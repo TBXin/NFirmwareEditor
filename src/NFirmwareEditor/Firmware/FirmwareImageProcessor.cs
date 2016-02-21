@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace NFirmwareEditor.Core
+namespace NFirmwareEditor.Firmware
 {
 	internal static class FirmwareImageProcessor
 	{
-		public static List<ImageMetadata> EnumerateImages(byte[] firmware, int offsetFrom, int offsetTo)
+		public static List<ImageMetadata> EnumerateImages(byte[] firmware, long offsetFrom, long offsetTo)
 		{
 			var result = new List<ImageMetadata>();
 			using (var ms = new MemoryStream(firmware))

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
+using NFirmwareEditor.Firmware;
 
 namespace NFirmwareEditor
 {
@@ -11,8 +12,20 @@ namespace NFirmwareEditor
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
 
-			ImagePixelGrid.Data = new bool[5,5];
+		private void MainWindow_Load(object sender, EventArgs e)
+		{
+			ImagePixelGrid.Data = new bool[5, 5];
+			var definitions = FirmwareDefinitionManager.Load();
+			foreach (var definition in definitions)
+			{
+				DefinitionsComboBox.Items.Add(definition);
+			}
+			if (definitions.Count > 0)
+			{
+				DefinitionsComboBox.SelectedItem = definitions[0];
+			}
 		}
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -34,17 +47,7 @@ namespace NFirmwareEditor
 				try
 				{
 					m_firmware = readFirmwareDelegate(op.FileName);
-
-					var images = FirmwareImageProcessor.EnumerateImages(m_firmware, 0x8808, 0x8A84);
-					ImagesListBox.BeginUpdate();
-					ImagesListBox.Items.Clear();
-					foreach (var imageData in images)
-					{
-						ImagesListBox.Items.Add(imageData);
-					}
-					ImagesListBox.EndUpdate();
-
-					StatusLabel.Text = @"Firmware loaded successfully.";
+					StatusLabel.Text = @"Firmware loaded successfully. Now choose definition and scan...";
 				}
 				catch (Exception ex)
 				{
@@ -53,7 +56,7 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void ExitMenuItem_Click(object sender, System.EventArgs e)
+		private void ExitMenuItem_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
@@ -75,6 +78,25 @@ namespace NFirmwareEditor
 		private void ShowGridCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
+		}
+
+		private void ScanButton_Click(object sender, EventArgs e)
+		{
+			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
+			if (definition == null)
+			{
+				InfoBox.Show("Select definition first.");
+				return;
+			}
+
+			var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition.ImageTable.OffsetFrom, definition.ImageTable.OffsetTo);
+			ImagesListBox.BeginUpdate();
+			ImagesListBox.Items.Clear();
+			foreach (var imageData in images)
+			{
+				ImagesListBox.Items.Add(imageData);
+			}
+			ImagesListBox.EndUpdate();
 		}
 	}
 }

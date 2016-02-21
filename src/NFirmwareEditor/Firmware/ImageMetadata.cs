@@ -1,4 +1,4 @@
-﻿namespace NFirmwareEditor.Core
+﻿namespace NFirmwareEditor.Firmware
 {
 	internal class ImageMetadata
 	{

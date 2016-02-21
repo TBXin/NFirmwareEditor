@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace NFirmwareEditor.Core
+namespace NFirmwareEditor.Firmware
 {
 	public static class FirmwareEncoder
 	{
