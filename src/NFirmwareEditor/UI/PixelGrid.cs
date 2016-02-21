@@ -14,6 +14,7 @@ namespace NFirmwareEditor.UI
 		private int m_rowsCount;
 		private Pen m_blockOuterBorderPen = Pens.DarkGray;
 		private Pen m_blockInnerBorderPen = new Pen(Color.LightGray) { DashStyle = DashStyle.Dash };
+		private TextureBrush m_backgroundBrush;
 
 		private Rectangle m_clientArea;
 		private bool m_showGrid;
@@ -90,6 +91,7 @@ namespace NFirmwareEditor.UI
 				gfx.TranslateTransform(-HorizontalScroll.Value, -VerticalScroll.Value);
 				gfx.TranslateTransform(Margin.Left, Margin.Top);
 
+				DrawBackground(gfx);
 				DrawBlocks(gfx);
 				DrawGrid(gfx);
 				DrawBorder(gfx);
@@ -117,6 +119,22 @@ namespace NFirmwareEditor.UI
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			if (TrySetBlockValue(e)) Invalidate();
+		}
+
+		private void DrawBackground(Graphics gfx)
+		{
+			if (BackgroundImage == null) return;
+			if (m_backgroundBrush == null)
+			{
+				m_backgroundBrush = new TextureBrush(BackgroundImage) { WrapMode = WrapMode.Tile };
+			}
+
+			var rect = new Rectangle(Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
+			{
+				rect.Offset(-HorizontalScroll.Value - Margin.Left, -VerticalScroll.Value - Margin.Top);
+				rect.Inflate(HorizontalScroll.Value * 2 + Margin.Left, VerticalScroll.Value * 2 + Margin.Top);
+			}
+			gfx.FillRectangle(m_backgroundBrush, rect);
 		}
 
 		private void DrawBlocks(Graphics gfx)

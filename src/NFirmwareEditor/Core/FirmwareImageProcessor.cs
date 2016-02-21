@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace NFirmwareEditor.Core
 {
@@ -23,10 +21,10 @@ namespace NFirmwareEditor.Core
 						offsetsTable.Add(br.ReadUInt32());
 					}
 
-					foreach (var offset in offsetsTable)
+					for (var i = 0; i < offsetsTable.Count; i++)
 					{
-						br.BaseStream.Seek(offset, SeekOrigin.Begin);
-						result.Add(ReadImageMetadataData(br));
+						br.BaseStream.Seek(offsetsTable[i], SeekOrigin.Begin);
+						result.Add(ReadImageMetadataData(br, i + 1));
 					}
 				}
 			}
@@ -58,9 +56,9 @@ namespace NFirmwareEditor.Core
 			return result;
 		}
 
-		private static ImageMetadata ReadImageMetadataData(BinaryReader reader)
+		private static ImageMetadata ReadImageMetadataData(BinaryReader reader, int index)
 		{
-			var name = string.Format("0x{0:X2}", reader.BaseStream.Position);
+			var name = string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", index, reader.BaseStream.Position);
 			var width = reader.ReadByte();
 			var height = reader.ReadByte();
 			var dataOffset = reader.BaseStream.Position;

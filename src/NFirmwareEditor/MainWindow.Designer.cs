@@ -154,10 +154,10 @@
 			this.borderedPanel3.Controls.Add(this.ShowGridCheckBox);
 			this.borderedPanel3.Controls.Add(this.label1);
 			this.borderedPanel3.Controls.Add(this.GridSizeUpDown);
-			this.borderedPanel3.Location = new System.Drawing.Point(112, 27);
+			this.borderedPanel3.Location = new System.Drawing.Point(151, 27);
 			this.borderedPanel3.Name = "borderedPanel3";
 			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(741, 100);
+			this.borderedPanel3.Size = new System.Drawing.Size(702, 100);
 			this.borderedPanel3.TabIndex = 3;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
@@ -195,7 +195,7 @@
 			this.GridSizeUpDown.Size = new System.Drawing.Size(42, 21);
 			this.GridSizeUpDown.TabIndex = 0;
 			this.GridSizeUpDown.Value = new decimal(new int[] {
-            15,
+            16,
             0,
             0,
             0});
@@ -214,10 +214,10 @@
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
 			this.borderedPanel2.Controls.Add(this.ImagePixelGrid);
-			this.borderedPanel2.Location = new System.Drawing.Point(112, 133);
+			this.borderedPanel2.Location = new System.Drawing.Point(151, 133);
 			this.borderedPanel2.Name = "borderedPanel2";
 			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel2.Size = new System.Drawing.Size(740, 378);
+			this.borderedPanel2.Size = new System.Drawing.Size(701, 378);
 			this.borderedPanel2.TabIndex = 2;
 			this.borderedPanel2.Text = "borderedPanel2";
 			// 
@@ -225,13 +225,14 @@
 			// 
 			this.ImagePixelGrid.AutoScroll = true;
 			this.ImagePixelGrid.AutoScrollMinSize = new System.Drawing.Size(6, 6);
-			this.ImagePixelGrid.BlockSize = 15;
+			this.ImagePixelGrid.BackgroundImage = global::NFirmwareEditor.Properties.Resources.transparent_bg;
+			this.ImagePixelGrid.BlockSize = 16;
 			this.ImagePixelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ImagePixelGrid.Location = new System.Drawing.Point(1, 1);
-			this.ImagePixelGrid.Margin = new System.Windows.Forms.Padding(10);
+			this.ImagePixelGrid.Margin = new System.Windows.Forms.Padding(8);
 			this.ImagePixelGrid.Name = "ImagePixelGrid";
 			this.ImagePixelGrid.ShowGrid = true;
-			this.ImagePixelGrid.Size = new System.Drawing.Size(738, 376);
+			this.ImagePixelGrid.Size = new System.Drawing.Size(699, 376);
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
 			// 
@@ -250,7 +251,7 @@
 			this.borderedPanel1.Location = new System.Drawing.Point(6, 27);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(100, 484);
+			this.borderedPanel1.Size = new System.Drawing.Size(140, 484);
 			this.borderedPanel1.TabIndex = 1;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -258,10 +259,11 @@
 			// 
 			this.ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
 			this.ImagesListBox.FormattingEnabled = true;
 			this.ImagesListBox.Location = new System.Drawing.Point(1, 1);
 			this.ImagesListBox.Name = "ImagesListBox";
-			this.ImagesListBox.Size = new System.Drawing.Size(98, 482);
+			this.ImagesListBox.Size = new System.Drawing.Size(138, 482);
 			this.ImagesListBox.TabIndex = 0;
 			this.ImagesListBox.SelectedValueChanged += new System.EventHandler(this.ImagesListBox_SelectedValueChanged);
 			// 
