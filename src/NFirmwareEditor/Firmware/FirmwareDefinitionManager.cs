@@ -23,10 +23,10 @@ namespace NFirmwareEditor.Firmware
 #endif
 			var serizlier = new XmlSerializer(typeof(List<FirmwareDefinition>));
 #if DEBUG
-			using (var fs = File.Open(Paths.DefinitionsFile, FileMode.Create))
+			/*using (var fs = File.Open(Paths.DefinitionsFile, FileMode.Create))
 			{
 				serizlier.Serialize(fs, data);
-			}
+			}*/
 #endif
 
 			try

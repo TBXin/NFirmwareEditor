@@ -16,7 +16,7 @@ namespace NFirmwareEditor
 
 		private void MainWindow_Load(object sender, EventArgs e)
 		{
-			ImagePixelGrid.Data = new bool[5, 5];
+			InititalizeControls();
 			var definitions = FirmwareDefinitionManager.Load();
 			foreach (var definition in definitions)
 			{
@@ -54,6 +54,8 @@ namespace NFirmwareEditor
 					InfoBox.Show("Can't open file.\n" + ex.Message);
 				}
 			}
+
+			ScanFirmware();
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -67,7 +69,14 @@ namespace NFirmwareEditor
 			if (metadata == null) return;
 
 			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
-			ImagePixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+			try
+			{
+				ImagePixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+			}
+			catch (Exception)
+			{
+				InfoBox.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
+			}
 		}
 
 		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
@@ -80,8 +89,23 @@ namespace NFirmwareEditor
 			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
 		}
 
-		private void ScanButton_Click(object sender, EventArgs e)
+		private void DefinitionsComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
+			ScanFirmware();
+		}
+
+		private void InititalizeControls()
+		{
+			ImagesListBox.Items.Clear();
+			ImagePixelGrid.Data = new bool[5, 5];
+			StatusLabel.Text = null;
+		}
+
+		private void ScanFirmware()
+		{
+			InititalizeControls();
+			if (m_firmware == null) return;
+
 			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
 			if (definition == null)
 			{
@@ -89,14 +113,21 @@ namespace NFirmwareEditor
 				return;
 			}
 
-			var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition.ImageTable.OffsetFrom, definition.ImageTable.OffsetTo);
-			ImagesListBox.BeginUpdate();
-			ImagesListBox.Items.Clear();
-			foreach (var imageData in images)
+			try
 			{
-				ImagesListBox.Items.Add(imageData);
+				var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition.ImageTable.OffsetFrom, definition.ImageTable.OffsetTo);
+				ImagesListBox.BeginUpdate();
+				ImagesListBox.Items.Clear();
+				foreach (var imageData in images)
+				{
+					ImagesListBox.Items.Add(imageData);
+				}
+				ImagesListBox.EndUpdate();
 			}
-			ImagesListBox.EndUpdate();
+			catch (Exception)
+			{
+				InfoBox.Show("Unable to enumerate images. Possibly firmware definition is incompatible with loaded firmware.");
+			}
 		}
 	}
 }

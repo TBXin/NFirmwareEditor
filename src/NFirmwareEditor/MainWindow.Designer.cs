@@ -40,9 +40,7 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
-			this.ScanButton = new System.Windows.Forms.Button();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
@@ -154,9 +152,6 @@
 			this.borderedPanel3.BorderRight = true;
 			this.borderedPanel3.BorderTop = true;
 			this.borderedPanel3.BorderWidth = 1F;
-			this.borderedPanel3.Controls.Add(this.ScanButton);
-			this.borderedPanel3.Controls.Add(this.DefinitionsComboBox);
-			this.borderedPanel3.Controls.Add(this.label2);
 			this.borderedPanel3.Controls.Add(this.ShowGridCheckBox);
 			this.borderedPanel3.Controls.Add(this.label1);
 			this.borderedPanel3.Controls.Add(this.GridSizeUpDown);
@@ -167,33 +162,15 @@
 			this.borderedPanel3.TabIndex = 3;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
-			// ScanButton
-			// 
-			this.ScanButton.Location = new System.Drawing.Point(203, 3);
-			this.ScanButton.Name = "ScanButton";
-			this.ScanButton.Size = new System.Drawing.Size(75, 23);
-			this.ScanButton.TabIndex = 5;
-			this.ScanButton.Text = "Scan";
-			this.ScanButton.UseVisualStyleBackColor = true;
-			this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
-			// 
 			// DefinitionsComboBox
 			// 
 			this.DefinitionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.DefinitionsComboBox.FormattingEnabled = true;
-			this.DefinitionsComboBox.Location = new System.Drawing.Point(59, 4);
+			this.DefinitionsComboBox.Location = new System.Drawing.Point(6, 27);
 			this.DefinitionsComboBox.Name = "DefinitionsComboBox";
 			this.DefinitionsComboBox.Size = new System.Drawing.Size(140, 21);
 			this.DefinitionsComboBox.TabIndex = 4;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(4, 7);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 13);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Firmware:";
+			this.DefinitionsComboBox.SelectedValueChanged += new System.EventHandler(this.DefinitionsComboBox_SelectedValueChanged);
 			// 
 			// ShowGridCheckBox
 			// 
@@ -282,10 +259,10 @@
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
 			this.borderedPanel1.Controls.Add(this.ImagesListBox);
-			this.borderedPanel1.Location = new System.Drawing.Point(6, 27);
+			this.borderedPanel1.Location = new System.Drawing.Point(6, 54);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(140, 484);
+			this.borderedPanel1.Size = new System.Drawing.Size(140, 457);
 			this.borderedPanel1.TabIndex = 1;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -297,7 +274,7 @@
 			this.ImagesListBox.FormattingEnabled = true;
 			this.ImagesListBox.Location = new System.Drawing.Point(1, 1);
 			this.ImagesListBox.Name = "ImagesListBox";
-			this.ImagesListBox.Size = new System.Drawing.Size(138, 482);
+			this.ImagesListBox.Size = new System.Drawing.Size(138, 455);
 			this.ImagesListBox.TabIndex = 0;
 			this.ImagesListBox.SelectedValueChanged += new System.EventHandler(this.ImagesListBox_SelectedValueChanged);
 			// 
@@ -307,6 +284,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(858, 539);
 			this.Controls.Add(this.statusStrip1);
+			this.Controls.Add(this.DefinitionsComboBox);
 			this.Controls.Add(this.borderedPanel3);
 			this.Controls.Add(this.borderedPanel2);
 			this.Controls.Add(this.borderedPanel1);
@@ -352,9 +330,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown GridSizeUpDown;
 		private System.Windows.Forms.CheckBox ShowGridCheckBox;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox DefinitionsComboBox;
-		private System.Windows.Forms.Button ScanButton;
 	}
 }
 
