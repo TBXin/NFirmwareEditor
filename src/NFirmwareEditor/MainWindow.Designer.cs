@@ -39,8 +39,8 @@
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
+			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
@@ -70,9 +70,9 @@
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenEncryptedMenuItem,
-            this.OpenDecryptedMenuItem,
-            this.toolStripSeparator1,
             this.SaveEncryptedMenuItem,
+            this.toolStripSeparator1,
+            this.OpenDecryptedMenuItem,
             this.SaveDecryptedMenuItem,
             this.toolStripSeparator2,
             this.ExitMenuItem});
@@ -83,45 +83,47 @@
 			// OpenEncryptedMenuItem
 			// 
 			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
-			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.OpenEncryptedMenuItem.Text = "Open encrypted";
+			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
 			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
 			// 
 			// OpenDecryptedMenuItem
 			// 
 			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.OpenDecryptedMenuItem.Text = "Open decrypted";
+			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
 			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// SaveEncryptedMenuItem
 			// 
 			this.SaveEncryptedMenuItem.Enabled = false;
 			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
-			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.SaveEncryptedMenuItem.Text = "Save encrypted";
+			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
+			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
 			// 
 			// SaveDecryptedMenuItem
 			// 
 			this.SaveDecryptedMenuItem.Enabled = false;
 			this.SaveDecryptedMenuItem.Name = "SaveDecryptedMenuItem";
-			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.SaveDecryptedMenuItem.Text = "Save decrypted";
+			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveDecryptedMenuItem.Text = "Save Decrypted As...";
+			this.SaveDecryptedMenuItem.Click += new System.EventHandler(this.SaveDecryptedMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(156, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// ExitMenuItem
 			// 
 			this.ExitMenuItem.Name = "ExitMenuItem";
-			this.ExitMenuItem.Size = new System.Drawing.Size(159, 22);
+			this.ExitMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
@@ -140,6 +142,15 @@
 			this.StatusLabel.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.StatusLabel.Name = "StatusLabel";
 			this.StatusLabel.Size = new System.Drawing.Size(0, 17);
+			// 
+			// DefinitionsComboBox
+			// 
+			this.DefinitionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.DefinitionsComboBox.FormattingEnabled = true;
+			this.DefinitionsComboBox.Location = new System.Drawing.Point(6, 27);
+			this.DefinitionsComboBox.Name = "DefinitionsComboBox";
+			this.DefinitionsComboBox.Size = new System.Drawing.Size(140, 21);
+			this.DefinitionsComboBox.TabIndex = 4;
 			// 
 			// borderedPanel3
 			// 
@@ -161,16 +172,6 @@
 			this.borderedPanel3.Size = new System.Drawing.Size(702, 100);
 			this.borderedPanel3.TabIndex = 3;
 			this.borderedPanel3.Text = "borderedPanel3";
-			// 
-			// DefinitionsComboBox
-			// 
-			this.DefinitionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.DefinitionsComboBox.FormattingEnabled = true;
-			this.DefinitionsComboBox.Location = new System.Drawing.Point(6, 27);
-			this.DefinitionsComboBox.Name = "DefinitionsComboBox";
-			this.DefinitionsComboBox.Size = new System.Drawing.Size(140, 21);
-			this.DefinitionsComboBox.TabIndex = 4;
-			this.DefinitionsComboBox.SelectedValueChanged += new System.EventHandler(this.DefinitionsComboBox_SelectedValueChanged);
 			// 
 			// ShowGridCheckBox
 			// 

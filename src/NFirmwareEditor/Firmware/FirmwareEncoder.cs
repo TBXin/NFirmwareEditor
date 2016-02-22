@@ -32,5 +32,13 @@ namespace NFirmwareEditor.Firmware
 			var rawBytes = File.ReadAllBytes(filePath);
 			return decode ? Decode(rawBytes) : rawBytes;
 		}
+
+		public static void WriteFile(string filePath, byte[] data, bool encode = true)
+		{
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+			if (data == null) throw new ArgumentNullException("data");
+
+			File.WriteAllBytes(filePath, encode ? Encode(data) : data);
+		}
 	}
 }

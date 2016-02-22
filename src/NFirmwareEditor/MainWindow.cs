@@ -7,6 +7,7 @@ namespace NFirmwareEditor
 {
 	public partial class MainWindow : Form
 	{
+		private const string Title = "NFirmwareEditor";
 		private byte[] m_firmware;
 
 		public MainWindow()
@@ -38,24 +39,50 @@ namespace NFirmwareEditor
 			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName, false));
 		}
 
+		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
+		}
+
+		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
+		}
+
 		private void OpenDialogAndReadFirmwareOnOk(Func<string, byte[]> readFirmwareDelegate)
 		{
+			string firmwareFile;
 			using (var op = new OpenFileDialog { Filter = @"Firmware file|*.bin" })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
-
-				try
-				{
-					m_firmware = readFirmwareDelegate(op.FileName);
-					StatusLabel.Text = @"Firmware loaded successfully. Now choose definition and scan...";
-				}
-				catch (Exception ex)
-				{
-					InfoBox.Show("Can't open file.\n" + ex.Message);
-				}
+				firmwareFile = op.FileName;
 			}
 
+			InititalizeControls();
+			LoadFirmware(readFirmwareDelegate, firmwareFile);
 			ScanFirmware();
+		}
+
+		private void OpenDiaglogAndSaveFirmwareOnOk(Action<string, byte[]> writeFirmwareDelegate)
+		{
+			if (m_firmware == null) return;
+
+			string firmwareFile;
+			using (var sf = new SaveFileDialog { Filter = @"Firmware file|*.bin" })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+				firmwareFile = sf.FileName;
+			}
+
+			try
+			{
+				writeFirmwareDelegate(firmwareFile, m_firmware);
+				StatusLabel.Text = @"Firmware saved successfully to: " + firmwareFile;
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("Can't save firmware file.\n" + ex.Message);
+			}
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -89,11 +116,6 @@ namespace NFirmwareEditor
 			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
 		}
 
-		private void DefinitionsComboBox_SelectedValueChanged(object sender, EventArgs e)
-		{
-			ScanFirmware();
-		}
-
 		private void InititalizeControls()
 		{
 			ImagesListBox.Items.Clear();
@@ -101,11 +123,25 @@ namespace NFirmwareEditor
 			StatusLabel.Text = null;
 		}
 
+		private void LoadFirmware(Func<string, byte[]> readFirmwareDelegate, string firmwareFile)
+		{
+			try
+			{
+				m_firmware = readFirmwareDelegate(firmwareFile);
+
+				SaveEncryptedMenuItem.Enabled = true;
+				SaveDecryptedMenuItem.Enabled = true;
+				Text = Title + @" - " + firmwareFile;
+				StatusLabel.Text = @"Firmware loaded successfully.";
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("Can't open file.\n" + ex.Message);
+			}
+		}
+
 		private void ScanFirmware()
 		{
-			InititalizeControls();
-			if (m_firmware == null) return;
-
 			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
 			if (definition == null)
 			{
@@ -123,6 +159,7 @@ namespace NFirmwareEditor
 					ImagesListBox.Items.Add(imageData);
 				}
 				ImagesListBox.EndUpdate();
+				if (ImagesListBox.Items.Count > 0) ImagesListBox.SelectedIndex = 0;
 			}
 			catch (Exception)
 			{
