@@ -14,6 +14,7 @@ namespace NFirmwareEditor
 		public MainWindow()
 		{
 			InitializeComponent();
+			Icon = Paths.ApplicationIcon;
 		}
 
 		private void MainWindow_Load(object sender, EventArgs e)
