@@ -45,6 +45,12 @@
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.InversePixelGridButton = new System.Windows.Forms.Button();
+			this.ClearPixelGridButton = new System.Windows.Forms.Button();
+			this.MovePixelGridDownButton = new System.Windows.Forms.Button();
+			this.MovePixelGridUpButton = new System.Windows.Forms.Button();
+			this.MovePixelGridRightButton = new System.Windows.Forms.Button();
+			this.MovePixelGridLeftButton = new System.Windows.Forms.Button();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
@@ -235,6 +241,12 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.InversePixelGridButton);
+			this.borderedPanel2.Controls.Add(this.ClearPixelGridButton);
+			this.borderedPanel2.Controls.Add(this.MovePixelGridDownButton);
+			this.borderedPanel2.Controls.Add(this.MovePixelGridUpButton);
+			this.borderedPanel2.Controls.Add(this.MovePixelGridRightButton);
+			this.borderedPanel2.Controls.Add(this.MovePixelGridLeftButton);
 			this.borderedPanel2.Controls.Add(this.borderedPanel4);
 			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
 			this.borderedPanel2.Controls.Add(this.label1);
@@ -245,6 +257,60 @@
 			this.borderedPanel2.Size = new System.Drawing.Size(701, 360);
 			this.borderedPanel2.TabIndex = 2;
 			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// InversePixelGridButton
+			// 
+			this.InversePixelGridButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
+			this.InversePixelGridButton.Location = new System.Drawing.Point(209, 3);
+			this.InversePixelGridButton.Name = "InversePixelGridButton";
+			this.InversePixelGridButton.Size = new System.Drawing.Size(24, 24);
+			this.InversePixelGridButton.TabIndex = 10;
+			this.InversePixelGridButton.UseVisualStyleBackColor = true;
+			// 
+			// ClearPixelGridButton
+			// 
+			this.ClearPixelGridButton.Image = global::NFirmwareEditor.Properties.Resources._new;
+			this.ClearPixelGridButton.Location = new System.Drawing.Point(186, 3);
+			this.ClearPixelGridButton.Name = "ClearPixelGridButton";
+			this.ClearPixelGridButton.Size = new System.Drawing.Size(24, 24);
+			this.ClearPixelGridButton.TabIndex = 9;
+			this.ClearPixelGridButton.UseVisualStyleBackColor = true;
+			// 
+			// MovePixelGridDownButton
+			// 
+			this.MovePixelGridDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
+			this.MovePixelGridDownButton.Location = new System.Drawing.Point(308, 3);
+			this.MovePixelGridDownButton.Name = "MovePixelGridDownButton";
+			this.MovePixelGridDownButton.Size = new System.Drawing.Size(24, 24);
+			this.MovePixelGridDownButton.TabIndex = 7;
+			this.MovePixelGridDownButton.UseVisualStyleBackColor = true;
+			// 
+			// MovePixelGridUpButton
+			// 
+			this.MovePixelGridUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
+			this.MovePixelGridUpButton.Location = new System.Drawing.Point(285, 3);
+			this.MovePixelGridUpButton.Name = "MovePixelGridUpButton";
+			this.MovePixelGridUpButton.Size = new System.Drawing.Size(24, 24);
+			this.MovePixelGridUpButton.TabIndex = 6;
+			this.MovePixelGridUpButton.UseVisualStyleBackColor = true;
+			// 
+			// MovePixelGridRightButton
+			// 
+			this.MovePixelGridRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
+			this.MovePixelGridRightButton.Location = new System.Drawing.Point(262, 3);
+			this.MovePixelGridRightButton.Name = "MovePixelGridRightButton";
+			this.MovePixelGridRightButton.Size = new System.Drawing.Size(24, 24);
+			this.MovePixelGridRightButton.TabIndex = 5;
+			this.MovePixelGridRightButton.UseVisualStyleBackColor = true;
+			// 
+			// MovePixelGridLeftButton
+			// 
+			this.MovePixelGridLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
+			this.MovePixelGridLeftButton.Location = new System.Drawing.Point(239, 3);
+			this.MovePixelGridLeftButton.Name = "MovePixelGridLeftButton";
+			this.MovePixelGridLeftButton.Size = new System.Drawing.Size(24, 24);
+			this.MovePixelGridLeftButton.TabIndex = 4;
+			this.MovePixelGridLeftButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel4
 			// 
@@ -288,7 +354,7 @@
 			this.ShowGridCheckBox.AutoSize = true;
 			this.ShowGridCheckBox.Checked = true;
 			this.ShowGridCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.ShowGridCheckBox.Location = new System.Drawing.Point(107, 8);
+			this.ShowGridCheckBox.Location = new System.Drawing.Point(107, 7);
 			this.ShowGridCheckBox.Name = "ShowGridCheckBox";
 			this.ShowGridCheckBox.Size = new System.Drawing.Size(73, 17);
 			this.ShowGridCheckBox.TabIndex = 2;
@@ -414,6 +480,12 @@
 		private UI.BorderedPanel borderedPanel5;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button MovePixelGridLeftButton;
+		private System.Windows.Forms.Button MovePixelGridRightButton;
+		private System.Windows.Forms.Button MovePixelGridUpButton;
+		private System.Windows.Forms.Button MovePixelGridDownButton;
+		private System.Windows.Forms.Button ClearPixelGridButton;
+		private System.Windows.Forms.Button InversePixelGridButton;
 	}
 }
 
