@@ -182,52 +182,52 @@ namespace NFirmwareEditor
 			PreviewPixelGrid.Data = data;
 		}
 
-		private void ClearPixelGridButton_Click(object sender, EventArgs e)
+		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearImage(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearAllPixelsImage(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void InversePixelGridButton_Click(object sender, EventArgs e)
+		private void InvertButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InverseImage(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void MovePixelGridLeftButton_Click(object sender, EventArgs e)
+		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void MovePixelGridRightButton_Click(object sender, EventArgs e)
+		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageRight(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageRight(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void MovePixelGridUpButton_Click(object sender, EventArgs e)
+		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageUp(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageUp(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void MovePixelGridDownButton_Click(object sender, EventArgs e)
+		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
 			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageDown(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 	}
 }

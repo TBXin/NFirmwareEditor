@@ -28,7 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.components = new System.ComponentModel.Container();
+			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,7 +38,7 @@
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
 			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
@@ -45,12 +46,12 @@
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
-			this.InversePixelGridButton = new System.Windows.Forms.Button();
-			this.ClearPixelGridButton = new System.Windows.Forms.Button();
-			this.MovePixelGridDownButton = new System.Windows.Forms.Button();
-			this.MovePixelGridUpButton = new System.Windows.Forms.Button();
-			this.MovePixelGridRightButton = new System.Windows.Forms.Button();
-			this.MovePixelGridLeftButton = new System.Windows.Forms.Button();
+			this.InverseButton = new System.Windows.Forms.Button();
+			this.ClearAllPixelsButton = new System.Windows.Forms.Button();
+			this.ShiftDownButton = new System.Windows.Forms.Button();
+			this.ShiftUpButton = new System.Windows.Forms.Button();
+			this.ShiftRightButton = new System.Windows.Forms.Button();
+			this.ShiftLeftButton = new System.Windows.Forms.Button();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
@@ -58,8 +59,9 @@
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagesListBox = new System.Windows.Forms.ListBox();
-			this.menuStrip1.SuspendLayout();
-			this.statusStrip1.SuspendLayout();
+			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.MainMenuStrip.SuspendLayout();
+			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
@@ -68,16 +70,16 @@
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// MainMenuStrip
 			// 
-			this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.MainMenuStrip.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(858, 24);
-			this.menuStrip1.TabIndex = 0;
-			this.menuStrip1.Text = "MainMenu";
+			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.MainMenuStrip.Name = "MainMenuStrip";
+			this.MainMenuStrip.Size = new System.Drawing.Size(858, 24);
+			this.MainMenuStrip.TabIndex = 0;
+			this.MainMenuStrip.Text = "MainMenu";
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -140,15 +142,15 @@
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
-			// statusStrip1
+			// MainStatusStrip
 			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 517);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(858, 22);
-			this.statusStrip1.TabIndex = 4;
-			this.statusStrip1.Text = "statusStrip1";
+			this.MainStatusStrip.Location = new System.Drawing.Point(0, 517);
+			this.MainStatusStrip.Name = "MainStatusStrip";
+			this.MainStatusStrip.Size = new System.Drawing.Size(858, 22);
+			this.MainStatusStrip.TabIndex = 4;
+			this.MainStatusStrip.Text = "statusStrip1";
 			// 
 			// StatusLabel
 			// 
@@ -164,6 +166,7 @@
 			this.DefinitionsComboBox.Name = "DefinitionsComboBox";
 			this.DefinitionsComboBox.Size = new System.Drawing.Size(140, 21);
 			this.DefinitionsComboBox.TabIndex = 4;
+			this.MainToolTip.SetToolTip(this.DefinitionsComboBox, "Firmware definitions");
 			// 
 			// borderedPanel3
 			// 
@@ -241,12 +244,12 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
-			this.borderedPanel2.Controls.Add(this.InversePixelGridButton);
-			this.borderedPanel2.Controls.Add(this.ClearPixelGridButton);
-			this.borderedPanel2.Controls.Add(this.MovePixelGridDownButton);
-			this.borderedPanel2.Controls.Add(this.MovePixelGridUpButton);
-			this.borderedPanel2.Controls.Add(this.MovePixelGridRightButton);
-			this.borderedPanel2.Controls.Add(this.MovePixelGridLeftButton);
+			this.borderedPanel2.Controls.Add(this.InverseButton);
+			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
+			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
+			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
+			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
+			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
 			this.borderedPanel2.Controls.Add(this.borderedPanel4);
 			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
 			this.borderedPanel2.Controls.Add(this.label1);
@@ -258,65 +261,71 @@
 			this.borderedPanel2.TabIndex = 2;
 			this.borderedPanel2.Text = "borderedPanel2";
 			// 
-			// InversePixelGridButton
+			// InverseButton
 			// 
-			this.InversePixelGridButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
-			this.InversePixelGridButton.Location = new System.Drawing.Point(209, 3);
-			this.InversePixelGridButton.Name = "InversePixelGridButton";
-			this.InversePixelGridButton.Size = new System.Drawing.Size(24, 24);
-			this.InversePixelGridButton.TabIndex = 10;
-			this.InversePixelGridButton.UseVisualStyleBackColor = true;
-			this.InversePixelGridButton.Click += new System.EventHandler(this.InversePixelGridButton_Click);
+			this.InverseButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
+			this.InverseButton.Location = new System.Drawing.Point(209, 3);
+			this.InverseButton.Name = "InverseButton";
+			this.InverseButton.Size = new System.Drawing.Size(24, 24);
+			this.InverseButton.TabIndex = 10;
+			this.MainToolTip.SetToolTip(this.InverseButton, "Invert");
+			this.InverseButton.UseVisualStyleBackColor = true;
+			this.InverseButton.Click += new System.EventHandler(this.InvertButton_Click);
 			// 
-			// ClearPixelGridButton
+			// ClearAllPixelsButton
 			// 
-			this.ClearPixelGridButton.Image = global::NFirmwareEditor.Properties.Resources._new;
-			this.ClearPixelGridButton.Location = new System.Drawing.Point(186, 3);
-			this.ClearPixelGridButton.Name = "ClearPixelGridButton";
-			this.ClearPixelGridButton.Size = new System.Drawing.Size(24, 24);
-			this.ClearPixelGridButton.TabIndex = 9;
-			this.ClearPixelGridButton.UseVisualStyleBackColor = true;
-			this.ClearPixelGridButton.Click += new System.EventHandler(this.ClearPixelGridButton_Click);
+			this.ClearAllPixelsButton.Image = global::NFirmwareEditor.Properties.Resources._new;
+			this.ClearAllPixelsButton.Location = new System.Drawing.Point(186, 3);
+			this.ClearAllPixelsButton.Name = "ClearAllPixelsButton";
+			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);
+			this.ClearAllPixelsButton.TabIndex = 9;
+			this.MainToolTip.SetToolTip(this.ClearAllPixelsButton, "Clear all pixels");
+			this.ClearAllPixelsButton.UseVisualStyleBackColor = true;
+			this.ClearAllPixelsButton.Click += new System.EventHandler(this.ClearAllPixelsButton_Click);
 			// 
-			// MovePixelGridDownButton
+			// ShiftDownButton
 			// 
-			this.MovePixelGridDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.MovePixelGridDownButton.Location = new System.Drawing.Point(308, 3);
-			this.MovePixelGridDownButton.Name = "MovePixelGridDownButton";
-			this.MovePixelGridDownButton.Size = new System.Drawing.Size(24, 24);
-			this.MovePixelGridDownButton.TabIndex = 7;
-			this.MovePixelGridDownButton.UseVisualStyleBackColor = true;
-			this.MovePixelGridDownButton.Click += new System.EventHandler(this.MovePixelGridDownButton_Click);
+			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
+			this.ShiftDownButton.Location = new System.Drawing.Point(308, 3);
+			this.ShiftDownButton.Name = "ShiftDownButton";
+			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftDownButton.TabIndex = 7;
+			this.MainToolTip.SetToolTip(this.ShiftDownButton, "Shift down");
+			this.ShiftDownButton.UseVisualStyleBackColor = true;
+			this.ShiftDownButton.Click += new System.EventHandler(this.ShiftDownButton_Click);
 			// 
-			// MovePixelGridUpButton
+			// ShiftUpButton
 			// 
-			this.MovePixelGridUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.MovePixelGridUpButton.Location = new System.Drawing.Point(285, 3);
-			this.MovePixelGridUpButton.Name = "MovePixelGridUpButton";
-			this.MovePixelGridUpButton.Size = new System.Drawing.Size(24, 24);
-			this.MovePixelGridUpButton.TabIndex = 6;
-			this.MovePixelGridUpButton.UseVisualStyleBackColor = true;
-			this.MovePixelGridUpButton.Click += new System.EventHandler(this.MovePixelGridUpButton_Click);
+			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
+			this.ShiftUpButton.Location = new System.Drawing.Point(285, 3);
+			this.ShiftUpButton.Name = "ShiftUpButton";
+			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftUpButton.TabIndex = 6;
+			this.MainToolTip.SetToolTip(this.ShiftUpButton, "Shift up");
+			this.ShiftUpButton.UseVisualStyleBackColor = true;
+			this.ShiftUpButton.Click += new System.EventHandler(this.ShiftUpButton_Click);
 			// 
-			// MovePixelGridRightButton
+			// ShiftRightButton
 			// 
-			this.MovePixelGridRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.MovePixelGridRightButton.Location = new System.Drawing.Point(262, 3);
-			this.MovePixelGridRightButton.Name = "MovePixelGridRightButton";
-			this.MovePixelGridRightButton.Size = new System.Drawing.Size(24, 24);
-			this.MovePixelGridRightButton.TabIndex = 5;
-			this.MovePixelGridRightButton.UseVisualStyleBackColor = true;
-			this.MovePixelGridRightButton.Click += new System.EventHandler(this.MovePixelGridRightButton_Click);
+			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
+			this.ShiftRightButton.Location = new System.Drawing.Point(262, 3);
+			this.ShiftRightButton.Name = "ShiftRightButton";
+			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftRightButton.TabIndex = 5;
+			this.MainToolTip.SetToolTip(this.ShiftRightButton, "Shift right");
+			this.ShiftRightButton.UseVisualStyleBackColor = true;
+			this.ShiftRightButton.Click += new System.EventHandler(this.ShiftRightButton_Click);
 			// 
-			// MovePixelGridLeftButton
+			// ShiftLeftButton
 			// 
-			this.MovePixelGridLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.MovePixelGridLeftButton.Location = new System.Drawing.Point(239, 3);
-			this.MovePixelGridLeftButton.Name = "MovePixelGridLeftButton";
-			this.MovePixelGridLeftButton.Size = new System.Drawing.Size(24, 24);
-			this.MovePixelGridLeftButton.TabIndex = 4;
-			this.MovePixelGridLeftButton.UseVisualStyleBackColor = true;
-			this.MovePixelGridLeftButton.Click += new System.EventHandler(this.MovePixelGridLeftButton_Click);
+			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
+			this.ShiftLeftButton.Location = new System.Drawing.Point(239, 3);
+			this.ShiftLeftButton.Name = "ShiftLeftButton";
+			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftLeftButton.TabIndex = 4;
+			this.MainToolTip.SetToolTip(this.ShiftLeftButton, "Shift left");
+			this.ShiftLeftButton.UseVisualStyleBackColor = true;
+			this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
 			// 
 			// borderedPanel4
 			// 
@@ -431,22 +440,22 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(858, 539);
-			this.Controls.Add(this.statusStrip1);
+			this.Controls.Add(this.MainStatusStrip);
 			this.Controls.Add(this.DefinitionsComboBox);
 			this.Controls.Add(this.borderedPanel3);
 			this.Controls.Add(this.borderedPanel2);
 			this.Controls.Add(this.borderedPanel1);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.MainMenuStrip);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.MainMenuStrip;
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor";
 			this.Load += new System.EventHandler(this.MainWindow_Load);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
+			this.MainMenuStrip.ResumeLayout(false);
+			this.MainMenuStrip.PerformLayout();
+			this.MainStatusStrip.ResumeLayout(false);
+			this.MainStatusStrip.PerformLayout();
 			this.borderedPanel3.ResumeLayout(false);
 			this.borderedPanel3.PerformLayout();
 			this.borderedPanel5.ResumeLayout(false);
@@ -462,7 +471,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.MenuStrip MainMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OpenEncryptedMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OpenDecryptedMenuItem;
@@ -476,7 +485,7 @@
 		private System.Windows.Forms.ListBox ImagesListBox;
 		private UI.PixelGrid ImagePixelGrid;
 		private UI.BorderedPanel borderedPanel3;
-		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.StatusStrip MainStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.NumericUpDown GridSizeUpDown;
 		private System.Windows.Forms.CheckBox ShowGridCheckBox;
@@ -486,12 +495,13 @@
 		private UI.BorderedPanel borderedPanel5;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button MovePixelGridLeftButton;
-		private System.Windows.Forms.Button MovePixelGridRightButton;
-		private System.Windows.Forms.Button MovePixelGridUpButton;
-		private System.Windows.Forms.Button MovePixelGridDownButton;
-		private System.Windows.Forms.Button ClearPixelGridButton;
-		private System.Windows.Forms.Button InversePixelGridButton;
+		private System.Windows.Forms.Button ShiftLeftButton;
+		private System.Windows.Forms.Button ShiftRightButton;
+		private System.Windows.Forms.Button ShiftUpButton;
+		private System.Windows.Forms.Button ShiftDownButton;
+		private System.Windows.Forms.Button ClearAllPixelsButton;
+		private System.Windows.Forms.Button InverseButton;
+		private System.Windows.Forms.ToolTip MainToolTip;
 	}
 }
 

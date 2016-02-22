@@ -94,7 +94,7 @@ namespace NFirmwareEditor.Firmware
 			Buffer.BlockCopy(imageBytes, 0, firmware, (int)metadata.DataOffset, imageBytes.Length);
 		}
 
-		public static bool[,] ClearImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] ClearAllPixelsImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
@@ -110,7 +110,7 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static bool[,] InverseImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] InvertImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
@@ -126,7 +126,7 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static bool[,] MoveImageUp(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] ShiftImageUp(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
@@ -142,7 +142,7 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static bool[,] MoveImageDown(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] ShiftImageDown(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
@@ -158,7 +158,7 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static bool[,] MoveImageLeft(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] ShiftImageLeft(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
@@ -174,7 +174,7 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static bool[,] MoveImageRight(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		public static bool[,] ShiftImageRight(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (imageData == null) throw new ArgumentNullException("imageData");
