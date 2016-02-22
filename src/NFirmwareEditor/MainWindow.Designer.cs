@@ -46,6 +46,8 @@
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.PasteButton = new System.Windows.Forms.Button();
+			this.CopyButton = new System.Windows.Forms.Button();
 			this.InverseButton = new System.Windows.Forms.Button();
 			this.ClearAllPixelsButton = new System.Windows.Forms.Button();
 			this.ShiftDownButton = new System.Windows.Forms.Button();
@@ -77,7 +79,7 @@
             this.fileToolStripMenuItem});
 			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip.Name = "MainMenuStrip";
-			this.MainMenuStrip.Size = new System.Drawing.Size(858, 24);
+			this.MainMenuStrip.Size = new System.Drawing.Size(784, 24);
 			this.MainMenuStrip.TabIndex = 0;
 			this.MainMenuStrip.Text = "MainMenu";
 			// 
@@ -146,9 +148,9 @@
 			// 
 			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-			this.MainStatusStrip.Location = new System.Drawing.Point(0, 517);
+			this.MainStatusStrip.Location = new System.Drawing.Point(0, 539);
 			this.MainStatusStrip.Name = "MainStatusStrip";
-			this.MainStatusStrip.Size = new System.Drawing.Size(858, 22);
+			this.MainStatusStrip.Size = new System.Drawing.Size(784, 22);
 			this.MainStatusStrip.TabIndex = 4;
 			this.MainStatusStrip.Text = "statusStrip1";
 			// 
@@ -184,7 +186,7 @@
 			this.borderedPanel3.Location = new System.Drawing.Point(151, 27);
 			this.borderedPanel3.Name = "borderedPanel3";
 			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(702, 118);
+			this.borderedPanel3.Size = new System.Drawing.Size(628, 118);
 			this.borderedPanel3.TabIndex = 3;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
@@ -211,7 +213,7 @@
 			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel5.Name = "borderedPanel5";
 			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel5.Size = new System.Drawing.Size(700, 88);
+			this.borderedPanel5.Size = new System.Drawing.Size(626, 88);
 			this.borderedPanel5.TabIndex = 4;
 			this.borderedPanel5.Text = "borderedPanel5";
 			// 
@@ -228,7 +230,7 @@
 			this.PreviewPixelGrid.Margin = new System.Windows.Forms.Padding(2);
 			this.PreviewPixelGrid.Name = "PreviewPixelGrid";
 			this.PreviewPixelGrid.ShowGrid = false;
-			this.PreviewPixelGrid.Size = new System.Drawing.Size(698, 85);
+			this.PreviewPixelGrid.Size = new System.Drawing.Size(624, 85);
 			this.PreviewPixelGrid.TabIndex = 3;
 			this.PreviewPixelGrid.Text = "pixelGrid1";
 			// 
@@ -244,6 +246,8 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.PasteButton);
+			this.borderedPanel2.Controls.Add(this.CopyButton);
 			this.borderedPanel2.Controls.Add(this.InverseButton);
 			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
 			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
@@ -257,9 +261,29 @@
 			this.borderedPanel2.Location = new System.Drawing.Point(151, 151);
 			this.borderedPanel2.Name = "borderedPanel2";
 			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel2.Size = new System.Drawing.Size(701, 360);
+			this.borderedPanel2.Size = new System.Drawing.Size(627, 382);
 			this.borderedPanel2.TabIndex = 2;
 			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// PasteButton
+			// 
+			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteButton.Location = new System.Drawing.Point(262, 3);
+			this.PasteButton.Name = "PasteButton";
+			this.PasteButton.Size = new System.Drawing.Size(24, 24);
+			this.PasteButton.TabIndex = 12;
+			this.MainToolTip.SetToolTip(this.PasteButton, "Invert");
+			this.PasteButton.UseVisualStyleBackColor = true;
+			// 
+			// CopyButton
+			// 
+			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyButton.Location = new System.Drawing.Point(239, 3);
+			this.CopyButton.Name = "CopyButton";
+			this.CopyButton.Size = new System.Drawing.Size(24, 24);
+			this.CopyButton.TabIndex = 11;
+			this.MainToolTip.SetToolTip(this.CopyButton, "Clear all pixels");
+			this.CopyButton.UseVisualStyleBackColor = true;
 			// 
 			// InverseButton
 			// 
@@ -286,7 +310,7 @@
 			// ShiftDownButton
 			// 
 			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.ShiftDownButton.Location = new System.Drawing.Point(308, 3);
+			this.ShiftDownButton.Location = new System.Drawing.Point(361, 3);
 			this.ShiftDownButton.Name = "ShiftDownButton";
 			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftDownButton.TabIndex = 7;
@@ -297,7 +321,7 @@
 			// ShiftUpButton
 			// 
 			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.ShiftUpButton.Location = new System.Drawing.Point(285, 3);
+			this.ShiftUpButton.Location = new System.Drawing.Point(338, 3);
 			this.ShiftUpButton.Name = "ShiftUpButton";
 			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftUpButton.TabIndex = 6;
@@ -308,7 +332,7 @@
 			// ShiftRightButton
 			// 
 			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.ShiftRightButton.Location = new System.Drawing.Point(262, 3);
+			this.ShiftRightButton.Location = new System.Drawing.Point(315, 3);
 			this.ShiftRightButton.Name = "ShiftRightButton";
 			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftRightButton.TabIndex = 5;
@@ -319,7 +343,7 @@
 			// ShiftLeftButton
 			// 
 			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.ShiftLeftButton.Location = new System.Drawing.Point(239, 3);
+			this.ShiftLeftButton.Location = new System.Drawing.Point(292, 3);
 			this.ShiftLeftButton.Name = "ShiftLeftButton";
 			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftLeftButton.TabIndex = 4;
@@ -343,7 +367,7 @@
 			this.borderedPanel4.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel4.Size = new System.Drawing.Size(699, 330);
+			this.borderedPanel4.Size = new System.Drawing.Size(625, 352);
 			this.borderedPanel4.TabIndex = 3;
 			this.borderedPanel4.Text = "borderedPanel4";
 			// 
@@ -359,7 +383,7 @@
 			this.ImagePixelGrid.Margin = new System.Windows.Forms.Padding(8);
 			this.ImagePixelGrid.Name = "ImagePixelGrid";
 			this.ImagePixelGrid.ShowGrid = true;
-			this.ImagePixelGrid.Size = new System.Drawing.Size(699, 329);
+			this.ImagePixelGrid.Size = new System.Drawing.Size(625, 351);
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
 			this.ImagePixelGrid.DataUpdated += new NFirmwareEditor.UI.PixelGrid.DataUpdatedDelegate(this.ImagePixelGrid_DataUpdated);
@@ -419,7 +443,7 @@
 			this.borderedPanel1.Location = new System.Drawing.Point(6, 54);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(140, 457);
+			this.borderedPanel1.Size = new System.Drawing.Size(140, 479);
 			this.borderedPanel1.TabIndex = 1;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -431,7 +455,7 @@
 			this.ImagesListBox.FormattingEnabled = true;
 			this.ImagesListBox.Location = new System.Drawing.Point(1, 1);
 			this.ImagesListBox.Name = "ImagesListBox";
-			this.ImagesListBox.Size = new System.Drawing.Size(138, 455);
+			this.ImagesListBox.Size = new System.Drawing.Size(138, 477);
 			this.ImagesListBox.TabIndex = 0;
 			this.ImagesListBox.SelectedValueChanged += new System.EventHandler(this.ImagesListBox_SelectedValueChanged);
 			// 
@@ -439,7 +463,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(858, 539);
+			this.ClientSize = new System.Drawing.Size(784, 561);
 			this.Controls.Add(this.MainStatusStrip);
 			this.Controls.Add(this.DefinitionsComboBox);
 			this.Controls.Add(this.borderedPanel3);
@@ -447,7 +471,7 @@
 			this.Controls.Add(this.borderedPanel1);
 			this.Controls.Add(this.MainMenuStrip);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.MainMenuStrip = this.MainMenuStrip;
+			this.MinimumSize = new System.Drawing.Size(800, 600);
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor";
@@ -502,6 +526,8 @@
 		private System.Windows.Forms.Button ClearAllPixelsButton;
 		private System.Windows.Forms.Button InverseButton;
 		private System.Windows.Forms.ToolTip MainToolTip;
+		private System.Windows.Forms.Button PasteButton;
+		private System.Windows.Forms.Button CopyButton;
 	}
 }
 
