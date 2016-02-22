@@ -121,14 +121,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					result[col, row] = !imageData[col, row];
-				}
-			}
+			var result = ProcessImage(imageData, col => col, row => row, v => !v);
 			WriteImage(firmware, result, metadata);
 			return result;
 		}
@@ -144,14 +137,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					result[col, row - 1 >= 0 ? row - 1 : height - 1] = imageData[col, row];
-				}
-			}
+			var result = ProcessImage(imageData, col => col, row => row - 1 >= 0 ? row - 1 : height - 1, v => v);
 			WriteImage(firmware, result, metadata);
 			return result;
 		}
@@ -167,14 +153,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					result[col, row + 1 < height ? row + 1 : 0] = imageData[col, row];
-				}
-			}
+			var result = ProcessImage(imageData, col => col, row => row + 1 < height ? row + 1 : 0, v => v);
 			WriteImage(firmware, result, metadata);
 			return result;
 		}
@@ -190,14 +169,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					result[col - 1 >= 0 ? col - 1 : width - 1, row] = imageData[col, row];
-				}
-			}
+			var result = ProcessImage(imageData, col => col - 1 >= 0 ? col - 1 : width - 1, row => row, v => v);
 			WriteImage(firmware, result, metadata);
 			return result;
 		}
@@ -213,14 +185,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					result[col + 1 < width ? col + 1 : 0, row] = imageData[col, row];
-				}
-			}
+			var result = ProcessImage(imageData, col => col + 1 < width ? col + 1 : 0, row => row, v => v);
 			WriteImage(firmware, result, metadata);
 			return result;
 		}
@@ -237,6 +202,22 @@ namespace NFirmwareEditor.Firmware
 			reader.BaseStream.Seek(dataLength, SeekOrigin.Current);
 
 			return new ImageMetadata(name, width, height, dataOffset, dataLength);
+		}
+
+		private static bool[,] ProcessImage(bool[,] imageData, Func<int, int> colEvaluator, Func<int, int> rowEvaluator, Func<bool, bool> dataEvaluator)
+		{
+			var width = imageData.GetLength(0);
+			var height = imageData.GetLength(1);
+
+			var result = new bool[width, height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					result[colEvaluator(col), rowEvaluator(row)] = dataEvaluator(imageData[col, row]);
+				}
+			}
+			return result;
 		}
 
 		private static bool[] ToBoolArray(BitArray bitArray)
