@@ -14,6 +14,8 @@ namespace NFirmwareEditor.UI
 		private int m_rowsCount;
 		private Pen m_blockOuterBorderPen = Pens.DarkGray;
 		private Pen m_blockInnerBorderPen = new Pen(Color.LightGray) { DashStyle = DashStyle.Dash };
+		private Brush m_activeBlockBrush = new SolidBrush(Color.Black);
+		private Brush m_inactiveBlockBrush = new SolidBrush(Color.White);
 		private TextureBrush m_backgroundBrush;
 
 		private Rectangle m_clientArea;
@@ -21,7 +23,6 @@ namespace NFirmwareEditor.UI
 
 		public PixelGrid()
 		{
-			AutoScroll = true;
 			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
 			SetStyle(ControlStyles.Selectable, false);
 			UpdateStyles();
@@ -83,13 +84,33 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
+		public Brush ActiveBlockBrush
+		{
+			get { return m_activeBlockBrush; }
+			set
+			{
+				m_activeBlockBrush = value;
+				Invalidate();
+			}
+		}
+
+		public Brush InactiveBlockBrush
+		{
+			get { return m_inactiveBlockBrush; }
+			set
+			{
+				m_inactiveBlockBrush = value;
+				Invalidate();
+			}
+		}
+
 		public event DataUpdatedDelegate DataUpdated;
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			var gfx = e.Graphics;
 			{
-				gfx.Clear(Color.White);
+				gfx.Clear(BackColor);
 				gfx.TranslateTransform(-HorizontalScroll.Value, -VerticalScroll.Value);
 				gfx.TranslateTransform(Margin.Left, Margin.Top);
 
@@ -131,7 +152,7 @@ namespace NFirmwareEditor.UI
 				m_backgroundBrush = new TextureBrush(BackgroundImage) { WrapMode = WrapMode.Tile };
 			}
 
-			var rect = new Rectangle(Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
+			var rect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
 			{
 				rect.Offset(-HorizontalScroll.Value - Margin.Left, -VerticalScroll.Value - Margin.Top);
 				rect.Inflate(HorizontalScroll.Value * 2 + Margin.Left, VerticalScroll.Value * 2 + Margin.Top);
@@ -146,7 +167,7 @@ namespace NFirmwareEditor.UI
 				for (var row = 0; row < m_rowsCount; row++)
 				{
 					var blockRect = new Rectangle(col * BlockSize, row * BlockSize, BlockSize, BlockSize);
-					gfx.FillRectangle(Data[col, row] ? Brushes.Black : Brushes.White, blockRect);
+					gfx.FillRectangle(Data[col, row] ? m_activeBlockBrush : m_inactiveBlockBrush, blockRect);
 				}
 			}
 		}

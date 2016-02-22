@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -98,7 +99,7 @@ namespace NFirmwareEditor
 			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
 			try
 			{
-				ImagePixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
 			}
 			catch (Exception)
 			{
@@ -121,6 +122,11 @@ namespace NFirmwareEditor
 			ImagesListBox.Items.Clear();
 			ImagePixelGrid.Data = new bool[5, 5];
 			StatusLabel.Text = null;
+
+			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
+			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
+			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
 		}
 
 		private void LoadFirmware(Func<string, byte[]> readFirmwareDelegate, string firmwareFile)
@@ -173,6 +179,7 @@ namespace NFirmwareEditor
 			if (metadata == null) return;
 
 			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
+			PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
 		}
 	}
 }
