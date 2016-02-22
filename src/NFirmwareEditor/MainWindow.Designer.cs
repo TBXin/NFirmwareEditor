@@ -41,6 +41,7 @@
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
+			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
@@ -61,7 +62,6 @@
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagesListBox = new System.Windows.Forms.ListBox();
-			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel3.SuspendLayout();
@@ -272,7 +272,7 @@
 			this.PasteButton.Name = "PasteButton";
 			this.PasteButton.Size = new System.Drawing.Size(24, 24);
 			this.PasteButton.TabIndex = 12;
-			this.MainToolTip.SetToolTip(this.PasteButton, "Invert");
+			this.MainToolTip.SetToolTip(this.PasteButton, "Paste");
 			this.PasteButton.UseVisualStyleBackColor = true;
 			this.PasteButton.Click += new System.EventHandler(this.PasteButton_Click);
 			// 
@@ -283,7 +283,7 @@
 			this.CopyButton.Name = "CopyButton";
 			this.CopyButton.Size = new System.Drawing.Size(24, 24);
 			this.CopyButton.TabIndex = 11;
-			this.MainToolTip.SetToolTip(this.CopyButton, "Clear all pixels");
+			this.MainToolTip.SetToolTip(this.CopyButton, "Copy");
 			this.CopyButton.UseVisualStyleBackColor = true;
 			this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
 			// 
@@ -455,6 +455,7 @@
 			this.ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
 			this.ImagesListBox.FormattingEnabled = true;
+			this.ImagesListBox.IntegralHeight = false;
 			this.ImagesListBox.Location = new System.Drawing.Point(1, 1);
 			this.ImagesListBox.Name = "ImagesListBox";
 			this.ImagesListBox.Size = new System.Drawing.Size(138, 477);

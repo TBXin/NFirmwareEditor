@@ -207,7 +207,7 @@ namespace NFirmwareEditor.Firmware
 			var width = Math.Min(sourceWidth, copiedWidth);
 			var heigth = Math.Min(sourceHeight, copiedHeigth);
 
-			var result = new bool[width, heigth];
+			var result = new bool[sourceWidth, sourceHeight];
 			for (var col = 0; col < width; col++)
 			{
 				for (var row = 0; row < heigth; row++)
