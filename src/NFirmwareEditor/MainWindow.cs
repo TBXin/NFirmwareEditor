@@ -10,6 +10,7 @@ namespace NFirmwareEditor
 	{
 		private const string Title = "NFirmwareEditor";
 		private byte[] m_firmware;
+		private bool[,] m_buffer;
 
 		public MainWindow()
 		{
@@ -197,6 +198,19 @@ namespace NFirmwareEditor
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
+		}
+
+		private void CopyButton_Click(object sender, EventArgs e)
+		{
+			m_buffer = ImagePixelGrid.Data;
+		}
+
+		private void PasteButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null || m_buffer == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.PasteImage(m_firmware, ImagePixelGrid.Data, m_buffer, metadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)

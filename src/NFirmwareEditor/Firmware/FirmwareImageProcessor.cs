@@ -190,6 +190,35 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
+		public static bool[,] PasteImage(byte[] firmware, bool[,] sourceImageData, bool[,] copiedImageData, ImageMetadata metadata)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (sourceImageData == null) throw new ArgumentNullException("sourceImageData");
+			if (copiedImageData == null) throw new ArgumentNullException("copiedImageData");
+			if (metadata == null) throw new ArgumentNullException("metadata");
+
+			var sourceWidth = sourceImageData.GetLength(0);
+			var sourceHeight = sourceImageData.GetLength(1);
+
+			if (sourceWidth != metadata.Width || sourceHeight != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
+
+			var copiedWidth = copiedImageData.GetLength(0);
+			var copiedHeigth = copiedImageData.GetLength(1);
+			var width = Math.Min(sourceWidth, copiedWidth);
+			var heigth = Math.Min(sourceHeight, copiedHeigth);
+
+			var result = new bool[width, heigth];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < heigth; row++)
+				{
+					result[col, row] = copiedImageData[col, row];
+				}
+			}
+			WriteImage(firmware, result, metadata);
+			return result;
+		}
+
 		private static ImageMetadata ReadImageMetadataData(BinaryReader reader, int index)
 		{
 			if (reader == null) throw new ArgumentNullException("reader");

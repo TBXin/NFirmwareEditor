@@ -274,6 +274,7 @@
 			this.PasteButton.TabIndex = 12;
 			this.MainToolTip.SetToolTip(this.PasteButton, "Invert");
 			this.PasteButton.UseVisualStyleBackColor = true;
+			this.PasteButton.Click += new System.EventHandler(this.PasteButton_Click);
 			// 
 			// CopyButton
 			// 
@@ -284,6 +285,7 @@
 			this.CopyButton.TabIndex = 11;
 			this.MainToolTip.SetToolTip(this.CopyButton, "Clear all pixels");
 			this.CopyButton.UseVisualStyleBackColor = true;
+			this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
 			// 
 			// InverseButton
 			// 
