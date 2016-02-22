@@ -83,6 +83,8 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
+		public event DataUpdatedDelegate DataUpdated;
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			var gfx = e.Graphics;
@@ -200,9 +202,18 @@ namespace NFirmwareEditor.UI
 				if (block == null) return false;
 
 				Data[block.Value.X, block.Value.Y] = e.Button == MouseButtons.Left;
+				OnDataUpdated(m_data);
 				return true;
 			}
 			return false;
+		}
+
+		public delegate void DataUpdatedDelegate(bool[,] data);
+
+		private void OnDataUpdated(bool[,] data)
+		{
+			var handler = DataUpdated;
+			if (handler != null) handler(data);
 		}
 	}
 }
