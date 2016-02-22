@@ -266,6 +266,7 @@
 			this.InversePixelGridButton.Size = new System.Drawing.Size(24, 24);
 			this.InversePixelGridButton.TabIndex = 10;
 			this.InversePixelGridButton.UseVisualStyleBackColor = true;
+			this.InversePixelGridButton.Click += new System.EventHandler(this.InversePixelGridButton_Click);
 			// 
 			// ClearPixelGridButton
 			// 
@@ -275,6 +276,7 @@
 			this.ClearPixelGridButton.Size = new System.Drawing.Size(24, 24);
 			this.ClearPixelGridButton.TabIndex = 9;
 			this.ClearPixelGridButton.UseVisualStyleBackColor = true;
+			this.ClearPixelGridButton.Click += new System.EventHandler(this.ClearPixelGridButton_Click);
 			// 
 			// MovePixelGridDownButton
 			// 
@@ -284,6 +286,7 @@
 			this.MovePixelGridDownButton.Size = new System.Drawing.Size(24, 24);
 			this.MovePixelGridDownButton.TabIndex = 7;
 			this.MovePixelGridDownButton.UseVisualStyleBackColor = true;
+			this.MovePixelGridDownButton.Click += new System.EventHandler(this.MovePixelGridDownButton_Click);
 			// 
 			// MovePixelGridUpButton
 			// 
@@ -293,6 +296,7 @@
 			this.MovePixelGridUpButton.Size = new System.Drawing.Size(24, 24);
 			this.MovePixelGridUpButton.TabIndex = 6;
 			this.MovePixelGridUpButton.UseVisualStyleBackColor = true;
+			this.MovePixelGridUpButton.Click += new System.EventHandler(this.MovePixelGridUpButton_Click);
 			// 
 			// MovePixelGridRightButton
 			// 
@@ -302,6 +306,7 @@
 			this.MovePixelGridRightButton.Size = new System.Drawing.Size(24, 24);
 			this.MovePixelGridRightButton.TabIndex = 5;
 			this.MovePixelGridRightButton.UseVisualStyleBackColor = true;
+			this.MovePixelGridRightButton.Click += new System.EventHandler(this.MovePixelGridRightButton_Click);
 			// 
 			// MovePixelGridLeftButton
 			// 
@@ -311,6 +316,7 @@
 			this.MovePixelGridLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.MovePixelGridLeftButton.TabIndex = 4;
 			this.MovePixelGridLeftButton.UseVisualStyleBackColor = true;
+			this.MovePixelGridLeftButton.Click += new System.EventHandler(this.MovePixelGridLeftButton_Click);
 			// 
 			// borderedPanel4
 			// 

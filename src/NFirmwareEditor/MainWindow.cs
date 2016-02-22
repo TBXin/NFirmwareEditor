@@ -179,7 +179,43 @@ namespace NFirmwareEditor
 			if (metadata == null) return;
 
 			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
-			PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+			PreviewPixelGrid.Data = data;
+		}
+
+		private void ClearPixelGridButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearImage(m_firmware, ImagePixelGrid.Data, metadata);
+		}
+
+		private void InversePixelGridButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InverseImage(m_firmware, ImagePixelGrid.Data, metadata);
+		}
+
+		private void MovePixelGridLeftButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void MovePixelGridRightButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void MovePixelGridUpButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void MovePixelGridDownButton_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

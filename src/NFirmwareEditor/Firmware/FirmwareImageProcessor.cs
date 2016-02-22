@@ -94,6 +94,45 @@ namespace NFirmwareEditor.Firmware
 			Buffer.BlockCopy(imageBytes, 0, firmware, (int)metadata.DataOffset, imageBytes.Length);
 		}
 
+		public static bool[,] ClearImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (imageData == null) throw new ArgumentNullException("imageData");
+			if (metadata == null) throw new ArgumentNullException("metadata");
+
+			var width = imageData.GetLength(0);
+			var height = imageData.GetLength(1);
+
+			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
+
+			var result = new bool[width, height];
+			WriteImage(firmware, result, metadata);
+			return result;
+		}
+
+		public static bool[,] InverseImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (imageData == null) throw new ArgumentNullException("imageData");
+			if (metadata == null) throw new ArgumentNullException("metadata");
+
+			var width = imageData.GetLength(0);
+			var height = imageData.GetLength(1);
+
+			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
+
+			var result = new bool[width, height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					result[col, row] = !imageData[col, row];
+				}
+			}
+			WriteImage(firmware, result, metadata);
+			return result;
+		}
+
 		private static ImageMetadata ReadImageMetadataData(BinaryReader reader, int index)
 		{
 			if (reader == null) throw new ArgumentNullException("reader");
