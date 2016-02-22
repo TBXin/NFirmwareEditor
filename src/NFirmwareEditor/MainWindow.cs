@@ -200,22 +200,34 @@ namespace NFirmwareEditor
 
 		private void MovePixelGridLeftButton_Click(object sender, EventArgs e)
 		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
 
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
 		private void MovePixelGridRightButton_Click(object sender, EventArgs e)
 		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
 
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageRight(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
 		private void MovePixelGridUpButton_Click(object sender, EventArgs e)
 		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
 
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageUp(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
 		private void MovePixelGridDownButton_Click(object sender, EventArgs e)
 		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
 
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.MoveImageDown(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 	}
 }
