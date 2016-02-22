@@ -31,9 +31,9 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.OpenDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +58,7 @@
 			// 
 			// menuStrip1
 			// 
+			this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -77,53 +78,53 @@
             this.toolStripSeparator2,
             this.ExitMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
 			this.fileToolStripMenuItem.Text = "File";
 			// 
 			// OpenEncryptedMenuItem
 			// 
 			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
-			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(178, 22);
 			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
 			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
-			// 
-			// OpenDecryptedMenuItem
-			// 
-			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
-			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// SaveEncryptedMenuItem
 			// 
 			this.SaveEncryptedMenuItem.Enabled = false;
 			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
-			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(178, 22);
 			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
 			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+			// 
+			// OpenDecryptedMenuItem
+			// 
+			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
+			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
+			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
 			// SaveDecryptedMenuItem
 			// 
 			this.SaveDecryptedMenuItem.Enabled = false;
 			this.SaveDecryptedMenuItem.Name = "SaveDecryptedMenuItem";
-			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(178, 22);
 			this.SaveDecryptedMenuItem.Text = "Save Decrypted As...";
 			this.SaveDecryptedMenuItem.Click += new System.EventHandler(this.SaveDecryptedMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(175, 6);
 			// 
 			// ExitMenuItem
 			// 
 			this.ExitMenuItem.Name = "ExitMenuItem";
-			this.ExitMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.ExitMenuItem.Size = new System.Drawing.Size(178, 22);
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
@@ -247,6 +248,7 @@
 			this.ImagePixelGrid.Size = new System.Drawing.Size(699, 376);
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
+			this.ImagePixelGrid.DataUpdated += new NFirmwareEditor.UI.PixelGrid.DataUpdatedDelegate(this.ImagePixelGrid_DataUpdated);
 			// 
 			// borderedPanel1
 			// 

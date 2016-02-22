@@ -166,5 +166,13 @@ namespace NFirmwareEditor
 				InfoBox.Show("Unable to enumerate images. Possibly firmware definition is incompatible with loaded firmware.");
 			}
 		}
+
+		private void ImagePixelGrid_DataUpdated(bool[,] data)
+		{
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
+
+			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
+		}
 	}
 }
