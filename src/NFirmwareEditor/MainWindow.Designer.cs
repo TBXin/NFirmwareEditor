@@ -45,7 +45,7 @@
 			this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.shiftUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.sihftDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.shiftDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.shiftLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.shiftRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +115,8 @@
 			// 
 			this.OpenEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedMenuItem.Image")));
 			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
-			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.OpenEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
+			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
 			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
 			// 
@@ -124,20 +125,22 @@
 			this.SaveEncryptedMenuItem.Enabled = false;
 			this.SaveEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveEncryptedMenuItem.Image")));
 			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
-			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.SaveEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + S";
+			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(221, 22);
 			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
 			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(218, 6);
 			// 
 			// OpenDecryptedMenuItem
 			// 
 			this.OpenDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedMenuItem.Image")));
 			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.OpenDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + E";
+			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(221, 22);
 			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
 			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
@@ -146,20 +149,21 @@
 			this.SaveDecryptedMenuItem.Enabled = false;
 			this.SaveDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveDecryptedMenuItem.Image")));
 			this.SaveDecryptedMenuItem.Name = "SaveDecryptedMenuItem";
-			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.SaveDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + S";
+			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.SaveDecryptedMenuItem.Text = "Save Decrypted As...";
 			this.SaveDecryptedMenuItem.Click += new System.EventHandler(this.SaveDecryptedMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(175, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(218, 6);
 			// 
 			// ExitMenuItem
 			// 
 			this.ExitMenuItem.Image = global::NFirmwareEditor.Properties.Resources.exit;
 			this.ExitMenuItem.Name = "ExitMenuItem";
-			this.ExitMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.ExitMenuItem.Size = new System.Drawing.Size(221, 22);
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
@@ -171,7 +175,7 @@
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem,
             this.shiftUpToolStripMenuItem,
-            this.sihftDownToolStripMenuItem,
+            this.shiftDownToolStripMenuItem,
             this.shiftLeftToolStripMenuItem,
             this.shiftRightToolStripMenuItem});
 			this.EditMenuItem.Enabled = false;
@@ -183,7 +187,8 @@
 			// 
 			this.clearAllPixelsToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
 			this.clearAllPixelsToolStripMenuItem.Name = "clearAllPixelsToolStripMenuItem";
-			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.clearAllPixelsToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + N";
+			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.clearAllPixelsToolStripMenuItem.Text = "Clear All Pixels";
 			this.clearAllPixelsToolStripMenuItem.Click += new System.EventHandler(this.ClearAllPixelsMenuItem_Click);
 			// 
@@ -191,7 +196,8 @@
 			// 
 			this.invertToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.inverse;
 			this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
-			this.invertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.invertToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + I";
+			this.invertToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.invertToolStripMenuItem.Text = "Invert";
 			this.invertToolStripMenuItem.Click += new System.EventHandler(this.InvertMenuItem_Click);
 			// 
@@ -199,7 +205,8 @@
 			// 
 			this.copyToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + C";
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
 			this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyMenuItem_Click);
 			// 
@@ -207,7 +214,8 @@
 			// 
 			this.pasteToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + P";
+			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.pasteToolStripMenuItem.Text = "Paste";
 			this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteMenuItem_Click);
 			// 
@@ -215,23 +223,26 @@
 			// 
 			this.shiftUpToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
 			this.shiftUpToolStripMenuItem.Name = "shiftUpToolStripMenuItem";
-			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.shiftUpToolStripMenuItem.ShortcutKeyDisplayString = "Up";
+			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.shiftUpToolStripMenuItem.Text = "Shift Up";
 			this.shiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpMenuItem_Click);
 			// 
-			// sihftDownToolStripMenuItem
+			// shiftDownToolStripMenuItem
 			// 
-			this.sihftDownToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.sihftDownToolStripMenuItem.Name = "sihftDownToolStripMenuItem";
-			this.sihftDownToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.sihftDownToolStripMenuItem.Text = "Shift Down";
-			this.sihftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownMenuItem_Click);
+			this.shiftDownToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
+			this.shiftDownToolStripMenuItem.Name = "shiftDownToolStripMenuItem";
+			this.shiftDownToolStripMenuItem.ShortcutKeyDisplayString = "Down";
+			this.shiftDownToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.shiftDownToolStripMenuItem.Text = "Shift Down";
+			this.shiftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownMenuItem_Click);
 			// 
 			// shiftLeftToolStripMenuItem
 			// 
 			this.shiftLeftToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
 			this.shiftLeftToolStripMenuItem.Name = "shiftLeftToolStripMenuItem";
-			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.shiftLeftToolStripMenuItem.ShortcutKeyDisplayString = "Left";
+			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.shiftLeftToolStripMenuItem.Text = "Shift Left";
 			this.shiftLeftToolStripMenuItem.Click += new System.EventHandler(this.ShiftLeftMenuItem_Click);
 			// 
@@ -239,7 +250,8 @@
 			// 
 			this.shiftRightToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
 			this.shiftRightToolStripMenuItem.Name = "shiftRightToolStripMenuItem";
-			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.shiftRightToolStripMenuItem.ShortcutKeyDisplayString = "Right";
+			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.shiftRightToolStripMenuItem.Text = "Shift Right";
 			this.shiftRightToolStripMenuItem.Click += new System.EventHandler(this.ShiftRightMenuItem_Click);
 			// 
@@ -654,7 +666,7 @@
 		private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem shiftUpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem sihftDownToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem shiftDownToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem shiftLeftToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem shiftRightToolStripMenuItem;
 	}

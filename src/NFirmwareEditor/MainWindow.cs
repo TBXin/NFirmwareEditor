@@ -293,5 +293,79 @@ namespace NFirmwareEditor
 		{
 			ShiftRightButton_Click(null, null);
 		}
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData.HasFlag(Keys.Control))
+			{
+				if (keyData.HasFlag(Keys.O))
+				{
+					OpenEncryptedMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.E))
+				{
+					OpenDecryptedMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
+				{
+					SaveDecryptedMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.S))
+				{
+					SaveEncryptedMenuItem.PerformClick();
+					return true;
+				}
+
+				if (keyData.HasFlag(Keys.N))
+				{
+					clearAllPixelsToolStripMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.I))
+				{
+					invertToolStripMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.C))
+				{
+					copyToolStripMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.V))
+				{
+					pasteToolStripMenuItem.PerformClick();
+					return true;
+				}
+			}
+
+			if (keyData == Keys.Up)
+			{
+				shiftUpToolStripMenuItem.PerformClick();
+				return true;
+			}
+
+			if (keyData == Keys.Down)
+			{
+				shiftDownToolStripMenuItem.PerformClick();
+				return true;
+			}
+
+			if (keyData == Keys.Left)
+			{
+				shiftLeftToolStripMenuItem.PerformClick();
+				return true;
+			}
+
+			if (keyData == Keys.Right)
+			{
+				shiftRightToolStripMenuItem.PerformClick();
+				return true;
+			}
+
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
 	}
 }
