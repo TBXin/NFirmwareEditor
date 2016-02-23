@@ -50,6 +50,7 @@
 			this.shiftRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.encryptDecryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
@@ -90,7 +91,8 @@
 			this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.EditMenuItem,
-            this.toolsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.AboutMenuItem});
 			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip.Name = "MainMenuStrip";
 			this.MainMenuStrip.Size = new System.Drawing.Size(784, 24);
@@ -126,21 +128,21 @@
 			this.SaveEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveEncryptedMenuItem.Image")));
 			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
 			this.SaveEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + S";
-			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(221, 22);
+			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
 			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(218, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
 			// 
 			// OpenDecryptedMenuItem
 			// 
 			this.OpenDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedMenuItem.Image")));
 			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
 			this.OpenDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + E";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(221, 22);
+			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
 			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
@@ -157,13 +159,13 @@
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(218, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(255, 6);
 			// 
 			// ExitMenuItem
 			// 
 			this.ExitMenuItem.Image = global::NFirmwareEditor.Properties.Resources.exit;
 			this.ExitMenuItem.Name = "ExitMenuItem";
-			this.ExitMenuItem.Size = new System.Drawing.Size(221, 22);
+			this.ExitMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
@@ -270,6 +272,13 @@
 			this.encryptDecryptToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.encryptDecryptToolStripMenuItem.Text = "Encrypt / Decrypt";
 			this.encryptDecryptToolStripMenuItem.Click += new System.EventHandler(this.encryptDecryptToolStripMenuItem_Click);
+			// 
+			// AboutMenuItem
+			// 
+			this.AboutMenuItem.Name = "AboutMenuItem";
+			this.AboutMenuItem.Size = new System.Drawing.Size(24, 20);
+			this.AboutMenuItem.Text = "?";
+			this.AboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
 			// 
 			// MainStatusStrip
 			// 
@@ -669,6 +678,7 @@
 		private System.Windows.Forms.ToolStripMenuItem shiftDownToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem shiftLeftToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem shiftRightToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
 	}
 }
 
