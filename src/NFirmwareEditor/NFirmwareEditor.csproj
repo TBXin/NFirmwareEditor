@@ -135,6 +135,10 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\toolbox.png" />
+    <None Include="Resources\save_as.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\exit.png" />
     <None Include="Resources\paste.png" />
     <None Include="Resources\copy.png" />
   </ItemGroup>
