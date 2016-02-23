@@ -63,7 +63,7 @@ namespace NFirmwareEditor
 
 			InititalizeControls();
 			LoadFirmware(readFirmwareDelegate, firmwareFile);
-			ScanFirmware();
+			EnumerateFirmwareImages();
 		}
 
 		private void OpenDiaglogAndSaveFirmwareOnOk(Action<string, byte[]> writeFirmwareDelegate)
@@ -148,7 +148,7 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void ScanFirmware()
+		private void EnumerateFirmwareImages()
 		{
 			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
 			if (definition == null)
@@ -243,6 +243,14 @@ namespace NFirmwareEditor
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
+		}
+
+		private void encryptDecryptToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var decryptionWindow = new DecryptionWindow())
+			{
+				decryptionWindow.ShowDialog();
+			}
 		}
 	}
 }

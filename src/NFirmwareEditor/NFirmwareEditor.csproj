@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NFirmwareEditor</RootNamespace>
     <AssemblyName>NFirmwareEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Paths.cs" />
+    <Compile Include="DecryptionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DecryptionWindow.Designer.cs">
+      <DependentUpon>DecryptionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Firmware\FirmwareDefinitionManager.cs" />
     <Compile Include="Firmware\FirmwareEncoder.cs" />
     <Compile Include="Firmware\FirmwareImageProcessor.cs" />
@@ -70,6 +77,9 @@
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="DecryptionWindow.resx">
+      <DependentUpon>DecryptionWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <Content Include="Definitions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\paste.png" />
     <None Include="Resources\copy.png" />
   </ItemGroup>

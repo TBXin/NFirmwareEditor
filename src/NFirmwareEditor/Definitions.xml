@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<FirmwareDefinition Name="RX200 3.00">
+		<ImageTable>
+			<OffsetFrom>0x8808</OffsetFrom>
+			<OffsetTo>0x8A84</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
+	<FirmwareDefinition Name="Evic VTC Mini 2.00">
+		<ImageTable>
+			<OffsetFrom>0xA914</OffsetFrom>
+			<OffsetTo>0xAC5C</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
+	<FirmwareDefinition Name="Evic VTC Mini 3.00">
+		<ImageTable>
+			<OffsetFrom>0xBBBC</OffsetFrom>
+			<OffsetTo>0xBF3C</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
+	<FirmwareDefinition Name="Cuboid 3.10">
+		<ImageTable>
+			<OffsetFrom>0xC18C</OffsetFrom>
+			<OffsetTo>0xC4B4</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
+	<FirmwareDefinition Name="PresaTC75W 3.00">
+		<ImageTable>
+			<OffsetFrom>0xB4A8</OffsetFrom>
+			<OffsetTo>0xB828</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
+</ArrayOfFirmwareDefinition>
