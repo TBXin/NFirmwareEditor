@@ -180,50 +180,58 @@
 			// 
 			// clearAllPixelsToolStripMenuItem
 			// 
+			this.clearAllPixelsToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
 			this.clearAllPixelsToolStripMenuItem.Name = "clearAllPixelsToolStripMenuItem";
-			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.clearAllPixelsToolStripMenuItem.Text = "Clear all pixels";
 			// 
 			// invertToolStripMenuItem
 			// 
+			this.invertToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.inverse;
 			this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
-			this.invertToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.invertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.invertToolStripMenuItem.Text = "Invert";
 			// 
 			// copyToolStripMenuItem
 			// 
+			this.copyToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
 			// 
 			// pasteToolStripMenuItem
 			// 
+			this.pasteToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.pasteToolStripMenuItem.Text = "Paste";
 			// 
 			// shiftUpToolStripMenuItem
 			// 
+			this.shiftUpToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
 			this.shiftUpToolStripMenuItem.Name = "shiftUpToolStripMenuItem";
-			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.shiftUpToolStripMenuItem.Text = "Shift up";
 			// 
 			// sihftDownToolStripMenuItem
 			// 
+			this.sihftDownToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
 			this.sihftDownToolStripMenuItem.Name = "sihftDownToolStripMenuItem";
-			this.sihftDownToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.sihftDownToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.sihftDownToolStripMenuItem.Text = "Sihft down";
 			// 
 			// shiftLeftToolStripMenuItem
 			// 
+			this.shiftLeftToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
 			this.shiftLeftToolStripMenuItem.Name = "shiftLeftToolStripMenuItem";
-			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.shiftLeftToolStripMenuItem.Text = "Shift left";
 			// 
 			// shiftRightToolStripMenuItem
 			// 
+			this.shiftRightToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
 			this.shiftRightToolStripMenuItem.Name = "shiftRightToolStripMenuItem";
-			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.shiftRightToolStripMenuItem.Text = "Shift right";
 			// 
 			// toolsToolStripMenuItem
