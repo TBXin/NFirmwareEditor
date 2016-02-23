@@ -39,7 +39,7 @@
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.clearAllPixelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.invertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +89,7 @@
 			this.MainMenuStrip.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
+            this.EditMenuItem,
             this.toolsToolStripMenuItem});
 			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip.Name = "MainMenuStrip";
@@ -163,9 +163,9 @@
 			this.ExitMenuItem.Text = "Exit";
 			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
 			// 
-			// editToolStripMenuItem
+			// EditMenuItem
 			// 
-			this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.EditMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearAllPixelsToolStripMenuItem,
             this.invertToolStripMenuItem,
             this.copyToolStripMenuItem,
@@ -174,16 +174,18 @@
             this.sihftDownToolStripMenuItem,
             this.shiftLeftToolStripMenuItem,
             this.shiftRightToolStripMenuItem});
-			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-			this.editToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.editToolStripMenuItem.Text = "Edit";
+			this.EditMenuItem.Enabled = false;
+			this.EditMenuItem.Name = "EditMenuItem";
+			this.EditMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.EditMenuItem.Text = "Edit";
 			// 
 			// clearAllPixelsToolStripMenuItem
 			// 
 			this.clearAllPixelsToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
 			this.clearAllPixelsToolStripMenuItem.Name = "clearAllPixelsToolStripMenuItem";
 			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.clearAllPixelsToolStripMenuItem.Text = "Clear all pixels";
+			this.clearAllPixelsToolStripMenuItem.Text = "Clear All Pixels";
+			this.clearAllPixelsToolStripMenuItem.Click += new System.EventHandler(this.ClearAllPixelsMenuItem_Click);
 			// 
 			// invertToolStripMenuItem
 			// 
@@ -191,6 +193,7 @@
 			this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
 			this.invertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.invertToolStripMenuItem.Text = "Invert";
+			this.invertToolStripMenuItem.Click += new System.EventHandler(this.InvertMenuItem_Click);
 			// 
 			// copyToolStripMenuItem
 			// 
@@ -198,6 +201,7 @@
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
 			this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
+			this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyMenuItem_Click);
 			// 
 			// pasteToolStripMenuItem
 			// 
@@ -205,34 +209,39 @@
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
 			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.pasteToolStripMenuItem.Text = "Paste";
+			this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteMenuItem_Click);
 			// 
 			// shiftUpToolStripMenuItem
 			// 
 			this.shiftUpToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
 			this.shiftUpToolStripMenuItem.Name = "shiftUpToolStripMenuItem";
 			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.shiftUpToolStripMenuItem.Text = "Shift up";
+			this.shiftUpToolStripMenuItem.Text = "Shift Up";
+			this.shiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpMenuItem_Click);
 			// 
 			// sihftDownToolStripMenuItem
 			// 
 			this.sihftDownToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
 			this.sihftDownToolStripMenuItem.Name = "sihftDownToolStripMenuItem";
 			this.sihftDownToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.sihftDownToolStripMenuItem.Text = "Sihft down";
+			this.sihftDownToolStripMenuItem.Text = "Shift Down";
+			this.sihftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownMenuItem_Click);
 			// 
 			// shiftLeftToolStripMenuItem
 			// 
 			this.shiftLeftToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
 			this.shiftLeftToolStripMenuItem.Name = "shiftLeftToolStripMenuItem";
 			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.shiftLeftToolStripMenuItem.Text = "Shift left";
+			this.shiftLeftToolStripMenuItem.Text = "Shift Left";
+			this.shiftLeftToolStripMenuItem.Click += new System.EventHandler(this.ShiftLeftMenuItem_Click);
 			// 
 			// shiftRightToolStripMenuItem
 			// 
 			this.shiftRightToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
 			this.shiftRightToolStripMenuItem.Name = "shiftRightToolStripMenuItem";
 			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.shiftRightToolStripMenuItem.Text = "Shift right";
+			this.shiftRightToolStripMenuItem.Text = "Shift Right";
+			this.shiftRightToolStripMenuItem.Click += new System.EventHandler(this.ShiftRightMenuItem_Click);
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -637,7 +646,7 @@
 		private System.Windows.Forms.ToolTip MainToolTip;
 		private System.Windows.Forms.Button PasteButton;
 		private System.Windows.Forms.Button CopyButton;
-		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem EditMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem encryptDecryptToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem clearAllPixelsToolStripMenuItem;

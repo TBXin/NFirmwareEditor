@@ -139,6 +139,7 @@ namespace NFirmwareEditor
 
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
+				EditMenuItem.Enabled = true;
 				Text = Title + @" - " + firmwareFile;
 				StatusLabel.Text = @"Firmware loaded successfully.";
 			}
@@ -251,6 +252,46 @@ namespace NFirmwareEditor
 			{
 				decryptionWindow.ShowDialog();
 			}
+		}
+
+		private void ClearAllPixelsMenuItem_Click(object sender, EventArgs e)
+		{
+			ClearAllPixelsButton_Click(null, null);
+		}
+
+		private void InvertMenuItem_Click(object sender, EventArgs e)
+		{
+			InvertButton_Click(null, null);
+		}
+
+		private void CopyMenuItem_Click(object sender, EventArgs e)
+		{
+			CopyButton_Click(null, null);
+		}
+
+		private void PasteMenuItem_Click(object sender, EventArgs e)
+		{
+			PasteButton_Click(null, null);
+		}
+
+		private void ShiftUpMenuItem_Click(object sender, EventArgs e)
+		{
+			ShiftUpButton_Click(null, null);
+		}
+
+		private void ShiftDownMenuItem_Click(object sender, EventArgs e)
+		{
+			ShiftDownButton_Click(null, null);
+		}
+
+		private void ShiftLeftMenuItem_Click(object sender, EventArgs e)
+		{
+			ShiftLeftButton_Click(null, null);
+		}
+
+		private void ShiftRightMenuItem_Click(object sender, EventArgs e)
+		{
+			ShiftRightButton_Click(null, null);
 		}
 	}
 }
