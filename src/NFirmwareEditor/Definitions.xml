@@ -14,8 +14,8 @@
 	</FirmwareDefinition>
 	<FirmwareDefinition Name="Evic VTC Mini 3.00">
 		<ImageTable>
-			<OffsetFrom>0xBBBC</OffsetFrom>
-			<OffsetTo>0xBF3C</OffsetTo>
+			<OffsetFrom>0xBBC4</OffsetFrom>
+			<OffsetTo>0xBF44</OffsetTo>
 		</ImageTable>
 	</FirmwareDefinition>
 	<FirmwareDefinition Name="Evic VTC Mini 3.01">
