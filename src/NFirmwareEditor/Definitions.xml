@@ -18,6 +18,12 @@
 			<OffsetTo>0xBF3C</OffsetTo>
 		</ImageTable>
 	</FirmwareDefinition>
+	<FirmwareDefinition Name="Evic VTC Mini 3.01">
+		<ImageTable>
+			<OffsetFrom>0xC1D4</OffsetFrom>
+			<OffsetTo>0xC55C</OffsetTo>
+		</ImageTable>
+	</FirmwareDefinition>
 	<FirmwareDefinition Name="Cuboid 3.10">
 		<ImageTable>
 			<OffsetFrom>0xC18C</OffsetFrom>
