@@ -21,7 +21,10 @@ namespace NFirmwareEditor.Firmware
 					var offsetsTable = new List<long>();
 					while (br.BaseStream.Position <= offsetTo)
 					{
-						offsetsTable.Add(br.ReadUInt32());
+						var offset = br.ReadUInt32();
+						if (offset == 0) continue;
+
+						offsetsTable.Add(offset);
 					}
 
 					for (var i = 0; i < offsetsTable.Count; i++)
