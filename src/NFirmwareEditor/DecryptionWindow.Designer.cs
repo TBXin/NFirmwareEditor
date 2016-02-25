@@ -64,10 +64,11 @@
 			this.SelectEncryptedSourceButton.TabIndex = 2;
 			this.SelectEncryptedSourceButton.Text = "Select";
 			this.SelectEncryptedSourceButton.UseVisualStyleBackColor = true;
-			this.SelectEncryptedSourceButton.Click += new System.EventHandler(this.SelectSourceButton_Click);
+			this.SelectEncryptedSourceButton.Click += new System.EventHandler(this.SelectEncryptedSourceButton_Click);
 			// 
 			// SelectDestinationButton
 			// 
+			this.SelectDestinationButton.Enabled = false;
 			this.SelectDestinationButton.Location = new System.Drawing.Point(439, 63);
 			this.SelectDestinationButton.Name = "SelectDestinationButton";
 			this.SelectDestinationButton.Size = new System.Drawing.Size(75, 21);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -7,44 +8,55 @@ namespace NFirmwareEditor
 {
 	public partial class DecryptionWindow : Form
 	{
+		private bool m_sourceEncrypted;
+		private string m_source = string.Empty;
+
 		public DecryptionWindow()
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
 		}
 
-		private void SelectSourceButton_Click(object sender, System.EventArgs e)
+		private void SelectEncryptedSourceButton_Click(object sender, EventArgs e)
 		{
-			using (var op = new OpenFileDialog { Filter = @"Firmware file|*.bin" })
+			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 
-				SourceEncryptedTextBox.Text = op.FileName;
+				m_source = op.FileName;
+				m_sourceEncrypted = true;
+
+				SourceEncryptedTextBox.Text = m_source;
 				SourceDecryptedTextBox.Text = null;
+				SelectDestinationButton.Enabled = true;
 			}
 		}
 
 		private void SelectDecryptedSourceButton_Click(object sender, EventArgs e)
 		{
-			using (var op = new OpenFileDialog { Filter = @"Firmware file|*.bin" })
+			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 
+				m_source = op.FileName;
+				m_sourceEncrypted = false;
+
 				SourceEncryptedTextBox.Text = null;
-				SourceDecryptedTextBox.Text = op.FileName;
+				SourceDecryptedTextBox.Text = m_source;
+				SelectDestinationButton.Enabled = true;
 			}
 		}
 
-		private void SelectDestinationButton_Click(object sender, System.EventArgs e)
+		private void SelectDestinationButton_Click(object sender, EventArgs e)
 		{
-			using (var sf = new SaveFileDialog { Filter = @"Firmware file|*.bin" })
+			using (var sf = new SaveFileDialog { Filter = Consts.FirmwareFilter, FileName = GetDestinationFileName() })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
 				DestinationTextBox.Text = sf.FileName;
 			}
 		}
 
-		private void EncryptDecryptButton_Click(object sender, System.EventArgs e)
+		private void EncryptDecryptButton_Click(object sender, EventArgs e)
 		{
 			if (string.IsNullOrEmpty(SourceEncryptedTextBox.Text) && string.IsNullOrEmpty(SourceDecryptedTextBox.Text))
 			{
@@ -60,27 +72,35 @@ namespace NFirmwareEditor
 			try
 			{
 				var source = string.Empty;
-				var sourceEncrypted = false;
 
 				if (!string.IsNullOrEmpty(SourceEncryptedTextBox.Text))
 				{
 					source = SourceEncryptedTextBox.Text;
-					sourceEncrypted = true;
 				}
 				if (!string.IsNullOrEmpty(SourceDecryptedTextBox.Text))
 				{
 					source = SourceDecryptedTextBox.Text;
-					sourceEncrypted = false;
 				}
 
-				var firmware = FirmwareEncoder.ReadFile(source, sourceEncrypted);
-				FirmwareEncoder.WriteFile(DestinationTextBox.Text, firmware, !sourceEncrypted);
-				InfoBox.Show(string.Format("Firmware successfully {0}!", sourceEncrypted ? "decrypted" : "encrypted"));
+				var firmware = FirmwareEncoder.ReadFile(source, m_sourceEncrypted);
+				FirmwareEncoder.WriteFile(DestinationTextBox.Text, firmware, !m_sourceEncrypted);
+				InfoBox.Show(string.Format("Firmware successfully {0}!", m_sourceEncrypted ? Consts.Decrypted : Consts.Encrypted));
 			}
 			catch (Exception ex)
 			{
 				InfoBox.Show("An error occurred during firmware encryption / decryption.\n" + ex.Message);
 			}
+		}
+
+		private string GetDestinationFileName()
+		{
+			if (string.IsNullOrEmpty(m_source)) return m_source;
+
+			var result = Path.GetFileNameWithoutExtension(m_source)
+				.Replace("_" + Consts.Encrypted, string.Empty)
+				.Replace("_" + Consts.Decrypted, string.Empty);
+
+			return result + "_" + (m_sourceEncrypted ? Consts.Decrypted : Consts.Encrypted);
 		}
 	}
 }

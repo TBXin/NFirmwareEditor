@@ -55,7 +55,7 @@ namespace NFirmwareEditor
 		private void OpenDialogAndReadFirmwareOnOk(Func<string, byte[]> readFirmwareDelegate)
 		{
 			string firmwareFile;
-			using (var op = new OpenFileDialog { Filter = @"Firmware file|*.bin" })
+			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 				firmwareFile = op.FileName;
@@ -71,7 +71,7 @@ namespace NFirmwareEditor
 			if (m_firmware == null) return;
 
 			string firmwareFile;
-			using (var sf = new SaveFileDialog { Filter = @"Firmware file|*.bin" })
+			using (var sf = new SaveFileDialog { Filter = Consts.FirmwareFilter })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
 				firmwareFile = sf.FileName;

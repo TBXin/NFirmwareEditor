@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Consts.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="DecryptionWindow.cs">
       <SubType>Form</SubType>
