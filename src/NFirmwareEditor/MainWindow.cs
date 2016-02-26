@@ -312,70 +312,67 @@ namespace NFirmwareEditor
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
-			if (keyData.HasFlag(Keys.Control))
-			{
-				if (keyData.HasFlag(Keys.O))
-				{
-					OpenEncryptedMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.E))
-				{
-					OpenDecryptedMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
-				{
-					SaveDecryptedMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.S))
-				{
-					SaveEncryptedMenuItem.PerformClick();
-					return true;
-				}
+			if (!keyData.HasFlag(Keys.Control)) return base.ProcessCmdKey(ref msg, keyData);
 
-				if (keyData.HasFlag(Keys.N))
-				{
-					clearAllPixelsToolStripMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.I))
-				{
-					invertToolStripMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.C))
-				{
-					copyToolStripMenuItem.PerformClick();
-					return true;
-				}
-				if (keyData.HasFlag(Keys.V))
-				{
-					pasteToolStripMenuItem.PerformClick();
-					return true;
-				}
+			if (keyData.HasFlag(Keys.O))
+			{
+				OpenEncryptedMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.E))
+			{
+				OpenDecryptedMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
+			{
+				SaveDecryptedMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.S))
+			{
+				SaveEncryptedMenuItem.PerformClick();
+				return true;
 			}
 
-			if (keyData == Keys.Up)
+			if (keyData.HasFlag(Keys.N))
+			{
+				clearAllPixelsToolStripMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.I))
+			{
+				invertToolStripMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.C))
+			{
+				copyToolStripMenuItem.PerformClick();
+				return true;
+			}
+			if (keyData.HasFlag(Keys.V))
+			{
+				pasteToolStripMenuItem.PerformClick();
+				return true;
+			}
+
+			var key = keyData &= ~Keys.Control;
+			if (key == Keys.Up)
 			{
 				shiftUpToolStripMenuItem.PerformClick();
 				return true;
 			}
-
-			if (keyData == Keys.Down)
+			if (key == Keys.Down)
 			{
 				shiftDownToolStripMenuItem.PerformClick();
 				return true;
 			}
-
-			if (keyData == Keys.Left)
+			if (key == Keys.Left)
 			{
 				shiftLeftToolStripMenuItem.PerformClick();
 				return true;
 			}
-
-			if (keyData == Keys.Right)
+			if (key == Keys.Right)
 			{
 				shiftRightToolStripMenuItem.PerformClick();
 				return true;

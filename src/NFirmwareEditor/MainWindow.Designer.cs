@@ -228,7 +228,7 @@
 			// 
 			this.shiftUpToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
 			this.shiftUpToolStripMenuItem.Name = "shiftUpToolStripMenuItem";
-			this.shiftUpToolStripMenuItem.ShortcutKeyDisplayString = "Up";
+			this.shiftUpToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Up";
 			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
 			this.shiftUpToolStripMenuItem.Text = "Shift Up";
 			this.shiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpMenuItem_Click);
@@ -237,8 +237,8 @@
 			// 
 			this.shiftDownToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
 			this.shiftDownToolStripMenuItem.Name = "shiftDownToolStripMenuItem";
-			this.shiftDownToolStripMenuItem.ShortcutKeyDisplayString = "Down";
-			this.shiftDownToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.shiftDownToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Down";
+			this.shiftDownToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.shiftDownToolStripMenuItem.Text = "Shift Down";
 			this.shiftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownMenuItem_Click);
 			// 
@@ -246,8 +246,8 @@
 			// 
 			this.shiftLeftToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
 			this.shiftLeftToolStripMenuItem.Name = "shiftLeftToolStripMenuItem";
-			this.shiftLeftToolStripMenuItem.ShortcutKeyDisplayString = "Left";
-			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.shiftLeftToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Left";
+			this.shiftLeftToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.shiftLeftToolStripMenuItem.Text = "Shift Left";
 			this.shiftLeftToolStripMenuItem.Click += new System.EventHandler(this.ShiftLeftMenuItem_Click);
 			// 
@@ -255,8 +255,8 @@
 			// 
 			this.shiftRightToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
 			this.shiftRightToolStripMenuItem.Name = "shiftRightToolStripMenuItem";
-			this.shiftRightToolStripMenuItem.ShortcutKeyDisplayString = "Right";
-			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.shiftRightToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Right";
+			this.shiftRightToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.shiftRightToolStripMenuItem.Text = "Shift Right";
 			this.shiftRightToolStripMenuItem.Click += new System.EventHandler(this.ShiftRightMenuItem_Click);
 			// 
