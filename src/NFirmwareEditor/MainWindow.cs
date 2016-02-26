@@ -307,7 +307,7 @@ namespace NFirmwareEditor
 
 		private void AboutMenuItem_Click(object sender, EventArgs e)
 		{
-			InfoBox.Show("NFirmwareEditor v1.0\n\nFirmware resource editor for vape devices such as:\nEvic VTC Mini, Cuboid, RX200, PresaTC75W and so on...\n\nReikoKitsune © 2016");
+			InfoBox.Show("NFirmwareEditor v1.5\n\nFirmware resource editor for vape devices such as:\nEvic VTC Mini, Cuboid, RX200, PresaTC75W and so on...\n\nReikoKitsune © 2016");
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
