@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
@@ -93,9 +94,9 @@ namespace NFirmwareEditor
 			Application.Exit();
 		}
 
-		private void ImagesListBox_SelectedValueChanged(object sender, EventArgs e)
+		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ((ListBox)sender).SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
@@ -121,7 +122,7 @@ namespace NFirmwareEditor
 
 		private void InititalizeControls()
 		{
-			ImagesListBox.Items.Clear();
+			Block1ImagesListBox.Items.Clear();
 			ImagePixelGrid.Data = new bool[5, 5];
 			StatusLabel.Text = null;
 
@@ -160,15 +161,9 @@ namespace NFirmwareEditor
 
 			try
 			{
-				var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition.ImageTable.OffsetFrom, definition.ImageTable.OffsetTo);
-				ImagesListBox.BeginUpdate();
-				ImagesListBox.Items.Clear();
-				foreach (var imageData in images)
-				{
-					ImagesListBox.Items.Add(imageData);
-				}
-				ImagesListBox.EndUpdate();
-				if (ImagesListBox.Items.Count > 0) ImagesListBox.SelectedIndex = 0;
+				var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition);
+				FillImagesListBox(Block2ImagesListBox, images.Block2Images, true);
+				FillImagesListBox(Block1ImagesListBox, images.Block1Images, true);
 			}
 			catch (Exception)
 			{
@@ -176,9 +171,25 @@ namespace NFirmwareEditor
 			}
 		}
 
+		private void FillImagesListBox(ListBox listBox, IEnumerable<object> items, bool selectFirstItem)
+		{
+			listBox.Items.Clear();
+			listBox.BeginUpdate();
+			foreach (var item in items)
+			{
+				listBox.Items.Add(item);
+			}
+			listBox.EndUpdate();
+
+			if (selectFirstItem && listBox.Items.Count > 0)
+			{
+				listBox.SelectedIndex = 0;
+			}
+		}
+
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = (Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox).SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
@@ -187,7 +198,7 @@ namespace NFirmwareEditor
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearAllPixelsImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -195,7 +206,7 @@ namespace NFirmwareEditor
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -208,7 +219,7 @@ namespace NFirmwareEditor
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null || m_buffer == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.PasteImage(m_firmware, ImagePixelGrid.Data, m_buffer, metadata);
@@ -216,7 +227,7 @@ namespace NFirmwareEditor
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
@@ -224,7 +235,7 @@ namespace NFirmwareEditor
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageRight(m_firmware, ImagePixelGrid.Data, metadata);
@@ -232,7 +243,7 @@ namespace NFirmwareEditor
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageUp(m_firmware, ImagePixelGrid.Data, metadata);
@@ -240,7 +251,7 @@ namespace NFirmwareEditor
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
@@ -371,6 +382,27 @@ namespace NFirmwareEditor
 			}
 
 			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
+		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
+			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
+
+			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
+			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
+
+			if (Block1ImagesListBox.Visible)
+			{
+				Block1ImagesListBox.Focus();
+				BlockImagesListBox_SelectedValueChanged(Block1ImagesListBox, EventArgs.Empty);
+			}
+
+			if (Block2ImagesListBox.Visible)
+			{
+				Block2ImagesListBox.Focus();
+				BlockImagesListBox_SelectedValueChanged(Block2ImagesListBox, EventArgs.Empty);
+			}
 		}
 	}
 }

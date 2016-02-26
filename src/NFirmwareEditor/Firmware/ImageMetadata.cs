@@ -1,25 +1,31 @@
-﻿namespace NFirmwareEditor.Firmware
+﻿using System.IO;
+
+namespace NFirmwareEditor.Firmware
 {
-	internal class ImageMetadata
+	internal abstract class ImageMetadata
 	{
-		public ImageMetadata(string name, byte width, byte height, long dataOffset, long dataLength)
+		public string Name { get; protected set; }
+
+		public byte Width { get; protected set; }
+
+		public byte Height { get; protected set; }
+
+		public long DataOffset { get; protected set; }
+
+		public abstract long DataLength { get; }
+
+		public ImageMetadata ReadMetadata(BinaryReader reader, int index)
 		{
-			Name = name;
-			Width = width;
-			Height = height;
-			DataOffset = dataOffset;
-			DataLength = dataLength;
+			Name = string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", index, reader.BaseStream.Position);
+			Width = reader.ReadByte();
+			Height = reader.ReadByte();
+			DataOffset = reader.BaseStream.Position;
+			return this;
 		}
 
-		public string Name { get; set; }
+		public abstract bool[,] ReadImage(byte[] imageBytes);
 
-		public byte Width { get; set; }
-
-		public byte Height { get; set; }
-
-		public long DataOffset { get; set; }
-
-		public long DataLength { get; set; }
+		public abstract byte[] WriteImage(bool[,] imageData);
 
 		public override string ToString()
 		{

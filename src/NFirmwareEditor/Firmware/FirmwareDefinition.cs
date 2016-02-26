@@ -8,7 +8,9 @@ namespace NFirmwareEditor.Firmware
 		[XmlAttribute]
 		public string Name { get; set; }
 
-		public ImageTable ImageTable { get; set; }
+		public ImageTableDefinition ImageTable1 { get; set; }
+
+		public ImageTableDefinition ImageTable2 { get; set; }
 
 		public override string ToString()
 		{
@@ -16,7 +18,7 @@ namespace NFirmwareEditor.Firmware
 		}
 	}
 
-	public class ImageTable
+	public class ImageTableDefinition
 	{
 		[XmlElement("OffsetFrom")]
 		public string OffsetFromString { get; set; }

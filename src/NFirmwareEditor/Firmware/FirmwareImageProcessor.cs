@@ -1,38 +1,48 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace NFirmwareEditor.Firmware
 {
 	internal static class FirmwareImageProcessor
 	{
-		public static List<ImageMetadata> EnumerateImages(byte[] firmware, long offsetFrom, long offsetTo)
+		public static FirmwareImages EnumerateImages(byte[] firmware, FirmwareDefinition definition)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (definition == null) throw new ArgumentNullException("definition");
 
-			var result = new List<ImageMetadata>();
 			using (var ms = new MemoryStream(firmware))
 			{
 				using (var br = new BinaryReader(ms))
 				{
-					br.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
+					var block1Images = ReadImagesTable<Image1Metadata>(definition.ImageTable1, br);
+					var block2Images = ReadImagesTable<Image2Metadata>(definition.ImageTable2, br);
 
-					var offsetsTable = new List<long>();
-					while (br.BaseStream.Position <= offsetTo)
-					{
-						var offset = br.ReadUInt32();
-						if (offset == 0) continue;
-
-						offsetsTable.Add(offset);
-					}
-
-					for (var i = 0; i < offsetsTable.Count; i++)
-					{
-						br.BaseStream.Seek(offsetsTable[i], SeekOrigin.Begin);
-						result.Add(ReadImageMetadataData(br, i + 1));
-					}
+					return new FirmwareImages(block1Images, block2Images);
 				}
+			}
+		}
+
+		private static List<ImageMetadata> ReadImagesTable<T>(ImageTableDefinition imageTableDefinition, BinaryReader reader) where T : ImageMetadata, new()
+		{
+			var result = new List<ImageMetadata>();
+			if (imageTableDefinition == null) return result;
+
+			var offsetsTable = new List<long>();
+			reader.BaseStream.Seek(imageTableDefinition.OffsetFrom, SeekOrigin.Begin);
+			while (reader.BaseStream.Position <= imageTableDefinition.OffsetTo)
+			{
+				var offset = reader.ReadUInt32();
+				if (offset == 0) continue;
+
+				offsetsTable.Add(offset);
+			}
+
+			for (var i = 0; i < offsetsTable.Count; i++)
+			{
+				reader.BaseStream.Seek(offsetsTable[i], SeekOrigin.Begin);
+				result.Add(new T().ReadMetadata(reader, i + 1));
 			}
 			return result;
 		}
@@ -42,27 +52,12 @@ namespace NFirmwareEditor.Firmware
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (metadata == null) throw new ArgumentNullException("metadata");
 
-			var result = new bool[metadata.Width, metadata.Height];
-			var colCounter = 0;
-			var rowCounter = 0;
-			for (var i = 0; i < metadata.DataLength; i++)
-			{
-				var bits = ToBoolArray(new BitArray(new[] { firmware[metadata.DataOffset + i] }));
+			var imageData = firmware
+				.Skip((int)metadata.DataOffset)
+				.Take((int)metadata.DataLength)
+				.ToArray();
 
-				if (colCounter == metadata.Width)
-				{
-					colCounter = 0;
-					rowCounter += bits.Length;
-				}
-
-				for (var j = 0; j < bits.Length; j++)
-				{
-					result[colCounter, rowCounter + j] = bits[j];
-				}
-
-				colCounter++;
-			}
-			return result;
+			return metadata.ReadImage(imageData);
 		}
 
 		public static void WriteImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
@@ -76,24 +71,7 @@ namespace NFirmwareEditor.Firmware
 
 			if (width != metadata.Width || height != metadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
-			var imageBytesCounter = 0;
-			var imageBytes = new byte[metadata.DataLength];
-			var rowCounter = 0;
-
-			while (rowCounter < height)
-			{
-				var byteBits = new bool[8];
-				for (var col = 0; col < width; col++)
-				{
-					for (var row = 0; row < byteBits.Length; row++)
-					{
-						byteBits[row] = imageData[col, rowCounter + row];
-					}
-					imageBytes[imageBytesCounter++] = ToByte(new BitArray(byteBits));
-				}
-				rowCounter += byteBits.Length;
-			}
-
+			var imageBytes = metadata.WriteImage(imageData);
 			Buffer.BlockCopy(imageBytes, 0, firmware, (int)metadata.DataOffset, imageBytes.Length);
 		}
 
@@ -222,20 +200,6 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		private static ImageMetadata ReadImageMetadataData(BinaryReader reader, int index)
-		{
-			if (reader == null) throw new ArgumentNullException("reader");
-
-			var name = string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", index, reader.BaseStream.Position);
-			var width = reader.ReadByte();
-			var height = reader.ReadByte();
-			var dataOffset = reader.BaseStream.Position;
-			var dataLength = width * height / 8;
-			reader.BaseStream.Seek(dataLength, SeekOrigin.Current);
-
-			return new ImageMetadata(name, width, height, dataOffset, dataLength);
-		}
-
 		private static bool[,] ProcessImage(bool[,] imageData, Func<int, int> colEvaluator, Func<int, int> rowEvaluator, Func<bool, bool> dataEvaluator)
 		{
 			var width = imageData.GetLength(0);
@@ -250,28 +214,6 @@ namespace NFirmwareEditor.Firmware
 				}
 			}
 			return result;
-		}
-
-		private static bool[] ToBoolArray(BitArray bitArray)
-		{
-			if (bitArray == null) throw new ArgumentNullException("bitArray");
-
-			var result = new bool[bitArray.Length];
-			for (var i = 0; i < result.Length; i++)
-			{
-				result[i] = bitArray[i];
-			}
-			return result;
-		}
-
-		private static byte ToByte(BitArray bitArray)
-		{
-			if (bitArray == null) throw new ArgumentNullException("bitArray");
-			if (bitArray.Count != 8) throw new ArgumentException("bits");
-
-			var bytes = new byte[1];
-			bitArray.CopyTo(bytes, 0);
-			return bytes[0];
 		}
 	}
 }

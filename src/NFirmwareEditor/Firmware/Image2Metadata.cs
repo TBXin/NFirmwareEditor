@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections;
+using System.Linq;
+using NFirmwareEditor.Core;
+
+namespace NFirmwareEditor.Firmware
+{
+	internal class Image2Metadata : ImageMetadata
+	{
+		public override long DataLength
+		{
+			get { return (int)Math.Ceiling(Width / 8f) * Height; }
+		}
+
+		public override bool[,] ReadImage(byte[] imageBytes)
+		{
+			var result = new bool[Width, Height];
+			var colCounter = 0;
+			var rowCounter = 0;
+
+			foreach (var imageByte in imageBytes)
+			{
+				var bitArray = new BitArray(new[] { imageByte }).ToBoolArray().Reverse();
+				foreach (var b in bitArray)
+				{
+					result[colCounter++, rowCounter] = b;
+					if (colCounter == Width)
+					{
+						colCounter = 0;
+						rowCounter++;
+						break;
+					}
+				}
+
+				if (rowCounter == Height) break;
+			}
+			return result;
+		}
+
+		public override byte[] WriteImage(bool[,] imageData)
+		{
+			var imageBytes = new byte[DataLength];
+			var imageBytesCounter = 0;
+			var colCounter = 0;
+
+			for (var row = 0; row < Height; row++)
+			{
+				var byteBits = new bool[8];
+				for (var col = 0; col < Width; col++)
+				{
+					byteBits[colCounter++] = imageData[col, row];
+					if (colCounter == 8)
+					{
+						imageBytes[imageBytesCounter++] = new BitArray(byteBits.Reverse().ToArray()).ToByte();
+						byteBits = new bool[8];
+						colCounter = 0;
+					}
+				}
+
+				if (colCounter > 0)
+				{
+					imageBytes[imageBytesCounter++] = new BitArray(byteBits.Reverse().ToArray()).ToByte();
+					colCounter = 0;
+				}
+			}
+			return imageBytes;
+		}
+	}
+}

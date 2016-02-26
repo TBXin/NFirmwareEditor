@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Consts.cs" />
+    <Compile Include="Core\BitArrayExtensions.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="DecryptionWindow.cs">
       <SubType>Form</SubType>
@@ -55,6 +56,9 @@
     <Compile Include="Firmware\FirmwareDefinitionManager.cs" />
     <Compile Include="Firmware\FirmwareEncoder.cs" />
     <Compile Include="Firmware\FirmwareImageProcessor.cs" />
+    <Compile Include="Firmware\FirmwareImages.cs" />
+    <Compile Include="Firmware\Image1Metadata.cs" />
+    <Compile Include="Firmware\Image2Metadata.cs" />
     <Compile Include="Firmware\ImageMetadata.cs" />
     <Compile Include="Core\InfoBox.cs" />
     <Compile Include="MainWindow.cs">
