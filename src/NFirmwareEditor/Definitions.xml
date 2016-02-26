@@ -8,6 +8,28 @@
 		</ImageTable1>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid 3.11">
+		<ImageTable1>
+			<OffsetFrom>0xC65C</OffsetFrom>
+			<OffsetTo>0xC9E4</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xADAC</OffsetFrom>
+			<OffsetTo>0xB134</OffsetTo>
+		</ImageTable2>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="Cuboid 3.10">
+		<ImageTable1>
+			<OffsetFrom>0xC18C</OffsetFrom>
+			<OffsetTo>0xC50C</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA8F8</OffsetFrom>
+			<OffsetTo>0xAC78</OffsetTo>
+		</ImageTable2>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Evic VTC Mini 3.01">
 		<ImageTable1>
 			<OffsetFrom>0xC1D4</OffsetFrom>
@@ -41,17 +63,6 @@
 		</ImageTable1>
 	</FirmwareDefinition>
 		
-	<FirmwareDefinition Name="Cuboid 3.10">
-		<ImageTable1>
-			<OffsetFrom>0xC18C</OffsetFrom>
-			<OffsetTo>0xC50C</OffsetTo>
-		</ImageTable1>
-		<ImageTable2>
-			<OffsetFrom>0xA8F8</OffsetFrom>
-			<OffsetTo>0xAC78</OffsetTo>
-		</ImageTable2>
-	</FirmwareDefinition>
-	
 	<FirmwareDefinition Name="PresaTC75W 3.00">
 		<ImageTable1>
 			<OffsetFrom>0xB4A8</OffsetFrom>
