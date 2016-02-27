@@ -64,6 +64,8 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
+		public bool ReadOnly { get; set; }
+
 		public Pen BlockOuterBorderPen
 		{
 			get { return m_blockOuterBorderPen; }
@@ -217,6 +219,7 @@ namespace NFirmwareEditor.UI
 
 		private bool TrySetBlockValue(MouseEventArgs e)
 		{
+			if (ReadOnly) return false;
 			if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
 			{
 				var block = TryGetBlockFromPoint(e.Location);

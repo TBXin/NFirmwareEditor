@@ -55,6 +55,16 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.Block2CheckBox = new System.Windows.Forms.CheckBox();
+			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
+			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.Block1ImagesListBox = new System.Windows.Forms.ListBox();
+			this.Block2ImagesListBox = new System.Windows.Forms.ListBox();
+			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
+			this.label2 = new System.Windows.Forms.Label();
+			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
+			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
+			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PasteButton = new System.Windows.Forms.Button();
 			this.CopyButton = new System.Windows.Forms.Button();
 			this.InverseButton = new System.Windows.Forms.Button();
@@ -63,16 +73,6 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
-			this.Block1ImagesListBox = new System.Windows.Forms.ListBox();
-			this.Block2ImagesListBox = new System.Windows.Forms.ListBox();
-			this.Block2CheckBox = new System.Windows.Forms.CheckBox();
-			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
-			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
-			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
@@ -193,7 +193,7 @@
 			this.clearAllPixelsToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
 			this.clearAllPixelsToolStripMenuItem.Name = "clearAllPixelsToolStripMenuItem";
 			this.clearAllPixelsToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + N";
-			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.clearAllPixelsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.clearAllPixelsToolStripMenuItem.Text = "Clear All Pixels";
 			this.clearAllPixelsToolStripMenuItem.Click += new System.EventHandler(this.ClearAllPixelsMenuItem_Click);
 			// 
@@ -202,7 +202,7 @@
 			this.invertToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.inverse;
 			this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
 			this.invertToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + I";
-			this.invertToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.invertToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.invertToolStripMenuItem.Text = "Invert";
 			this.invertToolStripMenuItem.Click += new System.EventHandler(this.InvertMenuItem_Click);
 			// 
@@ -211,7 +211,7 @@
 			this.copyToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
 			this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + C";
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
 			this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyMenuItem_Click);
 			// 
@@ -220,7 +220,7 @@
 			this.pasteToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
 			this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + P";
-			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.pasteToolStripMenuItem.Text = "Paste";
 			this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteMenuItem_Click);
 			// 
@@ -229,7 +229,7 @@
 			this.shiftUpToolStripMenuItem.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
 			this.shiftUpToolStripMenuItem.Name = "shiftUpToolStripMenuItem";
 			this.shiftUpToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Up";
-			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.shiftUpToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.shiftUpToolStripMenuItem.Text = "Shift Up";
 			this.shiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpMenuItem_Click);
 			// 
@@ -308,6 +308,174 @@
 			this.DefinitionsComboBox.Size = new System.Drawing.Size(140, 21);
 			this.DefinitionsComboBox.TabIndex = 4;
 			this.MainToolTip.SetToolTip(this.DefinitionsComboBox, "Firmware definitions");
+			// 
+			// Block2CheckBox
+			// 
+			this.Block2CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2CheckBox.Location = new System.Drawing.Point(76, 55);
+			this.Block2CheckBox.Name = "Block2CheckBox";
+			this.Block2CheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block2CheckBox.TabIndex = 2;
+			this.Block2CheckBox.Text = "Block 2";
+			this.Block2CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block2CheckBox.UseVisualStyleBackColor = true;
+			this.Block2CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
+			// 
+			// Block1CheckBox
+			// 
+			this.Block1CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block1CheckBox.Checked = true;
+			this.Block1CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Block1CheckBox.Location = new System.Drawing.Point(6, 55);
+			this.Block1CheckBox.Name = "Block1CheckBox";
+			this.Block1CheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block1CheckBox.TabIndex = 1;
+			this.Block1CheckBox.Text = "Block 1";
+			this.Block1CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block1CheckBox.UseVisualStyleBackColor = true;
+			this.Block1CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
+			// 
+			// borderedPanel1
+			// 
+			this.borderedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel1.BorderBottom = true;
+			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel1.BorderLeft = true;
+			this.borderedPanel1.BorderRight = true;
+			this.borderedPanel1.BorderTop = true;
+			this.borderedPanel1.BorderWidth = 1F;
+			this.borderedPanel1.Controls.Add(this.Block1ImagesListBox);
+			this.borderedPanel1.Controls.Add(this.Block2ImagesListBox);
+			this.borderedPanel1.Location = new System.Drawing.Point(6, 91);
+			this.borderedPanel1.Name = "borderedPanel1";
+			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel1.Size = new System.Drawing.Size(140, 442);
+			this.borderedPanel1.TabIndex = 5;
+			this.borderedPanel1.Text = "borderedPanel1";
+			// 
+			// Block1ImagesListBox
+			// 
+			this.Block1ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block1ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block1ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block1ImagesListBox.FormattingEnabled = true;
+			this.Block1ImagesListBox.IntegralHeight = false;
+			this.Block1ImagesListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block1ImagesListBox.Name = "Block1ImagesListBox";
+			this.Block1ImagesListBox.Size = new System.Drawing.Size(138, 440);
+			this.Block1ImagesListBox.TabIndex = 0;
+			this.Block1ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
+			// 
+			// Block2ImagesListBox
+			// 
+			this.Block2ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block2ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block2ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block2ImagesListBox.FormattingEnabled = true;
+			this.Block2ImagesListBox.IntegralHeight = false;
+			this.Block2ImagesListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block2ImagesListBox.Name = "Block2ImagesListBox";
+			this.Block2ImagesListBox.Size = new System.Drawing.Size(138, 440);
+			this.Block2ImagesListBox.TabIndex = 0;
+			this.Block2ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
+			// 
+			// borderedPanel3
+			// 
+			this.borderedPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel3.BackColor = System.Drawing.Color.White;
+			this.borderedPanel3.BorderBottom = true;
+			this.borderedPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel3.BorderLeft = true;
+			this.borderedPanel3.BorderRight = true;
+			this.borderedPanel3.BorderTop = true;
+			this.borderedPanel3.BorderWidth = 1F;
+			this.borderedPanel3.Controls.Add(this.label2);
+			this.borderedPanel3.Controls.Add(this.borderedPanel5);
+			this.borderedPanel3.Location = new System.Drawing.Point(151, 27);
+			this.borderedPanel3.Name = "borderedPanel3";
+			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel3.Size = new System.Drawing.Size(628, 118);
+			this.borderedPanel3.TabIndex = 3;
+			this.borderedPanel3.Text = "borderedPanel3";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(4, 8);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(49, 13);
+			this.label2.TabIndex = 5;
+			this.label2.Text = "Preview:";
+			// 
+			// borderedPanel5
+			// 
+			this.borderedPanel5.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel5.BorderBottom = false;
+			this.borderedPanel5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel5.BorderLeft = false;
+			this.borderedPanel5.BorderRight = false;
+			this.borderedPanel5.BorderTop = true;
+			this.borderedPanel5.BorderWidth = 1F;
+			this.borderedPanel5.Controls.Add(this.PreviewPixelGrid);
+			this.borderedPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
+			this.borderedPanel5.Name = "borderedPanel5";
+			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.borderedPanel5.Size = new System.Drawing.Size(626, 88);
+			this.borderedPanel5.TabIndex = 4;
+			this.borderedPanel5.Text = "borderedPanel5";
+			// 
+			// PreviewPixelGrid
+			// 
+			this.PreviewPixelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.PreviewPixelGrid.AutoScroll = true;
+			this.PreviewPixelGrid.AutoScrollMinSize = new System.Drawing.Size(6, 6);
+			this.PreviewPixelGrid.BackColor = System.Drawing.Color.Black;
+			this.PreviewPixelGrid.BlockSize = 2;
+			this.PreviewPixelGrid.ReadOnly = true;
+			this.PreviewPixelGrid.Location = new System.Drawing.Point(2, 3);
+			this.PreviewPixelGrid.Margin = new System.Windows.Forms.Padding(2);
+			this.PreviewPixelGrid.Name = "PreviewPixelGrid";
+			this.PreviewPixelGrid.ShowGrid = false;
+			this.PreviewPixelGrid.Size = new System.Drawing.Size(622, 83);
+			this.PreviewPixelGrid.TabIndex = 3;
+			this.PreviewPixelGrid.Text = "pixelGrid1";
+			// 
+			// borderedPanel2
+			// 
+			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel2.BackColor = System.Drawing.Color.White;
+			this.borderedPanel2.BorderBottom = true;
+			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel2.BorderLeft = true;
+			this.borderedPanel2.BorderRight = true;
+			this.borderedPanel2.BorderTop = true;
+			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.PasteButton);
+			this.borderedPanel2.Controls.Add(this.CopyButton);
+			this.borderedPanel2.Controls.Add(this.InverseButton);
+			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
+			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
+			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
+			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
+			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
+			this.borderedPanel2.Controls.Add(this.borderedPanel4);
+			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
+			this.borderedPanel2.Controls.Add(this.label1);
+			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
+			this.borderedPanel2.Location = new System.Drawing.Point(151, 151);
+			this.borderedPanel2.Name = "borderedPanel2";
+			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel2.Size = new System.Drawing.Size(627, 382);
+			this.borderedPanel2.TabIndex = 2;
+			this.borderedPanel2.Text = "borderedPanel2";
 			// 
 			// PasteButton
 			// 
@@ -397,173 +565,6 @@
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
 			// 
-			// borderedPanel1
-			// 
-			this.borderedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
-			this.borderedPanel1.BorderBottom = true;
-			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel1.BorderLeft = true;
-			this.borderedPanel1.BorderRight = true;
-			this.borderedPanel1.BorderTop = true;
-			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.Block1ImagesListBox);
-			this.borderedPanel1.Controls.Add(this.Block2ImagesListBox);
-			this.borderedPanel1.Location = new System.Drawing.Point(6, 91);
-			this.borderedPanel1.Name = "borderedPanel1";
-			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(140, 442);
-			this.borderedPanel1.TabIndex = 5;
-			this.borderedPanel1.Text = "borderedPanel1";
-			// 
-			// Block1ImagesListBox
-			// 
-			this.Block1ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Block1ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Block1ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
-			this.Block1ImagesListBox.FormattingEnabled = true;
-			this.Block1ImagesListBox.IntegralHeight = false;
-			this.Block1ImagesListBox.Location = new System.Drawing.Point(1, 1);
-			this.Block1ImagesListBox.Name = "Block1ImagesListBox";
-			this.Block1ImagesListBox.Size = new System.Drawing.Size(138, 440);
-			this.Block1ImagesListBox.TabIndex = 0;
-			this.Block1ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
-			// 
-			// Block2ImagesListBox
-			// 
-			this.Block2ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Block2ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Block2ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
-			this.Block2ImagesListBox.FormattingEnabled = true;
-			this.Block2ImagesListBox.IntegralHeight = false;
-			this.Block2ImagesListBox.Location = new System.Drawing.Point(1, 1);
-			this.Block2ImagesListBox.Name = "Block2ImagesListBox";
-			this.Block2ImagesListBox.Size = new System.Drawing.Size(138, 440);
-			this.Block2ImagesListBox.TabIndex = 0;
-			this.Block2ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
-			// 
-			// Block2CheckBox
-			// 
-			this.Block2CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block2CheckBox.Location = new System.Drawing.Point(76, 55);
-			this.Block2CheckBox.Name = "Block2CheckBox";
-			this.Block2CheckBox.Size = new System.Drawing.Size(71, 30);
-			this.Block2CheckBox.TabIndex = 2;
-			this.Block2CheckBox.Text = "Block 2";
-			this.Block2CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block2CheckBox.UseVisualStyleBackColor = true;
-			this.Block2CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
-			// 
-			// Block1CheckBox
-			// 
-			this.Block1CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block1CheckBox.Checked = true;
-			this.Block1CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Block1CheckBox.Location = new System.Drawing.Point(6, 55);
-			this.Block1CheckBox.Name = "Block1CheckBox";
-			this.Block1CheckBox.Size = new System.Drawing.Size(71, 30);
-			this.Block1CheckBox.TabIndex = 1;
-			this.Block1CheckBox.Text = "Block 1";
-			this.Block1CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block1CheckBox.UseVisualStyleBackColor = true;
-			this.Block1CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
-			// 
-			// borderedPanel3
-			// 
-			this.borderedPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.borderedPanel3.BackColor = System.Drawing.Color.White;
-			this.borderedPanel3.BorderBottom = true;
-			this.borderedPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel3.BorderLeft = true;
-			this.borderedPanel3.BorderRight = true;
-			this.borderedPanel3.BorderTop = true;
-			this.borderedPanel3.BorderWidth = 1F;
-			this.borderedPanel3.Controls.Add(this.label2);
-			this.borderedPanel3.Controls.Add(this.borderedPanel5);
-			this.borderedPanel3.Location = new System.Drawing.Point(151, 27);
-			this.borderedPanel3.Name = "borderedPanel3";
-			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(628, 118);
-			this.borderedPanel3.TabIndex = 3;
-			this.borderedPanel3.Text = "borderedPanel3";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(4, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(49, 13);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Preview:";
-			// 
-			// borderedPanel5
-			// 
-			this.borderedPanel5.BackColor = System.Drawing.Color.Transparent;
-			this.borderedPanel5.BorderBottom = false;
-			this.borderedPanel5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel5.BorderLeft = false;
-			this.borderedPanel5.BorderRight = false;
-			this.borderedPanel5.BorderTop = true;
-			this.borderedPanel5.BorderWidth = 1F;
-			this.borderedPanel5.Controls.Add(this.PreviewPixelGrid);
-			this.borderedPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
-			this.borderedPanel5.Name = "borderedPanel5";
-			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel5.Size = new System.Drawing.Size(626, 88);
-			this.borderedPanel5.TabIndex = 4;
-			this.borderedPanel5.Text = "borderedPanel5";
-			// 
-			// PreviewPixelGrid
-			// 
-			this.PreviewPixelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.PreviewPixelGrid.AutoScroll = true;
-			this.PreviewPixelGrid.AutoScrollMinSize = new System.Drawing.Size(6, 6);
-			this.PreviewPixelGrid.BackColor = System.Drawing.Color.Black;
-			this.PreviewPixelGrid.BlockSize = 2;
-			this.PreviewPixelGrid.Location = new System.Drawing.Point(2, 3);
-			this.PreviewPixelGrid.Margin = new System.Windows.Forms.Padding(2);
-			this.PreviewPixelGrid.Name = "PreviewPixelGrid";
-			this.PreviewPixelGrid.ShowGrid = false;
-			this.PreviewPixelGrid.Size = new System.Drawing.Size(622, 83);
-			this.PreviewPixelGrid.TabIndex = 3;
-			this.PreviewPixelGrid.Text = "pixelGrid1";
-			// 
-			// borderedPanel2
-			// 
-			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.borderedPanel2.BackColor = System.Drawing.Color.White;
-			this.borderedPanel2.BorderBottom = true;
-			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel2.BorderLeft = true;
-			this.borderedPanel2.BorderRight = true;
-			this.borderedPanel2.BorderTop = true;
-			this.borderedPanel2.BorderWidth = 1F;
-			this.borderedPanel2.Controls.Add(this.PasteButton);
-			this.borderedPanel2.Controls.Add(this.CopyButton);
-			this.borderedPanel2.Controls.Add(this.InverseButton);
-			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
-			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
-			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
-			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
-			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
-			this.borderedPanel2.Controls.Add(this.borderedPanel4);
-			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
-			this.borderedPanel2.Controls.Add(this.label1);
-			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
-			this.borderedPanel2.Location = new System.Drawing.Point(151, 151);
-			this.borderedPanel2.Name = "borderedPanel2";
-			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel2.Size = new System.Drawing.Size(627, 382);
-			this.borderedPanel2.TabIndex = 2;
-			this.borderedPanel2.Text = "borderedPanel2";
-			// 
 			// borderedPanel4
 			// 
 			this.borderedPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -592,6 +593,7 @@
 			this.ImagePixelGrid.BackgroundImage = global::NFirmwareEditor.Properties.Resources.transparent_bg;
 			this.ImagePixelGrid.BlockSize = 16;
 			this.ImagePixelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ImagePixelGrid.ReadOnly = false;
 			this.ImagePixelGrid.Location = new System.Drawing.Point(0, 1);
 			this.ImagePixelGrid.Margin = new System.Windows.Forms.Padding(8);
 			this.ImagePixelGrid.Name = "ImagePixelGrid";
