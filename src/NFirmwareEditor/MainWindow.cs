@@ -11,7 +11,6 @@ namespace NFirmwareEditor
 	{
 		private const string Title = "NFirmwareEditor";
 		private byte[] m_firmware;
-		private bool[,] m_buffer;
 
 		public MainWindow()
 		{
@@ -31,26 +30,6 @@ namespace NFirmwareEditor
 			{
 				DefinitionsComboBox.SelectedItem = definitions[0];
 			}
-		}
-
-		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName));
-		}
-
-		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName, false));
-		}
-
-		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
-		}
-
-		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
 		}
 
 		private void OpenDialogAndReadFirmwareOnOk(Func<string, byte[]> readFirmwareDelegate)
@@ -89,9 +68,21 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void ExitMenuItem_Click(object sender, EventArgs e)
+		public ListBox ImagesListBox
 		{
-			Application.Exit();
+			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
+		}
+
+		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
+			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
+
+			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
+			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
+
+			ImagesListBox.Focus();
+			BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
 		}
 
 		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -189,7 +180,7 @@ namespace NFirmwareEditor
 
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
 		{
-			var metadata = (Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox).SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
@@ -198,7 +189,7 @@ namespace NFirmwareEditor
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearAllPixelsImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -206,7 +197,7 @@ namespace NFirmwareEditor
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -214,20 +205,26 @@ namespace NFirmwareEditor
 
 		private void CopyButton_Click(object sender, EventArgs e)
 		{
-			m_buffer = ImagePixelGrid.Data;
+			Clipboard.SetDataObject(ImagePixelGrid.Data);
 		}
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
-			if (metadata == null || m_buffer == null) return;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.PasteImage(m_firmware, ImagePixelGrid.Data, m_buffer, metadata);
+			var dataObject = Clipboard.GetDataObject();
+			if (dataObject == null) return;
+
+			var buffer = dataObject.GetData(typeof(bool[,])) as bool[,];
+			if (buffer == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.PasteImage(m_firmware, ImagePixelGrid.Data, buffer, metadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
@@ -235,7 +232,7 @@ namespace NFirmwareEditor
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageRight(m_firmware, ImagePixelGrid.Data, metadata);
@@ -243,7 +240,7 @@ namespace NFirmwareEditor
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageUp(m_firmware, ImagePixelGrid.Data, metadata);
@@ -251,18 +248,35 @@ namespace NFirmwareEditor
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
-			var metadata = Block1ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
-		private void encryptDecryptToolStripMenuItem_Click(object sender, EventArgs e)
+		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var decryptionWindow = new DecryptionWindow())
-			{
-				decryptionWindow.ShowDialog();
-			}
+			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName));
+		}
+
+		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName, false));
+		}
+
+		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
+		}
+
+		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
+		}
+
+		private void ExitMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
 
 		private void ClearAllPixelsMenuItem_Click(object sender, EventArgs e)
@@ -303,6 +317,14 @@ namespace NFirmwareEditor
 		private void ShiftRightMenuItem_Click(object sender, EventArgs e)
 		{
 			ShiftRightButton_Click(null, null);
+		}
+
+		private void encryptDecryptToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var decryptionWindow = new DecryptionWindow())
+			{
+				decryptionWindow.ShowDialog();
+			}
 		}
 
 		private void AboutMenuItem_Click(object sender, EventArgs e)
@@ -379,27 +401,6 @@ namespace NFirmwareEditor
 			}
 
 			return base.ProcessCmdKey(ref msg, keyData);
-		}
-
-		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
-		{
-			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
-			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
-
-			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
-			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
-
-			if (Block1ImagesListBox.Visible)
-			{
-				Block1ImagesListBox.Focus();
-				BlockImagesListBox_SelectedValueChanged(Block1ImagesListBox, EventArgs.Empty);
-			}
-
-			if (Block2ImagesListBox.Visible)
-			{
-				Block2ImagesListBox.Focus();
-				BlockImagesListBox_SelectedValueChanged(Block2ImagesListBox, EventArgs.Empty);
-			}
 		}
 	}
 }
