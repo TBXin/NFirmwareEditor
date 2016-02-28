@@ -3,13 +3,23 @@ using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Firmware
 {
+	/// <summary>
+	/// Represents metadata of the image for LCD-display SSD1306.
+	/// </summary>
 	internal class Image1Metadata : ImageMetadata
 	{
+		/// <summary>
+		/// Gets the length of the byte array that represents an image.
+		/// </summary>
 		public override long DataLength
 		{
 			get { return Width * Height / 8; }
 		}
 
+		/// <summary>
+		/// Reads the image from bytes array and transforms to the two-dimensional bool array.
+		/// </summary>
+		/// <param name="imageBytes">Image bytes.</param>
 		public override bool[,] ReadImage(byte[] imageBytes)
 		{
 			var result = new bool[Width, Height];
@@ -36,6 +46,10 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
+		/// <summary>
+		/// Transforms two-dimensional bool array to the bytes array.
+		/// </summary>
+		/// <param name="imageData">Image data.</param>
 		public override byte[] WriteImage(bool[,] imageData)
 		{
 			var imageBytes = new byte[DataLength];
