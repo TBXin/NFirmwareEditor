@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -470,6 +471,13 @@ namespace NFirmwareEditor
 		private void ExportContextMenuItem_Click(object sender, EventArgs e)
 		{
 			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
+
+			var sb = new StringBuilder();
+			foreach (var imageMetadata in selectedItems)
+			{
+				sb.AppendLine(FirmwareImageProcessor.ExportImage(m_firmware, imageMetadata));
+			}
+			var s = sb.ToString();
 		}
 	}
 }

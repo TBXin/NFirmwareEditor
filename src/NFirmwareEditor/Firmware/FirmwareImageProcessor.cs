@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace NFirmwareEditor.Firmware
 {
@@ -198,6 +199,19 @@ namespace NFirmwareEditor.Firmware
 			}
 			WriteImage(firmware, result, metadata);
 			return result;
+		}
+
+		public static string ExportImage(byte[] firmware, ImageMetadata metadata)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (metadata == null) throw new ArgumentNullException("metadata");
+
+			var imageData = firmware
+				.Skip((int)metadata.DataOffset)
+				.Take((int)metadata.DataLength)
+				.ToArray();
+
+			return string.Format("{0}x{1}: {2}", metadata.Width, metadata.Height, string.Join(", ", imageData.Select(x => string.Format("0x{0:X2}", x))));
 		}
 
 		private static bool[,] ProcessImage(bool[,] imageData, Func<int, int> colEvaluator, Func<int, int> rowEvaluator, Func<bool, bool> dataEvaluator)
