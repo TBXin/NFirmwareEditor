@@ -152,6 +152,28 @@ namespace NFirmwareEditor
 			}
 		}
 
+		private ImageMetadata GetSelectedImageMetadata(ListBox listBox)
+		{
+			return listBox == null || listBox.SelectedIndices.Count == 0
+				? null
+				: listBox.Items[listBox.SelectedIndices[listBox.SelectedIndices.Count - 1]] as ImageMetadata;
+		}
+
+		private List<ImageMetadata> GetSelectedImagesMetadata(ListBox listBox)
+		{
+			if (listBox == null || listBox.SelectedIndices.Count == 0) return new List<ImageMetadata>();
+
+			var result = new List<ImageMetadata>();
+			foreach (int selectedIndex in listBox.SelectedIndices)
+			{
+				var metadata = listBox.Items[selectedIndex] as ImageMetadata;
+				if(metadata == null) continue;
+
+				result.Add(metadata);
+			}
+			return result;
+		}
+
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			ConfigurationManager.Save(m_configuration);
@@ -193,7 +215,10 @@ namespace NFirmwareEditor
 
 		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			var metadata = ((ListBox)sender).SelectedItem as ImageMetadata;
+			var listBox = sender as ListBox;
+			if (listBox == null) return;
+
+			var metadata = GetSelectedImageMetadata(listBox);
 			if (metadata == null) return;
 
 			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
@@ -398,48 +423,53 @@ namespace NFirmwareEditor
 
 			if (keyData.HasFlag(Keys.N))
 			{
-				clearAllPixelsToolStripMenuItem.PerformClick();
+				ClearAllPixelsMenuItem.PerformClick();
 				return true;
 			}
 			if (keyData.HasFlag(Keys.I))
 			{
-				invertToolStripMenuItem.PerformClick();
+				InvertMenuItem.PerformClick();
 				return true;
 			}
 			if (keyData.HasFlag(Keys.C))
 			{
-				copyToolStripMenuItem.PerformClick();
+				CopyMenuItem.PerformClick();
 				return true;
 			}
 			if (keyData.HasFlag(Keys.V))
 			{
-				pasteToolStripMenuItem.PerformClick();
+				PasteMenuItem.PerformClick();
 				return true;
 			}
 
 			var key = keyData &= ~Keys.Control;
 			if (key == Keys.Up)
 			{
-				shiftUpToolStripMenuItem.PerformClick();
+				ShiftUpMenuItem.PerformClick();
 				return true;
 			}
 			if (key == Keys.Down)
 			{
-				shiftDownToolStripMenuItem.PerformClick();
+				ShiftDownMenuItem.PerformClick();
 				return true;
 			}
 			if (key == Keys.Left)
 			{
-				shiftLeftToolStripMenuItem.PerformClick();
+				ShiftLeftMenuItem.PerformClick();
 				return true;
 			}
 			if (key == Keys.Right)
 			{
-				shiftRightToolStripMenuItem.PerformClick();
+				ShiftRightMenuItem.PerformClick();
 				return true;
 			}
 
 			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
+		private void ExportContextMenuItem_Click(object sender, EventArgs e)
+		{
+			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
 		}
 	}
 }
