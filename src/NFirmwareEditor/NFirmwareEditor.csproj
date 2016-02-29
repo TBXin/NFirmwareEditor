@@ -48,6 +48,8 @@
     <Compile Include="Core\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
     <Compile Include="Core\BitArrayExtensions.cs" />
+    <Compile Include="Core\ImageExporter.cs" />
+    <Compile Include="Firmware\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="DecryptionWindow.cs">
       <SubType>Form</SubType>
@@ -136,6 +138,8 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\image_import.png" />
+    <None Include="Resources\image_export.png" />
     <None Include="Resources\toolbox.png" />
     <None Include="Resources\save_as.png" />
     <None Include="Resources\open.png" />

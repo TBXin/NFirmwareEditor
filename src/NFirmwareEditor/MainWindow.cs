@@ -471,13 +471,15 @@ namespace NFirmwareEditor
 		private void ExportContextMenuItem_Click(object sender, EventArgs e)
 		{
 			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
+			if (selectedItems.Count == 0) return;
 
-			var sb = new StringBuilder();
-			foreach (var imageMetadata in selectedItems)
+			var images = selectedItems.Select(x => FirmwareImageProcessor.CreateExportedImage(m_firmware, x)).ToList();
+			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter})
 			{
-				sb.AppendLine(FirmwareImageProcessor.ExportImage(m_firmware, imageMetadata));
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				ImageExporter.Export(sf.FileName, images);
 			}
-			var s = sb.ToString();
 		}
 	}
 }

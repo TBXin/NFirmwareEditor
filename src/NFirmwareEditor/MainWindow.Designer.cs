@@ -67,6 +67,7 @@
 			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
 			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImagesListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImagesListBox = new System.Windows.Forms.ListBox();
@@ -430,16 +431,25 @@
 			// ImageListBoxContextMenu
 			// 
 			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ExportContextMenuItem});
+            this.ExportContextMenuItem,
+            this.ImportContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(108, 26);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(153, 70);
 			// 
 			// ExportContextMenuItem
 			// 
+			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
 			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(107, 22);
+			this.ExportContextMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.ExportContextMenuItem.Text = "Export";
 			this.ExportContextMenuItem.Click += new System.EventHandler(this.ExportContextMenuItem_Click);
+			// 
+			// ImportContextMenuItem
+			// 
+			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
+			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
+			this.ImportContextMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.ImportContextMenuItem.Text = "Import";
 			// 
 			// borderedPanel1
 			// 
@@ -755,6 +765,7 @@
 		private System.Windows.Forms.CheckBox Block2CheckBox;
 		private System.Windows.Forms.ContextMenuStrip ImageListBoxContextMenu;
 		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ImportContextMenuItem;
 	}
 }
 

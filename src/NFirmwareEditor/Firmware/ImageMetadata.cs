@@ -8,9 +8,9 @@ namespace NFirmwareEditor.Firmware
 	internal abstract class ImageMetadata
 	{
 		/// <summary>
-		/// Gets the image name.
+		/// Gets the image index.
 		/// </summary>
-		public string Name { get; protected set; }
+		public int Index { get; protected set; }
 
 		/// <summary>
 		/// Gets the image width.
@@ -36,10 +36,10 @@ namespace NFirmwareEditor.Firmware
 		/// Reads the image metadata at the specified offset.
 		/// </summary>
 		/// <param name="reader">Binary reader.</param>
-		/// <param name="offset">Offset on which metadata is located.</param>
-		public ImageMetadata ReadMetadata(BinaryReader reader, int offset)
+		/// <param name="imageIndex">Character generator index.</param>
+		public ImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
 		{
-			Name = string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", offset, reader.BaseStream.Position);
+			Index = imageIndex;
 			Width = reader.ReadByte();
 			Height = reader.ReadByte();
 			DataOffset = reader.BaseStream.Position;
@@ -63,7 +63,7 @@ namespace NFirmwareEditor.Firmware
 		/// </summary>
 		public override string ToString()
 		{
-			return Name;
+			return string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", Index, DataOffset);
 		}
 	}
 }
