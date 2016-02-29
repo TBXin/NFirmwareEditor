@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -473,12 +472,19 @@ namespace NFirmwareEditor
 			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
 			if (selectedItems.Count == 0) return;
 
-			var images = selectedItems.Select(x => FirmwareImageProcessor.CreateExportedImage(m_firmware, x)).ToList();
-			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter})
+			string fileName;
+			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
-				ImageExporter.Export(sf.FileName, images);
+				fileName = sf.FileName;
 			}
+
+			var images = selectedItems.Select(x =>
+			{
+				var imageData = FirmwareImageProcessor.ReadImage(m_firmware, x);
+				return new ExportedImage(x.Index, imageData);
+			}).ToList();
+			ImageExporter.Export(fileName, images);
 		}
 
 		private void ImportContextMenuItem_Click(object sender, EventArgs e)
@@ -497,7 +503,7 @@ namespace NFirmwareEditor
 			if (exportedImages.Count == 0) return;
 
 			var importedImages = exportedImages.Select(x => x.Data).ToList();
-			var originalImages = selectedItems.Select(x => FirmwareImageProcessor.ReadImage(m_firmware, x)).ToList();
+			var originalImages = FirmwareImageProcessor.ReadImages(m_firmware, selectedItems);
 
 			var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
 			using (var importWindow = new ImportImageWindow(originalImages.Take(minimumImagesCount), importedImages.Take(minimumImagesCount)))

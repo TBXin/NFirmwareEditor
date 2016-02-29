@@ -56,6 +56,14 @@ namespace NFirmwareEditor.Firmware
 			return metadata.ReadImage(imageData);
 		}
 
+		public static List<bool[,]> ReadImages(byte[] firmware, IEnumerable<ImageMetadata> metadata)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (metadata == null) throw new ArgumentNullException("metadata");
+
+			return metadata.Select(x => ReadImage(firmware, x)).ToList();
+		}
+
 		public static void WriteImage(byte[] firmware, bool[,] imageData, ImageMetadata metadata)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
@@ -194,15 +202,6 @@ namespace NFirmwareEditor.Firmware
 			}
 			WriteImage(firmware, result, metadata);
 			return result;
-		}
-
-		public static ExportedImage CreateExportedImage(byte[] firmware, ImageMetadata metadata)
-		{
-			if (firmware == null) throw new ArgumentNullException("firmware");
-			if (metadata == null) throw new ArgumentNullException("metadata");
-
-			var imageData = ReadImage(firmware, metadata);
-			return new ExportedImage(metadata.Index, imageData);
 		}
 
 		private static byte[] GetImageBytes(byte[] firmware, ImageMetadata metadata)
