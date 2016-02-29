@@ -477,9 +477,42 @@ namespace NFirmwareEditor
 			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter})
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
-
 				ImageExporter.Export(sf.FileName, images);
 			}
+		}
+
+		private void ImportContextMenuItem_Click(object sender, EventArgs e)
+		{
+			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
+			if (selectedItems.Count == 0) return;
+
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = Consts.ExportImageFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				fileName = op.FileName;
+			}
+
+			var exportedImages = ImageExporter.Import(fileName);
+			if (exportedImages.Count == 0) return;
+
+			var importedImages = exportedImages.Select(x => x.Data).ToList();
+			var originalImages = selectedItems.Select(x => FirmwareImageProcessor.ReadImage(m_firmware, x)).ToList();
+
+			var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
+			using (var importWindow = new ImportImageWindow(originalImages.Take(minimumImagesCount), importedImages.Take(minimumImagesCount)))
+			{
+				if (importWindow.ShowDialog() != DialogResult.OK) return;
+			}
+
+			for (var i = 0; i < minimumImagesCount; i++)
+			{
+				FirmwareImageProcessor.PasteImage(m_firmware, originalImages[i], importedImages[i], selectedItems[i]);
+			}
+
+			var lastSelectedItem = GetSelectedImageMetadata(ImagesListBox);
+			ImagesListBox.SelectedIndices.Clear();
+			ImagesListBox.SelectedItem = lastSelectedItem;
 		}
 	}
 }

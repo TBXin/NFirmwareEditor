@@ -152,5 +152,11 @@ namespace NFirmwareEditor.UI
 			base.OnSizeChanged(e);
 			Invalidate();
 		}
+
+		protected override void OnScroll(ScrollEventArgs se)
+		{
+			base.OnScroll(se);
+			Invalidate();
+		}
 	}
 }

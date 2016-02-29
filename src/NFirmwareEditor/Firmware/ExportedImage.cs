@@ -42,7 +42,7 @@ namespace NFirmwareEditor.Firmware
 				var result = new bool[Width, Height];
 				if (string.IsNullOrEmpty(ImagePixels)) return result;
 
-				var rows = ImagePixels.Trim().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+				var rows = ImagePixels.Trim().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 				for (var row = 0; row < rows.Length; row++)
 				{
 					for (var col = 0; col < rows[row].Length; col++)
