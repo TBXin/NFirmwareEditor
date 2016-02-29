@@ -13,10 +13,10 @@ namespace NFirmwareEditor.Firmware
 		{
 			try
 			{
-				var serizlier = new XmlSerializer(typeof(List<FirmwareDefinition>));
+				var serializer = new XmlSerializer(typeof(List<FirmwareDefinition>));
 				using (var fs = File.Open(Paths.DefinitionsFile, FileMode.Open))
 				{
-					var result = serizlier.Deserialize(fs) as List<FirmwareDefinition> ?? new List<FirmwareDefinition>();
+					var result = serializer.Deserialize(fs) as List<FirmwareDefinition> ?? new List<FirmwareDefinition>();
 					if (result.Any(definition => string.IsNullOrEmpty(definition.Name)
 					                             || definition.ImageTable1 == null
 					                             || definition.ImageTable1.OffsetFrom == 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -10,17 +11,44 @@ namespace NFirmwareEditor
 	public partial class MainWindow : Form
 	{
 		private const string Title = "NFirmwareEditor";
+
+		private Configuration m_configuration;
 		private byte[] m_firmware;
 
 		public MainWindow()
 		{
 			InitializeComponent();
+			InitializeControls();
+
 			Icon = Paths.ApplicationIcon;
+			LoadSettings();
 		}
 
-		private void MainWindow_Load(object sender, EventArgs e)
+		public ListBox ImagesListBox
 		{
-			InititalizeControls();
+			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
+		}
+
+		private void InitializeControls()
+		{
+			Block1ImagesListBox.Items.Clear();
+			Block2ImagesListBox.Items.Clear();
+			ImagePixelGrid.Data = new bool[5, 5];
+			StatusLabel.Text = null;
+
+			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
+			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
+			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+		}
+
+		private void LoadSettings()
+		{
+			m_configuration = ConfigurationManager.Load();
+			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
+			Width = m_configuration.MainWindowWidth;
+			Height = m_configuration.MainWindowHeight;
+
 			var definitions = FirmwareDefinitionManager.Load();
 			foreach (var definition in definitions)
 			{
@@ -28,7 +56,8 @@ namespace NFirmwareEditor
 			}
 			if (definitions.Count > 0)
 			{
-				DefinitionsComboBox.SelectedItem = definitions[0];
+				var savedDefinition = definitions.FirstOrDefault(x => x.Name.Equals(m_configuration.LastUsedDefinition));
+				DefinitionsComboBox.SelectedItem = savedDefinition ?? definitions[0];
 			}
 		}
 
@@ -41,12 +70,12 @@ namespace NFirmwareEditor
 				firmwareFile = op.FileName;
 			}
 
-			InititalizeControls();
+			InitializeControls();
 			LoadFirmware(readFirmwareDelegate, firmwareFile);
 			EnumerateFirmwareImages();
 		}
 
-		private void OpenDiaglogAndSaveFirmwareOnOk(Action<string, byte[]> writeFirmwareDelegate)
+		private void OpenDialogAndSaveFirmwareOnOk(Action<string, byte[]> writeFirmwareDelegate)
 		{
 			if (m_firmware == null) return;
 
@@ -66,61 +95,6 @@ namespace NFirmwareEditor
 			{
 				InfoBox.Show("Can't save firmware file.\n" + ex.Message);
 			}
-		}
-
-		public ListBox ImagesListBox
-		{
-			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
-		}
-
-		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
-		{
-			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
-			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
-
-			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
-			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
-
-			ImagesListBox.Focus();
-			BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
-		}
-
-		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
-		{
-			var metadata = ((ListBox)sender).SelectedItem as ImageMetadata;
-			if (metadata == null) return;
-
-			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
-			try
-			{
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
-			}
-			catch (Exception)
-			{
-				InfoBox.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
-			}
-		}
-
-		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
-		{
-			ImagePixelGrid.BlockSize = (int)GridSizeUpDown.Value;
-		}
-
-		private void ShowGridCheckBox_CheckedChanged(object sender, EventArgs e)
-		{
-			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
-		}
-
-		private void InititalizeControls()
-		{
-			Block1ImagesListBox.Items.Clear();
-			ImagePixelGrid.Data = new bool[5, 5];
-			StatusLabel.Text = null;
-
-			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
-			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
-			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
-			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
 		}
 
 		private void LoadFirmware(Func<string, byte[]> readFirmwareDelegate, string firmwareFile)
@@ -176,6 +150,71 @@ namespace NFirmwareEditor
 			{
 				listBox.SelectedIndex = 0;
 			}
+		}
+
+		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			ConfigurationManager.Save(m_configuration);
+		}
+
+		private void MainWindow_SizeChanged(object sender, EventArgs e)
+		{
+			if (WindowState == FormWindowState.Maximized)
+			{
+				m_configuration.MainWindowMaximaged = true;
+			}
+			else if (WindowState == FormWindowState.Normal)
+			{
+				m_configuration.MainWindowMaximaged = false;
+				m_configuration.MainWindowWidth = Width;
+				m_configuration.MainWindowHeight = Height;
+			}
+		}
+
+		private void DefinitionsComboBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
+			if (definition == null) return;
+
+			m_configuration.LastUsedDefinition = definition.Name;
+		}
+
+		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
+			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
+
+			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
+			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
+
+			ImagesListBox.Focus();
+			BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
+		}
+
+		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			var metadata = ((ListBox)sender).SelectedItem as ImageMetadata;
+			if (metadata == null) return;
+
+			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
+			try
+			{
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+			}
+			catch (Exception)
+			{
+				InfoBox.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
+			}
+		}
+
+		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			ImagePixelGrid.BlockSize = (int)GridSizeUpDown.Value;
+		}
+
+		private void ShowGridCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
 		}
 
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
@@ -266,12 +305,12 @@ namespace NFirmwareEditor
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
+			OpenDialogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
 		}
 
 		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDiaglogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
+			OpenDialogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -319,7 +358,7 @@ namespace NFirmwareEditor
 			ShiftRightButton_Click(null, null);
 		}
 
-		private void encryptDecryptToolStripMenuItem_Click(object sender, EventArgs e)
+		private void EncryptDecryptToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			using (var decryptionWindow = new DecryptionWindow())
 			{

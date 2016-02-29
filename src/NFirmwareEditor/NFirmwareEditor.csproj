@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Configuration.cs" />
+    <Compile Include="Core\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
     <Compile Include="Core\BitArrayExtensions.cs" />
     <Compile Include="Core\Paths.cs" />
