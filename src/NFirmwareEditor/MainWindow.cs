@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
@@ -26,11 +27,13 @@ namespace NFirmwareEditor
 			LoadSettings();
 		}
 
+		[NotNull]
 		public ListBox ImagesListBox
 		{
 			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
 		}
 
+		[CanBeNull]
 		public FirmwareDefinition SelectedDefinition
 		{
 			get { return DefinitionsComboBox.SelectedItem as FirmwareDefinition; }
@@ -38,15 +41,18 @@ namespace NFirmwareEditor
 
 		private void InitializeControls()
 		{
-			Block1ImagesListBox.Items.Clear();
-			Block2ImagesListBox.Items.Clear();
-			ImagePixelGrid.Data = new bool[5, 5];
-			StatusLabel.Text = null;
-
 			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
 			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
 			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+		}
+
+		private void ResetWorkspace()
+		{
+			Block1ImagesListBox.Items.Clear();
+			Block2ImagesListBox.Items.Clear();
+			ImagePixelGrid.Data = new bool[5, 5];
+			StatusLabel.Text = null;
 		}
 
 		private void LoadSettings()
@@ -68,8 +74,14 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(Func<string, NFirmware.Firmware> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(Func<string, FirmwareDefinition, NFirmware.Firmware> readFirmwareDelegate)
 		{
+			if (SelectedDefinition == null)
+			{
+				InfoBox.Show("Select firmware definition first.");
+				return;
+			}
+
 			string firmwareFile;
 			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
 			{
@@ -77,8 +89,25 @@ namespace NFirmwareEditor
 				firmwareFile = op.FileName;
 			}
 
-			InitializeControls();
-			LoadFirmware(readFirmwareDelegate, firmwareFile);
+			ResetWorkspace();
+			try
+			{
+				m_firmware = readFirmwareDelegate(firmwareFile, SelectedDefinition);
+
+				FillImagesListBox(Block2ImagesListBox, m_firmware.Block2Images, true);
+				FillImagesListBox(Block1ImagesListBox, m_firmware.Block1Images, true);
+
+				SaveEncryptedMenuItem.Enabled = true;
+				SaveDecryptedMenuItem.Enabled = true;
+				EditMenuItem.Enabled = true;
+
+				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
+				StatusLabel.Text = @"Firmware loaded successfully.";
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("Unable to load firmware.\n{0}", ex.Message);
+			}
 		}
 
 		private void OpenDialogAndSaveFirmwareOnOk(Action<string, NFirmware.Firmware> writeFirmwareDelegate)
@@ -95,33 +124,11 @@ namespace NFirmwareEditor
 			try
 			{
 				writeFirmwareDelegate(firmwareFile, m_firmware);
-				StatusLabel.Text = @"Firmware saved successfully to: " + firmwareFile;
+				StatusLabel.Text = @"Firmware successfully saved to the file: " + firmwareFile;
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("Can't save firmware file.\n" + ex.Message);
-			}
-		}
-
-		private void LoadFirmware(Func<string, NFirmware.Firmware> readFirmwareDelegate, string firmwareFile)
-		{
-			try
-			{
-				m_firmware = readFirmwareDelegate(firmwareFile);
-
-				FillImagesListBox(Block2ImagesListBox, m_firmware.Block2Images, true);
-				FillImagesListBox(Block1ImagesListBox, m_firmware.Block1Images, true);
-
-				SaveEncryptedMenuItem.Enabled = true;
-				SaveDecryptedMenuItem.Enabled = true;
-				EditMenuItem.Enabled = true;
-
-				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				StatusLabel.Text = @"Firmware loaded successfully.";
-			}
-			catch (Exception ex)
-			{
-				InfoBox.Show("Can't open file.\n" + ex.Message);
+				InfoBox.Show("Unable to save firmware.\n{0}", ex.Message);
 			}
 		}
 
@@ -161,6 +168,13 @@ namespace NFirmwareEditor
 				result.Add(metadata);
 			}
 			return result;
+		}
+
+		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata)
+		{
+			var processedData = imageDataProcessor(ImagePixelGrid.Data);
+			m_firmware.WriteImage(processedData, imageMetadata);
+			return processedData;
 		}
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -213,7 +227,7 @@ namespace NFirmwareEditor
 			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
 			try
 			{
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ReadImage(m_firmware, metadata);
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = m_firmware.ReadImage(metadata);
 			}
 			catch (Exception)
 			{
@@ -236,7 +250,7 @@ namespace NFirmwareEditor
 			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
-			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
+			m_firmware.WriteImage(data, metadata);
 			PreviewPixelGrid.Data = data;
 		}
 
@@ -245,7 +259,7 @@ namespace NFirmwareEditor
 			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearAllPixelsImage(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, metadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
@@ -253,7 +267,39 @@ namespace NFirmwareEditor
 			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, metadata);
+		}
+
+		private void ShiftLeftButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, metadata);
+		}
+
+		private void ShiftRightButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, metadata);
+		}
+
+		private void ShiftUpButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, metadata);
+		}
+
+		private void ShiftDownButton_Click(object sender, EventArgs e)
+		{
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
+			if (metadata == null) return;
+
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, metadata);
 		}
 
 		private void CopyButton_Click(object sender, EventArgs e)
@@ -272,70 +318,27 @@ namespace NFirmwareEditor
 			var buffer = dataObject.GetData(typeof(bool[,])) as bool[,];
 			if (buffer == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.PasteImage(m_firmware, ImagePixelGrid.Data, buffer, metadata);
-		}
-
-		private void ShiftLeftButton_Click(object sender, EventArgs e)
-		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
-
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
-		}
-
-		private void ShiftRightButton_Click(object sender, EventArgs e)
-		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
-
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageRight(m_firmware, ImagePixelGrid.Data, metadata);
-		}
-
-		private void ShiftUpButton_Click(object sender, EventArgs e)
-		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
-
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageUp(m_firmware, ImagePixelGrid.Data, metadata);
-		}
-
-		private void ShiftDownButton_Click(object sender, EventArgs e)
-		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
-
-			
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, buffer), metadata);
 		}
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			if (SelectedDefinition == null)
-			{
-				InfoBox.Show("Select definition first.");
-				return;
-			}
-			OpenDialogAndReadFirmwareOnOk(fileName => m_loader.LoadEncoded(fileName, SelectedDefinition));
+			OpenDialogAndReadFirmwareOnOk((fileName, definition) => m_loader.LoadEncrypted(fileName, definition));
 		}
 
 		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			if (SelectedDefinition == null)
-			{
-				InfoBox.Show("Select definition first.");
-				return;
-			}
-			OpenDialogAndReadFirmwareOnOk(fileName => m_loader.LoadDecoded(fileName, SelectedDefinition));
+			OpenDialogAndReadFirmwareOnOk((fileName, definition) => m_loader.LoadDecrypted(fileName, definition));
 		}
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data));
+			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveEncrypted(filePath, firmware));
 		}
 
 		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndSaveFirmwareOnOk((filePath, data) => FirmwareEncoder.WriteFile(filePath, data, false));
+			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveDecrypted(filePath, firmware));
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -481,7 +484,7 @@ namespace NFirmwareEditor
 
 			var images = selectedItems.Select(x =>
 			{
-				var imageData = FirmwareImageProcessor.ReadImage(m_firmware, x);
+				var imageData = m_firmware.ReadImage(x);
 				return new ExportedImage(x.Index, imageData);
 			}).ToList();
 			ImageExporter.Export(fileName, images);
@@ -503,7 +506,7 @@ namespace NFirmwareEditor
 			if (exportedImages.Count == 0) return;
 
 			var importedImages = exportedImages.Select(x => x.Data).ToList();
-			var originalImages = FirmwareImageProcessor.ReadImages(m_firmware, selectedItems);
+			var originalImages = m_firmware.ReadImages(selectedItems).ToList();
 
 			var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
 			using (var importWindow = new ImportImageWindow(originalImages.Take(minimumImagesCount), importedImages.Take(minimumImagesCount)))
@@ -513,7 +516,8 @@ namespace NFirmwareEditor
 
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
-				FirmwareImageProcessor.PasteImage(m_firmware, originalImages[i], importedImages[i], selectedItems[i]);
+				var index = i;
+				ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], importedImages[index]), selectedItems[index]);
 			}
 
 			var lastSelectedItem = GetSelectedImageMetadata(ImagesListBox);

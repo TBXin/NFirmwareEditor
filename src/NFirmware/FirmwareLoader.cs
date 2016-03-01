@@ -14,22 +14,22 @@ namespace NFirmware
 			m_encoder = encoder;
 		}
 
-		public Firmware LoadEncoded(string filePath, FirmwareDefinition definition)
+		public Firmware LoadEncrypted(string filePath, FirmwareDefinition definition)
 		{
 			return Load(filePath, definition, true);
 		}
 
-		public Firmware LoadDecoded(string filePath, FirmwareDefinition definition)
+		public Firmware LoadDecrypted(string filePath, FirmwareDefinition definition)
 		{
 			return Load(filePath, definition, false);
 		}
 
-		public void SaveEncoded(string filePath, Firmware firmware)
+		public void SaveEncrypted(string filePath, Firmware firmware)
 		{
 			Save(filePath, firmware, true);
 		}
 
-		public void SaveDecoded(string filePath, Firmware firmware)
+		public void SaveDecrypted(string filePath, Firmware firmware)
 		{
 			Save(filePath, firmware, false);
 		}

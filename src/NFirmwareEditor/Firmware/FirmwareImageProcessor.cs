@@ -5,7 +5,7 @@ namespace NFirmwareEditor.Firmware
 {
 	internal static class FirmwareImageProcessor
 	{
-		public static bool[,] ClearAllPixelsImage(bool[,] imageData)
+		public static bool[,] Clear(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 
@@ -13,31 +13,31 @@ namespace NFirmwareEditor.Firmware
 			return new bool[size.Width, size.Height];
 		}
 
-		public static bool[,] InvertImage(bool[,] imageData)
+		public static bool[,] Invert(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return ProcessImage(imageData, (col, width) => col, (row, height) => row, v => !v);
 		}
 
-		public static bool[,] ShiftImageUp(bool[,] imageData)
+		public static bool[,] ShiftUp(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return ProcessImage(imageData, (col, width) => col, (row, height) => row - 1 >= 0 ? row - 1 : height - 1, v => v);
 		}
 
-		public static bool[,] ShiftImageDown(bool[,] imageData)
+		public static bool[,] ShiftDown(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return ProcessImage(imageData, (col, width) => col, (row, height) => row + 1 < height ? row + 1 : 0, v => v);
 		}
 
-		public static bool[,] ShiftImageLeft(bool[,] imageData)
+		public static bool[,] ShiftLeft(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return ProcessImage(imageData, (col, width) => col - 1 >= 0 ? col - 1 : width - 1, (row, height) => row, v => v);
 		}
 
-		public static bool[,] ShiftImageRight(bool[,] imageData)
+		public static bool[,] ShiftRight(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return ProcessImage(imageData, (col, width) => col + 1 < width ? col + 1 : 0, (row, height) => row, v => v);

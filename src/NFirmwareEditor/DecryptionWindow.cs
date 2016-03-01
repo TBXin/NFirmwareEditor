@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using NFirmware;
 using NFirmwareEditor.Core;
-using NFirmwareEditor.Firmware;
 
 namespace NFirmwareEditor
 {
 	public partial class DecryptionWindow : Form
 	{
+		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();
 		private bool m_sourceEncrypted;
 		private string m_source = string.Empty;
 
@@ -82,8 +83,8 @@ namespace NFirmwareEditor
 					source = SourceDecryptedTextBox.Text;
 				}
 
-				var firmware = FirmwareEncoder.ReadFile(source, m_sourceEncrypted);
-				FirmwareEncoder.WriteFile(DestinationTextBox.Text, firmware, !m_sourceEncrypted);
+				var firmware = m_encoder.ReadFile(source, m_sourceEncrypted);
+				m_encoder.WriteFile(DestinationTextBox.Text, firmware, !m_sourceEncrypted);
 				InfoBox.Show(string.Format("Firmware successfully {0}!", m_sourceEncrypted ? Consts.Decrypted : Consts.Encrypted));
 			}
 			catch (Exception ex)

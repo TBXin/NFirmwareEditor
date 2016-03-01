@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace NFirmware
 {
@@ -9,7 +10,7 @@ namespace NFirmware
 	{
 		private readonly FirmwareImageBlocks m_imageBlocks;
 
-		internal Firmware(byte[] body, FirmwareImageBlocks imageBlocks)
+		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks)
 		{
 			if (body == null) throw new ArgumentNullException("body");
 			if (imageBlocks == null) throw new ArgumentNullException("imageBlocks");
@@ -18,19 +19,23 @@ namespace NFirmware
 			m_imageBlocks = imageBlocks;
 		}
 
+		[NotNull]
 		internal byte[] Body { get; set; }
 
+		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareImageMetadata> Block1Images
 		{
 			get { return m_imageBlocks.Block1Images; }
 		}
 
+		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareImageMetadata> Block2Images
 		{
 			get { return m_imageBlocks.Block2Images; }
 		}
 
-		public bool[,] ReadImage(FirmwareImageMetadata imageMetadata)
+		[NotNull]
+		public bool[,] ReadImage([NotNull] FirmwareImageMetadata imageMetadata)
 		{
 			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
 
@@ -38,13 +43,14 @@ namespace NFirmware
 			return imageMetadata.Load(imageData);
 		}
 
-		public IEnumerable<bool[,]> ReadImages(IEnumerable<FirmwareImageMetadata> metadata)
+		[NotNull]
+		public IEnumerable<bool[,]> ReadImages([NotNull, ItemNotNull] IEnumerable<FirmwareImageMetadata> metadata)
 		{
 			if (metadata == null) throw new ArgumentNullException("metadata");
 			return metadata.Select(ReadImage).ToList();
 		}
 
-		public void WriteImage(bool[,] imageData, FirmwareImageMetadata imageMetadata)
+		public void WriteImage([NotNull] bool[,] imageData, [NotNull] FirmwareImageMetadata imageMetadata)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
@@ -58,7 +64,8 @@ namespace NFirmware
 			Buffer.BlockCopy(imageBytes, 0, Body, (int)imageMetadata.DataOffset, imageBytes.Length);
 		}
 
-		private static byte[] GetImageBytes(IEnumerable<byte> firmware, FirmwareImageMetadata metadata)
+		[NotNull]
+		private static byte[] GetImageBytes([NotNull] IEnumerable<byte> firmware, [NotNull] FirmwareImageMetadata metadata)
 		{
 			return firmware
 				.Skip((int)metadata.DataOffset)
