@@ -33,7 +33,18 @@ namespace NFirmwareEditor
 		[NotNull]
 		public ListBox ImagesListBox
 		{
-			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
+			get { return Block1ImagesListBox.Visible ? Block1ImagesListBox : Block2ImagesListBox; }
+		}
+
+		[CanBeNull]
+		public FirmwareImageMetadata LastSelectedImageMetadata
+		{
+			get
+			{
+				return ImagesListBox.Items.Count == 0 || ImagesListBox.SelectedIndices.Count == 0
+					? null
+					: ImagesListBox.Items[ImagesListBox.SelectedIndices[ImagesListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
+			}
 		}
 
 		[CanBeNull]
@@ -154,13 +165,6 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private FirmwareImageMetadata GetSelectedImageMetadata(ListBox listBox)
-		{
-			return listBox == null || listBox.SelectedIndices.Count == 0
-				? null
-				: listBox.Items[listBox.SelectedIndices[listBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
-		}
-
 		private List<FirmwareImageMetadata> GetSelectedImagesMetadata(ListBox listBox)
 		{
 			if (listBox == null || listBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
@@ -212,6 +216,8 @@ namespace NFirmwareEditor
 
 		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
+			var currentListBoxSelectedIndices = ImagesListBox.SelectedIndices.ToList();
+
 			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
 			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
 
@@ -219,21 +225,29 @@ namespace NFirmwareEditor
 			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
 
 			ImagesListBox.Focus();
-			BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
+			if (currentListBoxSelectedIndices.Count != 0)
+			{
+				ImagesListBox.SelectedIndices.Clear();
+				ImagesListBox.SelectedIndices.AddRange(currentListBoxSelectedIndices.Where(x => ImagesListBox.Items.Count > x));
+				if (ImagesListBox.SelectedIndices.Count == 0)
+				{
+					ImagePixelGrid.Data = PreviewPixelGrid.Data = new bool[5, 5];
+				}
+			}
+			else
+			{
+				BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
+			}
 		}
 
 		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			var listBox = sender as ListBox;
-			if (listBox == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			var metadata = GetSelectedImageMetadata(listBox);
-			if (metadata == null) return;
-
-			StatusLabel.Text = string.Format("Image: {0}x{1}", metadata.Width, metadata.Height);
+			StatusLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
 			try
 			{
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = m_firmware.ReadImage(metadata);
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
 			}
 			catch (Exception)
 			{
@@ -253,59 +267,52 @@ namespace NFirmwareEditor
 
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			m_firmware.WriteImage(data, metadata);
+			m_firmware.WriteImage(data, LastSelectedImageMetadata);
 			PreviewPixelGrid.Data = data;
 		}
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
 		}
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
 		}
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
 		}
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
 		}
 
 		private void CopyButton_Click(object sender, EventArgs e)
@@ -315,8 +322,7 @@ namespace NFirmwareEditor
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
-			if (metadata == null) return;
+			if (LastSelectedImageMetadata == null) return;
 
 			var dataObject = Clipboard.GetDataObject();
 			if (dataObject == null) return;
@@ -324,7 +330,7 @@ namespace NFirmwareEditor
 			var buffer = dataObject.GetData(typeof(bool[,])) as bool[,];
 			if (buffer == null) return;
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, buffer), metadata);
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, buffer), LastSelectedImageMetadata);
 		}
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -526,7 +532,7 @@ namespace NFirmwareEditor
 				ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], importedImages[index]), selectedItems[index]);
 			}
 
-			var lastSelectedItem = GetSelectedImageMetadata(ImagesListBox);
+			var lastSelectedItem = LastSelectedImageMetadata;
 			ImagesListBox.SelectedIndices.Clear();
 			ImagesListBox.SelectedItem = lastSelectedItem;
 		}
