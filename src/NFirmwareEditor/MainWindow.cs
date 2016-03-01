@@ -6,17 +6,20 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
-using NFirmwareEditor.Firmware;
+using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
 
 namespace NFirmwareEditor
 {
 	public partial class MainWindow : Form
 	{
+		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
+		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 
 		private Configuration m_configuration;
-		private NFirmware.Firmware m_firmware;
+		private Firmware m_firmware;
 
 		public MainWindow()
 		{
@@ -57,12 +60,12 @@ namespace NFirmwareEditor
 
 		private void LoadSettings()
 		{
-			m_configuration = ConfigurationManager.Load();
+			m_configuration = m_configurationManager.Load();
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
 			Width = m_configuration.MainWindowWidth;
 			Height = m_configuration.MainWindowHeight;
 
-			var definitions = FirmwareDefinitionManager.Load();
+			var definitions = m_firmwareDefinitionManager.Load();
 			foreach (var definition in definitions)
 			{
 				DefinitionsComboBox.Items.Add(definition);
@@ -72,9 +75,12 @@ namespace NFirmwareEditor
 				var savedDefinition = definitions.FirstOrDefault(x => x.Name.Equals(m_configuration.LastUsedDefinition));
 				DefinitionsComboBox.SelectedItem = savedDefinition ?? definitions[0];
 			}
+
+			GridSizeUpDown.Value = m_configuration.GridSize;
+			ShowGridCheckBox.Checked = m_configuration.ShowGid;
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(Func<string, FirmwareDefinition, NFirmware.Firmware> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(Func<string, FirmwareDefinition, Firmware> readFirmwareDelegate)
 		{
 			if (SelectedDefinition == null)
 			{
@@ -110,7 +116,7 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void OpenDialogAndSaveFirmwareOnOk(Action<string, NFirmware.Firmware> writeFirmwareDelegate)
+		private void OpenDialogAndSaveFirmwareOnOk(Action<string, Firmware> writeFirmwareDelegate)
 		{
 			if (m_firmware == null) return;
 
@@ -179,7 +185,7 @@ namespace NFirmwareEditor
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			ConfigurationManager.Save(m_configuration);
+			m_configurationManager.Save(m_configuration);
 		}
 
 		private void MainWindow_SizeChanged(object sender, EventArgs e)
@@ -237,12 +243,12 @@ namespace NFirmwareEditor
 
 		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
 		{
-			ImagePixelGrid.BlockSize = (int)GridSizeUpDown.Value;
+			ImagePixelGrid.BlockSize = m_configuration.GridSize = (int)GridSizeUpDown.Value;
 		}
 
 		private void ShowGridCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
-			ImagePixelGrid.ShowGrid = ShowGridCheckBox.Checked;
+			ImagePixelGrid.ShowGrid = m_configuration.ShowGid = ShowGridCheckBox.Checked;
 		}
 
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
@@ -487,7 +493,7 @@ namespace NFirmwareEditor
 				var imageData = m_firmware.ReadImage(x);
 				return new ExportedImage(x.Index, imageData);
 			}).ToList();
-			ImageExporter.Export(fileName, images);
+			ImageExportManager.Export(fileName, images);
 		}
 
 		private void ImportContextMenuItem_Click(object sender, EventArgs e)
@@ -502,7 +508,7 @@ namespace NFirmwareEditor
 				fileName = op.FileName;
 			}
 
-			var exportedImages = ImageExporter.Import(fileName);
+			var exportedImages = ImageExportManager.Import(fileName);
 			if (exportedImages.Count == 0) return;
 
 			var importedImages = exportedImages.Select(x => x.Data).ToList();

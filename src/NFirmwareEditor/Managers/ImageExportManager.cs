@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using NFirmwareEditor.Firmware;
+using NFirmwareEditor.Core;
+using NFirmwareEditor.Models;
 
-namespace NFirmwareEditor.Core
+namespace NFirmwareEditor.Managers
 {
-	internal static class ImageExporter
+	internal static class ImageExportManager
 	{
 		public static List<ExportedImage> Import(string path)
 		{
@@ -23,7 +24,7 @@ namespace NFirmwareEditor.Core
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("Unable to export images.\n" + ex.Message);
+				InfoBox.Show("Unable to import images.\n" + ex.Message);
 			}
 			return result ?? new List<ExportedImage>();
 		}

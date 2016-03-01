@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using NFirmwareEditor.Core;
+using NFirmwareEditor.Models;
 
-namespace NFirmwareEditor.Core
+namespace NFirmwareEditor.Managers
 {
-	internal static class ConfigurationManager
+	internal class ConfigurationManager
 	{
-		public static Configuration Load()
+		public Configuration Load()
 		{
 			Configuration result = null;
 			try
@@ -24,7 +26,7 @@ namespace NFirmwareEditor.Core
 			return result ?? new Configuration();
 		}
 
-		public static void Save(Configuration configuration)
+		public void Save(Configuration configuration)
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");
 

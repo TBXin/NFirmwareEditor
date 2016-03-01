@@ -6,11 +6,11 @@ using System.Xml.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmwareEditor.Managers
 {
-	internal static class FirmwareDefinitionManager
+	internal class FirmwareDefinitionManager
 	{
-		public static List<FirmwareDefinition> Load()
+		public List<FirmwareDefinition> Load()
 		{
 			try
 			{

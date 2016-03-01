@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmwareEditor.Managers
 {
 	internal static class FirmwareImageProcessor
 	{
