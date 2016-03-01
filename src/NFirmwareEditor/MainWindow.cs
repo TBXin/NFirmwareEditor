@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Firmware;
+using NFirmwareEditor.Properties;
 
 namespace NFirmwareEditor
 {
 	public partial class MainWindow : Form
 	{
-		private const string Title = "NFirmwareEditor";
+		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 
 		private Configuration m_configuration;
-		private byte[] m_firmware;
+		private NFirmware.Firmware m_firmware;
 
 		public MainWindow()
 		{
@@ -27,6 +29,11 @@ namespace NFirmwareEditor
 		public ListBox ImagesListBox
 		{
 			get { return Block1CheckBox.Checked ? Block1ImagesListBox : Block2ImagesListBox; }
+		}
+
+		public FirmwareDefinition SelectedDefinition
+		{
+			get { return DefinitionsComboBox.SelectedItem as FirmwareDefinition; }
 		}
 
 		private void InitializeControls()
@@ -61,7 +68,7 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(Func<string, byte[]> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(Func<string, NFirmware.Firmware> readFirmwareDelegate)
 		{
 			string firmwareFile;
 			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
@@ -72,10 +79,9 @@ namespace NFirmwareEditor
 
 			InitializeControls();
 			LoadFirmware(readFirmwareDelegate, firmwareFile);
-			EnumerateFirmwareImages();
 		}
 
-		private void OpenDialogAndSaveFirmwareOnOk(Action<string, byte[]> writeFirmwareDelegate)
+		private void OpenDialogAndSaveFirmwareOnOk(Action<string, NFirmware.Firmware> writeFirmwareDelegate)
 		{
 			if (m_firmware == null) return;
 
@@ -97,42 +103,25 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void LoadFirmware(Func<string, byte[]> readFirmwareDelegate, string firmwareFile)
+		private void LoadFirmware(Func<string, NFirmware.Firmware> readFirmwareDelegate, string firmwareFile)
 		{
 			try
 			{
 				m_firmware = readFirmwareDelegate(firmwareFile);
 
+				FillImagesListBox(Block2ImagesListBox, m_firmware.Block2Images, true);
+				FillImagesListBox(Block1ImagesListBox, m_firmware.Block1Images, true);
+
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
 				EditMenuItem.Enabled = true;
-				Text = Title + @" - " + firmwareFile;
+
+				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
 				StatusLabel.Text = @"Firmware loaded successfully.";
 			}
 			catch (Exception ex)
 			{
 				InfoBox.Show("Can't open file.\n" + ex.Message);
-			}
-		}
-
-		private void EnumerateFirmwareImages()
-		{
-			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
-			if (definition == null)
-			{
-				InfoBox.Show("Select definition first.");
-				return;
-			}
-
-			try
-			{
-				var images = FirmwareImageProcessor.EnumerateImages(m_firmware, definition);
-				FillImagesListBox(Block2ImagesListBox, images.Block2Images, true);
-				FillImagesListBox(Block1ImagesListBox, images.Block1Images, true);
-			}
-			catch (Exception)
-			{
-				InfoBox.Show("Unable to enumerate images. Possibly firmware definition is incompatible with loaded firmware.");
 			}
 		}
 
@@ -152,21 +141,21 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private ImageMetadata GetSelectedImageMetadata(ListBox listBox)
+		private FirmwareImageMetadata GetSelectedImageMetadata(ListBox listBox)
 		{
 			return listBox == null || listBox.SelectedIndices.Count == 0
 				? null
-				: listBox.Items[listBox.SelectedIndices[listBox.SelectedIndices.Count - 1]] as ImageMetadata;
+				: listBox.Items[listBox.SelectedIndices[listBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
 		}
 
-		private List<ImageMetadata> GetSelectedImagesMetadata(ListBox listBox)
+		private List<FirmwareImageMetadata> GetSelectedImagesMetadata(ListBox listBox)
 		{
-			if (listBox == null || listBox.SelectedIndices.Count == 0) return new List<ImageMetadata>();
+			if (listBox == null || listBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
 
-			var result = new List<ImageMetadata>();
+			var result = new List<FirmwareImageMetadata>();
 			foreach (int selectedIndex in listBox.SelectedIndices)
 			{
-				var metadata = listBox.Items[selectedIndex] as ImageMetadata;
+				var metadata = listBox.Items[selectedIndex] as FirmwareImageMetadata;
 				if(metadata == null) continue;
 
 				result.Add(metadata);
@@ -244,7 +233,7 @@ namespace NFirmwareEditor
 
 		private void ImagePixelGrid_DataUpdated(bool[,] data)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			FirmwareImageProcessor.WriteImage(m_firmware, data, metadata);
@@ -253,7 +242,7 @@ namespace NFirmwareEditor
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ClearAllPixelsImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -261,7 +250,7 @@ namespace NFirmwareEditor
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.InvertImage(m_firmware, ImagePixelGrid.Data, metadata);
@@ -274,7 +263,7 @@ namespace NFirmwareEditor
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			var dataObject = Clipboard.GetDataObject();
@@ -288,7 +277,7 @@ namespace NFirmwareEditor
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageLeft(m_firmware, ImagePixelGrid.Data, metadata);
@@ -296,7 +285,7 @@ namespace NFirmwareEditor
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageRight(m_firmware, ImagePixelGrid.Data, metadata);
@@ -304,7 +293,7 @@ namespace NFirmwareEditor
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageUp(m_firmware, ImagePixelGrid.Data, metadata);
@@ -312,20 +301,31 @@ namespace NFirmwareEditor
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
-			var metadata = ImagesListBox.SelectedItem as ImageMetadata;
+			var metadata = ImagesListBox.SelectedItem as FirmwareImageMetadata;
 			if (metadata == null) return;
 
+			
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = FirmwareImageProcessor.ShiftImageDown(m_firmware, ImagePixelGrid.Data, metadata);
 		}
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName));
+			if (SelectedDefinition == null)
+			{
+				InfoBox.Show("Select definition first.");
+				return;
+			}
+			OpenDialogAndReadFirmwareOnOk(fileName => m_loader.LoadEncoded(fileName, SelectedDefinition));
 		}
 
 		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndReadFirmwareOnOk(fileName => FirmwareEncoder.ReadFile(fileName, false));
+			if (SelectedDefinition == null)
+			{
+				InfoBox.Show("Select definition first.");
+				return;
+			}
+			OpenDialogAndReadFirmwareOnOk(fileName => m_loader.LoadDecoded(fileName, SelectedDefinition));
 		}
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -393,7 +393,7 @@ namespace NFirmwareEditor
 
 		private void AboutMenuItem_Click(object sender, EventArgs e)
 		{
-			InfoBox.Show("NFirmwareEditor v1.7\n\nFirmware resource editor for vape devices such as:\nEvic VTC Mini, Cuboid, RX200, PresaTC75W and so on...\n\nReikoKitsune © 2016");
+			InfoBox.Show(Resources.AboutMessage, Consts.ApplicationVersion);
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

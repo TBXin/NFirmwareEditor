@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Xml.Serialization;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmware
 {
 	public class FirmwareDefinition
 	{

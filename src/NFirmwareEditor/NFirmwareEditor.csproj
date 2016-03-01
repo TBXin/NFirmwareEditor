@@ -48,7 +48,6 @@
     <Compile Include="Core\Configuration.cs" />
     <Compile Include="Core\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
-    <Compile Include="Core\BitArrayExtensions.cs" />
     <Compile Include="Core\ImageExporter.cs" />
     <Compile Include="Firmware\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
@@ -59,12 +58,7 @@
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Firmware\FirmwareDefinitionManager.cs" />
-    <Compile Include="Firmware\FirmwareEncoder.cs" />
     <Compile Include="Firmware\FirmwareImageProcessor.cs" />
-    <Compile Include="Firmware\FirmwareImages.cs" />
-    <Compile Include="Firmware\Image1Metadata.cs" />
-    <Compile Include="Firmware\Image2Metadata.cs" />
-    <Compile Include="Firmware\ImageMetadata.cs" />
     <Compile Include="Core\InfoBox.cs" />
     <Compile Include="ImportImageWindow.cs">
       <SubType>Form</SubType>
@@ -80,7 +74,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Firmware\FirmwareDefinition.cs" />
     <Compile Include="UI\BorderedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -156,6 +149,12 @@
     <None Include="Resources\exit.png" />
     <None Include="Resources\paste.png" />
     <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFirmware\NFirmware.csproj">
+      <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
+      <Name>NFirmware</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

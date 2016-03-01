@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmware
 {
-	public static class FirmwareEncoder
+	public class FirmwareEncoder
 	{
 		private const int MagicNumber = 0x63B38;
 
-		public static byte[] Encode(byte[] bytes)
+		public byte[] Encode(byte[] bytes)
 		{
 			if (bytes == null) throw new ArgumentNullException("bytes");
 
@@ -19,13 +19,13 @@ namespace NFirmwareEditor.Firmware
 			return result;
 		}
 
-		public static byte[] Decode(byte[] bytes)
+		public byte[] Decode(byte[] bytes)
 		{
 			if (bytes == null) throw new ArgumentNullException("bytes");
 			return Encode(bytes);
 		}
 
-		public static byte[] ReadFile(string filePath, bool decode = true)
+		public byte[] ReadFile(string filePath, bool decode = true)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
@@ -33,7 +33,7 @@ namespace NFirmwareEditor.Firmware
 			return decode ? Decode(rawBytes) : rawBytes;
 		}
 
-		public static void WriteFile(string filePath, byte[] data, bool encode = true)
+		public void WriteFile(string filePath, byte[] data, bool encode = true)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 			if (data == null) throw new ArgumentNullException("data");

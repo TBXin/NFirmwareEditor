@@ -1,11 +1,11 @@
 ﻿using System.IO;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmware
 {
 	/// <summary>
 	/// Contains metadata of the firmware image.
 	/// </summary>
-	internal abstract class ImageMetadata
+	public abstract class FirmwareImageMetadata
 	{
 		/// <summary>
 		/// Gets the image index.
@@ -37,7 +37,7 @@ namespace NFirmwareEditor.Firmware
 		/// </summary>
 		/// <param name="reader">Binary reader.</param>
 		/// <param name="imageIndex">Character generator index.</param>
-		public ImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
+		public FirmwareImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
 		{
 			Index = imageIndex;
 			Width = reader.ReadByte();
@@ -50,16 +50,16 @@ namespace NFirmwareEditor.Firmware
 		/// Reads the image from bytes array and transforms to the two-dimensional bool array.
 		/// </summary>
 		/// <param name="imageBytes">Image bytes.</param>
-		public abstract bool[,] ReadImage(byte[] imageBytes);
+		public abstract bool[,] Load(byte[] imageBytes);
 
 		/// <summary>
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public abstract byte[] WriteImage(bool[,] imageData);
+		public abstract byte[] Save(bool[,] imageData);
 
 		/// <summary>
-		/// Returns a <see cref="T:System.String"/> that represents the current <see cref="ImageMetadata"/>.
+		/// Returns a <see cref="T:System.String"/> that represents the current <see cref="FirmwareImageMetadata"/>.
 		/// </summary>
 		public override string ToString()
 		{

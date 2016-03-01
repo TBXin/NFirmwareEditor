@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using NFirmwareEditor.Core;
 
-namespace NFirmwareEditor.Firmware
+namespace NFirmware
 {
 	/// <summary>
 	/// Represents metadata of the image for LCD-display SSD1306.
 	/// </summary>
-	internal class Image1Metadata : ImageMetadata
+	public class FirmwareImage1Metadata : FirmwareImageMetadata
 	{
 		/// <summary>
 		/// Gets the length of the byte array that represents an image.
@@ -17,10 +16,10 @@ namespace NFirmwareEditor.Firmware
 		}
 
 		/// <summary>
-		/// Reads the image from bytes array and transforms to the two-dimensional bool array.
+		/// Loads the image from bytes array and transforms to the two-dimensional bool array.
 		/// </summary>
 		/// <param name="imageBytes">Image bytes.</param>
-		public override bool[,] ReadImage(byte[] imageBytes)
+		public override bool[,] Load(byte[] imageBytes)
 		{
 			var result = new bool[Width, Height];
 			var colCounter = 0;
@@ -50,7 +49,7 @@ namespace NFirmwareEditor.Firmware
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public override byte[] WriteImage(bool[,] imageData)
+		public override byte[] Save(bool[,] imageData)
 		{
 			var imageBytes = new byte[DataLength];
 			var imageBytesCounter = 0;

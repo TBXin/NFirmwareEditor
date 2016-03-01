@@ -71,6 +71,20 @@ namespace NFirmwareEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NFirmwareEditor v{0}
+        ///
+        ///Firmware resource editor for vaping devices such as:
+        ///Evic VTC Mini, Cuboid, RX200, PresaTC75W and so on...
+        ///
+        ///ReikoKitsune © 2016.
+        /// </summary>
+        internal static string AboutMessage {
+            get {
+                return ResourceManager.GetString("AboutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap arrow_down {

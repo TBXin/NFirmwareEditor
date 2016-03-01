@@ -2,6 +2,8 @@
 {
 	internal static class Consts
 	{
+		internal const string ApplicationTitle = "NFirmwareEditor";
+		internal const string ApplicationVersion = "1.8";
 		internal const string FirmwareFilter = "Firmware file|*.bin";
 		internal const string ExportImageFilter = "Exported images|*.images";
 		internal const string Encrypted = "encrypted";

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 
-namespace NFirmwareEditor.Core
+namespace NFirmware
 {
-	internal static class BitArrayExtensions
+	public static class BitArrayExtensions
 	{
-		internal static bool[] ToBoolArray(this BitArray bitArray)
+		public static bool[] ToBoolArray(this BitArray bitArray)
 		{
 			if (bitArray == null) throw new ArgumentNullException("bitArray");
 
@@ -17,7 +17,7 @@ namespace NFirmwareEditor.Core
 			return result;
 		}
 
-		internal static byte ToByte(this BitArray bitArray)
+		public static byte ToByte(this BitArray bitArray)
 		{
 			if (bitArray == null) throw new ArgumentNullException("bitArray");
 			if (bitArray.Count != 8) throw new ArgumentException("bits");
