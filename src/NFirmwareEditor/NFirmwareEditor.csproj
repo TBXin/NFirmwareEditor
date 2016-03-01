@@ -121,9 +121,7 @@
   <ItemGroup>
     <None Include="Resources\transparent_bg.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\arrow_right.png" />
   </ItemGroup>
