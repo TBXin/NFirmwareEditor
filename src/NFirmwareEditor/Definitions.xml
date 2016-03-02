@@ -73,8 +73,15 @@
 			<OffsetTo>0x94C4</OffsetTo>
 		</ImageTable1>
 	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="iStick TC100W 1.10">
+		<ImageTable1>
+			<OffsetFrom>0x7EB4</OffsetFrom>
+			<OffsetTo>0x812C</OffsetTo>
+		</ImageTable1>
+	</FirmwareDefinition>
 		
-	<FirmwareDefinition Name="PresaTC75W 3.00">
+	<FirmwareDefinition Name="Presa TC75W 3.00">
 		<ImageTable1>
 			<OffsetFrom>0xB4A8</OffsetFrom>
 			<OffsetTo>0xB828</OffsetTo>
