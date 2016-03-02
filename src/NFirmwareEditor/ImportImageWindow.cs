@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
+using NFirmwareEditor.Managers;
 using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor
@@ -16,22 +18,23 @@ namespace NFirmwareEditor
 
 		public ImportImageWindow
 		(
-			ICollection<bool[,]> originalImages, 
-			ICollection<bool[,]> importedImages,
+			IList<bool[,]> originalImages,
+			IList<bool[,]> importedImages,
 			int originalsImageCount,
 			int importedImageCount
 		) : this()
 		{
+			if (originalImages.Count != importedImages.Count) throw new InvalidOperationException("Source and imported images count does not match.");
+
 			BeforeLabel.Text = string.Format("Before:\nUsing {0} of the {1} selected images.", originalImages.Count, originalsImageCount);
 			AfterLabel.Text = string.Format("After:\nUsing {0} of the {1} importing images.", importedImages.Count, importedImageCount);
 
-			foreach (var originalImage in originalImages)
+			for (var i = 0; i < originalImages.Count; i++)
 			{
-				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));
-			}
+				var originalImage = originalImages[i];
+				var importedImage = FirmwareImageProcessor.PasteImage(originalImage, importedImages[i]);
 
-			foreach (var importedImage in importedImages)
-			{
+				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));
 				RightLayoutPanel.Controls.Add(CreateGrid(importedImage));
 			}
 		}
