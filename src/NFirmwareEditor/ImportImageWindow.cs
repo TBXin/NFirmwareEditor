@@ -10,6 +10,10 @@ namespace NFirmwareEditor
 {
 	public partial class ImportImageWindow : Form
 	{
+		private readonly IList<bool[,]> m_originalImages;
+		private readonly IList<bool[,]> m_importedImages;
+		private readonly IList<PixelGrid> m_rightPanelGrids = new List<PixelGrid>();
+
 		public ImportImageWindow()
 		{
 			InitializeComponent();
@@ -24,10 +28,13 @@ namespace NFirmwareEditor
 			int importedImageCount
 		) : this()
 		{
-			if (originalImages.Count != importedImages.Count) throw new InvalidOperationException("Source and imported images count does not match.");
+			if (originalImages.Count != importedImages.Count)
+			{
+				throw new InvalidOperationException("Source and imported images count does not match.");
+			}
 
-			BeforeLabel.Text = string.Format("Before:\nUsing {0} of the {1} selected images.", originalImages.Count, originalsImageCount);
-			AfterLabel.Text = string.Format("After:\nUsing {0} of the {1} importing images.", importedImages.Count, importedImageCount);
+			m_originalImages = originalImages;
+			m_importedImages = importedImages;
 
 			for (var i = 0; i < originalImages.Count; i++)
 			{
@@ -35,7 +42,26 @@ namespace NFirmwareEditor
 				var importedImage = FirmwareImageProcessor.PasteImage(originalImage, importedImages[i]);
 
 				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));
-				RightLayoutPanel.Controls.Add(CreateGrid(importedImage));
+				var rightGrid = CreateGrid(importedImage);
+				m_rightPanelGrids.Add(rightGrid);
+				RightLayoutPanel.Controls.Add(rightGrid);
+			}
+
+			BeforeLabel.Text = string.Format("Before:\nUsing {0} of {1} selected images.", originalImages.Count, originalsImageCount);
+			AfterLabel.Text = string.Format("After:\nUsing {0} of {1} importing images.", importedImages.Count, importedImageCount);
+		}
+
+		private void ResizingCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			for (var i = 0; i < m_rightPanelGrids.Count; i++)
+			{
+				var grid = m_rightPanelGrids[i];
+				var originalImage = m_originalImages[i];
+				var importedImage = m_importedImages[i];
+
+				grid.Data = ResizingCheckBox.Checked
+					? importedImage
+					: FirmwareImageProcessor.PasteImage(originalImage, importedImage);
 			}
 		}
 
