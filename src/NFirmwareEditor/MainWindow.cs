@@ -17,6 +17,7 @@ namespace NFirmwareEditor
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
+		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 
 		private Configuration m_configuration;
 		private Firmware m_firmware;
@@ -44,6 +45,25 @@ namespace NFirmwareEditor
 				return ImagesListBox.Items.Count == 0 || ImagesListBox.SelectedIndices.Count == 0
 					? null
 					: ImagesListBox.Items[ImagesListBox.SelectedIndices[ImagesListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
+			}
+		}
+
+		[NotNull]
+		public List<FirmwareImageMetadata> SelectedImageMetadata
+		{
+			get
+			{
+				if (ImagesListBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
+
+				var result = new List<FirmwareImageMetadata>();
+				foreach (int selectedIndex in ImagesListBox.SelectedIndices)
+				{
+					var metadata = ImagesListBox.Items[selectedIndex] as FirmwareImageMetadata;
+					if (metadata == null) continue;
+
+					result.Add(metadata);
+				}
+				return result;
 			}
 		}
 
@@ -163,21 +183,6 @@ namespace NFirmwareEditor
 			{
 				listBox.SelectedIndex = 0;
 			}
-		}
-
-		private List<FirmwareImageMetadata> GetSelectedImagesMetadata(ListBox listBox)
-		{
-			if (listBox == null || listBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
-
-			var result = new List<FirmwareImageMetadata>();
-			foreach (int selectedIndex in listBox.SelectedIndices)
-			{
-				var metadata = listBox.Items[selectedIndex] as FirmwareImageMetadata;
-				if(metadata == null) continue;
-
-				result.Add(metadata);
-			}
-			return result;
 		}
 
 		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata)
@@ -317,20 +322,46 @@ namespace NFirmwareEditor
 
 		private void CopyButton_Click(object sender, EventArgs e)
 		{
-			Clipboard.SetDataObject(ImagePixelGrid.Data);
+			if (SelectedImageMetadata.Count == 0) return;
+
+			var images = m_firmware.ReadImages(SelectedImageMetadata).ToList();
+			m_clipboardManager.SetData(images);
 		}
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (SelectedImageMetadata.Count == 0) return;
 
-			var dataObject = Clipboard.GetDataObject();
-			if (dataObject == null) return;
+			var copiedImages = m_clipboardManager.GetData();
+			if (copiedImages.Count == 0) return;
+			if (copiedImages.Count == 1)
+			{
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, copiedImages[0]), LastSelectedImageMetadata);
+			}
+			else
+			{
+				var originalImages = m_firmware.ReadImages(SelectedImageMetadata).ToList();
 
-			var buffer = dataObject.GetData(typeof(bool[,])) as bool[,];
-			if (buffer == null) return;
+				var originalImagesCount = originalImages.Count;
+				var copiedImagesCount = copiedImages.Count;
+				var minimumImagesCount = Math.Min(originalImagesCount, copiedImagesCount);
 
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, buffer), LastSelectedImageMetadata);
+				originalImages = originalImages.Take(minimumImagesCount).ToList();
+				copiedImages = copiedImages.Take(minimumImagesCount).ToList();
+
+				using (var importWindow = new ImportImageWindow(originalImages, copiedImages, originalImagesCount, copiedImagesCount))
+				{
+					if (importWindow.ShowDialog() != DialogResult.OK) return;
+				}
+
+				var updatedImage = new bool[5, 5];
+				for (var i = 0; i < minimumImagesCount; i++)
+				{
+					var index = i;
+					updatedImage = ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], copiedImages[index]), SelectedImageMetadata[index]);
+				}
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = updatedImage;
+			}
 		}
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -482,10 +513,19 @@ namespace NFirmwareEditor
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
+		private void CopyContextMenuItem_Click(object sender, EventArgs e)
+		{
+			CopyButton_Click(null, null);
+		}
+
+		private void PasteContextMenuItem_Click(object sender, EventArgs e)
+		{
+			PasteButton_Click(null, null);
+		}
+
 		private void ExportContextMenuItem_Click(object sender, EventArgs e)
 		{
-			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
-			if (selectedItems.Count == 0) return;
+			if (SelectedImageMetadata.Count == 0) return;
 
 			string fileName;
 			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter })
@@ -494,7 +534,7 @@ namespace NFirmwareEditor
 				fileName = sf.FileName;
 			}
 
-			var images = selectedItems.Select(x =>
+			var images = SelectedImageMetadata.Select(x =>
 			{
 				var imageData = m_firmware.ReadImage(x);
 				return new ExportedImage(x.Index, imageData);
@@ -504,8 +544,7 @@ namespace NFirmwareEditor
 
 		private void ImportContextMenuItem_Click(object sender, EventArgs e)
 		{
-			var selectedItems = GetSelectedImagesMetadata(ImagesListBox);
-			if (selectedItems.Count == 0) return;
+			if (SelectedImageMetadata.Count == 0) return;
 
 			string fileName;
 			using (var op = new OpenFileDialog { Filter = Consts.ExportImageFilter })
@@ -517,11 +556,17 @@ namespace NFirmwareEditor
 			var exportedImages = ImageExportManager.Import(fileName);
 			if (exportedImages.Count == 0) return;
 
+			var originalImages = m_firmware.ReadImages(SelectedImageMetadata).ToList();
 			var importedImages = exportedImages.Select(x => x.Data).ToList();
-			var originalImages = m_firmware.ReadImages(selectedItems).ToList();
 
-			var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
-			using (var importWindow = new ImportImageWindow(originalImages.Take(minimumImagesCount), importedImages.Take(minimumImagesCount)))
+			var originalImagesCount = originalImages.Count;
+			var importedImagesCount = importedImages.Count;
+			var minimumImagesCount = Math.Min(originalImagesCount, importedImagesCount);
+
+			originalImages = originalImages.Take(minimumImagesCount).ToList();
+			importedImages = importedImages.Take(minimumImagesCount).ToList();
+
+			using (var importWindow = new ImportImageWindow(originalImages, importedImages, originalImagesCount, importedImagesCount))
 			{
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
 			}
@@ -529,7 +574,7 @@ namespace NFirmwareEditor
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
 				var index = i;
-				ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], importedImages[index]), selectedItems[index]);
+				ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], importedImages[index]), SelectedImageMetadata[index]);
 			}
 
 			var lastSelectedItem = LastSelectedImageMetadata;

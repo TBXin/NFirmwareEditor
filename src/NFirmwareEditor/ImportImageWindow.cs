@@ -14,8 +14,17 @@ namespace NFirmwareEditor
 			Icon = Paths.ApplicationIcon;
 		}
 
-		public ImportImageWindow(IEnumerable<bool[,]> originalImages, IEnumerable<bool[,]> importedImages) : this()
+		public ImportImageWindow
+		(
+			ICollection<bool[,]> originalImages, 
+			ICollection<bool[,]> importedImages,
+			int originalsImageCount,
+			int importedImageCount
+		) : this()
 		{
+			BeforeLabel.Text = string.Format("Before:\nUsing {0} of the {1} selected images.", originalImages.Count, originalsImageCount);
+			AfterLabel.Text = string.Format("After:\nUsing {0} of the {1} importing images.", importedImages.Count, importedImageCount);
+
 			foreach (var originalImage in originalImages)
 			{
 				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));

@@ -59,26 +59,26 @@
 			this.ImportButton.Name = "ImportButton";
 			this.ImportButton.Size = new System.Drawing.Size(100, 30);
 			this.ImportButton.TabIndex = 5;
-			this.ImportButton.Text = "Import";
+			this.ImportButton.Text = "Import / Paste";
 			this.ImportButton.UseVisualStyleBackColor = true;
 			// 
 			// AfterLabel
 			// 
-			this.AfterLabel.Location = new System.Drawing.Point(217, 5);
+			this.AfterLabel.Location = new System.Drawing.Point(219, 5);
 			this.AfterLabel.Name = "AfterLabel";
-			this.AfterLabel.Size = new System.Drawing.Size(205, 13);
+			this.AfterLabel.Size = new System.Drawing.Size(205, 26);
 			this.AfterLabel.TabIndex = 8;
 			this.AfterLabel.Text = "After:";
-			this.AfterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.AfterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// BeforeLabel
 			// 
 			this.BeforeLabel.Location = new System.Drawing.Point(12, 5);
 			this.BeforeLabel.Name = "BeforeLabel";
-			this.BeforeLabel.Size = new System.Drawing.Size(199, 13);
+			this.BeforeLabel.Size = new System.Drawing.Size(199, 26);
 			this.BeforeLabel.TabIndex = 7;
 			this.BeforeLabel.Text = "Before:";
-			this.BeforeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.BeforeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// borderedPanel1
 			// 
@@ -94,10 +94,10 @@
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
 			this.borderedPanel1.Controls.Add(this.tableLayoutPanel1);
-			this.borderedPanel1.Location = new System.Drawing.Point(6, 21);
+			this.borderedPanel1.Location = new System.Drawing.Point(6, 34);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(422, 396);
+			this.borderedPanel1.Size = new System.Drawing.Size(422, 383);
 			this.borderedPanel1.TabIndex = 3;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -154,7 +154,7 @@
 			this.MinimizeBox = false;
 			this.Name = "ImportImageWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Import";
+			this.Text = "Import / Paste";
 			this.borderedPanel1.ResumeLayout(false);
 			this.borderedPanel1.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
