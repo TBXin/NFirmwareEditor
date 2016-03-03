@@ -53,6 +53,7 @@
 			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DefinitionsComboBox = new System.Windows.Forms.ComboBox();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.PasteButton = new System.Windows.Forms.Button();
@@ -66,6 +67,9 @@
 			this.Block2CheckBox = new System.Windows.Forms.CheckBox();
 			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
 			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
@@ -81,9 +85,6 @@
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
-			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.ImageListBoxContextMenu.SuspendLayout();
@@ -293,7 +294,8 @@
 			// MainStatusStrip
 			// 
 			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusLabel});
+            this.StatusLabel,
+            this.CursorPositionLabel});
 			this.MainStatusStrip.Location = new System.Drawing.Point(0, 539);
 			this.MainStatusStrip.Name = "MainStatusStrip";
 			this.MainStatusStrip.Size = new System.Drawing.Size(784, 22);
@@ -305,6 +307,11 @@
 			this.StatusLabel.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.StatusLabel.Name = "StatusLabel";
 			this.StatusLabel.Size = new System.Drawing.Size(0, 17);
+			// 
+			// CursorPositionLabel
+			// 
+			this.CursorPositionLabel.Name = "CursorPositionLabel";
+			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// DefinitionsComboBox
 			// 
@@ -440,13 +447,34 @@
             this.ExportContextMenuItem,
             this.ImportContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(153, 120);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
+			// 
+			// CopyContextMenuItem
+			// 
+			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
+			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.CopyContextMenuItem.Text = "Copy";
+			this.CopyContextMenuItem.Click += new System.EventHandler(this.CopyContextMenuItem_Click);
+			// 
+			// PasteContextMenuItem
+			// 
+			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
+			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.PasteContextMenuItem.Text = "Paste";
+			this.PasteContextMenuItem.Click += new System.EventHandler(this.PasteContextMenuItem_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
 			// 
 			// ExportContextMenuItem
 			// 
 			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
 			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.ExportContextMenuItem.Text = "Export";
 			this.ExportContextMenuItem.Click += new System.EventHandler(this.ExportContextMenuItem_Click);
 			// 
@@ -454,7 +482,7 @@
 			// 
 			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
 			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
-			this.ImportContextMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.ImportContextMenuItem.Text = "Import";
 			this.ImportContextMenuItem.Click += new System.EventHandler(this.ImportContextMenuItem_Click);
 			// 
@@ -641,6 +669,7 @@
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
 			this.ImagePixelGrid.DataUpdated += new NFirmwareEditor.UI.PixelGrid.DataUpdatedDelegate(this.ImagePixelGrid_DataUpdated);
+			this.ImagePixelGrid.CursorPositionChanged += new NFirmwareEditor.UI.PixelGrid.CursorPositionChangedDelegate(this.ImagePixelGrid_CursorPositionChanged);
 			// 
 			// ShowGridCheckBox
 			// 
@@ -681,27 +710,6 @@
             0,
             0});
 			this.GridSizeUpDown.ValueChanged += new System.EventHandler(this.GridSizeUpDown_ValueChanged);
-			// 
-			// CopyContextMenuItem
-			// 
-			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
-			this.CopyContextMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.CopyContextMenuItem.Text = "Copy";
-			this.CopyContextMenuItem.Click += new System.EventHandler(this.CopyContextMenuItem_Click);
-			// 
-			// PasteContextMenuItem
-			// 
-			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
-			this.PasteContextMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.PasteContextMenuItem.Text = "Paste";
-			this.PasteContextMenuItem.Click += new System.EventHandler(this.PasteContextMenuItem_Click);
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
 			// 
 			// MainWindow
 			// 
@@ -797,6 +805,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CopyContextMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem PasteContextMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 	}
 }
 

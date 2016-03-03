@@ -108,6 +108,8 @@ namespace NFirmwareEditor.UI
 
 		public event DataUpdatedDelegate DataUpdated;
 
+		public event CursorPositionChangedDelegate CursorPositionChanged;
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			var gfx = e.Graphics;
@@ -143,6 +145,8 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
+			var block = TryGetBlockFromPoint(e.Location);
+			if (block != null) OnCursorPositionChanged(block.Value);
 			if (TrySetBlockValue(e)) Invalidate();
 		}
 
@@ -234,10 +238,18 @@ namespace NFirmwareEditor.UI
 
 		public delegate void DataUpdatedDelegate(bool[,] data);
 
+		public delegate void CursorPositionChangedDelegate(Point location);
+
 		private void OnDataUpdated(bool[,] data)
 		{
 			var handler = DataUpdated;
 			if (handler != null) handler(data);
+		}
+
+		private void OnCursorPositionChanged(Point location)
+		{
+			var handler = CursorPositionChanged;
+			if (handler != null) handler(location);
 		}
 	}
 }

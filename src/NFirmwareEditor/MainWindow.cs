@@ -581,5 +581,10 @@ namespace NFirmwareEditor
 			ImagesListBox.SelectedIndices.Clear();
 			ImagesListBox.SelectedItem = lastSelectedItem;
 		}
+
+		private void ImagePixelGrid_CursorPositionChanged(Point location)
+		{
+			CursorPositionLabel.Text = string.Format("X: {0}, Y:{1}", location.X + 1, location.Y + 1);
+		}
 	}
 }
