@@ -598,9 +598,11 @@ namespace NFirmwareEditor
 			ImagesListBox.SelectedItem = lastSelectedItem;
 		}
 
-		private void ImagePixelGrid_CursorPositionChanged(Point location)
+		private void ImagePixelGrid_CursorPositionChanged(Point? location)
 		{
-			CursorPositionLabel.Text = string.Format("X: {0}, Y:{1}", location.X + 1, location.Y + 1);
+			CursorPositionLabel.Text = location.HasValue
+				? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
+				: string.Empty;
 		}
 	}
 }

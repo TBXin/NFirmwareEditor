@@ -9,7 +9,7 @@ namespace NFirmwareEditor.UI
 	public sealed class PixelGrid : ScrollableControl
 	{
 		private bool[,] m_data = new bool[0, 0];
-		private int m_blockSize = 50;
+		private int m_blockSize = 16;
 		private int m_colsCount;
 		private int m_rowsCount;
 		private Pen m_blockOuterBorderPen = Pens.DarkGray;
@@ -17,6 +17,7 @@ namespace NFirmwareEditor.UI
 		private Brush m_activeBlockBrush = new SolidBrush(Color.Black);
 		private Brush m_inactiveBlockBrush = new SolidBrush(Color.White);
 		private TextureBrush m_backgroundBrush;
+		private Point? m_lastCursorPosition;
 
 		private Rectangle m_clientArea;
 		private bool m_showGrid;
@@ -121,6 +122,7 @@ namespace NFirmwareEditor.UI
 				DrawBackground(gfx);
 				DrawBlocks(gfx);
 				DrawGrid(gfx);
+				//DrawSelection(gfx);
 				DrawBorder(gfx);
 
 				gfx.ResetTransform();
@@ -145,8 +147,10 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
-			var block = TryGetBlockFromPoint(e.Location);
-			if (block != null) OnCursorPositionChanged(block.Value);
+			m_lastCursorPosition = TryGetBlockFromPoint(e.Location);
+			OnCursorPositionChanged(m_lastCursorPosition);
+			Invalidate();
+
 			if (TrySetBlockValue(e)) Invalidate();
 		}
 
@@ -192,9 +196,21 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
+		private void DrawSelection(Graphics gfx)
+		{
+			if (!m_lastCursorPosition.HasValue) return;
+
+			var blockRect = new Rectangle(m_lastCursorPosition.Value.X * BlockSize, m_lastCursorPosition.Value.Y * BlockSize, BlockSize, BlockSize);
+			var horizontalRect = new Rectangle(0, m_lastCursorPosition.Value.Y * BlockSize, m_clientArea.Width, BlockSize);
+			var verticalRect = new Rectangle(m_lastCursorPosition.Value.X * BlockSize, 0, BlockSize, m_clientArea.Height);
+			gfx.FillRectangle(new SolidBrush(Color.FromArgb(0x20, 0x11, 0xAE, 0xDB)), horizontalRect);
+			gfx.FillRectangle(new SolidBrush(Color.FromArgb(0x20, 0x11, 0xAE, 0xDB)), verticalRect);
+			gfx.DrawRectangle(new Pen(Color.FromArgb(0xFF, 0x00, 0xAE, 0xDB)), blockRect);
+		}
+
 		private void DrawBorder(Graphics gfx)
 		{
-			gfx.DrawRectangle(BlockOuterBorderPen, 0, 0, m_clientArea.Width - 1, m_clientArea.Height - 1);
+			gfx.DrawRectangle(BlockOuterBorderPen, 0, 0, m_clientArea.Width, m_clientArea.Height);
 		}
 
 		private void CalculateSurfaceArea()
@@ -238,7 +254,7 @@ namespace NFirmwareEditor.UI
 
 		public delegate void DataUpdatedDelegate(bool[,] data);
 
-		public delegate void CursorPositionChangedDelegate(Point location);
+		public delegate void CursorPositionChangedDelegate(Point? location);
 
 		private void OnDataUpdated(bool[,] data)
 		{
@@ -246,8 +262,9 @@ namespace NFirmwareEditor.UI
 			if (handler != null) handler(data);
 		}
 
-		private void OnCursorPositionChanged(Point location)
+		private void OnCursorPositionChanged(Point? location)
 		{
+			m_lastCursorPosition = location;
 			var handler = CursorPositionChanged;
 			if (handler != null) handler(location);
 		}
