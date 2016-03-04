@@ -146,6 +146,8 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\flip_vertical.png" />
+    <None Include="Resources\flip_horizontal.png" />
     <None Include="Resources\image_import.png" />
     <None Include="Resources\image_export.png" />
     <None Include="Resources\toolbox.png" />

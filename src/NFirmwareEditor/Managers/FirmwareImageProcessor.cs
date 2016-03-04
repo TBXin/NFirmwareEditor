@@ -19,6 +19,18 @@ namespace NFirmwareEditor.Managers
 			return ProcessImage(imageData, (col, width) => col, (row, height) => row, v => !v);
 		}
 
+		public static bool[,] FlipHorizontal(bool[,] imageData)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+			return ProcessImage(imageData, (col, width) => width - col - 1, (row, height) => row, v => v);
+		}
+
+		public static bool[,] FlipVertical(bool[,] imageData)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+			return ProcessImage(imageData, (col, width) => col, (row, height) => height - row - 1, v => v);
+		}
+
 		public static bool[,] ShiftUp(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");

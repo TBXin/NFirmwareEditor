@@ -281,42 +281,48 @@ namespace NFirmwareEditor
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
+		}
+
+		private void FlipHorizontalButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
+		}
+
+		private void FlipVerticalButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
 		}
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
 		}
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
 		}
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-
 			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
 		}
 
@@ -397,6 +403,16 @@ namespace NFirmwareEditor
 		private void InvertMenuItem_Click(object sender, EventArgs e)
 		{
 			InvertButton_Click(null, null);
+		}
+
+		private void FlipHorizontalMenuItem_Click(object sender, EventArgs e)
+		{
+			FlipHorizontalButton_Click(null, null);
+		}
+
+		private void FlipVerticalMenuItem_Click(object sender, EventArgs e)
+		{
+			FlipVerticalButton_Click(null, null);
 		}
 
 		private void CopyMenuItem_Click(object sender, EventArgs e)

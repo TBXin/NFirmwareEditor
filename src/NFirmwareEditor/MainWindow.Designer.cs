@@ -40,10 +40,14 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ClearAllPixelsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.InvertMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.CopyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.PasteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ClearAllPixelsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.InvertMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FlipHorizontalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FlipVerticalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.ShiftUpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ShiftDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ShiftLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +68,8 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
+			this.FlipHorizontalButton = new System.Windows.Forms.Button();
+			this.FlipVerticalButton = new System.Windows.Forms.Button();
 			this.Block2CheckBox = new System.Windows.Forms.CheckBox();
 			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
 			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -183,10 +189,14 @@
 			// EditMenuItem
 			// 
 			this.EditMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ClearAllPixelsMenuItem,
-            this.InvertMenuItem,
             this.CopyMenuItem,
             this.PasteMenuItem,
+            this.ClearAllPixelsMenuItem,
+            this.toolStripSeparator4,
+            this.InvertMenuItem,
+            this.FlipHorizontalMenuItem,
+            this.FlipVerticalMenuItem,
+            this.toolStripSeparator5,
             this.ShiftUpMenuItem,
             this.ShiftDownMenuItem,
             this.ShiftLeftMenuItem,
@@ -195,24 +205,6 @@
 			this.EditMenuItem.Name = "EditMenuItem";
 			this.EditMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.EditMenuItem.Text = "Edit";
-			// 
-			// ClearAllPixelsMenuItem
-			// 
-			this.ClearAllPixelsMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
-			this.ClearAllPixelsMenuItem.Name = "ClearAllPixelsMenuItem";
-			this.ClearAllPixelsMenuItem.ShortcutKeyDisplayString = "Ctrl + N";
-			this.ClearAllPixelsMenuItem.Size = new System.Drawing.Size(191, 22);
-			this.ClearAllPixelsMenuItem.Text = "Clear All Pixels";
-			this.ClearAllPixelsMenuItem.Click += new System.EventHandler(this.ClearAllPixelsMenuItem_Click);
-			// 
-			// InvertMenuItem
-			// 
-			this.InvertMenuItem.Image = global::NFirmwareEditor.Properties.Resources.inverse;
-			this.InvertMenuItem.Name = "InvertMenuItem";
-			this.InvertMenuItem.ShortcutKeyDisplayString = "Ctrl + I";
-			this.InvertMenuItem.Size = new System.Drawing.Size(191, 22);
-			this.InvertMenuItem.Text = "Invert";
-			this.InvertMenuItem.Click += new System.EventHandler(this.InvertMenuItem_Click);
 			// 
 			// CopyMenuItem
 			// 
@@ -231,6 +223,50 @@
 			this.PasteMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.PasteMenuItem.Text = "Paste";
 			this.PasteMenuItem.Click += new System.EventHandler(this.PasteMenuItem_Click);
+			// 
+			// ClearAllPixelsMenuItem
+			// 
+			this.ClearAllPixelsMenuItem.Image = global::NFirmwareEditor.Properties.Resources._new;
+			this.ClearAllPixelsMenuItem.Name = "ClearAllPixelsMenuItem";
+			this.ClearAllPixelsMenuItem.ShortcutKeyDisplayString = "Ctrl + N";
+			this.ClearAllPixelsMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.ClearAllPixelsMenuItem.Text = "Clear";
+			this.ClearAllPixelsMenuItem.Click += new System.EventHandler(this.ClearAllPixelsMenuItem_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(188, 6);
+			// 
+			// InvertMenuItem
+			// 
+			this.InvertMenuItem.Image = global::NFirmwareEditor.Properties.Resources.inverse;
+			this.InvertMenuItem.Name = "InvertMenuItem";
+			this.InvertMenuItem.ShortcutKeyDisplayString = "Ctrl + I";
+			this.InvertMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.InvertMenuItem.Text = "Invert";
+			this.InvertMenuItem.Click += new System.EventHandler(this.InvertMenuItem_Click);
+			// 
+			// FlipHorizontalMenuItem
+			// 
+			this.FlipHorizontalMenuItem.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
+			this.FlipHorizontalMenuItem.Name = "FlipHorizontalMenuItem";
+			this.FlipHorizontalMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.FlipHorizontalMenuItem.Text = "Flip Horizontal";
+			this.FlipHorizontalMenuItem.Click += new System.EventHandler(this.FlipHorizontalMenuItem_Click);
+			// 
+			// FlipVerticalMenuItem
+			// 
+			this.FlipVerticalMenuItem.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
+			this.FlipVerticalMenuItem.Name = "FlipVerticalMenuItem";
+			this.FlipVerticalMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.FlipVerticalMenuItem.Text = "Flip Vertical";
+			this.FlipVerticalMenuItem.Click += new System.EventHandler(this.FlipVerticalMenuItem_Click);
+			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(188, 6);
 			// 
 			// ShiftUpMenuItem
 			// 
@@ -371,7 +407,7 @@
 			// ShiftDownButton
 			// 
 			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.ShiftDownButton.Location = new System.Drawing.Point(361, 3);
+			this.ShiftDownButton.Location = new System.Drawing.Point(414, 3);
 			this.ShiftDownButton.Name = "ShiftDownButton";
 			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftDownButton.TabIndex = 7;
@@ -382,7 +418,7 @@
 			// ShiftUpButton
 			// 
 			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.ShiftUpButton.Location = new System.Drawing.Point(338, 3);
+			this.ShiftUpButton.Location = new System.Drawing.Point(391, 3);
 			this.ShiftUpButton.Name = "ShiftUpButton";
 			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftUpButton.TabIndex = 6;
@@ -393,7 +429,7 @@
 			// ShiftRightButton
 			// 
 			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.ShiftRightButton.Location = new System.Drawing.Point(315, 3);
+			this.ShiftRightButton.Location = new System.Drawing.Point(368, 3);
 			this.ShiftRightButton.Name = "ShiftRightButton";
 			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftRightButton.TabIndex = 5;
@@ -404,13 +440,35 @@
 			// ShiftLeftButton
 			// 
 			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.ShiftLeftButton.Location = new System.Drawing.Point(292, 3);
+			this.ShiftLeftButton.Location = new System.Drawing.Point(345, 3);
 			this.ShiftLeftButton.Name = "ShiftLeftButton";
 			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftLeftButton.TabIndex = 4;
 			this.MainToolTip.SetToolTip(this.ShiftLeftButton, "Shift left");
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
+			// 
+			// FlipHorizontalButton
+			// 
+			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
+			this.FlipHorizontalButton.Location = new System.Drawing.Point(292, 3);
+			this.FlipHorizontalButton.Name = "FlipHorizontalButton";
+			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
+			this.FlipHorizontalButton.TabIndex = 13;
+			this.MainToolTip.SetToolTip(this.FlipHorizontalButton, "Flip Horizontal");
+			this.FlipHorizontalButton.UseVisualStyleBackColor = true;
+			this.FlipHorizontalButton.Click += new System.EventHandler(this.FlipHorizontalButton_Click);
+			// 
+			// FlipVerticalButton
+			// 
+			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
+			this.FlipVerticalButton.Location = new System.Drawing.Point(315, 3);
+			this.FlipVerticalButton.Name = "FlipVerticalButton";
+			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
+			this.FlipVerticalButton.TabIndex = 14;
+			this.MainToolTip.SetToolTip(this.FlipVerticalButton, "Flip Vertical");
+			this.FlipVerticalButton.UseVisualStyleBackColor = true;
+			this.FlipVerticalButton.Click += new System.EventHandler(this.FlipVerticalButton_Click);
 			// 
 			// Block2CheckBox
 			// 
@@ -613,6 +671,8 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
+			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
 			this.borderedPanel2.Controls.Add(this.PasteButton);
 			this.borderedPanel2.Controls.Add(this.CopyButton);
 			this.borderedPanel2.Controls.Add(this.InverseButton);
@@ -806,6 +866,12 @@
 		private System.Windows.Forms.ToolStripMenuItem PasteContextMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
+		private System.Windows.Forms.Button FlipHorizontalButton;
+		private System.Windows.Forms.Button FlipVerticalButton;
+		private System.Windows.Forms.ToolStripMenuItem FlipHorizontalMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem FlipVerticalMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 	}
 }
 
