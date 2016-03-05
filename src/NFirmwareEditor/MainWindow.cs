@@ -22,6 +22,8 @@ namespace NFirmwareEditor
 		private Configuration m_configuration;
 		private Firmware m_firmware;
 
+		private bool m_imageListBoxIsUpdating;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -32,7 +34,7 @@ namespace NFirmwareEditor
 		}
 
 		[NotNull]
-		public ListBox ImagesListBox
+		public ListBox ImageListBox
 		{
 			get { return Block1ImagesListBox.Visible ? Block1ImagesListBox : Block2ImagesListBox; }
 		}
@@ -42,9 +44,9 @@ namespace NFirmwareEditor
 		{
 			get
 			{
-				return ImagesListBox.Items.Count == 0 || ImagesListBox.SelectedIndices.Count == 0
+				return ImageListBox.Items.Count == 0 || ImageListBox.SelectedIndices.Count == 0
 					? null
-					: ImagesListBox.Items[ImagesListBox.SelectedIndices[ImagesListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
+					: ImageListBox.Items[ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
 			}
 		}
 
@@ -53,12 +55,12 @@ namespace NFirmwareEditor
 		{
 			get
 			{
-				if (ImagesListBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
+				if (ImageListBox.SelectedIndices.Count == 0) return new List<FirmwareImageMetadata>();
 
 				var result = new List<FirmwareImageMetadata>();
-				foreach (int selectedIndex in ImagesListBox.SelectedIndices)
+				foreach (int selectedIndex in ImageListBox.SelectedIndices)
 				{
-					var metadata = ImagesListBox.Items[selectedIndex] as FirmwareImageMetadata;
+					var metadata = ImageListBox.Items[selectedIndex] as FirmwareImageMetadata;
 					if (metadata == null) continue;
 
 					result.Add(metadata);
@@ -221,7 +223,7 @@ namespace NFirmwareEditor
 
 		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
-			var currentListBoxSelectedIndices = ImagesListBox.SelectedIndices.ToList();
+			var currentListBoxSelectedIndices = ImageListBox.SelectedIndices.ToList();
 
 			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
 			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
@@ -229,25 +231,28 @@ namespace NFirmwareEditor
 			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
 			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
 
-			ImagesListBox.Focus();
+			ImageListBox.Focus();
 			if (currentListBoxSelectedIndices.Count != 0)
 			{
-				ImagesListBox.SelectedIndices.Clear();
-				ImagesListBox.SelectedIndices.AddRange(currentListBoxSelectedIndices.Where(x => ImagesListBox.Items.Count > x));
-				if (ImagesListBox.SelectedIndices.Count == 0)
-				{
-					ImagePixelGrid.Data = PreviewPixelGrid.Data = new bool[5, 5];
-				}
+				m_imageListBoxIsUpdating = true;
+				ImageListBox.SelectedIndices.Clear();
+				ImageListBox.SelectedIndices.AddRange(currentListBoxSelectedIndices.Where(x => ImageListBox.Items.Count > x));
+
+				ImagePixelGrid.Data = PreviewPixelGrid.Data = LastSelectedImageMetadata != null
+					? m_firmware.ReadImage(LastSelectedImageMetadata)
+					: new bool[5, 5];
+
+				m_imageListBoxIsUpdating = false;
 			}
 			else
 			{
-				BlockImagesListBox_SelectedValueChanged(ImagesListBox, EventArgs.Empty);
+				BlockImagesListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
 		}
 
 		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (m_imageListBoxIsUpdating || LastSelectedImageMetadata == null) return;
 
 			StatusLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
 			try
@@ -503,6 +508,12 @@ namespace NFirmwareEditor
 				PasteMenuItem.PerformClick();
 				return true;
 			}
+			if (keyData.HasFlag(Keys.A))
+			{
+				ImageListBox.SelectedIndices.Clear();
+				ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
+				return true;
+			}
 
 			var key = keyData &= ~Keys.Control;
 			if (key == Keys.Up)
@@ -594,8 +605,8 @@ namespace NFirmwareEditor
 			}
 
 			var lastSelectedItem = LastSelectedImageMetadata;
-			ImagesListBox.SelectedIndices.Clear();
-			ImagesListBox.SelectedItem = lastSelectedItem;
+			ImageListBox.SelectedIndices.Clear();
+			ImageListBox.SelectedItem = lastSelectedItem;
 		}
 
 		private void ImagePixelGrid_CursorPositionChanged(Point? location)
