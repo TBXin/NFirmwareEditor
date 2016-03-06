@@ -56,6 +56,12 @@ namespace NFirmware
 			return imageMetadata.Load(imageData);
 		}
 
+		public byte[] ReadString([NotNull] FirmwareStringMetadata stringMetadata)
+		{
+			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
+			return Body.Skip((int)stringMetadata.DataOffset).Take((int)stringMetadata.DataLength).ToArray();
+		}
+
 		[NotNull]
 		public IEnumerable<bool[,]> ReadImages([NotNull, ItemNotNull] IEnumerable<FirmwareImageMetadata> metadata)
 		{

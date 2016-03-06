@@ -63,7 +63,7 @@ namespace NFirmware
 		/// </summary>
 		public override string ToString()
 		{
-			return string.Format("[Char: 0x{0:X2}] 0x{1:X2} ", Index, DataOffset);
+			return string.Format("[Img: 0x{0:X2}] 0x{1:X2} ", Index, DataOffset);
 		}
 	}
 }

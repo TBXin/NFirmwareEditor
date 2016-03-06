@@ -36,7 +36,13 @@ namespace NFirmwareEditor
 		[NotNull]
 		public ListBox ImageListBox
 		{
-			get { return Block1ImagesListBox.Visible ? Block1ImagesListBox : Block2ImagesListBox; }
+			get { return Block1ImageListBox.Visible ? Block1ImageListBox : Block2ImageListBox; }
+		}
+
+		[NotNull]
+		public ListBox StringListBox
+		{
+			get { return Block1StringCheckBox.Visible ? Block1StringListBox : Block2StringListBox; }
 		}
 
 		[CanBeNull]
@@ -94,8 +100,8 @@ namespace NFirmwareEditor
 
 		private void ResetWorkspace()
 		{
-			Block1ImagesListBox.Items.Clear();
-			Block2ImagesListBox.Items.Clear();
+			Block1ImageListBox.Items.Clear();
+			Block2ImageListBox.Items.Clear();
 			ImagePixelGrid.Data = new bool[5, 5];
 			StatusLabel.Text = null;
 		}
@@ -139,8 +145,10 @@ namespace NFirmwareEditor
 			{
 				m_firmware = readFirmwareDelegate(firmwareFile);
 
-				FillImagesListBox(Block2ImagesListBox, m_firmware.Block2Images, true);
-				FillImagesListBox(Block1ImagesListBox, m_firmware.Block1Images, true);
+				FillListBox(Block2ImageListBox, m_firmware.Block2Images, true);
+				FillListBox(Block1ImageListBox, m_firmware.Block1Images, true);
+				FillListBox(Block2StringListBox, m_firmware.Block2Strings, false);
+				FillListBox(Block1StringListBox, m_firmware.Block1Strings, false);
 
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
@@ -177,7 +185,7 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void FillImagesListBox(ListBox listBox, IEnumerable<object> items, bool selectFirstItem)
+		private void FillListBox(ListBox listBox, IEnumerable<object> items, bool selectFirstItem)
 		{
 			listBox.Items.Clear();
 			listBox.BeginUpdate();
@@ -219,15 +227,15 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
+		private void BlockImageCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			var currentListBoxSelectedIndices = ImageListBox.SelectedIndices.ToList();
 
-			if (sender == Block1CheckBox) Block2CheckBox.Checked = !Block1CheckBox.Checked;
-			if (sender == Block2CheckBox) Block1CheckBox.Checked = !Block2CheckBox.Checked;
+			if (sender == Block1ImageCheckBox) Block2ImageCheckBox.Checked = !Block1ImageCheckBox.Checked;
+			if (sender == Block2ImageCheckBox) Block1ImageCheckBox.Checked = !Block2ImageCheckBox.Checked;
 
-			Block1ImagesListBox.Visible = Block1CheckBox.Checked;
-			Block2ImagesListBox.Visible = Block2CheckBox.Checked;
+			Block1ImageListBox.Visible = Block1ImageCheckBox.Checked;
+			Block2ImageListBox.Visible = Block2ImageCheckBox.Checked;
 
 			ImageListBox.Focus();
 			if (currentListBoxSelectedIndices.Count != 0)
@@ -244,11 +252,22 @@ namespace NFirmwareEditor
 			}
 			else
 			{
-				BlockImagesListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+				BlockImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
 		}
 
-		private void BlockImagesListBox_SelectedValueChanged(object sender, EventArgs e)
+		private void BlockStringCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (sender == Block1StringCheckBox) Block2StringCheckBox.Checked = !Block1StringCheckBox.Checked;
+			if (sender == Block2StringCheckBox) Block1StringCheckBox.Checked = !Block2StringCheckBox.Checked;
+
+			Block1StringListBox.Visible = Block1StringCheckBox.Checked;
+			Block2StringListBox.Visible = Block2StringCheckBox.Checked;
+
+			StringListBox.Focus();
+		}
+
+		private void BlockImageListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			if (m_imageListBoxIsUpdating || LastSelectedImageMetadata == null) return;
 

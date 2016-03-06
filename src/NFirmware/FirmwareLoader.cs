@@ -130,7 +130,7 @@ namespace NFirmware
 					{
 						dataLength++;
 					}
-					result.Add(new FirmwareStringMetadata(offset, dataLength));
+					result.Add(new FirmwareStringMetadata(result.Count + 1, offset, dataLength));
 				}
 			}
 			return result;

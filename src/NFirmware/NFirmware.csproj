@@ -54,7 +54,7 @@
     <Compile Include="FirmwareImageBlocks.cs" />
     <Compile Include="FirmwareImageMetadata.cs" />
     <Compile Include="FirmwareLoader.cs" />
-    <Compile Include="FirmwareString.cs" />
+    <Compile Include="FirmwareStringMetadata.cs" />
     <Compile Include="FirmwareStringBlocks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

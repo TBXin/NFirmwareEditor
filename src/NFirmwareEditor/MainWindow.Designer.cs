@@ -59,18 +59,6 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.Block2CheckBox = new System.Windows.Forms.CheckBox();
-			this.Block1CheckBox = new System.Windows.Forms.CheckBox();
-			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.ImagesTabPage = new System.Windows.Forms.TabPage();
-			this.StringsTabPage = new System.Windows.Forms.TabPage();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.FlipVerticalButton = new System.Windows.Forms.Button();
 			this.FlipHorizontalButton = new System.Windows.Forms.Button();
 			this.PasteButton = new System.Windows.Forms.Button();
@@ -81,6 +69,17 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
+			this.Block2ImageCheckBox = new System.Windows.Forms.CheckBox();
+			this.Block1ImageCheckBox = new System.Windows.Forms.CheckBox();
+			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.ImagesTabPage = new System.Windows.Forms.TabPage();
+			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
@@ -91,8 +90,14 @@
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
-			this.Block1ImagesListBox = new System.Windows.Forms.ListBox();
-			this.Block2ImagesListBox = new System.Windows.Forms.ListBox();
+			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
+			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
+			this.StringsTabPage = new System.Windows.Forms.TabPage();
+			this.Block1StringCheckBox = new System.Windows.Forms.CheckBox();
+			this.Block2StringCheckBox = new System.Windows.Forms.CheckBox();
+			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
+			this.Block1StringListBox = new System.Windows.Forms.ListBox();
+			this.Block2StringListBox = new System.Windows.Forms.ListBox();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.ImageListBoxContextMenu.SuspendLayout();
@@ -104,6 +109,8 @@
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
+			this.StringsTabPage.SuspendLayout();
+			this.borderedPanel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainMenuStrip
@@ -351,153 +358,6 @@
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
 			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
 			// 
-			// Block2CheckBox
-			// 
-			this.Block2CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block2CheckBox.Location = new System.Drawing.Point(70, 1);
-			this.Block2CheckBox.Name = "Block2CheckBox";
-			this.Block2CheckBox.Size = new System.Drawing.Size(71, 30);
-			this.Block2CheckBox.TabIndex = 2;
-			this.Block2CheckBox.Text = "Block 2";
-			this.Block2CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block2CheckBox.UseVisualStyleBackColor = true;
-			this.Block2CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
-			// 
-			// Block1CheckBox
-			// 
-			this.Block1CheckBox.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block1CheckBox.Checked = true;
-			this.Block1CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.Block1CheckBox.Location = new System.Drawing.Point(-1, 1);
-			this.Block1CheckBox.Name = "Block1CheckBox";
-			this.Block1CheckBox.Size = new System.Drawing.Size(71, 30);
-			this.Block1CheckBox.TabIndex = 1;
-			this.Block1CheckBox.Text = "Block 1";
-			this.Block1CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block1CheckBox.UseVisualStyleBackColor = true;
-			this.Block1CheckBox.CheckedChanged += new System.EventHandler(this.BlockCheckBox_CheckedChanged);
-			// 
-			// ImageListBoxContextMenu
-			// 
-			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyContextMenuItem,
-            this.PasteContextMenuItem,
-            this.toolStripSeparator3,
-            this.ExportContextMenuItem,
-            this.ImportContextMenuItem});
-			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
-			// 
-			// CopyContextMenuItem
-			// 
-			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
-			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.CopyContextMenuItem.Text = "Copy";
-			this.CopyContextMenuItem.Click += new System.EventHandler(this.CopyContextMenuItem_Click);
-			// 
-			// PasteContextMenuItem
-			// 
-			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
-			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.PasteContextMenuItem.Text = "Paste";
-			this.PasteContextMenuItem.Click += new System.EventHandler(this.PasteContextMenuItem_Click);
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
-			// 
-			// ExportContextMenuItem
-			// 
-			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
-			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ExportContextMenuItem.Text = "Export";
-			this.ExportContextMenuItem.Click += new System.EventHandler(this.ExportContextMenuItem_Click);
-			// 
-			// ImportContextMenuItem
-			// 
-			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
-			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
-			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ImportContextMenuItem.Text = "Import";
-			this.ImportContextMenuItem.Click += new System.EventHandler(this.ImportContextMenuItem_Click);
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.ImagesTabPage);
-			this.tabControl1.Controls.Add(this.StringsTabPage);
-			this.tabControl1.ItemSize = new System.Drawing.Size(100, 20);
-			this.tabControl1.Location = new System.Drawing.Point(3, 27);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(780, 510);
-			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-			this.tabControl1.TabIndex = 6;
-			// 
-			// ImagesTabPage
-			// 
-			this.ImagesTabPage.Controls.Add(this.Block1CheckBox);
-			this.ImagesTabPage.Controls.Add(this.borderedPanel2);
-			this.ImagesTabPage.Controls.Add(this.Block2CheckBox);
-			this.ImagesTabPage.Controls.Add(this.borderedPanel3);
-			this.ImagesTabPage.Controls.Add(this.borderedPanel1);
-			this.ImagesTabPage.Location = new System.Drawing.Point(4, 24);
-			this.ImagesTabPage.Name = "ImagesTabPage";
-			this.ImagesTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ImagesTabPage.Size = new System.Drawing.Size(772, 482);
-			this.ImagesTabPage.TabIndex = 0;
-			this.ImagesTabPage.Text = "Images";
-			this.ImagesTabPage.UseVisualStyleBackColor = true;
-			// 
-			// StringsTabPage
-			// 
-			this.StringsTabPage.Location = new System.Drawing.Point(4, 22);
-			this.StringsTabPage.Name = "StringsTabPage";
-			this.StringsTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.StringsTabPage.Size = new System.Drawing.Size(772, 484);
-			this.StringsTabPage.TabIndex = 1;
-			this.StringsTabPage.Text = "Strings";
-			this.StringsTabPage.UseVisualStyleBackColor = true;
-			// 
-			// borderedPanel2
-			// 
-			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.borderedPanel2.BackColor = System.Drawing.Color.White;
-			this.borderedPanel2.BorderBottom = true;
-			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel2.BorderLeft = true;
-			this.borderedPanel2.BorderRight = true;
-			this.borderedPanel2.BorderTop = true;
-			this.borderedPanel2.BorderWidth = 1F;
-			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
-			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
-			this.borderedPanel2.Controls.Add(this.PasteButton);
-			this.borderedPanel2.Controls.Add(this.CopyButton);
-			this.borderedPanel2.Controls.Add(this.InverseButton);
-			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
-			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
-			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
-			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
-			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
-			this.borderedPanel2.Controls.Add(this.borderedPanel4);
-			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
-			this.borderedPanel2.Controls.Add(this.label1);
-			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
-			this.borderedPanel2.Location = new System.Drawing.Point(143, 123);
-			this.borderedPanel2.Name = "borderedPanel2";
-			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel2.Size = new System.Drawing.Size(627, 358);
-			this.borderedPanel2.TabIndex = 2;
-			this.borderedPanel2.Text = "borderedPanel2";
-			// 
 			// FlipVerticalButton
 			// 
 			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
@@ -607,6 +467,143 @@
 			this.MainToolTip.SetToolTip(this.ShiftLeftButton, "Shift left");
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
+			// 
+			// Block2ImageCheckBox
+			// 
+			this.Block2ImageCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2ImageCheckBox.Location = new System.Drawing.Point(70, 1);
+			this.Block2ImageCheckBox.Name = "Block2ImageCheckBox";
+			this.Block2ImageCheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block2ImageCheckBox.TabIndex = 2;
+			this.Block2ImageCheckBox.Text = "Block 2";
+			this.Block2ImageCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block2ImageCheckBox.UseVisualStyleBackColor = true;
+			this.Block2ImageCheckBox.CheckedChanged += new System.EventHandler(this.BlockImageCheckBox_CheckedChanged);
+			// 
+			// Block1ImageCheckBox
+			// 
+			this.Block1ImageCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block1ImageCheckBox.Checked = true;
+			this.Block1ImageCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Block1ImageCheckBox.Location = new System.Drawing.Point(-1, 1);
+			this.Block1ImageCheckBox.Name = "Block1ImageCheckBox";
+			this.Block1ImageCheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block1ImageCheckBox.TabIndex = 1;
+			this.Block1ImageCheckBox.Text = "Block 1";
+			this.Block1ImageCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block1ImageCheckBox.UseVisualStyleBackColor = true;
+			this.Block1ImageCheckBox.CheckedChanged += new System.EventHandler(this.BlockImageCheckBox_CheckedChanged);
+			// 
+			// ImageListBoxContextMenu
+			// 
+			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyContextMenuItem,
+            this.PasteContextMenuItem,
+            this.toolStripSeparator3,
+            this.ExportContextMenuItem,
+            this.ImportContextMenuItem});
+			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
+			// 
+			// CopyContextMenuItem
+			// 
+			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
+			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.CopyContextMenuItem.Text = "Copy";
+			this.CopyContextMenuItem.Click += new System.EventHandler(this.CopyContextMenuItem_Click);
+			// 
+			// PasteContextMenuItem
+			// 
+			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
+			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.PasteContextMenuItem.Text = "Paste";
+			this.PasteContextMenuItem.Click += new System.EventHandler(this.PasteContextMenuItem_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
+			// 
+			// ExportContextMenuItem
+			// 
+			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
+			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
+			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.ExportContextMenuItem.Text = "Export";
+			this.ExportContextMenuItem.Click += new System.EventHandler(this.ExportContextMenuItem_Click);
+			// 
+			// ImportContextMenuItem
+			// 
+			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
+			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
+			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.ImportContextMenuItem.Text = "Import";
+			this.ImportContextMenuItem.Click += new System.EventHandler(this.ImportContextMenuItem_Click);
+			// 
+			// tabControl1
+			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Controls.Add(this.ImagesTabPage);
+			this.tabControl1.Controls.Add(this.StringsTabPage);
+			this.tabControl1.ItemSize = new System.Drawing.Size(100, 20);
+			this.tabControl1.Location = new System.Drawing.Point(3, 27);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(780, 510);
+			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+			this.tabControl1.TabIndex = 6;
+			// 
+			// ImagesTabPage
+			// 
+			this.ImagesTabPage.Controls.Add(this.Block1ImageCheckBox);
+			this.ImagesTabPage.Controls.Add(this.borderedPanel2);
+			this.ImagesTabPage.Controls.Add(this.Block2ImageCheckBox);
+			this.ImagesTabPage.Controls.Add(this.borderedPanel3);
+			this.ImagesTabPage.Controls.Add(this.borderedPanel1);
+			this.ImagesTabPage.Location = new System.Drawing.Point(4, 24);
+			this.ImagesTabPage.Name = "ImagesTabPage";
+			this.ImagesTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.ImagesTabPage.Size = new System.Drawing.Size(772, 482);
+			this.ImagesTabPage.TabIndex = 0;
+			this.ImagesTabPage.Text = "Images";
+			this.ImagesTabPage.UseVisualStyleBackColor = true;
+			// 
+			// borderedPanel2
+			// 
+			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel2.BackColor = System.Drawing.Color.White;
+			this.borderedPanel2.BorderBottom = true;
+			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel2.BorderLeft = true;
+			this.borderedPanel2.BorderRight = true;
+			this.borderedPanel2.BorderTop = true;
+			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
+			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
+			this.borderedPanel2.Controls.Add(this.PasteButton);
+			this.borderedPanel2.Controls.Add(this.CopyButton);
+			this.borderedPanel2.Controls.Add(this.InverseButton);
+			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
+			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
+			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
+			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
+			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
+			this.borderedPanel2.Controls.Add(this.borderedPanel4);
+			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
+			this.borderedPanel2.Controls.Add(this.label1);
+			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
+			this.borderedPanel2.Location = new System.Drawing.Point(143, 123);
+			this.borderedPanel2.Name = "borderedPanel2";
+			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel2.Size = new System.Drawing.Size(627, 358);
+			this.borderedPanel2.TabIndex = 2;
+			this.borderedPanel2.Text = "borderedPanel2";
 			// 
 			// borderedPanel4
 			// 
@@ -761,8 +758,8 @@
 			this.borderedPanel1.BorderRight = true;
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.Block1ImagesListBox);
-			this.borderedPanel1.Controls.Add(this.Block2ImagesListBox);
+			this.borderedPanel1.Controls.Add(this.Block1ImageListBox);
+			this.borderedPanel1.Controls.Add(this.Block2ImageListBox);
 			this.borderedPanel1.Location = new System.Drawing.Point(0, 33);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
@@ -770,35 +767,122 @@
 			this.borderedPanel1.TabIndex = 5;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
-			// Block1ImagesListBox
+			// Block1ImageListBox
 			// 
-			this.Block1ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Block1ImagesListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
-			this.Block1ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Block1ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
-			this.Block1ImagesListBox.FormattingEnabled = true;
-			this.Block1ImagesListBox.IntegralHeight = false;
-			this.Block1ImagesListBox.Location = new System.Drawing.Point(1, 1);
-			this.Block1ImagesListBox.Name = "Block1ImagesListBox";
-			this.Block1ImagesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.Block1ImagesListBox.Size = new System.Drawing.Size(138, 446);
-			this.Block1ImagesListBox.TabIndex = 0;
-			this.Block1ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
+			this.Block1ImageListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block1ImageListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
+			this.Block1ImageListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block1ImageListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block1ImageListBox.FormattingEnabled = true;
+			this.Block1ImageListBox.IntegralHeight = false;
+			this.Block1ImageListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block1ImageListBox.Name = "Block1ImageListBox";
+			this.Block1ImageListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.Block1ImageListBox.Size = new System.Drawing.Size(138, 446);
+			this.Block1ImageListBox.TabIndex = 0;
+			this.Block1ImageListBox.SelectedValueChanged += new System.EventHandler(this.BlockImageListBox_SelectedValueChanged);
 			// 
-			// Block2ImagesListBox
+			// Block2ImageListBox
 			// 
-			this.Block2ImagesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Block2ImagesListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
-			this.Block2ImagesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Block2ImagesListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
-			this.Block2ImagesListBox.FormattingEnabled = true;
-			this.Block2ImagesListBox.IntegralHeight = false;
-			this.Block2ImagesListBox.Location = new System.Drawing.Point(1, 1);
-			this.Block2ImagesListBox.Name = "Block2ImagesListBox";
-			this.Block2ImagesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.Block2ImagesListBox.Size = new System.Drawing.Size(138, 446);
-			this.Block2ImagesListBox.TabIndex = 0;
-			this.Block2ImagesListBox.SelectedValueChanged += new System.EventHandler(this.BlockImagesListBox_SelectedValueChanged);
+			this.Block2ImageListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block2ImageListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
+			this.Block2ImageListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block2ImageListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block2ImageListBox.FormattingEnabled = true;
+			this.Block2ImageListBox.IntegralHeight = false;
+			this.Block2ImageListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block2ImageListBox.Name = "Block2ImageListBox";
+			this.Block2ImageListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.Block2ImageListBox.Size = new System.Drawing.Size(138, 446);
+			this.Block2ImageListBox.TabIndex = 0;
+			this.Block2ImageListBox.SelectedValueChanged += new System.EventHandler(this.BlockImageListBox_SelectedValueChanged);
+			// 
+			// StringsTabPage
+			// 
+			this.StringsTabPage.Controls.Add(this.Block1StringCheckBox);
+			this.StringsTabPage.Controls.Add(this.Block2StringCheckBox);
+			this.StringsTabPage.Controls.Add(this.borderedPanel6);
+			this.StringsTabPage.Location = new System.Drawing.Point(4, 24);
+			this.StringsTabPage.Name = "StringsTabPage";
+			this.StringsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.StringsTabPage.Size = new System.Drawing.Size(772, 482);
+			this.StringsTabPage.TabIndex = 1;
+			this.StringsTabPage.Text = "Strings";
+			this.StringsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// Block1StringCheckBox
+			// 
+			this.Block1StringCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block1StringCheckBox.Checked = true;
+			this.Block1StringCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.Block1StringCheckBox.Location = new System.Drawing.Point(-1, 1);
+			this.Block1StringCheckBox.Name = "Block1StringCheckBox";
+			this.Block1StringCheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block1StringCheckBox.TabIndex = 6;
+			this.Block1StringCheckBox.Text = "Block 1";
+			this.Block1StringCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block1StringCheckBox.UseVisualStyleBackColor = true;
+			this.Block1StringCheckBox.CheckedChanged += new System.EventHandler(this.BlockStringCheckBox_CheckedChanged);
+			// 
+			// Block2StringCheckBox
+			// 
+			this.Block2StringCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2StringCheckBox.Location = new System.Drawing.Point(70, 1);
+			this.Block2StringCheckBox.Name = "Block2StringCheckBox";
+			this.Block2StringCheckBox.Size = new System.Drawing.Size(71, 30);
+			this.Block2StringCheckBox.TabIndex = 7;
+			this.Block2StringCheckBox.Text = "Block 2";
+			this.Block2StringCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block2StringCheckBox.UseVisualStyleBackColor = true;
+			this.Block2StringCheckBox.CheckedChanged += new System.EventHandler(this.BlockStringCheckBox_CheckedChanged);
+			// 
+			// borderedPanel6
+			// 
+			this.borderedPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.borderedPanel6.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel6.BorderBottom = true;
+			this.borderedPanel6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel6.BorderLeft = true;
+			this.borderedPanel6.BorderRight = true;
+			this.borderedPanel6.BorderTop = true;
+			this.borderedPanel6.BorderWidth = 1F;
+			this.borderedPanel6.Controls.Add(this.Block1StringListBox);
+			this.borderedPanel6.Controls.Add(this.Block2StringListBox);
+			this.borderedPanel6.Location = new System.Drawing.Point(0, 33);
+			this.borderedPanel6.Name = "borderedPanel6";
+			this.borderedPanel6.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel6.Size = new System.Drawing.Size(140, 448);
+			this.borderedPanel6.TabIndex = 8;
+			this.borderedPanel6.Text = "borderedPanel6";
+			// 
+			// Block1StringListBox
+			// 
+			this.Block1StringListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block1StringListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
+			this.Block1StringListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block1StringListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block1StringListBox.FormattingEnabled = true;
+			this.Block1StringListBox.IntegralHeight = false;
+			this.Block1StringListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block1StringListBox.Name = "Block1StringListBox";
+			this.Block1StringListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.Block1StringListBox.Size = new System.Drawing.Size(138, 446);
+			this.Block1StringListBox.TabIndex = 0;
+			// 
+			// Block2StringListBox
+			// 
+			this.Block2StringListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.Block2StringListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
+			this.Block2StringListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Block2StringListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block2StringListBox.FormattingEnabled = true;
+			this.Block2StringListBox.IntegralHeight = false;
+			this.Block2StringListBox.Location = new System.Drawing.Point(1, 1);
+			this.Block2StringListBox.Name = "Block2StringListBox";
+			this.Block2StringListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.Block2StringListBox.Size = new System.Drawing.Size(138, 446);
+			this.Block2StringListBox.TabIndex = 0;
 			// 
 			// MainWindow
 			// 
@@ -830,6 +914,8 @@
 			this.borderedPanel3.PerformLayout();
 			this.borderedPanel5.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
+			this.StringsTabPage.ResumeLayout(false);
+			this.borderedPanel6.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -847,7 +933,7 @@
 		private System.Windows.Forms.ToolStripMenuItem SaveDecryptedMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private UI.BorderedPanel borderedPanel2;
-		private System.Windows.Forms.ListBox Block1ImagesListBox;
+		private System.Windows.Forms.ListBox Block1ImageListBox;
 		private UI.PixelGrid ImagePixelGrid;
 		private UI.BorderedPanel borderedPanel3;
 		private System.Windows.Forms.StatusStrip MainStatusStrip;
@@ -880,10 +966,10 @@
 		private System.Windows.Forms.ToolStripMenuItem ShiftLeftMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ShiftRightMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
-		private System.Windows.Forms.ListBox Block2ImagesListBox;
+		private System.Windows.Forms.ListBox Block2ImageListBox;
 		private UI.BorderedPanel borderedPanel1;
-		private System.Windows.Forms.CheckBox Block1CheckBox;
-		private System.Windows.Forms.CheckBox Block2CheckBox;
+		private System.Windows.Forms.CheckBox Block1ImageCheckBox;
+		private System.Windows.Forms.CheckBox Block2ImageCheckBox;
 		private System.Windows.Forms.ContextMenuStrip ImageListBoxContextMenu;
 		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ImportContextMenuItem;
@@ -900,6 +986,11 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage ImagesTabPage;
 		private System.Windows.Forms.TabPage StringsTabPage;
+		private System.Windows.Forms.CheckBox Block1StringCheckBox;
+		private System.Windows.Forms.CheckBox Block2StringCheckBox;
+		private UI.BorderedPanel borderedPanel6;
+		private System.Windows.Forms.ListBox Block1StringListBox;
+		private System.Windows.Forms.ListBox Block2StringListBox;
 	}
 }
 
