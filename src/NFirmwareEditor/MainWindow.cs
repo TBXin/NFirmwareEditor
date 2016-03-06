@@ -69,18 +69,27 @@ namespace NFirmwareEditor
 			}
 		}
 
-		[CanBeNull]
-		public FirmwareDefinition SelectedDefinition
-		{
-			get { return DefinitionsComboBox.SelectedItem as FirmwareDefinition; }
-		}
-
 		private void InitializeControls()
 		{
 			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
 			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
 			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+
+			ImagePixelGrid.CursorPositionChanged += location =>
+			{
+				CursorPositionLabel.Text = location.HasValue
+					? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
+					: string.Empty;
+			};
+
+			ImagePixelGrid.DataUpdated += data =>
+			{
+				if (LastSelectedImageMetadata == null) return;
+
+				m_firmware.WriteImage(data, LastSelectedImageMetadata);
+				PreviewPixelGrid.Data = data;
+			};
 		}
 
 		private void ResetWorkspace()
@@ -94,35 +103,32 @@ namespace NFirmwareEditor
 		private void LoadSettings()
 		{
 			m_configuration = m_configurationManager.Load();
+
+			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
-			Width = m_configuration.MainWindowWidth;
-			Height = m_configuration.MainWindowHeight;
 
 			var definitions = m_firmwareDefinitionManager.Load();
 			foreach (var definition in definitions)
 			{
-				DefinitionsComboBox.Items.Add(definition);
-			}
-			if (definitions.Count > 0)
-			{
-				var savedDefinition = definitions.FirstOrDefault(x => x.Name.Equals(m_configuration.LastUsedDefinition));
-				DefinitionsComboBox.SelectedItem = savedDefinition ?? definitions[0];
+				var firmwareDefinition = definition;
+				OpenEncryptedMenuItem.DropDownItems.Add(definition.Name, OpenEncryptedMenuItem.Image, (s, e) =>
+				{
+					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadEncrypted(fileName, firmwareDefinition));
+				});
+				OpenDecryptedMenuItem.DropDownItems.Add(definition.Name, OpenDecryptedMenuItem.Image, (s, e) =>
+				{
+					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadDecrypted(fileName, firmwareDefinition));
+				});
 			}
 
 			GridSizeUpDown.Value = m_configuration.GridSize;
 			ShowGridCheckBox.Checked = m_configuration.ShowGid;
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(Func<string, FirmwareDefinition, Firmware> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
 		{
-			if (SelectedDefinition == null)
-			{
-				InfoBox.Show("Select firmware definition first.");
-				return;
-			}
-
 			string firmwareFile;
-			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
+			using (var op = new OpenFileDialog { Title = string.Format("Select \"{0}\" firmware file ...", firmwareName), Filter = Consts.FirmwareFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 				firmwareFile = op.FileName;
@@ -131,7 +137,7 @@ namespace NFirmwareEditor
 			ResetWorkspace();
 			try
 			{
-				m_firmware = readFirmwareDelegate(firmwareFile, SelectedDefinition);
+				m_firmware = readFirmwareDelegate(firmwareFile);
 
 				FillImagesListBox(Block2ImagesListBox, m_firmware.Block2Images, true);
 				FillImagesListBox(Block1ImagesListBox, m_firmware.Block1Images, true);
@@ -213,14 +219,6 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void DefinitionsComboBox_SelectedValueChanged(object sender, EventArgs e)
-		{
-			var definition = DefinitionsComboBox.SelectedItem as FirmwareDefinition;
-			if (definition == null) return;
-
-			m_configuration.LastUsedDefinition = definition.Name;
-		}
-
 		private void BlockCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			var currentListBoxSelectedIndices = ImageListBox.SelectedIndices.ToList();
@@ -273,14 +271,6 @@ namespace NFirmwareEditor
 		private void ShowGridCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			ImagePixelGrid.ShowGrid = m_configuration.ShowGid = ShowGridCheckBox.Checked;
-		}
-
-		private void ImagePixelGrid_DataUpdated(bool[,] data)
-		{
-			if (LastSelectedImageMetadata == null) return;
-
-			m_firmware.WriteImage(data, LastSelectedImageMetadata);
-			PreviewPixelGrid.Data = data;
 		}
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
@@ -375,16 +365,6 @@ namespace NFirmwareEditor
 			}
 		}
 
-		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDialogAndReadFirmwareOnOk((fileName, definition) => m_loader.LoadEncrypted(fileName, definition));
-		}
-
-		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDialogAndReadFirmwareOnOk((fileName, definition) => m_loader.LoadDecrypted(fileName, definition));
-		}
-
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveEncrypted(filePath, firmware));
@@ -467,16 +447,6 @@ namespace NFirmwareEditor
 		{
 			if (!keyData.HasFlag(Keys.Control)) return base.ProcessCmdKey(ref msg, keyData);
 
-			if (keyData.HasFlag(Keys.O))
-			{
-				OpenEncryptedMenuItem.PerformClick();
-				return true;
-			}
-			if (keyData.HasFlag(Keys.E))
-			{
-				OpenDecryptedMenuItem.PerformClick();
-				return true;
-			}
 			if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
 			{
 				SaveDecryptedMenuItem.PerformClick();
@@ -607,13 +577,6 @@ namespace NFirmwareEditor
 			var lastSelectedItem = LastSelectedImageMetadata;
 			ImageListBox.SelectedIndices.Clear();
 			ImageListBox.SelectedItem = lastSelectedItem;
-		}
-
-		private void ImagePixelGrid_CursorPositionChanged(Point? location)
-		{
-			CursorPositionLabel.Text = location.HasValue
-				? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
-				: string.Empty;
 		}
 	}
 }

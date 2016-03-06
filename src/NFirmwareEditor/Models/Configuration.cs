@@ -16,8 +16,6 @@
 
 		public bool MainWindowMaximaged { get; set; }
 
-		public string LastUsedDefinition { get; set; }
-
 		public bool ShowGid { get; set; }
 
 		public int GridSize { get; set; }
