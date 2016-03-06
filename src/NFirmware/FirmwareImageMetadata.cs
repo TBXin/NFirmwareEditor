@@ -37,7 +37,7 @@ namespace NFirmware
 		/// </summary>
 		/// <param name="reader">Binary reader.</param>
 		/// <param name="imageIndex">Character generator index.</param>
-		public FirmwareImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
+		internal FirmwareImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
 		{
 			Index = imageIndex;
 			Width = reader.ReadByte();
@@ -50,13 +50,13 @@ namespace NFirmware
 		/// Reads the image from bytes array and transforms to the two-dimensional bool array.
 		/// </summary>
 		/// <param name="imageBytes">Image bytes.</param>
-		public abstract bool[,] Load(byte[] imageBytes);
+		internal abstract bool[,] Load(byte[] imageBytes);
 
 		/// <summary>
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public abstract byte[] Save(bool[,] imageData);
+		internal abstract byte[] Save(bool[,] imageData);
 
 		/// <summary>
 		/// Returns a <see cref="T:System.String"/> that represents the current <see cref="FirmwareImageMetadata"/>.

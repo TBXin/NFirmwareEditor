@@ -19,7 +19,7 @@ namespace NFirmware
 		/// Loads the image from bytes array and transforms to the two-dimensional bool array.
 		/// </summary>
 		/// <param name="imageBytes">Image bytes.</param>
-		public override bool[,] Load(byte[] imageBytes)
+		internal override bool[,] Load(byte[] imageBytes)
 		{
 			var result = new bool[Width, Height];
 			var colCounter = 0;
@@ -49,7 +49,7 @@ namespace NFirmware
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public override byte[] Save(bool[,] imageData)
+		internal override byte[] Save(bool[,] imageData)
 		{
 			var imageBytes = new byte[DataLength];
 			var imageBytesCounter = 0;
