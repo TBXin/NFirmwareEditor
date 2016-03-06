@@ -42,7 +42,7 @@ namespace NFirmwareEditor
 		[NotNull]
 		public ListBox StringListBox
 		{
-			get { return Block1StringCheckBox.Visible ? Block1StringListBox : Block2StringListBox; }
+			get { return Block1StringListBox.Visible ? Block1StringListBox : Block2StringListBox; }
 		}
 
 		[CanBeNull]
@@ -53,6 +53,17 @@ namespace NFirmwareEditor
 				return ImageListBox.Items.Count == 0 || ImageListBox.SelectedIndices.Count == 0
 					? null
 					: ImageListBox.Items[ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
+			}
+		}
+
+		[CanBeNull]
+		public FirmwareStringMetadata LastSelectedStringMetadata
+		{
+			get
+			{
+				return StringListBox.Items.Count == 0 || StringListBox.SelectedIndices.Count == 0
+					? null
+					: StringListBox.Items[StringListBox.SelectedIndices[StringListBox.SelectedIndices.Count - 1]] as FirmwareStringMetadata;
 			}
 		}
 
@@ -77,10 +88,10 @@ namespace NFirmwareEditor
 
 		private void InitializeControls()
 		{
-			PreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
-			PreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
-			PreviewPixelGrid.ActiveBlockBrush = Brushes.White;
-			PreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+			ImagePreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			ImagePreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
+			ImagePreviewPixelGrid.ActiveBlockBrush = Brushes.White;
+			ImagePreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
 
 			ImagePixelGrid.CursorPositionChanged += location =>
 			{
@@ -94,7 +105,7 @@ namespace NFirmwareEditor
 				if (LastSelectedImageMetadata == null) return;
 
 				m_firmware.WriteImage(data, LastSelectedImageMetadata);
-				PreviewPixelGrid.Data = data;
+				ImagePreviewPixelGrid.Data = data;
 			};
 		}
 
@@ -244,7 +255,7 @@ namespace NFirmwareEditor
 				ImageListBox.SelectedIndices.Clear();
 				ImageListBox.SelectedIndices.AddRange(currentListBoxSelectedIndices.Where(x => ImageListBox.Items.Count > x));
 
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = LastSelectedImageMetadata != null
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = LastSelectedImageMetadata != null
 					? m_firmware.ReadImage(LastSelectedImageMetadata)
 					: new bool[5, 5];
 
@@ -252,7 +263,7 @@ namespace NFirmwareEditor
 			}
 			else
 			{
-				BlockImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
 		}
 
@@ -267,19 +278,55 @@ namespace NFirmwareEditor
 			StringListBox.Focus();
 		}
 
-		private void BlockImageListBox_SelectedValueChanged(object sender, EventArgs e)
+		private void ImageListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			if (m_imageListBoxIsUpdating || LastSelectedImageMetadata == null) return;
 
 			StatusLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
 			try
 			{
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
 			}
 			catch (Exception)
 			{
 				InfoBox.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
 			}
+		}
+
+		private void StringListBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			if (LastSelectedStringMetadata == null) return;
+
+			var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
+
+			var charMetadata = new List<FirmwareImageMetadata>();
+			foreach (var charIndex in firmwareString)
+			{
+				charMetadata.Add(m_firmware.Block1Images.First(x => x.Index == charIndex));
+			}
+
+			var images = m_firmware.ReadImages(charMetadata).ToList();
+
+			var width = images.Sum(x => x.GetLength(0));
+			var height = images.Max(x => x.GetLength(1));
+
+			var data = new bool[width, height];
+
+			var colOffset = 0;
+			foreach (var image in images)
+			{
+				for (var col = 0; col < image.GetLength(0); col++)
+				{
+					for (var row = 0; row < image.GetLength(1); row++)
+					{
+						data[colOffset + col, row] = image[col, row];
+					}
+				}
+
+				colOffset += image.GetLength(0);
+			}
+
+			StringPrewviewPixelGrid.Data = data;
 		}
 
 		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
@@ -295,49 +342,49 @@ namespace NFirmwareEditor
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
 		}
 
 		private void FlipHorizontalButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
 		}
 
 		private void FlipVerticalButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
 		}
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
 		}
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
 		}
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
 		}
 
 		private void CopyButton_Click(object sender, EventArgs e)
@@ -356,7 +403,7 @@ namespace NFirmwareEditor
 			if (copiedImages.Count == 0) return;
 			if (copiedImages.Count == 1)
 			{
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, copiedImages[0]), LastSelectedImageMetadata);
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, copiedImages[0]), LastSelectedImageMetadata);
 			}
 			else
 			{
@@ -380,7 +427,7 @@ namespace NFirmwareEditor
 					var index = i;
 					updatedImage = ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], copiedImages[index]), SelectedImageMetadata[index]);
 				}
-				ImagePixelGrid.Data = PreviewPixelGrid.Data = updatedImage;
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = updatedImage;
 			}
 		}
 
