@@ -17,6 +17,14 @@
 			<OffsetFrom>0xADAC</OffsetFrom>
 			<OffsetTo>0xB134</OffsetTo>
 		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xCAE8</OffsetFrom>
+			<OffsetTo>0xCC60</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x952A</OffsetFrom>
+			<OffsetTo>0x957F</OffsetTo>
+		</StringTable2>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Cuboid 3.10">

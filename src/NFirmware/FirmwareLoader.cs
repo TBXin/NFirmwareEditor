@@ -52,7 +52,8 @@ namespace NFirmware
 			data = decode ? m_encoder.Decode(data) : data;
 
 			var imageBlocks = LoadImageBlocks(data, definition);
-			return new Firmware(data, imageBlocks);
+			var stringBlocks = LoadStringBlocks(data, definition);
+			return new Firmware(data, imageBlocks, stringBlocks);
 		}
 
 		private FirmwareImageBlocks LoadImageBlocks(byte[] firmware, FirmwareDefinition definition)
@@ -64,14 +65,30 @@ namespace NFirmware
 			{
 				using (var reader = new BinaryReader(ms))
 				{
-					var block1Images = ReadImagesTable<FirmwareImage1Metadata>(definition.ImageTable1, reader);
-					var block2Images = ReadImagesTable<FirmwareImage2Metadata>(definition.ImageTable2, reader);
+					var block1Images = ReadImageTable<FirmwareImage1Metadata>(definition.ImageTable1, reader);
+					var block2Images = ReadImageTable<FirmwareImage2Metadata>(definition.ImageTable2, reader);
 					return new FirmwareImageBlocks(block1Images, block2Images);
 				}
 			}
 		}
 
-		private IEnumerable<FirmwareImageMetadata> ReadImagesTable<T>(ImageTableDefinition imageTableDefinition, BinaryReader reader) where T : FirmwareImageMetadata, new()
+		private FirmwareStringBlocks LoadStringBlocks(byte[] firmware, FirmwareDefinition definition)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (definition == null) throw new ArgumentNullException("definition");
+
+			using (var ms = new MemoryStream(firmware))
+			{
+				using (var reader = new BinaryReader(ms))
+				{
+					var block1String = ReadStringTable(definition.StringTable1, reader);
+					var block2Strings = ReadStringTable(definition.StringTable2, reader);
+					return new FirmwareStringBlocks(block1String, block2Strings);
+				}
+			}
+		}
+
+		private IEnumerable<FirmwareImageMetadata> ReadImageTable<T>(ImageTableDefinition imageTableDefinition, BinaryReader reader) where T : FirmwareImageMetadata, new()
 		{
 			if (imageTableDefinition == null) return new List<FirmwareImageMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
@@ -92,6 +109,28 @@ namespace NFirmware
 				{
 					reader.BaseStream.Seek(offsetsTable[i], SeekOrigin.Begin);
 					result.Add(new T().ReadMetadata(reader, i + 1));
+				}
+			}
+			return result;
+		}
+
+		private IEnumerable<FirmwareStringMetadata> ReadStringTable(StringTableDefinition stringTableDefinition, BinaryReader reader)
+		{
+			if (stringTableDefinition == null) return new List<FirmwareStringMetadata>();
+			if (reader == null) throw new ArgumentNullException("reader");
+
+			var result = new List<FirmwareStringMetadata>();
+			{
+				reader.BaseStream.Seek(stringTableDefinition.OffsetFrom, SeekOrigin.Begin);
+				while (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+				{
+					var offset = reader.BaseStream.Position;
+					var dataLength = 0;
+					while (reader.ReadByte() != 0 && reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+					{
+						dataLength++;
+					}
+					result.Add(new FirmwareStringMetadata(offset, dataLength));
 				}
 			}
 			return result;

@@ -12,13 +12,25 @@ namespace NFirmware
 
 		public ImageTableDefinition ImageTable2 { get; set; }
 
+		public StringTableDefinition StringTable1 { get; set; }
+
+		public StringTableDefinition StringTable2 { get; set; }
+
 		public override string ToString()
 		{
 			return Name;
 		}
 	}
 
-	public class ImageTableDefinition
+	public class ImageTableDefinition : FirmwareTableDefinition
+	{
+	}
+
+	public class StringTableDefinition : FirmwareTableDefinition
+	{
+	}
+
+	public abstract class FirmwareTableDefinition
 	{
 		[XmlElement("OffsetFrom")]
 		public string OffsetFromString { get; set; }

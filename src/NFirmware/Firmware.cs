@@ -9,14 +9,17 @@ namespace NFirmware
 	public class Firmware
 	{
 		private readonly FirmwareImageBlocks m_imageBlocks;
+		private readonly FirmwareStringBlocks m_stringBlocks;
 
-		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks)
+		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks, [NotNull] FirmwareStringBlocks stringBlocks)
 		{
 			if (body == null) throw new ArgumentNullException("body");
 			if (imageBlocks == null) throw new ArgumentNullException("imageBlocks");
+			if (stringBlocks == null) throw new ArgumentNullException("stringBlocks");
 
 			Body = body;
 			m_imageBlocks = imageBlocks;
+			m_stringBlocks = stringBlocks;
 		}
 
 		[NotNull]
@@ -32,6 +35,16 @@ namespace NFirmware
 		public IEnumerable<FirmwareImageMetadata> Block2Images
 		{
 			get { return m_imageBlocks.Block2Images; }
+		}
+
+		public IEnumerable<FirmwareStringMetadata> Block1Strings
+		{
+			get { return m_stringBlocks.Block1Strings; }
+		}
+
+		public IEnumerable<FirmwareStringMetadata> Block2Strings
+		{
+			get { return m_stringBlocks.Block2Strings; }
 		}
 
 		[NotNull]
