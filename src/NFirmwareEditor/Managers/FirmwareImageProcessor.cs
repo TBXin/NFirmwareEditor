@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
 {
@@ -72,6 +74,67 @@ namespace NFirmwareEditor.Managers
 				for (var row = 0; row < height; row++)
 				{
 					result[col, row] = copiedImageData[col, row];
+				}
+			}
+			return result;
+		}
+
+		public static bool[,] MergeImages([NotNull] List<bool[,]> imagesData)
+		{
+			if (imagesData == null) throw new ArgumentNullException("imagesData");
+
+			var totalWidth = 0;
+			var totalHeight = 0;
+
+			foreach (var imageData in imagesData)
+			{
+				var size = GetImageSize(imageData);
+
+				totalWidth += size.Width;
+				if (totalHeight < size.Height) totalHeight = size.Height;
+			}
+
+			var result = new bool[totalWidth, totalHeight];
+			var colOffset = 0;
+			foreach (var image in imagesData)
+			{
+				var size = GetImageSize(image);
+				for (var col = 0; col < size.Width; col++)
+				{
+					for (var row = 0; row < size.Height; row++)
+					{
+						result[colOffset + col, row] = image[col, row];
+					}
+				}
+				colOffset += image.GetLength(0);
+			}
+			return result;
+		}
+
+		public static Image CreateImage([NotNull] bool[,] imageData, int pixelSize = 2)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+
+			var size = GetImageSize(imageData);
+			var result = new Bitmap(size.Width * pixelSize, size.Height * pixelSize);
+			using (var gfx = Graphics.FromImage(result))
+			{
+				gfx.Clear(Color.Black);
+				for (var col = 0; col < size.Width; col++)
+				{
+					for (var row = 0; row < size.Height; row++)
+					{
+						if (!imageData[col, row]) continue;
+
+						if (pixelSize <= 1)
+						{
+							result.SetPixel(col, row, Color.White);
+						}
+						else
+						{
+							gfx.FillRectangle(Brushes.White, col * pixelSize, row * pixelSize, pixelSize, pixelSize);
+						}
+					}
 				}
 			}
 			return result;

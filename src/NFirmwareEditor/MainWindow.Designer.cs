@@ -95,6 +95,10 @@
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
+			this.borderedPanel9 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel10 = new NFirmwareEditor.UI.BorderedPanel();
+			this.CharLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.label4 = new System.Windows.Forms.Label();
 			this.borderedPanel7 = new NFirmwareEditor.UI.BorderedPanel();
 			this.label3 = new System.Windows.Forms.Label();
 			this.borderedPanel8 = new NFirmwareEditor.UI.BorderedPanel();
@@ -114,6 +118,8 @@
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
+			this.borderedPanel9.SuspendLayout();
+			this.borderedPanel10.SuspendLayout();
 			this.borderedPanel7.SuspendLayout();
 			this.borderedPanel8.SuspendLayout();
 			this.borderedPanel6.SuspendLayout();
@@ -470,6 +476,7 @@
 			// 
 			// StringsTabPage
 			// 
+			this.StringsTabPage.Controls.Add(this.borderedPanel9);
 			this.StringsTabPage.Controls.Add(this.borderedPanel7);
 			this.StringsTabPage.Controls.Add(this.Block1StringCheckBox);
 			this.StringsTabPage.Controls.Add(this.Block2StringCheckBox);
@@ -843,6 +850,66 @@
 			this.Block2ImageListBox.TabIndex = 0;
 			this.Block2ImageListBox.SelectedValueChanged += new System.EventHandler(this.ImageListBox_SelectedValueChanged);
 			// 
+			// borderedPanel9
+			// 
+			this.borderedPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel9.BackColor = System.Drawing.Color.White;
+			this.borderedPanel9.BorderBottom = true;
+			this.borderedPanel9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel9.BorderLeft = true;
+			this.borderedPanel9.BorderRight = true;
+			this.borderedPanel9.BorderTop = true;
+			this.borderedPanel9.BorderWidth = 1F;
+			this.borderedPanel9.Controls.Add(this.borderedPanel10);
+			this.borderedPanel9.Controls.Add(this.label4);
+			this.borderedPanel9.Location = new System.Drawing.Point(143, 123);
+			this.borderedPanel9.Name = "borderedPanel9";
+			this.borderedPanel9.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel9.Size = new System.Drawing.Size(627, 358);
+			this.borderedPanel9.TabIndex = 10;
+			this.borderedPanel9.Text = "borderedPanel9";
+			// 
+			// borderedPanel10
+			// 
+			this.borderedPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel10.AutoScroll = true;
+			this.borderedPanel10.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel10.BorderBottom = false;
+			this.borderedPanel10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel10.BorderLeft = false;
+			this.borderedPanel10.BorderRight = false;
+			this.borderedPanel10.BorderTop = true;
+			this.borderedPanel10.BorderWidth = 1F;
+			this.borderedPanel10.Controls.Add(this.CharLayoutPanel);
+			this.borderedPanel10.Location = new System.Drawing.Point(1, 29);
+			this.borderedPanel10.Name = "borderedPanel10";
+			this.borderedPanel10.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.borderedPanel10.Size = new System.Drawing.Size(625, 328);
+			this.borderedPanel10.TabIndex = 3;
+			this.borderedPanel10.Text = "borderedPanel10";
+			// 
+			// CharLayoutPanel
+			// 
+			this.CharLayoutPanel.AutoSize = true;
+			this.CharLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.CharLayoutPanel.Location = new System.Drawing.Point(1, 4);
+			this.CharLayoutPanel.Name = "CharLayoutPanel";
+			this.CharLayoutPanel.Size = new System.Drawing.Size(155, 84);
+			this.CharLayoutPanel.TabIndex = 1;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(4, 8);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(29, 13);
+			this.label4.TabIndex = 1;
+			this.label4.Text = "Edit:";
+			// 
 			// borderedPanel7
 			// 
 			this.borderedPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -987,6 +1054,10 @@
 			this.borderedPanel3.PerformLayout();
 			this.borderedPanel5.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
+			this.borderedPanel9.ResumeLayout(false);
+			this.borderedPanel9.PerformLayout();
+			this.borderedPanel10.ResumeLayout(false);
+			this.borderedPanel10.PerformLayout();
 			this.borderedPanel7.ResumeLayout(false);
 			this.borderedPanel7.PerformLayout();
 			this.borderedPanel8.ResumeLayout(false);
@@ -1070,6 +1141,10 @@
 		private System.Windows.Forms.Label label3;
 		private UI.BorderedPanel borderedPanel8;
 		private UI.PixelGrid StringPrewviewPixelGrid;
+		private System.Windows.Forms.Label label4;
+		private UI.BorderedPanel borderedPanel10;
+		private UI.BorderedPanel borderedPanel9;
+		private System.Windows.Forms.FlowLayoutPanel CharLayoutPanel;
 	}
 }
 

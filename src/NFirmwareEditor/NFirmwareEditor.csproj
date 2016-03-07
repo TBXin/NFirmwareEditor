@@ -83,6 +83,9 @@
     <Compile Include="UI\BorderedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\ImagedComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
     </Compile>

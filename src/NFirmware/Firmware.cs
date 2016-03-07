@@ -83,6 +83,23 @@ namespace NFirmware
 			Buffer.BlockCopy(imageBytes, 0, Body, (int)imageMetadata.DataOffset, imageBytes.Length);
 		}
 
+		public void WriteString([NotNull] byte[] stringData, [NotNull] FirmwareStringMetadata stringMetadata)
+		{
+			if (stringData == null) throw new ArgumentNullException("stringData");
+			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
+			if (stringData.Length != stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
+
+			Buffer.BlockCopy(stringData, 0, Body, (int)stringMetadata.DataOffset, stringData.Length);
+		}
+
+		public void WriteChar(byte stringChar, int index, [NotNull] FirmwareStringMetadata stringMetadata)
+		{
+			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
+			if (index > stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
+
+			Body[stringMetadata.DataOffset + index] = stringChar;
+		}
+
 		[NotNull]
 		private static byte[] GetImageBytes([NotNull] IEnumerable<byte> firmware, [NotNull] FirmwareImageMetadata metadata)
 		{
