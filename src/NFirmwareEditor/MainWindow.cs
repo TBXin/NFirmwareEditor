@@ -401,7 +401,7 @@ namespace NFirmwareEditor
 				CreateStringEditControls(firmwareString, ImageCacheForStringListBox);
 				UpdateStringPreview();
 			}
-			catch(Exception ex)
+			catch
 			{
 				InfoBox.Show("Invalid string data.");
 			}
@@ -477,7 +477,6 @@ namespace NFirmwareEditor
 			StringPrewviewPixelGrid.Data = data;
 		}
 
-
 		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
 		{
 			ImagePixelGrid.BlockSize = m_configuration.GridSize = (int)GridSizeUpDown.Value;
@@ -490,55 +489,55 @@ namespace NFirmwareEditor
 
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
 		}
 
 		private void FlipHorizontalButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
 		}
 
 		private void FlipVerticalButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
 		}
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
 		}
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
 		}
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
-			if (LastSelectedImageMetadata == null) return;
+			if (LastSelectedImageMetadata == null || MainTabControl.SelectedTab != ImagesTabPage) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
 		}
 
 		private void CopyButton_Click(object sender, EventArgs e)
 		{
-			if (SelectedImageMetadata.Count == 0) return;
+			if (SelectedImageMetadata.Count == 0 || MainTabControl.SelectedTab != ImagesTabPage) return;
 
 			var images = m_firmware.ReadImages(SelectedImageMetadata).ToList();
 			m_clipboardManager.SetData(images);
@@ -546,7 +545,7 @@ namespace NFirmwareEditor
 
 		private void PasteButton_Click(object sender, EventArgs e)
 		{
-			if (SelectedImageMetadata.Count == 0) return;
+			if (SelectedImageMetadata.Count == 0 || MainTabControl.SelectedTab != ImagesTabPage) return;
 
 			var copiedImages = m_clipboardManager.GetData();
 			if (copiedImages.Count == 0) return;
