@@ -306,9 +306,9 @@ namespace NFirmwareEditor
 						icb.Invalidate();
 					}
 				}
-				catch(Exception ex)
+				catch
 				{
-					ex = ex;
+					// Ignore
 				}
 			});
 			updateCache.BeginInvoke(null, null);
