@@ -37,6 +37,16 @@ namespace NFirmwareEditor
 			LoadSettings();
 		}
 
+		public IDictionary<int, Image> ImageCacheForImageListBox
+		{
+			get { return Block1ImageListBox.Visible ? m_block1ImageCache : m_block2ImageCache; }
+		}
+
+		public IDictionary<int, Image> ImageCacheForStringListBox
+		{
+			get { return Block1StringCheckBox.Checked ? m_block1ImageCache : m_block2ImageCache; }
+		}
+
 		public IEnumerable<FirmwareImageMetadata> CurrentImageBlockForStrings
 		{
 			get { return Block1StringListBox.Visible ? m_firmware.Block1Images : m_firmware.Block1Images; }
@@ -51,7 +61,7 @@ namespace NFirmwareEditor
 		[NotNull]
 		public ListBox StringListBox
 		{
-			get { return Block1StringListBox.Visible ? Block1StringListBox : Block2StringListBox; }
+			get { return Block1StringCheckBox.Checked ? Block1StringListBox : Block2StringListBox; }
 		}
 
 		[CanBeNull]
@@ -97,7 +107,7 @@ namespace NFirmwareEditor
 
 		private void InitializeControls()
 		{
-			ImagePreviewPixelGrid.BlockInnerBorderPen= StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			ImagePreviewPixelGrid.BlockInnerBorderPen = StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			ImagePreviewPixelGrid.BlockOuterBorderPen = StringPrewviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
 			ImagePreviewPixelGrid.ActiveBlockBrush = StringPrewviewPixelGrid.ActiveBlockBrush = Brushes.White;
 			ImagePreviewPixelGrid.InactiveBlockBrush = StringPrewviewPixelGrid.InactiveBlockBrush = Brushes.Black;
@@ -113,8 +123,15 @@ namespace NFirmwareEditor
 			{
 				if (LastSelectedImageMetadata == null) return;
 
-				m_firmware.WriteImage(data, LastSelectedImageMetadata);
-				ImagePreviewPixelGrid.Data = data;
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(r => data, LastSelectedImageMetadata);
+			};
+
+			MainTabControl.Selected += (s, e) =>
+			{
+				if (e.TabPage != StringsTabPage) return;
+
+				StringListBox.Focus();
+				StringListBox_SelectedValueChanged(StringListBox, EventArgs.Empty);
 			};
 		}
 
@@ -130,7 +147,7 @@ namespace NFirmwareEditor
 
 			Block1ImageCheckBox.Checked = true;
 			Block1StringCheckBox.Checked = true;
-			tabControl1.SelectedIndex = 0;
+			MainTabControl.SelectedIndex = 0;
 
 			SaveEncryptedMenuItem.Enabled = false;
 			SaveDecryptedMenuItem.Enabled = false;
@@ -274,6 +291,28 @@ namespace NFirmwareEditor
 		{
 			var processedData = imageDataProcessor(ImagePixelGrid.Data);
 			m_firmware.WriteImage(processedData, imageMetadata);
+
+			var updateCache = new Action(() =>
+			{
+				var cachedImage = FirmwareImageProcessor.CreateImage(processedData);
+				ImageCacheForImageListBox[imageMetadata.Index] = cachedImage;
+
+				try
+				{
+					foreach (var icb in CharLayoutPanel.Controls.OfType<ImagedComboBox>())
+					{
+						icb.Items[imageMetadata.Index - 1].Image.Dispose();
+						icb.Items[imageMetadata.Index - 1].Image = cachedImage;
+						icb.Invalidate();
+					}
+				}
+				catch(Exception ex)
+				{
+					ex = ex;
+				}
+			});
+			updateCache.BeginInvoke(null, null);
+
 			return processedData;
 		}
 
@@ -355,12 +394,17 @@ namespace NFirmwareEditor
 		{
 			if (LastSelectedStringMetadata == null) return;
 
-			var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
-			var imageCache = sender == Block1StringListBox ? m_block1ImageCache : m_block2ImageCache;
-
-			RemoveStringEditControls();
-			CreateStringEditControls(firmwareString, imageCache);
-			UpdateStringPreview();
+			try
+			{
+				var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
+				RemoveStringEditControls();
+				CreateStringEditControls(firmwareString, ImageCacheForStringListBox);
+				UpdateStringPreview();
+			}
+			catch(Exception ex)
+			{
+				InfoBox.Show("Invalid string data.");
+			}
 		}
 
 		private void RemoveStringEditControls()
@@ -372,7 +416,7 @@ namespace NFirmwareEditor
 			CharLayoutPanel.Controls.Clear();
 		}
 
-		private void CreateStringEditControls(byte[] firmwareString, Dictionary<int, Image> imageCache)
+		private void CreateStringEditControls(byte[] firmwareString, IDictionary<int, Image> imageCache)
 		{
 			for (var i = 0; i < firmwareString.Length; i++)
 			{
@@ -424,14 +468,15 @@ namespace NFirmwareEditor
 			var charMetadata = new List<FirmwareImageMetadata>();
 			foreach (var charIndex in firmwareString)
 			{
+
 				charMetadata.Add(CurrentImageBlockForStrings.First(x => x.Index == charIndex));
 			}
-
 			var images = m_firmware.ReadImages(charMetadata).ToList();
 			var data = FirmwareImageProcessor.MergeImages(images);
 
 			StringPrewviewPixelGrid.Data = data;
 		}
+
 
 		private void GridSizeUpDown_ValueChanged(object sender, EventArgs e)
 		{

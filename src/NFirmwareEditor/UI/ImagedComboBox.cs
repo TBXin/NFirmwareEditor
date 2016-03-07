@@ -44,9 +44,16 @@ namespace NFirmwareEditor.UI
 			if (e.Index < 0) return;
 
 			var item = Items[e.Index];
-			if (item.Image != null)
+			try
 			{
-				e.ItemHeight = item.Image.Height + 4;
+				if (item.Image != null)
+				{
+					e.ItemHeight = item.Image.Height + 4;
+				}
+			}
+			catch
+			{
+				// Ignore
 			}
 		}
 
@@ -72,7 +79,7 @@ namespace NFirmwareEditor.UI
 				}
 				catch
 				{
-					//
+					// Ignore
 				}
 			}
 			e.DrawFocusRectangle();

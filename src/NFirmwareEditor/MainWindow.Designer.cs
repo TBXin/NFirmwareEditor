@@ -67,7 +67,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.ImagesTabPage = new System.Windows.Forms.TabPage();
 			this.StringsTabPage = new System.Windows.Forms.TabPage();
 			this.Block1StringCheckBox = new System.Windows.Forms.CheckBox();
@@ -109,7 +109,7 @@
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.ImageListBoxContextMenu.SuspendLayout();
-			this.tabControl1.SuspendLayout();
+			this.MainTabControl.SuspendLayout();
 			this.ImagesTabPage.SuspendLayout();
 			this.StringsTabPage.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
@@ -444,20 +444,20 @@
 			this.ImportContextMenuItem.Text = "Import";
 			this.ImportContextMenuItem.Click += new System.EventHandler(this.ImportContextMenuItem_Click);
 			// 
-			// tabControl1
+			// MainTabControl
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.MainTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.ImagesTabPage);
-			this.tabControl1.Controls.Add(this.StringsTabPage);
-			this.tabControl1.ItemSize = new System.Drawing.Size(100, 20);
-			this.tabControl1.Location = new System.Drawing.Point(3, 27);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(780, 510);
-			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-			this.tabControl1.TabIndex = 6;
+			this.MainTabControl.Controls.Add(this.ImagesTabPage);
+			this.MainTabControl.Controls.Add(this.StringsTabPage);
+			this.MainTabControl.ItemSize = new System.Drawing.Size(100, 20);
+			this.MainTabControl.Location = new System.Drawing.Point(3, 27);
+			this.MainTabControl.Name = "MainTabControl";
+			this.MainTabControl.SelectedIndex = 0;
+			this.MainTabControl.Size = new System.Drawing.Size(780, 510);
+			this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+			this.MainTabControl.TabIndex = 6;
 			// 
 			// ImagesTabPage
 			// 
@@ -1028,7 +1028,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 561);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.MainTabControl);
 			this.Controls.Add(this.MainStatusStrip);
 			this.Controls.Add(this.MainMenuStrip);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -1043,7 +1043,7 @@
 			this.MainStatusStrip.ResumeLayout(false);
 			this.MainStatusStrip.PerformLayout();
 			this.ImageListBoxContextMenu.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
+			this.MainTabControl.ResumeLayout(false);
 			this.ImagesTabPage.ResumeLayout(false);
 			this.StringsTabPage.ResumeLayout(false);
 			this.borderedPanel2.ResumeLayout(false);
@@ -1129,7 +1129,7 @@
 		private System.Windows.Forms.ToolStripMenuItem FlipVerticalMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.TabPage ImagesTabPage;
 		private System.Windows.Forms.TabPage StringsTabPage;
 		private System.Windows.Forms.CheckBox Block1StringCheckBox;
