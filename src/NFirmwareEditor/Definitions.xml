@@ -6,6 +6,10 @@
 			<OffsetFrom>0x8808</OffsetFrom>
 			<OffsetTo>0x8A84</OffsetTo>
 		</ImageTable1>
+		<StringTable1>
+			<OffsetFrom>0x78C4</OffsetFrom>
+			<OffsetTo>0x79F3</OffsetTo>
+		</StringTable1>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Cuboid 3.11">
@@ -36,17 +40,14 @@
 			<OffsetFrom>0xA8F8</OffsetFrom>
 			<OffsetTo>0xAC78</OffsetTo>
 		</ImageTable2>
-	</FirmwareDefinition>
-
-	<FirmwareDefinition Name="Cuboid 3.01">
-		<ImageTable1>
-			<OffsetFrom>0xC678</OffsetFrom>
-			<OffsetTo>0xCA00</OffsetTo>
-		</ImageTable1>
-		<ImageTable2>
-			<OffsetFrom>0xADC8</OffsetFrom>
-			<OffsetTo>0xB150</OffsetTo>
-		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xC610</OffsetFrom>
+			<OffsetTo>0xC722</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x908D</OffsetFrom>
+			<OffsetTo>0x90DF</OffsetTo>
+		</StringTable2>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Evic VTC Mini 3.01">
@@ -58,6 +59,14 @@
 			<OffsetFrom>0xA924</OffsetFrom>
 			<OffsetTo>0xACAC</OffsetTo>
 		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xC660</OffsetFrom>
+			<OffsetTo>0xC7A7</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x90A2</OffsetFrom>
+			<OffsetTo>0x90F7</OffsetTo>
+		</StringTable2>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Evic VTC Mini 3.00">
@@ -69,6 +78,14 @@
 			<OffsetFrom>0xA33C</OffsetFrom>
 			<OffsetTo>0xA6BC</OffsetTo>
 		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xC040</OffsetFrom>
+			<OffsetTo>0xC176</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x8AE6</OffsetFrom>
+			<OffsetTo>0x8B3B</OffsetTo>
+		</StringTable2>
 	</FirmwareDefinition>
 	
 	<FirmwareDefinition Name="Evic VTC Mini 2.00">
@@ -76,10 +93,18 @@
 			<OffsetFrom>0xA914</OffsetFrom>
 			<OffsetTo>0xAC5C</OffsetTo>
 		</ImageTable1>
-		<ImageTable1>
+		<ImageTable2>
 			<OffsetFrom>0x917C</OffsetFrom>
 			<OffsetTo>0x94C4</OffsetTo>
-		</ImageTable1>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xAD60</OffsetFrom>
+			<OffsetTo>0xAE3B</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x7AE5</OffsetFrom>
+			<OffsetTo>0x7B37</OffsetTo>
+		</StringTable2>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="iStick TC100W 1.10">
@@ -87,6 +112,10 @@
 			<OffsetFrom>0x7EB4</OffsetFrom>
 			<OffsetTo>0x812C</OffsetTo>
 		</ImageTable1>
+		<StringTable1>
+			<OffsetFrom>0x7098</OffsetFrom>
+			<OffsetTo>0x715D</OffsetTo>
+		</StringTable1>
 	</FirmwareDefinition>
 		
 	<FirmwareDefinition Name="Presa TC75W 3.00">
