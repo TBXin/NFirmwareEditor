@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	
+
 	<FirmwareDefinition Name="RX200 3.00">
+		<Marker Offset="0x90" Bytes="0xB5 0x20" />
 		<ImageTable1>
 			<OffsetFrom>0x8808</OffsetFrom>
 			<OffsetTo>0x8A84</OffsetTo>
@@ -13,6 +14,7 @@
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Cuboid 3.11">
+		<Marker Offset="0x90" Bytes="0x79 0x21" />
 		<ImageTable1>
 			<OffsetFrom>0xC65C</OffsetFrom>
 			<OffsetTo>0xC9E4</OffsetTo>
@@ -32,6 +34,7 @@
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Cuboid 3.10">
+		<Marker Offset="0x90" Bytes="0x05 0x21" />
 		<ImageTable1>
 			<OffsetFrom>0xC18C</OffsetFrom>
 			<OffsetTo>0xC50C</OffsetTo>
@@ -51,6 +54,7 @@
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Evic VTC Mini 3.01">
+		<Marker Offset="0x90" Bytes="0x99 0x1D" />
 		<ImageTable1>
 			<OffsetFrom>0xC1D4</OffsetFrom>
 			<OffsetTo>0xC55C</OffsetTo>
@@ -70,6 +74,7 @@
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Evic VTC Mini 3.00">
+		<Marker Offset="0x90" Bytes="0x0D 0x1D" />
 		<ImageTable1>
 			<OffsetFrom>0xBBBC</OffsetFrom>
 			<OffsetTo>0xBF3C</OffsetTo>
@@ -89,6 +94,7 @@
 	</FirmwareDefinition>
 	
 	<FirmwareDefinition Name="Evic VTC Mini 2.00">
+		<Marker Offset="0x90" Bytes="0x99 0x1C" />
 		<ImageTable1>
 			<OffsetFrom>0xA914</OffsetFrom>
 			<OffsetTo>0xAC5C</OffsetTo>
@@ -108,6 +114,7 @@
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="iStick TC100W 1.10">
+		<Marker Offset="0x90" Bytes="0x55 0x1A" />
 		<ImageTable1>
 			<OffsetFrom>0x7EB4</OffsetFrom>
 			<OffsetTo>0x812C</OffsetTo>

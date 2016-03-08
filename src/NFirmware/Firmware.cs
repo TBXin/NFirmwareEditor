@@ -11,16 +11,21 @@ namespace NFirmware
 		private readonly FirmwareImageBlocks m_imageBlocks;
 		private readonly FirmwareStringBlocks m_stringBlocks;
 
-		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks, [NotNull] FirmwareStringBlocks stringBlocks)
+		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks, [NotNull] FirmwareStringBlocks stringBlocks, [NotNull] FirmwareDefinition definition)
 		{
 			if (body == null) throw new ArgumentNullException("body");
 			if (imageBlocks == null) throw new ArgumentNullException("imageBlocks");
 			if (stringBlocks == null) throw new ArgumentNullException("stringBlocks");
+			if (definition == null) throw new ArgumentNullException("definition");
 
 			Body = body;
+			Definition = definition;
 			m_imageBlocks = imageBlocks;
 			m_stringBlocks = stringBlocks;
 		}
+
+		[NotNull]
+		public FirmwareDefinition Definition { get; private set; }
 
 		[NotNull]
 		internal byte[] Body { get; set; }

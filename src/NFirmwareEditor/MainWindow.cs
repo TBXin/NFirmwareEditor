@@ -21,6 +21,7 @@ namespace NFirmwareEditor
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 
 		private Configuration m_configuration;
+		private IEnumerable<FirmwareDefinition> m_definitions; 
 		private Firmware m_firmware;
 
 		private Dictionary<int, Image> m_block1ImageCache = new Dictionary<int, Image>();
@@ -161,15 +162,15 @@ namespace NFirmwareEditor
 			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
 
-			var definitions = m_firmwareDefinitionManager.Load();
-			foreach (var definition in definitions)
+			m_definitions = m_firmwareDefinitionManager.Load();
+			foreach (var definition in m_definitions)
 			{
 				var firmwareDefinition = definition;
-				OpenEncryptedMenuItem.DropDownItems.Add(definition.Name, OpenEncryptedMenuItem.Image, (s, e) =>
+				OpenEncryptedManualMenuItem.DropDownItems.Add(definition.Name, OpenEncryptedManualMenuItem.Image, (s, e) =>
 				{
 					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadEncrypted(fileName, firmwareDefinition));
 				});
-				OpenDecryptedMenuItem.DropDownItems.Add(definition.Name, OpenDecryptedMenuItem.Image, (s, e) =>
+				OpenDecryptedManualMenuItem.DropDownItems.Add(definition.Name, OpenDecryptedManualMenuItem.Image, (s, e) =>
 				{
 					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadDecrypted(fileName, firmwareDefinition));
 				});
@@ -243,6 +244,10 @@ namespace NFirmwareEditor
 			try
 			{
 				m_firmware = readFirmwareDelegate(firmwareFile);
+				if (m_firmware == null)
+				{
+					throw new InvalidOperationException("No one definition is not appropriate for the selected firmware file.");
+				}
 
 				RebuildImageCache(m_firmware);
 				FillListBox(Block2ImageListBox, m_firmware.Block2Images, true);
@@ -255,7 +260,7 @@ namespace NFirmwareEditor
 				EditMenuItem.Enabled = true;
 
 				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				StatusLabel.Text = @"Firmware loaded successfully.";
+				StatusLabel.Text = string.Format("Firmware loaded successfully. Used definition: {0}.", m_firmware.Definition.Name);
 			}
 			catch (Exception ex)
 			{
@@ -593,6 +598,16 @@ namespace NFirmwareEditor
 			}
 		}
 
+		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDialogAndReadFirmwareOnOk("Select firmware file...", fileName => m_loader.TryLoadEncrypted(fileName, m_definitions));
+		}
+
+		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenDialogAndReadFirmwareOnOk("Select firmware file...", fileName => m_loader.TryLoadDecrypted(fileName, m_definitions));
+		}
+
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveEncrypted(filePath, firmware));
@@ -806,5 +821,7 @@ namespace NFirmwareEditor
 			ImageListBox.SelectedIndices.Clear();
 			ImageListBox.SelectedItem = lastSelectedItem;
 		}
+
+
 	}
 }

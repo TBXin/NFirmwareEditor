@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
+using JetBrains.Annotations;
 
 namespace NFirmware
 {
@@ -8,12 +8,19 @@ namespace NFirmware
 		[XmlAttribute]
 		public string Name { get; set; }
 
+		[CanBeNull]
+		public FirmwareMarkerDefinition Marker { get; set; }
+
+		[CanBeNull]
 		public ImageTableDefinition ImageTable1 { get; set; }
 
+		[CanBeNull]
 		public ImageTableDefinition ImageTable2 { get; set; }
 
+		[CanBeNull]
 		public StringTableDefinition StringTable1 { get; set; }
 
+		[CanBeNull]
 		public StringTableDefinition StringTable2 { get; set; }
 
 		public override string ToString()
@@ -41,19 +48,34 @@ namespace NFirmware
 		[XmlIgnore]
 		public long OffsetFrom
 		{
-			get { return HexStringToLong(OffsetFromString); }
+			get { return OffsetFromString.HexStringToLong(); }
 		}
 
 		[XmlIgnore]
 		public long OffsetTo
 		{
-			get { return HexStringToLong(OffsetToString); }
+			get { return OffsetToString.HexStringToLong(); }
+		}
+	}
+
+	public class FirmwareMarkerDefinition
+	{
+		[XmlAttribute("Offset")]
+		public string OffsetFromString { get; set; }
+
+		[XmlAttribute("Bytes")]
+		public string MarkerBytesString { get; set; }
+
+		[XmlIgnore]
+		public long Offset
+		{
+			get { return OffsetFromString.HexStringToLong(); }
 		}
 
-		private static long HexStringToLong(string hexNumber)
+		[XmlIgnore]
+		public byte[] Marker
 		{
-			if (hexNumber.StartsWith("0x")) hexNumber = hexNumber.Substring(2);
-			return long.Parse(hexNumber, NumberStyles.AllowHexSpecifier);
+			get { return MarkerBytesString.HexStringToByteArray(); }
 		}
 	}
 }

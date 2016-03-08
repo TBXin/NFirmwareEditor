@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using JetBrains.Annotations;
 
 namespace NFirmware
 {
@@ -8,33 +10,51 @@ namespace NFirmware
 	{
 		private readonly FirmwareEncoder m_encoder;
 
-		public FirmwareLoader(FirmwareEncoder encoder)
+		public FirmwareLoader([NotNull] FirmwareEncoder encoder)
 		{
 			if (encoder == null) throw new ArgumentNullException("encoder");
 			m_encoder = encoder;
 		}
 
-		public Firmware LoadEncrypted(string filePath, FirmwareDefinition definition)
+		[CanBeNull]
+		public Firmware TryLoadEncrypted([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			var bytes = LoadFile(filePath, true);
+			var definition = DetermineDefinition(bytes, definitions);
+			return definition != null ? Load(bytes, definition) : null;
+		}
+
+		[CanBeNull]
+		public Firmware TryLoadDecrypted([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			var bytes = LoadFile(filePath, false);
+			var definition = DetermineDefinition(bytes, definitions);
+			return definition != null ? Load(bytes, definition) : null;
+		}
+
+		[NotNull]
+		public Firmware LoadEncrypted([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
 		{
 			return Load(filePath, definition, true);
 		}
 
-		public Firmware LoadDecrypted(string filePath, FirmwareDefinition definition)
+		[NotNull]
+		public Firmware LoadDecrypted([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
 		{
 			return Load(filePath, definition, false);
 		}
 
-		public void SaveEncrypted(string filePath, Firmware firmware)
+		public void SaveEncrypted([NotNull] string filePath, [NotNull] Firmware firmware)
 		{
 			Save(filePath, firmware, true);
 		}
 
-		public void SaveDecrypted(string filePath, Firmware firmware)
+		public void SaveDecrypted([NotNull] string filePath, [NotNull] Firmware firmware)
 		{
 			Save(filePath, firmware, false);
 		}
 
-		private void Save(string filePath, Firmware firmware, bool encode)
+		private void Save([NotNull] string filePath, Firmware firmware, bool encode)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
@@ -43,20 +63,34 @@ namespace NFirmware
 			File.WriteAllBytes(filePath, data);
 		}
 
-		private Firmware Load(string filePath, FirmwareDefinition definition, bool decode)
+		private byte[] LoadFile([NotNull] string filePath, bool decode)
+		{
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+
+			var data = File.ReadAllBytes(filePath);
+			return decode ? m_encoder.Decode(data) : data;
+		}
+
+		private Firmware Load([NotNull] string filePath, [NotNull] FirmwareDefinition definition, bool decode)
 		{
 			if (definition == null) throw new ArgumentNullException("definition");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
-			var data = File.ReadAllBytes(filePath);
-			data = decode ? m_encoder.Decode(data) : data;
+			var data = LoadFile(filePath, decode);
+			return Load(data, definition);
+		}
+
+		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition)
+		{
+			if (data == null) throw new ArgumentNullException("data");
+			if (definition == null) throw new ArgumentNullException("definition");
 
 			var imageBlocks = LoadImageBlocks(data, definition);
 			var stringBlocks = LoadStringBlocks(data, definition);
-			return new Firmware(data, imageBlocks, stringBlocks);
+			return new Firmware(data, imageBlocks, stringBlocks, definition);
 		}
 
-		private FirmwareImageBlocks LoadImageBlocks(byte[] firmware, FirmwareDefinition definition)
+		private FirmwareImageBlocks LoadImageBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (definition == null) throw new ArgumentNullException("definition");
@@ -72,7 +106,25 @@ namespace NFirmware
 			}
 		}
 
-		private FirmwareStringBlocks LoadStringBlocks(byte[] firmware, FirmwareDefinition definition)
+		[CanBeNull]
+		private FirmwareDefinition DetermineDefinition([NotNull] byte[] firmwareBytes, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
+			if (definitions == null) throw new ArgumentNullException("definitions");
+
+			foreach (var definition in definitions)
+			{
+				if (definition.Marker == null || string.IsNullOrEmpty(definition.Marker.OffsetFromString) || string.IsNullOrEmpty(definition.Marker.MarkerBytesString)) continue;
+
+				var bytes = firmwareBytes.Skip((int)definition.Marker.Offset).Take(definition.Marker.Marker.Length).ToArray();
+				if (!definition.Marker.Marker.SequenceEqual(bytes)) continue;
+
+				return definition;
+			}
+			return null;
+		}
+
+		private FirmwareStringBlocks LoadStringBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (definition == null) throw new ArgumentNullException("definition");
@@ -88,7 +140,7 @@ namespace NFirmware
 			}
 		}
 
-		private IEnumerable<FirmwareImageMetadata> ReadImageTable<T>(ImageTableDefinition imageTableDefinition, BinaryReader reader) where T : FirmwareImageMetadata, new()
+		private IEnumerable<FirmwareImageMetadata> ReadImageTable<T>([CanBeNull] ImageTableDefinition imageTableDefinition, [NotNull] BinaryReader reader) where T : FirmwareImageMetadata, new()
 		{
 			if (imageTableDefinition == null) return new List<FirmwareImageMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
@@ -114,7 +166,7 @@ namespace NFirmware
 			return result;
 		}
 
-		private IEnumerable<FirmwareStringMetadata> ReadStringTable(StringTableDefinition stringTableDefinition, BinaryReader reader)
+		private IEnumerable<FirmwareStringMetadata> ReadStringTable([CanBeNull] StringTableDefinition stringTableDefinition, [NotNull] BinaryReader reader)
 		{
 			if (stringTableDefinition == null) return new List<FirmwareStringMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
