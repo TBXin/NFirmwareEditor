@@ -186,17 +186,31 @@ namespace NFirmwareEditor
 			var block1ImageCache = new Dictionary<int, Image>();
 			foreach (var imageMetadata in firmware.Block1Images)
 			{
-				var imageData = firmware.ReadImage(imageMetadata);
-				var image = FirmwareImageProcessor.CreateImage(imageData);
-				block1ImageCache[imageMetadata.Index] = image;
+				try
+				{
+					var imageData = firmware.ReadImage(imageMetadata);
+					var image = FirmwareImageProcessor.CreateImage(imageData);
+					block1ImageCache[imageMetadata.Index] = image;
+				}
+				catch
+				{
+					block1ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
+				}
 			}
 
 			var block2ImageCache = new Dictionary<int, Image>();
 			foreach (var imageMetadata in firmware.Block2Images)
 			{
-				var imageData = firmware.ReadImage(imageMetadata);
-				var image = FirmwareImageProcessor.CreateImage(imageData);
-				block2ImageCache[imageMetadata.Index] = image;
+				try
+				{
+					var imageData = firmware.ReadImage(imageMetadata);
+					var image = FirmwareImageProcessor.CreateImage(imageData);
+					block2ImageCache[imageMetadata.Index] = image;
+				}
+				catch
+				{
+					block2ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
+				}
 			}
 
 			var previousCache1 = m_block1ImageCache;
