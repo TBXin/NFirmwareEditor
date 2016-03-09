@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -15,6 +16,9 @@ namespace NFirmwareEditor
 {
 	public partial class MainWindow : Form
 	{
+		private const int ImagedListBoxItemMaxHeight = 24 * 2;
+		private const int ImagedListBoxItemImageMargin = 6;
+
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
@@ -50,7 +54,7 @@ namespace NFirmwareEditor
 
 		public IEnumerable<FirmwareImageMetadata> CurrentImageBlockForStrings
 		{
-			get { return Block1StringListBox.Visible ? m_firmware.Block1Images : m_firmware.Block1Images; }
+			get { return Block1StringListBox.Visible ? m_firmware.Block1Images : m_firmware.Block2Images; }
 		}
 
 		[NotNull]
@@ -70,9 +74,10 @@ namespace NFirmwareEditor
 		{
 			get
 			{
-				return ImageListBox.Items.Count == 0 || ImageListBox.SelectedIndices.Count == 0
-					? null
-					: ImageListBox.Items[ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1]] as FirmwareImageMetadata;
+				if (ImageListBox.Items.Count == 0 || ImageListBox.SelectedIndices.Count == 0) return null;
+
+				var item = ImageListBox.Items[ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1]] as ImagedListBoxItem<FirmwareImageMetadata>;
+				return item != null ? item.Value : null;
 			}
 		}
 
@@ -97,10 +102,10 @@ namespace NFirmwareEditor
 				var result = new List<FirmwareImageMetadata>();
 				foreach (int selectedIndex in ImageListBox.SelectedIndices)
 				{
-					var metadata = ImageListBox.Items[selectedIndex] as FirmwareImageMetadata;
+					var metadata = ImageListBox.Items[selectedIndex] as ImagedListBoxItem<FirmwareImageMetadata>;
 					if (metadata == null) continue;
 
-					result.Add(metadata);
+					result.Add(metadata.Value);
 				}
 				return result;
 			}
@@ -134,6 +139,59 @@ namespace NFirmwareEditor
 				StringListBox.Focus();
 				StringListBox_SelectedValueChanged(StringListBox, EventArgs.Empty);
 			};
+
+			Block1ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block1ImageListBox.MeasureItem += ImageListBox_MeasureItem;
+			Block1ImageListBox.DrawItem += ImageListBox_DrawItem;
+
+			Block2ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block2ImageListBox.MeasureItem += ImageListBox_MeasureItem;
+			Block2ImageListBox.DrawItem += ImageListBox_DrawItem;
+		}
+
+		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)
+		{
+			var listBox = sender as ListBox;
+
+			if (listBox == null) return;
+			if (e.Index < 0) return;
+
+			var item = listBox.Items[e.Index] as ImagedListBoxItem<FirmwareImageMetadata>;
+			if (item == null) return;
+
+			e.Graphics.SmoothingMode = SmoothingMode.None;
+			e.Graphics.InterpolationMode = InterpolationMode.Low;
+			e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
+			e.DrawBackground();
+
+			var itemText = item.ToString();
+			var textSize = e.Graphics.MeasureString(itemText, e.Font);
+
+			try
+			{
+				if (item.Image != null)
+				{
+					if (item.Image.Width > ImagedListBoxItemMaxHeight || item.Image.Height > ImagedListBoxItemMaxHeight)
+					{
+						e.Graphics.DrawImage(item.Image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + ImagedListBoxItemImageMargin, ImagedListBoxItemMaxHeight, ImagedListBoxItemMaxHeight);
+					}
+					else
+					{
+						e.Graphics.DrawImage(item.Image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - item.Image.Height / 2f), item.Image.Width, item.Image.Height);
+					}
+				}
+			}
+			catch(ObjectDisposedException)
+			{
+			}
+
+			e.Graphics.DrawString(itemText, e.Font, new SolidBrush(e.ForeColor), e.Bounds.X + ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2, e.Bounds.Y + (int)(e.Bounds.Height / 2f - textSize.Height / 2f));
+			e.DrawFocusRectangle();
+		}
+
+		private void ImageListBox_MeasureItem(object sender, MeasureItemEventArgs e)
+		{
+			e.ItemHeight = ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2;
 		}
 
 		private void ResetWorkspace()
@@ -250,8 +308,8 @@ namespace NFirmwareEditor
 				}
 
 				RebuildImageCache(m_firmware);
-				FillListBox(Block2ImageListBox, m_firmware.Block2Images, true);
-				FillListBox(Block1ImageListBox, m_firmware.Block1Images, true);
+				FillListBox(Block2ImageListBox, m_firmware.Block2Images.Select(x => new ImagedListBoxItem<FirmwareImageMetadata>(x, m_block2ImageCache[x.Index], string.Format("0x{0:X2}", x.Index))), true);
+				FillListBox(Block1ImageListBox, m_firmware.Block1Images.Select(x => new ImagedListBoxItem<FirmwareImageMetadata>(x, m_block1ImageCache[x.Index], string.Format("0x{0:X2}", x.Index))), true);
 				FillListBox(Block2StringListBox, m_firmware.Block2Strings, false);
 				FillListBox(Block1StringListBox, m_firmware.Block1Strings, false);
 
@@ -318,6 +376,19 @@ namespace NFirmwareEditor
 
 				try
 				{
+					var item = ImageListBox.Items[imageMetadata.Index - 1] as ImagedListBoxItem<FirmwareImageMetadata>;
+					if (item != null)
+					{
+						if(item.Image != null) item.Image.Dispose();
+
+						item.Image = cachedImage;
+						ImageListBox.Invoke(new Action(() =>
+						{
+							var itemRect = ImageListBox.GetItemRectangle(imageMetadata.Index - 1);
+							ImageListBox.Invalidate(itemRect);
+						}));
+					}
+
 					foreach (var icb in CharLayoutPanel.Controls.OfType<ImagedComboBox>())
 					{
 						icb.Items[imageMetadata.Index - 1].Image.Dispose();
@@ -368,8 +439,10 @@ namespace NFirmwareEditor
 			if (currentListBoxSelectedIndices.Count != 0)
 			{
 				m_imageListBoxIsUpdating = true;
+				ImageListBox.BeginUpdate();
 				ImageListBox.SelectedIndices.Clear();
 				ImageListBox.SelectedIndices.AddRange(currentListBoxSelectedIndices.Where(x => ImageListBox.Items.Count > x));
+				ImageListBox.EndUpdate();
 
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = LastSelectedImageMetadata != null
 					? m_firmware.ReadImage(LastSelectedImageMetadata)

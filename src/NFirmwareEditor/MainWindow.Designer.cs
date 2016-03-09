@@ -32,9 +32,11 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OpenEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenEncryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.OpenDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenDecryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -106,8 +108,6 @@
 			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1StringListBox = new System.Windows.Forms.ListBox();
 			this.Block2StringListBox = new System.Windows.Forms.ListBox();
-			this.OpenEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.ImageListBoxContextMenu.SuspendLayout();
@@ -157,6 +157,15 @@
 			this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
 			this.FileMenuItem.Text = "File";
 			// 
+			// OpenEncryptedMenuItem
+			// 
+			this.OpenEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedMenuItem.Image")));
+			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
+			this.OpenEncryptedMenuItem.ShortcutKeyDisplayString = "";
+			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
+			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
+			// 
 			// OpenEncryptedManualMenuItem
 			// 
 			this.OpenEncryptedManualMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedManualMenuItem.Image")));
@@ -179,6 +188,15 @@
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
+			// 
+			// OpenDecryptedMenuItem
+			// 
+			this.OpenDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedMenuItem.Image")));
+			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
+			this.OpenDecryptedMenuItem.ShortcutKeyDisplayString = "";
+			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
+			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
 			// OpenDecryptedManualMenuItem
 			// 
@@ -785,10 +803,12 @@
 			// 
 			// Block1ImageListBox
 			// 
+			this.Block1ImageListBox.BackColor = System.Drawing.Color.Black;
 			this.Block1ImageListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.Block1ImageListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
 			this.Block1ImageListBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Block1ImageListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block1ImageListBox.ForeColor = System.Drawing.Color.White;
 			this.Block1ImageListBox.FormattingEnabled = true;
 			this.Block1ImageListBox.IntegralHeight = false;
 			this.Block1ImageListBox.Location = new System.Drawing.Point(1, 1);
@@ -800,10 +820,12 @@
 			// 
 			// Block2ImageListBox
 			// 
+			this.Block2ImageListBox.BackColor = System.Drawing.Color.Black;
 			this.Block2ImageListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.Block2ImageListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
 			this.Block2ImageListBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Block2ImageListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block2ImageListBox.ForeColor = System.Drawing.Color.White;
 			this.Block2ImageListBox.FormattingEnabled = true;
 			this.Block2ImageListBox.IntegralHeight = false;
 			this.Block2ImageListBox.Location = new System.Drawing.Point(1, 1);
@@ -1001,10 +1023,12 @@
 			// 
 			// Block1StringListBox
 			// 
+			this.Block1StringListBox.BackColor = System.Drawing.Color.Black;
 			this.Block1StringListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.Block1StringListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
 			this.Block1StringListBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Block1StringListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block1StringListBox.ForeColor = System.Drawing.Color.White;
 			this.Block1StringListBox.FormattingEnabled = true;
 			this.Block1StringListBox.IntegralHeight = false;
 			this.Block1StringListBox.Location = new System.Drawing.Point(1, 1);
@@ -1015,10 +1039,12 @@
 			// 
 			// Block2StringListBox
 			// 
+			this.Block2StringListBox.BackColor = System.Drawing.Color.Black;
 			this.Block2StringListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.Block2StringListBox.ContextMenuStrip = this.ImageListBoxContextMenu;
 			this.Block2StringListBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Block2StringListBox.Font = new System.Drawing.Font("Consolas", 8.25F);
+			this.Block2StringListBox.ForeColor = System.Drawing.Color.White;
 			this.Block2StringListBox.FormattingEnabled = true;
 			this.Block2StringListBox.IntegralHeight = false;
 			this.Block2StringListBox.Location = new System.Drawing.Point(1, 1);
@@ -1026,24 +1052,6 @@
 			this.Block2StringListBox.Size = new System.Drawing.Size(138, 446);
 			this.Block2StringListBox.TabIndex = 0;
 			this.Block2StringListBox.SelectedValueChanged += new System.EventHandler(this.StringListBox_SelectedValueChanged);
-			// 
-			// OpenEncryptedMenuItem
-			// 
-			this.OpenEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedMenuItem.Image")));
-			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
-			this.OpenEncryptedMenuItem.ShortcutKeyDisplayString = "";
-			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
-			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
-			// 
-			// OpenDecryptedMenuItem
-			// 
-			this.OpenDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedMenuItem.Image")));
-			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
-			this.OpenDecryptedMenuItem.ShortcutKeyDisplayString = "";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
-			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
 			// MainWindow
 			// 

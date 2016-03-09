@@ -75,11 +75,13 @@ namespace NFirmwareEditor.UI
 				
 				try
 				{
-					e.Graphics.DrawImage(item.Image, e.Bounds.X + 40, e.Bounds.Y + 2, item.Image.Width, item.Image.Height);
+					if (item.Image != null)
+					{
+						e.Graphics.DrawImage(item.Image, e.Bounds.X + 40, e.Bounds.Y + 2, item.Image.Width, item.Image.Height);
+					}
 				}
-				catch
+				catch(ObjectDisposedException)
 				{
-					// Ignore
 				}
 			}
 			e.DrawFocusRectangle();
@@ -97,6 +99,19 @@ namespace NFirmwareEditor.UI
 			private readonly string m_dispayName;
 
 			/// <summary>
+			///  Constructor item with image.
+			/// </summary>
+			/// <param name="value">Item value.</param>
+			/// <param name="image">Item image.</param>
+			/// <param name="dispayName">Display name.</param>
+			public ImagedComboBoxItem(object value, Image image, string dispayName = null)
+			{
+				m_value = value;
+				m_image = image;
+				m_dispayName = dispayName;
+			}
+
+			/// <summary>
 			/// ComobBox Item.
 			/// </summary>
 			public object Value
@@ -112,35 +127,6 @@ namespace NFirmwareEditor.UI
 			{
 				get { return m_image; }
 				set { m_image = value; }
-			}
-
-			public ImagedComboBoxItem()
-			{
-				m_value = string.Empty;
-				m_image = new Bitmap(1, 1);
-			}
-
-			/// <summary>
-			/// Constructor item without image.
-			/// </summary>
-			/// <param name="value">Item value.</param>
-			public ImagedComboBoxItem(object value)
-			{
-				m_value = value;
-				m_image = new Bitmap(1, 1);
-			}
-
-			/// <summary>
-			///  Constructor item with image.
-			/// </summary>
-			/// <param name="value">Item value.</param>
-			/// <param name="image">Item image.</param>
-			/// <param name="dispayName">Display name.</param>
-			public ImagedComboBoxItem(object value, Image image, string dispayName = null)
-			{
-				m_value = value;
-				m_image = image;
-				m_dispayName = dispayName;
 			}
 
 			public override string ToString()
