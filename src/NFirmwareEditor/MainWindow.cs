@@ -512,6 +512,7 @@ namespace NFirmwareEditor
 
 		private void CreateStringEditControls(byte[] firmwareString, IDictionary<int, Image> imageCache)
 		{
+			var nullByteFound = false;
 			for (var i = 0; i < firmwareString.Length; i++)
 			{
 				if (i == firmwareString.Length - 1 && firmwareString[i] == 0x00) continue;
@@ -526,8 +527,7 @@ namespace NFirmwareEditor
 					ForeColor = Color.White,
 					Tag = new Tuple<FirmwareStringMetadata, int>(LastSelectedStringMetadata, i)
 				};
-				icb.Items.Add(nullItem);
-
+				if (i > 0) icb.Items.Add(nullItem);
 				var selectedItem = nullItem;
 				foreach (var imageMetadata in CurrentImageBlockForStrings)
 				{
@@ -540,7 +540,9 @@ namespace NFirmwareEditor
 				}
 				icb.SelectedItem = selectedItem;
 				icb.SelectedValueChanged += Icb_SelectedValueChanged;
+				icb.Enabled = !nullByteFound;
 				CharLayoutPanel.Controls.Add(icb);
+				nullByteFound = (byte)selectedItem.Value == 0x00;
 			}
 		}
 
@@ -555,8 +557,33 @@ namespace NFirmwareEditor
 			if (tag == null) return;
 			if (item == null) return;
 
-			m_firmware.WriteChar((byte)item.Value, tag.Item2, tag.Item1);
+			var value = (byte)item.Value;
+			var idx = CharLayoutPanel.Controls.IndexOf(icb);
+
+			m_firmware.WriteChar(value, tag.Item2, tag.Item1);
 			UpdateStringPreview();
+
+			if (value == 0x00)
+			{
+				for (var i = idx + 1; i < CharLayoutPanel.Controls.Count; i++)
+				{
+					var relatedIcb = CharLayoutPanel.Controls[i] as ImagedComboBox;
+					if (relatedIcb == null) continue;
+
+					relatedIcb.SelectedIndex = 0;
+					relatedIcb.Enabled = false;
+				}
+			}
+			else if (idx + 1 < CharLayoutPanel.Controls.Count)
+			{
+				var relatedIcb = CharLayoutPanel.Controls[idx + 1] as ImagedComboBox;
+				if (relatedIcb == null) return;
+
+				if (relatedIcb.SelectedIndex == 0 && !relatedIcb.Enabled)
+				{
+					relatedIcb.Enabled = true;
+				}
+			}
 		}
 
 		private void UpdateStringPreview()
