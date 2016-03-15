@@ -256,6 +256,7 @@ namespace NFirmwareEditor
 					block1ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
+			block1ImageCache.Add(0, new Bitmap(1, 16));
 
 			var block2ImageCache = new Dictionary<int, Image>();
 			foreach (var imageMetadata in firmware.Block2Images)
@@ -271,6 +272,7 @@ namespace NFirmwareEditor
 					block2ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
+			block2ImageCache.Add(0, new Bitmap(1, 16));
 
 			var previousCache1 = m_block1ImageCache;
 			var previousCache2 = m_block2ImageCache;
@@ -512,7 +514,10 @@ namespace NFirmwareEditor
 		{
 			for (var i = 0; i < firmwareString.Length; i++)
 			{
+				if (i == firmwareString.Length - 1 && firmwareString[i] == 0x00) continue;
+
 				var stringChar = firmwareString[i];
+				var nullItem = new ImagedComboBox.ImagedComboBoxItem((byte)0, imageCache[0], "NULL");
 				var icb = new ImagedComboBox
 				{
 					Width = 200,
@@ -521,7 +526,9 @@ namespace NFirmwareEditor
 					ForeColor = Color.White,
 					Tag = new Tuple<FirmwareStringMetadata, int>(LastSelectedStringMetadata, i)
 				};
-				ImagedComboBox.ImagedComboBoxItem selectedItem = null;
+				icb.Items.Add(nullItem);
+
+				var selectedItem = nullItem;
 				foreach (var imageMetadata in CurrentImageBlockForStrings)
 				{
 					var item = new ImagedComboBox.ImagedComboBoxItem((byte)imageMetadata.Index, imageCache[imageMetadata.Index], string.Format("0x{0:X2}", imageMetadata.Index));
@@ -557,13 +564,13 @@ namespace NFirmwareEditor
 			if (LastSelectedStringMetadata == null) return;
 
 			var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
-			var charMetadata = new List<FirmwareImageMetadata>();
+			var charMetadatas = new List<FirmwareImageMetadata>();
 			foreach (var charIndex in firmwareString)
 			{
-
-				charMetadata.Add(CurrentImageBlockForStrings.First(x => x.Index == charIndex));
+				var metadata = CurrentImageBlockForStrings.FirstOrDefault(x => x.Index == charIndex);
+				if (metadata != null) charMetadatas.Add(metadata);
 			}
-			var images = m_firmware.ReadImages(charMetadata).ToList();
+			var images = m_firmware.ReadImages(charMetadatas).ToList();
 			var data = FirmwareImageProcessor.MergeImages(images);
 
 			StringPrewviewPixelGrid.Data = data;
@@ -894,7 +901,5 @@ namespace NFirmwareEditor
 			ImageListBox.SelectedIndices.Clear();
 			ImageListBox.SelectedItem = lastSelectedItem;
 		}
-
-
 	}
 }

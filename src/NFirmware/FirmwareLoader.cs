@@ -178,9 +178,24 @@ namespace NFirmware
 				{
 					var offset = reader.BaseStream.Position;
 					var dataLength = 0;
-					while (reader.ReadByte() != 0 && reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+
+					while (true)
 					{
-						dataLength++;
+						if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+						{
+							dataLength++;
+							var byte1 = reader.ReadByte();
+							byte? byte2;
+							if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+							{
+								byte2 = reader.ReadByte();
+								reader.BaseStream.Position--;
+							}
+							else break;
+
+							if (byte1 == 0x00 && byte2 != 0x00) break;
+						}
+						else break;
 					}
 					result.Add(new FirmwareStringMetadata(result.Count + 1, offset, dataLength));
 				}
