@@ -6,7 +6,7 @@ using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.UI;
 
-namespace NFirmwareEditor
+namespace NFirmwareEditor.Windows
 {
 	public partial class ImportImageWindow : Form
 	{

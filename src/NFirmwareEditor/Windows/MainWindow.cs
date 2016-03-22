@@ -12,7 +12,7 @@ using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
 using NFirmwareEditor.UI;
 
-namespace NFirmwareEditor
+namespace NFirmwareEditor.Windows
 {
 	public partial class MainWindow : Form
 	{

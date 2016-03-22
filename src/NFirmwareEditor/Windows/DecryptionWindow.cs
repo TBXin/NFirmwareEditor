@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using NFirmware;
 using NFirmwareEditor.Core;
 
-namespace NFirmwareEditor
+namespace NFirmwareEditor.Windows
 {
 	public partial class DecryptionWindow : Form
 	{

@@ -1,4 +1,4 @@
-﻿namespace NFirmwareEditor
+﻿namespace NFirmwareEditor.Windows
 {
 	partial class DecryptionWindow
 	{

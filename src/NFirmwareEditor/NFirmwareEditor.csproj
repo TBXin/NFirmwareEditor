@@ -57,25 +57,25 @@
     <Compile Include="Managers\ImageExportManager.cs" />
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
-    <Compile Include="DecryptionWindow.cs">
+    <Compile Include="Windows\DecryptionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DecryptionWindow.Designer.cs">
+    <Compile Include="Windows\DecryptionWindow.Designer.cs">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
-    <Compile Include="ImportImageWindow.cs">
+    <Compile Include="Windows\ImportImageWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportImageWindow.Designer.cs">
+    <Compile Include="Windows\ImportImageWindow.Designer.cs">
       <DependentUpon>ImportImageWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Windows\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -90,13 +90,13 @@
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="DecryptionWindow.resx">
+    <EmbeddedResource Include="Windows\DecryptionWindow.resx">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportImageWindow.resx">
+    <EmbeddedResource Include="Windows\ImportImageWindow.resx">
       <DependentUpon>ImportImageWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
