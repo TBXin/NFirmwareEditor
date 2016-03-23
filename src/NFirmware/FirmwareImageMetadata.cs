@@ -7,7 +7,7 @@ namespace NFirmware
 	/// </summary>
 	public abstract class FirmwareImageMetadata
 	{
-		internal const byte HeaderLength = 2;
+		internal const int HeaderLength = 2;
 
 		/// <summary>
 		/// Gets the image index.

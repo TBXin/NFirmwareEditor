@@ -176,6 +176,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bitmap_import.png" />
     <None Include="Resources\image_resize.png" />
     <None Include="Resources\information.png" />
     <None Include="Resources\flip_vertical.png" />

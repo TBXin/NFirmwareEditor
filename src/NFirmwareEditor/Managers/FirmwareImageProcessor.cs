@@ -98,6 +98,25 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
+		public static bool[,] ImportBitmap([NotNull] Bitmap sourceImage)
+		{
+			if (sourceImage == null) throw new ArgumentNullException("sourceImage");
+
+			var width = sourceImage.Width;
+			var height = sourceImage.Height;
+
+			var result = new bool[width, height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					var pixel = sourceImage.GetPixel(col, row);
+					result[col, row] = pixel.R == 0xFF && pixel.G == 0xFF && pixel.B == 0xFF;
+				}
+			}
+			return result;
+		}
+
 		public static bool[,] MergeImages([NotNull] List<bool[,]> imagesData)
 		{
 			if (imagesData == null) throw new ArgumentNullException("imagesData");
@@ -159,7 +178,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		private static Size GetImageSize(bool[,] imageData)
+		public static Size GetImageSize(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return new Size(imageData.GetLength(0), imageData.GetLength(1));

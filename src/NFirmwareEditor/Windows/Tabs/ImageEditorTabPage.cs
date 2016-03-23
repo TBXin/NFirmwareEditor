@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -125,17 +126,20 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ClearAllPixelsButton.Click += ClearAllPixelsButton_Click;
 			InverseButton.Click += InvertButton_Click;
+			ResizeButton.Click += ResizeButton_Click;
+
+			CopyButton.Click += CopyButton_Click;
+			PasteButton.Click += PasteButton_Click;
+			BitmapImportButton.Click += BitmapImportButton_Click;
 
 			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
 			FlipVerticalButton.Click += FlipVerticalButton_Click;
-			ResizeButton.Click += ResizeButton_Click;
 
 			ShiftLeftButton.Click += ShiftLeftButton_Click;
 			ShiftRightButton.Click += ShiftRightButton_Click;
 			ShiftUpButton.Click += ShiftUpButton_Click;
 			ShiftDownButton.Click += ShiftDownButton_Click;
-			CopyButton.Click += CopyButton_Click;
-			PasteButton.Click += PasteButton_Click;
+
 			ImageEditorHotkeyInformationButton.Click += ImageEditorHotkeyInformationButton_Click;
 
 			CopyContextMenuItem.Click += CopyButton_Click;
@@ -168,53 +172,40 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (!keyData.HasFlag(Keys.Control)) return false;
 
-			if (keyData.HasFlag(Keys.N))
-			{
-				ClearAllPixelsButton.PerformClick();
-				return true;
-			}
-			if (keyData.HasFlag(Keys.I))
-			{
-				InverseButton.PerformClick();
-				return true;
-			}
-			if (keyData.HasFlag(Keys.C))
-			{
-				CopyButton.PerformClick();
-				return true;
-			}
-			if (keyData.HasFlag(Keys.V))
-			{
-				PasteButton.PerformClick();
-				return true;
-			}
-			if (keyData.HasFlag(Keys.A))
-			{
-				ImageListBox.SelectedIndices.Clear();
-				ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
-				return true;
-			}
-
 			var key = keyData &= ~Keys.Control;
-			if (key == Keys.Up)
+			switch (key)
 			{
-				ShiftUpButton.PerformClick();
-				return true;
-			}
-			if (key == Keys.Down)
-			{
-				ShiftDownButton.PerformClick();
-				return true;
-			}
-			if (key == Keys.Left)
-			{
-				ShiftLeftButton.PerformClick();
-				return true;
-			}
-			if (key == Keys.Right)
-			{
-				ShiftRightButton.PerformClick();
-				return true;
+				case Keys.N:
+					ClearAllPixelsButton.PerformClick();
+					return true;
+				case Keys.I:
+					InverseButton.PerformClick();
+					return true;
+				case Keys.R:
+					ResizeButton.PerformClick();
+					return true;
+				case Keys.C:
+					CopyButton.PerformClick();
+					return true;
+				case Keys.V:
+					PasteButton.PerformClick();
+					return true;
+				case Keys.A:
+					ImageListBox.SelectedIndices.Clear();
+					ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
+					return true;
+				case Keys.Up:
+					ShiftUpButton.PerformClick();
+					return true;
+				case Keys.Down:
+					ShiftDownButton.PerformClick();
+					return true;
+				case Keys.Left:
+					ShiftLeftButton.PerformClick();
+					return true;
+				case Keys.Right:
+					ShiftRightButton.PerformClick();
+					return true;
 			}
 			return false;
 		}
@@ -409,14 +400,46 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
+		private void BitmapImportButton_Click(object sender, EventArgs eventArgs)
+		{
+			if (LastSelectedImageMetadata == null) return;
+
+			using (var op = new OpenFileDialog { Filter = Consts.BitmapImportFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+
+				try
+				{
+					var bitmapFile = op.FileName;
+					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile, true))
+					{
+						var imageData = FirmwareImageProcessor.ImportBitmap(bitmap);
+						var imageSize = FirmwareImageProcessor.GetImageSize(imageData);
+
+						LastSelectedImageMetadata.Width = (byte)imageSize.Width;
+						LastSelectedImageMetadata.Height = (byte)imageSize.Height;
+						ProcessImage(x => imageData, LastSelectedImageMetadata);
+						ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+					}
+				}
+				catch (Exception ex)
+				{
+					InfoBox.Show("Unable to import bitmap image.\n" + ex.Message);
+				}
+			}
+		}
+
 		private void ImageEditorHotkeyInformationButton_Click(object sender, EventArgs e)
 		{
 			var sb = new StringBuilder();
 			{
-				sb.AppendLine("{0, -15} - {1}", "Copy", "Ctrl + C");
-				sb.AppendLine("{0, -15} - {1}", "Paste", "Ctrl + V");
 				sb.AppendLine("{0, -15} - {1}", "Clear", "Ctrl + C");
 				sb.AppendLine("{0, -15} - {1}", "Invert", "Ctrl + I");
+				sb.AppendLine();
+				sb.AppendLine("{0, -15} - {1}", "Copy", "Ctrl + C");
+				sb.AppendLine("{0, -15} - {1}", "Paste", "Ctrl + V");
+				sb.AppendLine("{0, -15} - {1}", "Resize", "Ctrl + R");
+				sb.AppendLine();
 				sb.AppendLine("{0, -15} - {1}", "Shift Up", "Ctrl + Up");
 				sb.AppendLine("{0, -15} - {1}", "Shift Down", "Ctrl + Down");
 				sb.AppendLine("{0, -15} - {1}", "Shift Left", "Ctrl + Left");

@@ -206,12 +206,12 @@ namespace NFirmwareEditor.Windows
 
 		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndReadFirmwareOnOk("encrypted", fileName => m_loader.TryLoadEncrypted(fileName, m_definitions));
+			OpenDialogAndReadFirmwareOnOk(Consts.Encrypted, fileName => m_loader.TryLoadEncrypted(fileName, m_definitions));
 		}
 
 		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndReadFirmwareOnOk("decrypted", fileName => m_loader.TryLoadDecrypted(fileName, m_definitions));
+			OpenDialogAndReadFirmwareOnOk(Consts.Decrypted, fileName => m_loader.TryLoadDecrypted(fileName, m_definitions));
 		}
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)

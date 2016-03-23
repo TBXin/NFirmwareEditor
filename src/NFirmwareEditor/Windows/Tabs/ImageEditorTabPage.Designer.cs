@@ -38,6 +38,7 @@
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.BitmapImportButton = new System.Windows.Forms.Button();
 			this.ResizeButton = new System.Windows.Forms.Button();
 			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
 			this.FlipVerticalButton = new System.Windows.Forms.Button();
@@ -155,6 +156,7 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.BitmapImportButton);
 			this.borderedPanel2.Controls.Add(this.ResizeButton);
 			this.borderedPanel2.Controls.Add(this.ImageEditorHotkeyInformationButton);
 			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
@@ -178,13 +180,24 @@
 			this.borderedPanel2.TabIndex = 7;
 			this.borderedPanel2.Text = "borderedPanel2";
 			// 
+			// BitmapImportButton
+			// 
+			this.BitmapImportButton.Image = global::NFirmwareEditor.Properties.Resources.bitmap_import;
+			this.BitmapImportButton.Location = new System.Drawing.Point(308, 3);
+			this.BitmapImportButton.Name = "BitmapImportButton";
+			this.BitmapImportButton.Size = new System.Drawing.Size(24, 24);
+			this.BitmapImportButton.TabIndex = 17;
+			this.BitmapImportButton.TabStop = false;
+			this.BitmapImportButton.UseVisualStyleBackColor = true;
+			// 
 			// ResizeButton
 			// 
 			this.ResizeButton.Image = global::NFirmwareEditor.Properties.Resources.image_resize;
-			this.ResizeButton.Location = new System.Drawing.Point(338, 3);
+			this.ResizeButton.Location = new System.Drawing.Point(232, 3);
 			this.ResizeButton.Name = "ResizeButton";
 			this.ResizeButton.Size = new System.Drawing.Size(24, 24);
 			this.ResizeButton.TabIndex = 16;
+			this.ResizeButton.TabStop = false;
 			this.ResizeButton.UseVisualStyleBackColor = true;
 			// 
 			// ImageEditorHotkeyInformationButton
@@ -195,42 +208,47 @@
 			this.ImageEditorHotkeyInformationButton.Name = "ImageEditorHotkeyInformationButton";
 			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
 			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
+			this.ImageEditorHotkeyInformationButton.TabStop = false;
 			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
 			// 
 			// FlipVerticalButton
 			// 
 			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
-			this.FlipVerticalButton.Location = new System.Drawing.Point(315, 3);
+			this.FlipVerticalButton.Location = new System.Drawing.Point(361, 3);
 			this.FlipVerticalButton.Name = "FlipVerticalButton";
 			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
 			this.FlipVerticalButton.TabIndex = 14;
+			this.FlipVerticalButton.TabStop = false;
 			this.FlipVerticalButton.UseVisualStyleBackColor = true;
 			// 
 			// FlipHorizontalButton
 			// 
 			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
-			this.FlipHorizontalButton.Location = new System.Drawing.Point(292, 3);
+			this.FlipHorizontalButton.Location = new System.Drawing.Point(338, 3);
 			this.FlipHorizontalButton.Name = "FlipHorizontalButton";
 			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
 			this.FlipHorizontalButton.TabIndex = 13;
+			this.FlipHorizontalButton.TabStop = false;
 			this.FlipHorizontalButton.UseVisualStyleBackColor = true;
 			// 
 			// PasteButton
 			// 
 			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteButton.Location = new System.Drawing.Point(262, 3);
+			this.PasteButton.Location = new System.Drawing.Point(285, 3);
 			this.PasteButton.Name = "PasteButton";
 			this.PasteButton.Size = new System.Drawing.Size(24, 24);
 			this.PasteButton.TabIndex = 12;
+			this.PasteButton.TabStop = false;
 			this.PasteButton.UseVisualStyleBackColor = true;
 			// 
 			// CopyButton
 			// 
 			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyButton.Location = new System.Drawing.Point(239, 3);
+			this.CopyButton.Location = new System.Drawing.Point(262, 3);
 			this.CopyButton.Name = "CopyButton";
 			this.CopyButton.Size = new System.Drawing.Size(24, 24);
 			this.CopyButton.TabIndex = 11;
+			this.CopyButton.TabStop = false;
 			this.CopyButton.UseVisualStyleBackColor = true;
 			// 
 			// InverseButton
@@ -240,6 +258,7 @@
 			this.InverseButton.Name = "InverseButton";
 			this.InverseButton.Size = new System.Drawing.Size(24, 24);
 			this.InverseButton.TabIndex = 10;
+			this.InverseButton.TabStop = false;
 			this.InverseButton.UseVisualStyleBackColor = true;
 			// 
 			// ClearAllPixelsButton
@@ -249,42 +268,47 @@
 			this.ClearAllPixelsButton.Name = "ClearAllPixelsButton";
 			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);
 			this.ClearAllPixelsButton.TabIndex = 9;
+			this.ClearAllPixelsButton.TabStop = false;
 			this.ClearAllPixelsButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftDownButton
 			// 
 			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.ShiftDownButton.Location = new System.Drawing.Point(437, 3);
+			this.ShiftDownButton.Location = new System.Drawing.Point(460, 3);
 			this.ShiftDownButton.Name = "ShiftDownButton";
 			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftDownButton.TabIndex = 7;
+			this.ShiftDownButton.TabStop = false;
 			this.ShiftDownButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftUpButton
 			// 
 			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.ShiftUpButton.Location = new System.Drawing.Point(414, 3);
+			this.ShiftUpButton.Location = new System.Drawing.Point(437, 3);
 			this.ShiftUpButton.Name = "ShiftUpButton";
 			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftUpButton.TabIndex = 6;
+			this.ShiftUpButton.TabStop = false;
 			this.ShiftUpButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftRightButton
 			// 
 			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.ShiftRightButton.Location = new System.Drawing.Point(391, 3);
+			this.ShiftRightButton.Location = new System.Drawing.Point(414, 3);
 			this.ShiftRightButton.Name = "ShiftRightButton";
 			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftRightButton.TabIndex = 5;
+			this.ShiftRightButton.TabStop = false;
 			this.ShiftRightButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftLeftButton
 			// 
 			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.ShiftLeftButton.Location = new System.Drawing.Point(368, 3);
+			this.ShiftLeftButton.Location = new System.Drawing.Point(391, 3);
 			this.ShiftLeftButton.Name = "ShiftLeftButton";
 			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftLeftButton.TabIndex = 4;
+			this.ShiftLeftButton.TabStop = false;
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel4
@@ -356,6 +380,7 @@
 			this.ShowGridCheckBox.Name = "ShowGridCheckBox";
 			this.ShowGridCheckBox.Size = new System.Drawing.Size(73, 17);
 			this.ShowGridCheckBox.TabIndex = 2;
+			this.ShowGridCheckBox.TabStop = false;
 			this.ShowGridCheckBox.Text = "Show grid";
 			this.ShowGridCheckBox.UseVisualStyleBackColor = true;
 			// 
@@ -379,6 +404,7 @@
 			this.GridSizeUpDown.Name = "GridSizeUpDown";
 			this.GridSizeUpDown.Size = new System.Drawing.Size(42, 21);
 			this.GridSizeUpDown.TabIndex = 0;
+			this.GridSizeUpDown.TabStop = false;
 			this.GridSizeUpDown.Value = new decimal(new int[] {
             16,
             0,
@@ -568,5 +594,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ImageSizeLabel;
 		private System.Windows.Forms.Button ResizeButton;
+		private System.Windows.Forms.Button BitmapImportButton;
 	}
 }
