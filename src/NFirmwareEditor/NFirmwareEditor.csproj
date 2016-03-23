@@ -67,6 +67,12 @@
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
+    <Compile Include="Windows\ResizeImageWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ResizeImageWindow.Designer.cs">
+      <DependentUpon>ResizeImageWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tabs\IEditorTabPage.cs" />
     <Compile Include="Windows\Tabs\ImageEditorTabPage.cs">
       <SubType>UserControl</SubType>
@@ -120,6 +126,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Windows\ResizeImageWindow.resx">
+      <DependentUpon>ResizeImageWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\ImageEditorTabPage.resx">
       <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\image_resize.png" />
     <None Include="Resources\information.png" />
     <None Include="Resources\flip_vertical.png" />
     <None Include="Resources\flip_horizontal.png" />

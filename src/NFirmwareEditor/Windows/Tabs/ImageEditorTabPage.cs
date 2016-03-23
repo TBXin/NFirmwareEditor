@@ -125,8 +125,11 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ClearAllPixelsButton.Click += ClearAllPixelsButton_Click;
 			InverseButton.Click += InvertButton_Click;
+
 			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
 			FlipVerticalButton.Click += FlipVerticalButton_Click;
+			ResizeButton.Click += ResizeButton_Click;
+
 			ShiftLeftButton.Click += ShiftLeftButton_Click;
 			ShiftRightButton.Click += ShiftRightButton_Click;
 			ShiftUpButton.Click += ShiftUpButton_Click;
@@ -320,6 +323,20 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (LastSelectedImageMetadata == null) return;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
+		}
+
+		private void ResizeButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+
+			using (var rw = new ResizeImageWindow(LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height))
+			{
+				if (rw.ShowDialog() != DialogResult.OK) return;
+
+				LastSelectedImageMetadata.Width = (byte)rw.NewSize.Width;
+				LastSelectedImageMetadata.Height = (byte)rw.NewSize.Height;
+				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+			}
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)

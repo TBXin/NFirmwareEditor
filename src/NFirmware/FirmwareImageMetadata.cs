@@ -15,12 +15,12 @@ namespace NFirmware
 		/// <summary>
 		/// Gets the image width.
 		/// </summary>
-		public byte Width { get; protected set; }
+		public byte Width { get; set; }
 
 		/// <summary>
 		/// Gets the image height.
 		/// </summary>
-		public byte Height { get; protected set; }
+		public byte Height { get; set; }
 
 		/// <summary>
 		/// Gets the image absolute offset in the firmware.

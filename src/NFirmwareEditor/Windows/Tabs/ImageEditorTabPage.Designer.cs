@@ -38,6 +38,7 @@
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ResizeButton = new System.Windows.Forms.Button();
 			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
 			this.FlipVerticalButton = new System.Windows.Forms.Button();
 			this.FlipHorizontalButton = new System.Windows.Forms.Button();
@@ -154,6 +155,7 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.ResizeButton);
 			this.borderedPanel2.Controls.Add(this.ImageEditorHotkeyInformationButton);
 			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
 			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
@@ -175,6 +177,15 @@
 			this.borderedPanel2.Size = new System.Drawing.Size(627, 358);
 			this.borderedPanel2.TabIndex = 7;
 			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// ResizeButton
+			// 
+			this.ResizeButton.Image = global::NFirmwareEditor.Properties.Resources.image_resize;
+			this.ResizeButton.Location = new System.Drawing.Point(338, 3);
+			this.ResizeButton.Name = "ResizeButton";
+			this.ResizeButton.Size = new System.Drawing.Size(24, 24);
+			this.ResizeButton.TabIndex = 16;
+			this.ResizeButton.UseVisualStyleBackColor = true;
 			// 
 			// ImageEditorHotkeyInformationButton
 			// 
@@ -243,7 +254,7 @@
 			// ShiftDownButton
 			// 
 			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.ShiftDownButton.Location = new System.Drawing.Point(414, 3);
+			this.ShiftDownButton.Location = new System.Drawing.Point(437, 3);
 			this.ShiftDownButton.Name = "ShiftDownButton";
 			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftDownButton.TabIndex = 7;
@@ -252,7 +263,7 @@
 			// ShiftUpButton
 			// 
 			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.ShiftUpButton.Location = new System.Drawing.Point(391, 3);
+			this.ShiftUpButton.Location = new System.Drawing.Point(414, 3);
 			this.ShiftUpButton.Name = "ShiftUpButton";
 			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftUpButton.TabIndex = 6;
@@ -261,7 +272,7 @@
 			// ShiftRightButton
 			// 
 			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.ShiftRightButton.Location = new System.Drawing.Point(368, 3);
+			this.ShiftRightButton.Location = new System.Drawing.Point(391, 3);
 			this.ShiftRightButton.Name = "ShiftRightButton";
 			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftRightButton.TabIndex = 5;
@@ -270,7 +281,7 @@
 			// ShiftLeftButton
 			// 
 			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.ShiftLeftButton.Location = new System.Drawing.Point(345, 3);
+			this.ShiftLeftButton.Location = new System.Drawing.Point(368, 3);
 			this.ShiftLeftButton.Name = "ShiftLeftButton";
 			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftLeftButton.TabIndex = 4;
@@ -556,5 +567,6 @@
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ImageSizeLabel;
+		private System.Windows.Forms.Button ResizeButton;
 	}
 }
