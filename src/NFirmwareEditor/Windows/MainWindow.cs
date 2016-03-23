@@ -100,7 +100,7 @@ namespace NFirmwareEditor.Windows
 				try
 				{
 					var imageData = firmware.ReadImage(imageMetadata);
-					var image = FirmwareImageProcessor.CreateImage(imageData);
+					var image = FirmwareImageProcessor.CreateBitmap(imageData);
 					block1ImageCache[imageMetadata.Index] = image;
 				}
 				catch
@@ -116,7 +116,7 @@ namespace NFirmwareEditor.Windows
 				try
 				{
 					var imageData = firmware.ReadImage(imageMetadata);
-					var image = FirmwareImageProcessor.CreateImage(imageData);
+					var image = FirmwareImageProcessor.CreateBitmap(imageData);
 					block2ImageCache[imageMetadata.Index] = image;
 				}
 				catch

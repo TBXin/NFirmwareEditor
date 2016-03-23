@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NFirmwareEditor.UI
 {
-	sealed class BorderedPanel : ScrollableControl
+	sealed class BorderedPanel : Panel
 	{
 		private RectangleF m_clientRect;
 

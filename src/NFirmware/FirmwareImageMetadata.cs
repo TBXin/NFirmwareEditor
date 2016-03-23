@@ -7,6 +7,8 @@ namespace NFirmware
 	/// </summary>
 	public abstract class FirmwareImageMetadata
 	{
+		internal const byte HeaderLength = 2;
+
 		/// <summary>
 		/// Gets the image index.
 		/// </summary>
@@ -44,11 +46,21 @@ namespace NFirmware
 		/// <param name="imageIndex">Character generator index.</param>
 		internal FirmwareImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
 		{
+			DataOffset = reader.BaseStream.Position;
 			Index = imageIndex;
 			Width = reader.ReadByte();
 			Height = reader.ReadByte();
-			DataOffset = reader.BaseStream.Position;
 			return this;
+		}
+
+		internal byte[] CreateEmptyImage()
+		{
+			var result = new byte[DataLength + HeaderLength];
+			{
+				result[0] = Width;
+				result[1] = Height;
+			}
+			return result;
 		}
 
 		/// <summary>

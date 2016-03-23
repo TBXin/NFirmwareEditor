@@ -109,7 +109,7 @@ namespace NFirmware
 		private static byte[] GetImageBytes([NotNull] IEnumerable<byte> firmware, [NotNull] FirmwareImageMetadata metadata)
 		{
 			return firmware
-				.Skip((int)metadata.DataOffset)
+				.Skip((int)metadata.DataOffset + FirmwareImageMetadata.HeaderLength)
 				.Take((int)metadata.DataLength)
 				.ToArray();
 		}

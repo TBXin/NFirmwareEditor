@@ -227,7 +227,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			var updateCache = new Action(() =>
 			{
-				var cachedImage = FirmwareImageProcessor.CreateImage(processedData);
+				var cachedImage = FirmwareImageProcessor.CreateBitmap(processedData);
 				ImageCacheManager.SetImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
 
 				ImageListBox.Invoke(new Action(() =>
@@ -333,8 +333,10 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				if (rw.ShowDialog() != DialogResult.OK) return;
 
-				LastSelectedImageMetadata.Width = (byte)rw.NewSize.Width;
-				LastSelectedImageMetadata.Height = (byte)rw.NewSize.Height;
+				var newSize = rw.NewSize;
+				LastSelectedImageMetadata.Width = (byte)newSize.Width;
+				LastSelectedImageMetadata.Height = (byte)newSize.Height;
+				ProcessImage(x => FirmwareImageProcessor.ResizeImage(x, newSize), LastSelectedImageMetadata);
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
 		}

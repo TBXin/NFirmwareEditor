@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Linq;
 
 namespace NFirmware
 {
@@ -12,7 +14,7 @@ namespace NFirmware
 		/// </summary>
 		public override long DataLength
 		{
-			get { return Width * Height / 8; }
+			get { return Width * (int)Math.Ceiling(Height / 8f); }
 		}
 
 		/// <summary>
@@ -45,6 +47,7 @@ namespace NFirmware
 
 				for (var j = 0; j < bits.Length; j++)
 				{
+					if (rowCounter + j >= Height) break;
 					result[colCounter, rowCounter + j] = bits[j];
 				}
 
@@ -59,8 +62,8 @@ namespace NFirmware
 		/// <param name="imageData">Image data.</param>
 		internal override byte[] Save(bool[,] imageData)
 		{
-			var imageBytes = new byte[DataLength];
-			var imageBytesCounter = 0;
+			var imageBytes = CreateEmptyImage();
+			var imageBytesCounter = HeaderLength;
 			var rowCounter = 0;
 
 			while (rowCounter < Height)
@@ -70,6 +73,7 @@ namespace NFirmware
 				{
 					for (var row = 0; row < byteBits.Length; row++)
 					{
+						if (rowCounter + row >= Height) break;
 						byteBits[row] = imageData[col, rowCounter + row];
 					}
 					imageBytes[imageBytesCounter++] = new BitArray(byteBits).ToByte();

@@ -20,7 +20,6 @@ namespace NFirmware
 		public static byte ToByte(this BitArray bitArray)
 		{
 			if (bitArray == null) throw new ArgumentNullException("bitArray");
-			if (bitArray.Count != 8) throw new ArgumentException("bits");
 
 			var bytes = new byte[1];
 			bitArray.CopyTo(bytes, 0);

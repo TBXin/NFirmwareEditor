@@ -79,6 +79,25 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
+		public static bool[,] ResizeImage([NotNull] bool[,] sourceImageData, Size newSize)
+		{
+			if (sourceImageData == null) throw new ArgumentNullException("sourceImageData");
+
+			var sourceSize = GetImageSize(sourceImageData);
+			var width = Math.Min(sourceSize.Width, newSize.Width);
+			var height = Math.Min(sourceSize.Height, newSize.Height);
+
+			var result = new bool[newSize.Width, newSize.Height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					result[col, row] = sourceImageData[col, row];
+				}
+			}
+			return result;
+		}
+
 		public static bool[,] MergeImages([NotNull] List<bool[,]> imagesData)
 		{
 			if (imagesData == null) throw new ArgumentNullException("imagesData");
@@ -111,7 +130,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static Image CreateImage([NotNull] bool[,] imageData, int pixelSize = 2)
+		public static Image CreateBitmap([NotNull] bool[,] imageData, int pixelSize = 2)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 
