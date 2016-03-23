@@ -1,0 +1,17 @@
+﻿using System.Windows.Forms;
+using JetBrains.Annotations;
+using NFirmware;
+using NFirmwareEditor.Models;
+
+namespace NFirmwareEditor.Windows.Tabs
+{
+	internal interface IEditorTabPage
+	{
+		string Title { get; }
+		void Initialize([NotNull] Configuration configuration);
+		void OnWorkspaceReset();
+		void OnFirmwareLoaded([NotNull] Firmware firmware);
+		void OnActivate();
+		bool OnHotkey(Keys keyData);
+	}
+}

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitArrayExtensions.cs" />
+    <Compile Include="BlockType.cs" />
     <Compile Include="Firmware.cs" />
     <Compile Include="FirmwareDefinition.cs" />
     <Compile Include="FirmwareEncoder.cs" />

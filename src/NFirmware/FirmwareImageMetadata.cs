@@ -33,6 +33,11 @@ namespace NFirmware
 		public abstract long DataLength { get; }
 
 		/// <summary>
+		/// Gets the block type.
+		/// </summary>
+		public abstract BlockType BlockType { get; }
+
+		/// <summary>
 		/// Reads the image metadata at the specified offset.
 		/// </summary>
 		/// <param name="reader">Binary reader.</param>

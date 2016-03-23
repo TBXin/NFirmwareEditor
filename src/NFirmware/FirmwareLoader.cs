@@ -133,8 +133,8 @@ namespace NFirmware
 			{
 				using (var reader = new BinaryReader(ms))
 				{
-					var block1String = ReadStringTable(definition.StringTable1, reader);
-					var block2Strings = ReadStringTable(definition.StringTable2, reader);
+					var block1String = ReadStringTable(definition.StringTable1, BlockType.Block1, reader);
+					var block2Strings = ReadStringTable(definition.StringTable2, BlockType.Block2, reader);
 					return new FirmwareStringBlocks(block1String, block2Strings);
 				}
 			}
@@ -166,7 +166,7 @@ namespace NFirmware
 			return result;
 		}
 
-		private IEnumerable<FirmwareStringMetadata> ReadStringTable([CanBeNull] StringTableDefinition stringTableDefinition, [NotNull] BinaryReader reader)
+		private IEnumerable<FirmwareStringMetadata> ReadStringTable([CanBeNull] StringTableDefinition stringTableDefinition, BlockType blockType, [NotNull] BinaryReader reader)
 		{
 			if (stringTableDefinition == null) return new List<FirmwareStringMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
@@ -197,7 +197,7 @@ namespace NFirmware
 						}
 						else break;
 					}
-					result.Add(new FirmwareStringMetadata(result.Count + 1, offset, dataLength));
+					result.Add(new FirmwareStringMetadata(result.Count + 1, offset, dataLength, blockType));
 				}
 			}
 			return result;

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
+    <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
@@ -66,6 +67,13 @@
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
+    <Compile Include="Windows\Tabs\IEditorTabPage.cs" />
+    <Compile Include="Windows\Tabs\ImageEditorTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Tabs\ImageEditorTabPage.Designer.cs">
+      <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ImportImageWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,12 +91,15 @@
     <Compile Include="UI\BorderedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\ImagedComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\ImagedListBoxItem.cs" />
+    <Compile Include="UI\ImagedItem.cs" />
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Tabs\StringEditorTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Tabs\StringEditorTabPage.Designer.cs">
+      <DependentUpon>StringEditorTabPage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Windows\DecryptionWindow.resx">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
@@ -109,6 +120,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Windows\Tabs\ImageEditorTabPage.resx">
+      <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Tabs\StringEditorTabPage.resx">
+      <DependentUpon>StringEditorTabPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,6 +167,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\information.png" />
     <None Include="Resources\flip_vertical.png" />
     <None Include="Resources\flip_horizontal.png" />
     <None Include="Resources\image_import.png" />

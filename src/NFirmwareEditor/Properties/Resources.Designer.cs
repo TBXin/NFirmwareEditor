@@ -74,7 +74,12 @@ namespace NFirmwareEditor.Properties {
         ///   Looks up a localized string similar to NFirmwareEditor v{0}
         ///
         ///Firmware resource editor for vaping devices such as:
-        ///Evic VTC Mini, Cuboid, RX200, PresaTC75W and so on...
+        ///
+        ///Joyetech: Evic VTC Mini, Cuboid;
+        ///Wismec: Reuleaux RX200, Presa TC75W;
+        ///Vaporflask: Lite, Classic, Stout;
+        ///Eleaf: iStick TC100W;
+        ///and so on...
         ///
         ///ReikoKitsune © 2016.
         /// </summary>
@@ -180,6 +185,16 @@ namespace NFirmwareEditor.Properties {
         internal static System.Drawing.Bitmap image_import {
             get {
                 object obj = ResourceManager.GetObject("image_import", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information {
+            get {
+                object obj = ResourceManager.GetObject("information", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -18,6 +18,14 @@ namespace NFirmware
 		}
 
 		/// <summary>
+		/// Gets the block type.
+		/// </summary>
+		public override BlockType BlockType
+		{
+			get { return BlockType.Block2; }
+		}
+
+		/// <summary>
 		/// Reads the image from bytes array and transforms to the two-dimensional bool array.
 		/// </summary>
 		/// <param name="imageBytes">Image bytes.</param>
