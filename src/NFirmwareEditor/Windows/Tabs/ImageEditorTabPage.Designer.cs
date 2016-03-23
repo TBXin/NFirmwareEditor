@@ -30,7 +30,15 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.Block1ImageRadioButton = new System.Windows.Forms.RadioButton();
+			this.Block2ImageRadioButton = new System.Windows.Forms.RadioButton();
+			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
 			this.FlipVerticalButton = new System.Windows.Forms.Button();
 			this.FlipHorizontalButton = new System.Windows.Forms.Button();
 			this.PasteButton = new System.Windows.Forms.Button();
@@ -43,31 +51,27 @@
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.ImageSizeLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
-			this.Block2ImageRadioButton = new System.Windows.Forms.RadioButton();
 			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
-			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
-			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
+			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
 			this.borderedPanel4.SuspendLayout();
+			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).BeginInit();
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
-			this.ImageListBoxContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Block1ImageRadioButton
@@ -78,9 +82,65 @@
 			this.Block1ImageRadioButton.Name = "Block1ImageRadioButton";
 			this.Block1ImageRadioButton.Size = new System.Drawing.Size(71, 30);
 			this.Block1ImageRadioButton.TabIndex = 6;
+			this.Block1ImageRadioButton.TabStop = true;
 			this.Block1ImageRadioButton.Text = "Block 1";
 			this.Block1ImageRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.Block1ImageRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// Block2ImageRadioButton
+			// 
+			this.Block2ImageRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2ImageRadioButton.Location = new System.Drawing.Point(70, 1);
+			this.Block2ImageRadioButton.Name = "Block2ImageRadioButton";
+			this.Block2ImageRadioButton.Size = new System.Drawing.Size(71, 30);
+			this.Block2ImageRadioButton.TabIndex = 8;
+			this.Block2ImageRadioButton.Text = "Block 2";
+			this.Block2ImageRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block2ImageRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// ImageListBoxContextMenu
+			// 
+			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyContextMenuItem,
+            this.PasteContextMenuItem,
+            this.toolStripSeparator3,
+            this.ExportContextMenuItem,
+            this.ImportContextMenuItem});
+			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
+			// 
+			// CopyContextMenuItem
+			// 
+			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
+			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.CopyContextMenuItem.Text = "Copy";
+			// 
+			// PasteContextMenuItem
+			// 
+			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
+			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.PasteContextMenuItem.Text = "Paste";
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
+			// 
+			// ExportContextMenuItem
+			// 
+			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
+			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
+			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.ExportContextMenuItem.Text = "Export";
+			// 
+			// ImportContextMenuItem
+			// 
+			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
+			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
+			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.ImportContextMenuItem.Text = "Import";
 			// 
 			// borderedPanel2
 			// 
@@ -115,6 +175,16 @@
 			this.borderedPanel2.Size = new System.Drawing.Size(627, 358);
 			this.borderedPanel2.TabIndex = 7;
 			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// ImageEditorHotkeyInformationButton
+			// 
+			this.ImageEditorHotkeyInformationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ImageEditorHotkeyInformationButton.Image = global::NFirmwareEditor.Properties.Resources.information;
+			this.ImageEditorHotkeyInformationButton.Location = new System.Drawing.Point(599, 3);
+			this.ImageEditorHotkeyInformationButton.Name = "ImageEditorHotkeyInformationButton";
+			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
+			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
+			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
 			// 
 			// FlipVerticalButton
 			// 
@@ -219,6 +289,7 @@
 			this.borderedPanel4.BorderTop = true;
 			this.borderedPanel4.BorderWidth = 1F;
 			this.borderedPanel4.Controls.Add(this.ImagePixelGrid);
+			this.borderedPanel4.Controls.Add(this.statusStrip1);
 			this.borderedPanel4.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -239,9 +310,31 @@
 			this.ImagePixelGrid.Name = "ImagePixelGrid";
 			this.ImagePixelGrid.ReadOnly = false;
 			this.ImagePixelGrid.ShowGrid = true;
-			this.ImagePixelGrid.Size = new System.Drawing.Size(625, 327);
+			this.ImagePixelGrid.Size = new System.Drawing.Size(625, 305);
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
+			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ImageSizeLabel,
+            this.CursorPositionLabel});
+			this.statusStrip1.Location = new System.Drawing.Point(0, 306);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(625, 22);
+			this.statusStrip1.SizingGrip = false;
+			this.statusStrip1.TabIndex = 1;
+			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// ImageSizeLabel
+			// 
+			this.ImageSizeLabel.Name = "ImageSizeLabel";
+			this.ImageSizeLabel.Size = new System.Drawing.Size(0, 17);
+			// 
+			// CursorPositionLabel
+			// 
+			this.CursorPositionLabel.Name = "CursorPositionLabel";
+			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// ShowGridCheckBox
 			// 
@@ -280,17 +373,6 @@
             0,
             0,
             0});
-			// 
-			// Block2ImageRadioButton
-			// 
-			this.Block2ImageRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block2ImageRadioButton.Location = new System.Drawing.Point(70, 1);
-			this.Block2ImageRadioButton.Name = "Block2ImageRadioButton";
-			this.Block2ImageRadioButton.Size = new System.Drawing.Size(71, 30);
-			this.Block2ImageRadioButton.TabIndex = 8;
-			this.Block2ImageRadioButton.Text = "Block 2";
-			this.Block2ImageRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block2ImageRadioButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel3
 			// 
@@ -393,50 +475,6 @@
 			this.Block1ImageListBox.Size = new System.Drawing.Size(138, 446);
 			this.Block1ImageListBox.TabIndex = 0;
 			// 
-			// ImageListBoxContextMenu
-			// 
-			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyContextMenuItem,
-            this.PasteContextMenuItem,
-            this.toolStripSeparator3,
-            this.ExportContextMenuItem,
-            this.ImportContextMenuItem});
-			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
-			// 
-			// CopyContextMenuItem
-			// 
-			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
-			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.CopyContextMenuItem.Text = "Copy";
-			// 
-			// PasteContextMenuItem
-			// 
-			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
-			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.PasteContextMenuItem.Text = "Paste";
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
-			// 
-			// ExportContextMenuItem
-			// 
-			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
-			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ExportContextMenuItem.Text = "Export";
-			// 
-			// ImportContextMenuItem
-			// 
-			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
-			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
-			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ImportContextMenuItem.Text = "Import";
-			// 
 			// Block2ImageListBox
 			// 
 			this.Block2ImageListBox.BackColor = System.Drawing.Color.Black;
@@ -453,16 +491,6 @@
 			this.Block2ImageListBox.Size = new System.Drawing.Size(138, 446);
 			this.Block2ImageListBox.TabIndex = 0;
 			// 
-			// ImageEditorHotkeyInformationButton
-			// 
-			this.ImageEditorHotkeyInformationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ImageEditorHotkeyInformationButton.Image = global::NFirmwareEditor.Properties.Resources.information;
-			this.ImageEditorHotkeyInformationButton.Location = new System.Drawing.Point(599, 3);
-			this.ImageEditorHotkeyInformationButton.Name = "ImageEditorHotkeyInformationButton";
-			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
-			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
-			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
-			// 
 			// ImageEditorTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,15 +503,18 @@
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.Name = "ImageEditorTabPage";
 			this.Size = new System.Drawing.Size(772, 482);
+			this.ImageListBoxContextMenu.ResumeLayout(false);
 			this.borderedPanel2.ResumeLayout(false);
 			this.borderedPanel2.PerformLayout();
 			this.borderedPanel4.ResumeLayout(false);
+			this.borderedPanel4.PerformLayout();
+			this.statusStrip1.ResumeLayout(false);
+			this.statusStrip1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).EndInit();
 			this.borderedPanel3.ResumeLayout(false);
 			this.borderedPanel3.PerformLayout();
 			this.borderedPanel5.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
-			this.ImageListBoxContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -522,5 +553,8 @@
 		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ImportContextMenuItem;
 		private System.Windows.Forms.Button ImageEditorHotkeyInformationButton;
+		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
+		private System.Windows.Forms.ToolStripStatusLabel ImageSizeLabel;
 	}
 }

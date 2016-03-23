@@ -98,9 +98,9 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ImagePixelGrid.CursorPositionChanged += location =>
 			{
-				/*CursorPositionLabel.Text = location.HasValue
+				CursorPositionLabel.Text = location.HasValue
 					? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
-					: string.Empty;*/
+					: string.Empty;
 			};
 
 			ImagePixelGrid.DataUpdated += data =>
@@ -277,7 +277,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (m_imageListBoxIsUpdating || LastSelectedImageMetadata == null) return;
 
-			// StatusLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
+			ImageSizeLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
 			try
 			{
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
