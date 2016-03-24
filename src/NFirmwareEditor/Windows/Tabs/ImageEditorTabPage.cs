@@ -16,10 +16,11 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	public partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
-		private const int ImagedListBoxItemMaxHeight = 24 * 2;
+		private const int ImagedListBoxItemMaxHeight = 32 * 2;
 		private const int ImagedListBoxItemImageMargin = 6;
 
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
+		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
 		private Configuration m_configuration;
 		private Firmware m_firmware;
@@ -519,7 +520,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ImageListBox.SelectedIndex = lastSelectedItem;
 		}
 
-		private static void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)
+		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)
 		{
 			var listBox = sender as ListBox;
 
@@ -535,14 +536,13 @@ namespace NFirmwareEditor.Windows.Tabs
 			e.DrawBackground();
 
 			var itemText = item.ToString();
-			var textSize = e.Graphics.MeasureString(itemText, e.Font);
 
 			try
 			{
 				var imageScale = 1f;
 				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
 				if (image.Width > ImagedListBoxItemMaxHeight) imageScale = (float)image.Width / ImagedListBoxItemMaxHeight;
-				if (image.Height > ImagedListBoxItemMaxHeight) imageScale = (float)image.Height / ImagedListBoxItemMaxHeight;
+				else if (image.Height > ImagedListBoxItemMaxHeight) imageScale = (float)image.Height / ImagedListBoxItemMaxHeight;
 
 				var resultWidth = image.Width / imageScale;
 				var resultHeight = image.Height / imageScale;
@@ -554,13 +554,21 @@ namespace NFirmwareEditor.Windows.Tabs
 				// Ignore
 			}
 
-			e.Graphics.DrawString(itemText, e.Font, new SolidBrush(e.ForeColor), e.Bounds.X + ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2, e.Bounds.Y + (int)(e.Bounds.Height / 2f - textSize.Height / 2f));
+			var stringRectX = e.Bounds.X + ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2;
+			e.Graphics.DrawString
+			(
+				itemText,
+				e.Font,
+				new SolidBrush(e.ForeColor),
+				new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - ImagedListBoxItemImageMargin, e.Bounds.Height),
+				m_listBoxStringFormat
+			);
 			e.DrawFocusRectangle();
 		}
 
 		private static void ImageListBox_MeasureItem(object sender, MeasureItemEventArgs e)
 		{
-			e.ItemHeight = ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2;
+			e.ItemHeight = ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin;
 		}
 	}
 }
