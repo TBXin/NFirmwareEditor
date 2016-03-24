@@ -9,5 +9,7 @@
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg";
 		internal const string Encrypted = "encrypted";
 		internal const string Decrypted = "decrypted";
+
+		internal const int MaximumImageWidthAndHeight = 128;
 	}
 }

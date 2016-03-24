@@ -428,6 +428,11 @@ namespace NFirmwareEditor.Windows.Tabs
 					var bitmapFile = op.FileName;
 					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile, true))
 					{
+						if (bitmap.Width > Consts.MaximumImageWidthAndHeight || bitmap.Height > Consts.MaximumImageWidthAndHeight)
+						{
+							InfoBox.Show("Image is too big. Image width and height must be lower or equals to {0} pixels.", Consts.MaximumImageWidthAndHeight);
+							return;
+						}
 						var imageData = FirmwareImageProcessor.ImportBitmap(bitmap);
 						ProcessImage(x => imageData, LastSelectedImageMetadata, true);
 						ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);

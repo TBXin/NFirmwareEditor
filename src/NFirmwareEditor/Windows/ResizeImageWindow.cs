@@ -11,6 +11,7 @@ namespace NFirmwareEditor.Windows
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
+			NewWidthUpDown.Maximum = NewHeightUpDown.Maximum = Consts.MaximumImageWidthAndHeight;
 
 			Load += (s, e) => { NewWidthUpDown.Select(); };
 			NewWidthUpDown.Enter += UpDownEnter;
