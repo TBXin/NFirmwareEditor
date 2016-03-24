@@ -442,21 +442,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ImageEditorHotkeyInformationButton_Click(object sender, EventArgs e)
 		{
-			var sb = new StringBuilder();
-			{
-				sb.AppendLine("{0, -15} - {1}", "Clear", "Ctrl + C");
-				sb.AppendLine("{0, -15} - {1}", "Invert", "Ctrl + I");
-				sb.AppendLine();
-				sb.AppendLine("{0, -15} - {1}", "Copy", "Ctrl + C");
-				sb.AppendLine("{0, -15} - {1}", "Paste", "Ctrl + V");
-				sb.AppendLine("{0, -15} - {1}", "Resize", "Ctrl + R");
-				sb.AppendLine();
-				sb.AppendLine("{0, -15} - {1}", "Shift Up", "Ctrl + Up");
-				sb.AppendLine("{0, -15} - {1}", "Shift Down", "Ctrl + Down");
-				sb.AppendLine("{0, -15} - {1}", "Shift Left", "Ctrl + Left");
-				sb.AppendLine("{0, -15} - {1}", "Shift Right", "Ctrl + Right");
-			}
-			InfoBox.Show(sb.ToString());
+			new HotkeyHelpWindow().ShowDialog();
 		}
 
 		private void ExportContextMenuItem_Click(object sender, EventArgs e)

@@ -67,6 +67,12 @@
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
+    <Compile Include="Windows\HotkeyHelpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\HotkeyHelpWindow.Designer.cs">
+      <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ResizeImageWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
     <EmbeddedResource Include="Windows\DecryptionWindow.resx">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\HotkeyHelpWindow.resx">
+      <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\ImportImageWindow.resx">
       <DependentUpon>ImportImageWindow.cs</DependentUpon>
