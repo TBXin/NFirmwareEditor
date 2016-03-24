@@ -539,15 +539,15 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
+				var imageScale = 1f;
 				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
-				if (image.Width > ImagedListBoxItemMaxHeight || image.Height > ImagedListBoxItemMaxHeight)
-				{
-					e.Graphics.DrawImage(image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + ImagedListBoxItemImageMargin, ImagedListBoxItemMaxHeight, ImagedListBoxItemMaxHeight);
-				}
-				else
-				{
-					e.Graphics.DrawImage(image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - image.Height / 2f), image.Width, image.Height);
-				}
+				if (image.Width > ImagedListBoxItemMaxHeight) imageScale = (float)image.Width / ImagedListBoxItemMaxHeight;
+				if (image.Height > ImagedListBoxItemMaxHeight) imageScale = (float)image.Height / ImagedListBoxItemMaxHeight;
+
+				var resultWidth = image.Width / imageScale;
+				var resultHeight = image.Height / imageScale;
+
+				e.Graphics.DrawImage(image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - resultHeight / 2f), resultWidth, resultHeight);
 			}
 			catch (ObjectDisposedException)
 			{
