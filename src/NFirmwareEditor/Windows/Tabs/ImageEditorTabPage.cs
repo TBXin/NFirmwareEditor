@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -172,7 +171,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (!keyData.HasFlag(Keys.Control)) return false;
 
-			var key = keyData &= ~Keys.Control;
+			var key = keyData & ~Keys.Control;
 			switch (key)
 			{
 				case Keys.N:
@@ -211,23 +210,37 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 		#endregion
 
-		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata)
+		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata, bool rebuildCache = false)
 		{
 			var processedData = imageDataProcessor(ImagePixelGrid.Data);
+			var processedImageSize = FirmwareImageProcessor.GetImageSize(processedData);
+			var imageSizeChanged = imageMetadata.Width != processedImageSize.Width || imageMetadata.Height != processedImageSize.Height;
+
+			imageMetadata.Width = (byte)processedImageSize.Width;
+			imageMetadata.Height = (byte)processedImageSize.Height;
+			
 			m_firmware.WriteImage(processedData, imageMetadata);
 
-			var updateCache = new Action(() =>
+			if (imageSizeChanged || rebuildCache)
+			{
+				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageListBox.Invalidate();
+			}
+			else
 			{
 				var cachedImage = FirmwareImageProcessor.CreateBitmap(processedData);
 				ImageCacheManager.SetImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
 
-				ImageListBox.Invoke(new Action(() =>
+				var updateCache = new Action(() =>
 				{
-					var itemRect = ImageListBox.GetItemRectangle(imageMetadata.Index - 1);
-					ImageListBox.Invalidate(itemRect);
-				}));
-			});
-			updateCache.BeginInvoke(null, null);
+					ImageListBox.Invoke(new Action(() =>
+					{
+						var itemRect = ImageListBox.GetItemRectangle(imageMetadata.Index - 1);
+						ImageListBox.Invalidate(itemRect);
+					}));
+				});
+				updateCache.BeginInvoke(null, null);
+			}
 
 			return processedData;
 		}
@@ -325,9 +338,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				if (rw.ShowDialog() != DialogResult.OK) return;
 
 				var newSize = rw.NewSize;
-				LastSelectedImageMetadata.Width = (byte)newSize.Width;
-				LastSelectedImageMetadata.Height = (byte)newSize.Height;
-				ProcessImage(x => FirmwareImageProcessor.ResizeImage(x, newSize), LastSelectedImageMetadata);
+				ProcessImage(x => FirmwareImageProcessor.ResizeImage(x, newSize), LastSelectedImageMetadata, true);
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
 		}
@@ -372,7 +383,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (copiedImages.Count == 0) return;
 			if (copiedImages.Count == 1)
 			{
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => FirmwareImageProcessor.PasteImage(data, copiedImages[0]), LastSelectedImageMetadata);
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => copiedImages[0], LastSelectedImageMetadata, true);
 			}
 			else
 			{
@@ -394,8 +405,11 @@ namespace NFirmwareEditor.Windows.Tabs
 				for (var i = 0; i < minimumImagesCount; i++)
 				{
 					var index = i;
-					updatedImage = ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], copiedImages[index]), SelectedImageMetadata[index]);
+					updatedImage = ProcessImage(x => copiedImages[index], SelectedImageMetadata[index]);
 				}
+
+				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageListBox.Invalidate();
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = updatedImage;
 			}
 		}
@@ -414,11 +428,7 @@ namespace NFirmwareEditor.Windows.Tabs
 					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile, true))
 					{
 						var imageData = FirmwareImageProcessor.ImportBitmap(bitmap);
-						var imageSize = FirmwareImageProcessor.GetImageSize(imageData);
-
-						LastSelectedImageMetadata.Width = (byte)imageSize.Width;
-						LastSelectedImageMetadata.Height = (byte)imageSize.Height;
-						ProcessImage(x => imageData, LastSelectedImageMetadata);
+						ProcessImage(x => imageData, LastSelectedImageMetadata, true);
 						ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 					}
 				}
@@ -499,8 +509,10 @@ namespace NFirmwareEditor.Windows.Tabs
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
 				var index = i;
-				ProcessImage(x => FirmwareImageProcessor.PasteImage(originalImages[index], importedImages[index]), SelectedImageMetadata[index]);
+				ProcessImage(x => importedImages[index], SelectedImageMetadata[index]);
 			}
+
+			ImageCacheManager.RebuildImageCache(m_firmware);
 
 			var lastSelectedItem = ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1];
 			ImageListBox.SelectedIndices.Clear();

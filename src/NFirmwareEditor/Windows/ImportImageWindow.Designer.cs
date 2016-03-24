@@ -36,7 +36,6 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.RightLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.LeftLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.ResizingCheckBox = new System.Windows.Forms.CheckBox();
 			this.borderedPanel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -138,22 +137,11 @@
 			this.LeftLayoutPanel.Size = new System.Drawing.Size(0, 0);
 			this.LeftLayoutPanel.TabIndex = 1;
 			// 
-			// ResizingCheckBox
-			// 
-			this.ResizingCheckBox.Location = new System.Drawing.Point(12, 426);
-			this.ResizingCheckBox.Name = "ResizingCheckBox";
-			this.ResizingCheckBox.Size = new System.Drawing.Size(208, 30);
-			this.ResizingCheckBox.TabIndex = 9;
-			this.ResizingCheckBox.Text = "Show \'After\' images without resizing";
-			this.ResizingCheckBox.UseVisualStyleBackColor = true;
-			this.ResizingCheckBox.CheckedChanged += new System.EventHandler(this.ResizingCheckBox_CheckedChanged);
-			// 
 			// ImportImageWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(434, 461);
-			this.Controls.Add(this.ResizingCheckBox);
 			this.Controls.Add(this.AfterLabel);
 			this.Controls.Add(this.ImportButton);
 			this.Controls.Add(this.BeforeLabel);
@@ -185,6 +173,5 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Label BeforeLabel;
 		private System.Windows.Forms.Label AfterLabel;
-		private System.Windows.Forms.CheckBox ResizingCheckBox;
 	}
 }

@@ -90,46 +90,6 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void RebuildImageCache([NotNull] Firmware firmware)
-		{
-			if (firmware == null) throw new ArgumentNullException("firmware");
-
-			var block1ImageCache = new Dictionary<int, Image>();
-			foreach (var imageMetadata in firmware.Block1Images)
-			{
-				try
-				{
-					var imageData = firmware.ReadImage(imageMetadata);
-					var image = FirmwareImageProcessor.CreateBitmap(imageData);
-					block1ImageCache[imageMetadata.Index] = image;
-				}
-				catch
-				{
-					block1ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
-				}
-			}
-			block1ImageCache.Add(0, new Bitmap(1, 16));
-
-			var block2ImageCache = new Dictionary<int, Image>();
-			foreach (var imageMetadata in firmware.Block2Images)
-			{
-				try
-				{
-					var imageData = firmware.ReadImage(imageMetadata);
-					var image = FirmwareImageProcessor.CreateBitmap(imageData);
-					block2ImageCache[imageMetadata.Index] = image;
-				}
-				catch
-				{
-					block2ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
-				}
-			}
-			block2ImageCache.Add(0, new Bitmap(1, 16));
-
-			ImageCacheManager.SetCache(BlockType.Block1, block1ImageCache);
-			ImageCacheManager.SetCache(BlockType.Block2, block2ImageCache);
-		}
-
 		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
 		{
 			string firmwareFile;
@@ -148,7 +108,7 @@ namespace NFirmwareEditor.Windows
 					throw new InvalidOperationException("No one definition is not appropriate for the selected firmware file.");
 				}
 
-				RebuildImageCache(m_firmware);
+				ImageCacheManager.RebuildImageCache(m_firmware);
 				m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
 
 				SaveEncryptedMenuItem.Enabled = true;
