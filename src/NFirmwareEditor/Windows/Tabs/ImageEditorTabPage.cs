@@ -541,6 +541,24 @@ namespace NFirmwareEditor.Windows.Tabs
 		private static void ImageListBox_MeasureItem(object sender, MeasureItemEventArgs e)
 		{
 			e.ItemHeight = Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin;
+
+			var listBox = sender as ListBox;
+
+			if (listBox == null) return;
+			if (e.Index < 0) return;
+
+			var item = listBox.Items[e.Index] as ImagedItem<FirmwareImageMetadata>;
+			if (item == null) return;
+
+			try
+			{
+				var cachedImage = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
+				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
+			}
+			catch (ObjectDisposedException)
+			{
+				// Ignore
+			}
 		}
 	}
 }

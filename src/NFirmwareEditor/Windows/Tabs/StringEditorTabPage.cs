@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -14,6 +15,8 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	public partial class StringEditorTabPage : UserControl, IEditorTabPage
 	{
+		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
+
 		private Firmware m_firmware;
 		private BlockType m_currentBlock = BlockType.Block1;
 
@@ -126,6 +129,7 @@ namespace NFirmwareEditor.Windows.Tabs
 					DrawMode = DrawMode.OwnerDrawVariable,
 					BackColor = Color.Black,
 					ForeColor = Color.White,
+					Font = new Font("Consolas", 8.25f),
 					Tag = new Tuple<FirmwareStringMetadata, int>(stringMetadata, i)
 				};
 				if (i > 0) icb.Items.Add(nullItem);
@@ -267,25 +271,47 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			if (e.Index < 0) return;
 
-			var itemText = item.ToString();
-			var textSize = e.Graphics.MeasureString(itemText, Font);
-
+			e.Graphics.SmoothingMode = SmoothingMode.None;
+			e.Graphics.InterpolationMode = InterpolationMode.Low;
+			e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
 			e.DrawBackground();
-			e.Graphics.DrawString(itemText, comboBox.Font, new SolidBrush(comboBox.ForeColor), e.Bounds.X, e.Bounds.Y + (int)(e.Bounds.Height / 2f - textSize.Height / 2f));
+
+			var itemText = item.ToString();
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
-				e.Graphics.DrawImage(cachedImage, e.Bounds.X + 40, e.Bounds.Y + 2, cachedImage.Width, cachedImage.Height);
+				var imageScale = 1f;
+				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+
+				var greatestDimension = Math.Max(image.Width, image.Height);
+				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
+
+				var resultWidth = image.Width / imageScale;
+				var resultHeight = image.Height / imageScale;
+
+				e.Graphics.DrawImage(image, e.Bounds.X + Consts.ImageListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - resultHeight / 2f), resultWidth, resultHeight);
 			}
 			catch (ObjectDisposedException)
 			{
+				// Ignore
 			}
+
+			var stringRectX = e.Bounds.X + Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin * 2;
+			e.Graphics.DrawString
+			(
+				itemText,
+				e.Font,
+				new SolidBrush(e.ForeColor),
+				new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - Consts.ImageListBoxItemImageMargin, e.Bounds.Height),
+				m_listBoxStringFormat
+			);
 			e.DrawFocusRectangle();
 		}
 
 		private void Icb_MeasureItem(object sender, MeasureItemEventArgs e)
 		{
+			e.ItemHeight = Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin;
+
 			var comboBox = sender as ComboBox;
 
 			if (comboBox == null) return;
@@ -300,7 +326,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var cachedImage = ImageCacheManager.GetImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
-				e.ItemHeight = cachedImage.Height + 4;
+				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)
 			{
