@@ -36,6 +36,7 @@
 			this.RightLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.LeftLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ResizeCheckBox = new System.Windows.Forms.CheckBox();
 			this.ImportButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
@@ -143,6 +144,7 @@
 			this.ControlBorderedPanel.BorderRight = false;
 			this.ControlBorderedPanel.BorderTop = true;
 			this.ControlBorderedPanel.BorderWidth = 1F;
+			this.ControlBorderedPanel.Controls.Add(this.ResizeCheckBox);
 			this.ControlBorderedPanel.Controls.Add(this.ImportButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -152,6 +154,15 @@
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(434, 39);
 			this.ControlBorderedPanel.TabIndex = 0;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
+			// 
+			// ResizeCheckBox
+			// 
+			this.ResizeCheckBox.Location = new System.Drawing.Point(5, 5);
+			this.ResizeCheckBox.Name = "ResizeCheckBox";
+			this.ResizeCheckBox.Size = new System.Drawing.Size(215, 30);
+			this.ResizeCheckBox.TabIndex = 2;
+			this.ResizeCheckBox.Text = "Resize original images";
+			this.ResizeCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ImportButton
 			// 
@@ -212,5 +223,6 @@
 		private System.Windows.Forms.Label AfterLabel;
 		private UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.CheckBox ResizeCheckBox;
 	}
 }

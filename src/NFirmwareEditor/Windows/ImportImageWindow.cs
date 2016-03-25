@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -8,12 +9,17 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
-	public partial class ImportImageWindow : Form
+	internal partial class ImportImageWindow : Form
 	{
+		private readonly IDictionary<int, bool[,]> m_originalImportedImages = new Dictionary<int, bool[,]>();
+		private readonly IDictionary<int, bool[,]> m_croppedImportedImages = new Dictionary<int, bool[,]>();
+
 		public ImportImageWindow()
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
+
+			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 
 		public ImportImageWindow
@@ -33,29 +39,45 @@ namespace NFirmwareEditor.Windows
 			{
 				var originalImage = originalImages[i];
 				var importedImage = importedImages[i];
+				var croppedImportedImage = FirmwareImageProcessor.PasteImage(originalImage, importedImage);
+
+				m_originalImportedImages[i] = importedImage;
+				m_croppedImportedImages[i] = croppedImportedImage;
 
 				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));
-				RightLayoutPanel.Controls.Add(CreateGrid(importedImage));
+				RightLayoutPanel.Controls.Add(CreateGrid(croppedImportedImage));
 			}
 
 			BeforeLabel.Text = string.Format("Before:\nUsing {0} of {1} selected images.", originalImages.Count, originalsImageCount);
 			AfterLabel.Text = string.Format("After:\nUsing {0} of {1} importing images.", importedImages.Count, importedImageCount);
 		}
 
+		public IEnumerable<bool[,]> GetImportedImages()
+		{
+			switch (ResizeCheckBox.Checked)
+			{
+				case true: return m_originalImportedImages.Values;
+				case false: return m_croppedImportedImages.Values;
+				default: throw new ArgumentOutOfRangeException();
+			}
+		}
+
+		private void ResizeCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			var resizeOriginalImages = ResizeCheckBox.Checked;
+			var pixelGrids = RightLayoutPanel.Controls.OfType<PixelGrid>().ToList();
+
+			for (var i = 0; i < pixelGrids.Count; i++)
+			{
+				pixelGrids[i].Data = resizeOriginalImages ? m_originalImportedImages[i] : m_croppedImportedImages[i];
+			}
+		}
+
 		private PixelGrid CreateGrid(bool[,] imageData)
 		{
 			return new PixelGrid
 			{
-				Width = 205,
-				Height = 80,
-				BlockSize = 2,
-				ShowGrid = false,
-				Data = imageData,
-				BackColor = Color.Black,
-				BlockInnerBorderPen = Pens.Transparent,
-				BlockOuterBorderPen = Pens.Transparent,
-				ActiveBlockBrush = Brushes.White,
-				InactiveBlockBrush = Brushes.Black
+				Width = 205, Height = 80, BlockSize = 2, ShowGrid = false, Data = imageData, BackColor = Color.Black, BlockInnerBorderPen = Pens.Transparent, BlockOuterBorderPen = Pens.Transparent, ActiveBlockBrush = Brushes.White, InactiveBlockBrush = Brushes.Black
 			};
 		}
 	}

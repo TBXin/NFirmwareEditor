@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
@@ -191,8 +190,10 @@ namespace NFirmwareEditor.Windows.Tabs
 					PasteButton.PerformClick();
 					return true;
 				case Keys.A:
+					ImageListBox.BeginUpdate();
 					ImageListBox.SelectedIndices.Clear();
 					ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
+					ImageListBox.EndUpdate();
 					return true;
 				case Keys.Up:
 					ShiftUpButton.PerformClick();
@@ -210,6 +211,45 @@ namespace NFirmwareEditor.Windows.Tabs
 			return false;
 		}
 		#endregion
+
+		private void ImportImages([NotNull] List<bool[,]> importedImages, [NotNull] IList<FirmwareImageMetadata> imageMetadata)
+		{
+			if (importedImages == null) throw new ArgumentNullException("importedImages");
+			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
+			if (importedImages.Count == 0) return;
+
+			var originalImages = m_firmware.ReadImages(imageMetadata).ToList();
+			if (importedImages.Count == 1 && FirmwareImageProcessor.GetImageSize(importedImages[0]) == FirmwareImageProcessor.GetImageSize(originalImages[0]))
+			{
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => importedImages[0], imageMetadata[0], true);
+			}
+			else
+			{
+				var originalImagesCount = originalImages.Count;
+				var copiedImagesCount = importedImages.Count;
+				var minimumImagesCount = Math.Min(originalImagesCount, copiedImagesCount);
+
+				originalImages = originalImages.Take(minimumImagesCount).ToList();
+				importedImages = importedImages.Take(minimumImagesCount).ToList();
+
+				using (var importWindow = new ImportImageWindow(originalImages, importedImages, originalImagesCount, copiedImagesCount))
+				{
+					if (importWindow.ShowDialog() != DialogResult.OK) return;
+					importedImages = importWindow.GetImportedImages().ToList();
+				}
+
+				var updatedImage = new bool[5, 5];
+				for (var i = 0; i < minimumImagesCount; i++)
+				{
+					var index = i;
+					updatedImage = ProcessImage(x => importedImages[index], SelectedImageMetadata[index]);
+				}
+
+				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageListBox.Invalidate();
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = updatedImage;
+			}
+		}
 
 		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata, bool rebuildCache = false)
 		{
@@ -381,38 +421,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedImageMetadata.Count == 0) return;
 
 			var copiedImages = m_clipboardManager.GetData();
-			if (copiedImages.Count == 0) return;
-			if (copiedImages.Count == 1)
-			{
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => copiedImages[0], LastSelectedImageMetadata, true);
-			}
-			else
-			{
-				var originalImages = m_firmware.ReadImages(SelectedImageMetadata).ToList();
-
-				var originalImagesCount = originalImages.Count;
-				var copiedImagesCount = copiedImages.Count;
-				var minimumImagesCount = Math.Min(originalImagesCount, copiedImagesCount);
-
-				originalImages = originalImages.Take(minimumImagesCount).ToList();
-				copiedImages = copiedImages.Take(minimumImagesCount).ToList();
-
-				using (var importWindow = new ImportImageWindow(originalImages, copiedImages, originalImagesCount, copiedImagesCount))
-				{
-					if (importWindow.ShowDialog() != DialogResult.OK) return;
-				}
-
-				var updatedImage = new bool[5, 5];
-				for (var i = 0; i < minimumImagesCount; i++)
-				{
-					var index = i;
-					updatedImage = ProcessImage(x => copiedImages[index], SelectedImageMetadata[index]);
-				}
-
-				ImageCacheManager.RebuildImageCache(m_firmware);
-				ImageListBox.Invalidate();
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = updatedImage;
-			}
+			ImportImages(copiedImages, SelectedImageMetadata);
 		}
 
 		private void BitmapImportButton_Click(object sender, EventArgs eventArgs)
@@ -481,34 +490,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var exportedImages = ImageExportManager.Import(fileName);
-			if (exportedImages.Count == 0) return;
-
-			var originalImages = m_firmware.ReadImages(SelectedImageMetadata).ToList();
 			var importedImages = exportedImages.Select(x => x.Data).ToList();
-
-			var originalImagesCount = originalImages.Count;
-			var importedImagesCount = importedImages.Count;
-			var minimumImagesCount = Math.Min(originalImagesCount, importedImagesCount);
-
-			originalImages = originalImages.Take(minimumImagesCount).ToList();
-			importedImages = importedImages.Take(minimumImagesCount).ToList();
-
-			using (var importWindow = new ImportImageWindow(originalImages, importedImages, originalImagesCount, importedImagesCount))
-			{
-				if (importWindow.ShowDialog() != DialogResult.OK) return;
-			}
-
-			for (var i = 0; i < minimumImagesCount; i++)
-			{
-				var index = i;
-				ProcessImage(x => importedImages[index], SelectedImageMetadata[index]);
-			}
-
-			ImageCacheManager.RebuildImageCache(m_firmware);
-
-			var lastSelectedItem = ImageListBox.SelectedIndices[ImageListBox.SelectedIndices.Count - 1];
-			ImageListBox.SelectedIndices.Clear();
-			ImageListBox.SelectedIndex = lastSelectedItem;
+			ImportImages(importedImages, SelectedImageMetadata);
 		}
 
 		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)
