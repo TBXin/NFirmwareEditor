@@ -15,9 +15,6 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	public partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
-		private const int ImagedListBoxItemMaxHeight = 32 * 2;
-		private const int ImagedListBoxItemImageMargin = 6;
-
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
@@ -515,26 +512,27 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				var imageScale = 1f;
 				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
-				if (image.Width > ImagedListBoxItemMaxHeight) imageScale = (float)image.Width / ImagedListBoxItemMaxHeight;
-				else if (image.Height > ImagedListBoxItemMaxHeight) imageScale = (float)image.Height / ImagedListBoxItemMaxHeight;
+
+				var greatestDimension = Math.Max(image.Width, image.Height);
+				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
 
 				var resultWidth = image.Width / imageScale;
 				var resultHeight = image.Height / imageScale;
 
-				e.Graphics.DrawImage(image, e.Bounds.X + ImagedListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - resultHeight / 2f), resultWidth, resultHeight);
+				e.Graphics.DrawImage(image, e.Bounds.X + Consts.ImageListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - resultHeight / 2f), resultWidth, resultHeight);
 			}
 			catch (ObjectDisposedException)
 			{
 				// Ignore
 			}
 
-			var stringRectX = e.Bounds.X + ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin * 2;
+			var stringRectX = e.Bounds.X + Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin * 2;
 			e.Graphics.DrawString
 			(
 				itemText,
 				e.Font,
 				new SolidBrush(e.ForeColor),
-				new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - ImagedListBoxItemImageMargin, e.Bounds.Height),
+				new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - Consts.ImageListBoxItemImageMargin, e.Bounds.Height),
 				m_listBoxStringFormat
 			);
 			e.DrawFocusRectangle();
@@ -542,7 +540,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private static void ImageListBox_MeasureItem(object sender, MeasureItemEventArgs e)
 		{
-			e.ItemHeight = ImagedListBoxItemMaxHeight + ImagedListBoxItemImageMargin;
+			e.ItemHeight = Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin;
 		}
 	}
 }
