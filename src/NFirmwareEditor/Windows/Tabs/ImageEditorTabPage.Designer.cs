@@ -363,13 +363,17 @@
 			// 
 			// ImageSizeLabel
 			// 
+			this.ImageSizeLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.ImageSizeLabel.Name = "ImageSizeLabel";
 			this.ImageSizeLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// CursorPositionLabel
 			// 
+			this.CursorPositionLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
-			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
+			this.CursorPositionLabel.Size = new System.Drawing.Size(579, 17);
+			this.CursorPositionLabel.Spring = true;
+			this.CursorPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// ShowGridCheckBox
 			// 
