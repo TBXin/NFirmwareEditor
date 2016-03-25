@@ -283,6 +283,20 @@ namespace NFirmwareEditor.Windows.Tabs
 			return processedData;
 		}
 
+		private void UpdateImageStatusLabel([CanBeNull] FirmwareImageMetadata metadata)
+		{
+			if (metadata == null) return;
+
+			ImageSizeLabel.Text = string.Format
+			(
+				"Image: {0}x{1}, Offset: 0x{2:X4}, Length: {3} bytes",
+				metadata.Width,
+				metadata.Height,
+				metadata.DataOffset,
+				metadata.DataLength + 2
+			);
+		}
+
 		private void BlockImageRadioButton_CheckedChanged(object sender, EventArgs e)
 		{
 			var currentListBoxSelectedIndices = ImageListBox.SelectedIndices.ToList();
@@ -309,20 +323,20 @@ namespace NFirmwareEditor.Windows.Tabs
 				ImageListBox.EndUpdate();
 
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = LastSelectedImageMetadata != null ? m_firmware.ReadImage(LastSelectedImageMetadata) : new bool[5, 5];
-
 				m_imageListBoxIsUpdating = false;
 			}
 			else
 			{
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
+			UpdateImageStatusLabel(LastSelectedImageMetadata);
 		}
 
 		private void ImageListBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			if (m_imageListBoxIsUpdating || LastSelectedImageMetadata == null) return;
 
-			ImageSizeLabel.Text = string.Format("Image: {0}x{1}", LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height);
+			UpdateImageStatusLabel(LastSelectedImageMetadata);
 			try
 			{
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
