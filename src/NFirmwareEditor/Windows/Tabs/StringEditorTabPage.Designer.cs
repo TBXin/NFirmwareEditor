@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.Block1StringRadioButton = new System.Windows.Forms.RadioButton();
+			this.Block2StringRadioButton = new System.Windows.Forms.RadioButton();
 			this.borderedPanel9 = new NFirmwareEditor.UI.BorderedPanel();
 			this.borderedPanel10 = new NFirmwareEditor.UI.BorderedPanel();
 			this.CharLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -36,8 +38,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.borderedPanel8 = new NFirmwareEditor.UI.BorderedPanel();
 			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.Block1StringRadioButton = new System.Windows.Forms.RadioButton();
-			this.Block2StringRadioButton = new System.Windows.Forms.RadioButton();
 			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1StringListBox = new System.Windows.Forms.ListBox();
 			this.Block2StringListBox = new System.Windows.Forms.ListBox();
@@ -47,6 +47,30 @@
 			this.borderedPanel8.SuspendLayout();
 			this.borderedPanel6.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// Block1StringRadioButton
+			// 
+			this.Block1StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block1StringRadioButton.Checked = true;
+			this.Block1StringRadioButton.Location = new System.Drawing.Point(-1, 1);
+			this.Block1StringRadioButton.Name = "Block1StringRadioButton";
+			this.Block1StringRadioButton.Size = new System.Drawing.Size(71, 30);
+			this.Block1StringRadioButton.TabIndex = 11;
+			this.Block1StringRadioButton.TabStop = true;
+			this.Block1StringRadioButton.Text = "Block 1";
+			this.Block1StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block1StringRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// Block2StringRadioButton
+			// 
+			this.Block2StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2StringRadioButton.Location = new System.Drawing.Point(70, 1);
+			this.Block2StringRadioButton.Name = "Block2StringRadioButton";
+			this.Block2StringRadioButton.Size = new System.Drawing.Size(71, 30);
+			this.Block2StringRadioButton.TabIndex = 12;
+			this.Block2StringRadioButton.Text = "Block 2";
+			this.Block2StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.Block2StringRadioButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel9
 			// 
@@ -173,29 +197,6 @@
 			this.StringPrewviewPixelGrid.TabIndex = 3;
 			this.StringPrewviewPixelGrid.Text = "pixelGrid1";
 			// 
-			// Block1StringRadioButton
-			// 
-			this.Block1StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block1StringRadioButton.Checked = true;
-			this.Block1StringRadioButton.Location = new System.Drawing.Point(-1, 1);
-			this.Block1StringRadioButton.Name = "Block1StringRadioButton";
-			this.Block1StringRadioButton.Size = new System.Drawing.Size(71, 30);
-			this.Block1StringRadioButton.TabIndex = 11;
-			this.Block1StringRadioButton.Text = "Block 1";
-			this.Block1StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block1StringRadioButton.UseVisualStyleBackColor = true;
-			// 
-			// Block2StringRadioButton
-			// 
-			this.Block2StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block2StringRadioButton.Location = new System.Drawing.Point(70, 1);
-			this.Block2StringRadioButton.Name = "Block2StringRadioButton";
-			this.Block2StringRadioButton.Size = new System.Drawing.Size(71, 30);
-			this.Block2StringRadioButton.TabIndex = 12;
-			this.Block2StringRadioButton.Text = "Block 2";
-			this.Block2StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.Block2StringRadioButton.UseVisualStyleBackColor = true;
-			// 
 			// borderedPanel6
 			// 
 			this.borderedPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -248,6 +249,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.borderedPanel9);
 			this.Controls.Add(this.borderedPanel7);
 			this.Controls.Add(this.Block1StringRadioButton);

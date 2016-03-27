@@ -371,7 +371,7 @@
 			// 
 			this.CursorPositionLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
-			this.CursorPositionLabel.Size = new System.Drawing.Size(579, 17);
+			this.CursorPositionLabel.Size = new System.Drawing.Size(610, 17);
 			this.CursorPositionLabel.Spring = true;
 			this.CursorPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -536,6 +536,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.Block1ImageRadioButton);
 			this.Controls.Add(this.borderedPanel2);
 			this.Controls.Add(this.Block2ImageRadioButton);

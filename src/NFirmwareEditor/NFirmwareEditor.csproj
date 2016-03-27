@@ -110,6 +110,12 @@
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Windows\Tabs\PatchesTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Tabs\PatchesTabPage.Designer.cs">
+      <DependentUpon>PatchesTabPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tabs\StringEditorTabPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\ImageEditorTabPage.resx">
       <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Tabs\PatchesTabPage.resx">
+      <DependentUpon>PatchesTabPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\StringEditorTabPage.resx">
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>

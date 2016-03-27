@@ -18,7 +18,8 @@ namespace NFirmwareEditor.Windows
 		private readonly IEnumerable<IEditorTabPage> m_tabPages = new List<IEditorTabPage>
 		{
 			new ImageEditorTabPage { Dock = DockStyle.Fill },
-			new StringEditorTabPage { Dock = DockStyle.Fill }
+			new StringEditorTabPage { Dock = DockStyle.Fill },
+			new PatchesTabPage { Dock = DockStyle.Fill }
 		};
 
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
