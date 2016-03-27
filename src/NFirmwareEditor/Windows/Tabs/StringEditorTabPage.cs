@@ -206,8 +206,11 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
+
+				CharLayoutPanel.Visible = false;
 				RemoveStringEditControls();
 				CreateStringEditControls(firmwareString, LastSelectedStringMetadata);
+				CharLayoutPanel.Visible = true;
 				UpdateStringPreview();
 			}
 			catch
