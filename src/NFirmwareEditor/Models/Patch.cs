@@ -14,6 +14,9 @@ namespace NFirmwareEditor.Models
 		public string Name { get; set; }
 
 		[XmlAttribute]
+		public string Version { get; set; }
+
+		[XmlAttribute]
 		public string Author { get; set; }
 
 		[XmlAttribute]
