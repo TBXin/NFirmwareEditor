@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -76,10 +75,12 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
+			var body = m_firmware.GetBody();
 			var patches = m_patches.Where(x => x.Definition.Equals(m_firmware.Definition.Name));
 			foreach (var patch in patches)
 			{
-				PatchListView.Items.Add(new ListViewItem(new[] { patch.Name, patch.Version, "No" }) { Tag = patch });
+				var isPatchApplied = IsPatchApplied(body, patch);
+				PatchListView.Items.Add(new ListViewItem(new[] { patch.Name, patch.Version, isPatchApplied ? "Yes" : "No" }) { Tag = patch });
 			}
 		}
 
@@ -91,6 +92,11 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnWorkspaceReset()
 		{
 			PatchListView.Items.Clear();
+		}
+
+		private bool IsPatchApplied(byte[] firmware, Patch patch)
+		{
+			return patch.Data.All(data => firmware[data.Offset] == data.PatchedValue);
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, System.EventArgs e)
