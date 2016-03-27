@@ -59,7 +59,7 @@ namespace NFirmware
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
-			var data = encode ? m_encoder.Encode(firmware.Body) : firmware.Body;
+			var data = encode ? m_encoder.Encode(firmware.GetBody()) : firmware.GetBody();
 			File.WriteAllBytes(filePath, data);
 		}
 

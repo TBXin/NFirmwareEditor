@@ -8,6 +8,7 @@ namespace NFirmware
 {
 	public class Firmware
 	{
+		private readonly FirmwareStream m_bodyStream;
 		private readonly FirmwareImageBlocks m_imageBlocks;
 		private readonly FirmwareStringBlocks m_stringBlocks;
 
@@ -18,17 +19,14 @@ namespace NFirmware
 			if (stringBlocks == null) throw new ArgumentNullException("stringBlocks");
 			if (definition == null) throw new ArgumentNullException("definition");
 
-			Body = body;
 			Definition = definition;
+			m_bodyStream = new FirmwareStream(body);
 			m_imageBlocks = imageBlocks;
 			m_stringBlocks = stringBlocks;
 		}
 
 		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
-
-		[NotNull]
-		internal byte[] Body { get; set; }
 
 		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareImageMetadata> Block1Images
@@ -52,19 +50,24 @@ namespace NFirmware
 			get { return m_stringBlocks.Block2Strings; }
 		}
 
+		public byte[] GetBody()
+		{
+			return m_bodyStream.ToArray();
+		}
+
 		[NotNull]
 		public bool[,] ReadImage([NotNull] FirmwareImageMetadata imageMetadata)
 		{
 			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
 
-			var imageData = GetImageBytes(Body, imageMetadata);
+			var imageData = m_bodyStream.ReadBytes((int)imageMetadata.DataOffset + FirmwareImageMetadata.HeaderLength, (int)imageMetadata.DataLength);
 			return imageMetadata.Load(imageData);
 		}
 
 		public byte[] ReadString([NotNull] FirmwareStringMetadata stringMetadata)
 		{
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
-			return Body.Skip((int)stringMetadata.DataOffset).Take((int)stringMetadata.DataLength).ToArray();
+			return m_bodyStream.ReadBytes((int)stringMetadata.DataOffset, (int)stringMetadata.DataLength);
 		}
 
 		[NotNull]
@@ -85,7 +88,7 @@ namespace NFirmware
 			if (width != imageMetadata.Width || height != imageMetadata.Height) throw new InvalidDataException("Image data does not correspond to the metadata.");
 
 			var imageBytes = imageMetadata.Save(imageData);
-			Buffer.BlockCopy(imageBytes, 0, Body, (int)imageMetadata.DataOffset, imageBytes.Length);
+			m_bodyStream.WriteBytes((int)imageMetadata.DataOffset, imageBytes);
 		}
 
 		public void WriteString([NotNull] byte[] stringData, [NotNull] FirmwareStringMetadata stringMetadata)
@@ -94,7 +97,7 @@ namespace NFirmware
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
 			if (stringData.Length != stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
 
-			Buffer.BlockCopy(stringData, 0, Body, (int)stringMetadata.DataOffset, stringData.Length);
+			m_bodyStream.WriteBytes((int)stringMetadata.DataOffset, stringData);
 		}
 
 		public void WriteChar(byte stringChar, int index, [NotNull] FirmwareStringMetadata stringMetadata)
@@ -102,16 +105,7 @@ namespace NFirmware
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
 			if (index > stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
 
-			Body[stringMetadata.DataOffset + index] = stringChar;
-		}
-
-		[NotNull]
-		private static byte[] GetImageBytes([NotNull] IEnumerable<byte> firmware, [NotNull] FirmwareImageMetadata metadata)
-		{
-			return firmware
-				.Skip((int)metadata.DataOffset + FirmwareImageMetadata.HeaderLength)
-				.Take((int)metadata.DataLength)
-				.ToArray();
+			m_bodyStream.WriteByte((int)stringMetadata.DataOffset + index, stringChar);
 		}
 	}
 }
