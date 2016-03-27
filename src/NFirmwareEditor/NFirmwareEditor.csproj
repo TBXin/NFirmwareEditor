@@ -52,12 +52,15 @@
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
     <Compile Include="Managers\ImageCacheManager.cs" />
+    <Compile Include="Managers\PatchManager.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
     <Compile Include="Managers\ImageExportManager.cs" />
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
+    <Compile Include="Models\Patch.cs" />
+    <Compile Include="Models\PatchData.cs" />
     <Compile Include="Windows\DecryptionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
