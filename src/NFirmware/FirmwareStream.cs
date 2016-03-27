@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace NFirmware
 {
-	internal class FirmwareStream
+	public class FirmwareStream
 	{
 		private readonly MemoryStream m_stream;
 
@@ -16,7 +16,12 @@ namespace NFirmware
 			m_stream.Write(body, 0, body.Length);
 		}
 
-		public byte[] ReadBytes(int offset, int count)
+		public byte ReadByte(long offset)
+		{
+			return m_stream.Length < offset ? (byte)0 : ReadBytes(offset, 1)[0];
+		}
+
+		public byte[] ReadBytes(long offset, int count)
 		{
 			var result = new byte[count];
 			{
@@ -26,7 +31,7 @@ namespace NFirmware
 			return result;
 		}
 
-		public void WriteBytes(int offset, [NotNull] byte[] data)
+		public void WriteBytes(long offset, [NotNull] byte[] data)
 		{
 			if (data == null) throw new ArgumentNullException("data");
 
@@ -34,7 +39,7 @@ namespace NFirmware
 			m_stream.Write(data, 0, data.Length);
 		}
 
-		public void WriteByte(int offset, byte data)
+		public void WriteByte(long offset, byte data)
 		{
 			m_stream.Position = offset;
 			m_stream.WriteByte(data);

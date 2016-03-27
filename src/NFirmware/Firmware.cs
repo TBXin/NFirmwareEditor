@@ -26,6 +26,12 @@ namespace NFirmware
 		}
 
 		[NotNull]
+		public FirmwareStream BodyStream
+		{
+			get { return m_bodyStream; }
+		}
+
+		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
 
 		[NotNull, ItemNotNull]
