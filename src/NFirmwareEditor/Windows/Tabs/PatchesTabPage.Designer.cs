@@ -28,59 +28,141 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1",
-            "2"}, -1);
-			this.listView1 = new System.Windows.Forms.ListView();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.DescriptionGroupBox = new System.Windows.Forms.GroupBox();
+			this.ApplyPatchesButton = new System.Windows.Forms.Button();
+			this.RollbackPatchesButton = new System.Windows.Forms.Button();
+			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.PatchListView = new System.Windows.Forms.ListView();
+			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+			this.DescriptionGroupBox.SuspendLayout();
+			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// listView1
+			// DescriptionGroupBox
 			// 
-			this.listView1.CheckBoxes = true;
-			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-			this.listView1.FullRowSelect = true;
-			this.listView1.GridLines = true;
-			listViewItem2.StateImageIndex = 0;
-			this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
-			this.listView1.Location = new System.Drawing.Point(38, 22);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(521, 157);
-			this.listView1.TabIndex = 0;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.Details;
+			this.DescriptionGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.DescriptionGroupBox.Controls.Add(this.DescriptionTextBox);
+			this.DescriptionGroupBox.Location = new System.Drawing.Point(0, 326);
+			this.DescriptionGroupBox.Name = "DescriptionGroupBox";
+			this.DescriptionGroupBox.Size = new System.Drawing.Size(769, 117);
+			this.DescriptionGroupBox.TabIndex = 1;
+			this.DescriptionGroupBox.TabStop = false;
+			this.DescriptionGroupBox.Text = "Description:";
 			// 
-			// columnHeader1
+			// ApplyPatchesButton
 			// 
-			this.columnHeader1.Text = "ColumnHeader1";
-			this.columnHeader1.Width = 127;
+			this.ApplyPatchesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ApplyPatchesButton.Location = new System.Drawing.Point(0, 449);
+			this.ApplyPatchesButton.Name = "ApplyPatchesButton";
+			this.ApplyPatchesButton.Size = new System.Drawing.Size(100, 30);
+			this.ApplyPatchesButton.TabIndex = 3;
+			this.ApplyPatchesButton.Text = "Apply patches";
+			this.ApplyPatchesButton.UseVisualStyleBackColor = true;
 			// 
-			// columnHeader2
+			// RollbackPatchesButton
 			// 
-			this.columnHeader2.Text = "ColumnHeader2";
-			this.columnHeader2.Width = 110;
+			this.RollbackPatchesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.RollbackPatchesButton.Location = new System.Drawing.Point(106, 449);
+			this.RollbackPatchesButton.Name = "RollbackPatchesButton";
+			this.RollbackPatchesButton.Size = new System.Drawing.Size(100, 30);
+			this.RollbackPatchesButton.TabIndex = 4;
+			this.RollbackPatchesButton.Text = "Rollback patches";
+			this.RollbackPatchesButton.UseVisualStyleBackColor = true;
 			// 
-			// PatcherTabPage
+			// borderedPanel1
+			// 
+			this.borderedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel1.BorderBottom = true;
+			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel1.BorderLeft = true;
+			this.borderedPanel1.BorderRight = true;
+			this.borderedPanel1.BorderTop = true;
+			this.borderedPanel1.BorderWidth = 1F;
+			this.borderedPanel1.Controls.Add(this.PatchListView);
+			this.borderedPanel1.Location = new System.Drawing.Point(0, 2);
+			this.borderedPanel1.Name = "borderedPanel1";
+			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel1.Size = new System.Drawing.Size(770, 318);
+			this.borderedPanel1.TabIndex = 2;
+			// 
+			// PatchListView
+			// 
+			this.PatchListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.PatchListView.CheckBoxes = true;
+			this.PatchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NameColumnHeader,
+            this.VersionColumnHeader,
+            this.InstalledColumnHeader});
+			this.PatchListView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PatchListView.FullRowSelect = true;
+			this.PatchListView.GridLines = true;
+			this.PatchListView.Location = new System.Drawing.Point(1, 1);
+			this.PatchListView.Name = "PatchListView";
+			this.PatchListView.Size = new System.Drawing.Size(768, 316);
+			this.PatchListView.TabIndex = 0;
+			this.PatchListView.UseCompatibleStateImageBehavior = false;
+			this.PatchListView.View = System.Windows.Forms.View.Details;
+			// 
+			// NameColumnHeader
+			// 
+			this.NameColumnHeader.Text = "Name";
+			this.NameColumnHeader.Width = 127;
+			// 
+			// VersionColumnHeader
+			// 
+			this.VersionColumnHeader.Text = "Version";
+			this.VersionColumnHeader.Width = 55;
+			// 
+			// InstalledColumnHeader
+			// 
+			this.InstalledColumnHeader.Text = "Installed";
+			this.InstalledColumnHeader.Width = 55;
+			// 
+			// DescriptionTextBox
+			// 
+			this.DescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.DescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.DescriptionTextBox.Location = new System.Drawing.Point(3, 17);
+			this.DescriptionTextBox.Multiline = true;
+			this.DescriptionTextBox.Name = "DescriptionTextBox";
+			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 97);
+			this.DescriptionTextBox.TabIndex = 0;
+			// 
+			// PatchesTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.listView1);
+			this.Controls.Add(this.RollbackPatchesButton);
+			this.Controls.Add(this.ApplyPatchesButton);
+			this.Controls.Add(this.borderedPanel1);
+			this.Controls.Add(this.DescriptionGroupBox);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.Name = "PatcherTabPage";
+			this.Name = "PatchesTabPage";
 			this.Size = new System.Drawing.Size(772, 482);
+			this.DescriptionGroupBox.ResumeLayout(false);
+			this.DescriptionGroupBox.PerformLayout();
+			this.borderedPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.ListView listView1;
-		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader NameColumnHeader;
+		private System.Windows.Forms.ColumnHeader VersionColumnHeader;
+		private System.Windows.Forms.ColumnHeader InstalledColumnHeader;
+		private System.Windows.Forms.GroupBox DescriptionGroupBox;
+		private UI.BorderedPanel borderedPanel1;
+		private System.Windows.Forms.ListView PatchListView;
+		private System.Windows.Forms.Button ApplyPatchesButton;
+		private System.Windows.Forms.Button RollbackPatchesButton;
+		private System.Windows.Forms.TextBox DescriptionTextBox;
 	}
 }
