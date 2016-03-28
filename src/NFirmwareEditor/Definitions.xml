@@ -126,6 +126,7 @@
 	</FirmwareDefinition>
 		
 	<FirmwareDefinition Name="Presa TC75W 3.00">
+		<Marker Offset="0x90" Bytes="0xBD 0x1C" />
 		<ImageTable1>
 			<OffsetFrom>0xB4A8</OffsetFrom>
 			<OffsetTo>0xB828</OffsetTo>
@@ -134,6 +135,10 @@
 			<OffsetFrom>0x9C14</OffsetFrom>
 			<OffsetTo>0x9F94</OffsetTo>
 		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xB92C</OffsetFrom>
+			<OffsetTo>0xBA28</OffsetTo>
+		</StringTable1>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="VaporFlask Classic 2.00">
