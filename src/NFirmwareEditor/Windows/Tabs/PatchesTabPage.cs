@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,18 @@ using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
-	public partial class PatchesTabPage : UserControl, IEditorTabPage
+	internal partial class PatchesTabPage : UserControl, IEditorTabPage
 	{
-		private readonly PatchManager m_patchManager = new PatchManager();
+		private readonly PatchManager m_patchManager;
 
 		private IEnumerable<Patch> m_patches; 
 		private Firmware m_firmware;
 
-		public PatchesTabPage()
+		public PatchesTabPage([NotNull] PatchManager patchManager)
 		{
+			if (patchManager == null) throw new ArgumentNullException("patchManager");
+
+			m_patchManager = patchManager;
 			InitializeComponent();
 
 			PatchListView.Resize += (s, e) =>

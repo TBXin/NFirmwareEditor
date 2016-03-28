@@ -13,7 +13,7 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
-	public partial class StringEditorTabPage : UserControl, IEditorTabPage
+	internal partial class StringEditorTabPage : UserControl, IEditorTabPage
 	{
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 

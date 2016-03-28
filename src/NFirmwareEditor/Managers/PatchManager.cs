@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
+using JetBrains.Annotations;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
 
@@ -31,6 +34,36 @@ namespace NFirmwareEditor.Managers
 				}
 			}
 			return result;
+		}
+
+		public string CompareFiles([NotNull] byte[] file1, [NotNull] byte[] file2)
+		{
+			if (file1 == null) throw new ArgumentNullException("file1");
+			if (file2 == null) throw new ArgumentNullException("file2");
+
+			var result = new StringBuilder();
+			for (var i = 0; i < file2.Length; i++)
+			{
+				var sourceByte = GetByte(file1, i);
+				var patchedByte = file2[i];
+				if (sourceByte == patchedByte) continue;
+
+				result.AppendLine("{0:X8}: {1} -> {2:X2}", i, sourceByte.HasValue ? sourceByte.Value.ToString("X2") : "null", patchedByte);
+			}
+			if (file1.Length > file2.Length)
+			{
+				for (var i = file2.Length; i < file1.Length; i++)
+				{
+					result.AppendLine("{0:X8}: {1:X2} -> {2}", i, file1[i], "null");
+				}
+			}
+			return result.ToString();
+		}
+
+		private static byte? GetByte(byte[] source, int offset)
+		{
+			if (source.Length <= offset) return null;
+			return source[offset];
 		}
 	}
 }

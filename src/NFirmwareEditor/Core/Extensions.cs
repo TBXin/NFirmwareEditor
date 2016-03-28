@@ -56,6 +56,14 @@ namespace NFirmwareEditor.Core
 			}
 		}
 
+		internal static void ScrollToEnd([NotNull] this TextBox textBox)
+		{
+			if (textBox == null) throw new ArgumentNullException("textBox");
+
+			textBox.SelectionStart = textBox.TextLength;
+			textBox.ScrollToCaret();
+		}
+
 		internal static StringBuilder AppendLine([NotNull] this StringBuilder sb, [NotNull] string format, params object[] args)
 		{
 			if (sb == null) throw new ArgumentNullException("sb");

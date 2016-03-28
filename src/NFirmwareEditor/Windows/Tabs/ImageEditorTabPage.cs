@@ -13,7 +13,7 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
-	public partial class ImageEditorTabPage : UserControl, IEditorTabPage
+	internal partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };

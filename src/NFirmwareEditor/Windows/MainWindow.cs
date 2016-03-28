@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -15,14 +14,9 @@ namespace NFirmwareEditor.Windows
 {
 	public partial class MainWindow : Form
 	{
-		private readonly IEnumerable<IEditorTabPage> m_tabPages = new List<IEditorTabPage>
-		{
-			new ImageEditorTabPage { Dock = DockStyle.Fill },
-			new StringEditorTabPage { Dock = DockStyle.Fill },
-			new PatchesTabPage { Dock = DockStyle.Fill }
-		};
-
+		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
+		private readonly PatchManager m_patchManager = new PatchManager();
 		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 
@@ -32,6 +26,12 @@ namespace NFirmwareEditor.Windows
 
 		public MainWindow()
 		{
+			m_tabPages = new List<IEditorTabPage>
+			{
+				new ImageEditorTabPage { Dock = DockStyle.Fill },
+				new StringEditorTabPage { Dock = DockStyle.Fill },
+				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill }
+			};
 			Icon = Paths.ApplicationIcon;
 
 			InitializeComponent();
@@ -200,7 +200,7 @@ namespace NFirmwareEditor.Windows
 
 		private void PatchCreatorMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var patchCreatorWindow = new PatchCreatorWindow(m_definitions.Select(x => x.Name)))
+			using (var patchCreatorWindow = new PatchCreatorWindow(m_patchManager, m_definitions.Select(x => x.Name)))
 			{
 				patchCreatorWindow.ShowDialog();
 			}
