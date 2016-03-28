@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows
 {
@@ -23,6 +24,7 @@ namespace NFirmwareEditor.Windows
 			SelectSource1Button.Click += SelectSourceButton_Click;
 			SelectSource2Button.Click += SelectSourceButton_Click;
 			CreateDiffLink.LinkClicked += CreateDiffLink_LinkClicked;
+			OkButton.Click += OkButton_Click;
 		}
 
 		public PatchCreatorWindow([NotNull] PatchManager patchManager, [NotNull] IEnumerable<string> firmwareDefinitions) : this()
@@ -35,6 +37,19 @@ namespace NFirmwareEditor.Windows
 			{
 				DefinitionComboBox.Items.Add(firmwareDefinition);
 			}
+		}
+
+		private Patch GetPatch()
+		{
+			return new Patch
+			{
+				Name = NameTextBox.Text,
+				Version = VersionTextBox.Text,
+				Author = AuthorTextBox.Text,
+				Definition = DefinitionComboBox.Text,
+				Description = DescriptionTextBox.Text,
+				DataString = Environment.NewLine + DataTextBox.Text
+			};
 		}
 
 		private void SelectSourceButton_Click(object sender, EventArgs e)
@@ -70,6 +85,26 @@ namespace NFirmwareEditor.Windows
 			var file2 = m_encoder.ReadFile(Source2TextBox.Text, DecryptSourceButton.Checked);
 
 			DataTextBox.Text = m_patchManager.CompareFiles(file1, file2);
+			OkButton.Enabled = true;
+		}
+
+		private void OkButton_Click(object sender, EventArgs e)
+		{
+			var patch = GetPatch();
+			using (var sf = new SaveFileDialog { Filter = Consts.PatchFilter, FileName = patch.Name.Nvl("new_patch") + ".patch"})
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				try
+				{
+					m_patchManager.SavePatch(sf.FileName, patch);
+					DialogResult = DialogResult.OK;
+				}
+				catch (Exception ex)
+				{
+					InfoBox.Show("An error occured during saving patch\n" + ex.Message);
+				}
+			}
 		}
 	}
 }

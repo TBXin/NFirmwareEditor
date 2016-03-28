@@ -72,5 +72,10 @@ namespace NFirmwareEditor.Core
 			sb.AppendLine(string.Format(format, args));
 			return sb;
 		}
+
+		internal static string Nvl(this string source, string value)
+		{
+			return string.IsNullOrEmpty(source) ? value : source;
+		}
 	}
 }

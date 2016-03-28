@@ -321,7 +321,7 @@
 			// OkButton
 			// 
 			this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.OkButton.Enabled = false;
 			this.OkButton.Location = new System.Drawing.Point(224, 5);
 			this.OkButton.Name = "OkButton";
 			this.OkButton.Size = new System.Drawing.Size(100, 30);

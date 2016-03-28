@@ -36,6 +36,18 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
+		public void SavePatch(string filePath, [NotNull] Patch patch)
+		{
+			if(string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+			if (patch == null) throw new ArgumentNullException("patch");
+
+			var serializer = new XmlSerializer(typeof(Patch));
+			using (var fs = File.Open(filePath, FileMode.Create))
+			{
+				serializer.Serialize(fs, patch);
+			}
+		}
+
 		public string CompareFiles([NotNull] byte[] file1, [NotNull] byte[] file2)
 		{
 			if (file1 == null) throw new ArgumentNullException("file1");
