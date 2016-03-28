@@ -76,6 +76,12 @@
     <Compile Include="Windows\HotkeyHelpWindow.Designer.cs">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\PatchCreatorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\PatchCreatorWindow.Designer.cs">
+      <DependentUpon>PatchCreatorWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ResizeImageWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Windows\PatchCreatorWindow.resx">
+      <DependentUpon>PatchCreatorWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\ResizeImageWindow.resx">
       <DependentUpon>ResizeImageWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +206,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\patch_creator.png" />
     <None Include="Resources\bitmap_import.png" />
     <None Include="Resources\image_resize.png" />
     <None Include="Resources\information.png" />

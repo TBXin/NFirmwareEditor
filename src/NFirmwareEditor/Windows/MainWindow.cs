@@ -198,6 +198,14 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void PatchCreatorMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var patchCreatorWindow = new PatchCreatorWindow())
+			{
+				patchCreatorWindow.ShowDialog();
+			}
+		}
+
 		private void AboutMenuItem_Click(object sender, EventArgs e)
 		{
 			InfoBox.Show(Resources.AboutMessage, Consts.ApplicationVersion);

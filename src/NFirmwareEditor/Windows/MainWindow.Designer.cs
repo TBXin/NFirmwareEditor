@@ -43,6 +43,7 @@
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.EncryptDecryptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PatchCreatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -166,7 +167,8 @@
 			// ToolsMenuItem
 			// 
 			this.ToolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EncryptDecryptMenuItem});
+            this.EncryptDecryptMenuItem,
+            this.PatchCreatorMenuItem});
 			this.ToolsMenuItem.Name = "ToolsMenuItem";
 			this.ToolsMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.ToolsMenuItem.Text = "Tools";
@@ -178,6 +180,14 @@
 			this.EncryptDecryptMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.EncryptDecryptMenuItem.Text = "Encrypt / Decrypt";
 			this.EncryptDecryptMenuItem.Click += new System.EventHandler(this.EncryptDecryptToolStripMenuItem_Click);
+			// 
+			// PatchCreatorMenuItem
+			// 
+			this.PatchCreatorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.patch_creator;
+			this.PatchCreatorMenuItem.Name = "PatchCreatorMenuItem";
+			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(159, 22);
+			this.PatchCreatorMenuItem.Text = "Patch Creator";
+			this.PatchCreatorMenuItem.Click += new System.EventHandler(this.PatchCreatorMenuItem_Click);
 			// 
 			// AboutMenuItem
 			// 
@@ -337,6 +347,7 @@
 		private System.Windows.Forms.ToolStripMenuItem OpenEncryptedMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OpenDecryptedMenuItem;
 		private UI.BorderedPanel borderedPanel1;
+		private System.Windows.Forms.ToolStripMenuItem PatchCreatorMenuItem;
 	}
 }
 
