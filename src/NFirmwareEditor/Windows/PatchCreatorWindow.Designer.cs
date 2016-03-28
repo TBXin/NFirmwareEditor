@@ -33,14 +33,14 @@
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.textBox5 = new System.Windows.Forms.TextBox();
+			this.DecryptSourceButton = new System.Windows.Forms.CheckBox();
+			this.DataTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.SelectSource2Button = new System.Windows.Forms.Button();
+			this.Source2TextBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.SelectEncryptedSourceButton = new System.Windows.Forms.Button();
-			this.SourceEncryptedTextBox = new System.Windows.Forms.TextBox();
+			this.SelectSource1Button = new System.Windows.Forms.Button();
+			this.Source1TextBox = new System.Windows.Forms.TextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.DefinitionComboBox = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
@@ -104,14 +104,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.label8);
-			this.groupBox1.Controls.Add(this.checkBox1);
-			this.groupBox1.Controls.Add(this.textBox5);
+			this.groupBox1.Controls.Add(this.DecryptSourceButton);
+			this.groupBox1.Controls.Add(this.DataTextBox);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.button1);
-			this.groupBox1.Controls.Add(this.textBox1);
+			this.groupBox1.Controls.Add(this.SelectSource2Button);
+			this.groupBox1.Controls.Add(this.Source2TextBox);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.SelectEncryptedSourceButton);
-			this.groupBox1.Controls.Add(this.SourceEncryptedTextBox);
+			this.groupBox1.Controls.Add(this.SelectSource1Button);
+			this.groupBox1.Controls.Add(this.Source1TextBox);
 			this.groupBox1.Location = new System.Drawing.Point(3, 228);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(428, 338);
@@ -128,27 +128,27 @@
 			this.label8.TabIndex = 25;
 			this.label8.Text = "Data:";
 			// 
-			// checkBox1
+			// DecryptSourceButton
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(106, 74);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(121, 17);
-			this.checkBox1.TabIndex = 7;
-			this.checkBox1.Text = "Decrypt source files";
-			this.checkBox1.UseVisualStyleBackColor = true;
+			this.DecryptSourceButton.AutoSize = true;
+			this.DecryptSourceButton.Location = new System.Drawing.Point(106, 74);
+			this.DecryptSourceButton.Name = "DecryptSourceButton";
+			this.DecryptSourceButton.Size = new System.Drawing.Size(121, 17);
+			this.DecryptSourceButton.TabIndex = 7;
+			this.DecryptSourceButton.Text = "Decrypt source files";
+			this.DecryptSourceButton.UseVisualStyleBackColor = true;
 			// 
-			// textBox5
+			// DataTextBox
 			// 
-			this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.DataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox5.Location = new System.Drawing.Point(106, 97);
-			this.textBox5.Multiline = true;
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(317, 235);
-			this.textBox5.TabIndex = 0;
-			this.textBox5.TabStop = false;
+			this.DataTextBox.Location = new System.Drawing.Point(106, 97);
+			this.DataTextBox.Multiline = true;
+			this.DataTextBox.Name = "DataTextBox";
+			this.DataTextBox.Size = new System.Drawing.Size(317, 235);
+			this.DataTextBox.TabIndex = 0;
+			this.DataTextBox.TabStop = false;
 			// 
 			// label2
 			// 
@@ -159,26 +159,26 @@
 			this.label2.TabIndex = 11;
 			this.label2.Text = "Source (Patched):";
 			// 
-			// button1
+			// SelectSource2Button
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Location = new System.Drawing.Point(348, 47);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 21);
-			this.button1.TabIndex = 6;
-			this.button1.Text = "Select";
-			this.button1.UseVisualStyleBackColor = true;
+			this.SelectSource2Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SelectSource2Button.Location = new System.Drawing.Point(348, 47);
+			this.SelectSource2Button.Name = "SelectSource2Button";
+			this.SelectSource2Button.Size = new System.Drawing.Size(75, 21);
+			this.SelectSource2Button.TabIndex = 6;
+			this.SelectSource2Button.Text = "Select";
+			this.SelectSource2Button.UseVisualStyleBackColor = true;
 			// 
-			// textBox1
+			// Source2TextBox
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.Source2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(106, 47);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.Size = new System.Drawing.Size(236, 21);
-			this.textBox1.TabIndex = 0;
-			this.textBox1.TabStop = false;
+			this.Source2TextBox.Location = new System.Drawing.Point(106, 47);
+			this.Source2TextBox.Name = "Source2TextBox";
+			this.Source2TextBox.ReadOnly = true;
+			this.Source2TextBox.Size = new System.Drawing.Size(236, 21);
+			this.Source2TextBox.TabIndex = 0;
+			this.Source2TextBox.TabStop = false;
 			// 
 			// label1
 			// 
@@ -189,26 +189,26 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "Source (Original):";
 			// 
-			// SelectEncryptedSourceButton
+			// SelectSource1Button
 			// 
-			this.SelectEncryptedSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectEncryptedSourceButton.Location = new System.Drawing.Point(348, 20);
-			this.SelectEncryptedSourceButton.Name = "SelectEncryptedSourceButton";
-			this.SelectEncryptedSourceButton.Size = new System.Drawing.Size(75, 21);
-			this.SelectEncryptedSourceButton.TabIndex = 5;
-			this.SelectEncryptedSourceButton.Text = "Select";
-			this.SelectEncryptedSourceButton.UseVisualStyleBackColor = true;
+			this.SelectSource1Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SelectSource1Button.Location = new System.Drawing.Point(348, 20);
+			this.SelectSource1Button.Name = "SelectSource1Button";
+			this.SelectSource1Button.Size = new System.Drawing.Size(75, 21);
+			this.SelectSource1Button.TabIndex = 5;
+			this.SelectSource1Button.Text = "Select";
+			this.SelectSource1Button.UseVisualStyleBackColor = true;
 			// 
-			// SourceEncryptedTextBox
+			// Source1TextBox
 			// 
-			this.SourceEncryptedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.Source1TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.SourceEncryptedTextBox.Location = new System.Drawing.Point(106, 20);
-			this.SourceEncryptedTextBox.Name = "SourceEncryptedTextBox";
-			this.SourceEncryptedTextBox.ReadOnly = true;
-			this.SourceEncryptedTextBox.Size = new System.Drawing.Size(236, 21);
-			this.SourceEncryptedTextBox.TabIndex = 0;
-			this.SourceEncryptedTextBox.TabStop = false;
+			this.Source1TextBox.Location = new System.Drawing.Point(106, 20);
+			this.Source1TextBox.Name = "Source1TextBox";
+			this.Source1TextBox.ReadOnly = true;
+			this.Source1TextBox.Size = new System.Drawing.Size(236, 21);
+			this.Source1TextBox.TabIndex = 0;
+			this.Source1TextBox.TabStop = false;
 			// 
 			// groupBox2
 			// 
@@ -355,12 +355,12 @@
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button SelectEncryptedSourceButton;
-		private System.Windows.Forms.TextBox SourceEncryptedTextBox;
+		private System.Windows.Forms.Button SelectSource1Button;
+		private System.Windows.Forms.TextBox Source1TextBox;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.Button SelectSource2Button;
+		private System.Windows.Forms.TextBox Source2TextBox;
+		private System.Windows.Forms.CheckBox DecryptSourceButton;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox NameTextBox;
@@ -373,6 +373,6 @@
 		private System.Windows.Forms.TextBox DescriptionTextBox;
 		private System.Windows.Forms.ComboBox DefinitionComboBox;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox textBox5;
+		private System.Windows.Forms.TextBox DataTextBox;
 	}
 }
