@@ -73,7 +73,7 @@
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(434, 39);
-			this.ControlBorderedPanel.TabIndex = 1;
+			this.ControlBorderedPanel.TabIndex = 2;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
 			// OkButton
@@ -83,7 +83,7 @@
 			this.OkButton.Location = new System.Drawing.Point(224, 5);
 			this.OkButton.Name = "OkButton";
 			this.OkButton.Size = new System.Drawing.Size(100, 30);
-			this.OkButton.TabIndex = 0;
+			this.OkButton.TabIndex = 7;
 			this.OkButton.Text = "Save Patch";
 			this.OkButton.UseVisualStyleBackColor = true;
 			// 
@@ -94,7 +94,7 @@
 			this.CancelButton.Location = new System.Drawing.Point(330, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 30);
-			this.CancelButton.TabIndex = 1;
+			this.CancelButton.TabIndex = 8;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
@@ -115,7 +115,7 @@
 			this.groupBox1.Location = new System.Drawing.Point(3, 228);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(428, 338);
-			this.groupBox1.TabIndex = 2;
+			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Patch data:";
 			// 
@@ -134,7 +134,7 @@
 			this.checkBox1.Location = new System.Drawing.Point(106, 74);
 			this.checkBox1.Name = "checkBox1";
 			this.checkBox1.Size = new System.Drawing.Size(121, 17);
-			this.checkBox1.TabIndex = 12;
+			this.checkBox1.TabIndex = 7;
 			this.checkBox1.Text = "Decrypt source files";
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
@@ -147,7 +147,8 @@
 			this.textBox5.Multiline = true;
 			this.textBox5.Name = "textBox5";
 			this.textBox5.Size = new System.Drawing.Size(317, 235);
-			this.textBox5.TabIndex = 24;
+			this.textBox5.TabIndex = 0;
+			this.textBox5.TabStop = false;
 			// 
 			// label2
 			// 
@@ -164,7 +165,7 @@
 			this.button1.Location = new System.Drawing.Point(348, 47);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 21);
-			this.button1.TabIndex = 10;
+			this.button1.TabIndex = 6;
 			this.button1.Text = "Select";
 			this.button1.UseVisualStyleBackColor = true;
 			// 
@@ -176,7 +177,8 @@
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.Size = new System.Drawing.Size(236, 21);
-			this.textBox1.TabIndex = 9;
+			this.textBox1.TabIndex = 0;
+			this.textBox1.TabStop = false;
 			// 
 			// label1
 			// 
@@ -193,7 +195,7 @@
 			this.SelectEncryptedSourceButton.Location = new System.Drawing.Point(348, 20);
 			this.SelectEncryptedSourceButton.Name = "SelectEncryptedSourceButton";
 			this.SelectEncryptedSourceButton.Size = new System.Drawing.Size(75, 21);
-			this.SelectEncryptedSourceButton.TabIndex = 7;
+			this.SelectEncryptedSourceButton.TabIndex = 5;
 			this.SelectEncryptedSourceButton.Text = "Select";
 			this.SelectEncryptedSourceButton.UseVisualStyleBackColor = true;
 			// 
@@ -205,7 +207,8 @@
 			this.SourceEncryptedTextBox.Name = "SourceEncryptedTextBox";
 			this.SourceEncryptedTextBox.ReadOnly = true;
 			this.SourceEncryptedTextBox.Size = new System.Drawing.Size(236, 21);
-			this.SourceEncryptedTextBox.TabIndex = 6;
+			this.SourceEncryptedTextBox.TabIndex = 0;
+			this.SourceEncryptedTextBox.TabStop = false;
 			// 
 			// groupBox2
 			// 
@@ -224,7 +227,7 @@
 			this.groupBox2.Location = new System.Drawing.Point(3, 1);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(428, 221);
-			this.groupBox2.TabIndex = 3;
+			this.groupBox2.TabIndex = 0;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Patch info:";
 			// 
@@ -236,7 +239,7 @@
 			this.DefinitionComboBox.Location = new System.Drawing.Point(106, 101);
 			this.DefinitionComboBox.Name = "DefinitionComboBox";
 			this.DefinitionComboBox.Size = new System.Drawing.Size(317, 21);
-			this.DefinitionComboBox.TabIndex = 23;
+			this.DefinitionComboBox.TabIndex = 3;
 			// 
 			// label7
 			// 
@@ -256,7 +259,7 @@
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
 			this.DescriptionTextBox.Size = new System.Drawing.Size(317, 87);
-			this.DescriptionTextBox.TabIndex = 21;
+			this.DescriptionTextBox.TabIndex = 4;
 			// 
 			// label6
 			// 
@@ -283,7 +286,7 @@
 			this.AuthorTextBox.Location = new System.Drawing.Point(106, 74);
 			this.AuthorTextBox.Name = "AuthorTextBox";
 			this.AuthorTextBox.Size = new System.Drawing.Size(317, 21);
-			this.AuthorTextBox.TabIndex = 17;
+			this.AuthorTextBox.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -301,7 +304,7 @@
 			this.VersionTextBox.Location = new System.Drawing.Point(106, 47);
 			this.VersionTextBox.Name = "VersionTextBox";
 			this.VersionTextBox.Size = new System.Drawing.Size(317, 21);
-			this.VersionTextBox.TabIndex = 15;
+			this.VersionTextBox.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -319,7 +322,7 @@
 			this.NameTextBox.Location = new System.Drawing.Point(106, 20);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(317, 21);
-			this.NameTextBox.TabIndex = 13;
+			this.NameTextBox.TabIndex = 0;
 			// 
 			// PatchCreatorWindow
 			// 
