@@ -37,6 +37,14 @@ namespace NFirmwareEditor.Core
 			}
 		}
 
+		internal static void ForEach([NotNull] this ListView.CheckedListViewItemCollection collection, [NotNull] Action<ListViewItem> action)
+		{
+			if (collection == null) throw new ArgumentNullException("collection");
+			if (action == null) throw new ArgumentNullException("action");
+
+			collection.OfType<ListViewItem>().ForEach(action);
+		}
+
 		internal static void Fill([NotNull] this ListBox listBox, [NotNull] IEnumerable<object> items, bool selectFirstItem)
 		{
 			if (listBox == null) throw new ArgumentNullException("listBox");

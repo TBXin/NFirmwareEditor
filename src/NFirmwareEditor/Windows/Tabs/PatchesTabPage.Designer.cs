@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.DescriptionGroupBox = new System.Windows.Forms.GroupBox();
+			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
 			this.ApplyPatchesButton = new System.Windows.Forms.Button();
 			this.RollbackPatchesButton = new System.Windows.Forms.Button();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
@@ -36,7 +37,6 @@
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
 			this.DescriptionGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -52,6 +52,16 @@
 			this.DescriptionGroupBox.TabIndex = 1;
 			this.DescriptionGroupBox.TabStop = false;
 			this.DescriptionGroupBox.Text = "Description:";
+			// 
+			// DescriptionTextBox
+			// 
+			this.DescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.DescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.DescriptionTextBox.Location = new System.Drawing.Point(3, 17);
+			this.DescriptionTextBox.Multiline = true;
+			this.DescriptionTextBox.Name = "DescriptionTextBox";
+			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 97);
+			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// ApplyPatchesButton
 			// 
@@ -103,7 +113,9 @@
 			this.PatchListView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PatchListView.FullRowSelect = true;
 			this.PatchListView.GridLines = true;
+			this.PatchListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.PatchListView.Location = new System.Drawing.Point(1, 1);
+			this.PatchListView.MultiSelect = false;
 			this.PatchListView.Name = "PatchListView";
 			this.PatchListView.Size = new System.Drawing.Size(768, 316);
 			this.PatchListView.TabIndex = 0;
@@ -124,16 +136,6 @@
 			// 
 			this.InstalledColumnHeader.Text = "Installed";
 			this.InstalledColumnHeader.Width = 55;
-			// 
-			// DescriptionTextBox
-			// 
-			this.DescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.DescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.DescriptionTextBox.Location = new System.Drawing.Point(3, 17);
-			this.DescriptionTextBox.Multiline = true;
-			this.DescriptionTextBox.Name = "DescriptionTextBox";
-			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 97);
-			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// PatchesTabPage
 			// 

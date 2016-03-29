@@ -121,6 +121,20 @@ namespace NFirmwareEditor.Managers
 			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
+		public void ApplyPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			if (patch == null) throw new ArgumentNullException("patch");
+			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.PatchedValue));
+		}
+
+		public void RoolbackPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			if (patch == null) throw new ArgumentNullException("patch");
+			if (firmware == null) throw new ArgumentNullException("firmware");
+		}
+
 		private static byte? GetByte(byte[] source, int offset)
 		{
 			if (source.Length <= offset) return null;

@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
+using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
 
@@ -30,21 +31,14 @@ namespace NFirmwareEditor.Windows.Tabs
 				NameColumnHeader.Width = PatchListView.Width - VersionColumnHeader.Width - InstalledColumnHeader.Width - 1;
 			};
 			PatchListView.SelectedIndexChanged += PatchListView_SelectedIndexChanged;
+
+			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 		}
 
 		[NotNull]
 		public IEnumerable<Patch> SelectedPatches
 		{
-			get
-			{
-				var result = new List<Patch>();
-				foreach (int selectedIndex in PatchListView.SelectedIndices)
-				{
-					var patch = PatchListView.Items[selectedIndex].Tag as Patch;
-					if (patch != null) result.Add(patch);
-				}
-				return result;
-			}
+			get { return new List<Patch>((from ListViewItem item in PatchListView.CheckedItems select item.Tag).OfType<Patch>()); }
 		}
 
 		[CanBeNull]
@@ -52,10 +46,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			get
 			{
-				if (PatchListView.Items.Count == 0 || PatchListView.SelectedIndices.Count == 0) return null;
-
-				var item = PatchListView.Items[PatchListView.SelectedIndices[PatchListView.SelectedIndices.Count - 1]];
-				return item.Tag as Patch;
+				if (PatchListView.SelectedItems.Count == 0) return null;
+				return PatchListView.SelectedItems[PatchListView.SelectedItems.Count - 1].Tag as Patch;
 			}
 		}
 
@@ -108,6 +100,17 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Version: " + LastSelectedPatch.Version);
 			}
 			DescriptionTextBox.Text = sb.ToString();
+		}
+
+		private void ApplyPatchesButton_Click(object sender, EventArgs e)
+		{
+			foreach (var patch in SelectedPatches)
+			{
+				m_patchManager.ApplyPatch(patch, m_firmware);
+			}
+
+			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
+			InfoBox.Show("Selected patches were applied successfully.");
 		}
 	}
 }
