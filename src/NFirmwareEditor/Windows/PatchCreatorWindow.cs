@@ -11,7 +11,9 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class PatchCreatorWindow : EditorDialogWindow
 	{
+		private readonly FirmwareLoader m_loader;
 		private readonly PatchManager m_patchManager;
+		private readonly IEnumerable<FirmwareDefinition> m_firmwareDefinitions;
 		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();
 
 		private bool m_isFirstDiffCreated;
@@ -27,15 +29,18 @@ namespace NFirmwareEditor.Windows
 			OkButton.Click += OkButton_Click;
 		}
 
-		public PatchCreatorWindow([NotNull] PatchManager patchManager, [NotNull] IEnumerable<string> firmwareDefinitions) : this()
+		public PatchCreatorWindow([NotNull] FirmwareLoader firmwareLoader, [NotNull] PatchManager patchManager, [NotNull] IEnumerable<FirmwareDefinition> firmwareDefinitions) : this()
 		{
+			if (firmwareLoader == null) throw new ArgumentNullException("firmwareLoader");
 			if (patchManager == null) throw new ArgumentNullException("patchManager");
 			if (firmwareDefinitions == null) throw new ArgumentNullException("firmwareDefinitions");
 
+			m_loader = firmwareLoader;
 			m_patchManager = patchManager;
-			foreach (var firmwareDefinition in firmwareDefinitions)
+			m_firmwareDefinitions = firmwareDefinitions;
+			foreach (var firmwareDefinition in m_firmwareDefinitions)
 			{
-				DefinitionComboBox.Items.Add(firmwareDefinition);
+				DefinitionComboBox.Items.Add(firmwareDefinition.Name);
 			}
 		}
 
@@ -84,7 +89,10 @@ namespace NFirmwareEditor.Windows
 			var file1 = m_encoder.ReadFile(Source1TextBox.Text, DecryptSourceButton.Checked);
 			var file2 = m_encoder.ReadFile(Source2TextBox.Text, DecryptSourceButton.Checked);
 
-			DataTextBox.Text = m_patchManager.CompareFiles(file1, file2);
+			var definition = m_loader.DetermineDefinition(file1, m_firmwareDefinitions);
+			if (definition != null) DefinitionComboBox.SelectedItem = definition.Name;
+
+			DataTextBox.Text = m_patchManager.CreateDiff(file1, file2);
 			OkButton.Enabled = true;
 		}
 

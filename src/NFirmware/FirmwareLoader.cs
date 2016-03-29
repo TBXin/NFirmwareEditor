@@ -107,7 +107,7 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		private FirmwareDefinition DetermineDefinition([NotNull] byte[] firmwareBytes, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		public FirmwareDefinition DetermineDefinition([NotNull] byte[] firmwareBytes, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (definitions == null) throw new ArgumentNullException("definitions");

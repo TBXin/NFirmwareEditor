@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -58,7 +60,7 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		public string CompareFiles([NotNull] byte[] file1, [NotNull] byte[] file2)
+		public string CreateDiff([NotNull] byte[] file1, [NotNull] byte[] file2)
 		{
 			if (file1 == null) throw new ArgumentNullException("file1");
 			if (file2 == null) throw new ArgumentNullException("file2");
@@ -70,16 +72,44 @@ namespace NFirmwareEditor.Managers
 				var patchedByte = file2[i];
 				if (sourceByte == patchedByte) continue;
 
-				result.AppendLine("{0:X8}: {1} -> {2:X2}", i, sourceByte.HasValue ? sourceByte.Value.ToString("X2") : "null", patchedByte);
+				result.AppendLine("{0:X8}: {1} - {2:X2}", i, sourceByte.HasValue ? sourceByte.Value.ToString("X2") : "null", patchedByte);
 			}
 			if (file1.Length > file2.Length)
 			{
 				for (var i = file2.Length; i < file1.Length; i++)
 				{
-					result.AppendLine("{0:X8}: {1:X2} -> {2}", i, file1[i], "null");
+					result.AppendLine("{0:X8}: {1:X2} - {2}", i, file1[i], "null");
 				}
 			}
 			return result.ToString();
+		}
+
+		public static IEnumerable<PatchModificationData> ParseDiff(string dataString)
+		{
+			if (string.IsNullOrEmpty(dataString)) return new List<PatchModificationData>();
+
+			var lines = dataString.Trim().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+			var result = new List<PatchModificationData>();
+			foreach (var line in lines.Where(x => string.IsNullOrEmpty(x) || !x.StartsWith("#")).Select(x => x.Replace(" ", string.Empty)))
+			{
+				var offsetAndData = line.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+				if (offsetAndData.Length != 2) continue;
+
+				var offset = long.Parse(offsetAndData[0], NumberStyles.AllowHexSpecifier);
+				var data = offsetAndData[1];
+				if (data.IndexOf(';') != -1) data = data.Substring(0, data.IndexOf(';'));
+
+				var originalPatchedData = data.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+				if (originalPatchedData.Length != 2) continue;
+
+				var originalByte = originalPatchedData[0].Equals("null", StringComparison.OrdinalIgnoreCase)
+					? (byte?)null
+					: byte.Parse(originalPatchedData[0], NumberStyles.AllowHexSpecifier);
+				var patchedByte = byte.Parse(originalPatchedData[1], NumberStyles.AllowHexSpecifier);
+
+				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
+			}
+			return result;
 		}
 
 		private static byte? GetByte(byte[] source, int offset)

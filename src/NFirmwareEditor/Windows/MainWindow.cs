@@ -200,7 +200,7 @@ namespace NFirmwareEditor.Windows
 
 		private void PatchCreatorMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var patchCreatorWindow = new PatchCreatorWindow(m_patchManager, m_definitions.Select(x => x.Name)))
+			using (var patchCreatorWindow = new PatchCreatorWindow(m_loader, m_patchManager, m_definitions))
 			{
 				patchCreatorWindow.ShowDialog();
 			}
