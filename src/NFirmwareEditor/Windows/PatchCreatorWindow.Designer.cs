@@ -31,7 +31,6 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.CreateDiffLink = new System.Windows.Forms.LinkLabel();
 			this.label8 = new System.Windows.Forms.Label();
-			this.DecryptSourceButton = new System.Windows.Forms.CheckBox();
 			this.DataTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.SelectSource2Button = new System.Windows.Forms.Button();
@@ -65,7 +64,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.CreateDiffLink);
 			this.groupBox1.Controls.Add(this.label8);
-			this.groupBox1.Controls.Add(this.DecryptSourceButton);
 			this.groupBox1.Controls.Add(this.DataTextBox);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.SelectSource2Button);
@@ -82,34 +80,24 @@
 			// 
 			// CreateDiffLink
 			// 
+			this.CreateDiffLink.AutoSize = true;
 			this.CreateDiffLink.Enabled = false;
-			this.CreateDiffLink.Location = new System.Drawing.Point(348, 71);
+			this.CreateDiffLink.Location = new System.Drawing.Point(61, 77);
 			this.CreateDiffLink.Name = "CreateDiffLink";
-			this.CreateDiffLink.Size = new System.Drawing.Size(75, 21);
+			this.CreateDiffLink.Size = new System.Drawing.Size(41, 13);
 			this.CreateDiffLink.TabIndex = 26;
 			this.CreateDiffLink.TabStop = true;
-			this.CreateDiffLink.Text = "Recreate Diff";
-			this.CreateDiffLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.CreateDiffLink.Text = "update";
 			this.CreateDiffLink.VisitedLinkColor = System.Drawing.Color.Blue;
 			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(9, 100);
+			this.label8.Location = new System.Drawing.Point(9, 77);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(55, 13);
 			this.label8.TabIndex = 25;
 			this.label8.Text = "Diffrence:";
-			// 
-			// DecryptSourceButton
-			// 
-			this.DecryptSourceButton.AutoSize = true;
-			this.DecryptSourceButton.Location = new System.Drawing.Point(106, 74);
-			this.DecryptSourceButton.Name = "DecryptSourceButton";
-			this.DecryptSourceButton.Size = new System.Drawing.Size(121, 17);
-			this.DecryptSourceButton.TabIndex = 7;
-			this.DecryptSourceButton.Text = "Decrypt source files";
-			this.DecryptSourceButton.UseVisualStyleBackColor = true;
 			// 
 			// DataTextBox
 			// 
@@ -117,7 +105,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DataTextBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DataTextBox.Location = new System.Drawing.Point(106, 97);
+			this.DataTextBox.Location = new System.Drawing.Point(106, 74);
 			this.DataTextBox.Multiline = true;
 			this.DataTextBox.Name = "DataTextBox";
 			this.DataTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -376,7 +364,6 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button SelectSource2Button;
 		private System.Windows.Forms.TextBox Source2TextBox;
-		private System.Windows.Forms.CheckBox DecryptSourceButton;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox NameTextBox;

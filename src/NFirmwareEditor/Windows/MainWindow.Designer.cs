@@ -32,11 +32,10 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenEncryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.OpenDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenDecryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -79,27 +78,26 @@
 			// FileMenuItem
 			// 
 			this.FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenEncryptedMenuItem,
-            this.OpenEncryptedManualMenuItem,
+            this.OpenMenuItem,
             this.SaveEncryptedMenuItem,
-            this.toolStripSeparator1,
-            this.OpenDecryptedMenuItem,
-            this.OpenDecryptedManualMenuItem,
             this.SaveDecryptedMenuItem,
+            this.toolStripSeparator1,
+            this.OpenEncryptedManualMenuItem,
+            this.OpenDecryptedManualMenuItem,
             this.toolStripSeparator2,
             this.ExitMenuItem});
 			this.FileMenuItem.Name = "FileMenuItem";
 			this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
 			this.FileMenuItem.Text = "File";
 			// 
-			// OpenEncryptedMenuItem
+			// OpenMenuItem
 			// 
-			this.OpenEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedMenuItem.Image")));
-			this.OpenEncryptedMenuItem.Name = "OpenEncryptedMenuItem";
-			this.OpenEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
-			this.OpenEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenEncryptedMenuItem.Text = "Open Encrypted";
-			this.OpenEncryptedMenuItem.Click += new System.EventHandler(this.OpenEncryptedMenuItem_Click);
+			this.OpenMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenuItem.Image")));
+			this.OpenMenuItem.Name = "OpenMenuItem";
+			this.OpenMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
+			this.OpenMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenMenuItem.Text = "Open";
+			this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
 			// 
 			// OpenEncryptedManualMenuItem
 			// 
@@ -123,15 +121,6 @@
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
-			// 
-			// OpenDecryptedMenuItem
-			// 
-			this.OpenDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedMenuItem.Image")));
-			this.OpenDecryptedMenuItem.Name = "OpenDecryptedMenuItem";
-			this.OpenDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + O";
-			this.OpenDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenDecryptedMenuItem.Text = "Open Decrypted";
-			this.OpenDecryptedMenuItem.Click += new System.EventHandler(this.OpenDecryptedMenuItem_Click);
 			// 
 			// OpenDecryptedManualMenuItem
 			// 
@@ -344,8 +333,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.TabControl MainTabControl;
-		private System.Windows.Forms.ToolStripMenuItem OpenEncryptedMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem OpenDecryptedMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
 		private UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.ToolStripMenuItem PatchCreatorMenuItem;
 	}

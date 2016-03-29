@@ -165,14 +165,9 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void OpenEncryptedMenuItem_Click(object sender, EventArgs e)
+		private void OpenMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndReadFirmwareOnOk(Consts.Encrypted, fileName => m_loader.TryLoadEncrypted(fileName, m_definitions));
-		}
-
-		private void OpenDecryptedMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDialogAndReadFirmwareOnOk(Consts.Decrypted, fileName => m_loader.TryLoadDecrypted(fileName, m_definitions));
+			OpenDialogAndReadFirmwareOnOk(Consts.EncryptedOrDecrypted, fileName => m_loader.TryLoad(fileName, m_definitions));
 		}
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -215,14 +210,9 @@ namespace NFirmwareEditor.Windows
 		{
 			if (keyData.HasFlag(Keys.Control))
 			{
-				if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.O))
-				{
-					OpenDecryptedMenuItem.PerformClick();
-					return true;
-				}
 				if (keyData.HasFlag(Keys.O))
 				{
-					OpenEncryptedMenuItem.PerformClick();
+					OpenMenuItem.PerformClick();
 					return true;
 				}
 

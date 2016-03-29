@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace NFirmware
 {
 	public class FirmwareLoader
 	{
+		private readonly byte[] m_encryptedFirmwareMark = Encoding.Unicode.GetBytes("Nuvoton");
 		private readonly FirmwareEncoder m_encoder;
 
 		public FirmwareLoader([NotNull] FirmwareEncoder encoder)
@@ -17,17 +19,9 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public Firmware TryLoadEncrypted([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		public Firmware TryLoad([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
-			var bytes = LoadFile(filePath, true);
-			var definition = DetermineDefinition(bytes, definitions);
-			return definition != null ? Load(bytes, definition) : null;
-		}
-
-		[CanBeNull]
-		public Firmware TryLoadDecrypted([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
-		{
-			var bytes = LoadFile(filePath, false);
+			var bytes = LoadFile(filePath);
 			var definition = DetermineDefinition(bytes, definitions);
 			return definition != null ? Load(bytes, definition) : null;
 		}
@@ -54,6 +48,15 @@ namespace NFirmware
 			Save(filePath, firmware, false);
 		}
 
+		internal byte[] LoadFile([NotNull] string filePath)
+		{
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+
+			var data = File.ReadAllBytes(filePath);
+			var decode = IsFirmwareEncrypted(data);
+			return decode ? m_encoder.Decode(data) : data;
+		}
+
 		private void Save([NotNull] string filePath, Firmware firmware, bool encode)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
@@ -61,6 +64,36 @@ namespace NFirmware
 
 			var data = encode ? m_encoder.Encode(firmware.GetBody()) : firmware.GetBody();
 			File.WriteAllBytes(filePath, data);
+		}
+
+		[CanBeNull]
+		public FirmwareDefinition DetermineDefinition([NotNull] byte[] firmwareBytes, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
+			if (definitions == null) throw new ArgumentNullException("definitions");
+
+			foreach (var definition in definitions)
+			{
+				if (definition.Marker == null
+				    || string.IsNullOrEmpty(definition.Marker.OffsetFromString)
+				    || string.IsNullOrEmpty(definition.Marker.MarkerBytesString))
+					continue;
+
+				var bytes = firmwareBytes.Skip((int)definition.Marker.Offset).Take(definition.Marker.Marker.Length).ToArray();
+				if (!definition.Marker.Marker.SequenceEqual(bytes)) continue;
+
+				return definition;
+			}
+			return null;
+		}
+
+		private bool IsFirmwareEncrypted([NotNull] byte[] firmwareBytes)
+		{
+			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
+			if (m_encryptedFirmwareMark.Length > firmwareBytes.Length) return false;
+
+			var idx = FindByteArray(firmwareBytes, m_encryptedFirmwareMark);
+			return idx == -1;
 		}
 
 		private byte[] LoadFile([NotNull] string filePath, bool decode)
@@ -104,24 +137,6 @@ namespace NFirmware
 					return new FirmwareImageBlocks(block1Images, block2Images);
 				}
 			}
-		}
-
-		[CanBeNull]
-		public FirmwareDefinition DetermineDefinition([NotNull] byte[] firmwareBytes, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
-		{
-			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
-			if (definitions == null) throw new ArgumentNullException("definitions");
-
-			foreach (var definition in definitions)
-			{
-				if (definition.Marker == null || string.IsNullOrEmpty(definition.Marker.OffsetFromString) || string.IsNullOrEmpty(definition.Marker.MarkerBytesString)) continue;
-
-				var bytes = firmwareBytes.Skip((int)definition.Marker.Offset).Take(definition.Marker.Marker.Length).ToArray();
-				if (!definition.Marker.Marker.SequenceEqual(bytes)) continue;
-
-				return definition;
-			}
-			return null;
 		}
 
 		private FirmwareStringBlocks LoadStringBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
@@ -201,6 +216,26 @@ namespace NFirmware
 				}
 			}
 			return result;
+		}
+
+		private static int FindByteArray(byte[] source, byte[] searchedBytes)
+		{
+			if (searchedBytes.Length > source.Length) return -1;
+
+			for (var i = 0; i < source.Length - searchedBytes.Length; i++)
+			{
+				var match = true;
+				for (var j = 0; j < searchedBytes.Length; j++)
+				{
+					if (source[i + j] != searchedBytes[j])
+					{
+						match = false;
+						break;
+					}
+				}
+				if (match) return i;
+			}
+			return -1;
 		}
 	}
 }

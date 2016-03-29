@@ -10,6 +10,7 @@
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg";
 		internal const string Encrypted = "encrypted";
 		internal const string Decrypted = "decrypted";
+		internal const string EncryptedOrDecrypted = Encrypted + " or " + Decrypted;
 
 		internal const int MaximumImageWidthAndHeight = 128;
 		internal const int ImageListBoxItemMaxHeight = 32 * 2;

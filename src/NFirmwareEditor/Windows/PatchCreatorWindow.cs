@@ -14,7 +14,6 @@ namespace NFirmwareEditor.Windows
 		private readonly FirmwareLoader m_loader;
 		private readonly PatchManager m_patchManager;
 		private readonly IEnumerable<FirmwareDefinition> m_firmwareDefinitions;
-		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();
 
 		private bool m_isFirstDiffCreated;
 
@@ -86,8 +85,8 @@ namespace NFirmwareEditor.Windows
 		{
 			if (string.IsNullOrEmpty(Source1TextBox.Text) || string.IsNullOrEmpty(Source2TextBox.Text)) return;
 
-			var file1 = m_encoder.ReadFile(Source1TextBox.Text, DecryptSourceButton.Checked);
-			var file2 = m_encoder.ReadFile(Source2TextBox.Text, DecryptSourceButton.Checked);
+			var file1 = m_loader.LoadFile(Source1TextBox.Text);
+			var file2 = m_loader.LoadFile(Source2TextBox.Text);
 
 			var definition = m_loader.DetermineDefinition(file1, m_firmwareDefinitions);
 			if (definition != null) DefinitionComboBox.SelectedItem = definition.Name;
