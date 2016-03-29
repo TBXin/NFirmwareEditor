@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
+using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
 
@@ -110,6 +111,14 @@ namespace NFirmwareEditor.Managers
 				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
 			}
 			return result;
+		}
+
+		public bool IsPatchApplied([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			if (patch == null) throw new ArgumentNullException("patch");
+			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
 		private static byte? GetByte(byte[] source, int offset)

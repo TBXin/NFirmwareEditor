@@ -82,7 +82,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			var patches = m_patches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
 			foreach (var patch in patches)
 			{
-				var isPatchApplied = IsPatchApplied(patch);
+				var isPatchApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
 				PatchListView.Items.Add(new ListViewItem(new[] { patch.Name, patch.Version, isPatchApplied ? "Yes" : "No" }) { Tag = patch });
 			}
 		}
@@ -95,11 +95,6 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnWorkspaceReset()
 		{
 			PatchListView.Items.Clear();
-		}
-
-		private bool IsPatchApplied(Patch patch)
-		{
-			return patch.Data.All(data => m_firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
