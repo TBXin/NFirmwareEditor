@@ -2,13 +2,33 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Xml;
 using System.Xml.Serialization;
+using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Models
 {
 	public class Patch
 	{
+		private readonly XmlSerializerNamespaces m_namespaces;
 		private IEnumerable<PatchModificationData> m_data;
+
+		public Patch()
+		{
+			m_namespaces = new XmlSerializerNamespaces(new[]
+			{
+				new XmlQualifiedName(string.Empty, Consts.PatchXmlNamespace)
+			});
+		}
+
+		[XmlNamespaceDeclarations]
+		public XmlSerializerNamespaces Namespaces
+		{
+			get { return m_namespaces; }
+		}
+
+		[XmlAttribute]
+		public string Definition { get; set; }
 
 		[XmlAttribute]
 		public string Name { get; set; }
@@ -19,10 +39,6 @@ namespace NFirmwareEditor.Models
 		[XmlAttribute]
 		public string Author { get; set; }
 
-		[XmlAttribute]
-		public string Definition { get; set; }
-
-		[XmlElement]
 		public string Description { get; set; }
 
 		[XmlElement("Data")]

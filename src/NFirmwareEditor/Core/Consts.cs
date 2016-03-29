@@ -14,5 +14,7 @@
 		internal const int MaximumImageWidthAndHeight = 128;
 		internal const int ImageListBoxItemMaxHeight = 32 * 2;
 		internal const int ImageListBoxItemImageMargin = 6;
+
+		internal const string PatchXmlNamespace = "urn:NFirmwareEditor";
 	}
 }

@@ -6,7 +6,7 @@ using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
 {
-	public partial class DecryptionWindow : Form
+	internal partial class DecryptionWindow : EditorDialogWindow
 	{
 		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();
 		private bool m_sourceEncrypted;

@@ -60,7 +60,7 @@
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\Patch.cs" />
-    <Compile Include="Models\PatchData.cs" />
+    <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Windows\DecryptionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +70,9 @@
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
+    <Compile Include="Windows\EditorDialogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Windows\HotkeyHelpWindow.cs">
       <SubType>Form</SubType>
     </Compile>

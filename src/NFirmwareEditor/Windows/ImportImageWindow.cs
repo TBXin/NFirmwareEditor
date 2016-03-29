@@ -9,7 +9,7 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class ImportImageWindow : Form
+	internal partial class ImportImageWindow : EditorDialogWindow
 	{
 		private readonly IDictionary<int, bool[,]> m_originalImportedImages = new Dictionary<int, bool[,]>();
 		private readonly IDictionary<int, bool[,]> m_croppedImportedImages = new Dictionary<int, bool[,]>();

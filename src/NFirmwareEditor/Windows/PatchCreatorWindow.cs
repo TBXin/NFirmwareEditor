@@ -9,7 +9,7 @@ using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class PatchCreatorWindow : Form
+	internal partial class PatchCreatorWindow : EditorDialogWindow
 	{
 		private readonly PatchManager m_patchManager;
 		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();

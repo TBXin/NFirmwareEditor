@@ -79,7 +79,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			var patches = m_patches.Where(x => x.Definition.Equals(m_firmware.Definition.Name));
+			var patches = m_patches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
 			foreach (var patch in patches)
 			{
 				var isPatchApplied = IsPatchApplied(patch);
@@ -102,7 +102,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			return patch.Data.All(data => m_firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
-		private void PatchListView_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (LastSelectedPatch == null) return;
 

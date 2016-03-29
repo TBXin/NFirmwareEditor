@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
@@ -11,6 +12,12 @@ namespace NFirmwareEditor.Managers
 {
 	internal class PatchManager
 	{
+		private readonly XmlWriterSettings m_xmlWriterSettings = new XmlWriterSettings
+		{
+			OmitXmlDeclaration = true,
+			Indent = true
+		};
+
 		public IEnumerable<Patch> LoadPatches()
 		{
 			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
@@ -44,7 +51,10 @@ namespace NFirmwareEditor.Managers
 			var serializer = new XmlSerializer(typeof(Patch));
 			using (var fs = File.Open(filePath, FileMode.Create))
 			{
-				serializer.Serialize(fs, patch);
+				using (var writer = XmlWriter.Create(fs, m_xmlWriterSettings))
+				{
+					serializer.Serialize(writer, patch, patch.Namespaces);
+				}
 			}
 		}
 

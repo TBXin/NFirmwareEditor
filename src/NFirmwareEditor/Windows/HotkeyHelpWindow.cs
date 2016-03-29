@@ -1,9 +1,8 @@
-﻿using System.Windows.Forms;
-using NFirmwareEditor.Core;
+﻿using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
 {
-	public partial class HotkeyHelpWindow : Form
+	internal partial class HotkeyHelpWindow : EditorDialogWindow
 	{
 		public HotkeyHelpWindow()
 		{

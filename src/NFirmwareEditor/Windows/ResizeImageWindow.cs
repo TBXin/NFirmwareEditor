@@ -5,7 +5,7 @@ using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
 {
-	public partial class ResizeImageWindow : Form
+	internal partial class ResizeImageWindow : EditorDialogWindow
 	{
 		public ResizeImageWindow()
 		{
