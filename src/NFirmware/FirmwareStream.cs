@@ -16,9 +16,12 @@ namespace NFirmware
 			m_stream.Write(body, 0, body.Length);
 		}
 
-		public byte ReadByte(long offset)
+		public byte? ReadByte(long offset)
 		{
-			return m_stream.Length < offset ? (byte)0 : ReadBytes(offset, 1)[0];
+			if (m_stream.Length <= offset) return null;
+
+			m_stream.Position = offset;
+			return (byte)m_stream.ReadByte();
 		}
 
 		public byte[] ReadBytes(long offset, int count)

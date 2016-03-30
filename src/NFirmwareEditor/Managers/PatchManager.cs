@@ -119,20 +119,34 @@ namespace NFirmwareEditor.Managers
 			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
-		public void ApplyPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
+		public bool ApplyPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			if (patch == null) throw new ArgumentNullException("patch");
 			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (!ValidatePatchApplyingCompatibility(patch, firmware)) return false;
 
 			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.PatchedValue));
+			return true;
 		}
 
-		public void RollbackPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
+		public bool RollbackPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			if (patch == null) throw new ArgumentNullException("patch");
 			if (firmware == null) throw new ArgumentNullException("firmware");
+			if (!ValidatePatchRollbackCompatibility(patch, firmware)) return false;
 
 			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.OriginalValue));
+			return true;
+		}
+
+		private static bool ValidatePatchApplyingCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.OriginalValue);
+		}
+
+		private static bool ValidatePatchRollbackCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
 		private static byte? GetByte(byte[] source, int offset)
