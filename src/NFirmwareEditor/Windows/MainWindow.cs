@@ -12,7 +12,7 @@ using NFirmwareEditor.Windows.Tabs;
 
 namespace NFirmwareEditor.Windows
 {
-	public partial class MainWindow : Form
+	internal sealed partial class MainWindow : Form
 	{
 		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
@@ -32,11 +32,13 @@ namespace NFirmwareEditor.Windows
 				new StringEditorTabPage { Dock = DockStyle.Fill },
 				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill }
 			};
-			Icon = Paths.ApplicationIcon;
 
 			InitializeComponent();
 			LoadSettings();
 			InitializeControls();
+
+			Icon = Paths.ApplicationIcon;
+			Text = Consts.ApplicationTitle;
 		}
 
 		private void InitializeControls()
