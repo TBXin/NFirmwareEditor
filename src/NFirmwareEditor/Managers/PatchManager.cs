@@ -147,6 +147,24 @@ namespace NFirmwareEditor.Managers
 			return true;
 		}
 
+		public BulkPatchResult BulkOperation(IEnumerable<Patch> patchList, Func<Patch, bool> operation)
+		{
+			var proceededPatches = new List<Patch>();
+			var conflictedPatches = new List<Patch>();
+			foreach (var patch in patchList)
+			{
+				if (operation(patch))
+				{
+					proceededPatches.Add(patch);
+				}
+				else
+				{
+					conflictedPatches.Add(patch);
+				}
+			}
+			return new BulkPatchResult(proceededPatches, conflictedPatches);
+		}
+
 		private static bool ValidatePatchApplyingCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.OriginalValue);

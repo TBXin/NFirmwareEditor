@@ -39,6 +39,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.SelectedIndexChanged += PatchListView_SelectedIndexChanged;
 			PatchListView.ItemChecked += PatchListView_ItemChecked;
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
+			RollbackPatchesButton.Click += RollbackPatchesButton_Click;
 		}
 
 		[NotNull]
@@ -146,46 +147,75 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Focus();
 			if (!candidates.Any())
 			{
-				InfoBox.Show("Selected patches were already applied.");
+				InfoBox.Show("Selected patches were already installed.");
 				return;
 			}
 
-			var appliedPatchList = new List<Patch>();
-			var notAppliedPatchList = new List<Patch>();
-
-			foreach (var patch in candidates)
-			{
-				if (m_patchManager.ApplyPatch(patch, m_firmware))
-				{
-					appliedPatchList.Add(patch);
-					UpdatePatchStatuses();
-				}
-				else
-				{
-					notAppliedPatchList.Add(patch);
-				}
-			}	
+			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.ApplyPatch(p, m_firmware));
+			UpdatePatchStatuses();
 
 			var sb = new StringBuilder();
-			if (appliedPatchList.Count > 0)
+			if (result.ProceededPatches.Count > 0)
 			{
-				sb.AppendLine("Patching is complete.");
+				sb.AppendLine("Patching is completed.");
 				sb.AppendLine();
-				sb.AppendLine("List of applied patches:");
-				foreach (var patch in appliedPatchList)
+				sb.AppendLine("List of installed patches:");
+				foreach (var patch in result.ProceededPatches)
 				{
 					sb.AppendLine(" - " + patch.Name);
 				}
 			}
-			if (notAppliedPatchList.Count > 0)
+			if (result.ConflictedPatches.Count > 0)
 			{
-				if (appliedPatchList.Count == 0)
+				if (result.ConflictedPatches.Count == 0)
 				{
-					sb.AppendLine("Patching ended in failure.");
+					sb.AppendLine("Patching is not completed.");
 				}
 				sb.AppendLine();
-				sb.AppendLine("Patches that have not been applied because of conflicts:");
-				foreach (var patch in notAppliedPatchList)
+				sb.AppendLine("Patches that have not been installed because of conflicts:");
+				foreach (var patch in result.ConflictedPatches)
+				{
+					sb.AppendLine(" - " + patch.Name);
+				}
+			}
+			InfoBox.Show(sb.ToString());
+		}
+		private void RollbackPatchesButton_Click(object sender, EventArgs e)
+		{
+			if (!SelectedPatches.Any()) return;
+
+			var candidates = SelectedPatches.Where(x => x.IsApplied).ToList();
+			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
+			PatchListView.Focus();
+			if (!candidates.Any())
+			{
+				InfoBox.Show("Selected patches are not installed.");
+				return;
+			}
+
+			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.RollbackPatch(p, m_firmware));
+			UpdatePatchStatuses();
+
+			var sb = new StringBuilder();
+			if (result.ProceededPatches.Count > 0)
+			{
+				sb.AppendLine("Rollback is completed.");
+				sb.AppendLine();
+				sb.AppendLine("List of rollbacked patches:");
+				foreach (var patch in result.ProceededPatches)
+				{
+					sb.AppendLine(" - " + patch.Name);
+				}
+			}
+			if (result.ConflictedPatches.Count > 0)
+			{
+				if (result.ConflictedPatches.Count == 0)
+				{
+					sb.AppendLine("Rollback is not completed.");
+				}
+				sb.AppendLine();
+				sb.AppendLine("Patches that have not been rollbacked because of conflicts:");
+				foreach (var patch in result.ConflictedPatches)
 				{
 					sb.AppendLine(" - " + patch.Name);
 				}
