@@ -37,6 +37,7 @@
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.CompatibleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.DescriptionGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -48,7 +49,7 @@
 			this.DescriptionGroupBox.Controls.Add(this.DescriptionTextBox);
 			this.DescriptionGroupBox.Location = new System.Drawing.Point(0, 326);
 			this.DescriptionGroupBox.Name = "DescriptionGroupBox";
-			this.DescriptionGroupBox.Size = new System.Drawing.Size(769, 117);
+			this.DescriptionGroupBox.Size = new System.Drawing.Size(769, 125);
 			this.DescriptionGroupBox.TabIndex = 1;
 			this.DescriptionGroupBox.TabStop = false;
 			this.DescriptionGroupBox.Text = "Description:";
@@ -60,13 +61,14 @@
 			this.DescriptionTextBox.Location = new System.Drawing.Point(3, 17);
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
-			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 97);
+			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 105);
 			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// ApplyPatchesButton
 			// 
 			this.ApplyPatchesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.ApplyPatchesButton.Location = new System.Drawing.Point(0, 449);
+			this.ApplyPatchesButton.Enabled = false;
+			this.ApplyPatchesButton.Location = new System.Drawing.Point(-1, 452);
 			this.ApplyPatchesButton.Name = "ApplyPatchesButton";
 			this.ApplyPatchesButton.Size = new System.Drawing.Size(100, 30);
 			this.ApplyPatchesButton.TabIndex = 3;
@@ -76,7 +78,8 @@
 			// RollbackPatchesButton
 			// 
 			this.RollbackPatchesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.RollbackPatchesButton.Location = new System.Drawing.Point(106, 449);
+			this.RollbackPatchesButton.Enabled = false;
+			this.RollbackPatchesButton.Location = new System.Drawing.Point(100, 452);
 			this.RollbackPatchesButton.Name = "RollbackPatchesButton";
 			this.RollbackPatchesButton.Size = new System.Drawing.Size(100, 30);
 			this.RollbackPatchesButton.TabIndex = 4;
@@ -109,7 +112,8 @@
 			this.PatchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumnHeader,
             this.VersionColumnHeader,
-            this.InstalledColumnHeader});
+            this.InstalledColumnHeader,
+            this.CompatibleColumnHeader});
 			this.PatchListView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PatchListView.FullRowSelect = true;
 			this.PatchListView.GridLines = true;
@@ -136,6 +140,11 @@
 			// 
 			this.InstalledColumnHeader.Text = "Installed";
 			this.InstalledColumnHeader.Width = 55;
+			// 
+			// CompatibleColumnHeader
+			// 
+			this.CompatibleColumnHeader.Text = "Compatible";
+			this.CompatibleColumnHeader.Width = 70;
 			// 
 			// PatchesTabPage
 			// 
@@ -166,5 +175,6 @@
 		private System.Windows.Forms.Button ApplyPatchesButton;
 		private System.Windows.Forms.Button RollbackPatchesButton;
 		private System.Windows.Forms.TextBox DescriptionTextBox;
+		private System.Windows.Forms.ColumnHeader CompatibleColumnHeader;
 	}
 }

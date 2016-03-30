@@ -119,6 +119,14 @@ namespace NFirmwareEditor.Managers
 			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.PatchedValue);
 		}
 
+		public bool IsPatchCompatible([NotNull] Patch patch, [NotNull] Firmware firmware)
+		{
+			if (patch == null) throw new ArgumentNullException("patch");
+			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			return ValidatePatchApplyingCompatibility(patch, firmware);
+		}
+
 		public bool ApplyPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			if (patch == null) throw new ArgumentNullException("patch");

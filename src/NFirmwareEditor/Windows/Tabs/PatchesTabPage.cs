@@ -15,8 +15,11 @@ namespace NFirmwareEditor.Windows.Tabs
 	internal partial class PatchesTabPage : UserControl, IEditorTabPage
 	{
 		private readonly PatchManager m_patchManager;
+		private readonly IDictionary<Patch, ListViewItem> m_patchListViewItems = new Dictionary<Patch, ListViewItem>();
 
-		private IEnumerable<Patch> m_patches; 
+		private IEnumerable<Patch> m_allPatches;
+		private IEnumerable<Patch> m_suitablePatches;
+
 		private Firmware m_firmware;
 
 		public PatchesTabPage([NotNull] PatchManager patchManager)
@@ -28,10 +31,13 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			PatchListView.Resize += (s, e) =>
 			{
-				NameColumnHeader.Width = PatchListView.Width - VersionColumnHeader.Width - InstalledColumnHeader.Width - 1;
+				NameColumnHeader.Width = PatchListView.Width -
+				                         VersionColumnHeader.Width -
+				                         InstalledColumnHeader.Width -
+				                         CompatibleColumnHeader.Width - 1;
 			};
 			PatchListView.SelectedIndexChanged += PatchListView_SelectedIndexChanged;
-
+			PatchListView.ItemChecked += PatchListView_ItemChecked;
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 		}
 
@@ -58,7 +64,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void Initialize(Configuration configuration)
 		{
-			m_patches = m_patchManager.LoadPatches();
+			m_allPatches = m_patchManager.LoadPatches();
 		}
 
 		public void OnActivate()
@@ -71,11 +77,21 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			var patches = m_patches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
-			foreach (var patch in patches)
+			m_suitablePatches = m_allPatches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
+			foreach (var patch in m_suitablePatches)
 			{
-				var isPatchApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
-				PatchListView.Items.Add(new ListViewItem(new[] { patch.Name, patch.Version, isPatchApplied ? "Yes" : "No" }) { Tag = patch });
+				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
+				patch.IsCompatible = m_patchManager.IsPatchCompatible(patch, m_firmware) || patch.IsApplied;
+				var item = new ListViewItem(new[]
+				{
+					patch.Name,
+					patch.Version,
+					patch.IsApplied ? "Yes" : "No",
+					patch.IsCompatible ? "Yes" : "No"
+				}) { Tag = patch };
+
+				m_patchListViewItems[patch] = item;
+				PatchListView.Items.Add(item);
 			}
 		}
 
@@ -86,7 +102,21 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnWorkspaceReset()
 		{
+			m_patchListViewItems.Clear();
 			PatchListView.Items.Clear();
+		}
+
+		private void UpdatePatchStatuses()
+		{
+			foreach (var item in m_patchListViewItems)
+			{
+				var patch = item.Key;
+				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
+				patch.IsCompatible = m_patchManager.IsPatchCompatible(patch, m_firmware) || patch.IsApplied;
+
+				item.Value.SubItems[2].Text = patch.IsApplied ? "Yes" : "No";
+				item.Value.SubItems[3].Text = patch.IsCompatible ? "Yes" : "No";
+			}
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,15 +132,65 @@ namespace NFirmwareEditor.Windows.Tabs
 			DescriptionTextBox.Text = sb.ToString();
 		}
 
+		private void PatchListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+		{
+			ApplyPatchesButton.Enabled = RollbackPatchesButton.Enabled = PatchListView.CheckedIndices.Count > 0;
+		}
+
 		private void ApplyPatchesButton_Click(object sender, EventArgs e)
 		{
-			foreach (var patch in SelectedPatches)
+			if (!SelectedPatches.Any()) return;
+
+			var candidates = SelectedPatches.Where(x => !x.IsApplied).ToList();
+			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
+			PatchListView.Focus();
+			if (!candidates.Any())
 			{
-				m_patchManager.ApplyPatch(patch, m_firmware);
+				InfoBox.Show("Selected patches were already applied.");
+				return;
 			}
 
-			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
-			InfoBox.Show("Selected patches were applied successfully.");
+			var appliedPatchList = new List<Patch>();
+			var notAppliedPatchList = new List<Patch>();
+
+			foreach (var patch in candidates)
+			{
+				if (m_patchManager.ApplyPatch(patch, m_firmware))
+				{
+					appliedPatchList.Add(patch);
+					UpdatePatchStatuses();
+				}
+				else
+				{
+					notAppliedPatchList.Add(patch);
+				}
+			}	
+
+			var sb = new StringBuilder();
+			if (appliedPatchList.Count > 0)
+			{
+				sb.AppendLine("Patching is complete.");
+				sb.AppendLine();
+				sb.AppendLine("List of applied patches:");
+				foreach (var patch in appliedPatchList)
+				{
+					sb.AppendLine(" - " + patch.Name);
+				}
+			}
+			if (notAppliedPatchList.Count > 0)
+			{
+				if (appliedPatchList.Count == 0)
+				{
+					sb.AppendLine("Patching ended in failure.");
+				}
+				sb.AppendLine();
+				sb.AppendLine("Patches that have not been applied because of conflicts:");
+				foreach (var patch in notAppliedPatchList)
+				{
+					sb.AppendLine(" - " + patch.Name);
+				}
+			}
+			InfoBox.Show(sb.ToString());
 		}
 	}
 }

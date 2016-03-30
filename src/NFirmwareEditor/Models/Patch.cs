@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using NFirmwareEditor.Core;
@@ -50,5 +47,11 @@ namespace NFirmwareEditor.Models
 		{
 			get { return m_data ?? (m_data = PatchManager.ParseDiff(DataString)); }
 		}
+
+		[XmlIgnore]
+		internal bool IsApplied { get; set; }
+
+		[XmlIgnore]
+		internal bool IsCompatible { get; set; }
 	}
 }
