@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFirmwareEditor", "NFirmwar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFirmware", "NFirmware\NFirmware.csproj", "{557A7598-73FA-42E5-BF8F-A2D1C4767953}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFirmware.Tests", "NFirmware.Tests\NFirmware.Tests.csproj", "{51773345-23C3-444D-8C95-B51AEF1CE7FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{557A7598-73FA-42E5-BF8F-A2D1C4767953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{557A7598-73FA-42E5-BF8F-A2D1C4767953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{557A7598-73FA-42E5-BF8F-A2D1C4767953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51773345-23C3-444D-8C95-B51AEF1CE7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51773345-23C3-444D-8C95-B51AEF1CE7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51773345-23C3-444D-8C95-B51AEF1CE7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51773345-23C3-444D-8C95-B51AEF1CE7FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

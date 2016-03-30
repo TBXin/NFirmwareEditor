@@ -100,13 +100,11 @@ namespace NFirmwareEditor.Managers
 				var data = offsetAndData[1];
 				if (data.IndexOf(';') != -1) data = data.Substring(0, data.IndexOf(';'));
 
-				var originalPatchedData = data.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-				if (originalPatchedData.Length != 2) continue;
+				var originalAndPatchedBytes = data.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+				if (originalAndPatchedBytes.Length != 2) continue;
 
-				var originalByte = originalPatchedData[0].Equals("null", StringComparison.OrdinalIgnoreCase)
-					? (byte?)null
-					: byte.Parse(originalPatchedData[0], NumberStyles.AllowHexSpecifier);
-				var patchedByte = byte.Parse(originalPatchedData[1], NumberStyles.AllowHexSpecifier);
+				var originalByte = ParseByte(originalAndPatchedBytes[0]);
+				var patchedByte = ParseByte(originalAndPatchedBytes[1]);
 
 				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
 			}
@@ -129,16 +127,27 @@ namespace NFirmwareEditor.Managers
 			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.PatchedValue));
 		}
 
-		public void RoolbackPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
+		public void RollbackPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			if (patch == null) throw new ArgumentNullException("patch");
 			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.OriginalValue));
 		}
 
 		private static byte? GetByte(byte[] source, int offset)
 		{
 			if (source.Length <= offset) return null;
 			return source[offset];
+		}
+
+		private static byte? ParseByte([NotNull] string byteString)
+		{
+			if (string.IsNullOrEmpty(byteString)) throw new ArgumentNullException("byteString");
+
+			return byteString.Equals("null", StringComparison.OrdinalIgnoreCase)
+				? (byte?)null
+				: byte.Parse(byteString, NumberStyles.AllowHexSpecifier);
 		}
 	}
 }

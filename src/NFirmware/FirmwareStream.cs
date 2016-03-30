@@ -39,10 +39,14 @@ namespace NFirmware
 			m_stream.Write(data, 0, data.Length);
 		}
 
-		public void WriteByte(long offset, byte data)
+		public void WriteByte(long offset, byte? data)
 		{
-			m_stream.Position = offset;
-			m_stream.WriteByte(data);
+			if (data.HasValue)
+			{
+				m_stream.Position = offset;
+				m_stream.WriteByte(data.Value);
+			}
+			else m_stream.SetLength(offset);
 		}
 
 		public byte[] ToArray()
