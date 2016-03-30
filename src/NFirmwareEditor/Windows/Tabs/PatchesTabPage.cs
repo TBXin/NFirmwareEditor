@@ -126,9 +126,10 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			var sb = new StringBuilder();
 			{
-				sb.AppendLine(LastSelectedPatch.Description);
 				sb.AppendLine("Author: " + LastSelectedPatch.Author);
 				sb.AppendLine("Version: " + LastSelectedPatch.Version);
+				sb.AppendLine();
+				sb.AppendLine(LastSelectedPatch.Description);
 			}
 			DescriptionTextBox.Text = sb.ToString();
 		}
