@@ -177,7 +177,9 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			var images = m_firmware.ReadImages(charMetadatas).ToList();
 			var data = FirmwareImageProcessor.MergeImages(images);
+			var dataSize = FirmwareImageProcessor.GetImageSize(data);
 
+			StringPreviewImageSizeLabel.Text = dataSize.Width + "x" + dataSize.Height;
 			StringPrewviewPixelGrid.Data = data;
 		}
 

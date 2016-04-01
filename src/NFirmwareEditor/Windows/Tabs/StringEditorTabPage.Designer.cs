@@ -35,6 +35,7 @@
 			this.CharLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.label4 = new System.Windows.Forms.Label();
 			this.borderedPanel7 = new NFirmwareEditor.UI.BorderedPanel();
+			this.StringPreviewImageSizeLabel = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.borderedPanel8 = new NFirmwareEditor.UI.BorderedPanel();
 			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
@@ -143,6 +144,7 @@
 			this.borderedPanel7.BorderRight = true;
 			this.borderedPanel7.BorderTop = true;
 			this.borderedPanel7.BorderWidth = 1F;
+			this.borderedPanel7.Controls.Add(this.StringPreviewImageSizeLabel);
 			this.borderedPanel7.Controls.Add(this.label3);
 			this.borderedPanel7.Controls.Add(this.borderedPanel8);
 			this.borderedPanel7.Location = new System.Drawing.Point(143, 2);
@@ -151,6 +153,14 @@
 			this.borderedPanel7.Size = new System.Drawing.Size(627, 118);
 			this.borderedPanel7.TabIndex = 14;
 			this.borderedPanel7.Text = "borderedPanel7";
+			// 
+			// StringPreviewImageSizeLabel
+			// 
+			this.StringPreviewImageSizeLabel.AutoSize = true;
+			this.StringPreviewImageSizeLabel.Location = new System.Drawing.Point(48, 8);
+			this.StringPreviewImageSizeLabel.Name = "StringPreviewImageSizeLabel";
+			this.StringPreviewImageSizeLabel.Size = new System.Drawing.Size(0, 13);
+			this.StringPreviewImageSizeLabel.TabIndex = 6;
 			// 
 			// label3
 			// 
@@ -285,5 +295,6 @@
 		private UI.BorderedPanel borderedPanel6;
 		private System.Windows.Forms.ListBox Block1StringListBox;
 		private System.Windows.Forms.ListBox Block2StringListBox;
+		private System.Windows.Forms.Label StringPreviewImageSizeLabel;
 	}
 }
