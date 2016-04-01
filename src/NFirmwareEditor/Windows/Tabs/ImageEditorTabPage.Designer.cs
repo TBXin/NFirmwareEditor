@@ -37,7 +37,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.BitmapImportButton = new System.Windows.Forms.Button();
 			this.ResizeButton = new System.Windows.Forms.Button();
 			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
@@ -51,6 +51,7 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
+			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ImageEditorStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -66,7 +67,6 @@
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
-			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
 			this.borderedPanel4.SuspendLayout();
@@ -144,42 +144,6 @@
 			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
 			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.ImportContextMenuItem.Text = "Import";
-			// 
-			// borderedPanel2
-			// 
-			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.borderedPanel2.BackColor = System.Drawing.Color.White;
-			this.borderedPanel2.BorderBottom = true;
-			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel2.BorderLeft = true;
-			this.borderedPanel2.BorderRight = true;
-			this.borderedPanel2.BorderTop = true;
-			this.borderedPanel2.BorderWidth = 1F;
-			this.borderedPanel2.Controls.Add(this.BitmapImportButton);
-			this.borderedPanel2.Controls.Add(this.ResizeButton);
-			this.borderedPanel2.Controls.Add(this.ImageEditorHotkeyInformationButton);
-			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
-			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
-			this.borderedPanel2.Controls.Add(this.PasteButton);
-			this.borderedPanel2.Controls.Add(this.CopyButton);
-			this.borderedPanel2.Controls.Add(this.InverseButton);
-			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
-			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
-			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
-			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
-			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
-			this.borderedPanel2.Controls.Add(this.borderedPanel4);
-			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
-			this.borderedPanel2.Controls.Add(this.label1);
-			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
-			this.borderedPanel2.Location = new System.Drawing.Point(143, 123);
-			this.borderedPanel2.Name = "borderedPanel2";
-			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel2.Size = new System.Drawing.Size(627, 358);
-			this.borderedPanel2.TabIndex = 7;
-			this.borderedPanel2.Text = "borderedPanel2";
 			// 
 			// BitmapImportButton
 			// 
@@ -325,6 +289,42 @@
 			this.ImageEditorToolTip.SetToolTip(this.ShiftLeftButton, "Shift image left");
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			// 
+			// borderedPanel2
+			// 
+			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel2.BackColor = System.Drawing.Color.White;
+			this.borderedPanel2.BorderBottom = true;
+			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel2.BorderLeft = true;
+			this.borderedPanel2.BorderRight = true;
+			this.borderedPanel2.BorderTop = true;
+			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.BitmapImportButton);
+			this.borderedPanel2.Controls.Add(this.ResizeButton);
+			this.borderedPanel2.Controls.Add(this.ImageEditorHotkeyInformationButton);
+			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
+			this.borderedPanel2.Controls.Add(this.FlipHorizontalButton);
+			this.borderedPanel2.Controls.Add(this.PasteButton);
+			this.borderedPanel2.Controls.Add(this.CopyButton);
+			this.borderedPanel2.Controls.Add(this.InverseButton);
+			this.borderedPanel2.Controls.Add(this.ClearAllPixelsButton);
+			this.borderedPanel2.Controls.Add(this.ShiftDownButton);
+			this.borderedPanel2.Controls.Add(this.ShiftUpButton);
+			this.borderedPanel2.Controls.Add(this.ShiftRightButton);
+			this.borderedPanel2.Controls.Add(this.ShiftLeftButton);
+			this.borderedPanel2.Controls.Add(this.borderedPanel4);
+			this.borderedPanel2.Controls.Add(this.ShowGridCheckBox);
+			this.borderedPanel2.Controls.Add(this.label1);
+			this.borderedPanel2.Controls.Add(this.GridSizeUpDown);
+			this.borderedPanel2.Location = new System.Drawing.Point(143, 174);
+			this.borderedPanel2.Name = "borderedPanel2";
+			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel2.Size = new System.Drawing.Size(627, 307);
+			this.borderedPanel2.TabIndex = 7;
+			this.borderedPanel2.Text = "borderedPanel2";
+			// 
 			// borderedPanel4
 			// 
 			this.borderedPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -342,7 +342,7 @@
 			this.borderedPanel4.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel4.Size = new System.Drawing.Size(625, 328);
+			this.borderedPanel4.Size = new System.Drawing.Size(625, 277);
 			this.borderedPanel4.TabIndex = 3;
 			this.borderedPanel4.Text = "borderedPanel4";
 			// 
@@ -359,7 +359,7 @@
 			this.ImagePixelGrid.Name = "ImagePixelGrid";
 			this.ImagePixelGrid.ReadOnly = false;
 			this.ImagePixelGrid.ShowGrid = true;
-			this.ImagePixelGrid.Size = new System.Drawing.Size(625, 305);
+			this.ImagePixelGrid.Size = new System.Drawing.Size(625, 254);
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
 			// 
@@ -368,7 +368,7 @@
 			this.ImageEditorStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImageSizeLabel,
             this.CursorPositionLabel});
-			this.ImageEditorStatusStrip.Location = new System.Drawing.Point(0, 306);
+			this.ImageEditorStatusStrip.Location = new System.Drawing.Point(0, 255);
 			this.ImageEditorStatusStrip.Name = "ImageEditorStatusStrip";
 			this.ImageEditorStatusStrip.Size = new System.Drawing.Size(625, 22);
 			this.ImageEditorStatusStrip.SizingGrip = false;
@@ -445,7 +445,7 @@
 			this.borderedPanel3.Location = new System.Drawing.Point(143, 2);
 			this.borderedPanel3.Name = "borderedPanel3";
 			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(627, 118);
+			this.borderedPanel3.Size = new System.Drawing.Size(627, 169);
 			this.borderedPanel3.TabIndex = 9;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
@@ -460,6 +460,9 @@
 			// 
 			// borderedPanel5
 			// 
+			this.borderedPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.borderedPanel5.BackColor = System.Drawing.Color.Transparent;
 			this.borderedPanel5.BorderBottom = false;
 			this.borderedPanel5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
@@ -468,11 +471,10 @@
 			this.borderedPanel5.BorderTop = true;
 			this.borderedPanel5.BorderWidth = 1F;
 			this.borderedPanel5.Controls.Add(this.ImagePreviewPixelGrid);
-			this.borderedPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel5.Name = "borderedPanel5";
 			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel5.Size = new System.Drawing.Size(625, 88);
+			this.borderedPanel5.Size = new System.Drawing.Size(625, 139);
 			this.borderedPanel5.TabIndex = 4;
 			this.borderedPanel5.Text = "borderedPanel5";
 			// 
@@ -490,7 +492,7 @@
 			this.ImagePreviewPixelGrid.Name = "ImagePreviewPixelGrid";
 			this.ImagePreviewPixelGrid.ReadOnly = true;
 			this.ImagePreviewPixelGrid.ShowGrid = false;
-			this.ImagePreviewPixelGrid.Size = new System.Drawing.Size(621, 83);
+			this.ImagePreviewPixelGrid.Size = new System.Drawing.Size(621, 134);
 			this.ImagePreviewPixelGrid.TabIndex = 3;
 			this.ImagePreviewPixelGrid.Text = "pixelGrid1";
 			// 
@@ -551,10 +553,10 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.borderedPanel3);
 			this.Controls.Add(this.Block1ImageRadioButton);
 			this.Controls.Add(this.borderedPanel2);
 			this.Controls.Add(this.Block2ImageRadioButton);
-			this.Controls.Add(this.borderedPanel3);
 			this.Controls.Add(this.borderedPanel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.Name = "ImageEditorTabPage";

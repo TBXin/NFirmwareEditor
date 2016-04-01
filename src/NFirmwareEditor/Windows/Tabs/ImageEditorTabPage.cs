@@ -339,7 +339,11 @@ namespace NFirmwareEditor.Windows.Tabs
 			UpdateImageStatusLabel(LastSelectedImageMetadata);
 			try
 			{
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = m_firmware.ReadImage(LastSelectedImageMetadata);
+				var image = m_firmware.ReadImage(LastSelectedImageMetadata);
+				var imageSize = FirmwareImageProcessor.GetImageSize(image);
+
+				ImagePreviewPixelGrid.BlockSize = imageSize.Height > 64 ? 1 : 2;
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = image;
 			}
 			catch (Exception)
 			{
