@@ -93,6 +93,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block1ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
 			Block2ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
 
+			ImagePixelGrid.BlockSize = m_configuration.GridSize;
 			ImagePixelGrid.CursorPositionChanged += location =>
 			{
 				CursorPositionLabel.Text = location.HasValue
