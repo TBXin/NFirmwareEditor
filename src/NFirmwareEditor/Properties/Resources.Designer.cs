@@ -71,21 +71,12 @@ namespace NFirmwareEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NFirmwareEditor v{0}
-        ///
-        ///Firmware resource editor for vaping devices such as:
-        ///
-        ///Joyetech: Evic VTC Mini, Cuboid;
-        ///Wismec: Reuleaux RX200, Presa TC75W;
-        ///Vaporflask: Lite, Classic, Stout;
-        ///Eleaf: iStick TC100W;
-        ///and so on...
-        ///
-        ///ReikoKitsune © 2016.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string AboutMessage {
+        internal static System.Drawing.Bitmap app_logo {
             get {
-                return ResourceManager.GetString("AboutMessage", resourceCulture);
+                object obj = ResourceManager.GetObject("app_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -182,6 +173,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GitHub {
+            get {
+                object obj = ResourceManager.GetObject("GitHub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap image_export {
             get {
                 object obj = ResourceManager.GetObject("image_export", resourceCulture);
@@ -262,6 +263,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ru {
+            get {
+                object obj = ResourceManager.GetObject("ru", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_as {
             get {
                 object obj = ResourceManager.GetObject("save_as", resourceCulture);
@@ -285,6 +296,16 @@ namespace NFirmwareEditor.Properties {
         internal static System.Drawing.Bitmap transparent_bg {
             get {
                 object obj = ResourceManager.GetObject("transparent_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap www_page {
+            get {
+                object obj = ResourceManager.GetObject("www_page", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

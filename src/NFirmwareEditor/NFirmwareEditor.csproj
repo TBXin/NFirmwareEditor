@@ -62,6 +62,12 @@
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\Patch.cs" />
     <Compile Include="Models\PatchModificationData.cs" />
+    <Compile Include="Windows\AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\AboutWindow.Designer.cs">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DecryptionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <Compile Include="Windows\Tabs\StringEditorTabPage.Designer.cs">
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Windows\AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\DecryptionWindow.resx">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +219,10 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\www_page.png" />
+    <None Include="Resources\GitHub.png" />
+    <None Include="Resources\ru.png" />
+    <None Include="Resources\app_logo.png" />
     <None Include="Resources\patch_creator.png" />
     <None Include="Resources\bitmap_import.png" />
     <None Include="Resources\image_resize.png" />

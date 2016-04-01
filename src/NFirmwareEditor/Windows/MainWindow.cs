@@ -201,7 +201,10 @@ namespace NFirmwareEditor.Windows
 
 		private void AboutMenuItem_Click(object sender, EventArgs e)
 		{
-			InfoBox.Show(Resources.AboutMessage, Consts.ApplicationVersion);
+			using (var aboutWindow = new AboutWindow())
+			{
+				aboutWindow.ShowDialog();
+			}
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
