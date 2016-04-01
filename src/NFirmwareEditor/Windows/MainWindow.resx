@@ -136,6 +136,21 @@
         cYhvR8O6KF8G4FNBlWXaT8az++8qD5RfWaTHhoc2ThMAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="OpenUsingSpecifiedDefinitionMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIWSURBVDhPpdPLTxNBHAfw/Qv8V8QgLx8taKsn482T
+        oh5EoBBUQE3ExBC4aEWFgoD0gAcOEhMPHMAHelKjpWzpu8XahNiATQy0tLS7rV+/M6sUiRwaN/lkJ7OZ
+        32NmVgHwX/45WQ5lafT4C9VxFIuDhyQx9jxuWOI8v1n+NmZRvMK4lU5IiliAwjKwFTJoUSwMVMH9qG47
+        aMlhmYDBg9sBxCS2/Mh7LiCnXkQxOQNkw0AuYshHGZQJBJ0QhzpsgnfMWlkKkP2EvL+F2sgmxxrpwVZo
+        vmZsfGhESvh4DrmVGVnF+wfmlt8BjgDpd9AjV6FHu1CIdhuWr0OLdMI3YcFnew1Vw2Wvguv+Qbgf1v5p
+        JckA3IPNOS7uRMplQ3qhDWm30M7FJ7H28ozRSjZIAfLLlpmFQUzgJpqA9WkEnCJTdcm9GnyfPws93AEt
+        0Mq2mpH3XaYmFGK9yMaf4XV/7ZyiDtcjE7yL0KQFKH7hZjEbTwJajG10cSha6SaOhfA1YHUSibc9mOio
+        aFQ8I8ewOm9D4k07kHqFYoz9x27QTRS+3qLbO/SgGL/Dip/D6zzFW6TsExcJ4anTyEQGgB9P8fNbL/UZ
+        Ev279AHJEWRCdpZfNysulrhd3Awzz3iap/EE2Bikob3lprAyewnOKwfOy2P0jFpTogrVUc+bZoJbMu9p
+        cYhvR8O6KF8G4FNBlWXaT8az++8qD5RfWaTHhoc2ThMAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="SaveEncryptedMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -168,36 +183,6 @@
         ap9HTKTvR7HhmBmf50SeV1RU8DUuyxAlCRFRRDS6dqdigJzGAdx4J6H29SKU6Aq/YB046QfqvKdDeekR
         6O608/M/g3ewtUrXlk2QTdrn+Dg6ifExB9Kru2kG0aQtdfAZUOSQin6V+lQPcs/0IptWdS3TY96u6kRS
         lK9/hRTxGzC1hKLv70q84tB/mkAAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="OpenEncryptedManualMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIWSURBVDhPpdPLTxNBHAfw/Qv8V8QgLx8taKsn482T
-        oh5EoBBUQE3ExBC4aEWFgoD0gAcOEhMPHMAHelKjpWzpu8XahNiATQy0tLS7rV+/M6sUiRwaN/lkJ7OZ
-        32NmVgHwX/45WQ5lafT4C9VxFIuDhyQx9jxuWOI8v1n+NmZRvMK4lU5IiliAwjKwFTJoUSwMVMH9qG47
-        aMlhmYDBg9sBxCS2/Mh7LiCnXkQxOQNkw0AuYshHGZQJBJ0QhzpsgnfMWlkKkP2EvL+F2sgmxxrpwVZo
-        vmZsfGhESvh4DrmVGVnF+wfmlt8BjgDpd9AjV6FHu1CIdhuWr0OLdMI3YcFnew1Vw2Wvguv+Qbgf1v5p
-        JckA3IPNOS7uRMplQ3qhDWm30M7FJ7H28ozRSjZIAfLLlpmFQUzgJpqA9WkEnCJTdcm9GnyfPws93AEt
-        0Mq2mpH3XaYmFGK9yMaf4XV/7ZyiDtcjE7yL0KQFKH7hZjEbTwJajG10cSha6SaOhfA1YHUSibc9mOio
-        aFQ8I8ewOm9D4k07kHqFYoz9x27QTRS+3qLbO/SgGL/Dip/D6zzFW6TsExcJ4anTyEQGgB9P8fNbL/UZ
-        Ev279AHJEWRCdpZfNysulrhd3Awzz3iap/EE2Bikob3lprAyewnOKwfOy2P0jFpTogrVUc+bZoJbMu9p
-        cYhvR8O6KF8G4FNBlWXaT8az++8qD5RfWaTHhoc2ThMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="OpenDecryptedManualMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIWSURBVDhPpdPLTxNBHAfw/Qv8V8QgLx8taKsn482T
-        oh5EoBBUQE3ExBC4aEWFgoD0gAcOEhMPHMAHelKjpWzpu8XahNiATQy0tLS7rV+/M6sUiRwaN/lkJ7OZ
-        32NmVgHwX/45WQ5lafT4C9VxFIuDhyQx9jxuWOI8v1n+NmZRvMK4lU5IiliAwjKwFTJoUSwMVMH9qG47
-        aMlhmYDBg9sBxCS2/Mh7LiCnXkQxOQNkw0AuYshHGZQJBJ0QhzpsgnfMWlkKkP2EvL+F2sgmxxrpwVZo
-        vmZsfGhESvh4DrmVGVnF+wfmlt8BjgDpd9AjV6FHu1CIdhuWr0OLdMI3YcFnew1Vw2Wvguv+Qbgf1v5p
-        JckA3IPNOS7uRMplQ3qhDWm30M7FJ7H28ozRSjZIAfLLlpmFQUzgJpqA9WkEnCJTdcm9GnyfPws93AEt
-        0Mq2mpH3XaYmFGK9yMaf4XV/7ZyiDtcjE7yL0KQFKH7hZjEbTwJajG10cSha6SaOhfA1YHUSibc9mOio
-        aFQ8I8ewOm9D4k07kHqFYoz9x27QTRS+3qLbO/SgGL/Dip/D6zzFW6TsExcJ4anTyEQGgB9P8fNbL/UZ
-        Ev279AHJEWRCdpZfNysulrhd3Awzz3iap/EE2Bikob3lprAyewnOKwfOy2P0jFpTogrVUc+bZoJbMu9p
-        cYhvR8O6KF8G4FNBlWXaT8az++8qD5RfWaTHhoc2ThMAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="MainStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

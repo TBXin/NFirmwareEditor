@@ -26,6 +26,20 @@ namespace NFirmware
 			return definition != null ? Load(bytes, definition) : null;
 		}
 
+		[CanBeNull]
+		public Firmware TryLoadUsingDefinition([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
+		{
+			var bytes = LoadFile(filePath);
+			try
+			{
+				return Load(bytes, definition);
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
 		[NotNull]
 		public Firmware LoadEncrypted([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
 		{

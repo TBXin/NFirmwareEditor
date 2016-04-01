@@ -82,13 +82,9 @@ namespace NFirmwareEditor.Windows
 			foreach (var definition in m_definitions)
 			{
 				var firmwareDefinition = definition;
-				OpenEncryptedManualMenuItem.DropDownItems.Add(definition.Name, OpenEncryptedManualMenuItem.Image, (s, e) =>
+				OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Add(definition.Name, OpenUsingSpecifiedDefinitionMenuItem.Image, (s, e) =>
 				{
-					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadEncrypted(fileName, firmwareDefinition));
-				});
-				OpenDecryptedManualMenuItem.DropDownItems.Add(definition.Name, OpenDecryptedManualMenuItem.Image, (s, e) =>
-				{
-					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.LoadDecrypted(fileName, firmwareDefinition));
+					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, firmwareDefinition));
 				});
 			}
 		}

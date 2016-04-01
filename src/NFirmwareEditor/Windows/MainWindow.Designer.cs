@@ -33,10 +33,9 @@
 			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenEncryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OpenUsingSpecifiedDefinitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.OpenDecryptedManualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,11 +78,10 @@
 			// 
 			this.FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenMenuItem,
+            this.OpenUsingSpecifiedDefinitionMenuItem,
+            this.toolStripSeparator1,
             this.SaveEncryptedMenuItem,
             this.SaveDecryptedMenuItem,
-            this.toolStripSeparator1,
-            this.OpenEncryptedManualMenuItem,
-            this.OpenDecryptedManualMenuItem,
             this.toolStripSeparator2,
             this.ExitMenuItem});
 			this.FileMenuItem.Name = "FileMenuItem";
@@ -99,13 +97,18 @@
 			this.OpenMenuItem.Text = "Open";
 			this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
 			// 
-			// OpenEncryptedManualMenuItem
+			// OpenUsingSpecifiedDefinitionMenuItem
 			// 
-			this.OpenEncryptedManualMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenEncryptedManualMenuItem.Image")));
-			this.OpenEncryptedManualMenuItem.Name = "OpenEncryptedManualMenuItem";
-			this.OpenEncryptedManualMenuItem.ShortcutKeyDisplayString = "";
-			this.OpenEncryptedManualMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenEncryptedManualMenuItem.Text = "Open Encrypted (Manual)";
+			this.OpenUsingSpecifiedDefinitionMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenUsingSpecifiedDefinitionMenuItem.Image")));
+			this.OpenUsingSpecifiedDefinitionMenuItem.Name = "OpenUsingSpecifiedDefinitionMenuItem";
+			this.OpenUsingSpecifiedDefinitionMenuItem.ShortcutKeyDisplayString = "";
+			this.OpenUsingSpecifiedDefinitionMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenUsingSpecifiedDefinitionMenuItem.Text = "Open (Using Specified Definition)";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
 			// 
 			// SaveEncryptedMenuItem
 			// 
@@ -116,19 +119,6 @@
 			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
 			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
 			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
-			// 
-			// OpenDecryptedManualMenuItem
-			// 
-			this.OpenDecryptedManualMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenDecryptedManualMenuItem.Image")));
-			this.OpenDecryptedManualMenuItem.Name = "OpenDecryptedManualMenuItem";
-			this.OpenDecryptedManualMenuItem.ShortcutKeyDisplayString = "";
-			this.OpenDecryptedManualMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenDecryptedManualMenuItem.Text = "Open Decrypted (Manual)";
 			// 
 			// SaveDecryptedMenuItem
 			// 
@@ -312,8 +302,7 @@
 
 		private System.Windows.Forms.MenuStrip MainMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem FileMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem OpenEncryptedManualMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem OpenDecryptedManualMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem OpenUsingSpecifiedDefinitionMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem SaveEncryptedMenuItem;
