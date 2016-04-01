@@ -342,7 +342,7 @@
 			this.MinimizeBox = false;
 			this.Name = "PatchCreatorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Patch Creator";
+			this.Text = "NFirmwareEditor - Patch Creator";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);

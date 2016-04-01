@@ -8,42 +8,51 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DecryptionWindow : EditorDialogWindow
 	{
-		private readonly FirmwareEncoder m_encoder = new FirmwareEncoder();
+		private readonly FirmwareEncoder m_encoder;
+		private readonly FirmwareLoader m_loader;
+
+		private string m_sourceFileName;
 		private bool m_sourceEncrypted;
-		private string m_source = string.Empty;
+		private byte[] m_source;
 
 		public DecryptionWindow()
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
+
+			m_encoder = new FirmwareEncoder();
+			m_loader = new FirmwareLoader(m_encoder);
+
+			SelectSourceButton.Click += SelectSourceButton_Click;
+			SourceTextBox.TextChanged += (s, e) =>
+			{
+				SelectDestinationButton.Enabled = !string.IsNullOrEmpty(SourceTextBox.Text);
+			};
+			SelectDestinationButton.Click += SelectDestinationButton_Click;
+			DestinationTextBox.TextChanged += (s, e) =>
+			{
+				EncryptDecryptButton.Enabled = !string.IsNullOrEmpty(DestinationTextBox.Text);
+			};
+
+			EncryptDecryptButton.Click += EncryptDecryptButton_Click;
 		}
 
-		private void SelectEncryptedSourceButton_Click(object sender, EventArgs e)
+		private void SelectSourceButton_Click(object sender, EventArgs e)
 		{
 			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 
-				m_source = op.FileName;
-				m_sourceEncrypted = true;
+				m_sourceFileName = op.FileName;
+				m_source = File.ReadAllBytes(m_sourceFileName);
+				m_sourceEncrypted = m_loader.IsFirmwareEncrypted(m_source);
 
-				SourceEncryptedTextBox.Text = m_source;
-				SourceDecryptedTextBox.Text = null;
-				SelectDestinationButton.Enabled = true;
-			}
-		}
-
-		private void SelectDecryptedSourceButton_Click(object sender, EventArgs e)
-		{
-			using (var op = new OpenFileDialog { Filter = Consts.FirmwareFilter })
-			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-
-				m_source = op.FileName;
-				m_sourceEncrypted = false;
-
-				SourceEncryptedTextBox.Text = null;
-				SourceDecryptedTextBox.Text = m_source;
+				SourceGroupBox.Text = string.Format("Source: ({0})", m_sourceEncrypted ? Consts.Encrypted : Consts.Decrypted);
+				DestinationGroupBox.Text = string.Format("Destination: ({0})", !m_sourceEncrypted ? Consts.Encrypted : Consts.Decrypted);
+				DestinationTextBox.Text = string.Empty;
+				EncryptDecryptButton.Text = !m_sourceEncrypted ? "Encrypt" : "Decrypt";
+				SourceTextBox.Text = m_sourceFileName;
+				SourceTextBox.ScrollToEnd();
 				SelectDestinationButton.Enabled = true;
 			}
 		}
@@ -53,51 +62,34 @@ namespace NFirmwareEditor.Windows
 			using (var sf = new SaveFileDialog { Filter = Consts.FirmwareFilter, FileName = GetDestinationFileName() })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
+
 				DestinationTextBox.Text = sf.FileName;
+				DestinationTextBox.ScrollToEnd();
 			}
 		}
 
 		private void EncryptDecryptButton_Click(object sender, EventArgs e)
 		{
-			if (string.IsNullOrEmpty(SourceEncryptedTextBox.Text) && string.IsNullOrEmpty(SourceDecryptedTextBox.Text))
-			{
-				InfoBox.Show("Specify source file first.");
-				return;
-			}
-			if (string.IsNullOrEmpty(DestinationTextBox.Text))
-			{
-				InfoBox.Show("Specify destination file first.");
-				return;
-			}
-
 			try
 			{
-				var source = string.Empty;
-
-				if (!string.IsNullOrEmpty(SourceEncryptedTextBox.Text))
-				{
-					source = SourceEncryptedTextBox.Text;
-				}
-				if (!string.IsNullOrEmpty(SourceDecryptedTextBox.Text))
-				{
-					source = SourceDecryptedTextBox.Text;
-				}
-
-				var firmware = m_encoder.ReadFile(source, m_sourceEncrypted);
-				m_encoder.WriteFile(DestinationTextBox.Text, firmware, !m_sourceEncrypted);
+				m_encoder.WriteFile(DestinationTextBox.Text, m_source);
 				InfoBox.Show(string.Format("Firmware successfully {0}!", m_sourceEncrypted ? Consts.Decrypted : Consts.Encrypted));
 			}
 			catch (Exception ex)
 			{
 				InfoBox.Show("An error occurred during firmware encryption / decryption.\n" + ex.Message);
 			}
+			finally
+			{
+				SourceTextBox.Text = DestinationTextBox.Text = string.Empty;
+			}
 		}
 
 		private string GetDestinationFileName()
 		{
-			if (string.IsNullOrEmpty(m_source)) return m_source;
+			if (string.IsNullOrEmpty(m_sourceFileName)) return m_sourceFileName;
 
-			var result = Path.GetFileNameWithoutExtension(m_source)
+			var result = Path.GetFileNameWithoutExtension(m_sourceFileName)
 				.Replace("_" + Consts.Encrypted, string.Empty)
 				.Replace("_" + Consts.Decrypted, string.Empty);
 

@@ -28,148 +28,187 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SourceEncryptedTextBox = new System.Windows.Forms.TextBox();
-			this.DestinationTextBox = new System.Windows.Forms.TextBox();
-			this.SelectEncryptedSourceButton = new System.Windows.Forms.Button();
-			this.SelectDestinationButton = new System.Windows.Forms.Button();
+			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
 			this.EncryptDecryptButton = new System.Windows.Forms.Button();
+			this.CancelButton = new System.Windows.Forms.Button();
+			this.SourceGroupBox = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.SelectSourceButton = new System.Windows.Forms.Button();
+			this.SourceTextBox = new System.Windows.Forms.TextBox();
+			this.DestinationGroupBox = new System.Windows.Forms.GroupBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.SelectDecryptedSourceButton = new System.Windows.Forms.Button();
-			this.SourceDecryptedTextBox = new System.Windows.Forms.TextBox();
+			this.SelectDestinationButton = new System.Windows.Forms.Button();
+			this.DestinationTextBox = new System.Windows.Forms.TextBox();
+			this.ControlBorderedPanel.SuspendLayout();
+			this.SourceGroupBox.SuspendLayout();
+			this.DestinationGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// SourceEncryptedTextBox
+			// ControlBorderedPanel
 			// 
-			this.SourceEncryptedTextBox.Location = new System.Drawing.Point(124, 9);
-			this.SourceEncryptedTextBox.Name = "SourceEncryptedTextBox";
-			this.SourceEncryptedTextBox.ReadOnly = true;
-			this.SourceEncryptedTextBox.Size = new System.Drawing.Size(309, 21);
-			this.SourceEncryptedTextBox.TabIndex = 0;
-			// 
-			// DestinationTextBox
-			// 
-			this.DestinationTextBox.Location = new System.Drawing.Point(124, 63);
-			this.DestinationTextBox.Name = "DestinationTextBox";
-			this.DestinationTextBox.ReadOnly = true;
-			this.DestinationTextBox.Size = new System.Drawing.Size(309, 21);
-			this.DestinationTextBox.TabIndex = 1;
-			// 
-			// SelectEncryptedSourceButton
-			// 
-			this.SelectEncryptedSourceButton.Location = new System.Drawing.Point(439, 9);
-			this.SelectEncryptedSourceButton.Name = "SelectEncryptedSourceButton";
-			this.SelectEncryptedSourceButton.Size = new System.Drawing.Size(75, 21);
-			this.SelectEncryptedSourceButton.TabIndex = 2;
-			this.SelectEncryptedSourceButton.Text = "Select";
-			this.SelectEncryptedSourceButton.UseVisualStyleBackColor = true;
-			this.SelectEncryptedSourceButton.Click += new System.EventHandler(this.SelectEncryptedSourceButton_Click);
-			// 
-			// SelectDestinationButton
-			// 
-			this.SelectDestinationButton.Enabled = false;
-			this.SelectDestinationButton.Location = new System.Drawing.Point(439, 63);
-			this.SelectDestinationButton.Name = "SelectDestinationButton";
-			this.SelectDestinationButton.Size = new System.Drawing.Size(75, 21);
-			this.SelectDestinationButton.TabIndex = 3;
-			this.SelectDestinationButton.Text = "Select";
-			this.SelectDestinationButton.UseVisualStyleBackColor = true;
-			this.SelectDestinationButton.Click += new System.EventHandler(this.SelectDestinationButton_Click);
+			this.ControlBorderedPanel.BackColor = System.Drawing.Color.Transparent;
+			this.ControlBorderedPanel.BorderBottom = false;
+			this.ControlBorderedPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlBorderedPanel.BorderLeft = false;
+			this.ControlBorderedPanel.BorderRight = false;
+			this.ControlBorderedPanel.BorderTop = true;
+			this.ControlBorderedPanel.BorderWidth = 1F;
+			this.ControlBorderedPanel.Controls.Add(this.EncryptDecryptButton);
+			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
+			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 112);
+			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
+			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(434, 39);
+			this.ControlBorderedPanel.TabIndex = 10;
+			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
 			// EncryptDecryptButton
 			// 
-			this.EncryptDecryptButton.Location = new System.Drawing.Point(12, 90);
+			this.EncryptDecryptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EncryptDecryptButton.Enabled = false;
+			this.EncryptDecryptButton.Location = new System.Drawing.Point(224, 5);
 			this.EncryptDecryptButton.Name = "EncryptDecryptButton";
-			this.EncryptDecryptButton.Size = new System.Drawing.Size(502, 25);
-			this.EncryptDecryptButton.TabIndex = 4;
-			this.EncryptDecryptButton.Text = "Encrypt / Decrypt";
+			this.EncryptDecryptButton.Size = new System.Drawing.Size(100, 30);
+			this.EncryptDecryptButton.TabIndex = 7;
+			this.EncryptDecryptButton.Text = "Encrypt / decrypt";
 			this.EncryptDecryptButton.UseVisualStyleBackColor = true;
-			this.EncryptDecryptButton.Click += new System.EventHandler(this.EncryptDecryptButton_Click);
+			// 
+			// CancelButton
+			// 
+			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.CancelButton.Location = new System.Drawing.Point(330, 5);
+			this.CancelButton.Name = "CancelButton";
+			this.CancelButton.Size = new System.Drawing.Size(100, 30);
+			this.CancelButton.TabIndex = 8;
+			this.CancelButton.Text = "Cancel";
+			this.CancelButton.UseVisualStyleBackColor = true;
+			// 
+			// SourceGroupBox
+			// 
+			this.SourceGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.SourceGroupBox.Controls.Add(this.label1);
+			this.SourceGroupBox.Controls.Add(this.SelectSourceButton);
+			this.SourceGroupBox.Controls.Add(this.SourceTextBox);
+			this.SourceGroupBox.Location = new System.Drawing.Point(3, 1);
+			this.SourceGroupBox.Name = "SourceGroupBox";
+			this.SourceGroupBox.Size = new System.Drawing.Size(428, 50);
+			this.SourceGroupBox.TabIndex = 11;
+			this.SourceGroupBox.TabStop = false;
+			this.SourceGroupBox.Text = "Source:";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 12);
+			this.label1.Location = new System.Drawing.Point(9, 23);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(104, 13);
-			this.label1.TabIndex = 5;
-			this.label1.Text = "Source (encyrpted):";
+			this.label1.Size = new System.Drawing.Size(72, 13);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "Firmware file:";
+			// 
+			// SelectSourceButton
+			// 
+			this.SelectSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SelectSourceButton.Location = new System.Drawing.Point(348, 20);
+			this.SelectSourceButton.Name = "SelectSourceButton";
+			this.SelectSourceButton.Size = new System.Drawing.Size(75, 21);
+			this.SelectSourceButton.TabIndex = 10;
+			this.SelectSourceButton.Text = "Select";
+			this.SelectSourceButton.UseVisualStyleBackColor = true;
+			// 
+			// SourceTextBox
+			// 
+			this.SourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.SourceTextBox.Location = new System.Drawing.Point(106, 20);
+			this.SourceTextBox.Name = "SourceTextBox";
+			this.SourceTextBox.ReadOnly = true;
+			this.SourceTextBox.Size = new System.Drawing.Size(236, 21);
+			this.SourceTextBox.TabIndex = 9;
+			this.SourceTextBox.TabStop = false;
+			// 
+			// DestinationGroupBox
+			// 
+			this.DestinationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.DestinationGroupBox.Controls.Add(this.label2);
+			this.DestinationGroupBox.Controls.Add(this.SelectDestinationButton);
+			this.DestinationGroupBox.Controls.Add(this.DestinationTextBox);
+			this.DestinationGroupBox.Location = new System.Drawing.Point(3, 57);
+			this.DestinationGroupBox.Name = "DestinationGroupBox";
+			this.DestinationGroupBox.Size = new System.Drawing.Size(428, 50);
+			this.DestinationGroupBox.TabIndex = 12;
+			this.DestinationGroupBox.TabStop = false;
+			this.DestinationGroupBox.Text = "Destination:";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 66);
+			this.label2.Location = new System.Drawing.Point(9, 23);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(65, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Destination:";
+			this.label2.Size = new System.Drawing.Size(72, 13);
+			this.label2.TabIndex = 11;
+			this.label2.Text = "Firmware file:";
 			// 
-			// label3
+			// SelectDestinationButton
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 39);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(104, 13);
-			this.label3.TabIndex = 9;
-			this.label3.Text = "Source (decrypted):";
+			this.SelectDestinationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SelectDestinationButton.Enabled = false;
+			this.SelectDestinationButton.Location = new System.Drawing.Point(348, 20);
+			this.SelectDestinationButton.Name = "SelectDestinationButton";
+			this.SelectDestinationButton.Size = new System.Drawing.Size(75, 21);
+			this.SelectDestinationButton.TabIndex = 10;
+			this.SelectDestinationButton.Text = "Select";
+			this.SelectDestinationButton.UseVisualStyleBackColor = true;
 			// 
-			// SelectDecryptedSourceButton
+			// DestinationTextBox
 			// 
-			this.SelectDecryptedSourceButton.Location = new System.Drawing.Point(439, 36);
-			this.SelectDecryptedSourceButton.Name = "SelectDecryptedSourceButton";
-			this.SelectDecryptedSourceButton.Size = new System.Drawing.Size(75, 21);
-			this.SelectDecryptedSourceButton.TabIndex = 8;
-			this.SelectDecryptedSourceButton.Text = "Select";
-			this.SelectDecryptedSourceButton.UseVisualStyleBackColor = true;
-			this.SelectDecryptedSourceButton.Click += new System.EventHandler(this.SelectDecryptedSourceButton_Click);
-			// 
-			// SourceDecryptedTextBox
-			// 
-			this.SourceDecryptedTextBox.Location = new System.Drawing.Point(124, 36);
-			this.SourceDecryptedTextBox.Name = "SourceDecryptedTextBox";
-			this.SourceDecryptedTextBox.ReadOnly = true;
-			this.SourceDecryptedTextBox.Size = new System.Drawing.Size(309, 21);
-			this.SourceDecryptedTextBox.TabIndex = 7;
+			this.DestinationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.DestinationTextBox.Location = new System.Drawing.Point(106, 20);
+			this.DestinationTextBox.Name = "DestinationTextBox";
+			this.DestinationTextBox.ReadOnly = true;
+			this.DestinationTextBox.Size = new System.Drawing.Size(236, 21);
+			this.DestinationTextBox.TabIndex = 9;
+			this.DestinationTextBox.TabStop = false;
 			// 
 			// DecryptionWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(527, 124);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.SelectDecryptedSourceButton);
-			this.Controls.Add(this.SourceDecryptedTextBox);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.EncryptDecryptButton);
-			this.Controls.Add(this.SelectDestinationButton);
-			this.Controls.Add(this.SelectEncryptedSourceButton);
-			this.Controls.Add(this.DestinationTextBox);
-			this.Controls.Add(this.SourceEncryptedTextBox);
+			this.ClientSize = new System.Drawing.Size(434, 151);
+			this.Controls.Add(this.DestinationGroupBox);
+			this.Controls.Add(this.SourceGroupBox);
+			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "DecryptionWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Encryption / Decryption";
+			this.Text = "NFirmwareEditor - Firmware Encryption / Decryption";
+			this.ControlBorderedPanel.ResumeLayout(false);
+			this.SourceGroupBox.ResumeLayout(false);
+			this.SourceGroupBox.PerformLayout();
+			this.DestinationGroupBox.ResumeLayout(false);
+			this.DestinationGroupBox.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.TextBox SourceEncryptedTextBox;
-		private System.Windows.Forms.TextBox DestinationTextBox;
-		private System.Windows.Forms.Button SelectEncryptedSourceButton;
-		private System.Windows.Forms.Button SelectDestinationButton;
+		private UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button EncryptDecryptButton;
+		private System.Windows.Forms.Button CancelButton;
+		private System.Windows.Forms.GroupBox SourceGroupBox;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button SelectSourceButton;
+		private System.Windows.Forms.TextBox SourceTextBox;
+		private System.Windows.Forms.GroupBox DestinationGroupBox;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button SelectDecryptedSourceButton;
-		private System.Windows.Forms.TextBox SourceDecryptedTextBox;
+		private System.Windows.Forms.Button SelectDestinationButton;
+		private System.Windows.Forms.TextBox DestinationTextBox;
 	}
 }
