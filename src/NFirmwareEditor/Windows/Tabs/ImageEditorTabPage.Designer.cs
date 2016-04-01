@@ -53,7 +53,7 @@
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.ImageEditorStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.ImageSizeLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
@@ -66,10 +66,11 @@
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
+			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
 			this.borderedPanel4.SuspendLayout();
-			this.statusStrip1.SuspendLayout();
+			this.ImageEditorStatusStrip.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).BeginInit();
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
@@ -188,6 +189,7 @@
 			this.BitmapImportButton.Size = new System.Drawing.Size(24, 24);
 			this.BitmapImportButton.TabIndex = 17;
 			this.BitmapImportButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.BitmapImportButton, "Import bitmap");
 			this.BitmapImportButton.UseVisualStyleBackColor = true;
 			// 
 			// ResizeButton
@@ -198,6 +200,7 @@
 			this.ResizeButton.Size = new System.Drawing.Size(24, 24);
 			this.ResizeButton.TabIndex = 16;
 			this.ResizeButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ResizeButton, "Resize image");
 			this.ResizeButton.UseVisualStyleBackColor = true;
 			// 
 			// ImageEditorHotkeyInformationButton
@@ -209,6 +212,7 @@
 			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
 			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
 			this.ImageEditorHotkeyInformationButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ImageEditorHotkeyInformationButton, "Hotkey\'s list");
 			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
 			// 
 			// FlipVerticalButton
@@ -219,6 +223,7 @@
 			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
 			this.FlipVerticalButton.TabIndex = 14;
 			this.FlipVerticalButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.FlipVerticalButton, "Flip image vertically");
 			this.FlipVerticalButton.UseVisualStyleBackColor = true;
 			// 
 			// FlipHorizontalButton
@@ -229,6 +234,7 @@
 			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
 			this.FlipHorizontalButton.TabIndex = 13;
 			this.FlipHorizontalButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.FlipHorizontalButton, "Flip image horizontally");
 			this.FlipHorizontalButton.UseVisualStyleBackColor = true;
 			// 
 			// PasteButton
@@ -239,6 +245,7 @@
 			this.PasteButton.Size = new System.Drawing.Size(24, 24);
 			this.PasteButton.TabIndex = 12;
 			this.PasteButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.PasteButton, "Paste image");
 			this.PasteButton.UseVisualStyleBackColor = true;
 			// 
 			// CopyButton
@@ -249,6 +256,7 @@
 			this.CopyButton.Size = new System.Drawing.Size(24, 24);
 			this.CopyButton.TabIndex = 11;
 			this.CopyButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.CopyButton, "Copy image");
 			this.CopyButton.UseVisualStyleBackColor = true;
 			// 
 			// InverseButton
@@ -259,6 +267,7 @@
 			this.InverseButton.Size = new System.Drawing.Size(24, 24);
 			this.InverseButton.TabIndex = 10;
 			this.InverseButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.InverseButton, "Inverse image pixels");
 			this.InverseButton.UseVisualStyleBackColor = true;
 			// 
 			// ClearAllPixelsButton
@@ -269,6 +278,7 @@
 			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);
 			this.ClearAllPixelsButton.TabIndex = 9;
 			this.ClearAllPixelsButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ClearAllPixelsButton, "Clear all pixels");
 			this.ClearAllPixelsButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftDownButton
@@ -279,6 +289,7 @@
 			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftDownButton.TabIndex = 7;
 			this.ShiftDownButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftDownButton, "Shift image down");
 			this.ShiftDownButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftUpButton
@@ -289,6 +300,7 @@
 			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftUpButton.TabIndex = 6;
 			this.ShiftUpButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftUpButton, "Shift image up");
 			this.ShiftUpButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftRightButton
@@ -299,6 +311,7 @@
 			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftRightButton.TabIndex = 5;
 			this.ShiftRightButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftRightButton, "Shift image right");
 			this.ShiftRightButton.UseVisualStyleBackColor = true;
 			// 
 			// ShiftLeftButton
@@ -309,6 +322,7 @@
 			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
 			this.ShiftLeftButton.TabIndex = 4;
 			this.ShiftLeftButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftLeftButton, "Shift image left");
 			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel4
@@ -324,7 +338,7 @@
 			this.borderedPanel4.BorderTop = true;
 			this.borderedPanel4.BorderWidth = 1F;
 			this.borderedPanel4.Controls.Add(this.ImagePixelGrid);
-			this.borderedPanel4.Controls.Add(this.statusStrip1);
+			this.borderedPanel4.Controls.Add(this.ImageEditorStatusStrip);
 			this.borderedPanel4.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -349,17 +363,17 @@
 			this.ImagePixelGrid.TabIndex = 0;
 			this.ImagePixelGrid.Text = "pixelGrid1";
 			// 
-			// statusStrip1
+			// ImageEditorStatusStrip
 			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.ImageEditorStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImageSizeLabel,
             this.CursorPositionLabel});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 306);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(625, 22);
-			this.statusStrip1.SizingGrip = false;
-			this.statusStrip1.TabIndex = 1;
-			this.statusStrip1.Text = "statusStrip1";
+			this.ImageEditorStatusStrip.Location = new System.Drawing.Point(0, 306);
+			this.ImageEditorStatusStrip.Name = "ImageEditorStatusStrip";
+			this.ImageEditorStatusStrip.Size = new System.Drawing.Size(625, 22);
+			this.ImageEditorStatusStrip.SizingGrip = false;
+			this.ImageEditorStatusStrip.TabIndex = 1;
+			this.ImageEditorStatusStrip.Text = "statusStrip1";
 			// 
 			// ImageSizeLabel
 			// 
@@ -550,8 +564,8 @@
 			this.borderedPanel2.PerformLayout();
 			this.borderedPanel4.ResumeLayout(false);
 			this.borderedPanel4.PerformLayout();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
+			this.ImageEditorStatusStrip.ResumeLayout(false);
+			this.ImageEditorStatusStrip.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).EndInit();
 			this.borderedPanel3.ResumeLayout(false);
 			this.borderedPanel3.PerformLayout();
@@ -595,10 +609,11 @@
 		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ImportContextMenuItem;
 		private System.Windows.Forms.Button ImageEditorHotkeyInformationButton;
-		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.StatusStrip ImageEditorStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ImageSizeLabel;
 		private System.Windows.Forms.Button ResizeButton;
 		private System.Windows.Forms.Button BitmapImportButton;
+		private System.Windows.Forms.ToolTip ImageEditorToolTip;
 	}
 }

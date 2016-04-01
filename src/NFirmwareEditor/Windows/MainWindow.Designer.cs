@@ -46,7 +46,6 @@
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -310,7 +309,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.StatusStrip MainStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
-		private System.Windows.Forms.ToolTip MainToolTip;
 		private System.Windows.Forms.ToolStripMenuItem ToolsMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem EncryptDecryptMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
