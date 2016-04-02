@@ -149,13 +149,20 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			Block1ImageListBox.Items.Clear();
 			Block2ImageListBox.Items.Clear();
-			Block1ImageRadioButton.Checked = true;
+			Block1ImageRadioButton.Enabled = false;
+			Block2ImageRadioButton.Enabled = false;
+			Block1ImageRadioButton.Checked = false;
+			Block2ImageRadioButton.Checked = false;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = new bool[5, 5];
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
 		{
 			m_firmware = firmware;
+
+			Block1ImageRadioButton.Enabled = true;
+			Block1ImageRadioButton.Checked = true;
+			Block2ImageRadioButton.Enabled = m_firmware.Block2Images.Any();
 
 			Block2ImageListBox.Fill(m_firmware.Block2Images.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
 			Block1ImageListBox.Fill(m_firmware.Block1Images.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);

@@ -52,12 +52,11 @@
 			// Block1StringRadioButton
 			// 
 			this.Block1StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-			this.Block1StringRadioButton.Checked = true;
+			this.Block1StringRadioButton.Enabled = false;
 			this.Block1StringRadioButton.Location = new System.Drawing.Point(-1, 1);
 			this.Block1StringRadioButton.Name = "Block1StringRadioButton";
 			this.Block1StringRadioButton.Size = new System.Drawing.Size(71, 30);
 			this.Block1StringRadioButton.TabIndex = 11;
-			this.Block1StringRadioButton.TabStop = true;
 			this.Block1StringRadioButton.Text = "Block 1";
 			this.Block1StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.Block1StringRadioButton.UseVisualStyleBackColor = true;
@@ -65,6 +64,7 @@
 			// Block2StringRadioButton
 			// 
 			this.Block2StringRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+			this.Block2StringRadioButton.Enabled = false;
 			this.Block2StringRadioButton.Location = new System.Drawing.Point(70, 1);
 			this.Block2StringRadioButton.Name = "Block2StringRadioButton";
 			this.Block2StringRadioButton.Size = new System.Drawing.Size(71, 30);

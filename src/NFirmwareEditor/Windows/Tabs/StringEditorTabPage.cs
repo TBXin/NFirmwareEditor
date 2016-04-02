@@ -88,13 +88,20 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block1StringListBox.Items.Clear();
 			Block2StringListBox.Items.Clear();
 			RemoveStringEditControls();
-			Block1StringRadioButton.Checked = true;
+			Block1StringRadioButton.Enabled = false;
+			Block1StringRadioButton.Enabled = false;
+			Block1StringRadioButton.Checked = false;
+			Block1StringRadioButton.Checked = false;
 			StringPrewviewPixelGrid.Data = new bool[5, 5];
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
 		{
 			m_firmware = firmware;
+
+			Block1StringRadioButton.Enabled = true;
+			Block1StringRadioButton.Checked = true;
+			Block2StringRadioButton.Enabled = m_firmware.Block2Strings.Any();
 
 			Block2StringListBox.Fill(m_firmware.Block2Strings, false);
 			Block1StringListBox.Fill(m_firmware.Block1Strings, false);
