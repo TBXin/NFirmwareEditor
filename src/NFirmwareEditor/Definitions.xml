@@ -141,7 +141,7 @@
 		</StringTable1>
 	</FirmwareDefinition>
 
-	<FirmwareDefinition Name="VaporFlask Classic 2.00">
+	<FirmwareDefinition Name="Vaporflask Classic 2.00">
 		<Marker Offset="0x90" Bytes="0x91 0x20" />
 		<ImageTable1>
 			<OffsetFrom>0x88CC</OffsetFrom>
@@ -153,7 +153,7 @@
 		</StringTable1>
 	</FirmwareDefinition>
 
-	<FirmwareDefinition Name="VaporFlask Lite 2.00">
+	<FirmwareDefinition Name="Vaporflask Lite 2.00">
 		<Marker Offset="0x90" Bytes="0x49 0x1B" />
 		<ImageTable1>
 			<OffsetFrom>0x815C</OffsetFrom>
@@ -165,7 +165,7 @@
 		</StringTable1>
 	</FirmwareDefinition>
 
-	<FirmwareDefinition Name="VaporFlask Stout 2.00">
+	<FirmwareDefinition Name="Vaporflask Stout 2.00">
 		<Marker Offset="0x90" Bytes="0x45 0x1B" />
 		<ImageTable1>
 			<OffsetFrom>0x815C</OffsetFrom>
