@@ -40,6 +40,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.ItemChecked += PatchListView_ItemChecked;
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 			RollbackPatchesButton.Click += RollbackPatchesButton_Click;
+			ReloadPatchesButton.Click += ReloadPatchesButton_Click;
 		}
 
 		[NotNull]
@@ -94,6 +95,8 @@ namespace NFirmwareEditor.Windows.Tabs
 				m_patchListViewItems[patch] = item;
 				PatchListView.Items.Add(item);
 			}
+
+			ReloadPatchesButton.Enabled = true;
 		}
 
 		public bool OnHotkey(Keys keyData)
@@ -222,6 +225,16 @@ namespace NFirmwareEditor.Windows.Tabs
 				}
 			}
 			InfoBox.Show(sb.ToString());
+		}
+
+		private void ReloadPatchesButton_Click(object sender, EventArgs e)
+		{
+			m_allPatches = m_patchManager.LoadPatches();
+
+			OnWorkspaceReset();
+			OnFirmwareLoaded(m_firmware);
+
+			PatchListView.Focus();
 		}
 	}
 }

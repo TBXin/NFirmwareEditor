@@ -32,6 +32,7 @@
 			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
 			this.ApplyPatchesButton = new System.Windows.Forms.Button();
 			this.RollbackPatchesButton = new System.Windows.Forms.Button();
+			this.ReloadPatchesButton = new System.Windows.Forms.Button();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PatchListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +50,7 @@
 			this.DescriptionGroupBox.Controls.Add(this.DescriptionTextBox);
 			this.DescriptionGroupBox.Location = new System.Drawing.Point(0, 326);
 			this.DescriptionGroupBox.Name = "DescriptionGroupBox";
-			this.DescriptionGroupBox.Size = new System.Drawing.Size(769, 125);
+			this.DescriptionGroupBox.Size = new System.Drawing.Size(770, 125);
 			this.DescriptionGroupBox.TabIndex = 1;
 			this.DescriptionGroupBox.TabStop = false;
 			this.DescriptionGroupBox.Text = "Description:";
@@ -62,7 +63,7 @@
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
 			this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.DescriptionTextBox.Size = new System.Drawing.Size(763, 105);
+			this.DescriptionTextBox.Size = new System.Drawing.Size(764, 105);
 			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// ApplyPatchesButton
@@ -86,6 +87,17 @@
 			this.RollbackPatchesButton.TabIndex = 4;
 			this.RollbackPatchesButton.Text = "Rollback patches";
 			this.RollbackPatchesButton.UseVisualStyleBackColor = true;
+			// 
+			// ReloadPatchesButton
+			// 
+			this.ReloadPatchesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.ReloadPatchesButton.Enabled = false;
+			this.ReloadPatchesButton.Location = new System.Drawing.Point(671, 452);
+			this.ReloadPatchesButton.Name = "ReloadPatchesButton";
+			this.ReloadPatchesButton.Size = new System.Drawing.Size(100, 30);
+			this.ReloadPatchesButton.TabIndex = 5;
+			this.ReloadPatchesButton.Text = "Reload patches";
+			this.ReloadPatchesButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel1
 			// 
@@ -152,6 +164,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.ReloadPatchesButton);
 			this.Controls.Add(this.RollbackPatchesButton);
 			this.Controls.Add(this.ApplyPatchesButton);
 			this.Controls.Add(this.borderedPanel1);
@@ -177,5 +190,6 @@
 		private System.Windows.Forms.Button RollbackPatchesButton;
 		private System.Windows.Forms.TextBox DescriptionTextBox;
 		private System.Windows.Forms.ColumnHeader CompatibleColumnHeader;
+		private System.Windows.Forms.Button ReloadPatchesButton;
 	}
 }

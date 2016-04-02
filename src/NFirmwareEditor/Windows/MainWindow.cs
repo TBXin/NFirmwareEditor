@@ -7,7 +7,6 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
-using NFirmwareEditor.Properties;
 using NFirmwareEditor.Windows.Tabs;
 
 namespace NFirmwareEditor.Windows
