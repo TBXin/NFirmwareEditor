@@ -135,6 +135,16 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine(LastSelectedPatch.Description);
 			}
 			DescriptionTextBox.Text = sb.ToString();
+
+			var conflicts = m_patchManager.CheckConflicts(LastSelectedPatch, m_suitablePatches);
+			if (conflicts.Count == 0) return;
+
+			sb = new StringBuilder();
+			foreach (var conflict in conflicts)
+			{
+				sb.AppendLine(conflict.Name);
+			}
+			ConflictsTextBox.Text = sb.ToString();
 		}
 
 		private void PatchListView_ItemChecked(object sender, ItemCheckedEventArgs e)

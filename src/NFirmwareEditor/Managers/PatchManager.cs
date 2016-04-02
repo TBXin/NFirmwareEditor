@@ -127,6 +127,23 @@ namespace NFirmwareEditor.Managers
 			return ValidatePatchApplyingCompatibility(patch, firmware);
 		}
 
+		public List<Patch> CheckConflicts(Patch patch, IEnumerable<Patch> otherPathes)
+		{
+			var result = new List<Patch>();
+			foreach (var otherPatch in otherPathes.Where(x=> x != patch))
+			{
+				foreach (var otherPatchData in otherPatch.Data)
+				{
+					if (patch.Data.Any(x => x.Offset == otherPatchData.Offset))
+					{
+						result.Add(otherPatch);
+						break;
+					}
+				}
+			}
+			return result;
+		}
+
 		public bool ApplyPatch([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
 			if (patch == null) throw new ArgumentNullException("patch");

@@ -33,6 +33,8 @@
 			this.ApplyPatchesButton = new System.Windows.Forms.Button();
 			this.RollbackPatchesButton = new System.Windows.Forms.Button();
 			this.ReloadPatchesButton = new System.Windows.Forms.Button();
+			this.ConflictsGroupBox = new System.Windows.Forms.GroupBox();
+			this.ConflictsTextBox = new System.Windows.Forms.TextBox();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PatchListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,6 +42,7 @@
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.CompatibleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.DescriptionGroupBox.SuspendLayout();
+			this.ConflictsGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -50,7 +53,7 @@
 			this.DescriptionGroupBox.Controls.Add(this.DescriptionTextBox);
 			this.DescriptionGroupBox.Location = new System.Drawing.Point(0, 326);
 			this.DescriptionGroupBox.Name = "DescriptionGroupBox";
-			this.DescriptionGroupBox.Size = new System.Drawing.Size(770, 125);
+			this.DescriptionGroupBox.Size = new System.Drawing.Size(525, 125);
 			this.DescriptionGroupBox.TabIndex = 1;
 			this.DescriptionGroupBox.TabStop = false;
 			this.DescriptionGroupBox.Text = "Description:";
@@ -63,7 +66,7 @@
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
 			this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.DescriptionTextBox.Size = new System.Drawing.Size(764, 105);
+			this.DescriptionTextBox.Size = new System.Drawing.Size(519, 105);
 			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// ApplyPatchesButton
@@ -98,6 +101,28 @@
 			this.ReloadPatchesButton.TabIndex = 5;
 			this.ReloadPatchesButton.Text = "Reload patches";
 			this.ReloadPatchesButton.UseVisualStyleBackColor = true;
+			// 
+			// ConflictsGroupBox
+			// 
+			this.ConflictsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.ConflictsGroupBox.Controls.Add(this.ConflictsTextBox);
+			this.ConflictsGroupBox.Location = new System.Drawing.Point(528, 326);
+			this.ConflictsGroupBox.Name = "ConflictsGroupBox";
+			this.ConflictsGroupBox.Size = new System.Drawing.Size(242, 125);
+			this.ConflictsGroupBox.TabIndex = 2;
+			this.ConflictsGroupBox.TabStop = false;
+			this.ConflictsGroupBox.Text = "Incompatibility with patches:";
+			// 
+			// ConflictsTextBox
+			// 
+			this.ConflictsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.ConflictsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ConflictsTextBox.Location = new System.Drawing.Point(3, 17);
+			this.ConflictsTextBox.Multiline = true;
+			this.ConflictsTextBox.Name = "ConflictsTextBox";
+			this.ConflictsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.ConflictsTextBox.Size = new System.Drawing.Size(236, 105);
+			this.ConflictsTextBox.TabIndex = 0;
 			// 
 			// borderedPanel1
 			// 
@@ -164,6 +189,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.ConflictsGroupBox);
 			this.Controls.Add(this.ReloadPatchesButton);
 			this.Controls.Add(this.RollbackPatchesButton);
 			this.Controls.Add(this.ApplyPatchesButton);
@@ -174,6 +200,8 @@
 			this.Size = new System.Drawing.Size(772, 482);
 			this.DescriptionGroupBox.ResumeLayout(false);
 			this.DescriptionGroupBox.PerformLayout();
+			this.ConflictsGroupBox.ResumeLayout(false);
+			this.ConflictsGroupBox.PerformLayout();
 			this.borderedPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -191,5 +219,7 @@
 		private System.Windows.Forms.TextBox DescriptionTextBox;
 		private System.Windows.Forms.ColumnHeader CompatibleColumnHeader;
 		private System.Windows.Forms.Button ReloadPatchesButton;
+		private System.Windows.Forms.GroupBox ConflictsGroupBox;
+		private System.Windows.Forms.TextBox ConflictsTextBox;
 	}
 }
