@@ -134,7 +134,7 @@ namespace NFirmwareEditor.Managers
 			{
 				foreach (var otherPatchData in otherPatch.Data)
 				{
-					if (patch.Data.Any(x => x.Offset == otherPatchData.Offset))
+					if (patch.Data.Any(x => x.Offset == otherPatchData.Offset && x.PatchedValue != otherPatchData.PatchedValue))
 					{
 						result.Add(otherPatch);
 						break;
