@@ -137,8 +137,6 @@ namespace NFirmwareEditor.Windows.Tabs
 			DescriptionTextBox.Text = sb.ToString();
 
 			var conflicts = m_patchManager.CheckConflicts(LastSelectedPatch, m_suitablePatches);
-			if (conflicts.Count == 0) return;
-
 			sb = new StringBuilder();
 			foreach (var conflict in conflicts)
 			{
