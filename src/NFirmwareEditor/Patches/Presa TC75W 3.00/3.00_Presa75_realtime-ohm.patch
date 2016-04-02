@@ -1,0 +1,8 @@
+<Patch Definition="Presa TC75W 3.00" Name="Realtime COIL in Standby" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Display resistance in realtime.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Realtime resistance on
+6455: D4 - E7
+</Data>
+</Patch>

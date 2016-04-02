@@ -1,0 +1,300 @@
+<Patch Definition="Presa TC75W 3.00" Name="2 clicks / 4 clicks" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Coil Erase on 4 clicks, mode change on 2 clicks (TEMP SS - POWER by default).</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Coil Erase on 4 clicks #
+# Mode change on 2 clicks #
+
+# Mode List
+# 0 - TEMP NI
+# 1 - TEMP TI
+# 2 - TEMP SS
+# 3 - TCR M1..M3
+# 4 - POWER
+# 5 - BYPASS
+
+# Branch to coil erase
+1010: 04 - 0A
+1011: F0 - F0
+1012: 50 - 6C
+1013: FD - F9
+
+# Screen on after messages
+10DA: 0C - 22
+10E4: 15 - 1D
+
+# 2 sec message timeout
+3F7C: 05 - 02
+
+# Branch to new click counter
+41E6: 2C - 07
+41E7: 72 - F0
+41E8: EC - 29
+41E9: 71 - B9
+
+# Disable Temp message
+41FE: 23 - 26
+
+# Patch Temp message
+5ABE: 02 - 64
+5ABF: 21 - 21
+5AC0: 47 - 06
+5AC1: 20 - 48
+5AC2: CD - FF
+5AC3: E9 - F7
+5AC4: 00 - 9D
+5AC5: 01 - F8
+5AC6: 05 - 1C
+5AC7: 48 - BD
+5AC8: 00 - 8A
+5AC9: 23 - 7D
+5ACA: 66 - 6C
+5ACB: 21 - 7E
+5ACC: 02 - 70
+5ACD: 78 - 6F
+5ACE: 10 - 00
+5ACF: 20 - 00
+5AD0: FE - 88
+5AD1: F7 - 7A
+5AD2: AE - 74
+5AD3: FF - 77
+5AD4: 1C - 00
+5AD5: BD - 00
+5AD6: 00 - 00
+5AD7: 00 - 00
+5AD8: 58 - D0
+5AD9: B9 - 5A
+5ADA: 00 - 00
+5ADB: 00 - 00
+5ADC: 42 - C8
+5ADD: 00 - 5A
+5ADE: 00 - 00
+5ADF: 20 - 00
+
+# Patch Version
+69F6: 03 - 05
+69F7: 21 - 49
+69F8: 47 - 88
+69F9: 20 - 7B
+69FA: CD - 04 ; Mode 1
+69FB: E9 - 28
+69FC: 00 - 01
+69FD: 01 - D0
+69FE: 02 - 04 ; Mode 1
+69FF: 23 - 20
+6A00: 4F - 00
+6A01: F4 - E0
+6A02: 96 - 02 ; Mode 2
+6A03: 72 - 20
+6A04: 66 - 88
+6A05: 21 - 73
+6A06: 06 - 04
+6A07: 20 - F0
+6A08: FE - 0F
+6A09: F7 - BC
+6A0A: 12 - 1C
+6A0B: F8 - BD
+6A0C: 1C - 4C
+6A0D: BD - 02
+6A0E: 00 - 00
+6A0F: 00 - 20
+
+# Mode message
+B228: 07 - 01
+B229: 1F - 1C
+B22A: 3F - 11
+B22B: FF - 48
+B22C: FF - 00
+B22D: FF - 29
+B22E: FF - 01
+B22F: FF - D1
+B230: FF - 00
+B231: FF - BF
+B232: FF - 18
+B233: FE - E0
+B234: FC - 01
+B235: F8 - 29
+B236: F0 - 01
+B237: F0 - D1
+B238: E0 - 03
+B239: E0 - 38
+B23A: C0 - 14
+B23B: C0 - E0
+B23C: 80 - 02
+B23D: 80 - 29
+B23E: 80 - 01
+B23F: 80 - D1
+B240: 00 - 03
+B241: 00 - 30
+B242: 00 - 10
+B243: 00 - E0
+B244: 00 - 03
+B245: 00 - 29
+B246: 00 - 01
+B247: 00 - D1
+B248: 00 - 0A
+B249: 00 - 30
+B24A: 80 - 0C
+B24B: 80 - E0
+B24C: 80 - 04
+B24D: 80 - 29
+B24E: C0 - 01
+B24F: C0 - D1
+B250: C0 - 22
+B251: E0 - 30
+B252: E0 - 08
+B253: F0 - E0
+B254: F0 - 05
+B255: F8 - 29
+B256: FC - 01
+B257: FE - D1
+B258: FF - 06
+B259: FF - 38
+B25A: FF - 04
+B25B: FF - E0
+B25C: FF - 06
+B25D: FF - 29
+B25E: FF - 05
+B25F: 7F - D1
+B260: 3F - 00
+B261: 1F - BF
+B262: 07 - 00
+B263: 00 - BF
+B264: 00 - 00
+B265: 00 - BF
+B266: 00 - 66
+B267: 00 - 21
+B268: 00 - F9
+B269: 00 - F7
+B26A: 00 - CA
+B26B: 00 - FC
+B26C: 01 - FB
+B26D: 03 - F7
+B26E: 07 - CD
+B26F: 07 - BB
+B270: 0F - E6
+B271: 1F - B9
+B272: 1F - 00
+B273: 3F - 00
+B274: 7F - 00
+B275: 7F - 00
+
+# Erasing coil
+B2EC: C0 - 0C
+B2ED: 80 - 49
+B2EE: 00 - 88
+B2EF: 00 - 7B
+B2F0: 00 - 01
+B2F1: 00 - 28
+B2F2: 00 - 05
+B2F3: 00 - D0
+B2F4: 00 - 38
+B2F5: 00 - B1
+B2F6: 00 - 02
+B2F7: 00 - 28
+B2F8: 00 - 08
+B2F9: 00 - D0
+B2FA: 00 - 03
+B2FB: 00 - 28
+B2FC: 00 - 0A
+B2FD: 00 - D0
+B2FE: 00 - 0C
+B2FF: C0 - E0
+B300: F0 - 00
+B301: 38 - 20
+B302: 1C - C8
+B303: 0E - 83
+B304: 06 - 09
+B305: 06 - E0
+B306: 06 - 00
+B307: 06 - 20
+B308: 0C - 08
+B309: 38 - 84
+B30A: F0 - 06
+B30B: C0 - E0
+B30C: 00 - 00
+B30D: 00 - 20
+B30E: 00 - A1
+B30F: 00 - F8
+B310: 00 - 84
+B311: 00 - 00
+B312: 00 - 02
+B313: 00 - E0
+B314: 00 - 00
+B315: 00 - 20
+B316: 00 - A1
+B317: 00 - F8
+B318: 00 - 90
+B319: 00 - 00
+B31A: 00 - FA
+B31B: 00 - F7
+B31C: 00 - CB
+B31D: 00 - BB
+B320: E0 - 4C
+B321: F0 - 02
+B322: F8 - 00
+B323: 18 - 20
+
+# New click counter
+B43C: 20 - 2C
+B43D: 10 - 72
+B43E: 20 - EC
+B43F: C0 - 71
+B440: 00 - 05
+B441: F1 - 28
+B442: 11 - 38
+B443: 13 - F4
+B444: E3 - FF
+B445: 07 - AE
+B446: 07 - 38
+B447: 3F - F7
+B448: 07 - 02
+B449: 03 - AF
+B44A: C3 - 01
+B44B: 21 - 28
+B44C: 11 - 38
+B44D: 10 - F4
+B44E: 20 - DC
+B44F: 00 - AE
+B450: 10 - 03
+B451: F0 - 28
+B452: 10 - 02
+B453: 00 - D1
+B454: 00 - 10
+B455: E0 - 20
+B456: 30 - F8
+B457: E0 - F7
+B458: 00 - F8
+B459: 00 - BE
+B45A: F0 - 04
+B45B: 60 - 28
+B45C: 80 - 01
+B45D: 00 - D1
+B45E: F0 - 1F
+B45F: 00 - 20
+B460: 10 - F9
+B461: 10 - E7
+B462: F0 - 02
+B463: 10 - 28
+B464: 10 - 01
+B465: 00 - D1
+B466: 00 - 1D
+B467: 00 - 20
+B468: 00 - F5
+B469: 00 - E7
+B46A: 00 - F8
+B46B: 03 - F7
+B46C: 0C - 35
+B46D: 03 - BE
+
+# Version - Mode
+B98F: 9B - 92
+B990: 70 - 7A
+B991: 7D - 6F
+B992: 7E - 70
+B993: 74 - 00
+B994: 7A - 00
+B995: 79 - 00
+
+</Data>
+</Patch>

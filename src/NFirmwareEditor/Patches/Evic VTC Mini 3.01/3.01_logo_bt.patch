@@ -1,0 +1,131 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Charge Screen Mod" Version="1.0" Author="maelstrom2001">
+  <Description>Adds battery voltage, board temperature and 64x64 picture to charging screen.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Logo, battery voltage, #
+# temperature on charge #
+# Branch to additional drawing
+5C7C: FF - 06
+5C7D: F7 - F0
+5C7E: 4C - A2
+5C7F: F8 - BA
+# Draw battery symbol
+C1C4: 00 - F8
+C1C5: 00 - F7
+C1C6: 00 - A8
+C1C7: 00 - FD
+# Draw logo
+C1C8: 00 - E3 ; logo charcode
+C1C9: 00 - 22
+C1CA: 00 - 20 ; logo pos Y
+C1CB: 00 - 21
+C1CC: 00 - 00 ; logo pos X
+C1CD: 00 - 20
+C1CE: 00 - F8
+C1CF: 00 - F7
+C1D0: 00 - A3
+C1D1: 00 - FD
+C1D2: 00 - 30
+C1D3: 00 - E7
+# Long branch to batt/temp
+C036: 00 - FE
+C037: 00 - F7
+C038: 00 - E6
+C039: 00 - BB
+# Batt/temp
+A806: FF - 1C
+A807: D2 - B4
+A808: 4B - 11
+A809: FF - 48
+A80A: FE - 0B
+A80B: 80 - 21
+A80C: 01 - 03
+A80D: 0F - 22
+A80E: FF - CD
+A80F: C9 - E9
+A810: 93 - 00
+A811: FF - 12
+A812: F0 - 02
+A813: 80 - 23
+A814: 00 - 02
+A815: 01 - 88
+A816: FF - 67 ; voltage pos Y
+A817: E8 - 21
+A818: 17 - 02 ; voltage pos X
+A819: FF - 20
+A81A: 80 - FA
+A81B: 00 - F7
+A81C: 00 - 99
+A81D: 00 - FA
+A81E: 7F - 67 ; V charcode
+A81F: E4 - 22
+A820: 27 - 67 ; V pos Y
+A821: FE - 21
+A822: 00 - 18 ; V pos X
+A823: 00 - 20
+A824: 00 - FA
+A825: 00 - F7
+A826: 0F - 78
+A827: F3 - FA
+A828: CF - 0A
+A829: F0 - 48
+A82A: 00 - 0B
+A82B: 00 - 21
+A82C: 00 - 02
+A82D: 00 - 22
+A82E: 03 - CD
+A82F: F8 - E9
+A830: 1F - 00
+A831: C0 - 12
+A832: 00 - 00
+A833: 00 - 23
+A834: 00 - 02
+A835: 00 - 78
+A836: 00 - 67 ; temperature pos Y
+A837: 7C - 21
+A838: 3E - 27 ; temperature pos X
+A839: 00 - 20
+A83A: 00 - FA
+A83B: 00 - F7
+A83C: 00 - 89
+A83D: 00 - FA
+A83E: 00 - 54 ; 'C charcode
+A83F: 07 - 22
+A840: F0 - 67 ; 'C pos Y
+A841: 00 - 21
+A842: 00 - 35 ; 'C pos X
+A843: 00 - 20
+A844: 00 - FA
+A845: 00 - F7
+A846: 00 - 68
+A847: 0F - FA
+A848: F8 - 1C
+A849: 00 - BC
+A84A: 00 - FB
+A84B: 00 - F7
+A84C: 00 - 19
+A84D: 00 - BA
+A850: FC - 56
+A851: 00 - 00
+A852: 00 - 00
+A853: 00 - 20
+A854: 00 - 42
+A855: 00 - 00
+A856: 00 - 00
+A857: 3F - 20
+
+# Pointers to logos (charcode E3)
+C55C: 11 - D0
+C55D: C0 - C9
+ACAC: 62 - D2
+ACAD: A7 - CB
+
+# Add logo 64x64
+C9D0: null - 40
+C9D1: null - 40
+CBD1: null - 00 ; logo 1 end
+CBD2: null - 40
+CBD3: null - 40
+CDD3: null - 00 ; logo 2 end
+</Data>
+</Patch>

@@ -1,0 +1,82 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001">
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Resistance unlock
+# branch to resistance erase
+104A: 06 - 0B
+104B: F0 - F0
+104C: 67 - 9F
+104D: FB - F8
+
+# Resistance erase
+C18C: 00 - 0C
+C18D: 00 - 49
+C18E: 00 - 88
+C18F: 00 - 7B
+C190: 00 - 01
+C191: 00 - 28
+C192: 00 - 05
+C193: 00 - D0
+C194: 00 - 38
+C195: 00 - B1
+C196: 00 - 02
+C197: 00 - 28
+C198: 00 - 08
+C199: 00 - D0
+C19A: 00 - 03
+C19B: 00 - 28
+C19C: 00 - 0A
+C19D: 00 - D0
+C19E: 00 - 0C
+C19F: 00 - E0
+C1A0: 00 - 00
+C1A1: 00 - 20
+C1A2: 00 - C8
+C1A3: 00 - 83
+C1A4: 00 - 09
+C1A5: 00 - E0
+C1A6: 00 - 00
+C1A7: 00 - 20
+C1A8: 00 - 08
+C1A9: 00 - 84
+C1AA: 00 - 06
+C1AB: 00 - E0
+C1AC: 00 - 00
+C1AD: 00 - 20
+C1AE: 00 - A1
+C1AF: 00 - F8
+C1B0: 00 - 84
+C1B1: 00 - 00
+C1B2: 00 - 02
+C1B3: 00 - E0
+C1B4: 00 - 00
+C1B5: 00 - 20
+C1B6: 00 - A1
+C1B7: 00 - F8
+C1B8: 00 - 90
+C1B9: 00 - 00
+C1BA: 00 - FB
+C1BB: 00 - F7
+C1BC: 00 - AF
+C1BD: 00 - BA
+C1C0: 00 - 50
+C1C1: 00 - 02
+C1C2: 00 - 00
+C1C3: 00 - 20
+
+# Always Unlocked
+41CC: 41 - 21
+# Key - Omega
+C6A3: 90 - A6
+C6A4: 70 - AA
+C6A5: 84 - A6
+# Unlock - Erased
+C6D6: 9A - 8A
+C6D7: 79 - 7D
+C6D8: 91 - 6C
+C6D9: 7A - 7E
+C6DA: 6E - 70
+C6DB: 76 - 6F
+</Data>
+</Patch>

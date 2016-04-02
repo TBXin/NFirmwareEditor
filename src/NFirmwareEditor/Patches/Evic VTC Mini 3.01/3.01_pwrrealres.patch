@@ -1,0 +1,9 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Realtime COIL in POWER" Version="1.0" Author="maelstrom2001">
+  <Description>Display realtime resistance in POWER mode, same to BYPASS.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Realtime resistance in POWER #
+69CE: 2C - 00
+69CF: E0 - BF
+</Data>
+</Patch>

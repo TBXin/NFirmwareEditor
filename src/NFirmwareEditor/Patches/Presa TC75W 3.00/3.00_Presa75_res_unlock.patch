@@ -1,0 +1,83 @@
+<Patch Definition="Presa TC75W 3.00" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Resistance reset #
+# Branch to resistance reset
+102E: 05 - 0A
+102F: F0 - F0
+1030: 73 - 5D
+1031: FD - F9
+
+# Always unlocked
+3EA2: 40 - 20
+
+B2EC: C0 - 0C
+B2ED: 80 - 49
+B2EE: 00 - 88
+B2EF: 00 - 7B
+B2F0: 00 - 01
+B2F1: 00 - 28
+B2F2: 00 - 05
+B2F3: 00 - D0
+B2F4: 00 - 38
+B2F5: 00 - B1
+B2F6: 00 - 02
+B2F7: 00 - 28
+B2F8: 00 - 08
+B2F9: 00 - D0
+B2FA: 00 - 03
+B2FB: 00 - 28
+B2FC: 00 - 0A
+B2FD: 00 - D0
+B2FE: 00 - 0C
+B2FF: C0 - E0
+B300: F0 - 00
+B301: 38 - 20
+B302: 1C - C8
+B303: 0E - 83
+B304: 06 - 09
+B305: 06 - E0
+B306: 06 - 00
+B307: 06 - 20
+B308: 0C - 08
+B309: 38 - 84
+B30A: F0 - 06
+B30B: C0 - E0
+B30C: 00 - 00
+B30D: 00 - 20
+B30E: 00 - A1
+B30F: 00 - F8
+B310: 00 - 84
+B311: 00 - 00
+B312: 00 - 02
+B313: 00 - E0
+B314: 00 - 00
+B315: 00 - 20
+B316: 00 - A1
+B317: 00 - F8
+B318: 00 - 90
+B319: 00 - 00
+B31A: 00 - FB
+B31B: 00 - F7
+B31C: 00 - FD
+B31D: 00 - BB
+B320: E0 - 4C
+B321: F0 - 02
+B322: F8 - 00
+B323: 18 - 20
+
+# Key - Omega
+B947: 90 - A6
+B948: 70 - AA
+B949: 84 - A6
+
+# UnLock - Erased
+B97A: 9A - 8A
+B97B: 79 - 7D
+B97C: 91 - 6C
+B97D: 7A - 7E
+B97E: 6E - 70
+B97F: 76 - 6F
+</Data>
+</Patch>

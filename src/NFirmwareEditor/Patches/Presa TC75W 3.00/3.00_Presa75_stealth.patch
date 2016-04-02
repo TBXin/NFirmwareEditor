@@ -1,0 +1,33 @@
+<Patch Definition="Presa TC75W 3.00" Name="Stealth on Charge" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Extend Stealth Mode to the charging screen.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Stealth Mode on charge #
+# Branch to stealth mode detection
+58F0: 00 - 05
+58F1: F0 - F0
+58F2: 2E - B8
+58F3: B8 - BD
+# Stealth mode detection
+B464: 10 - 03
+B465: 00 - 48
+B466: 00 - 90
+B467: 00 - F8
+B468: 00 - 25
+B469: 00 - 00
+B46A: 00 - 08
+B46B: 03 - B1
+B46C: 0C - FA
+B46D: 03 - F7
+B46E: 00 - 44
+B46F: 00 - BA
+B470: 0F - FA
+B471: 02 - F7
+B472: 02 - 6E
+B473: 02 - BA
+B474: 0F - 4C
+B475: 00 - 02
+B476: 0F - 00
+B477: 01 - 20
+</Data>
+</Patch>

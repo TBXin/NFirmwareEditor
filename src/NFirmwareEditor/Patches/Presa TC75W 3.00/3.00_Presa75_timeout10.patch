@@ -1,0 +1,10 @@
+<Patch Definition="Presa TC75W 3.00" Name="Set Dim Timeout (10 s)" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Set screen dim timeout to 10 sec.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Set dim timeout to 10 s #
+116C: 1E - 0A
+3CF8: 1E - 0A
+5360: 1E - 0A
+</Data>
+</Patch>

@@ -1,0 +1,9 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Disable switch to AMP" Version="1.0" Author="maelstrom2001">
+  <Description>Disable auto switching status to AMP on charge.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Disable switch to AMP on charge #
+6A74: 39 - 00
+6A75: B1 - BF
+</Data>
+</Patch>

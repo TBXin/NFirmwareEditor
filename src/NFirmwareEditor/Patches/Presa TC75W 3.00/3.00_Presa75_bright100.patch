@@ -1,0 +1,73 @@
+<Patch Definition="Presa TC75W 3.00" Name="Display Brightness 100%" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Set display brightness to maximum.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Set display brightness #
+
+# Branch one
+4546: FF - 06
+4547: F7 - F0
+4548: 49 - F3
+4549: FF - BE
+
+# Branch two
+47E0: FF - 06
+47E1: F7 - F0
+47E2: FC - B1
+47E3: FD - BD
+
+# Sequence one
+B330: FC - 81
+B331: F8 - 20
+B332: F0 - F9
+B333: E0 - F7
+B334: C0 - 53
+B335: 80 - F8
+
+# Value
+B336: 00 - FF
+
+B337: 00 - 20
+B338: 00 - F9
+B339: 00 - F7
+B33A: 00 - 50
+B33B: C0 - F8
+B33C: C0 - AF
+B33D: 00 - 20
+B33E: 7F - F9
+B33F: FF - F7
+B340: C0 - 4D
+B341: 00 - F8
+B342: 00 - F9
+B343: 00 - F7
+B344: 00 - 02
+B345: 00 - B9
+
+# Sequence two
+B346: 00 - 81
+B347: 00 - 20
+B348: 60 - F9
+B349: 60 - F7
+B34A: 60 - 48
+B34B: E3 - F8
+
+# Value
+B34C: E3 - FF
+
+B34D: 00 - 20
+B34E: 00 - F9
+B34F: C0 - F7
+B350: C0 - 45
+B351: 00 - F8
+B352: 00 - AF
+B353: 00 - 20
+B354: 00 - F9
+B355: 00 - F7
+B356: 80 - 42
+B357: C0 - F8
+B358: E0 - F9
+B359: F0 - F7
+B35A: F8 - 44
+B35B: FC - BA
+</Data>
+</Patch>

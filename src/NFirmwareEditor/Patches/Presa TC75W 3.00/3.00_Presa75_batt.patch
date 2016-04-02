@@ -1,0 +1,76 @@
+<Patch Definition="Presa TC75W 3.00" Name="Battery Voltage on Screen" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Add battery voltage to Puff/Time/PCB section.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Add battery voltage to Puff/Time/PCB #
+# Item count
+1858: 03 - 04
+39AA: 03 - 04
+# Branch to new case set
+64C6: 02 - 04
+64C7: 28 - F0
+64C8: 05 - 5B
+64C9: D0 - BF
+# New case set
+B380: 07 - 02
+B381: 0E - 28
+B382: 18 - 3B
+B383: 30 - F4
+B384: 60 - A8
+B385: 60 - A8
+B386: 60 - 03
+B387: 60 - 28
+B388: 60 - 0A
+B389: 30 - D0
+B38A: 1C - FB
+B38B: 0F - F7
+B38C: 83 - 9E
+B38D: E0 - B8
+# Display Batt
+B3A0: 00 - 0C
+B3A1: 00 - 48
+B3A2: 00 - 53
+B3A3: 00 - 22
+B3A4: 00 - 06
+B3A5: 00 - 21
+B3A6: 00 - F9
+B3A7: 00 - F7
+B3A8: 00 - 1B
+B3A9: 00 - FC
+B3AA: 00 - 09
+B3AB: 00 - 48
+B3AC: 00 - 4F
+B3AD: 00 - F0
+B3AE: 00 - 03
+B3AF: 00 - 08
+B3B0: 00 - 02
+B3B1: 00 - 88
+B3B2: 00 - CD
+B3B3: 00 - E9
+B3B4: 00 - 00
+B3B5: 01 - 48
+B3B6: 03 - 02
+B3B7: 07 - 23
+B3B8: 0F - 5D
+B3B9: 1F - 21
+B3BA: 3F - 08
+B3BB: 7F - 20
+B3BC: FF - FB
+B3BD: FC - F7
+B3BE: F8 - C7
+B3BF: F1 - B8
+B3D0: 7F - 56
+B3D1: 3F - 00
+B3D2: 1F - 00
+B3D3: 0F - 20
+B3D4: 07 - D8
+B3D5: 03 - B3
+B3D6: 01 - 00
+B3D7: 00 - 00
+B3D8: 00 - 87
+B3D9: 00 - 6C
+B3DA: 00 - 7F
+B3DB: 00 - 7F
+B3DC: 00 - 00
+</Data>
+</Patch>

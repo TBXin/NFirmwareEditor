@@ -1,0 +1,15 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Change menu timeout (15 sec)" Version="1.0" Author="maelstrom2001">
+  <Description>Set menu timeout to 15 sec.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Set menu timeout to 15 s #
+3B26: 7A - BB
+3B27: 70 - 60
+3D8C: 7A - BB
+3D8D: 73 - 63
+4174: 7A - BB
+4175: 70 - 60
+45A8: 7A - BB
+45A9: 70 - 60
+</Data>
+</Patch>

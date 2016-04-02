@@ -1,0 +1,155 @@
+<Patch Definition="Presa TC75W 3.00" Name="Saved Coil Erase - 4 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Erasing saved resistance by 4 clicks.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Coil Erase on 4 clicks #
+# Branch to coil erase
+1010: 04 - 0A
+1011: F0 - F0
+1012: 50 - 6C
+1013: FD - F9
+
+# Branch to new click counter
+41E6: 2C - 07
+41E7: 72 - F0
+41E8: EC - 29
+41E9: 71 - B9
+
+# Disable Temp message
+41FE: 23 - 26
+
+# Patch Temp message
+5ABE: 02 - 64
+5ABF: 21 - 21
+5AC0: 47 - 06
+5AC1: 20 - 48
+5AC2: CD - FF
+5AC3: E9 - F7
+5AC4: 00 - 9D
+5AC5: 01 - F8
+5AC6: 05 - 1C
+5AC7: 48 - BD
+5AC8: 00 - 8A
+5AC9: 23 - 7D
+5ACA: 66 - 6C
+5ACB: 21 - 7E
+5ACC: 02 - 70
+5ACD: 78 - 6F
+5ACE: 10 - 00
+5ACF: 20 - 00
+5AD0: FE - 88
+5AD1: F7 - 7A
+5AD2: AE - 74
+5AD3: FF - 77
+5AD4: 1C - 00
+5AD5: BD - 00
+5AD6: 00 - 00
+5AD7: 00 - 00
+5AD8: 58 - D0
+5AD9: B9 - 5A
+5ADA: 00 - 00
+5ADB: 00 - 00
+5ADC: 42 - C8
+5ADD: 00 - 5A
+5ADE: 00 - 00
+5ADF: 20 - 00
+
+# Erasing coil
+B2EC: C0 - 0C
+B2ED: 80 - 49
+B2EE: 00 - 88
+B2EF: 00 - 7B
+B2F0: 00 - 01
+B2F1: 00 - 28
+B2F2: 00 - 05
+B2F3: 00 - D0
+B2F4: 00 - 38
+B2F5: 00 - B1
+B2F6: 00 - 02
+B2F7: 00 - 28
+B2F8: 00 - 08
+B2F9: 00 - D0
+B2FA: 00 - 03
+B2FB: 00 - 28
+B2FC: 00 - 0A
+B2FD: 00 - D0
+B2FE: 00 - 0C
+B2FF: C0 - E0
+B300: F0 - 00
+B301: 38 - 20
+B302: 1C - C8
+B303: 0E - 83
+B304: 06 - 09
+B305: 06 - E0
+B306: 06 - 00
+B307: 06 - 20
+B308: 0C - 08
+B309: 38 - 84
+B30A: F0 - 06
+B30B: C0 - E0
+B30C: 00 - 00
+B30D: 00 - 20
+B30E: 00 - A1
+B30F: 00 - F8
+B310: 00 - 84
+B311: 00 - 00
+B312: 00 - 02
+B313: 00 - E0
+B314: 00 - 00
+B315: 00 - 20
+B316: 00 - A1
+B317: 00 - F8
+B318: 00 - 90
+B319: 00 - 00
+B31A: 00 - FA
+B31B: 00 - F7
+B31C: 00 - CB
+B31D: 00 - BB
+B320: E0 - 4C
+B321: F0 - 02
+B322: F8 - 00
+B323: 18 - 20
+
+# New click counter
+B43C: 20 - 2C
+B43D: 10 - 72
+B43E: 20 - EC
+B43F: C0 - 71
+B440: 00 - 05
+B441: F1 - 28
+B442: 11 - 38
+B443: 13 - F4
+B444: E3 - FF
+B445: 07 - AE
+B446: 07 - 38
+B447: 3F - F7
+B448: 07 - D9
+B449: 03 - AE
+B44A: C3 - 01
+B44B: 21 - 28
+B44C: 11 - 38
+B44D: 10 - F4
+B44E: 20 - DC
+B44F: 00 - AE
+B450: 10 - 03
+B451: F0 - 28
+B452: 10 - 02
+B453: 00 - D1
+B454: 00 - 10
+B455: E0 - 20
+B456: 30 - F8
+B457: E0 - F7
+B458: 00 - F8
+B459: 00 - BE
+B45A: F0 - 04
+B45B: 60 - 28
+B45C: 80 - 78
+B45D: 00 - F4
+B45E: F0 - 3C
+B45F: 00 - AE
+B460: 10 - F8
+B461: 10 - F7
+B462: F0 - F2
+B463: 10 - BE
+</Data>
+</Patch>

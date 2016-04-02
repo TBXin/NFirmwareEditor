@@ -1,0 +1,51 @@
+<Patch Definition="Presa TC75W 3.00" Name="Ohm-meter to thousandths" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Extend ohm-meter to thousandths.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Ohmmeter 3 dec#
+
+# Cosmetics
+615E: 0C - 06
+6172: 06 - 00
+617A: 08 - 02
+6386: 0A - 04
+685E: 0C - 06
+69AE: 0C - 06
+69C2: 06 - 00
+69CE: 08 - 02
+
+# Branch to new format
+63EA: 11 - 04
+63EB: 68 - F0
+63EC: 0A - B9
+63ED: 20 - BF
+
+# New format
+B360: 7F - 12
+B361: 0F - 68
+B362: 00 - 03
+B363: 00 - 23
+B364: 00 - 40
+B365: 00 - 21
+B366: 00 - 21
+B367: 00 - 20
+B368: 00 - 04
+B369: 00 - 25
+B36A: 00 - CD
+B36B: 00 - E9
+B36C: 03 - 00
+B36D: 1D - 45
+B36E: 03 - F9
+B36F: 07 - F7
+B370: 0F - 5F
+B371: 1F - FB
+B372: 3F - 02
+B373: 7F - 23
+B374: FF - 03
+B375: FF - 25
+B376: FF - FB
+B377: FE - F7
+B378: FC - 4B
+B379: F8 - B8
+</Data>
+</Patch>

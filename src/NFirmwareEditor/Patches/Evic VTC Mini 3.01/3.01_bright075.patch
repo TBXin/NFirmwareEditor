@@ -1,0 +1,63 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Display Brightness 75%" Version="1.0" Author="maelstrom2001">
+  <Description>Set display brightness to 75%</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Set display brightness #
+# Branch 1
+4864: AF - 07
+4865: 20 - F0
+4866: FF - DC
+4867: F7 - BB
+# Branch 2
+4AFE: AF - 07
+4AFF: 20 - F0
+4B00: FF - 9F
+4B01: F7 - BA
+# Cut-in 1
+C020: 00 - 81
+C021: 00 - 20
+C022: 00 - F8
+C023: 00 - F7
+C024: 00 - 6B
+C025: 00 - FB
+C026: 00 - C0 ; value
+C027: 00 - 20
+C028: 00 - F8
+C029: 00 - F7
+C02A: 00 - 68
+C02B: 00 - FB
+C02C: 00 - AF
+C02D: 00 - 20
+C02E: 00 - F8
+C02F: 00 - F7
+C030: 00 - 65
+C031: 00 - FB
+C032: 00 - F8
+C033: 00 - F7
+C034: 00 - 1A
+C035: 00 - BC
+# Cut-in 2
+C040: 00 - 81
+C041: 00 - 20
+C042: 00 - F8
+C043: 00 - F7
+C044: 00 - 5B
+C045: 00 - FB
+C046: 00 - C0 ; value
+C047: 00 - 20
+C048: 00 - F8
+C049: 00 - F7
+C04A: 00 - 58
+C04B: 00 - FB
+C04C: 00 - AF
+C04D: 00 - 20
+C04E: 00 - F8
+C04F: 00 - F7
+C050: 00 - 55
+C051: 00 - FB
+C052: 00 - F8
+C053: 04 - F7
+C054: 0C - 57
+C055: 1C - BD
+</Data>
+</Patch>

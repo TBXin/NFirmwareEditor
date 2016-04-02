@@ -1,0 +1,33 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="Stealth on Charge" Version="1.0" Author="maelstrom2001">
+  <Description>Extend Stealth Mode to the charging screen.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Stealth Mode on charge #
+# Branch to Stealth Mode detection
+5C14: 00 - 04
+5C15: F0 - F0
+5C16: 2E - 20
+5C17: B8 - BE
+# Stealth Mode detection
+A858: FE - 03
+A859: 00 - 48
+A85A: 00 - 90
+A85B: 00 - F8
+A85C: 00 - 25
+A85D: 00 - 00
+A85E: 00 - 08
+A85F: 1F - B1
+A860: FC - FB ; Stealth On
+A861: 00 - F7 ; B.W locret_5C20
+A862: 00 - DE
+A863: 00 - B9
+A864: 00 - FB ; Stealth Off
+A865: 00 - F7 ; B.W loc_5C74
+A866: 00 - 06
+A867: 07 - BA
+A868: F0 - 50
+A869: 00 - 02
+A86A: 00 - 00
+A86B: 00 - 20
+</Data>
+</Patch>

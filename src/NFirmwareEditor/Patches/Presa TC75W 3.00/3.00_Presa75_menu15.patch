@@ -1,0 +1,15 @@
+<Patch Definition="Presa TC75W 3.00" Name="Menu Timeout (15 s)" Version="1.0" Author="maelstrom2001">
+  <Description>Set menu timeout to 15 sec.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Set menu timeout to 15 s #
+38C0: 7A - BB
+38C1: 70 - 60
+3B16: 7A - BB
+3B17: 70 - 60
+3E4C: 7A - BB
+3E4D: 70 - 60
+428A: 7A - BB
+428B: 70 - 60
+</Data>
+</Patch>

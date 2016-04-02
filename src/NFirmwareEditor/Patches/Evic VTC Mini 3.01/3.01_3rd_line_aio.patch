@@ -1,0 +1,437 @@
+<Patch Definition="Evic VTC Mini 3.01" Name="3rd Status Line - AIO" Version="1.0" Author="maelstrom2001">
+  <Description>Adds battery voltage, board temperature, saved resistance and realtime measuring to the 3rd line.</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Last status line - all in one
+# Battery voltage
+# PCB temperature
+# Resistance management
+# Realtime resistance
+# Realtime output voltage
+
+# Max item number
+18EA: 03 - 08 ; check while loading from dataflash
+3BDC: 03 - 08 ; menu subroutine
+
+# Branch to new case set for 3rd line
+6A7C: 01 - 05
+6A7D: 28 - F0
+6A7E: 21 - 10
+6A7F: D0 - BB
+
+# Battery voltage
+C060: 80 - 0B
+C061: 00 - 48
+C062: 00 - 5C ; BATT pos Y
+C063: 00 - 22
+C064: 00 - 00 ; BATT pos X
+C065: 00 - 21
+C066: 00 - 03
+C067: 00 - 27
+C068: 00 - F8
+C069: 00 - F7
+C06A: 00 - 3A
+C06B: 00 - FF
+C06C: 00 - 07
+C06D: 00 - 48
+C06E: 00 - CD
+C06F: C0 - E9
+C070: 30 - 00
+C071: 08 - 47
+C072: 04 - 02
+C073: 04 - 23
+C074: 04 - 02
+C075: 08 - 88
+C076: 30 - 5A ; voltage pos Y
+C077: 00 - 21
+C078: 00 - 1B ; voltage pos X
+C079: 00 - 20
+C07A: 00 - F8
+C07B: 00 - F7
+C07C: 00 - 69
+C07D: 00 - FE
+C07E: 00 - 67 ; V charcode
+C07F: 00 - 22
+C080: 00 - 5C ; V pos Y
+C081: 00 - 21
+C082: 00 - 38 ; V pos X
+C083: 00 - 20
+C084: 00 - F8
+C085: 80 - F7
+C086: 80 - 48
+C087: 80 - FE
+C088: C0 - FA
+C089: C0 - F7
+C08A: E0 - 3C
+C08B: E0 - BD
+C08C: F0 - 56
+C08D: F0 - 00
+C08E: F8 - 00
+C08F: 78 - 20
+C090: 1C - 98
+C091: 0C - C0
+C092: 04 - 00
+C093: 00 - 00
+C098: 03 - 53 ; B
+C099: 07 - 52 ; A
+C09A: 3F - 65 ; T
+C09B: 0F - 65 ; T
+C09C: 1F - 00 ; line end
+C09F: 3F - 00
+
+# New case set
+C0A0: 3F - 01 ; case 1 - PUFF (6AC4)
+C0A1: 3F - 28
+C0A2: 7F - 3A
+C0A3: 7E - F4
+C0A4: FE - 0F
+C0A5: FE - AD
+C0A6: FC - 02 ; case 2 - TIME (6AE0)
+C0A7: FC - 28
+C0A8: F8 - 3A
+C0A9: F8 - F4
+C0AA: F8 - 1A
+C0AB: F0 - AD
+C0AC: F0 - 03 ; case 3 - BATT (C060)
+C0AD: C7 - 28
+C0AE: 18 - 3F
+C0AF: 63 - F4
+C0B0: 8C - D7
+C0B1: 10 - AF
+C0B2: 20 - 04 ; case 4 - TEMP (C0E0)
+C0B3: 20 - 28
+C0B4: 11 - 00
+C0B5: 8D - F0
+C0B6: 63 - 14
+C0B7: 18 - 80
+C0B8: C7 - 05 ; case 5 - RES saved (C120)
+C0B9: F0 - 28
+C0BA: F0 - 00
+C0BB: F8 - F0
+C0BC: F8 - 31
+C0BD: F8 - 80
+C0BE: FC - 06 ; case 6 - RES realtime (A770)
+C0BF: FC - 28
+C0C0: FE - 3E
+C0C1: FE - F4
+C0C2: 7E - 56
+C0C3: 7F - AB
+C0C4: 3F - 07 ; case 7 - Vout (A7B0)
+C0C5: 3F - 28
+C0C6: 3F - 3E
+C0C7: 1F - F4
+C0C8: 1F - 73
+C0C9: 1F - AB
+C0CA: 0F - FA
+C0CB: 3F - F7
+C0CC: 07 - 1B
+C0CD: 03 - BD
+
+# PCB temperature
+C0E0: 00 - 0B
+C0E1: 00 - 48
+C0E2: 00 - 5C ; TEMP pos Y
+C0E3: 00 - 22
+C0E4: 00 - 00 ; TEMP pos X
+C0E5: 00 - 21
+C0E6: 00 - 02
+C0E7: 01 - 27
+C0E8: 01 - F8
+C0E9: 03 - F7
+C0EA: 03 - FA
+C0EB: 03 - FE
+C0EC: 07 - 07
+C0ED: 47 - 48
+C0EE: E7 - CD
+C0EF: F6 - E9
+C0F0: FC - 00
+C0F1: F9 - 47
+C0F2: F9 - 00
+C0F3: F9 - 23
+C0F4: F9 - 02
+C0F5: FC - 78
+C0F6: FE - 5A ; temperature pos Y
+C0F7: F7 - 21
+C0F8: E7 - 27 ; temperature pos X
+C0F9: 47 - 20
+C0FA: 03 - F8
+C0FB: 03 - F7
+C0FC: 03 - 29
+C0FD: 01 - FE
+C0FE: 01 - 54 ; 'C charcode
+C0FF: 00 - 22
+C100: 00 - 5C ; 'C pos Y
+C101: 00 - 21
+C102: 00 - 38 ; 'C pos X
+C103: 00 - 20
+C104: 00 - F8
+C105: 00 - F7
+C106: 00 - 08
+C107: 00 - FE
+C108: 00 - FA
+C109: 00 - F7
+C10A: 00 - FC
+C10B: 00 - BC
+C10C: 00 - 42
+C10D: 00 - 00
+C10E: 00 - 00
+C10F: 00 - 20
+C110: 00 - 18
+C111: 00 - C1
+C112: 00 - 00
+C113: 00 - 00
+C118: 00 - 65 ; T
+C119: 00 - 56 ; E
+C11A: 00 - 5E ; M
+C11B: 04 - 61 ; P
+C11C: 18 - 00 ; line end
+
+# Resistance management
+C120: 40 - 17
+C121: 38 - 48
+C122: 24 - 5C ; RES pos Y
+C123: 38 - 22
+C124: 40 - 00 ; RES pos X
+C125: 00 - 21
+C126: 7C - 03
+C127: 14 - 27
+C128: 1C - F8
+C129: 00 - F7
+C12A: 38 - DA
+C12B: 44 - FE
+C12C: 38 - 13
+C12D: 00 - 4B
+C12E: 7C - 98
+C12F: 14 - 7B
+C130: 69 - 01
+C131: 01 - 28
+C132: 03 - 05
+C133: 0F - D0
+C134: 03 - 40
+C135: 01 - B1
+C136: 39 - 02
+C137: 44 - 28
+C138: 54 - 0A
+C139: 30 - D0
+C13A: 00 - 03
+C13B: 44 - 28
+C13C: 7C - 0D
+C13D: 44 - D0
+C13E: 00 - 15
+C13F: 40 - E0
+C140: 38 - CD
+C141: 24 - E9
+C142: 38 - 00
+C143: 40 - 47
+C144: 00 - DA
+C145: 7C - 8B
+C146: 08 - 0C
+C147: 30 - E0
+C148: 7C - CD
+C149: 00 - E9
+C14A: 04 - 00
+C14B: 7C - 47
+C14C: 04 - 1A
+C14D: 00 - 8C
+C14E: 00 - 08
+C14F: 00 - E0
+C150: 00 - CD
+C151: 00 - E9
+C152: 00 - 00
+C153: 00 - 47
+C154: 00 - B3
+C155: 00 - F8
+C156: 00 - 84
+C157: 00 - 20
+C158: 00 - 03
+C159: 00 - E0
+C15A: 00 - CD
+C15B: 00 - E9
+C15C: 00 - 00
+C15D: 00 - 47
+C15E: 00 - B3
+C15F: 00 - F8
+C160: 00 - 90
+C161: 00 - 20
+C162: 00 - 02
+C163: 00 - 23
+C164: 00 - 5A ; resistance pos Y
+C165: 00 - 21
+C166: 00 - 1B ; resistance pos X
+C167: 00 - 20
+C168: 00 - F8
+C169: 00 - F7
+C16A: 00 - F2
+C16B: 00 - FD
+C16C: 00 - AA ; omega charcode
+C16D: 00 - 22
+C16E: 00 - 5C ; omega pos Y
+C16F: 00 - 21
+C170: 00 - 38 ; omega pos X
+C171: 00 - 20
+C172: 00 - F8
+C173: 00 - F7
+C174: 00 - D1
+C175: 00 - FD
+C176: 00 - FA
+C177: 00 - F7
+C178: 00 - C5
+C179: 00 - BC
+C17A: 00 - 00
+C17B: 00 - 00
+C17C: 00 - 50
+C17D: 00 - 02
+C17E: 00 - 00
+C17F: 00 - 20
+C180: 00 - 84
+C181: 00 - C1
+C182: 00 - 00
+C183: 00 - 00
+C184: 00 - 63 ; R
+C185: 00 - 56 ; E
+C186: 00 - 64 ; S
+C187: 00 - AD ; []
+C188: 00 - 00 ; line end
+
+# Realtime resistance
+A770: 00 - 0B
+A771: 00 - 48
+A772: 00 - 5C ; RES pos Y
+A773: 00 - 22
+A774: 00 - 00 ; RES pos X
+A775: 00 - 21
+A776: 00 - 04
+A777: 00 - 27
+A778: 00 - FA
+A779: 00 - F7
+A77A: 00 - B2
+A77B: 00 - FB
+A77C: 00 - 07
+A77D: 00 - 48
+A77E: 00 - CD
+A77F: 00 - E9
+A780: 00 - 00
+A781: 00 - 47
+A782: 00 - 03
+A783: 00 - 23
+A784: 00 - 02
+A785: 00 - 88
+A786: 00 - 5A ; resistance pos Y
+A787: 00 - 21
+A788: 00 - 13 ; resistance pos X
+A789: 00 - 20
+A78A: 00 - FA
+A78B: 00 - F7
+A78C: 00 - E1
+A78D: 00 - FA
+A78E: 00 - AA ; omega charcode
+A78F: 00 - 22
+A790: 00 - 5C ; omega pos Y
+A791: 00 - 21
+A792: 00 - 38 ; omega pos X
+A793: 00 - 20
+A794: 00 - FA
+A795: 00 - F7
+A796: 00 - C0
+A797: 00 - FA
+A798: 00 - FC
+A799: 00 - F7
+A79A: 00 - B4
+A79B: 00 - B9
+A79C: 00 - A0
+A79D: 00 - 00
+A79E: 00 - 00
+A79F: 00 - 20
+A7A0: 00 - A4
+A7A1: 00 - A7
+A7A2: 00 - 00
+A7A3: 00 - 00
+A7A4: 00 - 63 ; R
+A7A5: 00 - 56 ; E
+A7A6: 00 - 64 ; S
+A7A7: 00 - 00 ; line end
+
+# Output voltage
+A7B0: 00 - 11
+A7B1: 00 - 48
+A7B2: 00 - 5C ; Vout pos Y
+A7B3: 00 - 22
+A7B4: E0 - 00 ; Vout pos X
+A7B5: 00 - 21
+A7B6: 00 - FA
+A7B7: 01 - F7
+A7B8: C0 - 93
+A7B9: 00 - FB
+A7BA: 00 - 0D
+A7BB: 07 - 4F
+A7BC: 78 - 38
+A7BD: 00 - 88
+A7BE: 00 - 03
+A7BF: 02 - 27
+A7C0: 20 - 02
+A7C1: 00 - 23
+A7C2: 00 - C0
+A7C3: 1E - 05
+A7C4: 3E - 06
+A7C5: 00 - D5
+A7C6: 00 - 0B
+A7C7: 04 - 48
+A7C8: 10 - CD
+A7C9: 00 - E9
+A7CA: 00 - 00
+A7CB: 7C - 47
+A7CC: 1F - 02
+A7CD: 80 - 88
+A7CE: 00 - 5A ; voltage pos Y
+A7CF: 04 - 21
+A7D0: 10 - 1B ; voltage pos X
+A7D1: 00 - 20
+A7D2: 01 - 04
+A7D3: F8 - E0
+A7D4: 1F - 00
+A7D5: E0 - 22
+A7D6: 00 - 5A ; voltage pos Y
+A7D7: 08 - 21
+A7D8: 00 - 1B ; voltage pos X
+A7D9: 00 - 20
+A7DA: 07 - CD
+A7DB: F8 - E9
+A7DC: 0F - 00
+A7DD: FC - 47
+A7DE: 00 - FA
+A7DF: 08 - F7
+A7E0: 00 - B7
+A7E1: 00 - FA
+A7E2: 3F - 67 ; V charcode
+A7E3: F0 - 22
+A7E4: 07 - 5C ; V pos Y
+A7E5: FF - 21
+A7E6: 00 - 38 ; V pos X
+A7E7: 28 - 20
+A7E8: 74 - FA
+A7E9: 00 - F7
+A7EA: FF - 96
+A7EB: E0 - FA
+A7EC: 07 - FC
+A7ED: FF - F7
+A7EE: E0 - 8A
+A7EF: 28 - B9
+A7F0: 14 - 60
+A7F1: 07 - 00
+A7F2: FF - 00
+A7F3: E0 - 20
+A7F4: 03 - C4
+A7F5: FF - 00
+A7F6: F8 - 00
+A7F7: 24 - 20
+A7F8: 24 - FC
+A7F9: 1F - A7
+A7FA: FF - 00
+A7FB: C0 - 00
+A7FC: 01 - 67 ; V
+A7FD: FF - 7A ; o
+A7FE: FF - 80 ; u
+A7FF: 14 - 7F ; t
+A800: 28 - 00 ; line end
+</Data>
+</Patch>
