@@ -35,7 +35,11 @@ namespace NFirmwareEditor.Managers
 					using (var fs = File.Open(file, FileMode.Open))
 					{
 						var patch = serializer.Deserialize(fs) as Patch;
-						if (patch != null) result.Add(patch);
+						if (patch != null)
+						{
+							patch.Data = ParseDiff(patch.DataString);
+							result.Add(patch);
+						}
 					}
 				}
 				catch
@@ -83,32 +87,6 @@ namespace NFirmwareEditor.Managers
 				}
 			}
 			return result.ToString();
-		}
-
-		public static IEnumerable<PatchModificationData> ParseDiff(string dataString)
-		{
-			if (string.IsNullOrEmpty(dataString)) return new List<PatchModificationData>();
-
-			var lines = dataString.Trim().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-			var result = new List<PatchModificationData>();
-			foreach (var line in lines.Where(x => string.IsNullOrEmpty(x) || !x.StartsWith("#")).Select(x => x.Replace(" ", string.Empty)))
-			{
-				var offsetAndData = line.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-				if (offsetAndData.Length != 2) continue;
-
-				var offset = long.Parse(offsetAndData[0], NumberStyles.AllowHexSpecifier);
-				var data = offsetAndData[1];
-				if (data.IndexOf(';') != -1) data = data.Substring(0, data.IndexOf(';'));
-
-				var originalAndPatchedBytes = data.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-				if (originalAndPatchedBytes.Length != 2) continue;
-
-				var originalByte = ParseByte(originalAndPatchedBytes[0]);
-				var patchedByte = ParseByte(originalAndPatchedBytes[1]);
-
-				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
-			}
-			return result;
 		}
 
 		public bool IsPatchApplied([NotNull] Patch patch, [NotNull] Firmware firmware)
@@ -180,6 +158,32 @@ namespace NFirmwareEditor.Managers
 				}
 			}
 			return new BulkPatchResult(proceededPatches, conflictedPatches);
+		}
+
+		private static IEnumerable<PatchModificationData> ParseDiff(string dataString)
+		{
+			if (string.IsNullOrEmpty(dataString)) return new List<PatchModificationData>();
+
+			var lines = dataString.Trim().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+			var result = new List<PatchModificationData>();
+			foreach (var line in lines.Where(x => string.IsNullOrEmpty(x) || !x.StartsWith("#")).Select(x => x.Replace(" ", string.Empty)))
+			{
+				var offsetAndData = line.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+				if (offsetAndData.Length != 2) throw new InvalidDataException();
+
+				var offset = long.Parse(offsetAndData[0], NumberStyles.AllowHexSpecifier);
+				var data = offsetAndData[1];
+				if (data.IndexOf(';') != -1) data = data.Substring(0, data.IndexOf(';'));
+
+				var originalAndPatchedBytes = data.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+				if (originalAndPatchedBytes.Length != 2) throw new InvalidDataException();
+
+				var originalByte = ParseByte(originalAndPatchedBytes[0]);
+				var patchedByte = ParseByte(originalAndPatchedBytes[1]);
+
+				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
+			}
+			return result;
 		}
 
 		private static bool ValidatePatchApplyingCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)

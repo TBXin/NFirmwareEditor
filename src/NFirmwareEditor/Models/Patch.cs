@@ -2,14 +2,12 @@
 using System.Xml;
 using System.Xml.Serialization;
 using NFirmwareEditor.Core;
-using NFirmwareEditor.Managers;
 
 namespace NFirmwareEditor.Models
 {
 	public class Patch
 	{
 		private readonly XmlSerializerNamespaces m_namespaces;
-		private IEnumerable<PatchModificationData> m_data;
 
 		public Patch()
 		{
@@ -43,10 +41,7 @@ namespace NFirmwareEditor.Models
 		public string DataString { get; set; }
 
 		[XmlIgnore]
-		internal IEnumerable<PatchModificationData> Data
-		{
-			get { return m_data ?? (m_data = PatchManager.ParseDiff(DataString)); }
-		}
+		internal IEnumerable<PatchModificationData> Data { get; set; }
 
 		[XmlIgnore]
 		internal bool IsApplied { get; set; }
