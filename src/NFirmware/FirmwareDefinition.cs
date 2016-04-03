@@ -23,6 +23,17 @@ namespace NFirmware
 		[CanBeNull]
 		public StringTableDefinition StringTable2 { get; set; }
 
+		[CanBeNull]
+		[XmlElement("CharsToCorrect")]
+		public string CharsToCorrectString { get; set; }
+
+		[CanBeNull]
+		[XmlIgnore]
+		public byte[] CharsToCorrect
+		{
+			get { return CharsToCorrectString.HexStringToByteArray(); }
+		}
+
 		public override string ToString()
 		{
 			return Name;
@@ -72,6 +83,7 @@ namespace NFirmware
 			get { return OffsetFromString.HexStringToLong(); }
 		}
 
+		[CanBeNull]
 		[XmlIgnore]
 		public byte[] Marker
 		{

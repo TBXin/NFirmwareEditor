@@ -19,9 +19,10 @@ namespace NFirmware
 			return byte.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
 		}
 
-		internal static byte[] HexStringToByteArray([NotNull] this string hexNumbers)
+		[CanBeNull]
+		internal static byte[] HexStringToByteArray([CanBeNull] this string hexNumbers)
 		{
-			if (hexNumbers == null) throw new ArgumentNullException("hexNumbers");
+			if (string.IsNullOrEmpty(hexNumbers)) return null;
 
 			var numbers = hexNumbers.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 			return numbers.Select(x => x.HexStringToByte()).ToArray();

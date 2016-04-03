@@ -182,7 +182,20 @@ namespace NFirmwareEditor.Windows.Tabs
 				var metadata = CurrentImageBlockForStrings.FirstOrDefault(x => x.Index == charIndex);
 				if (metadata != null) charMetadatas.Add(metadata);
 			}
-			var images = m_firmware.ReadImages(charMetadatas).ToList();
+
+			var images = new List<bool[,]>();
+			foreach (var charMetadata in charMetadatas)
+			{
+				var image = m_firmware.ReadImage(charMetadata);
+				if (m_firmware.Definition.CharsToCorrect != null && m_firmware.Definition.CharsToCorrect.Contains((byte)charMetadata.Index))
+				{
+					var imageSize = FirmwareImageProcessor.GetImageSize(image);
+					image = FirmwareImageProcessor.ResizeImage(image, new Size(imageSize.Width, imageSize.Height + 2));
+					image = FirmwareImageProcessor.ShiftDown(image);
+					image = FirmwareImageProcessor.ShiftDown(image);
+				}
+				images.Add(image);
+			}
 			var data = FirmwareImageProcessor.MergeImages(images);
 			var dataSize = FirmwareImageProcessor.GetImageSize(data);
 

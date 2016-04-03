@@ -88,10 +88,7 @@ namespace NFirmware
 
 			foreach (var definition in definitions)
 			{
-				if (definition.Marker == null
-				    || string.IsNullOrEmpty(definition.Marker.OffsetFromString)
-				    || string.IsNullOrEmpty(definition.Marker.MarkerBytesString))
-					continue;
+				if (definition.Marker == null || definition.Marker.Marker == null) continue;
 
 				var bytes = firmwareBytes.Skip((int)definition.Marker.Offset).Take(definition.Marker.Marker.Length).ToArray();
 				if (!definition.Marker.Marker.SequenceEqual(bytes)) continue;
