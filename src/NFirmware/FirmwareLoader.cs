@@ -19,9 +19,21 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public Firmware TryLoad([NotNull] string filePath, [NotNull, ItemNotNull] IEnumerable<FirmwareDefinition> definitions)
+		public Firmware TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
-			var bytes = LoadFile(filePath);
+			if (definitions == null) throw new ArgumentNullException("definitions");
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+
+			return TryLoad(File.ReadAllBytes(filePath), definitions);
+		}
+
+		[CanBeNull]
+		public Firmware TryLoad([NotNull] byte[] firmwareBytes, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
+			if (definitions == null) throw new ArgumentNullException("definitions");
+
+			var bytes = DecryptIfNecessary(firmwareBytes);
 			var definition = DetermineDefinition(bytes, definitions);
 			return definition != null ? Load(bytes, definition) : null;
 		}
@@ -40,18 +52,6 @@ namespace NFirmware
 			}
 		}
 
-		[NotNull]
-		public Firmware LoadEncrypted([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
-		{
-			return Load(filePath, definition, true);
-		}
-
-		[NotNull]
-		public Firmware LoadDecrypted([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
-		{
-			return Load(filePath, definition, false);
-		}
-
 		public void SaveEncrypted([NotNull] string filePath, [NotNull] Firmware firmware)
 		{
 			Save(filePath, firmware, true);
@@ -67,8 +67,13 @@ namespace NFirmware
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
 			var data = File.ReadAllBytes(filePath);
-			var decode = IsFirmwareEncrypted(data);
-			return decode ? m_encoder.Decode(data) : data;
+			return DecryptIfNecessary(data);
+		}
+
+		private byte[] DecryptIfNecessary(byte[] firmwareBytes)
+		{
+			var decode = IsFirmwareEncrypted(firmwareBytes);
+			return decode ? m_encoder.Decode(firmwareBytes) : firmwareBytes;
 		}
 
 		private void Save([NotNull] string filePath, Firmware firmware, bool encode)
@@ -107,23 +112,6 @@ namespace NFirmware
 			return idx == -1;
 		}
 
-		private byte[] LoadFile([NotNull] string filePath, bool decode)
-		{
-			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
-
-			var data = File.ReadAllBytes(filePath);
-			return decode ? m_encoder.Decode(data) : data;
-		}
-
-		private Firmware Load([NotNull] string filePath, [NotNull] FirmwareDefinition definition, bool decode)
-		{
-			if (definition == null) throw new ArgumentNullException("definition");
-			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
-
-			var data = LoadFile(filePath, decode);
-			return Load(data, definition);
-		}
-
 		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition)
 		{
 			if (data == null) throw new ArgumentNullException("data");
@@ -134,7 +122,7 @@ namespace NFirmware
 			return new Firmware(data, imageBlocks, stringBlocks, definition);
 		}
 
-		private FirmwareImageBlocks LoadImageBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
+		internal FirmwareImageBlocks LoadImageBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (definition == null) throw new ArgumentNullException("definition");
@@ -150,7 +138,7 @@ namespace NFirmware
 			}
 		}
 
-		private FirmwareStringBlocks LoadStringBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
+		internal FirmwareStringBlocks LoadStringBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (definition == null) throw new ArgumentNullException("definition");

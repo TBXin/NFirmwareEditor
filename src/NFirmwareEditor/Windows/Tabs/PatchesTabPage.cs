@@ -21,6 +21,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private IEnumerable<Patch> m_suitablePatches;
 
 		private Firmware m_firmware;
+		private IEditorTabPageHost m_host;
 
 		public PatchesTabPage([NotNull] PatchManager patchManager)
 		{
@@ -64,8 +65,9 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Patches"; }
 		}
 
-		public void Initialize(Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, Configuration configuration)
 		{
+			m_host = host;
 			m_allPatches = m_patchManager.LoadPatches();
 		}
 
@@ -164,7 +166,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.ApplyPatch(p, m_firmware));
-			UpdatePatchStatuses();
+			//UpdatePatchStatuses();
+			if (result.ProceededPatches.Count > 0) m_host.ReloadFirmware(this);
 
 			var sb = new StringBuilder();
 			if (result.ProceededPatches.Count > 0)
@@ -206,7 +209,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.RollbackPatch(p, m_firmware));
-			UpdatePatchStatuses();
+			//UpdatePatchStatuses();
+			if (result.ProceededPatches.Count > 0) m_host.ReloadFirmware(this);
 
 			var sb = new StringBuilder();
 			if (result.ProceededPatches.Count > 0)

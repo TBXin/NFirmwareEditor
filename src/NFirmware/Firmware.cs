@@ -9,8 +9,9 @@ namespace NFirmware
 	public class Firmware
 	{
 		private readonly FirmwareStream m_bodyStream;
-		private readonly FirmwareImageBlocks m_imageBlocks;
-		private readonly FirmwareStringBlocks m_stringBlocks;
+
+		private FirmwareImageBlocks m_imageBlocks;
+		private FirmwareStringBlocks m_stringBlocks;
 
 		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks, [NotNull] FirmwareStringBlocks stringBlocks, [NotNull] FirmwareDefinition definition)
 		{
@@ -46,16 +47,19 @@ namespace NFirmware
 			get { return m_imageBlocks.Block2Images; }
 		}
 
+		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareStringMetadata> Block1Strings
 		{
 			get { return m_stringBlocks.Block1Strings; }
 		}
 
+		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareStringMetadata> Block2Strings
 		{
 			get { return m_stringBlocks.Block2Strings; }
 		}
 
+		[NotNull]
 		public byte[] GetBody()
 		{
 			return m_bodyStream.ToArray();
@@ -70,6 +74,7 @@ namespace NFirmware
 			return imageMetadata.Load(imageData);
 		}
 
+		[NotNull]
 		public byte[] ReadString([NotNull] FirmwareStringMetadata stringMetadata)
 		{
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
@@ -112,6 +117,15 @@ namespace NFirmware
 			if (index > stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
 
 			m_bodyStream.WriteByte((int)stringMetadata.DataOffset + index, stringChar);
+		}
+
+		internal void ReloadResources([NotNull] FirmwareLoader loader)
+		{
+			if (loader == null) throw new ArgumentNullException("loader");
+
+			var firmwareBytes = GetBody();
+			m_imageBlocks = loader.LoadImageBlocks(firmwareBytes, Definition);
+			m_stringBlocks = loader.LoadStringBlocks(firmwareBytes, Definition);
 		}
 	}
 }

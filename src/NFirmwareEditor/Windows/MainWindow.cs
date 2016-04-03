@@ -11,7 +11,7 @@ using NFirmwareEditor.Windows.Tabs;
 
 namespace NFirmwareEditor.Windows
 {
-	internal sealed partial class MainWindow : Form
+	internal sealed partial class MainWindow :  Form, IEditorTabPageHost
 	{
 		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
@@ -40,11 +40,21 @@ namespace NFirmwareEditor.Windows
 			Text = Consts.ApplicationTitle;
 		}
 
+		public void ReloadFirmware(IEditorTabPage initiator)
+		{
+			if (m_firmware == null) return;
+
+			m_tabPages.ForEach(x => x.OnWorkspaceReset());
+			m_firmware.ReloadResources(m_loader);
+			ImageCacheManager.RebuildImageCache(m_firmware);
+			m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
+		}
+
 		private void InitializeControls()
 		{
 			foreach (var tabPage in m_tabPages)
 			{
-				tabPage.Initialize(m_configuration);
+				tabPage.Initialize(this, m_configuration);
 				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
 			}
 

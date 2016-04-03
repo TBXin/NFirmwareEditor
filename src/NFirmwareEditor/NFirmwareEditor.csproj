@@ -126,6 +126,7 @@
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Windows\Tabs\IEditorTabPageHost.cs" />
     <Compile Include="Windows\Tabs\PatchesTabPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

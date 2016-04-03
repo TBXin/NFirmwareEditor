@@ -79,7 +79,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Images"; }
 		}
 
-		public void Initialize(Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, Configuration configuration)
 		{
 			m_configuration = configuration;
 			GridSizeUpDown.Value = m_configuration.GridSize;

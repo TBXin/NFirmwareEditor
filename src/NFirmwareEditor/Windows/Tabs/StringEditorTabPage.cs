@@ -69,7 +69,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Strings"; }
 		}
 
-		public void Initialize(Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, Configuration configuration)
 		{
 			StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			StringPrewviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;

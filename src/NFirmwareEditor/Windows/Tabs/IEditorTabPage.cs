@@ -8,7 +8,7 @@ namespace NFirmwareEditor.Windows.Tabs
 	internal interface IEditorTabPage
 	{
 		string Title { get; }
-		void Initialize([NotNull] Configuration configuration);
+		void Initialize([NotNull] IEditorTabPageHost host, [NotNull] Configuration configuration);
 		void OnWorkspaceReset();
 		void OnFirmwareLoaded([NotNull] Firmware firmware);
 		void OnActivate();
