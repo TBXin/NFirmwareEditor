@@ -2,7 +2,7 @@
 {
 	internal static class Consts
 	{
-		internal const string ApplicationVersion = "3.0";
+		internal const string ApplicationVersion = "3.1";
 		internal const string ApplicationTitle = "NFirmwareEditor v" + ApplicationVersion;
 		internal const string FirmwareFilter = "Firmware file|*.bin";
 		internal const string PatchFilter = "Patch file|*.patch";
