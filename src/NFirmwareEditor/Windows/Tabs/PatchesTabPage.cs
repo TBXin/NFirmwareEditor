@@ -134,7 +134,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Author: " + LastSelectedPatch.Author);
 				sb.AppendLine("Version: " + LastSelectedPatch.Version);
 				sb.AppendLine();
-				sb.AppendLine(LastSelectedPatch.Description);
+				sb.AppendLine(LastSelectedPatch.Description.Trim().Replace("\n", Environment.NewLine));
 			}
 			DescriptionTextBox.Text = sb.ToString();
 
