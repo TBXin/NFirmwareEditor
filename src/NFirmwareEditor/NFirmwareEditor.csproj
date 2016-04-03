@@ -192,7 +192,7 @@
     <None Include="Patches\Evic VTC Mini 3.01\3.01_bright100.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Patches\Evic VTC Mini 3.01\3.01_CalcFont.patch">
+    <None Include="Patches\Evic VTC Mini 3.01\3.01_calc_font.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_logo_bt.patch">
@@ -243,7 +243,7 @@
     <None Include="Patches\Presa TC75W 3.00\3.00_Presa75_bright100.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Patches\Presa TC75W 3.00\3.00_Presa75_CalcFont.patch">
+    <None Include="Patches\Presa TC75W 3.00\3.00_Presa75_calc_font.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Presa TC75W 3.00\3.00_Presa75_ch.patch">

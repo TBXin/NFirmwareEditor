@@ -1,5 +1,5 @@
-﻿<Patch Definition="Evic VTC Mini 3.01" Name="Calc.Font" Version="1.0" Author="MicroSur">
-  <Description>Calculator (Segment) font</Description>
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Calculator (Segment) font" Version="1.0" Author="MicroSur">
+  <Description>Calculator (Segment) font.</Description>
   <Data>
 0000AD03: 7E - 76
 0000AD07: 7E - 76
