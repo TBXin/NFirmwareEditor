@@ -15,7 +15,6 @@ namespace NFirmwareEditor.Windows.Tabs
 	internal partial class PatchesTabPage : UserControl, IEditorTabPage
 	{
 		private readonly PatchManager m_patchManager;
-		private readonly IDictionary<Patch, ListViewItem> m_patchListViewItems = new Dictionary<Patch, ListViewItem>();
 
 		private IEnumerable<Patch> m_allPatches;
 		private IEnumerable<Patch> m_suitablePatches;
@@ -94,7 +93,6 @@ namespace NFirmwareEditor.Windows.Tabs
 					patch.IsCompatible ? "Yes" : "No"
 				}) { Tag = patch };
 
-				m_patchListViewItems[patch] = item;
 				PatchListView.Items.Add(item);
 			}
 
@@ -108,21 +106,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnWorkspaceReset()
 		{
-			m_patchListViewItems.Clear();
 			PatchListView.Items.Clear();
-		}
-
-		private void UpdatePatchStatuses()
-		{
-			foreach (var item in m_patchListViewItems)
-			{
-				var patch = item.Key;
-				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
-				patch.IsCompatible = m_patchManager.IsPatchCompatible(patch, m_firmware) || patch.IsApplied;
-
-				item.Value.SubItems[2].Text = patch.IsApplied ? "Yes" : "No";
-				item.Value.SubItems[3].Text = patch.IsCompatible ? "Yes" : "No";
-			}
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
