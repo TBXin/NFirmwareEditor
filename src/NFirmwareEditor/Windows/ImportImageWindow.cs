@@ -75,9 +75,21 @@ namespace NFirmwareEditor.Windows
 
 		private PixelGrid CreateGrid(bool[,] imageData)
 		{
+			var imageSize = FirmwareImageProcessor.GetImageSize(imageData);
+			var blockSize = imageSize.Height > 64 ? 1 : 2;
 			return new PixelGrid
 			{
-				Width = 205, Height = 80, BlockSize = 2, ShowGrid = false, Data = imageData, BackColor = Color.Black, BlockInnerBorderPen = Pens.Transparent, BlockOuterBorderPen = Pens.Transparent, ActiveBlockBrush = Brushes.White, InactiveBlockBrush = Brushes.Black
+				Width = 132,
+				Height = 132,
+				Margin = new Padding(2),
+				BlockSize = blockSize,
+				ShowGrid = false,
+				Data = imageData,
+				BackColor = Color.Black,
+				BlockInnerBorderPen = Pens.Transparent,
+				BlockOuterBorderPen = Pens.Transparent,
+				ActiveBlockBrush = Brushes.White,
+				InactiveBlockBrush = Brushes.Black
 			};
 		}
 	}

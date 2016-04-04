@@ -6,7 +6,7 @@
 		internal const string ApplicationTitle = "NFirmwareEditor v" + ApplicationVersion;
 		internal const string FirmwareFilter = "Firmware file|*.bin";
 		internal const string PatchFilter = "Patch file|*.patch";
-		internal const string ExportImageFilter = "Exported images|*.images";
+		internal const string ExportResourcePackFilter = "Resource packs|*.respack";
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg";
 		internal const string Encrypted = "encrypted";
 		internal const string Decrypted = "decrypted";

@@ -1,40 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using System.Xml.Serialization;
-using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Models
 {
-	public class Patch
+	public class Patch : LoadableObject
 	{
-		private readonly XmlSerializerNamespaces m_namespaces;
-
-		public Patch()
-		{
-			m_namespaces = new XmlSerializerNamespaces(new[]
-			{
-				new XmlQualifiedName(string.Empty, Consts.PatchXmlNamespace)
-			});
-		}
-
-		[XmlNamespaceDeclarations]
-		public XmlSerializerNamespaces Namespaces
-		{
-			get { return m_namespaces; }
-		}
-
-		[XmlAttribute]
-		public string Definition { get; set; }
-
-		[XmlAttribute]
-		public string Name { get; set; }
-
-		[XmlAttribute]
-		public string Version { get; set; }
-
-		[XmlAttribute]
-		public string Author { get; set; }
-
 		public string Description { get; set; }
 
 		[XmlElement("Data")]

@@ -42,6 +42,20 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
+		[NotNull]
+		public IEnumerable<FirmwareImageMetadata> ImageBlockMetadatas
+		{
+			get
+			{
+				switch (m_currentBlock)
+				{
+					case BlockType.Block1: return m_firmware.Block1Images;
+					case BlockType.Block2: return m_firmware.Block2Images;
+					default: throw new ArgumentOutOfRangeException();
+				}
+			}
+		}
+
 		[CanBeNull]
 		public FirmwareImageMetadata LastSelectedImageMetadata
 		{
@@ -216,6 +230,18 @@ namespace NFirmwareEditor.Windows.Tabs
 			return false;
 		}
 		#endregion
+
+		private void ImportResourcePack([NotNull] ResourcePack resourcePack)
+		{
+			if (resourcePack == null) throw new ArgumentNullException("resourcePack");
+			if (resourcePack.Images == null || resourcePack.Images.Count == 0) return;
+
+			var imageBlockMetadatasDict = ImageBlockMetadatas.ToDictionary(x => x.Index, x => x);
+			var originalImageMetadatas = resourcePack.Images.Where(x => imageBlockMetadatasDict.ContainsKey(x.Index)).Select(x => imageBlockMetadatasDict[x.Index]).ToList();
+			var importedImages = resourcePack.Images.Select(x => x.Data).ToList();
+
+			ImportImages(importedImages, originalImageMetadatas);
+		}
 
 		private void ImportImages([NotNull] List<bool[,]> importedImages, [NotNull] IList<FirmwareImageMetadata> imageMetadata)
 		{
@@ -487,7 +513,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedImageMetadata.Count == 0) return;
 
 			string fileName;
-			using (var sf = new SaveFileDialog { Filter = Consts.ExportImageFilter })
+			using (var sf = new SaveFileDialog { Filter = Consts.ExportResourcePackFilter })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
 				fileName = sf.FileName;
@@ -496,9 +522,11 @@ namespace NFirmwareEditor.Windows.Tabs
 			var images = SelectedImageMetadata.Select(x =>
 			{
 				var imageData = m_firmware.ReadImage(x);
-				return new ExportedImage(x.Index, imageData);
+				var imageSize = FirmwareImageProcessor.GetImageSize(imageData);
+				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
-			ImageExportManager.Export(fileName, images);
+			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images);
+			ResourcePackManager.SaveToFile(fileName, resourcePack);
 		}
 
 		private void ImportContextMenuItem_Click(object sender, EventArgs e)
@@ -506,15 +534,24 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedImageMetadata.Count == 0) return;
 
 			string fileName;
-			using (var op = new OpenFileDialog { Filter = Consts.ExportImageFilter })
+			using (var op = new OpenFileDialog { Filter = Consts.ExportResourcePackFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 				fileName = op.FileName;
 			}
 
-			var exportedImages = ImageExportManager.Import(fileName);
-			var importedImages = exportedImages.Select(x => x.Data).ToList();
-			ImportImages(importedImages, SelectedImageMetadata);
+			var resourcePack = ResourcePackManager.LoadFromFile(fileName);
+			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
+			if (resourcePack.Definition != m_firmware.Definition.Name)
+			{
+				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
+				             + resourcePack.Definition
+				             + "\nOpend firmware is: "
+				             + m_firmware.Definition.Name);
+				return;
+			}
+
+			ImportResourcePack(resourcePack);
 		}
 
 		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)

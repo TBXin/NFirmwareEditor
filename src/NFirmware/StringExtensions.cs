@@ -7,16 +7,22 @@ namespace NFirmware
 {
 	internal static class StringExtensions
 	{
-		internal static long HexStringToLong([NotNull] this string hexNumber)
-		{
-			if (string.IsNullOrEmpty(hexNumber)) throw new ArgumentNullException("hexNumber");
-			return long.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
-		}
-
 		internal static byte HexStringToByte([NotNull] this string hexNumber)
 		{
 			if (string.IsNullOrEmpty(hexNumber)) throw new ArgumentNullException("hexNumber");
 			return byte.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
+		}
+
+		internal static int HexStringToInt([NotNull] this string hexNumber)
+		{
+			if (string.IsNullOrEmpty(hexNumber)) throw new ArgumentNullException("hexNumber");
+			return int.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
+		}
+
+		internal static long HexStringToLong([NotNull] this string hexNumber)
+		{
+			if (string.IsNullOrEmpty(hexNumber)) throw new ArgumentNullException("hexNumber");
+			return long.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
 		}
 
 		[CanBeNull]

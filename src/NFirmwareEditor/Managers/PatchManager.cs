@@ -15,12 +15,6 @@ namespace NFirmwareEditor.Managers
 {
 	internal class PatchManager
 	{
-		private readonly XmlWriterSettings m_xmlWriterSettings = new XmlWriterSettings
-		{
-			OmitXmlDeclaration = true,
-			Indent = true
-		};
-
 		public IEnumerable<Patch> LoadPatches()
 		{
 			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
@@ -55,13 +49,9 @@ namespace NFirmwareEditor.Managers
 			if(string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 			if (patch == null) throw new ArgumentNullException("patch");
 
-			var serializer = new XmlSerializer(typeof(Patch));
 			using (var fs = File.Open(filePath, FileMode.Create))
 			{
-				using (var writer = XmlWriter.Create(fs, m_xmlWriterSettings))
-				{
-					serializer.Serialize(writer, patch, patch.Namespaces);
-				}
+				Serializer.Write(patch, fs);
 			}
 		}
 
