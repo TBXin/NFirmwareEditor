@@ -186,6 +186,9 @@
     <None Include="Patches\Evic VTC Mini 3.01\3.01_3rd_line_aio.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Evic VTC Mini 3.01\3.01_batt_prc3.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_bright075.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,5 +1,5 @@
-<Patch Definition="Evic VTC Mini 3.01" Name="4-2 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Erasing saved resistance by 4 clicks, fast mode change by 2 clicks (TEMP SS - POWER by default).</Description>
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="4-2 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
+  <Description>Erasing saved resistance by 4 clicks, fast mode change by 2 clicks (TEMP SS - POWER by default). Комбо-патч. Сброс сохраненного сопротивления по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 2 кликам Fire.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # 2 Click - fast mode change #
