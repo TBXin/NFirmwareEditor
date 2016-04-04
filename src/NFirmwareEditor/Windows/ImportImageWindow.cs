@@ -35,6 +35,8 @@ namespace NFirmwareEditor.Windows
 				throw new InvalidOperationException("Source and imported images count does not match.");
 			}
 
+			LeftLayoutPanel.SuspendLayout();
+			RightLayoutPanel.SuspendLayout();
 			for (var i = 0; i < originalImages.Count; i++)
 			{
 				var originalImage = originalImages[i];
@@ -47,6 +49,8 @@ namespace NFirmwareEditor.Windows
 				LeftLayoutPanel.Controls.Add(CreateGrid(originalImage));
 				RightLayoutPanel.Controls.Add(CreateGrid(croppedImportedImage));
 			}
+			LeftLayoutPanel.ResumeLayout();
+			RightLayoutPanel.ResumeLayout();
 
 			BeforeLabel.Text = string.Format("Before:\nUsing {0} of {1} selected images.", originalImages.Count, originalsImageCount);
 			AfterLabel.Text = string.Format("After:\nUsing {0} of {1} importing images.", importedImages.Count, importedImageCount);
