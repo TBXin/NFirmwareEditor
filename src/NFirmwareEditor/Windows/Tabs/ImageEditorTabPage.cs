@@ -273,7 +273,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				for (var i = 0; i < minimumImagesCount; i++)
 				{
 					var index = i;
-					updatedImage = ProcessImage(x => importedImages[index], SelectedImageMetadata[index]);
+					updatedImage = ProcessImage(x => importedImages[index], imageMetadata[index]);
 				}
 
 				ImageCacheManager.RebuildImageCache(m_firmware);
