@@ -189,7 +189,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				var image = m_firmware.ReadImage(charMetadata);
 				if (m_firmware.Definition.CharsToCorrect != null && m_firmware.Definition.CharsToCorrect.Contains((byte)charMetadata.Index))
 				{
-					var imageSize = FirmwareImageProcessor.GetImageSize(image);
+					var imageSize = image.GetSize();
 					image = FirmwareImageProcessor.ResizeImage(image, new Size(imageSize.Width, imageSize.Height + 2));
 					image = FirmwareImageProcessor.ShiftDown(image);
 					image = FirmwareImageProcessor.ShiftDown(image);
@@ -197,7 +197,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				images.Add(image);
 			}
 			var data = FirmwareImageProcessor.MergeImages(images);
-			var dataSize = FirmwareImageProcessor.GetImageSize(data);
+			var dataSize = data.GetSize();
 
 			StringPreviewImageSizeLabel.Text = dataSize.Width + "x" + dataSize.Height;
 			StringPrewviewPixelGrid.Data = data;

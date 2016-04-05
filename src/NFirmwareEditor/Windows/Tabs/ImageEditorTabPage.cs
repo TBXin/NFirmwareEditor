@@ -250,7 +250,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (importedImages.Count == 0) return;
 
 			var originalImages = m_firmware.ReadImages(imageMetadata).ToList();
-			if (importedImages.Count == 1 && FirmwareImageProcessor.GetImageSize(importedImages[0]) == FirmwareImageProcessor.GetImageSize(originalImages[0]))
+			if (importedImages.Count == 1 && importedImages[0].GetSize() == originalImages[0].GetSize())
 			{
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => importedImages[0], imageMetadata[0], true);
 			}
@@ -285,7 +285,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata, bool rebuildCache = false)
 		{
 			var processedData = imageDataProcessor(ImagePixelGrid.Data);
-			var processedImageSize = FirmwareImageProcessor.GetImageSize(processedData);
+			var processedImageSize = processedData.GetSize();
 			var imageSizeChanged = imageMetadata.Width != processedImageSize.Width || imageMetadata.Height != processedImageSize.Height;
 
 			imageMetadata.Width = (byte)processedImageSize.Width;
@@ -374,7 +374,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var image = m_firmware.ReadImage(LastSelectedImageMetadata);
-				var imageSize = FirmwareImageProcessor.GetImageSize(image);
+				var imageSize = image.GetSize();;
 
 				ImagePreviewPixelGrid.BlockSize = imageSize.Height > 64 ? 1 : 2;
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = image;
@@ -522,7 +522,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			var images = SelectedImageMetadata.Select(x =>
 			{
 				var imageData = m_firmware.ReadImage(x);
-				var imageSize = FirmwareImageProcessor.GetImageSize(imageData);
+				var imageSize = imageData.GetSize();
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images);

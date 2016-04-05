@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NFirmwareEditor.Managers;
 
 namespace NFirmwareEditor.Core
 {
@@ -84,6 +86,12 @@ namespace NFirmwareEditor.Core
 		internal static string Nvl(this string source, string value)
 		{
 			return string.IsNullOrEmpty(source) ? value : source;
+		}
+
+		internal static Size GetSize([NotNull] this bool[,] imageData)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+			return FirmwareImageProcessor.GetImageSize(imageData);
 		}
 	}
 }
