@@ -20,7 +20,7 @@ namespace NFirmwareEditor.Models
 			Data = imageData;
 		}
 
-		[XmlAttribute("Char")]
+		[XmlAttribute("Index")]
 		public string IndexString { get; set; }
 
 		[XmlAttribute]

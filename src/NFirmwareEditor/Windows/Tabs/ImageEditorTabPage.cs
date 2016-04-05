@@ -374,7 +374,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var image = m_firmware.ReadImage(LastSelectedImageMetadata);
-				var imageSize = image.GetSize();;
+				var imageSize = image.GetSize();
 
 				ImagePreviewPixelGrid.BlockSize = imageSize.Height > 64 ? 1 : 2;
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = image;
