@@ -29,7 +29,8 @@ namespace NFirmwareEditor.Windows
 			{
 				new ImageEditorTabPage { Dock = DockStyle.Fill },
 				new StringEditorTabPage { Dock = DockStyle.Fill },
-				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill }
+				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
+				new ResourcePacksTabPage { Dock = DockStyle.Fill }
 			};
 
 			InitializeComponent();

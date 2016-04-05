@@ -99,7 +99,7 @@
 			this.ReloadPatchesButton.Name = "ReloadPatchesButton";
 			this.ReloadPatchesButton.Size = new System.Drawing.Size(100, 30);
 			this.ReloadPatchesButton.TabIndex = 5;
-			this.ReloadPatchesButton.Text = "Reload patches";
+			this.ReloadPatchesButton.Text = "Reload";
 			this.ReloadPatchesButton.UseVisualStyleBackColor = true;
 			// 
 			// ConflictsGroupBox

@@ -137,6 +137,12 @@
     <Compile Include="Windows\Tabs\PatchesTabPage.Designer.cs">
       <DependentUpon>PatchesTabPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Tabs\ResourcePacksTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Tabs\ResourcePacksTabPage.Designer.cs">
+      <DependentUpon>ResourcePacksTabPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tabs\StringEditorTabPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\PatchesTabPage.resx">
       <DependentUpon>PatchesTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Tabs\ResourcePacksTabPage.resx">
+      <DependentUpon>ResourcePacksTabPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\StringEditorTabPage.resx">
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>
