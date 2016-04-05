@@ -22,13 +22,7 @@ namespace NFirmwareEditor.Windows
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 
-		public ImportImageWindow
-		(
-			IList<bool[,]> originalImages,
-			IList<bool[,]> importedImages,
-			int originalsImageCount,
-			int importedImageCount
-		) : this()
+		public ImportImageWindow(IList<bool[,]> originalImages, IList<bool[,]> importedImages) : this()
 		{
 			if (originalImages.Count != importedImages.Count)
 			{
@@ -51,9 +45,6 @@ namespace NFirmwareEditor.Windows
 			}
 			LeftLayoutPanel.ResumeLayout();
 			RightLayoutPanel.ResumeLayout();
-
-			BeforeLabel.Text = string.Format("Before:\nUsing {0} of {1} selected images.", originalImages.Count, originalsImageCount);
-			AfterLabel.Text = string.Format("After:\nUsing {0} of {1} importing images.", importedImages.Count, importedImageCount);
 		}
 
 		public IEnumerable<bool[,]> GetImportedImages()
@@ -85,7 +76,7 @@ namespace NFirmwareEditor.Windows
 			{
 				Width = 132,
 				Height = 132,
-				Margin = new Padding(2),
+				Margin = new Padding(1, 1, 1, 0),
 				BlockSize = blockSize,
 				ShowGrid = false,
 				Data = imageData,

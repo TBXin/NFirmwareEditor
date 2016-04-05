@@ -256,14 +256,12 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			else
 			{
-				var originalImagesCount = originalImages.Count;
-				var copiedImagesCount = importedImages.Count;
-				var minimumImagesCount = Math.Min(originalImagesCount, copiedImagesCount);
+				var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
 
 				originalImages = originalImages.Take(minimumImagesCount).ToList();
 				importedImages = importedImages.Take(minimumImagesCount).ToList();
 
-				using (var importWindow = new ImportImageWindow(originalImages, importedImages, originalImagesCount, copiedImagesCount))
+				using (var importWindow = new ImportImageWindow(originalImages, importedImages))
 				{
 					if (importWindow.ShowDialog() != DialogResult.OK) return;
 					importedImages = importWindow.GetImportedImages().ToList();
