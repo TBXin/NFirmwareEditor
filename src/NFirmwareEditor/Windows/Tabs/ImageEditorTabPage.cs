@@ -15,6 +15,7 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	internal partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
+		private readonly ResourcePackManager m_resourcePackManager;
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
@@ -23,8 +24,9 @@ namespace NFirmwareEditor.Windows.Tabs
 		private BlockType m_currentBlock = BlockType.Block1;
 		private bool m_imageListBoxIsUpdating;
 
-		public ImageEditorTabPage()
+		public ImageEditorTabPage(ResourcePackManager resourcePackManager)
 		{
+			m_resourcePackManager = resourcePackManager;
 			InitializeComponent();
 		}
 
@@ -524,7 +526,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images);
-			ResourcePackManager.SaveToFile(fileName, resourcePack);
+			m_resourcePackManager.SaveToFile(fileName, resourcePack);
 		}
 
 		private void ImportContextMenuItem_Click(object sender, EventArgs e)
@@ -538,7 +540,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				fileName = op.FileName;
 			}
 
-			var resourcePack = ResourcePackManager.LoadFromFile(fileName);
+			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
 			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
 			if (resourcePack.Definition != m_firmware.Definition.Name)
 			{

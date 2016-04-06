@@ -16,6 +16,7 @@ namespace NFirmwareEditor.Windows
 		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly PatchManager m_patchManager = new PatchManager();
+		private readonly ResourcePackManager m_resourcePackManager = new ResourcePackManager();
 		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 
@@ -27,10 +28,10 @@ namespace NFirmwareEditor.Windows
 		{
 			m_tabPages = new List<IEditorTabPage>
 			{
-				new ImageEditorTabPage { Dock = DockStyle.Fill },
+				new ImageEditorTabPage(m_resourcePackManager) { Dock = DockStyle.Fill },
 				new StringEditorTabPage { Dock = DockStyle.Fill },
 				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
-				new ResourcePacksTabPage { Dock = DockStyle.Fill }
+				new ResourcePacksTabPage(m_resourcePackManager) { Dock = DockStyle.Fill }
 			};
 
 			InitializeComponent();

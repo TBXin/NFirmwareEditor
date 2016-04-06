@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using JetBrains.Annotations;
@@ -8,13 +9,41 @@ using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Managers
 {
-	internal static class ResourcePackManager
+	internal class ResourcePackManager
 	{
 		private const char TrueChar = 'X';
 		private const char FalseChar = '.';
 
+		[NotNull, ItemNotNull]
+		public IEnumerable<ResourcePackFile> LoadAll()
+		{
+			if (!Directory.Exists(Paths.ResourcePackDirectory)) Directory.CreateDirectory(Paths.ResourcePackDirectory);
+
+			var result = new List<ResourcePackFile>();
+			var files = Directory.GetFiles(Paths.ResourcePackDirectory, Consts.ResourcePackFileExtension, SearchOption.AllDirectories);
+			foreach (var file in files)
+			{
+				try
+				{
+					using (var fs = File.Open(file, FileMode.Open))
+					{
+						var resourcePack = Serializer.Read<ResourcePackFile>(fs);
+						if (resourcePack == null) continue;
+
+						resourcePack.FilePath = file;
+						result.Add(resourcePack);
+					}
+				}
+				catch
+				{
+					// Ignore
+				}
+			}
+			return result;
+		}
+
 		[CanBeNull]
-		public static ResourcePack LoadFromFile([NotNull] string path)
+		public ResourcePack LoadFromFile([NotNull] string path)
 		{
 			if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
 
@@ -41,7 +70,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static void SaveToFile([NotNull] string path, [NotNull] ResourcePack pack)
+		public void SaveToFile([NotNull] string path, [NotNull] ResourcePack pack)
 		{
 			if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
 			if (pack == null) throw new ArgumentNullException("pack");

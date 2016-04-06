@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Models
 {
-	public class ResourcePack : LoadableObject
+	public class ResourcePack : ResourcePackFile
 	{
 		public ResourcePack()
 		{

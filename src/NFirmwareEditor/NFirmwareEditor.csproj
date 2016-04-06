@@ -66,6 +66,7 @@
     <Compile Include="Models\Patch.cs" />
     <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Models\ResourcePack.cs" />
+    <Compile Include="Models\ResourcePackFile.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>

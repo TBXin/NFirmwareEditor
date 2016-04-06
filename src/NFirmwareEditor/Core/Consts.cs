@@ -4,9 +4,13 @@
 	{
 		internal const string ApplicationVersion = "3.1";
 		internal const string ApplicationTitle = "NFirmwareEditor v" + ApplicationVersion;
+
+		internal const string PatchFileExtension = "*.patch";
+		internal const string ResourcePackFileExtension = "*.respack";
+
 		internal const string FirmwareFilter = "Firmware file|*.bin";
-		internal const string PatchFilter = "Patch file|*.patch";
-		internal const string ExportResourcePackFilter = "Resource packs|*.respack";
+		internal const string PatchFilter = "Patch file|" + PatchFileExtension;
+		internal const string ExportResourcePackFilter = "Resource packs|" + ResourcePackFileExtension;
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg";
 		internal const string Encrypted = "encrypted";
 		internal const string Decrypted = "decrypted";

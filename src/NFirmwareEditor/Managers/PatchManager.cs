@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
 using NFirmware;
@@ -20,7 +19,7 @@ namespace NFirmwareEditor.Managers
 			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
 
 			var result = new List<Patch>();
-			var files = Directory.GetFiles(Paths.PatchDirectory, "*.patch", SearchOption.AllDirectories);
+			var files = Directory.GetFiles(Paths.PatchDirectory, Consts.PatchFileExtension, SearchOption.AllDirectories);
 			foreach (var file in files)
 			{
 				var serializer = new XmlSerializer(typeof(Patch));
@@ -29,11 +28,10 @@ namespace NFirmwareEditor.Managers
 					using (var fs = File.Open(file, FileMode.Open))
 					{
 						var patch = serializer.Deserialize(fs) as Patch;
-						if (patch != null)
-						{
-							patch.Data = ParseDiff(patch.DataString);
-							result.Add(patch);
-						}
+						if (patch == null) continue;
+
+						patch.Data = ParseDiff(patch.DataString);
+						result.Add(patch);
 					}
 				}
 				catch

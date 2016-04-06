@@ -44,19 +44,15 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 
 		[NotNull]
-		public IEnumerable<Patch> SelectedPatches
+		public IEnumerable<Patch> CheckedPatches
 		{
 			get { return new List<Patch>((from ListViewItem item in PatchListView.CheckedItems select item.Tag).OfType<Patch>()); }
 		}
 
 		[CanBeNull]
-		public Patch LastSelectedPatch
+		public Patch SelectedPatch
 		{
-			get
-			{
-				if (PatchListView.SelectedItems.Count == 0) return null;
-				return PatchListView.SelectedItems[PatchListView.SelectedItems.Count - 1].Tag as Patch;
-			}
+			get { return PatchListView.SelectedItems.Count == 0 ? null : PatchListView.SelectedItems[0].Tag as Patch; }
 		}
 
 		public string Title
@@ -111,18 +107,18 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (LastSelectedPatch == null) return;
+			if (SelectedPatch == null) return;
 
 			var sb = new StringBuilder();
 			{
-				sb.AppendLine("Author: " + LastSelectedPatch.Author);
-				sb.AppendLine("Version: " + LastSelectedPatch.Version);
+				sb.AppendLine("Author: " + SelectedPatch.Author);
+				sb.AppendLine("Version: " + SelectedPatch.Version);
 				sb.AppendLine();
-				sb.AppendLine(LastSelectedPatch.Description.Trim().Replace("\n", Environment.NewLine));
+				sb.AppendLine(SelectedPatch.Description.Trim().Replace("\n", Environment.NewLine));
 			}
 			DescriptionTextBox.Text = sb.ToString();
 
-			var conflicts = m_patchManager.CheckConflicts(LastSelectedPatch, m_suitablePatches);
+			var conflicts = m_patchManager.CheckConflicts(SelectedPatch, m_suitablePatches);
 			sb = new StringBuilder();
 			foreach (var conflict in conflicts)
 			{
@@ -138,9 +134,9 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ApplyPatchesButton_Click(object sender, EventArgs e)
 		{
-			if (!SelectedPatches.Any()) return;
+			if (!CheckedPatches.Any()) return;
 
-			var candidates = SelectedPatches.Where(x => !x.IsApplied).ToList();
+			var candidates = CheckedPatches.Where(x => !x.IsApplied).ToList();
 			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
 			PatchListView.Focus();
 			if (!candidates.Any())
@@ -181,9 +177,9 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 		private void RollbackPatchesButton_Click(object sender, EventArgs e)
 		{
-			if (!SelectedPatches.Any()) return;
+			if (!CheckedPatches.Any()) return;
 
-			var candidates = SelectedPatches.Where(x => x.IsApplied).ToList();
+			var candidates = CheckedPatches.Where(x => x.IsApplied).ToList();
 			PatchListView.CheckedItems.ForEach(x => x.Checked = false);
 			PatchListView.Focus();
 			if (!candidates.Any())

@@ -107,7 +107,6 @@
 			// ResourcePackListView
 			// 
 			this.ResourcePackListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.ResourcePackListView.CheckBoxes = true;
 			this.ResourcePackListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumnHeader,
             this.VersionColumnHeader});
