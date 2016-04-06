@@ -32,6 +32,9 @@ namespace NFirmwareEditor.Windows.Tabs
 				NameColumnHeader.Width = ResourcePackListView.Width - VersionColumnHeader.Width - 1;
 			};
 			ResourcePackListView.SelectedIndexChanged += ResourcePackListView_SelectedIndexChanged;
+			ResourcePackListView.ItemActivate += ResourcePackListView_ItemActivate;
+			PreviewResourcePackButton.Click += PreviewResourcePackButton_Click;
+			ReloadResourcePacksButton.Click += ReloadResourcePacksButton_Click;
 		}
 
 		[CanBeNull]
@@ -68,6 +71,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				resourcePack.Name,
 				resourcePack.Version
 			}) { Tag = resourcePack }));
+
 			ReloadResourcePacksButton.Enabled = true;
 		}
 
@@ -81,8 +85,53 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 		#endregion
 
+		private void PreviewResourcePack()
+		{
+			if (SelectedResourcePack == null) return;
+
+			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
+			if (resourcePack == null || resourcePack.Images == null || resourcePack.Images.Count == 0) return;
+
+			var originalImageIndices = resourcePack.Images.Select(x => x.Index).ToList();
+			var importedImages = resourcePack.Images.Select(x => x.Data).ToList();
+
+			ImportImages(originalImageIndices, importedImages, true);
+		}
+
+		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages, bool importResourcePack)
+		{
+			if (importedImages == null) throw new ArgumentNullException("importedImages");
+			if (originalImageIndices == null) throw new ArgumentNullException("originalImageIndices");
+			if (importedImages.Count == 0) return;
+
+			var minimumImagesCount = Math.Min(originalImageIndices.Count, importedImages.Count);
+
+			originalImageIndices = originalImageIndices.Take(minimumImagesCount).ToList();
+			importedImages = importedImages.Take(minimumImagesCount).ToList();
+
+			using (var importWindow = new ImportImageWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
+			{
+				if (importWindow.ShowDialog() != DialogResult.OK) return;
+				importedImages = importWindow.GetImportedImages().ToList();
+			}
+
+			for (var i = 0; i < minimumImagesCount; i++)
+			{
+				var index = i;
+				var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]);
+				var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]);
+				var block2Image = FirmwareImageProcessor.PasteImage(new bool[block2ImageMetadata.Width, block2ImageMetadata.Height], importedImages[index]);
+
+				m_firmware.WriteImage(importedImages[index], block1ImageMetadata);
+				m_firmware.WriteImage(block2Image, block2ImageMetadata);
+			}
+
+			ImageCacheManager.RebuildImageCache(m_firmware);
+		}
+
 		private void ResourcePackListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			PreviewResourcePackButton.Enabled = SelectedResourcePack != null;
 			if (SelectedResourcePack == null) return;
 
 			var sb = new StringBuilder();
@@ -90,9 +139,29 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Author: " + SelectedResourcePack.Author);
 				sb.AppendLine("Version: " + SelectedResourcePack.Version);
 				sb.AppendLine();
-				sb.AppendLine(SelectedResourcePack.Description.Trim().Replace("\n", Environment.NewLine));
+				sb.AppendLine((SelectedResourcePack.Description ?? string.Empty).Trim().Replace("\n", Environment.NewLine));
 			}
 			DescriptionTextBox.Text = sb.ToString();
+		}
+
+		private void ResourcePackListView_ItemActivate(object sender, EventArgs e)
+		{
+			PreviewResourcePack();
+		}
+
+		private void PreviewResourcePackButton_Click(object sender, EventArgs e)
+		{
+			PreviewResourcePack();
+		}
+
+		private void ReloadResourcePacksButton_Click(object sender, EventArgs e)
+		{
+			m_allResourcePacks = m_resourcePackManager.LoadAll();
+
+			OnWorkspaceReset();
+			OnFirmwareLoaded(m_firmware);
+
+			ResourcePackListView.Focus();
 		}
 	}
 }

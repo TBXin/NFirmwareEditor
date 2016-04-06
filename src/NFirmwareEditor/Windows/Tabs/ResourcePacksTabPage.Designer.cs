@@ -106,6 +106,7 @@
 			// 
 			// ResourcePackListView
 			// 
+			this.ResourcePackListView.Activation = System.Windows.Forms.ItemActivation.TwoClick;
 			this.ResourcePackListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.ResourcePackListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumnHeader,

@@ -37,10 +37,14 @@
 			this.ImportButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.ResizeCheckBox = new System.Windows.Forms.CheckBox();
+			this.OptionsGroupBox = new System.Windows.Forms.GroupBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.ImportModeComboBox = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.ControlBorderedPanel.SuspendLayout();
+			this.OptionsGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -51,7 +55,7 @@
 			this.groupBox1.Controls.Add(this.borderedPanel1);
 			this.groupBox1.Location = new System.Drawing.Point(3, 1);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(302, 418);
+			this.groupBox1.Size = new System.Drawing.Size(302, 363);
 			this.groupBox1.TabIndex = 9;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Preview:";
@@ -73,7 +77,7 @@
 			this.borderedPanel1.Location = new System.Drawing.Point(6, 20);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(290, 391);
+			this.borderedPanel1.Size = new System.Drawing.Size(290, 336);
 			this.borderedPanel1.TabIndex = 3;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -127,7 +131,6 @@
 			this.ControlBorderedPanel.BorderWidth = 1F;
 			this.ControlBorderedPanel.Controls.Add(this.ImportButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
-			this.ControlBorderedPanel.Controls.Add(this.ResizeCheckBox);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 422);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
@@ -144,7 +147,7 @@
 			this.ImportButton.Name = "ImportButton";
 			this.ImportButton.Size = new System.Drawing.Size(100, 30);
 			this.ImportButton.TabIndex = 0;
-			this.ImportButton.Text = "Import / Paste";
+			this.ImportButton.Text = "Import";
 			this.ImportButton.UseVisualStyleBackColor = true;
 			// 
 			// CancelButton
@@ -162,18 +165,52 @@
 			// 
 			this.ResizeCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.ResizeCheckBox.Location = new System.Drawing.Point(5, 5);
+			this.ResizeCheckBox.AutoSize = true;
+			this.ResizeCheckBox.Location = new System.Drawing.Point(163, 23);
 			this.ResizeCheckBox.Name = "ResizeCheckBox";
-			this.ResizeCheckBox.Size = new System.Drawing.Size(95, 30);
+			this.ResizeCheckBox.Size = new System.Drawing.Size(130, 17);
 			this.ResizeCheckBox.TabIndex = 2;
-			this.ResizeCheckBox.Text = "Resize images";
+			this.ResizeCheckBox.Text = "Resize original images";
 			this.ResizeCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// OptionsGroupBox
+			// 
+			this.OptionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.OptionsGroupBox.Controls.Add(this.label3);
+			this.OptionsGroupBox.Controls.Add(this.ImportModeComboBox);
+			this.OptionsGroupBox.Controls.Add(this.ResizeCheckBox);
+			this.OptionsGroupBox.Location = new System.Drawing.Point(3, 370);
+			this.OptionsGroupBox.Name = "OptionsGroupBox";
+			this.OptionsGroupBox.Size = new System.Drawing.Size(302, 50);
+			this.OptionsGroupBox.TabIndex = 10;
+			this.OptionsGroupBox.TabStop = false;
+			this.OptionsGroupBox.Text = "Import options:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(6, 23);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(56, 13);
+			this.label3.TabIndex = 15;
+			this.label3.Text = "Import to:";
+			// 
+			// ImportModeComboBox
+			// 
+			this.ImportModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ImportModeComboBox.FormattingEnabled = true;
+			this.ImportModeComboBox.Location = new System.Drawing.Point(65, 20);
+			this.ImportModeComboBox.Name = "ImportModeComboBox";
+			this.ImportModeComboBox.Size = new System.Drawing.Size(92, 21);
+			this.ImportModeComboBox.TabIndex = 3;
 			// 
 			// ImportImageWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(308, 461);
+			this.Controls.Add(this.OptionsGroupBox);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.DoubleBuffered = true;
@@ -183,13 +220,15 @@
 			this.MinimizeBox = false;
 			this.Name = "ImportImageWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Import / Paste";
+			this.Text = "Import";
 			this.groupBox1.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
 			this.borderedPanel1.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.ControlBorderedPanel.ResumeLayout(false);
+			this.OptionsGroupBox.ResumeLayout(false);
+			this.OptionsGroupBox.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -205,5 +244,8 @@
 		private UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox ResizeCheckBox;
+		private System.Windows.Forms.GroupBox OptionsGroupBox;
+		private System.Windows.Forms.ComboBox ImportModeComboBox;
+		private System.Windows.Forms.Label label3;
 	}
 }

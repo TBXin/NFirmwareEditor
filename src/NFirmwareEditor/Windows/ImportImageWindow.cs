@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
 using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
 	internal partial class ImportImageWindow : EditorDialogWindow
 	{
+		private readonly Firmware m_firmware;
+
+		private static readonly IDictionary<int, ImageImportMode> s_importModeMap = new Dictionary<int, ImageImportMode>
+		{
+			{ 0, ImageImportMode.Block1And2 },
+			{ 1, ImageImportMode.Block1 },
+			{ 2, ImageImportMode.Block2 },
+		};
+
 		private readonly IDictionary<int, bool[,]> m_originalImportedImages = new Dictionary<int, bool[,]>();
 		private readonly IDictionary<int, bool[,]> m_croppedImportedImages = new Dictionary<int, bool[,]>();
 
@@ -18,22 +29,36 @@ namespace NFirmwareEditor.Windows
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
-
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 
-		public ImportImageWindow(IList<bool[,]> originalImages, IList<bool[,]> importedImages) : this()
+		public ImportImageWindow(Firmware firmware, IList<int> originalImageIndices, IList<bool[,]> importedImages, bool resourceImport = false) : this()
 		{
-			if (originalImages.Count != importedImages.Count)
+			if (originalImageIndices.Count != importedImages.Count)
 			{
 				throw new InvalidOperationException("Source and imported images count does not match.");
 			}
+			m_firmware = firmware;
 
+			if (m_firmware.Block2Images.Any())
+			{
+				ImportModeComboBox.Items.Add("Block 1 & 2");
+				ImportModeComboBox.Items.Add("Block 1");
+				ImportModeComboBox.Items.Add("Block 2");
+			}
+			else
+			{
+				ImportModeComboBox.Items.Add("Block 1");
+			}
+			ImportModeComboBox.SelectedIndex = 0;
+
+			OptionsGroupBox.Enabled = !resourceImport;
 			LeftLayoutPanel.SuspendLayout();
 			RightLayoutPanel.SuspendLayout();
-			for (var i = 0; i < originalImages.Count; i++)
+			for (var i = 0; i < originalImageIndices.Count; i++)
 			{
-				var originalImage = originalImages[i];
+				var originalImageIndex = originalImageIndices[i];
+				var originalImage = GetImageByIndex(originalImageIndex);
 				var importedImage = importedImages[i];
 				var croppedImportedImage = FirmwareImageProcessor.PasteImage(originalImage, importedImage);
 
@@ -45,6 +70,20 @@ namespace NFirmwareEditor.Windows
 			}
 			LeftLayoutPanel.ResumeLayout();
 			RightLayoutPanel.ResumeLayout();
+		}
+
+		private bool[,] GetImageByIndex(int index)
+		{
+			var mode = GetImportMode();
+			var block = mode == ImageImportMode.Block2 ? m_firmware.Block2Images : m_firmware.Block1Images;
+			var imageMetadata = block.First(x => x.Index == index);
+
+			return m_firmware.ReadImage(imageMetadata);
+		}
+
+		public ImageImportMode GetImportMode()
+		{
+			return s_importModeMap[ImportModeComboBox.SelectedIndex];
 		}
 
 		public IEnumerable<bool[,]> GetImportedImages()

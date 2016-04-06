@@ -238,48 +238,53 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (resourcePack == null) throw new ArgumentNullException("resourcePack");
 			if (resourcePack.Images == null || resourcePack.Images.Count == 0) return;
 
-			var imageBlockMetadatasDict = ImageBlockMetadatas.ToDictionary(x => x.Index, x => x);
-			var originalImageMetadatas = resourcePack.Images.Where(x => imageBlockMetadatasDict.ContainsKey(x.Index)).Select(x => imageBlockMetadatasDict[x.Index]).ToList();
+			var originalImageIndices = resourcePack.Images.Select(x => x.Index).ToList();
 			var importedImages = resourcePack.Images.Select(x => x.Data).ToList();
 
-			ImportImages(importedImages, originalImageMetadatas);
+			ImportImages(originalImageIndices, importedImages, true);
 		}
 
-		private void ImportImages([NotNull] List<bool[,]> importedImages, [NotNull] IList<FirmwareImageMetadata> imageMetadata)
+		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages, bool importResourcePack)
 		{
 			if (importedImages == null) throw new ArgumentNullException("importedImages");
-			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
+			if (originalImageIndices == null) throw new ArgumentNullException("originalImageIndices");
 			if (importedImages.Count == 0) return;
 
-			var originalImages = m_firmware.ReadImages(imageMetadata).ToList();
-			if (importedImages.Count == 1 && importedImages[0].GetSize() == originalImages[0].GetSize())
+			var minimumImagesCount = Math.Min(originalImageIndices.Count, importedImages.Count);
+
+			originalImageIndices = originalImageIndices.Take(minimumImagesCount).ToList();
+			importedImages = importedImages.Take(minimumImagesCount).ToList();
+
+			ImageImportMode importMode;
+			using (var importWindow = new ImportImageWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
 			{
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(data => importedImages[0], imageMetadata[0], true);
+				if (importWindow.ShowDialog() != DialogResult.OK) return;
+
+				importMode = importWindow.GetImportMode();
+				importedImages = importWindow.GetImportedImages().ToList();
 			}
-			else
+
+			for (var i = 0; i < minimumImagesCount; i++)
 			{
-				var minimumImagesCount = Math.Min(originalImages.Count, importedImages.Count);
-
-				originalImages = originalImages.Take(minimumImagesCount).ToList();
-				importedImages = importedImages.Take(minimumImagesCount).ToList();
-
-				using (var importWindow = new ImportImageWindow(originalImages, importedImages))
+				var index = i;
+				if (importMode == ImageImportMode.Block1)
 				{
-					if (importWindow.ShowDialog() != DialogResult.OK) return;
-					importedImages = importWindow.GetImportedImages().ToList();
+					ProcessImage(x => importedImages[index], m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]));
 				}
-
-				var updatedImage = new bool[5, 5];
-				for (var i = 0; i < minimumImagesCount; i++)
+				else if (importMode == ImageImportMode.Block2)
 				{
-					var index = i;
-					updatedImage = ProcessImage(x => importedImages[index], imageMetadata[index]);
+					ProcessImage(x => importedImages[index], m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]));
 				}
-
-				ImageCacheManager.RebuildImageCache(m_firmware);
-				ImageListBox.Invalidate();
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = updatedImage;
+				else
+				{
+					ProcessImage(x => importedImages[index], m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]));
+					ProcessImage(x => importedImages[index], m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]));
+				}
 			}
+
+			ImageCacheManager.RebuildImageCache(m_firmware);
+			ImageListBox.Invalidate();
+			ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 		}
 
 		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata, bool rebuildCache = false)
@@ -290,7 +295,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			imageMetadata.Width = (byte)processedImageSize.Width;
 			imageMetadata.Height = (byte)processedImageSize.Height;
-			
+
 			m_firmware.WriteImage(processedData, imageMetadata);
 
 			if (imageSizeChanged || rebuildCache)
@@ -321,14 +326,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (metadata == null) return;
 
-			ImageSizeLabel.Text = string.Format
-			(
-				"Image: {0}x{1}, Offset: 0x{2:X4}, Length: {3} bytes",
-				metadata.Width,
-				metadata.Height,
-				metadata.DataOffset,
-				metadata.DataLength + 2
-			);
+			ImageSizeLabel.Text = string.Format("Image: {0}x{1}, Offset: 0x{2:X4}, Length: {3} bytes", metadata.Width, metadata.Height, metadata.DataOffset, metadata.DataLength + 2);
 		}
 
 		private void BlockImageRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -360,9 +358,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				m_imageListBoxIsUpdating = false;
 			}
 			else
-			{
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
-			}
 			UpdateImageStatusLabel(LastSelectedImageMetadata);
 		}
 
@@ -470,7 +466,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedImageMetadata.Count == 0) return;
 
 			var copiedImages = m_clipboardManager.GetData();
-			ImportImages(copiedImages, SelectedImageMetadata);
+			ImportImages(SelectedImageMetadata.Select(x => x.Index).ToList(), copiedImages, false);
 		}
 
 		private void BitmapImportButton_Click(object sender, EventArgs eventArgs)
@@ -544,10 +540,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
 			if (resourcePack.Definition != m_firmware.Definition.Name)
 			{
-				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
-				             + resourcePack.Definition
-				             + "\nOpend firmware is: "
-				             + m_firmware.Definition.Name);
+				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: " + resourcePack.Definition + "\nOpend firmware is: " + m_firmware.Definition.Name);
 				return;
 			}
 
@@ -590,14 +583,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var stringRectX = e.Bounds.X + Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin * 2;
-			e.Graphics.DrawString
-			(
-				itemText,
-				e.Font,
-				new SolidBrush(e.ForeColor),
-				new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - Consts.ImageListBoxItemImageMargin, e.Bounds.Height),
-				m_listBoxStringFormat
-			);
+			e.Graphics.DrawString(itemText, e.Font, new SolidBrush(e.ForeColor), new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - Consts.ImageListBoxItemImageMargin, e.Bounds.Height), m_listBoxStringFormat);
 			e.DrawFocusRectangle();
 		}
 
