@@ -77,21 +77,19 @@ namespace NFirmwareEditor.Windows.Tabs
 			m_firmware = firmware;
 
 			m_suitablePatches = m_allPatches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
-			foreach (var patch in m_suitablePatches)
+			PatchListView.Fill(m_suitablePatches.Select(patch =>
 			{
 				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
 				patch.IsCompatible = m_patchManager.IsPatchCompatible(patch, m_firmware) || patch.IsApplied;
-				var item = new ListViewItem(new[]
+				return new ListViewItem(new[]
 				{
 					patch.Name,
 					patch.Version,
 					patch.IsApplied ? "Yes" : "No",
 					patch.IsCompatible ? "Yes" : "No"
-				}) { Tag = patch };
-
-				PatchListView.Items.Add(item);
-			}
-
+				})
+				{ Tag = patch };
+			}));
 			ReloadPatchesButton.Enabled = true;
 		}
 

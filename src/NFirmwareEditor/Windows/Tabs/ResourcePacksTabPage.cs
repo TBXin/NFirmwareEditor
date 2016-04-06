@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
+using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
 
@@ -62,12 +63,11 @@ namespace NFirmwareEditor.Windows.Tabs
 			m_firmware = firmware;
 
 			m_suitableResourcePacks = m_allResourcePacks.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
-			foreach (var patch in m_suitableResourcePacks)
+			ResourcePackListView.Fill(m_suitableResourcePacks.Select(resourcePack => new ListViewItem(new[]
 			{
-				var item = new ListViewItem(new[] { patch.Name, patch.Version }) { Tag = patch };
-				ResourcePackListView.Items.Add(item);
-			}
-
+				resourcePack.Name,
+				resourcePack.Version
+			}) { Tag = resourcePack }));
 			ReloadResourcePacksButton.Enabled = true;
 		}
 

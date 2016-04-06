@@ -54,16 +54,24 @@ namespace NFirmwareEditor.Core
 
 			listBox.Items.Clear();
 			listBox.BeginUpdate();
-			foreach (var item in items)
-			{
-				listBox.Items.Add(item);
-			}
+			items.ForEach(item => listBox.Items.Add(item));
 			listBox.EndUpdate();
 
 			if (selectFirstItem && listBox.Items.Count > 0)
 			{
 				listBox.SelectedIndex = 0;
 			}
+		}
+
+		internal static void Fill([NotNull] this ListView listView, [NotNull] IEnumerable<ListViewItem> items)
+		{
+			if (listView == null) throw new ArgumentNullException("listView");
+			if (items == null) throw new ArgumentNullException("items");
+
+			listView.Items.Clear();
+			listView.BeginUpdate();
+			items.ForEach(item => listView.Items.Add(item));
+			listView.EndUpdate();
 		}
 
 		internal static void ScrollToEnd([NotNull] this TextBox textBox)
