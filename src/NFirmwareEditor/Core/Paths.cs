@@ -19,8 +19,8 @@ namespace NFirmwareEditor.Core
 
 			SettingsFile = Path.Combine(ApplicationDirectory, SettingsFileName);
 			DefinitionsFile = Path.Combine(ApplicationDirectory, DefinitionsFileName);
-			PatchDirectory = Path.Combine(ApplicationDirectory, ResourcePackDirectoryName);
-			ResourcePackDirectory = Path.Combine(ApplicationDirectory, PatchDirectoryName);
+			PatchDirectory = Path.Combine(ApplicationDirectory, PatchDirectoryName);
+			ResourcePackDirectory = Path.Combine(ApplicationDirectory, ResourcePackDirectoryName);
 		}
 
 		public static string ApplicationDirectory { get; private set; }
