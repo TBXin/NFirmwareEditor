@@ -105,7 +105,9 @@ namespace NFirmwareEditor.Windows
 
 		public ImageImportMode GetImportMode()
 		{
-			return s_importModeMap[ImportModeComboBox.SelectedIndex];
+			return ImportModeComboBox.Items.Count > 1 ? 
+				s_importModeMap[ImportModeComboBox.SelectedIndex] 
+				: ImageImportMode.Block1;
 		}
 
 		public bool AllowResizeOriginalImages
