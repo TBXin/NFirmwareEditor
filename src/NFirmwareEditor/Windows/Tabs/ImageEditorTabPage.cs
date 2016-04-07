@@ -246,7 +246,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ImageImportMode importMode;
 			bool allowResizeOriginalImages;
 
-			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages))
+			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, false, m_currentBlock))
 			{
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
 

@@ -32,7 +32,14 @@ namespace NFirmwareEditor.Windows
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 
-		public PreviewResourcePackWindow(Firmware firmware, IList<int> originalImageIndices, IList<bool[,]> importedImages, bool resourceImport = false) : this()
+		public PreviewResourcePackWindow
+		(
+			Firmware firmware, 
+			IList<int> originalImageIndices, 
+			IList<bool[,]> importedImages, 
+			bool resourceImport = false, 
+			BlockType? defaultImportBlock = null
+		) : this()
 		{
 			if (originalImageIndices.Count != importedImages.Count)
 			{
@@ -45,13 +52,22 @@ namespace NFirmwareEditor.Windows
 				ImportModeComboBox.Items.Add("Block 1 & 2");
 				ImportModeComboBox.Items.Add("Block 1");
 				ImportModeComboBox.Items.Add("Block 2");
+
+				if (defaultImportBlock.HasValue)
+				{
+					ImportModeComboBox.SelectedIndex = defaultImportBlock == BlockType.Block1 ? 1 : 2;
+				}
+				else
+				{
+					ImportModeComboBox.SelectedIndex = 0;
+				}
 			}
 			else
 			{
 				ImportModeComboBox.Items.Add("Block 1");
+				ImportModeComboBox.SelectedIndex = 0;
 			}
 
-			ImportModeComboBox.SelectedIndex = 0;
 			OptionsGroupBox.Enabled = !resourceImport;
 			LeftLayoutPanel.SuspendLayout();
 			RightLayoutPanel.SuspendLayout();

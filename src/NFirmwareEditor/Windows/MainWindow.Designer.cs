@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,17 +45,10 @@
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ImportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
-			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -196,50 +188,6 @@
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
 			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
 			// 
-			// ImageListBoxContextMenu
-			// 
-			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyContextMenuItem,
-            this.PasteContextMenuItem,
-            this.toolStripSeparator3,
-            this.ExportContextMenuItem,
-            this.ImportContextMenuItem});
-			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(111, 98);
-			// 
-			// CopyContextMenuItem
-			// 
-			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
-			this.CopyContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.CopyContextMenuItem.Text = "Copy";
-			// 
-			// PasteContextMenuItem
-			// 
-			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
-			this.PasteContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.PasteContextMenuItem.Text = "Paste";
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(107, 6);
-			// 
-			// ExportContextMenuItem
-			// 
-			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
-			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ExportContextMenuItem.Text = "Export";
-			// 
-			// ImportContextMenuItem
-			// 
-			this.ImportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_import;
-			this.ImportContextMenuItem.Name = "ImportContextMenuItem";
-			this.ImportContextMenuItem.Size = new System.Drawing.Size(110, 22);
-			this.ImportContextMenuItem.Text = "Import";
-			// 
 			// borderedPanel1
 			// 
 			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -290,7 +238,6 @@
 			this.MainMenuStrip.PerformLayout();
 			this.MainStatusStrip.ResumeLayout(false);
 			this.MainStatusStrip.PerformLayout();
-			this.ImageListBoxContextMenu.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -312,12 +259,6 @@
 		private System.Windows.Forms.ToolStripMenuItem ToolsMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem EncryptDecryptMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
-		private System.Windows.Forms.ContextMenuStrip ImageListBoxContextMenu;
-		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem ImportContextMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem CopyContextMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem PasteContextMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
