@@ -320,6 +320,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Evic VTC Mini 3.01\3.01_EvicVtcMini_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Presa TC75W 3.00\3.00_Presa75_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\RX200 3.00\3.00_RX200_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Vaporflask Classic 2.00\2.00_vaporflask_classic_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Vaporflask Lite 2.00\2.00_vaporflask_lite_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Vaporflask Stout 2.00\2.00_vaporflask_stout_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\transparent_bg.png" />
   </ItemGroup>
   <ItemGroup />
