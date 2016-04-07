@@ -63,7 +63,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void Initialize(IEditorTabPageHost host, Configuration configuration)
 		{
 			m_host = host;
-			m_allPatches = m_patchManager.LoadPatches();
+			m_allPatches = m_patchManager.LoadAll();
 		}
 
 		public void OnActivate()
@@ -219,7 +219,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ReloadPatchesButton_Click(object sender, EventArgs e)
 		{
-			m_allPatches = m_patchManager.LoadPatches();
+			m_allPatches = m_patchManager.LoadAll();
 
 			OnWorkspaceReset();
 			OnFirmwareLoaded(m_firmware);

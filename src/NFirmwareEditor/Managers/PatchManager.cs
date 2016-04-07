@@ -14,7 +14,7 @@ namespace NFirmwareEditor.Managers
 {
 	internal class PatchManager
 	{
-		public IEnumerable<Patch> LoadPatches()
+		public IEnumerable<Patch> LoadAll()
 		{
 			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
 

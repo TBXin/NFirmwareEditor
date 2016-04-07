@@ -88,6 +88,12 @@ namespace NFirmwareEditor.Windows
 			RightLayoutPanel.ResumeLayout();
 		}
 
+		public string ImportButtonText
+		{
+			get { return ImportButton.Text; }
+			set { ImportButton.Text = value; }
+		}
+
 		private bool[,] GetImageByIndex(int index)
 		{
 			var mode = GetImportMode();

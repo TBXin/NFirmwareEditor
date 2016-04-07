@@ -28,7 +28,12 @@ namespace NFirmwareEditor.Windows
 			OkButton.Click += OkButton_Click;
 		}
 
-		public PatchCreatorWindow([NotNull] FirmwareLoader firmwareLoader, [NotNull] PatchManager patchManager, [NotNull] IEnumerable<FirmwareDefinition> firmwareDefinitions) : this()
+		public PatchCreatorWindow
+		(
+			[NotNull] FirmwareLoader firmwareLoader, 
+			[NotNull] PatchManager patchManager, 
+			[NotNull] IEnumerable<FirmwareDefinition> firmwareDefinitions
+		) : this()
 		{
 			if (firmwareLoader == null) throw new ArgumentNullException("firmwareLoader");
 			if (patchManager == null) throw new ArgumentNullException("patchManager");
@@ -37,6 +42,7 @@ namespace NFirmwareEditor.Windows
 			m_loader = firmwareLoader;
 			m_patchManager = patchManager;
 			m_firmwareDefinitions = firmwareDefinitions;
+			AuthorTextBox.Text = Environment.UserName;
 			foreach (var firmwareDefinition in m_firmwareDefinitions)
 			{
 				DefinitionComboBox.Items.Add(firmwareDefinition.Name);
@@ -98,7 +104,7 @@ namespace NFirmwareEditor.Windows
 		private void OkButton_Click(object sender, EventArgs e)
 		{
 			var patch = GetPatch();
-			using (var sf = new SaveFileDialog { Filter = Consts.PatchFilter, FileName = patch.Name.Nvl("new_patch") + ".patch"})
+			using (var sf = new SaveFileDialog { Filter = Consts.PatchFilter, FileName = patch.Name.Nvl("new_patch") + Consts.PatchFileExtensionWoAsterisk})
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
 

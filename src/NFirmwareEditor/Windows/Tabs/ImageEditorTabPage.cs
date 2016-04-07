@@ -248,6 +248,8 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, false, m_currentBlock))
 			{
+				importWindow.Text = Consts.ApplicationTitleWoVersion + @" - Paste image(s)";
+				importWindow.ImportButtonText = "Paste";
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
 
 				importMode = importWindow.GetImportMode();
@@ -527,13 +529,6 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (SelectedImageMetadata.Count == 0) return;
 
-			string fileName;
-			using (var sf = new SaveFileDialog { Filter = Consts.ExportResourcePackFilter })
-			{
-				if (sf.ShowDialog() != DialogResult.OK) return;
-				fileName = sf.FileName;
-			}
-
 			var images = SelectedImageMetadata.Select(x =>
 			{
 				var imageData = m_firmware.ReadImage(x);
@@ -541,8 +536,10 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 
-			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images) { Name = "TestPack " + DateTime.Now, Author = "ReikoKitsune", Version = "1.0" };
-			m_resourcePackManager.SaveToFile(fileName, resourcePack);
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_firmware.Definition.Name, images))
+			{
+				createResourcePackWindow.ShowDialog();
+			}
 		}
 
 		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)

@@ -73,7 +73,7 @@
 			this.groupBox1.Controls.Add(this.Source1TextBox);
 			this.groupBox1.Location = new System.Drawing.Point(3, 228);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(428, 338);
+			this.groupBox1.Size = new System.Drawing.Size(378, 342);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Patch data:";
@@ -109,7 +109,7 @@
 			this.DataTextBox.Multiline = true;
 			this.DataTextBox.Name = "DataTextBox";
 			this.DataTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.DataTextBox.Size = new System.Drawing.Size(317, 235);
+			this.DataTextBox.Size = new System.Drawing.Size(267, 262);
 			this.DataTextBox.TabIndex = 0;
 			this.DataTextBox.TabStop = false;
 			// 
@@ -125,7 +125,7 @@
 			// SelectSource2Button
 			// 
 			this.SelectSource2Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectSource2Button.Location = new System.Drawing.Point(348, 47);
+			this.SelectSource2Button.Location = new System.Drawing.Point(298, 47);
 			this.SelectSource2Button.Name = "SelectSource2Button";
 			this.SelectSource2Button.Size = new System.Drawing.Size(75, 21);
 			this.SelectSource2Button.TabIndex = 6;
@@ -139,7 +139,7 @@
 			this.Source2TextBox.Location = new System.Drawing.Point(106, 47);
 			this.Source2TextBox.Name = "Source2TextBox";
 			this.Source2TextBox.ReadOnly = true;
-			this.Source2TextBox.Size = new System.Drawing.Size(236, 21);
+			this.Source2TextBox.Size = new System.Drawing.Size(186, 21);
 			this.Source2TextBox.TabIndex = 0;
 			this.Source2TextBox.TabStop = false;
 			// 
@@ -155,7 +155,7 @@
 			// SelectSource1Button
 			// 
 			this.SelectSource1Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectSource1Button.Location = new System.Drawing.Point(348, 20);
+			this.SelectSource1Button.Location = new System.Drawing.Point(298, 20);
 			this.SelectSource1Button.Name = "SelectSource1Button";
 			this.SelectSource1Button.Size = new System.Drawing.Size(75, 21);
 			this.SelectSource1Button.TabIndex = 5;
@@ -169,7 +169,7 @@
 			this.Source1TextBox.Location = new System.Drawing.Point(106, 20);
 			this.Source1TextBox.Name = "Source1TextBox";
 			this.Source1TextBox.ReadOnly = true;
-			this.Source1TextBox.Size = new System.Drawing.Size(236, 21);
+			this.Source1TextBox.Size = new System.Drawing.Size(186, 21);
 			this.Source1TextBox.TabIndex = 0;
 			this.Source1TextBox.TabStop = false;
 			// 
@@ -189,7 +189,7 @@
 			this.groupBox2.Controls.Add(this.NameTextBox);
 			this.groupBox2.Location = new System.Drawing.Point(3, 1);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(428, 221);
+			this.groupBox2.Size = new System.Drawing.Size(378, 221);
 			this.groupBox2.TabIndex = 0;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Patch info:";
@@ -201,7 +201,7 @@
 			this.DefinitionComboBox.FormattingEnabled = true;
 			this.DefinitionComboBox.Location = new System.Drawing.Point(106, 101);
 			this.DefinitionComboBox.Name = "DefinitionComboBox";
-			this.DefinitionComboBox.Size = new System.Drawing.Size(317, 21);
+			this.DefinitionComboBox.Size = new System.Drawing.Size(267, 21);
 			this.DefinitionComboBox.TabIndex = 3;
 			// 
 			// label7
@@ -221,7 +221,7 @@
 			this.DescriptionTextBox.Location = new System.Drawing.Point(106, 128);
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
-			this.DescriptionTextBox.Size = new System.Drawing.Size(317, 87);
+			this.DescriptionTextBox.Size = new System.Drawing.Size(267, 87);
 			this.DescriptionTextBox.TabIndex = 4;
 			// 
 			// label6
@@ -248,7 +248,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.AuthorTextBox.Location = new System.Drawing.Point(106, 74);
 			this.AuthorTextBox.Name = "AuthorTextBox";
-			this.AuthorTextBox.Size = new System.Drawing.Size(317, 21);
+			this.AuthorTextBox.Size = new System.Drawing.Size(267, 21);
 			this.AuthorTextBox.TabIndex = 2;
 			// 
 			// label4
@@ -266,8 +266,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.VersionTextBox.Location = new System.Drawing.Point(106, 47);
 			this.VersionTextBox.Name = "VersionTextBox";
-			this.VersionTextBox.Size = new System.Drawing.Size(317, 21);
+			this.VersionTextBox.Size = new System.Drawing.Size(267, 21);
 			this.VersionTextBox.TabIndex = 1;
+			this.VersionTextBox.Text = "1.0";
 			// 
 			// label3
 			// 
@@ -284,7 +285,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.NameTextBox.Location = new System.Drawing.Point(106, 20);
 			this.NameTextBox.Name = "NameTextBox";
-			this.NameTextBox.Size = new System.Drawing.Size(317, 21);
+			this.NameTextBox.Size = new System.Drawing.Size(267, 21);
 			this.NameTextBox.TabIndex = 0;
 			// 
 			// ControlBorderedPanel
@@ -302,7 +303,7 @@
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 572);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(434, 39);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(384, 39);
 			this.ControlBorderedPanel.TabIndex = 2;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
@@ -310,18 +311,18 @@
 			// 
 			this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.OkButton.Enabled = false;
-			this.OkButton.Location = new System.Drawing.Point(224, 5);
+			this.OkButton.Location = new System.Drawing.Point(174, 5);
 			this.OkButton.Name = "OkButton";
 			this.OkButton.Size = new System.Drawing.Size(100, 30);
 			this.OkButton.TabIndex = 7;
-			this.OkButton.Text = "Save Patch";
+			this.OkButton.Text = "Save patch";
 			this.OkButton.UseVisualStyleBackColor = true;
 			// 
 			// CancelButton
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(330, 5);
+			this.CancelButton.Location = new System.Drawing.Point(280, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 30);
 			this.CancelButton.TabIndex = 8;
@@ -332,7 +333,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(434, 611);
+			this.ClientSize = new System.Drawing.Size(384, 611);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.ControlBorderedPanel);

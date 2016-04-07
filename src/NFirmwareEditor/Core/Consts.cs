@@ -2,11 +2,14 @@
 {
 	internal static class Consts
 	{
-		internal const string ApplicationVersion = "3.1";
-		internal const string ApplicationTitle = "NFirmwareEditor v" + ApplicationVersion;
+		internal const string ApplicationVersion = "3.3";
+		internal const string ApplicationTitleWoVersion = "NFirmwareEditor";
+		internal const string ApplicationTitle = ApplicationTitleWoVersion + " v" + ApplicationVersion;
 
-		internal const string PatchFileExtension = "*.patch";
-		internal const string ResourcePackFileExtension = "*.respack";
+		internal const string PatchFileExtensionWoAsterisk = ".patch";
+		internal const string ResourcePackFileExtensionWoAsterisk = ".respack";
+		internal const string PatchFileExtension = "*" + PatchFileExtensionWoAsterisk;
+		internal const string ResourcePackFileExtension = "*" + ResourcePackFileExtensionWoAsterisk;
 
 		internal const string FirmwareFilter = "Firmware file|*.bin";
 		internal const string PatchFilter = "Patch file|" + PatchFileExtension;

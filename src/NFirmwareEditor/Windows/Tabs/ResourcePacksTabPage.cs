@@ -104,7 +104,10 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, true))
 			{
+				importWindow.Text = Consts.ApplicationTitleWoVersion + @" - Resource Pack Preview";
+				importWindow.ImportButtonText = "Import";
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
+
 				ImportResourcePack(originalImageIndices, importedImages);
 			}
 		}
