@@ -157,7 +157,6 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			CopyContextMenuItem.Click += CopyButton_Click;
 			PasteContextMenuItem.Click += PasteButton_Click;
-			ImportContextMenuItem.Click += ImportContextMenuItem_Click;
 			ExportContextMenuItem.Click += ExportContextMenuItem_Click;
 		}
 
@@ -233,18 +232,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 		#endregion
 
-		private void ImportResourcePack([NotNull] ResourcePack resourcePack)
-		{
-			if (resourcePack == null) throw new ArgumentNullException("resourcePack");
-			if (resourcePack.Images == null || resourcePack.Images.Count == 0) return;
-
-			var originalImageIndices = resourcePack.Images.Select(x => x.Index).ToList();
-			var importedImages = resourcePack.Images.Select(x => x.Data).ToList();
-
-			ImportImages(originalImageIndices, importedImages, true);
-		}
-
-		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages, bool importResourcePack)
+		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages)
 		{
 			if (importedImages == null) throw new ArgumentNullException("importedImages");
 			if (originalImageIndices == null) throw new ArgumentNullException("originalImageIndices");
@@ -256,29 +244,60 @@ namespace NFirmwareEditor.Windows.Tabs
 			importedImages = importedImages.Take(minimumImagesCount).ToList();
 
 			ImageImportMode importMode;
-			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
+			bool allowResizeOriginalImages;
+
+			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages))
 			{
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
 
 				importMode = importWindow.GetImportMode();
-				importedImages = importWindow.GetImportedImages().ToList();
+				allowResizeOriginalImages = importWindow.AllowResizeOriginalImages;
 			}
 
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
 				var index = i;
+				var originalImageIndex = originalImageIndices[index];
+				var importedImage = importedImages[index];
 				if (importMode == ImageImportMode.Block1)
 				{
-					ProcessImage(x => importedImages[index], m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]));
+					var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndex);
+					if (allowResizeOriginalImages)
+					{
+						ProcessImage(x => importedImage, block1ImageMetadata);
+					}
+					else
+					{
+						ProcessImage(x=> FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage), block1ImageMetadata);
+					}
 				}
 				else if (importMode == ImageImportMode.Block2)
 				{
-					ProcessImage(x => importedImages[index], m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]));
+					var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndex);
+					if (allowResizeOriginalImages)
+					{
+						ProcessImage(x => importedImage, block2ImageMetadata);
+					}
+					else
+					{
+						ProcessImage(x => FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage), block2ImageMetadata);
+					}
 				}
 				else
 				{
-					ProcessImage(x => importedImages[index], m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]));
-					ProcessImage(x => importedImages[index], m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]));
+					var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndex);
+					var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndex);
+
+					if (allowResizeOriginalImages)
+					{
+						ProcessImage(x => importedImage, block1ImageMetadata);
+						ProcessImage(x => importedImage, block2ImageMetadata);
+					}
+					else
+					{
+						ProcessImage(x => FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage), block1ImageMetadata);
+						ProcessImage(x => FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage), block2ImageMetadata);
+					}
 				}
 			}
 
@@ -466,7 +485,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedImageMetadata.Count == 0) return;
 
 			var copiedImages = m_clipboardManager.GetData();
-			ImportImages(SelectedImageMetadata.Select(x => x.Index).ToList(), copiedImages, false);
+			ImportImages(SelectedImageMetadata.Select(x => x.Index).ToList(), copiedImages);
 		}
 
 		private void BitmapImportButton_Click(object sender, EventArgs eventArgs)
@@ -521,30 +540,9 @@ namespace NFirmwareEditor.Windows.Tabs
 				var imageSize = imageData.GetSize();
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
+
 			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images) { Name = "TestPack " + DateTime.Now, Author = "ReikoKitsune", Version = "1.0" };
 			m_resourcePackManager.SaveToFile(fileName, resourcePack);
-		}
-
-		private void ImportContextMenuItem_Click(object sender, EventArgs e)
-		{
-			if (SelectedImageMetadata.Count == 0) return;
-
-			string fileName;
-			using (var op = new OpenFileDialog { Filter = Consts.ExportResourcePackFilter })
-			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-				fileName = op.FileName;
-			}
-
-			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
-			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
-			if (resourcePack.Definition != m_firmware.Definition.Name)
-			{
-				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: " + resourcePack.Definition + "\nOpend firmware is: " + m_firmware.Definition.Name);
-				return;
-			}
-
-			ImportResourcePack(resourcePack);
 		}
 
 		private void ImageListBox_DrawItem(object sender, DrawItemEventArgs e)

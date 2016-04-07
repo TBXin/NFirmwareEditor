@@ -34,6 +34,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ResourcePackListView.SelectedIndexChanged += ResourcePackListView_SelectedIndexChanged;
 			ResourcePackListView.ItemActivate += ResourcePackListView_ItemActivate;
 			PreviewResourcePackButton.Click += PreviewResourcePackButton_Click;
+			ImportResourcePackButton.Click += ImportResourcePackButton_Click;
 			ReloadResourcePacksButton.Click += ReloadResourcePacksButton_Click;
 		}
 
@@ -59,6 +60,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnWorkspaceReset()
 		{
+			ResourcePackListView.Items.Clear();
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
@@ -72,6 +74,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				resourcePack.Version
 			}) { Tag = resourcePack }));
 
+			ImportResourcePackButton.Enabled = true;
 			ReloadResourcePacksButton.Enabled = true;
 		}
 
@@ -85,12 +88,10 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 		#endregion
 
-		private void PreviewResourcePack()
+		private void PreviewResourcePack([NotNull] ResourcePack resourcePack)
 		{
-			if (SelectedResourcePack == null) return;
-
-			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
-			if (resourcePack == null || resourcePack.Images == null || resourcePack.Images.Count == 0) return;
+			if (resourcePack == null) throw new ArgumentNullException("resourcePack");
+			if (resourcePack.Images == null || resourcePack.Images.Count == 0) return;
 
 			var originalImageIndices = new List<int>();
 			var importedImages = new List<bool[,]>();
@@ -104,7 +105,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, true))
 			{
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
-				ImportResourcePack(originalImageIndices, importWindow.GetImportedImages().ToList());
+				ImportResourcePack(originalImageIndices, importedImages);
 			}
 		}
 
@@ -157,12 +158,43 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ResourcePackListView_ItemActivate(object sender, EventArgs e)
 		{
-			PreviewResourcePack();
+			if (SelectedResourcePack == null) return;
+			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FileName);
+			if (resourcePack == null) return;
+
+			PreviewResourcePack(resourcePack);
 		}
 
 		private void PreviewResourcePackButton_Click(object sender, EventArgs e)
 		{
-			PreviewResourcePack();
+			if (SelectedResourcePack == null) return;
+			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FileName);
+			if (resourcePack == null) return;
+
+			PreviewResourcePack(resourcePack);
+		}
+
+		private void ImportResourcePackButton_Click(object sender, EventArgs e)
+		{
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = Consts.ExportResourcePackFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				fileName = op.FileName;
+			}
+
+			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
+			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
+			if (resourcePack.Definition != m_firmware.Definition.Name)
+			{
+				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
+				             + resourcePack.Definition
+				             + "\nOpend firmware is: "
+				             + m_firmware.Definition.Name);
+				return;
+			}
+
+			PreviewResourcePack(resourcePack);
 		}
 
 		private void ReloadResourcePacksButton_Click(object sender, EventArgs e)

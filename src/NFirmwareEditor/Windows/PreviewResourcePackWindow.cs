@@ -50,7 +50,7 @@ namespace NFirmwareEditor.Windows
 			{
 				ImportModeComboBox.Items.Add("Block 1");
 			}
-			ResizeCheckBox.Checked = !resourceImport;
+
 			ImportModeComboBox.SelectedIndex = 0;
 			OptionsGroupBox.Enabled = !resourceImport;
 			LeftLayoutPanel.SuspendLayout();
@@ -86,11 +86,9 @@ namespace NFirmwareEditor.Windows
 			return s_importModeMap[ImportModeComboBox.SelectedIndex];
 		}
 
-		public IEnumerable<bool[,]> GetImportedImages()
+		public bool AllowResizeOriginalImages
 		{
-			return ResizeCheckBox.Checked
-				? m_originalImportedImages.Values
-				: m_croppedImportedImages.Values;
+			get { return ResizeCheckBox.Checked; }
 		}
 
 		private void ResizeCheckBox_CheckedChanged(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace NFirmwareEditor.Managers
 						var resourcePack = Serializer.Read<ResourcePackFile>(fs);
 						if (resourcePack == null) continue;
 
-						resourcePack.FilePath = file;
+						resourcePack.FileName = file;
 						result.Add(resourcePack);
 					}
 				}
