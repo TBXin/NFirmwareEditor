@@ -1,0 +1,98 @@
+﻿<Patch Definition="Presa TC75W 3.00" Name="Charge Screen Mod" Version="1.1" Author="maelstrom2001 and Zinger">
+  <Description>Adds battery voltage and PCB temperature to the charge screen. Отображение при заряде над иконкой батареи текущего напряжения аккумулятора и температуры платы.</Description>
+  <Data>
+# Presa_TC75W_V3.00.bin #
+# Battery voltage, #
+# temperature on charge #
+# Branch to additional drawing
+5958: FF - 05
+5959: F7 - F0
+595A: 4E - 43
+595B: F8 - BD
+# Batt/temp
+B3E2: 00 - F9
+B3E3: 00 - F7
+B3E4: 00 - 09
+B3E5: 00 - FB
+B3E6: 00 - 1C
+B3E7: 00 - B4
+B3E8: 00 - 11
+B3E9: 00 - 48
+B3EA: 00 - 0B
+B3EB: 00 - 21
+B3EC: 00 - 03
+B3ED: 00 - 22
+B3EE: 00 - CD
+B3EF: 00 - E9
+B3F0: 00 - 00
+B3F1: 00 - 12
+B3F2: 00 - 02
+B3F3: 00 - 23
+B3F4: 00 - 02
+B3F5: 00 - 88
+B3F6: 00 - 69 ; voltage pos Y
+B3F7: 00 - 21
+B3F8: 00 - 02 ; voltage pos X
+B3F9: 00 - 20
+B3FA: 00 - F9
+B3FB: 10 - F7
+B3FC: 38 - 19
+B3FD: 7E - FB
+B3FE: 7F - 67 ; V charcode
+B3FF: FF - 22
+B400: FF - 69 ; V pos Y
+B401: FF - 21
+B402: FF - 18 ; V pos X
+B403: FF - 20
+B404: FF - F9
+B405: FF - F7
+B406: FF - F8
+B407: FF - FA
+B408: FF - 0A
+B409: FF - 48
+B40A: FF - 0B
+B40B: FF - 21
+B40C: FF - 02
+B40D: FF - 22
+B40E: FF - CD
+B40F: 7E - E9
+B410: 7C - 00
+B411: 38 - 12
+B412: 10 - 00
+B413: 00 - 23
+B414: 00 - 02
+B415: 00 - 78
+B416: 00 - 69 ; temperature pos Y
+B417: 00 - 21
+B418: 00 - 27 ; temperature pos X
+B419: 00 - 20
+B41A: 00 - F9
+B41B: 00 - F7
+B41C: 00 - 09
+B41D: 00 - FB
+B41E: 00 - 54 ; 'C charcode
+B41F: 00 - 22
+B420: 00 - 69 ; 'C pos Y
+B421: 00 - 21
+B422: 00 - 35 ; 'C pos X
+B423: 00 - 20
+B424: 00 - F9
+B425: 00 - F7
+B426: 00 - E8
+B427: 00 - FA
+B428: 00 - 1C
+B429: 00 - BC
+B42A: 70 - FA
+B42B: 80 - F7
+B42C: 00 - 97
+B42D: 80 - BA
+B430: 00 - 56
+B431: E0 - 00
+B432: 30 - 00
+B433: E0 - 20
+B434: 00 - 42
+B435: 00 - 00
+B436: F0 - 00
+B437: 10 - 20
+</Data>
+</Patch>

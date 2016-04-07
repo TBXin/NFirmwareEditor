@@ -1,0 +1,41 @@
+﻿<Patch Definition="Presa TC75W 3.00" Name="Picture On Charge" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adds 64x104 logo to the charge screen. Добавляет изображение 64x104 на экране зарядки.</Description>
+  <Data>
+00005954: 73 - 05
+00005955: 21 - F0
+00005956: 08 - BC
+00005957: 20 - BC
+0000B2D0: 01 - 73
+0000B2D1: 01 - 21
+0000B2D2: 00 - 08
+0000B2D3: 00 - 20
+0000B2D4: 00 - F9
+0000B2D5: 00 - F7
+0000B2D6: 00 - 90
+0000B2D7: 00 - FB
+0000B2D9: 00 - 20
+0000B2DB: 00 - 21
+0000B2DC: 00 - E1
+0000B2DD: 00 - 22
+0000B2DE: 00 - FA
+0000B2DF: 00 - F7
+0000B2E0: 00 - 3B
+0000B2E1: 00 - BB
+
+# Pointers to logos (charcode E1)
+B828: E5 - 50
+B829: B2 - BC
+9F94: 50 - 92
+9F95: 9A - BF
+
+# Add logo 64x104
+BC50: null - 40
+BC51: null - 68
+BF91: null - 00 ; logo 1 end
+
+BF92: null - 40
+BF93: null - 68
+C2D3: null - 00 ; logo 2 end
+
+</Data>
+</Patch>
