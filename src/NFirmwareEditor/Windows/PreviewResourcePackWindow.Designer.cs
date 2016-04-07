@@ -1,6 +1,6 @@
 ﻿namespace NFirmwareEditor.Windows
 {
-	partial class ImportImageWindow
+	partial class PreviewResourcePackWindow
 	{
 		/// <summary>
 		/// Required designer variable.

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NFirmware;
 using NFirmwareEditor.Managers;
 
 namespace NFirmwareEditor.Core
@@ -100,6 +101,12 @@ namespace NFirmwareEditor.Core
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 			return FirmwareImageProcessor.GetImageSize(imageData);
+		}
+
+		internal static bool[,] CreateImage([NotNull] this FirmwareImageMetadata imageMetadata)
+		{
+			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
+			return new bool[imageMetadata.Width, imageMetadata.Height];
 		}
 	}
 }

@@ -53,7 +53,7 @@ namespace NFirmware
 			return this;
 		}
 
-		internal byte[] CreateEmptyImage()
+		internal byte[] CreateImageDataWithHeader()
 		{
 			var result = new byte[DataLength + HeaderLength];
 			{

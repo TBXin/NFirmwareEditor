@@ -92,38 +92,49 @@ namespace NFirmwareEditor.Windows.Tabs
 			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
 			if (resourcePack == null || resourcePack.Images == null || resourcePack.Images.Count == 0) return;
 
-			var originalImageIndices = resourcePack.Images.Select(x => x.Index).ToList();
-			var importedImages = resourcePack.Images.Select(x => x.Data).ToList();
+			var originalImageIndices = new List<int>();
+			var importedImages = new List<bool[,]>();
 
-			ImportImages(originalImageIndices, importedImages, true);
+			foreach (var exportedImage in resourcePack.Images)
+			{
+				originalImageIndices.Add(exportedImage.Index);
+				importedImages.Add(exportedImage.Data);
+			}
+
+			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, true))
+			{
+				if (importWindow.ShowDialog() != DialogResult.OK) return;
+				ImportResourcePack(originalImageIndices, importWindow.GetImportedImages().ToList());
+			}
 		}
 
-		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages, bool importResourcePack)
+		private void ImportResourcePack([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages)
 		{
 			if (importedImages == null) throw new ArgumentNullException("importedImages");
 			if (originalImageIndices == null) throw new ArgumentNullException("originalImageIndices");
 			if (importedImages.Count == 0) return;
 
-			var minimumImagesCount = Math.Min(originalImageIndices.Count, importedImages.Count);
+			var block1MetadataDictionary = m_firmware.Block1Images.ToDictionary(x => x.Index, x => x);
+			var block2MetadataDictionary = m_firmware.Block2Images.ToDictionary(x => x.Index, x => x);
 
-			originalImageIndices = originalImageIndices.Take(minimumImagesCount).ToList();
-			importedImages = importedImages.Take(minimumImagesCount).ToList();
-
-			using (var importWindow = new ImportImageWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
+			for (var i = 0; i < originalImageIndices.Count; i++)
 			{
-				if (importWindow.ShowDialog() != DialogResult.OK) return;
-				importedImages = importWindow.GetImportedImages().ToList();
-			}
+				var originalImageIndex = originalImageIndices[i];
+				var importedImage = importedImages[i];
 
-			for (var i = 0; i < minimumImagesCount; i++)
-			{
-				var index = i;
-				var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndices[index]);
-				var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndices[index]);
-				var block2Image = FirmwareImageProcessor.PasteImage(new bool[block2ImageMetadata.Width, block2ImageMetadata.Height], importedImages[index]);
+				if (block1MetadataDictionary.Count > 0)
+				{
+					var block1ImageMetadata = block1MetadataDictionary[originalImageIndex];
+					var block1Image = FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage);
+					m_firmware.WriteImage(block1Image, block1ImageMetadata);
+				}
 
-				m_firmware.WriteImage(importedImages[index], block1ImageMetadata);
-				m_firmware.WriteImage(block2Image, block2ImageMetadata);
+				if (block2MetadataDictionary.Count > 0)
+				{
+					var block2ImageMetadata = block2MetadataDictionary[originalImageIndex];
+					var block2Image = FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage);
+					m_firmware.WriteImage(block2Image, block2ImageMetadata);
+				}
 			}
 
 			ImageCacheManager.RebuildImageCache(m_firmware);

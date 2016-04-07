@@ -11,7 +11,7 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class ImportImageWindow : EditorDialogWindow
+	internal partial class PreviewResourcePackWindow : EditorDialogWindow
 	{
 		private readonly Firmware m_firmware;
 
@@ -25,14 +25,14 @@ namespace NFirmwareEditor.Windows
 		private readonly IDictionary<int, bool[,]> m_originalImportedImages = new Dictionary<int, bool[,]>();
 		private readonly IDictionary<int, bool[,]> m_croppedImportedImages = new Dictionary<int, bool[,]>();
 
-		public ImportImageWindow()
+		public PreviewResourcePackWindow()
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 
-		public ImportImageWindow(Firmware firmware, IList<int> originalImageIndices, IList<bool[,]> importedImages, bool resourceImport = false) : this()
+		public PreviewResourcePackWindow(Firmware firmware, IList<int> originalImageIndices, IList<bool[,]> importedImages, bool resourceImport = false) : this()
 		{
 			if (originalImageIndices.Count != importedImages.Count)
 			{
@@ -50,8 +50,8 @@ namespace NFirmwareEditor.Windows
 			{
 				ImportModeComboBox.Items.Add("Block 1");
 			}
+			ResizeCheckBox.Checked = !resourceImport;
 			ImportModeComboBox.SelectedIndex = 0;
-
 			OptionsGroupBox.Enabled = !resourceImport;
 			LeftLayoutPanel.SuspendLayout();
 			RightLayoutPanel.SuspendLayout();
@@ -88,12 +88,9 @@ namespace NFirmwareEditor.Windows
 
 		public IEnumerable<bool[,]> GetImportedImages()
 		{
-			switch (ResizeCheckBox.Checked)
-			{
-				case true: return m_originalImportedImages.Values;
-				case false: return m_croppedImportedImages.Values;
-				default: throw new ArgumentOutOfRangeException();
-			}
+			return ResizeCheckBox.Checked
+				? m_originalImportedImages.Values
+				: m_croppedImportedImages.Values;
 		}
 
 		private void ResizeCheckBox_CheckedChanged(object sender, EventArgs e)

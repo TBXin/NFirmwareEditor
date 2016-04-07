@@ -256,7 +256,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			importedImages = importedImages.Take(minimumImagesCount).ToList();
 
 			ImageImportMode importMode;
-			using (var importWindow = new ImportImageWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
+			using (var importWindow = new PreviewResourcePackWindow(m_firmware, originalImageIndices, importedImages, importResourcePack))
 			{
 				if (importWindow.ShowDialog() != DialogResult.OK) return;
 
@@ -521,7 +521,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				var imageSize = imageData.GetSize();
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
-			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images);
+			var resourcePack = new ResourcePack(m_firmware.Definition.Name, images) { Name = "TestPack " + DateTime.Now, Author = "ReikoKitsune", Version = "1.0" };
 			m_resourcePackManager.SaveToFile(fileName, resourcePack);
 		}
 

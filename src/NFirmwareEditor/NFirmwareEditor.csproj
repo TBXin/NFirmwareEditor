@@ -111,11 +111,11 @@
     <Compile Include="Windows\Tabs\ImageEditorTabPage.Designer.cs">
       <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ImportImageWindow.cs">
+    <Compile Include="Windows\PreviewResourcePackWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\ImportImageWindow.Designer.cs">
-      <DependentUpon>ImportImageWindow.cs</DependentUpon>
+    <Compile Include="Windows\PreviewResourcePackWindow.Designer.cs">
+      <DependentUpon>PreviewResourcePackWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
@@ -160,8 +160,8 @@
     <EmbeddedResource Include="Windows\HotkeyHelpWindow.resx">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\ImportImageWindow.resx">
-      <DependentUpon>ImportImageWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\PreviewResourcePackWindow.resx">
+      <DependentUpon>PreviewResourcePackWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

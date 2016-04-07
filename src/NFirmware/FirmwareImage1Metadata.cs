@@ -61,7 +61,7 @@ namespace NFirmware
 		/// <param name="imageData">Image data.</param>
 		internal override byte[] Save(bool[,] imageData)
 		{
-			var imageBytes = CreateEmptyImage();
+			var imageBytes = CreateImageDataWithHeader();
 			var imageBytesCounter = HeaderLength;
 			var rowCounter = 0;
 
