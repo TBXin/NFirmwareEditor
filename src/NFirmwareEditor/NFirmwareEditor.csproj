@@ -382,6 +382,8 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\arrow_rotate_clockwise.png" />
+    <None Include="Resources\arrow_rotate_anticlockwise.png" />
     <None Include="Resources\www_page.png" />
     <None Include="Resources\GitHub.png" />
     <None Include="Resources\ru.png" />

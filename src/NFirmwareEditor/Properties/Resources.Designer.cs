@@ -113,6 +113,26 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_rotate_anticlockwise {
+            get {
+                object obj = ResourceManager.GetObject("arrow_rotate_anticlockwise", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_rotate_clockwise {
+            get {
+                object obj = ResourceManager.GetObject("arrow_rotate_clockwise", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_up {
             get {
                 object obj = ResourceManager.GetObject("arrow_up", resourceCulture);

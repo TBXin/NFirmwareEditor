@@ -37,7 +37,14 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
+			this.label2 = new System.Windows.Forms.Label();
+			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ImagePreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
+			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.RotateClockwiseButton = new System.Windows.Forms.Button();
 			this.BitmapImportButton = new System.Windows.Forms.Button();
+			this.RotateAntiClockwiseButton = new System.Windows.Forms.Button();
 			this.ResizeButton = new System.Windows.Forms.Button();
 			this.ImageEditorHotkeyInformationButton = new System.Windows.Forms.Button();
 			this.FlipVerticalButton = new System.Windows.Forms.Button();
@@ -50,11 +57,6 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
-			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
-			this.ImagePreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ImageEditorStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -136,150 +138,6 @@
 			this.ExportContextMenuItem.Size = new System.Drawing.Size(194, 22);
 			this.ExportContextMenuItem.Text = "Resource Pack - Export";
 			// 
-			// BitmapImportButton
-			// 
-			this.BitmapImportButton.Image = global::NFirmwareEditor.Properties.Resources.bitmap_import;
-			this.BitmapImportButton.Location = new System.Drawing.Point(308, 3);
-			this.BitmapImportButton.Name = "BitmapImportButton";
-			this.BitmapImportButton.Size = new System.Drawing.Size(24, 24);
-			this.BitmapImportButton.TabIndex = 17;
-			this.BitmapImportButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.BitmapImportButton, "Import bitmap");
-			this.BitmapImportButton.UseVisualStyleBackColor = true;
-			// 
-			// ResizeButton
-			// 
-			this.ResizeButton.Image = global::NFirmwareEditor.Properties.Resources.image_resize;
-			this.ResizeButton.Location = new System.Drawing.Point(232, 3);
-			this.ResizeButton.Name = "ResizeButton";
-			this.ResizeButton.Size = new System.Drawing.Size(24, 24);
-			this.ResizeButton.TabIndex = 16;
-			this.ResizeButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ResizeButton, "Resize image");
-			this.ResizeButton.UseVisualStyleBackColor = true;
-			// 
-			// ImageEditorHotkeyInformationButton
-			// 
-			this.ImageEditorHotkeyInformationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ImageEditorHotkeyInformationButton.Image = global::NFirmwareEditor.Properties.Resources.information;
-			this.ImageEditorHotkeyInformationButton.Location = new System.Drawing.Point(599, 3);
-			this.ImageEditorHotkeyInformationButton.Name = "ImageEditorHotkeyInformationButton";
-			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
-			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
-			this.ImageEditorHotkeyInformationButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ImageEditorHotkeyInformationButton, "Hotkey\'s list");
-			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
-			// 
-			// FlipVerticalButton
-			// 
-			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
-			this.FlipVerticalButton.Location = new System.Drawing.Point(361, 3);
-			this.FlipVerticalButton.Name = "FlipVerticalButton";
-			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
-			this.FlipVerticalButton.TabIndex = 14;
-			this.FlipVerticalButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.FlipVerticalButton, "Flip image vertically");
-			this.FlipVerticalButton.UseVisualStyleBackColor = true;
-			// 
-			// FlipHorizontalButton
-			// 
-			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
-			this.FlipHorizontalButton.Location = new System.Drawing.Point(338, 3);
-			this.FlipHorizontalButton.Name = "FlipHorizontalButton";
-			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
-			this.FlipHorizontalButton.TabIndex = 13;
-			this.FlipHorizontalButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.FlipHorizontalButton, "Flip image horizontally");
-			this.FlipHorizontalButton.UseVisualStyleBackColor = true;
-			// 
-			// PasteButton
-			// 
-			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.paste;
-			this.PasteButton.Location = new System.Drawing.Point(285, 3);
-			this.PasteButton.Name = "PasteButton";
-			this.PasteButton.Size = new System.Drawing.Size(24, 24);
-			this.PasteButton.TabIndex = 12;
-			this.PasteButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.PasteButton, "Paste image");
-			this.PasteButton.UseVisualStyleBackColor = true;
-			// 
-			// CopyButton
-			// 
-			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.copy;
-			this.CopyButton.Location = new System.Drawing.Point(262, 3);
-			this.CopyButton.Name = "CopyButton";
-			this.CopyButton.Size = new System.Drawing.Size(24, 24);
-			this.CopyButton.TabIndex = 11;
-			this.CopyButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.CopyButton, "Copy image");
-			this.CopyButton.UseVisualStyleBackColor = true;
-			// 
-			// InverseButton
-			// 
-			this.InverseButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
-			this.InverseButton.Location = new System.Drawing.Point(209, 3);
-			this.InverseButton.Name = "InverseButton";
-			this.InverseButton.Size = new System.Drawing.Size(24, 24);
-			this.InverseButton.TabIndex = 10;
-			this.InverseButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.InverseButton, "Inverse image pixels");
-			this.InverseButton.UseVisualStyleBackColor = true;
-			// 
-			// ClearAllPixelsButton
-			// 
-			this.ClearAllPixelsButton.Image = global::NFirmwareEditor.Properties.Resources._new;
-			this.ClearAllPixelsButton.Location = new System.Drawing.Point(186, 3);
-			this.ClearAllPixelsButton.Name = "ClearAllPixelsButton";
-			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);
-			this.ClearAllPixelsButton.TabIndex = 9;
-			this.ClearAllPixelsButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ClearAllPixelsButton, "Clear all pixels");
-			this.ClearAllPixelsButton.UseVisualStyleBackColor = true;
-			// 
-			// ShiftDownButton
-			// 
-			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
-			this.ShiftDownButton.Location = new System.Drawing.Point(460, 3);
-			this.ShiftDownButton.Name = "ShiftDownButton";
-			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
-			this.ShiftDownButton.TabIndex = 7;
-			this.ShiftDownButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ShiftDownButton, "Shift image down");
-			this.ShiftDownButton.UseVisualStyleBackColor = true;
-			// 
-			// ShiftUpButton
-			// 
-			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
-			this.ShiftUpButton.Location = new System.Drawing.Point(437, 3);
-			this.ShiftUpButton.Name = "ShiftUpButton";
-			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
-			this.ShiftUpButton.TabIndex = 6;
-			this.ShiftUpButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ShiftUpButton, "Shift image up");
-			this.ShiftUpButton.UseVisualStyleBackColor = true;
-			// 
-			// ShiftRightButton
-			// 
-			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
-			this.ShiftRightButton.Location = new System.Drawing.Point(414, 3);
-			this.ShiftRightButton.Name = "ShiftRightButton";
-			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
-			this.ShiftRightButton.TabIndex = 5;
-			this.ShiftRightButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ShiftRightButton, "Shift image right");
-			this.ShiftRightButton.UseVisualStyleBackColor = true;
-			// 
-			// ShiftLeftButton
-			// 
-			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
-			this.ShiftLeftButton.Location = new System.Drawing.Point(391, 3);
-			this.ShiftLeftButton.Name = "ShiftLeftButton";
-			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
-			this.ShiftLeftButton.TabIndex = 4;
-			this.ShiftLeftButton.TabStop = false;
-			this.ImageEditorToolTip.SetToolTip(this.ShiftLeftButton, "Shift image left");
-			this.ShiftLeftButton.UseVisualStyleBackColor = true;
-			// 
 			// borderedPanel3
 			// 
 			this.borderedPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -359,7 +217,9 @@
 			this.borderedPanel2.BorderRight = true;
 			this.borderedPanel2.BorderTop = true;
 			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.RotateClockwiseButton);
 			this.borderedPanel2.Controls.Add(this.BitmapImportButton);
+			this.borderedPanel2.Controls.Add(this.RotateAntiClockwiseButton);
 			this.borderedPanel2.Controls.Add(this.ResizeButton);
 			this.borderedPanel2.Controls.Add(this.ImageEditorHotkeyInformationButton);
 			this.borderedPanel2.Controls.Add(this.FlipVerticalButton);
@@ -382,6 +242,174 @@
 			this.borderedPanel2.Size = new System.Drawing.Size(627, 307);
 			this.borderedPanel2.TabIndex = 7;
 			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// RotateClockwiseButton
+			// 
+			this.RotateClockwiseButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_rotate_clockwise;
+			this.RotateClockwiseButton.Location = new System.Drawing.Point(506, 3);
+			this.RotateClockwiseButton.Name = "RotateClockwiseButton";
+			this.RotateClockwiseButton.Size = new System.Drawing.Size(24, 24);
+			this.RotateClockwiseButton.TabIndex = 19;
+			this.RotateClockwiseButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.RotateClockwiseButton, "Shift image down");
+			this.RotateClockwiseButton.UseVisualStyleBackColor = true;
+			this.RotateClockwiseButton.Visible = false;
+			// 
+			// BitmapImportButton
+			// 
+			this.BitmapImportButton.Image = global::NFirmwareEditor.Properties.Resources.bitmap_import;
+			this.BitmapImportButton.Location = new System.Drawing.Point(308, 3);
+			this.BitmapImportButton.Name = "BitmapImportButton";
+			this.BitmapImportButton.Size = new System.Drawing.Size(24, 24);
+			this.BitmapImportButton.TabIndex = 17;
+			this.BitmapImportButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.BitmapImportButton, "Import bitmap");
+			this.BitmapImportButton.UseVisualStyleBackColor = true;
+			// 
+			// RotateAntiClockwiseButton
+			// 
+			this.RotateAntiClockwiseButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_rotate_anticlockwise;
+			this.RotateAntiClockwiseButton.Location = new System.Drawing.Point(483, 3);
+			this.RotateAntiClockwiseButton.Name = "RotateAntiClockwiseButton";
+			this.RotateAntiClockwiseButton.Size = new System.Drawing.Size(24, 24);
+			this.RotateAntiClockwiseButton.TabIndex = 18;
+			this.RotateAntiClockwiseButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.RotateAntiClockwiseButton, "Shift image down");
+			this.RotateAntiClockwiseButton.UseVisualStyleBackColor = true;
+			this.RotateAntiClockwiseButton.Visible = false;
+			// 
+			// ResizeButton
+			// 
+			this.ResizeButton.Image = global::NFirmwareEditor.Properties.Resources.image_resize;
+			this.ResizeButton.Location = new System.Drawing.Point(232, 3);
+			this.ResizeButton.Name = "ResizeButton";
+			this.ResizeButton.Size = new System.Drawing.Size(24, 24);
+			this.ResizeButton.TabIndex = 16;
+			this.ResizeButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ResizeButton, "Resize image");
+			this.ResizeButton.UseVisualStyleBackColor = true;
+			// 
+			// ImageEditorHotkeyInformationButton
+			// 
+			this.ImageEditorHotkeyInformationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ImageEditorHotkeyInformationButton.Image = global::NFirmwareEditor.Properties.Resources.information;
+			this.ImageEditorHotkeyInformationButton.Location = new System.Drawing.Point(599, 3);
+			this.ImageEditorHotkeyInformationButton.Name = "ImageEditorHotkeyInformationButton";
+			this.ImageEditorHotkeyInformationButton.Size = new System.Drawing.Size(24, 24);
+			this.ImageEditorHotkeyInformationButton.TabIndex = 15;
+			this.ImageEditorHotkeyInformationButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ImageEditorHotkeyInformationButton, "Hotkey\'s list");
+			this.ImageEditorHotkeyInformationButton.UseVisualStyleBackColor = true;
+			// 
+			// FlipVerticalButton
+			// 
+			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
+			this.FlipVerticalButton.Location = new System.Drawing.Point(460, 3);
+			this.FlipVerticalButton.Name = "FlipVerticalButton";
+			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
+			this.FlipVerticalButton.TabIndex = 14;
+			this.FlipVerticalButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.FlipVerticalButton, "Flip image vertically");
+			this.FlipVerticalButton.UseVisualStyleBackColor = true;
+			// 
+			// FlipHorizontalButton
+			// 
+			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
+			this.FlipHorizontalButton.Location = new System.Drawing.Point(437, 3);
+			this.FlipHorizontalButton.Name = "FlipHorizontalButton";
+			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
+			this.FlipHorizontalButton.TabIndex = 13;
+			this.FlipHorizontalButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.FlipHorizontalButton, "Flip image horizontally");
+			this.FlipHorizontalButton.UseVisualStyleBackColor = true;
+			// 
+			// PasteButton
+			// 
+			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteButton.Location = new System.Drawing.Point(285, 3);
+			this.PasteButton.Name = "PasteButton";
+			this.PasteButton.Size = new System.Drawing.Size(24, 24);
+			this.PasteButton.TabIndex = 12;
+			this.PasteButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.PasteButton, "Paste image");
+			this.PasteButton.UseVisualStyleBackColor = true;
+			// 
+			// CopyButton
+			// 
+			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyButton.Location = new System.Drawing.Point(262, 3);
+			this.CopyButton.Name = "CopyButton";
+			this.CopyButton.Size = new System.Drawing.Size(24, 24);
+			this.CopyButton.TabIndex = 11;
+			this.CopyButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.CopyButton, "Copy image");
+			this.CopyButton.UseVisualStyleBackColor = true;
+			// 
+			// InverseButton
+			// 
+			this.InverseButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
+			this.InverseButton.Location = new System.Drawing.Point(209, 3);
+			this.InverseButton.Name = "InverseButton";
+			this.InverseButton.Size = new System.Drawing.Size(24, 24);
+			this.InverseButton.TabIndex = 10;
+			this.InverseButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.InverseButton, "Inverse image pixels");
+			this.InverseButton.UseVisualStyleBackColor = true;
+			// 
+			// ClearAllPixelsButton
+			// 
+			this.ClearAllPixelsButton.Image = global::NFirmwareEditor.Properties.Resources._new;
+			this.ClearAllPixelsButton.Location = new System.Drawing.Point(186, 3);
+			this.ClearAllPixelsButton.Name = "ClearAllPixelsButton";
+			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);
+			this.ClearAllPixelsButton.TabIndex = 9;
+			this.ClearAllPixelsButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ClearAllPixelsButton, "Clear all pixels");
+			this.ClearAllPixelsButton.UseVisualStyleBackColor = true;
+			// 
+			// ShiftDownButton
+			// 
+			this.ShiftDownButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_down;
+			this.ShiftDownButton.Location = new System.Drawing.Point(407, 3);
+			this.ShiftDownButton.Name = "ShiftDownButton";
+			this.ShiftDownButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftDownButton.TabIndex = 7;
+			this.ShiftDownButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftDownButton, "Shift image down");
+			this.ShiftDownButton.UseVisualStyleBackColor = true;
+			// 
+			// ShiftUpButton
+			// 
+			this.ShiftUpButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_up;
+			this.ShiftUpButton.Location = new System.Drawing.Point(384, 3);
+			this.ShiftUpButton.Name = "ShiftUpButton";
+			this.ShiftUpButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftUpButton.TabIndex = 6;
+			this.ShiftUpButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftUpButton, "Shift image up");
+			this.ShiftUpButton.UseVisualStyleBackColor = true;
+			// 
+			// ShiftRightButton
+			// 
+			this.ShiftRightButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_right;
+			this.ShiftRightButton.Location = new System.Drawing.Point(361, 3);
+			this.ShiftRightButton.Name = "ShiftRightButton";
+			this.ShiftRightButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftRightButton.TabIndex = 5;
+			this.ShiftRightButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftRightButton, "Shift image right");
+			this.ShiftRightButton.UseVisualStyleBackColor = true;
+			// 
+			// ShiftLeftButton
+			// 
+			this.ShiftLeftButton.Image = global::NFirmwareEditor.Properties.Resources.arrow_left;
+			this.ShiftLeftButton.Location = new System.Drawing.Point(338, 3);
+			this.ShiftLeftButton.Name = "ShiftLeftButton";
+			this.ShiftLeftButton.Size = new System.Drawing.Size(24, 24);
+			this.ShiftLeftButton.TabIndex = 4;
+			this.ShiftLeftButton.TabStop = false;
+			this.ImageEditorToolTip.SetToolTip(this.ShiftLeftButton, "Shift image left");
+			this.ShiftLeftButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel4
 			// 
@@ -607,5 +635,7 @@
 		private System.Windows.Forms.Button ResizeButton;
 		private System.Windows.Forms.Button BitmapImportButton;
 		private System.Windows.Forms.ToolTip ImageEditorToolTip;
+		private System.Windows.Forms.Button RotateClockwiseButton;
+		private System.Windows.Forms.Button RotateAntiClockwiseButton;
 	}
 }

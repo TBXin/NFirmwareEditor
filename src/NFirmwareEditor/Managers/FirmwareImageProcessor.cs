@@ -57,6 +57,24 @@ namespace NFirmwareEditor.Managers
 			return ProcessImage(imageData, (col, width) => col + 1 < width ? col + 1 : 0, (row, height) => row, v => v);
 		}
 
+		public static bool[,] Rotate([NotNull] bool[,] imageData, bool clockwise)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+
+			var imageSize = GetImageSize(imageData);
+			var result = new bool[imageSize.Height, imageSize.Width];
+			for (var col = 0; col < imageSize.Width; col++)
+			{
+				for (var row = 0; row < imageSize.Height; row++)
+				{
+					result[row, col] = clockwise
+						? imageData[col, imageSize.Height - row - 1]
+						: imageData[imageSize.Width - col - 1, row];
+				}
+			}
+			return result;
+		}
+
 		public static bool[,] PasteImage(bool[,] sourceImageData, bool[,] copiedImageData)
 		{
 			if (sourceImageData == null) throw new ArgumentNullException("sourceImageData");

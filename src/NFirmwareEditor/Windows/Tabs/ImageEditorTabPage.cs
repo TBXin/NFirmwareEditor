@@ -147,6 +147,8 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
 			FlipVerticalButton.Click += FlipVerticalButton_Click;
+			RotateAntiClockwiseButton.Click += RotateAntiClockwiseButton_Click;
+			RotateClockwiseButton.Click += RotateClockwiseButton_Click;
 
 			ShiftLeftButton.Click += ShiftLeftButton_Click;
 			ShiftRightButton.Click += ShiftRightButton_Click;
@@ -424,18 +426,6 @@ namespace NFirmwareEditor.Windows.Tabs
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
 		}
 
-		private void FlipHorizontalButton_Click(object sender, EventArgs e)
-		{
-			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
-		}
-
-		private void FlipVerticalButton_Click(object sender, EventArgs e)
-		{
-			if (LastSelectedImageMetadata == null) return;
-			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
-		}
-
 		private void ResizeButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
@@ -448,6 +438,30 @@ namespace NFirmwareEditor.Windows.Tabs
 				ProcessImage(x => FirmwareImageProcessor.ResizeImage(x, newSize), LastSelectedImageMetadata, true);
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
+		}
+
+		private void FlipHorizontalButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
+		}
+
+		private void FlipVerticalButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
+		}
+
+		private void RotateClockwiseButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.Rotate(x, true), LastSelectedImageMetadata);
+		}
+
+		private void RotateAntiClockwiseButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.Rotate(x, false), LastSelectedImageMetadata);
 		}
 
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
