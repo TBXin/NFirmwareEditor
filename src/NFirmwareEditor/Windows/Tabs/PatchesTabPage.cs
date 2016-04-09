@@ -9,6 +9,7 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
@@ -38,10 +39,12 @@ namespace NFirmwareEditor.Windows.Tabs
 			};
 			PatchListView.SelectedIndexChanged += PatchListView_SelectedIndexChanged;
 			PatchListView.ItemChecked += PatchListView_ItemChecked;
+			PatchListView.ColumnClick += ListViewItemComparer.ListViewColumnClick;
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 			RollbackPatchesButton.Click += RollbackPatchesButton_Click;
 			ReloadPatchesButton.Click += ReloadPatchesButton_Click;
 		}
+
 
 		[NotNull]
 		public IEnumerable<Patch> CheckedPatches

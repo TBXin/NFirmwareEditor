@@ -155,7 +155,6 @@
 			this.PatchListView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PatchListView.FullRowSelect = true;
 			this.PatchListView.GridLines = true;
-			this.PatchListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.PatchListView.Location = new System.Drawing.Point(1, 1);
 			this.PatchListView.MultiSelect = false;
 			this.PatchListView.Name = "PatchListView";

@@ -68,6 +68,7 @@
     <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Models\ResourcePack.cs" />
     <Compile Include="Models\ResourcePackFile.cs" />
+    <Compile Include="UI\ListViewItemComparer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>

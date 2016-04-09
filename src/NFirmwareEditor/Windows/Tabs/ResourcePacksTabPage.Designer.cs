@@ -115,7 +115,6 @@
 			this.ResourcePackListView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ResourcePackListView.FullRowSelect = true;
 			this.ResourcePackListView.GridLines = true;
-			this.ResourcePackListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.ResourcePackListView.Location = new System.Drawing.Point(1, 1);
 			this.ResourcePackListView.MultiSelect = false;
 			this.ResourcePackListView.Name = "ResourcePackListView";

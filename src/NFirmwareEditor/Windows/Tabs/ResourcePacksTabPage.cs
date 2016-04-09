@@ -8,6 +8,7 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
@@ -33,6 +34,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			};
 			ResourcePackListView.SelectedIndexChanged += ResourcePackListView_SelectedIndexChanged;
 			ResourcePackListView.ItemActivate += ResourcePackListView_ItemActivate;
+			ResourcePackListView.ColumnClick += ListViewItemComparer.ListViewColumnClick;
 			PreviewResourcePackButton.Click += PreviewResourcePackButton_Click;
 			ImportResourcePackButton.Click += ImportResourcePackButton_Click;
 			ReloadResourcePacksButton.Click += ReloadResourcePacksButton_Click;
