@@ -217,7 +217,7 @@ namespace NFirmware
 			return result;
 		}
 
-		private static int FindByteArray(byte[] source, byte[] searchedBytes)
+		internal static int FindByteArray(byte[] source, byte[] searchedBytes)
 		{
 			if (searchedBytes.Length > source.Length) return -1;
 

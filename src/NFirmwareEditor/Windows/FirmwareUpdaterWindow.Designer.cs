@@ -38,6 +38,8 @@
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.DeviceNameTextBox = new System.Windows.Forms.TextBox();
+			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
+			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -54,7 +56,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 322);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 162);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(384, 39);
@@ -64,7 +66,6 @@
 			// OkButton
 			// 
 			this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.OkButton.Enabled = false;
 			this.OkButton.Location = new System.Drawing.Point(174, 5);
 			this.OkButton.Name = "OkButton";
@@ -153,11 +154,32 @@
 			this.DeviceNameTextBox.Size = new System.Drawing.Size(267, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
 			// 
+			// UpdateProgressBar
+			// 
+			this.UpdateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.UpdateProgressBar.Location = new System.Drawing.Point(3, 128);
+			this.UpdateProgressBar.Name = "UpdateProgressBar";
+			this.UpdateProgressBar.Size = new System.Drawing.Size(378, 30);
+			this.UpdateProgressBar.TabIndex = 4;
+			// 
+			// UpdateStatusLabel
+			// 
+			this.UpdateStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 105);
+			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
+			this.UpdateStatusLabel.Size = new System.Drawing.Size(378, 20);
+			this.UpdateStatusLabel.TabIndex = 5;
+			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
 			// FirmwareUpdaterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(384, 361);
+			this.ClientSize = new System.Drawing.Size(384, 201);
+			this.Controls.Add(this.UpdateStatusLabel);
+			this.Controls.Add(this.UpdateProgressBar);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -186,5 +208,7 @@
 		private System.Windows.Forms.TextBox FirmwareVersionTextBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox DeviceNameTextBox;
+		private System.Windows.Forms.ProgressBar UpdateProgressBar;
+		private System.Windows.Forms.Label UpdateStatusLabel;
 	}
 }

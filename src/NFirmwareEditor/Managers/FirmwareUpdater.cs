@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -57,7 +58,7 @@ namespace NFirmwareEditor.Managers
 
 		public void StartMonitoring()
 		{
-			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
+			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromSeconds(1));
 		}
 
 		public void StopMonitoring()
@@ -65,11 +66,11 @@ namespace NFirmwareEditor.Managers
 			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
 		}
 
-		public DataFlash ReadDataFlash()
+		public DataFlash ReadDataFlash(BackgroundWorker worker = null)
 		{
 			var stream = Connect();
 			Write(stream, CreateCommand(0x35, 0, 2048));
-			var rawData = Read(stream, 2048);
+			var rawData = Read(stream, 2048, worker);
 
 			var checksum = BitConverter.ToInt32(rawData, 0);
 			var data = new byte[rawData.Length - 4];
@@ -82,7 +83,7 @@ namespace NFirmwareEditor.Managers
 			};
 		}
 
-		public void WriteDataFlash(DataFlash dataFlash)
+		public void WriteDataFlash(DataFlash dataFlash, BackgroundWorker worker = null)
 		{
 			var checksum = dataFlash.Data.Sum(x => x);
 			var checksumBytes = BitConverter.GetBytes(checksum);
@@ -93,14 +94,14 @@ namespace NFirmwareEditor.Managers
 
 			var stream = Connect();
 			Write(stream, CreateCommand(0x53, 0, 2048));
-			Write(stream, rawData);
+			Write(stream, rawData, worker);
 		}
 
-		public void WriteFirmware(byte[] firmware)
+		public void WriteFirmware(byte[] firmware, BackgroundWorker worker = null)
 		{
 			var stream = Connect();
 			Write(stream, CreateCommand(0xC3, 0, firmware.Length));
-			Write(stream, firmware);
+			Write(stream, firmware, worker);
 		}
 
 		public void Reset()
@@ -125,7 +126,7 @@ namespace NFirmwareEditor.Managers
 			m_device = null;
 		}
 
-		private byte[] Read(HidStream steam, int length)
+		private byte[] Read(HidStream steam, int length, BackgroundWorker worker = null)
 		{
 			var offset = 0;
 			var result = new byte[length];
@@ -141,11 +142,14 @@ namespace NFirmwareEditor.Managers
 				offset += bufferLength == data.Length
 					? bufferLength - 1
 					: bufferLength;
+
+				if (worker != null) worker.ReportProgress((int)(offset * 100f / length));
 			}
+			if (worker != null) worker.ReportProgress(100);
 			return result;
 		}
 
-		private void Write(HidStream steam, byte[] data)
+		private void Write(HidStream steam, byte[] data, BackgroundWorker worker = null)
 		{
 			var offset = 0;
 			while (offset < data.Length)
@@ -162,7 +166,11 @@ namespace NFirmwareEditor.Managers
 
 				steam.Write(buffer);
 				offset += bufferLength;
+
+				if (worker != null) worker.ReportProgress((int)(offset * 100f / data.Length));
 			}
+
+			if (worker != null) worker.ReportProgress(100);
 		}
 
 		private static byte[] CreateCommand(byte commandCode, int arg1, int arg2)
