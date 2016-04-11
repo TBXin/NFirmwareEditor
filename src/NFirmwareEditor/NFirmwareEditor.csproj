@@ -111,6 +111,12 @@
     <Compile Include="Windows\ResizeImageWindow.Designer.cs">
       <DependentUpon>ResizeImageWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\OptionsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\OptionsWindow.Designer.cs">
+      <DependentUpon>OptionsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tabs\IEditorTabPage.cs" />
     <Compile Include="Windows\Tabs\ImageEditorTabPage.cs">
       <SubType>UserControl</SubType>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\ResizeImageWindow.resx">
       <DependentUpon>ResizeImageWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\OptionsWindow.resx">
+      <DependentUpon>OptionsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\ImageEditorTabPage.resx">
       <DependentUpon>ImageEditorTabPage.cs</DependentUpon>
@@ -383,6 +392,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\options.png" />
     <None Include="Resources\arrow_rotate_clockwise.png" />
     <None Include="Resources\arrow_rotate_anticlockwise.png" />
     <None Include="Resources\www_page.png" />

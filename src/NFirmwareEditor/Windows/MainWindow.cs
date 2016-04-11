@@ -210,6 +210,15 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void OptionsMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var optionsWindow = new OptionsWindow(m_configuration))
+			{
+				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
+				m_configurationManager.Save(m_configuration);
+			}
+		}
+
 		private void AboutMenuItem_Click(object sender, EventArgs e)
 		{
 			using (var aboutWindow = new AboutWindow())
