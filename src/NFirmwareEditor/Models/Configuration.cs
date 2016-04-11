@@ -8,6 +8,7 @@
 			MainWindowHeight = 600;
 			GridSize = 16;
 			ShowGid = true;
+			ImageEditorMouseMode = ImageEditorMouseMode.LeftSetRightUnset;
 		}
 
 		public int MainWindowWidth { get; set; }
@@ -19,5 +20,13 @@
 		public bool ShowGid { get; set; }
 
 		public int GridSize { get; set; }
+
+		public ImageEditorMouseMode ImageEditorMouseMode { get; set; }
+	}
+
+	public enum ImageEditorMouseMode
+	{
+		LeftSetRightUnset,
+		LeftSetUnset
 	}
 }
