@@ -215,6 +215,14 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void FirmwareUpdaterMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var firmwareUpdaterWindow = new FirmwareUpdaterWindow())
+			{
+				firmwareUpdaterWindow.ShowDialog();
+			}
+		}
+
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
 			using (var optionsWindow = new OptionsWindow(m_configuration))

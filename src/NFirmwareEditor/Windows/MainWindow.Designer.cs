@@ -31,23 +31,25 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OpenUsingSpecifiedDefinitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.EncryptDecryptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.PatchCreatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
+			this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OpenUsingSpecifiedDefinitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.EncryptDecryptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PatchCreatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FirmwareUpdaterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -80,94 +82,27 @@
 			this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
 			this.FileMenuItem.Text = "File";
 			// 
-			// OpenMenuItem
-			// 
-			this.OpenMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenuItem.Image")));
-			this.OpenMenuItem.Name = "OpenMenuItem";
-			this.OpenMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
-			this.OpenMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenMenuItem.Text = "Open";
-			this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
-			// 
-			// OpenUsingSpecifiedDefinitionMenuItem
-			// 
-			this.OpenUsingSpecifiedDefinitionMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenUsingSpecifiedDefinitionMenuItem.Image")));
-			this.OpenUsingSpecifiedDefinitionMenuItem.Name = "OpenUsingSpecifiedDefinitionMenuItem";
-			this.OpenUsingSpecifiedDefinitionMenuItem.ShortcutKeyDisplayString = "";
-			this.OpenUsingSpecifiedDefinitionMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.OpenUsingSpecifiedDefinitionMenuItem.Text = "Open (Using Specified Definition)";
-			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
-			// 
-			// SaveEncryptedMenuItem
-			// 
-			this.SaveEncryptedMenuItem.Enabled = false;
-			this.SaveEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveEncryptedMenuItem.Image")));
-			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
-			this.SaveEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + S";
-			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
-			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
-			// 
-			// SaveDecryptedMenuItem
-			// 
-			this.SaveDecryptedMenuItem.Enabled = false;
-			this.SaveDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveDecryptedMenuItem.Image")));
-			this.SaveDecryptedMenuItem.Name = "SaveDecryptedMenuItem";
-			this.SaveDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + S";
-			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.SaveDecryptedMenuItem.Text = "Save Decrypted As...";
-			this.SaveDecryptedMenuItem.Click += new System.EventHandler(this.SaveDecryptedMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(255, 6);
 			// 
-			// ExitMenuItem
-			// 
-			this.ExitMenuItem.Image = global::NFirmwareEditor.Properties.Resources.exit;
-			this.ExitMenuItem.Name = "ExitMenuItem";
-			this.ExitMenuItem.Size = new System.Drawing.Size(258, 22);
-			this.ExitMenuItem.Text = "Exit";
-			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
-			// 
 			// ToolsMenuItem
 			// 
 			this.ToolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EncryptDecryptMenuItem,
             this.PatchCreatorMenuItem,
+            this.FirmwareUpdaterMenuItem,
+            this.toolStripSeparator3,
             this.OptionsMenuItem});
 			this.ToolsMenuItem.Name = "ToolsMenuItem";
 			this.ToolsMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.ToolsMenuItem.Text = "Tools";
-			// 
-			// EncryptDecryptMenuItem
-			// 
-			this.EncryptDecryptMenuItem.Image = global::NFirmwareEditor.Properties.Resources.toolbox;
-			this.EncryptDecryptMenuItem.Name = "EncryptDecryptMenuItem";
-			this.EncryptDecryptMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.EncryptDecryptMenuItem.Text = "Encrypt / Decrypt";
-			this.EncryptDecryptMenuItem.Click += new System.EventHandler(this.EncryptDecryptToolStripMenuItem_Click);
-			// 
-			// PatchCreatorMenuItem
-			// 
-			this.PatchCreatorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.patch_creator;
-			this.PatchCreatorMenuItem.Name = "PatchCreatorMenuItem";
-			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.PatchCreatorMenuItem.Text = "Patch Creator";
-			this.PatchCreatorMenuItem.Click += new System.EventHandler(this.PatchCreatorMenuItem_Click);
-			// 
-			// OptionsMenuItem
-			// 
-			this.OptionsMenuItem.Image = global::NFirmwareEditor.Properties.Resources.options;
-			this.OptionsMenuItem.Name = "OptionsMenuItem";
-			this.OptionsMenuItem.Size = new System.Drawing.Size(159, 22);
-			this.OptionsMenuItem.Text = "Options";
-			this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
 			// 
 			// AboutMenuItem
 			// 
@@ -197,6 +132,11 @@
 			// 
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
 			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(157, 6);
 			// 
 			// borderedPanel1
 			// 
@@ -228,6 +168,83 @@
 			this.MainTabControl.Size = new System.Drawing.Size(778, 507);
 			this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.MainTabControl.TabIndex = 6;
+			// 
+			// OpenMenuItem
+			// 
+			this.OpenMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenuItem.Image")));
+			this.OpenMenuItem.Name = "OpenMenuItem";
+			this.OpenMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
+			this.OpenMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenMenuItem.Text = "Open";
+			this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
+			// 
+			// OpenUsingSpecifiedDefinitionMenuItem
+			// 
+			this.OpenUsingSpecifiedDefinitionMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenUsingSpecifiedDefinitionMenuItem.Image")));
+			this.OpenUsingSpecifiedDefinitionMenuItem.Name = "OpenUsingSpecifiedDefinitionMenuItem";
+			this.OpenUsingSpecifiedDefinitionMenuItem.ShortcutKeyDisplayString = "";
+			this.OpenUsingSpecifiedDefinitionMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.OpenUsingSpecifiedDefinitionMenuItem.Text = "Open (Using Specified Definition)";
+			// 
+			// SaveEncryptedMenuItem
+			// 
+			this.SaveEncryptedMenuItem.Enabled = false;
+			this.SaveEncryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveEncryptedMenuItem.Image")));
+			this.SaveEncryptedMenuItem.Name = "SaveEncryptedMenuItem";
+			this.SaveEncryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + S";
+			this.SaveEncryptedMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.SaveEncryptedMenuItem.Text = "Save Encrypted As...";
+			this.SaveEncryptedMenuItem.Click += new System.EventHandler(this.SaveEncryptedMenuItem_Click);
+			// 
+			// SaveDecryptedMenuItem
+			// 
+			this.SaveDecryptedMenuItem.Enabled = false;
+			this.SaveDecryptedMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveDecryptedMenuItem.Image")));
+			this.SaveDecryptedMenuItem.Name = "SaveDecryptedMenuItem";
+			this.SaveDecryptedMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + S";
+			this.SaveDecryptedMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.SaveDecryptedMenuItem.Text = "Save Decrypted As...";
+			this.SaveDecryptedMenuItem.Click += new System.EventHandler(this.SaveDecryptedMenuItem_Click);
+			// 
+			// ExitMenuItem
+			// 
+			this.ExitMenuItem.Image = global::NFirmwareEditor.Properties.Resources.exit;
+			this.ExitMenuItem.Name = "ExitMenuItem";
+			this.ExitMenuItem.Size = new System.Drawing.Size(258, 22);
+			this.ExitMenuItem.Text = "Exit";
+			this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
+			// 
+			// EncryptDecryptMenuItem
+			// 
+			this.EncryptDecryptMenuItem.Image = global::NFirmwareEditor.Properties.Resources.toolbox;
+			this.EncryptDecryptMenuItem.Name = "EncryptDecryptMenuItem";
+			this.EncryptDecryptMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.EncryptDecryptMenuItem.Text = "Encrypt / Decrypt";
+			this.EncryptDecryptMenuItem.Click += new System.EventHandler(this.EncryptDecryptToolStripMenuItem_Click);
+			// 
+			// PatchCreatorMenuItem
+			// 
+			this.PatchCreatorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.patch_creator;
+			this.PatchCreatorMenuItem.Name = "PatchCreatorMenuItem";
+			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.PatchCreatorMenuItem.Text = "Patch Creator";
+			this.PatchCreatorMenuItem.Click += new System.EventHandler(this.PatchCreatorMenuItem_Click);
+			// 
+			// FirmwareUpdaterMenuItem
+			// 
+			this.FirmwareUpdaterMenuItem.Image = global::NFirmwareEditor.Properties.Resources.firmware_update;
+			this.FirmwareUpdaterMenuItem.Name = "FirmwareUpdaterMenuItem";
+			this.FirmwareUpdaterMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.FirmwareUpdaterMenuItem.Text = "Firmware Updater";
+			this.FirmwareUpdaterMenuItem.Click += new System.EventHandler(this.FirmwareUpdaterMenuItem_Click);
+			// 
+			// OptionsMenuItem
+			// 
+			this.OptionsMenuItem.Image = global::NFirmwareEditor.Properties.Resources.options;
+			this.OptionsMenuItem.Name = "OptionsMenuItem";
+			this.OptionsMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.OptionsMenuItem.Text = "Options";
+			this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
 			// 
 			// MainWindow
 			// 
@@ -275,6 +292,8 @@
 		private UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.ToolStripMenuItem PatchCreatorMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 	}
 }
 
