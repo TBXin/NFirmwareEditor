@@ -23,6 +23,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		public StringEditorTabPage()
 		{
 			InitializeComponent();
+			InitializeControlls();
 		}
 
 		[NotNull]
@@ -71,16 +72,6 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void Initialize(IEditorTabPageHost host, Configuration configuration)
 		{
-			StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
-			StringPrewviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
-			StringPrewviewPixelGrid.ActiveBlockBrush = Brushes.White;
-			StringPrewviewPixelGrid.InactiveBlockBrush = Brushes.Black;
-
-			Block1StringRadioButton.CheckedChanged += BlockStringRadioButton_CheckedChanged;
-			Block2StringRadioButton.CheckedChanged += BlockStringRadioButton_CheckedChanged;
-
-			Block1StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
-			Block2StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
 		}
 
 		public void OnWorkspaceReset()
@@ -118,6 +109,20 @@ namespace NFirmwareEditor.Windows.Tabs
 			return false;
 		}
 		#endregion
+
+		private void InitializeControlls()
+		{
+			StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			StringPrewviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
+			StringPrewviewPixelGrid.ActiveBlockBrush = Brushes.White;
+			StringPrewviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+
+			Block1StringRadioButton.CheckedChanged += BlockStringRadioButton_CheckedChanged;
+			Block2StringRadioButton.CheckedChanged += BlockStringRadioButton_CheckedChanged;
+
+			Block1StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
+			Block2StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
+		}
 
 		private void CreateStringEditControls(byte[] firmwareString, FirmwareStringMetadata stringMetadata)
 		{
@@ -199,7 +204,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			var data = FirmwareImageProcessor.MergeImages(images);
 			var dataSize = data.GetSize();
 
-			StringPreviewImageSizeLabel.Text = dataSize.Width + "x" + dataSize.Height;
+			StringPreviewImageSizeLabel.Text = dataSize.Width + @"x" + dataSize.Height;
 			StringPrewviewPixelGrid.Data = data;
 		}
 

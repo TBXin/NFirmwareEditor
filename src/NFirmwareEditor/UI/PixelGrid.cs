@@ -65,6 +65,8 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
+		public bool SingleMouseButtonMode { get; set; }
+
 		public bool ReadOnly { get; set; }
 
 		public Pen BlockOuterBorderPen
@@ -147,9 +149,11 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
-			m_lastCursorPosition = TryGetBlockFromPoint(e.Location);
+			var blockAtPoint = TryGetBlockFromPoint(e.Location);
+			if (m_lastCursorPosition == blockAtPoint) return;
+
+			m_lastCursorPosition = blockAtPoint;
 			OnCursorPositionChanged(m_lastCursorPosition);
-			Invalidate();
 
 			if (TrySetBlockValue(e)) Invalidate();
 		}
@@ -245,7 +249,9 @@ namespace NFirmwareEditor.UI
 				var block = TryGetBlockFromPoint(e.Location);
 				if (block == null) return false;
 
-				Data[block.Value.X, block.Value.Y] = e.Button == MouseButtons.Left;
+				Data[block.Value.X, block.Value.Y] = SingleMouseButtonMode
+					? !Data[block.Value.X, block.Value.Y]
+					: e.Button == MouseButtons.Left;
 				OnDataUpdated(m_data);
 				return true;
 			}

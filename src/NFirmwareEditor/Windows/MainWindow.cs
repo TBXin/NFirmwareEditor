@@ -35,8 +35,8 @@ namespace NFirmwareEditor.Windows
 			};
 
 			InitializeComponent();
-			LoadSettings();
 			InitializeControls();
+			LoadSettings();
 
 			Icon = Paths.ApplicationIcon;
 			Text = Consts.ApplicationTitle;
@@ -56,7 +56,6 @@ namespace NFirmwareEditor.Windows
 		{
 			foreach (var tabPage in m_tabPages)
 			{
-				tabPage.Initialize(this, m_configuration);
 				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
 			}
 
@@ -89,6 +88,7 @@ namespace NFirmwareEditor.Windows
 			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
 
+			LoadTabSettings();
 			m_definitions = m_firmwareDefinitionManager.Load();
 			foreach (var definition in m_definitions)
 			{
@@ -98,6 +98,11 @@ namespace NFirmwareEditor.Windows
 					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, firmwareDefinition));
 				});
 			}
+		}
+
+		private void LoadTabSettings()
+		{
+			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 		}
 
 		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
@@ -215,7 +220,9 @@ namespace NFirmwareEditor.Windows
 			using (var optionsWindow = new OptionsWindow(m_configuration))
 			{
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
+
 				m_configurationManager.Save(m_configuration);
+				LoadTabSettings();
 			}
 		}
 

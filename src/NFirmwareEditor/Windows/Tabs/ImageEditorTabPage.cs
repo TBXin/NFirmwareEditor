@@ -28,6 +28,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_resourcePackManager = resourcePackManager;
 			InitializeComponent();
+			InitializeControls();
 		}
 
 		[NotNull]
@@ -100,66 +101,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			m_configuration = configuration;
 			GridSizeUpDown.Value = m_configuration.GridSize;
 			ShowGridCheckBox.Checked = m_configuration.ShowGid;
-
-			ImagePreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
-			ImagePreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
-			ImagePreviewPixelGrid.ActiveBlockBrush = Brushes.White;
-			ImagePreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
-
-			Block1ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
-			Block2ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
-
 			ImagePixelGrid.BlockSize = m_configuration.GridSize;
-			ImagePixelGrid.CursorPositionChanged += location =>
-			{
-				CursorPositionLabel.Text = location.HasValue
-					? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
-					: string.Empty;
-			};
-
-			ImagePixelGrid.DataUpdated += data =>
-			{
-				if (LastSelectedImageMetadata == null) return;
-
-				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(r => data, LastSelectedImageMetadata);
-			};
-
-			Block1ImageListBox.SelectedValueChanged += ImageListBox_SelectedValueChanged;
-			Block1ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
-			Block1ImageListBox.MeasureItem += ImageListBox_MeasureItem;
-			Block1ImageListBox.DrawItem += ImageListBox_DrawItem;
-
-			Block2ImageListBox.SelectedValueChanged += ImageListBox_SelectedValueChanged;
-			Block2ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
-			Block2ImageListBox.MeasureItem += ImageListBox_MeasureItem;
-			Block2ImageListBox.DrawItem += ImageListBox_DrawItem;
-
-			GridSizeUpDown.ValueChanged += GridSizeUpDown_ValueChanged;
-			ShowGridCheckBox.CheckedChanged += ShowGridCheckBox_CheckedChanged;
-
-			ClearAllPixelsButton.Click += ClearAllPixelsButton_Click;
-			InverseButton.Click += InvertButton_Click;
-			ResizeButton.Click += ResizeButton_Click;
-
-			CopyButton.Click += CopyButton_Click;
-			PasteButton.Click += PasteButton_Click;
-			BitmapImportButton.Click += BitmapImportButton_Click;
-
-			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
-			FlipVerticalButton.Click += FlipVerticalButton_Click;
-			RotateAntiClockwiseButton.Click += RotateAntiClockwiseButton_Click;
-			RotateClockwiseButton.Click += RotateClockwiseButton_Click;
-
-			ShiftLeftButton.Click += ShiftLeftButton_Click;
-			ShiftRightButton.Click += ShiftRightButton_Click;
-			ShiftUpButton.Click += ShiftUpButton_Click;
-			ShiftDownButton.Click += ShiftDownButton_Click;
-
-			ImageEditorHotkeyInformationButton.Click += ImageEditorHotkeyInformationButton_Click;
-
-			CopyContextMenuItem.Click += CopyButton_Click;
-			PasteContextMenuItem.Click += PasteButton_Click;
-			ExportContextMenuItem.Click += ExportContextMenuItem_Click;
+			ImagePixelGrid.SingleMouseButtonMode = configuration.ImageEditorMouseMode == ImageEditorMouseMode.LeftSetUnset;
 		}
 
 		public void OnWorkspaceReset()
@@ -233,6 +176,68 @@ namespace NFirmwareEditor.Windows.Tabs
 			return false;
 		}
 		#endregion
+
+		private void InitializeControls()
+		{
+			ImagePreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
+			ImagePreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
+			ImagePreviewPixelGrid.ActiveBlockBrush = Brushes.White;
+			ImagePreviewPixelGrid.InactiveBlockBrush = Brushes.Black;
+
+			Block1ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
+			Block2ImageRadioButton.CheckedChanged += BlockImageRadioButton_CheckedChanged;
+
+			ImagePixelGrid.CursorPositionChanged += location =>
+			{
+				CursorPositionLabel.Text = location.HasValue
+					? string.Format("X: {0}, Y:{1}", location.Value.X + 1, location.Value.Y + 1)
+					: string.Empty;
+			};
+
+			ImagePixelGrid.DataUpdated += data =>
+			{
+				if (LastSelectedImageMetadata == null) return;
+
+				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(r => data, LastSelectedImageMetadata);
+			};
+
+			Block1ImageListBox.SelectedValueChanged += ImageListBox_SelectedValueChanged;
+			Block1ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block1ImageListBox.MeasureItem += ImageListBox_MeasureItem;
+			Block1ImageListBox.DrawItem += ImageListBox_DrawItem;
+
+			Block2ImageListBox.SelectedValueChanged += ImageListBox_SelectedValueChanged;
+			Block2ImageListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block2ImageListBox.MeasureItem += ImageListBox_MeasureItem;
+			Block2ImageListBox.DrawItem += ImageListBox_DrawItem;
+
+			GridSizeUpDown.ValueChanged += GridSizeUpDown_ValueChanged;
+			ShowGridCheckBox.CheckedChanged += ShowGridCheckBox_CheckedChanged;
+
+			ClearAllPixelsButton.Click += ClearAllPixelsButton_Click;
+			InverseButton.Click += InvertButton_Click;
+			ResizeButton.Click += ResizeButton_Click;
+
+			CopyButton.Click += CopyButton_Click;
+			PasteButton.Click += PasteButton_Click;
+			BitmapImportButton.Click += BitmapImportButton_Click;
+
+			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
+			FlipVerticalButton.Click += FlipVerticalButton_Click;
+			RotateAntiClockwiseButton.Click += RotateAntiClockwiseButton_Click;
+			RotateClockwiseButton.Click += RotateClockwiseButton_Click;
+
+			ShiftLeftButton.Click += ShiftLeftButton_Click;
+			ShiftRightButton.Click += ShiftRightButton_Click;
+			ShiftUpButton.Click += ShiftUpButton_Click;
+			ShiftDownButton.Click += ShiftDownButton_Click;
+
+			ImageEditorHotkeyInformationButton.Click += ImageEditorHotkeyInformationButton_Click;
+
+			CopyContextMenuItem.Click += CopyButton_Click;
+			PasteContextMenuItem.Click += PasteButton_Click;
+			ExportContextMenuItem.Click += ExportContextMenuItem_Click;
+		}
 
 		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages)
 		{
