@@ -91,6 +91,7 @@ namespace NFirmwareEditor.Windows
 
 		private void OkButton_Click(object sender, EventArgs e)
 		{
+			var skipValidation = ModifierKeys.HasFlag(Keys.Control) && ModifierKeys.HasFlag(Keys.Alt);
 			string fileName;
 			using (var op = new OpenFileDialog { Title = @"Select encrypted or decrypted firmware file ...", Filter = Consts.FirmwareFilter })
 			{
@@ -101,7 +102,7 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				var firmware = m_loader.LoadFile(fileName);
-				if (FirmwareLoader.FindByteArray(firmware, Encoding.UTF8.GetBytes(m_connectedDeviceProductId)) == -1)
+				if (!skipValidation && FirmwareLoader.FindByteArray(firmware, Encoding.UTF8.GetBytes(m_connectedDeviceProductId)) == -1)
 				{
 					InfoBox.Show("Selected firmware file is not suitable for the connected device.");
 					return;
@@ -113,7 +114,6 @@ namespace NFirmwareEditor.Windows
 				InfoBox.Show("An exception occured during firmware update.\n" + ex.Message);
 			}
 		}
-
 
 		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
