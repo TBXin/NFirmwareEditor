@@ -117,6 +117,7 @@
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
 			this.HardwareVersionTextBox.Size = new System.Drawing.Size(267, 21);
 			this.HardwareVersionTextBox.TabIndex = 21;
+			this.HardwareVersionTextBox.TabStop = false;
 			// 
 			// label4
 			// 
@@ -135,6 +136,7 @@
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
 			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(267, 21);
 			this.FirmwareVersionTextBox.TabIndex = 20;
+			this.FirmwareVersionTextBox.TabStop = false;
 			// 
 			// label3
 			// 
@@ -153,6 +155,7 @@
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
 			this.DeviceNameTextBox.Size = new System.Drawing.Size(267, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
+			this.DeviceNameTextBox.TabStop = false;
 			// 
 			// UpdateProgressBar
 			// 
