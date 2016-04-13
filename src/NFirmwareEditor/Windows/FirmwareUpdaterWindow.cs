@@ -162,7 +162,14 @@ namespace NFirmwareEditor.Windows
 		// ReSharper disable once InconsistentNaming
 		private void UpdateUI(Action action)
 		{
-			Invoke(action);
+			try
+			{
+				Invoke(action);
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
 		}
 	}
 }
