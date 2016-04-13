@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Cuboid 3.11" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001">
-  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously. Сброс сохраненного сопротивления атомайзера с помощью одновременного нажатия + и -, функция блокировки кнопок отключена.</Description>
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.
+Сброс сохраненного сопротивления атомайзера с помощью одновременного нажатия + и -, функция блокировки кнопок отключена.</Description>
   <Data>
 0000144E: 06 - 0B
 00001450: 97 - 25

@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously. Сброс сохраненного сопротивления по одновременному нажатию +/-, функция блокировки кнопок при этом будет отключена.</Description>
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.
+Сброс сохраненного сопротивления по одновременному нажатию +/-, функция блокировки кнопок при этом будет отключена.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Resistance reset #

@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Display Brightness 100%" Version="1.0" Author="maelstrom2001">
-  <Description>Set display brightness to maximum. Установка яркости экрана на максимальное значение.</Description>
+  <Description>Set display brightness to maximum.
+Установка яркости экрана на максимальное значение.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Set display brightness #

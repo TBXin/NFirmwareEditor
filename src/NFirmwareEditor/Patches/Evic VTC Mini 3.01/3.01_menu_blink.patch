@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Fast Menu Blink" Version="1.0" Author="maelstrom2001">
-  <Description>Set blink frequency to 2 Hz. Увеличивает частоту мигания активированного меню.</Description>
+  <Description>Set blink frequency to 2 Hz.
+Увеличивает частоту мигания активированного меню.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Set blink frequency to 2 Hz

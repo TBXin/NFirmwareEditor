@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Stealth on Charge" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Extends Stealth Mode to the charge screen.  Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.</Description>
+  <Description>Extends Stealth Mode to the charge screen.
+Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Stealth Mode on charge #

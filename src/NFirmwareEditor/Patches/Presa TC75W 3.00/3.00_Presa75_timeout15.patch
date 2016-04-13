@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Set Dim Timeout (15 s)" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Set screen dim timeout to 15 sec.  Изменяет время отключения экрана в режиме ожидания (на 15 с).</Description>
+  <Description>Set screen dim timeout to 15 sec.
+Изменяет время отключения экрана в режиме ожидания (на 15 с).</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Set dim timeout to 15 s #

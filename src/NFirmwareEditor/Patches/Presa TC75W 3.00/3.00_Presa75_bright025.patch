@@ -1,5 +1,6 @@
 <Patch Definition="Presa TC75W 3.00" Name="Display Brightness 25%" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Set display brightness to 25%</Description>
+  <Description>Set display brightness to 25%.
+”становка €ркости экрана на уровень 25%.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Set display brightness #

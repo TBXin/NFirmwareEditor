@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Change dim timeout (10 sec)" Version="1.0" Author="maelstrom2001">
-  <Description>Set dim timeout to 10 sec. Изменяет время отключения экрана в режиме ожидания (на 10 с).</Description>
+  <Description>Set dim timeout to 10 sec.
+Изменяет время отключения экрана в режиме ожидания (на 10 с).</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Set dim timeout to 10 s #

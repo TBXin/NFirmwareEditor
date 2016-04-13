@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Delete 316 label" Version="1.0" Author="maelstrom2001">
-  <Description>Deletes 316 label in TEMP SS mode. Убирает надпись "316" из режима Temp SS 316.</Description>
+  <Description>Deletes 316 label in TEMP SS mode.
+Убирает надпись "316" из режима Temp SS 316.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Delete 316 in SS TCR mode #

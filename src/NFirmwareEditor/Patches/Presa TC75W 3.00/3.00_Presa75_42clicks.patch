@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="4-2 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Erasing saved resistance by 4 clicks, fast mode change by 2 clicks (TEMP SS - POWER by default). Комбо-патч. Сброс сохраненного сопротивления по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 2 кликам Fire.</Description>
+  <Description>Erasing saved resistance by 4 clicks, fast mode change by 2 clicks (TEMP SS - POWER by default).
+Комбо-патч. Сброс сохраненного сопротивления по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 2 кликам Fire.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Coil Erase on 4 clicks #

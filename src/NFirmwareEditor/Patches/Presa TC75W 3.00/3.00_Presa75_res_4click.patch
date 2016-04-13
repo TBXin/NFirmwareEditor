@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Saved Coil Erase - 4 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Erasing saved resistance by 4 clicks. Сброс сохраненного сопротивления по 4 кликам кнопки Fire.</Description>
+  <Description>Erasing saved resistance by 4 clicks.
+Сброс сохраненного сопротивления по 4 кликам кнопки Fire.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Coil Erase on 4 clicks #

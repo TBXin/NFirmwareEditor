@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="3rd Status Line - AIO" Version="1.0" Author="maelstrom2001">
-  <Description>Adds battery voltage, board temperature, saved resistance and realtime measuring to the 3rd line. Добавляет на выбор показ напряжения батареи, температуры платы, фиксированного и реального сопротивления (с точностью до тысячных), выходного напряжения в третью строку.</Description>
+  <Description>Adds battery voltage, board temperature, saved resistance and realtime measuring to the 3rd line.
+Добавляет на выбор показ напряжения батареи, температуры платы, фиксированного и реального сопротивления (с точностью до тысячных), выходного напряжения в третью строку.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Last status line - all in one

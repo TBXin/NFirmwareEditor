@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Realtime COIL in Standby" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Display resistance in realtime. Отображение реального сопротивления по нажатию на любую клавишу / по обновлению экрана.</Description>
+  <Description>Display resistance in realtime.
+Отображение реального сопротивления по нажатию на любую клавишу / по обновлению экрана.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Realtime resistance on

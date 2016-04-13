@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Disable switch to AMP" Version="1.0" Author="maelstrom2001">
-  <Description>Disable auto switching status to AMP on charge. Отключает при зарядке сброс на AMP выбранной опции в третьей строке.</Description>
+  <Description>Disable auto switching status to AMP on charge.
+Отключает при зарядке сброс на AMP выбранной опции в третьей строке.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Disable switch to AMP on charge #

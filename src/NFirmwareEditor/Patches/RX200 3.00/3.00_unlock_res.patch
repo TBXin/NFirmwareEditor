@@ -1,5 +1,6 @@
 ﻿<Patch Definition="RX200 3.00" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001">
-  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously. Сброс сохраненного сопротивления атомайзера с помощью одновременного нажатия + и -, функция блокировки кнопок отключена.</Description>
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.
+Сброс сохраненного сопротивления атомайзера с помощью одновременного нажатия + и -, функция блокировки кнопок отключена.</Description>
   <Data>
 000014F2: 04 - 07
 000014F4: D5 - 2B

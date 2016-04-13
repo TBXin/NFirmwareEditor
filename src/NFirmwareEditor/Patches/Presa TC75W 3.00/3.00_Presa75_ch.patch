@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Charge Screen Mod" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Adds battery voltage and PCB temperature to the charge screen. Отображение при заряде над иконкой батареи текущего напряжения аккумулятора и температуры платы.</Description>
+  <Description>Adds battery voltage and PCB temperature to the charge screen.
+Отображение при заряде над иконкой батареи текущего напряжения аккумулятора и температуры платы.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Battery voltage, #

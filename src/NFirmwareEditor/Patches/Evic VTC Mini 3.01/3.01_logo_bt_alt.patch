@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Charge Screen Mod - 64x104" Version="1.0" Author="NFirmwareEditor Team">
-  <Description>Adds battery voltage, board temperature and 64x104 picture to the charge screen. Отображение при заряде над иконкой батареи текущего напряжения аккумулятора и температуры платы, а также добавление выше произвольного рисунка 64x104 пикселей.</Description>
+  <Description>Adds battery voltage, board temperature and 64x104 picture to the charge screen.
+Отображение при заряде над иконкой батареи текущего напряжения аккумулятора и температуры платы, а также добавление выше произвольного рисунка 64x104 пикселей.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Logo, battery voltage, #

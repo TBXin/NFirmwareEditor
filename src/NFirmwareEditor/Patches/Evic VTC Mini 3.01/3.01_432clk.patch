@@ -1,6 +1,6 @@
-﻿<Patch Definition="Evic VTC Mini 3.01" Name="4-2 Clicks" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Erasing saved resistance by 4 clicks, fast mode change by 2 clicks (TEMP SS - POWER by default).
-Комбо-патч. Сброс сохраненного сопротивления по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 2 кликам Fire.</Description>
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="4-2 Clicks (reloaded)" Version="1.2" Author="maelstrom2001 and Zinger">
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously, 4 clicks for Lock/UnLock, fast mode change by 3 clicks (TEMP SS - POWER by default), menu access by 2 clicks.
+Комбо-патч. Сброс сохраненного сопротивления по одновременному нажатию + и -, блокировка по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 3 кликам Fire (TEMP SS - POWER по умолчанию), активация меню по 2 кликам.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # 2 Click - fast mode change #
@@ -116,7 +116,7 @@ A87C: 00 - 39
 A87D: 52 - F4
 A87E: 95 - 58
 A87F: 54 - AE
-A880: 90 - 03
+A880: 90 - 02 ; clicks to Menu
 A881: 45 - 28
 A882: 34 - 02
 A883: 80 - D1
@@ -126,7 +126,7 @@ A886: 9D - F9
 A887: 58 - F7
 A888: 16 - 6F
 A889: 45 - BE
-A88A: 2C - 04
+A88A: 2C - 04 ; clicks to Lock/UnLock
 A88B: 80 - 28
 A88C: 00 - 01
 A88D: 23 - D1
@@ -134,7 +134,7 @@ A88E: 91 - 1F
 A88F: 54 - 20
 A890: 12 - F9
 A891: 47 - E7
-A892: 2C - 02
+A892: 2C - 03 ; clicks to Mode Change
 A893: 80 - 28
 A894: 00 - 01
 A895: 24 - D1
@@ -283,20 +283,27 @@ C1C1: 00 - 02
 C1C2: 00 - 00
 C1C3: 00 - 20
 
-# Toggled - Mode
+# Version - Mode
 
 C6EB: 9B - 92 ; M
 C6EC: 70 - 7A ; o
 C6ED: 7D - 6F ; d
 C6EE: 7E - 70 ; e
 C6EF: 74 - 00
-C6F0: 7A - 00
+C6F0: 7A - 01
 C6F1: 79 - 00
 
 # 2 sec message timeout
 4296: 05 - 02
 42A6: 05 - 02
 
+# Screen on after Lock/UnLock
+000010AC: 31 - 47
+000010F2: 0E - 24
+
+# Swap +/- and 4 clicks events
+00003D0C: C5 - 59
+00003D30: 47 - B3
 
 </Data>
 </Patch>

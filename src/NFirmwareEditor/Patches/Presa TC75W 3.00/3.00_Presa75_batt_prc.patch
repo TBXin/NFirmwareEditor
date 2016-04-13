@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Battery Percentage" Version="1.0" Author="NFirmwareEditor Team">
-  <Description>Adds percentage value to the battery icon. Изменение стиля значка аккумулятора с добавлением значения уровня заряда в процентах.</Description>
+  <Description>Adds percentage value to the battery icon.
+Изменение стиля значка аккумулятора с добавлением значения уровня заряда в процентах.</Description>
   <Data>
 00005A2E: AE - 00
 00005A2F: 22 - BF

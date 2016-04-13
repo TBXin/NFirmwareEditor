@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Menu Timeout (15 s)" Version="1.0" Author="maelstrom2001">
-  <Description>Set menu timeout to 15 sec. Увеличивает время доступности активированного меню (до 15 с).</Description>
+  <Description>Set menu timeout to 15 sec.
+Увеличивает время доступности активированного меню (до 15 с).</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Set menu timeout to 15 s #

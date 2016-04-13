@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Saved Coil Erase - KeyLock replacement" Version="1.0" Author="maelstrom2001">
-  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously. Сброс сохраненного сопротивления по одновременному нажатию +/-, функция блокировки кнопок при этом будет отключена.</Description>
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously.
+Сброс сохраненного сопротивления по одновременному нажатию +/-, функция блокировки кнопок при этом будет отключена.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Resistance unlock

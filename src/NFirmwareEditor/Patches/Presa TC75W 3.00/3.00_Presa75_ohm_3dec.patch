@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Ohm-meter to thousandths" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Extends ohm-meter to thousandths. Отображение сопротивления спирали с точностью до тысячных.</Description>
+  <Description>Extends ohm-meter to thousandths.
+Отображение сопротивления спирали с точностью до тысячных.</Description>
   <Data>
 # Presa_TC75W_V3.00.bin #
 # Ohmmeter 3 dec#

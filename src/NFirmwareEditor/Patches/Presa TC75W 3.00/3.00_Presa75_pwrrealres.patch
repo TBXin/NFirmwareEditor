@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Realtime COIL in POWER Mode" Version="1.0" Author="maelstrom2001 and Zinger">
-  <Description>Display resistance in realtime. Отображение реального сопротивления в режиме VW (а не последнего после накручивания атомайзера).</Description>
+  <Description>Display resistance in realtime.
+Отображение реального сопротивления в режиме VW (а не последнего после накручивания атомайзера).</Description>
   <Data>
 # Presa_TC75W_V3.00.bin # 
 # realtime VW resistance # 

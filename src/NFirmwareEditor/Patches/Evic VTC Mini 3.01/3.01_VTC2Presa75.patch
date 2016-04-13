@@ -1,0 +1,17 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="VTC2Presa75" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Converts eVic VTC Mini Firmware to Presa 75.
+Преобразование прошивки eVic VTC Mini в версию для Presa 75.</Description>
+  <Data>
+# ProductID
+00001B00: 45 - 57
+00001B01: 30 - 30
+00001B02: 35 - 30
+00001B03: 32 - 37
+# Shunt
+0000155C: 73 - 64 ; 1.00, 1.02, default
+00001594: 7D - 64 ; 1.01, 1.08
+00001598: 6E - 64 ; 1.03, 1.04, 1.05, 1.06
+0000159C: 78 - 64 ; 1.07, 1.09
+000015A0: 69 - 64 ; 1.10, 1.11
+</Data>
+</Patch>

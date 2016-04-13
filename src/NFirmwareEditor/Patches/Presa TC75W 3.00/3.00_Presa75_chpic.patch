@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Presa TC75W 3.00" Name="Picture On Charge" Version="1.0" Author="NFirmwareEditor Team">
-  <Description>Adds 64x104 logo to the charge screen. Добавляет изображение 64x104 на экране зарядки.</Description>
+  <Description>Adds 64x104 logo to the charge screen.
+Добавляет изображение 64x104 на экране зарядки.</Description>
   <Data>
 00005954: 73 - 05
 00005955: 21 - F0

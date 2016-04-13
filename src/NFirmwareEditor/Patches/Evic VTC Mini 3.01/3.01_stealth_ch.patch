@@ -1,5 +1,6 @@
 ﻿<Patch Definition="Evic VTC Mini 3.01" Name="Stealth on Charge" Version="1.0" Author="maelstrom2001">
-  <Description>Extends Stealth Mode to the charge screen. Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.</Description>
+  <Description>Extends Stealth Mode to the charge screen.
+Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.</Description>
   <Data>
 # eVic_VTC_Mini_V3.01.bin #
 # Stealth Mode on charge #
