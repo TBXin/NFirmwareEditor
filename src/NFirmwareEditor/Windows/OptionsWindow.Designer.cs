@@ -54,7 +54,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 322);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 82);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(384, 39);
@@ -92,7 +92,7 @@
 			this.SettingsTabControl.Location = new System.Drawing.Point(3, 3);
 			this.SettingsTabControl.Name = "SettingsTabControl";
 			this.SettingsTabControl.SelectedIndex = 0;
-			this.SettingsTabControl.Size = new System.Drawing.Size(378, 316);
+			this.SettingsTabControl.Size = new System.Drawing.Size(380, 76);
 			this.SettingsTabControl.TabIndex = 2;
 			// 
 			// GeneralTabPage
@@ -101,7 +101,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(370, 290);
+			this.GeneralTabPage.Size = new System.Drawing.Size(372, 50);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "Application";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Location = new System.Drawing.Point(3, 1);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(363, 47);
+			this.groupBox1.Size = new System.Drawing.Size(365, 47);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Image Editor:";
@@ -127,7 +127,7 @@
 			this.ImageEditorModeComboBox.FormattingEnabled = true;
 			this.ImageEditorModeComboBox.Location = new System.Drawing.Point(106, 20);
 			this.ImageEditorModeComboBox.Name = "ImageEditorModeComboBox";
-			this.ImageEditorModeComboBox.Size = new System.Drawing.Size(252, 21);
+			this.ImageEditorModeComboBox.Size = new System.Drawing.Size(254, 21);
 			this.ImageEditorModeComboBox.TabIndex = 21;
 			// 
 			// label6
@@ -143,7 +143,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(384, 361);
+			this.ClientSize = new System.Drawing.Size(384, 121);
 			this.Controls.Add(this.SettingsTabControl);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
