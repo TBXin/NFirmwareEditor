@@ -1,0 +1,309 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="4-2 Clicks (reloaded)" Version="1.1" Author="maelstrom2001 and Zinger">
+  <Description>Erasing saved resistance by pressing Up and Down keys simultaneously, 4 clicks for Lock/UnLock, fast mode change by 2 clicks (TEMP SS - POWER by default).
+Комбо-патч. Сброс сохраненного сопротивления по одновременному нажатию + и -, блокировка по 4 кликам кнопки Fire, быстрое переключение между двумя предпочитаемыми режимами по 2 кликам Fire (TEMP SS - POWER по умолчанию).</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# 2 Click - fast mode change #
+# 4 Click - saved resistance erase #
+
+# Mode List
+# 0 - TEMP NI
+# 1 - TEMP TI
+# 2 - TEMP SS
+# 3 - TCR M1..M3
+# 4 - POWER
+# 5 - BYPASS
+# 6 - START
+
+# Branch to resistance erase
+102C: 04 - 0B
+102D: F0 - F0
+102E: 2E - AE
+102F: FF - F8
+
+# Screen on
+10F6: 0C - 22
+1100: 15 - 1D
+
+# Branch to new click counter
+450E: 2C - 06
+450F: 72 - F0
+4510: EC - AD
+4511: 71 - B9
+
+# Temp Message
+5E96: 02 - 64
+5E97: 21 - 21
+5E98: 47 - 06
+5E99: 20 - 48
+5E9A: CD - FF
+5E9B: E9 - F7
+5E9C: 00 - 41
+5E9D: 01 - F8
+5E9E: 05 - 1C
+5E9F: 48 - BD
+5EA0: 00 - 8A
+5EA1: 23 - 7D
+5EA2: 66 - 6C
+5EA3: 21 - 7E
+5EA4: 02 - 70
+5EA5: 78 - 6F
+5EA6: 10 - 00
+5EA7: 20 - 00
+5EA8: FE - 88
+5EA9: F7 - 7A
+5EAA: 52 - 74
+5EAB: FF - 77
+5EAC: 1C - 00
+5EAD: BD - 00
+5EAE: 00 - 00
+5EAF: 00 - 00
+5EB0: B4 - A8
+5EB1: C6 - 5E
+5EB2: 00 - 00
+5EB3: 00 - 00
+5EB4: 42 - A0
+5EB5: 00 - 5E
+5EB6: 00 - 00
+5EB7: 20 - 00
+
+# Patch "Version" to toggle
+75FA: 03 - 05
+75FB: 21 - 49
+75FC: 47 - 88
+75FD: 20 - 7B
+75FE: CD - 04 ; Mode 1
+75FF: E9 - 28
+7600: 00 - 01
+7601: 01 - D0
+7602: 02 - 04 ; Mode 1
+7603: 23 - 20
+7604: 40 - 00
+7605: F2 - E0
+7606: 2D - 02 ; Mode 2
+7607: 12 - 20
+7608: 66 - 88
+7609: 21 - 73
+760A: 06 - 04
+760B: 20 - F0
+760C: FD - A2
+760D: F7 - BC
+760E: A0 - 1C
+760F: FB - BD
+7610: 1C - 50
+7611: BD - 02
+7612: 00 - 00
+7613: 00 - 20
+
+# New Click Counter
+A86C: 00 - 2C
+A86D: 00 - 72
+A86E: 00 - EC
+A86F: 01 - 71
+A870: C0 - 05
+A871: 00 - 28
+A872: 00 - 39
+A873: 00 - F4
+A874: 00 - 76
+A875: 89 - AE
+A876: 1C - 39
+A877: 98 - F7
+A878: 8C - F5
+A879: E2 - AD
+A87A: 25 - 01
+A87B: C0 - 28
+A87C: 00 - 39
+A87D: 52 - F4
+A87E: 95 - 58
+A87F: 54 - AE
+A880: 90 - 03
+A881: 45 - 28
+A882: 34 - 02
+A883: 80 - D1
+A884: 00 - 10
+A885: 52 - 20
+A886: 9D - F9
+A887: 58 - F7
+A888: 16 - 6F
+A889: 45 - BE
+A88A: 2C - 04
+A88B: 80 - 28
+A88C: 00 - 01
+A88D: 23 - D1
+A88E: 91 - 1F
+A88F: 54 - 20
+A890: 12 - F9
+A891: 47 - E7
+A892: 2C - 02
+A893: 80 - 28
+A894: 00 - 01
+A895: 24 - D1
+A896: 50 - 1D
+A897: 94 - 20
+A898: 0C - F5
+A899: E8 - E7
+A89A: A4 - F9
+A89B: 80 - F7
+A89C: 00 - B1
+A89D: 00 - BD
+
+# Mode display
+BF52: 00 - 01
+BF53: 00 - 1C
+BF54: 07 - 11
+BF55: 1F - 48
+BF56: 3F - 00
+BF57: FF - 29
+BF58: FF - 01
+BF59: FF - D1
+BF5A: FF - 00
+BF5B: FF - BF
+BF5C: FF - 18
+BF5D: FF - E0
+BF5E: FF - 01
+BF5F: FE - 29
+BF60: FC - 01
+BF61: F8 - D1
+BF62: F0 - 03
+BF63: F0 - 30
+BF64: E0 - 14
+BF65: E0 - E0
+BF66: C0 - 02
+BF67: C0 - 29
+BF68: 80 - 01
+BF69: 80 - D1
+BF6A: 80 - 06
+BF6B: 80 - 30
+BF6C: 00 - 10
+BF6D: 00 - E0
+BF6E: 00 - 03
+BF6F: 00 - 29
+BF70: 00 - 01
+BF71: 00 - D1
+BF72: 00 - 0C
+BF73: 00 - 30
+BF74: 00 - 0C
+BF75: 00 - E0
+BF76: 80 - 04
+BF77: 80 - 29
+BF78: 80 - 01
+BF79: 80 - D1
+BF7A: C0 - 3E
+BF7B: C0 - 30
+BF7C: C0 - 08
+BF7D: E0 - E0
+BF7E: E0 - 05
+BF7F: F0 - 29
+BF80: F0 - 01
+BF81: F8 - D1
+BF82: FC - 4A
+BF83: FE - 30
+BF84: FF - 04
+BF85: FF - E0
+BF86: FF - 06
+BF87: FF - 29
+BF88: FF - 05
+BF89: FF - D1
+BF8A: FF - 44
+BF8B: 7F - 30
+BF8C: 3F - 00
+BF8D: 1F - BF
+BF8E: 07 - 00
+BF8F: 00 - BF
+BF90: 00 - 66
+BF91: 00 - 21
+BF92: 00 - F8
+BF93: 00 - F7
+BF94: 00 - C5
+BF95: 00 - FF
+BF96: 00 - FB
+BF97: 00 - F7
+BF98: 01 - 3A
+BF99: 03 - BB
+BF9A: 07 - 00
+BF9B: 07 - 00
+BF9C: 0F - 3C
+BF9D: 1F - C7
+BF9E: 1F - 00
+BF9F: 3F - 00
+
+# Resistance erase
+C18C: 00 - 0C
+C18D: 00 - 49
+C18E: 00 - 88
+C18F: 00 - 7B
+C190: 00 - 01
+C191: 00 - 28
+C192: 00 - 05
+C193: 00 - D0
+C194: 00 - 38
+C195: 00 - B1
+C196: 00 - 02
+C197: 00 - 28
+C198: 00 - 08
+C199: 00 - D0
+C19A: 00 - 03
+C19B: 00 - 28
+C19C: 00 - 0A
+C19D: 00 - D0
+C19E: 00 - 0C
+C19F: 00 - E0
+C1A0: 00 - 00
+C1A1: 00 - 20
+C1A2: 00 - C8
+C1A3: 00 - 83
+C1A4: 00 - 09
+C1A5: 00 - E0
+C1A6: 00 - 00
+C1A7: 00 - 20
+C1A8: 00 - 08
+C1A9: 00 - 84
+C1AA: 00 - 06
+C1AB: 00 - E0
+C1AC: 00 - 00
+C1AD: 00 - 20
+C1AE: 00 - A1
+C1AF: 00 - F8
+C1B0: 00 - 84
+C1B1: 00 - 00
+C1B2: 00 - 02
+C1B3: 00 - E0
+C1B4: 00 - 00
+C1B5: 00 - 20
+C1B6: 00 - A1
+C1B7: 00 - F8
+C1B8: 00 - 90
+C1B9: 00 - 00
+C1BA: 00 - F9
+C1BB: 00 - F7
+C1BC: 00 - 67
+C1BD: 00 - BE
+C1C0: 00 - 50
+C1C1: 00 - 02
+C1C2: 00 - 00
+C1C3: 00 - 20
+
+# Version - Mode
+
+C6EB: 9B - 92 ; M
+C6EC: 70 - 7A ; o
+C6ED: 7D - 6F ; d
+C6EE: 7E - 70 ; e
+C6EF: 74 - 00
+C6F0: 7A - 01
+C6F1: 79 - 00
+
+# 2 sec message timeout
+4296: 05 - 02
+42A6: 05 - 02
+
+# Screen on after Lock/UnLock
+000010AC: 31 - 47
+000010F2: 0E - 24
+
+# Swap +/- and 4 clicks events
+00003D0C: C5 - 59
+00003D30: 47 - B3
+
+</Data>
+</Patch>

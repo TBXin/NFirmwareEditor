@@ -1,0 +1,70 @@
+﻿<Patch Definition="Presa TC75W 3.00" Name="Splash Screen" Version="1.2" Author="NFirmwareEditor Team">
+  <Description>Adds splash picture to the main screen, 8 s timeout by default.
+Picture On Charge and Dim Timeout (15 s) patches are recommended to be installed.
+Добавляет изображение-заставку 0xE1 на экран в режиме ожидания. Вывод изображения через 8 секунд по умолчанию.
+Рекомендуется установить патчи Picture On Charge с изображением 64x104 и таймаут гашения экрана 15 с.</Description>
+  <Data>
+00001074: 20 - 0A
+00001075: 78 - F0
+00001076: 20 - 76
+00001077: B1 - B8
+0000B164: 00 - 20
+0000B165: 00 - 78
+0000B166: 00 - 08
+0000B167: 00 - B9
+0000B168: 00 - F5
+0000B169: 00 - F7
+0000B16A: 00 - 8B
+0000B16B: 00 - BF
+0000B16C: 80 - 08 ; Splash display time
+0000B16D: 80 - 28
+0000B16E: C0 - 01
+0000B16F: E0 - D0
+0000B170: E0 - F5
+0000B171: F0 - F7
+0000B172: F8 - 82
+0000B173: F8 - BF
+0000B174: F8 - 1F
+0000B175: FC - B4
+0000B176: FC - 09
+0000B177: FE - 48
+0000B178: FE - 00
+0000B179: FE - 78
+0000B17A: FE - 01
+0000B17B: FF - 28
+0000B17C: FF - 0B
+0000B17D: FF - D1
+0000B17E: FF - 00
+0000B17F: FF - 20
+0000B180: FF - 55
+0000B181: FF - 21
+0000B182: FF - DF
+0000B183: FF - 22
+0000B184: FF - F9
+0000B185: FF - F7
+0000B186: FF - 38
+0000B187: FF - FC
+0000B188: FF - 00
+0000B189: FF - 20
+0000B18A: FF - 00
+0000B18B: FF - 21
+0000B18C: FE - E1
+0000B18D: FE - 22
+0000B18E: FE - F9
+0000B18F: FE - F7
+0000B190: FC - 33
+0000B191: FC - FC
+0000B192: F8 - F9
+0000B193: F8 - F7
+0000B194: F0 - 4D
+0000B195: F0 - FD
+0000B196: E0 - 1F
+0000B197: E0 - BC
+0000B198: C0 - EA
+0000B199: 80 - E7
+0000B19C: 00 - E6
+0000B19D: 00 - 00
+0000B19E: 00 - 00
+0000B19F: 00 - 20
+</Data>
+</Patch>

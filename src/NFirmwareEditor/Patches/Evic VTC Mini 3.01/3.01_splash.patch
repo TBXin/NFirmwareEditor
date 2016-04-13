@@ -1,0 +1,60 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Splash Screen" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adds splash picture to the main screen, 8 s timeout by default.
+Charge Screen Mod and Dim Timeout (15 s) patches are recommended to be installed.
+Добавляет изображение-заставку 0xE3 на экран в режиме ожидания. Вывод изображения через 8 секунд по умолчанию.
+Рекомендуется установить патчи Charge Screen Mod с изображением 64x64 или 64x104 и таймаут гашения экрана 15 с.</Description>
+  <Data>
+00001090: 20 - 0A
+00001091: 78 - F0
+00001092: 20 - 90
+00001093: B1 - BF
+0000BFB4: FF - 20
+0000BFB5: FF - 78
+0000BFB6: FF - 08
+0000BFB7: FF - B9
+0000BFB8: FF - F5
+0000BFB9: FF - F7
+0000BFBA: FF - 71
+0000BFBB: FF - B8
+0000BFBC: FF - 08 ; Splash display time
+0000BFBD: FF - 28
+0000BFBE: FF - 01
+0000BFBF: FF - D0
+0000BFC0: 7F - F5
+0000BFC1: 7F - F7
+0000BFC2: 3F - 68
+0000BFC3: 3F - B8
+0000BFC4: 1F - 1F
+0000BFC5: 1F - B4
+0000BFC6: 0F - 06
+0000BFC7: 07 - 48
+0000BFC8: 03 - 00
+0000BFC9: 01 - 78
+0000BFCA: 00 - 01
+0000BFCB: 00 - 28
+0000BFCC: 00 - 06
+0000BFCD: 00 - D1
+0000BFCE: 00 - 00 ; Splash X position
+0000BFCF: 00 - 20
+0000BFD0: 00 - 00 ; Splash Y position
+0000BFD1: 00 - 21
+0000BFD2: 00 - E3 ; Splash Charcode
+0000BFD3: 00 - 22
+0000BFD4: 00 - F8
+0000BFD5: 00 - F7
+0000BFD6: 00 - A0
+0000BFD7: 00 - FE
+0000BFD8: 00 - F8
+0000BFD9: 00 - F7
+0000BFDA: 00 - BA
+0000BFDB: 00 - FF
+0000BFDC: 00 - 1F
+0000BFDD: 00 - BC
+0000BFDE: 00 - EF
+0000BFDF: 00 - E7
+0000BFE0: 00 - EA
+0000BFE1: 00 - 00
+0000BFE2: 00 - 00
+0000BFE3: 00 - 20
+</Data>
+</Patch>
