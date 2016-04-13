@@ -104,6 +104,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnWorkspaceReset()
 		{
 			PatchListView.Items.Clear();
+			DescriptionTextBox.Clear();
+			ConflictsTextBox.Clear();
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,7 +192,6 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.RollbackPatch(p, m_firmware));
-			//UpdatePatchStatuses();
 			if (result.ProceededPatches.Count > 0) m_host.ReloadFirmware(this);
 
 			var sb = new StringBuilder();
@@ -222,10 +223,29 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ReloadPatchesButton_Click(object sender, EventArgs e)
 		{
+			var selectedItem = SelectedPatch;
 			m_allPatches = m_patchManager.LoadAll();
 
 			OnWorkspaceReset();
 			OnFirmwareLoaded(m_firmware);
+
+			if (selectedItem != null)
+			{
+				var found = false;
+				foreach (ListViewItem item in PatchListView.Items)
+				{
+					var patch = item.Tag as Patch;
+					if (patch == null || !string.Equals(selectedItem.Name, patch.Name)) continue;
+
+					PatchListView.SelectedIndices.Add(item.Index);
+					found = true;
+					break;
+				}
+				if (!found && PatchListView.Items.Count > 0)
+				{
+					PatchListView.SelectedIndices.Add(0);
+				}
+			}
 
 			PatchListView.Focus();
 		}
