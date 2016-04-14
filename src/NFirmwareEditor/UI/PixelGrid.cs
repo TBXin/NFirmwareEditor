@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,6 +9,10 @@ namespace NFirmwareEditor.UI
 {
 	public sealed class PixelGrid : ScrollableControl
 	{
+		private const int StackBufferMaxSize = 128;
+		private readonly ConcurrentStack<bool[,]> m_undoBuffer = new ConcurrentStack<bool[,]>();
+		private readonly ConcurrentStack<bool[,]> m_redoBuffer = new ConcurrentStack<bool[,]>();
+
 		private bool[,] m_data = new bool[0, 0];
 		private int m_blockSize = 16;
 		private int m_colsCount;
@@ -21,6 +26,8 @@ namespace NFirmwareEditor.UI
 
 		private Rectangle m_clientArea;
 		private bool m_showGrid;
+
+		private bool[,] m_previousData;
 
 		public PixelGrid()
 		{
@@ -113,6 +120,56 @@ namespace NFirmwareEditor.UI
 
 		public event CursorPositionChangedDelegate CursorPositionChanged;
 
+		public void ClearHistory()
+		{
+			m_undoBuffer.Clear();
+			m_redoBuffer.Clear();
+			m_previousData = null;
+		}
+
+		public void CreateUndo()
+		{
+			Push(m_undoBuffer, m_data);
+		}
+
+		public void Undo()
+		{
+			if (m_undoBuffer.Count <= 0) return;
+
+			m_previousData = (bool[,])m_data.Clone();
+			if (m_undoBuffer.TryPop(out m_data))
+			{
+				Push(m_redoBuffer, m_previousData);
+				OnDataUpdated(m_data);
+				Invalidate();
+			}
+		}
+
+		public void Redo()
+		{
+			if (m_redoBuffer.Count <= 0) return;
+
+			m_previousData = (bool[,])m_data.Clone();
+			if (m_redoBuffer.TryPop(out m_data))
+			{
+				Push(m_undoBuffer, m_previousData);
+				OnDataUpdated(m_data);
+				Invalidate();
+			}
+		}
+
+		private void Push(ConcurrentStack<bool[,]> stack, bool[,] data)
+		{
+			if (data == null) return;
+
+			while (stack.Count == StackBufferMaxSize)
+			{
+				bool[,] trash;
+				stack.TryPop(out trash);
+			}
+			stack.Push(data);
+		}
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			var gfx = e.Graphics;
@@ -144,7 +201,16 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
-			if (TrySetBlockValue(e)) Invalidate();
+			m_previousData = (bool[,])m_data.Clone();
+			if (TrySetBlockValue(e))
+			{
+				Invalidate();
+			}
+		}
+
+		protected override void OnMouseUp(MouseEventArgs e)
+		{
+			Push(m_undoBuffer, m_previousData);
 		}
 
 		protected override void OnMouseMove(MouseEventArgs e)
@@ -200,17 +266,18 @@ namespace NFirmwareEditor.UI
 			}
 		}
 
-		private void DrawSelection(Graphics gfx)
+		/*private void DrawSelection(Graphics gfx)
 		{
 			if (!m_lastCursorPosition.HasValue) return;
 
 			var blockRect = new Rectangle(m_lastCursorPosition.Value.X * BlockSize, m_lastCursorPosition.Value.Y * BlockSize, BlockSize, BlockSize);
 			var horizontalRect = new Rectangle(0, m_lastCursorPosition.Value.Y * BlockSize, m_clientArea.Width, BlockSize);
 			var verticalRect = new Rectangle(m_lastCursorPosition.Value.X * BlockSize, 0, BlockSize, m_clientArea.Height);
+
 			gfx.FillRectangle(new SolidBrush(Color.FromArgb(0x20, 0x11, 0xAE, 0xDB)), horizontalRect);
 			gfx.FillRectangle(new SolidBrush(Color.FromArgb(0x20, 0x11, 0xAE, 0xDB)), verticalRect);
 			gfx.DrawRectangle(new Pen(Color.FromArgb(0xFF, 0x00, 0xAE, 0xDB)), blockRect);
-		}
+		}*/
 
 		private void DrawBorder(Graphics gfx)
 		{
@@ -256,6 +323,21 @@ namespace NFirmwareEditor.UI
 				return true;
 			}
 			return false;
+		}
+
+		internal bool[,] Clone(bool[,] imageData)
+		{
+			var width = imageData.GetLength(0);
+			var height = imageData.GetLength(1);
+			var result = new bool[width, height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					result[col, row] = imageData[col, row];
+				}
+			}
+			return result;
 		}
 
 		public delegate void DataUpdatedDelegate(bool[,] data);

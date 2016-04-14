@@ -430,6 +430,8 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\redo.png" />
     <None Include="Resources\firmware_update.png" />
     <None Include="Resources\options.png" />
     <None Include="Resources\arrow_rotate_clockwise.png" />

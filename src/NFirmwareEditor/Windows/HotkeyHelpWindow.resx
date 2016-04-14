@@ -128,6 +128,9 @@ Resize      - Ctrl + R
 Shift Up    - Ctrl + Up
 Shift Down  - Ctrl + Down
 Shift Left  - Ctrl + Left
-Shift Right - Ctrl + Right</value>
+Shift Right - Ctrl + Right
+
+Undo        - Ctrl + Z
+Redo        - Ctrl + Shift + Z</value>
   </data>
 </root>

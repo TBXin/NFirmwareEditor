@@ -134,45 +134,60 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public bool OnHotkey(Keys keyData)
 		{
-			if (!keyData.HasFlag(Keys.Control)) return false;
-
-			var key = keyData & ~Keys.Control;
-			switch (key)
+			if (ModifierKeys.HasFlag(Keys.Control))
 			{
-				case Keys.N:
-					ClearAllPixelsButton.PerformClick();
-					return true;
-				case Keys.I:
-					InverseButton.PerformClick();
-					return true;
-				case Keys.R:
-					ResizeButton.PerformClick();
-					return true;
-				case Keys.C:
-					CopyButton.PerformClick();
-					return true;
-				case Keys.V:
-					PasteButton.PerformClick();
-					return true;
-				case Keys.A:
-					ImageListBox.BeginUpdate();
-					ImageListBox.SelectedIndices.Clear();
-					ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
-					ImageListBox.EndUpdate();
-					return true;
-				case Keys.Up:
-					ShiftUpButton.PerformClick();
-					return true;
-				case Keys.Down:
-					ShiftDownButton.PerformClick();
-					return true;
-				case Keys.Left:
-					ShiftLeftButton.PerformClick();
-					return true;
-				case Keys.Right:
-					ShiftRightButton.PerformClick();
-					return true;
+				var key = keyData & ~Keys.Control;
+				switch (key)
+				{
+					case Keys.N:
+						ClearAllPixelsButton.PerformClick();
+						return true;
+					case Keys.I:
+						InverseButton.PerformClick();
+						return true;
+					case Keys.R:
+						ResizeButton.PerformClick();
+						return true;
+					case Keys.C:
+						CopyButton.PerformClick();
+						return true;
+					case Keys.V:
+						PasteButton.PerformClick();
+						return true;
+					case Keys.A:
+						ImageListBox.BeginUpdate();
+						ImageListBox.SelectedIndices.Clear();
+						ImageListBox.SelectedIndices.AddRange(Enumerable.Range(0, ImageListBox.Items.Count));
+						ImageListBox.EndUpdate();
+						return true;
+					case Keys.Up:
+						ShiftUpButton.PerformClick();
+						return true;
+					case Keys.Down:
+						ShiftDownButton.PerformClick();
+						return true;
+					case Keys.Left:
+						ShiftLeftButton.PerformClick();
+						return true;
+					case Keys.Right:
+						ShiftRightButton.PerformClick();
+						return true;
+					case Keys.Z:
+						ImagePixelGrid.Undo();
+						break;
+				}
 			}
+			if (ModifierKeys.HasFlag(Keys.Shift))
+			{
+				var key = keyData & ~(Keys.Control | Keys.Shift);
+				switch (key)
+				{
+					case Keys.Z:
+						ImagePixelGrid.Redo();
+						break;
+				}
+			}
+
 			return false;
 		}
 		#endregion
@@ -222,15 +237,19 @@ namespace NFirmwareEditor.Windows.Tabs
 			PasteButton.Click += PasteButton_Click;
 			BitmapImportButton.Click += BitmapImportButton_Click;
 
-			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
-			FlipVerticalButton.Click += FlipVerticalButton_Click;
-			RotateAntiClockwiseButton.Click += RotateAntiClockwiseButton_Click;
-			RotateClockwiseButton.Click += RotateClockwiseButton_Click;
-
 			ShiftLeftButton.Click += ShiftLeftButton_Click;
 			ShiftRightButton.Click += ShiftRightButton_Click;
 			ShiftUpButton.Click += ShiftUpButton_Click;
 			ShiftDownButton.Click += ShiftDownButton_Click;
+
+			FlipHorizontalButton.Click += FlipHorizontalButton_Click;
+			FlipVerticalButton.Click += FlipVerticalButton_Click;
+
+			UndoButton.Click += UndoButton_Click;
+			RedoButton.Click += RedoButton_Click;
+
+			RotateAntiClockwiseButton.Click += RotateAntiClockwiseButton_Click;
+			RotateClockwiseButton.Click += RotateClockwiseButton_Click;
 
 			ImageEditorHotkeyInformationButton.Click += ImageEditorHotkeyInformationButton_Click;
 
@@ -385,8 +404,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = LastSelectedImageMetadata != null ? m_firmware.ReadImage(LastSelectedImageMetadata) : new bool[5, 5];
 				m_imageListBoxIsUpdating = false;
 			}
-			else
-				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+			else ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			UpdateImageStatusLabel(LastSelectedImageMetadata);
 		}
 
@@ -402,6 +420,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 				ImagePreviewPixelGrid.BlockSize = imageSize.Height > 64 ? 1 : 2;
 				ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = image;
+				ImagePixelGrid.ClearHistory();
 			}
 			catch (Exception)
 			{
@@ -422,12 +441,16 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void ClearAllPixelsButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Clear, LastSelectedImageMetadata);
 		}
 
 		private void InvertButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.Invert, LastSelectedImageMetadata);
 		}
 
@@ -448,13 +471,29 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void FlipHorizontalButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipHorizontal, LastSelectedImageMetadata);
 		}
 
 		private void FlipVerticalButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.FlipVertical, LastSelectedImageMetadata);
+		}
+
+		private void UndoButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Undo();
+		}
+
+		private void RedoButton_Click(object sender, EventArgs e)
+		{
+			if (LastSelectedImageMetadata == null) return;
+			ImagePixelGrid.Redo();
 		}
 
 		private void RotateClockwiseButton_Click(object sender, EventArgs e)
@@ -472,24 +511,32 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void ShiftLeftButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftLeft, LastSelectedImageMetadata);
 		}
 
 		private void ShiftRightButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftRight, LastSelectedImageMetadata);
 		}
 
 		private void ShiftUpButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftUp, LastSelectedImageMetadata);
 		}
 
 		private void ShiftDownButton_Click(object sender, EventArgs e)
 		{
 			if (LastSelectedImageMetadata == null) return;
+
+			ImagePixelGrid.CreateUndo();
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(FirmwareImageProcessor.ShiftDown, LastSelectedImageMetadata);
 		}
 
