@@ -1,6 +1,33 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
+	<FirmwareDefinition Name="RX200 3.10">
+		<Marker Offset="0x90" Bytes="0x79 0x21" />
+		<Marker Offset="0xC0" Bytes="0x55 0x64" />
+		<ImageTable1>
+			<OffsetFrom>0x89B0</OffsetFrom>
+			<OffsetTo>0x8C34</OffsetTo>
+		</ImageTable1>
+		<StringTable1>
+			<OffsetFrom>0x7A38</OffsetFrom>
+			<OffsetTo>0x7B67</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="RX200 3.00 (14.04.2016)">
+		<Marker Offset="0x90" Bytes="0xE1 0x20" />
+		<ImageTable1>
+			<OffsetFrom>0x8834</OffsetFrom>
+			<OffsetTo>0x8AB0</OffsetTo>
+		</ImageTable1>
+		<StringTable1>
+			<OffsetFrom>0x78F0</OffsetFrom>
+			<OffsetTo>0x7A1F</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+	
 	<FirmwareDefinition Name="RX200 3.00">
 		<Marker Offset="0x90" Bytes="0xB5 0x20" />
 		<ImageTable1>

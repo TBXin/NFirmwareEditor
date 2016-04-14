@@ -93,12 +93,23 @@ namespace NFirmware
 
 			foreach (var definition in definitions)
 			{
-				if (definition.Marker == null || definition.Marker.Marker == null) continue;
+				var markers = definition.Markers;
+				if (markers == null || markers.Length == 0) continue;
 
-				var bytes = firmwareBytes.Skip((int)definition.Marker.Offset).Take(definition.Marker.Marker.Length).ToArray();
-				if (!definition.Marker.Marker.SequenceEqual(bytes)) continue;
+				var found = true;
+				foreach (var marker in markers)
+				{
+					if (marker.Data == null || marker.Data.Length == 0) continue;
 
-				return definition;
+					var bytes = firmwareBytes.Skip((int)marker.Offset).Take(marker.Data.Length).ToArray();
+					if (!marker.Data.SequenceEqual(bytes))
+					{
+						found = false;
+						break;
+					}
+				}
+
+				if (found) return definition;
 			}
 			return null;
 		}

@@ -9,7 +9,8 @@ namespace NFirmware
 		public string Name { get; set; }
 
 		[CanBeNull]
-		public FirmwareMarkerDefinition Marker { get; set; }
+		[XmlElement("Marker", typeof(FirmwareMarkerDefinition))]
+		public FirmwareMarkerDefinition[] Markers { get; set; }
 
 		[CanBeNull]
 		public ImageTableDefinition ImageTable1 { get; set; }
@@ -85,7 +86,7 @@ namespace NFirmware
 
 		[CanBeNull]
 		[XmlIgnore]
-		public byte[] Marker
+		public byte[] Data
 		{
 			get { return MarkerBytesString.HexStringToByteArray(); }
 		}
