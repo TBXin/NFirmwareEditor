@@ -1,5 +1,5 @@
 # NFirmwareEditor
-Firmware editor for vaping devices such as:
+Firmware editor and updater for vaping devices such as:
 
 * Joyetech: Evic VTC Mini, Cuboid;
 * Wismec: Reuleaux RX200, Presa TC75W;
@@ -11,7 +11,7 @@ Firmware editor for vaping devices such as:
 * String Editor;
 * Patcher / Patch Manager;
 * Resource Pack(s) import / export;
-* Advanced Tools: Firmware ecryptor/decryptor, Patch creator, Firmware updater (coming soon);
+* Advanced Tools: Firmware ecryptor/decryptor, Patch creator, Firmware updater;
 
 #### Links
 * [Get latest release](https://github.com/TBXin/NFirmwareEditor/releases)
