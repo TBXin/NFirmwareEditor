@@ -137,6 +137,7 @@ namespace NFirmwareEditor.Windows
 				Margin = new Padding(1, 1, 1, 0),
 				BlockSize = blockSize,
 				ShowGrid = false,
+				ReadOnly = true,
 				Data = imageData,
 				BackColor = Color.Black,
 				BlockInnerBorderPen = Pens.Transparent,
