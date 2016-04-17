@@ -174,7 +174,7 @@ namespace NFirmwareEditor.Windows.Tabs
 						return true;
 					case Keys.Z:
 						ImagePixelGrid.Undo();
-						break;
+						return true;
 				}
 			}
 			if (ModifierKeys.HasFlag(Keys.Shift))
@@ -184,7 +184,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				{
 					case Keys.Z:
 						ImagePixelGrid.Redo();
-						break;
+						return true;
 				}
 			}
 
@@ -255,6 +255,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			CopyContextMenuItem.Click += CopyButton_Click;
 			PasteContextMenuItem.Click += PasteButton_Click;
+			ImportFontMenuItem.Click += ImportFontMenuItem_Click;
 			ExportContextMenuItem.Click += ExportContextMenuItem_Click;
 		}
 
@@ -554,6 +555,28 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			var copiedImages = m_clipboardManager.GetData();
 			ImportImages(SelectedImageMetadata.Select(x => x.Index).ToList(), copiedImages);
+		}
+
+		private void ImportFontMenuItem_Click(object sender, EventArgs e)
+		{
+			if (SelectedImageMetadata.Count == 0) return;
+
+			using (var importFontWindow = new ImportFontWindow(SelectedImageMetadata))
+			{
+				if (importFontWindow.ShowDialog() != DialogResult.OK) return;
+
+				var importedData = importFontWindow.GetImportedData();
+				foreach (var imageDataTuple in importedData)
+				{
+					var metadata = imageDataTuple.Item1;
+					var imageData = imageDataTuple.Item2;
+
+					ProcessImage(x => imageData, metadata);
+				}
+				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageListBox.Invalidate();
+				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+			}
 		}
 
 		private void BitmapImportButton_Click(object sender, EventArgs eventArgs)

@@ -15,6 +15,7 @@
 		internal const string PatchFilter = "Patch file|" + PatchFileExtension;
 		internal const string ExportResourcePackFilter = "Resource packs|" + ResourcePackFileExtension;
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg";
+		internal const string FontImportFilter = "Font files|*.ttf;*.otf";
 		internal const string Encrypted = "encrypted";
 		internal const string Decrypted = "decrypted";
 		internal const string EncryptedOrDecrypted = Encrypted + " or " + Decrypted;

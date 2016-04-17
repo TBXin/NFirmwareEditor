@@ -34,6 +34,8 @@
 			this.ImageListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CopyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.PasteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.ImportFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -109,10 +111,12 @@
 			this.ImageListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CopyContextMenuItem,
             this.PasteContextMenuItem,
+            this.toolStripSeparator1,
+            this.ImportFontMenuItem,
             this.toolStripSeparator3,
             this.ExportContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(195, 76);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(195, 126);
 			// 
 			// CopyContextMenuItem
 			// 
@@ -127,6 +131,18 @@
 			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
 			this.PasteContextMenuItem.Size = new System.Drawing.Size(194, 22);
 			this.PasteContextMenuItem.Text = "Paste";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
+			// 
+			// ImportFontMenuItem
+			// 
+			this.ImportFontMenuItem.Image = global::NFirmwareEditor.Properties.Resources.import_font;
+			this.ImportFontMenuItem.Name = "ImportFontMenuItem";
+			this.ImportFontMenuItem.Size = new System.Drawing.Size(194, 22);
+			this.ImportFontMenuItem.Text = "Import Font";
 			// 
 			// toolStripSeparator3
 			// 
@@ -667,5 +683,7 @@
 		private System.Windows.Forms.Button RotateAntiClockwiseButton;
 		private System.Windows.Forms.Button RedoButton;
 		private System.Windows.Forms.Button UndoButton;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem ImportFontMenuItem;
 	}
 }

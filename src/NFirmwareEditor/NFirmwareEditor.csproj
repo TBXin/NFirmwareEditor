@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -442,6 +443,11 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\font_underline.png" />
+    <None Include="Resources\font_italic.png" />
+    <None Include="Resources\font_bold.png" />
+    <None Include="Resources\load_font.png" />
+    <None Include="Resources\import_font.png" />
     <None Include="Resources\undo.png" />
     <None Include="Resources\redo.png" />
     <None Include="Resources\firmware_update.png" />

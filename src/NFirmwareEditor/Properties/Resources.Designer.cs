@@ -203,6 +203,36 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap font_bold {
+            get {
+                object obj = ResourceManager.GetObject("font_bold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font_italic {
+            get {
+                object obj = ResourceManager.GetObject("font_italic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font_underline {
+            get {
+                object obj = ResourceManager.GetObject("font_underline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GitHub {
             get {
                 object obj = ResourceManager.GetObject("GitHub", resourceCulture);
@@ -243,6 +273,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap import_font {
+            get {
+                object obj = ResourceManager.GetObject("import_font", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap information {
             get {
                 object obj = ResourceManager.GetObject("information", resourceCulture);
@@ -256,6 +296,16 @@ namespace NFirmwareEditor.Properties {
         internal static System.Drawing.Bitmap inverse {
             get {
                 object obj = ResourceManager.GetObject("inverse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap load_font {
+            get {
+                object obj = ResourceManager.GetObject("load_font", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

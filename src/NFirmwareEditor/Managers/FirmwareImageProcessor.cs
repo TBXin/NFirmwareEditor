@@ -116,7 +116,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static bool[,] ImportBitmap([NotNull] Bitmap sourceImage)
+		public static bool[,] ImportBitmap([NotNull] Bitmap sourceImage, byte pixelMark = 0xFF)
 		{
 			if (sourceImage == null) throw new ArgumentNullException("sourceImage");
 
@@ -129,10 +129,20 @@ namespace NFirmwareEditor.Managers
 				for (var row = 0; row < height; row++)
 				{
 					var pixel = sourceImage.GetPixel(col, row);
-					result[col, row] = pixel.R == 0xFF && pixel.G == 0xFF && pixel.B == 0xFF;
+					result[col, row] = pixel.R == pixelMark && pixel.G == pixelMark && pixel.B == pixelMark;
 				}
 			}
 			return result;
+		}
+
+		public static Bitmap CropImage(Image srcImage, Rectangle cropArea)
+		{
+			var rtnImage = new Bitmap(cropArea.Width, cropArea.Height);
+			using (var gfx = Graphics.FromImage(rtnImage))
+			{
+				gfx.DrawImage(srcImage, 0, 0, cropArea, GraphicsUnit.Pixel);
+			}
+			return rtnImage;
 		}
 
 		public static bool[,] MergeImages([NotNull] List<bool[,]> imagesData)
