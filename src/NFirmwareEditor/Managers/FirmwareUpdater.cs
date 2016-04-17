@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,28 @@ namespace NFirmwareEditor.Managers
 {
 	internal class FirmwareUpdater
 	{
+		private static class Commands
+		{
+			public const byte ReadDataFlash = 0x35;
+			public const byte WriteDataFlash = 0x53;
+			public const byte ResetDataFlash = 0x7C;
+
+			public const byte WriteFirmware = 0xC3;
+			public const byte Restart = 0xB4;
+		}
+
+		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
+		{
+			{ "E052", "Joyetech eVic-VTC Mini" },
+			{ "E060", "Joyetech Cuboid" },
+			{ "M011", "Eleaf iStick TC100W" },
+			{ "W007", "Wismec Presa TC75W" },
+			{ "W010", "Vaporflask Classic" },
+			{ "W011", "Vaporflask Lite" },
+			{ "W013", "Vaporflask Stout" },
+			{ "W014", "Wismec Reuleaux RX200" }
+		};
+
 		private const int VendorId = 0x0416;
 		private const int ProductId = 0x5020;
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -69,7 +92,7 @@ namespace NFirmwareEditor.Managers
 		public DataFlash ReadDataFlash(BackgroundWorker worker = null)
 		{
 			var stream = Connect();
-			Write(stream, CreateCommand(0x35, 0, 2048));
+			Write(stream, CreateCommand(Commands.ReadDataFlash, 0, 2048));
 			var rawData = Read(stream, 2048, worker);
 
 			var checksum = BitConverter.ToInt32(rawData, 0);
@@ -93,22 +116,33 @@ namespace NFirmwareEditor.Managers
 			Buffer.BlockCopy(dataFlash.Data, 0, rawData, 4, dataFlash.Data.Length);
 
 			var stream = Connect();
-			Write(stream, CreateCommand(0x53, 0, 2048));
+			Write(stream, CreateCommand(Commands.WriteDataFlash, 0, 2048));
 			Write(stream, rawData, worker);
 		}
 
 		public void WriteFirmware(byte[] firmware, BackgroundWorker worker = null)
 		{
 			var stream = Connect();
-			Write(stream, CreateCommand(0xC3, 0, firmware.Length));
+			Write(stream, CreateCommand(Commands.WriteFirmware, 0, firmware.Length));
 			Write(stream, firmware, worker);
 		}
 
-		public void Reset()
+		public void RestartDevice()
 		{
 			var stream = Connect();
-			Write(stream, CreateCommand(0xB4, 0, 0));
+			Write(stream, CreateCommand(Commands.Restart, 0, 0));
 			Close();
+		}
+
+		public void ResetDataFlash()
+		{
+			var stream = Connect();
+			Write(stream, CreateCommand(Commands.ResetDataFlash, 0, 2048));
+		}
+
+		public static string GetDeviceName(string productId)
+		{
+			return s_deviceName.ContainsKey(productId) ? s_deviceName[productId] : "Unknown device";
 		}
 
 		private HidStream Connect()

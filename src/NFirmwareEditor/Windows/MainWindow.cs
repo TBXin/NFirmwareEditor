@@ -217,7 +217,7 @@ namespace NFirmwareEditor.Windows
 
 		private void FirmwareUpdaterMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var firmwareUpdaterWindow = new FirmwareUpdaterWindow(m_loader))
+			using (var firmwareUpdaterWindow = new FirmwareUpdaterWindow(m_firmware, m_loader))
 			{
 				firmwareUpdaterWindow.ShowDialog();
 			}
