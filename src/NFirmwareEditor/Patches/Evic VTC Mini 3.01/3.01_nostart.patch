@@ -1,0 +1,8 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Delete START Mode" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Delete START Mode from menu.
+Убирает режим START из меню.</Description>
+  <Data>
+0000186A: 07 - 06
+00004F88: 07 - 06
+</Data>
+</Patch>

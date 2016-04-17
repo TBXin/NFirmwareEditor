@@ -1,0 +1,16 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Smooth Scroll 2" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adjust scrolling speed of power and temperature. 2 speeds, 0,1 W step.
+Регулировка скорости прокрутки значений мощности и температуры. 2 скорости, шаг 0,1 Вт.</Description>
+  <Data>
+# Shift to the 2nd gear #
+00008E52: 05 - 0B ; threshold
+00008ED6: 05 - 0B ; threshold
+
+# Disable 3rd gear #
+000030DA: 69 - 0B ; must be the same as above
+
+# Repeat Delay
+000030CA: 03 - 04
+000030D4: 03 - 04
+</Data>
+</Patch>

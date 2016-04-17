@@ -1,0 +1,58 @@
+﻿<Patch Definition="RX200 3.10" Name="Splash" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adds splash picture (0xA2) to the main screen, 15 s timeout by default.
+Добавляет изображение-заставку (0xA2) на экран в режиме ожидания. Вывод изображения через 15 секунд по умолчанию.</Description>
+  <Data>
+000015D6: 4A - 07
+000015D7: 46 - F0
+000015D8: 20 - C3
+000015D9: B1 - BC
+00008F60: null - 4A
+00008F61: null - 46
+00008F62: null - 08
+00008F63: null - B9
+00008F64: null - F8
+00008F65: null - F7
+00008F66: null - 3E
+00008F67: null - BB
+00008F68: null - 0F ; Splash display time
+00008F69: null - 28
+00008F6A: null - 01
+00008F6B: null - D0
+00008F6C: null - F8
+00008F6D: null - F7
+00008F6E: null - 35
+00008F6F: null - BB
+00008F70: null - 1F
+00008F71: null - B4
+00008F72: null - 06
+00008F73: null - 48
+00008F74: null - 00
+00008F75: null - 78
+00008F76: null - 01
+00008F77: null - 28
+00008F78: null - 06
+00008F79: null - D1
+00008F7A: null - 00 ; Splash X position
+00008F7B: null - 20
+00008F7C: null - 00 ; Splash Y position
+00008F7D: null - 21
+00008F7E: null - A2 ; Splash Charcode
+00008F7F: null - 22
+00008F80: null - FB
+00008F81: null - F7
+00008F82: null - 30
+00008F83: null - FD
+00008F84: null - FB
+00008F85: null - F7
+00008F86: null - 12
+00008F87: null - FF
+00008F88: null - 1F
+00008F89: null - BC
+00008F8A: null - EF
+00008F8B: null - E7
+00008F8C: null - 55
+00008F8D: null - 00
+00008F8E: null - 00
+00008F8F: null - 20
+</Data>
+</Patch>

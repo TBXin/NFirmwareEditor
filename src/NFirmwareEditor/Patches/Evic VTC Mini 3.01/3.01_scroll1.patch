@@ -1,0 +1,83 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Smooth Scroll 1" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adjust scrolling speed of power and temperature. 3 speeds, 0,5 W max. increment and decrement.
+Регулировка скорости прокрутки значений мощности и температуры. 3 скорости, наибольший шаг 0,5 Вт.</Description>
+  <Data>
+# Increment PWR in TC #
+#00003B78: 69 - 69 ; shift to the 3rd gear
+#00003B7D: D3 - E0 ; disable fast increment
+00003B7E: 0A - 05 ; round to 5
+00003B91: EB - FB
+00003B92: 80 - 01
+00003B93: 01 - F0
+00003B94: 4F - 00
+00003B95: F6 - BF
+00003B96: FF - 00
+00003B97: 70 - BF
+00003B99: EA - BF
+00003B9A: 41 - 00
+00003B9B: 00 - BF
+00003BA4: 0A - 05 ; increment by 5
+
+# Increment POWER #
+#00003C44: 69 - 69 ; shift to the 3rd gear
+#00003C47: D3 - E0 ; disable fast increment
+00003C4A: 0A - 05 ; round to 5
+00003C5B: F0 - F3
+00003C5C: 00 - 03
+00003C5D: EB - FB
+00003C5E: 80 - 00
+00003C5F: 03 - F0
+00003C60: 4F - 00
+00003C61: F6 - BF
+00003C62: FF - 00
+00003C63: 70 - BF
+00003C65: EA - BF
+00003C66: 43 - 00
+00003C67: 00 - BF
+00003C6C: 0A - 05 ; increment by 5
+
+# Decrement PWR in TC #
+#00003DA6: 69 - 69 ; shift to the 3rd gear
+#00003DA9: D3 - E0 ; disable fast decrement
+00003DAC: 0A - 05 ; round to 5
+00003DBD: F0 - F1
+00003DBE: 00 - 01
+00003DBF: EB - FB
+00003DC0: 80 - 00
+00003DC1: 01 - F0
+00003DC2: 4F - 00
+00003DC3: F6 - BF
+00003DC4: FF - 00
+00003DC5: 70 - BF
+00003DC7: EA - BF
+00003DC8: 41 - 00
+00003DC9: 00 - BF
+00003DD2: 0A - 05 ; decrement by 5
+
+# Decrement POWER #
+#00003F12: 69 - 69 ; shift to the 3rd gear
+#00003F15: D3 - E0 ; disable fast decrement
+00003F18: 0A - 05 ; round to 5
+00003F29: F0 - F3
+00003F2A: 00 - 03
+00003F2B: EB - FB
+00003F2C: 80 - 00
+00003F2D: 03 - F0
+00003F2E: 4F - 00
+00003F2F: F6 - BF
+00003F30: FF - 00
+00003F31: 70 - BF
+00003F33: EA - BF
+00003F34: 43 - 00
+00003F35: 00 - BF
+00003F3E: 0A - 05 ; decrement by 5
+
+# Shift to the 2nd gear #
+00008E52: 05 - 0B ; threshold
+00008ED6: 05 - 0B ; threshold
+
+# Repeat Delay
+000030CA: 03 - 04
+000030D4: 03 - 04
+</Data>
+</Patch>
