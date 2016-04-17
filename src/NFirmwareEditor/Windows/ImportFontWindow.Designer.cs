@@ -53,6 +53,7 @@
 			this.FontPreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
 			this.label1 = new System.Windows.Forms.Label();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.label3 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeUpDown)).BeginInit();
@@ -68,6 +69,7 @@
 			this.ControlBorderedPanel.BorderRight = false;
 			this.ControlBorderedPanel.BorderTop = true;
 			this.ControlBorderedPanel.BorderWidth = 1F;
+			this.ControlBorderedPanel.Controls.Add(this.label3);
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -359,6 +361,20 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Font size:";
 			// 
+			// label3
+			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.Location = new System.Drawing.Point(4, 4);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(614, 36);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Ctrl + Left / Right / Up / Down - Shift glyphs\r\nCtrl + Plus / Minus - Change font" +
+    " size";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// ImportFontWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,5 +423,6 @@
 		private System.Windows.Forms.Button LowerAZButton;
 		private System.Windows.Forms.Button ZeroNineButton;
 		private System.Windows.Forms.ToolTip MainToolTip;
+		private System.Windows.Forms.Label label3;
 	}
 }
