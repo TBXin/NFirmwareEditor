@@ -73,6 +73,9 @@
     <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Models\ResourcePack.cs" />
     <Compile Include="Models\ResourcePackFile.cs" />
+    <Compile Include="UI\DrawingSurface.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
@@ -109,6 +112,12 @@
     </Compile>
     <Compile Include="Windows\HotkeyHelpWindow.Designer.cs">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ImportFontWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ImportFontWindow.Designer.cs">
+      <DependentUpon>ImportFontWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\PatchCreatorWindow.cs">
       <SubType>Form</SubType>
@@ -189,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\HotkeyHelpWindow.resx">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ImportFontWindow.resx">
+      <DependentUpon>ImportFontWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\PreviewResourcePackWindow.resx">
       <DependentUpon>PreviewResourcePackWindow.cs</DependentUpon>
