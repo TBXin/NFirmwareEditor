@@ -63,7 +63,7 @@
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 162);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(446, 44);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(425, 44);
 			this.ControlBorderedPanel.TabIndex = 2;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
@@ -83,7 +83,7 @@
 			this.UpdateButton.Enabled = false;
 			this.UpdateButton.Location = new System.Drawing.Point(109, 5);
 			this.UpdateButton.Name = "UpdateButton";
-			this.UpdateButton.Size = new System.Drawing.Size(121, 35);
+			this.UpdateButton.Size = new System.Drawing.Size(100, 35);
 			this.UpdateButton.TabIndex = 1;
 			this.UpdateButton.Text = "Update";
 			this.UpdateButton.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
 			// 
 			this.UpdateFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateFromFileButton.Enabled = false;
-			this.UpdateFromFileButton.Location = new System.Drawing.Point(236, 5);
+			this.UpdateFromFileButton.Location = new System.Drawing.Point(215, 5);
 			this.UpdateFromFileButton.Name = "UpdateFromFileButton";
 			this.UpdateFromFileButton.Size = new System.Drawing.Size(100, 35);
 			this.UpdateFromFileButton.TabIndex = 2;
@@ -103,7 +103,7 @@
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(342, 5);
+			this.CancelButton.Location = new System.Drawing.Point(321, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
 			this.CancelButton.TabIndex = 3;
@@ -122,7 +122,7 @@
 			this.groupBox1.Controls.Add(this.DeviceNameTextBox);
 			this.groupBox1.Location = new System.Drawing.Point(3, 1);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(440, 101);
+			this.groupBox1.Size = new System.Drawing.Size(419, 101);
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Device info:";
@@ -142,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.HardwareVersionTextBox.Location = new System.Drawing.Point(106, 74);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(329, 21);
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(308, 21);
 			this.HardwareVersionTextBox.TabIndex = 21;
 			this.HardwareVersionTextBox.TabStop = false;
 			// 
@@ -161,7 +161,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 47);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(329, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(308, 21);
 			this.FirmwareVersionTextBox.TabIndex = 20;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
@@ -180,7 +180,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DeviceNameTextBox.Location = new System.Drawing.Point(106, 20);
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
-			this.DeviceNameTextBox.Size = new System.Drawing.Size(329, 21);
+			this.DeviceNameTextBox.Size = new System.Drawing.Size(308, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
 			this.DeviceNameTextBox.TabStop = false;
 			// 
@@ -190,7 +190,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateProgressBar.Location = new System.Drawing.Point(3, 128);
 			this.UpdateProgressBar.Name = "UpdateProgressBar";
-			this.UpdateProgressBar.Size = new System.Drawing.Size(440, 30);
+			this.UpdateProgressBar.Size = new System.Drawing.Size(419, 30);
 			this.UpdateProgressBar.TabIndex = 4;
 			// 
 			// UpdateStatusLabel
@@ -199,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 105);
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-			this.UpdateStatusLabel.Size = new System.Drawing.Size(440, 20);
+			this.UpdateStatusLabel.Size = new System.Drawing.Size(419, 20);
 			this.UpdateStatusLabel.TabIndex = 5;
 			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -207,7 +207,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(446, 206);
+			this.ClientSize = new System.Drawing.Size(425, 206);
 			this.ControlBox = false;
 			this.Controls.Add(this.UpdateStatusLabel);
 			this.Controls.Add(this.UpdateProgressBar);
