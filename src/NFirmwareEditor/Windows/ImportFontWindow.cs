@@ -26,15 +26,24 @@ namespace NFirmwareEditor.Windows
 
 			public FirmwareImageMetadata Metadata { get; private set; }
 
+			public bool IsSelected { get; set; }
+
+			public bool IsPreSelected { get; set; }
+
 			public Rectangle Rect { get; private set; }
 
-			public string Char { get; set; }
+			public int LetterOffsetX { get; set; }
+
+			public int LetterOffsetY { get; set; }
+
+			public string Letter { get; set; }
 		}
 
 		private const int PixelMultiplier = 10;
 		private const int Offset = 2;
 
 		private readonly IList<LetterBox> m_letters = new List<LetterBox>();
+		private LetterBox m_selectedLetterBox;
 
 		private TextureBrush m_fontPreviewBackgroundBrush;
 		private Font m_font = new Font("Tahoma", 8);
@@ -42,8 +51,6 @@ namespace NFirmwareEditor.Windows
 		private string m_fontName;
 		private float m_fontSize;
 		private FontStyle m_fontStyle;
-		private int m_letterOffsetX;
-		private int m_letterOffsetY;
 
 		public ImportFontWindow()
 		{
@@ -135,8 +142,10 @@ namespace NFirmwareEditor.Windows
 			UpperAZButton.Click += (s, e) => LettersTextBox.Text = GetLetters('A', 'Z');
 
 			OkButton.Click += OkButton_Click;
-			FontPreviewSurface.Paint += FontPreviewSurface_Paint;
 			FontPreviewSurface.Resize += (s, e) => FontPreviewSurface.Invalidate();
+			FontPreviewSurface.MouseDown += FontPreviewSurface_MouseDown;
+			FontPreviewSurface.MouseMove += FontPreviewSurface_MouseMove;
+			FontPreviewSurface.Paint += FontPreviewSurface_Paint;
 
 			m_fontName = FontComboBox.Text;
 			m_fontSize = (float)FontSizeUpDown.Value;
@@ -239,7 +248,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (string.IsNullOrEmpty(LettersTextBox.Text))
 			{
-				m_letters.ForEach(x => x.Char = string.Empty);
+				m_letters.ForEach(x => x.Letter = string.Empty);
 				OkButton.Enabled = false;
 			}
 			else
@@ -248,12 +257,12 @@ namespace NFirmwareEditor.Windows
 				var minCount = Math.Min(m_letters.Count, letters.Length);
 				for (var i = 0; i < minCount; i++)
 				{
-					m_letters[i].Char = letters[i].ToString();
+					m_letters[i].Letter = letters[i].ToString();
 				}
 
 				if (letters.Length < m_letters.Count)
 				{
-					m_letters.Skip(letters.Length).ForEach(x => x.Char = string.Empty);
+					m_letters.Skip(letters.Length).ForEach(x => x.Letter = string.Empty);
 				}
 
 				OkButton.Enabled = true;
@@ -263,11 +272,20 @@ namespace NFirmwareEditor.Windows
 
 		private void AdjustFontPosition(object sender, EventArgs e)
 		{
-			if (sender == ShiftUpButton) m_letterOffsetY--;
-			if (sender == ShiftDownButton) m_letterOffsetY++;
-			if (sender == ShiftLeftButton) m_letterOffsetX--;
-			if (sender == ShiftRightButton) m_letterOffsetX++;
-
+			if (m_selectedLetterBox == null)
+			{
+				if (sender == ShiftUpButton) m_letters.ForEach(x => x.LetterOffsetY--);
+				if (sender == ShiftDownButton) m_letters.ForEach(x => x.LetterOffsetY++);
+				if (sender == ShiftLeftButton) m_letters.ForEach(x => x.LetterOffsetX--);
+				if (sender == ShiftRightButton) m_letters.ForEach(x => x.LetterOffsetX++);
+			}
+			else
+			{
+				if (sender == ShiftUpButton) m_selectedLetterBox.LetterOffsetY--;
+				if (sender == ShiftDownButton) m_selectedLetterBox.LetterOffsetY++;
+				if (sender == ShiftLeftButton)m_selectedLetterBox.LetterOffsetX--;
+				if (sender == ShiftRightButton) m_selectedLetterBox.LetterOffsetX++;
+			}
 			FontPreviewSurface.Invalidate();
 		}
 
@@ -283,12 +301,12 @@ namespace NFirmwareEditor.Windows
 					foreach (var letterBox in m_letters)
 					{
 						gfx.FillRectangle(Brushes.White, letterBox.Rect);
-						gfx.DrawRectangle(Pens.LightGray, letterBox.Rect);
+						gfx.DrawRectangle(letterBox.IsSelected ? Pens.DeepSkyBlue : letterBox.IsPreSelected ? Pens.LightBlue : Pens.LightGray, letterBox.Rect);
 
-						if (string.IsNullOrEmpty(letterBox.Char)) continue;
+						if (string.IsNullOrEmpty(letterBox.Letter)) continue;
 						try
 						{
-							gfx.DrawString(letterBox.Char, m_font, Brushes.Black, letterBox.Rect.X + m_letterOffsetX, letterBox.Rect.Y + m_letterOffsetY, StringFormat.GenericTypographic);
+							gfx.DrawString(letterBox.Letter, m_font, Brushes.Black, letterBox.Rect.X + letterBox.LetterOffsetX, letterBox.Rect.Y + letterBox.LetterOffsetY, StringFormat.GenericTypographic);
 						}
 						catch
 						{
@@ -300,9 +318,74 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private Point GetRelativeMouseLocation(Point location, ScrollableControl control)
+		{
+			var relativeX = location.X + control.HorizontalScroll.Value;
+			var relativeY = location.Y + control.VerticalScroll.Value;
+
+			return new Point
+			(
+				(int)Math.Floor((float)relativeX / PixelMultiplier), 
+				(int)Math.Floor((float)relativeY / PixelMultiplier)
+			);
+		}
+
 		private void OkButton_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
+		}
+
+		private void FontPreviewSurface_MouseMove(object sender, MouseEventArgs e)
+		{
+			var position = GetRelativeMouseLocation(e.Location, FontPreviewSurface);
+
+			var needToInvalidate = false;
+			foreach (var letterBox in m_letters)
+			{
+				if (letterBox.Rect.Contains(position))
+				{
+					if (!letterBox.IsPreSelected)
+					{
+						letterBox.IsPreSelected = true;
+						needToInvalidate = true;
+					}
+				}
+				else
+				{
+					if (letterBox.IsPreSelected) needToInvalidate = true;
+					letterBox.IsPreSelected = false;
+				}
+			}
+
+			if (needToInvalidate) FontPreviewSurface.Invalidate();
+		}
+
+		private void FontPreviewSurface_MouseDown(object sender, MouseEventArgs e)
+		{
+			var position = GetRelativeMouseLocation(e.Location, FontPreviewSurface);
+
+			var selectedLetterBox = (LetterBox)null;
+			foreach (var letterBox in m_letters)
+			{
+				if (letterBox.Rect.Contains(position))
+				{
+					if (!letterBox.IsSelected)
+					{
+						letterBox.IsSelected = true;
+						selectedLetterBox = letterBox;
+					}
+					else
+					{
+						letterBox.IsSelected = false;
+					}
+				}
+				else
+				{
+					letterBox.IsSelected = false;
+				}
+			}
+			m_selectedLetterBox = selectedLetterBox;
+			FontPreviewSurface.Invalidate();
 		}
 
 		private void FontPreviewSurface_Paint(object sender, PaintEventArgs e)
