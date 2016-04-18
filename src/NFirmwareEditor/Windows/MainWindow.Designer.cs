@@ -36,7 +36,7 @@
 			this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
-			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
@@ -114,7 +114,7 @@
 			// MainStatusStrip
 			// 
 			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusLabel,
+            this.LoadedFirmwareLabel,
             this.CursorPositionLabel});
 			this.MainStatusStrip.Location = new System.Drawing.Point(0, 539);
 			this.MainStatusStrip.Name = "MainStatusStrip";
@@ -122,11 +122,11 @@
 			this.MainStatusStrip.TabIndex = 4;
 			this.MainStatusStrip.Text = "statusStrip1";
 			// 
-			// StatusLabel
+			// LoadedFirmwareLabel
 			// 
-			this.StatusLabel.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.StatusLabel.Name = "StatusLabel";
-			this.StatusLabel.Size = new System.Drawing.Size(0, 17);
+			this.LoadedFirmwareLabel.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.LoadedFirmwareLabel.Name = "LoadedFirmwareLabel";
+			this.LoadedFirmwareLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// CursorPositionLabel
 			// 
@@ -282,7 +282,7 @@
 		private System.Windows.Forms.ToolStripMenuItem SaveDecryptedMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.StatusStrip MainStatusStrip;
-		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
+		private System.Windows.Forms.ToolStripStatusLabel LoadedFirmwareLabel;
 		private System.Windows.Forms.ToolStripMenuItem ToolsMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem EncryptDecryptMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;

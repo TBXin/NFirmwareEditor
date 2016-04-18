@@ -19,7 +19,7 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public Firmware TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
+		public FirmwareLoadResult TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (definitions == null) throw new ArgumentNullException("definitions");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
@@ -28,28 +28,24 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public Firmware TryLoad([NotNull] byte[] firmwareBytes, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
+		public FirmwareLoadResult TryLoad([NotNull] byte[] firmwareBytes, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (definitions == null) throw new ArgumentNullException("definitions");
 
-			var bytes = DecryptIfNecessary(firmwareBytes);
+			bool wasEncrypted;
+			var bytes = DecryptIfNecessary(firmwareBytes, out wasEncrypted);
 			var definition = DetermineDefinition(bytes, definitions);
-			return definition != null ? Load(bytes, definition) : null;
+			if (definition == null) return null;
+
+			var firmware = Load(bytes, definition);
+			return new FirmwareLoadResult(firmware, wasEncrypted);
 		}
 
 		[CanBeNull]
-		public Firmware TryLoadUsingDefinition([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
+		public FirmwareLoadResult TryLoadUsingDefinition([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
 		{
-			var bytes = LoadFile(filePath);
-			try
-			{
-				return Load(bytes, definition);
-			}
-			catch
-			{
-				return null;
-			}
+			return TryLoad(filePath, new[] { definition });
 		}
 
 		public void SaveEncrypted([NotNull] string filePath, [NotNull] Firmware firmware)
@@ -67,13 +63,14 @@ namespace NFirmware
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
 			var data = File.ReadAllBytes(filePath);
-			return DecryptIfNecessary(data);
+			bool wasEncrytpted;
+			return DecryptIfNecessary(data, out wasEncrytpted);
 		}
 
-		private byte[] DecryptIfNecessary(byte[] firmwareBytes)
+		private byte[] DecryptIfNecessary(byte[] firmwareBytes, out bool wasEncrypted)
 		{
-			var decode = IsFirmwareEncrypted(firmwareBytes);
-			return decode ? m_encoder.Decode(firmwareBytes) : firmwareBytes;
+			wasEncrypted = IsFirmwareEncrypted(firmwareBytes);
+			return wasEncrypted ? m_encoder.Decode(firmwareBytes) : firmwareBytes;
 		}
 
 		private void Save([NotNull] string filePath, Firmware firmware, bool encode)

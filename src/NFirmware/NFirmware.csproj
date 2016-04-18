@@ -58,6 +58,7 @@
     <Compile Include="FirmwareStream.cs" />
     <Compile Include="FirmwareStringMetadata.cs" />
     <Compile Include="FirmwareStringBlocks.cs" />
+    <Compile Include="FirmwareLoadResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

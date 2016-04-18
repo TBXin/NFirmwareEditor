@@ -74,7 +74,7 @@ namespace NFirmwareEditor.Windows
 		{
 			m_tabPages.ForEach(x => x.OnWorkspaceReset());
 
-			StatusLabel.Text = null;
+			LoadedFirmwareLabel.Text = null;
 			MainTabControl.SelectedIndex = 0;
 
 			SaveEncryptedMenuItem.Enabled = false;
@@ -105,7 +105,7 @@ namespace NFirmwareEditor.Windows
 			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, FirmwareLoadResult> readFirmwareDelegate)
 		{
 			string firmwareFile;
 			using (var op = new OpenFileDialog { Title = string.Format("Select \"{0}\" firmware file ...", firmwareName), Filter = Consts.FirmwareFilter })
@@ -117,11 +117,13 @@ namespace NFirmwareEditor.Windows
 			ResetWorkspace();
 			try
 			{
-				m_firmware = readFirmwareDelegate(firmwareFile);
-				if (m_firmware == null)
+				var result = readFirmwareDelegate(firmwareFile);
+				if (result == null)
 				{
 					throw new InvalidOperationException("No one definition is not appropriate for the selected firmware file.");
 				}
+
+				m_firmware = result.Firmware;
 
 				ImageCacheManager.RebuildImageCache(m_firmware);
 				m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
@@ -130,7 +132,7 @@ namespace NFirmwareEditor.Windows
 				SaveDecryptedMenuItem.Enabled = true;
 
 				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				StatusLabel.Text = string.Format("Firmware loaded successfully. Used definition: {0}.", m_firmware.Definition.Name);
+				LoadedFirmwareLabel.Text = string.Format("Loaded firmware: {0} {1}", result.IsEncrypted ? Consts.Encrypted : Consts.Decrypted, m_firmware.Definition.Name);
 			}
 			catch (Exception ex)
 			{
@@ -152,7 +154,6 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				writeFirmwareDelegate(firmwareFile, m_firmware);
-				StatusLabel.Text = @"Firmware successfully saved to the file: " + firmwareFile;
 			}
 			catch (Exception ex)
 			{
