@@ -72,7 +72,7 @@ namespace NFirmwareEditor.Windows
 			Closing += (s, e) =>
 			{
 				if (!m_tabPages.Any(x => x.IsDirty)) return;
-				if (InfoBox.Show("You have unsaved changes, are you sure you want to close the application?", MessageBoxButtons.YesNo) != DialogResult.No) return;
+				if (InfoBox.Show("You have unsaved changes, are you sure that you want to close the application?", MessageBoxButtons.YesNo) != DialogResult.No) return;
 
 				e.Cancel = true;
 			};
