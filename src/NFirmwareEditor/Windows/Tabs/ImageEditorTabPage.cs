@@ -91,6 +91,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 
 		#region Implementation of IEditorTabPage
+		public bool IsDirty { get; set; }
+
 		public string Title
 		{
 			get { return "Images"; }
@@ -367,6 +369,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				updateCache.BeginInvoke(null, null);
 			}
 
+			IsDirty = true;
 			return processedData;
 		}
 

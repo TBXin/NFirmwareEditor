@@ -7,6 +7,7 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	internal interface IEditorTabPage
 	{
+		bool IsDirty { get; set; }
 		string Title { get; }
 		void Initialize([NotNull] IEditorTabPageHost host, [NotNull] Configuration configuration);
 		void OnWorkspaceReset();

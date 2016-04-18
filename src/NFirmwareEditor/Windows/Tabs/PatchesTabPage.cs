@@ -58,6 +58,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return PatchListView.SelectedItems.Count == 0 ? null : PatchListView.SelectedItems[0].Tag as Patch; }
 		}
 
+		public bool IsDirty { get; set; }
+
 		public string Title
 		{
 			get { return "Patches"; }
@@ -162,6 +164,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				{
 					sb.AppendLine(" - " + patch.Name);
 				}
+				IsDirty = true;
 			}
 			if (result.ConflictedPatches.Count > 0)
 			{
@@ -204,6 +207,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				{
 					sb.AppendLine(" - " + patch.Name);
 				}
+				IsDirty = true;
 			}
 			if (result.ConflictedPatches.Count > 0)
 			{

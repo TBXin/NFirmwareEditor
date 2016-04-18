@@ -50,6 +50,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 
 		#region Implementation of IEditorTabPage
+		public bool IsDirty { get; set; }
+
 		public string Title
 		{
 			get { return "Resource Packs"; }
@@ -143,6 +145,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				}
 			}
 
+			IsDirty = true;
 			ImageCacheManager.RebuildImageCache(m_firmware);
 		}
 

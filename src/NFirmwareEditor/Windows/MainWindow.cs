@@ -68,6 +68,14 @@ namespace NFirmwareEditor.Windows
 
 				editorTabPage.OnActivate();
 			};
+
+			Closing += (s, e) =>
+			{
+				if (!m_tabPages.Any(x => x.IsDirty)) return;
+				if (InfoBox.Show("You have unsaved changes, are you sure you want to close the application?", MessageBoxButtons.YesNo) != DialogResult.No) return;
+
+				e.Cancel = true;
+			};
 		}
 
 		private void ResetWorkspace()
@@ -126,7 +134,11 @@ namespace NFirmwareEditor.Windows
 				m_firmware = result.Firmware;
 
 				ImageCacheManager.RebuildImageCache(m_firmware);
-				m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
+				m_tabPages.ForEach(x =>
+				{
+					x.OnFirmwareLoaded(m_firmware);
+					x.IsDirty = false;
+				});
 
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
@@ -154,6 +166,7 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				writeFirmwareDelegate(firmwareFile, m_firmware);
+				m_tabPages.ForEach(x => x.IsDirty = false);
 			}
 			catch (Exception ex)
 			{

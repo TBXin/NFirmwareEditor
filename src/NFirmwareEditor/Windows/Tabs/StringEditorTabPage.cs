@@ -65,6 +65,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		}
 
 		#region Implementation of IEditorTabPage
+		public bool IsDirty { get; set; }
+
 		public string Title
 		{
 			get { return "Strings"; }
@@ -284,6 +286,8 @@ namespace NFirmwareEditor.Windows.Tabs
 					relatedIcb.Enabled = true;
 				}
 			}
+
+			IsDirty = true;
 		}
 
 		private void Icb_DrawItem(object sender, DrawItemEventArgs e)
