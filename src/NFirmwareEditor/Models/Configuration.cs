@@ -9,6 +9,7 @@
 			GridSize = 16;
 			ShowGid = true;
 			ImageEditorMouseMode = ImageEditorMouseMode.LeftSetRightUnset;
+			CreateBackupBeforeSaving = true;
 		}
 
 		public int MainWindowWidth { get; set; }
@@ -22,6 +23,8 @@
 		public int GridSize { get; set; }
 
 		public ImageEditorMouseMode ImageEditorMouseMode { get; set; }
+
+		public bool CreateBackupBeforeSaving { get; set; }
 	}
 
 	public enum ImageEditorMouseMode

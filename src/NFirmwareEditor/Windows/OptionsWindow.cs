@@ -42,6 +42,7 @@ namespace NFirmwareEditor.Windows
 				ImageEditorModeComboBox.SelectedItem = item;
 				break;
 			}
+			CreateBackupCheckBox.Checked = m_configuration.CreateBackupBeforeSaving;
 		}
 
 		private void OkButton_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace NFirmwareEditor.Windows
 			if (editorModeItem == null) return;
 
 			m_configuration.ImageEditorMouseMode = editorModeItem.Mode;
+			m_configuration.CreateBackupBeforeSaving = CreateBackupCheckBox.Checked;
 			DialogResult = DialogResult.OK;
 		}
 

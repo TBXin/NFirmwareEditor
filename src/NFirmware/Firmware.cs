@@ -13,7 +13,14 @@ namespace NFirmware
 		private FirmwareImageBlocks m_imageBlocks;
 		private FirmwareStringBlocks m_stringBlocks;
 
-		internal Firmware([NotNull] byte[] body, [NotNull] FirmwareImageBlocks imageBlocks, [NotNull] FirmwareStringBlocks stringBlocks, [NotNull] FirmwareDefinition definition)
+		internal Firmware
+		(
+			[NotNull] byte[] body, 
+			[NotNull] FirmwareImageBlocks imageBlocks, 
+			[NotNull] FirmwareStringBlocks stringBlocks, 
+			[NotNull] FirmwareDefinition definition,
+			bool isEncrypted
+		)
 		{
 			if (body == null) throw new ArgumentNullException("body");
 			if (imageBlocks == null) throw new ArgumentNullException("imageBlocks");
@@ -21,6 +28,7 @@ namespace NFirmware
 			if (definition == null) throw new ArgumentNullException("definition");
 
 			Definition = definition;
+			IsEncrypted = isEncrypted;
 			m_bodyStream = new FirmwareStream(body);
 			m_imageBlocks = imageBlocks;
 			m_stringBlocks = stringBlocks;
@@ -34,6 +42,8 @@ namespace NFirmware
 
 		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
+
+		public bool IsEncrypted { get; private set; }
 
 		[NotNull, ItemNotNull]
 		public IEnumerable<FirmwareImageMetadata> Block1Images

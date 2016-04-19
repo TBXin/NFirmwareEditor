@@ -19,7 +19,7 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public FirmwareLoadResult TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
+		public Firmware TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (definitions == null) throw new ArgumentNullException("definitions");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
@@ -28,7 +28,7 @@ namespace NFirmware
 		}
 
 		[CanBeNull]
-		public FirmwareLoadResult TryLoad([NotNull] byte[] firmwareBytes, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
+		public Firmware TryLoad([NotNull] byte[] firmwareBytes, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (definitions == null) throw new ArgumentNullException("definitions");
@@ -36,14 +36,13 @@ namespace NFirmware
 			bool wasEncrypted;
 			var bytes = DecryptIfNecessary(firmwareBytes, out wasEncrypted);
 			var definition = DetermineDefinition(bytes, definitions);
-			if (definition == null) return null;
-
-			var firmware = Load(bytes, definition);
-			return new FirmwareLoadResult(firmware, wasEncrypted);
+			return definition == null
+				? null
+				: Load(bytes, definition, wasEncrypted);
 		}
 
 		[CanBeNull]
-		public FirmwareLoadResult TryLoadUsingDefinition([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
+		public Firmware TryLoadUsingDefinition([NotNull] string filePath, [NotNull] FirmwareDefinition definition)
 		{
 			return TryLoad(filePath, new[] { definition });
 		}
@@ -120,14 +119,14 @@ namespace NFirmware
 			return idx == -1;
 		}
 
-		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition)
+		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition, bool isEncrypted)
 		{
 			if (data == null) throw new ArgumentNullException("data");
 			if (definition == null) throw new ArgumentNullException("definition");
 
 			var imageBlocks = LoadImageBlocks(data, definition);
 			var stringBlocks = LoadStringBlocks(data, definition);
-			return new Firmware(data, imageBlocks, stringBlocks, definition);
+			return new Firmware(data, imageBlocks, stringBlocks, definition, isEncrypted);
 		}
 
 		internal FirmwareImageBlocks LoadImageBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)

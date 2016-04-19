@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using NFirmware;
@@ -23,6 +24,7 @@ namespace NFirmwareEditor.Windows
 		private Configuration m_configuration;
 		private IEnumerable<FirmwareDefinition> m_definitions;
 		private Firmware m_firmware;
+		private string m_firmwareFile;
 
 		public MainWindow()
 		{
@@ -68,14 +70,6 @@ namespace NFirmwareEditor.Windows
 
 				editorTabPage.OnActivate();
 			};
-
-			Closing += (s, e) =>
-			{
-				if (!m_tabPages.Any(x => x.IsDirty)) return;
-				if (InfoBox.Show("You have unsaved changes, are you sure that you want to close the application?", MessageBoxButtons.YesNo) != DialogResult.No) return;
-
-				e.Cancel = true;
-			};
 		}
 
 		private void ResetWorkspace()
@@ -85,6 +79,7 @@ namespace NFirmwareEditor.Windows
 			LoadedFirmwareLabel.Text = null;
 			MainTabControl.SelectedIndex = 0;
 
+			SaveMenuItem.Enabled = false;
 			SaveEncryptedMenuItem.Enabled = false;
 			SaveDecryptedMenuItem.Enabled = false;
 		}
@@ -113,7 +108,7 @@ namespace NFirmwareEditor.Windows
 			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, FirmwareLoadResult> readFirmwareDelegate)
+		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
 		{
 			string firmwareFile;
 			using (var op = new OpenFileDialog { Title = string.Format("Select \"{0}\" firmware file ...", firmwareName), Filter = Consts.FirmwareFilter })
@@ -125,13 +120,14 @@ namespace NFirmwareEditor.Windows
 			ResetWorkspace();
 			try
 			{
-				var result = readFirmwareDelegate(firmwareFile);
-				if (result == null)
+				var firmware = readFirmwareDelegate(firmwareFile);
+				if (firmware == null)
 				{
 					throw new InvalidOperationException("No one definition is not appropriate for the selected firmware file.");
 				}
 
-				m_firmware = result.Firmware;
+				m_firmware = firmware;
+				m_firmwareFile = firmwareFile;
 
 				ImageCacheManager.RebuildImageCache(m_firmware);
 				m_tabPages.ForEach(x =>
@@ -140,11 +136,12 @@ namespace NFirmwareEditor.Windows
 					x.IsDirty = false;
 				});
 
+				SaveMenuItem.Enabled = true;
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
 
 				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				LoadedFirmwareLabel.Text = string.Format("Loaded firmware: {0} {1}", result.IsEncrypted ? Consts.Encrypted : Consts.Decrypted, m_firmware.Definition.Name);
+				LoadedFirmwareLabel.Text = string.Format("Loaded firmware: {0} {1}", firmware.IsEncrypted ? Consts.Encrypted : Consts.Decrypted, m_firmware.Definition.Name);
 			}
 			catch (Exception ex)
 			{
@@ -176,6 +173,14 @@ namespace NFirmwareEditor.Windows
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			if (m_tabPages.Any(x => x.IsDirty))
+			{
+				if (InfoBox.Show("You have unsaved changes, are you sure that you want to close the application?", MessageBoxButtons.YesNo) == DialogResult.No)
+				{
+					e.Cancel = true;
+					return;
+				}
+			}
 			m_configurationManager.Save(m_configuration);
 		}
 
@@ -196,6 +201,32 @@ namespace NFirmwareEditor.Windows
 		private void OpenMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenDialogAndReadFirmwareOnOk(Consts.EncryptedOrDecrypted, fileName => m_loader.TryLoad(fileName, m_definitions));
+		}
+
+
+		private void SaveMenuItem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (m_configuration.CreateBackupBeforeSaving)
+				{
+					var fi = new FileInfo(m_firmwareFile);
+					var backupFileName = Path.GetFileNameWithoutExtension(m_firmwareFile) + "_backup" + fi.Extension;
+					var backupFilePath = string.IsNullOrEmpty(fi.DirectoryName) 
+						? backupFileName 
+						: Path.Combine(fi.DirectoryName, backupFileName);
+
+					File.Copy(m_firmwareFile, backupFilePath, true);
+				}
+
+				if (m_firmware.IsEncrypted) m_loader.SaveEncrypted(m_firmwareFile, m_firmware);
+				else if (m_firmware.IsEncrypted == false) m_loader.SaveDecrypted(m_firmwareFile, m_firmware);
+				m_tabPages.ForEach(x => x.IsDirty = false);
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("Unable to save firmware.\n{0}", ex.Message);
+			}
 		}
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
@@ -265,15 +296,19 @@ namespace NFirmwareEditor.Windows
 					OpenMenuItem.PerformClick();
 					return true;
 				}
-
-				if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
+				if (keyData.HasFlag(Keys.Alt) && keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
 				{
 					SaveDecryptedMenuItem.PerformClick();
 					return true;
 				}
-				if (keyData.HasFlag(Keys.S))
+				if (keyData.HasFlag(Keys.Shift) && keyData.HasFlag(Keys.S))
 				{
 					SaveEncryptedMenuItem.PerformClick();
+					return true;
+				}
+				if (keyData.HasFlag(Keys.S))
+				{
+					SaveMenuItem.PerformClick();
 					return true;
 				}
 			}
