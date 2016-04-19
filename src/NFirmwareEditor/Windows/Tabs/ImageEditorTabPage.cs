@@ -601,8 +601,8 @@ namespace NFirmwareEditor.Windows.Tabs
 							return;
 						}
 						var imageData = FirmwareImageProcessor.ImportBitmap(bitmap);
-						ProcessImage(x => imageData, LastSelectedImageMetadata, true);
-						ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+						ImagePixelGrid.CreateUndo();
+						ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
 					}
 				}
 				catch (Exception ex)
