@@ -593,7 +593,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				try
 				{
 					var bitmapFile = op.FileName;
-					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile, true))
+					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile))
 					{
 						if (bitmap.Width > Consts.MaximumImageWidthAndHeight || bitmap.Height > Consts.MaximumImageWidthAndHeight)
 						{

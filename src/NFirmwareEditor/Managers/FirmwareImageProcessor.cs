@@ -129,7 +129,9 @@ namespace NFirmwareEditor.Managers
 				for (var row = 0; row < height; row++)
 				{
 					var pixel = sourceImage.GetPixel(col, row);
-					result[col, row] = pixel.R == pixelMark && pixel.G == pixelMark && pixel.B == pixelMark;
+					result[col, row] = Math.Abs(pixel.R - pixelMark) < 10
+					                   && Math.Abs(pixel.G - pixelMark) < 10
+					                   && Math.Abs(pixel.B - pixelMark) < 10;
 				}
 			}
 			return result;
