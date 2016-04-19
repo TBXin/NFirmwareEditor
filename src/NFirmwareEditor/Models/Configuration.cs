@@ -9,7 +9,7 @@
 			GridSize = 16;
 			ShowGid = true;
 			ImageEditorMouseMode = ImageEditorMouseMode.LeftSetRightUnset;
-			CreateBackupBeforeSaving = true;
+			BackupCreationMode = BackupCreationMode.Extended;
 		}
 
 		public int MainWindowWidth { get; set; }
@@ -24,12 +24,19 @@
 
 		public ImageEditorMouseMode ImageEditorMouseMode { get; set; }
 
-		public bool CreateBackupBeforeSaving { get; set; }
+		public BackupCreationMode BackupCreationMode { get; set; }
 	}
 
 	public enum ImageEditorMouseMode
 	{
 		LeftSetRightUnset,
 		LeftSetUnset
+	}
+
+	public enum BackupCreationMode
+	{
+		Disabled,
+		Simple,
+		Extended
 	}
 }

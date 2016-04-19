@@ -20,6 +20,7 @@ namespace NFirmwareEditor.Windows
 		private readonly ResourcePackManager m_resourcePackManager = new ResourcePackManager();
 		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
+		private readonly BackupManager m_backupManager = new BackupManager();
 
 		private Configuration m_configuration;
 		private IEnumerable<FirmwareDefinition> m_definitions;
@@ -208,19 +209,15 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				if (m_configuration.CreateBackupBeforeSaving)
+				m_backupManager.CreateBackup(m_firmwareFile, m_configuration.BackupCreationMode);
+				if (m_firmware.IsEncrypted)
 				{
-					var fi = new FileInfo(m_firmwareFile);
-					var backupFileName = Path.GetFileNameWithoutExtension(m_firmwareFile) + "_backup" + fi.Extension;
-					var backupFilePath = string.IsNullOrEmpty(fi.DirectoryName) 
-						? backupFileName 
-						: Path.Combine(fi.DirectoryName, backupFileName);
-
-					File.Copy(m_firmwareFile, backupFilePath, true);
+					m_loader.SaveEncrypted(m_firmwareFile, m_firmware);
 				}
-
-				if (m_firmware.IsEncrypted) m_loader.SaveEncrypted(m_firmwareFile, m_firmware);
-				else if (m_firmware.IsEncrypted == false) m_loader.SaveDecrypted(m_firmwareFile, m_firmware);
+				else if (m_firmware.IsEncrypted == false)
+				{
+					m_loader.SaveDecrypted(m_firmwareFile, m_firmware);
+				}
 				m_tabPages.ForEach(x => x.IsDirty = false);
 			}
 			catch (Exception ex)

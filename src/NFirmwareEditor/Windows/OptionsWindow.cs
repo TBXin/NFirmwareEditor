@@ -18,8 +18,15 @@ namespace NFirmwareEditor.Windows
 
 			ImageEditorModeComboBox.Items.AddRange(new object[]
 			{
-				new ImageEditorModeComboBoxItem("LMB sets the pixel, RMB resets", ImageEditorMouseMode.LeftSetRightUnset),
-				new ImageEditorModeComboBoxItem("LMB sets or resets the pixel", ImageEditorMouseMode.LeftSetUnset)
+				new NamedComboBoxItem<ImageEditorMouseMode>("LMB sets the pixel, RMB resets", ImageEditorMouseMode.LeftSetRightUnset),
+				new NamedComboBoxItem<ImageEditorMouseMode>("LMB sets or resets the pixel", ImageEditorMouseMode.LeftSetUnset)
+			});
+
+			BackupModeComboBox.Items.AddRange(new object[]
+			{
+				new NamedComboBoxItem<BackupCreationMode>("Disabled (do not create backups)", BackupCreationMode.Disabled),
+				new NamedComboBoxItem<BackupCreationMode>("Simple (overwrites backup file on each save)", BackupCreationMode.Simple),
+				new NamedComboBoxItem<BackupCreationMode>("Extended (stores backups with unique names in the separate directory)", BackupCreationMode.Extended)
 			});
 
 			OkButton.Click += OkButton_Click;
@@ -35,42 +42,50 @@ namespace NFirmwareEditor.Windows
 
 		private void LoadSettings()
 		{
-			foreach (var item in ImageEditorModeComboBox.Items.Cast<ImageEditorModeComboBoxItem>())
+			foreach (var item in ImageEditorModeComboBox.Items.Cast<NamedComboBoxItem<ImageEditorMouseMode>>())
 			{
-				if (item.Mode != m_configuration.ImageEditorMouseMode) continue;
+				if (item.Data != m_configuration.ImageEditorMouseMode) continue;
 
 				ImageEditorModeComboBox.SelectedItem = item;
 				break;
 			}
-			CreateBackupCheckBox.Checked = m_configuration.CreateBackupBeforeSaving;
+			foreach (var item in BackupModeComboBox.Items.Cast<NamedComboBoxItem<BackupCreationMode>>())
+			{
+				if (item.Data != m_configuration.BackupCreationMode) continue;
+
+				BackupModeComboBox.SelectedItem = item;
+				break;
+			}
 		}
 
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			var editorModeItem = ImageEditorModeComboBox.SelectedItem as ImageEditorModeComboBoxItem;
-			if (editorModeItem == null) return;
-
-			m_configuration.ImageEditorMouseMode = editorModeItem.Mode;
-			m_configuration.CreateBackupBeforeSaving = CreateBackupCheckBox.Checked;
+			var editorModeItem = ImageEditorModeComboBox.SelectedItem as NamedComboBoxItem<ImageEditorMouseMode>;
+			if (editorModeItem != null)
+			{
+				m_configuration.ImageEditorMouseMode = editorModeItem.Data;
+			}
+			var backupModeItem = BackupModeComboBox.SelectedItem as NamedComboBoxItem<BackupCreationMode>;
+			if (backupModeItem != null)
+			{
+				m_configuration.BackupCreationMode = backupModeItem.Data;
+			}
 			DialogResult = DialogResult.OK;
 		}
 
-		private class ImageEditorModeComboBoxItem
+		private class NamedComboBoxItem<T>
 		{
-			/// <summary>
-			/// Initializes a new instance of the <see cref="T:System.Object"/> class.
-			/// </summary>
-			public ImageEditorModeComboBoxItem(string name, ImageEditorMouseMode mode)
+			public NamedComboBoxItem(string name, T data)
 			{
 				if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
 
 				Name = name;
-				Mode = mode;
+				Data = data;
 			}
 
 			private string Name { get; set; }
 
-			public ImageEditorMouseMode Mode { get; private set; }
+			public T Data { get; private set; }
 
 			public override string ToString()
 			{
