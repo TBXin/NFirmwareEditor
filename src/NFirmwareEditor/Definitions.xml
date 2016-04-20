@@ -127,6 +127,28 @@
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid Mini 3.00">
+		<Marker Offset="0x90" Bytes="0x15 0x1D" />
+		<Marker Offset="0xC0" Bytes="0xB5 0x75" />
+		<ImageTable1>
+			<OffsetFrom>0xBD90</OffsetFrom>
+			<OffsetTo>0xC118</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA4E0</OffsetFrom>
+			<OffsetTo>0xA868</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xC21C</OffsetFrom>
+			<OffsetTo>0xC352</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x8C5E</OffsetFrom>
+			<OffsetTo>0x8CB3</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Evic VTC Mini 3.02">
 		<Marker Offset="0x90" Bytes="0x01 0x1E" />
 		<ImageTable1>
