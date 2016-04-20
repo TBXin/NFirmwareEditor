@@ -24,6 +24,7 @@ namespace NFirmwareEditor.Managers
 		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
 		{
 			{ "E052", "Joyetech eVic-VTC Mini" },
+			{ "E056", "Joyetech Cuboid Mini" },
 			{ "E060", "Joyetech Cuboid" },
 			{ "M011", "Eleaf iStick TC100W" },
 			{ "W007", "Wismec Presa TC75W" },
