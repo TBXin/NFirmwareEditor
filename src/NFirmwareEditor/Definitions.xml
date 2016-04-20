@@ -127,6 +127,27 @@
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Evic VTC Mini 3.02">
+		<Marker Offset="0x90" Bytes="0x01 0x1E" />
+		<ImageTable1>
+			<OffsetFrom>0xC6C0</OffsetFrom>
+			<OffsetTo>0xCA48</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xAE10</OffsetFrom>
+			<OffsetTo>0xB198</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xCB4C</OffsetFrom>
+			<OffsetTo>0xCC9F</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x958E</OffsetFrom>
+			<OffsetTo>0x95E3</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x7B 0x7C 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+	
 	<FirmwareDefinition Name="Evic VTC Mini 3.01">
 		<Marker Offset="0x90" Bytes="0x99 0x1D" />
 		<ImageTable1>
