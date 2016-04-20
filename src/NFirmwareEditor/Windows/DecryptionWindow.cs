@@ -72,7 +72,7 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				m_encoder.WriteFile(DestinationTextBox.Text, m_source);
+				File.WriteAllBytes(DestinationTextBox.Text, m_encoder.Encode(m_source));
 				InfoBox.Show(string.Format("Firmware successfully {0}!", m_sourceEncrypted ? Consts.Decrypted : Consts.Encrypted));
 			}
 			catch (Exception ex)

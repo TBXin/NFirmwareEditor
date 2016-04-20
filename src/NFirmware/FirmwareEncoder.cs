@@ -14,7 +14,7 @@ namespace NFirmware
 			var result = new byte[bytes.Length];
 			for (var i = 0; i < bytes.Length; i++)
 			{
-				result[i] = (byte)((bytes[i] ^ (i + bytes.Length + MagicNumber - bytes.Length / MagicNumber)) & 0xFF);
+				result[i] = (byte)(bytes[i] ^ GenFunction(bytes.Length, i) & 0xFF);
 			}
 			return result;
 		}
@@ -25,20 +25,9 @@ namespace NFirmware
 			return Encode(bytes);
 		}
 
-		public byte[] ReadFile(string filePath, bool decode = true)
+		private static int GenFunction(int fileSize, int index)
 		{
-			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
-
-			var rawBytes = File.ReadAllBytes(filePath);
-			return decode ? Decode(rawBytes) : rawBytes;
-		}
-
-		public void WriteFile(string filePath, byte[] data, bool encode = true)
-		{
-			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
-			if (data == null) throw new ArgumentNullException("data");
-
-			File.WriteAllBytes(filePath, encode ? Encode(data) : data);
+			return fileSize + MagicNumber + index - fileSize / MagicNumber;
 		}
 	}
 }
