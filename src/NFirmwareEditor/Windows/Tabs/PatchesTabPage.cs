@@ -32,7 +32,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			PatchListView.Resize += (s, e) =>
 			{
-				NameColumnHeader.Width = PatchListView.Width -
+				NameColumnHeader.Width = PatchListView.ClientRectangle.Width -
 				                         VersionColumnHeader.Width -
 				                         InstalledColumnHeader.Width -
 				                         CompatibleColumnHeader.Width - 1;

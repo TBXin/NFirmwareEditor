@@ -30,7 +30,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ResourcePackListView.Resize += (s, e) =>
 			{
-				NameColumnHeader.Width = ResourcePackListView.Width - VersionColumnHeader.Width - 1;
+				NameColumnHeader.Width = ResourcePackListView.ClientRectangle.Width - VersionColumnHeader.Width - 1;
 			};
 			ResourcePackListView.SelectedIndexChanged += ResourcePackListView_SelectedIndexChanged;
 			ResourcePackListView.ItemActivate += ResourcePackListView_ItemActivate;
