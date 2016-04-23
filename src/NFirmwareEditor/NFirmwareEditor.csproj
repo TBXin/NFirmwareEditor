@@ -413,10 +413,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ResourcePacks\Cuboid 3.02\3.02_Cuboid_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ResourcePacks\Cuboid 3.12\3.12_Cuboid_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\Evic VTC Mini 3.01\3.01_Evic_Vtc_Mini_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Evic VTC Mini 3.02\3.02_EvicVtcMini_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_default.respack">
