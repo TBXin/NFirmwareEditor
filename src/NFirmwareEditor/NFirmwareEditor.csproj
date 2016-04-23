@@ -437,6 +437,9 @@
     <None Include="ResourcePacks\RX200 3.00\3.00_RX200_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ResourcePacks\RX200 3.10\3.10_RX200_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\Vaporflask Classic 2.00\2.00_Vaporflask_Classic_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
