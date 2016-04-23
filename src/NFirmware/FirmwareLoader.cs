@@ -174,7 +174,6 @@ namespace NFirmware
 				{
 					var imageTableOffset = reader.BaseStream.Position;
 					var imageDataOffset = reader.ReadUInt32();
-					if (imageDataOffset == 0) continue;
 
 					offsetsTable.Add(new Tuple<long, long>(imageTableOffset, imageDataOffset));
 				}
@@ -183,6 +182,7 @@ namespace NFirmware
 				{
 					var imageTableOffset = offsetsTable[i].Item1;
 					var imageDataOffset = offsetsTable[i].Item2;
+					if (imageDataOffset == 0) continue;
 
 					reader.BaseStream.Seek(imageDataOffset, SeekOrigin.Begin);
 					result.Add(new T().ReadMetadata(reader, imageTableOffset, i + 1));

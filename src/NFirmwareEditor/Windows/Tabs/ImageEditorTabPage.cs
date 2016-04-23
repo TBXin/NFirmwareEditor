@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -291,56 +290,48 @@ namespace NFirmwareEditor.Windows.Tabs
 				allowResizeOriginalImages = importWindow.AllowResizeOriginalImages;
 			}
 
+			var block1MetadataDictionary = m_firmware.Block1Images.ToDictionary(x => x.Index, x => x);
+			var block2MetadataDictionary = m_firmware.Block2Images.ToDictionary(x => x.Index, x => x);
+
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
 				var index = i;
 				var originalImageIndex = originalImageIndices[index];
 				var importedImage = importedImages[index];
+
 				if (importMode == ImageImportMode.Block1)
 				{
-					var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndex);
-					if (allowResizeOriginalImages)
-					{
-						ProcessImage(x => importedImage, block1ImageMetadata);
-					}
-					else
-					{
-						ProcessImage(x=> FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage), block1ImageMetadata);
-					}
+					ImportBlockImage(block1MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 				else if (importMode == ImageImportMode.Block2)
 				{
-					var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndex);
-					if (allowResizeOriginalImages)
-					{
-						ProcessImage(x => importedImage, block2ImageMetadata);
-					}
-					else
-					{
-						ProcessImage(x => FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage), block2ImageMetadata);
-					}
+					ImportBlockImage(block2MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 				else
 				{
-					var block1ImageMetadata = m_firmware.Block1Images.First(x => x.Index == originalImageIndex);
-					var block2ImageMetadata = m_firmware.Block2Images.First(x => x.Index == originalImageIndex);
-
-					if (allowResizeOriginalImages)
-					{
-						ProcessImage(x => importedImage, block1ImageMetadata);
-						ProcessImage(x => importedImage, block2ImageMetadata);
-					}
-					else
-					{
-						ProcessImage(x => FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage), block1ImageMetadata);
-						ProcessImage(x => FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage), block2ImageMetadata);
-					}
+					ImportBlockImage(block1MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
+					ImportBlockImage(block2MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 			}
 
 			ImageCacheManager.RebuildImageCache(m_firmware);
 			ImageListBox.Invalidate();
 			ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
+		}
+
+		private void ImportBlockImage(IDictionary<int, FirmwareImageMetadata> blockMetadataDictionary, int imageIndex, bool[,] importedImage, bool allowResizeOriginalImages)
+		{
+			FirmwareImageMetadata imageMetadata;
+			if (!blockMetadataDictionary.TryGetValue(imageIndex, out imageMetadata)) return;
+
+			if (allowResizeOriginalImages)
+			{
+				ProcessImage(x => importedImage, imageMetadata);
+			}
+			else
+			{
+				ProcessImage(x => FirmwareImageProcessor.PasteImage(imageMetadata.CreateImage(), importedImage), imageMetadata);
+			}
 		}
 
 		private bool[,] ProcessImage(Func<bool[,], bool[,]> imageDataProcessor, FirmwareImageMetadata imageMetadata, bool rebuildCache = false)

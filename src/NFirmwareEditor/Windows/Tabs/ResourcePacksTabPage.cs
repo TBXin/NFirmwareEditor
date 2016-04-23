@@ -132,16 +132,22 @@ namespace NFirmwareEditor.Windows.Tabs
 
 				if (block1MetadataDictionary.Count > 0)
 				{
-					var block1ImageMetadata = block1MetadataDictionary[originalImageIndex];
-					var block1Image = FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage);
-					m_firmware.WriteImage(block1Image, block1ImageMetadata);
+					FirmwareImageMetadata block1ImageMetadata;
+					if (block1MetadataDictionary.TryGetValue(originalImageIndex, out block1ImageMetadata))
+					{
+						var block1Image = FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage);
+						m_firmware.WriteImage(block1Image, block1ImageMetadata);
+					}
 				}
 
 				if (block2MetadataDictionary.Count > 0)
 				{
-					var block2ImageMetadata = block2MetadataDictionary[originalImageIndex];
-					var block2Image = FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage);
-					m_firmware.WriteImage(block2Image, block2ImageMetadata);
+					FirmwareImageMetadata block2ImageMetadata;
+					if (block2MetadataDictionary.TryGetValue(originalImageIndex, out block2ImageMetadata))
+					{
+						var block2Image = FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage);
+						m_firmware.WriteImage(block2Image, block2ImageMetadata);
+					}
 				}
 			}
 
