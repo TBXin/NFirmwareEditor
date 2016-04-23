@@ -122,14 +122,14 @@
 			// 
 			// CopyContextMenuItem
 			// 
-			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_copy;
 			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
 			this.CopyContextMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.CopyContextMenuItem.Text = "Copy";
 			// 
 			// PasteContextMenuItem
 			// 
-			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_paste;
 			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
 			this.PasteContextMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.PasteContextMenuItem.Text = "Paste";
@@ -141,7 +141,7 @@
 			// 
 			// ImportFontMenuItem
 			// 
-			this.ImportFontMenuItem.Image = global::NFirmwareEditor.Properties.Resources.import_font;
+			this.ImportFontMenuItem.Image = global::NFirmwareEditor.Properties.Resources.font_import;
 			this.ImportFontMenuItem.Name = "ImportFontMenuItem";
 			this.ImportFontMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.ImportFontMenuItem.Text = "Import Font";
@@ -167,7 +167,7 @@
 			// 
 			// RedoButton
 			// 
-			this.RedoButton.Image = global::NFirmwareEditor.Properties.Resources.redo;
+			this.RedoButton.Image = global::NFirmwareEditor.Properties.Resources.editor_redo;
 			this.RedoButton.Location = new System.Drawing.Point(510, 3);
 			this.RedoButton.Name = "RedoButton";
 			this.RedoButton.Size = new System.Drawing.Size(24, 24);
@@ -178,7 +178,7 @@
 			// 
 			// UndoButton
 			// 
-			this.UndoButton.Image = global::NFirmwareEditor.Properties.Resources.undo;
+			this.UndoButton.Image = global::NFirmwareEditor.Properties.Resources.editor_undo;
 			this.UndoButton.Location = new System.Drawing.Point(487, 3);
 			this.UndoButton.Name = "UndoButton";
 			this.UndoButton.Size = new System.Drawing.Size(24, 24);
@@ -247,7 +247,7 @@
 			// 
 			// FlipVerticalButton
 			// 
-			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_vertical;
+			this.FlipVerticalButton.Image = global::NFirmwareEditor.Properties.Resources.image_flip_vertical;
 			this.FlipVerticalButton.Location = new System.Drawing.Point(460, 3);
 			this.FlipVerticalButton.Name = "FlipVerticalButton";
 			this.FlipVerticalButton.Size = new System.Drawing.Size(24, 24);
@@ -258,7 +258,7 @@
 			// 
 			// FlipHorizontalButton
 			// 
-			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.flip_horizontal;
+			this.FlipHorizontalButton.Image = global::NFirmwareEditor.Properties.Resources.image_flip_horizontal;
 			this.FlipHorizontalButton.Location = new System.Drawing.Point(437, 3);
 			this.FlipHorizontalButton.Name = "FlipHorizontalButton";
 			this.FlipHorizontalButton.Size = new System.Drawing.Size(24, 24);
@@ -269,7 +269,7 @@
 			// 
 			// PasteButton
 			// 
-			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.paste;
+			this.PasteButton.Image = global::NFirmwareEditor.Properties.Resources.image_paste;
 			this.PasteButton.Location = new System.Drawing.Point(285, 3);
 			this.PasteButton.Name = "PasteButton";
 			this.PasteButton.Size = new System.Drawing.Size(24, 24);
@@ -280,7 +280,7 @@
 			// 
 			// CopyButton
 			// 
-			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.copy;
+			this.CopyButton.Image = global::NFirmwareEditor.Properties.Resources.image_copy;
 			this.CopyButton.Location = new System.Drawing.Point(262, 3);
 			this.CopyButton.Name = "CopyButton";
 			this.CopyButton.Size = new System.Drawing.Size(24, 24);
@@ -291,7 +291,7 @@
 			// 
 			// InverseButton
 			// 
-			this.InverseButton.Image = global::NFirmwareEditor.Properties.Resources.inverse;
+			this.InverseButton.Image = global::NFirmwareEditor.Properties.Resources.image_inverse;
 			this.InverseButton.Location = new System.Drawing.Point(209, 3);
 			this.InverseButton.Name = "InverseButton";
 			this.InverseButton.Size = new System.Drawing.Size(24, 24);
@@ -302,7 +302,7 @@
 			// 
 			// ClearAllPixelsButton
 			// 
-			this.ClearAllPixelsButton.Image = global::NFirmwareEditor.Properties.Resources._new;
+			this.ClearAllPixelsButton.Image = global::NFirmwareEditor.Properties.Resources.image_clear;
 			this.ClearAllPixelsButton.Location = new System.Drawing.Point(186, 3);
 			this.ClearAllPixelsButton.Name = "ClearAllPixelsButton";
 			this.ClearAllPixelsButton.Size = new System.Drawing.Size(24, 24);

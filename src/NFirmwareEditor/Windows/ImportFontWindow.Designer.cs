@@ -210,7 +210,7 @@
 			// 
 			// LoadFontButton
 			// 
-			this.LoadFontButton.Image = global::NFirmwareEditor.Properties.Resources.load_font;
+			this.LoadFontButton.Image = global::NFirmwareEditor.Properties.Resources.font_load;
 			this.LoadFontButton.Location = new System.Drawing.Point(273, 4);
 			this.LoadFontButton.Name = "LoadFontButton";
 			this.LoadFontButton.Size = new System.Drawing.Size(24, 23);
