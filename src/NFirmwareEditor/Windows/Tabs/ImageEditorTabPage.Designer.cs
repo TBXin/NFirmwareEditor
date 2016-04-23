@@ -37,7 +37,8 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ImportFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.ExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExportBitmapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExportResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.RedoButton = new System.Windows.Forms.Button();
 			this.UndoButton = new System.Windows.Forms.Button();
@@ -114,47 +115,55 @@
             this.toolStripSeparator1,
             this.ImportFontMenuItem,
             this.toolStripSeparator3,
-            this.ExportContextMenuItem});
+            this.ExportBitmapMenuItem,
+            this.ExportResourcePackContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(195, 126);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(187, 126);
 			// 
 			// CopyContextMenuItem
 			// 
 			this.CopyContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.copy;
 			this.CopyContextMenuItem.Name = "CopyContextMenuItem";
-			this.CopyContextMenuItem.Size = new System.Drawing.Size(194, 22);
+			this.CopyContextMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.CopyContextMenuItem.Text = "Copy";
 			// 
 			// PasteContextMenuItem
 			// 
 			this.PasteContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.paste;
 			this.PasteContextMenuItem.Name = "PasteContextMenuItem";
-			this.PasteContextMenuItem.Size = new System.Drawing.Size(194, 22);
+			this.PasteContextMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.PasteContextMenuItem.Text = "Paste";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
 			// 
 			// ImportFontMenuItem
 			// 
 			this.ImportFontMenuItem.Image = global::NFirmwareEditor.Properties.Resources.import_font;
 			this.ImportFontMenuItem.Name = "ImportFontMenuItem";
-			this.ImportFontMenuItem.Size = new System.Drawing.Size(194, 22);
+			this.ImportFontMenuItem.Size = new System.Drawing.Size(186, 22);
 			this.ImportFontMenuItem.Text = "Import Font";
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(191, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(183, 6);
 			// 
-			// ExportContextMenuItem
+			// ExportBitmapMenuItem
 			// 
-			this.ExportContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
-			this.ExportContextMenuItem.Name = "ExportContextMenuItem";
-			this.ExportContextMenuItem.Size = new System.Drawing.Size(194, 22);
-			this.ExportContextMenuItem.Text = "Resource Pack - Export";
+			this.ExportBitmapMenuItem.Image = global::NFirmwareEditor.Properties.Resources.bitmap_import;
+			this.ExportBitmapMenuItem.Name = "ExportBitmapMenuItem";
+			this.ExportBitmapMenuItem.Size = new System.Drawing.Size(186, 22);
+			this.ExportBitmapMenuItem.Text = "Export Bitmap(s)";
+			// 
+			// ExportResourcePackContextMenuItem
+			// 
+			this.ExportResourcePackContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
+			this.ExportResourcePackContextMenuItem.Name = "ExportResourcePackContextMenuItem";
+			this.ExportResourcePackContextMenuItem.Size = new System.Drawing.Size(186, 22);
+			this.ExportResourcePackContextMenuItem.Text = "Export Resource Pack";
 			// 
 			// RedoButton
 			// 
@@ -671,7 +680,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CopyContextMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem PasteContextMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripMenuItem ExportContextMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ExportResourcePackContextMenuItem;
 		private System.Windows.Forms.Button ImageEditorHotkeyInformationButton;
 		private System.Windows.Forms.StatusStrip ImageEditorStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
@@ -685,5 +694,6 @@
 		private System.Windows.Forms.Button UndoButton;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem ImportFontMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ExportBitmapMenuItem;
 	}
 }

@@ -8,6 +8,7 @@
 
 		internal const string PatchFileExtensionWoAsterisk = ".patch";
 		internal const string ResourcePackFileExtensionWoAsterisk = ".respack";
+		internal const string BitmapFileExtensionWoAsterisk = ".bmp";
 		internal const string PatchFileExtension = "*" + PatchFileExtensionWoAsterisk;
 		internal const string ResourcePackFileExtension = "*" + ResourcePackFileExtensionWoAsterisk;
 

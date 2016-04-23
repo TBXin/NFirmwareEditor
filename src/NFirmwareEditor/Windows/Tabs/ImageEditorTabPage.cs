@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -258,7 +261,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			CopyContextMenuItem.Click += CopyButton_Click;
 			PasteContextMenuItem.Click += PasteButton_Click;
 			ImportFontMenuItem.Click += ImportFontMenuItem_Click;
-			ExportContextMenuItem.Click += ExportContextMenuItem_Click;
+			ExportBitmapMenuItem.Click += ExportBitmapMenuItem_Click;
+			ExportResourcePackContextMenuItem.Click += ExportResourcePackContextMenuItem_Click;
 		}
 
 		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages)
@@ -625,7 +629,36 @@ namespace NFirmwareEditor.Windows.Tabs
 			new HotkeyHelpWindow().ShowDialog();
 		}
 
-		private void ExportContextMenuItem_Click(object sender, EventArgs e)
+		private void ExportBitmapMenuItem_Click(object sender, EventArgs e)
+		{
+			if (SelectedImageMetadata.Count == 0) return;
+
+			string directoryPath;
+			using (var fb = new FolderBrowserDialog())
+			{
+				if (fb.ShowDialog() != DialogResult.OK) return;
+				directoryPath = fb.SelectedPath;
+			}
+
+			var exportData = SelectedImageMetadata.Select(x => new { Metadata = x, ImageData = m_firmware.ReadImage(x) });
+			foreach (var data in exportData)
+			{
+				try
+				{
+					using (var image = FirmwareImageProcessor.CreateBitmap(data.ImageData, 1))
+					{
+						var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + Consts.BitmapFileExtensionWoAsterisk);
+						image.Save(fileName, ImageFormat.Bmp);
+					}
+				}
+				catch
+				{
+					// Ignore
+				}
+			}
+		}
+
+		private void ExportResourcePackContextMenuItem_Click(object sender, EventArgs e)
 		{
 			if (SelectedImageMetadata.Count == 0) return;
 
