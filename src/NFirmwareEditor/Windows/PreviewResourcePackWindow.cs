@@ -129,7 +129,7 @@ namespace NFirmwareEditor.Windows
 		private PixelGrid CreateGrid(bool[,] imageData)
 		{
 			var imageSize = imageData.GetSize();
-			var blockSize = imageSize.Height > 64 ? 1 : 2;
+			var blockSize = imageSize.Height > 64 || imageSize.Width > 64 ? 1 : 2;
 			return new PixelGrid
 			{
 				Width = 132,
