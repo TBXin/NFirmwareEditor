@@ -56,6 +56,9 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeControls()
 		{
+			LoadedFirmwareLabel.Text = null;
+			StatusLabel.Text = null;
+
 			foreach (var tabPage in m_tabPages)
 			{
 				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
@@ -76,7 +79,9 @@ namespace NFirmwareEditor.Windows
 		{
 			m_tabPages.ForEach(x => x.OnWorkspaceReset());
 
+			StatusLabel.Text = null;
 			LoadedFirmwareLabel.Text = null;
+
 			MainTabControl.SelectedIndex = 0;
 
 			SaveMenuItem.Enabled = false;
@@ -141,7 +146,8 @@ namespace NFirmwareEditor.Windows
 				SaveDecryptedMenuItem.Enabled = true;
 
 				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				LoadedFirmwareLabel.Text = string.Format("Loaded firmware: {0} {1}", firmware.IsEncrypted ? Consts.Encrypted : Consts.Decrypted, m_firmware.Definition.Name);
+				LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, firmware.IsEncrypted ? "Encrypted" : "Decrypted");
+				StatusLabel.Text = @"Firmware file has been successfully loaded.";
 			}
 			catch (Exception ex)
 			{
@@ -164,6 +170,7 @@ namespace NFirmwareEditor.Windows
 			{
 				writeFirmwareDelegate(firmwareFile, m_firmware);
 				m_tabPages.ForEach(x => x.IsDirty = false);
+				StatusLabel.Text = @"Firmware file saved to " + firmwareFile;
 			}
 			catch (Exception ex)
 			{
@@ -218,6 +225,7 @@ namespace NFirmwareEditor.Windows
 					m_loader.SaveDecrypted(m_firmwareFile, m_firmware);
 				}
 				m_tabPages.ForEach(x => x.IsDirty = false);
+				StatusLabel.Text = @"Firmware file saved.";
 			}
 			catch (Exception ex)
 			{

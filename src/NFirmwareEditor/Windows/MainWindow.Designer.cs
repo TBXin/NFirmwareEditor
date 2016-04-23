@@ -47,8 +47,8 @@
 			this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
+			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.MainMenuStrip.SuspendLayout();
@@ -208,24 +208,28 @@
 			// MainStatusStrip
 			// 
 			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LoadedFirmwareLabel,
-            this.CursorPositionLabel});
+            this.StatusLabel,
+            this.LoadedFirmwareLabel});
 			this.MainStatusStrip.Location = new System.Drawing.Point(0, 539);
 			this.MainStatusStrip.Name = "MainStatusStrip";
 			this.MainStatusStrip.Size = new System.Drawing.Size(784, 22);
 			this.MainStatusStrip.TabIndex = 4;
 			this.MainStatusStrip.Text = "statusStrip1";
 			// 
+			// StatusLabel
+			// 
+			this.StatusLabel.Name = "StatusLabel";
+			this.StatusLabel.Size = new System.Drawing.Size(682, 17);
+			this.StatusLabel.Spring = true;
+			this.StatusLabel.Text = "Status";
+			this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// LoadedFirmwareLabel
 			// 
 			this.LoadedFirmwareLabel.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.LoadedFirmwareLabel.Name = "LoadedFirmwareLabel";
-			this.LoadedFirmwareLabel.Size = new System.Drawing.Size(0, 17);
-			// 
-			// CursorPositionLabel
-			// 
-			this.CursorPositionLabel.Name = "CursorPositionLabel";
-			this.CursorPositionLabel.Size = new System.Drawing.Size(0, 17);
+			this.LoadedFirmwareLabel.Size = new System.Drawing.Size(87, 17);
+			this.LoadedFirmwareLabel.Text = "Loaded firmware";
 			// 
 			// borderedPanel1
 			// 
@@ -298,7 +302,6 @@
 		private System.Windows.Forms.ToolStripMenuItem ToolsMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem EncryptDecryptMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
-		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
 		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
 		private UI.BorderedPanel borderedPanel1;
@@ -307,6 +310,7 @@
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 	}
 }
 

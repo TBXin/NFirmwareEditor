@@ -118,6 +118,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block2ImageRadioButton.Enabled = false;
 			Block1ImageRadioButton.Checked = false;
 			Block2ImageRadioButton.Checked = false;
+
+			ImageSizeLabel.Text = null;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = new bool[5, 5];
 		}
 
