@@ -82,12 +82,14 @@ namespace NFirmwareEditor.Managers
 
 		public void StartMonitoring()
 		{
-			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromSeconds(1));
+			m_isDeviceConnected = null;
+			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
 		}
 
 		public void StopMonitoring()
 		{
 			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
+			m_isDeviceConnected = null;
 		}
 
 		public DataFlash ReadDataFlash(BackgroundWorker worker = null)

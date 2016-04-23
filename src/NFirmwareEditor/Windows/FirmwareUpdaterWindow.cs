@@ -37,6 +37,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (isConnected)
 			{
+				System.Diagnostics.Trace.WriteLine("Connected " + DateTime.Now);
 				var dataflash = m_updater.ReadDataFlash();
 				m_connectedDeviceProductId = dataflash.ProductId;
 				var deviceName = FirmwareUpdater.GetDeviceName(m_connectedDeviceProductId);
@@ -51,6 +52,7 @@ namespace NFirmwareEditor.Windows
 			}
 			else
 			{
+				System.Diagnostics.Trace.WriteLine("Disconnected " + DateTime.Now);
 				UpdateUI(() =>
 				{
 					DeviceNameTextBox.Clear();
@@ -152,6 +154,7 @@ namespace NFirmwareEditor.Windows
 		{
 			var worker = (BackgroundWorker)sender;
 			var firmware = (byte[])e.Argument;
+			var isSuccess = false;
 
 			try
 			{
@@ -172,9 +175,10 @@ namespace NFirmwareEditor.Windows
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
 				m_updater.WriteFirmware(firmware, worker);
 
-				Thread.Sleep(500);
 				UpdateUI(() => UpdateStatusLabel.Text = string.Empty);
-				InfoBox.Show("Firmware successfully updated.");
+				isSuccess = true;
+
+				Thread.Sleep(500);
 			}
 			catch (Exception ex)
 			{
@@ -184,6 +188,11 @@ namespace NFirmwareEditor.Windows
 			{
 				UpdateUI(() => SetAllButtonsState(true));
 				m_updater.StartMonitoring();
+
+				if (isSuccess)
+				{
+					InfoBox.Show("Firmware successfully updated.");
+				}
 			}
 		}
 
