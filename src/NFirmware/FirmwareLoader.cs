@@ -168,20 +168,24 @@ namespace NFirmware
 
 			var result = new List<FirmwareImageMetadata>();
 			{
-				var offsetsTable = new List<long>();
+				var offsetsTable = new List<Tuple<long, long>>();
 				reader.BaseStream.Seek(imageTableDefinition.OffsetFrom, SeekOrigin.Begin);
 				while (reader.BaseStream.Position <= imageTableDefinition.OffsetTo)
 				{
-					var offset = reader.ReadUInt32();
-					if (offset == 0) continue;
+					var imageTableOffset = reader.BaseStream.Position;
+					var imageDataOffset = reader.ReadUInt32();
+					if (imageDataOffset == 0) continue;
 
-					offsetsTable.Add(offset);
+					offsetsTable.Add(new Tuple<long, long>(imageTableOffset, imageDataOffset));
 				}
 
 				for (var i = 0; i < offsetsTable.Count; i++)
 				{
-					reader.BaseStream.Seek(offsetsTable[i], SeekOrigin.Begin);
-					result.Add(new T().ReadMetadata(reader, i + 1));
+					var imageTableOffset = offsetsTable[i].Item1;
+					var imageDataOffset = offsetsTable[i].Item2;
+
+					reader.BaseStream.Seek(imageDataOffset, SeekOrigin.Begin);
+					result.Add(new T().ReadMetadata(reader, imageTableOffset, i + 1));
 				}
 			}
 			return result;

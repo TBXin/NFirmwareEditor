@@ -377,7 +377,15 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (metadata == null) return;
 
-			ImageSizeLabel.Text = string.Format("Image: {0}x{1}, Offset: 0x{2:X4}, Length: {3} bytes", metadata.Width, metadata.Height, metadata.DataOffset, metadata.DataLength + 2);
+			ImageSizeLabel.Text = string.Format
+			(
+				"Image: {0}x{1}, Reference: 0x{2:X4}, Data: 0x{3:X4}, Length: {4} bytes", 
+				metadata.Width, 
+				metadata.Height, 
+				metadata.ImageReferenceOffset,
+				metadata.DataOffset, 
+				metadata.DataLength + 2
+			);
 		}
 
 		private void BlockImageRadioButton_CheckedChanged(object sender, EventArgs e)

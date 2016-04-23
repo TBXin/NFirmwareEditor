@@ -25,6 +25,11 @@ namespace NFirmware
 		public byte Height { get; set; }
 
 		/// <summary>
+		/// Gets the image reference offset.
+		/// </summary>
+		public long ImageReferenceOffset { get; private set; }
+
+		/// <summary>
 		/// Gets the image absolute offset in the firmware.
 		/// </summary>
 		public long DataOffset { get; protected set; }
@@ -43,10 +48,13 @@ namespace NFirmware
 		/// Reads the image metadata at the specified offset.
 		/// </summary>
 		/// <param name="reader">Binary reader.</param>
+		/// <param name="imageReferenceOffset">Image reference offset.</param>
 		/// <param name="imageIndex">Character generator index.</param>
-		internal FirmwareImageMetadata ReadMetadata(BinaryReader reader, int imageIndex)
+		internal FirmwareImageMetadata ReadMetadata(BinaryReader reader, long imageReferenceOffset, int imageIndex)
 		{
 			DataOffset = reader.BaseStream.Position;
+			ImageReferenceOffset = imageReferenceOffset;
+
 			Index = imageIndex;
 			Width = reader.ReadByte();
 			Height = reader.ReadByte();
