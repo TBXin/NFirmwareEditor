@@ -385,8 +385,16 @@ namespace NFirmwareEditor.Windows.Tabs
 				metadata.DataLength + 2
 			);
 
-			ImageListBixStatusStrip.Visible = SelectedImageMetadata.Count > 1;
-			ImageListBoxStatusLabel.Text = @"Selected: " + SelectedImageMetadata.Count;
+			var selectedItemsCount = ImageListBox.SelectedIndices.Count;
+			if (selectedItemsCount > 1)
+			{
+				if (!ImageListBoxStatusStrip.Visible) ImageListBoxStatusStrip.Visible = true;
+				ImageListBoxStatusLabel.Text = @"Selected: " + selectedItemsCount;
+			}
+			else
+			{
+				ImageListBoxStatusStrip.Visible = false;
+			}
 		}
 
 		private void BlockImageRadioButton_CheckedChanged(object sender, EventArgs e)

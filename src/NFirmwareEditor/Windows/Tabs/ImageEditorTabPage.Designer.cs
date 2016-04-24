@@ -73,7 +73,7 @@
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
-			this.ImageListBixStatusStrip = new System.Windows.Forms.StatusStrip();
+			this.ImageListBoxStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.ImageListBoxStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel3.SuspendLayout();
@@ -83,7 +83,7 @@
 			this.ImageEditorStatusStrip.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).BeginInit();
 			this.borderedPanel1.SuspendLayout();
-			this.ImageListBixStatusStrip.SuspendLayout();
+			this.ImageListBoxStatusStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Block1ImageRadioButton
@@ -584,7 +584,7 @@
 			this.borderedPanel1.BorderWidth = 1F;
 			this.borderedPanel1.Controls.Add(this.Block1ImageListBox);
 			this.borderedPanel1.Controls.Add(this.Block2ImageListBox);
-			this.borderedPanel1.Controls.Add(this.ImageListBixStatusStrip);
+			this.borderedPanel1.Controls.Add(this.ImageListBoxStatusStrip);
 			this.borderedPanel1.Location = new System.Drawing.Point(0, 33);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
@@ -624,17 +624,17 @@
 			this.Block2ImageListBox.Size = new System.Drawing.Size(138, 446);
 			this.Block2ImageListBox.TabIndex = 0;
 			// 
-			// ImageListBixStatusStrip
+			// ImageListBoxStatusStrip
 			// 
-			this.ImageListBixStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.ImageListBoxStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImageListBoxStatusLabel});
-			this.ImageListBixStatusStrip.Location = new System.Drawing.Point(1, 425);
-			this.ImageListBixStatusStrip.Name = "ImageListBixStatusStrip";
-			this.ImageListBixStatusStrip.Size = new System.Drawing.Size(138, 22);
-			this.ImageListBixStatusStrip.SizingGrip = false;
-			this.ImageListBixStatusStrip.TabIndex = 1;
-			this.ImageListBixStatusStrip.Text = "statusStrip1";
-			this.ImageListBixStatusStrip.Visible = false;
+			this.ImageListBoxStatusStrip.Location = new System.Drawing.Point(1, 425);
+			this.ImageListBoxStatusStrip.Name = "ImageListBoxStatusStrip";
+			this.ImageListBoxStatusStrip.Size = new System.Drawing.Size(138, 22);
+			this.ImageListBoxStatusStrip.SizingGrip = false;
+			this.ImageListBoxStatusStrip.TabIndex = 1;
+			this.ImageListBoxStatusStrip.Text = "statusStrip1";
+			this.ImageListBoxStatusStrip.Visible = false;
 			// 
 			// ImageListBoxStatusLabel
 			// 
@@ -668,8 +668,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.GridSizeUpDown)).EndInit();
 			this.borderedPanel1.ResumeLayout(false);
 			this.borderedPanel1.PerformLayout();
-			this.ImageListBixStatusStrip.ResumeLayout(false);
-			this.ImageListBixStatusStrip.PerformLayout();
+			this.ImageListBoxStatusStrip.ResumeLayout(false);
+			this.ImageListBoxStatusStrip.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -720,7 +720,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem ImportFontMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ExportBitmapMenuItem;
-		private System.Windows.Forms.StatusStrip ImageListBixStatusStrip;
+		private System.Windows.Forms.StatusStrip ImageListBoxStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel ImageListBoxStatusLabel;
 	}
 }
