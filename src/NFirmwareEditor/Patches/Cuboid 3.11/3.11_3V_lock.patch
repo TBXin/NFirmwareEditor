@@ -1,0 +1,6 @@
+﻿<Patch Definition="Cuboid 3.11" Name="Set 3.0V lock voltage" Version="1.0" Author="yii">
+  <Description>Set 3.0V lock voltage. Блокировка при разряде батарей до 3В. Возможны другое значение, смотрите коментарии внутри.</Description>
+  <Data>
+3854: 9B - 96 ; 9B = 3.1V (def), 96 = 3.0V, A0 = 3.2V
+</Data>
+</Patch>

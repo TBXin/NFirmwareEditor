@@ -1,0 +1,3837 @@
+﻿<ResourcePack Definition="Cuboid 3.11" Name="Cuboid 3.11 LCD Chess" Version="1.0" Author="yii">
+  <Description>LCD Chess font</Description>
+  <Images>
+    <Image Index="01" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="02" Width="6" Height="8">
+      <Data>
+.XXX..
+...X..
+...X..
+...X..
+...X..
+...X..
+.XXXX.
+......
+</Data>
+    </Image>
+    <Image Index="03" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+XXXXX.
+X.....
+X.....
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="04" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+XXXXX.
+....X.
+....X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="05" Width="6" Height="8">
+      <Data>
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+....X.
+....X.
+......
+</Data>
+    </Image>
+    <Image Index="06" Width="6" Height="8">
+      <Data>
+XXXXX.
+X.....
+XXXXX.
+....X.
+....X.
+....X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="07" Width="6" Height="8">
+      <Data>
+XXXXX.
+X.....
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="08" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+....X.
+....X.
+....X.
+....X.
+......
+</Data>
+    </Image>
+    <Image Index="09" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="0A" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+....X.
+....X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="0B" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="0C" Width="6" Height="8">
+      <Data>
+.XXX..
+...X..
+...X..
+...X..
+...X..
+...X..
+...X..
+.XXXX.
+</Data>
+    </Image>
+    <Image Index="0D" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+XXXXX.
+X.....
+X.....
+X.....
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="0E" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+XXXXX.
+....X.
+....X.
+....X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="0F" Width="6" Height="8">
+      <Data>
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+....X.
+....X.
+</Data>
+    </Image>
+    <Image Index="10" Width="6" Height="8">
+      <Data>
+XXXXX.
+X.....
+X.....
+XXXXX.
+....X.
+....X.
+....X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="11" Width="6" Height="8">
+      <Data>
+XXXXX.
+X.....
+X.....
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="12" Width="6" Height="8">
+      <Data>
+XXXXX.
+....X.
+....X.
+....X.
+....X.
+....X.
+....X.
+....X.
+</Data>
+    </Image>
+    <Image Index="13" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="14" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+....X.
+....X.
+....X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="15" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+X....X.
+X....X.
+X....X.
+X....X.
+X....X.
+X....X.
+X....X.
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="16" Width="6" Height="16">
+      <Data>
+......
+......
+......
+......
+.XXX..
+...X..
+...X..
+...X..
+...X..
+...X..
+...X..
+...X..
+.XXXX.
+......
+......
+......
+</Data>
+    </Image>
+    <Image Index="17" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+.....X.
+.....X.
+.....X.
+XXXXXX.
+X......
+X......
+X......
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="18" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+.....X.
+.....X.
+.....X.
+XXXXXX.
+.....X.
+.....X.
+.....X.
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="19" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+X....X.
+X....X.
+X....X.
+X....X.
+XXXXXX.
+.....X.
+.....X.
+.....X.
+.....X.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="1A" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+X......
+X......
+X......
+XXXXXX.
+.....X.
+.....X.
+.....X.
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="1B" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+X......
+X......
+X......
+XXXXXX.
+X....X.
+X....X.
+X....X.
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="1C" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+X....X.
+.....X.
+.....X.
+.....X.
+.....X.
+.....X.
+.....X.
+.....X.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="1D" Width="7" Height="16">
+      <Data>
+.......
+.......
+.......
+.......
+XXXXXX.
+X....X.
+X....X.
+X....X.
+XXXXXX.
+X....X.
+X....X.
+X....X.
+XXXXXX.
+.......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="1E" Width="6" Height="16">
+      <Data>
+......
+......
+......
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+....X.
+....X.
+....X.
+XXXXX.
+......
+......
+......
+</Data>
+    </Image>
+    <Image Index="1F" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="20" Width="8" Height="16">
+      <Data>
+.XXXX...
+....X...
+....X...
+....X...
+....X...
+....X...
+....X...
+....X...
+....X...
+.XXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="21" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+......X.
+......X.
+......X.
+XXXXXXX.
+X.......
+X.......
+X.......
+X.......
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="22" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+......X.
+......X.
+......X.
+XXXXXXX.
+......X.
+......X.
+......X.
+......X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="23" Width="8" Height="16">
+      <Data>
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+......X.
+......X.
+......X.
+......X.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="24" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+X.......
+X.......
+X.......
+XXXXXXX.
+......X.
+......X.
+......X.
+......X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="25" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+X.......
+X.......
+X.......
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="26" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+......X.
+......X.
+......X.
+......X.
+......X.
+......X.
+......X.
+......X.
+......X.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="27" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="28" Width="8" Height="16">
+      <Data>
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+......X.
+......X.
+......X.
+......X.
+XXXXXXX.
+........
+........
+........
+........
+........
+........
+</Data>
+    </Image>
+    <Image Index="29" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.XXXXXXX.X
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="2A" Width="12" Height="16">
+      <Data>
+...XXXXXX...
+...X.X.XX...
+...XXXX.X...
+......XXX...
+......X.X...
+......XXX...
+......X.X...
+......XXX...
+......X.X...
+......XXX...
+......X.X...
+......XXX...
+......X.X...
+..XXXXXXXXX.
+..X.X.X.X.X.
+..XXXXXXXXX.
+</Data>
+    </Image>
+    <Image Index="2B" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.XXXXXXXXX.X
+.XX.X.X.X.XX
+.X.XXXXXXXXX
+.XXX........
+.X.X........
+.XXX........
+.X.XXXXXXXXX
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="2C" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+...XXXXXXXXX
+...X.X.X.X.X
+...XXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.XXXXXXXXX.X
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="2D" Width="12" Height="16">
+      <Data>
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........XXX
+</Data>
+    </Image>
+    <Image Index="2E" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X........
+.XXX........
+.X.X........
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.XXXXXXXXX.X
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="2F" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X........
+.XXX........
+.X.X........
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.XXXXXXX.X
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="30" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........X.X
+.........XXX
+.........XXX
+</Data>
+    </Image>
+    <Image Index="31" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.XXXXXXX.X
+.XX.X.X.X.XX
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="32" Width="12" Height="16">
+      <Data>
+.XXXXXXXXXXX
+.XX.X.X.X.XX
+.X.XXXXXXX.X
+.XXX.....XXX
+.X.X.....X.X
+.XXX.....XXX
+.X.X.....X.X
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+.........X.X
+.........XXX
+.........X.X
+.XXXXXXXXXXX
+.X.X.X.X.X.X
+.XXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="33" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="34" Width="16" Height="24">
+      <Data>
+................
+...XXXXXXXX.....
+...X.X.X.XX.....
+...XX.X.X.X.....
+...XXXXX.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.XXXXXXX.XXXXXX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="35" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..XXXXXXXXXXX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+..XXXXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XX.XXXXXXXXXX..
+..X.XX...........
+..XX.X...........
+..X.XX...........
+..XX.X...........
+..X.XXXXXXXXXXX..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="36" Width="16" Height="24">
+      <Data>
+................
+..XXXXXXXXXXXX..
+..X.X.X.X.X.XX..
+..XX.X.X.X.X.X..
+..XXXXXXXXX.XX..
+..........XX.X..
+..........X.XX..
+..........XX.X..
+..........X.XX..
+....XXXXXXXX.X..
+....X.X.X.X.XX..
+....XX.X.X.X.X..
+....XXXXXXX.XX..
+..........XX.X..
+..........X.XX..
+..........XX.X..
+..........X.XX..
+..........XX.X..
+..XXXXXXXXX.XX..
+..XX.X.X.X.X.X..
+..X.X.X.X.X.XX..
+..XXXXXXXXXXXX..
+................
+................
+</Data>
+    </Image>
+    <Image Index="37" Width="16" Height="24">
+      <Data>
+................
+..XXXX....XXXX..
+..X.XX....X.XX..
+..XX.X....XX.X..
+..X.XX....X.XX..
+..XX.X....XX.X..
+..X.XX....X.XX..
+..XX.X....XX.X..
+..X.XX....X.XX..
+..XX.X....XX.X..
+..X.XX....X.XX..
+..XX.X....XX.X..
+..X.XX....X.XX..
+..XX.XXXXXXX.X..
+..X.X.X.X.X.XX..
+..XX.X.X.X.X.X..
+..XXXXXXXXX.XX..
+..........XX.X..
+..........X.XX..
+..........XX.X..
+..........X.XX..
+..........XXXX..
+................
+................
+</Data>
+    </Image>
+    <Image Index="38" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXXXX..
+..XX.X...........
+..X.XX...........
+..XX.X...........
+..X.XX...........
+..XX.XXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..XXXXXXXXXXX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+..XXXXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="39" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXXXX..
+..XX.X...........
+..X.XX...........
+..XX.X...........
+..X.XX...........
+..XX.XXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="3A" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..XXXXXXXXXXX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........XXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="3B" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.XXXXXXX.XX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="3C" Width="17" Height="24">
+      <Data>
+.................
+..XXXXXXXXXXXXX..
+..X.X.X.X.X.X.X..
+..XX.X.X.X.X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XX.....XX.X..
+..XX.X.....X.XX..
+..X.XXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXX.XX..
+...........XX.X..
+...........X.XX..
+...........XX.X..
+...........X.XX..
+..XXXXXXXXXXX.X..
+..XX.X.X.X.X.XX..
+..X.X.X.X.X.X.X..
+..XXXXXXXXXXXXX..
+.................
+.................
+</Data>
+    </Image>
+    <Image Index="3D" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXX.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="3E" Width="16" Height="24">
+      <Data>
+................
+................
+..XXXXXXXX......
+..X.X.X.XX......
+..XX.X.X.X......
+..XXXXX.XX......
+......XX.X......
+......X.XX......
+......XX.X......
+......X.XX......
+......XX.X......
+......X.XX......
+......XX.X......
+......X.XX......
+......XX.X......
+......X.XX......
+......XX.X......
+......X.XX......
+XXXXXXXX.XXXX...
+X.X.X.X.X.X.X...
+XX.X.X.X.X.XX...
+XXXXXXXXXXXXX...
+................
+................
+</Data>
+    </Image>
+    <Image Index="3F" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+XXXXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXXXXX.
+X.XX............
+XX.X............
+X.XX............
+XX.X............
+X.XXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="40" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+..XXXXXXXXXXX.X.
+..XX.X.X.X.X.XX.
+..X.X.X.X.X.X.X.
+..XXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+XXXXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="41" Width="16" Height="24">
+      <Data>
+................
+................
+XXXX.......XXXX.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.XXXXXXXXX.XX.
+X.X.X.X.X.XXX.X.
+XX.X.X.X.X.X.XX.
+XXXXXXXXXXXXX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........XXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="42" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXXXXX.
+X.XX............
+XX.X............
+X.XX............
+XX.X............
+X.XXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+XXXXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="43" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXXXXX.
+X.XX............
+XX.X............
+X.XX............
+XX.XXXXXXXXXXXX.
+X.X.X.X.X.X.X.X.
+XX.X.X.X.X.X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="44" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........XXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="45" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXX.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XX.XXXXXXXXX.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="46" Width="16" Height="24">
+      <Data>
+................
+................
+XXXXXXXXXXXXXXX.
+X.X.X.X.X.X.X.X.
+XX.X.X.X.X.X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XX.......XX.X.
+XX.X.......X.XX.
+X.XXXXXXXXXXX.X.
+XX.X.X.X.X.X.XX.
+X.X.X.X.X.X.X.X.
+XXXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+XXXXXXXXXXXX.XX.
+X.X.X.X.X.X.X.X.
+XX.X.X.X.X.X.XX.
+XXXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="47" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXX.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.XXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="48" Width="16" Height="24">
+      <Data>
+................
+................
+...XXXXXXXX.....
+...X.X.X.XX.....
+...XX.X.X.X.....
+...XXXXX.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.......XX.X.....
+.......X.XX.....
+.XXXXXXXX.XXX...
+.X.X.X.X.X.XX...
+.XX.X.X.X.X.X...
+.XXXXXXXXXXXX...
+................
+................
+</Data>
+    </Image>
+    <Image Index="49" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+.XXXXXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXXXXX.
+.XX.X...........
+.X.XX...........
+.XX.X...........
+.X.XX...........
+.XX.XXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4A" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...XXXXXXXXXX.X.
+...X.X.X.X.X.XX.
+...XX.X.X.X.X.X.
+...XXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+.XXXXXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4B" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXX......XXXX.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XXXXXXXXX.XX.
+.XX.X.X.X.XXX.X.
+.X.X.X.X.X.X.XX.
+.XXXXXXXXXXXX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........XXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4C" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XX.XXXXXXXXXXX.
+.X.XX...........
+.XX.X...........
+.X.XX...........
+.XX.X...........
+.X.XXXXXXXXXXXX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XXXXXXXXXXXX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+.XXXXXXXXXXX.XX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4D" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXXXXX.
+.XX.X...........
+.X.XX...........
+.XX.X...........
+.X.XXXXXXXXXXXX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XX.XXXXXXXXX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.XXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4E" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXX.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+...........XX.X.
+...........XXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="4F" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXX.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.XXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXX.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.XXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="50" Width="16" Height="24">
+      <Data>
+................
+................
+.XXXXXXXXXXXXXX.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.X.XXXXXXXXX.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XX......X.XX.
+.XX.X......XX.X.
+.X.XXXXXXXXX.XX.
+.XX.X.X.X.X.X.X.
+.X.X.X.X.X.X.XX.
+.XXXXXXXXXXXX.X.
+...........X.XX.
+...........XX.X.
+...........X.XX.
+.XXXXXXXXXXXX.X.
+.X.X.X.X.X.X.XX.
+.XX.X.X.X.X.X.X.
+.XXXXXXXXXXXXXX.
+................
+................
+</Data>
+    </Image>
+    <Image Index="51" Width="6" Height="8">
+      <Data>
+......
+X.X.X.
+X.X.X.
+X.X.X.
+X.X.X.
+X.X.X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="52" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+....X.
+XXXXX.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="53" Width="5" Height="8">
+      <Data>
+.....
+X....
+XXXX.
+X..X.
+X..X.
+X..X.
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="54" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X.....
+X.....
+X.....
+X.....
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="55" Width="5" Height="8">
+      <Data>
+.....
+...X.
+XXXX.
+X..X.
+X..X.
+X..X.
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="56" Width="5" Height="8">
+      <Data>
+.....
+XXXX.
+X..X.
+XXXX.
+X....
+X....
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="57" Width="5" Height="8">
+      <Data>
+.....
+XXXX.
+X....
+XXXX.
+X....
+X....
+X....
+.....
+</Data>
+    </Image>
+    <Image Index="58" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X.....
+X.XXX.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="59" Width="5" Height="8">
+      <Data>
+.....
+X....
+XXXX.
+X..X.
+X..X.
+X..X.
+X..X.
+.....
+</Data>
+    </Image>
+    <Image Index="5A" Width="4" Height="8">
+      <Data>
+....
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+....
+</Data>
+    </Image>
+    <Image Index="5B" Width="5" Height="8">
+      <Data>
+.....
+...X.
+...X.
+...X.
+...X.
+X..X.
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="5C" Width="5" Height="8">
+      <Data>
+.....
+X..X.
+X..X.
+X.X..
+XX...
+X.X..
+X..X.
+.....
+</Data>
+    </Image>
+    <Image Index="5D" Width="5" Height="8">
+      <Data>
+.....
+X....
+X....
+X....
+X....
+X....
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="5E" Width="8" Height="8">
+      <Data>
+........
+XXXXXXX.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+........
+</Data>
+    </Image>
+    <Image Index="5F" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+......
+</Data>
+    </Image>
+    <Image Index="60" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="61" Width="5" Height="8">
+      <Data>
+.....
+XXXXX
+X...X
+X...X
+X...X
+XXXXX
+X....
+X....
+</Data>
+    </Image>
+    <Image Index="62" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+..X...
+..XX..
+</Data>
+    </Image>
+    <Image Index="63" Width="5" Height="8">
+      <Data>
+.....
+XXXX.
+X....
+X....
+X....
+X....
+X....
+.....
+</Data>
+    </Image>
+    <Image Index="64" Width="5" Height="8">
+      <Data>
+.....
+XXXX.
+X....
+XXXX.
+...X.
+...X.
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="65" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+..X...
+..X...
+..X...
+..X...
+..X...
+......
+</Data>
+    </Image>
+    <Image Index="66" Width="5" Height="8">
+      <Data>
+.....
+X..X.
+X..X.
+X..X.
+X..X.
+X..X.
+XXXX.
+.....
+</Data>
+    </Image>
+    <Image Index="67" Width="6" Height="8">
+      <Data>
+......
+X...X.
+X...X.
+X...X.
+.X.X..
+.X.X..
+..X...
+......
+</Data>
+    </Image>
+    <Image Index="68" Width="8" Height="8">
+      <Data>
+........
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+XXXXXXX.
+........
+</Data>
+    </Image>
+    <Image Index="69" Width="6" Height="8">
+      <Data>
+......
+X...X.
+.X.X..
+..X...
+..X...
+.X.X..
+X...X.
+......
+</Data>
+    </Image>
+    <Image Index="6A" Width="6" Height="8">
+      <Data>
+......
+X...X.
+X...X.
+X...X.
+XXXXX.
+..X...
+..X...
+..X...
+</Data>
+    </Image>
+    <Image Index="6B" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+....X.
+..XX..
+.X....
+X.....
+XXXXX.
+......
+</Data>
+    </Image>
+    <Image Index="6C" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+....X.
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="6D" Width="6" Height="8">
+      <Data>
+X.....
+X.....
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="6E" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X.....
+X.....
+X.....
+X.....
+X.....
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="6F" Width="6" Height="8">
+      <Data>
+....X.
+....X.
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="70" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+XXXXX.
+X.....
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="71" Width="6" Height="8">
+      <Data>
+.XXXX.
+.X....
+.X....
+.XXXX.
+.X....
+.X....
+.X....
+.X....
+</Data>
+    </Image>
+    <Image Index="72" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+....X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="73" Width="6" Height="8">
+      <Data>
+X.....
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+</Data>
+    </Image>
+    <Image Index="74" Width="4" Height="8">
+      <Data>
+..X.
+....
+..X.
+..X.
+..X.
+..X.
+..X.
+..X.
+</Data>
+    </Image>
+    <Image Index="75" Width="4" Height="8">
+      <Data>
+..X.
+....
+..X.
+..X.
+..X.
+..X.
+..X.
+XXX.
+</Data>
+    </Image>
+    <Image Index="76" Width="6" Height="8">
+      <Data>
+......
+.X..X.
+.X..X.
+.X.X..
+.X.X..
+.XX...
+.X.X..
+.X..X.
+</Data>
+    </Image>
+    <Image Index="77" Width="4" Height="8">
+      <Data>
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+</Data>
+    </Image>
+    <Image Index="78" Width="8" Height="8">
+      <Data>
+........
+XXXXXXX.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+</Data>
+    </Image>
+    <Image Index="79" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+</Data>
+    </Image>
+    <Image Index="7A" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="7B" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+X.....
+X.....
+</Data>
+    </Image>
+    <Image Index="7C" Width="6" Height="8">
+      <Data>
+XXXXX.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+..X...
+..XX..
+</Data>
+    </Image>
+    <Image Index="7D" Width="6" Height="8">
+      <Data>
+XXXXX.
+X.....
+X.....
+X.....
+X.....
+X.....
+X.....
+X.....
+</Data>
+    </Image>
+    <Image Index="7E" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+X.....
+X.....
+XXXXX.
+....X.
+....X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="7F" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+</Data>
+    </Image>
+    <Image Index="80" Width="6" Height="8">
+      <Data>
+......
+......
+X...X.
+X...X.
+X...X.
+X...X.
+X...X.
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="81" Width="6" Height="8">
+      <Data>
+......
+......
+X...X.
+X...X.
+X...X.
+.X.X..
+.XXX..
+..X...
+</Data>
+    </Image>
+    <Image Index="82" Width="10" Height="8">
+      <Data>
+..........
+X...X...X.
+X...X...X.
+X...X...X.
+X...X...X.
+X...X...X.
+X...X...X.
+XXXXXXXXX.
+</Data>
+    </Image>
+    <Image Index="83" Width="6" Height="8">
+      <Data>
+......
+X...X.
+X...X.
+.X.X..
+..X...
+..X...
+.X.X..
+X...X.
+</Data>
+    </Image>
+    <Image Index="84" Width="6" Height="8">
+      <Data>
+......
+X...X.
+X...X.
+X...X.
+XXXXX.
+..X...
+..X...
+..X...
+</Data>
+    </Image>
+    <Image Index="85" Width="6" Height="8">
+      <Data>
+......
+XXXXX.
+....X.
+...X..
+..X...
+..X...
+.X....
+XXXXX.
+</Data>
+    </Image>
+    <Image Index="86" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+......X.
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="87" Width="8" Height="8">
+      <Data>
+.X......
+.X......
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="88" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X......
+.X......
+.X......
+.X......
+.X......
+.X......
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="89" Width="8" Height="8">
+      <Data>
+......X.
+......X.
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="8A" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+.X......
+.X......
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="8B" Width="8" Height="8">
+      <Data>
+..XXXXX.
+..X.....
+..X.....
+..XXXXX.
+..X.....
+..X.....
+..X.....
+..X.....
+</Data>
+    </Image>
+    <Image Index="8C" Width="8" Height="8">
+      <Data>
+.......X
+..XXXX.X
+.XXXXX.X
+.XXXXXXX
+.XXX...X
+.XXXXX.X
+..XXXX.X
+.......X
+</Data>
+    </Image>
+    <Image Index="8D" Width="8" Height="8">
+      <Data>
+.X......
+.X......
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+</Data>
+    </Image>
+    <Image Index="8E" Width="4" Height="8">
+      <Data>
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+</Data>
+    </Image>
+    <Image Index="8F" Width="6" Height="8">
+      <Data>
+....X.
+....X.
+....X.
+....X.
+....X.
+.X..X.
+.X..X.
+.XXXX.
+</Data>
+    </Image>
+    <Image Index="90" Width="8" Height="8">
+      <Data>
+.X...X..
+.X...X..
+.X...X..
+.X...X..
+.X..X...
+.XXX....
+.X..X...
+.X...X..
+</Data>
+    </Image>
+    <Image Index="91" Width="8" Height="8">
+      <Data>
+.X......
+.X......
+.X......
+.X......
+.X......
+.X......
+.X......
+.XXXXX..
+</Data>
+    </Image>
+    <Image Index="92" Width="8" Height="8">
+      <Data>
+XXXXXXX.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+X..X..X.
+</Data>
+    </Image>
+    <Image Index="93" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+</Data>
+    </Image>
+    <Image Index="94" Width="8" Height="8">
+      <Data>
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+</Data>
+    </Image>
+    <Image Index="95" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+.X......
+.X......
+</Data>
+    </Image>
+    <Image Index="96" Width="8" Height="8">
+      <Data>
+XXXXXXX.
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+...X....
+...XX...
+</Data>
+    </Image>
+    <Image Index="97" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X......
+.X......
+.X......
+.X......
+.X......
+.X......
+.X......
+</Data>
+    </Image>
+    <Image Index="98" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.X......
+.X......
+.XXXXXX.
+......X.
+......X.
+......X.
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="99" Width="6" Height="8">
+      <Data>
+XXXXX.
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+</Data>
+    </Image>
+    <Image Index="9A" Width="8" Height="8">
+      <Data>
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.X....X.
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="9B" Width="8" Height="8">
+      <Data>
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+.XX.XX..
+..X.X...
+..XXX...
+...X....
+</Data>
+    </Image>
+    <Image Index="9C" Width="12" Height="8">
+      <Data>
+X....X....X.
+X....X....X.
+X....X....X.
+X....X....X.
+X....X....X.
+X....X....X.
+X....X....X.
+XXXXXXXXXXX.
+</Data>
+    </Image>
+    <Image Index="9D" Width="8" Height="8">
+      <Data>
+.X....X.
+..X..X..
+..X..X..
+...XX...
+...XX...
+..X..X..
+..X..X..
+.X....X.
+</Data>
+    </Image>
+    <Image Index="9E" Width="8" Height="8">
+      <Data>
+X.....X.
+X.....X.
+X.....X.
+X.....X.
+XXXXXXX.
+...X....
+...X....
+...X....
+</Data>
+    </Image>
+    <Image Index="9F" Width="8" Height="8">
+      <Data>
+.XXXXXX.
+.....X..
+....X...
+....X...
+...X....
+...X....
+..X.....
+.XXXXXX.
+</Data>
+    </Image>
+    <Image Index="A0" Width="12" Height="16">
+      <Data>
+............
+............
+............
+XXXXXXXXXXX.
+XXXXXXXXXXX.
+.........XX.
+XXXXXXXXXXX.
+XXXXXXXXXXX.
+XX.......XX.
+XX.......XX.
+XX.......XX.
+XX.......XX.
+XX.......XX.
+XXXXXXXXXXX.
+XXXXXXXXXXX.
+............
+</Data>
+    </Image>
+    <Image Index="A1" Width="14" Height="16">
+      <Data>
+.XXXXXXXXXXXX.
+.XXXXXXXXXXXX.
+.XX...........
+.XX...........
+.XX...........
+.XX...........
+.XXXXXXXXXXXX.
+.XXXXXXXXXXXX.
+...........XX.
+...........XX.
+...........XX.
+...........XX.
+...........XX.
+...........XX.
+.XXXXXXXXXXXX.
+.XXXXXXXXXXXX.
+</Data>
+    </Image>
+    <Image Index="A2" Width="14" Height="16">
+      <Data>
+..............
+..............
+XX..........XX
+XX..........XX
+XX..........XX
+XX..........XX
+XX..........XX
+XXXX......XXXX
+XXXX......XXXX
+..XX......XX..
+..XX......XX..
+..XXXX..XXXX..
+..XXXX..XXXX..
+....XX..XX....
+....XXXXXX....
+......XX......
+</Data>
+    </Image>
+    <Image Index="A3" Width="18" Height="16">
+      <Data>
+..................
+..................
+..................
+..................
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XX......XX......XX
+XXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="A4" Width="16" Height="24">
+      <Data>
+................
+................
+................
+................
+................
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XX........XX..
+..XXX......XXX..
+...XXX....XXX...
+....XXX..XXX....
+.....XXXXXX.....
+......XXXX......
+................
+................
+</Data>
+    </Image>
+    <Image Index="A5" Width="20" Height="24">
+      <Data>
+....................
+....................
+....................
+....................
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXX.....XXX.....XXX.
+XXXXXXXXXXXXXXXXXXX.
+XXXXXXXXXXXXXXXXXXX.
+XXXXXXXXXXXXXXXXXXX.
+....................
+....................
+</Data>
+    </Image>
+    <Image Index="A6" Width="6" Height="8">
+      <Data>
+......
+......
+......
+......
+......
+......
+......
+......
+</Data>
+    </Image>
+    <Image Index="A7" Width="1" Height="8">
+      <Data>
+.
+.
+.
+.
+.
+.
+.
+.
+</Data>
+    </Image>
+    <Image Index="A8" Width="16" Height="8">
+      <Data>
+..XXXXXXXX......
+..XXXXXXXX......
+..XXX..XXX......
+..XXX..XXX......
+..XXX..XXX......
+..XXX..XXX......
+................
+X....XX....X....
+</Data>
+    </Image>
+    <Image Index="A9" Width="8" Height="8">
+      <Data>
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+...XX...
+X......X
+XX....XX
+XXX..XXX
+</Data>
+    </Image>
+    <Image Index="AA" Width="8" Height="8">
+      <Data>
+..XXX...
+.X...X..
+X.....X.
+X.....X.
+X.....X.
+.X...X..
+..X.X...
+XXX.XXX.
+</Data>
+    </Image>
+    <Image Index="AB" Width="2" Height="8">
+      <Data>
+..
+..
+..
+..
+..
+..
+XX
+XX
+</Data>
+    </Image>
+    <Image Index="AC" Width="9" Height="8">
+      <Data>
+.XX...X..
+X..X.X...
+X..X.X...
+.XX.X....
+....X.XX.
+...X.X..X
+...X.X..X
+..X...XX.
+</Data>
+    </Image>
+    <Image Index="AD" Width="8" Height="8">
+      <Data>
+..XXXXX.
+..X...X.
+.XXXXXXX
+.X.....X
+.X..X..X
+.X..X..X
+.X.....X
+.XXXXXXX
+</Data>
+    </Image>
+    <Image Index="AE" Width="46" Height="16">
+      <Data>
+..............................................
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+X..........................................X..
+X..........................................X..
+X...........................................X.
+X...........................................XX
+X...........................................XX
+X...........................................XX
+X...........................................X.
+X..........................................X..
+X..........................................X..
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+..............................................
+..............................................
+..............................................
+..............................................
+</Data>
+    </Image>
+    <Image Index="AF" Width="46" Height="16">
+      <Data>
+..............................................
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+X..........................................X..
+X.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.X..
+X.XXXXXXXXXXXXXX.......XXXXXXXXXXXXXXXXXXX..X.
+X.XXXXXXXXXXXXX............XXXXXXXXXXXXXXX..XX
+X.XXXXXXX..............XXXXXXXXXXXXXXXXXXX..XX
+X.XXXXXXX..............XXXXXXXXXXXXXXXXXXX..XX
+X.XXXXXXXXXXXXX............XXXXXXXXXXXXXXX..XX
+X.XXXXXXXXXXXXXX.......XXXXXXXXXXXXXXXXXXX..X.
+X.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.X..
+X..........................................X..
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+..............................................
+..............................................
+..............................................
+</Data>
+    </Image>
+    <Image Index="B0" Width="6" Height="16">
+      <Data>
+......
+..XX..
+.X..X.
+X....X
+.....X
+....X.
+...X..
+..X...
+..X...
+..X...
+......
+..X...
+......
+......
+......
+......
+</Data>
+    </Image>
+    <Image Index="B1" Width="6" Height="16">
+      <Data>
+......
+......
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+..X...
+......
+..X...
+......
+......
+......
+......
+</Data>
+    </Image>
+    <Image Index="B2" Width="16" Height="8">
+      <Data>
+...X............
+.X.X............
+...X..XXXX......
+XXXX.....X......
+XXXX.....X......
+XXXX..XXXX......
+XXXX..XXXX......
+XXXX..XXXX......
+</Data>
+    </Image>
+    <Image Index="B3" Width="16" Height="8">
+      <Data>
+...XX....X......
+.X.X............
+...X..XX........
+XXXX..XXXX......
+XXXX..XXXX......
+XXXX..XX........
+XXXX............
+XXXXX....X......
+</Data>
+    </Image>
+    <Image Index="B4" Width="16" Height="8">
+      <Data>
+X...XXX..XX..X..
+X....XX..XX..X..
+X.....X..XXXXX..
+X..X.....XX..X..
+X..XX....XX..X..
+X..XXX...XX..X..
+X..XXX...XX..X..
+X..XXXX..XX..X..
+</Data>
+    </Image>
+    <Image Index="B5" Width="16" Height="8">
+      <Data>
+X......XXX..X...
+X......XXX..X...
+XXX..XXXXXXXX...
+XXX..XXXXX..X...
+XXX..XXXXX..X...
+XXX..XXXXX..X...
+XXX..XXXXX..X...
+XXX..XXXXX..X...
+</Data>
+    </Image>
+    <Image Index="B6" Width="16" Height="8">
+      <Data>
+X.....XX.....XXX
+X.XXX.XX.XXX.XXX
+X.XXXXXX.XXXXXXX
+X.....XX.....XXX
+X.....XX.....XXX
+XXXXX.XXXXXX.XXX
+X.XXX.XX.XXX.XXX
+X.....XX.....XXX
+</Data>
+    </Image>
+    <Image Index="B7" Width="8" Height="8">
+      <Data>
+X......X
+X.......
+X..XXX..
+X..XXX..
+X.......
+X......X
+X..XXXXX
+X..XXXXX
+</Data>
+    </Image>
+    <Image Index="B8" Width="16" Height="8">
+      <Data>
+......XXX.....XX
+.......XX......X
+..XXX..XX..XX..X
+......XXX..XX..X
+.......XX......X
+..XXX..XX.....XX
+.......XX..XXXXX
+......XXX..XXXXX
+</Data>
+    </Image>
+    <Image Index="B9" Width="9" Height="8">
+      <Data>
+.........
+X...X.X..
+XX..X....
+X.X.X.X..
+X.X.X.X..
+X.X.X.X..
+X..XX.X..
+X...X.X..
+</Data>
+    </Image>
+    <Image Index="BA" Width="9" Height="8">
+      <Data>
+.........
+XXXXX.X..
+X.X.X....
+..X...X..
+..X...X..
+..X...X..
+..X...X..
+.XXX..X..
+</Data>
+    </Image>
+    <Image Index="BB" Width="10" Height="8">
+      <Data>
+..........
+.XX...XX..
+X..X.X..X.
+X....X....
+.XX...XX..
+...X....X.
+X..X.X..X.
+.XX...XX..
+</Data>
+    </Image>
+    <Image Index="BC" Width="6" Height="8">
+      <Data>
+......
+XXXX..
+X...X.
+X...X.
+XXXX..
+X.....
+X.....
+X.....
+</Data>
+    </Image>
+    <Image Index="BD" Width="6" Height="8">
+      <Data>
+......
+XXXX..
+X...X.
+X...X.
+XXXX..
+X...X.
+X...X.
+XXXX..
+</Data>
+    </Image>
+    <Image Index="BE" Width="8" Height="8">
+      <Data>
+........
+........
+....X...
+...XXX..
+..XXXXX.
+.XXXXXXX
+........
+........
+</Data>
+    </Image>
+    <Image Index="BF" Width="8" Height="8">
+      <Data>
+........
+........
+.XXXXXXX
+..XXXXX.
+...XXX..
+....X...
+........
+........
+</Data>
+    </Image>
+    <Image Index="C0" Width="2" Height="16">
+      <Data>
+..
+..
+..
+..
+..
+..
+..
+..
+..
+..
+..
+..
+X.
+..
+..
+..
+</Data>
+    </Image>
+    <Image Index="C1" Width="9" Height="16">
+      <Data>
+..XXXX...
+.XXXXXX..
+XX....XX.
+XX....XX.
+XX....XX.
+XX....XX.
+.XX..XX..
+.XX..XX..
+XXX..XXX.
+XXX..XXX.
+.........
+.........
+.........
+.........
+.........
+.........
+</Data>
+    </Image>
+    <Image Index="C2" Width="9" Height="16">
+      <Data>
+.XXXXXX..
+.X....X..
+.X....X..
+XXXXXXXX.
+X......X.
+X..XX..X.
+X..XX..X.
+X..XX..X.
+X......X.
+XXXXXXXX.
+.........
+.........
+.........
+.........
+.........
+.........
+</Data>
+    </Image>
+    <Image Index="C3" Width="9" Height="16">
+      <Data>
+.XXXXXX..
+XXXXXXXX.
+XX....XX.
+XX....XX.
+XX....XX.
+XX....XX.
+XXXXXXXX.
+XXXXXXXX.
+XX....XX.
+XX....XX.
+.........
+.........
+.........
+.........
+.........
+.........
+</Data>
+    </Image>
+    <Image Index="C4" Width="4" Height="16">
+      <Data>
+....
+....
+....
+....
+....
+....
+....
+....
+.XX.
+.XX.
+....
+....
+....
+....
+....
+....
+</Data>
+    </Image>
+    <Image Index="C5" Width="3" Height="16">
+      <Data>
+...
+...
+XX.
+XX.
+...
+...
+...
+XX.
+XX.
+...
+...
+...
+...
+...
+...
+...
+</Data>
+    </Image>
+    <Image Index="C6" Width="16" Height="16">
+      <Data>
+................
+................
+................
+.....XXXXXXX....
+....XXXXXXXXX...
+...XXX.....XXX..
+..XXX.......XXX.
+..XXX.......XXX.
+..XXX.......XXX.
+..XXXX.....XXXX.
+...XXXX...XXXX..
+....XXX...XXX...
+....XXX...XXX...
+..XXXXX...XXXXX.
+..XXXXX...XXXXX.
+................
+</Data>
+    </Image>
+    <Image Index="C7" Width="4" Height="16">
+      <Data>
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+.XX.
+.XX.
+</Data>
+    </Image>
+    <Image Index="C8" Width="16" Height="16">
+      <Data>
+................
+................
+..XX...XXXXXXX..
+.X..X..XXXXXXXX.
+.X..X.XX.....XX.
+..XX..XX.....XX.
+......XX........
+......XX........
+......XX........
+......XX........
+......XX........
+......XX.....XX.
+......XX.....XX.
+.......XXXXXXXX.
+.......XXXXXXX..
+................
+</Data>
+    </Image>
+    <Image Index="C9" Width="16" Height="16">
+      <Data>
+................
+................
+..XX...XXXXXXXX.
+.X..X..XXXXXXXX.
+.X..X..XX.......
+..XX...XX.......
+.......XXXXXX...
+.......XXXXXX...
+.......XX.......
+.......XX.......
+.......XX.......
+.......XX.......
+.......XX.......
+.......XX.......
+.......XX.......
+................
+</Data>
+    </Image>
+    <Image Index="CA" Width="31" Height="16">
+      <Data>
+...............................
+...............................
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+X...........................X..
+X...........................X..
+X............................X.
+X............................XX
+X............................XX
+X............................XX
+X............................X.
+X...........................X..
+X...........................X..
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+...............................
+...............................
+...............................
+</Data>
+    </Image>
+    <Image Index="CB" Width="31" Height="16">
+      <Data>
+...............................
+...............................
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+X...........................X..
+X.XXXXXXXXXXXXXXXXXXXXXXXXX.X..
+X.XXXXXXXXXXX.....XXXXXXXXX..X.
+X.XXXXXXXXXX..........XXXXX..X.
+X.XXXXX...........XXXXXXXXX..XX
+X.XXXXX...........XXXXXXXXX..XX
+X.XXXXXXXXXX..........XXXXX..X.
+X.XXXXXXXXXXX.....XXXXXXXXX..X.
+X.XXXXXXXXXXXXXXXXXXXXXXXXX.X..
+X...........................X..
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX..
+...............................
+...............................
+</Data>
+    </Image>
+    <Image Index="CC" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X.......XX
+X........X
+X..XXXX..X
+X..XXXX..X
+X........X
+X........X
+X..XXXX..X
+X..XXXX..X
+X........X
+X.......XX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="CD" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XX......XX
+XX......XX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XX......XX
+XX......XX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="CE" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X..XXXX..X
+X...XXX..X
+X..X.XX..X
+X..X.XX..X
+X..XX.X..X
+X..XX.X..X
+X..XX.X..X
+X..XXX...X
+X..XXXX..X
+X..XXXX..X
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="CF" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X.......XX
+X........X
+X..XXXX..X
+X..XXXX..X
+X........X
+X.......XX
+X..XXXXXXX
+X..XXXXXXX
+X..XXXXXXX
+X..XXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D0" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X.......XX
+X........X
+X..XXXX..X
+X..XXXX..X
+X........X
+X.......XX
+X..X..XXXX
+X..XX..XXX
+X..XXX..XX
+X..XXXX..X
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D1" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X........X
+X........X
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D2" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+X..XXXX..X
+X..XXXX..X
+X..XXXX..X
+XX..XX..XX
+XX..XX..XX
+XX..XX..XX
+XX..XX..XX
+XXXX..XXXX
+XXXX..XXXX
+XXXX..XXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D3" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XX.......X
+X........X
+X..XXXXXXX
+X..XXXXXXX
+X.......XX
+XX.......X
+XXXXXXX..X
+XXXXXXX..X
+X........X
+X.......XX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D4" Width="10" Height="16">
+      <Data>
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XX......XX
+XX......XX
+XX......XX
+XXX....XXX
+XXXX..XXXX
+XXXX..XXXX
+XXX....XXX
+XX......XX
+XX......XX
+XX......XX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+</Data>
+    </Image>
+    <Image Index="D5" Width="15" Height="16">
+      <Data>
+...............
+..........XX...
+...XXX...XXXX..
+....XXX..XXXXX.
+.X...XX...XXXX.
+.XX..XX..XXXXX.
+.XXXXXX.XXX.XX.
+..XXXX.XXX.....
+......XXX......
+.....XXX.XX....
+....XXX.XXXX...
+...XXX..XXXXX..
+..XXX....XXXXX.
+.XXX......XX.X.
+.XX........XXX.
+...............
+</Data>
+    </Image>
+    <Image Index="D6" Width="10" Height="16">
+      <Data>
+..........
+..........
+..........
+..XXXX....
+.....X....
+.....X....
+.....X....
+.....X....
+.....X....
+.....X....
+.....X....
+.....X....
+.....X....
+..XXXXXX..
+..........
+..........
+</Data>
+    </Image>
+    <Image Index="D7" Width="10" Height="16">
+      <Data>
+..........
+..........
+..........
+.XXXXXXX..
+.......X..
+.......X..
+.......X..
+.......X..
+.XXXXXXX..
+.X........
+.X........
+.X........
+.X........
+.XXXXXXX..
+..........
+..........
+</Data>
+    </Image>
+    <Image Index="D8" Width="10" Height="16">
+      <Data>
+..........
+..........
+..........
+.XXXXXXX..
+.......X..
+.......X..
+.......X..
+.......X..
+.XXXXXXX..
+.......X..
+.......X..
+.......X..
+.......X..
+.XXXXXXX..
+..........
+..........
+</Data>
+    </Image>
+    <Image Index="D9" Width="4" Height="24">
+      <Data>
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+....
+.XX.
+.XX.
+....
+....
+....
+</Data>
+    </Image>
+    <Image Index="DA" Width="8" Height="24">
+      <Data>
+........
+........
+.XXX....
+X...X...
+X...X...
+X...X...
+.XXX....
+........
+........
+........
+........
+........
+........
+........
+..XXXX..
+.X....X.
+X.......
+X.......
+X.......
+X.......
+.X....X.
+..XXXX..
+........
+........
+</Data>
+    </Image>
+    <Image Index="DB" Width="7" Height="24">
+      <Data>
+.......
+.......
+.XXX...
+X...X..
+X...X..
+X...X..
+.XXX...
+.......
+.......
+.......
+.......
+.......
+.......
+.......
+XXXXXX.
+X......
+X......
+XXXXX..
+X......
+X......
+X......
+X......
+.......
+.......
+</Data>
+    </Image>
+    <Image Index="DC" Width="5" Height="24">
+      <Data>
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.....
+.XXX.
+.XXX.
+.XXX.
+.....
+</Data>
+    </Image>
+    <Image Index="DD" Width="18" Height="24">
+      <Data>
+..................
+..................
+..................
+..................
+......XXXXX.......
+....XXXXXXXXX.....
+...XXXXXXXXXXX....
+.XXXXX.....XXXXX..
+.XXXX.......XXXX..
+XXXX.........XXXX.
+XXXX.........XXXX.
+XXXX.........XXXX.
+XXXX.........XXXX.
+XXXX.........XXXX.
+.XXXX.......XXXX..
+.XXXXX.....XXXXX..
+..XXXX.....XXXX...
+...XXX.....XXX....
+...XXX.....XXX....
+XXXXXX.....XXXXXX.
+XXXXXX.....XXXXXX.
+XXXXXX.....XXXXXX.
+..................
+..................
+</Data>
+    </Image>
+    <Image Index="DE" Width="6" Height="24">
+      <Data>
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+......
+.XXX..
+.XXX..
+.XXX..
+......
+......
+</Data>
+    </Image>
+    <Image Index="DF" Width="22" Height="24">
+      <Data>
+......................
+......................
+..XX..................
+.XXXX......XXXXXXX....
+XX..XX...XXXXXXXXXX...
+X....X..XXXXXXXXXXXX..
+XX..XX.XXXXX.....XXX..
+.XXXX..XXXX...........
+..XX..XXXX............
+......XXX.............
+......XXX.............
+......XXX.............
+......XXX.............
+......XXX.............
+......XXX.............
+......XXX.............
+......XXXX............
+.......XXXX...........
+.......XXXXX.....XXX..
+........XXXXXXXXXXXX..
+.........XXXXXXXXXX...
+...........XXXXXXX....
+......................
+......................
+</Data>
+    </Image>
+    <Image Index="E0" Width="22" Height="24">
+      <Data>
+......................
+......................
+..XX..................
+.XXXX....XXXXXXXXXXX..
+XX..XX...XXXXXXXXXXX..
+X....X...XXXXXXXXXXX..
+XX..XX...XXX..........
+.XXXX....XXX..........
+..XX.....XXX..........
+.........XXXXXXXXX....
+.........XXXXXXXXX....
+.........XXXXXXXXX....
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+.........XXX..........
+......................
+......................
+</Data>
+    </Image>
+  </Images>
+</ResourcePack>

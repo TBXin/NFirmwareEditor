@@ -1,0 +1,78 @@
+﻿<Patch Definition="Cuboid 3.11" Name="Skip Modes" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Skip non-used modes. Edit patch file to select which modes should be hidden.
+Не показывает неиспользуемые режимы в меню. Отредактируйте файл патча, чтобы выбрать скрытые режимы. Перед применением отредактируйте под свои нужды, описание внутри.</Description>
+  <Data>
+
+# На основе патча от NFirmwareEditor Team для витамина
+# Спасибо iNFiNUM за объяснение некоторых моментов
+
+
+# Branch to skip #
+531A: 40 - 07
+531B: 1C - F0
+531c: C0 - 13
+531D: B2 - B8
+
+# Skip #
+C318: 00 - 06
+C319: 00 - 28
+C31A: 00 - 00
+C31B: 00 - D3
+C31C: 00 - 00
+C31D: 00 - 20
+C31E: 00 - 00
+C31F: 00 - 28
+C320: 80 - 00
+C321: 80 - D1
+C322: C0 - 00 ; 00 - on, 01 - off TC NI
+C323: E0 - 30
+C324: E0 - 01
+C325: F0 - 28
+C326: F8 - 00
+C327: F8 - D1
+C328: F8 - 00 ; 00 - on, 01 - off TC TI
+C329: FC - 30
+C32A: FC - 02
+C32B: FE - 28
+C32C: FE - 00
+C32D: FE - D1
+C32E: FE - 00 ; 00 - on, 01 - off TC SS316
+C32F: FF - 30
+C330: FF - 03
+C331: FF - 28
+C332: FF - 00
+C333: FF - D1
+C334: FF - 00 ; 00 - on, 01 - off TC TCR
+C335: FF - 30
+C336: FF - 04
+C337: FF - 28
+C338: FF - 00
+C339: FF - D1
+C33A: FF - 00 ; 00 - on, 01 - off POWER
+C33B: FF - 30
+C33C: FF - 05
+C33D: FF - 28
+C33E: FF - 00
+C33F: FF - D1
+C340: FE - 00 ; 00 - on, 01 - off SMART
+C341: FE - 30
+C342: FE - 70
+C343: FE - 47
+C344: FC - 40
+C345: FC - 1C
+C346: F8 - C0
+C347: F8 - B2
+C348: F0 - FF
+C349: F0 - F7
+C34A: E0 - E6
+C34B: E0 - FF
+C34C: C0 - FF
+C34D: 80 - F7
+C34E: 00 - E4
+C34F: 00 - FF
+C350: 00 - F9
+C351: 00 - F7
+C352: 00 - 32
+C353: 00 - B8
+</Data>
+</Patch>

@@ -1,0 +1,9 @@
+﻿<Patch Definition="Cuboid 3.11" Name="Delete 316 from SS316 string in TCR mode" Version="1.0" Author="Musik234">
+  <Description>Delete 316 from SS316 string in TCR mode. Удаляет 316 в строке SS316 в термоконтроле.</Description>
+  <Data>
+6A6E:  04 - 0D
+6A6F:  22 - E0
+77E8:  04 - 0D
+77E9:  22 - E0
+</Data>
+</Patch>

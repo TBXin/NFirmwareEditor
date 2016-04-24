@@ -243,7 +243,43 @@
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Patches\Cuboid 3.11\3.11_3V_lock.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_75DC.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_menu_blink_2Hz.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_no316.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Cuboid 3.11\3.11_res_unlock.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_skip_modes.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.11\3.11_timeout_10_sec.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_3V_lock.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_75DC.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_menu_blink_2Hz.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_timeout_10_sec.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_3rd_line_aio.patch">
@@ -339,6 +375,12 @@
     <None Include="Patches\Evic VTC Mini 3.01\3.01_VTC2Presa75.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_75DC.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_timeout_10_sec.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Presa TC75W 3.00\3.00_Presa75_42clicks.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -431,7 +473,43 @@
     <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_LCD.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_LCD_Half.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_Segment_Empty.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_Segment_Full.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.11\3.11_Cuboid_Segment_Half.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.11\Cuboid 3.11 Big digits.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\Cuboid 3.12\3.12_Cuboid_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid 3.12 Big digits.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid_3.12_LCD.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid_3.12_LCD_Half.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid_3.12_Segment_Empty.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid_3.12_Segment_Full.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\Cuboid 3.12\Cuboid_3.12_Segment_Half.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ResourcePacks\Evic VTC Mini 3.01\3.01_Evic_Vtc_Mini_default.respack">
@@ -441,6 +519,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_default.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_LCD.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_LCD_bold.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_Segment_Empty.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_Segment_Full.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\iStick TC100W 1.10\1.10_iStick100_Segment_Half.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ResourcePacks\Presa TC75W 3.00\3.00_Presa75_default.respack">

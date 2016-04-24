@@ -1,0 +1,7 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Lock after 75 degrees Celsius" Version="1.0" Author="yii">
+  <Description>Lock after 75 degrees Celsius. Поднятия порога блокровки по перегреву с 70 до 75 градусов Цельсия.</Description>
+  <Data>
+30DA: 46 - 4B
+6F2A: 46 - 4B
+</Data>
+</Patch>

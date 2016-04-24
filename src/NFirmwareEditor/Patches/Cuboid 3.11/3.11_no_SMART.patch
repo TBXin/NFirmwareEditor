@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 3.11" Name="Disable SMART mode" Version="1.0" Author="yii">
+  <Description>Disable SMART mode. Зпрещает режим SMART</Description>
+  <Data>
+1C62: 06 - 05
+5328: 06 - 05
+</Data>
+</Patch>

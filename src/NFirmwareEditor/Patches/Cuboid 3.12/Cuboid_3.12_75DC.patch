@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Lock after 75 degrees Celsius" Version="1.0" Author="yii">
+  <Description>Lock after 75 degrees Celsius. Поднятия порога блокровки по перегреву с 70 до 75 градусов Цельсия.</Description>
+  <Data>
+39EC: 46 - 4B
+978C: 46 - 4B
+</Data>
+</Patch>
