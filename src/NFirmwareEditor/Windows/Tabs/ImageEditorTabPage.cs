@@ -376,13 +376,17 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ImageSizeLabel.Text = string.Format
 			(
-				"Image: {0}x{1}, Reference: 0x{2:X4}, Data: 0x{3:X4}, Length: {4} bytes", 
-				metadata.Width, 
-				metadata.Height, 
+				"Image: 0x{0:X2}, Size: {1}x{2}, Reference: 0x{3:X4}, Data: 0x{4:X4}, Length: {5} bytes",
+				metadata.Index,
+				metadata.Width,
+				metadata.Height,
 				metadata.ImageReferenceOffset,
-				metadata.DataOffset, 
+				metadata.DataOffset,
 				metadata.DataLength + 2
 			);
+
+			ImageListBixStatusStrip.Visible = SelectedImageMetadata.Count > 1;
+			ImageListBoxStatusLabel.Text = @"Selected: " + SelectedImageMetadata.Count;
 		}
 
 		private void BlockImageRadioButton_CheckedChanged(object sender, EventArgs e)
