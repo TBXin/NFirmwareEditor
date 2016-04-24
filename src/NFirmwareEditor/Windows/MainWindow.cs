@@ -21,8 +21,9 @@ namespace NFirmwareEditor.Windows
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 		private readonly BackupManager m_backupManager = new BackupManager();
 
+		private readonly IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
+
 		private Configuration m_configuration;
-		private IEnumerable<FirmwareDefinition> m_definitions;
 		private Firmware m_firmware;
 		private string m_firmwareFile;
 
@@ -30,7 +31,7 @@ namespace NFirmwareEditor.Windows
 		{
 			m_tabPages = new List<IEditorTabPage>
 			{
-				new ImageEditorTabPage(m_resourcePackManager) { Dock = DockStyle.Fill },
+				new ImageEditorTabPage(m_definitions, m_resourcePackManager) { Dock = DockStyle.Fill },
 				new StringEditorTabPage { Dock = DockStyle.Fill },
 				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
 				new ResourcePacksTabPage(m_resourcePackManager) { Dock = DockStyle.Fill }
@@ -97,7 +98,7 @@ namespace NFirmwareEditor.Windows
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
 
 			LoadTabSettings();
-			m_definitions = m_firmwareDefinitionManager.Load();
+			m_firmwareDefinitionManager.Load().ForEach(x => m_definitions.Add(x));
 			foreach (var definition in m_definitions)
 			{
 				var firmwareDefinition = definition;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 using NFirmware;
@@ -30,6 +31,11 @@ namespace NFirmwareEditor.Managers
 						var resourcePack = Serializer.Read<ResourcePackFile>(fs);
 						if (resourcePack == null) continue;
 
+						resourcePack.SuitableDefinitions = resourcePack
+							.Definition
+							.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+							.Select(x => x.Trim())
+							.ToArray();
 						resourcePack.FileName = file;
 						result.Add(resourcePack);
 					}

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
@@ -14,7 +15,6 @@ namespace NFirmwareEditor.Windows
 	internal partial class CreateResourcePackWindow : Form
 	{
 		private readonly ResourcePackManager m_resourcePackManager;
-		private readonly string m_definition;
 		private readonly List<ExportedImage> m_exportedImages;
 
 		public CreateResourcePackWindow()
@@ -27,19 +27,23 @@ namespace NFirmwareEditor.Windows
 
 		public CreateResourcePackWindow
 		(
-			[NotNull] ResourcePackManager resourcePackManager, 
+			[NotNull] ResourcePackManager resourcePackManager,
+			[NotNull] IEnumerable<FirmwareDefinition> definitions,
 			[NotNull] string definition, 
 			[NotNull] List<ExportedImage> exportedImages
 		) : this()
 		{
 			if (resourcePackManager == null) throw new ArgumentNullException("resourcePackManager");
+			if (definitions == null) throw new ArgumentNullException("definitions");
 			if (string.IsNullOrEmpty(definition)) throw new ArgumentNullException("definition");
 			if (exportedImages == null) throw new ArgumentNullException("exportedImages");
 
 			m_resourcePackManager = resourcePackManager;
-			m_definition = definition;
 			m_exportedImages = exportedImages.ToList();
 
+			definitions.ForEach(x => DefinitionComboBox.Items.Add(x));
+
+			DefinitionComboBox.Text = definition;
 			AuthorTextBox.Text = Environment.UserName;
 			flowLayoutPanel1.SuspendLayout();
 			foreach (var exportedImage in exportedImages.Select(x => x.Data))
@@ -71,6 +75,12 @@ namespace NFirmwareEditor.Windows
 
 		private void OkButton_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(DefinitionComboBox.Text))
+			{
+				InfoBox.Show("Selected defition first.");
+				return;
+			}
+
 			string fileName;
 			using (var sf = new SaveFileDialog { Filter = Consts.ExportResourcePackFilter, FileName = NameTextBox.Text.Nvl("new_resource_pack") + Consts.ResourcePackFileExtensionWoAsterisk })
 			{
@@ -78,7 +88,7 @@ namespace NFirmwareEditor.Windows
 				fileName = sf.FileName;
 			}
 
-			var resourcePack = new ResourcePack(m_definition, m_exportedImages)
+			var resourcePack = new ResourcePack(DefinitionComboBox.Text, m_exportedImages)
 			{
 				Name = NameTextBox.Text,
 				Author = AuthorTextBox.Text,

@@ -71,7 +71,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			m_suitableResourcePacks = m_allResourcePacks.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
+			m_suitableResourcePacks = m_allResourcePacks.Where(x => x.SuitableDefinitions.Contains(m_firmware.Definition.Name));
 			ResourcePackListView.Fill(m_suitableResourcePacks.Select(resourcePack => new ListViewItem(new[]
 			{
 				resourcePack.Name,

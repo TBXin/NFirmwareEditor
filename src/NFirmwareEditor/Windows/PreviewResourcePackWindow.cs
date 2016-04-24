@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -75,6 +76,8 @@ namespace NFirmwareEditor.Windows
 			{
 				var originalImageIndex = originalImageIndices[i];
 				var originalImage = GetImageByIndex(originalImageIndex);
+				if (originalImage == null) continue;
+
 				var importedImage = importedImages[i];
 				var croppedImportedImage = FirmwareImageProcessor.PasteImage(originalImage, importedImage);
 
@@ -94,11 +97,13 @@ namespace NFirmwareEditor.Windows
 			set { ImportButton.Text = value; }
 		}
 
+		[CanBeNull]
 		private bool[,] GetImageByIndex(int index)
 		{
 			var mode = GetImportMode();
 			var block = mode == ImageImportMode.Block2 ? m_firmware.Block2Images : m_firmware.Block1Images;
-			var imageMetadata = block.First(x => x.Index == index);
+			var imageMetadata = block.FirstOrDefault(x => x.Index == index);
+			if (imageMetadata == null) return null;
 
 			return m_firmware.ReadImage(imageMetadata);
 		}

@@ -17,6 +17,7 @@ namespace NFirmwareEditor.Windows.Tabs
 {
 	internal partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
+		private readonly IEnumerable<FirmwareDefinition> m_definitions;
 		private readonly ResourcePackManager m_resourcePackManager;
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
@@ -26,9 +27,11 @@ namespace NFirmwareEditor.Windows.Tabs
 		private BlockType m_currentBlock = BlockType.Block1;
 		private bool m_imageListBoxIsUpdating;
 
-		public ImageEditorTabPage(ResourcePackManager resourcePackManager)
+		public ImageEditorTabPage(IEnumerable<FirmwareDefinition> definitions, ResourcePackManager resourcePackManager)
 		{
+			m_definitions = definitions;
 			m_resourcePackManager = resourcePackManager;
+
 			InitializeComponent();
 			InitializeControls();
 		}
@@ -674,7 +677,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 
-			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_firmware.Definition.Name, images))
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images))
 			{
 				createResourcePackWindow.ShowDialog();
 			}
