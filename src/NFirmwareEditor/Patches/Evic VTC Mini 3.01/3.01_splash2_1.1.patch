@@ -1,0 +1,138 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Splash 2" Version="1.1" Author="NFirmwareEditor Team">
+  <Description>Double Splash Screen (0xE3), 3 seconds after Power On and 10 seconds before sleep. For default dim timeout (30 s).
+Charge Screen Mod is recommended to be installed.
+Двойная заставка (0xE3), в течение 3 секунд после включения мода и в течение 10 секунд перед автоматическим гашением. Для стандартного таймаута гашения экрана (30 секунд).</Description>
+Рекомендуется установить патч Charge Screen Mod с изображением 64x64 или 64x104.
+  <Data>
+# Branch to disable double screen update #
+00001066: 03 - 09
+00001067: F0 - F0
+00001068: 73 - EB
+00001069: FF - BA
+# Branch to additional drawing #
+00001090: 20 - 09
+00001091: 78 - F0
+00001092: 20 - A6
+00001093: B1 - BA
+# Keypress Fix #
+00001188: 1E - 1D ; default_dim_timeout - 1
+# Swith On event #
+0000417E: FC - 06
+0000417F: F7 - F0
+00004180: FB - 4F
+00004181: BF - BA
+# Additional drawing #
+0000A5E0: 00 - 20
+0000A5E1: 00 - 78
+0000A5E2: 00 - 08
+0000A5E3: FF - B9
+0000A5E4: FF - F6
+0000A5E5: 80 - F7
+0000A5E6: 00 - 5B
+0000A5E7: 00 - BD
+0000A5E8: 00 - 1F
+0000A5E9: 00 - B4
+0000A5EA: 0F - 0C
+0000A5EB: FF - 49
+0000A5EC: FF - 09
+0000A5ED: F8 - 78
+0000A5EE: 00 - 01
+0000A5EF: 00 - 29
+0000A5F0: 00 - 11
+0000A5F1: 00 - D1
+0000A5F2: 3F - 1F ; default_dim_timeout + 1
+0000A5F3: FF - 28
+0000A5F4: FF - 08
+0000A5F5: FE - D0
+0000A5F6: 00 - 0A ; second splash time
+0000A5F7: 00 - 28
+0000A5F8: 00 - 06
+0000A5F9: 01 - D0
+0000A5FA: FF - 1C ; first splash hide time (default_dim_timeout - 2)
+0000A5FB: FF - 28
+0000A5FC: FF - 0B
+0000A5FD: FF - D1
+0000A5FE: 80 - FA
+0000A5FF: 00 - F7
+0000A600: 00 - 7F
+0000A601: 03 - FB
+0000A602: FF - FB
+0000A603: FF - F7
+0000A604: FF - C1
+0000A605: FF - FC
+0000A606: E0 - 04
+0000A607: 00 - E0
+0000A608: 00 - 00 ; Splash X pos
+0000A609: 0F - 20
+0000A60A: FF - 00 ; Splash Y pos
+0000A60B: FF - 21
+0000A60C: FF - E3 ; Splash Charcode
+0000A60D: FF - 22
+0000A60E: F8 - FA
+0000A60F: 00 - F7
+0000A610: 00 - 83
+0000A611: 1F - FB
+0000A612: FF - FA
+0000A613: FF - F7
+0000A614: FF - 9D
+0000A615: FF - FC
+0000A616: FC - 1F
+0000A617: 00 - BC
+0000A618: 00 - F6
+0000A619: 7F - F7
+0000A61A: FF - 3C
+0000A61B: FF - BD
+0000A61C: FF - EA
+0000A61D: FF - 00
+0000A61E: FE - 00
+0000A61F: 00 - 20
+# Reload Timer on switch on event #
+0000A620: 00 - 05
+0000A621: FF - 48
+0000A622: FF - 01
+0000A623: FF - 68
+0000A624: FF - 41
+0000A625: FF - F4
+0000A626: FF - 00
+0000A627: 00 - 31
+0000A628: 01 - 01
+0000A629: FF - 60
+0000A62A: FF - 04
+0000A62B: FF - 48
+0000A62C: FF - 01
+0000A62D: FF - 21
+0000A62E: FF - 41
+0000A62F: 80 - 70
+0000A630: 03 - 1F ; default_dim_timeout + 1
+0000A631: FF - 21
+0000A632: FF - 01
+0000A633: E0 - 70
+0000A634: 07 - 70
+0000A635: FF - 47
+0000A636: FF - 00
+0000A637: C0 - 00
+0000A638: 03 - 60
+0000A639: FF - 00
+0000A63A: FE - 00
+0000A63B: 00 - 20
+0000A63C: 00 - E9
+0000A63D: 7F - 00
+0000A63E: FF - 00
+0000A63F: E0 - 20
+# Disable double screen update #
+0000A640: 07 - 20
+0000A641: FF - 78
+0000A642: F8 - 1F ; default_dim_timeout + 1
+0000A643: 00 - 28
+0000A644: 00 - 01
+0000A645: 0F - D0
+0000A646: FF - FA
+0000A647: F0 - F7
+0000A648: 0F - 83
+0000A649: FF - FC
+0000A64A: E0 - F6
+0000A64B: 00 - F7
+0000A64C: 00 - 0E
+0000A64D: 03 - BD
+</Data>
+</Patch>

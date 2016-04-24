@@ -1,0 +1,154 @@
+﻿<Patch Definition="RX200 3.10" Name="Splash 2" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Double Splash Screen (0xA2), 2 seconds after wake up and 10 seconds before sleep. For default dim timeout (30 s).
+Двойная заставка (0xA2), в течение 2 секунд после включения экрана и в течение 10 секунд перед автоматическим гашением. Для стандартного таймаута гашения экрана (30 секунд).</Description>
+  <Data>
+# Branch to disable double screen update #
+000015AC: 03 - 07
+000015AD: F0 - F0
+000015AE: FE - 0A
+000015AF: FB - BD
+# Branch to additional drawing #
+000015D6: 4A - 07
+000015D7: 46 - F0
+000015D8: 20 - C3
+000015D9: B1 - BC
+# Keypress Fix #
+00001732: 1E - 1D ; default_dim_timeout - 1
+# Swith On event #
+0000414C: FD - 04
+0000414D: F7 - F0
+0000414E: E8 - 28
+0000414F: BA - BF
+# Additional drawing #
+00008F60: null - 4A
+00008F61: null - 46
+00008F62: null - 08
+00008F63: null - B9
+00008F64: null - F8
+00008F65: null - F7
+00008F66: null - 3E
+00008F67: null - BB
+00008F68: null - 1F
+00008F69: null - B4
+00008F6A: null - 0C
+00008F6B: null - 49
+00008F6C: null - 09
+00008F6D: null - 78
+00008F6E: null - 01
+00008F6F: null - 29
+00008F70: null - 11
+00008F71: null - D1
+00008F72: null - 1E ; default_dim_timeout
+00008F73: null - 28
+00008F74: null - 08
+00008F75: null - D0
+00008F76: null - 0A ; second splash time
+00008F77: null - 28
+00008F78: null - 06
+00008F79: null - D0
+00008F7A: null - 1C ; first splash hide time (default_dim_timeout - 2)
+00008F7B: null - 28
+00008F7C: null - 0B
+00008F7D: null - D1
+00008F7E: null - FB
+00008F7F: null - F7
+00008F80: null - 1B
+00008F81: null - FD
+00008F82: null - FC
+00008F83: null - F7
+00008F84: null - 8D
+00008F85: null - FD
+00008F86: null - 04
+00008F87: null - E0
+00008F88: null - 00 ; Splash X pos
+00008F89: null - 20
+00008F8A: null - 00 ; Splash Y pos
+00008F8B: null - 21
+00008F8C: null - A2 ; Splash Charcode
+00008F8D: null - 22
+00008F8E: null - FB
+00008F8F: null - F7
+00008F90: null - 29
+00008F91: null - FD
+00008F92: null - FB
+00008F93: null - F7
+00008F94: null - 0B
+00008F95: null - FF
+00008F96: null - 1F
+00008F97: null - BC
+00008F98: null - F8
+00008F99: null - F7
+00008F9A: null - 1F
+00008F9B: null - BB
+00008F9C: null - 55
+00008F9D: null - 00
+00008F9E: null - 00
+00008F9F: null - 20
+# Reload Timer on switch on event #
+00008FA0: null - 05
+00008FA1: null - 48
+00008FA2: null - 01
+00008FA3: null - 68
+00008FA4: null - 41
+00008FA5: null - F4
+00008FA6: null - 00
+00008FA7: null - 31
+00008FA8: null - 01
+00008FA9: null - 60
+00008FAA: null - 04
+00008FAB: null - 49
+00008FAC: null - 01
+00008FAD: null - 20
+00008FAE: null - 08
+00008FAF: null - 70
+00008FB0: null - 03
+00008FB1: null - 49
+00008FB2: null - 1E ; default_dim_timeout
+00008FB3: null - 20
+00008FB4: null - 08
+00008FB5: null - 70
+00008FB6: null - 70
+00008FB7: null - 47
+00008FB8: null - 70
+00008FB9: null - 00
+00008FBA: null - 00
+00008FBB: null - 20
+00008FBC: null - 55
+00008FBD: null - 00
+00008FBE: null - 00
+00008FBF: null - 20
+00008FC0: null - 54
+00008FC1: null - 00
+00008FC2: null - 00
+00008FC3: null - 20
+# Disable double screen update #
+00008FC4: null - 99
+00008FC5: null - F8
+00008FC6: null - 00
+00008FC7: null - 00
+00008FC8: null - 1E ; default_dim_timeout
+00008FC9: null - 28
+00008FCA: null - 01
+00008FCB: null - D0
+00008FCC: null - FB
+00008FCD: null - F7
+00008FCE: null - EE
+00008FCF: null - FE
+00008FD0: null - F8
+00008FD1: null - F7
+00008FD2: null - EE
+00008FD3: null - BA
+00008FD4: null - 00
+00008FD5: null - 00
+00008FD6: null - 00
+00008FD7: null - 00
+00008FD8: null - 00
+00008FD9: null - 00
+00008FDA: null - 00
+00008FDB: null - 00
+00008FDC: null - 00
+00008FDD: null - 00
+00008FDE: null - 00
+00008FDF: null - 00
+</Data>
+</Patch>
