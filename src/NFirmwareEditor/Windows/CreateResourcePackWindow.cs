@@ -77,7 +77,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (string.IsNullOrEmpty(DefinitionComboBox.Text))
 			{
-				InfoBox.Show("Selected defition first.");
+				InfoBox.Show("Selected definition first.");
 				return;
 			}
 
