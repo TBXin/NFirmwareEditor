@@ -620,9 +620,13 @@ namespace NFirmwareEditor.Windows.Tabs
 							InfoBox.Show("Image is too big. Image width and height must be lower or equals to {0} pixels.", Consts.MaximumImageWidthAndHeight);
 							return;
 						}
-						var imageData = FirmwareImageProcessor.ImportBitmap(bitmap);
-						ImagePixelGrid.CreateUndo();
-						ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
+
+						using (var monochrome = FirmwareImageProcessor.ConvertTo1Bit(bitmap))
+						{
+							var imageData = FirmwareImageProcessor.ImportBitmap(monochrome);
+							ImagePixelGrid.CreateUndo();
+							ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
+						}
 					}
 				}
 				catch (Exception ex)
