@@ -117,6 +117,12 @@
     <Compile Include="Windows\HotkeyHelpWindow.Designer.cs">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ImageConvertorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ImageConvertorWindow.Designer.cs">
+      <DependentUpon>ImageConvertorWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ImportFontWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\HotkeyHelpWindow.resx">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ImageConvertorWindow.resx">
+      <DependentUpon>ImageConvertorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\ImportFontWindow.resx">
       <DependentUpon>ImportFontWindow.cs</DependentUpon>
@@ -581,6 +590,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\images.png" />
     <None Include="Resources\font_underline.png" />
     <None Include="Resources\font_italic.png" />
     <None Include="Resources\font_bold.png" />

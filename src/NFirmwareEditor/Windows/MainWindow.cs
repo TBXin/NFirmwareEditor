@@ -211,7 +211,6 @@ namespace NFirmwareEditor.Windows
 			OpenDialogAndReadFirmwareOnOk(Consts.EncryptedOrDecrypted, fileName => m_loader.TryLoad(fileName, m_definitions));
 		}
 
-
 		private void SaveMenuItem_Click(object sender, EventArgs e)
 		{
 			try
@@ -262,6 +261,14 @@ namespace NFirmwareEditor.Windows
 			using (var patchCreatorWindow = new PatchCreatorWindow(m_loader, m_patchManager, m_definitions))
 			{
 				patchCreatorWindow.ShowDialog();
+			}
+		}
+
+		private void ImageConverterMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var imageConvertorWindow = new ImageConvertorWindow())
+			{
+				imageConvertorWindow.ShowDialog();
 			}
 		}
 

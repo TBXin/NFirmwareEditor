@@ -42,6 +42,7 @@
 			this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.EncryptDecryptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.PatchCreatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ImageConverterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.FirmwareUpdaterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -154,6 +155,7 @@
 			this.ToolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EncryptDecryptMenuItem,
             this.PatchCreatorMenuItem,
+            this.ImageConverterMenuItem,
             this.FirmwareUpdaterMenuItem,
             this.toolStripSeparator3,
             this.OptionsMenuItem});
@@ -176,6 +178,14 @@
 			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(160, 22);
 			this.PatchCreatorMenuItem.Text = "Patch Creator";
 			this.PatchCreatorMenuItem.Click += new System.EventHandler(this.PatchCreatorMenuItem_Click);
+			// 
+			// ImageConverterMenuItem
+			// 
+			this.ImageConverterMenuItem.Image = global::NFirmwareEditor.Properties.Resources.images;
+			this.ImageConverterMenuItem.Name = "ImageConverterMenuItem";
+			this.ImageConverterMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.ImageConverterMenuItem.Text = "Image Converter";
+			this.ImageConverterMenuItem.Click += new System.EventHandler(this.ImageConverterMenuItem_Click);
 			// 
 			// FirmwareUpdaterMenuItem
 			// 
@@ -311,6 +321,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
+		private System.Windows.Forms.ToolStripMenuItem ImageConverterMenuItem;
 	}
 }
 

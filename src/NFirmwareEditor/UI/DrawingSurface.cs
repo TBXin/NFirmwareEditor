@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace NFirmwareEditor.UI
@@ -15,6 +16,12 @@ namespace NFirmwareEditor.UI
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{
 			e.Graphics.Clear(Color.White);
+		}
+
+		protected override void OnResize(EventArgs e)
+		{
+			base.OnResize(e);
+			Invalidate();
 		}
 	}
 }

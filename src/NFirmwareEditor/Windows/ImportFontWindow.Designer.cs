@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.label3 = new System.Windows.Forms.Label();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
@@ -53,7 +54,6 @@
 			this.FontPreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
 			this.label1 = new System.Windows.Forms.Label();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.label3 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.borderedPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeUpDown)).BeginInit();
@@ -79,6 +79,20 @@
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(834, 44);
 			this.ControlBorderedPanel.TabIndex = 3;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
+			// 
+			// label3
+			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.Location = new System.Drawing.Point(4, 4);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(614, 36);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Ctrl + Left / Right / Up / Down - Shift glyphs\r\nCtrl + Plus / Minus - Change font" +
+    " size";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// OkButton
 			// 
@@ -361,20 +375,6 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Font size:";
 			// 
-			// label3
-			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Location = new System.Drawing.Point(4, 4);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(614, 36);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Ctrl + Left / Right / Up / Down - Shift glyphs\r\nCtrl + Plus / Minus - Change font" +
-    " size";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
 			// ImportFontWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +385,7 @@
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(700, 300);
 			this.Name = "ImportFontWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor - Import Font";

@@ -142,7 +142,6 @@ namespace NFirmwareEditor.Windows
 			UpperAZButton.Click += (s, e) => LettersTextBox.Text = GetLetters('A', 'Z');
 
 			OkButton.Click += OkButton_Click;
-			FontPreviewSurface.Resize += (s, e) => FontPreviewSurface.Invalidate();
 			FontPreviewSurface.MouseDown += FontPreviewSurface_MouseDown;
 			FontPreviewSurface.MouseMove += FontPreviewSurface_MouseMove;
 			FontPreviewSurface.Paint += FontPreviewSurface_Paint;
