@@ -355,7 +355,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			else
 			{
-				var cachedImage = FirmwareImageProcessor.CreateBitmap(processedData);
+				var cachedImage = BitmapProcessor.CreateBitmap(processedData);
 				ImageCacheManager.SetImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
 
 				var updateCache = new Action(() =>
@@ -621,7 +621,7 @@ namespace NFirmwareEditor.Windows.Tabs
 							return;
 						}
 
-						using (var monochrome = FirmwareImageProcessor.ConvertTo1Bit(bitmap))
+						using (var monochrome = BitmapProcessor.ConvertTo1Bit(bitmap))
 						{
 							var imageData = FirmwareImageProcessor.ImportBitmap(monochrome);
 							ImagePixelGrid.CreateUndo();
@@ -657,7 +657,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				try
 				{
-					using (var image = FirmwareImageProcessor.CreateBitmap(data.ImageData, 1))
+					using (var image = BitmapProcessor.CreateBitmap(data.ImageData, 1))
 					{
 						var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + Consts.BitmapFileExtensionWoAsterisk);
 						image.Save(fileName, ImageFormat.Bmp);

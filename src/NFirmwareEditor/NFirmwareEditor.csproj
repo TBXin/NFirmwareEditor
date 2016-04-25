@@ -58,6 +58,7 @@
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\Serializer.cs" />
     <Compile Include="Managers\BackupManager.cs" />
+    <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
     <Compile Include="Managers\FirmwareUpdater.cs" />
     <Compile Include="Managers\ImageCacheManager.cs" />
