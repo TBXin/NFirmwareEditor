@@ -650,7 +650,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				try
 				{
-					using (var image = BitmapProcessor.CreateBitmapFromRaw(data.ImageData, 1))
+					using (var image = BitmapProcessor.Create1BitBitmapFromRaw(data.ImageData))
 					{
 						var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + Consts.BitmapFileExtensionWoAsterisk);
 						image.Save(fileName, ImageFormat.Bmp);
