@@ -101,6 +101,7 @@
 			this.OpenUsingSpecifiedDefinitionMenuItem.ShortcutKeyDisplayString = "";
 			this.OpenUsingSpecifiedDefinitionMenuItem.Size = new System.Drawing.Size(285, 22);
 			this.OpenUsingSpecifiedDefinitionMenuItem.Text = "Open (Using Specified Definition)";
+			this.OpenUsingSpecifiedDefinitionMenuItem.Visible = false;
 			// 
 			// toolStripSeparator1
 			// 
