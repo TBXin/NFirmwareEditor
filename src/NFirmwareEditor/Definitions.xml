@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
+	<!-- RX200 -->
 	<FirmwareDefinition Name="RX200 3.10">
 		<Marker Offset="0x90" Bytes="0x79 0x21" />
 		<Marker Offset="0xC0" Bytes="0x55 0x64" />
@@ -40,7 +41,9 @@
 		</StringTable1>
 		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- RX200 -->
 
+	<!-- Cuboid -->
 	<FirmwareDefinition Name="Cuboid 3.12">
 		<Marker Offset="0x90" Bytes="0xE9 0x21" />
 		<Marker Offset="0xC0" Bytes="0xBD 0x82" />
@@ -59,28 +62,6 @@
 		<StringTable2>
 			<OffsetFrom>0x9A2A</OffsetFrom>
 			<OffsetTo>0x9A7F</OffsetTo>
-		</StringTable2>
-		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
-	</FirmwareDefinition>
-
-	<FirmwareDefinition Name="Cuboid 3.02">
-		<Marker Offset="0x90" Bytes="0xE9 0x21" />
-		<Marker Offset="0xC0" Bytes="0xB9 0x82" />
-		<ImageTable1>
-			<OffsetFrom>0xCB58</OffsetFrom>
-			<OffsetTo>0xCEE0</OffsetTo>
-		</ImageTable1>
-		<ImageTable2>
-			<OffsetFrom>0xB2A8</OffsetFrom>
-			<OffsetTo>0xB630</OffsetTo>
-		</ImageTable2>
-		<StringTable1>
-			<OffsetFrom>0xCFE4</OffsetFrom>
-			<OffsetTo>0xD168</OffsetTo>
-		</StringTable1>
-		<StringTable2>
-			<OffsetFrom>0x9A26</OffsetFrom>
-			<OffsetTo>0x9A7B</OffsetTo>
 		</StringTable2>
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
@@ -129,6 +110,74 @@
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid 3.02">
+		<Marker Offset="0x90" Bytes="0xE9 0x21" />
+		<Marker Offset="0xC0" Bytes="0xB9 0x82" />
+		<ImageTable1>
+			<OffsetFrom>0xCB58</OffsetFrom>
+			<OffsetTo>0xCEE0</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xB2A8</OffsetFrom>
+			<OffsetTo>0xB630</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xCFE4</OffsetFrom>
+			<OffsetTo>0xD168</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x9A26</OffsetFrom>
+			<OffsetTo>0x9A7B</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="Cuboid 3.01">
+		<Marker Offset="0x90" Bytes="0x79 0x21" />
+		<Marker Offset="0xC0" Bytes="0x51 0x7E" />
+		<ImageTable1>
+			<OffsetFrom>0xC678</OffsetFrom>
+			<OffsetTo>0xCA00</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xADC8</OffsetFrom>
+			<OffsetTo>0xB150</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xCB04</OffsetFrom>
+			<OffsetTo>0xCC7C</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x9546</OffsetFrom>
+			<OffsetTo>0x959B</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+	
+	<FirmwareDefinition Name="Cuboid 3.00">
+		<Marker Offset="0x90" Bytes="0x05 0x21" />
+		<Marker Offset="0xC0" Bytes="0x49 0x7A" />
+		<ImageTable1>
+			<OffsetFrom>0xC1AC</OffsetFrom>
+			<OffsetTo>0xC52C</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA918</OffsetFrom>
+			<OffsetTo>0xAC98</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xC630</OffsetFrom>
+			<OffsetTo>0xC79A</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x90AA</OffsetFrom>
+			<OffsetTo>0x90FF</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- Cuboid -->
+	
+	<!-- Cuboid Mini -->
 	<FirmwareDefinition Name="Cuboid Mini 3.02">
 		<Marker Offset="0x90" Bytes="0x4D 0x1D" />
 		<Marker Offset="0xC0" Bytes="0x85 0x78" />
@@ -172,7 +221,9 @@
 		</StringTable2>
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- Cuboid Mini -->
 
+	<!-- Evic VTC Mini -->
 	<FirmwareDefinition Name="Evic VTC Mini 3.02">
 		<Marker Offset="0x90" Bytes="0x01 0x1E" />
 		<ImageTable1>
@@ -256,7 +307,9 @@
 		</StringTable2>
 		<CharsToCorrect>0x7B 0x7C 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- Evic VTC Mini -->
 
+	<!-- iStick TC100W -->
 	<FirmwareDefinition Name="iStick TC100W 1.10">
 		<Marker Offset="0x90" Bytes="0x55 0x1A" />
 		<ImageTable1>
@@ -269,7 +322,9 @@
 		</StringTable1>
 		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
-		
+	<!-- iStick TC100W -->
+
+	<!-- Presa TC75W -->
 	<FirmwareDefinition Name="Presa TC75W 3.00">
 		<Marker Offset="0x90" Bytes="0xBD 0x1C" />
 		<ImageTable1>
@@ -286,7 +341,9 @@
 		</StringTable1>
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- Presa TC75W -->
 
+	<!-- Vaporflask -->
 	<FirmwareDefinition Name="Vaporflask Classic 2.00">
 		<Marker Offset="0x90" Bytes="0x91 0x20" />
 		<ImageTable1>
@@ -325,5 +382,6 @@
 		</StringTable1>
 		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- Vaporflask -->
 	
 </ArrayOfFirmwareDefinition>
