@@ -1,6 +1,6 @@
 ﻿namespace NFirmwareEditor.Windows
 {
-	partial class ImageConvertorWindow
+	partial class ImageConverterWindow
 	{
 		/// <summary>
 		/// Required designer variable.

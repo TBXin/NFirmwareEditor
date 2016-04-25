@@ -8,7 +8,7 @@ using NFirmwareEditor.Managers;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class ImageConvertorWindow : EditorDialogWindow
+	internal partial class ImageConverterWindow : EditorDialogWindow
 	{
 		private const int PreviewMargin = 8;
 
@@ -18,7 +18,7 @@ namespace NFirmwareEditor.Windows
 		private int m_height;
 		private TextureBrush m_fontPreviewBackgroundBrush;
 
-		public ImageConvertorWindow()
+		public ImageConverterWindow()
 		{
 			InitializeComponent();
 			InitializeControls();
@@ -59,6 +59,11 @@ namespace NFirmwareEditor.Windows
 			OkButton.Click += OkButton_Click;
 
 			ImagePreviewSurface.Paint += ImagePreviewSurface_Paint;
+			Closing += (s, e) =>
+			{
+				if (m_originalBitmap != null) m_originalBitmap.Dispose();
+				if (m_monochromeBitmap != null) m_monochromeBitmap.Dispose();
+			};
 		}
 
 		private Bitmap CreateMonochromeBitmap(Image originalBitmap)

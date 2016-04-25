@@ -266,7 +266,7 @@ namespace NFirmwareEditor.Windows
 
 		private void ImageConverterMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var imageConvertorWindow = new ImageConvertorWindow())
+			using (var imageConvertorWindow = new ImageConverterWindow())
 			{
 				imageConvertorWindow.ShowDialog();
 			}
