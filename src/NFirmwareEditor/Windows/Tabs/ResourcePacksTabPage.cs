@@ -30,7 +30,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			ResourcePackListView.Resize += (s, e) =>
 			{
-				NameColumnHeader.Width = ResourcePackListView.ClientRectangle.Width - VersionColumnHeader.Width - 1;
+				NameColumnHeader.Width = ResourcePackListView.ClientRectangle.Width - FileNameColumnHeader.Width - VersionColumnHeader.Width - 1;
 			};
 			ResourcePackListView.SelectedIndexChanged += ResourcePackListView_SelectedIndexChanged;
 			ResourcePackListView.ItemActivate += ResourcePackListView_ItemActivate;
@@ -75,6 +75,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ResourcePackListView.Fill(m_suitableResourcePacks.Select(resourcePack => new ListViewItem(new[]
 			{
 				resourcePack.Name,
+				resourcePack.FileName,
 				resourcePack.Version
 			}) { Tag = resourcePack }));
 
@@ -173,7 +174,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void ResourcePackListView_ItemActivate(object sender, EventArgs e)
 		{
 			if (SelectedResourcePack == null) return;
-			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FileName);
+			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
 			if (resourcePack == null) return;
 
 			PreviewResourcePack(resourcePack);
@@ -182,7 +183,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void PreviewResourcePackButton_Click(object sender, EventArgs e)
 		{
 			if (SelectedResourcePack == null) return;
-			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FileName);
+			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
 			if (resourcePack == null) return;
 
 			PreviewResourcePack(resourcePack);

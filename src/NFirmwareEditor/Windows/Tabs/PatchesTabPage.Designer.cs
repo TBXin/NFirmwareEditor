@@ -38,6 +38,7 @@
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.PatchListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.FileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.CompatibleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -149,6 +150,7 @@
 			this.PatchListView.CheckBoxes = true;
 			this.PatchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumnHeader,
+            this.FileNameColumnHeader,
             this.VersionColumnHeader,
             this.InstalledColumnHeader,
             this.CompatibleColumnHeader});
@@ -165,8 +167,13 @@
 			// 
 			// NameColumnHeader
 			// 
-			this.NameColumnHeader.Text = "Name";
+			this.NameColumnHeader.Text = "Title";
 			this.NameColumnHeader.Width = 127;
+			// 
+			// FileNameColumnHeader
+			// 
+			this.FileNameColumnHeader.Text = "File name";
+			this.FileNameColumnHeader.Width = 200;
 			// 
 			// VersionColumnHeader
 			// 
@@ -220,5 +227,6 @@
 		private System.Windows.Forms.Button ReloadPatchesButton;
 		private System.Windows.Forms.GroupBox ConflictsGroupBox;
 		private System.Windows.Forms.TextBox ConflictsTextBox;
+		private System.Windows.Forms.ColumnHeader FileNameColumnHeader;
 	}
 }

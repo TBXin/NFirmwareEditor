@@ -10,9 +10,6 @@ namespace NFirmwareEditor.Models
 		}
 
 		[XmlIgnore]
-		public string FileName { get; set; }
-
-		[XmlIgnore]
 		public string[] SuitableDefinitions { get; set; }
 
 		public string Description { get; set; }

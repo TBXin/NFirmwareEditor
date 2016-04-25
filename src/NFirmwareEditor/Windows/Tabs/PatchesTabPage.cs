@@ -33,6 +33,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Resize += (s, e) =>
 			{
 				NameColumnHeader.Width = PatchListView.ClientRectangle.Width -
+				                         FileNameColumnHeader.Width -
 				                         VersionColumnHeader.Width -
 				                         InstalledColumnHeader.Width -
 				                         CompatibleColumnHeader.Width - 1;
@@ -89,6 +90,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ListViewItem(new[]
 				{
 					patch.Name,
+					patch.FileName,
 					patch.Version,
 					patch.IsApplied ? "Yes" : "No",
 					patch.IsCompatible ? "Yes" : "No"
@@ -127,7 +129,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			sb = new StringBuilder();
 			foreach (var conflict in conflicts)
 			{
-				sb.AppendLine(conflict.Name);
+				sb.AppendLine(conflict.ToString());
 			}
 			ConflictsTextBox.Text = sb.ToString();
 		}
@@ -162,7 +164,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("List of installed patches:");
 				foreach (var patch in result.ProceededPatches)
 				{
-					sb.AppendLine(" - " + patch.Name);
+					sb.AppendLine(" - " + patch);
 				}
 				IsDirty = true;
 			}
@@ -176,7 +178,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Patches that have not been installed because of conflicts:");
 				foreach (var patch in result.ConflictedPatches)
 				{
-					sb.AppendLine(" - " + patch.Name);
+					sb.AppendLine(" - " + patch);
 				}
 			}
 			InfoBox.Show(sb.ToString());
@@ -205,7 +207,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("List of rollbacked patches:");
 				foreach (var patch in result.ProceededPatches)
 				{
-					sb.AppendLine(" - " + patch.Name);
+					sb.AppendLine(" - " + patch);
 				}
 				IsDirty = true;
 			}
@@ -219,7 +221,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Patches that have not been rollbacked because of conflicts:");
 				foreach (var patch in result.ConflictedPatches)
 				{
-					sb.AppendLine(" - " + patch.Name);
+					sb.AppendLine(" - " + patch);
 				}
 			}
 			InfoBox.Show(sb.ToString());

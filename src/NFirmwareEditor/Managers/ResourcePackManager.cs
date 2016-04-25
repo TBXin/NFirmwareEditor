@@ -36,7 +36,8 @@ namespace NFirmwareEditor.Managers
 							.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
 							.Select(x => x.Trim())
 							.ToArray();
-						resourcePack.FileName = file;
+						resourcePack.FilePath = file;
+						resourcePack.FileName = Path.GetFileName(file);
 						result.Add(resourcePack);
 					}
 				}

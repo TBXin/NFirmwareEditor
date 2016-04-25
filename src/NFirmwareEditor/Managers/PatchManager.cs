@@ -31,6 +31,8 @@ namespace NFirmwareEditor.Managers
 						if (patch == null) continue;
 
 						patch.Data = ParseDiff(patch.DataString);
+						patch.FilePath = file;
+						patch.FileName = Path.GetFileName(file);
 						result.Add(patch);
 					}
 				}

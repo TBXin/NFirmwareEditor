@@ -32,11 +32,12 @@
 			this.PreviewResourcePackButton = new System.Windows.Forms.Button();
 			this.DescriptionGroupBox = new System.Windows.Forms.GroupBox();
 			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+			this.ImportResourcePackButton = new System.Windows.Forms.Button();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ResourcePackListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.FileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.ImportResourcePackButton = new System.Windows.Forms.Button();
 			this.DescriptionGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -86,6 +87,17 @@
 			this.DescriptionTextBox.Size = new System.Drawing.Size(764, 105);
 			this.DescriptionTextBox.TabIndex = 0;
 			// 
+			// ImportResourcePackButton
+			// 
+			this.ImportResourcePackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ImportResourcePackButton.Enabled = false;
+			this.ImportResourcePackButton.Location = new System.Drawing.Point(201, 452);
+			this.ImportResourcePackButton.Name = "ImportResourcePackButton";
+			this.ImportResourcePackButton.Size = new System.Drawing.Size(201, 30);
+			this.ImportResourcePackButton.TabIndex = 11;
+			this.ImportResourcePackButton.Text = "Import resource pack from file";
+			this.ImportResourcePackButton.UseVisualStyleBackColor = true;
+			// 
 			// borderedPanel1
 			// 
 			this.borderedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -111,6 +123,7 @@
 			this.ResourcePackListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.ResourcePackListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColumnHeader,
+            this.FileNameColumnHeader,
             this.VersionColumnHeader});
 			this.ResourcePackListView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ResourcePackListView.FullRowSelect = true;
@@ -125,24 +138,18 @@
 			// 
 			// NameColumnHeader
 			// 
-			this.NameColumnHeader.Text = "Name";
+			this.NameColumnHeader.Text = "Title";
 			this.NameColumnHeader.Width = 127;
+			// 
+			// FileNameColumnHeader
+			// 
+			this.FileNameColumnHeader.Text = "File name";
+			this.FileNameColumnHeader.Width = 200;
 			// 
 			// VersionColumnHeader
 			// 
 			this.VersionColumnHeader.Text = "Version";
 			this.VersionColumnHeader.Width = 55;
-			// 
-			// ImportResourcePackButton
-			// 
-			this.ImportResourcePackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.ImportResourcePackButton.Enabled = false;
-			this.ImportResourcePackButton.Location = new System.Drawing.Point(201, 452);
-			this.ImportResourcePackButton.Name = "ImportResourcePackButton";
-			this.ImportResourcePackButton.Size = new System.Drawing.Size(201, 30);
-			this.ImportResourcePackButton.TabIndex = 11;
-			this.ImportResourcePackButton.Text = "Import resource pack from file";
-			this.ImportResourcePackButton.UseVisualStyleBackColor = true;
 			// 
 			// ResourcePacksTabPage
 			// 
@@ -175,5 +182,6 @@
 		private System.Windows.Forms.ColumnHeader NameColumnHeader;
 		private System.Windows.Forms.ColumnHeader VersionColumnHeader;
 		private System.Windows.Forms.Button ImportResourcePackButton;
+		private System.Windows.Forms.ColumnHeader FileNameColumnHeader;
 	}
 }
