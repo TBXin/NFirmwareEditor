@@ -82,7 +82,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			m_suitablePatches = m_allPatches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name));
+			m_suitablePatches = m_allPatches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name)).OrderBy(x => x.Name);
 			PatchListView.Fill(m_suitablePatches.Select(patch =>
 			{
 				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
@@ -153,7 +153,6 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			var result = m_patchManager.BulkOperation(candidates, p => m_patchManager.ApplyPatch(p, m_firmware));
-			//UpdatePatchStatuses();
 			if (result.ProceededPatches.Count > 0) m_host.ReloadFirmware(this);
 
 			var sb = new StringBuilder();

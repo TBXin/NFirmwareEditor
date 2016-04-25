@@ -46,7 +46,7 @@ namespace NFirmwareEditor.UI
 			}
 			else
 			{
-				listView.ListViewItemSorter = new ListViewItemComparer(e.Column, true);
+				listView.ListViewItemSorter = new ListViewItemComparer(e.Column, false);
 			}
 		}
 	}
