@@ -116,25 +116,6 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static bool[,] ImportBitmap([NotNull] Bitmap sourceImage, byte pixelMark = 0xFF)
-		{
-			if (sourceImage == null) throw new ArgumentNullException("sourceImage");
-
-			var width = sourceImage.Width;
-			var height = sourceImage.Height;
-
-			var result = new bool[width, height];
-			for (var col = 0; col < width; col++)
-			{
-				for (var row = 0; row < height; row++)
-				{
-					var pixel = sourceImage.GetPixel(col, row);
-					result[col, row] = pixel.R == pixelMark && pixel.G == pixelMark && pixel.B == pixelMark;
-				}
-			}
-			return result;
-		}
-
 		public static Bitmap CropImage(Image srcImage, Rectangle cropArea)
 		{
 			var rtnImage = new Bitmap(cropArea.Width, cropArea.Height);

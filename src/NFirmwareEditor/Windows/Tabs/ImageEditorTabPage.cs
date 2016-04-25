@@ -355,7 +355,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			else
 			{
-				var cachedImage = BitmapProcessor.CreateBitmap(processedData);
+				var cachedImage = BitmapProcessor.CreateBitmapFromRaw(processedData);
 				ImageCacheManager.SetImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
 
 				var updateCache = new Action(() =>
@@ -614,19 +614,12 @@ namespace NFirmwareEditor.Windows.Tabs
 				{
 					var bitmapFile = op.FileName;
 					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile))
+					using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height)))
+					using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
 					{
-						if (bitmap.Width > Consts.MaximumImageWidthAndHeight || bitmap.Height > Consts.MaximumImageWidthAndHeight)
-						{
-							InfoBox.Show("Image is too big. Image width and height must be lower or equals to {0} pixels.", Consts.MaximumImageWidthAndHeight);
-							return;
-						}
-
-						using (var monochrome = BitmapProcessor.ConvertTo1Bit(bitmap))
-						{
-							var imageData = FirmwareImageProcessor.ImportBitmap(monochrome);
-							ImagePixelGrid.CreateUndo();
-							ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
-						}
+						var imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+						ImagePixelGrid.CreateUndo();
+						ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
 					}
 				}
 				catch (Exception ex)
@@ -657,7 +650,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				try
 				{
-					using (var image = BitmapProcessor.CreateBitmap(data.ImageData, 1))
+					using (var image = BitmapProcessor.CreateBitmapFromRaw(data.ImageData, 1))
 					{
 						var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + Consts.BitmapFileExtensionWoAsterisk);
 						image.Save(fileName, ImageFormat.Bmp);

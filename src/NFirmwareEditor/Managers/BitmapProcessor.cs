@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
@@ -8,7 +9,7 @@ namespace NFirmwareEditor.Managers
 {
 	internal static class BitmapProcessor
 	{
-		public static Image CreateBitmap([NotNull] bool[,] imageData, int pixelSize = 2)
+		public static Image CreateBitmapFromRaw([NotNull] bool[,] imageData, int pixelSize = 2)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 
@@ -36,6 +37,49 @@ namespace NFirmwareEditor.Managers
 				}
 			}
 			return result;
+		}
+
+		public static bool[,] CreateRawFromBitmap([NotNull] Bitmap sourceImage, byte pixelMark = 0xFF)
+		{
+			if (sourceImage == null) throw new ArgumentNullException("sourceImage");
+
+			var width = sourceImage.Width;
+			var height = sourceImage.Height;
+
+			var result = new bool[width, height];
+			for (var col = 0; col < width; col++)
+			{
+				for (var row = 0; row < height; row++)
+				{
+					var pixel = sourceImage.GetPixel(col, row);
+					result[col, row] = pixel.R == pixelMark && pixel.G == pixelMark && pixel.B == pixelMark;
+				}
+			}
+			return result;
+		}
+
+		public static Bitmap ScaleBitmapIfNecessary(Bitmap image, Size desizeSize)
+		{
+			return image.Width > desizeSize.Width || image.Height > desizeSize.Height
+				? FitToSize(image, desizeSize)
+				: image;
+		}
+
+		public static Bitmap FitToSize(Image sourceBitmap, Size desireSize)
+		{
+			var scalingRatioX = (float)sourceBitmap.Width / desireSize.Width;
+			var scalingRatioY = (float)sourceBitmap.Height / desireSize.Height;
+			var scalingRatio = Math.Max(scalingRatioX, scalingRatioY);
+
+			var output = new Bitmap(desireSize.Width, desireSize.Height);
+			using (var gfx = Graphics.FromImage(output))
+			{
+				gfx.CompositingQuality = CompositingQuality.HighQuality;
+				gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				gfx.SmoothingMode = SmoothingMode.AntiAlias;
+				gfx.DrawImage(sourceBitmap, new RectangleF(0, 0, sourceBitmap.Width / scalingRatio, sourceBitmap.Height / scalingRatio));
+			}
+			return output;
 		}
 
 		public static Bitmap ConvertTo1Bit([NotNull] Bitmap input)

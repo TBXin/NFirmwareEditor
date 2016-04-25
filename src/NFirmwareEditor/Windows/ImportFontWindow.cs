@@ -87,7 +87,7 @@ namespace NFirmwareEditor.Windows
 					var cropRect = new Rectangle(rect.X + 1, rect.Y + 1, rect.Width - 1, rect.Height - 1);
 					using (var croppedLetter = FirmwareImageProcessor.CropImage(surface, cropRect))
 					{
-						var imageData = FirmwareImageProcessor.ImportBitmap(croppedLetter, 0x00);
+						var imageData = BitmapProcessor.CreateRawFromBitmap(croppedLetter, 0x00);
 						result.Add(new Tuple<FirmwareImageMetadata, bool[,]>(metadata, imageData));
 					}
 				}
