@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
 namespace NFirmware
 {
@@ -15,7 +12,7 @@ namespace NFirmware
 		/// </summary>
 		public override long DataLength
 		{
-			get { return Width * (Height + 7) / 8; }
+			get { return Width * ((Height + 7) / 8); }
 		}
 
 		/// <summary>
