@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 
 namespace NFirmware
@@ -52,30 +53,20 @@ namespace NFirmware
 		internal override byte[] Save(bool[,] imageData)
 		{
 			var imageBytes = CreateImageDataWithHeader();
-			var imageBytesCounter = HeaderLength;
-			var colCounter = 0;
-
-			for (var row = 0; row < Height; row++)
+			var stride = (Width + 7) / 8;
+			for (var y = 0; y < Height; y++)
 			{
-				var byteBits = new bool[8];
-				for (var col = 0; col < Width; col++)
+				for (var x = 0; x < Width; x++)
 				{
-					byteBits[colCounter++] = imageData[col, row];
-					if (colCounter == 8)
-					{
-						imageBytes[imageBytesCounter++] = new BitArray(byteBits.Reverse().ToArray()).ToByte();
-						byteBits = new bool[8];
-						colCounter = 0;
-					}
-				}
+					if (imageData[x, y] == false) continue;
 
-				if (colCounter > 0)
-				{
-					imageBytes[imageBytesCounter++] = new BitArray(byteBits.Reverse().ToArray()).ToByte();
-					colCounter = 0;
+					var byteIndex = y * stride + x / 8;
+					var bitIndex = 7 - x % 8;
+
+					imageBytes[HeaderLength + byteIndex] |= (byte)((1 << bitIndex) & 0xFF);
 				}
 			}
 			return imageBytes;
-		}
+		} 
 	}
 }

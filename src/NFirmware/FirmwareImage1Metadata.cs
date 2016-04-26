@@ -51,22 +51,18 @@ namespace NFirmware
 		internal override byte[] Save(bool[,] imageData)
 		{
 			var imageBytes = CreateImageDataWithHeader();
-			var imageBytesCounter = HeaderLength;
-			var rowCounter = 0;
-
-			while (rowCounter < Height)
+			var stride = Width;
+			for (var y = 0; y < Height; y++)
 			{
-				var byteBits = new bool[8];
-				for (var col = 0; col < Width; col++)
+				for (var x = 0; x < Width; x++)
 				{
-					for (var row = 0; row < byteBits.Length; row++)
-					{
-						if (rowCounter + row >= Height) break;
-						byteBits[row] = imageData[col, rowCounter + row];
-					}
-					imageBytes[imageBytesCounter++] = new BitArray(byteBits).ToByte();
+					if (imageData[x, y] == false) continue;
+
+					var byteIndex = y / 8 * stride + x;
+					var bitIndex = y % 8;
+
+					imageBytes[HeaderLength + byteIndex] |= (byte)(1 << bitIndex & 0xFF);
 				}
-				rowCounter += byteBits.Length;
 			}
 			return imageBytes;
 		}
