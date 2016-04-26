@@ -27,6 +27,7 @@ namespace NFirmwareEditor.Managers
 			{ "E056", "Joyetech Cuboid Mini" },
 			{ "E060", "Joyetech Cuboid" },
 			{ "M011", "Eleaf iStick TC100W" },
+			{ "M041", "Eleaf iStick Pico" },
 			{ "W007", "Wismec Presa TC75W" },
 			{ "W010", "Vaporflask Classic" },
 			{ "W011", "Vaporflask Lite" },
