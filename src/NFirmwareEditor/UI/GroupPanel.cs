@@ -39,12 +39,12 @@ namespace NFirmwareEditor.UI
 			get
 			{
 				return new Rectangle
-				(
-					Padding.Left, 
-					Padding.Top + m_headerHeight, 
-					Math.Max(Width - Padding.Horizontal, 0), 
+					(
+					Padding.Left,
+					Padding.Top + m_headerHeight,
+					Math.Max(Width - Padding.Horizontal, 0),
 					Math.Max(Height - m_headerHeight - Padding.Vertical, 0)
-				);
+					);
 			}
 		}
 
@@ -57,7 +57,7 @@ namespace NFirmwareEditor.UI
 
 			// Draw header
 			e.Graphics.FillRectangle(new SolidBrush(HeaderBackColor), headerRect);
-			e.Graphics.DrawLine(borderPen, clientRect.X, clientRect.Y + m_headerHeight, clientRect.Width, clientRect.Y + m_headerHeight);
+			e.Graphics.DrawLine(borderPen, clientRect.X, clientRect.Y + m_headerHeight - 1, clientRect.Width, clientRect.Y + m_headerHeight - 1);
 			e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), GetHeaderTextRect(headerRect), s_headerStringFormat);
 
 			// Draw container
@@ -74,7 +74,7 @@ namespace NFirmwareEditor.UI
 
 		private RectangleF GetHedearRect(Rectangle clientRect)
 		{
-			return new RectangleF(clientRect.X, clientRect.Y, clientRect.Width, m_headerHeight);
+			return new RectangleF(clientRect.X, clientRect.Y, clientRect.Width, m_headerHeight - 1);
 		}
 
 		private Rectangle GetContainerRect(Rectangle clientRect)

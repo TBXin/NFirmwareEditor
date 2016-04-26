@@ -28,13 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.LayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.NewSizeGroupBox = new System.Windows.Forms.GroupBox();
 			this.NewHeightUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.NewWidthUpDown = new System.Windows.Forms.NumericUpDown();
-			this.CurrentSizeGroupBox = new System.Windows.Forms.GroupBox();
 			this.CurrentHeightUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.CurrentWidthUpDown = new System.Windows.Forms.NumericUpDown();
@@ -42,48 +39,20 @@
 			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.LayoutPanel.SuspendLayout();
-			this.NewSizeGroupBox.SuspendLayout();
+			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			((System.ComponentModel.ISupportInitialize)(this.NewHeightUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NewWidthUpDown)).BeginInit();
-			this.CurrentSizeGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CurrentHeightUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CurrentWidthUpDown)).BeginInit();
 			this.ControlBorderedPanel.SuspendLayout();
+			this.groupPanel1.SuspendLayout();
+			this.groupPanel2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// LayoutPanel
-			// 
-			this.LayoutPanel.ColumnCount = 1;
-			this.LayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.LayoutPanel.Controls.Add(this.NewSizeGroupBox, 0, 1);
-			this.LayoutPanel.Controls.Add(this.CurrentSizeGroupBox, 0, 0);
-			this.LayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.LayoutPanel.Location = new System.Drawing.Point(0, 0);
-			this.LayoutPanel.Name = "LayoutPanel";
-			this.LayoutPanel.RowCount = 2;
-			this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.LayoutPanel.Size = new System.Drawing.Size(214, 102);
-			this.LayoutPanel.TabIndex = 1;
-			// 
-			// NewSizeGroupBox
-			// 
-			this.NewSizeGroupBox.Controls.Add(this.NewHeightUpDown);
-			this.NewSizeGroupBox.Controls.Add(this.label4);
-			this.NewSizeGroupBox.Controls.Add(this.label3);
-			this.NewSizeGroupBox.Controls.Add(this.NewWidthUpDown);
-			this.NewSizeGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.NewSizeGroupBox.Location = new System.Drawing.Point(3, 54);
-			this.NewSizeGroupBox.Name = "NewSizeGroupBox";
-			this.NewSizeGroupBox.Size = new System.Drawing.Size(208, 45);
-			this.NewSizeGroupBox.TabIndex = 0;
-			this.NewSizeGroupBox.TabStop = false;
-			this.NewSizeGroupBox.Text = "Set new size:";
 			// 
 			// NewHeightUpDown
 			// 
-			this.NewHeightUpDown.Location = new System.Drawing.Point(152, 17);
+			this.NewHeightUpDown.Location = new System.Drawing.Point(154, 33);
 			this.NewHeightUpDown.Maximum = new decimal(new int[] {
             128,
             0,
@@ -106,7 +75,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(5, 20);
+			this.label4.Location = new System.Drawing.Point(9, 36);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(39, 13);
 			this.label4.TabIndex = 6;
@@ -115,7 +84,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(106, 20);
+			this.label3.Location = new System.Drawing.Point(108, 36);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(42, 13);
 			this.label3.TabIndex = 7;
@@ -123,7 +92,7 @@
 			// 
 			// NewWidthUpDown
 			// 
-			this.NewWidthUpDown.Location = new System.Drawing.Point(48, 17);
+			this.NewWidthUpDown.Location = new System.Drawing.Point(52, 33);
 			this.NewWidthUpDown.Maximum = new decimal(new int[] {
             128,
             0,
@@ -143,23 +112,9 @@
             0,
             0});
 			// 
-			// CurrentSizeGroupBox
-			// 
-			this.CurrentSizeGroupBox.Controls.Add(this.CurrentHeightUpDown);
-			this.CurrentSizeGroupBox.Controls.Add(this.label2);
-			this.CurrentSizeGroupBox.Controls.Add(this.CurrentWidthUpDown);
-			this.CurrentSizeGroupBox.Controls.Add(this.label1);
-			this.CurrentSizeGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.CurrentSizeGroupBox.Location = new System.Drawing.Point(3, 3);
-			this.CurrentSizeGroupBox.Name = "CurrentSizeGroupBox";
-			this.CurrentSizeGroupBox.Size = new System.Drawing.Size(208, 45);
-			this.CurrentSizeGroupBox.TabIndex = 1;
-			this.CurrentSizeGroupBox.TabStop = false;
-			this.CurrentSizeGroupBox.Text = "Current size:";
-			// 
 			// CurrentHeightUpDown
 			// 
-			this.CurrentHeightUpDown.Location = new System.Drawing.Point(152, 17);
+			this.CurrentHeightUpDown.Location = new System.Drawing.Point(154, 33);
 			this.CurrentHeightUpDown.Maximum = new decimal(new int[] {
             128,
             0,
@@ -184,7 +139,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(106, 20);
+			this.label2.Location = new System.Drawing.Point(108, 36);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(42, 13);
 			this.label2.TabIndex = 3;
@@ -192,7 +147,7 @@
 			// 
 			// CurrentWidthUpDown
 			// 
-			this.CurrentWidthUpDown.Location = new System.Drawing.Point(48, 17);
+			this.CurrentWidthUpDown.Location = new System.Drawing.Point(51, 33);
 			this.CurrentWidthUpDown.Maximum = new decimal(new int[] {
             128,
             0,
@@ -217,7 +172,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(5, 20);
+			this.label1.Location = new System.Drawing.Point(9, 36);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(39, 13);
 			this.label1.TabIndex = 2;
@@ -235,7 +190,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 102);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 125);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(214, 39);
@@ -264,12 +219,49 @@
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
+			// groupPanel1
+			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.CurrentWidthUpDown);
+			this.groupPanel1.Controls.Add(this.label1);
+			this.groupPanel1.Controls.Add(this.CurrentHeightUpDown);
+			this.groupPanel1.Controls.Add(this.label2);
+			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel1.HeaderHeight = 30;
+			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
+			this.groupPanel1.Name = "groupPanel1";
+			this.groupPanel1.Size = new System.Drawing.Size(208, 58);
+			this.groupPanel1.TabIndex = 8;
+			this.groupPanel1.TabStop = false;
+			this.groupPanel1.Text = "Current size:";
+			// 
+			// groupPanel2
+			// 
+			this.groupPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel2.Controls.Add(this.label4);
+			this.groupPanel2.Controls.Add(this.NewWidthUpDown);
+			this.groupPanel2.Controls.Add(this.NewHeightUpDown);
+			this.groupPanel2.Controls.Add(this.label3);
+			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel2.HeaderHeight = 30;
+			this.groupPanel2.Location = new System.Drawing.Point(3, 64);
+			this.groupPanel2.Name = "groupPanel2";
+			this.groupPanel2.Size = new System.Drawing.Size(208, 58);
+			this.groupPanel2.TabIndex = 9;
+			this.groupPanel2.TabStop = false;
+			this.groupPanel2.Text = "New size:";
+			// 
 			// ResizeImageWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(214, 141);
-			this.Controls.Add(this.LayoutPanel);
+			this.ClientSize = new System.Drawing.Size(214, 164);
+			this.Controls.Add(this.groupPanel2);
+			this.Controls.Add(this.groupPanel1);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -278,16 +270,15 @@
 			this.Name = "ResizeImageWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Resize Image";
-			this.LayoutPanel.ResumeLayout(false);
-			this.NewSizeGroupBox.ResumeLayout(false);
-			this.NewSizeGroupBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NewHeightUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NewWidthUpDown)).EndInit();
-			this.CurrentSizeGroupBox.ResumeLayout(false);
-			this.CurrentSizeGroupBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CurrentHeightUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.CurrentWidthUpDown)).EndInit();
 			this.ControlBorderedPanel.ResumeLayout(false);
+			this.groupPanel1.ResumeLayout(false);
+			this.groupPanel1.PerformLayout();
+			this.groupPanel2.ResumeLayout(false);
+			this.groupPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -297,9 +288,6 @@
 		private UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button OkButton;
-		private System.Windows.Forms.TableLayoutPanel LayoutPanel;
-		private System.Windows.Forms.GroupBox CurrentSizeGroupBox;
-		private System.Windows.Forms.GroupBox NewSizeGroupBox;
 		private System.Windows.Forms.NumericUpDown CurrentHeightUpDown;
 		private System.Windows.Forms.NumericUpDown CurrentWidthUpDown;
 		private System.Windows.Forms.Label label1;
@@ -308,5 +296,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.NumericUpDown NewWidthUpDown;
+		private UI.GroupPanel groupPanel1;
+		private UI.GroupPanel groupPanel2;
 	}
 }
