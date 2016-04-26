@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 
@@ -154,6 +155,16 @@ namespace NFirmwareEditor.Managers
 			}
 
 			return result;
+		}
+
+		public static Bitmap LoadBitmapFromFile([NotNull] string filePath)
+		{
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+
+			using (var imageStream = new MemoryStream(File.ReadAllBytes(filePath)))
+			{
+				return (Bitmap)Image.FromStream(imageStream);
+			}
 		}
 
 		public static Bitmap ScaleBitmapIfNecessary(Bitmap image, Size desizeSize)

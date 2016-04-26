@@ -17,6 +17,7 @@ namespace NFirmwareEditor.Windows
 		private int m_width;
 		private int m_height;
 		private TextureBrush m_fontPreviewBackgroundBrush;
+		private bool m_doNotUpdateMonochrome;
 
 		public ImageConverterWindow()
 		{
@@ -33,9 +34,7 @@ namespace NFirmwareEditor.Windows
 
 				SafeExecute(() =>
 				{
-					if (m_monochromeBitmap != null) m_monochromeBitmap.Dispose();
-					m_monochromeBitmap = CreateMonochromeBitmap(m_originalBitmap);
-
+					CreateMonochromeBitmap();
 					ImagePreviewSurface.Invalidate();
 				});
 			};
@@ -45,9 +44,7 @@ namespace NFirmwareEditor.Windows
 
 				SafeExecute(() =>
 				{
-					if (m_monochromeBitmap != null) m_monochromeBitmap.Dispose();
-					m_monochromeBitmap = CreateMonochromeBitmap(m_originalBitmap);
-
+					CreateMonochromeBitmap();
 					ImagePreviewSurface.Invalidate();
 				});
 			};
@@ -66,11 +63,18 @@ namespace NFirmwareEditor.Windows
 			};
 		}
 
-		private Bitmap CreateMonochromeBitmap(Image originalBitmap)
+		private void CreateMonochromeBitmap()
 		{
-			using (var scaledImage = BitmapProcessor.FitToSize(originalBitmap, new Size(m_width, m_height)))
+			if (m_originalBitmap == null || m_doNotUpdateMonochrome) return;
+
+			using (var scaledImage = BitmapProcessor.FitToSize(m_originalBitmap, new Size(m_width, m_height)))
 			{
-				return BitmapProcessor.ConvertTo1Bit(scaledImage);
+				if (m_monochromeBitmap != null)
+				{
+					m_monochromeBitmap.Dispose();
+					m_monochromeBitmap = null;
+				}
+				m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage);
 			}
 		}
 
@@ -86,18 +90,44 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				if (m_originalBitmap != null) m_originalBitmap.Dispose();
-				m_originalBitmap = (Bitmap)Image.FromFile(fileName);
+				m_originalBitmap = BitmapProcessor.LoadBitmapFromFile(fileName);
 
-				ImagePreviewSurface.Invalidate();
+				if (m_originalBitmap.Width > 2048 || m_originalBitmap.Height > 2048)
+				{
+					if (m_monochromeBitmap != null)
+					{
+						m_monochromeBitmap.Dispose();
+						m_monochromeBitmap = null;
+					}
 
-				SourceTextBox.Text = fileName;
-				SourceTextBox.ScrollToEnd();
+					SourceTextBox.Clear();
+					ResizeContainerPanel.Enabled = false;
 
-				ResizeContainerPanel.Enabled = true;
-				NewWidthUpDown.Value = m_width = m_originalBitmap.Width;
-				NewHeightUpDown.Value = m_height = m_originalBitmap.Height;
+					m_doNotUpdateMonochrome = true;
+					NewWidthUpDown.Value = m_width = (int)NewWidthUpDown.Minimum;
+					NewHeightUpDown.Value = m_height = (int)NewHeightUpDown.Minimum;
+					m_doNotUpdateMonochrome = false;
 
-				OkButton.Enabled = true;
+					ImagePreviewSurface.Invalidate();
+
+					OkButton.Enabled = false;
+					InfoBox.Show("Selected images is too big. Choose an image that has dimension lower than 2048x2048.");
+				}
+				else
+				{
+					SourceTextBox.Text = fileName;
+					ResizeContainerPanel.Enabled = true;
+
+					m_doNotUpdateMonochrome = true;
+					NewWidthUpDown.Value = m_width = m_originalBitmap.Width;
+					NewHeightUpDown.Value = m_height = m_originalBitmap.Height;
+					m_doNotUpdateMonochrome = false;
+
+					CreateMonochromeBitmap();
+					ImagePreviewSurface.Invalidate();
+
+					OkButton.Enabled = true;
+				}
 			}
 			catch (Exception ex)
 			{
