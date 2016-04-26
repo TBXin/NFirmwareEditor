@@ -36,10 +36,10 @@ namespace NFirmware
 			{
 				for (var x = 0; x < Width; x++)
 				{
-					var bytePos = y * stride + x / 8;
-					var bitPos = 7 - x % 8;
+					var byteIndex = y * stride + x / 8;
+					var bitIndex = 7 - x % 8;
 
-					result[x, y] = (imageBytes[bytePos] & (1 << bitPos)) != 0;
+					result[x, y] = (imageBytes[byteIndex] & (1 << bitIndex)) != 0;
 				}
 			}
 			return result;
