@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
+using System.Text;
 
 namespace NFirmware
 {
@@ -13,7 +15,7 @@ namespace NFirmware
 		/// </summary>
 		public override long DataLength
 		{
-			get { return Width * (int)Math.Ceiling(Height / 8f); }
+			get { return Width * (Height + 7) / 8; }
 		}
 
 		/// <summary>
@@ -31,26 +33,16 @@ namespace NFirmware
 		internal override bool[,] Load(byte[] imageBytes)
 		{
 			var result = new bool[Width, Height];
-			var colCounter = 0;
-			var rowCounter = 0;
-
-			foreach (var imageByte in imageBytes)
+			var stride = Width;
+			for (var y = 0; y < Height; y++)
 			{
-				var bits = new BitArray(new[] { imageByte }).ToBoolArray();
-
-				if (colCounter == Width)
+				for (var x = 0; x < Width; x++)
 				{
-					colCounter = 0;
-					rowCounter += bits.Length;
-				}
+					var byteIndex = y / 8 * stride + x;
+					var bitIndex = y % 8;
 
-				for (var j = 0; j < bits.Length; j++)
-				{
-					if (rowCounter + j >= Height) break;
-					result[colCounter, rowCounter + j] = bits[j];
+					result[x, y] = (imageBytes[byteIndex] & (1 << bitIndex)) != 0;
 				}
-
-				colCounter++;
 			}
 			return result;
 		}
