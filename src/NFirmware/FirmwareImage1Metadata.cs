@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace NFirmware
+﻿namespace NFirmware
 {
 	/// <summary>
 	/// Represents metadata of the image for LCD-display SSD1306.

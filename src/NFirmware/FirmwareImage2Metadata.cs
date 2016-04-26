@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-
-namespace NFirmware
+﻿namespace NFirmware
 {
 	/// <summary>
 	/// Represents metadata of the image for LCD-display SSD1327.
