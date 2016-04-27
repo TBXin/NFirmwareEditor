@@ -44,7 +44,7 @@ namespace NFirmwareEditor.Managers
 
 		private int m_receiveBufferLength;
 		private int m_sentBufferLength;
-		private bool m_isDeviceConnected;
+		private bool? m_isDeviceConnected;
 
 		public FirmwareUpdater()
 		{
@@ -53,11 +53,14 @@ namespace NFirmwareEditor.Managers
 				var previousState = m_isDeviceConnected;
 				var device = s_loader.GetDeviceOrDefault(VendorId, ProductId);
 
-				if (device == null && previousState == false) return;
-				if (device != null && previousState) return;
+				if (previousState.HasValue)
+				{
+					if (device == null && previousState == false) return;
+					if (device != null && previousState == true) return;
+				}
 
 				m_isDeviceConnected = device != null;
-				OnDeviceConnected(m_isDeviceConnected);
+				OnDeviceConnected(m_isDeviceConnected.Value);
 			});
 		}
 
@@ -70,14 +73,14 @@ namespace NFirmwareEditor.Managers
 
 		public void StartMonitoring()
 		{
-			m_isDeviceConnected = false;
+			m_isDeviceConnected = null;
 			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
 		}
 
 		public void StopMonitoring()
 		{
 			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
-			m_isDeviceConnected = false;
+			m_isDeviceConnected = null;
 		}
 
 		public Dataflash ReadDataflash(BackgroundWorker worker = null)
