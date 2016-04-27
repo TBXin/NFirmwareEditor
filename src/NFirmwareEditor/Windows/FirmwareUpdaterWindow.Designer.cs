@@ -44,6 +44,8 @@ namespace NFirmwareEditor.Windows
 			this.UpdateButton = new System.Windows.Forms.Button();
 			this.UpdateFromFileButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.BootModeTextBox = new System.Windows.Forms.TextBox();
 			this.groupPanel1.SuspendLayout();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SuspendLayout();
@@ -52,18 +54,18 @@ namespace NFirmwareEditor.Windows
 			// 
 			this.UpdateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateProgressBar.Location = new System.Drawing.Point(3, 141);
+			this.UpdateProgressBar.Location = new System.Drawing.Point(3, 168);
 			this.UpdateProgressBar.Name = "UpdateProgressBar";
-			this.UpdateProgressBar.Size = new System.Drawing.Size(419, 30);
+			this.UpdateProgressBar.Size = new System.Drawing.Size(420, 30);
 			this.UpdateProgressBar.TabIndex = 4;
 			// 
 			// UpdateStatusLabel
 			// 
 			this.UpdateStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 118);
+			this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 145);
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-			this.UpdateStatusLabel.Size = new System.Drawing.Size(419, 20);
+			this.UpdateStatusLabel.Size = new System.Drawing.Size(420, 20);
 			this.UpdateStatusLabel.TabIndex = 5;
 			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -73,6 +75,8 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.label1);
+			this.groupPanel1.Controls.Add(this.BootModeTextBox);
 			this.groupPanel1.Controls.Add(this.label5);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
 			this.groupPanel1.Controls.Add(this.label4);
@@ -83,7 +87,7 @@ namespace NFirmwareEditor.Windows
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(419, 112);
+			this.groupPanel1.Size = new System.Drawing.Size(420, 139);
 			this.groupPanel1.TabIndex = 3;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Device info:";
@@ -103,7 +107,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.HardwareVersionTextBox.Location = new System.Drawing.Point(106, 87);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(309, 21);
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(310, 21);
 			this.HardwareVersionTextBox.TabIndex = 21;
 			this.HardwareVersionTextBox.TabStop = false;
 			// 
@@ -122,7 +126,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 60);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(309, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(310, 21);
 			this.FirmwareVersionTextBox.TabIndex = 20;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
@@ -141,7 +145,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DeviceNameTextBox.Location = new System.Drawing.Point(106, 33);
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
-			this.DeviceNameTextBox.Size = new System.Drawing.Size(309, 21);
+			this.DeviceNameTextBox.Size = new System.Drawing.Size(310, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
 			this.DeviceNameTextBox.TabStop = false;
 			// 
@@ -159,17 +163,17 @@ namespace NFirmwareEditor.Windows
 			this.ControlBorderedPanel.Controls.Add(this.UpdateFromFileButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 174);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 201);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(425, 44);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(426, 44);
 			this.ControlBorderedPanel.TabIndex = 2;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
 			// ResetDataFlashButton
 			// 
 			this.ResetDataFlashButton.Enabled = false;
-			this.ResetDataFlashButton.Location = new System.Drawing.Point(3, 5);
+			this.ResetDataFlashButton.Location = new System.Drawing.Point(4, 5);
 			this.ResetDataFlashButton.Name = "ResetDataFlashButton";
 			this.ResetDataFlashButton.Size = new System.Drawing.Size(100, 35);
 			this.ResetDataFlashButton.TabIndex = 0;
@@ -180,7 +184,7 @@ namespace NFirmwareEditor.Windows
 			// 
 			this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateButton.Enabled = false;
-			this.UpdateButton.Location = new System.Drawing.Point(109, 5);
+			this.UpdateButton.Location = new System.Drawing.Point(110, 5);
 			this.UpdateButton.Name = "UpdateButton";
 			this.UpdateButton.Size = new System.Drawing.Size(100, 35);
 			this.UpdateButton.TabIndex = 1;
@@ -191,7 +195,7 @@ namespace NFirmwareEditor.Windows
 			// 
 			this.UpdateFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateFromFileButton.Enabled = false;
-			this.UpdateFromFileButton.Location = new System.Drawing.Point(215, 5);
+			this.UpdateFromFileButton.Location = new System.Drawing.Point(216, 5);
 			this.UpdateFromFileButton.Name = "UpdateFromFileButton";
 			this.UpdateFromFileButton.Size = new System.Drawing.Size(100, 35);
 			this.UpdateFromFileButton.TabIndex = 2;
@@ -202,18 +206,37 @@ namespace NFirmwareEditor.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(321, 5);
+			this.CancelButton.Location = new System.Drawing.Point(322, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
 			this.CancelButton.TabIndex = 3;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(9, 117);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(62, 13);
+			this.label1.TabIndex = 26;
+			this.label1.Text = "Boot mode:";
+			// 
+			// BootModeTextBox
+			// 
+			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.BootModeTextBox.Location = new System.Drawing.Point(106, 114);
+			this.BootModeTextBox.Name = "BootModeTextBox";
+			this.BootModeTextBox.Size = new System.Drawing.Size(310, 21);
+			this.BootModeTextBox.TabIndex = 25;
+			this.BootModeTextBox.TabStop = false;
+			// 
 			// FirmwareUpdaterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(425, 218);
+			this.ClientSize = new System.Drawing.Size(426, 245);
 			this.ControlBox = false;
 			this.Controls.Add(this.UpdateStatusLabel);
 			this.Controls.Add(this.UpdateProgressBar);
@@ -249,5 +272,7 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.Button UpdateButton;
 		private System.Windows.Forms.Button ResetDataFlashButton;
 		private GroupPanel groupPanel1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox BootModeTextBox;
 	}
 }

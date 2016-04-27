@@ -47,6 +47,7 @@ namespace NFirmwareEditor.Windows
 					DeviceNameTextBox.Text = deviceName;
 					HardwareVersionTextBox.Text = dataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 					FirmwareVersionTextBox.Text = dataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
+					BootModeTextBox.Text = dataflash.LoadFromLdrom ? "LDROM" : "APROM";
 					SetUpdaterButtonsState(true);
 				});
 			}
@@ -58,6 +59,7 @@ namespace NFirmwareEditor.Windows
 					DeviceNameTextBox.Clear();
 					HardwareVersionTextBox.Clear();
 					FirmwareVersionTextBox.Clear();
+					BootModeTextBox.Clear();
 					SetUpdaterButtonsState(false);
 				});
 				m_connectedDeviceProductId = null;
@@ -69,10 +71,12 @@ namespace NFirmwareEditor.Windows
 			DeviceNameTextBox.BackColor = Color.White;
 			HardwareVersionTextBox.BackColor = Color.White;
 			FirmwareVersionTextBox.BackColor = Color.White;
+			BootModeTextBox.BackColor = Color.White;
 
 			DeviceNameTextBox.ReadOnly = true;
 			HardwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.ReadOnly = true;
+			BootModeTextBox.ReadOnly = true;
 
 			m_updater.DeviceConnected += DeviceConnected;
 			m_updater.StartMonitoring();
