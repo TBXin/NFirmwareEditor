@@ -184,6 +184,38 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void UpdateLogoAsyncWorker(BackgroundWorker worker, byte[] block1ImageBytes, byte[] block2ImageBytes)
+		{
+			try
+			{
+				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
+				var dataflash = m_updater.ReadDataflash(worker);
+				if (dataflash.LoadFromLdrom == false && dataflash.FirmwareVersion > 0)
+				{
+					dataflash.LoadFromLdrom = true;
+					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
+					m_updater.WriteDataflash(dataflash, worker);
+					m_updater.RestartDevice();
+					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
+					Thread.Sleep(2000);
+				}
+				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading logo...");
+				m_updater.WriteLogo(block1ImageBytes, block2ImageBytes, worker);
+
+				UpdateUI(() =>
+				{
+					UpdateStatusLabel.Text = string.Empty;
+					worker.ReportProgress(0);
+				});
+
+				Thread.Sleep(500);
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("An exception occured during logo update.\n" + ex.Message);
+			}
+		}
+
 		private void ReadDataflashAsyncWorker(BackgroundWorker worker, string fileName)
 		{
 			try
@@ -219,7 +251,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SetUpdaterButtonsState(bool enabled)
 		{
-			LogoButton.Enabled = true;
+			LogoButton.Enabled = enabled;
 			UpdateButton.Enabled = enabled && m_firmware != null;
 			UpdateFromFileButton.Enabled = enabled;
 
@@ -274,6 +306,8 @@ namespace NFirmwareEditor.Windows
 
 			var block1ImageBytes = block1ImageMetadata.Save(imageData);
 			var block2ImageBytes = block2ImageMetadata.Save(imageData);
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker => UpdateLogoAsyncWorker(worker, block1ImageBytes, block2ImageBytes)));
 		}
 
 		private void UpdateButton_Click(object sender, EventArgs e)
