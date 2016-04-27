@@ -27,6 +27,9 @@ namespace NFirmwareEditor.Windows
 			public Action<BackgroundWorker> Processor { get; private set; }
 		}
 
+		private const int LogoWidth = 64;
+		private const int LogoHeight = 40;
+
 		private readonly FirmwareUpdater m_updater = new FirmwareUpdater();
 		private readonly Firmware m_firmware;
 		private readonly FirmwareLoader m_loader;
@@ -216,7 +219,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SetUpdaterButtonsState(bool enabled)
 		{
-			LogoButton.Enabled = false;
+			LogoButton.Enabled = true;
 			UpdateButton.Enabled = enabled && m_firmware != null;
 			UpdateFromFileButton.Enabled = enabled;
 
@@ -251,7 +254,26 @@ namespace NFirmwareEditor.Windows
 
 		private void LogoButton_Click(object sender, EventArgs e)
 		{
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = Consts.BitmapImportFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				fileName = op.FileName;
+			}
 
+			bool[,] imageData;
+			using (var bitmap = (Bitmap)Image.FromFile(fileName))
+			using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LogoWidth, LogoHeight)))
+			using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
+			{
+				imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+			}
+
+			var block1ImageMetadata = new FirmwareImage1Metadata { Width = LogoWidth, Height = LogoHeight };
+			var block2ImageMetadata = new FirmwareImage2Metadata { Width = LogoWidth, Height = LogoHeight };
+
+			var block1ImageBytes = block1ImageMetadata.Save(imageData);
+			var block2ImageBytes = block2ImageMetadata.Save(imageData);
 		}
 
 		private void UpdateButton_Click(object sender, EventArgs e)
