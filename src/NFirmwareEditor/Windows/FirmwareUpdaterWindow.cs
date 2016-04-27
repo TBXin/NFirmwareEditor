@@ -295,10 +295,17 @@ namespace NFirmwareEditor.Windows
 
 			bool[,] imageData;
 			using (var bitmap = (Bitmap)Image.FromFile(fileName))
-			using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LogoWidth, LogoHeight)))
-			using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
 			{
-				imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+				if (bitmap.Width > 2048 || bitmap.Height > 2048)
+				{
+					InfoBox.Show("Selected images is too big. Choose an image that has dimension lower than 2048x2048.");
+					return;
+				}
+				using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LogoWidth, LogoHeight)))
+				using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
+				{
+					imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+				}
 			}
 
 			var block1ImageMetadata = new FirmwareImage1Metadata { Width = LogoWidth, Height = LogoHeight };
