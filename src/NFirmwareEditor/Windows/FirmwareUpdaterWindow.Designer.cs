@@ -37,9 +37,9 @@ namespace NFirmwareEditor.Windows
 			this.UpdateButton = new System.Windows.Forms.Button();
 			this.UpdateFromFileButton = new System.Windows.Forms.Button();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.WriteDataFlashButton = new System.Windows.Forms.Button();
-			this.ReadDataFlashButton = new System.Windows.Forms.Button();
-			this.ResetDataFlashButton = new System.Windows.Forms.Button();
+			this.WriteDataflashButton = new System.Windows.Forms.Button();
+			this.ReadDataflashButton = new System.Windows.Forms.Button();
+			this.ResetDataflashButton = new System.Windows.Forms.Button();
 			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
@@ -138,9 +138,9 @@ namespace NFirmwareEditor.Windows
 			// 
 			// tabPage2
 			// 
-			this.tabPage2.Controls.Add(this.WriteDataFlashButton);
-			this.tabPage2.Controls.Add(this.ReadDataFlashButton);
-			this.tabPage2.Controls.Add(this.ResetDataFlashButton);
+			this.tabPage2.Controls.Add(this.WriteDataflashButton);
+			this.tabPage2.Controls.Add(this.ReadDataflashButton);
+			this.tabPage2.Controls.Add(this.ResetDataflashButton);
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -149,37 +149,37 @@ namespace NFirmwareEditor.Windows
 			this.tabPage2.Text = "Advanced";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// WriteDataFlashButton
+			// WriteDataflashButton
 			// 
-			this.WriteDataFlashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.WriteDataFlashButton.Enabled = false;
-			this.WriteDataFlashButton.Location = new System.Drawing.Point(211, 1);
-			this.WriteDataFlashButton.Name = "WriteDataFlashButton";
-			this.WriteDataFlashButton.Size = new System.Drawing.Size(100, 35);
-			this.WriteDataFlashButton.TabIndex = 2;
-			this.WriteDataFlashButton.Text = "Write dataflash";
-			this.WriteDataFlashButton.UseVisualStyleBackColor = true;
+			this.WriteDataflashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.WriteDataflashButton.Enabled = false;
+			this.WriteDataflashButton.Location = new System.Drawing.Point(211, 1);
+			this.WriteDataflashButton.Name = "WriteDataflashButton";
+			this.WriteDataflashButton.Size = new System.Drawing.Size(100, 35);
+			this.WriteDataflashButton.TabIndex = 2;
+			this.WriteDataflashButton.Text = "Write dataflash";
+			this.WriteDataflashButton.UseVisualStyleBackColor = true;
 			// 
-			// ReadDataFlashButton
+			// ReadDataflashButton
 			// 
-			this.ReadDataFlashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ReadDataFlashButton.Enabled = false;
-			this.ReadDataFlashButton.Location = new System.Drawing.Point(105, 1);
-			this.ReadDataFlashButton.Name = "ReadDataFlashButton";
-			this.ReadDataFlashButton.Size = new System.Drawing.Size(100, 35);
-			this.ReadDataFlashButton.TabIndex = 1;
-			this.ReadDataFlashButton.Text = "Read dataflash";
-			this.ReadDataFlashButton.UseVisualStyleBackColor = true;
+			this.ReadDataflashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ReadDataflashButton.Enabled = false;
+			this.ReadDataflashButton.Location = new System.Drawing.Point(105, 1);
+			this.ReadDataflashButton.Name = "ReadDataflashButton";
+			this.ReadDataflashButton.Size = new System.Drawing.Size(100, 35);
+			this.ReadDataflashButton.TabIndex = 1;
+			this.ReadDataflashButton.Text = "Read dataflash";
+			this.ReadDataflashButton.UseVisualStyleBackColor = true;
 			// 
-			// ResetDataFlashButton
+			// ResetDataflashButton
 			// 
-			this.ResetDataFlashButton.Enabled = false;
-			this.ResetDataFlashButton.Location = new System.Drawing.Point(-1, 1);
-			this.ResetDataFlashButton.Name = "ResetDataFlashButton";
-			this.ResetDataFlashButton.Size = new System.Drawing.Size(100, 35);
-			this.ResetDataFlashButton.TabIndex = 0;
-			this.ResetDataFlashButton.Text = "Reset dataflash";
-			this.ResetDataFlashButton.UseVisualStyleBackColor = true;
+			this.ResetDataflashButton.Enabled = false;
+			this.ResetDataflashButton.Location = new System.Drawing.Point(-1, 1);
+			this.ResetDataflashButton.Name = "ResetDataflashButton";
+			this.ResetDataflashButton.Size = new System.Drawing.Size(100, 35);
+			this.ResetDataflashButton.TabIndex = 0;
+			this.ResetDataflashButton.Text = "Reset dataflash";
+			this.ResetDataflashButton.UseVisualStyleBackColor = true;
 			// 
 			// groupPanel2
 			// 
@@ -386,7 +386,7 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.ProgressBar UpdateProgressBar;
 		private System.Windows.Forms.Label UpdateStatusLabel;
 		private System.Windows.Forms.Button UpdateButton;
-		private System.Windows.Forms.Button ResetDataFlashButton;
+		private System.Windows.Forms.Button ResetDataflashButton;
 		private GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox BootModeTextBox;
@@ -395,8 +395,8 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.Button ReadDataFlashButton;
-		private System.Windows.Forms.Button WriteDataFlashButton;
+		private System.Windows.Forms.Button ReadDataflashButton;
+		private System.Windows.Forms.Button WriteDataflashButton;
 		private System.Windows.Forms.Button LogoButton;
 	}
 }

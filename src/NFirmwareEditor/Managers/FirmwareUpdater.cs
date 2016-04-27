@@ -13,9 +13,9 @@ namespace NFirmwareEditor.Managers
 	{
 		private static class Commands
 		{
-			public const byte ReadDataFlash = 0x35;
-			public const byte WriteDataFlash = 0x53;
-			public const byte ResetDataFlash = 0x7C;
+			public const byte ReadDataflash = 0x35;
+			public const byte WriteDataflash = 0x53;
+			public const byte ResetDataflash = 0x7C;
 
 			public const byte WriteFirmware = 0xC3;
 			public const byte Restart = 0xB4;
@@ -93,34 +93,34 @@ namespace NFirmwareEditor.Managers
 			m_isDeviceConnected = null;
 		}
 
-		public DataFlash ReadDataFlash(BackgroundWorker worker = null)
+		public Dataflash ReadDataflash(BackgroundWorker worker = null)
 		{
 			var stream = Connect();
-			Write(stream, CreateCommand(Commands.ReadDataFlash, 0, 2048));
+			Write(stream, CreateCommand(Commands.ReadDataflash, 0, 2048));
 			var rawData = Read(stream, 2048, worker);
 
 			var checksum = BitConverter.ToInt32(rawData, 0);
 			var data = new byte[rawData.Length - 4];
 			Buffer.BlockCopy(rawData, 4, data, 0, data.Length);
 
-			return new DataFlash
+			return new Dataflash
 			{
 				Checksum = checksum,
 				Data = data
 			};
 		}
 
-		public void WriteDataFlash(DataFlash dataFlash, BackgroundWorker worker = null)
+		public void WriteDataflash(Dataflash dataflash, BackgroundWorker worker = null)
 		{
-			var checksum = dataFlash.Data.Sum(x => x);
+			var checksum = dataflash.Data.Sum(x => x);
 			var checksumBytes = BitConverter.GetBytes(checksum);
-			var rawData = new byte[dataFlash.Data.Length + 4];
+			var rawData = new byte[dataflash.Data.Length + 4];
 
 			Buffer.BlockCopy(checksumBytes, 0, rawData, 0, checksumBytes.Length);
-			Buffer.BlockCopy(dataFlash.Data, 0, rawData, 4, dataFlash.Data.Length);
+			Buffer.BlockCopy(dataflash.Data, 0, rawData, 4, dataflash.Data.Length);
 
 			var stream = Connect();
-			Write(stream, CreateCommand(Commands.WriteDataFlash, 0, 2048));
+			Write(stream, CreateCommand(Commands.WriteDataflash, 0, 2048));
 			Write(stream, rawData, worker);
 		}
 
@@ -141,7 +141,7 @@ namespace NFirmwareEditor.Managers
 		public void ResetDataFlash()
 		{
 			var stream = Connect();
-			Write(stream, CreateCommand(Commands.ResetDataFlash, 0, 2048));
+			Write(stream, CreateCommand(Commands.ResetDataflash, 0, 2048));
 		}
 
 		public static string GetDeviceName(string productId)
@@ -237,7 +237,7 @@ namespace NFirmwareEditor.Managers
 		}
 	}
 
-	internal class DataFlash
+	internal class Dataflash
 	{
 		private const int BootFlagOffset = 9;
 		private const int HwVerOffset = 4;

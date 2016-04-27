@@ -40,12 +40,12 @@ namespace NFirmwareEditor.UI
 			get
 			{
 				return new Rectangle
-					(
+				(
 					Padding.Left,
 					Padding.Top + m_headerHeight,
 					Math.Max(Width - Padding.Horizontal, 0),
 					Math.Max(Height - m_headerHeight - Padding.Vertical, 0)
-					);
+				);
 			}
 		}
 
