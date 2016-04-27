@@ -30,6 +30,16 @@ namespace NFirmwareEditor.Windows
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.LogoButton = new System.Windows.Forms.Button();
+			this.UpdateButton = new System.Windows.Forms.Button();
+			this.UpdateFromFileButton = new System.Windows.Forms.Button();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.WriteDataFlashButton = new System.Windows.Forms.Button();
+			this.ReadDataFlashButton = new System.Windows.Forms.Button();
+			this.ResetDataFlashButton = new System.Windows.Forms.Button();
 			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
@@ -43,17 +53,138 @@ namespace NFirmwareEditor.Windows
 			this.label3 = new System.Windows.Forms.Label();
 			this.DeviceNameTextBox = new System.Windows.Forms.TextBox();
 			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
-			this.ResetDataFlashButton = new System.Windows.Forms.Button();
-			this.UpdateButton = new System.Windows.Forms.Button();
-			this.UpdateFromFileButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
+			this.groupPanel3.SuspendLayout();
+			this.tabControl1.SuspendLayout();
+			this.tabPage1.SuspendLayout();
+			this.tabPage2.SuspendLayout();
 			this.groupPanel2.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
+			// groupPanel3
+			// 
+			this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel3.Controls.Add(this.tabControl1);
+			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel3.HeaderHeight = 30;
+			this.groupPanel3.Location = new System.Drawing.Point(3, 244);
+			this.groupPanel3.Name = "groupPanel3";
+			this.groupPanel3.Size = new System.Drawing.Size(326, 98);
+			this.groupPanel3.TabIndex = 2;
+			this.groupPanel3.TabStop = false;
+			this.groupPanel3.Text = "Operations:";
+			// 
+			// tabControl1
+			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Controls.Add(this.tabPage1);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.ItemSize = new System.Drawing.Size(158, 18);
+			this.tabControl1.Location = new System.Drawing.Point(4, 33);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(320, 62);
+			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+			this.tabControl1.TabIndex = 0;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Controls.Add(this.LogoButton);
+			this.tabPage1.Controls.Add(this.UpdateButton);
+			this.tabPage1.Controls.Add(this.UpdateFromFileButton);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(312, 36);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "Common";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// LogoButton
+			// 
+			this.LogoButton.Enabled = false;
+			this.LogoButton.Location = new System.Drawing.Point(-1, 1);
+			this.LogoButton.Name = "LogoButton";
+			this.LogoButton.Size = new System.Drawing.Size(100, 35);
+			this.LogoButton.TabIndex = 0;
+			this.LogoButton.Text = "Logo";
+			this.LogoButton.UseVisualStyleBackColor = true;
+			// 
+			// UpdateButton
+			// 
+			this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.UpdateButton.Location = new System.Drawing.Point(105, 1);
+			this.UpdateButton.Name = "UpdateButton";
+			this.UpdateButton.Size = new System.Drawing.Size(100, 35);
+			this.UpdateButton.TabIndex = 1;
+			this.UpdateButton.Text = "Update";
+			this.UpdateButton.UseVisualStyleBackColor = true;
+			// 
+			// UpdateFromFileButton
+			// 
+			this.UpdateFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.UpdateFromFileButton.Location = new System.Drawing.Point(211, 1);
+			this.UpdateFromFileButton.Name = "UpdateFromFileButton";
+			this.UpdateFromFileButton.Size = new System.Drawing.Size(100, 35);
+			this.UpdateFromFileButton.TabIndex = 2;
+			this.UpdateFromFileButton.Text = "Update from file";
+			this.UpdateFromFileButton.UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Controls.Add(this.WriteDataFlashButton);
+			this.tabPage2.Controls.Add(this.ReadDataFlashButton);
+			this.tabPage2.Controls.Add(this.ResetDataFlashButton);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(312, 36);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Advanced";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// WriteDataFlashButton
+			// 
+			this.WriteDataFlashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.WriteDataFlashButton.Enabled = false;
+			this.WriteDataFlashButton.Location = new System.Drawing.Point(211, 1);
+			this.WriteDataFlashButton.Name = "WriteDataFlashButton";
+			this.WriteDataFlashButton.Size = new System.Drawing.Size(100, 35);
+			this.WriteDataFlashButton.TabIndex = 2;
+			this.WriteDataFlashButton.Text = "Write dataflash";
+			this.WriteDataFlashButton.UseVisualStyleBackColor = true;
+			// 
+			// ReadDataFlashButton
+			// 
+			this.ReadDataFlashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ReadDataFlashButton.Enabled = false;
+			this.ReadDataFlashButton.Location = new System.Drawing.Point(105, 1);
+			this.ReadDataFlashButton.Name = "ReadDataFlashButton";
+			this.ReadDataFlashButton.Size = new System.Drawing.Size(100, 35);
+			this.ReadDataFlashButton.TabIndex = 1;
+			this.ReadDataFlashButton.Text = "Read dataflash";
+			this.ReadDataFlashButton.UseVisualStyleBackColor = true;
+			// 
+			// ResetDataFlashButton
+			// 
+			this.ResetDataFlashButton.Enabled = false;
+			this.ResetDataFlashButton.Location = new System.Drawing.Point(-1, 1);
+			this.ResetDataFlashButton.Name = "ResetDataFlashButton";
+			this.ResetDataFlashButton.Size = new System.Drawing.Size(100, 35);
+			this.ResetDataFlashButton.TabIndex = 0;
+			this.ResetDataFlashButton.Text = "Reset dataflash";
+			this.ResetDataFlashButton.UseVisualStyleBackColor = true;
+			// 
 			// groupPanel2
 			// 
+			this.groupPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel2.Controls.Add(this.UpdateStatusLabel);
 			this.groupPanel2.Controls.Add(this.UpdateProgressBar);
@@ -61,8 +192,8 @@ namespace NFirmwareEditor.Windows
 			this.groupPanel2.HeaderHeight = 30;
 			this.groupPanel2.Location = new System.Drawing.Point(3, 148);
 			this.groupPanel2.Name = "groupPanel2";
-			this.groupPanel2.Size = new System.Drawing.Size(420, 90);
-			this.groupPanel2.TabIndex = 6;
+			this.groupPanel2.Size = new System.Drawing.Size(326, 90);
+			this.groupPanel2.TabIndex = 1;
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "Progress:";
 			// 
@@ -72,7 +203,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateStatusLabel.Location = new System.Drawing.Point(4, 33);
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-			this.UpdateStatusLabel.Size = new System.Drawing.Size(412, 20);
+			this.UpdateStatusLabel.Size = new System.Drawing.Size(318, 20);
 			this.UpdateStatusLabel.TabIndex = 5;
 			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -82,7 +213,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateProgressBar.Location = new System.Drawing.Point(4, 56);
 			this.UpdateProgressBar.Name = "UpdateProgressBar";
-			this.UpdateProgressBar.Size = new System.Drawing.Size(412, 30);
+			this.UpdateProgressBar.Size = new System.Drawing.Size(318, 30);
 			this.UpdateProgressBar.TabIndex = 4;
 			// 
 			// groupPanel1
@@ -102,8 +233,8 @@ namespace NFirmwareEditor.Windows
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(420, 139);
-			this.groupPanel1.TabIndex = 3;
+			this.groupPanel1.Size = new System.Drawing.Size(326, 139);
+			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Device info:";
 			// 
@@ -122,7 +253,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BootModeTextBox.Location = new System.Drawing.Point(106, 114);
 			this.BootModeTextBox.Name = "BootModeTextBox";
-			this.BootModeTextBox.Size = new System.Drawing.Size(310, 21);
+			this.BootModeTextBox.Size = new System.Drawing.Size(216, 21);
 			this.BootModeTextBox.TabIndex = 25;
 			this.BootModeTextBox.TabStop = false;
 			// 
@@ -141,7 +272,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.HardwareVersionTextBox.Location = new System.Drawing.Point(106, 87);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(310, 21);
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(216, 21);
 			this.HardwareVersionTextBox.TabIndex = 21;
 			this.HardwareVersionTextBox.TabStop = false;
 			// 
@@ -160,7 +291,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 60);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(310, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(216, 21);
 			this.FirmwareVersionTextBox.TabIndex = 20;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
@@ -179,7 +310,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DeviceNameTextBox.Location = new System.Drawing.Point(106, 33);
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
-			this.DeviceNameTextBox.Size = new System.Drawing.Size(310, 21);
+			this.DeviceNameTextBox.Size = new System.Drawing.Size(216, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
 			this.DeviceNameTextBox.TabStop = false;
 			// 
@@ -192,55 +323,20 @@ namespace NFirmwareEditor.Windows
 			this.ControlBorderedPanel.BorderRight = false;
 			this.ControlBorderedPanel.BorderTop = true;
 			this.ControlBorderedPanel.BorderWidth = 1F;
-			this.ControlBorderedPanel.Controls.Add(this.ResetDataFlashButton);
-			this.ControlBorderedPanel.Controls.Add(this.UpdateButton);
-			this.ControlBorderedPanel.Controls.Add(this.UpdateFromFileButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 241);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 348);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(426, 44);
-			this.ControlBorderedPanel.TabIndex = 2;
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(332, 44);
+			this.ControlBorderedPanel.TabIndex = 3;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
-			// 
-			// ResetDataFlashButton
-			// 
-			this.ResetDataFlashButton.Enabled = false;
-			this.ResetDataFlashButton.Location = new System.Drawing.Point(4, 5);
-			this.ResetDataFlashButton.Name = "ResetDataFlashButton";
-			this.ResetDataFlashButton.Size = new System.Drawing.Size(100, 35);
-			this.ResetDataFlashButton.TabIndex = 0;
-			this.ResetDataFlashButton.Text = "Reset dataflash";
-			this.ResetDataFlashButton.UseVisualStyleBackColor = true;
-			// 
-			// UpdateButton
-			// 
-			this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateButton.Enabled = false;
-			this.UpdateButton.Location = new System.Drawing.Point(110, 5);
-			this.UpdateButton.Name = "UpdateButton";
-			this.UpdateButton.Size = new System.Drawing.Size(100, 35);
-			this.UpdateButton.TabIndex = 1;
-			this.UpdateButton.Text = "Update";
-			this.UpdateButton.UseVisualStyleBackColor = true;
-			// 
-			// UpdateFromFileButton
-			// 
-			this.UpdateFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateFromFileButton.Enabled = false;
-			this.UpdateFromFileButton.Location = new System.Drawing.Point(216, 5);
-			this.UpdateFromFileButton.Name = "UpdateFromFileButton";
-			this.UpdateFromFileButton.Size = new System.Drawing.Size(100, 35);
-			this.UpdateFromFileButton.TabIndex = 2;
-			this.UpdateFromFileButton.Text = "Update from file";
-			this.UpdateFromFileButton.UseVisualStyleBackColor = true;
 			// 
 			// CancelButton
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(322, 5);
+			this.CancelButton.Location = new System.Drawing.Point(228, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
 			this.CancelButton.TabIndex = 3;
@@ -251,8 +347,9 @@ namespace NFirmwareEditor.Windows
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(426, 285);
+			this.ClientSize = new System.Drawing.Size(332, 392);
 			this.ControlBox = false;
+			this.Controls.Add(this.groupPanel3);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.groupPanel1);
 			this.Controls.Add(this.ControlBorderedPanel);
@@ -263,6 +360,10 @@ namespace NFirmwareEditor.Windows
 			this.Name = "FirmwareUpdaterWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor - Updater";
+			this.groupPanel3.ResumeLayout(false);
+			this.tabControl1.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
+			this.tabPage2.ResumeLayout(false);
 			this.groupPanel2.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
@@ -290,5 +391,12 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox BootModeTextBox;
 		private GroupPanel groupPanel2;
+		private GroupPanel groupPanel3;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.Button ReadDataFlashButton;
+		private System.Windows.Forms.Button WriteDataFlashButton;
+		private System.Windows.Forms.Button LogoButton;
 	}
 }
