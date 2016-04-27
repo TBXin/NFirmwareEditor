@@ -42,6 +42,16 @@ namespace NFirmwareEditor.Managers
 			{ "W013", "Vaporflask Stout" },
 			{ "W014", "Wismec Reuleaux RX200" }
 		};
+
+		private static readonly IDictionary<string, bool> s_canUploadLogos = new Dictionary<string, bool>
+		{
+			// Joyetech eVic-VTC Mini
+			{ "E052", true },
+			// Joyetech Cuboid Mini
+			{ "E056", true },
+			// Joyetech Cuboid
+			{ "E060", true }
+		};
 		private readonly Timer m_monitoringTimer;
 
 		private int m_receiveBufferLength;
@@ -165,7 +175,13 @@ namespace NFirmwareEditor.Managers
 
 		public static string GetDeviceName(string productId)
 		{
+			if (string.IsNullOrEmpty(productId)) return "Unknown device";
 			return s_deviceName.ContainsKey(productId) ? s_deviceName[productId] : "Unknown device";
+		}
+
+		public static bool GetCanUploadLogo(string productId)
+		{
+			return !string.IsNullOrEmpty(productId) && s_canUploadLogos.ContainsKey(productId);
 		}
 
 		private HidStream OpenDeviceStream()

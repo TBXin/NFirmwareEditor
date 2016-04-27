@@ -251,7 +251,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SetUpdaterButtonsState(bool enabled)
 		{
-			LogoButton.Enabled = enabled;
+			LogoButton.Enabled = enabled && FirmwareUpdater.GetCanUploadLogo(m_connectedDeviceProductId);
 			UpdateButton.Enabled = enabled && m_firmware != null;
 			UpdateFromFileButton.Enabled = enabled;
 
