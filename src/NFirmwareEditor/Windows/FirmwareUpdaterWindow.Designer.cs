@@ -30,9 +30,12 @@ namespace NFirmwareEditor.Windows
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
+			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
+			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.BootModeTextBox = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
@@ -44,35 +47,47 @@ namespace NFirmwareEditor.Windows
 			this.UpdateButton = new System.Windows.Forms.Button();
 			this.UpdateFromFileButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.BootModeTextBox = new System.Windows.Forms.TextBox();
+			this.groupPanel2.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// UpdateProgressBar
+			// groupPanel2
 			// 
-			this.UpdateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateProgressBar.Location = new System.Drawing.Point(3, 168);
-			this.UpdateProgressBar.Name = "UpdateProgressBar";
-			this.UpdateProgressBar.Size = new System.Drawing.Size(420, 30);
-			this.UpdateProgressBar.TabIndex = 4;
+			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel2.Controls.Add(this.UpdateStatusLabel);
+			this.groupPanel2.Controls.Add(this.UpdateProgressBar);
+			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel2.HeaderHeight = 30;
+			this.groupPanel2.Location = new System.Drawing.Point(3, 148);
+			this.groupPanel2.Name = "groupPanel2";
+			this.groupPanel2.Size = new System.Drawing.Size(420, 90);
+			this.groupPanel2.TabIndex = 6;
+			this.groupPanel2.TabStop = false;
+			this.groupPanel2.Text = "Progress:";
 			// 
 			// UpdateStatusLabel
 			// 
-			this.UpdateStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.UpdateStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 145);
+			this.UpdateStatusLabel.Location = new System.Drawing.Point(4, 33);
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-			this.UpdateStatusLabel.Size = new System.Drawing.Size(420, 20);
+			this.UpdateStatusLabel.Size = new System.Drawing.Size(412, 20);
 			this.UpdateStatusLabel.TabIndex = 5;
 			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
+			// UpdateProgressBar
+			// 
+			this.UpdateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.UpdateProgressBar.Location = new System.Drawing.Point(4, 56);
+			this.UpdateProgressBar.Name = "UpdateProgressBar";
+			this.UpdateProgressBar.Size = new System.Drawing.Size(412, 30);
+			this.UpdateProgressBar.TabIndex = 4;
+			// 
 			// groupPanel1
 			// 
-			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.label1);
@@ -91,6 +106,25 @@ namespace NFirmwareEditor.Windows
 			this.groupPanel1.TabIndex = 3;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Device info:";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(9, 117);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(62, 13);
+			this.label1.TabIndex = 26;
+			this.label1.Text = "Boot mode:";
+			// 
+			// BootModeTextBox
+			// 
+			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.BootModeTextBox.Location = new System.Drawing.Point(106, 114);
+			this.BootModeTextBox.Name = "BootModeTextBox";
+			this.BootModeTextBox.Size = new System.Drawing.Size(310, 21);
+			this.BootModeTextBox.TabIndex = 25;
+			this.BootModeTextBox.TabStop = false;
 			// 
 			// label5
 			// 
@@ -163,7 +197,7 @@ namespace NFirmwareEditor.Windows
 			this.ControlBorderedPanel.Controls.Add(this.UpdateFromFileButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 201);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 241);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(426, 44);
@@ -213,33 +247,13 @@ namespace NFirmwareEditor.Windows
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(9, 117);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(62, 13);
-			this.label1.TabIndex = 26;
-			this.label1.Text = "Boot mode:";
-			// 
-			// BootModeTextBox
-			// 
-			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.BootModeTextBox.Location = new System.Drawing.Point(106, 114);
-			this.BootModeTextBox.Name = "BootModeTextBox";
-			this.BootModeTextBox.Size = new System.Drawing.Size(310, 21);
-			this.BootModeTextBox.TabIndex = 25;
-			this.BootModeTextBox.TabStop = false;
-			// 
 			// FirmwareUpdaterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(426, 245);
+			this.ClientSize = new System.Drawing.Size(426, 285);
 			this.ControlBox = false;
-			this.Controls.Add(this.UpdateStatusLabel);
-			this.Controls.Add(this.UpdateProgressBar);
+			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.groupPanel1);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -249,6 +263,7 @@ namespace NFirmwareEditor.Windows
 			this.Name = "FirmwareUpdaterWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor - Updater";
+			this.groupPanel2.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			this.ControlBorderedPanel.ResumeLayout(false);
@@ -274,5 +289,6 @@ namespace NFirmwareEditor.Windows
 		private GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox BootModeTextBox;
+		private GroupPanel groupPanel2;
 	}
 }
