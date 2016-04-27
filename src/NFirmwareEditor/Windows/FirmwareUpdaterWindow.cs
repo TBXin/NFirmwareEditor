@@ -73,8 +73,8 @@ namespace NFirmwareEditor.Windows
 				UpdateUI(() =>
 				{
 					DeviceNameTextBox.Text = m_deviceName;
-					HardwareVersionTextBox.Text = dataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
-					FirmwareVersionTextBox.Text = dataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
+					HardwareVersionTextBox.Text = m_hardwareVersion;
+					FirmwareVersionTextBox.Text = m_firmwareVersion;
 					BootModeTextBox.Text = dataflash.LoadFromLdrom ? "LDROM" : "APROM";
 					UpdateStatusLabel.Text = @"Device is ready.";
 					SetUpdaterButtonsState(true);
@@ -159,7 +159,11 @@ namespace NFirmwareEditor.Windows
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
 				m_updater.WriteFirmware(firmware, worker);
 
-				UpdateUI(() => UpdateStatusLabel.Text = string.Empty);
+				UpdateUI(() =>
+				{
+					UpdateStatusLabel.Text = string.Empty;
+					worker.ReportProgress(0);
+				});
 				isSuccess = true;
 
 				Thread.Sleep(500);
@@ -198,7 +202,11 @@ namespace NFirmwareEditor.Windows
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
 				m_updater.WriteDataflash(dataflash, worker);
-				UpdateUI(() => UpdateStatusLabel.Text = @"Dataflash was successfully written.");
+				UpdateUI(() =>
+				{
+					UpdateStatusLabel.Text = @"Dataflash was successfully written.";
+					worker.ReportProgress(0);
+				});
 			}
 			catch (Exception ex)
 			{

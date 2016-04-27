@@ -17,10 +17,16 @@ namespace NFirmwareEditor.Managers
 			public const byte WriteDataflash = 0x53;
 			public const byte ResetDataflash = 0x7C;
 
-			public const byte WriteFirmware = 0xC3;
+			public const byte WriteData = 0xC3;
 			public const byte Restart = 0xB4;
 		}
 
+		private const int VendorId = 0x0416;
+		private const int ProductId = 0x5020;
+		private const int DataflashLength = 2048;
+
+		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
+		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
 		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
 		{
 			{ "E052", "Joyetech eVic-VTC Mini" },
@@ -34,44 +40,25 @@ namespace NFirmwareEditor.Managers
 			{ "W013", "Vaporflask Stout" },
 			{ "W014", "Wismec Reuleaux RX200" }
 		};
-
-		private const int VendorId = 0x0416;
-		private const int ProductId = 0x5020;
-		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
-		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
-
-		private readonly object m_syncLock = new object();
 		private readonly Timer m_monitoringTimer;
 
-		private HidDevice m_device;
 		private int m_receiveBufferLength;
 		private int m_sentBufferLength;
-		private bool? m_isDeviceConnected;
+		private bool m_isDeviceConnected;
 
 		public FirmwareUpdater()
 		{
 			m_monitoringTimer = new Timer(state =>
 			{
-				lock (m_syncLock)
-				{
-					var isConnected = IsDeviceConnected;
+				var previousState = m_isDeviceConnected;
+				var device = s_loader.GetDeviceOrDefault(VendorId, ProductId);
 
-					if (!m_isDeviceConnected.HasValue) 
-					{
-						m_isDeviceConnected = isConnected;
-					}
-					else if (m_isDeviceConnected.Value == isConnected)
-					{
-						return;
-					}
-					else
-					{
-						m_isDeviceConnected = isConnected;
-					}
-					OnDeviceConnected(m_isDeviceConnected.Value);
-				}
+				if (device == null && previousState == false) return;
+				if (device != null && previousState) return;
+
+				m_isDeviceConnected = device != null;
+				OnDeviceConnected(m_isDeviceConnected);
 			});
-			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
 		}
 
 		public event Action<bool> DeviceConnected;
@@ -83,65 +70,73 @@ namespace NFirmwareEditor.Managers
 
 		public void StartMonitoring()
 		{
-			m_isDeviceConnected = null;
+			m_isDeviceConnected = false;
 			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
 		}
 
 		public void StopMonitoring()
 		{
 			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
-			m_isDeviceConnected = null;
+			m_isDeviceConnected = false;
 		}
 
 		public Dataflash ReadDataflash(BackgroundWorker worker = null)
 		{
-			var stream = Connect();
-			Write(stream, CreateCommand(Commands.ReadDataflash, 0, 2048));
-			var rawData = Read(stream, 2048, worker);
-
-			var checksum = BitConverter.ToInt32(rawData, 0);
-			var data = new byte[rawData.Length - 4];
-			Buffer.BlockCopy(rawData, 4, data, 0, data.Length);
-
-			return new Dataflash
+			using (var stream = OpenDeviceStream())
 			{
-				Checksum = checksum,
-				Data = data
-			};
+				Write(stream, CreateCommand(Commands.ReadDataflash, 0, DataflashLength));
+				var rawData = Read(stream, DataflashLength, worker);
+
+				var checksum = BitConverter.ToInt32(rawData, 0);
+				var data = new byte[rawData.Length - 4];
+				Buffer.BlockCopy(rawData, 4, data, 0, data.Length);
+
+				return new Dataflash
+				{
+					Checksum = checksum,
+					Data = data
+				};
+			}
 		}
 
 		public void WriteDataflash(Dataflash dataflash, BackgroundWorker worker = null)
 		{
-			var checksum = dataflash.Data.Sum(x => x);
-			var checksumBytes = BitConverter.GetBytes(checksum);
-			var rawData = new byte[dataflash.Data.Length + 4];
+			var checksumBytes = BitConverter.GetBytes(dataflash.Data.Sum(x => x));
+			var rawData = new byte[dataflash.Data.Length + checksumBytes.Length];
 
 			Buffer.BlockCopy(checksumBytes, 0, rawData, 0, checksumBytes.Length);
-			Buffer.BlockCopy(dataflash.Data, 0, rawData, 4, dataflash.Data.Length);
+			Buffer.BlockCopy(dataflash.Data, 0, rawData, checksumBytes.Length, dataflash.Data.Length);
 
-			var stream = Connect();
-			Write(stream, CreateCommand(Commands.WriteDataflash, 0, 2048));
-			Write(stream, rawData, worker);
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.WriteDataflash, 0, DataflashLength));
+				Write(stream, rawData, worker);
+			}
 		}
 
 		public void WriteFirmware(byte[] firmware, BackgroundWorker worker = null)
 		{
-			var stream = Connect();
-			Write(stream, CreateCommand(Commands.WriteFirmware, 0, firmware.Length));
-			Write(stream, firmware, worker);
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.WriteData, 0, firmware.Length));
+				Write(stream, firmware, worker);
+			}
 		}
 
 		public void RestartDevice()
 		{
-			var stream = Connect();
-			Write(stream, CreateCommand(Commands.Restart, 0, 0));
-			Close();
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.Restart, 0, 0));
+			}
 		}
 
 		public void ResetDataFlash()
 		{
-			var stream = Connect();
-			Write(stream, CreateCommand(Commands.ResetDataflash, 0, 2048));
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.ResetDataflash, 0, DataflashLength));
+			}
 		}
 
 		public static string GetDeviceName(string productId)
@@ -149,19 +144,15 @@ namespace NFirmwareEditor.Managers
 			return s_deviceName.ContainsKey(productId) ? s_deviceName[productId] : "Unknown device";
 		}
 
-		private HidStream Connect()
+		private HidStream OpenDeviceStream()
 		{
-			if (m_device == null) m_device = s_loader.GetDeviceOrDefault(VendorId, ProductId);
-			if (m_device == null) return null;
+			var device = s_loader.GetDeviceOrDefault(VendorId, ProductId);
+			if (device == null) return null;
 
-			m_receiveBufferLength = m_device.MaxOutputReportLength;
-			m_sentBufferLength = m_device.MaxInputReportLength - 1;
-			return m_device.Open();
-		}
+			m_receiveBufferLength = device.MaxOutputReportLength;
+			m_sentBufferLength = device.MaxInputReportLength - 1;
 
-		private void Close()
-		{
-			m_device = null;
+			return device.Open();
 		}
 
 		private byte[] Read(HidStream steam, int length, BackgroundWorker worker = null)
