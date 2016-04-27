@@ -186,7 +186,13 @@ namespace NFirmwareEditor.Managers
 				gfx.CompositingQuality = CompositingQuality.HighQuality;
 				gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				gfx.SmoothingMode = SmoothingMode.AntiAlias;
-				gfx.DrawImage(sourceBitmap, new RectangleF(0, 0, sourceBitmap.Width / scalingRatio, sourceBitmap.Height / scalingRatio));
+
+				var rect = new RectangleF(0, 0, sourceBitmap.Width / scalingRatio, sourceBitmap.Height / scalingRatio);
+				{
+					rect.X = desireSize.Width / 2f - rect.Width / 2f;
+					rect.Y = desireSize.Height / 2f - rect.Height / 2f;
+				}
+				gfx.DrawImage(sourceBitmap, rect);
 			}
 			return output;
 		}
