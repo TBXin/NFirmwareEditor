@@ -6,6 +6,7 @@ namespace NFirmwareEditor.UI
 {
 	internal class GroupPanel : GroupBox
 	{
+		private static readonly TextFormatFlags s_headerFormatFlags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter;
 		private static readonly StringFormat s_headerStringFormat = new StringFormat
 		{
 			Alignment = StringAlignment.Near,
@@ -58,8 +59,14 @@ namespace NFirmwareEditor.UI
 			// Draw header
 			e.Graphics.FillRectangle(new SolidBrush(HeaderBackColor), headerRect);
 			e.Graphics.DrawLine(borderPen, clientRect.X, clientRect.Y + m_headerHeight - 1, clientRect.Width, clientRect.Y + m_headerHeight - 1);
-			e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), GetHeaderTextRect(headerRect), s_headerStringFormat);
-
+			try
+			{
+				TextRenderer.DrawText(e.Graphics, Text, Font, GetHeaderTextRect(headerRect), ForeColor, s_headerFormatFlags);
+			}
+			catch
+			{
+				e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), GetHeaderTextRect(headerRect), s_headerStringFormat);
+			}
 			// Draw container
 			e.Graphics.FillRectangle(new SolidBrush(BackColor), containerRect);
 
@@ -82,9 +89,9 @@ namespace NFirmwareEditor.UI
 			return new Rectangle(clientRect.X, clientRect.Y + m_headerHeight + 1, clientRect.Width, clientRect.Height - m_headerHeight - 1);
 		}
 
-		private RectangleF GetHeaderTextRect(RectangleF headerRect)
+		private Rectangle GetHeaderTextRect(RectangleF headerRect)
 		{
-			return new RectangleF(headerRect.X + 3, headerRect.Y, headerRect.Width - 3, headerRect.Height);
+			return new Rectangle((int)(headerRect.X + 3), (int)headerRect.Y, (int)(headerRect.Width - 3), (int)headerRect.Height);
 		}
 	}
 }
