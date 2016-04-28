@@ -19,3 +19,4 @@ Firmware editor and updater for vaping devices such as:
 
 #### Main application window
 ![](http://i.imgur.com/uNf6u1v.png)
+![](http://i.imgur.com/vQqZ1Eg.png)
