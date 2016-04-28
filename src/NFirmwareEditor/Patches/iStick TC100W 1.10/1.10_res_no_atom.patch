@@ -1,0 +1,90 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Saved Coil Erase on No Atomizer Found" Version="1.0" Author="yii">
+<Description>Erasing saved resistance by pressing Fire with out atomizer.
+Сброс сохраненного сопротивления атомайзера при нажатии Fire без атомайзера</Description>
+<Data>
+
+
+# На основе патча для Cuboid 3.11 от maelstrom2001
+
+# Переход на новый код
+0EE2: 04 - 07
+0EE3: F0 - F0
+0EE4: FD - D7
+0EE5: FC - FA
+
+# Новая Надпись
+58E2: 00 - 04 
+58E4: 84 - 75
+58E6: 08 - 00
+58E7: 46 - 20 
+7136: 5A - 50
+7137: 41 - 37
+7138: 6F - 3E
+7139: 4D - 6F
+713A: 46 - 5A
+713C: 3F - 6F
+713D: 3B - 4D
+713E: 4C - 46
+713F: 37 - 41
+7140: 44 - 3F
+
+# Новый код
+8494: null - 0C
+8495: null - 49
+8496: null - 88
+8497: null - 7B
+8498: null - 01
+8499: null - 28
+849A: null - 05
+849B: null - D0
+849C: null - 38
+849D: null - B1
+849E: null - 02
+849F: null - 28
+84A0: null - 08
+84A1: null - D0
+84A2: null - 03
+84A3: null - 28
+84A4: null - 0A
+84A5: null - D0
+84A6: null - 0C
+84A7: null - E0
+84A8: null - 00
+84A9: null - 20
+84AA: null - C8
+84AB: null - 83
+84AC: null - 09
+84AD: null - E0
+84AE: null - 00
+84AF: null - 20
+84B0: null - 08
+84B1: null - 84
+84B2: null - 06
+84B3: null - E0
+84B4: null - 00
+84B5: null - 20
+84B6: null - A1
+84B7: null - F8
+84B8: null - 84
+84B9: null - 00
+84BA: null - 02
+84BB: null - E0
+84BC: null - 00
+84BD: null - 20
+84BE: null - A1
+84BF: null - F8
+84C0: null - 90
+84C1: null - 00
+84C2: null - FD
+84C3: null - F7
+84C4: null - 0D
+84C5: null - BA
+84C6: null - 00
+84C7: null - 00
+84C8: null - 4C
+84C9: null - 02
+84CA: null - 00
+84CB: null - 20
+
+</Data>
+</Patch>

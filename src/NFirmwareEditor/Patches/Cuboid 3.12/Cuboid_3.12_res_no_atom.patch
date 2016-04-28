@@ -1,0 +1,79 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Saved Coil Erase on No Atomizer Found" Version="1.0" Author="yii">
+  <Description>Erasing saved resistance by pressing Fire with out atomizer.
+Сброс сохраненного сопротивления атомайзера при нажатии Fire без атомайзера</Description>
+  <Data>
+
+# На основе патча для Cuboid 3.11 от maelstrom2001
+
+# Переход на новый код
+1412: 06 - 0B
+1413: F0 - F0
+1414: 07 - 01
+1415: FE - FA
+
+# Новый код. Удаление сохраненного сопротивления
+C818: 00 - 0C
+C819: 00 - 49
+C81A: 00 - 88
+C81B: 00 - 7B
+C81C: 00 - 01
+C81D: 00 - 28
+C81E: 00 - 05
+C81F: 00 - D0
+C820: 80 - 38
+C821: 80 - B1
+C822: C0 - 02
+C823: E0 - 28
+C824: E0 - 08
+C825: F0 - D0
+C826: F8 - 03
+C827: F8 - 28
+C828: F8 - 0A
+C829: FC - D0
+C82A: FC - 0C
+C82B: FE - E0
+C82C: FE - 00
+C82D: FE - 20
+C82E: FE - C8
+C82F: FF - 83
+C830: FF - 09
+C831: FF - E0
+C832: FF - 00
+C833: FF - 20
+C834: FF - 08
+C835: FF - 84
+C836: FF - 06
+C837: FF - E0
+C838: FF - 00
+C839: FF - 20
+C83A: FF - A1
+C83B: FF - F8
+C83C: FF - 84
+C83D: FF - 00
+C83E: FF - 02
+C83F: FF - E0
+C840: FE - 00
+C841: FE - 20
+C842: FE - A1
+C843: FE - F8
+C844: FC - 90
+C845: FC - 00
+C846: F8 - FB
+C847: F8 - F7
+C848: F0 - ED
+C849: F0 - BB
+C84A: E0 - 00
+C84B: E0 - 00
+C84C: C0 - 88
+C84D: 80 - 02
+C84E: 00 - 00
+C84F: 00 - 20
+#Надпись Omh Del вместо Found
+D068: 8B - AA
+D069: 7A - A6
+D06A: 80 - 89
+D06B: 79 - 70
+D06C: 6F - 77
+
+</Data>
+</Patch>

@@ -1,0 +1,37 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Stealth on Charge" Version="1.0" Author="yii">
+  <Description>Extends Stealth Mode to the charge screen.
+Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.
+
+На основе патча maelstrom2001 для витамина
+</Description>
+<Data>
+# Branch to Stealth Mode detection
+63AC: 00 - 06
+63AD: F0 - F0
+63AE: 38 - 50
+63AF: B8 - BA
+# Stealth Mode detection
+C850: 00 - 03
+C851: 00 - 48
+C852: 00 - 90
+C853: 00 - F8
+C854: 00 - 25
+C855: 00 - 00
+C856: 00 - 08
+C857: 00 - B1
+C858: 00 - F9 ; Stealth On
+C859: 00 - F7 ; B.W locret_63B8
+C85A: 80 - AE
+C85B: E0 - BD
+C85C: F0 - F9 ; Stealth Off
+C85D: FC - F7 ; B.W loc_6420
+C85E: FE - E0
+C85F: FF - BD
+C860: FF - 88
+C861: FF - 02
+C862: FF - 00
+C863: FF - 20
+</Data>
+</Patch>
+
+

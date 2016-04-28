@@ -1,0 +1,6 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Battery limit 3v" Version="1.0" Author="D1m0k">
+  <Description>Change limit from 3.30v to 3.00v. Меняет лимит отсечки с 3.30в до 3.00в. Возможны другое значение, смотрите коментарии внутри.</Description>
+  <Data>
+30D4: 9B - 96 ; 9B = 3.1V (def), 96 = 3.0V, A0 = 3.2V
+</Data>
+</Patch>

@@ -1,0 +1,470 @@
+﻿<Patch Definition="Cuboid 3.12" Name="3rd Status Line - AIO" Version="1.0" Author="yii">
+  <Description>Adds battery voltage, board temperature, saved resistance and realtime measuring to the 3rd line.
+Добавляет на выбор показ фиксированного и реального сопротивления,  температуры платы, выходного напряжения и напряжения батареи в третью строку.
+
+На основе патча от maelstrom2001 для витамина
+
+# Last status line - all in one
+# Output current (from stock)
+# Puff counter(from stock)
+# Time counter (from stock)
+# Resistance management
+# Realtime resistance
+# PCB temperature
+# Realtime output voltage
+# Battery voltage (the smaller of the two)
+
+</Description>
+<Data>
+
+# Количество режимов 3-й строки
+1D46: 03 - 08 ; check while loading from dataflash
+4198: 03 - 08 ; menu subroutine
+
+# Отключение переключения на AMP при зарядке
+72BA: 39 - 00
+72BB: B1 - BF
+
+# Переход на новый код
+72C2: 01 - 05
+72C3: 28 - F0
+72C4: 21 - 6D
+72C5: D0 - BB
+
+# Новый код
+# Выбор режима
+C9A0: 00 - 01 ; Количество затяжек
+C9A1: 00 - 28
+C9A2: 00 - 3A
+C9A3: 00 - F4
+C9A4: 00 - B2
+C9A5: 00 - AC
+C9A6: 00 - 02 ; Время парения
+C9A7: 00 - 28
+C9A8: 00 - 3A
+C9A9: 00 - F4
+C9AA: 00 - BD
+C9AB: 00 - AC
+C9AC: 00 - 03 ; Сохраненное сопротивление
+C9AD: 00 - 28
+C9AE: 00 - 00
+C9AF: 00 - F0
+C9B0: 00 - 4F
+C9B1: 00 - 80
+C9B2: 00 - 04 ; Текущее сопротивление
+C9B3: 00 - 28
+C9B4: 00 - 00
+C9B5: 00 - F0
+C9B6: 00 - 84
+C9B7: 00 - 80
+C9B8: 00 - 05 ; Температура
+C9B9: 00 - 28
+C9BA: 00 - 00
+C9BB: 00 - F0
+C9BC: 00 - 29
+C9BD: 00 - 80
+C9BE: 00 - 06 ; Выходное напряжение
+C9BF: 00 - 28
+C9C0: 00 - 00
+C9C1: 00 - F0
+C9C2: 00 - 9E
+C9C3: 00 - 80
+C9C4: 00 - 07 ; Напряжение батареи
+C9C5: 00 - 28
+C9C6: 00 - 00
+C9C7: 00 - F0
+C9C8: 00 - 03
+C9C9: 00 - 80
+C9CA: 00 - FA ; Амперы
+C9CB: 00 - F7
+C9CC: 00 - BD
+C9CD: 00 - BC
+C9CE: 00 - 00
+C9CF: 00 - 00
+
+
+# Напряжение батареи
+C9D0: 00 - 0B
+C9D1: 00 - 48
+C9D2: 00 - 5C ; BATT pos Y
+C9D3: 00 - 22
+C9D4: 00 - 00 ; BATT pos X
+C9D5: 00 - 21
+C9D6: 00 - 03
+C9D7: 00 - 27
+C9D8: 00 - F8
+C9D9: 00 - F7
+C9DA: 00 - 28
+C9DB: 04 - FE
+C9DC: 0C - 07
+C9DD: 1C - 48
+C9DE: 78 - CD
+C9DF: F8 - E9
+C9E0: F0 - 00
+C9E1: F0 - 47
+C9E2: E0 - 02
+C9E3: E0 - 23
+C9E4: C0 - 02
+C9E5: C0 - 88
+C9E6: 80 - 5A ; voltage pos Y
+C9E7: 80 - 21
+C9E8: 80 - 1B ; voltage pos X
+C9E9: 00 - 20
+C9EA: 00 - F8
+C9EB: 00 - F7
+C9EC: 00 - 57
+C9ED: 00 - FD
+C9EE: 00 - 67 ; V charcode
+C9EF: 00 - 22
+C9F0: 00 - 5C ; V pos Y
+C9F1: 00 - 21
+C9F2: 00 - 38 ; V pos X
+C9F3: 00 - 20
+C9F4: 00 - F8
+C9F5: 00 - F7
+C9F6: 00 - CE
+C9F7: C0 - FC
+C9F8: 30 - FA
+C9F9: 08 - F7
+C9FA: 04 - A6
+C9FB: 04 - BC
+C9FC: 04 - 60
+C9FD: 08 - 00
+C9FE: 30 - 00
+C9FF: 00 - 20
+CA00: 00 - 08
+CA01: 00 - CA
+CA02: 00 - 00
+CA03: 00 - 00
+CA04: 00 - 00
+CA05: 00 - 00
+CA06: 00 - 00
+CA07: 00 - 00
+CA08: 00 - 53 ; B
+CA09: 00 - 52 ; A
+CA0A: 00 - 65 ; T
+CA0B: 00 - 65 ; T
+CA0C: 00 - 00 ; line end
+CA0D: 80 - 1F
+CA0E: 80 - 1F
+CA0F: 80 - 00
+
+# температура пляты
+CA10: C0 - 0B
+CA11: C0 - 48
+CA12: E0 - 5C ; TEMP pos Y
+CA13: E0 - 22
+CA14: F0 - 00 ; TEMP pos X
+CA15: F0 - 21
+CA16: F8 - 02
+CA17: 78 - 27
+CA18: 1C - F8
+CA19: 0C - F7
+CA1A: 04 - 08
+CA1B: 00 - FE
+CA1C: 00 - 07
+CA1D: 00 - 48
+CA1E: 00 - CD
+CA1F: 00 - E9
+CA20: 03 - 00
+CA21: 07 - 47
+CA22: 3F - 00
+CA23: 0F - 23
+CA24: 1F - 02
+CA25: 1F - 78
+CA26: 1F - 5A ; temperature pos Y
+CA27: 3F - 21
+CA28: 3F - 27 ; temperature pos X
+CA29: 3F - 20
+CA2A: 7F - F8
+CA2B: 7E - F7
+CA2C: FE - 37
+CA2D: FE - FD
+CA2E: FC - 54 ; 'C charcode
+CA2F: FC - 22
+CA30: F8 - 5C ; 'C pos Y
+CA31: F8 - 21
+CA32: F8 - 38 ; 'C pos X
+CA33: F0 - 20
+CA34: F0 - F8
+CA35: C7 - F7
+CA36: 18 - AE
+CA37: 63 - FC
+CA38: 8C - FA
+CA39: 10 - F7
+CA3A: 20 - 86
+CA3B: 20 - BC
+CA3C: 11 - 42
+CA3D: 8D - 00
+CA3E: 63 - 00
+CA3F: 18 - 20
+CA40: C7 - 48
+CA41: F0 - CA
+CA42: F0 - 00
+CA43: F8 - 00
+CA44: F8 - 00
+CA45: F8 - 00
+CA46: FC - 00
+CA47: FC - 00
+CA48: FE - 65 ; T
+CA49: FE - 56 ; E
+CA4A: 7E - 5E ; M
+CA4B: 7F - 61 ; P
+CA4C: 3F - 00 ; line end
+CA4D: 3F - 60
+CA4E: 3F - 18
+CA4F: 1F - 04
+
+# Сохраненное сопротивление
+CA50: 1F - 17
+CA51: 1F - 48
+CA52: 0F - 5C ; RES pos Y
+CA53: 3F - 22
+CA54: 07 - 00 ; RES pos X
+CA55: 03 - 21
+CA56: 00 - 03
+CA57: 00 - 27
+CA58: 00 - F8
+CA59: 00 - F7
+CA5A: 00 - E8
+CA5B: 00 - FD
+CA5C: 00 - 13
+CA5D: 00 - 4B
+CA5E: 00 - 98
+CA5F: 00 - 7B
+CA60: 00 - 01
+CA61: 00 - 28
+CA62: 00 - 05
+CA63: 00 - D0
+CA64: 00 - 40
+CA65: 00 - B1
+CA66: 00 - 02
+CA67: 00 - 28
+CA68: 00 - 0A
+CA69: 00 - D0
+CA6A: 00 - 03
+CA6B: 00 - 28
+CA6C: 00 - 0D
+CA6D: 00 - D0
+CA6E: 00 - 15
+CA6F: 01 - E0
+CA70: 01 - CD
+CA71: 03 - E9
+CA72: 03 - 00
+CA73: 03 - 47
+CA74: 07 - DA
+CA75: 47 - 8B
+CA76: E7 - 0C
+CA77: F6 - E0
+CA78: FC - CD
+CA79: F9 - E9
+CA7A: F9 - 00
+CA7B: F9 - 47
+CA7C: F9 - 1A
+CA7D: FC - 8C
+CA7E: FE - 08
+CA7F: F7 - E0
+CA80: E7 - CD
+CA81: 47 - E9
+CA82: 03 - 00
+CA83: 03 - 47
+CA84: 03 - B3
+CA85: 01 - F8
+CA86: 01 - 84
+CA87: 00 - 20
+CA88: 00 - 03
+CA89: 00 - E0
+CA8A: 00 - CD
+CA8B: 00 - E9
+CA8C: 00 - 00
+CA8D: 00 - 47
+CA8E: 00 - B3
+CA8F: 00 - F8
+CA90: 00 - 90
+CA91: 00 - 20
+CA92: 00 - 02
+CA93: 00 - 23
+CA94: 00 - 5A ; resistance pos Y
+CA95: 00 - 21
+CA96: 00 - 1B ; resistance pos X
+CA97: 00 - 20
+CA98: 00 - F8
+CA99: 00 - F7
+CA9A: 00 - 00
+CA9B: 00 - FD
+CA9C: 00 - AA ; omega charcode
+CA9D: 00 - 22
+CA9E: 00 - 5C ; omega pos Y
+CA9F: 00 - 21
+CAA0: 00 - 38 ; omega pos X
+CAA1: 00 - 20
+CAA2: 00 - F8
+CAA3: 04 - F7
+CAA4: 18 - 77
+CAA5: 60 - FC
+CAA6: 18 - FA
+CAA7: 04 - F7
+CAA8: 40 - 4F
+CAA9: 38 - BC
+CAAA: 24 - 00
+CAAB: 38 - 00
+CAAC: 40 - 88
+CAAD: 00 - 02
+CAAE: 7C - 00
+CAAF: 14 - 20
+CAB0: 1C - B4
+CAB1: 00 - CA
+CAB2: 38 - 00
+CAB3: 44 - 00
+CAB4: 38 - 63 ; R
+CAB5: 00 - 56 ; E
+CAB6: 7C - 64 ; S
+CAB7: 14 - AD ; []
+CAB8: 69 - 00 ; line end
+CAB9: 01 - 00
+
+# Текущее сопротивление
+CAC0: 54 - 0B
+CAC1: 30 - 48
+CAC2: 00 - 5C ; RES pos Y
+CAC3: 44 - 22
+CAC4: 7C - 00 ; RES pos X
+CAC5: 44 - 21
+CAC6: 00 - 04
+CAC7: 40 - 27
+CAC8: 38 - F8
+CAC9: 24 - F7
+CACA: 38 - B0
+CACB: 40 - FD
+CACC: 00 - 07
+CACD: 7C - 48
+CACE: 08 - CD
+CACF: 30 - E9
+CAD0: 7C - 00
+CAD1: 00 - 47
+CAD2: 04 - 03
+CAD3: 7C - 23
+CAD4: 04 - 02
+CAD5: 00 - 88
+CAD6: 00 - 5A ; resistance pos Y
+CAD7: 00 - 21
+CAD8: 00 - 13 ; resistance pos X
+CAD9: 00 - 20
+CADA: 00 - F8
+CADB: 00 - F7
+CADC: 00 - DF
+CADD: 00 - FC
+CADE: 00 - AA ; omega charcode
+CADF: 00 - 22
+CAE0: 00 - 5C ; omega pos Y
+CAE1: 00 - 21
+CAE2: 00 - 38 ; omega pos X
+CAE3: 00 - 20
+CAE4: 00 - F8
+CAE5: 00 - F7
+CAE6: 00 - 56
+CAE7: 00 - FC
+CAE8: 00 - FA
+CAE9: 00 - F7
+CAEA: 00 - 2E
+CAEB: 00 - BC
+CAEC: 00 - D8
+CAED: 00 - 00
+CAEE: 00 - 00
+CAEF: 00 - 20
+CAF0: 00 - F4
+CAF1: 00 - CA
+CAF2: 00 - 00
+CAF3: 00 - 00
+CAF4: 00 - 63 ; R
+CAF5: 00 - 56 ; E
+CAF6: 00 - 64 ; S
+CAF7: 00 - 00 ; line end
+
+# Выходное напряжение
+CB00: 00 - 11
+CB01: 00 - 48
+CB02: 00 - 5C ; Vout pos Y
+CB03: 00 - 22
+CB04: 00 - 00 ; Vout pos X
+CB05: 00 - 21
+CB06: 00 - F8
+CB07: 00 - F7
+CB08: 00 - 91
+CB09: 00 - FD
+CB0A: 00 - 0D
+CB0B: 00 - 4F
+CB0C: 00 - 38
+CB0D: 00 - 88
+CB0E: 00 - 03
+CB0F: 00 - 27
+CB10: 00 - 02
+CB11: 00 - 23
+CB12: 00 - C0
+CB13: 00 - 05
+CB14: 00 - 06
+CB15: 00 - D5
+CB16: 00 - 0B
+CB17: 00 - 48
+CB18: 00 - CD
+CB19: 00 - E9
+CB1A: 00 - 00
+CB1B: 00 - 47
+CB1C: 00 - 02
+CB1D: 00 - 88
+CB1E: 00 - 5A ; voltage pos Y
+CB1F: 00 - 21
+CB20: 00 - 1B ; voltage pos X
+CB21: 00 - 20
+CB22: 00 - 04
+CB23: 00 - E0
+CB24: 00 - 00
+CB25: 00 - 22
+CB26: 00 - 5A ; voltage pos Y
+CB27: 00 - 21
+CB28: 00 - 1B ; voltage pos X
+CB29: 00 - 20
+CB2A: 00 - CD
+CB2B: 00 - E9
+CB2C: 00 - 00
+CB2D: 00 - 47
+CB2E: 00 - F8
+CB2F: 00 - F7
+CB30: 00 - B5
+CB31: 00 - FC
+CB32: 00 - 67 ; V charcode
+CB33: 00 - 22
+CB34: 00 - 5C ; V pos Y
+CB35: 00 - 21
+CB36: 00 - 38 ; V pos X
+CB37: 00 - 20
+CB38: 00 - F8
+CB39: 00 - F7
+CB3A: 00 - 2C
+CB3B: 00 - FC
+CB3C: 00 - FA
+CB3D: 00 - F7
+CB3E: 00 - 04
+CB3F: 00 - BC
+CB40: 00 - 70
+CB41: 00 - 00
+CB42: 00 - 00
+CB43: 00 - 20
+CB44: 00 - F8
+CB45: 00 - 00
+CB46: 00 - 00
+CB47: 00 - 20
+CB48: 00 - 4C
+CB49: 00 - CB
+CB4A: 00 - 00
+CB4B: 00 - 00
+CB4C: 00 - 67 ; V
+CB4D: 00 - 7A ; o
+CB4E: 00 - 80 ; u
+CB4F: 00 - 7F ; t
+CB50: 00 - 00 ; line end
+CB51: 00 - FF
+CB52: 00 - FF
+CB53: 00 - 80
+</Data>
+</Patch>

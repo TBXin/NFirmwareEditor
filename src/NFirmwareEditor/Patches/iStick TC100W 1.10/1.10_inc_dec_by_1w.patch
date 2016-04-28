@@ -1,0 +1,10 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Inc/Dec by 1W" Version="1.0" Author="Dr_Zlo">
+  <Description>Изменение мощности по одному ватту.
+Changing power by one watt.</Description>
+  <Data>
+00003680: 69 - 00
+000036D2: 69 - 00
+0000381E: 69 - 00
+00003958: 69 - 00
+</Data>
+</Patch>
