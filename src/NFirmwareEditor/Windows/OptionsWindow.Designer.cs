@@ -33,10 +33,10 @@
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.SettingsTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
 			this.BackupModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
 			this.ImageEditorModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
@@ -58,7 +58,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 137);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 155);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(494, 39);
@@ -96,7 +96,7 @@
 			this.SettingsTabControl.Location = new System.Drawing.Point(3, 3);
 			this.SettingsTabControl.Name = "SettingsTabControl";
 			this.SettingsTabControl.SelectedIndex = 0;
-			this.SettingsTabControl.Size = new System.Drawing.Size(490, 131);
+			this.SettingsTabControl.Size = new System.Drawing.Size(490, 150);
 			this.SettingsTabControl.TabIndex = 2;
 			// 
 			// GeneralTabPage
@@ -106,7 +106,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(482, 105);
+			this.GeneralTabPage.Size = new System.Drawing.Size(482, 124);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "Application";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -115,11 +115,14 @@
 			// 
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupBox2.Controls.Add(this.BackupModeComboBox);
 			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Location = new System.Drawing.Point(0, 56);
+			this.groupBox2.HeaderBackColor = System.Drawing.Color.White;
+			this.groupBox2.HeaderHeight = 30;
+			this.groupBox2.Location = new System.Drawing.Point(0, 65);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(480, 49);
+			this.groupBox2.Size = new System.Drawing.Size(480, 58);
 			this.groupBox2.TabIndex = 23;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Backups:";
@@ -130,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BackupModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.BackupModeComboBox.FormattingEnabled = true;
-			this.BackupModeComboBox.Location = new System.Drawing.Point(106, 20);
+			this.BackupModeComboBox.Location = new System.Drawing.Point(106, 33);
 			this.BackupModeComboBox.Name = "BackupModeComboBox";
 			this.BackupModeComboBox.Size = new System.Drawing.Size(369, 21);
 			this.BackupModeComboBox.TabIndex = 23;
@@ -138,7 +141,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(9, 23);
+			this.label1.Location = new System.Drawing.Point(9, 36);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(37, 13);
 			this.label1.TabIndex = 24;
@@ -148,11 +151,14 @@
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupBox1.Controls.Add(this.ImageEditorModeComboBox);
 			this.groupBox1.Controls.Add(this.label6);
+			this.groupBox1.HeaderBackColor = System.Drawing.Color.White;
+			this.groupBox1.HeaderHeight = 30;
 			this.groupBox1.Location = new System.Drawing.Point(0, 1);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(480, 49);
+			this.groupBox1.Size = new System.Drawing.Size(480, 58);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Image Editor:";
@@ -163,7 +169,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ImageEditorModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ImageEditorModeComboBox.FormattingEnabled = true;
-			this.ImageEditorModeComboBox.Location = new System.Drawing.Point(106, 20);
+			this.ImageEditorModeComboBox.Location = new System.Drawing.Point(106, 33);
 			this.ImageEditorModeComboBox.Name = "ImageEditorModeComboBox";
 			this.ImageEditorModeComboBox.Size = new System.Drawing.Size(369, 21);
 			this.ImageEditorModeComboBox.TabIndex = 21;
@@ -171,7 +177,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(9, 23);
+			this.label6.Location = new System.Drawing.Point(9, 36);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(37, 13);
 			this.label6.TabIndex = 22;
@@ -181,7 +187,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(494, 176);
+			this.ClientSize = new System.Drawing.Size(494, 194);
 			this.Controls.Add(this.SettingsTabControl);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -209,11 +215,11 @@
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.TabControl SettingsTabControl;
 		private System.Windows.Forms.TabPage GeneralTabPage;
-		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.ComboBox ImageEditorModeComboBox;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.ComboBox BackupModeComboBox;
 		private System.Windows.Forms.Label label1;
+		private UI.GroupPanel groupBox1;
+		private UI.GroupPanel groupBox2;
 	}
 }
