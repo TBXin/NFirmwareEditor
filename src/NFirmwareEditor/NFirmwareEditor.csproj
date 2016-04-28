@@ -490,6 +490,9 @@
     <None Include="Patches\RX200 3.10\3.10_splash2.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\RX200 3.10\Reuleaux_RX200_V3.10.Cutoff_voltage_V1.0.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

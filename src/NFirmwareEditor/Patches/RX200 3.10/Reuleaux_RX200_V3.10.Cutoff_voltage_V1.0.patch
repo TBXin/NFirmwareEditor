@@ -1,0 +1,7 @@
+﻿<Patch Definition="RX200 3.10" Name="Cutoff voltage" Version="1.0" Author="iNFiNUM">
+  <Description>Changes the cut-off voltage (to 3.00 V by default).
+Изменяет напряжение отсечки (по умолчанию до 3,00 В).</Description>
+  <Data>
+000037C2: 9B - 96 ; 9B ~ 3.10 V / 96 ~ 3.00 V
+</Data>
+</Patch>
