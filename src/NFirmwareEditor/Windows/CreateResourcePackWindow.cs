@@ -30,7 +30,8 @@ namespace NFirmwareEditor.Windows
 			[NotNull] ResourcePackManager resourcePackManager,
 			[NotNull] IEnumerable<FirmwareDefinition> definitions,
 			[NotNull] string definition, 
-			[NotNull] List<ExportedImage> exportedImages
+			[NotNull] List<ExportedImage> exportedImages,
+			[CanBeNull] ResourcePackFile existedResourcePack
 		) : this()
 		{
 			if (resourcePackManager == null) throw new ArgumentNullException("resourcePackManager");
@@ -42,9 +43,19 @@ namespace NFirmwareEditor.Windows
 			m_exportedImages = exportedImages.ToList();
 
 			definitions.ForEach(x => DefinitionComboBox.Items.Add(x));
-
-			DefinitionComboBox.Text = definition;
-			AuthorTextBox.Text = Environment.UserName;
+			if (existedResourcePack == null)
+			{
+				DefinitionComboBox.Text = definition;
+				AuthorTextBox.Text = Environment.UserName;
+			}
+			else
+			{
+				NameTextBox.Text = existedResourcePack.Name;
+				VersionTextBox.Text = existedResourcePack.Version;
+				AuthorTextBox.Text = existedResourcePack.Author;
+				DefinitionComboBox.Text = existedResourcePack.Definition;
+				DescriptionTextBox.Text = existedResourcePack.Description;
+			}
 			flowLayoutPanel1.SuspendLayout();
 			foreach (var exportedImage in exportedImages.Select(x => x.Data))
 			{

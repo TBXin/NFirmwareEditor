@@ -97,6 +97,11 @@ namespace NFirmwareEditor.Core
 			return string.IsNullOrEmpty(source) ? value : source;
 		}
 
+		internal static string SplitLines([CanBeNull] this string source)
+		{
+			return (source ?? string.Empty).Trim().Replace("\n", Environment.NewLine);
+		}
+
 		internal static Size GetSize([NotNull] this bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");

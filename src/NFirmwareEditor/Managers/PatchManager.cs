@@ -33,6 +33,7 @@ namespace NFirmwareEditor.Managers
 						patch.Data = ParseDiff(patch.DataString);
 						patch.FilePath = file;
 						patch.FileName = Path.GetFileName(file);
+						patch.Description = patch.Description.SplitLines();
 						result.Add(patch);
 					}
 				}

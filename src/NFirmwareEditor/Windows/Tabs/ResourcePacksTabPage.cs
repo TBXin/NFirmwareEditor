@@ -166,7 +166,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				sb.AppendLine("Author: " + SelectedResourcePack.Author);
 				sb.AppendLine("Version: " + SelectedResourcePack.Version);
 				sb.AppendLine();
-				sb.AppendLine((SelectedResourcePack.Description ?? string.Empty).Trim().Replace("\n", Environment.NewLine));
+				sb.AppendLine(SelectedResourcePack.Description);
 			}
 			DescriptionTextBox.Text = sb.ToString();
 		}

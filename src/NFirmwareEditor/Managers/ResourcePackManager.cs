@@ -38,6 +38,7 @@ namespace NFirmwareEditor.Managers
 							.ToArray();
 						resourcePack.FilePath = file;
 						resourcePack.FileName = Path.GetFileName(file);
+						resourcePack.Description = resourcePack.Description.SplitLines();
 						result.Add(resourcePack);
 					}
 				}
@@ -60,13 +61,17 @@ namespace NFirmwareEditor.Managers
 				using (var fs = File.Open(path, FileMode.Open))
 				{
 					result = Serializer.Read<ResourcePack>(fs);
-					if (result != null && result.Images != null)
+					if (result != null)
 					{
-						result.Images.ForEach(image =>
+						result.Description = result.Description.SplitLines();
+						if (result.Images != null)
 						{
-							image.Index = image.IndexString.HexStringToInt();
-							image.Data = ReadImageFromAsciiString(image.Width, image.Height, image.DataString);
-						});
+							result.Images.ForEach(image =>
+							{
+								image.Index = image.IndexString.HexStringToInt();
+								image.Data = ReadImageFromAsciiString(image.Width, image.Height, image.DataString);
+							});
+						}
 					}
 				}
 			}

@@ -267,6 +267,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ImportFontMenuItem.Click += ImportFontMenuItem_Click;
 			ExportBitmapMenuItem.Click += ExportBitmapMenuItem_Click;
 			ExportResourcePackContextMenuItem.Click += ExportResourcePackContextMenuItem_Click;
+			UpdateResourcePackContextMenuItem.Click += UpdateResourcePackContextMenuItem_Click;
 		}
 
 		private void ImportImages([NotNull] IList<int> originalImageIndices, [NotNull] IList<bool[,]> importedImages)
@@ -681,7 +682,32 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 
-			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images))
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images, null))
+			{
+				createResourcePackWindow.ShowDialog();
+			}
+		}
+
+		private void UpdateResourcePackContextMenuItem_Click(object sender, EventArgs e)
+		{
+			if (SelectedImageMetadata.Count == 0) return;
+
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = Consts.ExportResourcePackFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				fileName = op.FileName;
+			}
+
+			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
+			var images = SelectedImageMetadata.Select(x =>
+			{
+				var imageData = m_firmware.ReadImage(x);
+				var imageSize = imageData.GetSize();
+				return new ExportedImage(x.Index, imageSize, imageData);
+			}).ToList();
+
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images, resourcePack))
 			{
 				createResourcePackWindow.ShowDialog();
 			}
