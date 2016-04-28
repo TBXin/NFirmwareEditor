@@ -18,5 +18,4 @@ Firmware editor and updater for vaping devices such as:
 * [Official NFirmwareEditor forum thread (Ru)](http://www.ecigtalk.ru/forum/f16/t101098.html)
 
 #### Main application window
-![](http://i.imgur.com/uNf6u1v.png)
 ![](http://i.imgur.com/vQqZ1Eg.png)
