@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -10,6 +11,7 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class ImageConverterWindow : EditorDialogWindow
 	{
+		private readonly bool m_logoPreviewMode;
 		private const int PreviewMargin = 8;
 
 		private Bitmap m_originalBitmap;
@@ -19,10 +21,37 @@ namespace NFirmwareEditor.Windows
 		private TextureBrush m_fontPreviewBackgroundBrush;
 		private bool m_doNotUpdateMonochrome;
 
-		public ImageConverterWindow()
+		public ImageConverterWindow(bool logoPreviewMode = false)
 		{
 			InitializeComponent();
 			InitializeControls();
+
+			m_logoPreviewMode = logoPreviewMode;
+			if (m_logoPreviewMode)
+			{
+				ResizeContainerPanel.Enabled = false;
+
+				OkButton.Text = @"Upload";
+				OkButton.DialogResult = DialogResult.OK;
+				OkButton.Click -= OkButton_Click;
+			}
+		}
+
+		public Bitmap GetConvertedImage()
+		{
+			try
+			{
+				using (var ms = new MemoryStream())
+				{
+					m_monochromeBitmap.Save(ms, ImageFormat.Bmp);
+					return (Bitmap)Image.FromStream(new MemoryStream(ms.ToArray()));
+				}
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("An error occured during converting image.\n" + ex.Message);
+				return null;
+			}
 		}
 
 		private void InitializeControls()
@@ -48,19 +77,21 @@ namespace NFirmwareEditor.Windows
 					ImagePreviewSurface.Invalidate();
 				});
 			};
-			JoyetechSizeButton.Click += (s, e) =>
-			{
-				NewWidthUpDown.Value = 64;
-				NewHeightUpDown.Value = 40;
-			};
+			JoyetechSizeButton.Click += JoyetechSizeButton_Click;
 			OkButton.Click += OkButton_Click;
 
 			ImagePreviewSurface.Paint += ImagePreviewSurface_Paint;
-			Closing += (s, e) =>
+			Disposed += (s, e) =>
 			{
 				if (m_originalBitmap != null) m_originalBitmap.Dispose();
 				if (m_monochromeBitmap != null) m_monochromeBitmap.Dispose();
 			};
+		}
+
+		private void JoyetechSizeButton_Click(object sender, EventArgs eventArgs)
+		{
+			NewWidthUpDown.Value = 64;
+			NewHeightUpDown.Value = 40;
 		}
 
 		private void CreateMonochromeBitmap()
@@ -102,7 +133,7 @@ namespace NFirmwareEditor.Windows
 
 					SourceTextBox.Clear();
 					ResizeContainerPanel.Enabled = false;
-
+					
 					m_doNotUpdateMonochrome = true;
 					NewWidthUpDown.Value = m_width = (int)NewWidthUpDown.Minimum;
 					NewHeightUpDown.Value = m_height = (int)NewHeightUpDown.Minimum;
@@ -116,12 +147,20 @@ namespace NFirmwareEditor.Windows
 				else
 				{
 					SourceTextBox.Text = fileName;
-					ResizeContainerPanel.Enabled = true;
 
-					m_doNotUpdateMonochrome = true;
-					NewWidthUpDown.Value = m_width = m_originalBitmap.Width;
-					NewHeightUpDown.Value = m_height = m_originalBitmap.Height;
-					m_doNotUpdateMonochrome = false;
+					if (m_logoPreviewMode)
+					{
+						JoyetechSizeButton_Click(null, EventArgs.Empty);
+					}
+					else
+					{
+						ResizeContainerPanel.Enabled = true;
+
+						m_doNotUpdateMonochrome = true;
+						NewWidthUpDown.Value = m_width = m_originalBitmap.Width;
+						NewHeightUpDown.Value = m_height = m_originalBitmap.Height;
+						m_doNotUpdateMonochrome = false;
+					}
 
 					CreateMonochromeBitmap();
 					ImagePreviewSurface.Invalidate();

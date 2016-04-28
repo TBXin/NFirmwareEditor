@@ -72,10 +72,10 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 505);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 322);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(434, 39);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(384, 39);
 			this.ControlBorderedPanel.TabIndex = 3;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
@@ -83,7 +83,7 @@
 			// 
 			this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.OkButton.Enabled = false;
-			this.OkButton.Location = new System.Drawing.Point(224, 5);
+			this.OkButton.Location = new System.Drawing.Point(174, 5);
 			this.OkButton.Name = "OkButton";
 			this.OkButton.Size = new System.Drawing.Size(100, 30);
 			this.OkButton.TabIndex = 7;
@@ -94,7 +94,7 @@
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(330, 5);
+			this.CancelButton.Location = new System.Drawing.Point(280, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 30);
 			this.CancelButton.TabIndex = 8;
@@ -106,16 +106,16 @@
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(9, 7);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(60, 13);
+			this.label1.Size = new System.Drawing.Size(27, 13);
 			this.label1.TabIndex = 14;
-			this.label1.Text = "Bitmap file:";
+			this.label1.Text = "File:";
 			// 
 			// SelectSourceButton
 			// 
 			this.SelectSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectSourceButton.Location = new System.Drawing.Point(348, 4);
+			this.SelectSourceButton.Location = new System.Drawing.Point(298, 3);
 			this.SelectSourceButton.Name = "SelectSourceButton";
-			this.SelectSourceButton.Size = new System.Drawing.Size(75, 21);
+			this.SelectSourceButton.Size = new System.Drawing.Size(75, 23);
 			this.SelectSourceButton.TabIndex = 13;
 			this.SelectSourceButton.Text = "Select";
 			this.SelectSourceButton.UseVisualStyleBackColor = true;
@@ -124,16 +124,17 @@
 			// 
 			this.SourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.SourceTextBox.Location = new System.Drawing.Point(106, 4);
+			this.SourceTextBox.Location = new System.Drawing.Point(52, 4);
 			this.SourceTextBox.Name = "SourceTextBox";
 			this.SourceTextBox.ReadOnly = true;
-			this.SourceTextBox.Size = new System.Drawing.Size(236, 21);
+			this.SourceTextBox.Size = new System.Drawing.Size(240, 21);
 			this.SourceTextBox.TabIndex = 12;
 			this.SourceTextBox.TabStop = false;
 			// 
 			// JoyetechSizeButton
 			// 
-			this.JoyetechSizeButton.Location = new System.Drawing.Point(212, 3);
+			this.JoyetechSizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.JoyetechSizeButton.Location = new System.Drawing.Point(298, 3);
 			this.JoyetechSizeButton.Name = "JoyetechSizeButton";
 			this.JoyetechSizeButton.Size = new System.Drawing.Size(75, 23);
 			this.JoyetechSizeButton.TabIndex = 12;
@@ -219,7 +220,7 @@
 			this.borderedPanel3.Location = new System.Drawing.Point(3, 133);
 			this.borderedPanel3.Name = "borderedPanel3";
 			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(428, 369);
+			this.borderedPanel3.Size = new System.Drawing.Size(378, 186);
 			this.borderedPanel3.TabIndex = 10;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
@@ -248,7 +249,7 @@
 			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel5.Name = "borderedPanel5";
 			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel5.Size = new System.Drawing.Size(426, 339);
+			this.borderedPanel5.Size = new System.Drawing.Size(376, 156);
 			this.borderedPanel5.TabIndex = 4;
 			this.borderedPanel5.Text = "borderedPanel5";
 			// 
@@ -258,7 +259,7 @@
 			this.ImagePreviewSurface.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ImagePreviewSurface.Location = new System.Drawing.Point(0, 1);
 			this.ImagePreviewSurface.Name = "ImagePreviewSurface";
-			this.ImagePreviewSurface.Size = new System.Drawing.Size(426, 338);
+			this.ImagePreviewSurface.Size = new System.Drawing.Size(376, 155);
 			this.ImagePreviewSurface.TabIndex = 0;
 			this.ImagePreviewSurface.Text = "drawingSurface1";
 			// 
@@ -278,7 +279,7 @@
 			this.borderedPanel1.Location = new System.Drawing.Point(3, 68);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(428, 59);
+			this.borderedPanel1.Size = new System.Drawing.Size(378, 59);
 			this.borderedPanel1.TabIndex = 11;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
@@ -312,7 +313,7 @@
 			this.ResizeContainerPanel.Location = new System.Drawing.Point(1, 29);
 			this.ResizeContainerPanel.Name = "ResizeContainerPanel";
 			this.ResizeContainerPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ResizeContainerPanel.Size = new System.Drawing.Size(426, 29);
+			this.ResizeContainerPanel.Size = new System.Drawing.Size(376, 29);
 			this.ResizeContainerPanel.TabIndex = 4;
 			this.ResizeContainerPanel.Text = "borderedPanel2";
 			// 
@@ -332,7 +333,7 @@
 			this.borderedPanel4.Location = new System.Drawing.Point(3, 3);
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel4.Size = new System.Drawing.Size(428, 59);
+			this.borderedPanel4.Size = new System.Drawing.Size(378, 59);
 			this.borderedPanel4.TabIndex = 12;
 			this.borderedPanel4.Text = "borderedPanel4";
 			// 
@@ -363,23 +364,23 @@
 			this.borderedPanel6.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel6.Name = "borderedPanel6";
 			this.borderedPanel6.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel6.Size = new System.Drawing.Size(426, 29);
+			this.borderedPanel6.Size = new System.Drawing.Size(376, 29);
 			this.borderedPanel6.TabIndex = 4;
 			this.borderedPanel6.Text = "borderedPanel6";
 			// 
-			// ImageConvertorWindow
+			// ImageConverterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(434, 544);
+			this.ClientSize = new System.Drawing.Size(384, 361);
 			this.Controls.Add(this.borderedPanel4);
 			this.Controls.Add(this.borderedPanel1);
 			this.Controls.Add(this.borderedPanel3);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(450, 450);
-			this.Name = "ImageConvertorWindow";
+			this.MinimumSize = new System.Drawing.Size(400, 400);
+			this.Name = "ImageConverterWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor - Image Converter";
 			this.ControlBorderedPanel.ResumeLayout(false);

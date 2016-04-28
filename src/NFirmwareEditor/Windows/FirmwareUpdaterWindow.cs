@@ -286,35 +286,27 @@ namespace NFirmwareEditor.Windows
 
 		private void LogoButton_Click(object sender, EventArgs e)
 		{
-			string fileName;
-			using (var op = new OpenFileDialog { Filter = Consts.BitmapImportFilter })
+			Bitmap logoBitmap;
+			using (var imageConverterWindow = new ImageConverterWindow(true))
 			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-				fileName = op.FileName;
+				if (imageConverterWindow.ShowDialog() != DialogResult.OK) return;
+
+				logoBitmap = imageConverterWindow.GetConvertedImage();
+				if (logoBitmap == null) return;
 			}
 
-			bool[,] imageData;
-			using (var bitmap = (Bitmap)Image.FromFile(fileName))
+			using (logoBitmap)
 			{
-				if (bitmap.Width > 2048 || bitmap.Height > 2048)
-				{
-					InfoBox.Show("Selected images is too big. Choose an image that has dimension lower than 2048x2048.");
-					return;
-				}
-				using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LogoWidth, LogoHeight)))
-				using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
-				{
-					imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
-				}
+				var imageData = BitmapProcessor.CreateRawFromBitmap(logoBitmap);
+
+				var block1ImageMetadata = new FirmwareImage1Metadata { Width = LogoWidth, Height = LogoHeight };
+				var block2ImageMetadata = new FirmwareImage2Metadata { Width = LogoWidth, Height = LogoHeight };
+
+				var block1ImageBytes = block1ImageMetadata.Save(imageData);
+				var block2ImageBytes = block2ImageMetadata.Save(imageData);
+
+				m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker => UpdateLogoAsyncWorker(worker, block1ImageBytes, block2ImageBytes)));
 			}
-
-			var block1ImageMetadata = new FirmwareImage1Metadata { Width = LogoWidth, Height = LogoHeight };
-			var block2ImageMetadata = new FirmwareImage2Metadata { Width = LogoWidth, Height = LogoHeight };
-
-			var block1ImageBytes = block1ImageMetadata.Save(imageData);
-			var block2ImageBytes = block2ImageMetadata.Save(imageData);
-
-			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker => UpdateLogoAsyncWorker(worker, block1ImageBytes, block2ImageBytes)));
 		}
 
 		private void UpdateButton_Click(object sender, EventArgs e)
