@@ -1,4 +1,5 @@
-﻿using NFirmwareEditor.Core;
+﻿using System.Drawing;
+using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
 {
@@ -8,6 +9,9 @@ namespace NFirmwareEditor.Windows
 		{
 			InitializeComponent();
 			Icon = Paths.ApplicationIcon;
+
+			MessageTextBox.ReadOnly = true;
+			MessageTextBox.BackColor = Color.White;
 		}
 	}
 }

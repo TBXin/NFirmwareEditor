@@ -40,11 +40,11 @@
 			this.MessageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.MessageTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MessageTextBox.Location = new System.Drawing.Point(5, 5);
 			this.MessageTextBox.Multiline = true;
 			this.MessageTextBox.Name = "MessageTextBox";
-			this.MessageTextBox.ReadOnly = true;
 			this.MessageTextBox.Size = new System.Drawing.Size(254, 232);
 			this.MessageTextBox.TabIndex = 2;
 			this.MessageTextBox.TabStop = false;
@@ -52,7 +52,7 @@
 			// 
 			// ControlBorderedPanel
 			// 
-			this.ControlBorderedPanel.BackColor = System.Drawing.Color.Transparent;
+			this.ControlBorderedPanel.BackColor = System.Drawing.SystemColors.Control;
 			this.ControlBorderedPanel.BorderBottom = false;
 			this.ControlBorderedPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.ControlBorderedPanel.BorderLeft = false;
