@@ -227,7 +227,6 @@
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
 			this.DescriptionTextBox.Size = new System.Drawing.Size(268, 87);
 			this.DescriptionTextBox.TabIndex = 4;
-			this.DescriptionTextBox.Text = "1\r\n2\r\n3\r\n4\r\n5\r\n6";
 			// 
 			// label6
 			// 
