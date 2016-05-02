@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Extensions.cs" />
+    <Compile Include="Core\MruList.cs" />
     <Compile Include="Core\Serializer.cs" />
     <Compile Include="Managers\BackupManager.cs" />
     <Compile Include="Managers\BitmapProcessor.cs" />
@@ -626,6 +627,7 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\mru.png" />
     <None Include="Resources\images.png" />
     <None Include="Resources\font_underline.png" />
     <None Include="Resources\font_italic.png" />

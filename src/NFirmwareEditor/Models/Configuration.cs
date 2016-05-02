@@ -1,4 +1,7 @@
-﻿namespace NFirmwareEditor.Models
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
+
+namespace NFirmwareEditor.Models
 {
 	public class Configuration
 	{
@@ -10,6 +13,7 @@
 			ShowGid = true;
 			ImageEditorMouseMode = ImageEditorMouseMode.LeftSetRightUnset;
 			BackupCreationMode = BackupCreationMode.Extended;
+			MostRecentlyUsed = new List<string>();
 		}
 
 		public int MainWindowWidth { get; set; }
@@ -25,6 +29,9 @@
 		public ImageEditorMouseMode ImageEditorMouseMode { get; set; }
 
 		public BackupCreationMode BackupCreationMode { get; set; }
+
+		[XmlArrayItem("Item")]
+		public List<string> MostRecentlyUsed { get; set; }
 	}
 
 	public enum ImageEditorMouseMode

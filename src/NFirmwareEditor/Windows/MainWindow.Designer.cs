@@ -52,6 +52,8 @@
 			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.RecentFirmwaresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -80,6 +82,8 @@
             this.SaveEncryptedMenuItem,
             this.SaveDecryptedMenuItem,
             this.toolStripSeparator2,
+            this.RecentFirmwaresMenuItem,
+            this.toolStripSeparator4,
             this.ExitMenuItem});
 			this.FileMenuItem.Name = "FileMenuItem";
 			this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
@@ -273,6 +277,18 @@
 			this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.MainTabControl.TabIndex = 6;
 			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(282, 6);
+			// 
+			// RecentFirmwaresMenuItem
+			// 
+			this.RecentFirmwaresMenuItem.Image = global::NFirmwareEditor.Properties.Resources.mru;
+			this.RecentFirmwaresMenuItem.Name = "RecentFirmwaresMenuItem";
+			this.RecentFirmwaresMenuItem.Size = new System.Drawing.Size(285, 22);
+			this.RecentFirmwaresMenuItem.Text = "Recent Firmwares";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +339,8 @@
 		private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.ToolStripMenuItem ImageConverterMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem RecentFirmwaresMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 	}
 }
 

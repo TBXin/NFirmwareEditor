@@ -24,6 +24,7 @@ namespace NFirmwareEditor.Windows
 		private readonly IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
 
 		private Configuration m_configuration;
+		private MruList<string> m_mruFirmwares;
 		private Firmware m_firmware;
 		private string m_firmwareFile;
 
@@ -93,6 +94,9 @@ namespace NFirmwareEditor.Windows
 		private void LoadSettings()
 		{
 			m_configuration = m_configurationManager.Load();
+			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
+			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
+			BuildMruMenuItems();
 
 			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
@@ -114,15 +118,23 @@ namespace NFirmwareEditor.Windows
 			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 		}
 
-		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
+		private void BuildMruMenuItems()
 		{
-			string firmwareFile;
-			using (var op = new OpenFileDialog { Title = string.Format("Select \"{0}\" firmware file ...", firmwareName), Filter = Consts.FirmwareFilter })
+			RecentFirmwaresMenuItem.DropDownItems.Clear();
+			var counter = 1;
+			foreach (var item in m_mruFirmwares.Items)
 			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-				firmwareFile = op.FileName;
+				var mruItem = item;
+				RecentFirmwaresMenuItem.DropDownItems.Add(counter++ + ". " + mruItem, OpenMenuItem.Image, (s, e) =>
+				{
+					OpenFirmware(mruItem, fileName => m_loader.TryLoad(fileName, m_definitions));
+				});
 			}
+			RecentFirmwaresMenuItem.Enabled = RecentFirmwaresMenuItem.DropDownItems.Count > 0;
+		}
 
+		private void OpenFirmware(string firmwareFile, Func<string, Firmware> readFirmwareDelegate)
+		{
 			ResetWorkspace();
 			try
 			{
@@ -149,10 +161,26 @@ namespace NFirmwareEditor.Windows
 				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
 				LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, firmware.IsEncrypted ? "Encrypted" : "Decrypted");
 				StatusLabel.Text = @"Firmware file has been successfully loaded.";
+
+				m_mruFirmwares.Add(firmwareFile);	
 			}
 			catch (Exception ex)
 			{
+				m_mruFirmwares.Remove(firmwareFile);
 				InfoBox.Show("Unable to load firmware.\n{0}", ex.Message);
+			}
+			finally
+			{
+				BuildMruMenuItems();
+			}
+		}
+
+		private void OpenDialogAndReadFirmwareOnOk(string firmwareName, Func<string, Firmware> readFirmwareDelegate)
+		{
+			using (var op = new OpenFileDialog { Title = string.Format("Select \"{0}\" firmware file ...", firmwareName), Filter = Consts.FirmwareFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				OpenFirmware(op.FileName, readFirmwareDelegate);
 			}
 		}
 

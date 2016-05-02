@@ -122,7 +122,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block2ImageRadioButton.Checked = false;
 
 			ImageSizeLabel.Text = null;
-			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = new bool[5, 5];
+			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = new bool[0, 0];
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
