@@ -233,11 +233,11 @@ namespace NFirmwareEditor.Windows
 					return true;
 				case Keys.Oemplus:
 				case Keys.Add:
-					FontSizeUpDown.Value += 1;
+					FontSizeUpDown.Value = Math.Min(FontSizeUpDown.Value + 1, FontSizeUpDown.Maximum);
 					return true;
 				case Keys.OemMinus:
 				case Keys.Subtract:
-					FontSizeUpDown.Value -= 1;
+					FontSizeUpDown.Value = Math.Max(FontSizeUpDown.Value - 1, FontSizeUpDown.Minimum);
 					return true;
 			}
 			return false;
