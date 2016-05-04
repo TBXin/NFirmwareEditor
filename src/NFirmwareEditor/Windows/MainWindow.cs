@@ -86,9 +86,8 @@ namespace NFirmwareEditor.Windows
 			foreach (var tabPage in m_tabPages)
 			{
 				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
+				tabPage.Initialize(this, m_configuration);
 			}
-			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
-
 
 			MainTabControl.Selected += (s, e) =>
 			{
@@ -334,7 +333,7 @@ namespace NFirmwareEditor.Windows
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
 
 				m_configurationManager.Save(m_configuration);
-				InitializeTabPages();
+				m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 			}
 		}
 
