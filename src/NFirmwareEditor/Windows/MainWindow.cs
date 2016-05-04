@@ -15,7 +15,6 @@ namespace NFirmwareEditor.Windows
 	{
 		private const int MinimizedWindowLeftTop = -32000;
 
-		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly PatchManager m_patchManager = new PatchManager();
 		private readonly ResourcePackManager m_resourcePackManager = new ResourcePackManager();
@@ -23,8 +22,8 @@ namespace NFirmwareEditor.Windows
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 		private readonly BackupManager m_backupManager = new BackupManager();
 
-		private readonly IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
-
+		private IList<IEditorTabPage> m_tabPages;
+		private IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
 		private ApplicationConfiguration m_configuration;
 		private MruList<string> m_mruFirmwares;
 		private Firmware m_firmware;
@@ -32,20 +31,13 @@ namespace NFirmwareEditor.Windows
 
 		public MainWindow()
 		{
-			m_tabPages = new List<IEditorTabPage>
-			{
-				new ImageEditorTabPage(m_definitions, m_resourcePackManager) { Dock = DockStyle.Fill },
-				new StringEditorTabPage { Dock = DockStyle.Fill },
-				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
-				new ResourcePacksTabPage(m_resourcePackManager) { Dock = DockStyle.Fill }
-			};
-
 			InitializeComponent();
-			InitializeControls();
-			LoadSettings();
+			InitializeApplication();
 
 			Icon = Paths.ApplicationIcon;
 			Text = Consts.ApplicationTitle;
+			LoadedFirmwareLabel.Text = null;
+			StatusLabel.Text = null;
 		}
 
 		public void ReloadFirmware(IEditorTabPage initiator)
@@ -58,15 +50,45 @@ namespace NFirmwareEditor.Windows
 			m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
 		}
 
-		private void InitializeControls()
+		private void InitializeApplication()
 		{
-			LoadedFirmwareLabel.Text = null;
-			StatusLabel.Text = null;
+			m_tabPages = new List<IEditorTabPage>
+			{
+				new ImageEditorTabPage(m_definitions, m_resourcePackManager) { Dock = DockStyle.Fill },
+				new StringEditorTabPage { Dock = DockStyle.Fill },
+				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
+				new ResourcePacksTabPage(m_resourcePackManager) { Dock = DockStyle.Fill }
+			};
 
+			m_definitions = m_firmwareDefinitionManager.Load();
+			m_configuration = m_configurationManager.Load();
+			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
+
+			InitializeApplicationWindow();
+			InitializeOpenWithSpecifiedDefinitionMenu();
+			InitializeMruMenu();
+			InitializeTabPages();
+		}
+
+		private void InitializeApplicationWindow()
+		{
+			if (m_configuration.MainWindowTop != MinimizedWindowLeftTop && m_configuration.MainWindowLeft != MinimizedWindowLeftTop)
+			{
+				StartPosition = FormStartPosition.Manual;
+				Location = new Point(m_configuration.MainWindowLeft, m_configuration.MainWindowTop);
+			}
+			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
+			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
+		}
+
+		private void InitializeTabPages()
+		{
 			foreach (var tabPage in m_tabPages)
 			{
 				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
 			}
+			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
+
 
 			MainTabControl.Selected += (s, e) =>
 			{
@@ -77,6 +99,34 @@ namespace NFirmwareEditor.Windows
 
 				editorTabPage.OnActivate();
 			};
+		}
+
+		private void InitializeOpenWithSpecifiedDefinitionMenu()
+		{
+			OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Clear();
+			foreach (var definition in m_definitions)
+			{
+				var firmwareDefinition = definition;
+				OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Add(definition.Name, OpenUsingSpecifiedDefinitionMenuItem.Image, (s, e) =>
+				{
+					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, firmwareDefinition));
+				});
+			}
+		}
+
+		private void InitializeMruMenu()
+		{
+			RecentFirmwaresMenuItem.DropDownItems.Clear();
+			var counter = 1;
+			foreach (var item in m_mruFirmwares.Items)
+			{
+				var mruItem = item;
+				RecentFirmwaresMenuItem.DropDownItems.Add(counter++ + ". " + mruItem, OpenMenuItem.Image, (s, e) =>
+				{
+					OpenFirmware(mruItem, fileName => m_loader.TryLoad(fileName, m_definitions));
+				});
+			}
+			RecentFirmwaresMenuItem.Enabled = RecentFirmwaresMenuItem.DropDownItems.Count > 0;
 		}
 
 		private void ResetWorkspace()
@@ -91,53 +141,6 @@ namespace NFirmwareEditor.Windows
 			SaveMenuItem.Enabled = false;
 			SaveEncryptedMenuItem.Enabled = false;
 			SaveDecryptedMenuItem.Enabled = false;
-		}
-
-		private void LoadSettings()
-		{
-			m_configuration = m_configurationManager.Load();
-			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
-			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
-			BuildMruMenuItems();
-
-			if (m_configuration.MainWindowTop != MinimizedWindowLeftTop && m_configuration.MainWindowLeft != MinimizedWindowLeftTop)
-			{
-				StartPosition = FormStartPosition.Manual;
-				Location = new Point(m_configuration.MainWindowLeft, m_configuration.MainWindowTop);
-			}
-			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
-			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
-
-			LoadTabSettings();
-			m_firmwareDefinitionManager.Load().ForEach(x => m_definitions.Add(x));
-			foreach (var definition in m_definitions)
-			{
-				var firmwareDefinition = definition;
-				OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Add(definition.Name, OpenUsingSpecifiedDefinitionMenuItem.Image, (s, e) =>
-				{
-					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, firmwareDefinition));
-				});
-			}
-		}
-
-		private void LoadTabSettings()
-		{
-			m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
-		}
-
-		private void BuildMruMenuItems()
-		{
-			RecentFirmwaresMenuItem.DropDownItems.Clear();
-			var counter = 1;
-			foreach (var item in m_mruFirmwares.Items)
-			{
-				var mruItem = item;
-				RecentFirmwaresMenuItem.DropDownItems.Add(counter++ + ". " + mruItem, OpenMenuItem.Image, (s, e) =>
-				{
-					OpenFirmware(mruItem, fileName => m_loader.TryLoad(fileName, m_definitions));
-				});
-			}
-			RecentFirmwaresMenuItem.Enabled = RecentFirmwaresMenuItem.DropDownItems.Count > 0;
 		}
 
 		private void OpenFirmware(string firmwareFile, Func<string, Firmware> readFirmwareDelegate)
@@ -178,7 +181,7 @@ namespace NFirmwareEditor.Windows
 			}
 			finally
 			{
-				BuildMruMenuItems();
+				InitializeMruMenu();
 			}
 		}
 
@@ -224,6 +227,7 @@ namespace NFirmwareEditor.Windows
 					return;
 				}
 			}
+			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
 			m_configurationManager.Save(m_configuration);
 		}
 
@@ -330,7 +334,7 @@ namespace NFirmwareEditor.Windows
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
 
 				m_configurationManager.Save(m_configuration);
-				LoadTabSettings();
+				InitializeTabPages();
 			}
 		}
 
