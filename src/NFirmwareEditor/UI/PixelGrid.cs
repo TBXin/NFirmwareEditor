@@ -254,7 +254,7 @@ namespace NFirmwareEditor.UI
 
 		private void DrawGrid(Graphics gfx)
 		{
-			if (!m_showGrid) return;
+			if (!m_showGrid && m_blockInnerBorderPen.Color == Color.Transparent) return;
 
 			for (var row = 0; row < m_rowsCount; row++)
 			{
@@ -281,7 +281,8 @@ namespace NFirmwareEditor.UI
 
 		private void DrawBorder(Graphics gfx)
 		{
-			gfx.DrawRectangle(BlockOuterBorderPen, 0, 0, m_clientArea.Width, m_clientArea.Height);
+			if (m_blockOuterBorderPen.Color == Color.Transparent) return;
+			gfx.DrawRectangle(m_blockOuterBorderPen, 0, 0, m_clientArea.Width, m_clientArea.Height);
 		}
 
 		private void CalculateSurfaceArea()
