@@ -106,7 +106,7 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		private static bool[,] ReadImageFromAsciiString(int width, int height, string text)
+		internal static bool[,] ReadImageFromAsciiString(int width, int height, string text)
 		{
 			var result = new bool[width, height];
 			if (string.IsNullOrEmpty(text)) return result;
@@ -122,7 +122,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		private static string WriteImageToAsciiString(int width, int height, bool[,] imageData)
+		internal static string WriteImageToAsciiString(int width, int height, bool[,] imageData)
 		{
 			var sb = new StringBuilder();
 			sb.AppendLine();
