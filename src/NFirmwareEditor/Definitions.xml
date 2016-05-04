@@ -110,6 +110,28 @@
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid 3.03">
+		<Marker Offset="0x90" Bytes="0x25 0x27" />
+		<Marker Offset="0xC0" Bytes="0xA5 0x8B" />
+		<ImageTable1>
+			<OffsetFrom>0xE504</OffsetFrom>
+			<OffsetTo>0xE904</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xC674</OffsetFrom>
+			<OffsetTo>0xCA74</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xEA08</OffsetFrom>
+			<OffsetTo>0xEBA7</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0xA6AE</OffsetFrom>
+			<OffsetTo>0xA703</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	
 	<FirmwareDefinition Name="Cuboid 3.02">
 		<Marker Offset="0x90" Bytes="0xE9 0x21" />
 		<Marker Offset="0xC0" Bytes="0xB9 0x82" />
