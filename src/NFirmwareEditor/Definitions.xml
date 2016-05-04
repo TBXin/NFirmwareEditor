@@ -396,6 +396,30 @@
 		<CharsToCorrect>0x7B 0x7C 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 	<!-- Evic VTC Mini -->
+	
+	<!-- eGrip II -->
+	<FirmwareDefinition Name="eGrip II 4.03">
+		<Marker Offset="0x90" Bytes="0xDD 0x2F" />
+		<Marker Offset="0xC0" Bytes="0x69 0xA2" />
+		<ImageTable1>
+			<OffsetFrom>0x112B8</OffsetFrom>
+			<OffsetTo>0x116D0</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xEDC8</OffsetFrom>
+			<OffsetTo>0xF1E0</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0x117D4</OffsetFrom>
+			<OffsetTo>0x119AE</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0xC7AE</OffsetFrom>
+			<OffsetTo>0xC803</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- eGrip II -->
 
 	<!-- iStick TC100W -->
 	<FirmwareDefinition Name="iStick TC100W 1.10">
