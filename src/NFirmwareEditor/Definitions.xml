@@ -44,6 +44,28 @@
 	<!-- RX200 -->
 
 	<!-- Cuboid -->
+	<FirmwareDefinition Name="Cuboid 3.13">
+		<Marker Offset="0x90" Bytes="0x25 0x27" />
+		<Marker Offset="0xC0" Bytes="0xA9 0x8B" />
+		<ImageTable1>
+			<OffsetFrom>0xE508</OffsetFrom>
+			<OffsetTo>0xE908</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xC678</OffsetFrom>
+			<OffsetTo>0xCA78</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xEA0C</OffsetFrom>
+			<OffsetTo>0xEBAB</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0xA6B2</OffsetFrom>
+			<OffsetTo>0xA707</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Cuboid 3.12">
 		<Marker Offset="0x90" Bytes="0xE9 0x21" />
 		<Marker Offset="0xC0" Bytes="0xBD 0x82" />
