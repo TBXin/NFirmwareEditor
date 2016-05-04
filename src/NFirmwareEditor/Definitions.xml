@@ -178,6 +178,28 @@
 	<!-- Cuboid -->
 	
 	<!-- Cuboid Mini -->
+	<FirmwareDefinition Name="Cuboid Mini 3.03">
+		<Marker Offset="0x90" Bytes="0x7D 0x22" />
+		<Marker Offset="0xC0" Bytes="0x61 0x81" />
+		<ImageTable1>
+			<OffsetFrom>0xDA2C</OffsetFrom>
+			<OffsetTo>0xDE2C</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xBB9C</OffsetFrom>
+			<OffsetTo>0xBF9C</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0xDF30</OffsetFrom>
+			<OffsetTo>0xE08D</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0x9BD6</OffsetFrom>
+			<OffsetTo>0x9C2B</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Cuboid Mini 3.02">
 		<Marker Offset="0x90" Bytes="0x4D 0x1D" />
 		<Marker Offset="0xC0" Bytes="0x85 0x78" />
