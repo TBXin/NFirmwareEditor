@@ -13,6 +13,8 @@ namespace NFirmwareEditor.Windows
 {
 	internal sealed partial class MainWindow :  Form, IEditorTabPageHost
 	{
+		private const int MinimizedWindowLeftTop = -32000;
+
 		private readonly IEnumerable<IEditorTabPage> m_tabPages;
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly PatchManager m_patchManager = new PatchManager();
@@ -23,7 +25,7 @@ namespace NFirmwareEditor.Windows
 
 		private readonly IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
 
-		private Configuration m_configuration;
+		private ApplicationConfiguration m_configuration;
 		private MruList<string> m_mruFirmwares;
 		private Firmware m_firmware;
 		private string m_firmwareFile;
@@ -98,6 +100,11 @@ namespace NFirmwareEditor.Windows
 			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
 			BuildMruMenuItems();
 
+			if (m_configuration.MainWindowTop != MinimizedWindowLeftTop && m_configuration.MainWindowLeft != MinimizedWindowLeftTop)
+			{
+				StartPosition = FormStartPosition.Manual;
+				Location = new Point(m_configuration.MainWindowLeft, m_configuration.MainWindowTop);
+			}
 			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
 
@@ -218,6 +225,14 @@ namespace NFirmwareEditor.Windows
 				}
 			}
 			m_configurationManager.Save(m_configuration);
+		}
+
+		private void MainWindow_Move(object sender, EventArgs e)
+		{
+			if (WindowState != FormWindowState.Normal) return;
+
+			m_configuration.MainWindowLeft = Location.X;
+			m_configuration.MainWindowTop = Location.Y;
 		}
 
 		private void MainWindow_SizeChanged(object sender, EventArgs e)

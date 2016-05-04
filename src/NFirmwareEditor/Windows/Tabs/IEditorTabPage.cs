@@ -9,7 +9,7 @@ namespace NFirmwareEditor.Windows.Tabs
 	{
 		bool IsDirty { get; set; }
 		string Title { get; }
-		void Initialize([NotNull] IEditorTabPageHost host, [NotNull] Configuration configuration);
+		void Initialize([NotNull] IEditorTabPageHost host, [NotNull] ApplicationConfiguration configuration);
 		void OnWorkspaceReset();
 		void OnFirmwareLoaded([NotNull] Firmware firmware);
 		void OnActivate();

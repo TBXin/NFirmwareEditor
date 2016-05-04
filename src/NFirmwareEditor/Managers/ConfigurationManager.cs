@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Xml.Serialization;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
 
@@ -8,34 +7,32 @@ namespace NFirmwareEditor.Managers
 {
 	internal class ConfigurationManager
 	{
-		public Configuration Load()
+		public ApplicationConfiguration Load()
 		{
-			Configuration result = null;
+			ApplicationConfiguration result = null;
 			try
 			{
-				var serializer = new XmlSerializer(typeof(Configuration));
 				using (var fs = File.Open(Paths.SettingsFile, FileMode.Open))
 				{
-					result = serializer.Deserialize(fs) as Configuration;
+					result = Serializer.Read<ApplicationConfiguration>(fs);
 				}
 			}
 			catch (Exception)
 			{
 				// Ignore
 			}
-			return result ?? new Configuration();
+			return result ?? new ApplicationConfiguration();
 		}
 
-		public void Save(Configuration configuration)
+		public void Save(ApplicationConfiguration configuration)
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");
 
 			try
 			{
-				var serializer = new XmlSerializer(typeof(Configuration));
 				using (var fs = File.Open(Paths.SettingsFile, FileMode.Create))
 				{
-					serializer.Serialize(fs, configuration);
+					Serializer.Write(configuration, fs);
 				}
 			}
 			catch (Exception)

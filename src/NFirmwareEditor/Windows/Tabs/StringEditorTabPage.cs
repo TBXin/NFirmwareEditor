@@ -72,7 +72,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Strings"; }
 		}
 
-		public void Initialize(IEditorTabPageHost host, Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 		}
 

@@ -3,9 +3,10 @@ using System.Xml.Serialization;
 
 namespace NFirmwareEditor.Models
 {
-	public class Configuration
+	[XmlType("Configuration")]
+	public class ApplicationConfiguration : NamespacelessObject
 	{
-		public Configuration()
+		public ApplicationConfiguration()
 		{
 			MainWindowWidth = 800;
 			MainWindowHeight = 600;
@@ -15,6 +16,10 @@ namespace NFirmwareEditor.Models
 			BackupCreationMode = BackupCreationMode.Extended;
 			MostRecentlyUsed = new List<string>();
 		}
+
+		public int MainWindowTop { get; set; }
+
+		public int MainWindowLeft { get; set; }
 
 		public int MainWindowWidth { get; set; }
 

@@ -22,7 +22,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
-		private Configuration m_configuration;
+		private ApplicationConfiguration m_configuration;
 		private Firmware m_firmware;
 		private BlockType m_currentBlock = BlockType.Block1;
 		private bool m_imageListBoxIsUpdating;
@@ -103,7 +103,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Images"; }
 		}
 
-		public void Initialize(IEditorTabPageHost host, Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 			m_configuration = configuration;
 			GridSizeUpDown.Value = m_configuration.GridSize;

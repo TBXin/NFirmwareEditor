@@ -65,7 +65,7 @@
     <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Managers\PatchManager.cs" />
     <Compile Include="Models\BulkPatchResult.cs" />
-    <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\ApplicationConfiguration.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
     <Compile Include="Managers\ResourcePackManager.cs" />

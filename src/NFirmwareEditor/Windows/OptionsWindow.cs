@@ -9,7 +9,7 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class OptionsWindow : EditorDialogWindow
 	{
-		private readonly Configuration m_configuration;
+		private readonly ApplicationConfiguration m_configuration;
 
 		public OptionsWindow()
 		{
@@ -32,7 +32,7 @@ namespace NFirmwareEditor.Windows
 			OkButton.Click += OkButton_Click;
 		}
 
-		public OptionsWindow([NotNull] Configuration configuration) : this()
+		public OptionsWindow([NotNull] ApplicationConfiguration configuration) : this()
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");
 			m_configuration = configuration;

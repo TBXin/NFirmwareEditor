@@ -57,7 +57,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Resource Packs"; }
 		}
 
-		public void Initialize(IEditorTabPageHost host, Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 			m_allResourcePacks = m_resourcePackManager.LoadAll();
 		}

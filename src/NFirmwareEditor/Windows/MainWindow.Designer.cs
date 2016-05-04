@@ -38,6 +38,8 @@
 			this.SaveEncryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveDecryptedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.RecentFirmwaresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.EncryptDecryptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +54,6 @@
 			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-			this.RecentFirmwaresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -146,6 +146,18 @@
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(282, 6);
+			// 
+			// RecentFirmwaresMenuItem
+			// 
+			this.RecentFirmwaresMenuItem.Image = global::NFirmwareEditor.Properties.Resources.mru;
+			this.RecentFirmwaresMenuItem.Name = "RecentFirmwaresMenuItem";
+			this.RecentFirmwaresMenuItem.Size = new System.Drawing.Size(285, 22);
+			this.RecentFirmwaresMenuItem.Text = "Recent Firmwares";
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(282, 6);
 			// 
 			// ExitMenuItem
 			// 
@@ -277,18 +289,6 @@
 			this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.MainTabControl.TabIndex = 6;
 			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(282, 6);
-			// 
-			// RecentFirmwaresMenuItem
-			// 
-			this.RecentFirmwaresMenuItem.Image = global::NFirmwareEditor.Properties.Resources.mru;
-			this.RecentFirmwaresMenuItem.Name = "RecentFirmwaresMenuItem";
-			this.RecentFirmwaresMenuItem.Size = new System.Drawing.Size(285, 22);
-			this.RecentFirmwaresMenuItem.Text = "Recent Firmwares";
-			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +304,7 @@
 			this.Text = "NFirmwareEditor";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
 			this.SizeChanged += new System.EventHandler(this.MainWindow_SizeChanged);
+			this.Move += new System.EventHandler(this.MainWindow_Move);
 			this.MainMenuStrip.ResumeLayout(false);
 			this.MainMenuStrip.PerformLayout();
 			this.MainStatusStrip.ResumeLayout(false);

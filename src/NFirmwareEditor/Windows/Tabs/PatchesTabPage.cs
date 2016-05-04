@@ -66,7 +66,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			get { return "Patches"; }
 		}
 
-		public void Initialize(IEditorTabPageHost host, Configuration configuration)
+		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 			m_host = host;
 			m_allPatches = m_patchManager.LoadAll();
