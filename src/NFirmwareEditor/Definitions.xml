@@ -419,6 +419,28 @@
 		</StringTable2>
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="eGrip II 4.02">
+		<Marker Offset="0x90" Bytes="0xB1 0x2A" />
+		<Marker Offset="0xC0" Bytes="0x1D 0x9A" />
+		<ImageTable1>
+			<OffsetFrom>0x106D0</OffsetFrom>
+			<OffsetTo>0x10AE8</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xE1E0</OffsetFrom>
+			<OffsetTo>0xE5F8</OffsetTo>
+		</ImageTable2>
+		<StringTable1>
+			<OffsetFrom>0x10BEC</OffsetFrom>
+			<OffsetTo>0x10DAB</OffsetTo>
+		</StringTable1>
+		<StringTable2>
+			<OffsetFrom>0xBBC6</OffsetFrom>
+			<OffsetTo>0xBC1B</OffsetTo>
+		</StringTable2>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
 	<!-- eGrip II -->
 
 	<!-- iStick TC100W -->
