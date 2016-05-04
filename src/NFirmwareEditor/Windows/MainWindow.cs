@@ -72,7 +72,10 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeApplicationWindow()
 		{
-			if (m_configuration.MainWindowTop != MinimizedWindowLeftTop && m_configuration.MainWindowLeft != MinimizedWindowLeftTop)
+			if (m_configuration.MainWindowTop != 0 &&
+			    m_configuration.MainWindowLeft != 0 &&
+			    m_configuration.MainWindowTop != MinimizedWindowLeftTop &&
+			    m_configuration.MainWindowLeft != MinimizedWindowLeftTop)
 			{
 				StartPosition = FormStartPosition.Manual;
 				Location = new Point(m_configuration.MainWindowLeft, m_configuration.MainWindowTop);
