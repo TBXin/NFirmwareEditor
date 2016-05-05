@@ -123,7 +123,14 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block2StringRadioButton.CheckedChanged += BlockStringRadioButton_CheckedChanged;
 
 			Block1StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
+			Block1StringListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block1StringListBox.MeasureItem += StringListBox_MeasureItem;
+			Block1StringListBox.DrawItem += StringListBox_DrawItem;
+
 			Block2StringListBox.SelectedValueChanged += StringListBox_SelectedValueChanged;
+			Block2StringListBox.DrawMode = DrawMode.OwnerDrawVariable;
+			Block2StringListBox.MeasureItem += StringListBox_MeasureItem;
+			Block2StringListBox.DrawItem += StringListBox_DrawItem;
 		}
 
 		private void CreateStringEditControls(byte[] firmwareString, FirmwareStringMetadata stringMetadata)
@@ -317,7 +324,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var imageScale = 1f;
-				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+				var image = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
 
 				var greatestDimension = Math.Max(image.Width, image.Height);
 				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
@@ -361,7 +368,70 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+				var cachedImage = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
+			}
+			catch (ObjectDisposedException)
+			{
+				// Ignore
+			}
+		}
+
+		private void StringListBox_DrawItem(object sender, DrawItemEventArgs e)
+		{
+			var listBox = sender as ListBox;
+
+			if (listBox == null) return;
+			if (e.Index < 0) return;
+
+			var item = listBox.Items[e.Index] as FirmwareStringMetadata;
+			if (item == null) return;
+
+			e.Graphics.SmoothingMode = SmoothingMode.None;
+			e.Graphics.InterpolationMode = InterpolationMode.Low;
+			e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
+			e.DrawBackground();
+
+			var itemText = item.ToString();
+
+			try
+			{
+				var imageScale = 1f;
+				var image = ImageCacheManager.GetStringImage(item.Index, BlockType.Block1);
+
+				/*var greatestDimension = Math.Max(image.Width, image.Height);
+				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;*/
+
+				var resultWidth = image.Width / imageScale;
+				var resultHeight = image.Height / imageScale;
+
+				e.Graphics.DrawImage(image, e.Bounds.X + Consts.ImageListBoxItemImageMargin, e.Bounds.Y + (int)(e.Bounds.Height / 2f - resultHeight / 2f), resultWidth, resultHeight);
+			}
+			catch (ObjectDisposedException)
+			{
+				// Ignore
+			}
+
+			//var stringRectX = e.Bounds.X + Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin * 2;
+			//e.Graphics.DrawString(itemText, e.Font, new SolidBrush(e.ForeColor), new RectangleF(stringRectX, e.Bounds.Y, e.Bounds.Width - stringRectX - Consts.ImageListBoxItemImageMargin, e.Bounds.Height), m_listBoxStringFormat);
+			e.DrawFocusRectangle();
+		}
+
+		private static void StringListBox_MeasureItem(object sender, MeasureItemEventArgs e)
+		{
+			e.ItemHeight = Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin;
+
+			var listBox = sender as ListBox;
+
+			if (listBox == null) return;
+			if (e.Index < 0) return;
+
+			var item = listBox.Items[e.Index] as FirmwareStringMetadata;
+			if (item == null) return;
+
+			try
+			{
+				var cachedImage = ImageCacheManager.GetStringImage(item.Index, BlockType.Block1);
 				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)

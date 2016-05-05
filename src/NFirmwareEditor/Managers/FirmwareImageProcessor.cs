@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
@@ -124,6 +125,31 @@ namespace NFirmwareEditor.Managers
 				gfx.DrawImage(srcImage, 0, 0, cropArea, GraphicsUnit.Pixel);
 			}
 			return rtnImage;
+		}
+
+		public static bool[,] GetStringImageData([NotNull] byte[] stringData, [NotNull] IDictionary<int, bool[,]> charsData, byte[] charsToCorrect = null)
+		{
+			if (stringData == null) throw new ArgumentNullException("stringData");
+			if (charsData == null) throw new ArgumentNullException("charsData");
+
+			var charImages = new List<bool[,]>();
+			foreach (var b in stringData)
+			{
+				if (b == 0x00) continue;
+
+				var charData = charsData[b];
+				if (charsToCorrect != null && charsToCorrect.Contains(b))
+				{
+					charData = (bool[,])charData.Clone();
+					var charSize = GetImageSize(charData);
+					charData = ResizeImage(charData, new Size(charSize.Width, charSize.Height + 2));
+					charData = ShiftDown(charData);
+					charData = ShiftDown(charData);
+				}
+				charImages.Add(charData);
+			}
+
+			return MergeImages(charImages);
 		}
 
 		public static bool[,] MergeImages([NotNull] List<bool[,]> imagesData)

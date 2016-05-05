@@ -357,7 +357,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			else
 			{
 				var cachedImage = BitmapProcessor.CreateBitmapFromRaw(processedData);
-				ImageCacheManager.SetImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
+				ImageCacheManager.SetGlyphImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
 
 				var updateCache = new Action(() =>
 				{
@@ -733,7 +733,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var imageScale = 1f;
-				var image = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
+				var image = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, item.Value.BlockType);
 
 				var greatestDimension = Math.Max(image.Width, image.Height);
 				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
@@ -767,7 +767,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetImage(item.ImageCacheIndex, item.Value.BlockType);
+				var cachedImage = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, item.Value.BlockType);
 				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)
