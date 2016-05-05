@@ -191,32 +191,19 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (LastSelectedStringMetadata == null) return;
 
-			var firmwareString = m_firmware.ReadString(LastSelectedStringMetadata);
-			var charMetadatas = new List<FirmwareImageMetadata>();
-			foreach (var charIndex in firmwareString)
-			{
-				var metadata = CurrentImageBlockForStrings.FirstOrDefault(x => x.Index == charIndex);
-				if (metadata != null) charMetadatas.Add(metadata);
-			}
+			var stringData = m_firmware.ReadString(LastSelectedStringMetadata);
+			var charsMetadata = stringData
+				.Select(x => CurrentImageBlockForStrings.FirstOrDefault(y => y.Index == x))
+				.Where(x => x != null)
+				.DistinctBy(x => x.Index)
+				.ToList();
+			var charsData = charsMetadata.ToDictionary(x=> x.Index, x => m_firmware.ReadImage(x));
+			
+			var imageData = FirmwareImageProcessor.GetStringImageData(stringData, charsData, m_firmware.Definition.CharsToCorrect);
+			var imageDataSize = imageData.GetSize();
 
-			var images = new List<bool[,]>();
-			foreach (var charMetadata in charMetadatas)
-			{
-				var image = m_firmware.ReadImage(charMetadata);
-				if (m_firmware.Definition.CharsToCorrect != null && m_firmware.Definition.CharsToCorrect.Contains((byte)charMetadata.Index))
-				{
-					var imageSize = image.GetSize();
-					image = FirmwareImageProcessor.ResizeImage(image, new Size(imageSize.Width, imageSize.Height + 2));
-					image = FirmwareImageProcessor.ShiftDown(image);
-					image = FirmwareImageProcessor.ShiftDown(image);
-				}
-				images.Add(image);
-			}
-			var data = FirmwareImageProcessor.MergeImages(images);
-			var dataSize = data.GetSize();
-
-			StringPreviewImageSizeLabel.Text = dataSize.Width + @"x" + dataSize.Height;
-			StringPrewviewPixelGrid.Data = data;
+			StringPreviewImageSizeLabel.Text = imageDataSize.Width + @"x" + imageDataSize.Height;
+			StringPrewviewPixelGrid.Data = imageData;
 		}
 
 		private void BlockStringRadioButton_CheckedChanged(object sender, EventArgs e)
