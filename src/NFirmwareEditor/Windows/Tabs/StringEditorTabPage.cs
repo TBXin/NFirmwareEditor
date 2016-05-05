@@ -150,6 +150,8 @@ namespace NFirmwareEditor.Windows.Tabs
 				var selectedItem = nullItem;
 				foreach (var imageMetadata in CurrentImageBlockForStrings)
 				{
+					if (imageMetadata.Index > 0xFF) continue;
+
 					var item = new ImagedItem<byte>((byte)imageMetadata.Index, imageMetadata.Index, string.Format("0x{0:X2}", imageMetadata.Index));
 					icb.Items.Add(item);
 					if (imageMetadata.Index == stringChar)
