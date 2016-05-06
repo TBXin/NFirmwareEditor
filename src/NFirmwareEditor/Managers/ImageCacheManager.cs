@@ -14,20 +14,11 @@ namespace NFirmwareEditor.Managers
 			{ BlockType.Block2, new Dictionary<int, Image>() }
 		};
 
-		private static readonly IDictionary<BlockType, IDictionary<int, Image>> s_stringPreviewCache = new Dictionary<BlockType, IDictionary<int, Image>>
-		{
-			{ BlockType.Block1, new Dictionary<int, Image>() },
-			{ BlockType.Block2, new Dictionary<int, Image>() }
-		};
+		private static readonly IDictionary<int, Image> s_stringPreviewCache = new Dictionary<int, Image>();
 
 		public static Image GetGlyphImage(int key, BlockType blockType)
 		{
 			return s_glyphPreviewCache[blockType][key];
-		}
-
-		public static Image GetStringImage(int key, BlockType blockType)
-		{
-			return s_stringPreviewCache[blockType][key];
 		}
 
 		public static void SetGlyphImage(int key, BlockType blockType, [NotNull] Image image)
@@ -36,10 +27,15 @@ namespace NFirmwareEditor.Managers
 			s_glyphPreviewCache[blockType][key] = image;
 		}
 
-		public static void SetStringImage(int key, BlockType blockType, [NotNull] Image image)
+		public static Image GetStringImage(int key)
+		{
+			return s_stringPreviewCache[key];
+		}
+
+		public static void SetStringImage(int key, [NotNull] Image image)
 		{
 			if (image == null) throw new ArgumentNullException("image");
-			s_stringPreviewCache[blockType][key] = image;
+			s_stringPreviewCache[key] = image;
 		}
 
 		public static void RebuildImageCache([NotNull] Firmware firmware)
@@ -47,7 +43,6 @@ namespace NFirmwareEditor.Managers
 			if (firmware == null) throw new ArgumentNullException("firmware");
 
 			var block1RawImages = new Dictionary<int, bool[,]>();
-			var block2RawImages = new Dictionary<int, bool[,]>();
 
 			var block1ImageCache = new Dictionary<int, Image>();
 			foreach (var imageMetadata in firmware.Block1Images)
@@ -55,9 +50,9 @@ namespace NFirmwareEditor.Managers
 				try
 				{
 					var imageData = firmware.ReadImage(imageMetadata);
-					block1RawImages[imageMetadata.Index] = imageData;
-
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData);
+
+					block1RawImages[imageMetadata.Index] = imageData;
 					block1ImageCache[imageMetadata.Index] = image;
 				}
 				catch
@@ -73,8 +68,6 @@ namespace NFirmwareEditor.Managers
 				try
 				{
 					var imageData = firmware.ReadImage(imageMetadata);
-					block2RawImages[imageMetadata.Index] = imageData;
-
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData);
 					block2ImageCache[imageMetadata.Index] = image;
 				}
@@ -96,11 +89,11 @@ namespace NFirmwareEditor.Managers
 					var imageData = FirmwareImageProcessor.GetStringImageData(stringData, block1RawImages, firmware.Definition.CharsToCorrect);
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData, 1);
 
-					SetStringImage(stringMetadata.Index, BlockType.Block1, image);
+					SetStringImage(stringMetadata.Index, image);
 				}
 				catch
 				{
-					SetStringImage(stringMetadata.Index, BlockType.Block1, new Bitmap(1, 1));
+					SetStringImage(stringMetadata.Index, new Bitmap(1, 1));
 				}
 			}
 		}

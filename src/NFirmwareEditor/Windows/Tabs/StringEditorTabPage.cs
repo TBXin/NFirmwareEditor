@@ -40,6 +40,16 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
+		public int LastSelectedStringListBoxItemIndex
+		{
+			get
+			{
+				return StringListBox.Items.Count == 0 || StringListBox.SelectedIndices.Count == 0
+					? 0
+					: StringListBox.SelectedIndices[StringListBox.SelectedIndices.Count - 1];
+			}
+		}
+
 		[CanBeNull]
 		public FirmwareStringMetadata LastSelectedStringMetadata
 		{
@@ -259,6 +269,10 @@ namespace NFirmwareEditor.Windows.Tabs
 			var idx = CharLayoutPanel.Controls.IndexOf(icb);
 
 			m_firmware.WriteChar(value, tag.Item2, tag.Item1);
+			var itemRect = StringListBox.GetItemRectangle(LastSelectedStringListBoxItemIndex);
+			StringListBox.Invalidate(itemRect);
+			ImageCacheManager.RebuildImageCache(m_firmware);
+			
 			UpdateStringPreview();
 
 			if (value == 0x00)
@@ -384,10 +398,10 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var imageScale = 1f;
-				var image = ImageCacheManager.GetStringImage(item.Index, BlockType.Block1);
+				var image = ImageCacheManager.GetStringImage(item.Index);
 
-				/*var greatestDimension = Math.Max(image.Width, image.Height);
-				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;*/
+				var greatestDimension = Math.Max(image.Width, image.Height);
+				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
 
 				var resultWidth = image.Width / imageScale;
 				var resultHeight = image.Height / imageScale;
@@ -418,7 +432,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetStringImage(item.Index, BlockType.Block1);
+				var cachedImage = ImageCacheManager.GetStringImage(item.Index);
 				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)
