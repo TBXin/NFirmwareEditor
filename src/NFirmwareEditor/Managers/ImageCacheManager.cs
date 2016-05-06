@@ -57,7 +57,7 @@ namespace NFirmwareEditor.Managers
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 
-			var block1ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 1) } };
+			var block1ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 16) } };
 			foreach (var imageMetadata in firmware.Block1Images.Values)
 			{
 				try
@@ -73,7 +73,7 @@ namespace NFirmwareEditor.Managers
 				}
 			}
 
-			var block2ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 1) } };
+			var block2ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 16) } };
 			foreach (var imageMetadata in firmware.Block2Images.Values)
 			{
 				try
