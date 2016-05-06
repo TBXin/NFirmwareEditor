@@ -93,22 +93,26 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnWorkspaceReset()
 		{
+			BlockTypeComboBox.SelectedIndex = 0;
 			BlockTypeComboBox.Enabled = false;
+
 			Block1StringListBox.Items.Clear();
 			Block2StringListBox.Items.Clear();
+
 			RemoveStringEditControls();
 			Block1StringRadioButton.Enabled = false;
 			Block1StringRadioButton.Enabled = false;
-			Block1StringRadioButton.Checked = false;
-			Block1StringRadioButton.Checked = false;
-			StringPrewviewPixelGrid.Data = new bool[5, 5];
+			Block2StringRadioButton.Checked = false;
+			Block2StringRadioButton.Checked = false;
+			StringPrewviewPixelGrid.Data = new bool[0, 0];
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
 		{
 			m_firmware = firmware;
 
-			BlockTypeComboBox.Enabled = true;
+			BlockTypeComboBox.Enabled = BlockTypeComboBox.Visible = firmware.Block2Strings.Any();
+			StringPreviewGroupPanel.Text = BlockTypeComboBox.Enabled ? "Preview using:" : "Preview:";
 
 			Block1StringRadioButton.Enabled = true;
 			Block1StringRadioButton.Checked = true;

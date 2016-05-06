@@ -100,6 +100,8 @@ namespace NFirmwareEditor.Managers
 				? firmware.Block1Images
 				: firmware.Block2Images;
 
+			if (firmwareImages.Count == 0) return;
+
 			var glyphData = new Dictionary<int, bool[,]>();
 			foreach (var kvp in firmwareImages)
 			{

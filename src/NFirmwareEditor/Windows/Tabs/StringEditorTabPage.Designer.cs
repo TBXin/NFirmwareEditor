@@ -30,7 +30,7 @@
 		{
 			this.Block1StringRadioButton = new System.Windows.Forms.RadioButton();
 			this.Block2StringRadioButton = new System.Windows.Forms.RadioButton();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.StringPreviewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
 			this.BlockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.StringEditGroupPanel = new NFirmwareEditor.UI.GroupPanel();
@@ -41,7 +41,7 @@
 			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1StringListBox = new System.Windows.Forms.ListBox();
 			this.Block2StringListBox = new System.Windows.Forms.ListBox();
-			this.groupPanel1.SuspendLayout();
+			this.StringPreviewGroupPanel.SuspendLayout();
 			this.StringEditGroupPanel.SuspendLayout();
 			this.borderedPanel10.SuspendLayout();
 			this.StringStatusStrip.SuspendLayout();
@@ -72,21 +72,21 @@
 			this.Block2StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.Block2StringRadioButton.UseVisualStyleBackColor = true;
 			// 
-			// groupPanel1
+			// StringPreviewGroupPanel
 			// 
-			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.StringPreviewGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel1.Controls.Add(this.BlockTypeComboBox);
-			this.groupPanel1.Controls.Add(this.StringPrewviewPixelGrid);
-			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
-			this.groupPanel1.HeaderHeight = 30;
-			this.groupPanel1.Location = new System.Drawing.Point(143, 2);
-			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(627, 118);
-			this.groupPanel1.TabIndex = 2;
-			this.groupPanel1.TabStop = false;
-			this.groupPanel1.Text = "Preview using:";
+			this.StringPreviewGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.StringPreviewGroupPanel.Controls.Add(this.BlockTypeComboBox);
+			this.StringPreviewGroupPanel.Controls.Add(this.StringPrewviewPixelGrid);
+			this.StringPreviewGroupPanel.HeaderBackColor = System.Drawing.Color.White;
+			this.StringPreviewGroupPanel.HeaderHeight = 30;
+			this.StringPreviewGroupPanel.Location = new System.Drawing.Point(143, 2);
+			this.StringPreviewGroupPanel.Name = "StringPreviewGroupPanel";
+			this.StringPreviewGroupPanel.Size = new System.Drawing.Size(627, 118);
+			this.StringPreviewGroupPanel.TabIndex = 2;
+			this.StringPreviewGroupPanel.TabStop = false;
+			this.StringPreviewGroupPanel.Text = "Preview using:";
 			// 
 			// BlockTypeComboBox
 			// 
@@ -233,7 +233,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.groupPanel1);
+			this.Controls.Add(this.StringPreviewGroupPanel);
 			this.Controls.Add(this.StringEditGroupPanel);
 			this.Controls.Add(this.Block1StringRadioButton);
 			this.Controls.Add(this.Block2StringRadioButton);
@@ -241,7 +241,7 @@
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.Name = "StringEditorTabPage";
 			this.Size = new System.Drawing.Size(772, 482);
-			this.groupPanel1.ResumeLayout(false);
+			this.StringPreviewGroupPanel.ResumeLayout(false);
 			this.StringEditGroupPanel.ResumeLayout(false);
 			this.StringEditGroupPanel.PerformLayout();
 			this.borderedPanel10.ResumeLayout(false);
@@ -266,6 +266,6 @@
 		private System.Windows.Forms.StatusStrip StringStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel StringStatusLabel;
 		private UI.GroupPanel StringEditGroupPanel;
-		private UI.GroupPanel groupPanel1;
+		private UI.GroupPanel StringPreviewGroupPanel;
 	}
 }
