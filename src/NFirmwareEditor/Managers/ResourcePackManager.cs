@@ -64,6 +64,11 @@ namespace NFirmwareEditor.Managers
 					if (result != null)
 					{
 						result.Description = result.Description.SplitLines();
+						result.SuitableDefinitions = result
+							.Definition
+							.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+							.Select(x => x.Trim())
+							.ToArray();
 						if (result.Images != null)
 						{
 							result.Images.ForEach(image =>

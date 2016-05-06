@@ -200,7 +200,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
 			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
-			if (resourcePack.Definition != m_firmware.Definition.Name)
+			if (!resourcePack.SuitableDefinitions.Contains(m_firmware.Definition.Name))
 			{
 				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
 				             + resourcePack.Definition
