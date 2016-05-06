@@ -74,6 +74,8 @@
 			// 
 			// groupPanel1
 			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.BlockTypeComboBox);
 			this.groupPanel1.Controls.Add(this.StringPrewviewPixelGrid);

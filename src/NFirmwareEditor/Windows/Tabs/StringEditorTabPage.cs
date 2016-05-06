@@ -435,8 +435,8 @@ namespace NFirmwareEditor.Windows.Tabs
 				var imageScale = 1f;
 				var image = ImageCacheManager.GetStringImage(item.Index, SelectedImageBlock);
 
-				var greatestDimension = Math.Max(image.Width, image.Height);
-				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
+				/*var greatestDimension = Math.Max(image.Width, image.Height);
+				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;*/
 
 				var resultWidth = image.Width / imageScale;
 				var resultHeight = image.Height / imageScale;
