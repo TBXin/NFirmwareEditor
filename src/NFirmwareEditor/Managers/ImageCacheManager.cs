@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using JetBrains.Annotations;
 using NFirmware;
+using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Managers
 {
@@ -13,8 +14,7 @@ namespace NFirmwareEditor.Managers
 			{ BlockType.Block1, new Dictionary<int, Image>() },
 			{ BlockType.Block2, new Dictionary<int, Image>() }
 		};
-
-		private static readonly IDictionary<int, Image> s_stringPreviewCache = new Dictionary<int, Image>();
+		private static IDictionary<int, Image> s_stringPreviewCache = new Dictionary<int, Image>();
 
 		public static Image GetGlyphImage(int key, BlockType blockType)
 		{
@@ -38,21 +38,26 @@ namespace NFirmwareEditor.Managers
 			s_stringPreviewCache[key] = image;
 		}
 
-		public static void RebuildImageCache([NotNull] Firmware firmware)
+		public static void RebuildCache([NotNull] Firmware firmware)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 
-			var block1RawImages = new Dictionary<int, bool[,]>();
+			RebuildGlyphImageCache(firmware);
+			RebuildStringImageCache(firmware, BlockType.Block1);
+		}
 
-			var block1ImageCache = new Dictionary<int, Image>();
-			foreach (var imageMetadata in firmware.Block1Images)
+		public static void RebuildGlyphImageCache([NotNull] Firmware firmware)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			var block1ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 1) } };
+			foreach (var imageMetadata in firmware.Block1Images.Values)
 			{
 				try
 				{
 					var imageData = firmware.ReadImage(imageMetadata);
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData);
 
-					block1RawImages[imageMetadata.Index] = imageData;
 					block1ImageCache[imageMetadata.Index] = image;
 				}
 				catch
@@ -60,10 +65,9 @@ namespace NFirmwareEditor.Managers
 					block1ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
-			block1ImageCache.Add(0, new Bitmap(1, 16));
 
-			var block2ImageCache = new Dictionary<int, Image>();
-			foreach (var imageMetadata in firmware.Block2Images)
+			var block2ImageCache = new Dictionary<int, Image> { { 0, new Bitmap(1, 1) } };
+			foreach (var imageMetadata in firmware.Block2Images.Values)
 			{
 				try
 				{
@@ -76,26 +80,42 @@ namespace NFirmwareEditor.Managers
 					block2ImageCache[imageMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
-			block2ImageCache.Add(0, new Bitmap(1, 16));
 
 			SetGlyphCache(BlockType.Block1, block1ImageCache);
 			SetGlyphCache(BlockType.Block2, block2ImageCache);
+		}
 
+		public static void RebuildStringImageCache([NotNull] Firmware firmware, BlockType blockType)
+		{
+			if (firmware == null) throw new ArgumentNullException("firmware");
+
+			var firmwareImages = blockType == BlockType.Block1
+				? firmware.Block1Images
+				: firmware.Block2Images;
+
+			var glyphData = new Dictionary<int, bool[,]>();
+			foreach (var kvp in firmwareImages)
+			{
+				glyphData[kvp.Key] = firmware.ReadImage(kvp.Value);
+			}
+
+			var stringImageCache = new Dictionary<int, Image>();
 			foreach (var stringMetadata in firmware.Block1Strings)
 			{
 				try
 				{
 					var stringData = firmware.ReadString(stringMetadata);
-					var imageData = FirmwareImageProcessor.GetStringImageData(stringData, block1RawImages, firmware.Definition.CharsToCorrect);
+					var imageData = FirmwareImageProcessor.GetStringImageData(stringData, glyphData, firmware.Definition.CharsToCorrect);
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData, 1);
 
-					SetStringImage(stringMetadata.Index, image);
+					stringImageCache[stringMetadata.Index] = image;
 				}
 				catch
 				{
-					SetStringImage(stringMetadata.Index, new Bitmap(1, 1));
+					stringImageCache[stringMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
+			SetStringCache(stringImageCache);
 		}
 
 		private static void SetGlyphCache(BlockType blockType, [NotNull] IDictionary<int, Image> newCache)
@@ -107,7 +127,20 @@ namespace NFirmwareEditor.Managers
 
 			foreach (var pair in oldCache)
 			{
-				pair.Value.Dispose();
+				var image = pair.Value;
+				Safe.Execute(() => image.Dispose());
+			}
+		}
+
+		private static void SetStringCache(IDictionary<int, Image> newCache)
+		{
+			var oldCache = s_stringPreviewCache;
+			s_stringPreviewCache = newCache;
+
+			foreach (var pair in oldCache)
+			{
+				var image = pair.Value;
+				Safe.Execute(() => image.Dispose());
 			}
 		}
 	}

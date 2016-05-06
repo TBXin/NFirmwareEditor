@@ -4,14 +4,14 @@ namespace NFirmware
 {
 	internal class FirmwareImageBlocks
 	{
-		internal FirmwareImageBlocks(IEnumerable<FirmwareImageMetadata> block1Images, IEnumerable<FirmwareImageMetadata> block2Images)
+		internal FirmwareImageBlocks(IDictionary<int, FirmwareImageMetadata> block1Images, IDictionary<int, FirmwareImageMetadata> block2Images)
 		{
-			Block1Images = block1Images ?? new List<FirmwareImageMetadata>();
-			Block2Images = block2Images ?? new List<FirmwareImageMetadata>();
+			Block1Images = block1Images ?? new Dictionary<int, FirmwareImageMetadata>();
+			Block2Images = block2Images ?? new Dictionary<int, FirmwareImageMetadata>();
 		}
 
-		internal IEnumerable<FirmwareImageMetadata> Block1Images { get; private set; }
+		internal IDictionary<int, FirmwareImageMetadata> Block1Images { get; private set; }
 
-		internal IEnumerable<FirmwareImageMetadata> Block2Images { get; private set; }
+		internal IDictionary<int, FirmwareImageMetadata> Block2Images { get; private set; }
 	}
 }

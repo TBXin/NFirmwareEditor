@@ -123,28 +123,25 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (originalImageIndices == null) throw new ArgumentNullException("originalImageIndices");
 			if (importedImages.Count == 0) return;
 
-			var block1MetadataDictionary = m_firmware.Block1Images.ToDictionary(x => x.Index, x => x);
-			var block2MetadataDictionary = m_firmware.Block2Images.ToDictionary(x => x.Index, x => x);
-
 			for (var i = 0; i < originalImageIndices.Count; i++)
 			{
 				var originalImageIndex = originalImageIndices[i];
 				var importedImage = importedImages[i];
 
-				if (block1MetadataDictionary.Count > 0)
+				if (m_firmware.Block1Images.Count > 0)
 				{
 					FirmwareImageMetadata block1ImageMetadata;
-					if (block1MetadataDictionary.TryGetValue(originalImageIndex, out block1ImageMetadata))
+					if (m_firmware.Block1Images.TryGetValue(originalImageIndex, out block1ImageMetadata))
 					{
 						var block1Image = FirmwareImageProcessor.PasteImage(block1ImageMetadata.CreateImage(), importedImage);
 						m_firmware.WriteImage(block1Image, block1ImageMetadata);
 					}
 				}
 
-				if (block2MetadataDictionary.Count > 0)
+				if (m_firmware.Block2Images.Count > 0)
 				{
 					FirmwareImageMetadata block2ImageMetadata;
-					if (block2MetadataDictionary.TryGetValue(originalImageIndex, out block2ImageMetadata))
+					if (m_firmware.Block2Images.TryGetValue(originalImageIndex, out block2ImageMetadata))
 					{
 						var block2Image = FirmwareImageProcessor.PasteImage(block2ImageMetadata.CreateImage(), importedImage);
 						m_firmware.WriteImage(block2Image, block2ImageMetadata);
@@ -153,7 +150,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 
 			IsDirty = true;
-			ImageCacheManager.RebuildImageCache(m_firmware);
+			ImageCacheManager.RebuildCache(m_firmware);
 		}
 
 		private void ResourcePackListView_SelectedIndexChanged(object sender, EventArgs e)

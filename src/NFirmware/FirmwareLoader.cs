@@ -138,8 +138,8 @@ namespace NFirmware
 			{
 				using (var reader = new BinaryReader(ms))
 				{
-					var block1Images = ReadImageTable<FirmwareImage1Metadata>(definition.ImageTable1, reader);
-					var block2Images = ReadImageTable<FirmwareImage2Metadata>(definition.ImageTable2, reader);
+					var block1Images = ReadImageTable<FirmwareImage1Metadata>(definition.ImageTable1, reader).ToDictionary(x => x.Index, x => x);
+					var block2Images = ReadImageTable<FirmwareImage2Metadata>(definition.ImageTable2, reader).ToDictionary(x => x.Index, x => x);
 					return new FirmwareImageBlocks(block1Images, block2Images);
 				}
 			}

@@ -46,7 +46,7 @@ namespace NFirmwareEditor.Windows
 
 			m_tabPages.ForEach(x => x.OnWorkspaceReset());
 			m_firmware.ReloadResources(m_loader);
-			ImageCacheManager.RebuildImageCache(m_firmware);
+			ImageCacheManager.RebuildCache(m_firmware);
 			m_tabPages.ForEach(x => x.OnFirmwareLoaded(m_firmware));
 		}
 
@@ -159,7 +159,7 @@ namespace NFirmwareEditor.Windows
 				m_firmware = firmware;
 				m_firmwareFile = firmwareFile;
 
-				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageCacheManager.RebuildCache(m_firmware);
 				m_tabPages.ForEach(x =>
 				{
 					x.OnFirmwareLoaded(m_firmware);

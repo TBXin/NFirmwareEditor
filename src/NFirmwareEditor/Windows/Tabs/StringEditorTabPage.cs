@@ -18,7 +18,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
 		private Firmware m_firmware;
-		private BlockType m_currentBlock = BlockType.Block1;
+		private BlockType m_currentStringBlock = BlockType.Block1;
 
 		public StringEditorTabPage()
 		{
@@ -31,7 +31,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			get
 			{
-				switch (m_currentBlock)
+				switch (m_currentStringBlock)
 				{
 					case BlockType.Block1: return Block1StringListBox;
 					case BlockType.Block2: return Block2StringListBox;
@@ -61,11 +61,11 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
-		public IEnumerable<FirmwareImageMetadata> CurrentImageBlockForStrings
+		public IDictionary<int, FirmwareImageMetadata> CurrentImageBlockForStrings
 		{
 			get
 			{
-				switch (m_currentBlock)
+				switch (m_currentStringBlock)
 				{
 					case BlockType.Block1: return m_firmware.Block1Images;
 					case BlockType.Block2: return m_firmware.Block2Images;
@@ -165,7 +165,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				};
 				if (i > 0) icb.Items.Add(nullItem);
 				var selectedItem = nullItem;
-				foreach (var imageMetadata in CurrentImageBlockForStrings)
+				foreach (var imageMetadata in CurrentImageBlockForStrings.Values)
 				{
 					if (imageMetadata.Index > 0xFF) continue;
 
@@ -202,13 +202,17 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (LastSelectedStringMetadata == null) return;
 
 			var stringData = m_firmware.ReadString(LastSelectedStringMetadata);
-			var charsMetadata = stringData
-				.Select(x => CurrentImageBlockForStrings.FirstOrDefault(y => y.Index == x))
-				.Where(x => x != null)
-				.DistinctBy(x => x.Index)
-				.ToList();
-			var charsData = charsMetadata.ToDictionary(x=> x.Index, x => m_firmware.ReadImage(x));
-			
+			var charsData = new Dictionary<int, bool[,]>();
+			foreach (var b in stringData)
+			{
+				if (charsData.ContainsKey(b)) continue;
+
+				FirmwareImageMetadata imageMetadata;
+				if (!CurrentImageBlockForStrings.TryGetValue(b, out imageMetadata)) continue;
+
+				charsData[b] = m_firmware.ReadImage(imageMetadata);
+			}
+
 			var imageData = FirmwareImageProcessor.GetStringImageData(stringData, charsData, m_firmware.Definition.CharsToCorrect);
 			var imageDataSize = imageData.GetSize();
 
@@ -220,13 +224,13 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (sender == Block1StringRadioButton)
 			{
-				m_currentBlock = BlockType.Block1;
+				m_currentStringBlock = BlockType.Block1;
 				Block1StringListBox.Visible = true;
 				Block2StringListBox.Visible = false;
 			}
 			if (sender == Block2StringRadioButton)
 			{
-				m_currentBlock = BlockType.Block2;
+				m_currentStringBlock = BlockType.Block2;
 				Block1StringListBox.Visible = false;
 				Block2StringListBox.Visible = true;
 			}
@@ -271,7 +275,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			m_firmware.WriteChar(value, tag.Item2, tag.Item1);
 			var itemRect = StringListBox.GetItemRectangle(LastSelectedStringListBoxItemIndex);
 			StringListBox.Invalidate(itemRect);
-			ImageCacheManager.RebuildImageCache(m_firmware);
+			ImageCacheManager.RebuildStringImageCache(m_firmware, BlockType.Block1);
 			
 			UpdateStringPreview();
 

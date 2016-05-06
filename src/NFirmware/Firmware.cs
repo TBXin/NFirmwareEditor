@@ -45,14 +45,14 @@ namespace NFirmware
 
 		public bool IsEncrypted { get; private set; }
 
-		[NotNull, ItemNotNull]
-		public IEnumerable<FirmwareImageMetadata> Block1Images
+		[NotNull]
+		public IDictionary<int, FirmwareImageMetadata> Block1Images
 		{
 			get { return m_imageBlocks.Block1Images; }
 		}
 
-		[NotNull, ItemNotNull]
-		public IEnumerable<FirmwareImageMetadata> Block2Images
+		[NotNull]
+		public IDictionary<int, FirmwareImageMetadata> Block2Images
 		{
 			get { return m_imageBlocks.Block2Images; }
 		}

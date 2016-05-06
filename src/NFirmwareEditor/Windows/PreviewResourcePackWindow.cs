@@ -101,11 +101,14 @@ namespace NFirmwareEditor.Windows
 		private bool[,] GetImageByIndex(int index)
 		{
 			var mode = GetImportMode();
-			var block = mode == ImageImportMode.Block2 ? m_firmware.Block2Images : m_firmware.Block1Images;
-			var imageMetadata = block.FirstOrDefault(x => x.Index == index);
-			if (imageMetadata == null) return null;
+			var block = mode == ImageImportMode.Block2 
+				? m_firmware.Block2Images 
+				: m_firmware.Block1Images;
 
-			return m_firmware.ReadImage(imageMetadata);
+			FirmwareImageMetadata imageMetadata;
+			return block.TryGetValue(index, out imageMetadata)
+				? m_firmware.ReadImage(imageMetadata)
+				: null;
 		}
 
 		public ImageImportMode GetImportMode()

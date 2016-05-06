@@ -50,20 +50,6 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
-		[NotNull]
-		public IEnumerable<FirmwareImageMetadata> ImageBlockMetadatas
-		{
-			get
-			{
-				switch (m_currentBlock)
-				{
-					case BlockType.Block1: return m_firmware.Block1Images;
-					case BlockType.Block2: return m_firmware.Block2Images;
-					default: throw new ArgumentOutOfRangeException();
-				}
-			}
-		}
-
 		[CanBeNull]
 		public FirmwareImageMetadata LastSelectedImageMetadata
 		{
@@ -133,8 +119,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block1ImageRadioButton.Checked = true;
 			Block2ImageRadioButton.Enabled = m_firmware.Block2Images.Any();
 
-			Block2ImageListBox.Fill(m_firmware.Block2Images.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
-			Block1ImageListBox.Fill(m_firmware.Block1Images.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
+			Block2ImageListBox.Fill(m_firmware.Block2Images.Values.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
+			Block1ImageListBox.Fill(m_firmware.Block1Images.Values.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
 		}
 
 		public void OnActivate()
@@ -294,9 +280,6 @@ namespace NFirmwareEditor.Windows.Tabs
 				allowResizeOriginalImages = importWindow.AllowResizeOriginalImages;
 			}
 
-			var block1MetadataDictionary = m_firmware.Block1Images.ToDictionary(x => x.Index, x => x);
-			var block2MetadataDictionary = m_firmware.Block2Images.ToDictionary(x => x.Index, x => x);
-
 			for (var i = 0; i < minimumImagesCount; i++)
 			{
 				var index = i;
@@ -305,20 +288,20 @@ namespace NFirmwareEditor.Windows.Tabs
 
 				if (importMode == ImageImportMode.Block1)
 				{
-					ImportBlockImage(block1MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
+					ImportBlockImage(m_firmware.Block1Images, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 				else if (importMode == ImageImportMode.Block2)
 				{
-					ImportBlockImage(block2MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
+					ImportBlockImage(m_firmware.Block2Images, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 				else
 				{
-					ImportBlockImage(block1MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
-					ImportBlockImage(block2MetadataDictionary, originalImageIndex, importedImage, allowResizeOriginalImages);
+					ImportBlockImage(m_firmware.Block1Images, originalImageIndex, importedImage, allowResizeOriginalImages);
+					ImportBlockImage(m_firmware.Block2Images, originalImageIndex, importedImage, allowResizeOriginalImages);
 				}
 			}
 
-			ImageCacheManager.RebuildImageCache(m_firmware);
+			ImageCacheManager.RebuildCache(m_firmware);
 			ImageListBox.Invalidate();
 			ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 		}
@@ -351,14 +334,14 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			if (imageSizeChanged || rebuildCache)
 			{
-				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageCacheManager.RebuildCache(m_firmware);
 				ImageListBox.Invalidate();
 			}
 			else
 			{
 				var cachedImage = BitmapProcessor.CreateBitmapFromRaw(processedData);
 				ImageCacheManager.SetGlyphImage(imageMetadata.Index, imageMetadata.BlockType, cachedImage);
-
+				ImageCacheManager.RebuildStringImageCache(m_firmware, imageMetadata.BlockType);
 				var updateCache = new Action(() =>
 				{
 					ImageListBox.Invoke(new Action(() =>
@@ -597,7 +580,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 					ProcessImage(x => imageData, metadata);
 				}
-				ImageCacheManager.RebuildImageCache(m_firmware);
+				ImageCacheManager.RebuildCache(m_firmware);
 				ImageListBox.Invalidate();
 				ImageListBox_SelectedValueChanged(ImageListBox, EventArgs.Empty);
 			}
