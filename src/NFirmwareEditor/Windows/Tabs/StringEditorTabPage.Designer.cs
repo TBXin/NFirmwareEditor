@@ -30,24 +30,21 @@
 		{
 			this.Block1StringRadioButton = new System.Windows.Forms.RadioButton();
 			this.Block2StringRadioButton = new System.Windows.Forms.RadioButton();
+			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.BlockTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.StringEditGroupPanel = new NFirmwareEditor.UI.GroupPanel();
 			this.borderedPanel10 = new NFirmwareEditor.UI.BorderedPanel();
 			this.CharLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.StringStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StringStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.borderedPanel7 = new NFirmwareEditor.UI.BorderedPanel();
-			this.BlockTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.borderedPanel8 = new NFirmwareEditor.UI.BorderedPanel();
-			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
 			this.Block1StringListBox = new System.Windows.Forms.ListBox();
 			this.Block2StringListBox = new System.Windows.Forms.ListBox();
+			this.groupPanel1.SuspendLayout();
 			this.StringEditGroupPanel.SuspendLayout();
 			this.borderedPanel10.SuspendLayout();
 			this.StringStatusStrip.SuspendLayout();
-			this.borderedPanel7.SuspendLayout();
-			this.borderedPanel8.SuspendLayout();
 			this.borderedPanel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -74,6 +71,48 @@
 			this.Block2StringRadioButton.Text = "Block 2";
 			this.Block2StringRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.Block2StringRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// groupPanel1
+			// 
+			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.BlockTypeComboBox);
+			this.groupPanel1.Controls.Add(this.StringPrewviewPixelGrid);
+			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel1.HeaderHeight = 30;
+			this.groupPanel1.Location = new System.Drawing.Point(143, 2);
+			this.groupPanel1.Name = "groupPanel1";
+			this.groupPanel1.Size = new System.Drawing.Size(627, 118);
+			this.groupPanel1.TabIndex = 2;
+			this.groupPanel1.TabStop = false;
+			this.groupPanel1.Text = "Preview using:";
+			// 
+			// BlockTypeComboBox
+			// 
+			this.BlockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.BlockTypeComboBox.FormattingEnabled = true;
+			this.BlockTypeComboBox.Location = new System.Drawing.Point(80, 5);
+			this.BlockTypeComboBox.Name = "BlockTypeComboBox";
+			this.BlockTypeComboBox.Size = new System.Drawing.Size(92, 21);
+			this.BlockTypeComboBox.TabIndex = 7;
+			// 
+			// StringPrewviewPixelGrid
+			// 
+			this.StringPrewviewPixelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.StringPrewviewPixelGrid.AutoScroll = true;
+			this.StringPrewviewPixelGrid.AutoScrollMinSize = new System.Drawing.Size(6, 6);
+			this.StringPrewviewPixelGrid.BackColor = System.Drawing.Color.Black;
+			this.StringPrewviewPixelGrid.BlockSize = 2;
+			this.StringPrewviewPixelGrid.Location = new System.Drawing.Point(3, 32);
+			this.StringPrewviewPixelGrid.Margin = new System.Windows.Forms.Padding(2);
+			this.StringPrewviewPixelGrid.Name = "StringPrewviewPixelGrid";
+			this.StringPrewviewPixelGrid.ReadOnly = true;
+			this.StringPrewviewPixelGrid.ShowGrid = false;
+			this.StringPrewviewPixelGrid.SingleMouseButtonMode = false;
+			this.StringPrewviewPixelGrid.Size = new System.Drawing.Size(621, 83);
+			this.StringPrewviewPixelGrid.TabIndex = 3;
+			this.StringPrewviewPixelGrid.Text = "pixelGrid1";
 			// 
 			// StringEditGroupPanel
 			// 
@@ -139,82 +178,6 @@
 			this.StringStatusLabel.Size = new System.Drawing.Size(126, 17);
 			this.StringStatusLabel.Text = "StringStatusLabel";
 			// 
-			// borderedPanel7
-			// 
-			this.borderedPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.borderedPanel7.BackColor = System.Drawing.Color.White;
-			this.borderedPanel7.BorderBottom = true;
-			this.borderedPanel7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel7.BorderLeft = true;
-			this.borderedPanel7.BorderRight = true;
-			this.borderedPanel7.BorderTop = true;
-			this.borderedPanel7.BorderWidth = 1F;
-			this.borderedPanel7.Controls.Add(this.BlockTypeComboBox);
-			this.borderedPanel7.Controls.Add(this.label3);
-			this.borderedPanel7.Controls.Add(this.borderedPanel8);
-			this.borderedPanel7.Location = new System.Drawing.Point(143, 2);
-			this.borderedPanel7.Name = "borderedPanel7";
-			this.borderedPanel7.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel7.Size = new System.Drawing.Size(627, 118);
-			this.borderedPanel7.TabIndex = 14;
-			this.borderedPanel7.Text = "borderedPanel7";
-			// 
-			// BlockTypeComboBox
-			// 
-			this.BlockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.BlockTypeComboBox.FormattingEnabled = true;
-			this.BlockTypeComboBox.Location = new System.Drawing.Point(87, 5);
-			this.BlockTypeComboBox.Name = "BlockTypeComboBox";
-			this.BlockTypeComboBox.Size = new System.Drawing.Size(92, 21);
-			this.BlockTypeComboBox.TabIndex = 7;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(4, 8);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(77, 13);
-			this.label3.TabIndex = 5;
-			this.label3.Text = "Preview using:";
-			// 
-			// borderedPanel8
-			// 
-			this.borderedPanel8.BackColor = System.Drawing.Color.Transparent;
-			this.borderedPanel8.BorderBottom = false;
-			this.borderedPanel8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel8.BorderLeft = false;
-			this.borderedPanel8.BorderRight = false;
-			this.borderedPanel8.BorderTop = true;
-			this.borderedPanel8.BorderWidth = 1F;
-			this.borderedPanel8.Controls.Add(this.StringPrewviewPixelGrid);
-			this.borderedPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.borderedPanel8.Location = new System.Drawing.Point(1, 29);
-			this.borderedPanel8.Name = "borderedPanel8";
-			this.borderedPanel8.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel8.Size = new System.Drawing.Size(625, 88);
-			this.borderedPanel8.TabIndex = 4;
-			this.borderedPanel8.Text = "borderedPanel8";
-			// 
-			// StringPrewviewPixelGrid
-			// 
-			this.StringPrewviewPixelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.StringPrewviewPixelGrid.AutoScroll = true;
-			this.StringPrewviewPixelGrid.AutoScrollMinSize = new System.Drawing.Size(6, 6);
-			this.StringPrewviewPixelGrid.BackColor = System.Drawing.Color.Black;
-			this.StringPrewviewPixelGrid.BlockSize = 2;
-			this.StringPrewviewPixelGrid.Location = new System.Drawing.Point(2, 3);
-			this.StringPrewviewPixelGrid.Margin = new System.Windows.Forms.Padding(2);
-			this.StringPrewviewPixelGrid.Name = "StringPrewviewPixelGrid";
-			this.StringPrewviewPixelGrid.ReadOnly = true;
-			this.StringPrewviewPixelGrid.ShowGrid = false;
-			this.StringPrewviewPixelGrid.SingleMouseButtonMode = false;
-			this.StringPrewviewPixelGrid.Size = new System.Drawing.Size(621, 83);
-			this.StringPrewviewPixelGrid.TabIndex = 3;
-			this.StringPrewviewPixelGrid.Text = "pixelGrid1";
-			// 
 			// borderedPanel6
 			// 
 			this.borderedPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -268,23 +231,21 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.groupPanel1);
 			this.Controls.Add(this.StringEditGroupPanel);
-			this.Controls.Add(this.borderedPanel7);
 			this.Controls.Add(this.Block1StringRadioButton);
 			this.Controls.Add(this.Block2StringRadioButton);
 			this.Controls.Add(this.borderedPanel6);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.Name = "StringEditorTabPage";
 			this.Size = new System.Drawing.Size(772, 482);
+			this.groupPanel1.ResumeLayout(false);
 			this.StringEditGroupPanel.ResumeLayout(false);
 			this.StringEditGroupPanel.PerformLayout();
 			this.borderedPanel10.ResumeLayout(false);
 			this.borderedPanel10.PerformLayout();
 			this.StringStatusStrip.ResumeLayout(false);
 			this.StringStatusStrip.PerformLayout();
-			this.borderedPanel7.ResumeLayout(false);
-			this.borderedPanel7.PerformLayout();
-			this.borderedPanel8.ResumeLayout(false);
 			this.borderedPanel6.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -293,9 +254,6 @@
 		#endregion
 		private UI.BorderedPanel borderedPanel10;
 		private System.Windows.Forms.FlowLayoutPanel CharLayoutPanel;
-		private UI.BorderedPanel borderedPanel7;
-		private System.Windows.Forms.Label label3;
-		private UI.BorderedPanel borderedPanel8;
 		private UI.PixelGrid StringPrewviewPixelGrid;
 		private System.Windows.Forms.RadioButton Block1StringRadioButton;
 		private System.Windows.Forms.RadioButton Block2StringRadioButton;
@@ -306,5 +264,6 @@
 		private System.Windows.Forms.StatusStrip StringStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel StringStatusLabel;
 		private UI.GroupPanel StringEditGroupPanel;
+		private UI.GroupPanel groupPanel1;
 	}
 }
