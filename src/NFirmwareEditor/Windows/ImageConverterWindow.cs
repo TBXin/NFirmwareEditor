@@ -61,7 +61,7 @@ namespace NFirmwareEditor.Windows
 			{
 				m_width = (int)NewWidthUpDown.Value;
 
-				SafeExecute(() =>
+				Safe.Execute(() =>
 				{
 					CreateMonochromeBitmap();
 					ImagePreviewSurface.Invalidate();
@@ -71,7 +71,7 @@ namespace NFirmwareEditor.Windows
 			{
 				m_height = (int)NewHeightUpDown.Value;
 
-				SafeExecute(() =>
+				Safe.Execute(() =>
 				{
 					CreateMonochromeBitmap();
 					ImagePreviewSurface.Invalidate();
@@ -193,21 +193,9 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private static void SafeExecute(Action action)
-		{
-			try
-			{
-				action();
-			}
-			catch
-			{
-				// Ignore
-			}
-		}
-
 		private void ImagePreviewSurface_Paint(object sender, PaintEventArgs e)
 		{
-			SafeExecute(() =>
+			Safe.Execute(() =>
 			{
 				if (m_monochromeBitmap == null) return;
 
@@ -233,7 +221,7 @@ namespace NFirmwareEditor.Windows
 				);
 			}
 
-			SafeExecute(() =>
+			Safe.Execute(() =>
 			{
 				if (m_monochromeBitmap == null) return;
 
