@@ -38,7 +38,9 @@
 			this.ImportFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportBitmapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.UpdateResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.RotateAntiClockwiseButton = new System.Windows.Forms.Button();
 			this.RotateClockwiseButton = new System.Windows.Forms.Button();
@@ -65,7 +67,7 @@
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ImageEditorStatusStrip = new System.Windows.Forms.StatusStrip();
-			this.ImageSizeLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ImageStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.CursorPositionLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -75,8 +77,6 @@
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
 			this.ImageListBoxStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.ImageListBoxStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.UpdateResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
@@ -125,7 +125,7 @@
             this.ExportResourcePackContextMenuItem,
             this.UpdateResourcePackContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(192, 176);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(192, 154);
 			// 
 			// CopyContextMenuItem
 			// 
@@ -165,12 +165,24 @@
 			this.ExportBitmapMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.ExportBitmapMenuItem.Text = "Export Bitmap(s)";
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
+			// 
 			// ExportResourcePackContextMenuItem
 			// 
 			this.ExportResourcePackContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
 			this.ExportResourcePackContextMenuItem.Name = "ExportResourcePackContextMenuItem";
 			this.ExportResourcePackContextMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.ExportResourcePackContextMenuItem.Text = "Export Resource Pack";
+			// 
+			// UpdateResourcePackContextMenuItem
+			// 
+			this.UpdateResourcePackContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
+			this.UpdateResourcePackContextMenuItem.Name = "UpdateResourcePackContextMenuItem";
+			this.UpdateResourcePackContextMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.UpdateResourcePackContextMenuItem.Text = "Update Resource Pack";
 			// 
 			// RotateAntiClockwiseButton
 			// 
@@ -512,7 +524,7 @@
 			// ImageEditorStatusStrip
 			// 
 			this.ImageEditorStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ImageSizeLabel,
+            this.ImageStatusLabel,
             this.CursorPositionLabel});
 			this.ImageEditorStatusStrip.Location = new System.Drawing.Point(0, 255);
 			this.ImageEditorStatusStrip.Name = "ImageEditorStatusStrip";
@@ -521,17 +533,18 @@
 			this.ImageEditorStatusStrip.TabIndex = 1;
 			this.ImageEditorStatusStrip.Text = "statusStrip1";
 			// 
-			// ImageSizeLabel
+			// ImageStatusLabel
 			// 
-			this.ImageSizeLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.ImageSizeLabel.Name = "ImageSizeLabel";
-			this.ImageSizeLabel.Size = new System.Drawing.Size(0, 17);
+			this.ImageStatusLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ImageStatusLabel.Name = "ImageStatusLabel";
+			this.ImageStatusLabel.Size = new System.Drawing.Size(119, 17);
+			this.ImageStatusLabel.Text = "ImageStatusLabel";
 			// 
 			// CursorPositionLabel
 			// 
 			this.CursorPositionLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
-			this.CursorPositionLabel.Size = new System.Drawing.Size(610, 17);
+			this.CursorPositionLabel.Size = new System.Drawing.Size(579, 17);
 			this.CursorPositionLabel.Spring = true;
 			this.CursorPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -646,18 +659,6 @@
 			this.ImageListBoxStatusLabel.Name = "ImageListBoxStatusLabel";
 			this.ImageListBoxStatusLabel.Size = new System.Drawing.Size(0, 17);
 			// 
-			// UpdateResourcePackContextMenuItem
-			// 
-			this.UpdateResourcePackContextMenuItem.Image = global::NFirmwareEditor.Properties.Resources.image_export;
-			this.UpdateResourcePackContextMenuItem.Name = "UpdateResourcePackContextMenuItem";
-			this.UpdateResourcePackContextMenuItem.Size = new System.Drawing.Size(191, 22);
-			this.UpdateResourcePackContextMenuItem.Text = "Update Resource Pack";
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
-			// 
 			// ImageEditorTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,7 +726,7 @@
 		private System.Windows.Forms.Button ImageEditorHotkeyInformationButton;
 		private System.Windows.Forms.StatusStrip ImageEditorStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel CursorPositionLabel;
-		private System.Windows.Forms.ToolStripStatusLabel ImageSizeLabel;
+		private System.Windows.Forms.ToolStripStatusLabel ImageStatusLabel;
 		private System.Windows.Forms.Button ResizeButton;
 		private System.Windows.Forms.Button BitmapImportButton;
 		private System.Windows.Forms.ToolTip ImageEditorToolTip;

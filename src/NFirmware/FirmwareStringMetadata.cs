@@ -5,12 +5,11 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FirmwareStringMetadata"/> class.
 		/// </summary>
-		public FirmwareStringMetadata(int index, long dataOffset, long dataLength, BlockType blockType)
+		public FirmwareStringMetadata(int index, long dataOffset, long dataLength)
 		{
 			Index = index;
 			DataOffset = dataOffset;
 			DataLength = dataLength;
-			BlockType = blockType;
 		}
 
 		/// <summary>
@@ -27,11 +26,6 @@
 		/// Gets the length of the byte array that represents a string.
 		/// </summary>
 		public long DataLength { get; private set; }
-
-		/// <summary>
-		/// Gets the block type.
-		/// </summary>
-		public BlockType BlockType { get; private set; }
 
 		public override string ToString()
 		{

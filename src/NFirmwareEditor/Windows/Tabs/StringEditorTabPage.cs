@@ -61,11 +61,16 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 		}
 
+		public BlockType SelectedImageBlock
+		{
+			get { return (BlockType)BlockTypeComboBox.SelectedItem; }
+		}
+
 		public IDictionary<int, FirmwareImageMetadata> CurrentImageBlockForStrings
 		{
 			get
 			{
-				switch (m_currentStringBlock)
+				switch (SelectedImageBlock)
 				{
 					case BlockType.Block1: return m_firmware.Block1Images;
 					case BlockType.Block2: return m_firmware.Block2Images;
@@ -88,6 +93,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnWorkspaceReset()
 		{
+			BlockTypeComboBox.Enabled = false;
 			Block1StringListBox.Items.Clear();
 			Block2StringListBox.Items.Clear();
 			RemoveStringEditControls();
@@ -101,6 +107,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnFirmwareLoaded(Firmware firmware)
 		{
 			m_firmware = firmware;
+
+			BlockTypeComboBox.Enabled = true;
 
 			Block1StringRadioButton.Enabled = true;
 			Block1StringRadioButton.Checked = true;
@@ -124,6 +132,13 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void InitializeControlls()
 		{
+			StringStatusLabel.Text = null;
+
+			BlockTypeComboBox.Items.Clear();
+			BlockTypeComboBox.Items.AddRange(new object[] { BlockType.Block1, BlockType.Block2 });
+			BlockTypeComboBox.SelectedIndex = 0;
+			BlockTypeComboBox.SelectedIndexChanged += BlockTypeComboBox_SelectedIndexChanged;
+
 			StringPrewviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			StringPrewviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
 			StringPrewviewPixelGrid.ActiveBlockBrush = Brushes.White;
@@ -141,6 +156,14 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block2StringListBox.DrawMode = DrawMode.OwnerDrawVariable;
 			Block2StringListBox.MeasureItem += StringListBox_MeasureItem;
 			Block2StringListBox.DrawItem += StringListBox_DrawItem;
+		}
+
+		private void BlockTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (m_firmware == null) return;
+
+			StringListBox.Invalidate();
+			StringListBox_SelectedValueChanged(StringListBox, EventArgs.Empty);
 		}
 
 		private void CreateStringEditControls(byte[] firmwareString, FirmwareStringMetadata stringMetadata)
@@ -216,8 +239,16 @@ namespace NFirmwareEditor.Windows.Tabs
 			var imageData = FirmwareImageProcessor.GetStringImageData(stringData, charsData, m_firmware.Definition.CharsToCorrect);
 			var imageDataSize = imageData.GetSize();
 
-			StringPreviewImageSizeLabel.Text = imageDataSize.Width + @"x" + imageDataSize.Height;
 			StringPrewviewPixelGrid.Data = imageData;
+			StringStatusLabel.Text = string.Format
+			(
+				"String: 0x{0:X2}, Size: {1}x{2}, Data: 0x{3:X4}, Length: {4} bytes",
+				LastSelectedStringMetadata.Index,
+				imageDataSize.Width,
+				imageDataSize.Height,
+				LastSelectedStringMetadata.DataOffset,
+				LastSelectedStringMetadata.DataLength
+			);
 		}
 
 		private void BlockStringRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -329,7 +360,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			try
 			{
 				var imageScale = 1f;
-				var image = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+				var image = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, SelectedImageBlock);
 
 				var greatestDimension = Math.Max(image.Width, image.Height);
 				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
@@ -373,7 +404,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, stringMetadata.Item1.BlockType);
+				var cachedImage = ImageCacheManager.GetGlyphImage(item.ImageCacheIndex, SelectedImageBlock);
 				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)
@@ -397,12 +428,12 @@ namespace NFirmwareEditor.Windows.Tabs
 			e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
 			e.DrawBackground();
 
-			var itemText = item.ToString();
+			//var itemText = item.ToString();
 
 			try
 			{
 				var imageScale = 1f;
-				var image = ImageCacheManager.GetStringImage(item.Index);
+				var image = ImageCacheManager.GetStringImage(item.Index, SelectedImageBlock);
 
 				var greatestDimension = Math.Max(image.Width, image.Height);
 				if (greatestDimension > Consts.ImageListBoxItemMaxHeight) imageScale = (float)greatestDimension / Consts.ImageListBoxItemMaxHeight;
@@ -422,7 +453,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			e.DrawFocusRectangle();
 		}
 
-		private static void StringListBox_MeasureItem(object sender, MeasureItemEventArgs e)
+		private void StringListBox_MeasureItem(object sender, MeasureItemEventArgs e)
 		{
 			e.ItemHeight = Consts.ImageListBoxItemMaxHeight + Consts.ImageListBoxItemImageMargin;
 
@@ -436,7 +467,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			try
 			{
-				var cachedImage = ImageCacheManager.GetStringImage(item.Index);
+				var cachedImage = ImageCacheManager.GetStringImage(item.Index, SelectedImageBlock);
 				e.ItemHeight = Math.Min(e.ItemHeight, cachedImage.Height + Consts.ImageListBoxItemImageMargin);
 			}
 			catch (ObjectDisposedException)

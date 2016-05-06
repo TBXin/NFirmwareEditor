@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
@@ -14,7 +15,12 @@ namespace NFirmwareEditor.Managers
 			{ BlockType.Block1, new Dictionary<int, Image>() },
 			{ BlockType.Block2, new Dictionary<int, Image>() }
 		};
-		private static IDictionary<int, Image> s_stringPreviewCache = new Dictionary<int, Image>();
+
+		private static readonly IDictionary<BlockType, IDictionary<int, Image>> s_stringPreviewCache = new Dictionary<BlockType, IDictionary<int, Image>>
+		{
+			{ BlockType.Block1, new Dictionary<int, Image>() },
+			{ BlockType.Block2, new Dictionary<int, Image>() }
+		};
 
 		public static Image GetGlyphImage(int key, BlockType blockType)
 		{
@@ -27,15 +33,15 @@ namespace NFirmwareEditor.Managers
 			s_glyphPreviewCache[blockType][key] = image;
 		}
 
-		public static Image GetStringImage(int key)
+		public static Image GetStringImage(int key, BlockType blockType)
 		{
-			return s_stringPreviewCache[key];
+			return s_stringPreviewCache[blockType][key];
 		}
 
-		public static void SetStringImage(int key, [NotNull] Image image)
+		public static void SetStringImage(int key, BlockType blockType, [NotNull] Image image)
 		{
 			if (image == null) throw new ArgumentNullException("image");
-			s_stringPreviewCache[key] = image;
+			s_stringPreviewCache[blockType][key] = image;
 		}
 
 		public static void RebuildCache([NotNull] Firmware firmware)
@@ -44,6 +50,7 @@ namespace NFirmwareEditor.Managers
 
 			RebuildGlyphImageCache(firmware);
 			RebuildStringImageCache(firmware, BlockType.Block1);
+			RebuildStringImageCache(firmware, BlockType.Block2);
 		}
 
 		public static void RebuildGlyphImageCache([NotNull] Firmware firmware)
@@ -100,7 +107,7 @@ namespace NFirmwareEditor.Managers
 			}
 
 			var stringImageCache = new Dictionary<int, Image>();
-			foreach (var stringMetadata in firmware.Block1Strings)
+			foreach (var stringMetadata in firmware.Block1Strings.Concat(firmware.Block2Strings))
 			{
 				try
 				{
@@ -115,7 +122,7 @@ namespace NFirmwareEditor.Managers
 					stringImageCache[stringMetadata.Index] = new Bitmap(1, 1);
 				}
 			}
-			SetStringCache(stringImageCache);
+			SetStringCache(blockType, stringImageCache);
 		}
 
 		private static void SetGlyphCache(BlockType blockType, [NotNull] IDictionary<int, Image> newCache)
@@ -132,10 +139,10 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		private static void SetStringCache(IDictionary<int, Image> newCache)
+		private static void SetStringCache(BlockType blockType, IDictionary<int, Image> newCache)
 		{
-			var oldCache = s_stringPreviewCache;
-			s_stringPreviewCache = newCache;
+			var oldCache = s_stringPreviewCache[blockType];
+			s_stringPreviewCache[blockType] = newCache;
 
 			foreach (var pair in oldCache)
 			{

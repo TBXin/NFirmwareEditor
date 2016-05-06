@@ -107,7 +107,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			Block1ImageRadioButton.Checked = false;
 			Block2ImageRadioButton.Checked = false;
 
-			ImageSizeLabel.Text = null;
+			ImageStatusLabel.Text = null;
 			ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = new bool[0, 0];
 		}
 
@@ -189,6 +189,8 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void InitializeControls()
 		{
+			ImageStatusLabel.Text = null;
+
 			ImagePreviewPixelGrid.BlockInnerBorderPen = Pens.Transparent;
 			ImagePreviewPixelGrid.BlockOuterBorderPen = Pens.Transparent;
 			ImagePreviewPixelGrid.ActiveBlockBrush = Brushes.White;
@@ -361,7 +363,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (metadata == null) return;
 
-			ImageSizeLabel.Text = string.Format
+			ImageStatusLabel.Text = string.Format
 			(
 				"Image: 0x{0:X2}, Size: {1}x{2}, Reference: 0x{3:X4}, Data: 0x{4:X4}, Length: {5} bytes",
 				metadata.Index,
