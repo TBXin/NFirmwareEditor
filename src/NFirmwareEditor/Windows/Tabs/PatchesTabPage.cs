@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -43,9 +44,9 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.ColumnClick += ListViewItemComparer.ListViewColumnClick;
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 			RollbackPatchesButton.Click += RollbackPatchesButton_Click;
+			OpenInEditorButton.Click += OpenInEditorButton_Click;
 			ReloadPatchesButton.Click += ReloadPatchesButton_Click;
 		}
-
 
 		[NotNull]
 		public IEnumerable<Patch> CheckedPatches
@@ -114,6 +115,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			OpenInEditorButton.Enabled = SelectedPatch != null;
 			if (SelectedPatch == null) return;
 
 			var sb = new StringBuilder();
@@ -224,6 +226,14 @@ namespace NFirmwareEditor.Windows.Tabs
 				}
 			}
 			InfoBox.Show(sb.ToString());
+		}
+
+		private void OpenInEditorButton_Click(object sender, EventArgs e)
+		{
+			if (SelectedPatch == null) return;
+
+			var ex = Safe.Execute(() => Process.Start(SelectedPatch.FilePath));
+			if (ex != null) InfoBox.Show("An error occured during opening patch file.\n" + ex.Message);
 		}
 
 		private void ReloadPatchesButton_Click(object sender, EventArgs e)

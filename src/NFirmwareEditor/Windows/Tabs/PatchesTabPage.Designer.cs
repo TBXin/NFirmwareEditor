@@ -42,6 +42,7 @@
 			this.VersionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.CompatibleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.OpenInEditorButton = new System.Windows.Forms.Button();
 			this.DescriptionGroupBox.SuspendLayout();
 			this.ConflictsGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -190,11 +191,23 @@
 			this.CompatibleColumnHeader.Text = "Compatible";
 			this.CompatibleColumnHeader.Width = 70;
 			// 
+			// OpenInEditorButton
+			// 
+			this.OpenInEditorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.OpenInEditorButton.Enabled = false;
+			this.OpenInEditorButton.Location = new System.Drawing.Point(201, 452);
+			this.OpenInEditorButton.Name = "OpenInEditorButton";
+			this.OpenInEditorButton.Size = new System.Drawing.Size(100, 30);
+			this.OpenInEditorButton.TabIndex = 6;
+			this.OpenInEditorButton.Text = "Open in editor";
+			this.OpenInEditorButton.UseVisualStyleBackColor = true;
+			// 
 			// PatchesTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.OpenInEditorButton);
 			this.Controls.Add(this.ConflictsGroupBox);
 			this.Controls.Add(this.ReloadPatchesButton);
 			this.Controls.Add(this.RollbackPatchesButton);
@@ -228,5 +241,6 @@
 		private System.Windows.Forms.GroupBox ConflictsGroupBox;
 		private System.Windows.Forms.TextBox ConflictsTextBox;
 		private System.Windows.Forms.ColumnHeader FileNameColumnHeader;
+		private System.Windows.Forms.Button OpenInEditorButton;
 	}
 }

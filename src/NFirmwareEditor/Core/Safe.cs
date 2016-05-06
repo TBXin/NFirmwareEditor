@@ -4,15 +4,16 @@ namespace NFirmwareEditor.Core
 {
 	internal static class Safe
 	{
-		public static void Execute(Action action)
+		public static Exception Execute(Action action)
 		{
 			try
 			{
 				action();
+				return null;
 			}
-			catch
+			catch(Exception ex)
 			{
-				// Ignore
+				return ex;
 			}
 		}
 	}
