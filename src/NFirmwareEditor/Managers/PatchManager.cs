@@ -129,7 +129,7 @@ namespace NFirmwareEditor.Managers
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (!ValidatePatchRollbackCompatibility(patch, firmware)) return false;
 
-			patch.Data.ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.OriginalValue));
+			patch.Data.Where(data => !data.IgnoreOriginalValue).ForEach(data => firmware.BodyStream.WriteByte(data.Offset, data.OriginalValue));
 			return true;
 		}
 
@@ -179,17 +179,25 @@ namespace NFirmwareEditor.Managers
 				var originalAndPatchedBytes = data.Trim().Split(new[] { '-', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 				if (originalAndPatchedBytes.Length != 2) throw new InvalidDataException();
 
-				var originalByte = ParseByte(originalAndPatchedBytes[0]);
+				PatchModificationData patchModificationData;
 				var patchedByte = ParseByte(originalAndPatchedBytes[1]);
-
-				result.Add(new PatchModificationData(offset, originalByte, patchedByte));
+				if (string.Equals("*", originalAndPatchedBytes[0], StringComparison.OrdinalIgnoreCase))
+				{
+					patchModificationData = new PatchModificationData(offset, patchedByte);
+				}
+				else
+				{
+					var originalByte = ParseByte(originalAndPatchedBytes[0]);
+					patchModificationData = new PatchModificationData(offset, originalByte, patchedByte);
+				}
+				result.Add(patchModificationData);
 			}
 			return result;
 		}
 
 		private static bool ValidatePatchApplyingCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)
 		{
-			return patch.Data.All(data => firmware.BodyStream.ReadByte(data.Offset) == data.OriginalValue);
+			return patch.Data.Where(data => !data.IgnoreOriginalValue).All(data => firmware.BodyStream.ReadByte(data.Offset) == data.OriginalValue);
 		}
 
 		private static bool ValidatePatchRollbackCompatibility([NotNull] Patch patch, [NotNull] Firmware firmware)
