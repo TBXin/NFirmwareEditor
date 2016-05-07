@@ -157,15 +157,25 @@ namespace NFirmwareEditor.Managers
 
 			var lines = dataString.Trim().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 			var result = new List<PatchModificationData>();
-			foreach (var line in lines.Where(x => string.IsNullOrEmpty(x) || !x.StartsWith("#")))
+			foreach (var line in lines)
 			{
-				var offsetAndData = line.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+				// Remove all spaces and tabs.
+				var patchLine = line.Replace(" ", string.Empty).Replace("\t", string.Empty);
+				if (string.IsNullOrEmpty(patchLine)) continue;
+				if (patchLine.StartsWith("#")) continue;
+
+				// Look for inline comment.
+				var lineCommentStartIndex = patchLine.IndexOf(';');
+				if (lineCommentStartIndex != -1) patchLine = patchLine.Substring(0, lineCommentStartIndex);
+
+				// Split offset and data.
+				var offsetAndData = patchLine.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 				if (offsetAndData.Length != 2) throw new InvalidDataException();
 
 				var offset = long.Parse(offsetAndData[0], NumberStyles.AllowHexSpecifier);
 				var data = offsetAndData[1];
-				if (data.IndexOf(';') != -1) data = data.Substring(0, data.IndexOf(';'));
 
+				// Split data to the old / new values.
 				var originalAndPatchedBytes = data.Trim().Split(new[] { '-', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 				if (originalAndPatchedBytes.Length != 2) throw new InvalidDataException();
 
