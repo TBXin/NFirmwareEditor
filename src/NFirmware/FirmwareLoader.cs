@@ -9,7 +9,7 @@ namespace NFirmware
 {
 	public class FirmwareLoader
 	{
-		private readonly byte[] m_encryptedFirmwareMark = Encoding.Unicode.GetBytes("Nuvoton");
+		private readonly byte[] m_encryptedFirmwareMark = Encoding.ASCII.GetBytes("Joyetech APROM");
 		private readonly FirmwareEncoder m_encoder;
 
 		public FirmwareLoader([NotNull] FirmwareEncoder encoder)
