@@ -29,11 +29,13 @@ namespace NFirmwareEditor.Managers
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
+
 		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
 		{
 			{ "E052", "Joyetech eVic-VTC Mini" },
 			{ "E056", "Joyetech Cuboid Mini" },
 			{ "E060", "Joyetech Cuboid" },
+			{ "E083", "Joyetech eGrip II" },
 			{ "M011", "Eleaf iStick TC100W" },
 			{ "M041", "Eleaf iStick Pico" },
 			{ "W007", "Wismec Presa TC75W" },
