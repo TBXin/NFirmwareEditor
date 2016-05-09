@@ -312,6 +312,18 @@
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_timeout_10_sec.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 3.13\Cuboid_3.13_menu_blink_2Hz.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.13\Cuboid_3.13_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.13\Cuboid_3.13_scroll_1W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.13\Cuboid_3.13_timeout_10_sec.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_3rd_line_aio.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
