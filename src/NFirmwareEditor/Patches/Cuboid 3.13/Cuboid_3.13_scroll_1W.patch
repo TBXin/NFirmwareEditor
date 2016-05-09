@@ -1,0 +1,14 @@
+﻿<Patch Definition="Cuboid 3.13" Name="Inc/Dec power by 1W" Version="1.0" Author="yii">
+  <Description>Inc/Dec power by 1W
+Регулировка мощности с шагом 1W</Description>
+  <Data>
+# Увеличение и ТК
+47BA: 69 - 00
+#  Увеличение в Варивате
+48BA: 69 - 00 ; shift to the 3rd gear
+# Уменьшение в ТК
+4A1A: 69 - 00 ; shift to the 3rd gear
+# Уменьшение в Варивате
+4B9C: 69 - 00 ; shift to the 3rd gear
+</Data>
+</Patch>
