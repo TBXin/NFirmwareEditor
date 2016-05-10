@@ -15,6 +15,7 @@ namespace NFirmwareEditor.Windows
 	{
 		private const int MinimizedWindowLeftTop = -32000;
 
+		private readonly UpdatesManager m_updatesManager = new UpdatesManager(Consts.ApplicationVersion, TimeSpan.FromHours(1));
 		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
 		private readonly PatchManager m_patchManager = new PatchManager();
 		private readonly ResourcePackManager m_resourcePackManager = new ResourcePackManager();
@@ -68,6 +69,7 @@ namespace NFirmwareEditor.Windows
 			InitializeOpenWithSpecifiedDefinitionMenu();
 			InitializeMruMenu();
 			InitializeTabPages();
+			InitializeUpdatesChecking();
 		}
 
 		private void InitializeApplicationWindow()
@@ -82,25 +84,6 @@ namespace NFirmwareEditor.Windows
 			}
 			Size = new Size(m_configuration.MainWindowWidth, m_configuration.MainWindowHeight);
 			WindowState = m_configuration.MainWindowMaximaged ? FormWindowState.Maximized : FormWindowState.Normal;
-		}
-
-		private void InitializeTabPages()
-		{
-			foreach (var tabPage in m_tabPages)
-			{
-				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
-				tabPage.Initialize(this, m_configuration);
-			}
-
-			MainTabControl.Selected += (s, e) =>
-			{
-				if (e.TabPage.Controls.Count == 0) return;
-
-				var editorTabPage = e.TabPage.Controls[0] as IEditorTabPage;
-				if (editorTabPage == null) return;
-
-				editorTabPage.OnActivate();
-			};
 		}
 
 		private void InitializeOpenWithSpecifiedDefinitionMenu()
@@ -129,6 +112,31 @@ namespace NFirmwareEditor.Windows
 				});
 			}
 			RecentFirmwaresMenuItem.Enabled = RecentFirmwaresMenuItem.DropDownItems.Count > 0;
+		}
+
+		private void InitializeTabPages()
+		{
+			foreach (var tabPage in m_tabPages)
+			{
+				MainTabControl.TabPages.Add(new TabPage(tabPage.Title) { Controls = { (Control)tabPage } });
+				tabPage.Initialize(this, m_configuration);
+			}
+
+			MainTabControl.Selected += (s, e) =>
+			{
+				if (e.TabPage.Controls.Count == 0) return;
+
+				var editorTabPage = e.TabPage.Controls[0] as IEditorTabPage;
+				if (editorTabPage == null) return;
+
+				editorTabPage.OnActivate();
+			};
+		}
+
+		private void InitializeUpdatesChecking()
+		{
+			m_updatesManager.UpdatesAvailable += UpdatesAvailable;
+			m_updatesManager.StartChecking();
 		}
 
 		private void ResetWorkspace()
@@ -346,6 +354,11 @@ namespace NFirmwareEditor.Windows
 			{
 				aboutWindow.ShowDialog();
 			}
+		}
+
+		private void UpdatesAvailable(GitHubRelease release)
+		{
+			
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
