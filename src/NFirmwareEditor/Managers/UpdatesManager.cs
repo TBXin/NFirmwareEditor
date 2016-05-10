@@ -23,7 +23,7 @@ namespace NFirmwareEditor.Managers
 			m_checkForUpdatesTimer = new Timer(CheckForUpdatesCallback);
 		}
 
-		public event Action<GitHubRelease> UpdatesAvailable;
+		public event Action<ReleaseInfo> UpdatesAvailable;
 
 		public void StartChecking()
 		{
@@ -38,10 +38,15 @@ namespace NFirmwareEditor.Managers
 		private void CheckForUpdatesCallback(object state)
 		{
 			var latestRelease = GetLatestRelease();
-			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag)) return;
+			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag) || latestRelease.Assets.Length == 0) return;
 
-			OnUpdatesAvailable(latestRelease);
 			StopChecking();
+			OnUpdatesAvailable(new ReleaseInfo
+			{
+				Version = latestRelease.Tag,
+				Description = latestRelease.Description,
+				DownloadUrl = latestRelease.Assets[0].DownloadUrl
+			});
 		}
 
 		private GitHubRelease GetLatestRelease()
@@ -60,6 +65,29 @@ namespace NFirmwareEditor.Managers
 			{
 				return null;
 			}
+		}
+
+		[DataContract]
+		private class GitHubRelease
+		{
+			[DataMember(Name = "tag_name")]
+			public string Tag { get; set; }
+
+			[DataMember(Name = "name")]
+			public string Name { get; set; }
+
+			[DataMember(Name = "assets")]
+			public Asset[] Assets { get; set; }
+
+			[DataMember(Name = "body")]
+			public string Description { get; set; }
+		}
+
+		[DataContract]
+		private class Asset
+		{
+			[DataMember(Name = "browser_download_url")]
+			public string DownloadUrl { get; set; }
 		}
 
 		private class WebClientWithCustomTimeout : WebClient
@@ -82,33 +110,19 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		protected virtual void OnUpdatesAvailable(GitHubRelease release)
+		protected virtual void OnUpdatesAvailable(ReleaseInfo release)
 		{
 			var handler = UpdatesAvailable;
 			if (handler != null) handler(release);
 		}
 	}
 
-	[DataContract]
-	internal class GitHubRelease
+	internal class ReleaseInfo
 	{
-		[DataMember(Name = "tag_name")]
-		public string Tag { get; set; }
+		public string Version { get; set; }
 
-		[DataMember(Name = "name")]
-		public string Name { get; set; }
-
-		[DataMember(Name = "assets")]
-		public Asset[] Assets { get; set; }
-
-		[DataMember(Name = "body")]
 		public string Description { get; set; }
-	}
 
-	[DataContract]
-	internal class Asset
-	{
-		[DataMember(Name = "browser_download_url")]
 		public string DownloadUrl { get; set; }
 	}
 }

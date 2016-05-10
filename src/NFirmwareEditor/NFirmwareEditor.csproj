@@ -201,6 +201,12 @@
     <Compile Include="Windows\Tabs\StringEditorTabPage.Designer.cs">
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\UpdatesAvailableWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\UpdatesAvailableWindow.Designer.cs">
+      <DependentUpon>UpdatesAvailableWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows\AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Tabs\StringEditorTabPage.resx">
       <DependentUpon>StringEditorTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\UpdatesAvailableWindow.resx">
+      <DependentUpon>UpdatesAvailableWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Patches\Cuboid 3.11\3.11_3V_lock.patch">

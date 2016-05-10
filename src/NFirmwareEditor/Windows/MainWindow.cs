@@ -356,9 +356,15 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void UpdatesAvailable(GitHubRelease release)
+		private void UpdatesAvailable(ReleaseInfo release)
 		{
-			
+			Invoke(new Action(() =>
+			{
+				using (var updatesWindow = new UpdatesAvailableWindow(release))
+				{
+					updatesWindow.ShowDialog();
+				}
+			}));
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

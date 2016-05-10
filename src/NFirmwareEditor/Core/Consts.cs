@@ -33,5 +33,8 @@
 		internal const int ImageListBoxItemImageMargin = 6;
 
 		internal const string PatchXmlNamespace = "urn:NFirmwareEditor";
+
+		internal const string HomePage = "http://www.ecigtalk.ru/forum/f16/t101098.html";
+		internal const string ReleasesPage = "https://github.com/TBXin/NFirmwareEditor/releases";
 	}
 }
