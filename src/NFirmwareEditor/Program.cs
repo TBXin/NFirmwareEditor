@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using NFirmwareEditor.Windows;
 using NLog;
@@ -16,15 +17,21 @@ namespace NFirmwareEditor
 		private static void Main()
 		{
 			AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
+			Application.ThreadException += UnhandledThreadExceptionHandler;
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainWindow());
 		}
 
+		private static void UnhandledThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
+		{
+			s_logger.Fatal(e.Exception, "UnhandledThreadException");
+		}
+
 		private static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs args)
 		{
 			var e = (Exception)args.ExceptionObject;
-			s_logger.Fatal(e);
+			s_logger.Fatal(e, "UnhandledException");
 		}
 	}
 }
