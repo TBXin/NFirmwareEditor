@@ -5,11 +5,14 @@ using System.Linq;
 using System.Xml.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
+using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class FirmwareDefinitionManager
 	{
+		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
+
 		public List<FirmwareDefinition> Load()
 		{
 			try
@@ -30,6 +33,7 @@ namespace NFirmwareEditor.Managers
 			}
 			catch (Exception ex)
 			{
+				s_logger.Fatal(ex, "An error occurred during loading firmware definitions.");
 				InfoBox.Show(ex.Message);
 			}
 			return new List<FirmwareDefinition>();

@@ -2,11 +2,14 @@
 using System.IO;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
+using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class ConfigurationManager
 	{
+		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
+
 		public ApplicationConfiguration Load()
 		{
 			ApplicationConfiguration result = null;
@@ -17,9 +20,9 @@ namespace NFirmwareEditor.Managers
 					result = Serializer.Read<ApplicationConfiguration>(fs);
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				// Ignore
+				s_logger.Warn(ex, "An error occurred during loading application configuration.");
 			}
 			return result ?? new ApplicationConfiguration();
 		}
@@ -35,9 +38,9 @@ namespace NFirmwareEditor.Managers
 					Serializer.Write(configuration, fs);
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				// Ignore
+				s_logger.Warn(ex, "An error occurred during saving application configuration.");
 			}
 		}
 	}

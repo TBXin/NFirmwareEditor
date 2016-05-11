@@ -5,11 +5,14 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
+using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class UpdatesManager
 	{
+		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
+
 		private readonly string m_currentVersion;
 		private readonly TimeSpan m_checkForUpdatesInterval;
 		private readonly Timer m_checkForUpdatesTimer;
@@ -61,8 +64,9 @@ namespace NFirmwareEditor.Managers
 					return releaseObject;
 				}
 			}
-			catch
+			catch (Exception ex)
 			{
+				s_logger.Warn(ex, "An error occurred during checking for updates.");
 				return null;
 			}
 		}

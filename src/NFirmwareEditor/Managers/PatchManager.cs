@@ -9,11 +9,14 @@ using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
+using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class PatchManager
 	{
+		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
+
 		public IEnumerable<Patch> LoadAll()
 		{
 			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
@@ -37,9 +40,9 @@ namespace NFirmwareEditor.Managers
 						result.Add(patch);
 					}
 				}
-				catch
+				catch (Exception ex)
 				{
-					// Ignore
+					s_logger.Warn(ex, "An error occurred during loading patch: " + file);
 				}
 			}
 			return result;
@@ -170,14 +173,20 @@ namespace NFirmwareEditor.Managers
 
 				// Split offset and data.
 				var offsetAndData = patchLine.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-				if (offsetAndData.Length != 2) throw new InvalidDataException();
+				if (offsetAndData.Length != 2)
+				{
+					throw new InvalidDataException(string.Format("Invalid patch data '{0}'. Data should have format 'offset: oldByte - newByte'.", patchLine));
+				}
 
 				var offset = long.Parse(offsetAndData[0], NumberStyles.AllowHexSpecifier);
 				var data = offsetAndData[1];
 
 				// Split data to the old / new values.
 				var originalAndPatchedBytes = data.Trim().Split(new[] { '-', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-				if (originalAndPatchedBytes.Length != 2) throw new InvalidDataException();
+				if (originalAndPatchedBytes.Length != 2)
+				{
+					throw new InvalidDataException(string.Format("Invalid patch data '{0}'. Data should have format 'oldByte - newByte'.", data));
+				}
 
 				PatchModificationData patchModificationData;
 				var patchedByte = ParseByte(originalAndPatchedBytes[1]);

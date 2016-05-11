@@ -7,11 +7,14 @@ using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
+using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class ResourcePackManager
 	{
+		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
+
 		private const char TrueChar = 'X';
 		private const char FalseChar = '.';
 
@@ -42,9 +45,9 @@ namespace NFirmwareEditor.Managers
 						result.Add(resourcePack);
 					}
 				}
-				catch
+				catch (Exception ex)
 				{
-					// Ignore
+					s_logger.Warn(ex, "An error occurred during loading resource pack: " + file);
 				}
 			}
 			return result;
