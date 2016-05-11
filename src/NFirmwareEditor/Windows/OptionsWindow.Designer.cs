@@ -33,6 +33,8 @@
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.SettingsTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
+			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.CheckForUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
 			this.BackupModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +44,7 @@
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SettingsTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
+			this.groupPanel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -58,7 +61,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 155);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 220);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(494, 39);
@@ -96,20 +99,46 @@
 			this.SettingsTabControl.Location = new System.Drawing.Point(3, 3);
 			this.SettingsTabControl.Name = "SettingsTabControl";
 			this.SettingsTabControl.SelectedIndex = 0;
-			this.SettingsTabControl.Size = new System.Drawing.Size(490, 150);
+			this.SettingsTabControl.Size = new System.Drawing.Size(490, 215);
 			this.SettingsTabControl.TabIndex = 2;
 			// 
 			// GeneralTabPage
 			// 
+			this.GeneralTabPage.Controls.Add(this.groupPanel1);
 			this.GeneralTabPage.Controls.Add(this.groupBox2);
 			this.GeneralTabPage.Controls.Add(this.groupBox1);
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(482, 124);
+			this.GeneralTabPage.Size = new System.Drawing.Size(482, 189);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "Application";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
+			// 
+			// groupPanel1
+			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.CheckForUpdatesCheckBox);
+			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel1.HeaderHeight = 30;
+			this.groupPanel1.Location = new System.Drawing.Point(0, 130);
+			this.groupPanel1.Name = "groupPanel1";
+			this.groupPanel1.Size = new System.Drawing.Size(480, 58);
+			this.groupPanel1.TabIndex = 25;
+			this.groupPanel1.TabStop = false;
+			this.groupPanel1.Text = "Updates:";
+			// 
+			// CheckForUpdatesCheckBox
+			// 
+			this.CheckForUpdatesCheckBox.AutoSize = true;
+			this.CheckForUpdatesCheckBox.Location = new System.Drawing.Point(9, 36);
+			this.CheckForUpdatesCheckBox.Name = "CheckForUpdatesCheckBox";
+			this.CheckForUpdatesCheckBox.Size = new System.Drawing.Size(114, 17);
+			this.CheckForUpdatesCheckBox.TabIndex = 0;
+			this.CheckForUpdatesCheckBox.Text = "Check for updates";
+			this.CheckForUpdatesCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// groupBox2
 			// 
@@ -120,7 +149,7 @@
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupBox2.HeaderHeight = 30;
-			this.groupBox2.Location = new System.Drawing.Point(0, 65);
+			this.groupBox2.Location = new System.Drawing.Point(0, 66);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(480, 58);
 			this.groupBox2.TabIndex = 23;
@@ -156,7 +185,7 @@
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupBox1.HeaderHeight = 30;
-			this.groupBox1.Location = new System.Drawing.Point(0, 1);
+			this.groupBox1.Location = new System.Drawing.Point(0, 2);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(480, 58);
 			this.groupBox1.TabIndex = 0;
@@ -187,7 +216,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(494, 194);
+			this.ClientSize = new System.Drawing.Size(494, 259);
 			this.Controls.Add(this.SettingsTabControl);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -200,6 +229,8 @@
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.SettingsTabControl.ResumeLayout(false);
 			this.GeneralTabPage.ResumeLayout(false);
+			this.groupPanel1.ResumeLayout(false);
+			this.groupPanel1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.groupBox1.ResumeLayout(false);
@@ -221,5 +252,7 @@
 		private System.Windows.Forms.Label label1;
 		private UI.GroupPanel groupBox1;
 		private UI.GroupPanel groupBox2;
+		private UI.GroupPanel groupPanel1;
+		private System.Windows.Forms.CheckBox CheckForUpdatesCheckBox;
 	}
 }

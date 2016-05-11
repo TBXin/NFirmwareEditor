@@ -56,9 +56,10 @@ namespace NFirmwareEditor.Windows
 				BackupModeComboBox.SelectedItem = item;
 				break;
 			}
+			CheckForUpdatesCheckBox.Checked = m_configuration.CheckForUpdates;
 		}
 
-		private void OkButton_Click(object sender, EventArgs e)
+		private void SaveSettings()
 		{
 			var editorModeItem = ImageEditorModeComboBox.SelectedItem as NamedComboBoxItem<ImageEditorMouseMode>;
 			if (editorModeItem != null)
@@ -70,6 +71,12 @@ namespace NFirmwareEditor.Windows
 			{
 				m_configuration.BackupCreationMode = backupModeItem.Data;
 			}
+			m_configuration.CheckForUpdates = CheckForUpdatesCheckBox.Checked;
+		}
+
+		private void OkButton_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
 			DialogResult = DialogResult.OK;
 		}
 

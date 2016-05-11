@@ -135,8 +135,16 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeUpdatesChecking()
 		{
-			m_updatesManager.UpdatesAvailable += UpdatesAvailable;
-			m_updatesManager.StartChecking();
+			if (m_configuration.CheckForUpdates)
+			{
+				m_updatesManager.UpdatesAvailable += UpdatesAvailable;
+				m_updatesManager.StartChecking();
+			}
+			else
+			{
+				m_updatesManager.StopChecking();
+				m_updatesManager.UpdatesAvailable -= UpdatesAvailable;
+			}
 		}
 
 		private void ResetWorkspace()
@@ -339,12 +347,18 @@ namespace NFirmwareEditor.Windows
 
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
+			var checkForUpdates = m_configuration.CheckForUpdates;
 			using (var optionsWindow = new OptionsWindow(m_configuration))
 			{
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
 
 				m_configurationManager.Save(m_configuration);
 				m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
+
+				if (checkForUpdates != m_configuration.CheckForUpdates)
+				{
+					InitializeUpdatesChecking();
+				}
 			}
 		}
 
