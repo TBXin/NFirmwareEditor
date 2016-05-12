@@ -163,7 +163,7 @@ namespace NFirmwareEditor.Managers
 			foreach (var line in lines)
 			{
 				// Remove all spaces and tabs.
-				var patchLine = line.Replace(" ", string.Empty).Replace("\t", string.Empty);
+				var patchLine = line.Trim().Replace("\t", string.Empty);
 				if (string.IsNullOrEmpty(patchLine)) continue;
 				if (patchLine.StartsWith("#")) continue;
 
