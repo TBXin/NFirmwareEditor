@@ -1,0 +1,19 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Picture 0xE3 64x104" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Remap and resize symbol 0xE3 to 64x104.
+Вынесение символа 0xE3 с изменением размера до 64x104.</Description>
+  <Data>
+# Change pointers #
+0000B630: E6 - 0E
+0000B631: B0 - D7
+0000CEE0: 95 - CC
+0000CEE1: C9 - D3
+# Block 1 #
+0000D3CC: null - 40
+0000D3CD: null - 68
+0000D70D: null - 00
+# Block 2 #
+0000D70E: null - 40
+0000D70F: null - 68
+0000DA4F: null - 00
+</Data>
+</Patch>

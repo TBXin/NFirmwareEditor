@@ -1,0 +1,27 @@
+﻿<Patch Definition="Cuboid 3.02" Name="200W" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set maximum output power to 200 W.
+Устанавливает максимальную мощность 200 Вт.</Description>
+  <Data>
+000019E4: 40 - 4F
+000019E5: F2 - F4
+000019E6: DC - FA
+000019E7: 51 - 61
+00002BCA: 32 - 28
+000033AC: F0 - 06
+000033AD: 29 - F0
+000033AE: 0A - B2
+000033AF: D2 - BD
+00009F14: 00 - B1
+00009F15: 30 - F5
+00009F16: 00 - A0
+00009F17: 30 - 7F
+00009F18: 00 - B9
+00009F19: 30 - F4
+00009F1A: 00 - 55
+00009F1B: 30 - AA
+00009F1C: 00 - F9
+00009F1D: 30 - F7
+00009F1E: 00 - 48
+00009F1F: 30 - BA
+</Data>
+</Patch>

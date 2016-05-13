@@ -1,0 +1,34 @@
+﻿<Patch Definition="Vaporflask Lite 2.00" Name="Brightness" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set display brightness (maximum by default).
+Установка яркости дисплея (максимальное по умолчанию).</Description>
+  <Data>
+# Cut-in #
+00004262: FF - 03
+00004263: F7 - F0
+00004264: 8B - 36
+00004265: FF - BA
+# Add 0x81 command sequence #
+000076D2: 00 - 81
+000076D3: C0 - 20
+000076D4: F0 - FC
+000076D5: F8 - F7
+000076D6: FC - 52
+000076D7: 7E - FD
+000076D8: 1E - FF ; brightness value
+000076D9: 1E - 20
+000076DA: 1E - FC
+000076DB: 1E - F7
+000076DC: 7E - 4F
+000076DD: FC - FD
+000076DE: F8 - AF
+000076DF: F0 - 20
+000076E0: C0 - FC
+000076E1: 00 - F7
+000076E2: 00 - 4C
+000076E3: FF - FD
+000076E4: FF - FC
+000076E5: FF - F7
+000076E6: FF - BF
+000076E7: 00 - BD
+</Data>
+</Patch>

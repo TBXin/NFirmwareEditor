@@ -1,0 +1,10 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Delete 316 Label" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Deletes 316 label in TEMP SS mode.
+Убирает надпись "316" из режима Temp SS 316.</Description>
+  <Data>
+00006DE2: 04 - 0D
+00006DE3: 22 - E0
+00007C50: 04 - 0D
+00007C51: 22 - E0
+</Data>
+</Patch>

@@ -1,0 +1,8 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Disable switch to AMP" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Disable auto switching status to AMP on charge.
+Отключает при зарядке сброс на AMP выбранной опции в третьей строке.</Description>
+  <Data>
+000072B6: 39 - 00
+000072B7: B1 - BF
+</Data>
+</Patch>

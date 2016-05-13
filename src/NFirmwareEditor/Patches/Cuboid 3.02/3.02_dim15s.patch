@@ -1,0 +1,9 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Dim Timeout (15 s)" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set dim timeout to 15 s.
+Установка таймаута гашения экрана 15 секунд.</Description>
+  <Data>
+0000160A: 1E - 0F
+00005DCE: 1E - 0F
+000085BA: 1E - 0F
+</Data>
+</Patch>

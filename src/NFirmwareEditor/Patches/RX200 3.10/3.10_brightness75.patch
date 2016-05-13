@@ -1,0 +1,34 @@
+﻿<Patch Definition="RX200 3.10" Name="Display Brightness 75%" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set display brightness to 75%.
+Установка яркости дисплея на 75%.</Description>
+  <Data>
+# Cut-in #
+000048AA: FF - 03
+000048AB: F7 - F0
+000048AC: 8B - F1
+000048AD: FF - BA
+# Add 0x81 command sequence #
+00007E90: E0 - 81
+00007E91: F0 - 20
+00007E92: 78 - FC
+00007E93: FC - F7
+00007E94: FE - 97
+00007E95: FE - FC
+00007E96: FE - C0 ; brightness value
+00007E97: 00 - 20
+00007E98: 00 - FC
+00007E99: 00 - F7
+00007E9A: 00 - 94
+00007E9B: 00 - FC
+00007E9C: 00 - AF
+00007E9D: 00 - 20
+00007E9E: 00 - FC
+00007E9F: 01 - F7
+00007EA0: 01 - 91
+00007EA1: 00 - FC
+00007EA2: 00 - FC
+00007EA3: FF - F7
+00007EA4: FF - 04
+00007EA5: FF - BD
+</Data>
+</Patch>

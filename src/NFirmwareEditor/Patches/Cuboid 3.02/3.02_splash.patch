@@ -1,0 +1,60 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Splash Screen" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Adds splash picture 0xE3 to the main screen, 8 s timeout by default.
+Добавляет изображение-заставку 0xE3 на экран в режиме ожидания. Вывод изображения за 8 секунд до автоматического гашения экрана по умолчанию.</Description>
+  <Data>
+# Branch to countdown cut-in #
+000014A8: 28 - 08
+000014A9: 78 - F0
+000014AA: 20 - 8A
+000014AB: B1 - BD
+# Countdown plus #
+00009FC0: 00 - 28
+00009FC1: 00 - 78
+00009FC2: 00 - 08
+00009FC3: 3F - B9
+00009FC4: FE - F7
+00009FC5: 00 - F7
+00009FC6: 3F - 77
+00009FC7: FE - BA
+00009FC8: 00 - 08 ; timeout
+00009FC9: 00 - 28
+00009FCA: 06 - 01
+00009FCB: 00 - D0
+00009FCC: 00 - F7
+00009FCD: 06 - F7
+00009FCE: 00 - 6E
+00009FCF: 00 - BA
+00009FD0: 06 - 3F
+00009FD1: 00 - B4
+00009FD2: 00 - 06
+00009FD3: 06 - 48
+00009FD4: 00 - 00
+00009FD5: 00 - 78
+00009FD6: 06 - 01
+00009FD7: 00 - 28
+00009FD8: 00 - 06
+00009FD9: 06 - D1
+00009FDA: 00 - 00 ; splash X pos
+00009FDB: 00 - 20
+00009FDC: 06 - 00 ; splash Y pos
+00009FDD: 00 - 21
+00009FDE: 00 - E3 ; splash charcode
+00009FDF: 06 - 22
+00009FE0: 00 - FB
+00009FE1: 00 - F7
+00009FE2: 06 - D6
+00009FE3: 00 - F9
+00009FE4: 00 - FB
+00009FE5: 06 - F7
+00009FE6: 00 - 58
+00009FE7: 00 - FB
+00009FE8: 06 - 3F
+00009FE9: 00 - BC
+00009FEA: 00 - EF
+00009FEB: 06 - E7
+00009FEC: 00 - 22
+00009FED: 00 - 01
+00009FEE: 06 - 00
+00009FEF: 00 - 20
+</Data>
+</Patch>
