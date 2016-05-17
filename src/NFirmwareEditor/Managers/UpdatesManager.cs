@@ -1,9 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Threading;
 using NLog;
 
@@ -40,9 +35,15 @@ namespace NFirmwareEditor.Managers
 
 		private void CheckForUpdatesCallback(object state)
 		{
-			var latestRelease = GetLatestRelease();
-			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag) || latestRelease.Assets.Length == 0) return;
+			s_logger.Info("Checking for updates...");
+			var latestRelease = GitHubApi.GetLatestRelease();
+			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag) || latestRelease.Assets.Length == 0)
+			{
+				s_logger.Info("No updates available.");
+				return;
+			}
 
+			s_logger.Info("New version available: " + latestRelease.Tag);
 			StopChecking();
 			OnUpdatesAvailable(new ReleaseInfo
 			{
@@ -50,68 +51,6 @@ namespace NFirmwareEditor.Managers
 				Description = latestRelease.Description,
 				DownloadUrl = latestRelease.Assets[0].DownloadUrl
 			});
-		}
-
-		private GitHubRelease GetLatestRelease()
-		{
-			try
-			{
-				using (var client = new WebClientWithCustomTimeout(TimeSpan.FromSeconds(10)))
-				{
-					var responseJson = client.DownloadString("https://api.github.com/repos/TBXin/NFirmwareEditor/releases/latest");
-					var serializer = new DataContractJsonSerializer(typeof(GitHubRelease));
-					var releaseObject = serializer.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(responseJson))) as GitHubRelease;
-					return releaseObject;
-				}
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex, "An error occurred during checking for updates.");
-				return null;
-			}
-		}
-
-		[DataContract]
-		private class GitHubRelease
-		{
-			[DataMember(Name = "tag_name")]
-			public string Tag { get; set; }
-
-			[DataMember(Name = "name")]
-			public string Name { get; set; }
-
-			[DataMember(Name = "assets")]
-			public Asset[] Assets { get; set; }
-
-			[DataMember(Name = "body")]
-			public string Description { get; set; }
-		}
-
-		[DataContract]
-		private class Asset
-		{
-			[DataMember(Name = "browser_download_url")]
-			public string DownloadUrl { get; set; }
-		}
-
-		private class WebClientWithCustomTimeout : WebClient
-		{
-			private readonly TimeSpan m_requestTimeout;
-
-			public WebClientWithCustomTimeout(TimeSpan requestTimeout)
-			{
-				m_requestTimeout = requestTimeout;
-				Headers["User-Agent"] = "NFirmwareEditor";
-			}
-
-			protected override WebRequest GetWebRequest(Uri address)
-			{
-				var request = base.GetWebRequest(address);
-				if (request == null) throw new InvalidOperationException();
-
-				request.Timeout = (int)m_requestTimeout.TotalMilliseconds;
-				return request;
-			}
 		}
 
 		protected virtual void OnUpdatesAvailable(ReleaseInfo release)
