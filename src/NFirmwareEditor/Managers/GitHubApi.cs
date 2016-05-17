@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Security.Cryptography;
 using System.Text;
 using NLog;
 
@@ -52,6 +53,27 @@ namespace NFirmwareEditor.Managers
 			{
 				s_logger.Warn(ex, "An error occurred during retrieving files.");
 				return null;
+			}
+		}
+
+		public static string GetGitSha(string filePath)
+		{
+			var fileBytes = File.ReadAllBytes(filePath);
+			var fileText = Encoding.UTF8.GetString(fileBytes);
+
+			var unixStyleEndingString = fileText.Replace("\r\n", "\n");
+			var dataBytes = Encoding.UTF8.GetBytes(unixStyleEndingString);
+			var gitBlob = string.Format("blob {0}\0{1}", dataBytes.Length, unixStyleEndingString);
+			return GetSha1(gitBlob);
+		}
+
+		private static string GetSha1(string data)
+		{
+			using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
+			using (var sha = new SHA1Managed())
+			{
+				var checksum = sha.ComputeHash(ms);
+				return BitConverter.ToString(checksum).Replace("-", string.Empty).ToLower();
 			}
 		}
 

@@ -19,6 +19,9 @@ namespace NFirmwareEditor.Models
 		[XmlIgnore]
 		internal bool IsCompatible { get; set; }
 
+		[XmlIgnore]
+		internal string Sha { get; set; }
+
 		public override string ToString()
 		{
 			return Name + " v" + Version;

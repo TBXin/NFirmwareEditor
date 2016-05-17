@@ -28,17 +28,19 @@ namespace NFirmwareEditor.Managers
 				var serializer = new XmlSerializer(typeof(Patch));
 				try
 				{
+					Patch patch;
 					using (var fs = File.Open(file, FileMode.Open))
 					{
-						var patch = serializer.Deserialize(fs) as Patch;
-						if (patch == null) continue;
-
-						patch.Data = ParseDiff(patch.DataString);
-						patch.FilePath = file;
-						patch.FileName = Path.GetFileName(file);
-						patch.Description = patch.Description.SplitLines();
-						result.Add(patch);
+						patch = serializer.Deserialize(fs) as Patch;
 					}
+					if (patch == null) continue;
+
+					patch.Data = ParseDiff(patch.DataString);
+					patch.FilePath = file;
+					patch.FileName = Path.GetFileName(file);
+					patch.Description = patch.Description.SplitLines();
+					patch.Sha = GitHubApi.GetGitSha(file);
+					result.Add(patch);
 				}
 				catch (Exception ex)
 				{
