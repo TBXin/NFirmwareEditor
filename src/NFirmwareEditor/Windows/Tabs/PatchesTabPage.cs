@@ -124,6 +124,12 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Items.Clear();
 			DescriptionTextBox.Clear();
 			ConflictsTextBox.Clear();
+
+			ApplyPatchesButton.Enabled = false;
+			RollbackPatchesButton.Enabled = false;
+			OpenInEditorButton.Enabled = false;
+			CheckForUpdatesButton.Enabled = false;
+			ReloadPatchesButton.Enabled = false;
 		}
 
 		private void CheckForUpdatesWithUserInteraction(bool notifyWhenNoUpdatesAvailable)

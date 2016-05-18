@@ -65,6 +65,10 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnWorkspaceReset()
 		{
 			ResourcePackListView.Items.Clear();
+
+			PreviewResourcePackButton.Enabled = false;
+			ImportResourcePackButton.Enabled = false;
+			ReloadResourcePacksButton.Enabled = false;
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)

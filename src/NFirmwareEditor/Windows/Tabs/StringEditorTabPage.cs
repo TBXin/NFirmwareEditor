@@ -101,8 +101,8 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			RemoveStringEditControls();
 			Block1StringRadioButton.Enabled = false;
-			Block1StringRadioButton.Enabled = false;
-			Block2StringRadioButton.Checked = false;
+			Block2StringRadioButton.Enabled = false;
+			Block1StringRadioButton.Checked = false;
 			Block2StringRadioButton.Checked = false;
 			StringPrewviewPixelGrid.Data = new bool[0, 0];
 		}
