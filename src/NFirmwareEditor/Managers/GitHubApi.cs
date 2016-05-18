@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
+using JetBrains.Annotations;
 using NLog;
 
 namespace NFirmwareEditor.Managers
@@ -36,6 +37,7 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
+		[CanBeNull]
 		public static IEnumerable<GitHubFileInfo> GetFiles(string relativePath)
 		{
 			try
@@ -44,6 +46,9 @@ namespace NFirmwareEditor.Managers
 				{
 					var uri = Uri.EscapeUriString(RepositoryRootUrl + relativePath);
 					var responseJson = client.DownloadString(uri);
+					if (string.IsNullOrEmpty(responseJson)) return null;
+					if (responseJson.Contains("Not Found")) return null;
+
 					var serializer = new DataContractJsonSerializer(typeof(List<GitHubFileInfo>));
 					var fileInfos = serializer.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(responseJson))) as List<GitHubFileInfo>;
 					return fileInfos;
@@ -53,6 +58,21 @@ namespace NFirmwareEditor.Managers
 			{
 				s_logger.Warn(ex, "An error occurred during retrieving rep files.");
 				return null;
+			}
+		}
+
+		public static void DownloadFile(string url, string filePath)
+		{
+			try
+			{
+				using (var client = new WebClientWithCustomTimeout(TimeSpan.FromSeconds(10)))
+				{
+					client.DownloadFile(url, filePath);
+				}
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex, "An error occurred during patch file download.");
 			}
 		}
 
@@ -126,8 +146,7 @@ namespace NFirmwareEditor.Managers
 			protected override WebRequest GetWebRequest(Uri address)
 			{
 				var request = base.GetWebRequest(address);
-				if (request == null)
-					throw new InvalidOperationException();
+				if (request == null) throw new InvalidOperationException();
 
 				request.Timeout = (int)m_requestTimeout.TotalMilliseconds;
 				return request;

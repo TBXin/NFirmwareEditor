@@ -17,10 +17,12 @@ namespace NFirmwareEditor.Windows.Tabs
 	internal partial class PatchesTabPage : UserControl, IEditorTabPage
 	{
 		private readonly PatchManager m_patchManager;
+		private readonly IDictionary<string, bool> m_checkedFirmwares = new Dictionary<string, bool>();
 
 		private Firmware m_firmware;
 		private IEnumerable<Patch> m_suitablePatches;
 		private IEditorTabPageHost m_host;
+		private ApplicationConfiguration m_configuration;
 
 		public PatchesTabPage([NotNull] PatchManager patchManager)
 		{
@@ -43,6 +45,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			ApplyPatchesButton.Click += ApplyPatchesButton_Click;
 			RollbackPatchesButton.Click += RollbackPatchesButton_Click;
 			OpenInEditorButton.Click += OpenInEditorButton_Click;
+			CheckForUpdatesButton.Click += CheckForUpdatesButton_Click;
 			ReloadPatchesButton.Click += ReloadPatchesButton_Click;
 		}
 
@@ -68,6 +71,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 			m_host = host;
+			m_configuration = configuration;
 		}
 
 		public void OnActivate()
@@ -96,6 +100,18 @@ namespace NFirmwareEditor.Windows.Tabs
 				{ Tag = patch };
 			}));
 			ReloadPatchesButton.Enabled = true;
+
+			if (m_configuration.CheckForApplicationUpdates)
+			{
+				bool updatesAlreadyChecked;
+				m_checkedFirmwares.TryGetValue(firmware.Definition.Name, out updatesAlreadyChecked);
+
+				if (!updatesAlreadyChecked)
+				{
+					m_checkedFirmwares[firmware.Definition.Name] = true;
+					CheckForUpdatesWithUserInteraction(false);
+				}
+			}
 		}
 
 		public bool OnHotkey(Keys keyData)
@@ -108,6 +124,42 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Items.Clear();
 			DescriptionTextBox.Clear();
 			ConflictsTextBox.Clear();
+		}
+
+		private void CheckForUpdatesWithUserInteraction(bool notifyWhenNoUpdatesAvailable)
+		{
+			this.UpdateUI(() => CheckForUpdatesButton.Enabled = false);
+			var checkForUpdates = new Action(() =>
+			{
+				var newPatches = CheckForUpdates();
+				this.UpdateUI(() =>
+				{
+					CheckForUpdatesButton.Enabled = true;
+					if (newPatches == null || newPatches.Count == 0)
+					{
+						if (notifyWhenNoUpdatesAvailable)
+						{
+							InfoBox.Show("No updates available!");
+						}
+						return;
+					}
+
+					using (var newPatchesWindow = new PatchUpdatesAvailableWindow(m_firmware.Definition, newPatches))
+					{
+						if (newPatchesWindow.ShowDialog() != DialogResult.OK) return;
+						ReloadPatchesButton_Click(null, EventArgs.Empty);
+					}
+				});
+			});
+			checkForUpdates.BeginInvoke(null, null);
+		}
+
+		private List<GitHubApi.GitHubFileInfo> CheckForUpdates()
+		{
+			var patchesInRepository = GitHubApi.GetFiles("Patches/" + m_firmware.Definition.Name);
+			return patchesInRepository != null
+				? patchesInRepository.Where(rp => m_suitablePatches.FirstOrDefault(sp => string.Equals(rp.Name, sp.FileName)) == null).ToList()
+				: null;
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,6 +283,11 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			var ex = Safe.Execute(() => Process.Start(SelectedPatch.FilePath));
 			if (ex != null) InfoBox.Show("An error occured during opening patch file.\n" + ex.Message);
+		}
+
+		private void CheckForUpdatesButton_Click(object sender, EventArgs e)
+		{
+			CheckForUpdatesWithUserInteraction(true);
 		}
 
 		private void ReloadPatchesButton_Click(object sender, EventArgs e)

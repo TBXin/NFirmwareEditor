@@ -43,6 +43,7 @@
 			this.InstalledColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.CompatibleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.OpenInEditorButton = new System.Windows.Forms.Button();
+			this.CheckForUpdatesButton = new System.Windows.Forms.Button();
 			this.DescriptionGroupBox.SuspendLayout();
 			this.ConflictsGroupBox.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -55,7 +56,7 @@
 			this.DescriptionGroupBox.Controls.Add(this.DescriptionTextBox);
 			this.DescriptionGroupBox.Location = new System.Drawing.Point(0, 326);
 			this.DescriptionGroupBox.Name = "DescriptionGroupBox";
-			this.DescriptionGroupBox.Size = new System.Drawing.Size(525, 125);
+			this.DescriptionGroupBox.Size = new System.Drawing.Size(518, 125);
 			this.DescriptionGroupBox.TabIndex = 1;
 			this.DescriptionGroupBox.TabStop = false;
 			this.DescriptionGroupBox.Text = "Description:";
@@ -68,7 +69,7 @@
 			this.DescriptionTextBox.Multiline = true;
 			this.DescriptionTextBox.Name = "DescriptionTextBox";
 			this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.DescriptionTextBox.Size = new System.Drawing.Size(519, 105);
+			this.DescriptionTextBox.Size = new System.Drawing.Size(512, 105);
 			this.DescriptionTextBox.TabIndex = 0;
 			// 
 			// ApplyPatchesButton
@@ -108,9 +109,9 @@
 			// 
 			this.ConflictsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.ConflictsGroupBox.Controls.Add(this.ConflictsTextBox);
-			this.ConflictsGroupBox.Location = new System.Drawing.Point(528, 326);
+			this.ConflictsGroupBox.Location = new System.Drawing.Point(521, 326);
 			this.ConflictsGroupBox.Name = "ConflictsGroupBox";
-			this.ConflictsGroupBox.Size = new System.Drawing.Size(242, 125);
+			this.ConflictsGroupBox.Size = new System.Drawing.Size(249, 125);
 			this.ConflictsGroupBox.TabIndex = 2;
 			this.ConflictsGroupBox.TabStop = false;
 			this.ConflictsGroupBox.Text = "Incompatibility with patches:";
@@ -123,7 +124,7 @@
 			this.ConflictsTextBox.Multiline = true;
 			this.ConflictsTextBox.Name = "ConflictsTextBox";
 			this.ConflictsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.ConflictsTextBox.Size = new System.Drawing.Size(236, 105);
+			this.ConflictsTextBox.Size = new System.Drawing.Size(243, 105);
 			this.ConflictsTextBox.TabIndex = 0;
 			// 
 			// borderedPanel1
@@ -202,11 +203,23 @@
 			this.OpenInEditorButton.Text = "Open in editor";
 			this.OpenInEditorButton.UseVisualStyleBackColor = true;
 			// 
+			// CheckForUpdatesButton
+			// 
+			this.CheckForUpdatesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.CheckForUpdatesButton.Enabled = false;
+			this.CheckForUpdatesButton.Location = new System.Drawing.Point(520, 452);
+			this.CheckForUpdatesButton.Name = "CheckForUpdatesButton";
+			this.CheckForUpdatesButton.Size = new System.Drawing.Size(150, 30);
+			this.CheckForUpdatesButton.TabIndex = 7;
+			this.CheckForUpdatesButton.Text = "Check for updates";
+			this.CheckForUpdatesButton.UseVisualStyleBackColor = true;
+			// 
 			// PatchesTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.CheckForUpdatesButton);
 			this.Controls.Add(this.OpenInEditorButton);
 			this.Controls.Add(this.ConflictsGroupBox);
 			this.Controls.Add(this.ReloadPatchesButton);
@@ -242,5 +255,6 @@
 		private System.Windows.Forms.TextBox ConflictsTextBox;
 		private System.Windows.Forms.ColumnHeader FileNameColumnHeader;
 		private System.Windows.Forms.Button OpenInEditorButton;
+		private System.Windows.Forms.Button CheckForUpdatesButton;
 	}
 }

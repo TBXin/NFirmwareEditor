@@ -17,17 +17,25 @@ namespace NFirmwareEditor.Managers
 	{
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
+		public static string GetPatchDirectoryPath(FirmwareDefinition definition)
+		{
+			if (definition == null) throw new ArgumentNullException("definition");
+			return Path.Combine(Paths.PatchDirectory, definition.Name);
+		}
+
+		public static string GetPatchFilePath([NotNull] FirmwareDefinition definition, [NotNull] string fileName)
+		{
+			if (definition == null) throw new ArgumentNullException("definition");
+			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
+
+			return Path.Combine(Paths.PatchDirectory, definition.Name, fileName);
+		}
+
 		public void InitializeStorage([NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
 			if (definitions == null) throw new ArgumentNullException("definitions");
 
-			var patchDirEx = Safe.Execute(() =>
-			{
-				if (!Directory.Exists(Paths.PatchDirectory))
-				{
-					Directory.CreateDirectory(Paths.PatchDirectory);
-				}
-			});
+			var patchDirEx = Safe.Execute(() => Paths.EnsureDirectoryExists(Paths.PatchDirectory));
 			if (patchDirEx != null)
 			{
 				s_logger.Warn(patchDirEx, "An error occured during creating primary pathes directory '{0}'.", Paths.PatchDirectory);
@@ -37,14 +45,7 @@ namespace NFirmwareEditor.Managers
 			foreach (var definition in definitions)
 			{
 				var definitionPatchDir = Path.Combine(Paths.PatchDirectory, definition.Name);
-				var ex = Safe.Execute(() =>
-				{
-					if (!Directory.Exists(definitionPatchDir))
-					{
-						Directory.CreateDirectory(definitionPatchDir);
-					}
-				});
-
+				var ex = Safe.Execute(() => Paths.EnsureDirectoryExists(definitionPatchDir));
 				if (ex != null)
 				{
 					s_logger.Warn(ex, "An error occured during creating patches directory '{0}'.", definitionPatchDir);

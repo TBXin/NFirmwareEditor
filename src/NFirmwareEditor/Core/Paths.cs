@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
+using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Core
 {
@@ -34,5 +36,13 @@ namespace NFirmwareEditor.Core
 		public static string PatchDirectory { get; private set; }
 
 		public static string ResourcePackDirectory { get; private set; }
+
+		public static void EnsureDirectoryExists([NotNull] string directoryPath)
+		{
+			if (string.IsNullOrEmpty(directoryPath)) throw new ArgumentNullException("directoryPath");
+			if (Directory.Exists(directoryPath)) return;
+
+			Directory.CreateDirectory(directoryPath);
+		}
 	}
 }

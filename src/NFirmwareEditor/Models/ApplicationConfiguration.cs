@@ -15,7 +15,8 @@ namespace NFirmwareEditor.Models
 			ImageEditorMouseMode = ImageEditorMouseMode.LeftSetRightUnset;
 			BackupCreationMode = BackupCreationMode.Extended;
 			MostRecentlyUsed = new List<string>();
-			CheckForUpdates = true;
+			CheckForApplicationUpdates = true;
+			CheckForPatchesUpdates = true;
 		}
 
 		public int MainWindowTop { get; set; }
@@ -36,7 +37,9 @@ namespace NFirmwareEditor.Models
 
 		public BackupCreationMode BackupCreationMode { get; set; }
 
-		public bool CheckForUpdates { get; set; }
+		public bool CheckForApplicationUpdates { get; set; }
+
+		public bool CheckForPatchesUpdates { get; set; }
 
 		[XmlArrayItem("Item")]
 		public List<string> MostRecentlyUsed { get; set; }

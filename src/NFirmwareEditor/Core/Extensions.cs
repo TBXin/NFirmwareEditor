@@ -52,6 +52,14 @@ namespace NFirmwareEditor.Core
 			}
 		}
 
+		internal static void UpdateUI([NotNull] this Control control, [NotNull] Action action)
+		{
+			if (control == null) throw new ArgumentNullException("control");
+			if (action == null) throw new ArgumentNullException("action");
+
+			control.Invoke(action);
+		}
+
 		internal static void ForEach([NotNull] this ListView.CheckedListViewItemCollection collection, [NotNull] Action<ListViewItem> action)
 		{
 			if (collection == null) throw new ArgumentNullException("collection");

@@ -56,7 +56,8 @@ namespace NFirmwareEditor.Windows
 				BackupModeComboBox.SelectedItem = item;
 				break;
 			}
-			CheckForUpdatesCheckBox.Checked = m_configuration.CheckForUpdates;
+			CheckForApplicationUpdatesCheckBox.Checked = m_configuration.CheckForApplicationUpdates;
+			CheckForPatchesUpdatesCheckBox.Checked = m_configuration.CheckForPatchesUpdates;
 		}
 
 		private void SaveSettings()
@@ -71,7 +72,8 @@ namespace NFirmwareEditor.Windows
 			{
 				m_configuration.BackupCreationMode = backupModeItem.Data;
 			}
-			m_configuration.CheckForUpdates = CheckForUpdatesCheckBox.Checked;
+			m_configuration.CheckForApplicationUpdates = CheckForApplicationUpdatesCheckBox.Checked;
+			m_configuration.CheckForPatchesUpdates = CheckForPatchesUpdatesCheckBox.Checked;
 		}
 
 		private void OkButton_Click(object sender, EventArgs e)

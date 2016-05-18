@@ -151,6 +151,12 @@
     <Compile Include="Windows\PatchCreatorWindow.Designer.cs">
       <DependentUpon>PatchCreatorWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\PatchUpdatesAvailableWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\PatchUpdatesAvailableWindow.Designer.cs">
+      <DependentUpon>PatchUpdatesAvailableWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ResizeImageWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\ImportFontWindow.resx">
       <DependentUpon>ImportFontWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\PatchUpdatesAvailableWindow.resx">
+      <DependentUpon>PatchUpdatesAvailableWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\PreviewResourcePackWindow.resx">
       <DependentUpon>PreviewResourcePackWindow.cs</DependentUpon>
