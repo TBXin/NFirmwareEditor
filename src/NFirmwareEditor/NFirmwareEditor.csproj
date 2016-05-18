@@ -726,6 +726,8 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\check_for_updates.png" />
+    <None Include="Resources\about.png" />
     <None Include="Resources\mru.png" />
     <None Include="Resources\images.png" />
     <None Include="Resources\font_underline.png" />

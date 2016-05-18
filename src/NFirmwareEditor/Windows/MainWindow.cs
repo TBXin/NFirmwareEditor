@@ -138,13 +138,13 @@ namespace NFirmwareEditor.Windows
 		{
 			if (m_configuration.CheckForApplicationUpdates)
 			{
-				m_updatesManager.UpdatesAvailable += UpdatesAvailable;
+				m_updatesManager.UpdatesAvailable += ShowUpdatesWindow;
 				m_updatesManager.StartChecking();
 			}
 			else
 			{
 				m_updatesManager.StopChecking();
-				m_updatesManager.UpdatesAvailable -= UpdatesAvailable;
+				m_updatesManager.UpdatesAvailable -= ShowUpdatesWindow;
 			}
 		}
 
@@ -234,6 +234,17 @@ namespace NFirmwareEditor.Windows
 			{
 				InfoBox.Show("Unable to save firmware.\n{0}", ex.Message);
 			}
+		}
+
+		private void ShowUpdatesWindow(ReleaseInfo releaseInfo)
+		{
+			this.UpdateUI(() =>
+			{
+				using (var updatesWindow = new UpdatesAvailableWindow(releaseInfo))
+				{
+					updatesWindow.ShowDialog();
+				}
+			});
 		}
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -371,15 +382,23 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void UpdatesAvailable(ReleaseInfo release)
+		private void CheckForUpdatesMenuItem_Click(object sender, EventArgs e)
 		{
-			Invoke(new Action(() =>
+			CheckForUpdatesMenuItem.Enabled = false;
+			var checkForUpdatesAction = new Action(() =>
 			{
-				using (var updatesWindow = new UpdatesAvailableWindow(release))
+				var releaseInfo = m_updatesManager.CheckForUpdates();
+				this.UpdateUI(() => CheckForUpdatesMenuItem.Enabled = true);
+				if (releaseInfo == null)
 				{
-					updatesWindow.ShowDialog();
+					InfoBox.Show("You are using latest version!");
 				}
-			}));
+				else
+				{
+					ShowUpdatesWindow(releaseInfo);
+				}
+			});
+			checkForUpdatesAction.BeginInvoke(null, null);
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

@@ -63,6 +63,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap about {
+            get {
+                object obj = ResourceManager.GetObject("about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap app_logo {
             get {
                 object obj = ResourceManager.GetObject("app_logo", resourceCulture);
@@ -136,6 +146,16 @@ namespace NFirmwareEditor.Properties {
         internal static System.Drawing.Bitmap bitmap_import {
             get {
                 object obj = ResourceManager.GetObject("bitmap_import", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_for_updates {
+            get {
+                object obj = ResourceManager.GetObject("check_for_updates", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

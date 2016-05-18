@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using JetBrains.Annotations;
 using NLog;
 
 namespace NFirmwareEditor.Managers
@@ -33,24 +34,33 @@ namespace NFirmwareEditor.Managers
 			m_checkForUpdatesTimer.Change(Timeout.Infinite, Timeout.Infinite);
 		}
 
-		private void CheckForUpdatesCallback(object state)
+		[CanBeNull]
+		public ReleaseInfo CheckForUpdates()
 		{
 			s_logger.Info("Checking for updates...");
 			var latestRelease = GitHubApi.GetLatestRelease();
 			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag) || latestRelease.Assets.Length == 0)
 			{
 				s_logger.Info("No updates available.");
-				return;
+				return null;
 			}
 
 			s_logger.Info("New version available: " + latestRelease.Tag);
-			StopChecking();
-			OnUpdatesAvailable(new ReleaseInfo
+			return new ReleaseInfo
 			{
 				Version = latestRelease.Tag,
 				Description = latestRelease.Description,
 				DownloadUrl = latestRelease.Assets[0].DownloadUrl
-			});
+			};
+		}
+
+		private void CheckForUpdatesCallback(object state)
+		{
+			var latestRelease = CheckForUpdates();
+			if (latestRelease == null) return;
+
+			StopChecking();
+			OnUpdatesAvailable(latestRelease);
 		}
 
 		protected virtual void OnUpdatesAvailable(ReleaseInfo release)
