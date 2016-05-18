@@ -302,6 +302,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 			OnWorkspaceReset();
 			OnFirmwareLoaded(m_firmware);
+			CheckForUpdatesButton.Enabled = true;
 
 			if (selectedItem != null)
 			{
