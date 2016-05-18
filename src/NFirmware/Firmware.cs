@@ -43,7 +43,7 @@ namespace NFirmware
 		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
 
-		public bool IsEncrypted { get; private set; }
+		public bool IsEncrypted { get; internal set; }
 
 		[NotNull]
 		public IDictionary<int, FirmwareImageMetadata> Block1Images

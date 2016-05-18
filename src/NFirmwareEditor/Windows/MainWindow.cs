@@ -162,6 +162,12 @@ namespace NFirmwareEditor.Windows
 			SaveDecryptedMenuItem.Enabled = false;
 		}
 
+		private void UpdateOpenedFirmwareInfo()
+		{
+			Text = string.Format("{0} - {1}", Consts.ApplicationTitle, m_firmwareFile);
+			LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, m_firmware.IsEncrypted ? "Encrypted" : "Decrypted");
+		}
+
 		private void OpenFirmware(string firmwareFile, Func<string, Firmware> readFirmwareDelegate)
 		{
 			ResetWorkspace();
@@ -186,12 +192,10 @@ namespace NFirmwareEditor.Windows
 				SaveMenuItem.Enabled = true;
 				SaveEncryptedMenuItem.Enabled = true;
 				SaveDecryptedMenuItem.Enabled = true;
-
-				Text = string.Format("{0} - {1}", Consts.ApplicationTitle, firmwareFile);
-				LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, firmware.IsEncrypted ? "Encrypted" : "Decrypted");
 				StatusLabel.Text = @"Firmware file has been successfully loaded.";
 
-				m_mruFirmwares.Add(firmwareFile);	
+				m_mruFirmwares.Add(firmwareFile);
+				UpdateOpenedFirmwareInfo();
 			}
 			catch (Exception ex)
 			{
@@ -229,6 +233,9 @@ namespace NFirmwareEditor.Windows
 				writeFirmwareDelegate(firmwareFile, m_firmware);
 				m_tabPages.ForEach(x => x.IsDirty = false);
 				StatusLabel.Text = @"Firmware file saved to " + firmwareFile;
+
+				m_firmwareFile = firmwareFile;
+				UpdateOpenedFirmwareInfo();
 			}
 			catch (Exception ex)
 			{
@@ -312,12 +319,20 @@ namespace NFirmwareEditor.Windows
 
 		private void SaveEncryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveEncrypted(filePath, firmware));
+			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) =>
+			{
+				m_loader.SaveEncrypted(filePath, firmware);
+				firmware.IsEncrypted = true;
+			});
 		}
 
 		private void SaveDecryptedMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) => m_loader.SaveDecrypted(filePath, firmware));
+			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) =>
+			{
+				m_loader.SaveDecrypted(filePath, firmware);
+				firmware.IsEncrypted = false;
+			});
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
