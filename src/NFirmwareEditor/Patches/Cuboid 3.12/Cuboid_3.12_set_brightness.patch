@@ -1,0 +1,89 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Set screen brightness" Version="1.0" Author="yii">
+  <Description>
+Установка яркости экрана
+Set the screen brightness
+
+На основе патча от maelstrom2001 для витамина
+Based on the patch by maelstrom2001
+
+
+Значения яркости (brightness values):
+
+50% - 80 (Как в стоке / As in the Stock)
+60% - 9A
+70% - B4
+75% - C0
+80% - CD
+90% - E6
+100% - FF (в патче по умолчанию / default in the patch)
+    
+
+</Description>
+  <Data>
+
+# Установка яркости
+# Set brightness
+
+C86A: 1F - FF ; value
+C880: 0F - FF ; value
+
+
+
+
+# Patch
+# Go to cut-off 1
+4EC0: AF - 07
+4EC1: 20 - F0
+4EC2: FF - D0
+4EC3: F7 - BC
+# Go to cut-off 2
+5172: AF - 07
+5173: 20 - F0
+5174: FF - 82
+5175: F7 - BB
+# Cut-off 1
+C864: FF - 81        
+C865: FF - 20        
+C866: FF - F8        
+C867: 7F - F7        
+C868: 3F - 77        
+C869: 3F - FA        
+C86B: 1F - 20        
+C86C: 0F - F8        
+C86D: 0F - F7        
+C86E: 07 - 74        
+C86F: 07 - FA        
+C870: 07 - AF        
+C871: 07 - 20        
+C872: 03 - F8        
+C873: 03 - F7        
+C874: 03 - 71        
+C875: 03 - FA        
+C876: 03 - F8        
+C877: 03 - F7        
+C878: 03 - 26        
+C879: 03 - BB        
+# Cut-off 2                         
+C87A: 03 - 81        
+C87B: 03 - 20        
+C87C: 07 - F8        
+C87D: 07 - F7        
+C87E: 07 - 6C        
+C87F: 07 - FA        
+C881: 0F - 20        
+C882: 0F - F8        
+C883: 1F - F7        
+C884: 1F - 69        
+C885: 3F - FA        
+C886: 3F - AF        
+C887: 7F - 20        
+C888: FF - F8        
+C889: FF - F7        
+C88A: FF - 66        
+C88B: FF - FA        
+C88C: FF - F8        
+C88D: FF - F7        
+C88E: FF - 74        
+C88F: FE - BC        
+</Data>
+</Patch>

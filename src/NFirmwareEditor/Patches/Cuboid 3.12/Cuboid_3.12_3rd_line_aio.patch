@@ -1,6 +1,6 @@
-﻿<Patch Definition="Cuboid 3.12" Name="3rd Status Line - AIO" Version="1.0" Author="yii">
+﻿<Patch Definition="Cuboid 3.12" Name="3rd Status Line - AIO" Version="1.1" Author="yii">
   <Description>Adds battery voltage, board temperature, saved resistance and realtime measuring to the 3rd line.
-Добавляет на выбор показ фиксированного и реального сопротивления,  температуры платы, выходного напряжения и напряжения батареи в третью строку.
+Добавляет на выбор показ фиксированного и реального сопротивления,  температуры платы, выходного напряжения и напряжения и процент батарей в третью строку.
 
 На основе патча от maelstrom2001 для витамина
 
@@ -13,13 +13,15 @@
 # PCB temperature
 # Realtime output voltage
 # Battery voltage (the smaller of the two)
+# voltage of both batteries
+# Battery percentage
 
 </Description>
 <Data>
 
 # Количество режимов 3-й строки
-1D46: 03 - 08 ; check while loading from dataflash
-4198: 03 - 08 ; menu subroutine
+1D46: 03 - 0A ; check while loading from dataflash
+4198: 03 - 0A ; menu subroutine
 
 # Отключение переключения на AMP при зарядке
 72BA: 39 - 00
@@ -33,57 +35,72 @@
 
 # Новый код
 # Выбор режима
-C9A0: 00 - 01 ; Количество затяжек
+C9A0: 00 - 01 ; Количество затяжек (73A0)
 C9A1: 00 - 28
 C9A2: 00 - 3A
 C9A3: 00 - F4
 C9A4: 00 - B2
 C9A5: 00 - AC
-C9A6: 00 - 02 ; Время парения
+C9A6: 00 - 02 ; Время парения (7326)
 C9A7: 00 - 28
 C9A8: 00 - 3A
 C9A9: 00 - F4
 C9AA: 00 - BD
 C9AB: 00 - AC
-C9AC: 00 - 03 ; Сохраненное сопротивление
+C9AC: 00 - 03 ; Сохраненное сопротивление (CA50)
 C9AD: 00 - 28
 C9AE: 00 - 00
 C9AF: 00 - F0
 C9B0: 00 - 4F
 C9B1: 00 - 80
-C9B2: 00 - 04 ; Текущее сопротивление
+C9B2: 00 - 04 ; Текущее сопротивление (CAC0)
 C9B3: 00 - 28
 C9B4: 00 - 00
 C9B5: 00 - F0
 C9B6: 00 - 84
 C9B7: 00 - 80
-C9B8: 00 - 05 ; Температура
+C9B8: 00 - 05 ; Температура (CA10)
 C9B9: 00 - 28
 C9BA: 00 - 00
 C9BB: 00 - F0
 C9BC: 00 - 29
 C9BD: 00 - 80
-C9BE: 00 - 06 ; Выходное напряжение
+C9BE: 00 - 06 ; Выходное напряжение (CB00)
 C9BF: 00 - 28
 C9C0: 00 - 00
 C9C1: 00 - F0
 C9C2: 00 - 9E
 C9C3: 00 - 80
-C9C4: 00 - 07 ; Напряжение батареи
+C9C4: 00 - 07 ; Напряжение наименьшей батареи (C9D0)
 C9C5: 00 - 28
 C9C6: 00 - 00
 C9C7: 00 - F0
 C9C8: 00 - 03
 C9C9: 00 - 80
-C9CA: 00 - FA ; Амперы
+C9CA: 00 - FF ; 2 новых режима (c890)
 C9CB: 00 - F7
-C9CC: 00 - BD
-C9CD: 00 - BC
-C9CE: 00 - 00
-C9CF: 00 - 00
+C9CC: 00 - 61
+C9CD: 00 - BF
+# 2 новых режима
+C890: FC - 08 ; Напряжение батарей (C8DA)
+C891: F8 - 28
+C892: F0 - 00
+C893: E0 - F0
+C894: 80 - 22
+C895: 00 - 80
+C896: 00 - 09 ; % Батарей (C8A0)
+C897: 00 - 28
+C898: 00 - 00
+C899: 00 - F0
+C89A: 03 - 02
+C89B: 03 - 80
+C89C: 03 - FA ; Амперы (7348)
+C89D: 03 - F7
+C89E: 03 - 54
+C89F: 03 - BD
 
 
-# Напряжение батареи
+# Напряжение наименьшей батареи
 C9D0: 00 - 0B
 C9D1: 00 - 48
 C9D2: 00 - 5C ; BATT pos Y
@@ -466,5 +483,192 @@ CB50: 00 - 00 ; line end
 CB51: 00 - FF
 CB52: 00 - FF
 CB53: 00 - 80
+
+# Напряжение батарей
+C8DA: 00 - 03
+C8DB: 00 - 27
+C8DC: 07 - 0B ; font base
+C8DD: 1F - 24
+C8DE: 3F - 11
+C8DF: FF - 48
+C8E0: FF - CD
+C8E1: FF - E9
+C8E2: FF - 00
+C8E3: FF - 47
+C8E4: FF - 02
+C8E5: FF - 23
+C8E6: FF - 02
+C8E7: FE - 88
+C8E8: FC - 5C ; voltage 1 Y pos
+C8E9: F8 - 21
+C8EA: F0 - 01 ; voltage 1 X pos
+C8EB: F0 - 20
+C8EC: E0 - F8
+C8ED: E0 - F7
+C8EE: C0 - D6
+C8EF: C0 - FD
+C8F0: 80 - 67 ; V 1 charcode
+C8F1: 80 - 22
+C8F2: 80 - 5C ; V 1 Y pos
+C8F3: 80 - 21
+C8F4: 00 - 17 ; V 1 X pos
+C8F5: 00 - 20
+C8F6: 00 - F8
+C8F7: 00 - F7
+C8F8: 00 - 4D
+C8F9: 00 - FD
+C8FA: 00 - 03
+C8FB: 00 - 27
+C8FC: 00 - 0B ; font base
+C8FD: 00 - 24
+C8FE: 80 - 0A
+C8FF: 80 - 48
+C900: 80 - CD
+C901: 80 - E9
+C902: C0 - 00
+C903: C0 - 47
+C904: C0 - 02
+C905: E0 - 23
+C906: E0 - 02
+C907: F0 - 88
+C908: F0 - 5C ; voltage 2 Y pos
+C909: F8 - 21
+C90A: FC - 22 ; voltage 2 X pos
+C90B: FE - 20
+C90C: FF - F8
+C90D: FF - F7
+C90E: FF - C6
+C90F: FF - FD
+C910: FF - 67 ; V 2 charcode
+C911: FF - 22
+C912: FF - 5C ; V 2 Y pos
+C913: 7F - 21
+C914: 3F - 38 ; V 2 X pos
+C915: 1F - 20
+C916: 07 - F8
+C917: 00 - F7
+C918: 00 - 3D
+C919: 00 - FD
+C91A: 00 - FA
+C91B: 00 - F7
+C91C: 00 - 15
+C91D: 00 - BD
+C91E: 00 - 00
+C91F: 00 - 00
+C920: 01 - 00
+C921: 03 - 00
+C922: 07 - 00
+C923: 07 - 00
+C924: 0F - 64
+C925: 1F - 00
+C926: 1F - 00
+C927: 3F - 20
+C928: 7F - 66
+C929: 7F - 00
+C92A: 7F - 00
+C92B: FF - 20
+
+
+# Батарейки в процентах
+C8A0: 03 - 08
+C8A1: 03 - 48
+C8A2: 03 - 5C ; BATT Y pos
+C8A3: 03 - 22
+C8A4: 03 - 00 ; BATT X pos
+C8A5: 01 - 21
+C8A6: 00 - F8
+C8A7: 00 - F7
+C8A8: 00 - C1
+C8A9: 00 - FE
+C8AA: 00 - 04
+C8AB: 00 - 48
+C8AC: 00 - 02
+C8AD: 00 - 78
+C8AE: 00 - 04
+C8AF: 00 - 48
+C8B0: 00 - 01
+C8B1: 00 - 78
+C8B2: 00 - 89
+C8B3: 00 - 18
+C8B4: 00 - 05
+C8B5: 00 - 20
+C8B6: 00 - 01
+C8B7: 00 - FB
+C8B8: 00 - 00
+C8B9: 00 - F2
+C8BA: 00 - 37
+C8BB: 00 - E0
+C8BC: 00 - 4A
+C8BD: 00 - 00
+C8BE: 00 - 00
+C8BF: 00 - 20
+C8C0: 00 - 4B
+C8C1: 00 - 00
+C8C2: 00 - 00
+C8C3: 00 - 20
+C8C4: 00 - C8
+C8C5: 00 - C8
+C8C6: 00 - 00
+C8C7: 00 - 00
+C8C8: 00 - 53 ; B
+C8C9: 01 - 52 ; A
+C8CA: 03 - 65 ; T
+C8CB: 03 - 65 ; T
+C8CC: 03 - 00 ; line end
+
+C92C: FF - 01 ; number length
+C92D: FF - 27
+C92E: FF - 2F ; last digit X pos
+C92F: FF - 20
+C930: FF - 0A ; cmp 10
+C931: FF - 2A
+C932: FF - 05
+C933: FF - DB
+C934: FF - 01 ; inc length by 1
+C935: FF - 37
+C936: FF - 08 ; dec X pos by 8
+C937: FF - 38
+C938: FF - 64 ; cmp 100
+C939: FF - 2A
+C93A: FF - 01
+C93B: FF - D1
+C93C: FF - 01 ; inc length by 1
+C93D: FF - 37
+C93E: FF - 08 ; dec X pos by 8
+C93F: FF - 38
+C940: FF - CD
+C941: FF - E9
+C942: FF - 00
+C943: FF - 47
+C944: FF - 00
+C945: FF - 23
+C946: FF - 5A ; number Y pos
+C947: FF - 21
+C948: 7F - F8
+C949: 7F - F7
+C94A: 3F - A8
+C94B: 3F - FD
+C94C: 1F - AC ; % charcode
+C94D: 1F - 22
+C94E: 0F - 5C ; % Y pos
+C94F: 07 - 21
+C950: 03 - 37 ; % X pos
+C951: 01 - 20
+C952: 00 - F8
+C953: 00 - F7
+C954: 00 - 1F
+C955: 00 - FD
+C956: 00 - FA
+C957: 00 - F7
+C958: 00 - F7
+C959: 00 - BC
+C95A: 00 - 00
+C95B: 00 - 00
+C95C: 00 - 00
+C95D: 00 - 00
+C95E: 00 - 00
+C95F: 00 - 00
+C960: 00 - 00
+C961: 00 - 00
 </Data>
 </Patch>

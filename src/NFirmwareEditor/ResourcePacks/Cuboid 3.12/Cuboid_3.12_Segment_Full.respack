@@ -1,4 +1,4 @@
-﻿<ResourcePack Definition="Cuboid 3.12" Name="Segment Full" Version="1.0" Author="yii">
+﻿<ResourcePack Definition="Cuboid 3.01, Cuboid 3.02, Cuboid 3.11, Cuboid 3.12" Name="Segment Full" Version="1.0" Author="yii">
   <Description>Segment Full</Description>
   <Images>
     <Image Index="01" Width="6" Height="8">

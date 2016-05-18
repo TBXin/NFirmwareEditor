@@ -1,0 +1,103 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Soft power Scroll - 0.5W" Version="1.0" Author="yii">
+  <Description>
+Изменение мощности с интервалом 0,5W. Возможна настройка скоростей.
+
+Changing power 0,5W with an interval. Possible speed setting.
+
+На основе патча от NFirmwareEditor Team для витамина
+
+</Description>
+<Data>
+
+# Управление скоростями
+# Speed control
+
+# Задержка до повтора
+# Repeat Delay
+2E9A: 03 - 04
+2EA4: 03 - 04
+
+
+# Установить порог третий скорости равной порогу второй для запрещения третей скорости
+# или меньше для запрещения второй скорости
+
+# Set the threshold is equal to the third threshold speed to the second speed-thirds of the prohibition
+# Or lower second speed for prohibiting
+
+
+# Shift to the 2nd gear / Порог переключения на 2ю скорость
+6F34: 05 - 0B
+6FB2: 05 - 0B
+# Shift to the 3th gear / Порог переключения на 3ю скорость
+2EAA: 69 - 0B
+
+
+
+
+
+3680: 69 - 00
+3684: 0A - 05
+3693: F0 - F5
+3694: 00 - 05
+3695: EB - FB
+3696: 80 - 00
+3697: 03 - F0
+3698: 4F - 00
+3699: F6 - BF
+369A: FF - 00
+369B: 70 - BF
+369D: EA - BF
+369E: 43 - 00
+369F: 00 - BF
+36A4: 0A - 05
+
+36D2: 69 - 00
+36D6: 0A - 05
+36E5: F0 - F5
+36E6: 00 - 05
+36E7: EB - FB
+36E8: 80 - 00
+36E9: 02 - F0
+36EA: 4F - 00
+36EB: F6 - BF
+36EC: FF - 00
+36ED: 70 - BF
+36EF: EA - BF
+36F0: 42 - 00
+36F1: 00 - BF
+36FA: 0A - 05
+
+381E: 69 - 00
+3822: 0A - 05
+382E: B9 - B1
+3831: F0 - F1
+3832: 00 - 01
+3833: EB - FB
+3834: 80 - 00
+3835: 01 - F0
+3836: 4F - 00
+3837: F6 - BF
+3838: FF - 00
+3839: 70 - BF
+383B: EA - BF
+383C: 41 - 00
+383D: 00 - BF
+3842: 0A - 05
+
+3958: 69 - 00
+395C: 0A - 05
+396B: F0 - F9
+396C: 00 - 09
+396D: EB - FB
+396E: 80 - 00
+396F: 01 - F0
+3970: 4F - 00
+3971: F6 - BF
+3972: FF - 00
+3973: 70 - BF
+3979: EA - BF
+397A: 41 - 00
+397B: 00 - BF
+3984: 0A - 05
+</Data>
+</Patch>

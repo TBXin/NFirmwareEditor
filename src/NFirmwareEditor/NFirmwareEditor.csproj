@@ -374,6 +374,9 @@
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_no_SMART.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_real_res_VW.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_res_no_atom.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -381,6 +384,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_scroll_1W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_set_brightness.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_soft_power_scroll_0.5W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_soft_power_scroll_1W.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_timeout_10_sec.patch">
@@ -500,7 +512,19 @@
     <None Include="Patches\iStick TC100W 1.10\1.10_inc_dec_by_1w.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_inc_soft_power_scroll_0.5w.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_inc_soft_power_scroll_1w.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_res_no_atom.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_set_brightness.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_skip modes.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_timeout_10_sec.patch">

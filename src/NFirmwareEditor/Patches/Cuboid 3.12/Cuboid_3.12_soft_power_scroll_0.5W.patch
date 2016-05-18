@@ -1,0 +1,101 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Soft Power Scroll - 0.5W" Version="1.0" Author="yii">
+  <Description>
+Изменение мощности с интервалом 0,5W. Возможна настройка скоростей.
+
+Changing power 0,5W with an interval. Possible speed setting.
+
+На основе патча от NFirmwareEditor Team для витамина
+</Description>
+  <Data>
+
+
+# Управление скоростями
+# Speed control
+
+
+# Установить порог третий скорости равной порогу второй для запрещения третей скорости
+# или меньше для запрещения второй скорости
+
+# Set the threshold is equal to the third threshold speed to the second speed-thirds of the prohibition
+# Or lower second speed for prohibiting
+
+
+# Shift to the 2nd gear / Порог переключения на 2ю скорость
+979A: 05 - 0C ; threshold
+9820: 05 - 0C ; threshold
+# Shift to the 3th gear / Порог переключения на 3ю скорость
+365A: 69 - 0C ; threshold
+
+
+# Задержка до повтора
+# Repeat Delay
+364A: 03 - 04
+3654: 03 - 04
+
+
+
+413A: 69 - 00
+413E: 0A - 05
+414F: F0 - F1
+4150: 00 - 01
+4151: EB - FB
+4152: 80 - 00
+4153: 01 - F1
+4154: 4F - 00
+4155: F6 - BF
+4156: FF - 00
+4157: 70 - BF
+4159: EA - BF
+415A: 41 - 00
+415B: 00 - BF
+4160: 0A - 05
+
+4200: 69 - 00
+4206: 0A - 05
+4217: F0 - F3
+4218: 00 - 03
+4219: EB - FB
+421A: 80 - 00
+421B: 03 - F0
+421C: 4F - 00
+421D: F6 - BF
+421E: FF - 00
+421F: 70 - BF
+4221: EA - BF
+4222: 43 - 00
+4223: 00 - BF
+4228: 0A - 05
+
+437E: 69 - 00
+4384: 0A - 05
+4395: F0 - F1
+4396: 00 - 01
+4397: EB - FB
+4398: 80 - 00
+4399: 01 - F0
+439A: 4F - 00
+439B: F6 - BF
+439C: FF - 00
+439D: 70 - BF
+439F: EA - BF
+43A0: 41 - 00
+43A1: 00 - BF
+43AA: 0A - 05
+
+44D4: 69 - 00
+44DA: 0A - 05
+44EB: F0 - F3
+44EC: 00 - 03
+44ED: EB - FB
+44EE: 80 - 00
+44EF: 03 - F0
+44F4: 4F - 00
+44F5: F6 - BF
+44F6: FF - 00
+44F7: 70 - BF
+44F9: EA - BF
+44FA: 43 - 00
+44FB: 00 - BF
+4504: 0A - 05
+</Data>
+</Patch>

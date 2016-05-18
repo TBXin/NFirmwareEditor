@@ -1,4 +1,4 @@
-﻿<ResourcePack Definition="Cuboid 3.12" Name="Cuboid 3.12 Big digits" Version="1.0" Author="yii">
+﻿<ResourcePack Definition="Cuboid 3.01, Cuboid 3.02, Cuboid 3.11, Cuboid 3.12" Name="Cuboid 3.12 Big digits" Version="1.0" Author="yii">
   <Description>Большие цифры в стиле неон</Description>
   <Images>
     <Image Index="3D" Width="16" Height="24">

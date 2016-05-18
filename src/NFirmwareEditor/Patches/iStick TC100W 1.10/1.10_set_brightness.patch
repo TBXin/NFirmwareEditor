@@ -1,0 +1,60 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="(fw.ext 2) Set screen brightness" Version="1.0" Author="yii">
+  <Description>
+Установка яркости экрана
+Set the screen brightness
+
+На основе патча от NFirmwareEditor Team для рыксы
+Based on the patch by NFirmwareEditor Team
+
+
+Значения яркости (brightness values):
+
+50% - 80 (Как в стоке / As in the Stock)
+60% - 9A
+70% - B4
+75% - C0
+80% - CD
+90% - E6
+100% - FF (в патче по умолчанию / default in the patch)
+    
+
+</Description>
+  <Data>
+
+# Установка яркости
+# Set brightness
+
+84D2: null - FF
+
+
+
+# Patch
+# Go to cut-off 1
+40EA: FF - 04
+40EB: F7 - F0
+40EC: 8B - EF
+40ED: FF - B9
+# Cut-off 1
+84CC: null - 81
+84CD: null - 20
+84CE: null - FB
+84CF: null - F7
+84D0: null - 99
+84D1: null - FD
+84D3: null - 20
+84D4: null - FB
+84D5: null - F7
+84D6: null - 96
+84D7: null - FD
+84D8: null - AF
+84D9: null - 20
+84DA: null - FB
+84DB: null - F7
+84DC: null - 93
+84DD: null - FD
+84DE: null - FB
+84DF: null - F7
+84E0: null - 06
+84E1: null - BE
+</Data>
+</Patch>

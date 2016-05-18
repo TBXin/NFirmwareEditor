@@ -1,4 +1,4 @@
-﻿<Patch Definition="iStick TC100W 1.10" Name="Saved Coil Erase on No Atomizer Found" Version="1.0" Author="yii">
+﻿<Patch Definition="iStick TC100W 1.10" Name="(fw.ext 1) Saved Coil Erase on No Atomizer Found" Version="1.0" Author="yii">
 <Description>Erasing saved resistance by pressing Fire with out atomizer.
 Сброс сохраненного сопротивления атомайзера при нажатии Fire без атомайзера</Description>
 <Data>

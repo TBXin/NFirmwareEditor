@@ -1,0 +1,13 @@
+﻿<Patch Definition="Cuboid 3.12" Name="Realtime COIL in POWER" Version="1.0" Author="yii">
+  <Description>Display realtime resistance in POWER mode, same as in BYPASS.
+Отображение реального сопротивления в режиме VW (а не последнего после накручивания атомайзера).
+
+На основе патча maelstrom2001
+
+</Description>
+  <Data>
+# eVic_VTC_Mini_V3.01.bin #
+# Realtime resistance in POWER #
+7212: 07 - 04
+</Data>
+</Patch>
