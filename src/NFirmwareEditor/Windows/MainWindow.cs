@@ -64,6 +64,7 @@ namespace NFirmwareEditor.Windows
 			m_definitions = m_firmwareDefinitionManager.Load();
 			m_configuration = m_configurationManager.Load();
 			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
+			m_patchManager.InitializeStorage(m_definitions);
 
 			InitializeApplicationWindow();
 			InitializeOpenWithSpecifiedDefinitionMenu();

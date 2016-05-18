@@ -17,10 +17,43 @@ namespace NFirmwareEditor.Managers
 	{
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
+		public void InitializeStorage([NotNull] IEnumerable<FirmwareDefinition> definitions)
+		{
+			if (definitions == null) throw new ArgumentNullException("definitions");
+
+			var patchDirEx = Safe.Execute(() =>
+			{
+				if (!Directory.Exists(Paths.PatchDirectory))
+				{
+					Directory.CreateDirectory(Paths.PatchDirectory);
+				}
+			});
+			if (patchDirEx != null)
+			{
+				s_logger.Warn(patchDirEx, "An error occured during creating primary pathes directory '{0}'.", Paths.PatchDirectory);
+				return;
+			}
+
+			foreach (var definition in definitions)
+			{
+				var definitionPatchDir = Path.Combine(Paths.PatchDirectory, definition.Name);
+				var ex = Safe.Execute(() =>
+				{
+					if (!Directory.Exists(definitionPatchDir))
+					{
+						Directory.CreateDirectory(definitionPatchDir);
+					}
+				});
+
+				if (ex != null)
+				{
+					s_logger.Warn(ex, "An error occured during creating patches directory '{0}'.", definitionPatchDir);
+				}
+			}
+		}
+
 		public IEnumerable<Patch> LoadAll()
 		{
-			if (!Directory.Exists(Paths.PatchDirectory)) Directory.CreateDirectory(Paths.PatchDirectory);
-
 			var result = new List<Patch>();
 			var files = Directory.GetFiles(Paths.PatchDirectory, Consts.PatchFileExtension, SearchOption.AllDirectories);
 			foreach (var file in files)

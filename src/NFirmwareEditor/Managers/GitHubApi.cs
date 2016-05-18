@@ -51,7 +51,7 @@ namespace NFirmwareEditor.Managers
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during retrieving files.");
+				s_logger.Warn(ex, "An error occurred during retrieving rep files.");
 				return null;
 			}
 		}
