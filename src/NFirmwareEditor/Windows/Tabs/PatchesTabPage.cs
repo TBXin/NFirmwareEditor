@@ -134,7 +134,11 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void CheckForUpdatesWithUserInteraction(bool notifyWhenNoUpdatesAvailable)
 		{
-			this.UpdateUI(() => CheckForUpdatesButton.Enabled = false);
+			this.UpdateUI(() =>
+			{
+				CheckForUpdatesButton.Enabled = false;
+				PatchListView.Focus();
+			});
 			var checkForUpdates = new Action(() =>
 			{
 				var newPatches = CheckForUpdates();
