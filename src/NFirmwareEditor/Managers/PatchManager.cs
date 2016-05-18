@@ -52,10 +52,15 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		public IEnumerable<Patch> LoadAll()
+		public IEnumerable<Patch> LoadPatchesForFirmware([NotNull] FirmwareDefinition definition)
 		{
+			if (definition == null) throw new ArgumentNullException("definition");
+
 			var result = new List<Patch>();
-			var files = Directory.GetFiles(Paths.PatchDirectory, Consts.PatchFileExtension, SearchOption.AllDirectories);
+			var pathesLocation = Path.Combine(Paths.PatchDirectory, definition.Name);
+			if (!Directory.Exists(pathesLocation)) return result;
+
+			var files = Directory.GetFiles(pathesLocation, Consts.PatchFileExtension, SearchOption.AllDirectories);
 			foreach (var file in files)
 			{
 				var serializer = new XmlSerializer(typeof(Patch));
@@ -66,7 +71,9 @@ namespace NFirmwareEditor.Managers
 					{
 						patch = serializer.Deserialize(fs) as Patch;
 					}
+
 					if (patch == null) continue;
+					if (!string.Equals(patch.Definition, definition.Name)) continue;
 
 					patch.Data = ParseDiff(patch.DataString);
 					patch.FilePath = file;

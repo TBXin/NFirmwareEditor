@@ -18,10 +18,8 @@ namespace NFirmwareEditor.Windows.Tabs
 	{
 		private readonly PatchManager m_patchManager;
 
-		private IEnumerable<Patch> m_allPatches;
-		private IEnumerable<Patch> m_suitablePatches;
-
 		private Firmware m_firmware;
+		private IEnumerable<Patch> m_suitablePatches;
 		private IEditorTabPageHost m_host;
 
 		public PatchesTabPage([NotNull] PatchManager patchManager)
@@ -70,7 +68,6 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
 			m_host = host;
-			m_allPatches = m_patchManager.LoadAll();
 		}
 
 		public void OnActivate()
@@ -82,8 +79,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnFirmwareLoaded(Firmware firmware)
 		{
 			m_firmware = firmware;
+			m_suitablePatches = m_patchManager.LoadPatchesForFirmware(firmware.Definition).OrderBy(x => x.Name);
 
-			m_suitablePatches = m_allPatches.Where(x => string.Equals(x.Definition, m_firmware.Definition.Name)).OrderBy(x => x.Name);
 			PatchListView.Fill(m_suitablePatches.Select(patch =>
 			{
 				patch.IsApplied = m_patchManager.IsPatchApplied(patch, m_firmware);
@@ -239,7 +236,6 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void ReloadPatchesButton_Click(object sender, EventArgs e)
 		{
 			var selectedItem = SelectedPatch;
-			m_allPatches = m_patchManager.LoadAll();
 
 			OnWorkspaceReset();
 			OnFirmwareLoaded(m_firmware);
