@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using JetBrains.Annotations;
 using NLog;
@@ -39,9 +40,29 @@ namespace NFirmwareEditor.Managers
 		{
 			s_logger.Info("Checking for updates...");
 			var latestRelease = GitHubApi.GetLatestRelease();
-			if (latestRelease == null || string.Equals(m_currentVersion, latestRelease.Tag) || latestRelease.Assets.Length == 0)
+			if (latestRelease == null || latestRelease.Assets.Length == 0)
 			{
-				s_logger.Info("No updates available.");
+				s_logger.Info("No updates found.");
+				return null;
+			}
+
+			float currentVersion;
+			float newVersion;
+
+			var v1 = float.TryParse(m_currentVersion, NumberStyles.Float, CultureInfo.InvariantCulture, out currentVersion);
+			var v2 = float.TryParse(latestRelease.Tag, NumberStyles.Float, CultureInfo.InvariantCulture, out newVersion);
+
+			if (v1 == false || v2 == false)
+			{
+				if (string.Equals(m_currentVersion, latestRelease.Tag))
+				{
+					s_logger.Info("Your are using latest version (string checking).");
+					return null;
+				}
+			}
+			else if (currentVersion >= newVersion)
+			{
+				s_logger.Info("Your are using latest version (float checking).");
 				return null;
 			}
 
