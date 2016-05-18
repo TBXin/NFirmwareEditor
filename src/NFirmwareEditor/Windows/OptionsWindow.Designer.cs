@@ -34,6 +34,7 @@
 			this.SettingsTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.CheckForPatchesUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.CheckForApplicationUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
 			this.BackupModeComboBox = new System.Windows.Forms.ComboBox();
@@ -41,7 +42,6 @@
 			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
 			this.ImageEditorModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
-			this.CheckForPatchesUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SettingsTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
@@ -62,7 +62,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 244);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 243);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(494, 39);
@@ -100,7 +100,7 @@
 			this.SettingsTabControl.Location = new System.Drawing.Point(3, 3);
 			this.SettingsTabControl.Name = "SettingsTabControl";
 			this.SettingsTabControl.SelectedIndex = 0;
-			this.SettingsTabControl.Size = new System.Drawing.Size(490, 239);
+			this.SettingsTabControl.Size = new System.Drawing.Size(490, 238);
 			this.SettingsTabControl.TabIndex = 2;
 			// 
 			// GeneralTabPage
@@ -111,7 +111,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(482, 213);
+			this.GeneralTabPage.Size = new System.Drawing.Size(482, 212);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "Application";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -128,10 +128,20 @@
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(0, 130);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(480, 82);
+			this.groupPanel1.Size = new System.Drawing.Size(480, 81);
 			this.groupPanel1.TabIndex = 25;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Updates:";
+			// 
+			// CheckForPatchesUpdatesCheckBox
+			// 
+			this.CheckForPatchesUpdatesCheckBox.AutoSize = true;
+			this.CheckForPatchesUpdatesCheckBox.Location = new System.Drawing.Point(9, 59);
+			this.CheckForPatchesUpdatesCheckBox.Name = "CheckForPatchesUpdatesCheckBox";
+			this.CheckForPatchesUpdatesCheckBox.Size = new System.Drawing.Size(169, 17);
+			this.CheckForPatchesUpdatesCheckBox.TabIndex = 1;
+			this.CheckForPatchesUpdatesCheckBox.Text = "Checking for patches updates";
+			this.CheckForPatchesUpdatesCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// CheckForApplicationUpdatesCheckBox
 			// 
@@ -215,21 +225,11 @@
 			this.label6.TabIndex = 22;
 			this.label6.Text = "Mode:";
 			// 
-			// CheckForPatchesUpdatesCheckBox
-			// 
-			this.CheckForPatchesUpdatesCheckBox.AutoSize = true;
-			this.CheckForPatchesUpdatesCheckBox.Location = new System.Drawing.Point(9, 59);
-			this.CheckForPatchesUpdatesCheckBox.Name = "CheckForPatchesUpdatesCheckBox";
-			this.CheckForPatchesUpdatesCheckBox.Size = new System.Drawing.Size(169, 17);
-			this.CheckForPatchesUpdatesCheckBox.TabIndex = 1;
-			this.CheckForPatchesUpdatesCheckBox.Text = "Checking for patches updates";
-			this.CheckForPatchesUpdatesCheckBox.UseVisualStyleBackColor = true;
-			// 
 			// OptionsWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(494, 283);
+			this.ClientSize = new System.Drawing.Size(494, 282);
 			this.Controls.Add(this.SettingsTabControl);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
