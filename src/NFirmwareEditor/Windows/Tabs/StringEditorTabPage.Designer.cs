@@ -91,6 +91,7 @@
 			// BlockTypeComboBox
 			// 
 			this.BlockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.BlockTypeComboBox.Enabled = false;
 			this.BlockTypeComboBox.FormattingEnabled = true;
 			this.BlockTypeComboBox.Location = new System.Drawing.Point(80, 5);
 			this.BlockTypeComboBox.Name = "BlockTypeComboBox";
