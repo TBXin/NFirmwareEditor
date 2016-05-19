@@ -383,9 +383,6 @@
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_res_unlock.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_scroll_1W.patch">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_set_brightness.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
