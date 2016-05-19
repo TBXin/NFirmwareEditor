@@ -54,9 +54,22 @@ namespace NFirmwareEditor.Managers
 					return fileInfos;
 				}
 			}
+			catch (WebException ex)
+			{
+				var httpWebresponse = ex.Response as HttpWebResponse;
+				if (httpWebresponse == null)
+				{
+					s_logger.Warn(ex, "An unexpected response received. Path: '{0}'.", relativePath);
+				}
+				else if (httpWebresponse.StatusCode == HttpStatusCode.NotFound)
+				{
+					s_logger.Info(ex, "Requested repository directory '{0}' not found.", relativePath);
+				}
+				return null;
+			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during retrieving rep files.");
+				s_logger.Warn(ex, "An error occurred during retrieving rep files from '{0}'.", relativePath);
 				return null;
 			}
 		}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -168,7 +169,9 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			var patchesInRepository = GitHubApi.GetFiles("Patches/" + m_firmware.Definition.Name);
 			return patchesInRepository != null
-				? patchesInRepository.Where(rp => m_suitablePatches.FirstOrDefault(sp => string.Equals(rp.Name, sp.FileName)) == null).ToList()
+				? patchesInRepository
+					.Where(x => new FileInfo(x.Name).Extension == Consts.PatchFileExtensionWoAsterisk)
+					.Where(rp => m_suitablePatches.FirstOrDefault(sp => string.Equals(rp.Name, sp.FileName)) == null).ToList()
 				: null;
 		}
 
