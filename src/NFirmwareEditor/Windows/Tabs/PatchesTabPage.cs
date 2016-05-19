@@ -169,10 +169,19 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			var patchesInRepository = GitHubApi.GetFiles("Patches/" + m_firmware.Definition.Name);
 			return patchesInRepository != null
-				? patchesInRepository
-					.Where(x => new FileInfo(x.Name).Extension == Consts.PatchFileExtensionWoAsterisk)
-					.Where(rp => m_suitablePatches.FirstOrDefault(sp => string.Equals(rp.Name, sp.FileName)) == null).ToList()
+				? patchesInRepository.Where(FileExtensionPredicate).Where(UpdatedFilePredicate).ToList()
 				: null;
+		}
+
+		private static bool FileExtensionPredicate(GitHubApi.GitHubFileInfo fileInfo)
+		{
+			return new FileInfo(fileInfo.Name).Extension == Consts.PatchFileExtensionWoAsterisk;
+		}
+
+		private bool UpdatedFilePredicate(GitHubApi.GitHubFileInfo fileInfo)
+		{
+			var existedPatch = m_suitablePatches.FirstOrDefault(sp => string.Equals(fileInfo.Name, sp.FileName));
+			return existedPatch == null || !string.Equals(existedPatch.Sha, fileInfo.Sha);
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)
