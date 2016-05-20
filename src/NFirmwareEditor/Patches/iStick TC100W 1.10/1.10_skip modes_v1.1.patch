@@ -1,0 +1,95 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="Skip Modes" Version="1.1" Author="yii">
+  <Description>
+Убирает неиспользуемые режимы из меню. Отредактируйте файл патча, чтобы выбрать скрытые режимы.
+Skip non-used modes. Edit patch file to select which modes should be hidden.
+
+Без редактирования патча доступны все режимы
+Without editing the patch available all modes
+
+Режим Power отключить нельзя
+Power mode can not be disabled
+
+На основе патча от maelstrom2001 для витамина
+Based on the patch by maelstrom2001
+
+00 - режим включен (mode enabled)
+01 - режим отключен (mode disabled)
+
+
+</Description>
+  <Data>
+
+# Управление режимами (modes control)
+
+84EC: * - 00 ; TC NI    
+84F2: * - 00 ; TC TI    
+84F8: * - 00 ; TC SS
+84FE: * - 00 ; TC TCR (m1-m3)
+850A: * - 00 ; BYPASS   
+
+
+# Branch to skip #
+4698: 40 - 03
+4699: 1C - F0
+469A: 26 - 39
+469B: 4A - BF
+469C: C0 - 25
+469D: B2 - 4A
+# Skip modes#
+84E2: * - 06                              
+84E3: * - 28                              
+84E4: * - 00                              
+84E5: * - D3                              
+84E6: * - 00                              
+84E7: * - 20                              
+84E8: * - 00                               
+84E9: * - 28                              
+84EA: * - 00                              
+84EB: * - D1                              
+84ED: * - 30                              
+84EE: * - 01                              
+84EF: * - 28                              
+84F0: * - 00                              
+84F1: * - D1                              
+84F3: * - 30                              
+84F4: * - 02                              
+84F5: * - 28                              
+84F6: * - 00                              
+84F7: * - D1                              
+84F9: * - 30                              
+84FA: * - 03                              
+84FB: * - 28                              
+84FC: * - 00                              
+84FD: * - D1                              
+84FF: * - 30                              
+8500: * - 04                              
+8501: * - 28                               
+8502: * - 00                              
+8503: * - D1                              
+8504: * - 00
+8505: * - 30                              
+8506: * - 05                              
+8507: * - 28                              
+8508: * - 00                              
+8509: * - D1                              
+850B: * - 30                              
+850C: * - 70                              
+850D: * - 47                              
+850E: * - 40
+850F: * - 1C 
+8510: * - C0
+8511: * - B2                            
+8512: * - FF                              
+8513: * - F7                              
+8514: * - E6                              
+8515: * - FF      
+8516: * - FF      
+8517: * - F7      
+8518: * - E4      
+8519: * - FF      
+851A: * - FC      
+851B: * - F7      
+851C: * - BF      
+851D: * - B8      
+</Data>
+</Patch>

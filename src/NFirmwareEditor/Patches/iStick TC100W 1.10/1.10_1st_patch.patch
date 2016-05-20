@@ -1,0 +1,29 @@
+﻿<Patch Definition="iStick TC100W 1.10" Name="(1st patch) - Hide unused glifs" Version="1.0" Author="yii">
+<Description>
+Скрывает символы, которые заняты патчами. Обязателен для применения!!! Устанавливать ДО установки ресурспаков.
+
+Hides characters who are busy patch. Required for use!!! Install it before install ResursPacks.
+</Description>
+<Data>
+7F54: 40 - 00
+7F55: 74 - 00
+7F58: 82 - 00
+7F59: 74 - 00
+7F5C: C4 - 00
+7F5D: 74 - 00
+7F60: 06 - 00
+7F61: 75 - 00
+7F64: 48 - 00
+7F65: 75 - 00
+7F68: 8A - 00
+7F69: 75 - 00
+7F6C: CC - 00
+7F6D: 75 - 00
+7F70: 0E - 00
+7F71: 76 - 00
+7F74: 50 - 00
+7F75: 76 - 00
+7F78: 92 - 00
+7F79: 76 - 00
+</Data>
+</Patch>

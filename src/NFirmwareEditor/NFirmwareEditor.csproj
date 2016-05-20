@@ -500,6 +500,9 @@
     <None Include="Patches\Evic VTC Mini 3.01\3.01_VTC2Presa75.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_1st_patch.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_3v_cutt_off.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -518,10 +521,19 @@
     <None Include="Patches\iStick TC100W 1.10\1.10_res_no_atom.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_res_no_atom_v1.1.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_set_brightness.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_set_brightness_v1.1.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_skip modes.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick TC100W 1.10\1.10_skip modes_v1.1.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_timeout_10_sec.patch">
