@@ -1,0 +1,19 @@
+﻿<Patch Definition="RX200 3.10" Name="Power Mode Bug Fix" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Fix dropping power.
+Исправление самопроизвольного снижения мощности в режиме вариватта.</Description>
+  <Data>
+000012D0: 40 - 01
+000012D1: 43 - 48
+000012D2: 0A - 00
+000012D3: 21 - 8A
+000012D4: B0 - 02
+000012D5: FB - E0
+000012D6: F1 - 00
+000012D7: F0 - BF
+000012D8: B0 - 88
+000012D9: FB - 02
+000012DA: F2 - 00
+000012DB: F0 - 20
+000077D4: 00 - 01
+</Data>
+</Patch>

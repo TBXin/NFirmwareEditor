@@ -323,6 +323,9 @@
     <None Include="Patches\Cuboid 3.02\3.02_pwrreal.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 3.02\3.02_pwr_bugfix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Cuboid 3.02\3.02_scroll.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -374,6 +377,9 @@
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_no_SMART.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 3.12\Cuboid_3.12_pwr_bugfix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Cuboid 3.12\Cuboid_3.12_real_res_VW.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -399,6 +405,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Cuboid 3.13\Cuboid_3.13_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.13\Cuboid_3.13_pwr_bugfix.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\Cuboid 3.13\Cuboid_3.13_scroll_1W.patch">
@@ -609,6 +618,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_brightness75.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\RX200 3.10\3.10_pwr_bugfix.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_splash.patch">

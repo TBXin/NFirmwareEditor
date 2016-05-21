@@ -1,0 +1,19 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Power Mode Bug Fix" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Fix dropping power.
+Исправление самопроизвольного снижения мощности в режиме вариватта.</Description>
+  <Data>
+00001208: 40 - 01
+00001209: 43 - 48
+0000120A: 0A - 00
+0000120B: 21 - 8A
+0000120C: B0 - 02
+0000120D: FB - E0
+0000120E: F1 - 00
+0000120F: F0 - BF
+00001210: B0 - 88
+00001211: FB - 02
+00001212: F2 - 00
+00001213: F0 - 20
+00009676: 00 - 01
+</Data>
+</Patch>
