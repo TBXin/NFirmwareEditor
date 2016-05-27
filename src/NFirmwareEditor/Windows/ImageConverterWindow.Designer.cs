@@ -49,6 +49,13 @@
 			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
 			this.label6 = new System.Windows.Forms.Label();
 			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ConversionTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.label7 = new System.Windows.Forms.Label();
+			this.ConversionContainerPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.label9 = new System.Windows.Forms.Label();
+			this.ThresholdUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label8 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NewHeightUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NewWidthUpDown)).BeginInit();
@@ -58,6 +65,9 @@
 			this.ResizeContainerPanel.SuspendLayout();
 			this.borderedPanel4.SuspendLayout();
 			this.borderedPanel6.SuspendLayout();
+			this.borderedPanel2.SuspendLayout();
+			this.ConversionContainerPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThresholdUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ControlBorderedPanel
@@ -72,7 +82,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 322);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 382);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(384, 39);
@@ -86,7 +96,7 @@
 			this.OkButton.Location = new System.Drawing.Point(174, 5);
 			this.OkButton.Name = "OkButton";
 			this.OkButton.Size = new System.Drawing.Size(100, 30);
-			this.OkButton.TabIndex = 7;
+			this.OkButton.TabIndex = 0;
 			this.OkButton.Text = "Save bitmap";
 			this.OkButton.UseVisualStyleBackColor = true;
 			// 
@@ -97,7 +107,7 @@
 			this.CancelButton.Location = new System.Drawing.Point(280, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 30);
-			this.CancelButton.TabIndex = 8;
+			this.CancelButton.TabIndex = 1;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
@@ -116,7 +126,7 @@
 			this.SelectSourceButton.Location = new System.Drawing.Point(298, 3);
 			this.SelectSourceButton.Name = "SelectSourceButton";
 			this.SelectSourceButton.Size = new System.Drawing.Size(75, 23);
-			this.SelectSourceButton.TabIndex = 13;
+			this.SelectSourceButton.TabIndex = 0;
 			this.SelectSourceButton.Text = "Select";
 			this.SelectSourceButton.UseVisualStyleBackColor = true;
 			// 
@@ -137,7 +147,7 @@
 			this.JoyetechSizeButton.Location = new System.Drawing.Point(298, 3);
 			this.JoyetechSizeButton.Name = "JoyetechSizeButton";
 			this.JoyetechSizeButton.Size = new System.Drawing.Size(75, 23);
-			this.JoyetechSizeButton.TabIndex = 12;
+			this.JoyetechSizeButton.TabIndex = 2;
 			this.JoyetechSizeButton.Text = "64x40";
 			this.JoyetechSizeButton.UseVisualStyleBackColor = true;
 			// 
@@ -156,7 +166,7 @@
             0});
 			this.NewHeightUpDown.Name = "NewHeightUpDown";
 			this.NewHeightUpDown.Size = new System.Drawing.Size(50, 21);
-			this.NewHeightUpDown.TabIndex = 9;
+			this.NewHeightUpDown.TabIndex = 1;
 			this.NewHeightUpDown.Value = new decimal(new int[] {
             8,
             0,
@@ -196,7 +206,7 @@
             0});
 			this.NewWidthUpDown.Name = "NewWidthUpDown";
 			this.NewWidthUpDown.Size = new System.Drawing.Size(50, 21);
-			this.NewWidthUpDown.TabIndex = 8;
+			this.NewWidthUpDown.TabIndex = 0;
 			this.NewWidthUpDown.Value = new decimal(new int[] {
             8,
             0,
@@ -217,10 +227,10 @@
 			this.borderedPanel3.BorderWidth = 1F;
 			this.borderedPanel3.Controls.Add(this.label2);
 			this.borderedPanel3.Controls.Add(this.borderedPanel5);
-			this.borderedPanel3.Location = new System.Drawing.Point(3, 133);
+			this.borderedPanel3.Location = new System.Drawing.Point(3, 198);
 			this.borderedPanel3.Name = "borderedPanel3";
 			this.borderedPanel3.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel3.Size = new System.Drawing.Size(378, 186);
+			this.borderedPanel3.Size = new System.Drawing.Size(378, 181);
 			this.borderedPanel3.TabIndex = 10;
 			this.borderedPanel3.Text = "borderedPanel3";
 			// 
@@ -249,7 +259,7 @@
 			this.borderedPanel5.Location = new System.Drawing.Point(1, 29);
 			this.borderedPanel5.Name = "borderedPanel5";
 			this.borderedPanel5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel5.Size = new System.Drawing.Size(376, 156);
+			this.borderedPanel5.Size = new System.Drawing.Size(376, 151);
 			this.borderedPanel5.TabIndex = 4;
 			this.borderedPanel5.Text = "borderedPanel5";
 			// 
@@ -259,7 +269,7 @@
 			this.ImagePreviewSurface.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ImagePreviewSurface.Location = new System.Drawing.Point(0, 1);
 			this.ImagePreviewSurface.Name = "ImagePreviewSurface";
-			this.ImagePreviewSurface.Size = new System.Drawing.Size(376, 155);
+			this.ImagePreviewSurface.Size = new System.Drawing.Size(376, 150);
 			this.ImagePreviewSurface.TabIndex = 0;
 			this.ImagePreviewSurface.Text = "drawingSurface1";
 			// 
@@ -280,7 +290,7 @@
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
 			this.borderedPanel1.Size = new System.Drawing.Size(378, 59);
-			this.borderedPanel1.TabIndex = 11;
+			this.borderedPanel1.TabIndex = 1;
 			this.borderedPanel1.Text = "borderedPanel1";
 			// 
 			// label5
@@ -334,7 +344,7 @@
 			this.borderedPanel4.Name = "borderedPanel4";
 			this.borderedPanel4.Padding = new System.Windows.Forms.Padding(1);
 			this.borderedPanel4.Size = new System.Drawing.Size(378, 59);
-			this.borderedPanel4.TabIndex = 12;
+			this.borderedPanel4.TabIndex = 0;
 			this.borderedPanel4.Text = "borderedPanel4";
 			// 
 			// label6
@@ -368,11 +378,117 @@
 			this.borderedPanel6.TabIndex = 4;
 			this.borderedPanel6.Text = "borderedPanel6";
 			// 
+			// ConversionTypeComboBox
+			// 
+			this.ConversionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ConversionTypeComboBox.FormattingEnabled = true;
+			this.ConversionTypeComboBox.Location = new System.Drawing.Point(52, 4);
+			this.ConversionTypeComboBox.Name = "ConversionTypeComboBox";
+			this.ConversionTypeComboBox.Size = new System.Drawing.Size(154, 21);
+			this.ConversionTypeComboBox.TabIndex = 0;
+			// 
+			// borderedPanel2
+			// 
+			this.borderedPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.borderedPanel2.BackColor = System.Drawing.Color.White;
+			this.borderedPanel2.BorderBottom = true;
+			this.borderedPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel2.BorderLeft = true;
+			this.borderedPanel2.BorderRight = true;
+			this.borderedPanel2.BorderTop = true;
+			this.borderedPanel2.BorderWidth = 1F;
+			this.borderedPanel2.Controls.Add(this.label7);
+			this.borderedPanel2.Controls.Add(this.ConversionContainerPanel);
+			this.borderedPanel2.Location = new System.Drawing.Point(3, 133);
+			this.borderedPanel2.Name = "borderedPanel2";
+			this.borderedPanel2.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel2.Size = new System.Drawing.Size(378, 59);
+			this.borderedPanel2.TabIndex = 2;
+			this.borderedPanel2.Text = "borderedPanel2";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(4, 8);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(65, 13);
+			this.label7.TabIndex = 5;
+			this.label7.Text = "Conversion:";
+			// 
+			// ConversionContainerPanel
+			// 
+			this.ConversionContainerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.ConversionContainerPanel.BackColor = System.Drawing.SystemColors.Control;
+			this.ConversionContainerPanel.BorderBottom = false;
+			this.ConversionContainerPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ConversionContainerPanel.BorderLeft = false;
+			this.ConversionContainerPanel.BorderRight = false;
+			this.ConversionContainerPanel.BorderTop = true;
+			this.ConversionContainerPanel.BorderWidth = 1F;
+			this.ConversionContainerPanel.Controls.Add(this.label9);
+			this.ConversionContainerPanel.Controls.Add(this.ThresholdUpDown);
+			this.ConversionContainerPanel.Controls.Add(this.ConversionTypeComboBox);
+			this.ConversionContainerPanel.Controls.Add(this.label8);
+			this.ConversionContainerPanel.Enabled = false;
+			this.ConversionContainerPanel.Location = new System.Drawing.Point(1, 29);
+			this.ConversionContainerPanel.Name = "ConversionContainerPanel";
+			this.ConversionContainerPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.ConversionContainerPanel.Size = new System.Drawing.Size(376, 29);
+			this.ConversionContainerPanel.TabIndex = 4;
+			this.ConversionContainerPanel.Text = "borderedPanel2";
+			// 
+			// label9
+			// 
+			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(259, 7);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(58, 13);
+			this.label9.TabIndex = 13;
+			this.label9.Text = "Threshold:";
+			// 
+			// ThresholdUpDown
+			// 
+			this.ThresholdUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ThresholdUpDown.Enabled = false;
+			this.ThresholdUpDown.Location = new System.Drawing.Point(323, 4);
+			this.ThresholdUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.ThresholdUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.ThresholdUpDown.Name = "ThresholdUpDown";
+			this.ThresholdUpDown.Size = new System.Drawing.Size(50, 21);
+			this.ThresholdUpDown.TabIndex = 1;
+			this.ThresholdUpDown.Value = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(9, 7);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(35, 13);
+			this.label8.TabIndex = 10;
+			this.label8.Text = "Type:";
+			// 
 			// ImageConverterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(384, 361);
+			this.ClientSize = new System.Drawing.Size(384, 421);
+			this.Controls.Add(this.borderedPanel2);
 			this.Controls.Add(this.borderedPanel4);
 			this.Controls.Add(this.borderedPanel1);
 			this.Controls.Add(this.borderedPanel3);
@@ -397,6 +513,11 @@
 			this.borderedPanel4.PerformLayout();
 			this.borderedPanel6.ResumeLayout(false);
 			this.borderedPanel6.PerformLayout();
+			this.borderedPanel2.ResumeLayout(false);
+			this.borderedPanel2.PerformLayout();
+			this.ConversionContainerPanel.ResumeLayout(false);
+			this.ConversionContainerPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThresholdUpDown)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -424,5 +545,12 @@
 		private UI.BorderedPanel borderedPanel4;
 		private System.Windows.Forms.Label label6;
 		private UI.BorderedPanel borderedPanel6;
+		private System.Windows.Forms.ComboBox ConversionTypeComboBox;
+		private UI.BorderedPanel borderedPanel2;
+		private System.Windows.Forms.Label label7;
+		private UI.BorderedPanel ConversionContainerPanel;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.NumericUpDown ThresholdUpDown;
 	}
 }

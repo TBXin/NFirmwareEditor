@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
@@ -18,15 +19,15 @@ namespace NFirmwareEditor.Windows
 
 			ImageEditorModeComboBox.Items.AddRange(new object[]
 			{
-				new NamedComboBoxItem<ImageEditorMouseMode>("LMB sets the pixel, RMB resets", ImageEditorMouseMode.LeftSetRightUnset),
-				new NamedComboBoxItem<ImageEditorMouseMode>("LMB sets or resets the pixel", ImageEditorMouseMode.LeftSetUnset)
+				new NamedItemContainer<ImageEditorMouseMode>("LMB sets the pixel, RMB resets", ImageEditorMouseMode.LeftSetRightUnset),
+				new NamedItemContainer<ImageEditorMouseMode>("LMB sets or resets the pixel", ImageEditorMouseMode.LeftSetUnset)
 			});
 
 			BackupModeComboBox.Items.AddRange(new object[]
 			{
-				new NamedComboBoxItem<BackupCreationMode>("Disabled (do not create backups)", BackupCreationMode.Disabled),
-				new NamedComboBoxItem<BackupCreationMode>("Simple (overwrites backup file on each save)", BackupCreationMode.Simple),
-				new NamedComboBoxItem<BackupCreationMode>("Extended (stores backups with unique names in the separate directory)", BackupCreationMode.Extended)
+				new NamedItemContainer<BackupCreationMode>("Disabled (do not create backups)", BackupCreationMode.Disabled),
+				new NamedItemContainer<BackupCreationMode>("Simple (overwrites backup file on each save)", BackupCreationMode.Simple),
+				new NamedItemContainer<BackupCreationMode>("Extended (stores backups with unique names in the separate directory)", BackupCreationMode.Extended)
 			});
 
 			OkButton.Click += OkButton_Click;
@@ -42,14 +43,14 @@ namespace NFirmwareEditor.Windows
 
 		private void LoadSettings()
 		{
-			foreach (var item in ImageEditorModeComboBox.Items.Cast<NamedComboBoxItem<ImageEditorMouseMode>>())
+			foreach (var item in ImageEditorModeComboBox.Items.Cast<NamedItemContainer<ImageEditorMouseMode>>())
 			{
 				if (item.Data != m_configuration.ImageEditorMouseMode) continue;
 
 				ImageEditorModeComboBox.SelectedItem = item;
 				break;
 			}
-			foreach (var item in BackupModeComboBox.Items.Cast<NamedComboBoxItem<BackupCreationMode>>())
+			foreach (var item in BackupModeComboBox.Items.Cast<NamedItemContainer<BackupCreationMode>>())
 			{
 				if (item.Data != m_configuration.BackupCreationMode) continue;
 
@@ -62,12 +63,12 @@ namespace NFirmwareEditor.Windows
 
 		private void SaveSettings()
 		{
-			var editorModeItem = ImageEditorModeComboBox.SelectedItem as NamedComboBoxItem<ImageEditorMouseMode>;
+			var editorModeItem = ImageEditorModeComboBox.SelectedItem as NamedItemContainer<ImageEditorMouseMode>;
 			if (editorModeItem != null)
 			{
 				m_configuration.ImageEditorMouseMode = editorModeItem.Data;
 			}
-			var backupModeItem = BackupModeComboBox.SelectedItem as NamedComboBoxItem<BackupCreationMode>;
+			var backupModeItem = BackupModeComboBox.SelectedItem as NamedItemContainer<BackupCreationMode>;
 			if (backupModeItem != null)
 			{
 				m_configuration.BackupCreationMode = backupModeItem.Data;
@@ -80,26 +81,6 @@ namespace NFirmwareEditor.Windows
 		{
 			SaveSettings();
 			DialogResult = DialogResult.OK;
-		}
-
-		private class NamedComboBoxItem<T>
-		{
-			public NamedComboBoxItem(string name, T data)
-			{
-				if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
-
-				Name = name;
-				Data = data;
-			}
-
-			private string Name { get; set; }
-
-			public T Data { get; private set; }
-
-			public override string ToString()
-			{
-				return Name;
-			}
 		}
 	}
 }

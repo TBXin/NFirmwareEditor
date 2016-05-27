@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows.Forms;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
+using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
@@ -56,6 +58,13 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeControls()
 		{
+			ConversionTypeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<MonochromeConversionMode>("Floyd Steinberg Dithering", MonochromeConversionMode.FloydSteinbergDithering),
+				new NamedItemContainer<MonochromeConversionMode>("Threshold based", MonochromeConversionMode.ThresholdBased)
+			});
+			ConversionTypeComboBox.SelectedIndex = 0;
+
 			SelectSourceButton.Click += SelectSourceButton_Click;
 			NewWidthUpDown.ValueChanged += (s, e) =>
 			{
@@ -78,6 +87,27 @@ namespace NFirmwareEditor.Windows
 				});
 			};
 			JoyetechSizeButton.Click += JoyetechSizeButton_Click;
+
+			ConversionTypeComboBox.SelectedIndexChanged += (s, e) =>
+			{
+				var item = (NamedItemContainer<MonochromeConversionMode>)ConversionTypeComboBox.SelectedItem;
+				ThresholdUpDown.Enabled = item.Data == MonochromeConversionMode.ThresholdBased;
+
+				Safe.Execute(() =>
+				{
+					CreateMonochromeBitmap();
+					ImagePreviewSurface.Invalidate();
+				});
+			};
+			ThresholdUpDown.ValueChanged += (s, e) =>
+			{
+				Safe.Execute(() =>
+				{
+					CreateMonochromeBitmap();
+					ImagePreviewSurface.Invalidate();
+				});
+			};
+
 			OkButton.Click += OkButton_Click;
 
 			ImagePreviewSurface.Paint += ImagePreviewSurface_Paint;
@@ -105,7 +135,22 @@ namespace NFirmwareEditor.Windows
 					m_monochromeBitmap.Dispose();
 					m_monochromeBitmap = null;
 				}
-				m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage);
+
+				var mode = (NamedItemContainer<MonochromeConversionMode>)ConversionTypeComboBox.SelectedItem;
+				switch (mode.Data)
+				{
+					case MonochromeConversionMode.ThresholdBased:
+					{
+						m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage, MonochromeConversionMode.ThresholdBased, (int)ThresholdUpDown.Value);
+						break;
+					}
+					case MonochromeConversionMode.FloydSteinbergDithering:
+					{
+						m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage);
+						break;
+					}
+					default: throw new ArgumentOutOfRangeException();
+				}
 			}
 		}
 
@@ -133,7 +178,8 @@ namespace NFirmwareEditor.Windows
 
 					SourceTextBox.Clear();
 					ResizeContainerPanel.Enabled = false;
-					
+					ConversionContainerPanel.Enabled = false;
+
 					m_doNotUpdateMonochrome = true;
 					NewWidthUpDown.Value = m_width = (int)NewWidthUpDown.Minimum;
 					NewHeightUpDown.Value = m_height = (int)NewHeightUpDown.Minimum;
@@ -155,6 +201,7 @@ namespace NFirmwareEditor.Windows
 					else
 					{
 						ResizeContainerPanel.Enabled = true;
+						ConversionContainerPanel.Enabled = true;
 
 						m_doNotUpdateMonochrome = true;
 						NewWidthUpDown.Value = m_width = m_originalBitmap.Width;
@@ -211,14 +258,7 @@ namespace NFirmwareEditor.Windows
 				{
 					m_fontPreviewBackgroundBrush = new TextureBrush(ImagePreviewSurface.BackgroundImage) { WrapMode = WrapMode.Tile };
 				}
-				e.Graphics.FillRectangle
-				(
-					m_fontPreviewBackgroundBrush,
-					0,
-					0,
-					ImagePreviewSurface.Width + ImagePreviewSurface.HorizontalScroll.Value,
-					ImagePreviewSurface.Height + ImagePreviewSurface.VerticalScroll.Value
-				);
+				e.Graphics.FillRectangle(m_fontPreviewBackgroundBrush, 0, 0, ImagePreviewSurface.Width + ImagePreviewSurface.HorizontalScroll.Value, ImagePreviewSurface.Height + ImagePreviewSurface.VerticalScroll.Value);
 			}
 
 			Safe.Execute(() =>

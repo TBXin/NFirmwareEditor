@@ -98,6 +98,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
+    <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>
