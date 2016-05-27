@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
+using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Managers
 {
@@ -61,7 +62,7 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static Image Create1BitBitmapFromRaw(bool[,] imageData)
+		public static Bitmap Create1BitBitmapFromRaw(bool[,] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 
@@ -91,10 +92,25 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
-		public static Bitmap ConvertTo1Bit([NotNull] Bitmap sourceBitmap)
+		public static Bitmap ConvertTo1Bit
+		(
+			[NotNull] Bitmap sourceBitmap, 
+			MonochromeConversionMode mode = MonochromeConversionMode.FloydSteinbergDithering, 
+			int threshold = 127
+		)
 		{
 			if (sourceBitmap == null) throw new ArgumentNullException("sourceBitmap");
 
+			switch (mode)
+			{
+				case MonochromeConversionMode.ThresholdBased: return ThresholdBasedMonochrome(sourceBitmap, threshold);
+				case MonochromeConversionMode.FloydSteinbergDithering: return FloydSteinbergDithering(sourceBitmap);
+				default: throw new ArgumentOutOfRangeException("mode", mode, null);
+			}
+		}
+
+		private static Bitmap FloydSteinbergDithering([NotNull] Bitmap sourceBitmap)
+		{
 			var result = new Bitmap(sourceBitmap.Width, sourceBitmap.Height, PixelFormat.Format1bppIndexed);
 			var data = new sbyte[sourceBitmap.Width, sourceBitmap.Height];
 			var inputData = sourceBitmap.LockBits(new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
@@ -157,6 +173,33 @@ namespace NFirmwareEditor.Managers
 			return result;
 		}
 
+		private static Bitmap ThresholdBasedMonochrome(Bitmap sourceBitmap, int threshold)
+		{
+			BitmapData inputData = null;
+			try
+			{
+				inputData = sourceBitmap.LockBits(new Rectangle(0, 0, sourceBitmap.Width, sourceBitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+				var imageData = new bool[sourceBitmap.Width, sourceBitmap.Height];
+				var scanLine = inputData.Scan0;
+				var line = new byte[inputData.Stride];
+				for (var y = 0; y < inputData.Height; y++, scanLine += inputData.Stride)
+				{
+					Marshal.Copy(scanLine, line, 0, line.Length);
+					for (var x = 0; x < sourceBitmap.Width; x++)
+					{
+						imageData[x, y] = GetGray(line[x * 3 + 2], line[x * 3 + 1], line[x * 3 + 0]) >= threshold;
+					}
+				}
+
+				return Create1BitBitmapFromRaw(imageData);
+			}
+			finally
+			{
+				if (inputData != null) sourceBitmap.UnlockBits(inputData);
+			}
+		}
+
 		public static Bitmap LoadBitmapFromFile([NotNull] string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
@@ -197,9 +240,14 @@ namespace NFirmwareEditor.Managers
 			return output;
 		}
 
+		private static double GetGray(byte r, byte g, byte b)
+		{
+			return r * 0.299 + g * 0.587 + b * 0.114;
+		}
+
 		private static double GetGreyLevel(byte r, byte g, byte b)
 		{
-			return (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+			return GetGray(r, g, b) / 255;
 		}
 	}
 }

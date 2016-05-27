@@ -85,6 +85,7 @@
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
     <Compile Include="Models\LoadableObject.cs" />
+    <Compile Include="Models\MonochromeConversionMode.cs" />
     <Compile Include="Models\NamespacelessObject.cs" />
     <Compile Include="Models\Patch.cs" />
     <Compile Include="Models\PatchModificationData.cs" />
