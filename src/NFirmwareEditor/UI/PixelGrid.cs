@@ -201,11 +201,10 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
+			if (ReadOnly) return;
+
 			m_previousData = (bool[,])m_data.Clone();
-			if (TrySetBlockValue(e))
-			{
-				Invalidate();
-			}
+			SetPixels(e);
 		}
 
 		protected override void OnMouseUp(MouseEventArgs e)
@@ -215,13 +214,41 @@ namespace NFirmwareEditor.UI
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
+			if (ReadOnly) return;
+
 			var blockAtPoint = TryGetBlockFromPoint(e.Location);
 			if (m_lastCursorPosition == blockAtPoint) return;
 
 			m_lastCursorPosition = blockAtPoint;
 			OnCursorPositionChanged(m_lastCursorPosition);
 
-			if (TrySetBlockValue(e)) Invalidate();
+			SetPixels(e);
+		}
+
+		private void SetPixels(MouseEventArgs e)
+		{
+			if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right) return;
+			if (ModifierKeys == Keys.Control || ModifierKeys == Keys.Shift)
+			{
+				var block = TryGetBlockFromPoint(e.Location);
+				if (block == null) return;
+
+				var width = m_colsCount;
+				var height = m_rowsCount;
+				var to = ModifierKeys == Keys.Control ? width : height;
+
+				for (var i = 0; i < to; i++)
+				{
+					if (ModifierKeys == Keys.Control) m_data[i, block.Value.Y] = e.Button == MouseButtons.Left;
+					if (ModifierKeys == Keys.Shift) m_data[block.Value.X, i] = e.Button == MouseButtons.Left;
+				}
+
+				OnDataUpdated(m_data);
+			}
+			else if (TrySetBlockValue(e))
+			{
+				Invalidate();
+			}
 		}
 
 		private void DrawBackground(Graphics gfx)
@@ -328,8 +355,8 @@ namespace NFirmwareEditor.UI
 
 		internal bool[,] Clone(bool[,] imageData)
 		{
-			var width = imageData.GetLength(0);
-			var height = imageData.GetLength(1);
+			var width = m_colsCount;
+			var height = m_rowsCount;
 			var result = new bool[width, height];
 			for (var col = 0; col < width; col++)
 			{
