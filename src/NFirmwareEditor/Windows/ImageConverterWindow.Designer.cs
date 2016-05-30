@@ -160,7 +160,7 @@
             0,
             0});
 			this.NewHeightUpDown.Minimum = new decimal(new int[] {
-            8,
+            1,
             0,
             0,
             0});
@@ -200,7 +200,7 @@
             0,
             0});
 			this.NewWidthUpDown.Minimum = new decimal(new int[] {
-            8,
+            1,
             0,
             0,
             0});

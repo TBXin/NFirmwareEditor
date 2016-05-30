@@ -13,7 +13,7 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class ImageConverterWindow : EditorDialogWindow
 	{
-		private readonly bool m_logoPreviewMode;
+		private readonly bool m_importMode;
 		private const int PreviewMargin = 8;
 
 		private Bitmap m_originalBitmap;
@@ -23,17 +23,25 @@ namespace NFirmwareEditor.Windows
 		private TextureBrush m_fontPreviewBackgroundBrush;
 		private bool m_doNotUpdateMonochrome;
 
-		public ImageConverterWindow(bool logoPreviewMode = false)
+		private readonly int m_desireWidth;
+		private readonly int m_desireHeight;
+
+		public ImageConverterWindow(bool importMode = false, int? desireWidth = null, int? desireHeight = null)
 		{
 			InitializeComponent();
 			InitializeControls();
 
-			m_logoPreviewMode = logoPreviewMode;
-			if (m_logoPreviewMode)
+			m_importMode = importMode;
+			if (m_importMode)
 			{
+				if (!desireWidth.HasValue || !desireHeight.HasValue) throw new ArgumentNullException("desireWidth || desireHeight");
+
+				NewWidthUpDown.Value = m_width = m_desireWidth = desireWidth.Value;
+				NewHeightUpDown.Value = m_height = m_desireHeight = desireHeight.Value;
+
 				ResizeContainerPanel.Enabled = false;
 
-				OkButton.Text = @"Upload";
+				OkButton.Text = @"Import";
 				OkButton.DialogResult = DialogResult.OK;
 				OkButton.Click -= OkButton_Click;
 			}
@@ -193,15 +201,16 @@ namespace NFirmwareEditor.Windows
 				else
 				{
 					SourceTextBox.Text = fileName;
+					ConversionContainerPanel.Enabled = true;
 
-					if (m_logoPreviewMode)
+					if (m_importMode)
 					{
-						JoyetechSizeButton_Click(null, EventArgs.Empty);
+						NewWidthUpDown.Value = m_width = m_desireWidth;
+						NewHeightUpDown.Value = m_height = m_desireHeight;
 					}
 					else
 					{
 						ResizeContainerPanel.Enabled = true;
-						ConversionContainerPanel.Enabled = true;
 
 						m_doNotUpdateMonochrome = true;
 						NewWidthUpDown.Value = m_width = m_originalBitmap.Width;

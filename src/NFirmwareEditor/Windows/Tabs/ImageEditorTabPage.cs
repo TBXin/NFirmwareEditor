@@ -592,33 +592,23 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			if (LastSelectedImageMetadata == null) return;
 
-			using (var op = new OpenFileDialog { Filter = Consts.BitmapImportFilter })
+			try
 			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-
-				try
+				using (var imageConverterWindow = new ImageConverterWindow(true, LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height))
 				{
-					var bitmapFile = op.FileName;
-					using (var bitmap = (Bitmap)Image.FromFile(bitmapFile))
+					if (imageConverterWindow.ShowDialog() != DialogResult.OK) return;
+
+					using (var monochrome = imageConverterWindow.GetConvertedImage())
 					{
-						if (bitmap.Width > 2048 || bitmap.Height > 2048)
-						{
-							InfoBox.Show("Selected images is too big. Choose an image that has dimension lower than 2048x2048.");
-							return;
-						}
-						using (var scaledBitmap = BitmapProcessor.ScaleBitmapIfNecessary(bitmap, new Size(LastSelectedImageMetadata.Width, LastSelectedImageMetadata.Height)))
-						using (var monochrome = BitmapProcessor.ConvertTo1Bit(scaledBitmap))
-						{
-							var imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
-							ImagePixelGrid.CreateUndo();
-							ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
-						}
+						var imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+						ImagePixelGrid.CreateUndo();
+						ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
 					}
 				}
-				catch (Exception ex)
-				{
-					InfoBox.Show("Unable to import bitmap image.\n" + ex.Message);
-				}
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("Unable to import bitmap image.\n" + ex.Message);
 			}
 		}
 
