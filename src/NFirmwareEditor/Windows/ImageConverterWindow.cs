@@ -23,28 +23,13 @@ namespace NFirmwareEditor.Windows
 		private TextureBrush m_fontPreviewBackgroundBrush;
 		private bool m_doNotUpdateMonochrome;
 
-		private readonly int m_desireWidth;
-		private readonly int m_desireHeight;
+		private int m_desireWidth;
+		private int m_desireHeight;
 
 		public ImageConverterWindow(bool importMode = false, int? desireWidth = null, int? desireHeight = null)
 		{
 			InitializeComponent();
-			InitializeControls();
-
-			m_importMode = importMode;
-			if (m_importMode)
-			{
-				if (!desireWidth.HasValue || !desireHeight.HasValue) throw new ArgumentNullException("desireWidth || desireHeight");
-
-				NewWidthUpDown.Value = m_width = m_desireWidth = desireWidth.Value;
-				NewHeightUpDown.Value = m_height = m_desireHeight = desireHeight.Value;
-
-				ResizeContainerPanel.Enabled = false;
-
-				OkButton.Text = @"Import";
-				OkButton.DialogResult = DialogResult.OK;
-				OkButton.Click -= OkButton_Click;
-			}
+			InitializeControls(m_importMode = importMode, desireWidth, desireHeight);
 		}
 
 		public Bitmap GetConvertedImage()
@@ -64,8 +49,26 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void InitializeControls()
+		private void InitializeControls(bool importMode, int? desireWidth, int? desireHeight)
 		{
+			if (importMode)
+			{
+				if (!desireWidth.HasValue) throw new ArgumentNullException("desireWidth");
+				if (!desireHeight.HasValue) throw new ArgumentNullException("desireHeight");
+
+				NewWidthUpDown.Value = m_width = m_desireWidth = desireWidth.Value;
+				NewHeightUpDown.Value = m_height = m_desireHeight = desireHeight.Value;
+
+				ResizeContainerPanel.Enabled = false;
+
+				OkButton.Text = @"Import";
+				OkButton.DialogResult = DialogResult.OK;
+			}
+			else
+			{
+				OkButton.Click += OkButton_Click;
+			}
+
 			ConversionTypeComboBox.Items.AddRange(new object[]
 			{
 				new NamedItemContainer<MonochromeConversionMode>("Floyd Steinberg Dithering", MonochromeConversionMode.FloydSteinbergDithering),
@@ -115,8 +118,6 @@ namespace NFirmwareEditor.Windows
 					ImagePreviewSurface.Invalidate();
 				});
 			};
-
-			OkButton.Click += OkButton_Click;
 
 			ImagePreviewSurface.Paint += ImagePreviewSurface_Paint;
 			Disposed += (s, e) =>
