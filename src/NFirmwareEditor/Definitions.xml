@@ -578,6 +578,24 @@
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="eGrip II 4.02 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0xB9 0x2A" />
+		<Marker Offset="0xC0" Bytes="0x69 0x8D" />
+		<ImageTable1>
+			<OffsetFrom>0xF9C8</OffsetFrom>
+			<OffsetTo>0xFDE0</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xD4D8</OffsetFrom>
+			<OffsetTo>0xD8F0</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xFF80</OffsetFrom>
+			<OffsetTo>0x101E9</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	
 	<FirmwareDefinition Name="eGrip II 4.02">
 		<Marker Offset="0x90" Bytes="0xB1 0x2A" />
 		<Marker Offset="0xC0" Bytes="0x1D 0x9A" />
