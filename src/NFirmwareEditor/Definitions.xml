@@ -98,6 +98,24 @@
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid 3.12 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x09 0x22" />
+		<Marker Offset="0xC0" Bytes="0xA9 0x75" />
+		<ImageTable1>
+			<OffsetFrom>0xCAD4</OffsetFrom>
+			<OffsetTo>0xCED4</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xAC44</OffsetFrom>
+			<OffsetTo>0xB044</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xD05E</OffsetFrom>
+			<OffsetTo>0xD267</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Cuboid 3.12">
 		<Marker Offset="0x90" Bytes="0xE9 0x21" />
 		<Marker Offset="0xC0" Bytes="0xBD 0x82" />
@@ -202,6 +220,24 @@
 			<OffsetTo>0xA703</OffsetTo>
 		</StringTable2>
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="Cuboid 3.02 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x09 0x22" />
+		<Marker Offset="0xC0" Bytes="0xA5 0x75" />
+		<ImageTable1>
+			<OffsetFrom>0xCAD0</OffsetFrom>
+			<OffsetTo>0xCED0</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xAC40</OffsetFrom>
+			<OffsetTo>0xB040</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xD05A</OffsetFrom>
+			<OffsetTo>0xD262</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
 	</FirmwareDefinition>
 	
 	<FirmwareDefinition Name="Cuboid 3.02">
