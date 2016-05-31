@@ -5,12 +5,12 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FirmwareStringMetadata"/> class.
 		/// </summary>
-		public FirmwareStringMetadata(int index, long dataOffset, long dataLength, bool twoBytesPerChar)
+		public FirmwareStringMetadata(int index, long dataOffset, long dataLength, bool twoByteChars)
 		{
 			Index = index;
 			DataOffset = dataOffset;
 			DataLength = dataLength;
-			TwoBytesPerChar = twoBytesPerChar;
+			TwoByteChars = twoByteChars;
 		}
 
 		/// <summary>
@@ -28,7 +28,10 @@
 		/// </summary>
 		public long DataLength { get; private set; }
 
-		public bool TwoBytesPerChar { get; set; }
+		/// <summary>
+		/// Gets an indication that each char represented by two bytes.
+		/// </summary>
+		public bool TwoByteChars { get; private set; }
 
 		public override string ToString()
 		{

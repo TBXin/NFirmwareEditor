@@ -9,7 +9,7 @@
 			<OffsetFrom>0x8A88</OffsetFrom>
 			<OffsetTo>0x8D1C</OffsetTo>
 		</ImageTable1>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0x796C</OffsetFrom>
 			<OffsetTo>0x7BCA</OffsetTo>
 		</StringTable1>
@@ -69,7 +69,7 @@
 			<OffsetFrom>0xB898</OffsetFrom>
 			<OffsetTo>0xBC98</OffsetTo>
 		</ImageTable2>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0xDD32</OffsetFrom>
 			<OffsetTo>0xDEF0</OffsetTo>
 		</StringTable1>
@@ -175,7 +175,7 @@
 			<OffsetFrom>0xB894</OffsetFrom>
 			<OffsetTo>0xBC94</OffsetTo>
 		</ImageTable2>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0xDD2E</OffsetFrom>
 			<OffsetTo>0xDEEC</OffsetTo>
 		</StringTable1>
@@ -283,7 +283,7 @@
 			<OffsetFrom>0xAE70</OffsetFrom>
 			<OffsetTo>0xB270</OffsetTo>
 		</ImageTable2>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0xD2A2</OffsetFrom>
 			<OffsetTo>0xD444</OffsetTo>
 		</StringTable1>
@@ -369,7 +369,7 @@
 			<OffsetFrom>0xB494</OffsetFrom>
 			<OffsetTo>0xB894</OffsetTo>
 		</ImageTable2>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0xD8C6</OffsetFrom>
 			<OffsetTo>0xDA8A</OffsetTo>
 		</StringTable1>
@@ -495,7 +495,7 @@
 			<OffsetFrom>0xE0C0</OffsetFrom>
 			<OffsetTo>0xE4D8</OffsetTo>
 		</ImageTable2>
-		<StringTable1 TwoBytesPerChar="true">
+		<StringTable1 TwoByteChars="true">
 			<OffsetFrom>0x10B88</OffsetFrom>
 			<OffsetTo>0x10E06</OffsetTo>
 		</StringTable1>

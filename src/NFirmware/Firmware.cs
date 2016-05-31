@@ -89,15 +89,15 @@ namespace NFirmware
 		{
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
 
-			var stringData = m_bodyStream.ReadBytes((int)stringMetadata.DataOffset, (int)stringMetadata.DataLength);
-			if (!stringMetadata.TwoBytesPerChar)
+			var stringBytes = m_bodyStream.ReadBytes((int)stringMetadata.DataOffset, (int)stringMetadata.DataLength);
+			if (!stringMetadata.TwoByteChars)
 			{
-				return stringData.Select(x => (short)x).ToArray();
+				return stringBytes.Select(x => (short)x).ToArray();
 			}
 
-			var sdata = new short[(int)Math.Ceiling(stringData.Length / 2d)];
-			Buffer.BlockCopy(stringData, 0, sdata, 0, stringData.Length);
-			return sdata;
+			var stringChars = new short[(int)Math.Ceiling(stringBytes.Length / 2d)];
+			Buffer.BlockCopy(stringBytes, 0, stringChars, 0, stringBytes.Length);
+			return stringChars;
 		}
 
 		[NotNull]
@@ -135,7 +135,7 @@ namespace NFirmware
 			if (stringMetadata == null) throw new ArgumentNullException("stringMetadata");
 			if (index > stringMetadata.DataLength) throw new InvalidDataException("String data does not correspond to the metadata.");
 
-			if (stringMetadata.TwoBytesPerChar)
+			if (stringMetadata.TwoByteChars)
 			{
 				m_bodyStream.WriteBytes((int)stringMetadata.DataOffset + index * 2, BitConverter.GetBytes(stringChar));
 			}

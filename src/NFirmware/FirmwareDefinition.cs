@@ -48,7 +48,7 @@ namespace NFirmware
 	public class StringTableDefinition : FirmwareTableDefinition
 	{
 		[XmlAttribute]
-		public bool TwoBytesPerChar { get; set; }
+		public bool TwoByteChars { get; set; }
 	}
 
 	public abstract class FirmwareTableDefinition
