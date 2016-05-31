@@ -348,6 +348,24 @@
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
 
+	<FirmwareDefinition Name="Cuboid Mini 3.02 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x51 0x1D" />
+		<Marker Offset="0xC0" Bytes="0xCD 0x6B" />
+		<ImageTable1>
+			<OffsetFrom>0xC0A4</OffsetFrom>
+			<OffsetTo>0xC4A4</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA214</OffsetFrom>
+			<OffsetTo>0xA614</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xC626</OffsetFrom>
+			<OffsetTo>0xC7B3</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	
 	<FirmwareDefinition Name="Cuboid Mini 3.02">
 		<Marker Offset="0x90" Bytes="0x4D 0x1D" />
 		<Marker Offset="0xC0" Bytes="0x85 0x78" />
