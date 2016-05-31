@@ -30,7 +30,7 @@
 		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
 
-	<FirmwareDefinition Name="RX200 3.00 (31.05.2016)">
+	<FirmwareDefinition Name="RX200 3.00 (24.05.2016)">
 		<Marker Offset="0x90" Bytes="0x31 0x21" />
 		<Marker Offset="0xC0" Bytes="0x11 0x64" />
 		<ImageTable1>
