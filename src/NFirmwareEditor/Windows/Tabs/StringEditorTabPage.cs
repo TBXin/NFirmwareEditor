@@ -170,12 +170,12 @@ namespace NFirmwareEditor.Windows.Tabs
 			StringListBox_SelectedValueChanged(StringListBox, EventArgs.Empty);
 		}
 
-		private void CreateStringEditControls(byte[] firmwareString, FirmwareStringMetadata stringMetadata)
+		private void CreateStringEditControls(IList<short> firmwareString, FirmwareStringMetadata stringMetadata)
 		{
 			var nullByteFound = false;
-			for (var i = 0; i < firmwareString.Length; i++)
+			for (var i = 0; i < firmwareString.Count; i++)
 			{
-				if (i == firmwareString.Length - 1 && firmwareString[i] == 0x00) continue;
+				if (i == firmwareString.Count - 1 && firmwareString[i] == 0x00) continue;
 
 				var stringChar = firmwareString[i];
 				var nullItem = new ImagedItem<byte>(0, 0, "NULL");

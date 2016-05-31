@@ -196,6 +196,7 @@ namespace NFirmware
 			if (stringTableDefinition == null) return new List<FirmwareStringMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
 
+			var charLength = GetCharLength(stringTableDefinition.TwoBytesPerChar);
 			var result = new List<FirmwareStringMetadata>();
 			{
 				reader.BaseStream.Seek(stringTableDefinition.OffsetFrom, SeekOrigin.Begin);
@@ -208,24 +209,35 @@ namespace NFirmware
 					{
 						if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
 						{
-							dataLength++;
-							var byte1 = reader.ReadByte();
-							byte? byte2;
+							var char1 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
+							dataLength += charLength;
+
+							short? char2;
 							if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
 							{
-								byte2 = reader.ReadByte();
-								reader.BaseStream.Position--;
+								char2 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
+								reader.BaseStream.Position -= charLength;
 							}
 							else break;
 
-							if (byte1 == 0x00 && byte2 != 0x00) break;
+							if (char1 == 0x00 && char2 != 0x00) break;
 						}
 						else break;
 					}
-					result.Add(new FirmwareStringMetadata(startIndex + result.Count + 1, offset, dataLength));
+					result.Add(new FirmwareStringMetadata(startIndex + result.Count + 1, offset, dataLength, stringTableDefinition.TwoBytesPerChar));
 				}
 			}
 			return result;
+		}
+
+		private short ReadChar(BinaryReader reader, bool twoBytesPerChar)
+		{
+			return twoBytesPerChar ? reader.ReadInt16() : reader.ReadByte();
+		}
+
+		private int GetCharLength(bool twoBytesPerChar)
+		{
+			return twoBytesPerChar ? 2 : 1;
 		}
 
 		internal static int FindByteArray(byte[] source, byte[] searchedBytes)

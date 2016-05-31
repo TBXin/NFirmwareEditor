@@ -127,7 +127,7 @@ namespace NFirmwareEditor.Managers
 			return rtnImage;
 		}
 
-		public static bool[,] GetStringImageData([NotNull] byte[] stringData, [NotNull] IDictionary<int, bool[,]> charsData, byte[] charsToCorrect = null)
+		public static bool[,] GetStringImageData([NotNull] short[] stringData, [NotNull] IDictionary<int, bool[,]> charsData, byte[] charsToCorrect = null)
 		{
 			if (stringData == null) throw new ArgumentNullException("stringData");
 			if (charsData == null) throw new ArgumentNullException("charsData");
@@ -138,7 +138,7 @@ namespace NFirmwareEditor.Managers
 				if (b == 0x00) continue;
 
 				var charData = charsData[b];
-				if (charsToCorrect != null && charsToCorrect.Contains(b))
+				if (charsToCorrect != null && charsToCorrect.FirstOrDefault(x=> x == b) != 0)
 				{
 					charData = (bool[,])charData.Clone();
 					var charSize = GetImageSize(charData);

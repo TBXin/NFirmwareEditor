@@ -5,11 +5,12 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FirmwareStringMetadata"/> class.
 		/// </summary>
-		public FirmwareStringMetadata(int index, long dataOffset, long dataLength)
+		public FirmwareStringMetadata(int index, long dataOffset, long dataLength, bool twoBytesPerChar)
 		{
 			Index = index;
 			DataOffset = dataOffset;
 			DataLength = dataLength;
+			TwoBytesPerChar = twoBytesPerChar;
 		}
 
 		/// <summary>
@@ -26,6 +27,8 @@
 		/// Gets the length of the byte array that represents a string.
 		/// </summary>
 		public long DataLength { get; private set; }
+
+		public bool TwoBytesPerChar { get; set; }
 
 		public override string ToString()
 		{
