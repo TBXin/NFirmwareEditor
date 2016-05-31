@@ -178,7 +178,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				if (i == firmwareString.Count - 1 && firmwareString[i] == 0x00) continue;
 
 				var stringChar = firmwareString[i];
-				var nullItem = new ImagedItem<byte>(0, 0, "NULL");
+				var nullItem = new ImagedItem<short>(0, 0, "NULL");
 				var icb = new ComboBox
 				{
 					Width = 200,
@@ -194,9 +194,9 @@ namespace NFirmwareEditor.Windows.Tabs
 				var selectedItem = nullItem;
 				foreach (var imageMetadata in CurrentImageBlockForStrings.Values)
 				{
-					if (imageMetadata.Index > 0xFF) continue;
+					if (!stringMetadata.TwoBytesPerChar && imageMetadata.Index > 0xFF) continue;
 
-					var item = new ImagedItem<byte>((byte)imageMetadata.Index, imageMetadata.Index, string.Format("0x{0:X2}", imageMetadata.Index));
+					var item = new ImagedItem<short>((short)imageMetadata.Index, imageMetadata.Index, string.Format("0x{0:X2}", imageMetadata.Index));
 					icb.Items.Add(item);
 					if (imageMetadata.Index == stringChar)
 					{
@@ -299,7 +299,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (icb == null) return;
 
 			var tag = icb.Tag as Tuple<FirmwareStringMetadata, int>;
-			var item = icb.SelectedItem as ImagedItem<byte>;
+			var item = icb.SelectedItem as ImagedItem<short>;
 
 			if (tag == null) return;
 			if (item == null) return;
@@ -349,7 +349,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			var stringMetadata = comboBox.Tag as Tuple<FirmwareStringMetadata, int>;
 			if (stringMetadata == null) return;
 
-			var item = comboBox.Items[e.Index] as ImagedItem<byte>;
+			var item = comboBox.Items[e.Index] as ImagedItem<short>;
 			if (item == null) return;
 
 			if (e.Index < 0) return;
@@ -403,7 +403,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			var stringMetadata = comboBox.Tag as Tuple<FirmwareStringMetadata, int>;
 			if (stringMetadata == null) return;
 
-			var item = comboBox.Items[e.Index] as ImagedItem<byte>;
+			var item = comboBox.Items[e.Index] as ImagedItem<short>;
 			if (item == null) return;
 
 			try
