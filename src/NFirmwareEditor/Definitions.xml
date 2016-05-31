@@ -9,7 +9,7 @@
 			<OffsetFrom>0x8A88</OffsetFrom>
 			<OffsetTo>0x8D1C</OffsetTo>
 		</ImageTable1>
-		<StringTable1>
+		<StringTable1 TwoBytesPerChar="true">
 			<OffsetFrom>0x796C</OffsetFrom>
 			<OffsetTo>0x7BCA</OffsetTo>
 		</StringTable1>
@@ -58,6 +58,24 @@
 	<!-- RX200 -->
 
 	<!-- Cuboid -->
+	<FirmwareDefinition Name="Cuboid 3.13 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x31 0x27" />
+		<Marker Offset="0xC0" Bytes="0x61 0x7E" />
+		<ImageTable1>
+			<OffsetFrom>0xD728</OffsetFrom>
+			<OffsetTo>0xDB28</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xB898</OffsetFrom>
+			<OffsetTo>0xBC98</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoBytesPerChar="true">
+			<OffsetFrom>0xDD32</OffsetFrom>
+			<OffsetTo>0xDEF0</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Cuboid 3.13">
 		<Marker Offset="0x90" Bytes="0x25 0x27" />
 		<Marker Offset="0xC0" Bytes="0xA9 0x8B" />
@@ -144,6 +162,24 @@
 			<OffsetTo>0x90DF</OffsetTo>
 		</StringTable2>
 		<CharsToCorrect>0x7B 0x84 0x72</CharsToCorrect>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="Cuboid 3.03 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x31 0x27" />
+		<Marker Offset="0xC0" Bytes="0x5D 0x7E" />
+		<ImageTable1>
+			<OffsetFrom>0xD724</OffsetFrom>
+			<OffsetTo>0xDB24</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xB894</OffsetFrom>
+			<OffsetTo>0xBC94</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoBytesPerChar="true">
+			<OffsetFrom>0xDD2E</OffsetFrom>
+			<OffsetTo>0xDEEC</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
 
 	<FirmwareDefinition Name="Cuboid 3.03">
@@ -236,6 +272,24 @@
 	<!-- Cuboid -->
 	
 	<!-- Cuboid Mini -->
+	<FirmwareDefinition Name="Cuboid Mini 3.03 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x7D 0x22" />
+		<Marker Offset="0xC0" Bytes="0x8D 0x74" />
+		<ImageTable1>
+			<OffsetFrom>0xCD00</OffsetFrom>
+			<OffsetTo>0xD100</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xAE70</OffsetFrom>
+			<OffsetTo>0xB270</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoBytesPerChar="true">
+			<OffsetFrom>0xD2A2</OffsetFrom>
+			<OffsetTo>0xD444</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Cuboid Mini 3.03">
 		<Marker Offset="0x90" Bytes="0x7D 0x22" />
 		<Marker Offset="0xC0" Bytes="0x61 0x81" />
@@ -304,6 +358,24 @@
 	<!-- Cuboid Mini -->
 
 	<!-- Evic VTC Mini -->
+	<FirmwareDefinition Name="Evic VTC Mini 3.03 (31.05.2016)">
+		<Marker Offset="0x90" Bytes="0x35 0x23" />
+		<Marker Offset="0xC0" Bytes="0x2D 0x7A" />
+		<ImageTable1>
+			<OffsetFrom>0xD324</OffsetFrom>
+			<OffsetTo>0xD724</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xB494</OffsetFrom>
+			<OffsetTo>0xB894</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoBytesPerChar="true">
+			<OffsetFrom>0xD8C6</OffsetFrom>
+			<OffsetTo>0xDA8A</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
 	<FirmwareDefinition Name="Evic VTC Mini 3.03">
 		<Marker Offset="0x90" Bytes="0x35 0x23" />
 		<Marker Offset="0xC0" Bytes="0xF9 0x86" />
