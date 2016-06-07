@@ -660,8 +660,8 @@
 			<OffsetTo>0x8E4C</OffsetTo>
 		</ImageTable1>
 		<StringTable1 TwoByteChars="true">
-			<OffsetFrom>0x7AE2</OffsetFrom>
-			<OffsetTo>0x7CE5</OffsetTo>
+			<OffsetFrom>0x7AC4</OffsetFrom>
+			<OffsetTo>0x7CFB</OffsetTo>
 		</StringTable1>
 		<CharsToCorrect>0x39 0x3C 0x42 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
