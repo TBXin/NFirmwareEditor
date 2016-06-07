@@ -651,6 +651,36 @@
 	</FirmwareDefinition>
 	<!-- eGrip II -->
 
+	<!-- iStick Pico -->
+	<FirmwareDefinition Name="iStick Pico 1.01">
+		<Marker Offset="0x90" Bytes="0xB5 0x1C" />
+		<Marker Offset="0xC0" Bytes="0xAD 0x64" />
+		<ImageTable1>
+			<OffsetFrom>0x8BB8</OffsetFrom>
+			<OffsetTo>0x8E4C</OffsetTo>
+		</ImageTable1>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0x7AE2</OffsetFrom>
+			<OffsetTo>0x7CE5</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x39 0x3C 0x42 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+	
+	<FirmwareDefinition Name="iStick Pico 1.00">
+		<Marker Offset="0x90" Bytes="0x2D 0x1B" />
+		<Marker Offset="0xC0" Bytes="0x9D 0x5D" />
+		<ImageTable1>
+			<OffsetFrom>0x83B0</OffsetFrom>
+			<OffsetTo>0x8634</OffsetTo>
+		</ImageTable1>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0x7354</OffsetFrom>
+			<OffsetTo>0x7567</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x39 0x3C 0x42 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- iStick TC100W -->
+	
 	<!-- iStick TC100W -->
 	<FirmwareDefinition Name="iStick TC100W 1.10">
 		<Marker Offset="0x90" Bytes="0x55 0x1A" />
