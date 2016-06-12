@@ -616,10 +616,16 @@
     <None Include="Patches\RX200 3.00\3.00_unlock_res.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\RX200 3.10\3.10_temp_4clk.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\RX200 3.10\3.10_brightness100.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_brightness75.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\RX200 3.10\3.10_max_temp75.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_pwr_bugfix.patch">
@@ -629,6 +635,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_splash2.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\RX200 3.10\3.10_Vout-Battery.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX200 3.10\3.10_Vout2Batt.patch">

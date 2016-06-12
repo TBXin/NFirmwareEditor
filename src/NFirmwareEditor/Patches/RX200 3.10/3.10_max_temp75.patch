@@ -1,0 +1,8 @@
+﻿<Patch Definition="RX200 3.10" Name="Max temperature 75C" Version="1.0" Author="kab">
+  <Description>Increase maximum board temperature from 70 to 75 celsius degrees.
+Увеличивает максимально допустимую температуру платы с 70 до 75 градусов цельсия.</Description>
+  <Data>
+000037C8: 46 - 4B
+000078C6: 46 - 4B
+</Data>
+</Patch>

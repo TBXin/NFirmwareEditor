@@ -1,0 +1,8 @@
+﻿<Patch Definition="RX200 3.10" Name="Temperature by 4 clicks in the Power mode" Version="1.0" Author="kab">
+  <Description>Showing device temperature by 4 clicks in the power mode.
+Показ температуры по 4 кликам кнопки Fire в режиме Power.</Description>
+  <Data>
+00004594: A7 - 1F
+000045A4: 9F - 17
+</Data>
+</Patch>

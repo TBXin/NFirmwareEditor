@@ -1,0 +1,131 @@
+﻿<Patch Definition="RX200 3.10" Name="Vout - Battery" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Switch output voltage display to lowest battery voltage by Stealth Mode hotkey. Battery mode glyph: 0x78, Voltage mode glyph: 0x6C.
+
+Переключение отображения выходного напряжения на минимальное значение напряжения одного из аккумуляторов вместо режима Stealth. Глиф режима минимального напряжения батарей: 0x78, Глиф режиме напряжения на спирали: 0x6C.</Description>
+  <Data>
+# Stealth deletion #
+000014F0: 00 - 00
+000014F1: BB - BF
+00001612: 58 - 2B
+00001613: B3 - E0
+0000165C: 39 - 33
+000045BE: 10 - 02
+000045BF: B1 - E0
+
+# Cut-in 1 #
+00005B82: 02 - 02
+00005B83: 23 - F0
+00005B84: 08 - A5
+00005B85: 21 - B9
+
+# Cut-in 2 #
+00005B8C: 6C - 02
+00005B8D: 22 - F0
+00005B8E: 08 - A8
+00005B8F: 21 - B9
+
+# Change Stealth to Battery #
+00007AEC: 5F - 4E
+00007AED: 46 - 33
+00007AEE: 37 - 46
+00007AEF: 33 - 46
+00007AF0: 3E - 37
+00007AF1: 46 - 44
+00007AF2: 3A - 4B
+
+# Change Stealth to Battery #
+00007AF7: 5F - 4E
+00007AF8: 46 - 33
+00007AF9: 37 - 46
+00007AFA: 33 - 46
+00007AFB: 3E - 37
+00007AFC: 46 - 44
+00007AFD: 3A - 4B
+
+# Reload R2 with minimum battery voltage #
+00007E4C: F0 - 0B
+00007E4D: F8 - 48
+00007E4E: FC - 02
+00007E4F: 7E - 88
+00007E50: 1E - 0B
+00007E51: 1E - 48
+00007E52: 1E - 01
+00007E53: 1E - 88
+00007E54: 7E - 91
+00007E55: FC - 42
+00007E56: F8 - 00
+00007E57: F0 - D8
+00007E58: C0 - 0A
+00007E59: 00 - 00
+00007E5A: 00 - 0A
+00007E5B: FF - 48
+00007E5C: FF - 01
+00007E5D: FF - 88
+00007E5E: FF - 91
+00007E5F: 00 - 42
+00007E60: 00 - 00
+00007E61: 00 - D8
+00007E62: 00 - 0A
+00007E63: 00 - 00
+00007E64: 00 - 02
+00007E65: FF - 23
+00007E66: FF - 08
+00007E67: FF - 21
+00007E68: FF - FD
+00007E69: 00 - F7
+00007E6A: 00 - 8D
+00007E6B: FF - BE
+00007E7C: 0F - 64
+00007E7D: 1F - 00
+00007E7E: 3F - 00
+00007E7F: 7E - 20
+00007E80: 78 - 66
+00007E81: 78 - 00
+00007E82: 78 - 00
+00007E83: 78 - 20
+00007E84: 7E - 68
+00007E85: 3F - 00
+00007E86: 1F - 00
+00007E87: 0F - 20
+
+# Voltage reload #
+00007ED0: F8 - 0D
+00007ED1: FC - 48
+00007ED2: FC - 90
+00007ED3: 3E - F8
+00007ED4: 1E - 25
+00007ED5: 1E - 00
+00007ED6: 1E - 00
+00007ED7: 1E - B1
+00007ED8: 3E - B8
+00007ED9: FC - E7
+00007EDA: FC - C3
+00007EDB: F8 - E7
+
+# Letter reload #
+00007EE0: 03 - 09
+00007EE1: 03 - 48
+00007EE2: 03 - 90
+00007EE3: 00 - F8
+00007EE4: 00 - 25
+00007EE5: 00 - 00
+00007EE6: 00 - 08
+00007EE7: 00 - B1
+00007EE8: C0 - 78 ; Battery Mode Letter charcode
+00007EE9: FF - 22
+00007EEA: FF - 00
+00007EEB: FF - E0
+00007EEC: 3F - 6C ; Voltage Mode Letter charcode
+00007EED: 00 - 22
+00007EEE: 00 - 08
+00007EEF: 00 - 21
+00007EF0: 00 - FD
+00007EF1: 00 - F7
+00007EF2: C0 - 4E
+00007EF3: E0 - BE
+00007F08: 78 - 88
+00007F09: 78 - 02
+00007F0A: 78 - 00
+00007F0B: 78 - 20
+</Data>
+</Patch>
