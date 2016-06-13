@@ -444,6 +444,46 @@
 	</FirmwareDefinition>
 	<!-- Cuboid Mini -->
 
+	<!-- Evic VTwo -->
+	<FirmwareDefinition Name="Evic VTwo 4.02">
+		<Marker Offset="0x90" Bytes="0x95 0x2A" />
+		<Marker Offset="0xC0" Bytes="0xBD 0x8A" />
+		<ImageTable1>
+			<OffsetFrom>0xF71C</OffsetFrom>
+			<OffsetTo>0xFB34</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xD22C</OffsetFrom>
+			<OffsetTo>0xD644</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xFC38</OffsetFrom>
+			<OffsetTo>0xFED7</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- Evic VTwo -->
+
+	<!-- Evic VTwo Mini -->
+	<FirmwareDefinition Name="Evic VTwo Mini 4.02">
+		<Marker Offset="0x90" Bytes="0x05 0x2B" />
+		<Marker Offset="0xC0" Bytes="0x15 0x90" />
+		<ImageTable1>
+			<OffsetFrom>0xFCF8</OffsetFrom>
+			<OffsetTo>0x10110</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xD808</OffsetFrom>
+			<OffsetTo>0xDC20</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0x10214</OffsetFrom>
+			<OffsetTo>0x104D5</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- Evic VTwo Mini -->
+	
 	<!-- Evic VTC Mini -->
 	<FirmwareDefinition Name="Evic VTC Mini 3.03 (31.05.2016)">
 		<Marker Offset="0x90" Bytes="0x35 0x23" />
