@@ -32,17 +32,27 @@ namespace NFirmwareEditor.Managers
 
 		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
 		{
-			{ "E052", "Joyetech eVic-VTC Mini" },
-			{ "E056", "Joyetech Cuboid Mini" },
+			{ "E052", "Joyetech eVic VTC Mini" },
+
+			{ "E043", "Joyetech eVic VTwo" },
+			{ "E115", "Joyetech eVic VTwo Mini" },
+
 			{ "E060", "Joyetech Cuboid" },
+			{ "E056", "Joyetech Cuboid Mini" },
+			
 			{ "E083", "Joyetech eGrip II" },
+			
 			{ "M011", "Eleaf iStick TC100W" },
 			{ "M041", "Eleaf iStick Pico" },
+
 			{ "W007", "Wismec Presa TC75W" },
+			
+			{ "W014", "Wismec Reuleaux RX200" },
+			{ "W033", "Wismec Reuleaux RX200S" },
+
 			{ "W010", "Vaporflask Classic" },
 			{ "W011", "Vaporflask Lite" },
-			{ "W013", "Vaporflask Stout" },
-			{ "W014", "Wismec Reuleaux RX200" }
+			{ "W013", "Vaporflask Stout" }
 		};
 
 		private static readonly IDictionary<string, bool> s_canUploadLogos = new Dictionary<string, bool>
