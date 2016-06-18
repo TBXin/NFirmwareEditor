@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using HidSharp;
+using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
 {
@@ -30,45 +31,38 @@ namespace NFirmwareEditor.Managers
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
 
-		private static readonly IDictionary<string, string> s_deviceName = new Dictionary<string, string>
+		private static readonly IDictionary<string, DeviceInfo> s_supportedDevices = new Dictionary<string, DeviceInfo>
 		{
-			{ "E052", "Joyetech eVic VTC Mini" },
+			{ "E052", new DeviceInfo("Joyetech eVic VTC Mini", 64, 40) },
 
-			{ "E043", "Joyetech eVic VTwo" },
-			{ "E115", "Joyetech eVic VTwo Mini" },
+			{ "E043", new DeviceInfo("Joyetech eVic VTwo", 64, 40) },
+			{ "E115", new DeviceInfo("Joyetech eVic VTwo Mini", 64, 40) },
 
-			{ "E060", "Joyetech Cuboid" },
-			{ "E056", "Joyetech Cuboid Mini" },
-			
-			{ "E083", "Joyetech eGrip II" },
-			
-			{ "M011", "Eleaf iStick TC100W" },
-			{ "M041", "Eleaf iStick Pico" },
+			{ "E060", new DeviceInfo("Joyetech Cuboid", 64, 40) },
+			{ "E056", new DeviceInfo("Joyetech Cuboid Mini", 64, 40) },
 
-			{ "W007", "Wismec Presa TC75W" },
-			
-			{ "W014", "Wismec Reuleaux RX200" },
-			{ "W033", "Wismec Reuleaux RX200S" },
+			{ "E083", new DeviceInfo("Joyetech eGrip II", 64, 40) },
 
-			{ "W010", "Vaporflask Classic" },
-			{ "W011", "Vaporflask Lite" },
-			{ "W013", "Vaporflask Stout" }
+			{ "M011", new DeviceInfo("Eleaf iStick TC100W") },
+			{ "M041", new DeviceInfo("Eleaf iStick Pico", 96, 16) },
+
+			{ "W007", new DeviceInfo("Wismec Presa TC75W") },
+
+			{ "W014", new DeviceInfo("Wismec Reuleaux RX200") },
+			{ "W033", new DeviceInfo("Wismec Reuleaux RX200S") },
+
+			{ "W010", new DeviceInfo("Vaporflask Classic") },
+			{ "W011", new DeviceInfo("Vaporflask Lite") },
+			{ "W013", new DeviceInfo("Vaporflask Stout") }
 		};
 
-		private static readonly IDictionary<string, bool> s_canUploadLogos = new Dictionary<string, bool>
-		{
-			// Joyetech eVic-VTC Mini
-			{ "E052", true },
-			// Joyetech Cuboid Mini
-			{ "E056", true },
-			// Joyetech Cuboid
-			{ "E060", true }
-		};
 		private readonly Timer m_monitoringTimer;
 
 		private int m_receiveBufferLength;
 		private int m_sentBufferLength;
 		private bool? m_isDeviceConnected;
+
+		public static readonly DeviceInfo UnknownDevice = new DeviceInfo("Unknown device");
 
 		public FirmwareUpdater()
 		{
@@ -185,15 +179,12 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		public static string GetDeviceName(string productId)
+		[NotNull]
+		public static DeviceInfo GetDeviceInfo([CanBeNull] string productId)
 		{
-			if (string.IsNullOrEmpty(productId)) return "Unknown device";
-			return s_deviceName.ContainsKey(productId) ? s_deviceName[productId] : "Unknown device";
-		}
-
-		public static bool GetCanUploadLogo(string productId)
-		{
-			return !string.IsNullOrEmpty(productId) && s_canUploadLogos.ContainsKey(productId);
+			return string.IsNullOrEmpty(productId) || !s_supportedDevices.ContainsKey(productId)
+				? UnknownDevice
+				: s_supportedDevices[productId];
 		}
 
 		private HidStream OpenDeviceStream()
@@ -278,6 +269,40 @@ namespace NFirmwareEditor.Managers
 			var handler = DeviceConnected;
 			if (handler != null) handler(isConnected);
 		}
+	}
+
+	internal class DeviceInfo
+	{
+		private readonly bool m_canUploadLogo;
+
+		public DeviceInfo(string name)
+		{
+			if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
+
+			Name = name;
+			m_canUploadLogo = false;
+		}
+
+		public DeviceInfo([NotNull] string name, byte logoWidth, byte logoHeight)
+		{
+			if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
+
+			Name = name;
+			LogoWidth = logoWidth;
+			LogoHeight = logoHeight;
+			m_canUploadLogo = true;
+		}
+
+		public string Name { get; private set; }
+
+		public bool CanUploadLogo
+		{
+			get { return m_canUploadLogo; }
+		}
+
+		public byte LogoWidth { get; private set; }
+
+		public byte LogoHeight { get; private set; }
 	}
 
 	internal class Dataflash

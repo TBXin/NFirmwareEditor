@@ -27,16 +27,13 @@ namespace NFirmwareEditor.Windows
 			public Action<BackgroundWorker> Processor { get; private set; }
 		}
 
-		private const int LogoWidth = 64;
-		private const int LogoHeight = 40;
-
 		private readonly FirmwareUpdater m_updater = new FirmwareUpdater();
 		private readonly Firmware m_firmware;
 		private readonly FirmwareLoader m_loader;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
+		private DeviceInfo m_deviceInfo = FirmwareUpdater.UnknownDevice;
 		private string m_connectedDeviceProductId;
-		private string m_deviceName;
 		private string m_hardwareVersion;
 		private string m_firmwareVersion;
 
@@ -69,13 +66,13 @@ namespace NFirmwareEditor.Windows
 				}
 
 				m_connectedDeviceProductId = dataflash.ProductId;
-				m_deviceName = FirmwareUpdater.GetDeviceName(m_connectedDeviceProductId);
+				m_deviceInfo = FirmwareUpdater.GetDeviceInfo(m_connectedDeviceProductId);
 				m_hardwareVersion = dataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 				m_firmwareVersion = dataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 
 				UpdateUI(() =>
 				{
-					DeviceNameTextBox.Text = m_deviceName;
+					DeviceNameTextBox.Text = m_deviceInfo.Name;
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
 					BootModeTextBox.Text = dataflash.LoadFromLdrom ? "LDROM" : "APROM";
@@ -251,7 +248,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SetUpdaterButtonsState(bool enabled)
 		{
-			LogoButton.Enabled = enabled && FirmwareUpdater.GetCanUploadLogo(m_connectedDeviceProductId);
+			LogoButton.Enabled = enabled && m_deviceInfo.CanUploadLogo;
 			UpdateButton.Enabled = enabled && m_firmware != null;
 			UpdateFromFileButton.Enabled = enabled;
 
@@ -268,7 +265,7 @@ namespace NFirmwareEditor.Windows
 
 		private string GetDataflashFileName()
 		{
-			return string.Format("{0} HW v{1} FW v{2}", m_deviceName, m_hardwareVersion, m_firmwareVersion);
+			return string.Format("{0} HW v{1} FW v{2}", m_deviceInfo.Name, m_hardwareVersion, m_firmwareVersion);
 		}
 
 		// ReSharper disable once InconsistentNaming
@@ -286,8 +283,14 @@ namespace NFirmwareEditor.Windows
 
 		private void LogoButton_Click(object sender, EventArgs e)
 		{
+			if (!m_deviceInfo.CanUploadLogo)
+			{
+				InfoBox.Show("Logo uploading for this device is not supported.");
+				return;
+			}
+
 			Bitmap logoBitmap;
-			using (var imageConverterWindow = new ImageConverterWindow(true))
+			using (var imageConverterWindow = new ImageConverterWindow(true, m_deviceInfo.LogoWidth, m_deviceInfo.LogoHeight))
 			{
 				if (imageConverterWindow.ShowDialog() != DialogResult.OK) return;
 
@@ -299,8 +302,8 @@ namespace NFirmwareEditor.Windows
 			{
 				var imageData = BitmapProcessor.CreateRawFromBitmap(logoBitmap);
 
-				var block1ImageMetadata = new FirmwareImage1Metadata { Width = LogoWidth, Height = LogoHeight };
-				var block2ImageMetadata = new FirmwareImage2Metadata { Width = LogoWidth, Height = LogoHeight };
+				var block1ImageMetadata = new FirmwareImage1Metadata { Width = m_deviceInfo.LogoWidth, Height = m_deviceInfo.LogoHeight };
+				var block2ImageMetadata = new FirmwareImage2Metadata { Width = m_deviceInfo.LogoWidth, Height = m_deviceInfo.LogoHeight };
 
 				var block1ImageBytes = block1ImageMetadata.Save(imageData);
 				var block2ImageBytes = block2ImageMetadata.Save(imageData);
