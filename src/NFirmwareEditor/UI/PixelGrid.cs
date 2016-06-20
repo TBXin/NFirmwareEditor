@@ -281,7 +281,7 @@ namespace NFirmwareEditor.UI
 
 		private void DrawGrid(Graphics gfx)
 		{
-			if (!m_showGrid && m_blockInnerBorderPen.Color == Color.Transparent) return;
+			if (!m_showGrid || m_blockInnerBorderPen.Color == Color.Transparent) return;
 
 			for (var row = 0; row < m_rowsCount; row++)
 			{
