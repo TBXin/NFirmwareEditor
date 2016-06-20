@@ -814,5 +814,21 @@
 		<CharsToCorrect>0x42 0x39 0x4B</CharsToCorrect>
 	</FirmwareDefinition>
 	<!-- Vaporflask -->
+
+	<!-- Centurion -->
+	<FirmwareDefinition Name="Centurion 1.02">
+		<Marker Offset="0x90" Bytes="0x1D 0x1B" />
+		<Marker Offset="0xC0" Bytes="0xA9 0x5D" />
+		<ImageTable1>
+			<OffsetFrom>0x8458</OffsetFrom>
+			<OffsetTo>0x86EC</OffsetTo>
+		</ImageTable1>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0x7388</OffsetFrom>
+			<OffsetTo>0x759B</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x39 0x42 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- Evic VTwo -->
 	
 </ArrayOfFirmwareDefinition>
