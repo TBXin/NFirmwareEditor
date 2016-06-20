@@ -53,7 +53,9 @@ namespace NFirmwareEditor.Managers
 
 			{ "W010", new DeviceInfo("Vaporflask Classic") },
 			{ "W011", new DeviceInfo("Vaporflask Lite") },
-			{ "W013", new DeviceInfo("Vaporflask Stout") }
+			{ "W013", new DeviceInfo("Vaporflask Stout") },
+
+			{ "W016", new DeviceInfo("Beyondvape Centurion") }
 		};
 
 		private readonly Timer m_monitoringTimer;
