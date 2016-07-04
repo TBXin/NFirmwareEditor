@@ -2,6 +2,24 @@
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	<!-- RX200S -->
+	<FirmwareDefinition Name="RX200S 4.10">
+		<Marker Offset="0x90" Bytes="0xD9 0x21" />
+		<Marker Offset="0xC0" Bytes="0xAD 0x6D" />
+		<ImageTable1>
+			<OffsetFrom>0xC278</OffsetFrom>
+			<OffsetTo>0xC678</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA3E8</OffsetFrom>
+			<OffsetTo>0xA7E8</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xC77C</OffsetFrom>
+			<OffsetTo>0xC9B9</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>	
+		
 	<FirmwareDefinition Name="RX200S 4.00 (27.06.2016)">
 		<Marker Offset="0x90" Bytes="0xD9 0x21" />
 		<Marker Offset="0xC0" Bytes="0xA9 0x6D" />
