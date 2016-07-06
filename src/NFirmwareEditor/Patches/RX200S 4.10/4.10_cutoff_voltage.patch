@@ -1,0 +1,9 @@
+﻿<Patch Definition="RX200S 4.10" Name="Cutoff voltage" Version="1.0" Author="lomask">
+  <Description>Changes the cut-off voltage (to 3.00 V by default).
+Изменяет напряжение отсечки (по умолчанию до 3.00 В).</Description>
+  <Data>
+000036F6: 9B - 96 ; 9B ~ 3.10 V / 96 ~ 3.00 V / CD ~ 4.10 V :)
+#Мигание батарейки
+#000006B2: 9B - CD ; 9B ~ 3.10 V / 96 ~ 3.00 V / CD ~ 4.10 V :)
+</Data>
+</Patch>

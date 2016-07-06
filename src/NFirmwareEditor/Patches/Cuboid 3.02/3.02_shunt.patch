@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 3.02" Name="Shunt Correction" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Shunt resistance correction.
+Коррекция сопротивления измерительного шунта.</Description>
+  <Data>
+000019CC: 69 - 64
+</Data>
+</Patch>

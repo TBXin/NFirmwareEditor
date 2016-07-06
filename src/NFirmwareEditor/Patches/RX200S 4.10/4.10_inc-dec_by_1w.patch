@@ -1,0 +1,10 @@
+﻿<Patch Definition="RX200S 4.10" Name="Inc/Dec by 1W" Version="1.0" Author="lomask">
+  <Description>Changing power by one watt.
+Изменение мощности по одному ватту.</Description>
+  <Data>
+00003E50: 69 - 00
+00003F2C: 69 - 00
+00004044: 69 - 00
+00004196: 69 - 00
+</Data>
+</Patch>
