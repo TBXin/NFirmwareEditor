@@ -1,0 +1,20 @@
+﻿<Patch Definition="iStick Pico 1.01" Name="Fire button clicks changing" Version="1.0" Author="MicroSur">
+	<Description>Changing the number of clicks on the Fire button to call the various events.
+Изменение количества нажатий на кнопку Пуск для вызова соответствующих событий.
+	</Description>
+	<Data>
+#logo menu      2 -> 5 From OFF state!
+#menu           3 -> 2
+#on/off         5 -> 3
+
+# greater than 6 here
+44AA: 0A 06 ; show mod temp 6 From OFF state!
+44AE: 14 07 ; show fw ver   7 From OFF state!
+
+#do not edit
+449A: 02 03
+449C: 14 26 ; goto on-off with 3
+449E: 03 02 ; goto menu with 2
+44A8: 20 0E ; goto logo with 5
+	</Data>
+</Patch>
