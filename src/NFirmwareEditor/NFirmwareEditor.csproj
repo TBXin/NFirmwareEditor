@@ -794,6 +794,9 @@
     <Content Include="Definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Patches\RX200S 4.10\4.10_tc_ss_fix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\check_for_updates.png" />
     <None Include="Resources\about.png" />
     <None Include="Resources\mru.png" />

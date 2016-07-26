@@ -1,0 +1,11 @@
+﻿<Patch Definition="RX200S 4.10" Name="TC SS Fix" Version="1.0" Author="RenegadeTitan">
+	<Description>Исправляет ошибочное перекидывание в режим POWER из режима Temp SS при использовании композитных спиралей, например Clapton / Fused Clapton с SS в сердечнике.
+
+Greatly helps stop rx200s from thinking ss is kanthal and switching to vw mode. changes kanthal check max possible wattage from 40 watts to whatever your set wattage is (up to 249.6 watts).
+note: make sure your wattage and temp are both set high enough for coil to get hot of course.
+	</Description>
+	<Data>
+00003306: C8 - 1C
+00003307: 71 - 61
+	</Data>
+</Patch>
