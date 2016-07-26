@@ -45,6 +45,7 @@ namespace NFirmwareEditor.Managers
 
 			{ "M011", new DeviceInfo("Eleaf iStick TC100W") },
 			{ "M041", new DeviceInfo("Eleaf iStick Pico", 96, 16) },
+			{ "M045", new DeviceInfo("Eleaf iStick Pico Mega", 96, 16) },
 			{ "M046", new DeviceInfo("Eleaf iPower", 96, 16) },
 
 			{ "W007", new DeviceInfo("Wismec Presa TC75W") },
