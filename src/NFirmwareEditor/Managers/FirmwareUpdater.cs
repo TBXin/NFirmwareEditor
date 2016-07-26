@@ -49,6 +49,7 @@ namespace NFirmwareEditor.Managers
 
 			{ "W007", new DeviceInfo("Wismec Presa TC75W") },
 
+			{ "W018", new DeviceInfo("Wismec Reuleaux RX2/3", 64, 48) },
 			{ "W014", new DeviceInfo("Wismec Reuleaux RX200") },
 			{ "W033", new DeviceInfo("Wismec Reuleaux RX200S") },
 

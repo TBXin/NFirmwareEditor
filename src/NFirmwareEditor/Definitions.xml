@@ -1,6 +1,46 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
+	<!-- RX23 -->
+	<FirmwareDefinition Name="RX23 4.02">
+		<Marker Offset="0x90" Bytes="0x15 0x23" />
+		<Marker Offset="0xC0" Bytes="0x29 0x72" />
+		<Marker Offset="0xA30" Bytes="0x40 0xF2" />
+		<ImageTable1>
+			<OffsetFrom>0xC724</OffsetFrom>
+			<OffsetTo>0xCB24</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA894</OffsetFrom>
+			<OffsetTo>0xAC94</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xCC28</OffsetFrom>
+			<OffsetTo>0xCE7D</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+
+	<FirmwareDefinition Name="RX23 4.12">
+		<Marker Offset="0x90" Bytes="0x15 0x23" />
+		<Marker Offset="0xC0" Bytes="0x29 0x72" />
+		<Marker Offset="0xA30" Bytes="0x4F 0xF4" />
+		<ImageTable1>
+			<OffsetFrom>0xC724</OffsetFrom>
+			<OffsetTo>0xCB24</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xA894</OffsetFrom>
+			<OffsetTo>0xAC94</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xCC28</OffsetFrom>
+			<OffsetTo>0xCE7D</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- RX23 -->
+
 	<!-- RX200S -->
 	<FirmwareDefinition Name="RX200S 4.10">
 		<Marker Offset="0x90" Bytes="0xD9 0x21" />
@@ -37,6 +77,7 @@
 		</StringTable1>
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
+	<!-- RX200S -->
 
 	<FirmwareDefinition Name="RX200S 4.00">
 		<Marker Offset="0x90" Bytes="0xD9 0x21" />
