@@ -787,6 +787,22 @@
 	</FirmwareDefinition>
 	<!-- eGrip II -->
 
+	<!-- ASTER -->
+	<FirmwareDefinition Name="ASTER 1.01">
+		<Marker Offset="0x90" Bytes="0xB5 0x1C" />
+		<Marker Offset="0xC0" Bytes="0xB5 0x64" />
+		<ImageTable1>
+			<OffsetFrom>0x8BC0</OffsetFrom>
+			<OffsetTo>0x8E54</OffsetTo>
+		</ImageTable1>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0x7ACC</OffsetFrom>
+			<OffsetTo>0x7D03</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x39 0x3C 0x42 0x4B</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- ASTER -->
+	
 	<!-- iPower -->
 	<FirmwareDefinition Name="iPower 1.01">
 		<Marker Offset="0x90" Bytes="0x71 0x1C" />
