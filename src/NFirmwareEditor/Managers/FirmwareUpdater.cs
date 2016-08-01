@@ -38,6 +38,8 @@ namespace NFirmwareEditor.Managers
 			{ "E043", new DeviceInfo("Joyetech eVic VTwo", 64, 40) },
 			{ "E115", new DeviceInfo("Joyetech eVic VTwo Mini", 64, 40) },
 
+			{ "E150", new DeviceInfo("Joyetech eVic Basic", 64, 40) },
+
 			{ "E060", new DeviceInfo("Joyetech Cuboid", 64, 40) },
 			{ "E056", new DeviceInfo("Joyetech Cuboid Mini", 64, 40) },
 
