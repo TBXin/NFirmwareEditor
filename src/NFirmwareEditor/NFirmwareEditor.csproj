@@ -583,7 +583,13 @@
     <None Include="Patches\Evic VTwo Mini 4.02\4.02_temp2charge.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\iStick Pico 1.00\1.00_timeout10s.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\iStick Pico 1.01\1.01_buttons_2-5.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\iStick Pico 1.01\1.01_timeout10s.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\iStick TC100W 1.10\1.10_1st_patch.patch">
