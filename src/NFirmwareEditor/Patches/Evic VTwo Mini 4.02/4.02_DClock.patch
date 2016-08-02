@@ -1,0 +1,198 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Digital clock/date on big clock screen" Version="1.0" Author="Internet ©">
+  <Description>Show digital clock and date on big clock screen.
+
+Показывает цифровые часы и дату на экране с большими стрелочными часами.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+8714: FA - 04
+8715: F7 - F0
+8716: 49 - 94
+8717: FC - BC
+
+#-##-##
+D040: 00 - F5
+D041: 00 - F7
+D042: E0 - B3
+D043: 00 - FF
+D044: 00 - 6E
+D045: 01 - 46
+D046: C0 - 02
+D047: 00 - 23
+D048: 00 - 0B ; FONT_1_2
+D049: 07 - 20
+D04A: 78 - CD
+D04B: 00 - E9
+D04C: 00 - 00
+D04D: 02 - 03
+D04E: 20 - 00
+D04F: 00 - 23
+D050: 00 - 04 ; y_1
+D051: 1E - 21
+D052: 3E - 05 ; x_1
+D053: 00 - 20
+D054: 00 - 07 ; DATA_1 03Y - 04M - 05D ; 07h, 08m, 09s
+D055: 04 - 9A
+D056: 10 - F9
+D057: 00 - F7
+D058: 00 - EF
+D059: 7C - FA
+D05A: 1F - 04 ; Y_2
+D05B: 80 - 21
+D05C: 00 - 1A ; X_2
+D05D: 04 - 20
+D05E: 10 - 08 ; DATA_2 03Y - 04M - 05D ; 07h, 08m, 09s
+D05F: 00 - 9A
+D060: 01 - F9
+D061: F8 - F7
+D062: 1F - EA
+D063: E0 - FA
+D064: 00 - 4F ; ":" CODE 102
+D065: 08 - F4
+D066: 00 - 81
+D067: 00 - 72
+D068: 07 - 00
+D069: F8 - BF
+D06A: 0F - 00
+D06B: FC - BF
+D06C: 00 - 00 ; y_
+D06D: 08 - 21
+D06E: 00 - 11 ; x_
+D06F: 00 - 20
+D070: 3F - F9
+D071: F0 - F7
+D072: 07 - 5E
+D073: FF - FA
+D074: 00 - 02
+D075: 28 - 23
+D076: 74 - 0B ; FONT_3
+D077: 00 - 20
+D078: FF - CD
+D079: E0 - E9
+D07A: 07 - 00
+D07B: FF - 03
+D07C: E0 - 00
+D07D: 28 - 23
+D07E: 14 - 04 ; y_3
+D07F: 07 - 21
+D080: FF - 2F ; x_3
+D081: E0 - 20
+D082: 03 - 09 ; DATA_3 03Y - 04M - 05D ; 07h, 08m, 09s
+D083: FF - 9A
+D084: F8 - F9
+D085: 24 - F7
+D086: 24 - D8
+D087: 1F - FA
+
+#/##/####
+D088: FF - 02
+D089: C0 - 23
+D08A: 01 - 0B ; FONT_4_5
+D08B: FF - 20
+D08C: FF - CD
+D08D: 14 - E9
+D08E: 28 - 00
+D08F: FF - 03
+D090: FF - 00
+D091: 80 - 23
+D092: 01 - 6F ; Y_4
+D093: 7F - 21
+D094: FF - 01 ; X_4
+D095: D2 - 20
+D096: 4B - 05 ; DATA_4 03Y - 04M - 05D ; 07h, 08m, 09s
+D097: FF - 9A
+D098: FE - F9
+D099: 80 - F7
+D09A: 01 - CE
+D09B: 0F - FA
+D09C: FF - 6F ; Y_5
+D09D: C9 - 21
+D09E: 93 - 14 ; X_5
+D09F: FF - 20
+D0A0: F0 - 04 ; DATA_5 03Y - 04M - 05D ; 07h, 08m, 09s
+D0A1: 80 - 9A
+D0A2: 00 - F9
+D0A3: 01 - F7
+D0A4: FF - C9
+D0A5: E8 - FA
+
+D0A6: 17 - 4F ; ":" CODE 102
+D0A7: FF - F4
+D0A8: 80 - 81
+D0A9: 00 - 72
+D0AA: 00 - 00
+D0AB: 00 - BF
+D0AC: 7F - 01 ; CODE "/" 102+1
+D0AD: E4 - 32 ; ADDS
+D0AE: 27 - 70 ; Y
+D0AF: FE - 21
+D0B0: 00 - 0D ; X
+D0B1: 00 - 20
+D0B2: 00 - F9
+D0B3: 00 - F7
+D0B4: 0F - 3D
+D0B5: F3 - FA
+D0B6: CF - 04 ; 
+D0B7: F0 - 23
+D0B8: 00 - 0B ; FONT_6
+D0B9: 00 - 20
+D0BA: 00 - CD
+D0BB: 00 - E9
+D0BC: 03 - 00
+D0BD: F8 - 03
+D0BE: 1F - 00
+D0BF: C0 - 23
+D0C0: 00 - 6F ; Y_6
+D0C1: 00 - 21
+D0C2: 00 - 27 ; X_6
+D0C3: 00 - 20
+D0C4: 00 - 03 ; DATA_6 03Y - 04M - 05D ; 07h, 08m, 09s
+D0C5: 7C - 9A
+D0C6: 3E - F9
+D0C7: 00 - F7
+D0C8: 00 - B7
+D0C9: 00 - FA
+
+#":" CODE 102
+D0CA: 00 - 4F
+D0CB: 00 - F4
+D0CC: 00 - 81
+D0CD: 07 - 72
+D0CE: F0 - 01 ; CODE "/" 102+1
+D0CF: 00 - 32
+D0D0: 00 - 70 ; Y
+D0D1: 00 - 21
+D0D2: 00 - 20 ; X
+D0D3: 00 - 20
+D0D4: 00 - F9 ; print
+D0D5: 0F - F7
+D0D6: F8 - 2C
+D0D7: 00 - FA
+
+#":" CODE 102
+D0D8: 00 - 4F
+D0D9: 00 - F4
+D0DA: 00 - 81
+D0DB: 00 - 72
+D0DC: 00 - 00
+D0DD: 1F - BF
+D0DE: FC - 00 ; y
+D0DF: 00 - 21
+D0E0: 00 - 26 ; x
+D0E1: 00 - 20
+D0E2: 00 - F9 ; print
+D0E3: 00 - F7
+D0E4: 00 - 25
+D0E5: 3F - FA
+
+#ret
+D0E6: FE - B5
+D0E7: 00 - 46
+D0E8: 00 - FB
+D0E9: 00 - F7
+D0EA: 00 - 16
+D0EB: 00 - BB
+
+
+</Data>
+</Patch>

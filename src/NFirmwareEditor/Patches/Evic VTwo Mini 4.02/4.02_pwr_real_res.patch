@@ -1,0 +1,13 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Realtime resistance in Power mode" Version="1.0" Author="Internet ©">
+  <Description>Display realtime resistance in POWER mode when Fire, same as in BYPASS.
+
+Отображение реального сопротивления в режиме VW при парении (а не последнего после накручивания атомайзера).</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SuRPort()maelstrom2001
+
+#power_screen on Fire
+8482: 2B - 00
+8483: E0 - BF
+
+</Data>
+</Patch>

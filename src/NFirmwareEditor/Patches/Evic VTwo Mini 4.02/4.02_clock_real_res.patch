@@ -1,0 +1,33 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Realtime resistance in Clock mode" Version="1.0" Author="Internet ©">
+  <Description>Display realtime resistance in Clock mode everytime. 
+
+Показывает реальное сопротивление в режиме часов (из-за особенностей измерения может скакать в сотых долях).</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SuR
+
+#clock_screen everytime
+83EC: 9A - 9C ; point to real res data (200000B0)
+
+# goto cut-in for /0A
+83F2: 02 - 04
+83F3: 23 - F0
+83F4: 02 - 1E
+83F5: 88 - BE
+#cut
+D032: 00 - 02
+D033: 00 - 23
+D034: 00 - 00
+D035: 00 - 68
+D036: 00 - 0A
+D037: 00 - 22
+D038: 00 - B0
+D039: 00 - FB
+D03A: 00 - F2
+D03B: 00 - F2
+D03C: 00 - FB
+D03D: 00 - F7
+D03E: 00 - DB
+D03F: 00 - B9
+
+</Data>
+</Patch>

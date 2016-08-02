@@ -1,0 +1,13 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Correction of coil Res detection" Version="1.0" Author="Internet ©">
+  <Description>Change the resistance of the measuring shunt for the proper determination of the coil resistance.
+
+Изменение сопротивления шунта для более точного измерения сопротивления спирали.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+#Set and Uncomment
+#22BA: 73: 73 # 73 = default ; 7D -> +0.01 Ohm ; 69 -> -0.01
+
+
+</Data>
+</Patch>

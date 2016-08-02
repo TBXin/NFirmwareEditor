@@ -1,0 +1,30 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Charge screen mode with empty picture 64x128" Version="1.0" Author="Internet ©">
+  <Description>Show ownerdraw picture (code FF) on the charge screen. Increases firmware.
+
+Показывает на экране зарядки картинку 64x128 (код FF, картинку добавить в редакторе, там же можно будет уменьшить её высоту до нужного).</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+7836: C4 - FF ; change battery rectangle to ownerdraw pic
+7838: 73 - 00 ; Y
+783A: 08 - 00 ; X
+
+# Pointers to logos (charcode FF)
+100F0: 51 - 80
+100F1: F4 - 08
+100F2: 00 - 01
+DC00: 24 - 82
+DC01: CF - 0C
+DC02: 00 - 01
+
+# Add logo 64x128
+10880: null - 40
+10881: null - 80
+10C81: null - 00 ; logo 1 end
+
+10C82: null - 40
+10C83: null - 80
+11083: null - 00 ; logo 2 end
+
+</Data>
+</Patch>

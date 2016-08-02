@@ -1,0 +1,15 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Power scroll 1W" Version="1.0" Author="Internet ©">
+  <Description>Increase/decrease power with 1 Watt steps.
+
+Регулировка мощности с шагом 1 Ватт.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+
+# 1W
+51BE: 69 - 00
+52A4: 69 - 00
+5452: 69 - 00
+5606: 69 - 00
+
+</Data>
+</Patch>

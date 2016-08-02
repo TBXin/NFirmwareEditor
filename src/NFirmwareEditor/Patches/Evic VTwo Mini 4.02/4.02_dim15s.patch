@@ -1,0 +1,15 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Sleep timeout 15s" Version="1.0" Author="Internet ©">
+  <Description>Set dim timeout from 30 to 15s.
+
+Установка времени гашения экрана 15сек вместо 30-ти.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+
+1EEE: 1E - 0F
+572E: 1E - 0F
+720C: 1E - 0F
+932E: 1E - 0F
+
+
+</Data>
+</Patch>

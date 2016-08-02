@@ -1,0 +1,99 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Battery voltage and Temp at the charge screen" Version="1.0" Author="Internet ©">
+  <Description>Charge screen with Battery voltage and Temp.
+
+Температура мода и напряжение аккумулятора на экране зарядки.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+
+783C: FE - 07
+783D: F7 - F0
+783E: 78 - 57
+F4EE: 00 - F7
+F4EF: 00 - F7
+F4F0: 00 - 1F
+F4F1: 00 - F8
+F4F2: 00 - 1C
+F4F3: 00 - B4
+F4F4: 00 - 11
+F4F5: 00 - 48
+F4F6: 00 - 0B
+F4F7: 00 - 21
+F4F8: 00 - 03
+F4F9: 00 - 22
+F4FA: 00 - CD
+F4FB: 00 - E9
+F4FC: 00 - 00
+F4FD: 00 - 12
+F4FE: 00 - 02
+F4FF: 00 - 23
+F500: 00 - 02
+F501: 00 - 88
+F502: 00 - 67 ; voltage pos Y
+F503: 00 - 21
+F504: 00 - 02 ; voltage pos X
+F505: 00 - 20
+F506: 00 - F7
+F507: 00 - F7
+F508: 00 - 97
+F509: 00 - F8
+F50A: 00 - 97 ; V charcode
+F50B: 00 - 22
+F50C: 00 - 67 ; V pos Y
+F50D: 00 - 21
+F50E: 00 - 18 ; V pos X
+F50F: 00 - 20
+F510: 00 - F7
+F511: 00 - F7
+F512: 00 - 0E
+F513: 00 - F8
+F514: 00 - 0A
+F515: 00 - 48
+F516: 00 - 0B
+F517: 00 - 21
+F518: 00 - 02
+F519: 00 - 22
+F51A: 00 - CD
+F51B: 00 - E9
+F51C: 00 - 00
+F51D: 00 - 12
+F51E: 00 - 00
+F51F: 00 - 23
+F520: 00 - 02
+F521: 00 - 78
+F522: 00 - 67 ; temperature pos Y
+F523: 00 - 21
+F524: 00 - 27 ; temperature pos X
+F525: 00 - 20
+F526: 00 - F7
+F527: 00 - F7
+F528: 00 - 87
+F529: 00 - F8
+F52A: 00 - 84 ; 'C charcode
+F52B: 00 - 22
+F52C: 00 - 67 ; 'C pos Y
+F52D: 04 - 21
+F52E: 0C - 35 ; 'C pos X
+F52F: 1C - 20
+F530: 78 - F6
+F531: F8 - F7
+F532: F0 - FE
+F533: F0 - FF
+F534: E0 - 1C
+F535: E0 - BC
+F536: C0 - F8 ; RETURN
+F537: C0 - F7
+F538: 80 - 83
+F539: 80 - B9
+F53A: 80 - 00
+F53B: 00 - 00
+F53C: 00 - 60 ; data volt
+F53D: 00 - 00
+F53E: 00 - 00
+F53F: 00 - 20
+F540: 00 - 48 ; data temp
+F541: 00 - 00
+F542: 00 - 00
+F543: 00 - 20
+
+</Data>
+</Patch>

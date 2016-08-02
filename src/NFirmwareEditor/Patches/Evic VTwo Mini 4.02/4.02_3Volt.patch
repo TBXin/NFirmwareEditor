@@ -1,0 +1,14 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Set 3.0 Volt lock voltage" Version="1.0" Author="Internet ©">
+  <Description>Set 3.0 V lock voltage.
+
+Блокировка парения при разряде батарей до 3В. Возможны другое значение, смотрите коментарии внутри.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort$yii
+
+4900: 9B - 96 ; 9B = 3.1V (def), 96 = 3.0V, A0 = 3.2V
+
+#4906: 46: 46 # 70 grad for Too Hot
+
+
+</Data>
+</Patch>

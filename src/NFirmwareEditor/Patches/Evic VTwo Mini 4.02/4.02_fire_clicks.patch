@@ -1,0 +1,14 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Fire button clicks changing (3, 2, 5, 6)" Version="1.0" Author="Internet ©">
+  <Description>Changing the number of clicks on the Fire button to call the various events.
+
+Изменение количества нажатий на кнопку Пуск для вызова событий.</Description>
+  <Data>
+# 4.02_EvicVTwo_mini #Sur
+
+5C24: 05 - 03 ; on-off clicks
+5C2E: 03 - 02 ; menu
+5C36: 0A - 05 ; show temp
+5C3A: 14 - 06 ; show fw ver
+
+</Data>
+</Patch>

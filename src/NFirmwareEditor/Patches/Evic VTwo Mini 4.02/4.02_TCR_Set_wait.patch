@@ -1,0 +1,16 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Shorter timeout Fire+Buttons when Off" Version="1.0" Author="Internet ©">
+  <Description>Shorter timeout (2.5sec) waiting for TCR-Set and Buttery volts in Off mode.
+
+Время ожидания настроек кастомного TCR и показа заряда акка сокращено до 2.5 сек.</Description>
+  <Data>
+# eVic_VTwo_Mini_4.02.bin #Sur
+
+5B5C: FA - 80
+
+#can swap +- buttons in this case
+#5B5E: 06: 06 #fire &amp; button-
+#5B62: 05: 05 #fire &amp; button+
+
+
+</Data>
+</Patch>

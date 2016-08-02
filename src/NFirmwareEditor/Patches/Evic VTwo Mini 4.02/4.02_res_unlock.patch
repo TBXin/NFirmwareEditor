@@ -1,0 +1,91 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Resistance unlock/erase instead of Keylock function" Version="1.0" Author="Internet ©">
+  <Description>You need to reload the firmware in the editor!
+
+Требуется перезагрузить текущую прошивку в редакторе!</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+
+1D32: 07 - 0D ; branch to resistance erase
+1D33: F0 - F0
+1D34: 31 - 99
+1D35: F8 - FC
+
+58F4: 41 - 21 ; Always Unlocked
+
+# Resistance erase
+F668: 00 - 0C
+F669: 00 - 49
+F66A: 00 - 88
+F66B: 00 - 7B
+F66C: 00 - 01
+F66D: 00 - 28
+F66E: 00 - 05
+F66F: 00 - D0
+F670: 00 - 38
+F671: 00 - B1
+F672: 00 - 02
+F673: 00 - 28
+F674: 00 - 08
+F675: 00 - D0
+F676: 00 - 03
+F677: 00 - 28
+
+F678: 00 - 0A
+F679: 00 - D0
+F67A: 00 - 0C
+F67B: 00 - E0
+F67C: 00 - 00
+F67D: 00 - 20
+F67E: 00 - C8
+F67F: 00 - 83
+F680: 00 - 09
+F681: 00 - E0
+F682: 00 - 00
+F683: 00 - 20
+F684: 00 - 08
+F685: 00 - 84
+F686: 00 - 06
+F687: 00 - E0
+
+F688: 00 - 00
+F689: 00 - 20
+F68A: 00 - A1
+F68B: 00 - F8
+F68C: 00 - 84
+F68D: 00 - 00
+F68E: 00 - 02
+F68F: 00 - E0
+F690: 00 - 00
+F691: 00 - 20
+F692: 00 - A1
+F693: 00 - F8
+F694: 00 - 90
+F695: 00 - 00
+
+F696: 00 - F9 ; ret sub_8D98
+F697: 00 - F7
+F698: 00 - 7F
+F699: 00 - BB
+
+F69A: 00 - 00
+F69B: 00 - 00
+F69C: 00 - B0 ; data
+F69D: 00 - 02
+F69E: 00 - 00
+F69F: 00 - 20
+
+#Words change
+#Key->Omega
+10226: A6 - BC
+10228: 86 - C0
+1022A: 9A - BC
+#Unlock->Erased
+10258: B0 - A0
+1025A: 8F - 93
+1025C: A7 - 82
+1025E: 90 - 94
+10260: 84 - 86
+10262: 8C - 85
+
+</Data>
+</Patch>

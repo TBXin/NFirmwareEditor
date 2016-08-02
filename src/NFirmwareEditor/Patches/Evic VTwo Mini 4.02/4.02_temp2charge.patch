@@ -1,0 +1,21 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Show Charge screen instead of Temp" Version="1.0" Author="Internet ©">
+  <Description>Show Charge screen instead of Temp
+
+По кликам вызова показаний температуры показывается экран с заставкой заряда мода.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+1D14: 05 - FF
+1D15: F0 - F7
+1D16: 0C - E9
+1D17: FE - FF
+
+#version clicks to big clock show (no tick)
+#1D38: 06: 00
+#1D39: F0: F0
+#1D3A: 98: 08
+#1D3B: FF: F8
+
+
+</Data>
+</Patch>

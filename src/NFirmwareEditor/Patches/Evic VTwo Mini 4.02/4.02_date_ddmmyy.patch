@@ -1,0 +1,62 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Date dd/mm/yyyy" Version="1.0" Author="Internet ©">
+  <Description>Show Date in format DD/MM/YYYY. Enlarged digital clock font.
+
+Показ даты в формате день/месяц/год (числами), увеличен фонт цифровых часов.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+#1 
+80EA: 03 - 05
+8122: 05 - 03
+
+80E3: 7A - 76
+811B: 76 - 7A
+#x coord
+80F6: 19 - 0D ; ' -
+8104: 20 - 14
+8112: 2D - 21 ; ' -
+8120: 34 - 28
+
+#2 
+818E: 03 - 05
+81C6: 05 - 03
+
+8187: 7A - 76
+81BF: 76 - 7A
+
+819A: 19 - 0D ; ' -
+81A8: 20 - 14
+81B6: 2D - 21 ; ' -
+81C4: 34 - 28
+
+#3 edit
+81E0: 03 - 05
+8220: 05 - 03
+
+81D9: 7A - 76
+8219: 76 - 7A
+
+81FE: 20 - 14
+821E: 34 - 28
+8250: 19 - 0D ; ' -
+825A: 2D - 21 ; ' -
+
+81D2: 04 - 06
+8212: 06 - 04
+
+#clock font
+8092: 29 - 3D
+80BE: 29 - 3D
+814C: 29 - 3D
+816E: 29 - 3D
+8226: 29 - 3D
+#clock Y
+809A: 14 - 0C
+80C6: 14 - 0C
+8154: 14 - 0C
+8176: 14 - 0C
+822E: 14 - 0C
+823E: 14 - 0C
+
+</Data>
+</Patch>

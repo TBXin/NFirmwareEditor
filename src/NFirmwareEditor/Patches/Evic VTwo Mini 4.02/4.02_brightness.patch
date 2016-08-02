@@ -1,0 +1,81 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Display brightness 50%" Version="1.0" Author="Internet ©">
+  <Description>Set display brightness to 25% or set your own.
+
+Яркость экрана 25%. Можно выставить своё значение яркости.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+# Make same changes in both cut-in's
+# value 3F - 25%, 7F - 50%, C0 - 75%, FF - 100%
+# pos/neg A6 (normal) / A7 (negative)
+
+#Branch A
+605C: AF - 09
+605D: 20 - F0
+605E: FF - BD
+605F: F7 - BA
+#Branch B (HW 1.0)
+630E: AF - 09
+630F: 20 - F0
+6310: FF - 72
+6311: F7 - B9
+# Cut-in B
+F5F6: 18 - A6 ; pos/neg
+F5F7: 60 - 20
+F5F8: 18 - F6
+F5F9: 04 - F7
+F5FA: 40 - 70
+F5FB: 38 - FC
+F5FC: 24 - 81 ; set brightness cmd
+F5FD: 38 - 20
+F5FE: 40 - F6
+F5FF: 00 - F7
+F600: 7C - 6D
+F601: 14 - FC
+F602: 1C - 7F ; value of brightness
+F603: 00 - 20
+F604: 38 - F6
+F605: 44 - F7
+F606: 38 - 6A
+F607: 00 - FC
+F608: 7C - AF ; display On cmd (AE = Off)
+F609: 14 - 20
+F60A: 69 - F6
+F60B: 01 - F7
+F60C: 03 - 67
+F60D: 0F - FC
+F60E: 03 - F6 ; ret loc_6314
+F60F: 01 - F7
+F610: 39 - 81
+F611: 44 - BE
+#Cut-in A
+F5DA: 00 - A6 ; pos/neg
+F5DB: 00 - 20
+F5DC: 00 - F6
+F5DD: 00 - F7
+F5DE: 00 - 7E
+F5DF: 00 - FC
+F5E0: 00 - 81 ; set brightness cmd
+F5E1: 00 - 20
+F5E2: 00 - F6
+F5E3: 00 - F7
+F5E4: 00 - 7B
+F5E5: 00 - FC
+F5E6: 00 - 7F ; value of brightness
+F5E7: 00 - 20
+F5E8: 00 - F6
+F5E9: 00 - F7
+F5EA: 00 - 78
+F5EB: 00 - FC
+F5EC: 00 - AF ; display On cmd (AE = Off)
+F5ED: 00 - 20
+F5EE: 00 - F6
+F5EF: 00 - F7
+F5F0: 00 - 75
+F5F1: 00 - FC
+F5F2: 00 - F6 ; ret loc_6062
+F5F3: 00 - F7
+F5F4: 00 - 36
+F5F5: 04 - BD
+
+</Data>
+</Patch>

@@ -1,0 +1,86 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Skip Modes" Version="1.0" Author="Internet ©">
+  <Description>Skip non-used modes. Edit patch file to select which modes should be hidden.
+
+Убирает неиспользуемые режимы из меню выбора. Отредактируйте файл патча, чтобы выбрать скрытые режимы.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort()maelstrom2001
+
+#OPTIONS (01 to skip)
+D002: 00 - 01 ; - skip TEMP
+D014: 00 - 00 ; - skip TCR
+D01A: 00 - 00 ; - skip POWER
+D020: 00 - 01 ; - skip BYPASS
+D026: 00 - 01 ; - skip START
+D02C: 00 - 00 ; - skip CLOCK
+
+# Branch to skip #
+687E: 40 - 06
+687F: 1C - F0
+6880: C0 - B9
+6881: B2 - BB
+
+CFF4: 00 - 40
+CFF5: 00 - 1C
+CFF6: 00 - C0
+CFF7: 00 - B2
+CFF8: 00 - 08
+CFF9: 00 - 28
+CFFA: 00 - 00
+CFFB: 00 - D3
+CFFC: 00 - 00
+CFFD: 00 - 20
+CFFE: 00 - 00
+CFFF: 00 - 28
+D000: 00 - 00
+D001: 00 - D1
+#D002: 00: 00 ;
+D003: 00 - 30
+D004: 00 - 01
+D005: 00 - 28
+D006: 00 - 00
+D007: 00 - D1
+D008: 00 - 01 ; +1
+D009: 00 - 30
+D00A: 00 - 02
+D00B: 00 - 28
+D00C: 00 - 00
+D00D: 00 - D1
+D00E: 00 - 01 ; +1
+D00F: 00 - 30
+D010: 00 - 03
+D011: 00 - 28
+D012: 00 - 00
+D013: 00 - D1
+#D014: 00: 00 ;
+D015: 00 - 30
+D016: 00 - 04
+D017: 00 - 28
+D018: 00 - 00
+D019: 00 - D1
+#D01A: 00: 00 ;
+D01B: 00 - 30
+D01C: 00 - 05
+D01D: 00 - 28
+D01E: 00 - 00
+D01F: 00 - D1
+#D020: 00: 00 ;
+D021: 00 - 30
+D022: 00 - 06
+D023: 00 - 28
+D024: 00 - 00
+D025: 00 - D1
+#D026: 00: 00 ;
+D027: 00 - 30
+D028: 00 - 07
+D029: 00 - 28
+D02A: 00 - 00
+D02B: 00 - D1
+#D02C: 00: 00 ;
+D02D: 00 - 30
+D02E: 00 - F9
+D02F: 00 - F7
+D030: 00 - 28
+D031: 00 - BC
+
+</Data>
+</Patch>

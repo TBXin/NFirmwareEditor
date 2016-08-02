@@ -1,0 +1,192 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="3-d line with battery voltage and real resistance" Version="1.0" Author="Internet ©">
+  <Description>Adds battery voltage, real resistance #.### in last 3rd line.
+
+В 3-ю строку добавляются показания напряжения батареи, реальное сопротивление спирали до третьего знака.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #SurPort
+
+# Max item number
+263C: 03 - 05
+523A: 03 - 05
+# Branch to new case set for 3rd line
+8530: 01 - 07
+8531: 28 - F0
+8532: 21 - 08
+8533: D0 - B8
+
+# New case set
+F544: 00 - 01 ; PUFF
+F545: 00 - 28
+F546: 00 - 39
+F547: 00 - F4
+F548: 00 - 17
+F549: C0 - A8
+F54A: 30 - 02 ; TIME
+F54B: 08 - 28
+F54C: 04 - 39
+F54D: 04 - F4
+F54E: 04 - 22
+F54F: 08 - A8
+F550: 30 - 03 ; BATT
+F551: 00 - 28
+F552: 00 - 00
+F553: 00 - F0
+F554: 00 - 1B
+F555: 00 - 80
+F556: 00 - 04 ; RES
+F557: 00 - 28
+F558: 00 - 00
+F559: 00 - F0
+F55A: 00 - 02
+F55B: 00 - 80
+F55C: 00 - F9 ; Ret loc_85B8
+F55D: 00 - F7
+F55E: 00 - 2C
+F55F: 80 - B8
+
+#RES
+F560: 80 - 18
+F561: 80 - 48
+F562: C0 - 5E ; RES pos Y
+F563: C0 - 22
+F564: E0 - 00 ; X
+F565: E0 - 21
+F566: F0 - 04
+F567: F0 - 26
+
+F568: F8 - F7
+F569: 78 - F7
+F56A: 1C - 3D
+F56B: 0C - F9
+
+F56C: 04 - 12
+F56D: 00 - 48
+F56E: 00 - CD
+F56F: 00 - E9
+F570: 00 - 00
+F571: 00 - 46
+
+F572: 03 - 03 ; .###
+F573: 07 - 23
+F574: 3F - 02
+F575: 0F - 88
+F576: 1F - 5A ; pos Y
+F577: 1F - 21
+F578: 1F - 10 ; pos X
+F579: 3F - 20
+
+F57A: 3F - F7
+F57B: 3F - F7
+F57C: 7F - 5D
+F57D: 7E - F8
+
+F57E: FE - C0 ; Ohm charcode
+F57F: FE - 22
+F580: FC - 5D ; pos Y
+F581: FC - 21
+F582: F8 - 38 ; pos X
+F583: F8 - 20
+
+F584: F8 - F6
+F585: F0 - F7
+F586: F0 - D4
+F587: C7 - FF
+
+F588: 18 - F9 ; Ret
+F589: 63 - F7
+F58A: 8C - 16
+F58B: 10 - B8
+
+#BATT
+F58C: 20 - 0C
+F58D: 20 - 48
+F58E: 11 - 5E ; BATT pos Y
+F58F: 8D - 22
+F590: 63 - 00 ; BATT pos X
+F591: 18 - 21
+F592: C7 - 03
+F593: F0 - 26
+
+F594: F0 - F7
+F595: F8 - F7
+F596: F8 - 27
+F597: F8 - F9
+
+F598: FC - 08
+F599: FC - 48
+F59A: FE - CD
+F59B: FE - E9
+F59C: 7E - 00
+F59D: 7F - 46
+F59E: 3F - 02
+F59F: 3F - 23
+F5A0: 3F - 02
+F5A1: 1F - 88
+F5A2: 1F - 5A ; voltage pos Y
+F5A3: 1F - 21
+F5A4: 0F - 18 ; voltage pos X
+F5A5: 3F - 20
+
+F5A6: 07 - F7
+F5A7: 03 - F7
+F5A8: 00 - 47
+F5A9: 00 - F8
+
+F5AA: 00 - B1 ; V charcode
+F5AB: 00 - 22
+F5AC: 00 - 5D ; V pos Y
+F5AD: 00 - 21
+F5AE: 00 - 37 ; V pos X
+F5AF: 00 - 20
+
+F5B0: 00 - F6
+F5B1: 00 - F7
+F5B2: 00 - BE
+F5B3: 00 - FF
+
+F5B4: 00 - F9 ; Ret
+F5B5: 00 - F7
+F5B6: 00 - 00
+F5B7: 00 - B8
+
+F5B8: 00 - B0 ; data of Res
+F5B9: 00 - 00
+F5BA: 00 - 00
+F5BB: 00 - 20
+
+F5BC: 00 - 60 ; data of batt
+F5BD: 00 - 00
+F5BE: 00 - 00
+F5BF: 00 - 20
+
+F5C0: 00 - C8
+F5C1: 01 - F5
+F5C2: 01 - 00
+F5C3: 03 - 00
+F5C4: 03 - D2
+F5C5: 03 - F5
+F5C6: 07 - 00
+F5C7: 47 - 00
+
+F5C8: E7 - 69 ; word BATT
+F5C9: F6 - 00
+F5CA: FC - 68
+F5CB: F9 - 00
+F5CC: F9 - 7B
+F5CD: F9 - 00
+F5CE: F9 - 7B
+F5CF: FC - 00
+F5D0: FE - 00
+F5D1: F7 - 00
+
+F5D2: E7 - 79 ; word RS
+F5D3: 47 - 00
+F5D4: 03 - 7A
+F5D5: 03 - 00
+F5D6: 03 - 00 ; for more 1
+F5D7: 01 - 00
+F5D8: 01 - 00
+F5D9: 00 - 00
+
+</Data>
+</Patch>

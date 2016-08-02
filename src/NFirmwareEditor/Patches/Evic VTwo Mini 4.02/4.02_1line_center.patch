@@ -1,0 +1,65 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="Center 1st line on screen" Version="1.0" Author="Internet ©">
+  <Description>Center 1st line on screen (POWER, BYPASS etc).
+
+Надписи Power, Bypass, TEMP итд в первой строке отцентрованы. Так же устанавливается патч убивания 316 в строке SS316.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+7D32: 00 - 0C ; POWER
+7DC8: 00 - 0A ; BYPASS
+
+7B38: 00 - 0A ; TEMP /TI
+8AF0: 00 - 0A ; TEMP /TI
+7C16: 00 - 0A ; TEMP
+7B4C: 00 - 0A ; TEMP /SS
+8B04: 00 - 0A ; TEMP /SS
+
+7B44: 20 - 2B ; TI
+8AFC: 20 - 2B ; TI
+
+7B58: 20 - 29 ; SS
+8B10: 20 - 29 ; SS
+
+7B20: 20 - 2A ; NI
+8AC2: 20 - 2A ; NI
+
+7B12: 00 - 0A ; TEMP and TCR
+7B84: FE - 00 ; no print TCR in ### M#
+7B85: F7 - BF ; 
+7B86: 2F - 00 ; 
+7B87: FE - BF ; 
+
+7BDC: 00 - 0A ; TCR
+7BE0: FE - 00 ; no print TCR in ### M#
+7BE1: F7 - BF ; 
+7BE2: 01 - 00 ; 
+7BE3: FE - BF ; 
+
+8AB4: 00 - 0A ; TEMP and TCR
+8B3E: FD - 00 ; no print TCR in ### M#
+8B3F: F7 - BF ; 
+8B40: 52 - 00 ; 
+8B41: FE - BF ; 
+
+7BA6: 31 - 0E ; M
+7BC6: 39 - 16 ; 1-2-3
+7B9C: 19 - 20 ; digit ###
+7BF8: 19 - 20 ; digit ###
+
+8B62: 31 - 0E ; M
+8B76: 39 - 16 ; 1-2-3
+8B58: 19 - 20 ; digit ###
+
+7E3E: 0D - 0F ; Start_X
+
+# second line on main screen inverse (off)
+843E: 01 - 00
+
+# Delete 316 in SS TCR line #
+7B60: 04 - E2
+7B61: 22 - E7
+8B18: 04 - D7
+8B19: 22 - E7
+
+</Data>
+</Patch>

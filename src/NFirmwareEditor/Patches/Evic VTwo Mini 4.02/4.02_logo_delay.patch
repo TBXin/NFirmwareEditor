@@ -1,0 +1,12 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="logo_delay.patch" Version="1.0" Author="Internet ©">
+  <Description>Increases logo delay from 3 to 6 sec.</Description>
+  <Data>
+#Logo 64x40 show timeout
+#eVic_VTwo_Mini_V4.02.bin Sur
+
+#From 3 to 6 sec delay
+1EDC: 03 - 06
+5728: 03 - 06
+
+</Data>
+</Patch>

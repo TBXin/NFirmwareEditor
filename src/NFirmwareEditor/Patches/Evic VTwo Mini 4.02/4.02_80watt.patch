@@ -1,0 +1,15 @@
+<Patch Definition="Evic VTwo Mini 4.02" Name="80 Watt" Version="1.0" Author="Internet ©">
+  <Description>Set maximum power to 80 Watt.
+
+Позволит установить максимум мощности в 80 Ватт.</Description>
+  <Data>
+# eVic_VTwo_Mini_V4.02.bin #Sur
+
+#22D6: 40: 40
+#22D7: F2: F2
+22D8: EE - 20 ; 20 -> 80, E8 -> 100
+22D9: 21 - 31
+
+
+</Data>
+</Patch>
