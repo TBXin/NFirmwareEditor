@@ -594,7 +594,7 @@
 			<OffsetTo>0xB894</OffsetTo>
 		</ImageTable2>
 		<StringTable1 TwoByteChars="true">
-			<OffsetFrom>0xD8C6</OffsetFrom>
+			<OffsetFrom>0xD828</OffsetFrom>
 			<OffsetTo>0xDA8A</OffsetTo>
 		</StringTable1>
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
