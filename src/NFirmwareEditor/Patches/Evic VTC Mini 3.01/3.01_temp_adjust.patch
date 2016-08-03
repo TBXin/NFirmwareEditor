@@ -1,0 +1,10 @@
+﻿<Patch Definition="Evic VTC Mini 3.01" Name="Temperature adjustment" Version="1.0" Author="iNFiNUM">
+	<Description>Sets the temperature adjustment step to 1 degree (in Celsius).
+	
+Устанавливает шаг регулировки температуры в 1 градус (в Цельсиях).
+	</Description>
+	<Data>
+3CDF: 1D - 1C ; increment
+3FB3: 1F - 1E ; decrement
+	</Data>
+</Patch>
