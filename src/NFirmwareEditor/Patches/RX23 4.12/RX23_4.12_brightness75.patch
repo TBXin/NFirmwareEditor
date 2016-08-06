@@ -1,0 +1,58 @@
+﻿<Patch Definition="RX23 4.12" Name="Brightness 75%" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set display brightness to 75%.</Description>
+  <Data>
+00004DD8: AF - 81 ; replace ON command to Set Brightness
+00004DDA: FF - 05 ; branch to cut-in
+00004DDB: F7 - F0
+00004DDC: 49 - 3B
+00004DDD: FF - BA
+
+0000508A: AF - 81 ; replace ON command to Set Brightness
+0000508C: FF - 05 ; branch to cut-in
+0000508D: F7 - F0
+0000508E: F0 - EF
+0000508F: FD - B8
+
+0000A254: 00 - FA
+0000A255: 00 - F7
+0000A256: 70 - 0C
+0000A257: 88 - FD
+0000A258: 88 - BF ; brightness value
+0000A259: 88 - 20
+0000A25A: 70 - FA
+0000A25B: 00 - F7
+0000A25C: 00 - 09
+0000A25D: 00 - FD
+0000A25E: 00 - AF ; display on
+0000A25F: 00 - 20
+0000A260: 00 - FA
+0000A261: 00 - F7
+0000A262: 3C - 06
+0000A263: 42 - FD
+0000A264: 80 - FA
+0000A265: 80 - F7
+0000A266: 80 - BB
+0000A267: 80 - BD
+
+0000A26E: 00 - FA
+0000A26F: 00 - F7
+0000A270: 70 - FF
+0000A271: 88 - FC
+0000A272: 88 - BF ; brightness value
+0000A273: 88 - 20
+0000A274: 70 - FA
+0000A275: 00 - F7
+0000A276: 00 - FC
+0000A277: 00 - FC
+0000A278: 00 - AF ; display on
+0000A279: 00 - 20
+0000A27A: 00 - FA
+0000A27B: 00 - F7
+0000A27C: FC - F9
+0000A27D: 80 - FC
+0000A27E: 80 - FA
+0000A27F: F8 - F7
+0000A280: 80 - 07
+0000A281: 80 - BF
+</Data>
+</Patch>
