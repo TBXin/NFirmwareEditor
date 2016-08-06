@@ -1,0 +1,58 @@
+﻿<Patch Definition="RX200S 4.10" Name="Brightness 75%" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Set display brightness to 75%.</Description>
+  <Data>
+00004B3C: AF - 81 ; replace ON command to Set Brightness
+00004B3E: FF - 07 ; branch to cut-in
+00004B3F: F7 - F0
+00004B40: 49 - D8
+00004B41: FF - B8
+
+00004DEE: AF - 81 ; replace ON command to Set Brightness
+00004DF0: FF - 06 ; branch to cut-in
+00004DF1: F7 - F0
+00004DF2: F0 - 72
+00004DF3: FD - BF
+
+0000BCD8: 44 - F8
+0000BCD9: 44 - F7
+0000BCDA: 44 - 7C
+0000BCDB: 38 - FE
+0000BCDC: 00 - BF ; brightness value
+0000BCDD: 00 - 20
+0000BCDE: 00 - F8
+0000BCDF: 00 - F7
+0000BCE0: 80 - 79
+0000BCE1: 40 - FE
+0000BCE2: 40 - AF ; display on
+0000BCE3: 40 - 20
+0000BCE4: 40 - F8
+0000BCE5: 80 - F7
+0000BCE6: 00 - 76
+0000BCE7: 0F - FE
+0000BCE8: 10 - F9
+0000BCE9: 20 - F7
+0000BCEA: 20 - 84
+0000BCEB: 20 - B8
+
+0000BCF2: 44 - F8
+0000BCF3: 44 - F7
+0000BCF4: 44 - 6F
+0000BCF5: 38 - FE
+0000BCF6: 00 - BF ; brightness value
+0000BCF7: 00 - 20
+0000BCF8: C0 - F8
+0000BCF9: 40 - F7
+0000BCFA: 40 - 6C
+0000BCFB: 40 - FE
+0000BCFC: 40 - AF ; display on
+0000BCFD: 40 - 20
+0000BCFE: 00 - F8
+0000BCFF: 3F - F7
+0000BD00: 02 - 69
+0000BD01: 02 - FE
+0000BD02: 02 - F8
+0000BD03: 02 - F7
+0000BD04: 00 - 1E
+0000BD05: 00 - BF
+</Data>
+</Patch>
