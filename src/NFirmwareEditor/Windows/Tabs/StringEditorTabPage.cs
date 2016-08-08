@@ -94,7 +94,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		public void OnWorkspaceReset()
 		{
 			BlockTypeComboBox.SelectedIndex = 0;
-			BlockTypeComboBox.Enabled = false;
+			BlockTypeComboBox.Enabled = BlockTypeComboBox.Visible = false;
 
 			Block1StringListBox.Items.Clear();
 			Block2StringListBox.Items.Clear();
@@ -111,7 +111,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			BlockTypeComboBox.Enabled = BlockTypeComboBox.Visible = firmware.Block2Strings.Any();
+			BlockTypeComboBox.Enabled = BlockTypeComboBox.Visible = firmware.Block2Images.Any();
 			StringPreviewGroupPanel.Text = BlockTypeComboBox.Enabled ? "Preview using:" : "Preview:";
 
 			Block1StringRadioButton.Enabled = true;

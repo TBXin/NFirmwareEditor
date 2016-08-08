@@ -128,7 +128,9 @@
 			this.StringEditGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.StringEditGroupPanel.HeaderHeight = 30;
 			this.StringEditGroupPanel.Location = new System.Drawing.Point(143, 123);
+			this.StringEditGroupPanel.Margin = new System.Windows.Forms.Padding(0);
 			this.StringEditGroupPanel.Name = "StringEditGroupPanel";
+			this.StringEditGroupPanel.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
 			this.StringEditGroupPanel.Size = new System.Drawing.Size(627, 358);
 			this.StringEditGroupPanel.TabIndex = 16;
 			this.StringEditGroupPanel.TabStop = false;
@@ -148,9 +150,9 @@
 			this.borderedPanel10.BorderTop = false;
 			this.borderedPanel10.BorderWidth = 1F;
 			this.borderedPanel10.Controls.Add(this.CharLayoutPanel);
-			this.borderedPanel10.Location = new System.Drawing.Point(3, 33);
+			this.borderedPanel10.Location = new System.Drawing.Point(1, 30);
 			this.borderedPanel10.Name = "borderedPanel10";
-			this.borderedPanel10.Size = new System.Drawing.Size(620, 297);
+			this.borderedPanel10.Size = new System.Drawing.Size(624, 302);
 			this.borderedPanel10.TabIndex = 3;
 			this.borderedPanel10.Text = "borderedPanel10";
 			// 
@@ -167,16 +169,17 @@
 			// 
 			this.StringStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StringStatusLabel});
-			this.StringStatusStrip.Location = new System.Drawing.Point(3, 333);
+			this.StringStatusStrip.Location = new System.Drawing.Point(1, 335);
 			this.StringStatusStrip.Name = "StringStatusStrip";
-			this.StringStatusStrip.Size = new System.Drawing.Size(621, 22);
+			this.StringStatusStrip.Size = new System.Drawing.Size(625, 22);
+			this.StringStatusStrip.SizingGrip = false;
 			this.StringStatusStrip.TabIndex = 2;
 			this.StringStatusStrip.Text = "statusStrip1";
 			// 
 			// StringStatusLabel
 			// 
 			this.StringStatusLabel.BackColor = System.Drawing.SystemColors.Control;
-			this.StringStatusLabel.Font = new System.Drawing.Font("Consolas", 9.75F);
+			this.StringStatusLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.StringStatusLabel.Name = "StringStatusLabel";
 			this.StringStatusLabel.Size = new System.Drawing.Size(126, 17);
 			this.StringStatusLabel.Text = "StringStatusLabel";
