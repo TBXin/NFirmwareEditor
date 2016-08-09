@@ -521,6 +521,26 @@
 	</FirmwareDefinition>
 	<!-- Cuboid Mini -->
 
+	<!-- Evic AIO -->
+	<FirmwareDefinition Name="eVic AIO 4.02">
+		<Marker Offset="0x90" Bytes="0xC9 0x2A" />
+		<Marker Offset="0xC0" Bytes="0xAD 0x8D" />
+		<ImageTable1>
+			<OffsetFrom>0xFA10</OffsetFrom>
+			<OffsetTo>0xFE28</OffsetTo>
+		</ImageTable1>
+		<ImageTable2>
+			<OffsetFrom>0xD520</OffsetFrom>
+			<OffsetTo>0xD938</OffsetTo>
+		</ImageTable2>
+		<StringTable1 TwoByteChars="true">
+			<OffsetFrom>0xFF2C</OffsetFrom>
+			<OffsetTo>0x10237</OffsetTo>
+		</StringTable1>
+		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
+	</FirmwareDefinition>
+	<!-- Evic AIO -->
+	
 	<!-- Evic Basic -->
 	<FirmwareDefinition Name="Evic Basic 4.02">
 		<Marker Offset="0x90" Bytes="0x41 0x2A" />
