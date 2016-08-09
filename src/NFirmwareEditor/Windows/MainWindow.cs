@@ -101,14 +101,22 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeOpenWithSpecifiedDefinitionMenu()
 		{
+			var hierarchy = m_firmwareDefinitionManager.CreateHierarchy(m_definitions);
+
 			OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Clear();
-			foreach (var definition in m_definitions)
+			foreach (var deviceKvp in hierarchy)
 			{
-				var firmwareDefinition = definition;
-				OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Add(definition.Name, OpenUsingSpecifiedDefinitionMenuItem.Image, (s, e) =>
+				var deviceMenu = new ToolStripMenuItem(deviceKvp.Key, OpenUsingSpecifiedDefinitionMenuItem.Image);
+				foreach (var definitionKvp in deviceKvp.Value)
 				{
-					OpenDialogAndReadFirmwareOnOk(firmwareDefinition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, firmwareDefinition));
-				});
+					var kvp = definitionKvp;
+					var definition = kvp.Value;
+					deviceMenu.DropDownItems.Add(definitionKvp.Key, deviceMenu.Image, (s, e) =>
+					{
+						OpenDialogAndReadFirmwareOnOk(definition.Name, fileName => m_loader.TryLoadUsingDefinition(fileName, definition));
+					});
+				}
+				OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Add(deviceMenu);
 			}
 		}
 
