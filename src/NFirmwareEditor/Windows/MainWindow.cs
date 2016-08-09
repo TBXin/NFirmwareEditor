@@ -41,6 +41,18 @@ namespace NFirmwareEditor.Windows
 			StatusLabel.Text = null;
 		}
 
+		public MainWindow(string[] args) : this()
+		{
+			m_firmwareFile = Paths.ValidateInputArgs(args);
+			if (!string.IsNullOrEmpty(m_firmwareFile))
+			{
+				Shown += (s, e) =>
+				{
+					OpenFirmware(m_firmwareFile, fileName => m_loader.TryLoad(fileName, m_definitions));
+				};
+			}
+		}
+
 		public void ReloadFirmware(IEditorTabPage initiator)
 		{
 			if (m_firmware == null) return;

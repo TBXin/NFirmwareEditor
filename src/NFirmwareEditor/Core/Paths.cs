@@ -44,5 +44,14 @@ namespace NFirmwareEditor.Core
 
 			Directory.CreateDirectory(directoryPath);
 		}
+
+		[CanBeNull]
+		public static string ValidateInputArgs([CanBeNull] string[] args)
+		{
+			if (args == null || args.Length != 1) return null;
+
+			var filePath = args[0];
+			return File.Exists(filePath) ? filePath : null;
+		}
 	}
 }

@@ -14,13 +14,13 @@ namespace NFirmwareEditor
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		private static void Main()
+		private static void Main(string[] args)
 		{
 			AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
 			Application.ThreadException += UnhandledThreadExceptionHandler;
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainWindow());
+			Application.Run(new MainWindow(args));
 		}
 
 		private static void UnhandledThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
