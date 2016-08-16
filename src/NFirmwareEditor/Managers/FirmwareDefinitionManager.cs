@@ -21,7 +21,7 @@ namespace NFirmwareEditor.Managers
 			try
 			{
 				var serializer = new XmlSerializer(typeof(List<FirmwareDefinition>));
-				using (var fs = File.Open(Paths.DefinitionsFile, FileMode.Open))
+				using (var fs = File.OpenRead(Paths.DefinitionsFile))
 				{
 					var result = serializer.Deserialize(fs) as List<FirmwareDefinition> ?? new List<FirmwareDefinition>();
 					if (result.Any(definition => string.IsNullOrEmpty(definition.Name)

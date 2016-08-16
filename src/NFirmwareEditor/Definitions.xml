@@ -2,10 +2,10 @@
 <ArrayOfFirmwareDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	<!-- RX23 -->
-	<FirmwareDefinition Name="RX23 4.02">
+	<FirmwareDefinition Name="RX23 4.12">
 		<Marker Offset="0x90" Bytes="0x15 0x23" />
 		<Marker Offset="0xC0" Bytes="0x29 0x72" />
-		<Marker Offset="0xA30" Bytes="0x40 0xF2" />
+		<Marker Offset="0xA30" Bytes="0x4F 0xF4" />
 		<ImageTable1>
 			<OffsetFrom>0xC724</OffsetFrom>
 			<OffsetTo>0xCB24</OffsetTo>
@@ -20,11 +20,11 @@
 		</StringTable1>
 		<CharsToCorrect>0x88 0x91 0x9A</CharsToCorrect>
 	</FirmwareDefinition>
-
-	<FirmwareDefinition Name="RX23 4.12">
+	
+	<FirmwareDefinition Name="RX23 4.02">
 		<Marker Offset="0x90" Bytes="0x15 0x23" />
 		<Marker Offset="0xC0" Bytes="0x29 0x72" />
-		<Marker Offset="0xA30" Bytes="0x4F 0xF4" />
+		<Marker Offset="0xA30" Bytes="0x40 0xF2" />
 		<ImageTable1>
 			<OffsetFrom>0xC724</OffsetFrom>
 			<OffsetTo>0xCB24</OffsetTo>
