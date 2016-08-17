@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
-using NFirmwareEditor.Models;
+using NFirmware;
 
 namespace NFirmwareEditor.Core
 {

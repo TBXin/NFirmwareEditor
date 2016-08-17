@@ -8,6 +8,7 @@ namespace NFirmwareEditor.Core
 {
 	internal static class Paths
 	{
+		private const string DefinitionsDirectoryName = "Definitions";
 		private const string PatchDirectoryName = "Patches";
 		private const string ResourcePackDirectoryName = "ResourcePacks";
 		private const string SettingsFileName = "settings.xml";
@@ -21,6 +22,8 @@ namespace NFirmwareEditor.Core
 
 			SettingsFile = Path.Combine(ApplicationDirectory, SettingsFileName);
 			DefinitionsFile = Path.Combine(ApplicationDirectory, DefinitionsFileName);
+
+			DefinitionsDirectory = Path.Combine(ApplicationDirectory, DefinitionsDirectoryName);
 			PatchDirectory = Path.Combine(ApplicationDirectory, PatchDirectoryName);
 			ResourcePackDirectory = Path.Combine(ApplicationDirectory, ResourcePackDirectoryName);
 		}
@@ -32,6 +35,8 @@ namespace NFirmwareEditor.Core
 		public static string SettingsFile { get; private set; }
 
 		public static string DefinitionsFile { get; private set; }
+
+		public static string DefinitionsDirectory { get; private set; }
 
 		public static string PatchDirectory { get; private set; }
 

@@ -1,0 +1,7 @@
+﻿<FirmwareDefinition Name="Centurion 1.02">
+  <Marker Offset="0x90" Bytes="0x1D 0x1B" />
+  <Marker Offset="0xC0" Bytes="0xA9 0x5D" />
+  <ImageTable1 From="0x8458" To="0x86EC" />
+  <StringTable1 From="0x7388" To="0x759B" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x39 0x42 0x4B" />
+</FirmwareDefinition>

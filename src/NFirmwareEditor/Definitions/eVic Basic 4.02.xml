@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Evic Basic 4.02">
+  <Marker Offset="0x90" Bytes="0x41 0x2A" />
+  <Marker Offset="0xC0" Bytes="0x45 0x8A" />
+  <ImageTable1 From="0xF6A4" To="0xFABC" />
+  <ImageTable2 From="0xD1B4" To="0xD5CC" />
+  <StringTable1 From="0xFBC0" To="0xFE5F" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

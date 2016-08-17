@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Evic VTwo 4.02">
+  <Marker Offset="0x90" Bytes="0x95 0x2A" />
+  <Marker Offset="0xC0" Bytes="0xBD 0x8A" />
+  <ImageTable1 From="0xF71C" To="0xFB34" />
+  <ImageTable2 From="0xD22C" To="0xD644" />
+  <StringTable1 From="0xFC38" To="0xFED7" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

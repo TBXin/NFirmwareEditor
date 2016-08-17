@@ -114,7 +114,8 @@ namespace NFirmwareEditor.Managers
 				try
 				{
 					var stringData = firmware.ReadString(stringMetadata);
-					var imageData = FirmwareImageProcessor.GetStringImageData(stringData, glyphData, firmware.Definition.CharsToCorrect);
+					var imageData = FirmwareImageProcessor.GetStringImageData(stringData, glyphData,
+						firmware.Definition.StringsPreviewCorrection != null ? firmware.Definition.StringsPreviewCorrection.ForGlyphs : null);
 					var image = BitmapProcessor.CreateBitmapFromRaw(imageData, 1);
 
 					stringImageCache[stringMetadata.Index] = image;

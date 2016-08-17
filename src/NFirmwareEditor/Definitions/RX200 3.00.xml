@@ -1,0 +1,6 @@
+﻿<FirmwareDefinition Name="RX200 3.00">
+  <Marker Offset="0x90" Bytes="0xB5 0x20" />
+  <ImageTable1 From="0x8808" To="0x8A84" />
+  <StringTable1 From="0x78C4" To="0x79F3" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x42 0x39 0x4B" />
+</FirmwareDefinition>

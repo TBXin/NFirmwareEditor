@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Cuboid 3.03 (31.05.2016)">
+  <Marker Offset="0x90" Bytes="0x31 0x27" />
+  <Marker Offset="0xC0" Bytes="0x5D 0x7E" />
+  <ImageTable1 From="0xD724" To="0xDB24" />
+  <ImageTable2 From="0xB894" To="0xBC94" />
+  <StringTable1 From="0xDD2E" To="0xDEEC" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

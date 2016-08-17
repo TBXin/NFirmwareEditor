@@ -3,7 +3,8 @@ using JetBrains.Annotations;
 
 namespace NFirmware
 {
-	public class FirmwareDefinition
+	[XmlType("FirmwareDefinition")]
+	public class FirmwareDefinition : NamespacelessObject
 	{
 		[XmlAttribute]
 		public string Name { get; set; }
@@ -25,19 +26,24 @@ namespace NFirmware
 		public StringTableDefinition StringTable2 { get; set; }
 
 		[CanBeNull]
-		[XmlElement("CharsToCorrect")]
-		public string CharsToCorrectString { get; set; }
-
-		[CanBeNull]
-		[XmlIgnore]
-		public byte[] CharsToCorrect
-		{
-			get { return CharsToCorrectString.HexStringToByteArray(); }
-		}
+		public StringsPreviewCorrection StringsPreviewCorrection { get; set; }
 
 		public override string ToString()
 		{
 			return Name;
+		}
+	}
+
+	public class StringsPreviewCorrection
+	{
+		[XmlAttribute("ForGlyphs")]
+		public string ForGlyphsString { get; set; }
+
+		[CanBeNull]
+		[XmlIgnore]
+		public byte[] ForGlyphs
+		{
+			get { return ForGlyphsString.HexStringToByteArray(); }
 		}
 	}
 
@@ -48,15 +54,15 @@ namespace NFirmware
 	public class StringTableDefinition : FirmwareTableDefinition
 	{
 		[XmlAttribute]
-		public bool TwoByteChars { get; set; }
+		public bool TwoBytesPerChar { get; set; }
 	}
 
 	public abstract class FirmwareTableDefinition
 	{
-		[XmlElement("OffsetFrom")]
+		[XmlAttribute("From")]
 		public string OffsetFromString { get; set; }
 
-		[XmlElement("OffsetTo")]
+		[XmlAttribute("To")]
 		public string OffsetToString { get; set; }
 
 		[XmlIgnore]

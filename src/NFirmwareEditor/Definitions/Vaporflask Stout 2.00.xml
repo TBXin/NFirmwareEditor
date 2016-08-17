@@ -1,0 +1,6 @@
+﻿<FirmwareDefinition Name="Vaporflask Stout 2.00">
+  <Marker Offset="0x90" Bytes="0x45 0x1B" />
+  <ImageTable1 From="0x815C" To="0x83DC" />
+  <StringTable1 From="0x72E0" To="0x73EE" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x42 0x39 0x4B" />
+</FirmwareDefinition>

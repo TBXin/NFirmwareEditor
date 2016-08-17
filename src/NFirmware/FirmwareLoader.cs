@@ -196,7 +196,7 @@ namespace NFirmware
 			if (stringTableDefinition == null) return new List<FirmwareStringMetadata>();
 			if (reader == null) throw new ArgumentNullException("reader");
 
-			var charLength = GetCharLength(stringTableDefinition.TwoByteChars);
+			var charLength = GetCharLength(stringTableDefinition.TwoBytesPerChar);
 			var result = new List<FirmwareStringMetadata>();
 			{
 				reader.BaseStream.Seek(stringTableDefinition.OffsetFrom, SeekOrigin.Begin);
@@ -209,13 +209,13 @@ namespace NFirmware
 					{
 						if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
 						{
-							var char1 = ReadChar(reader, stringTableDefinition.TwoByteChars);
+							var char1 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
 							dataLength += charLength;
 
 							short? char2;
 							if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
 							{
-								char2 = ReadChar(reader, stringTableDefinition.TwoByteChars);
+								char2 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
 								reader.BaseStream.Position -= charLength;
 							}
 							else break;
@@ -224,7 +224,7 @@ namespace NFirmware
 						}
 						else break;
 					}
-					result.Add(new FirmwareStringMetadata(startIndex + result.Count + 1, offset, dataLength, stringTableDefinition.TwoByteChars));
+					result.Add(new FirmwareStringMetadata(startIndex + result.Count + 1, offset, dataLength, stringTableDefinition.TwoBytesPerChar));
 				}
 			}
 			return result;

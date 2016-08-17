@@ -1,0 +1,6 @@
+﻿<FirmwareDefinition Name="iStick TC100W 1.10">
+  <Marker Offset="0x90" Bytes="0x55 0x1A" />
+  <ImageTable1 From="0x7EB4" To="0x812C" />
+  <StringTable1 From="0x7098" To="0x715D" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x42 0x39 0x4B" />
+</FirmwareDefinition>

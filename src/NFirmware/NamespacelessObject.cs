@@ -1,18 +1,18 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
-using NFirmwareEditor.Core;
 
-namespace NFirmwareEditor.Models
+namespace NFirmware
 {
 	public class NamespacelessObject
 	{
+		private const string PatchXmlNamespace = "urn:NFirmware";
 		private readonly XmlSerializerNamespaces m_namespaces;
 
 		public NamespacelessObject()
 		{
 			m_namespaces = new XmlSerializerNamespaces(new[]
 			{
-				new XmlQualifiedName(string.Empty, Consts.PatchXmlNamespace)
+				new XmlQualifiedName(string.Empty, PatchXmlNamespace)
 			});
 		}
 

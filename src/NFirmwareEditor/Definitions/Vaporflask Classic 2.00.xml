@@ -1,0 +1,6 @@
+﻿<FirmwareDefinition Name="Vaporflask Classic 2.00">
+  <Marker Offset="0x90" Bytes="0x91 0x20" />
+  <ImageTable1 From="0x88CC" To="0x8B4C" />
+  <StringTable1 From="0x7A2C" To="0x7B5C" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x42 0x39 0x4B" />
+</FirmwareDefinition>

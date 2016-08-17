@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Evic VTC Mini 2.00">
+  <Marker Offset="0x90" Bytes="0x99 0x1C" />
+  <ImageTable1 From="0xA914" To="0xAC5C" />
+  <ImageTable2 From="0x917C" To="0x94C4" />
+  <StringTable1 From="0xAD60" To="0xAE3B" TwoBytesPerChar="false" />
+  <StringTable2 From="0x7AE5" To="0x7B37" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x7B 0x7C 0x84 0x72" />
+</FirmwareDefinition>

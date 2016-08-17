@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Xml.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NLog;
@@ -13,33 +11,37 @@ namespace NFirmwareEditor.Managers
 	internal class FirmwareDefinitionManager
 	{
 		private const string RegexPattern = @"(?<device>.+)\s(?<version>[0-9]{1,3}\.[0-9]{1,3}.+)";
+
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 		private static readonly Regex s_regex = new Regex(RegexPattern, RegexOptions.Compiled);
 
 		public List<FirmwareDefinition> Load()
 		{
-			try
+			var result = new List<FirmwareDefinition>();
+
+			var definitionsDirEx = Safe.Execute(() => Paths.EnsureDirectoryExists(Paths.DefinitionsDirectory));
+			if (definitionsDirEx != null)
 			{
-				var serializer = new XmlSerializer(typeof(List<FirmwareDefinition>));
-				using (var fs = File.OpenRead(Paths.DefinitionsFile))
+				s_logger.Warn(definitionsDirEx, "An error occured during creating definitions directory '{0}'.", Paths.DefinitionsDirectory);
+				return result;
+			}
+
+			var files = Directory.GetFiles(Paths.DefinitionsDirectory, Consts.DefinitionFileExtension);
+			foreach (var file in files)
+			{
+				var definitionFile = file;
+				FirmwareDefinition definition = null;
+
+				var definitionEx = Safe.Execute(() => definition = Serializer.Read<FirmwareDefinition>(File.OpenRead(definitionFile)));
+				if (definitionEx != null)
 				{
-					var result = serializer.Deserialize(fs) as List<FirmwareDefinition> ?? new List<FirmwareDefinition>();
-					if (result.Any(definition => string.IsNullOrEmpty(definition.Name)
-					                             || definition.ImageTable1 == null
-					                             || definition.ImageTable1.OffsetFrom == 0
-					                             || definition.ImageTable1.OffsetTo == 0))
-					{
-						throw new InvalidDataException("Definition file is malformed.");
-					}
-					return result;
+					s_logger.Warn(definitionEx, "An error occured during reading definition file '{0}'.", definitionFile);
+					continue;
 				}
+
+				if (definition != null) result.Add(definition);
 			}
-			catch (Exception ex)
-			{
-				s_logger.Fatal(ex, "An error occurred during loading firmware definitions.");
-				InfoBox.Show(ex.Message);
-			}
-			return new List<FirmwareDefinition>();
+			return result;
 		}
 
 		public IDictionary<string, SortedList<string, FirmwareDefinition>> CreateHierarchy(IEnumerable<FirmwareDefinition> definitions)

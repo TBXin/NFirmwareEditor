@@ -240,7 +240,8 @@ namespace NFirmwareEditor.Windows.Tabs
 				charsData[b] = m_firmware.ReadImage(imageMetadata);
 			}
 
-			var imageData = FirmwareImageProcessor.GetStringImageData(stringData, charsData, m_firmware.Definition.CharsToCorrect);
+			var imageData = FirmwareImageProcessor.GetStringImageData(stringData, charsData,
+				m_firmware.Definition.StringsPreviewCorrection != null ? m_firmware.Definition.StringsPreviewCorrection.ForGlyphs : null);
 			var imageDataSize = imageData.GetSize();
 
 			StringPrewviewPixelGrid.Data = imageData;

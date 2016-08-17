@@ -1,0 +1,9 @@
+﻿<FirmwareDefinition Name="Cuboid Mini 3.02">
+  <Marker Offset="0x90" Bytes="0x4D 0x1D" />
+  <Marker Offset="0xC0" Bytes="0x85 0x78" />
+  <ImageTable1 From="0xC090" To="0xC418" />
+  <ImageTable2 From="0xA7E0" To="0xAB68" />
+  <StringTable1 From="0xC51C" To="0xC65E" TwoBytesPerChar="false" />
+  <StringTable2 From="0x8F5E" To="0x8FB3" TwoBytesPerChar="false" />
+  <StringsPreviewCorrection ForGlyphs="0x7B 0x84 0x72" />
+</FirmwareDefinition>

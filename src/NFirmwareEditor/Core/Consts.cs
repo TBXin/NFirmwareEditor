@@ -6,9 +6,12 @@
 		internal const string ApplicationTitleWoVersion = "NFirmwareEditor";
 		internal const string ApplicationTitle = ApplicationTitleWoVersion + " v" + ApplicationVersion;
 
+		internal const string DefinitionFileExtensionWoAsterisk = ".xml";
 		internal const string PatchFileExtensionWoAsterisk = ".patch";
 		internal const string ResourcePackFileExtensionWoAsterisk = ".respack";
 		internal const string BitmapFileExtensionWoAsterisk = ".bmp";
+
+		internal const string DefinitionFileExtension = "*" + DefinitionFileExtensionWoAsterisk;
 		internal const string PatchFileExtension = "*" + PatchFileExtensionWoAsterisk;
 		internal const string ResourcePackFileExtension = "*" + ResourcePackFileExtensionWoAsterisk;
 
@@ -31,8 +34,6 @@
 		internal const int MaximumImageWidthAndHeight = 128;
 		internal const int ImageListBoxItemMaxHeight = 32 * 2;
 		internal const int ImageListBoxItemImageMargin = 6;
-
-		internal const string PatchXmlNamespace = "urn:NFirmwareEditor";
 
 		internal const string HomePage = "http://www.ecigtalk.ru/forum/f16/t101098.html";
 		internal const string ReleasesPage = "https://github.com/TBXin/NFirmwareEditor/releases";

@@ -1,0 +1,7 @@
+﻿<FirmwareDefinition Name="iStick Pico 1.00">
+  <Marker Offset="0x90" Bytes="0x2D 0x1B" />
+  <Marker Offset="0xC0" Bytes="0x9D 0x5D" />
+  <ImageTable1 From="0x83B0" To="0x8634" />
+  <StringTable1 From="0x7354" To="0x7567" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x39 0x3C 0x42 0x4B" />
+</FirmwareDefinition>
