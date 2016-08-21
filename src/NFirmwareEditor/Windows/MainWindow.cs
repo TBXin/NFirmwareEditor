@@ -7,6 +7,7 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 using NFirmwareEditor.Windows.Tabs;
 
 namespace NFirmwareEditor.Windows
@@ -15,16 +16,17 @@ namespace NFirmwareEditor.Windows
 	{
 		private const int MinimizedWindowLeftTop = -32000;
 
-		private readonly UpdatesManager m_updatesManager = new UpdatesManager(Consts.ApplicationVersion, TimeSpan.FromHours(1));
-		private readonly ConfigurationManager m_configurationManager = new ConfigurationManager();
+		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
+		private readonly FirmwareDefinitionsStorage m_firmwareDefinitionStorage = new FirmwareDefinitionsStorage();
+		private readonly ResourcePacksStorage m_resourcePackStorage = new ResourcePacksStorage();
 		private readonly PatchManager m_patchManager = new PatchManager();
-		private readonly ResourcePackManager m_resourcePackManager = new ResourcePackManager();
-		private readonly FirmwareDefinitionManager m_firmwareDefinitionManager = new FirmwareDefinitionManager();
-		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 		private readonly BackupManager m_backupManager = new BackupManager();
 
+		private readonly UpdatesManager m_updatesManager = new UpdatesManager(Consts.ApplicationVersion, TimeSpan.FromHours(1));
+		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
+		
 		private IList<IEditorTabPage> m_tabPages;
-		private IList<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
+		private IEnumerable<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
 		private ApplicationConfiguration m_configuration;
 		private MruList<string> m_mruFirmwares;
 		private Firmware m_firmware;
@@ -67,22 +69,30 @@ namespace NFirmwareEditor.Windows
 		{
 			m_tabPages = new List<IEditorTabPage>
 			{
-				new ImageEditorTabPage(m_definitions, m_resourcePackManager) { Dock = DockStyle.Fill },
+				new ImageEditorTabPage(m_definitions, m_resourcePackStorage) { Dock = DockStyle.Fill },
 				new StringEditorTabPage { Dock = DockStyle.Fill },
 				new PatchesTabPage(m_patchManager) { Dock = DockStyle.Fill },
-				new ResourcePacksTabPage(m_resourcePackManager) { Dock = DockStyle.Fill }
+				new ResourcePacksTabPage(m_resourcePackStorage) { Dock = DockStyle.Fill }
 			};
 
-			m_definitions = m_firmwareDefinitionManager.Load();
-			m_configuration = m_configurationManager.Load();
-			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
-			m_patchManager.InitializeStorage(m_definitions);
-
+			InitializeStorages();
 			InitializeApplicationWindow();
 			InitializeOpenWithSpecifiedDefinitionMenu();
 			InitializeMruMenu();
 			InitializeTabPages();
 			InitializeUpdatesChecking();
+		}
+
+		private void InitializeStorages()
+		{
+			m_configurationStorage.Initialize();
+			m_firmwareDefinitionStorage.Initialize();
+			m_resourcePackStorage.Initialize();
+
+			m_definitions = m_firmwareDefinitionStorage.LoadAll();
+			m_configuration = m_configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
+			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
+			m_patchManager.InitializeStorage(m_definitions);
 		}
 
 		private void InitializeApplicationWindow()
@@ -101,7 +111,7 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeOpenWithSpecifiedDefinitionMenu()
 		{
-			var hierarchy = m_firmwareDefinitionManager.CreateHierarchy(m_definitions);
+			var hierarchy = FirmwareDefinitionManager.CreateHierarchy(m_definitions);
 
 			OpenUsingSpecifiedDefinitionMenuItem.DropDownItems.Clear();
 			foreach (var deviceKvp in hierarchy)
@@ -285,7 +295,7 @@ namespace NFirmwareEditor.Windows
 				}
 			}
 			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
-			m_configurationManager.Save(m_configuration);
+			m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
 		}
 
 		private void MainWindow_Move(object sender, EventArgs e)
@@ -399,7 +409,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
 
-				m_configurationManager.Save(m_configuration);
+				m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
 				m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 
 				if (checkForUpdates != m_configuration.CheckForApplicationUpdates)

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 
 namespace NFirmwareEditor.Managers
 {
@@ -19,7 +20,7 @@ namespace NFirmwareEditor.Managers
 				var size = FirmwareImageProcessor.GetImageSize(image);
 				data.Add(new ExportedImage(0, size, image)
 				{
-					DataString = ResourcePackManager.WriteImageToAsciiString(size.Width, size.Height, image)
+					DataString = ResourcePacksStorage.WriteImageToAsciiString(size.Width, size.Height, image)
 				});
 			}
 			var buffer = Serializer.Write(data);
@@ -38,7 +39,7 @@ namespace NFirmwareEditor.Managers
 
 				foreach (var exportedImage in data)
 				{
-					images.Add(ResourcePackManager.ReadImageFromAsciiString(exportedImage.Width, exportedImage.Height, exportedImage.DataString));
+					images.Add(ResourcePacksStorage.ReadImageFromAsciiString(exportedImage.Width, exportedImage.Height, exportedImage.DataString));
 				}
 				return images;
 			}

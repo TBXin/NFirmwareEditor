@@ -6,15 +6,15 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
-using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
 	internal partial class CreateResourcePackWindow : Form
 	{
-		private readonly ResourcePackManager m_resourcePackManager;
+		private readonly ResourcePacksStorage m_resourcePackStorage;
 		private readonly List<ExportedImage> m_exportedImages;
 
 		public CreateResourcePackWindow()
@@ -27,19 +27,19 @@ namespace NFirmwareEditor.Windows
 
 		public CreateResourcePackWindow
 		(
-			[NotNull] ResourcePackManager resourcePackManager,
+			[NotNull] ResourcePacksStorage resourcePackStorage,
 			[NotNull] IEnumerable<FirmwareDefinition> definitions,
 			[NotNull] string definition, 
 			[NotNull] List<ExportedImage> exportedImages,
 			[CanBeNull] ResourcePackFile existedResourcePack
 		) : this()
 		{
-			if (resourcePackManager == null) throw new ArgumentNullException("resourcePackManager");
+			if (resourcePackStorage == null) throw new ArgumentNullException("resourcePackStorage");
 			if (definitions == null) throw new ArgumentNullException("definitions");
 			if (string.IsNullOrEmpty(definition)) throw new ArgumentNullException("definition");
 			if (exportedImages == null) throw new ArgumentNullException("exportedImages");
 
-			m_resourcePackManager = resourcePackManager;
+			m_resourcePackStorage = resourcePackStorage;
 			m_exportedImages = exportedImages.ToList();
 
 			definitions.ForEach(x => DefinitionComboBox.Items.Add(x));
@@ -109,7 +109,7 @@ namespace NFirmwareEditor.Windows
 
 			try
 			{
-				m_resourcePackManager.SaveToFile(fileName, resourcePack);
+				m_resourcePackStorage.Save(fileName, resourcePack);
 				DialogResult = DialogResult.OK;
 			}
 			catch (Exception ex)

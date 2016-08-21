@@ -8,24 +8,25 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
 {
 	internal partial class ResourcePacksTabPage : UserControl, IEditorTabPage
 	{
-		private readonly ResourcePackManager m_resourcePackManager;
+		private readonly ResourcePacksStorage m_resourcePackStorage;
 
 		private IEnumerable<ResourcePackFile> m_allResourcePacks;
 		private IEnumerable<ResourcePackFile> m_suitableResourcePacks;
 
 		private Firmware m_firmware;
 
-		public ResourcePacksTabPage([NotNull] ResourcePackManager resourcePackManager)
+		public ResourcePacksTabPage([NotNull] ResourcePacksStorage resourcePackStorage)
 		{
-			if (resourcePackManager == null) throw new ArgumentNullException("resourcePackManager");
+			if (resourcePackStorage == null) throw new ArgumentNullException("resourcePackStorage");
 
-			m_resourcePackManager = resourcePackManager;
+			m_resourcePackStorage = resourcePackStorage;
 			InitializeComponent();
 
 			ResourcePackListView.Resize += (s, e) =>
@@ -59,7 +60,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void Initialize(IEditorTabPageHost host, ApplicationConfiguration configuration)
 		{
-			m_allResourcePacks = m_resourcePackManager.LoadAll();
+			m_allResourcePacks = m_resourcePackStorage.LoadAll();
 		}
 
 		public void OnWorkspaceReset()
@@ -175,7 +176,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void ResourcePackListView_ItemActivate(object sender, EventArgs e)
 		{
 			if (SelectedResourcePack == null) return;
-			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
+			var resourcePack = m_resourcePackStorage.TryLoad(SelectedResourcePack.FilePath);
 			if (resourcePack == null) return;
 
 			PreviewResourcePack(resourcePack);
@@ -184,7 +185,7 @@ namespace NFirmwareEditor.Windows.Tabs
 		private void PreviewResourcePackButton_Click(object sender, EventArgs e)
 		{
 			if (SelectedResourcePack == null) return;
-			var resourcePack = m_resourcePackManager.LoadFromFile(SelectedResourcePack.FilePath);
+			var resourcePack = m_resourcePackStorage.TryLoad(SelectedResourcePack.FilePath);
 			if (resourcePack == null) return;
 
 			PreviewResourcePack(resourcePack);
@@ -199,7 +200,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				fileName = op.FileName;
 			}
 
-			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
+			var resourcePack = m_resourcePackStorage.TryLoad(fileName);
 			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
 			if (!resourcePack.SuitableDefinitions.Contains(m_firmware.Definition.Name))
 			{
@@ -215,7 +216,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void ReloadResourcePacksButton_Click(object sender, EventArgs e)
 		{
-			m_allResourcePacks = m_resourcePackManager.LoadAll();
+			m_allResourcePacks = m_resourcePackStorage.LoadAll();
 
 			OnWorkspaceReset();
 			OnFirmwareLoaded(m_firmware);

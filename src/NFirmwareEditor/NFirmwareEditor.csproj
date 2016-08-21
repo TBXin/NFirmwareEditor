@@ -78,9 +78,7 @@
     <Compile Include="Managers\UpdatesManager.cs" />
     <Compile Include="Models\BulkPatchResult.cs" />
     <Compile Include="Models\ApplicationConfiguration.cs" />
-    <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="Core\Consts.cs" />
-    <Compile Include="Managers\ResourcePackManager.cs" />
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
@@ -90,6 +88,10 @@
     <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Models\ResourcePack.cs" />
     <Compile Include="Models\ResourcePackFile.cs" />
+    <Compile Include="Storages\ConfigurationStorage.cs" />
+    <Compile Include="Storages\FirmwareDefinitionsStorage.cs" />
+    <Compile Include="Storages\IFileStorage.cs" />
+    <Compile Include="Storages\ResourcePacksStorage.cs" />
     <Compile Include="UI\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>

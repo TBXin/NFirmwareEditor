@@ -11,6 +11,7 @@ using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows.Tabs
@@ -18,7 +19,7 @@ namespace NFirmwareEditor.Windows.Tabs
 	internal partial class ImageEditorTabPage : UserControl, IEditorTabPage
 	{
 		private readonly IEnumerable<FirmwareDefinition> m_definitions;
-		private readonly ResourcePackManager m_resourcePackManager;
+		private readonly ResourcePacksStorage m_resourcePackStorage;
 		private readonly ClipboardManager m_clipboardManager = new ClipboardManager();
 		private readonly StringFormat m_listBoxStringFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
@@ -27,10 +28,10 @@ namespace NFirmwareEditor.Windows.Tabs
 		private BlockType m_currentBlock = BlockType.Block1;
 		private bool m_imageListBoxIsUpdating;
 
-		public ImageEditorTabPage(IEnumerable<FirmwareDefinition> definitions, ResourcePackManager resourcePackManager)
+		public ImageEditorTabPage(IEnumerable<FirmwareDefinition> definitions, ResourcePacksStorage resourcePackStorage)
 		{
 			m_definitions = definitions;
-			m_resourcePackManager = resourcePackManager;
+			m_resourcePackStorage = resourcePackStorage;
 
 			InitializeComponent();
 			InitializeControls();
@@ -657,7 +658,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 
-			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images, null))
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackStorage, m_definitions, m_firmware.Definition.Name, images, null))
 			{
 				createResourcePackWindow.ShowDialog();
 			}
@@ -674,7 +675,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				fileName = op.FileName;
 			}
 
-			var resourcePack = m_resourcePackManager.LoadFromFile(fileName);
+			var resourcePack = m_resourcePackStorage.TryLoad(fileName);
 			var images = SelectedImageMetadata.Select(x =>
 			{
 				var imageData = m_firmware.ReadImage(x);
@@ -682,7 +683,7 @@ namespace NFirmwareEditor.Windows.Tabs
 				return new ExportedImage(x.Index, imageSize, imageData);
 			}).ToList();
 
-			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackManager, m_definitions, m_firmware.Definition.Name, images, resourcePack))
+			using (var createResourcePackWindow = new CreateResourcePackWindow(m_resourcePackStorage, m_definitions, m_firmware.Definition.Name, images, resourcePack))
 			{
 				createResourcePackWindow.ShowDialog();
 			}
