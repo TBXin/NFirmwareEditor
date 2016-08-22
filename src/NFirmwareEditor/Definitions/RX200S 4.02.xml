@@ -1,7 +1,7 @@
-﻿<FirmwareDefinition Name="RX200S 4.12">
+﻿<FirmwareDefinition Name="RX200S 4.02">
 	<Marker Offset="0x90" Bytes="0x25 0x22" />
 	<Marker Offset="0xC0" Bytes="0x29 0x71" />
-	<Marker Offset="0x1A64" Bytes="0xCE 0x70" />
+	<Marker Offset="0x1A64" Bytes="0xC9 0x70" />
 	<ImageTable1 From="0xC624" To="0xCA24" />
 	<ImageTable2 From="0xA794" To="0xAB94" />
 	<StringTable1 From="0xCB28" To="0xCD7C" TwoBytesPerChar="true" />

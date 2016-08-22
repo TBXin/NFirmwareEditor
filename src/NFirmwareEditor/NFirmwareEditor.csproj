@@ -1020,6 +1020,9 @@
     <Content Include="Definitions\Presa TC75W 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Definitions\RX200S 4.02.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Definitions\RX200 3.00 %2814.04.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
