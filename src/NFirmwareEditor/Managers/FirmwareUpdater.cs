@@ -54,7 +54,7 @@ namespace NFirmwareEditor.Managers
 
 			{ "W018", new DeviceInfo("Wismec Reuleaux RX2/3", 64, 48) },
 			{ "W014", new DeviceInfo("Wismec Reuleaux RX200") },
-			{ "W033", new DeviceInfo("Wismec Reuleaux RX200S") },
+			{ "W033", new DeviceInfo("Wismec Reuleaux RX200S", 64, 48) },
 
 			{ "W010", new DeviceInfo("Vaporflask Classic") },
 			{ "W011", new DeviceInfo("Vaporflask Lite") },
