@@ -35,7 +35,11 @@ namespace NFirmwareEditor.Storages
 
 			try
 			{
-				var result = Serializer.Read<ResourcePack>(File.OpenRead(filePath));
+				ResourcePack result;
+				using (var fs = File.OpenRead(filePath))
+				{
+					result = Serializer.Read<ResourcePack>(fs);
+				}
 				if (result == null) return null;
 
 				result.Description = result.Description.SplitLines();
@@ -85,13 +89,14 @@ namespace NFirmwareEditor.Storages
 
 			try
 			{
-				using (var fs = File.Open(filePath, FileMode.Create))
+				resourcePack.Images.ForEach(image =>
 				{
-					resourcePack.Images.ForEach(image =>
-					{
-						image.IndexString = image.Index.ToString("X2");
-						image.DataString = WriteImageToAsciiString(image.Width, image.Height, image.Data);
-					});
+					image.IndexString = image.Index.ToString("X2");
+					image.DataString = WriteImageToAsciiString(image.Width, image.Height, image.Data);
+				});
+
+				using (var fs = File.Create(filePath))
+				{
 					Serializer.Write(resourcePack, fs);
 				}
 			}

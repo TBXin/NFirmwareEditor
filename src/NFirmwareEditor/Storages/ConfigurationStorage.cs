@@ -23,7 +23,10 @@ namespace NFirmwareEditor.Storages
 			ApplicationConfiguration result = null;
 			try
 			{
-				result = Serializer.Read<ApplicationConfiguration>(File.OpenRead(filePath));
+				using (var fs = File.OpenRead(filePath))
+				{
+					result = Serializer.Read<ApplicationConfiguration>(fs);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -45,7 +48,10 @@ namespace NFirmwareEditor.Storages
 
 			try
 			{
-				Serializer.Write(configuration, File.OpenWrite(filePath));
+				using (var fs = File.Create(filePath))
+				{
+					Serializer.Write(configuration, fs);
+				}
 			}
 			catch (Exception ex)
 			{

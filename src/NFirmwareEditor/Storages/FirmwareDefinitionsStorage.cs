@@ -28,7 +28,10 @@ namespace NFirmwareEditor.Storages
 
 			try
 			{
-				return Serializer.Read<FirmwareDefinition>(File.OpenRead(filePath));
+				using (var fs = File.OpenRead(filePath))
+				{
+					return Serializer.Read<FirmwareDefinition>(fs);
+				}
 			}
 			catch (Exception ex)
 			{
