@@ -764,6 +764,9 @@
     <None Include="Patches\RX23 4.12\RX23_4.12_brightness75.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\RX23 4.12\RX23_4.12_tc_ss_fix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Vaporflask Lite 2.00\2.00_brightness.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
