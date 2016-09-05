@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="eGrip II 5.04">
+	<Marker Offset="0x90" Bytes="0x21 0x2B" />
+	<Marker Offset="0xC0" Bytes="0x21 0x96" />
+	<ImageTable1 From="0x105C4" To="0x109EC" />
+	<ImageTable2 From="0xDF48" To="0xE370" />
+	<StringTable1 From="0x10AF0" To="0x10DD1" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

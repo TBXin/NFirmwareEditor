@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Evic VTwo Mini 5.04">
+	<Marker Offset="0x90" Bytes="0x69 0x2B" />
+	<Marker Offset="0xC0" Bytes="0xA1 0x98" />
+	<ImageTable1 From="0x108C4" To="0x10CEC" />
+	<ImageTable2 From="0xE248" To="0xE670" />
+	<StringTable1 From="0x10DF0" To="0x1108D" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

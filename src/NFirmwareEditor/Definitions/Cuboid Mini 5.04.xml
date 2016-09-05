@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Cuboid Mini 5.04">
+	<Marker Offset="0x90" Bytes="0xA1 0x1D" />
+	<Marker Offset="0xC0" Bytes="0x99 0x74" />
+	<ImageTable1 From="0xCCB0" To="0xD0C0" />
+	<ImageTable2 From="0xAC94" To="0xB0A4" />
+	<StringTable1 From="0xD1C4" To="0xD399" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>
