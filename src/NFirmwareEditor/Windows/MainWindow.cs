@@ -22,7 +22,7 @@ namespace NFirmwareEditor.Windows
 		private readonly PatchManager m_patchManager = new PatchManager();
 		private readonly BackupManager m_backupManager = new BackupManager();
 
-		private readonly UpdatesManager m_updatesManager = new UpdatesManager(Consts.ApplicationVersion, TimeSpan.FromHours(1));
+		private readonly UpdatesManager m_updatesManager = new UpdatesManager(TimeSpan.FromHours(1));
 		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
 		
 		private IList<IEditorTabPage> m_tabPages;
@@ -93,7 +93,7 @@ namespace NFirmwareEditor.Windows
 			m_configuration = m_configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
 			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
 			m_patchManager.InitializeStorage(m_definitions);
-			m_updatesManager.SetDefinitions(m_definitions);
+			m_updatesManager.SetupInitialData(Consts.ApplicationVersion, m_definitions);
 		}
 
 		private void InitializeApplicationWindow()
@@ -283,6 +283,7 @@ namespace NFirmwareEditor.Windows
 					using (var updatesWindow = new UpdatesAvailableWindow(updatesInfo.Release))
 					{
 						updatesWindow.ShowDialog();
+						return;
 					}
 				}
 				if (updatesInfo.Definitions != null && updatesInfo.Definitions.Any())
@@ -292,7 +293,8 @@ namespace NFirmwareEditor.Windows
 						if (updatesWindow.ShowDialog() == DialogResult.Cancel) return;
 
 						m_definitions = m_firmwareDefinitionStorage.LoadAll().ToList();
-						m_updatesManager.SetDefinitions(m_definitions);
+						m_updatesManager.SetupInitialData(Consts.ApplicationVersion, m_definitions);
+						InitializeOpenWithSpecifiedDefinitionMenu();
 					}
 				}
 			});
@@ -446,7 +448,7 @@ namespace NFirmwareEditor.Windows
 			CheckForUpdatesMenuItem.Enabled = false;
 			var checkForUpdatesAction = new Action(() =>
 			{
-				var releaseInfo = m_updatesManager.CheckForReleases();
+				var releaseInfo = UpdatesManager.CheckForNewRelease(Consts.ApplicationVersion);
 				this.UpdateUI(() => CheckForUpdatesMenuItem.Enabled = true);
 				if (releaseInfo == null)
 				{

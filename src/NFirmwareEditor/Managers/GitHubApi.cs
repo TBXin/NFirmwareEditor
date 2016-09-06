@@ -20,6 +20,7 @@ namespace NFirmwareEditor.Managers
 
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
+		[CanBeNull]
 		public static GitHubRelease GetLatestRelease()
 		{
 			try
@@ -39,9 +40,11 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		[CanBeNull]
-		public static IEnumerable<GitHubFileInfo> GetFiles(string relativePath)
+		[CanBeNull, ItemNotNull]
+		public static List<GitHubFileInfo> GetFiles([NotNull] string relativePath)
 		{
+			if (string.IsNullOrEmpty(relativePath)) throw new ArgumentNullException("relativePath");
+
 			try
 			{
 				using (var client = new WebClientWithCustomTimeout(TimeSpan.FromSeconds(10)))
@@ -76,9 +79,47 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
+		public static void DownloadFile([NotNull] string url, [NotNull] string filePath)
+		{
+			if (string.IsNullOrEmpty(url)) throw new ArgumentNullException("url");
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
-		[NotNull]
-		public static IEnumerable<GitHubFileInfo> GetEntityForUpdate
+			try
+			{
+				using (var client = new WebClientWithCustomTimeout(TimeSpan.FromSeconds(10)))
+				{
+					client.DownloadFile(url, filePath);
+				}
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex, "An error occurred during file download. " + url);
+			}
+		}
+
+		public static string GetGitSha(string filePath)
+		{
+			var fileBytes = File.ReadAllBytes(filePath);
+			var fileText = Encoding.UTF8.GetString(fileBytes);
+
+			var unixStyleEndingString = fileText.Replace("\r\n", "\n");
+			var dataBytes = Encoding.UTF8.GetBytes(unixStyleEndingString);
+			var gitBlob = string.Format("blob {0}\0{1}", dataBytes.Length, unixStyleEndingString);
+			return GetSha1(gitBlob);
+		}
+
+		private static string GetSha1(string data)
+		{
+			using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
+			using (var sha = new SHA1Managed())
+			{
+				var checksum = sha.ComputeHash(ms);
+				return BitConverter.ToString(checksum).Replace("-", string.Empty).ToLower();
+			}
+		}
+
+		[NotNull, ItemNotNull]
+		public static IEnumerable<GitHubFileInfo> GetEntitiesForUpdate
 		(
 			[NotNull] IEnumerable<GitHubFileInfo> remoteFiles,
 			[NotNull] IEnumerable<IUpdatable> localFiles
@@ -102,42 +143,6 @@ namespace NFirmwareEditor.Managers
 				{
 					yield return remoteFle;
 				}
-			}
-		}
-
-		public static void DownloadFile(string url, string filePath)
-		{
-			try
-			{
-				using (var client = new WebClientWithCustomTimeout(TimeSpan.FromSeconds(10)))
-				{
-					client.DownloadFile(url, filePath);
-				}
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex, "An error occurred during patch file download.");
-			}
-		}
-
-		public static string GetGitSha(string filePath)
-		{
-			var fileBytes = File.ReadAllBytes(filePath);
-			var fileText = Encoding.UTF8.GetString(fileBytes);
-
-			var unixStyleEndingString = fileText.Replace("\r\n", "\n");
-			var dataBytes = Encoding.UTF8.GetBytes(unixStyleEndingString);
-			var gitBlob = string.Format("blob {0}\0{1}", dataBytes.Length, unixStyleEndingString);
-			return GetSha1(gitBlob);
-		}
-
-		private static string GetSha1(string data)
-		{
-			using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
-			using (var sha = new SHA1Managed())
-			{
-				var checksum = sha.ComputeHash(ms);
-				return BitConverter.ToString(checksum).Replace("-", string.Empty).ToLower();
 			}
 		}
 

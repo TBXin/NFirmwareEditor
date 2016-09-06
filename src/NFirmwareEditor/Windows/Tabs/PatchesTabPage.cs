@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -142,7 +141,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			});
 			var checkForUpdates = new Action(() =>
 			{
-				var newPatches = CheckForUpdates();
+				var newPatches = UpdatesManager.CheckForNewPatches(m_firmware.Definition, m_suitablePatches);
 				this.UpdateUI(() =>
 				{
 					CheckForUpdatesButton.Enabled = true;
@@ -163,25 +162,6 @@ namespace NFirmwareEditor.Windows.Tabs
 				});
 			});
 			checkForUpdates.BeginInvoke(null, null);
-		}
-
-		private List<GitHubApi.GitHubFileInfo> CheckForUpdates()
-		{
-			var patchesInRepository = GitHubApi.GetFiles("Patches/" + m_firmware.Definition.Name);
-			return patchesInRepository != null
-				? patchesInRepository.Where(FileExtensionPredicate).Where(UpdatedFilePredicate).ToList()
-				: null;
-		}
-
-		private static bool FileExtensionPredicate(GitHubApi.GitHubFileInfo fileInfo)
-		{
-			return new FileInfo(fileInfo.Name).Extension == Consts.PatchFileExtensionWoAsterisk;
-		}
-
-		private bool UpdatedFilePredicate(GitHubApi.GitHubFileInfo fileInfo)
-		{
-			var existedPatch = m_suitablePatches.FirstOrDefault(sp => string.Equals(fileInfo.Name, sp.FileName));
-			return existedPatch == null || !string.Equals(existedPatch.Sha, fileInfo.Sha);
 		}
 
 		private void PatchListView_SelectedIndexChanged(object sender, EventArgs e)

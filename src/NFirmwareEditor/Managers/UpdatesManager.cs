@@ -14,32 +14,27 @@ namespace NFirmwareEditor.Managers
 	{
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
-		private readonly string m_currentVersion;
 		private readonly TimeSpan m_checkForUpdatesInterval;
 		private readonly Timer m_checkForUpdatesTimer;
 
-		private IEnumerable<Updatable<FirmwareDefinition>> m_definitions = new Updatable<FirmwareDefinition>[0];
+		private string m_currentVersion;
+		private IEnumerable<FirmwareDefinition> m_definitions = new FirmwareDefinition[0];
 
-		public UpdatesManager(string currentVersion, TimeSpan checkForUpdatesInterval)
+		public UpdatesManager(TimeSpan checkForUpdatesInterval)
 		{
-			if (string.IsNullOrEmpty(currentVersion)) throw new ArgumentNullException("currentVersion");
-
-			m_currentVersion = currentVersion;
 			m_checkForUpdatesInterval = checkForUpdatesInterval;
 			m_checkForUpdatesTimer = new Timer(CheckForUpdatesCallback);
 		}
 
 		public event Action<UpdatesInfo> UpdatesAvailable;
 
-		public void SetDefinitions([NotNull] IEnumerable<FirmwareDefinition> definitions)
+		public void SetupInitialData(string applicationVersion, [NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
+			if (string.IsNullOrEmpty(applicationVersion)) throw new ArgumentNullException("applicationVersion");
 			if (definitions == null) throw new ArgumentNullException("definitions");
-			m_definitions = definitions.Select(x => new Updatable<FirmwareDefinition>
-			{
-				FileName = x.FileName,
-				Sha = x.Sha,
-				Entity = x
-			});
+
+			m_currentVersion = applicationVersion;
+			m_definitions = definitions;
 		}
 
 		public void StartChecking()
@@ -53,7 +48,7 @@ namespace NFirmwareEditor.Managers
 		}
 
 		[CanBeNull]
-		public ReleaseInfo CheckForReleases()
+		public static ReleaseInfo CheckForNewRelease(string applicationVersion)
 		{
 			s_logger.Info("Checking for application updates...");
 			var latestRelease = GitHubApi.GetLatestRelease();
@@ -63,21 +58,21 @@ namespace NFirmwareEditor.Managers
 				return null;
 			}
 
-			float currentVersion;
-			float newVersion;
+			float currentVersionFloat;
+			float newVersionFloat;
 
-			var v1 = float.TryParse(m_currentVersion, NumberStyles.Float, CultureInfo.InvariantCulture, out currentVersion);
-			var v2 = float.TryParse(latestRelease.Tag, NumberStyles.Float, CultureInfo.InvariantCulture, out newVersion);
+			var v1 = float.TryParse(applicationVersion, NumberStyles.Float, CultureInfo.InvariantCulture, out currentVersionFloat);
+			var v2 = float.TryParse(latestRelease.Tag, NumberStyles.Float, CultureInfo.InvariantCulture, out newVersionFloat);
 
 			if (v1 == false || v2 == false)
 			{
-				if (string.Equals(m_currentVersion, latestRelease.Tag))
+				if (string.Equals(applicationVersion, latestRelease.Tag))
 				{
 					s_logger.Info("Your are using latest version (string checking).");
 					return null;
 				}
 			}
-			else if (currentVersion >= newVersion)
+			else if (currentVersionFloat >= newVersionFloat)
 			{
 				s_logger.Info("Your are using latest version (float checking).");
 				return null;
@@ -93,21 +88,55 @@ namespace NFirmwareEditor.Managers
 		}
 
 		[CanBeNull, ItemNotNull]
-		private List<GitHubApi.GitHubFileInfo> CheckForDefinitions()
+		public static List<GitHubApi.GitHubFileInfo> CheckForNewDefinitions([NotNull] IEnumerable<FirmwareDefinition> definitions)
 		{
+			if (definitions == null) throw new ArgumentNullException("definitions");
+
 			s_logger.Info("Checking for definitions updates...");
-			var definifiosFiles = GitHubApi.GetFiles("Definitions");
-			return definifiosFiles == null
-				? null
-				: GitHubApi.GetEntityForUpdate(definifiosFiles, m_definitions).ToList();
+			var definitionsInRepository = GitHubApi.GetFiles("Definitions");
+			if (definitionsInRepository == null)
+			{
+				s_logger.Info("Definitions repository is not found.");
+				return null;
+			}
+
+			var entitiesForUpdate = GitHubApi.GetEntitiesForUpdate(definitionsInRepository, definitions.Select(x => new Updatable<FirmwareDefinition>
+			{
+			    Entity = x,
+			    FileName = x.FileName,
+			    Sha = x.Sha
+			})).ToList();
+
+			if (entitiesForUpdate.Count == 0)
+			{
+				s_logger.Info("No new definitions were found.");
+			}
+			return entitiesForUpdate;
+		}
+
+		[CanBeNull, ItemNotNull]
+		public static List<GitHubApi.GitHubFileInfo> CheckForNewPatches([NotNull] FirmwareDefinition definition, [NotNull] IEnumerable<Patch> patches)
+		{
+			if (definition == null) throw new ArgumentNullException("definition");
+			if (patches == null) throw new ArgumentNullException("patches");
+
+			var patchesInRepository = GitHubApi.GetFiles("Patches/" + definition.Name);
+			if (patchesInRepository == null) return null;
+
+			return GitHubApi.GetEntitiesForUpdate(patchesInRepository, patches.Select(x => new Updatable<Patch>
+			{
+			    Entity = x,
+			    FileName = x.FileName,
+			    Sha = x.Sha
+			})).ToList();
 		}
 
 		private void CheckForUpdatesCallback(object state)
 		{
-			var latestRelease = CheckForReleases();
-			var newDefinitions = CheckForDefinitions();
+			var latestRelease = CheckForNewRelease(m_currentVersion);
+			var newDefinitions = CheckForNewDefinitions(m_definitions);
 
-			if (latestRelease == null && (newDefinitions == null || !newDefinitions.Any()))
+			if (latestRelease == null && (newDefinitions == null || newDefinitions.Count == 0))
 			{
 				return;
 			}
