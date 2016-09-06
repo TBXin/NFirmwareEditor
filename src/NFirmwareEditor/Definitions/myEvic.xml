@@ -1,0 +1,7 @@
+﻿<FirmwareDefinition Name="myEvic">
+	<Marker Offset="0x140" Bytes="0x4D 0x59 0x46 0x57" />
+	<ImageTable1 PtrFrom="0x144" PtrTo="0x148" />
+	<ImageTable2 PtrFrom="0x14C" PtrTo="0x150" />
+	<StringTable1 PtrFrom="0x154" PtrTo="0x158" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x92 0x9A" />
+</FirmwareDefinition>

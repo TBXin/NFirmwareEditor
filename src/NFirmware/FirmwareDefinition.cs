@@ -65,6 +65,12 @@ namespace NFirmware
 		[XmlAttribute("To")]
 		public string OffsetToString { get; set; }
 
+		[XmlAttribute("PtrFrom")]
+		public string OffsetPtrFromString { get; set; }
+
+		[XmlAttribute("PtrTo")]
+		public string OffsetPtrToString { get; set; }
+
 		[XmlIgnore]
 		public long OffsetFrom
 		{
@@ -75,6 +81,24 @@ namespace NFirmware
 		public long OffsetTo
 		{
 			get { return OffsetToString.HexStringToLong(); }
+		}
+
+		[XmlIgnore]
+		public long OffsetPtrFrom
+		{
+			get { return OffsetPtrFromString.HexStringToLong(); }
+		}
+
+		[XmlIgnore]
+		public long OffsetPtrTo
+		{
+			get { return OffsetPtrToString.HexStringToLong(); }
+		}
+
+		[XmlIgnore]
+		public bool IsPtrTable
+		{
+			get { return !string.IsNullOrEmpty(OffsetPtrFromString) && !string.IsNullOrEmpty(OffsetPtrToString); }
 		}
 	}
 

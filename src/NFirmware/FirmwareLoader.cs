@@ -168,9 +168,14 @@ namespace NFirmware
 
 			var result = new List<FirmwareImageMetadata>();
 			{
+				long offsetFrom;
+				long offsetTo;
+				GetOffsets(imageTableDefinition, reader, out offsetFrom, out offsetTo);
+				offsetTo -= 4;
+
 				var offsetsTable = new List<Tuple<long, long>>();
-				reader.BaseStream.Seek(imageTableDefinition.OffsetFrom, SeekOrigin.Begin);
-				while (reader.BaseStream.Position <= imageTableDefinition.OffsetTo)
+				reader.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
+				while (reader.BaseStream.Position <= offsetTo)
 				{
 					var imageTableOffset = reader.BaseStream.Position;
 					var imageDataOffset = reader.ReadUInt32();
@@ -199,21 +204,25 @@ namespace NFirmware
 			var charLength = GetCharLength(stringTableDefinition.TwoBytesPerChar);
 			var result = new List<FirmwareStringMetadata>();
 			{
-				reader.BaseStream.Seek(stringTableDefinition.OffsetFrom, SeekOrigin.Begin);
-				while (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+				long offsetFrom;
+				long offsetTo;
+				GetOffsets(stringTableDefinition, reader, out offsetFrom, out offsetTo);
+
+				reader.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
+				while (reader.BaseStream.Position <= offsetTo)
 				{
 					var offset = reader.BaseStream.Position;
 					var dataLength = 0;
 
 					while (true)
 					{
-						if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+						if (reader.BaseStream.Position <= offsetTo)
 						{
 							var char1 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
 							dataLength += charLength;
 
 							short? char2;
-							if (reader.BaseStream.Position <= stringTableDefinition.OffsetTo)
+							if (reader.BaseStream.Position <= offsetTo)
 							{
 								char2 = ReadChar(reader, stringTableDefinition.TwoBytesPerChar);
 								reader.BaseStream.Position -= charLength;
@@ -228,6 +237,22 @@ namespace NFirmware
 				}
 			}
 			return result;
+		}
+
+		private void GetOffsets(FirmwareTableDefinition table, BinaryReader reader, out long offsetFrom, out long offsetTo)
+		{
+			if (table.IsPtrTable)
+			{
+				reader.BaseStream.Seek(table.OffsetPtrFrom, SeekOrigin.Begin);
+				offsetFrom = reader.ReadUInt32();
+				reader.BaseStream.Seek(table.OffsetPtrTo, SeekOrigin.Begin);
+				offsetTo = reader.ReadUInt32();
+			}
+			else
+			{
+				offsetFrom = table.OffsetFrom;
+				offsetTo = table.OffsetTo;
+			}
 		}
 
 		private short ReadChar(BinaryReader reader, bool twoBytesPerChar)
