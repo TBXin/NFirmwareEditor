@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using NFirmware;
 using NFirmwareEditor.Core;
+using NFirmwareEditor.Managers;
 using NLog;
 
 namespace NFirmwareEditor.Storages
@@ -47,7 +48,11 @@ namespace NFirmwareEditor.Storages
 			foreach (var filePath in files)
 			{
 				var definition = TryLoad(filePath);
-				if (definition != null) result.Add(definition);
+				if (definition == null) continue;
+
+				definition.FileName = Path.GetFileName(filePath);
+				definition.Sha = GitHubApi.GetGitSha(filePath);
+				result.Add(definition);
 			}
 			return result;
 		}

@@ -6,6 +6,12 @@ namespace NFirmware
 	[XmlType("FirmwareDefinition")]
 	public class FirmwareDefinition : NamespacelessObject
 	{
+		[XmlIgnore]
+		internal string FileName { get; set; }
+
+		[XmlIgnore]
+		internal string Sha { get; set; }
+
 		[XmlAttribute]
 		public string Name { get; set; }
 

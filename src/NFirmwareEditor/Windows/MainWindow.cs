@@ -89,10 +89,11 @@ namespace NFirmwareEditor.Windows
 			m_firmwareDefinitionStorage.Initialize();
 			m_resourcePackStorage.Initialize();
 
-			m_definitions = m_firmwareDefinitionStorage.LoadAll();
+			m_definitions = m_firmwareDefinitionStorage.LoadAll().ToList();
 			m_configuration = m_configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
 			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
 			m_patchManager.InitializeStorage(m_definitions);
+			m_updatesManager.SetDefinitions(m_definitions);
 		}
 
 		private void InitializeApplicationWindow()
@@ -166,7 +167,7 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeUpdatesChecking()
 		{
-			if (m_configuration.CheckForApplicationUpdates)
+			if (m_configuration.CheckForApplicationUpdates || m_configuration.CheckForDefinitionsUpdates)
 			{
 				m_updatesManager.UpdatesAvailable += ShowUpdatesWindow;
 				m_updatesManager.StartChecking();
@@ -273,13 +274,26 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void ShowUpdatesWindow(ReleaseInfo releaseInfo)
+		private void ShowUpdatesWindow(UpdatesInfo updatesInfo)
 		{
 			this.UpdateUI(() =>
 			{
-				using (var updatesWindow = new UpdatesAvailableWindow(releaseInfo))
+				if (updatesInfo.Release != null)
 				{
-					updatesWindow.ShowDialog();
+					using (var updatesWindow = new UpdatesAvailableWindow(updatesInfo.Release))
+					{
+						updatesWindow.ShowDialog();
+					}
+				}
+				if (updatesInfo.Definitions != null && updatesInfo.Definitions.Any())
+				{
+					using (var updatesWindow = new DefinitionUpdatesAvailableWindow(updatesInfo.Definitions))
+					{
+						if (updatesWindow.ShowDialog() == DialogResult.Cancel) return;
+
+						m_definitions = m_firmwareDefinitionStorage.LoadAll().ToList();
+						m_updatesManager.SetDefinitions(m_definitions);
+					}
 				}
 			});
 		}
@@ -432,7 +446,7 @@ namespace NFirmwareEditor.Windows
 			CheckForUpdatesMenuItem.Enabled = false;
 			var checkForUpdatesAction = new Action(() =>
 			{
-				var releaseInfo = m_updatesManager.CheckForUpdates();
+				var releaseInfo = m_updatesManager.CheckForReleases();
 				this.UpdateUI(() => CheckForUpdatesMenuItem.Enabled = true);
 				if (releaseInfo == null)
 				{
@@ -440,7 +454,7 @@ namespace NFirmwareEditor.Windows
 				}
 				else
 				{
-					ShowUpdatesWindow(releaseInfo);
+					ShowUpdatesWindow(new UpdatesInfo { Release = releaseInfo });
 				}
 			});
 			checkForUpdatesAction.BeginInvoke(null, null);

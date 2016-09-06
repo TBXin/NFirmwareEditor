@@ -59,6 +59,7 @@ namespace NFirmwareEditor.Windows
 			}
 			CheckForApplicationUpdatesCheckBox.Checked = m_configuration.CheckForApplicationUpdates;
 			CheckForPatchesUpdatesCheckBox.Checked = m_configuration.CheckForPatchesUpdates;
+			CheckForDefinitionsUpdatesCheckBox.Checked = m_configuration.CheckForDefinitionsUpdates;
 		}
 
 		private void SaveSettings()
@@ -75,6 +76,7 @@ namespace NFirmwareEditor.Windows
 			}
 			m_configuration.CheckForApplicationUpdates = CheckForApplicationUpdatesCheckBox.Checked;
 			m_configuration.CheckForPatchesUpdates = CheckForPatchesUpdatesCheckBox.Checked;
+			m_configuration.CheckForDefinitionsUpdates = CheckForDefinitionsUpdatesCheckBox.Checked;
 		}
 
 		private void OkButton_Click(object sender, EventArgs e)

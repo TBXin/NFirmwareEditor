@@ -18,6 +18,7 @@ namespace NFirmwareEditor.Models
 			MostRecentlyUsed = new List<string>();
 			CheckForApplicationUpdates = true;
 			CheckForPatchesUpdates = true;
+			CheckForDefinitionsUpdates = true;
 		}
 
 		public int MainWindowTop { get; set; }
@@ -41,6 +42,8 @@ namespace NFirmwareEditor.Models
 		public bool CheckForApplicationUpdates { get; set; }
 
 		public bool CheckForPatchesUpdates { get; set; }
+
+		public bool CheckForDefinitionsUpdates { get; set; }
 
 		[XmlArrayItem("Item")]
 		public List<string> MostRecentlyUsed { get; set; }

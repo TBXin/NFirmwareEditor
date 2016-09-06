@@ -82,6 +82,7 @@
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
+    <Compile Include="Models\Updatable.cs" />
     <Compile Include="Models\LoadableObject.cs" />
     <Compile Include="Models\MonochromeConversionMode.cs" />
     <Compile Include="Models\Patch.cs" />
@@ -121,6 +122,12 @@
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
     <Compile Include="Core\InfoBox.cs" />
+    <Compile Include="Windows\DefinitionUpdatesAvailableWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DefinitionUpdatesAvailableWindow.Designer.cs">
+      <DependentUpon>DefinitionUpdatesAvailableWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditorDialogWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DecryptionWindow.resx">
       <DependentUpon>DecryptionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DefinitionUpdatesAvailableWindow.resx">
+      <DependentUpon>DefinitionUpdatesAvailableWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>

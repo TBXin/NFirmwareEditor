@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
 using JetBrains.Annotations;
+using NFirmwareEditor.Models;
 using NLog;
 
 namespace NFirmwareEditor.Managers
@@ -71,6 +73,35 @@ namespace NFirmwareEditor.Managers
 			{
 				s_logger.Warn(ex, "An error occurred during retrieving rep files from '{0}'.", relativePath);
 				return null;
+			}
+		}
+
+
+		[NotNull]
+		public static IEnumerable<GitHubFileInfo> GetEntityForUpdate
+		(
+			[NotNull] IEnumerable<GitHubFileInfo> remoteFiles,
+			[NotNull] IEnumerable<IUpdatable> localFiles
+		)
+		{
+			if (remoteFiles == null) throw new ArgumentNullException("remoteFiles");
+			if (localFiles == null) throw new ArgumentNullException("localFiles");
+
+			var localMap = localFiles.ToDictionary(x => x.FileName, x => x);
+			foreach (var remoteFle in remoteFiles)
+			{
+				IUpdatable local;
+				if (localMap.TryGetValue(remoteFle.Name, out local))
+				{
+					if (!string.Equals(local.Sha, remoteFle.Sha))
+					{
+						yield return remoteFle;
+					}
+				}
+				else
+				{
+					yield return remoteFle;
+				}
 			}
 		}
 

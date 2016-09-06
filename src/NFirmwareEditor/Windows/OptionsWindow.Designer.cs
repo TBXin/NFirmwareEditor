@@ -42,6 +42,7 @@
 			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
 			this.ImageEditorModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.CheckForDefinitionsUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SettingsTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
@@ -62,7 +63,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.OkButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 243);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 266);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(494, 39);
@@ -100,7 +101,7 @@
 			this.SettingsTabControl.Location = new System.Drawing.Point(3, 3);
 			this.SettingsTabControl.Name = "SettingsTabControl";
 			this.SettingsTabControl.SelectedIndex = 0;
-			this.SettingsTabControl.Size = new System.Drawing.Size(490, 238);
+			this.SettingsTabControl.Size = new System.Drawing.Size(490, 261);
 			this.SettingsTabControl.TabIndex = 2;
 			// 
 			// GeneralTabPage
@@ -111,7 +112,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(482, 212);
+			this.GeneralTabPage.Size = new System.Drawing.Size(482, 235);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "Application";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -122,13 +123,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.CheckForDefinitionsUpdatesCheckBox);
 			this.groupPanel1.Controls.Add(this.CheckForPatchesUpdatesCheckBox);
 			this.groupPanel1.Controls.Add(this.CheckForApplicationUpdatesCheckBox);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(0, 130);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(480, 81);
+			this.groupPanel1.Size = new System.Drawing.Size(480, 104);
 			this.groupPanel1.TabIndex = 25;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Updates:";
@@ -225,11 +227,21 @@
 			this.label6.TabIndex = 22;
 			this.label6.Text = "Mode:";
 			// 
+			// CheckForDefinitionsUpdatesCheckBox
+			// 
+			this.CheckForDefinitionsUpdatesCheckBox.AutoSize = true;
+			this.CheckForDefinitionsUpdatesCheckBox.Location = new System.Drawing.Point(9, 82);
+			this.CheckForDefinitionsUpdatesCheckBox.Name = "CheckForDefinitionsUpdatesCheckBox";
+			this.CheckForDefinitionsUpdatesCheckBox.Size = new System.Drawing.Size(180, 17);
+			this.CheckForDefinitionsUpdatesCheckBox.TabIndex = 2;
+			this.CheckForDefinitionsUpdatesCheckBox.Text = "Checking for definitions updates";
+			this.CheckForDefinitionsUpdatesCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// OptionsWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(494, 282);
+			this.ClientSize = new System.Drawing.Size(494, 305);
 			this.Controls.Add(this.SettingsTabControl);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -268,5 +280,6 @@
 		private UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.CheckBox CheckForApplicationUpdatesCheckBox;
 		private System.Windows.Forms.CheckBox CheckForPatchesUpdatesCheckBox;
+		private System.Windows.Forms.CheckBox CheckForDefinitionsUpdatesCheckBox;
 	}
 }
