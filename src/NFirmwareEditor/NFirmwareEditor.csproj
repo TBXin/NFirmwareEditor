@@ -910,9 +910,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
-    <Content Include="Definitions.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Definitions\ASTER 1.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
