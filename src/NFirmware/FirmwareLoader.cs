@@ -171,7 +171,6 @@ namespace NFirmware
 				long offsetFrom;
 				long offsetTo;
 				GetOffsets(imageTableDefinition, reader, out offsetFrom, out offsetTo);
-				offsetTo -= 4;
 
 				var offsetsTable = new List<Tuple<long, long>>();
 				reader.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
@@ -246,7 +245,7 @@ namespace NFirmware
 				reader.BaseStream.Seek(table.OffsetPtrFrom, SeekOrigin.Begin);
 				offsetFrom = reader.ReadUInt32();
 				reader.BaseStream.Seek(table.OffsetPtrTo, SeekOrigin.Begin);
-				offsetTo = reader.ReadUInt32();
+				offsetTo = reader.ReadUInt32() - 4;
 			}
 			else
 			{
