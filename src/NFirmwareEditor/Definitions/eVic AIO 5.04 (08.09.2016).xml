@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="eVic AIO 5.04 (08.09.2016)">
+	<Marker Offset="0x90" Bytes="0x35 0x2B" />
+	<Marker Offset="0xC0" Bytes="0x7D 0x96" />
+	<ImageTable1 From="0x10654" To="0x10A7C" />
+	<ImageTable2 From="0xDFD8" To="0xE400" />
+	<StringTable1 From="0x10B80" To="0x10E67" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>
