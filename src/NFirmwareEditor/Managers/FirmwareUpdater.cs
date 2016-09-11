@@ -20,6 +20,8 @@ namespace NFirmwareEditor.Managers
 
 			public const byte WriteData = 0xC3;
 			public const byte Restart = 0xB4;
+
+			public const byte Screenshot = 0xC1;
 		}
 
 		private const int VendorId = 0x0416;
@@ -124,6 +126,15 @@ namespace NFirmwareEditor.Managers
 					Checksum = checksum,
 					Data = data
 				};
+			}
+		}
+
+		public byte[] Screenshot()
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.Screenshot, 0, 0x400));
+				return Read(stream, 0x400);
 			}
 		}
 

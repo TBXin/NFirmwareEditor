@@ -13,6 +13,23 @@ namespace NFirmwareEditor.Managers
 	{
 		private static readonly byte[] s_bitMasks = { 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01 };
 
+		public static Image CreateBitmapFromBytesArray(int width, int height, [NotNull] byte[] imageData)
+		{
+			if (imageData == null) throw new ArgumentNullException("imageData");
+
+			var bitmap = new Bitmap(width, height, PixelFormat.Format1bppIndexed);
+			var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format1bppIndexed);
+			try
+			{
+				Marshal.Copy(imageData, 0, bitmapData.Scan0, imageData.Length);
+			}
+			finally
+			{
+				bitmap.UnlockBits(bitmapData);
+			}
+			return bitmap;
+		}
+
 		public static Image CreateBitmapFromRaw([NotNull] bool[,] imageData, int pixelSize = 2)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");

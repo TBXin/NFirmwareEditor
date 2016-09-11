@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -255,6 +257,7 @@ namespace NFirmwareEditor.Windows
 			ResetDataflashButton.Enabled = enabled;
 			ReadDataflashButton.Enabled = enabled;
 			WriteDataflashButton.Enabled = enabled;
+			ScreenshotButton.Enabled = enabled;
 		}
 
 		private void SetAllButtonsState(bool enabled)
@@ -386,6 +389,26 @@ namespace NFirmwareEditor.Windows
 			catch (Exception ex)
 			{
 				InfoBox.Show("An error occured during dataflash reading.\n" + ex.Message);
+			}
+		}
+
+		private void ScreenshotButton_Click(object sender, EventArgs e)
+		{
+			var data = m_updater.Screenshot();
+			if (data == null || data.All(x => x == 0x00))
+			{
+				InfoBox.Show("Unable to get screenshot. Activate your device first.");
+				return;
+			}
+
+			using (var bitmap = BitmapProcessor.CreateBitmapFromBytesArray(64, 128, data))
+			{
+				using (var sf = new SaveFileDialog { Filter = Consts.BitmapExportFilter })
+				{
+					if (sf.ShowDialog() != DialogResult.OK) return;
+
+					bitmap.Save(sf.FileName, ImageFormat.Bmp);
+				}
 			}
 		}
 
