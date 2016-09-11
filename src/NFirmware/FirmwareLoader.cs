@@ -35,7 +35,8 @@ namespace NFirmware
 
 			bool wasEncrypted;
 			var bytes = DecryptIfNecessary(firmwareBytes, out wasEncrypted);
-			var definition = DetermineDefinition(bytes, definitions);
+			var definition = DetermineDefinition(bytes, definitions) ?? FirmwareAnalyzer.Analyze(bytes);
+
 			return definition == null
 				? null
 				: Load(bytes, definition, wasEncrypted);

@@ -87,6 +87,7 @@ namespace NFirmware
 		public long OffsetTo
 		{
 			get { return OffsetToString.HexStringToLong(); }
+			set { OffsetToString = "0x" + value.ToString("X4"); }
 		}
 
 		[XmlIgnore]
