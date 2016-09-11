@@ -57,6 +57,7 @@
 			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
+			this.SaveDefinitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
@@ -84,6 +85,7 @@
             this.SaveMenuItem,
             this.SaveEncryptedMenuItem,
             this.SaveDecryptedMenuItem,
+            this.SaveDefinitionMenuItem,
             this.toolStripSeparator2,
             this.RecentFirmwaresMenuItem,
             this.toolStripSeparator4,
@@ -315,6 +317,15 @@
 			this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.MainTabControl.TabIndex = 6;
 			// 
+			// SaveDefinitionMenuItem
+			// 
+			this.SaveDefinitionMenuItem.Image = global::NFirmwareEditor.Properties.Resources.save_as;
+			this.SaveDefinitionMenuItem.Name = "SaveDefinitionMenuItem";
+			this.SaveDefinitionMenuItem.Size = new System.Drawing.Size(285, 22);
+			this.SaveDefinitionMenuItem.Text = "Save Definition";
+			this.SaveDefinitionMenuItem.Visible = false;
+			this.SaveDefinitionMenuItem.Click += new System.EventHandler(this.SaveDefinitionMenuItem_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +382,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CheckForUpdatesMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private System.Windows.Forms.ToolStripMenuItem SaveDefinitionMenuItem;
 	}
 }
 

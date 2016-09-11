@@ -57,5 +57,13 @@ namespace NFirmwareEditor.Storages
 			return result;
 		}
 		#endregion
+
+		public void Save(FirmwareDefinition definition, string filePath)
+		{
+			using (var fs = File.Open(filePath, FileMode.Create))
+			{
+				Serializer.Write(definition, fs);
+			}
+		}
 	}
 }

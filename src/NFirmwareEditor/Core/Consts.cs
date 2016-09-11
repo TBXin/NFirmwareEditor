@@ -17,6 +17,7 @@
 
 		internal const string FirmwareFilter = "Firmware file|*.bin";
 		internal const string DataFlashFilter = "Dataflash file|*.dataflash";
+		internal const string DefinitionFilter = "Definition file|*.xml";
 		internal const string PatchFilter = "Patch file|" + PatchFileExtension;
 		internal const string ExportResourcePackFilter = "Resource packs|" + ResourcePackFileExtension;
 		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg;*.gif";

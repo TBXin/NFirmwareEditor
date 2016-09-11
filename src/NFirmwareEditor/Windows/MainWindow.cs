@@ -197,6 +197,7 @@ namespace NFirmwareEditor.Windows
 		{
 			Text = string.Format("{0} - {1}", Consts.ApplicationTitle, m_firmwareFile);
 			LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, m_firmware.IsEncrypted ? "Encrypted" : "Decrypted");
+			SaveDefinitionMenuItem.Visible = !m_definitions.Any(x => x.Name.Equals(m_firmware.Definition.Name));
 		}
 
 		private void OpenFirmware(string firmwareFile, Func<string, Firmware> readFirmwareDelegate)
@@ -379,6 +380,23 @@ namespace NFirmwareEditor.Windows
 				m_loader.SaveDecrypted(filePath, firmware);
 				firmware.IsEncrypted = false;
 			});
+		}
+
+		private void SaveDefinitionMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var sf = new SaveFileDialog { Filter = Consts.DefinitionFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				try
+				{
+					m_firmwareDefinitionStorage.Save(m_firmware.Definition, sf.FileName);
+				}
+				catch (Exception ex)
+				{
+					InfoBox.Show("An error occured during saving definition file.\n" + ex);
+				}
+			}
 		}
 
 		private void ExitMenuItem_Click(object sender, EventArgs e)
