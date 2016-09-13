@@ -1,0 +1,7 @@
+﻿<FirmwareDefinition Name="iStick Power 1.02">
+	<Marker Offset="0x90" Bytes="0x91 0x1C" />
+	<Marker Offset="0xC0" Bytes="0x3D 0x64" />
+	<ImageTable1 From="0x8B00" To="0x8DA0" />
+	<StringTable1 From="0x7A9C" To="0x7C35" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x39 0x3C 0x42 0x4B" />
+</FirmwareDefinition>
