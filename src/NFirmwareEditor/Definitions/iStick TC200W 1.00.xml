@@ -1,0 +1,7 @@
+﻿<FirmwareDefinition Name="iStick TC200W 1.00">
+	<Marker Offset="0x90" Bytes="0xD9 0x1F" />
+	<Marker Offset="0xC0" Bytes="0x21 0x62" />
+	<ImageTable1 From="0x86BC" To="0x8938" />
+	<StringTable1 From="0x77BC" To="0x78A7" TwoBytesPerChar="false" />
+	<StringsPreviewCorrection ForGlyphs="0x39 0x42 0x4B" />
+</FirmwareDefinition>
