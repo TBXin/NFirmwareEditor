@@ -15,22 +15,37 @@ namespace NFirmware
 
 			using (var br = new BinaryReader(new MemoryStream(firmwareBytes)))
 			{
+				long stringTableSearchOffset;
 				var markers = ReadMarkers(br, new long[] { 0x90, 0xC0 });
 
+				// First in bin
 				var imageTable2 = LookupImageTable(br, 0);
 				if (imageTable2 == null) return null;
 
+				// Second in bin
 				var imageTable1 = LookupImageTable(br, imageTable2.OffsetTo);
-				if (imageTable1 == null) return null;
+				if (imageTable1 == null)
+				{
+					// If we can't find second table, we expecting that is firmware with only one table 
+					// and in this case imageTable2 will contains images for SSD1306 not for SSD1327. 
+					imageTable1 = imageTable2;
+					imageTable2 = null;
+					// Also, in those firmwares stringTables located earlier than images.
+					stringTableSearchOffset = 0;
+				}
+				else
+				{
+					if (imageTable1.OffsetTo - imageTable1.OffsetFrom != imageTable2.OffsetTo - imageTable2.OffsetFrom) return null;
 
-				if (imageTable1.OffsetTo - imageTable1.OffsetFrom != imageTable2.OffsetTo - imageTable2.OffsetFrom) return null;
+					imageTable2.OffsetTo -= 4;
+					stringTableSearchOffset = imageTable1.OffsetTo;
+				}
 
 				var imageTableSize = (imageTable1.OffsetTo - imageTable1.OffsetFrom) / 4;
-				var stringTable = LookupStringTable(br, imageTable1.OffsetTo, imageTableSize);
+				var stringTable = LookupStringTable(br, stringTableSearchOffset, imageTableSize);
 				if (stringTable == null) return null;
 
 				imageTable1.OffsetTo -= 4;
-				imageTable2.OffsetTo -= 4;
 				stringTable.OffsetTo -= 1;
 
 				return new FirmwareDefinition
