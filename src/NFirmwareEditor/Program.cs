@@ -20,7 +20,15 @@ namespace NFirmwareEditor
 			Application.ThreadException += UnhandledThreadExceptionHandler;
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainWindow(args));
+
+			if (args != null && args.Length == 1 && args[0] == "/configurator")
+			{
+				Application.Run(new DeviceConfiguratorWindow());
+			}
+			else
+			{
+				Application.Run(new MainWindow(args));
+			}
 		}
 
 		private static void UnhandledThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)

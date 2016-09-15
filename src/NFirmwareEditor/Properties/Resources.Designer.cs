@@ -163,6 +163,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap device_configurator {
+            get {
+                object obj = ResourceManager.GetObject("device_configurator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap editor_redo {
             get {
                 object obj = ResourceManager.GetObject("editor_redo", resourceCulture);

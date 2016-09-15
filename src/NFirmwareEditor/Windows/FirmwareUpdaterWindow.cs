@@ -56,28 +56,28 @@ namespace NFirmwareEditor.Windows
 			if (isConnected)
 			{
 				System.Diagnostics.Trace.WriteLine("Connected " + DateTime.Now);
-				Dataflash dataflash;
+				SimpleDataflash simpleDataflash;
 
 				try
 				{
-					dataflash = m_updater.ReadDataflash();
+					simpleDataflash = m_updater.ReadDataflash();
 				}
 				catch
 				{
 					return;
 				}
 
-				m_connectedDeviceProductId = dataflash.ProductId;
+				m_connectedDeviceProductId = simpleDataflash.ProductId;
 				m_deviceInfo = FirmwareUpdater.GetDeviceInfo(m_connectedDeviceProductId);
-				m_hardwareVersion = dataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
-				m_firmwareVersion = dataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
+				m_hardwareVersion = simpleDataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
+				m_firmwareVersion = simpleDataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 
 				UpdateUI(() =>
 				{
 					DeviceNameTextBox.Text = m_deviceInfo.Name;
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
-					BootModeTextBox.Text = dataflash.LoadFromLdrom ? "LDROM" : "APROM";
+					BootModeTextBox.Text = simpleDataflash.LoadFromLdrom ? "LDROM" : "APROM";
 					UpdateStatusLabel.Text = @"Device is ready.";
 					SetUpdaterButtonsState(true);
 				});
@@ -230,12 +230,12 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void WriteDataflashAsyncWorker(BackgroundWorker worker, Dataflash dataflash)
+		private void WriteDataflashAsyncWorker(BackgroundWorker worker, SimpleDataflash simpleDataflash)
 		{
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
-				m_updater.WriteDataflash(dataflash, worker);
+				m_updater.WriteDataflash(simpleDataflash, worker);
 				UpdateUI(() =>
 				{
 					UpdateStatusLabel.Text = @"Dataflash was successfully written.";
@@ -383,7 +383,7 @@ namespace NFirmwareEditor.Windows
 					return;
 				}
 
-				var dataflash = new Dataflash { Data = data };
+				var dataflash = new SimpleDataflash { Data = data };
 				m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker => WriteDataflashAsyncWorker(worker, dataflash)));
 			}
 			catch (Exception ex)

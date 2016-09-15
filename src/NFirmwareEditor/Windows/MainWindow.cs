@@ -436,6 +436,14 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void DeviceConfiguratorMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var configurator = new DeviceConfiguratorWindow())
+			{
+				configurator.ShowDialog();
+			}
+		}
+
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
 			var checkForUpdates = m_configuration.CheckForApplicationUpdates;

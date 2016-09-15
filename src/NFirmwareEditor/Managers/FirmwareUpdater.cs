@@ -110,7 +110,7 @@ namespace NFirmwareEditor.Managers
 			m_isDeviceConnected = null;
 		}
 
-		public Dataflash ReadDataflash(BackgroundWorker worker = null)
+		public SimpleDataflash ReadDataflash(BackgroundWorker worker = null)
 		{
 			using (var stream = OpenDeviceStream())
 			{
@@ -121,7 +121,7 @@ namespace NFirmwareEditor.Managers
 				var data = new byte[rawData.Length - 4];
 				Buffer.BlockCopy(rawData, 4, data, 0, data.Length);
 
-				return new Dataflash
+				return new SimpleDataflash
 				{
 					Checksum = checksum,
 					Data = data
@@ -138,13 +138,13 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		public void WriteDataflash(Dataflash dataflash, BackgroundWorker worker = null)
+		public void WriteDataflash(SimpleDataflash simpleDataflash, BackgroundWorker worker = null)
 		{
-			var checksumBytes = BitConverter.GetBytes(dataflash.Data.Sum(x => x));
-			var rawData = new byte[dataflash.Data.Length + checksumBytes.Length];
+			var checksumBytes = BitConverter.GetBytes(simpleDataflash.Data.Sum(x => x));
+			var rawData = new byte[simpleDataflash.Data.Length + checksumBytes.Length];
 
 			Buffer.BlockCopy(checksumBytes, 0, rawData, 0, checksumBytes.Length);
-			Buffer.BlockCopy(dataflash.Data, 0, rawData, checksumBytes.Length, dataflash.Data.Length);
+			Buffer.BlockCopy(simpleDataflash.Data, 0, rawData, checksumBytes.Length, simpleDataflash.Data.Length);
 
 			using (var stream = OpenDeviceStream())
 			{
@@ -323,7 +323,7 @@ namespace NFirmwareEditor.Managers
 		public byte LogoHeight { get; private set; }
 	}
 
-	internal class Dataflash
+	internal class SimpleDataflash
 	{
 		private const int BootFlagOffset = 9;
 		private const int HwVerOffset = 4;

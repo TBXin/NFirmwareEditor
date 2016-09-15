@@ -56,6 +56,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -71,6 +72,7 @@
     <Compile Include="Managers\BackupManager.cs" />
     <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
+    <Compile Include="Managers\DataflashManager.cs" />
     <Compile Include="Managers\FirmwareUpdater.cs" />
     <Compile Include="Managers\GitHubApi.cs" />
     <Compile Include="Managers\ImageCacheManager.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Models\BulkPatchResult.cs" />
     <Compile Include="Models\ApplicationConfiguration.cs" />
     <Compile Include="Core\Consts.cs" />
+    <Compile Include="Models\Dataflash.cs" />
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
@@ -100,6 +103,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
+    <Compile Include="UI\MultiPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
@@ -127,6 +133,12 @@
     </Compile>
     <Compile Include="Windows\DefinitionUpdatesAvailableWindow.Designer.cs">
       <DependentUpon>DefinitionUpdatesAvailableWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeviceConfiguratorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DeviceConfiguratorWindow.Designer.cs">
+      <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditorDialogWindow.cs">
       <SubType>Form</SubType>
@@ -243,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DefinitionUpdatesAvailableWindow.resx">
       <DependentUpon>DefinitionUpdatesAvailableWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DeviceConfiguratorWindow.resx">
+      <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
@@ -1204,6 +1219,7 @@
     <Content Include="Definitions\Vaporflask Stout 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\device_configurator.png" />
     <None Include="Patches\RX200S 4.10\4.10_tc_ss_fix.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
