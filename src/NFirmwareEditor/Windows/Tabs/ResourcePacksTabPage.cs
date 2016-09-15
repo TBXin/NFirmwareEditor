@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -90,6 +91,8 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		public void OnActivate()
 		{
+			DescriptionTextBox.BackColor = Color.White;
+			DescriptionTextBox.ReadOnly = true;
 		}
 
 		public bool OnHotkey(Keys keyData)

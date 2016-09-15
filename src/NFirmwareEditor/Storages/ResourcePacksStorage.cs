@@ -60,12 +60,13 @@ namespace NFirmwareEditor.Storages
 					image.Index = image.IndexString.HexStringToInt();
 					image.Data = ReadImageFromAsciiString(image.Width, image.Height, image.DataString);
 				});
+				return result;
 			}
 			catch (Exception ex)
 			{
 				s_logger.Warn(ex, "An error occured during reading resource pack file '{0}'.", filePath);
+				return null;
 			}
-			return null;
 		}
 
 		public IEnumerable<ResourcePack> LoadAll()

@@ -78,6 +78,8 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			DescriptionTextBox.BackColor = Color.White;
 			DescriptionTextBox.ReadOnly = true;
+			ConflictsTextBox.BackColor = Color.White;
+			ConflictsTextBox.ReadOnly = true;
 		}
 
 		public void OnFirmwareLoaded(Firmware firmware)
