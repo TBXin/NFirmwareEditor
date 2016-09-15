@@ -32,29 +32,43 @@
 			this.WelcomePage = new NFirmwareEditor.UI.MultiPanelPage();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
 			this.WorkspacePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.ResetButton = new System.Windows.Forms.Button();
+			this.UploadButton = new System.Windows.Forms.Button();
+			this.DownloadButton = new System.Windows.Forms.Button();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
+			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.BootModeTextBox = new System.Windows.Forms.TextBox();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.PwrResTabPage = new System.Windows.Forms.TabPage();
+			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
+			this.TemperatureDominantCheckBox = new System.Windows.Forms.CheckBox();
 			this.label30 = new System.Windows.Forms.Label();
 			this.label29 = new System.Windows.Forms.Label();
 			this.PreheatTimeTextBox = new System.Windows.Forms.TextBox();
 			this.PreheatTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label28 = new System.Windows.Forms.Label();
 			this.PreheatPowerTextBox = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.TemperatureComboBox = new System.Windows.Forms.ComboBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.TemperatureTextBox = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.TCPowerTextBox = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.PowerTextBox = new System.Windows.Forms.TextBox();
+			this.CoilsTabPage = new System.Windows.Forms.TabPage();
 			this.label16 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.ResistanceTCRCheckBox = new System.Windows.Forms.CheckBox();
 			this.ResistanceSSCheckBox = new System.Windows.Forms.CheckBox();
 			this.ResistanceTiCheckBox = new System.Windows.Forms.CheckBox();
@@ -67,14 +81,9 @@
 			this.ResistanceTiTextBox = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.ResistanceNiTextBox = new System.Windows.Forms.TextBox();
-			this.TemperatureComboBox = new System.Windows.Forms.ComboBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.TemperatureTextBox = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.TCPowerTextBox = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.PowerTextBox = new System.Windows.Forms.TextBox();
 			this.ModesTabPage = new System.Windows.Forms.TabPage();
+			this.TCRIndexLabel = new System.Windows.Forms.Label();
+			this.SelectedTCRComboBox = new System.Windows.Forms.ComboBox();
 			this.CurrentModeComboBox = new System.Windows.Forms.ComboBox();
 			this.SmartModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.label27 = new System.Windows.Forms.Label();
@@ -98,7 +107,6 @@
 			this.M2TextBox = new System.Windows.Forms.TextBox();
 			this.label17 = new System.Windows.Forms.Label();
 			this.M1TextBox = new System.Windows.Forms.TextBox();
-			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -107,6 +115,7 @@
 			this.groupPanel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.PwrResTabPage.SuspendLayout();
+			this.CoilsTabPage.SuspendLayout();
 			this.ModesTabPage.SuspendLayout();
 			this.TCRTabPage.SuspendLayout();
 			this.SuspendLayout();
@@ -119,7 +128,7 @@
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
 			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(377, 496);
+			this.MainContainer.Size = new System.Drawing.Size(377, 500);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -148,14 +157,53 @@
 			// 
 			// WorkspacePage
 			// 
+			this.WorkspacePage.Controls.Add(this.ResetButton);
+			this.WorkspacePage.Controls.Add(this.UploadButton);
+			this.WorkspacePage.Controls.Add(this.DownloadButton);
 			this.WorkspacePage.Controls.Add(this.MainTabControl);
 			this.WorkspacePage.Description = null;
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(377, 496);
+			this.WorkspacePage.Size = new System.Drawing.Size(377, 500);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "WorkspacePage";
+			// 
+			// ResetButton
+			// 
+			this.ResetButton.Image = global::NFirmwareEditor.Properties.Resources.reset_settings;
+			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ResetButton.Location = new System.Drawing.Point(257, 12);
+			this.ResetButton.Name = "ResetButton";
+			this.ResetButton.Size = new System.Drawing.Size(107, 25);
+			this.ResetButton.TabIndex = 3;
+			this.ResetButton.Text = "Reset settings";
+			this.ResetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ResetButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadButton
+			// 
+			this.UploadButton.Image = global::NFirmwareEditor.Properties.Resources.upload_settings;
+			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UploadButton.Location = new System.Drawing.Point(141, 12);
+			this.UploadButton.Name = "UploadButton";
+			this.UploadButton.Size = new System.Drawing.Size(110, 25);
+			this.UploadButton.TabIndex = 2;
+			this.UploadButton.Text = "Upload settings";
+			this.UploadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.UploadButton.UseVisualStyleBackColor = true;
+			// 
+			// DownloadButton
+			// 
+			this.DownloadButton.Image = global::NFirmwareEditor.Properties.Resources.download_settings;
+			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DownloadButton.Location = new System.Drawing.Point(11, 12);
+			this.DownloadButton.Name = "DownloadButton";
+			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
+			this.DownloadButton.TabIndex = 1;
+			this.DownloadButton.Text = "Download settings";
+			this.DownloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.DownloadButton.UseVisualStyleBackColor = true;
 			// 
 			// MainTabControl
 			// 
@@ -163,21 +211,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainTabControl.Controls.Add(this.GeneralTabPage);
-			this.MainTabControl.Location = new System.Drawing.Point(12, 12);
+			this.MainTabControl.Location = new System.Drawing.Point(12, 43);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
-			this.MainTabControl.Size = new System.Drawing.Size(353, 472);
+			this.MainTabControl.Size = new System.Drawing.Size(353, 445);
 			this.MainTabControl.TabIndex = 0;
 			// 
 			// GeneralTabPage
 			// 
 			this.GeneralTabPage.Controls.Add(this.groupPanel1);
 			this.GeneralTabPage.Controls.Add(this.tabControl1);
-			this.GeneralTabPage.Controls.Add(this.DeviceNameLabel);
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(345, 446);
+			this.GeneralTabPage.Size = new System.Drawing.Size(345, 419);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -187,18 +234,18 @@
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
+			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
 			this.groupPanel1.Controls.Add(this.label2);
 			this.groupPanel1.Controls.Add(this.label5);
 			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.Controls.Add(this.BootModeTextBox);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
-			this.groupPanel1.Location = new System.Drawing.Point(11, 39);
+			this.groupPanel1.Location = new System.Drawing.Point(11, 11);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(322, 112);
 			this.groupPanel1.TabIndex = 34;
 			this.groupPanel1.TabStop = false;
-			this.groupPanel1.Text = "Device info:";
 			// 
 			// FirmwareVersionTextBox
 			// 
@@ -215,6 +262,16 @@
 			this.HardwareVersionTextBox.Size = new System.Drawing.Size(212, 21);
 			this.HardwareVersionTextBox.TabIndex = 28;
 			this.HardwareVersionTextBox.TabStop = false;
+			// 
+			// DeviceNameLabel
+			// 
+			this.DeviceNameLabel.AutoSize = true;
+			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
+			this.DeviceNameLabel.Name = "DeviceNameLabel";
+			this.DeviceNameLabel.Size = new System.Drawing.Size(123, 19);
+			this.DeviceNameLabel.TabIndex = 0;
+			this.DeviceNameLabel.Text = "LostVape Triade";
 			// 
 			// label2
 			// 
@@ -254,10 +311,11 @@
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.PwrResTabPage);
+			this.tabControl1.Controls.Add(this.CoilsTabPage);
 			this.tabControl1.Controls.Add(this.ModesTabPage);
 			this.tabControl1.Controls.Add(this.TCRTabPage);
 			this.tabControl1.ItemSize = new System.Drawing.Size(70, 18);
-			this.tabControl1.Location = new System.Drawing.Point(11, 157);
+			this.tabControl1.Location = new System.Drawing.Point(11, 129);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(324, 279);
@@ -265,30 +323,16 @@
 			// 
 			// PwrResTabPage
 			// 
+			this.PwrResTabPage.Controls.Add(this.Step1WCheckBox);
+			this.PwrResTabPage.Controls.Add(this.TemperatureDominantCheckBox);
 			this.PwrResTabPage.Controls.Add(this.label30);
 			this.PwrResTabPage.Controls.Add(this.label29);
 			this.PwrResTabPage.Controls.Add(this.PreheatTimeTextBox);
 			this.PwrResTabPage.Controls.Add(this.PreheatTypeComboBox);
 			this.PwrResTabPage.Controls.Add(this.label28);
 			this.PwrResTabPage.Controls.Add(this.PreheatPowerTextBox);
-			this.PwrResTabPage.Controls.Add(this.label16);
-			this.PwrResTabPage.Controls.Add(this.label15);
-			this.PwrResTabPage.Controls.Add(this.label14);
-			this.PwrResTabPage.Controls.Add(this.label13);
 			this.PwrResTabPage.Controls.Add(this.label12);
 			this.PwrResTabPage.Controls.Add(this.label11);
-			this.PwrResTabPage.Controls.Add(this.ResistanceTCRCheckBox);
-			this.PwrResTabPage.Controls.Add(this.ResistanceSSCheckBox);
-			this.PwrResTabPage.Controls.Add(this.ResistanceTiCheckBox);
-			this.PwrResTabPage.Controls.Add(this.ResistanceNiCheckBox);
-			this.PwrResTabPage.Controls.Add(this.label10);
-			this.PwrResTabPage.Controls.Add(this.ResistanceTCRTextBox);
-			this.PwrResTabPage.Controls.Add(this.label9);
-			this.PwrResTabPage.Controls.Add(this.ResistanceSSTextBox);
-			this.PwrResTabPage.Controls.Add(this.label8);
-			this.PwrResTabPage.Controls.Add(this.ResistanceTiTextBox);
-			this.PwrResTabPage.Controls.Add(this.label7);
-			this.PwrResTabPage.Controls.Add(this.ResistanceNiTextBox);
 			this.PwrResTabPage.Controls.Add(this.TemperatureComboBox);
 			this.PwrResTabPage.Controls.Add(this.label6);
 			this.PwrResTabPage.Controls.Add(this.TemperatureTextBox);
@@ -301,13 +345,33 @@
 			this.PwrResTabPage.Padding = new System.Windows.Forms.Padding(3);
 			this.PwrResTabPage.Size = new System.Drawing.Size(316, 253);
 			this.PwrResTabPage.TabIndex = 0;
-			this.PwrResTabPage.Text = "Power & Resistance  ";
+			this.PwrResTabPage.Text = "Power";
 			this.PwrResTabPage.UseVisualStyleBackColor = true;
+			// 
+			// Step1WCheckBox
+			// 
+			this.Step1WCheckBox.AutoSize = true;
+			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 62);
+			this.Step1WCheckBox.Name = "Step1WCheckBox";
+			this.Step1WCheckBox.Size = new System.Drawing.Size(67, 17);
+			this.Step1WCheckBox.TabIndex = 62;
+			this.Step1WCheckBox.Text = "Step 1W";
+			this.Step1WCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// TemperatureDominantCheckBox
+			// 
+			this.TemperatureDominantCheckBox.AutoSize = true;
+			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 132);
+			this.TemperatureDominantCheckBox.Name = "TemperatureDominantCheckBox";
+			this.TemperatureDominantCheckBox.Size = new System.Drawing.Size(136, 17);
+			this.TemperatureDominantCheckBox.TabIndex = 61;
+			this.TemperatureDominantCheckBox.Text = "Temperature Dominant";
+			this.TemperatureDominantCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label30
 			// 
 			this.label30.AutoSize = true;
-			this.label30.Location = new System.Drawing.Point(213, 227);
+			this.label30.Location = new System.Drawing.Point(213, 205);
 			this.label30.Name = "label30";
 			this.label30.Size = new System.Drawing.Size(12, 13);
 			this.label30.TabIndex = 60;
@@ -316,7 +380,7 @@
 			// label29
 			// 
 			this.label29.AutoSize = true;
-			this.label29.Location = new System.Drawing.Point(4, 227);
+			this.label29.Location = new System.Drawing.Point(4, 205);
 			this.label29.Name = "label29";
 			this.label29.Size = new System.Drawing.Size(74, 13);
 			this.label29.TabIndex = 59;
@@ -324,7 +388,7 @@
 			// 
 			// PreheatTimeTextBox
 			// 
-			this.PreheatTimeTextBox.Location = new System.Drawing.Point(101, 224);
+			this.PreheatTimeTextBox.Location = new System.Drawing.Point(101, 202);
 			this.PreheatTimeTextBox.Name = "PreheatTimeTextBox";
 			this.PreheatTimeTextBox.Size = new System.Drawing.Size(106, 21);
 			this.PreheatTimeTextBox.TabIndex = 58;
@@ -338,7 +402,7 @@
 			this.PreheatTypeComboBox.Items.AddRange(new object[] {
             "W",
             "%"});
-			this.PreheatTypeComboBox.Location = new System.Drawing.Point(213, 197);
+			this.PreheatTypeComboBox.Location = new System.Drawing.Point(213, 175);
 			this.PreheatTypeComboBox.Name = "PreheatTypeComboBox";
 			this.PreheatTypeComboBox.Size = new System.Drawing.Size(42, 21);
 			this.PreheatTypeComboBox.TabIndex = 57;
@@ -346,7 +410,7 @@
 			// label28
 			// 
 			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(4, 200);
+			this.label28.Location = new System.Drawing.Point(4, 178);
 			this.label28.Name = "label28";
 			this.label28.Size = new System.Drawing.Size(82, 13);
 			this.label28.TabIndex = 56;
@@ -354,52 +418,12 @@
 			// 
 			// PreheatPowerTextBox
 			// 
-			this.PreheatPowerTextBox.Location = new System.Drawing.Point(101, 197);
+			this.PreheatPowerTextBox.Location = new System.Drawing.Point(101, 175);
 			this.PreheatPowerTextBox.Name = "PreheatPowerTextBox";
 			this.PreheatPowerTextBox.Size = new System.Drawing.Size(106, 21);
 			this.PreheatPowerTextBox.TabIndex = 55;
 			this.PreheatPowerTextBox.TabStop = false;
 			this.PreheatPowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label16.Location = new System.Drawing.Point(213, 172);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(17, 16);
-			this.label16.TabIndex = 54;
-			this.label16.Text = "Ω";
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label15.Location = new System.Drawing.Point(213, 145);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(17, 16);
-			this.label15.TabIndex = 54;
-			this.label15.Text = "Ω";
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label14.Location = new System.Drawing.Point(213, 118);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(17, 16);
-			this.label14.TabIndex = 54;
-			this.label14.Text = "Ω";
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label13.Location = new System.Drawing.Point(213, 91);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(17, 16);
-			this.label13.TabIndex = 53;
-			this.label13.Text = "Ω";
 			// 
 			// label12
 			// 
@@ -419,118 +443,6 @@
 			this.label11.TabIndex = 51;
 			this.label11.Text = "W";
 			// 
-			// ResistanceTCRCheckBox
-			// 
-			this.ResistanceTCRCheckBox.AutoSize = true;
-			this.ResistanceTCRCheckBox.Location = new System.Drawing.Point(242, 173);
-			this.ResistanceTCRCheckBox.Name = "ResistanceTCRCheckBox";
-			this.ResistanceTCRCheckBox.Size = new System.Drawing.Size(59, 17);
-			this.ResistanceTCRCheckBox.TabIndex = 50;
-			this.ResistanceTCRCheckBox.Text = "Locked";
-			this.ResistanceTCRCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// ResistanceSSCheckBox
-			// 
-			this.ResistanceSSCheckBox.AutoSize = true;
-			this.ResistanceSSCheckBox.Location = new System.Drawing.Point(242, 146);
-			this.ResistanceSSCheckBox.Name = "ResistanceSSCheckBox";
-			this.ResistanceSSCheckBox.Size = new System.Drawing.Size(59, 17);
-			this.ResistanceSSCheckBox.TabIndex = 50;
-			this.ResistanceSSCheckBox.Text = "Locked";
-			this.ResistanceSSCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// ResistanceTiCheckBox
-			// 
-			this.ResistanceTiCheckBox.AutoSize = true;
-			this.ResistanceTiCheckBox.Location = new System.Drawing.Point(242, 119);
-			this.ResistanceTiCheckBox.Name = "ResistanceTiCheckBox";
-			this.ResistanceTiCheckBox.Size = new System.Drawing.Size(59, 17);
-			this.ResistanceTiCheckBox.TabIndex = 50;
-			this.ResistanceTiCheckBox.Text = "Locked";
-			this.ResistanceTiCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// ResistanceNiCheckBox
-			// 
-			this.ResistanceNiCheckBox.AutoSize = true;
-			this.ResistanceNiCheckBox.Location = new System.Drawing.Point(242, 92);
-			this.ResistanceNiCheckBox.Name = "ResistanceNiCheckBox";
-			this.ResistanceNiCheckBox.Size = new System.Drawing.Size(59, 17);
-			this.ResistanceNiCheckBox.TabIndex = 49;
-			this.ResistanceNiCheckBox.Text = "Locked";
-			this.ResistanceNiCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(4, 173);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(86, 13);
-			this.label10.TabIndex = 48;
-			this.label10.Text = "Resistance TCR:";
-			// 
-			// ResistanceTCRTextBox
-			// 
-			this.ResistanceTCRTextBox.Location = new System.Drawing.Point(101, 170);
-			this.ResistanceTCRTextBox.Name = "ResistanceTCRTextBox";
-			this.ResistanceTCRTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceTCRTextBox.TabIndex = 47;
-			this.ResistanceTCRTextBox.TabStop = false;
-			this.ResistanceTCRTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(4, 146);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(78, 13);
-			this.label9.TabIndex = 46;
-			this.label9.Text = "Resistance SS:";
-			// 
-			// ResistanceSSTextBox
-			// 
-			this.ResistanceSSTextBox.Location = new System.Drawing.Point(101, 143);
-			this.ResistanceSSTextBox.Name = "ResistanceSSTextBox";
-			this.ResistanceSSTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceSSTextBox.TabIndex = 45;
-			this.ResistanceSSTextBox.TabStop = false;
-			this.ResistanceSSTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(4, 119);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(74, 13);
-			this.label8.TabIndex = 44;
-			this.label8.Text = "Resistance Ti:";
-			// 
-			// ResistanceTiTextBox
-			// 
-			this.ResistanceTiTextBox.Location = new System.Drawing.Point(101, 116);
-			this.ResistanceTiTextBox.Name = "ResistanceTiTextBox";
-			this.ResistanceTiTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceTiTextBox.TabIndex = 43;
-			this.ResistanceTiTextBox.TabStop = false;
-			this.ResistanceTiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(4, 92);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(75, 13);
-			this.label7.TabIndex = 42;
-			this.label7.Text = "Resistance Ni:";
-			// 
-			// ResistanceNiTextBox
-			// 
-			this.ResistanceNiTextBox.Location = new System.Drawing.Point(101, 89);
-			this.ResistanceNiTextBox.Name = "ResistanceNiTextBox";
-			this.ResistanceNiTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceNiTextBox.TabIndex = 41;
-			this.ResistanceNiTextBox.TabStop = false;
-			this.ResistanceNiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// TemperatureComboBox
 			// 
 			this.TemperatureComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -538,7 +450,7 @@
 			this.TemperatureComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.TemperatureComboBox.Location = new System.Drawing.Point(213, 62);
+			this.TemperatureComboBox.Location = new System.Drawing.Point(213, 105);
 			this.TemperatureComboBox.Name = "TemperatureComboBox";
 			this.TemperatureComboBox.Size = new System.Drawing.Size(42, 21);
 			this.TemperatureComboBox.TabIndex = 40;
@@ -546,7 +458,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(4, 65);
+			this.label6.Location = new System.Drawing.Point(4, 108);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(73, 13);
 			this.label6.TabIndex = 39;
@@ -554,7 +466,7 @@
 			// 
 			// TemperatureTextBox
 			// 
-			this.TemperatureTextBox.Location = new System.Drawing.Point(101, 62);
+			this.TemperatureTextBox.Location = new System.Drawing.Point(101, 105);
 			this.TemperatureTextBox.Name = "TemperatureTextBox";
 			this.TemperatureTextBox.Size = new System.Drawing.Size(106, 21);
 			this.TemperatureTextBox.TabIndex = 38;
@@ -597,8 +509,188 @@
 			this.PowerTextBox.TabStop = false;
 			this.PowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
+			// CoilsTabPage
+			// 
+			this.CoilsTabPage.Controls.Add(this.label16);
+			this.CoilsTabPage.Controls.Add(this.label15);
+			this.CoilsTabPage.Controls.Add(this.label14);
+			this.CoilsTabPage.Controls.Add(this.label13);
+			this.CoilsTabPage.Controls.Add(this.ResistanceTCRCheckBox);
+			this.CoilsTabPage.Controls.Add(this.ResistanceSSCheckBox);
+			this.CoilsTabPage.Controls.Add(this.ResistanceTiCheckBox);
+			this.CoilsTabPage.Controls.Add(this.ResistanceNiCheckBox);
+			this.CoilsTabPage.Controls.Add(this.label10);
+			this.CoilsTabPage.Controls.Add(this.ResistanceTCRTextBox);
+			this.CoilsTabPage.Controls.Add(this.label9);
+			this.CoilsTabPage.Controls.Add(this.ResistanceSSTextBox);
+			this.CoilsTabPage.Controls.Add(this.label8);
+			this.CoilsTabPage.Controls.Add(this.ResistanceTiTextBox);
+			this.CoilsTabPage.Controls.Add(this.label7);
+			this.CoilsTabPage.Controls.Add(this.ResistanceNiTextBox);
+			this.CoilsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.CoilsTabPage.Name = "CoilsTabPage";
+			this.CoilsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.CoilsTabPage.Size = new System.Drawing.Size(316, 253);
+			this.CoilsTabPage.TabIndex = 6;
+			this.CoilsTabPage.Text = "Coils Manager";
+			this.CoilsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label16.Location = new System.Drawing.Point(213, 91);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(17, 16);
+			this.label16.TabIndex = 68;
+			this.label16.Text = "Ω";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label15.Location = new System.Drawing.Point(213, 64);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(17, 16);
+			this.label15.TabIndex = 69;
+			this.label15.Text = "Ω";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label14.Location = new System.Drawing.Point(213, 37);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(17, 16);
+			this.label14.TabIndex = 70;
+			this.label14.Text = "Ω";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label13.Location = new System.Drawing.Point(213, 10);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(17, 16);
+			this.label13.TabIndex = 67;
+			this.label13.Text = "Ω";
+			// 
+			// ResistanceTCRCheckBox
+			// 
+			this.ResistanceTCRCheckBox.AutoSize = true;
+			this.ResistanceTCRCheckBox.Location = new System.Drawing.Point(242, 92);
+			this.ResistanceTCRCheckBox.Name = "ResistanceTCRCheckBox";
+			this.ResistanceTCRCheckBox.Size = new System.Drawing.Size(59, 17);
+			this.ResistanceTCRCheckBox.TabIndex = 64;
+			this.ResistanceTCRCheckBox.Text = "Locked";
+			this.ResistanceTCRCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ResistanceSSCheckBox
+			// 
+			this.ResistanceSSCheckBox.AutoSize = true;
+			this.ResistanceSSCheckBox.Location = new System.Drawing.Point(242, 65);
+			this.ResistanceSSCheckBox.Name = "ResistanceSSCheckBox";
+			this.ResistanceSSCheckBox.Size = new System.Drawing.Size(59, 17);
+			this.ResistanceSSCheckBox.TabIndex = 65;
+			this.ResistanceSSCheckBox.Text = "Locked";
+			this.ResistanceSSCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ResistanceTiCheckBox
+			// 
+			this.ResistanceTiCheckBox.AutoSize = true;
+			this.ResistanceTiCheckBox.Location = new System.Drawing.Point(242, 38);
+			this.ResistanceTiCheckBox.Name = "ResistanceTiCheckBox";
+			this.ResistanceTiCheckBox.Size = new System.Drawing.Size(59, 17);
+			this.ResistanceTiCheckBox.TabIndex = 66;
+			this.ResistanceTiCheckBox.Text = "Locked";
+			this.ResistanceTiCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ResistanceNiCheckBox
+			// 
+			this.ResistanceNiCheckBox.AutoSize = true;
+			this.ResistanceNiCheckBox.Location = new System.Drawing.Point(242, 11);
+			this.ResistanceNiCheckBox.Name = "ResistanceNiCheckBox";
+			this.ResistanceNiCheckBox.Size = new System.Drawing.Size(59, 17);
+			this.ResistanceNiCheckBox.TabIndex = 63;
+			this.ResistanceNiCheckBox.Text = "Locked";
+			this.ResistanceNiCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(4, 92);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(86, 13);
+			this.label10.TabIndex = 62;
+			this.label10.Text = "Resistance TCR:";
+			// 
+			// ResistanceTCRTextBox
+			// 
+			this.ResistanceTCRTextBox.Location = new System.Drawing.Point(101, 89);
+			this.ResistanceTCRTextBox.Name = "ResistanceTCRTextBox";
+			this.ResistanceTCRTextBox.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceTCRTextBox.TabIndex = 61;
+			this.ResistanceTCRTextBox.TabStop = false;
+			this.ResistanceTCRTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(4, 65);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(78, 13);
+			this.label9.TabIndex = 60;
+			this.label9.Text = "Resistance SS:";
+			// 
+			// ResistanceSSTextBox
+			// 
+			this.ResistanceSSTextBox.Location = new System.Drawing.Point(101, 62);
+			this.ResistanceSSTextBox.Name = "ResistanceSSTextBox";
+			this.ResistanceSSTextBox.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceSSTextBox.TabIndex = 59;
+			this.ResistanceSSTextBox.TabStop = false;
+			this.ResistanceSSTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(4, 38);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(74, 13);
+			this.label8.TabIndex = 58;
+			this.label8.Text = "Resistance Ti:";
+			// 
+			// ResistanceTiTextBox
+			// 
+			this.ResistanceTiTextBox.Location = new System.Drawing.Point(101, 35);
+			this.ResistanceTiTextBox.Name = "ResistanceTiTextBox";
+			this.ResistanceTiTextBox.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceTiTextBox.TabIndex = 57;
+			this.ResistanceTiTextBox.TabStop = false;
+			this.ResistanceTiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(4, 11);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(75, 13);
+			this.label7.TabIndex = 56;
+			this.label7.Text = "Resistance Ni:";
+			// 
+			// ResistanceNiTextBox
+			// 
+			this.ResistanceNiTextBox.Location = new System.Drawing.Point(101, 8);
+			this.ResistanceNiTextBox.Name = "ResistanceNiTextBox";
+			this.ResistanceNiTextBox.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceNiTextBox.TabIndex = 55;
+			this.ResistanceNiTextBox.TabStop = false;
+			this.ResistanceNiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
 			// ModesTabPage
 			// 
+			this.ModesTabPage.Controls.Add(this.TCRIndexLabel);
+			this.ModesTabPage.Controls.Add(this.SelectedTCRComboBox);
 			this.ModesTabPage.Controls.Add(this.CurrentModeComboBox);
 			this.ModesTabPage.Controls.Add(this.SmartModeCheckBox);
 			this.ModesTabPage.Controls.Add(this.label27);
@@ -622,6 +714,28 @@
 			this.ModesTabPage.Text = "Modes";
 			this.ModesTabPage.UseVisualStyleBackColor = true;
 			// 
+			// TCRIndexLabel
+			// 
+			this.TCRIndexLabel.AutoSize = true;
+			this.TCRIndexLabel.Location = new System.Drawing.Point(225, 11);
+			this.TCRIndexLabel.Name = "TCRIndexLabel";
+			this.TCRIndexLabel.Size = new System.Drawing.Size(31, 13);
+			this.TCRIndexLabel.TabIndex = 70;
+			this.TCRIndexLabel.Text = "TCR:";
+			// 
+			// SelectedTCRComboBox
+			// 
+			this.SelectedTCRComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.SelectedTCRComboBox.FormattingEnabled = true;
+			this.SelectedTCRComboBox.Items.AddRange(new object[] {
+            "M1",
+            "M2",
+            "M3"});
+			this.SelectedTCRComboBox.Location = new System.Drawing.Point(258, 8);
+			this.SelectedTCRComboBox.Name = "SelectedTCRComboBox";
+			this.SelectedTCRComboBox.Size = new System.Drawing.Size(55, 21);
+			this.SelectedTCRComboBox.TabIndex = 69;
+			// 
 			// CurrentModeComboBox
 			// 
 			this.CurrentModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -631,7 +745,7 @@
             "°F"});
 			this.CurrentModeComboBox.Location = new System.Drawing.Point(101, 8);
 			this.CurrentModeComboBox.Name = "CurrentModeComboBox";
-			this.CurrentModeComboBox.Size = new System.Drawing.Size(211, 21);
+			this.CurrentModeComboBox.Size = new System.Drawing.Size(120, 21);
 			this.CurrentModeComboBox.TabIndex = 68;
 			// 
 			// SmartModeCheckBox
@@ -845,21 +959,11 @@
 			this.M1TextBox.TabStop = false;
 			this.M1TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// DeviceNameLabel
-			// 
-			this.DeviceNameLabel.AutoSize = true;
-			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DeviceNameLabel.Location = new System.Drawing.Point(7, 9);
-			this.DeviceNameLabel.Name = "DeviceNameLabel";
-			this.DeviceNameLabel.Size = new System.Drawing.Size(123, 19);
-			this.DeviceNameLabel.TabIndex = 0;
-			this.DeviceNameLabel.Text = "LostVape Triade";
-			// 
 			// DeviceConfiguratorWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(377, 496);
+			this.ClientSize = new System.Drawing.Size(377, 500);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -872,12 +976,13 @@
 			this.WorkspacePage.ResumeLayout(false);
 			this.MainTabControl.ResumeLayout(false);
 			this.GeneralTabPage.ResumeLayout(false);
-			this.GeneralTabPage.PerformLayout();
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
 			this.PwrResTabPage.ResumeLayout(false);
 			this.PwrResTabPage.PerformLayout();
+			this.CoilsTabPage.ResumeLayout(false);
+			this.CoilsTabPage.PerformLayout();
 			this.ModesTabPage.ResumeLayout(false);
 			this.ModesTabPage.PerformLayout();
 			this.TCRTabPage.ResumeLayout(false);
@@ -911,24 +1016,8 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.TextBox TemperatureTextBox;
 		private System.Windows.Forms.ComboBox TemperatureComboBox;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox ResistanceNiTextBox;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox ResistanceTiTextBox;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TextBox ResistanceSSTextBox;
-		private System.Windows.Forms.CheckBox ResistanceNiCheckBox;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.TextBox ResistanceTCRTextBox;
-		private System.Windows.Forms.CheckBox ResistanceTCRCheckBox;
-		private System.Windows.Forms.CheckBox ResistanceSSCheckBox;
-		private System.Windows.Forms.CheckBox ResistanceTiCheckBox;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label16;
-		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.TextBox M3TextBox;
 		private System.Windows.Forms.Label label18;
@@ -959,5 +1048,29 @@
 		private System.Windows.Forms.Label label30;
 		private System.Windows.Forms.Label label29;
 		private System.Windows.Forms.TextBox PreheatTimeTextBox;
+		private System.Windows.Forms.TabPage CoilsTabPage;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.CheckBox ResistanceTCRCheckBox;
+		private System.Windows.Forms.CheckBox ResistanceSSCheckBox;
+		private System.Windows.Forms.CheckBox ResistanceTiCheckBox;
+		private System.Windows.Forms.CheckBox ResistanceNiCheckBox;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.TextBox ResistanceTCRTextBox;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.TextBox ResistanceSSTextBox;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TextBox ResistanceTiTextBox;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.TextBox ResistanceNiTextBox;
+		private System.Windows.Forms.CheckBox TemperatureDominantCheckBox;
+		private System.Windows.Forms.CheckBox Step1WCheckBox;
+		private System.Windows.Forms.Label TCRIndexLabel;
+		private System.Windows.Forms.ComboBox SelectedTCRComboBox;
+		private System.Windows.Forms.Button DownloadButton;
+		private System.Windows.Forms.Button UploadButton;
+		private System.Windows.Forms.Button ResetButton;
 	}
 }

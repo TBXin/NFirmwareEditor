@@ -173,6 +173,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download_settings {
+            get {
+                object obj = ResourceManager.GetObject("download_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap editor_redo {
             get {
                 object obj = ResourceManager.GetObject("editor_redo", resourceCulture);
@@ -423,6 +433,16 @@ namespace NFirmwareEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reset_settings {
+            get {
+                object obj = ResourceManager.GetObject("reset_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ru {
             get {
                 object obj = ResourceManager.GetObject("ru", resourceCulture);
@@ -456,6 +476,16 @@ namespace NFirmwareEditor.Properties {
         internal static System.Drawing.Bitmap transparent_bg {
             get {
                 object obj = ResourceManager.GetObject("transparent_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upload_settings {
+            get {
+                object obj = ResourceManager.GetObject("upload_settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -60,9 +60,13 @@ namespace NFirmwareEditor.Windows
 			// Power & Resistance Tab
 			PowerTextBox.Text = (dataflash.Params.Power / 10f).ToString(CultureInfo.InvariantCulture);
 			TCPowerTextBox.Text = (dataflash.Params.TCPower / 10f).ToString(CultureInfo.InvariantCulture);
+			Step1WCheckBox.Checked = dataflash.Params.Status.Step1W;
+
 			TemperatureTextBox.Text = dataflash.Params.Temperature.ToString(CultureInfo.InvariantCulture);
 			TemperatureComboBox.SelectedIndex = dataflash.Params.IsCelsius ? 0 : 1;
+			TemperatureDominantCheckBox.Checked = dataflash.Params.Status.TemperatureDominant;
 
+			// Coils Manager Tab
 			ResistanceNiTextBox.Text = (dataflash.Params.ResistanceNi / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 			ResistanceNiCheckBox.Checked = dataflash.Params.ResistanceNiLocked;
 
@@ -95,6 +99,11 @@ namespace NFirmwareEditor.Windows
 
 			// Modes Tab
 			CurrentModeComboBox.SelectedItem = CurrentModeComboBox.Items.Cast<NamedItemContainer<Mode>>().First(x => x.Data == dataflash.Params.Mode);
+
+			TCRIndexLabel.Visible = dataflash.Params.Mode == Mode.TCR;
+			SelectedTCRComboBox.Visible = dataflash.Params.Mode == Mode.TCR;
+			SelectedTCRComboBox.SelectedIndex = dataflash.Params.TCRIndex;
+
 			TempNiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempNi);
 			TempTiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempTi);
 			TempSSModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempSS);
