@@ -38,6 +38,8 @@ namespace NFirmwareEditor.Windows
 				new NamedItemContainer<Mode>("Bypass", Mode.Bypass),
 				new NamedItemContainer<Mode>("Smart / Start", Mode.Start)
 			});
+
+			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
 		}
 
 		private void Initialize()
@@ -111,6 +113,25 @@ namespace NFirmwareEditor.Windows
 			PowerModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Power);
 			BypassModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Bypass);
 			SmartModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Start);
+
+			// Screen Tab
+			BrightnessTrackBar.Value = (int)(dataflash.Params.Contrast * 100f / 255);
+			StealthModeCheckBox.Checked = dataflash.Params.StealthOn;
+			FlippedModeCheckBox.Checked = dataflash.Params.Status.Flipped;
+			BatteryPercentsCheckBox.Checked = dataflash.Params.Status.BatteryPercent;
+			ShowLogoCheckBox.Checked = !dataflash.Params.Status.NoLogo;
+			if (!dataflash.Params.Status.AnalogClock && !dataflash.Params.Status.DigitalClock)
+			{
+				ClockModeComboBox.SelectedIndex = 0;
+			}
+			else if (dataflash.Params.Status.AnalogClock)
+			{
+				ClockModeComboBox.SelectedIndex = 1;
+			}
+			else if (dataflash.Params.Status.DigitalClock)
+			{
+				ClockModeComboBox.SelectedIndex = 2;
+			}
 		}
 
 		private void DeviceConnected(bool isConnected)
