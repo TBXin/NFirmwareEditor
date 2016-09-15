@@ -1,0 +1,32 @@
+﻿<Patch Definition="Cuboid 3.14" Name="Stealth on Charge" Version="1.0" Author="yii">
+  <Description>Extends Stealth Mode to the charge screen.
+Отключает показ анимации зарядки (предохранение от местного выгорания экрана). Работает при активированном режиме Stealth.</Description>
+  <Data>
+# Branch to Stealth Mode detection #
+0000675E: 00 - 06
+0000675F: F0 - F0
+00006760: 03 - 5B
+00006761: B8 - BD
+# Stealth Mode detection #
+0000D218: * - 03
+0000D219: * - 48
+0000D21A: * - 90
+0000D21B: * - F8
+0000D21C: * - 25
+0000D21D: * - 00
+0000D21E: * - 08
+0000D21F: * - B1
+0000D220: * - F9
+0000D221: * - F7
+0000D222: * - 9F
+0000D223: * - BA
+0000D224: * - F9
+0000D225: * - F7
+0000D226: * - A0
+0000D227: * - BA
+0000D228: * - 90
+0000D229: * - 02
+0000D22A: * - 00
+0000D22B: * - 20
+</Data>
+</Patch>

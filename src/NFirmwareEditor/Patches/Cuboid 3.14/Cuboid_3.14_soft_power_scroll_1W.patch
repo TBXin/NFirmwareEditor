@@ -1,0 +1,42 @@
+﻿<Patch Definition="Cuboid 3.14" Name="Soft Power Scroll - 1W" Version="1.0" Author="yii">
+  <Description>
+Изменение мощности с интервалом 1W. Возможна настройка скоростей.
+
+Changing power 1W with an interval. Possible speed setting.
+
+На основе патча от NFirmwareEditor Team для витамина
+</Description>
+  <Data>
+
+
+# Управление скоростями
+
+# Установить порог третий скорости равной порогу второй для запрещения третей скорости
+# или меньше для запрещения второй скорости
+
+# Set the threshold is equal to the third threshold speed to the second speed-thirds of the prohibition
+# Or lower second speed for prohibiting
+
+
+# Shift to the 2nd gear / Порог переключения на 2ю скорость
+8FE4: 05 - 07 ; threshold
+906A: 05 - 07 ; threshold
+# Shift to the 3th gear / Порог переключения на 3ю скорость
+3732: 69 - 07 ; threshold
+
+
+# Задержка до повтора
+# Repeat Delay
+3722: 03 - 04
+372C: 03 - 04
+
+
+
+421C: 69 - 00
+4356: 69 - 00
+4454: 69 - 00
+45CE: 69 - 00
+4682: 69 - 00
+47E8: 69 - 00
+</Data>
+</Patch>

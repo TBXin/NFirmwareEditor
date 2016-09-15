@@ -432,6 +432,36 @@
     <None Include="Patches\Cuboid 3.13\Cuboid_3.13_timeout_10_sec.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_75DC.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_keys_remap_res_reset.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_menu_blink_2Hz.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_pwrreal.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_soft_power_scroll_1W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_stealth_ch.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_tc_1gr.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_tc_ss_fix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 3.14\Cuboid_3.14_timeout_10_sec.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_3rd_line_aio.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 3.14" Name="Realtime Coil in Power Mode" Version="1.0" Author="yii">
+  <Description>Display realtime resistance in Power mode while firing, same as in Temp Modes.
+Отображение реального сопротивления при парении в режиме Power, как в режимах ТК.</Description>
+  <Data>
+6FA0: 07 - 04
+</Data>
+</Patch>

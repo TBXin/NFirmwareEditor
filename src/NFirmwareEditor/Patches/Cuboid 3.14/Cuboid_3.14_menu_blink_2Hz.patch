@@ -1,0 +1,8 @@
+﻿<Patch Definition="Cuboid 3.14" Name="Fast Menu Blink" Version="1.0" Author="yii">
+  <Description>Set blink frequency to 2 Hz.
+Увеличивает частоту мигания активированного меню.</Description>
+  <Data>
+# Set blink frequency to 2 Hz
+00007E02: 32 - 19
+</Data>
+</Patch>
