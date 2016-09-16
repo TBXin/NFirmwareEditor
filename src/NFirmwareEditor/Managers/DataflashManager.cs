@@ -54,7 +54,7 @@ namespace NFirmwareEditor.Managers
 
 				HandleOffsetAttribute(property, br.BaseStream);
 
-				if (propertyType.IsPrimitive)
+				if (propertyType.IsPrimitive || propertyType.IsEnum)
 				{
 					var value = GetValue(propertyType, br);
 					property.SetValue(obj, value, null);
@@ -68,7 +68,9 @@ namespace NFirmwareEditor.Managers
 
 						for (var i = 0; i < arrayAttribute.Length; i++)
 						{
-							instance.SetValue(GetValue(elType, br), i);
+							var rawValue = GetValue(elType, br);
+							var value = elType.IsEnum ? Enum.ToObject(elType, rawValue) : rawValue;
+							instance.SetValue(value, i);
 						}
 						property.SetValue(obj, instance, null);
 					});
@@ -86,12 +88,6 @@ namespace NFirmwareEditor.Managers
 					var instance = (IBinaryReaderWriter)Activator.CreateInstance(propertyType);
 					instance.Read(br);
 					property.SetValue(obj, instance, null);
-				}
-				else if (propertyType.IsEnum)
-				{
-					var enumType = propertyType.GetEnumUnderlyingType();
-					var value = GetValue(enumType, br);
-					property.SetValue(obj, value, null);
 				}
 				else if (propertyType.IsClass)
 				{
@@ -111,7 +107,7 @@ namespace NFirmwareEditor.Managers
 
 				HandleOffsetAttribute(property, bw.BaseStream);
 
-				if (propertyType.IsPrimitive)
+				if (propertyType.IsPrimitive || propertyType.IsEnum)
 				{
 					var value = property.GetValue(obj, null);
 					WriteValue(propertyType, value, bw);
@@ -146,12 +142,6 @@ namespace NFirmwareEditor.Managers
 					var value = (IBinaryReaderWriter)property.GetValue(obj, null);
 					value.Write(bw);
 				}
-				else if (propertyType.IsEnum)
-				{
-					var enumType = propertyType.GetEnumUnderlyingType();
-					var value = property.GetValue(obj, null);
-					WriteValue(enumType, value, bw);
-				}
 				else if (propertyType.IsClass)
 				{
 					var value = property.GetValue(obj, null);
@@ -177,6 +167,7 @@ namespace NFirmwareEditor.Managers
 			if (type == typeof(byte)) return br.ReadByte();
 			if (type == typeof(ushort)) return br.ReadUInt16();
 			if (type == typeof(uint)) return br.ReadUInt32();
+			if (type.IsEnum) return GetValue(type.GetEnumUnderlyingType(), br);
 
 			throw new InvalidOperationException("Invalid type: " + type);
 		}
@@ -187,6 +178,7 @@ namespace NFirmwareEditor.Managers
 			else if (type == typeof(byte)) bw.Write((byte)value);
 			else if (type == typeof(ushort)) bw.Write((ushort)value);
 			else if (type == typeof(uint)) bw.Write((uint)value);
+			else if (type.IsEnum) WriteValue(type.GetEnumUnderlyingType(), value, bw);
 			else throw new InvalidOperationException("Invalid type: " + type);
 		}
 

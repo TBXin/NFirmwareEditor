@@ -90,7 +90,7 @@ namespace NFirmwareEditor.Models
 		public byte PreheatTime { get; set; }
 
 		[BinaryArray(Length = 3)]
-		public byte[] MClicks { get; set; }
+		public ClickAction[] MClicks { get; set; }
 
 		public byte ScreenDimTimeout { get; set; }
 	}
@@ -226,5 +226,15 @@ namespace NFirmwareEditor.Models
 		Power = 1 << 4,
 		Bypass = 1 << 5,
 		Start = 1 << 6
+	}
+
+	internal enum ClickAction : byte
+	{
+		None = 0,
+		Edit = 1,
+		Clock = 2,
+		TDom = 3,
+		NextMode = 4,
+		OnOff = 5
 	}
 }
