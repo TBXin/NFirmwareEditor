@@ -91,6 +91,8 @@ namespace NFirmwareEditor.Models
 
 		[BinaryArray(Length = 3)]
 		public byte[] MClicks { get; set; }
+
+		public byte ScreenDimTimeout { get; set; }
 	}
 
 	internal class DataflashInfo
@@ -141,6 +143,7 @@ namespace NFirmwareEditor.Models
 		public bool DigitalClock { get; set; }
 		public bool BatteryPercent { get; set; }
 		public bool PreheatPercent { get; set; }
+		public bool WakeUpByPlusMinus { get; set; }
 
 		#region Implementation of IBinaryReaderWriter
 		public void Read(BinaryReader r)
@@ -166,6 +169,7 @@ namespace NFirmwareEditor.Models
 				DigitalClock = DataflashManager.GetBit(b2, 4);
 				BatteryPercent = DataflashManager.GetBit(b2, 5);
 				PreheatPercent = DataflashManager.GetBit(b2, 6);
+				WakeUpByPlusMinus = DataflashManager.GetBit(b2, 7);
 			}
 		}
 
@@ -188,6 +192,7 @@ namespace NFirmwareEditor.Models
 			b2 = DataflashManager.SetBit(b2, 4, DigitalClock);
 			b2 = DataflashManager.SetBit(b2, 5, BatteryPercent);
 			b2 = DataflashManager.SetBit(b2, 6, PreheatPercent);
+			b2 = DataflashManager.SetBit(b2, 7, WakeUpByPlusMinus);
 
 			r.Write(new byte[] { b1, b2, 0, 0 });
 		}

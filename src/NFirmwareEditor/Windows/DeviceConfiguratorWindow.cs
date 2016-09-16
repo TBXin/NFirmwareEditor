@@ -116,6 +116,7 @@ namespace NFirmwareEditor.Windows
 
 			// Screen Tab
 			BrightnessTrackBar.Value = (int)(dataflash.Params.Contrast * 100f / 255);
+			IdleTimeTextBox.Text = dataflash.Params.ScreenDimTimeout.ToString(CultureInfo.InvariantCulture);
 			StealthModeCheckBox.Checked = dataflash.Params.StealthOn;
 			FlippedModeCheckBox.Checked = dataflash.Params.Status.Flipped;
 			BatteryPercentsCheckBox.Checked = dataflash.Params.Status.BatteryPercent;
@@ -132,6 +133,7 @@ namespace NFirmwareEditor.Windows
 			{
 				ClockModeComboBox.SelectedIndex = 2;
 			}
+			WakeUpByPlusMinusCheckBox.Checked = dataflash.Params.Status.WakeUpByPlusMinus;
 		}
 
 		private void DeviceConnected(bool isConnected)

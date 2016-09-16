@@ -108,6 +108,12 @@
 			this.label17 = new System.Windows.Forms.Label();
 			this.M1TextBox = new System.Windows.Forms.TextBox();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
+			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
+			this.label39 = new System.Windows.Forms.Label();
+			this.label31 = new System.Windows.Forms.Label();
+			this.label33 = new System.Windows.Forms.Label();
+			this.IdleTimeTextBox = new System.Windows.Forms.TextBox();
+			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.ClockModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label38 = new System.Windows.Forms.Label();
 			this.ShowLogoCheckBox = new System.Windows.Forms.CheckBox();
@@ -120,7 +126,6 @@
 			this.label37 = new System.Windows.Forms.Label();
 			this.BrightnessPercentLabel = new System.Windows.Forms.Label();
 			this.label32 = new System.Windows.Forms.Label();
-			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -978,6 +983,11 @@
 			// 
 			// ScreenTabPage
 			// 
+			this.ScreenTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
+			this.ScreenTabPage.Controls.Add(this.label39);
+			this.ScreenTabPage.Controls.Add(this.label31);
+			this.ScreenTabPage.Controls.Add(this.label33);
+			this.ScreenTabPage.Controls.Add(this.IdleTimeTextBox);
 			this.ScreenTabPage.Controls.Add(this.BrightnessTrackBar);
 			this.ScreenTabPage.Controls.Add(this.ClockModeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label38);
@@ -998,6 +1008,64 @@
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
 			// 
+			// WakeUpByPlusMinusCheckBox
+			// 
+			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 200);
+			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
+			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.WakeUpByPlusMinusCheckBox.TabIndex = 81;
+			this.WakeUpByPlusMinusCheckBox.Text = "Enabled";
+			this.WakeUpByPlusMinusCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label39
+			// 
+			this.label39.AutoSize = true;
+			this.label39.Location = new System.Drawing.Point(4, 200);
+			this.label39.Name = "label39";
+			this.label39.Size = new System.Drawing.Size(96, 13);
+			this.label39.TabIndex = 80;
+			this.label39.Text = "Wake up by + / - :";
+			// 
+			// label31
+			// 
+			this.label31.AutoSize = true;
+			this.label31.Location = new System.Drawing.Point(213, 38);
+			this.label31.Name = "label31";
+			this.label31.Size = new System.Drawing.Size(12, 13);
+			this.label31.TabIndex = 79;
+			this.label31.Text = "s";
+			// 
+			// label33
+			// 
+			this.label33.AutoSize = true;
+			this.label33.Location = new System.Drawing.Point(4, 38);
+			this.label33.Name = "label33";
+			this.label33.Size = new System.Drawing.Size(54, 13);
+			this.label33.TabIndex = 78;
+			this.label33.Text = "Idle Time:";
+			// 
+			// IdleTimeTextBox
+			// 
+			this.IdleTimeTextBox.Location = new System.Drawing.Point(101, 35);
+			this.IdleTimeTextBox.Name = "IdleTimeTextBox";
+			this.IdleTimeTextBox.Size = new System.Drawing.Size(106, 21);
+			this.IdleTimeTextBox.TabIndex = 77;
+			this.IdleTimeTextBox.TabStop = false;
+			this.IdleTimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// BrightnessTrackBar
+			// 
+			this.BrightnessTrackBar.AutoSize = false;
+			this.BrightnessTrackBar.BackColor = System.Drawing.Color.White;
+			this.BrightnessTrackBar.Location = new System.Drawing.Point(96, 10);
+			this.BrightnessTrackBar.Maximum = 100;
+			this.BrightnessTrackBar.Name = "BrightnessTrackBar";
+			this.BrightnessTrackBar.Size = new System.Drawing.Size(115, 21);
+			this.BrightnessTrackBar.SmallChange = 5;
+			this.BrightnessTrackBar.TabIndex = 76;
+			this.BrightnessTrackBar.TickFrequency = 5;
+			// 
 			// ClockModeComboBox
 			// 
 			this.ClockModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1006,7 +1074,7 @@
             "Disabled",
             "Analog",
             "Digital"});
-			this.ClockModeComboBox.Location = new System.Drawing.Point(101, 143);
+			this.ClockModeComboBox.Location = new System.Drawing.Point(101, 170);
 			this.ClockModeComboBox.Name = "ClockModeComboBox";
 			this.ClockModeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ClockModeComboBox.TabIndex = 75;
@@ -1014,7 +1082,7 @@
 			// label38
 			// 
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(4, 146);
+			this.label38.Location = new System.Drawing.Point(4, 173);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(65, 13);
 			this.label38.TabIndex = 74;
@@ -1023,7 +1091,7 @@
 			// ShowLogoCheckBox
 			// 
 			this.ShowLogoCheckBox.AutoSize = true;
-			this.ShowLogoCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.ShowLogoCheckBox.Location = new System.Drawing.Point(101, 146);
 			this.ShowLogoCheckBox.Name = "ShowLogoCheckBox";
 			this.ShowLogoCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowLogoCheckBox.TabIndex = 71;
@@ -1033,7 +1101,7 @@
 			// label34
 			// 
 			this.label34.AutoSize = true;
-			this.label34.Location = new System.Drawing.Point(4, 119);
+			this.label34.Location = new System.Drawing.Point(4, 146);
 			this.label34.Name = "label34";
 			this.label34.Size = new System.Drawing.Size(63, 13);
 			this.label34.TabIndex = 70;
@@ -1042,7 +1110,7 @@
 			// BatteryPercentsCheckBox
 			// 
 			this.BatteryPercentsCheckBox.AutoSize = true;
-			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(101, 119);
 			this.BatteryPercentsCheckBox.Name = "BatteryPercentsCheckBox";
 			this.BatteryPercentsCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.BatteryPercentsCheckBox.TabIndex = 69;
@@ -1052,7 +1120,7 @@
 			// label35
 			// 
 			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(4, 92);
+			this.label35.Location = new System.Drawing.Point(4, 119);
 			this.label35.Name = "label35";
 			this.label35.Size = new System.Drawing.Size(92, 13);
 			this.label35.TabIndex = 68;
@@ -1061,7 +1129,7 @@
 			// FlippedModeCheckBox
 			// 
 			this.FlippedModeCheckBox.AutoSize = true;
-			this.FlippedModeCheckBox.Location = new System.Drawing.Point(101, 65);
+			this.FlippedModeCheckBox.Location = new System.Drawing.Point(101, 92);
 			this.FlippedModeCheckBox.Name = "FlippedModeCheckBox";
 			this.FlippedModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.FlippedModeCheckBox.TabIndex = 67;
@@ -1071,7 +1139,7 @@
 			// label36
 			// 
 			this.label36.AutoSize = true;
-			this.label36.Location = new System.Drawing.Point(4, 65);
+			this.label36.Location = new System.Drawing.Point(4, 92);
 			this.label36.Name = "label36";
 			this.label36.Size = new System.Drawing.Size(45, 13);
 			this.label36.TabIndex = 66;
@@ -1080,7 +1148,7 @@
 			// StealthModeCheckBox
 			// 
 			this.StealthModeCheckBox.AutoSize = true;
-			this.StealthModeCheckBox.Location = new System.Drawing.Point(101, 38);
+			this.StealthModeCheckBox.Location = new System.Drawing.Point(101, 65);
 			this.StealthModeCheckBox.Name = "StealthModeCheckBox";
 			this.StealthModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.StealthModeCheckBox.TabIndex = 65;
@@ -1090,7 +1158,7 @@
 			// label37
 			// 
 			this.label37.AutoSize = true;
-			this.label37.Location = new System.Drawing.Point(4, 38);
+			this.label37.Location = new System.Drawing.Point(4, 65);
 			this.label37.Name = "label37";
 			this.label37.Size = new System.Drawing.Size(74, 13);
 			this.label37.TabIndex = 64;
@@ -1113,18 +1181,6 @@
 			this.label32.Size = new System.Drawing.Size(61, 13);
 			this.label32.TabIndex = 53;
 			this.label32.Text = "Brightness:";
-			// 
-			// BrightnessTrackBar
-			// 
-			this.BrightnessTrackBar.AutoSize = false;
-			this.BrightnessTrackBar.BackColor = System.Drawing.Color.White;
-			this.BrightnessTrackBar.Location = new System.Drawing.Point(96, 10);
-			this.BrightnessTrackBar.Maximum = 100;
-			this.BrightnessTrackBar.Name = "BrightnessTrackBar";
-			this.BrightnessTrackBar.Size = new System.Drawing.Size(115, 21);
-			this.BrightnessTrackBar.SmallChange = 5;
-			this.BrightnessTrackBar.TabIndex = 76;
-			this.BrightnessTrackBar.TickFrequency = 5;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -1256,5 +1312,10 @@
 		private System.Windows.Forms.ComboBox ClockModeComboBox;
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.TrackBar BrightnessTrackBar;
+		private System.Windows.Forms.Label label31;
+		private System.Windows.Forms.Label label33;
+		private System.Windows.Forms.TextBox IdleTimeTextBox;
+		private System.Windows.Forms.CheckBox WakeUpByPlusMinusCheckBox;
+		private System.Windows.Forms.Label label39;
 	}
 }
