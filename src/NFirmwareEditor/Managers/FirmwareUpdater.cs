@@ -46,10 +46,11 @@ namespace NFirmwareEditor.Managers
 
 			{ "E083", new DeviceInfo("Joyetech eGrip II", 64, 40) },
 
+			{ "M972", new DeviceInfo("Eleaf iStick TC200W", 96, 16) },
 			{ "M011", new DeviceInfo("Eleaf iStick TC100W", 96, 16) },
 			{ "M041", new DeviceInfo("Eleaf iStick Pico", 96, 16) },
 			{ "M045", new DeviceInfo("Eleaf iStick Pico Mega", 96, 16) },
-			{ "M046", new DeviceInfo("Eleaf iPower", 96, 16) },
+			{ "M046", new DeviceInfo("Eleaf iStick Power", 96, 16) },
 			{ "M037", new DeviceInfo("Eleaf ASTER", 96, 16) },
 
 			{ "W007", new DeviceInfo("Wismec Presa TC75W") },
