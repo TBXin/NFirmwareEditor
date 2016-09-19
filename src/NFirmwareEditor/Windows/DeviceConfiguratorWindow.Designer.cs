@@ -62,7 +62,7 @@
 			this.PreheatTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
-			this.TemperatureComboBox = new System.Windows.Forms.ComboBox();
+			this.TemperatureTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.CoilsManagerTabPage = new System.Windows.Forms.TabPage();
@@ -81,7 +81,7 @@
 			this.label13 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.ResistanceTCRCheckBox = new System.Windows.Forms.CheckBox();
-			this.resistanceSSUpDown = new System.Windows.Forms.NumericUpDown();
+			this.ResistanceSSUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ResistanceSSCheckBox = new System.Windows.Forms.CheckBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.ResistanceTiCheckBox = new System.Windows.Forms.CheckBox();
@@ -93,7 +93,7 @@
 			this.label21 = new System.Windows.Forms.Label();
 			this.SelectedTCRComboBox = new System.Windows.Forms.ComboBox();
 			this.label20 = new System.Windows.Forms.Label();
-			this.CurrentModeComboBox = new System.Windows.Forms.ComboBox();
+			this.SelectedModeComboBox = new System.Windows.Forms.ComboBox();
 			this.TempNiModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.SmartModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.label22 = new System.Windows.Forms.Label();
@@ -108,6 +108,12 @@
 			this.label25 = new System.Windows.Forms.Label();
 			this.TCRModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.ControlsTabPage = new System.Windows.Forms.TabPage();
+			this.label44 = new System.Windows.Forms.Label();
+			this.Clicks4ComboBox = new System.Windows.Forms.ComboBox();
+			this.label43 = new System.Windows.Forms.Label();
+			this.Clicks3ComboBox = new System.Windows.Forms.ComboBox();
+			this.label42 = new System.Windows.Forms.Label();
+			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
 			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
 			this.label39 = new System.Windows.Forms.Label();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
@@ -124,13 +130,17 @@
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.LayoutTabPage = new System.Windows.Forms.TabPage();
+			this.label38 = new System.Windows.Forms.Label();
+			this.ClockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label35 = new System.Windows.Forms.Label();
 			this.BatteryPercentsCheckBox = new System.Windows.Forms.CheckBox();
 			this.label34 = new System.Windows.Forms.Label();
 			this.ShowLogoCheckBox = new System.Windows.Forms.CheckBox();
 			this.ScreensaverTabPage = new System.Windows.Forms.TabPage();
-			this.label38 = new System.Windows.Forms.Label();
-			this.ClockModeComboBox = new System.Windows.Forms.ComboBox();
+			this.ScreenProtectionTimeComboBox = new System.Windows.Forms.ComboBox();
+			this.ScreensaverTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label41 = new System.Windows.Forms.Label();
+			this.label40 = new System.Windows.Forms.Label();
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.MainContainer.SuspendLayout();
@@ -152,7 +162,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.resistanceSSUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceSSUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).BeginInit();
 			this.ModesTabPage.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
@@ -396,7 +406,7 @@
 			this.PowerTabPage.Controls.Add(this.PreheatTypeComboBox);
 			this.PowerTabPage.Controls.Add(this.label6);
 			this.PowerTabPage.Controls.Add(this.label28);
-			this.PowerTabPage.Controls.Add(this.TemperatureComboBox);
+			this.PowerTabPage.Controls.Add(this.TemperatureTypeComboBox);
 			this.PowerTabPage.Controls.Add(this.label11);
 			this.PowerTabPage.Controls.Add(this.label12);
 			this.PowerTabPage.Location = new System.Drawing.Point(4, 22);
@@ -607,17 +617,17 @@
 			this.label28.TabIndex = 56;
 			this.label28.Text = "Preheat Power:";
 			// 
-			// TemperatureComboBox
+			// TemperatureTypeComboBox
 			// 
-			this.TemperatureComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TemperatureComboBox.FormattingEnabled = true;
-			this.TemperatureComboBox.Items.AddRange(new object[] {
+			this.TemperatureTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.TemperatureTypeComboBox.FormattingEnabled = true;
+			this.TemperatureTypeComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.TemperatureComboBox.Location = new System.Drawing.Point(213, 89);
-			this.TemperatureComboBox.Name = "TemperatureComboBox";
-			this.TemperatureComboBox.Size = new System.Drawing.Size(42, 21);
-			this.TemperatureComboBox.TabIndex = 40;
+			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 89);
+			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
+			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
+			this.TemperatureTypeComboBox.TabIndex = 40;
 			// 
 			// label11
 			// 
@@ -654,7 +664,7 @@
 			this.CoilsManagerTabPage.Controls.Add(this.label13);
 			this.CoilsManagerTabPage.Controls.Add(this.label8);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTCRCheckBox);
-			this.CoilsManagerTabPage.Controls.Add(this.resistanceSSUpDown);
+			this.CoilsManagerTabPage.Controls.Add(this.ResistanceSSUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceSSCheckBox);
 			this.CoilsManagerTabPage.Controls.Add(this.label9);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTiCheckBox);
@@ -886,26 +896,26 @@
 			this.ResistanceTCRCheckBox.Text = "Locked";
 			this.ResistanceTCRCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// resistanceSSUpDown
+			// ResistanceSSUpDown
 			// 
-			this.resistanceSSUpDown.DecimalPlaces = 3;
-			this.resistanceSSUpDown.Increment = new decimal(new int[] {
+			this.ResistanceSSUpDown.DecimalPlaces = 3;
+			this.ResistanceSSUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-			this.resistanceSSUpDown.Location = new System.Drawing.Point(101, 62);
-			this.resistanceSSUpDown.Maximum = new decimal(new int[] {
+			this.ResistanceSSUpDown.Location = new System.Drawing.Point(101, 62);
+			this.ResistanceSSUpDown.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-			this.resistanceSSUpDown.Name = "resistanceSSUpDown";
-			this.resistanceSSUpDown.Size = new System.Drawing.Size(106, 21);
-			this.resistanceSSUpDown.TabIndex = 59;
-			this.resistanceSSUpDown.TabStop = false;
-			this.resistanceSSUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.resistanceSSUpDown.Value = new decimal(new int[] {
+			this.ResistanceSSUpDown.Name = "ResistanceSSUpDown";
+			this.ResistanceSSUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceSSUpDown.TabIndex = 59;
+			this.ResistanceSSUpDown.TabStop = false;
+			this.ResistanceSSUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceSSUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -990,7 +1000,7 @@
 			this.ModesTabPage.Controls.Add(this.label21);
 			this.ModesTabPage.Controls.Add(this.SelectedTCRComboBox);
 			this.ModesTabPage.Controls.Add(this.label20);
-			this.ModesTabPage.Controls.Add(this.CurrentModeComboBox);
+			this.ModesTabPage.Controls.Add(this.SelectedModeComboBox);
 			this.ModesTabPage.Controls.Add(this.TempNiModeCheckBox);
 			this.ModesTabPage.Controls.Add(this.SmartModeCheckBox);
 			this.ModesTabPage.Controls.Add(this.label22);
@@ -1025,9 +1035,9 @@
 			this.label21.AutoSize = true;
 			this.label21.Location = new System.Drawing.Point(4, 11);
 			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(77, 13);
+			this.label21.Size = new System.Drawing.Size(81, 13);
 			this.label21.TabIndex = 53;
-			this.label21.Text = "Current Mode:";
+			this.label21.Text = "Selected Mode:";
 			// 
 			// SelectedTCRComboBox
 			// 
@@ -1051,17 +1061,17 @@
 			this.label20.TabIndex = 54;
 			this.label20.Text = "Temperature Ni:";
 			// 
-			// CurrentModeComboBox
+			// SelectedModeComboBox
 			// 
-			this.CurrentModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CurrentModeComboBox.FormattingEnabled = true;
-			this.CurrentModeComboBox.Items.AddRange(new object[] {
+			this.SelectedModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.SelectedModeComboBox.FormattingEnabled = true;
+			this.SelectedModeComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.CurrentModeComboBox.Location = new System.Drawing.Point(101, 8);
-			this.CurrentModeComboBox.Name = "CurrentModeComboBox";
-			this.CurrentModeComboBox.Size = new System.Drawing.Size(120, 21);
-			this.CurrentModeComboBox.TabIndex = 68;
+			this.SelectedModeComboBox.Location = new System.Drawing.Point(101, 8);
+			this.SelectedModeComboBox.Name = "SelectedModeComboBox";
+			this.SelectedModeComboBox.Size = new System.Drawing.Size(120, 21);
+			this.SelectedModeComboBox.TabIndex = 68;
 			// 
 			// TempNiModeCheckBox
 			// 
@@ -1189,6 +1199,12 @@
 			// 
 			// ControlsTabPage
 			// 
+			this.ControlsTabPage.Controls.Add(this.label44);
+			this.ControlsTabPage.Controls.Add(this.Clicks4ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label43);
+			this.ControlsTabPage.Controls.Add(this.Clicks3ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label42);
+			this.ControlsTabPage.Controls.Add(this.Clicks2ComboBox);
 			this.ControlsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
@@ -1198,10 +1214,73 @@
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// label44
+			// 
+			this.label44.AutoSize = true;
+			this.label44.Location = new System.Drawing.Point(4, 65);
+			this.label44.Name = "label44";
+			this.label44.Size = new System.Drawing.Size(46, 13);
+			this.label44.TabIndex = 86;
+			this.label44.Text = "4 Clicks:";
+			// 
+			// Clicks4ComboBox
+			// 
+			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks4ComboBox.FormattingEnabled = true;
+			this.Clicks4ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
+			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
+			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks4ComboBox.TabIndex = 87;
+			// 
+			// label43
+			// 
+			this.label43.AutoSize = true;
+			this.label43.Location = new System.Drawing.Point(4, 38);
+			this.label43.Name = "label43";
+			this.label43.Size = new System.Drawing.Size(46, 13);
+			this.label43.TabIndex = 84;
+			this.label43.Text = "3 Clicks:";
+			// 
+			// Clicks3ComboBox
+			// 
+			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks3ComboBox.FormattingEnabled = true;
+			this.Clicks3ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
+			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
+			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks3ComboBox.TabIndex = 85;
+			// 
+			// label42
+			// 
+			this.label42.AutoSize = true;
+			this.label42.Location = new System.Drawing.Point(4, 11);
+			this.label42.Name = "label42";
+			this.label42.Size = new System.Drawing.Size(46, 13);
+			this.label42.TabIndex = 82;
+			this.label42.Text = "2 Clicks:";
+			// 
+			// Clicks2ComboBox
+			// 
+			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks2ComboBox.FormattingEnabled = true;
+			this.Clicks2ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
+			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
+			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks2ComboBox.TabIndex = 83;
+			// 
 			// WakeUpByPlusMinusCheckBox
 			// 
 			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
-			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 11);
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 92);
 			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
 			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.WakeUpByPlusMinusCheckBox.TabIndex = 81;
@@ -1211,7 +1290,7 @@
 			// label39
 			// 
 			this.label39.AutoSize = true;
-			this.label39.Location = new System.Drawing.Point(4, 11);
+			this.label39.Location = new System.Drawing.Point(4, 92);
 			this.label39.Name = "label39";
 			this.label39.Size = new System.Drawing.Size(96, 13);
 			this.label39.TabIndex = 80;
@@ -1373,6 +1452,8 @@
 			// 
 			// LayoutTabPage
 			// 
+			this.LayoutTabPage.Controls.Add(this.label38);
+			this.LayoutTabPage.Controls.Add(this.ClockTypeComboBox);
 			this.LayoutTabPage.Controls.Add(this.label35);
 			this.LayoutTabPage.Controls.Add(this.BatteryPercentsCheckBox);
 			this.LayoutTabPage.Controls.Add(this.label34);
@@ -1383,6 +1464,28 @@
 			this.LayoutTabPage.TabIndex = 3;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label38
+			// 
+			this.label38.AutoSize = true;
+			this.label38.Location = new System.Drawing.Point(4, 65);
+			this.label38.Name = "label38";
+			this.label38.Size = new System.Drawing.Size(63, 13);
+			this.label38.TabIndex = 76;
+			this.label38.Text = "Clock Type:";
+			// 
+			// ClockTypeComboBox
+			// 
+			this.ClockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClockTypeComboBox.FormattingEnabled = true;
+			this.ClockTypeComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 62);
+			this.ClockTypeComboBox.Name = "ClockTypeComboBox";
+			this.ClockTypeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ClockTypeComboBox.TabIndex = 77;
 			// 
 			// label35
 			// 
@@ -1424,8 +1527,10 @@
 			// 
 			// ScreensaverTabPage
 			// 
-			this.ScreensaverTabPage.Controls.Add(this.label38);
-			this.ScreensaverTabPage.Controls.Add(this.ClockModeComboBox);
+			this.ScreensaverTabPage.Controls.Add(this.ScreenProtectionTimeComboBox);
+			this.ScreensaverTabPage.Controls.Add(this.ScreensaverTypeComboBox);
+			this.ScreensaverTabPage.Controls.Add(this.label41);
+			this.ScreensaverTabPage.Controls.Add(this.label40);
 			this.ScreensaverTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreensaverTabPage.Name = "ScreensaverTabPage";
 			this.ScreensaverTabPage.Size = new System.Drawing.Size(328, 224);
@@ -1433,27 +1538,49 @@
 			this.ScreensaverTabPage.Text = "Screensaver";
 			this.ScreensaverTabPage.UseVisualStyleBackColor = true;
 			// 
-			// label38
+			// ScreenProtectionTimeComboBox
 			// 
-			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(4, 11);
-			this.label38.Name = "label38";
-			this.label38.Size = new System.Drawing.Size(65, 13);
-			this.label38.TabIndex = 74;
-			this.label38.Text = "Clock Mode:";
-			// 
-			// ClockModeComboBox
-			// 
-			this.ClockModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClockModeComboBox.FormattingEnabled = true;
-			this.ClockModeComboBox.Items.AddRange(new object[] {
+			this.ScreenProtectionTimeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ScreenProtectionTimeComboBox.FormattingEnabled = true;
+			this.ScreenProtectionTimeComboBox.Items.AddRange(new object[] {
             "Disabled",
             "Analog",
             "Digital"});
-			this.ClockModeComboBox.Location = new System.Drawing.Point(101, 8);
-			this.ClockModeComboBox.Name = "ClockModeComboBox";
-			this.ClockModeComboBox.Size = new System.Drawing.Size(106, 21);
-			this.ClockModeComboBox.TabIndex = 75;
+			this.ScreenProtectionTimeComboBox.Location = new System.Drawing.Point(101, 35);
+			this.ScreenProtectionTimeComboBox.Name = "ScreenProtectionTimeComboBox";
+			this.ScreenProtectionTimeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ScreenProtectionTimeComboBox.TabIndex = 81;
+			// 
+			// ScreensaverTypeComboBox
+			// 
+			this.ScreensaverTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ScreensaverTypeComboBox.FormattingEnabled = true;
+			this.ScreensaverTypeComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ScreensaverTypeComboBox.Location = new System.Drawing.Point(101, 8);
+			this.ScreensaverTypeComboBox.Name = "ScreensaverTypeComboBox";
+			this.ScreensaverTypeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ScreensaverTypeComboBox.TabIndex = 79;
+			// 
+			// label41
+			// 
+			this.label41.AutoSize = true;
+			this.label41.Location = new System.Drawing.Point(4, 38);
+			this.label41.Name = "label41";
+			this.label41.Size = new System.Drawing.Size(85, 13);
+			this.label41.TabIndex = 80;
+			this.label41.Text = "Protection Time:";
+			// 
+			// label40
+			// 
+			this.label40.AutoSize = true;
+			this.label40.Location = new System.Drawing.Point(4, 11);
+			this.label40.Name = "label40";
+			this.label40.Size = new System.Drawing.Size(98, 13);
+			this.label40.TabIndex = 78;
+			this.label40.Text = "Screensaver Type:";
 			// 
 			// DeveloperTabPage
 			// 
@@ -1504,7 +1631,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.resistanceSSUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceSSUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).EndInit();
 			this.ModesTabPage.ResumeLayout(false);
 			this.ModesTabPage.PerformLayout();
@@ -1543,7 +1670,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.ComboBox TemperatureComboBox;
+		private System.Windows.Forms.ComboBox TemperatureTypeComboBox;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label19;
@@ -1568,7 +1695,7 @@
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.CheckBox TempTiModeCheckBox;
 		private System.Windows.Forms.Label label22;
-		private System.Windows.Forms.ComboBox CurrentModeComboBox;
+		private System.Windows.Forms.ComboBox SelectedModeComboBox;
 		private System.Windows.Forms.Label label28;
 		private System.Windows.Forms.ComboBox PreheatTypeComboBox;
 		private System.Windows.Forms.Label label30;
@@ -1584,7 +1711,7 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.NumericUpDown ResistanceTCRUpDown;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.NumericUpDown resistanceSSUpDown;
+		private System.Windows.Forms.NumericUpDown ResistanceSSUpDown;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.NumericUpDown ResistanceTiUpDown;
 		private System.Windows.Forms.Label label7;
@@ -1606,8 +1733,6 @@
 		private System.Windows.Forms.Label label36;
 		private System.Windows.Forms.CheckBox StealthModeCheckBox;
 		private System.Windows.Forms.Label label37;
-		private System.Windows.Forms.ComboBox ClockModeComboBox;
-		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.TrackBar BrightnessTrackBar;
 		private System.Windows.Forms.Label label31;
 		private System.Windows.Forms.Label label33;
@@ -1631,5 +1756,17 @@
 		private System.Windows.Forms.NumericUpDown PreheatPowerUpDown;
 		private System.Windows.Forms.NumericUpDown TCPowerUpDown;
 		private System.Windows.Forms.NumericUpDown TemperatureUpDown;
+		private System.Windows.Forms.Label label38;
+		private System.Windows.Forms.ComboBox ClockTypeComboBox;
+		private System.Windows.Forms.Label label41;
+		private System.Windows.Forms.ComboBox ScreenProtectionTimeComboBox;
+		private System.Windows.Forms.Label label40;
+		private System.Windows.Forms.ComboBox ScreensaverTypeComboBox;
+		private System.Windows.Forms.Label label42;
+		private System.Windows.Forms.ComboBox Clicks2ComboBox;
+		private System.Windows.Forms.Label label44;
+		private System.Windows.Forms.ComboBox Clicks4ComboBox;
+		private System.Windows.Forms.Label label43;
+		private System.Windows.Forms.ComboBox Clicks3ComboBox;
 	}
 }

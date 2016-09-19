@@ -34,27 +34,27 @@ namespace NFirmwareEditor.Windows
 			var errorIcon = BitmapProcessor.CreateIcon(Resources.exclamation);
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
-			CurrentModeComboBox.Items.Clear();
-			CurrentModeComboBox.Items.AddRange(new object[]
+			SelectedModeComboBox.Items.Clear();
+			SelectedModeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<Mode>("Temperature Ni", Mode.TempNi),
-				new NamedItemContainer<Mode>("Temperature Ti", Mode.TempTi),
-				new NamedItemContainer<Mode>("Temperature SS", Mode.TempSS),
-				new NamedItemContainer<Mode>("Temperature TCR", Mode.TCR),
-				new NamedItemContainer<Mode>("Power", Mode.Power),
-				new NamedItemContainer<Mode>("Bypass", Mode.Bypass),
-				new NamedItemContainer<Mode>("Smart / Start", Mode.Start)
+				new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
+				new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
+				new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
+				new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
+				new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
+				new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
+				new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
 			});
 
-			TemperatureComboBox.Items.Clear();
-			TemperatureComboBox.Items.AddRange(new object[]
+			TemperatureTypeComboBox.Items.Clear();
+			TemperatureTypeComboBox.Items.AddRange(new object[]
 			{
 			    new NamedItemContainer<bool>("°F", false),
 			    new NamedItemContainer<bool>("°C", true)
 			});
-			TemperatureComboBox.SelectedValueChanged += (s, e) =>
+			TemperatureTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
-				var isCelcius = TemperatureComboBox.GetSelectedItem<bool>();
+				var isCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
 				if (isCelcius)
 				{
 					TemperatureUpDown.Minimum = 100;
@@ -88,13 +88,13 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 
-			CurrentModeComboBox.SelectedValueChanged += (s, e) =>
+			SelectedModeComboBox.SelectedValueChanged += (s, e) =>
 			{
-				var mode = CurrentModeComboBox.GetSelectedItem<Mode>();
-				if (mode == Mode.TCR)
+				var mode = SelectedModeComboBox.GetSelectedItem<VapeMode>();
+				if (mode == VapeMode.TCR)
 				{
 					SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = true;
-					SelectedTCRComboBox.SelectedIndex = m_dataflash.Params.TCRIndex;
+					SelectedTCRComboBox.SelectedIndex = m_dataflash.Params.SelectedTCRIndex;
 				}
 				else
 				{
@@ -102,12 +102,52 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 
-			ClockModeComboBox.Items.Clear();
-			ClockModeComboBox.Items.AddRange(new object[]
+			var clicks = new object[]
 			{
-				new NamedItemContainer<ClockMode>("Disabled", ClockMode.Disabled),
-				new NamedItemContainer<ClockMode>("Analog", ClockMode.Analog),
-				new NamedItemContainer<ClockMode>("Digital", ClockMode.Digital)
+				new NamedItemContainer<ClickAction>("None", ClickAction.None),
+				new NamedItemContainer<ClickAction>("Edit", ClickAction.Edit),
+				new NamedItemContainer<ClickAction>("Clock", ClickAction.Clock),
+				new NamedItemContainer<ClickAction>("Temperature Dominant", ClickAction.TDom),
+				new NamedItemContainer<ClickAction>("Next Mode", ClickAction.NextMode),
+				new NamedItemContainer<ClickAction>("On / Off", ClickAction.OnOff)
+			};
+
+			Clicks2ComboBox.Items.Clear();
+			Clicks2ComboBox.Items.AddRange(clicks);
+
+			Clicks3ComboBox.Items.Clear();
+			Clicks3ComboBox.Items.AddRange(clicks);
+
+			Clicks4ComboBox.Items.Clear();
+			Clicks4ComboBox.Items.AddRange(clicks);
+
+			ClockTypeComboBox.Items.Clear();
+			ClockTypeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ClockType>("Disabled", ClockType.Disabled),
+				new NamedItemContainer<ClockType>("Analog", ClockType.Analog),
+				new NamedItemContainer<ClockType>("Digital", ClockType.Digital)
+			});
+
+			ScreensaverTypeComboBox.Items.Clear();
+			ScreensaverTypeComboBox.Items.AddRange(new object[]
+			{
+			    new NamedItemContainer<ScreensaverType>("None", ScreensaverType.None),
+			    new NamedItemContainer<ScreensaverType>("Clock", ScreensaverType.Clock),
+			    new NamedItemContainer<ScreensaverType>("Cube", ScreensaverType.Cube)
+			});
+
+			ScreenProtectionTimeComboBox.Items.Clear();
+			ScreenProtectionTimeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
+				new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
+				new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
+				new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
+				new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
+				new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
+				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
+				new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
 			});
 
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
@@ -162,16 +202,16 @@ namespace NFirmwareEditor.Windows
 			BootModeTextBox.Text = dataflash.Params.BootMode.ToString();
 
 			// General -> Power & Temp Tab
-			PowerUpDown.Value = Math.Min(dataflash.Params.Power / 10, 75);
-			TCPowerUpDown.Value = Math.Min(dataflash.Params.TCPower / 10, 75);
+			PowerUpDown.Value = Math.Max(1, Math.Min(dataflash.Params.Power / 10, 75));
+			TCPowerUpDown.Value = Math.Max(1, Math.Min(dataflash.Params.TCPower / 10, 75));
 			Step1WCheckBox.Checked = dataflash.Params.Status.Step1W;
 
-			TemperatureComboBox.SelectItem(dataflash.Params.IsCelsius);
+			TemperatureTypeComboBox.SelectItem(dataflash.Params.IsCelsius);
 			TemperatureUpDown.Value = dataflash.Params.Temperature;
 			TemperatureDominantCheckBox.Checked = dataflash.Params.Status.TemperatureDominant;
 
 			PreheatTypeComboBox.SelectItem(dataflash.Params.Status.PreheatPercent);
-			PreheatPowerUpDown.Value = dataflash.Params.Status.PreheatPercent ? dataflash.Params.PreheatPwr : Math.Min(dataflash.Params.PreheatPwr / 10m, 75);
+			PreheatPowerUpDown.Value = dataflash.Params.Status.PreheatPercent ? dataflash.Params.PreheatPwr : Math.Max(1, Math.Min(dataflash.Params.PreheatPwr / 10m, 75));
 			PreheatTimeUpDown.Value = dataflash.Params.PreheatTime / 100m;
 
 			// General -> Coils Manager Tab
@@ -181,7 +221,7 @@ namespace NFirmwareEditor.Windows
 			ResistanceTiUpDown.Value = dataflash.Params.ResistanceTi / 100m;
 			ResistanceTiCheckBox.Checked = dataflash.Params.ResistanceTiLocked;
 
-			resistanceSSUpDown.Value = dataflash.Params.ResistanceSS / 100m;
+			ResistanceSSUpDown.Value = dataflash.Params.ResistanceSS / 100m;
 			ResistanceSSCheckBox.Checked = dataflash.Params.ResistanceSSLocked;
 
 			ResistanceTCRUpDown.Value = dataflash.Params.ResistanceTCR / 100m;
@@ -192,16 +232,19 @@ namespace NFirmwareEditor.Windows
 			TCRM3UpDown.Value = dataflash.Params.TCR[2];
 
 			// General -> Modes Tab
-			CurrentModeComboBox.SelectItem(dataflash.Params.Mode);
-			TempNiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempNi);
-			TempTiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempTi);
-			TempSSModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TempSS);
-			TCRModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.TCR);
-			PowerModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Power);
-			BypassModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Bypass);
-			SmartModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(Modes.Start);
+			SelectedModeComboBox.SelectItem(dataflash.Params.SelectedMode);
+			TempNiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.TempNi);
+			TempTiModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.TempTi);
+			TempSSModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.TempSS);
+			TCRModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.TCR);
+			PowerModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.Power);
+			BypassModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.Bypass);
+			SmartModeCheckBox.Checked = !dataflash.Params.DisabledModes.HasFlag(VapeModes.Start);
 
 			// General -> Controls Tab
+			Clicks2ComboBox.SelectItem(dataflash.Params.MClicks[0]);
+			Clicks3ComboBox.SelectItem(dataflash.Params.MClicks[1]);
+			Clicks4ComboBox.SelectItem(dataflash.Params.MClicks[2]);
 			WakeUpByPlusMinusCheckBox.Checked = dataflash.Params.Status.WakeUpByPlusMinus;
 
 			// Screen -> Display Tab
@@ -214,19 +257,22 @@ namespace NFirmwareEditor.Windows
 			BatteryPercentsCheckBox.Checked = dataflash.Params.Status.BatteryPercent;
 			ShowLogoCheckBox.Checked = !dataflash.Params.Status.NoLogo;
 
-			// Screen -> Screensaver Tab
-			if (!dataflash.Params.Status.AnalogClock && !dataflash.Params.Status.DigitalClock)
+			if (!dataflash.Params.Status.AnalogClock)
 			{
-				ClockModeComboBox.SelectItem(ClockMode.Disabled);
+				ClockTypeComboBox.SelectItem(ClockType.Disabled);
+			}
+			else if (dataflash.Params.Status.AnalogClock && dataflash.Params.Status.DigitalClock)
+			{
+				ClockTypeComboBox.SelectItem(ClockType.Digital);
 			}
 			else if (dataflash.Params.Status.AnalogClock)
 			{
-				ClockModeComboBox.SelectItem(ClockMode.Analog);
+				ClockTypeComboBox.SelectItem(ClockType.Analog);
 			}
-			else if (dataflash.Params.Status.DigitalClock)
-			{
-				ClockModeComboBox.SelectItem(ClockMode.Digital);
-			}
+
+			// Screen -> Screensaver Tab
+			ScreensaverTypeComboBox.SelectItem(dataflash.Params.ScreensaverType);
+			ScreenProtectionTimeComboBox.SelectItem(dataflash.Params.ScreenProtectionTime);
 		}
 
 		private void SaveWorkspaceToDataflash([NotNull] Dataflash dataflash)
@@ -238,7 +284,7 @@ namespace NFirmwareEditor.Windows
 			dataflash.Params.TCPower = (ushort)(TCPowerUpDown.Value * 10);
 			dataflash.Params.Status.Step1W = Step1WCheckBox.Checked;
 
-			dataflash.Params.IsCelsius = TemperatureComboBox.GetSelectedItem<bool>();
+			dataflash.Params.IsCelsius = TemperatureTypeComboBox.GetSelectedItem<bool>();
 			dataflash.Params.Temperature = (ushort)TemperatureUpDown.Value;
 			dataflash.Params.Status.TemperatureDominant = TemperatureDominantCheckBox.Checked;
 
@@ -253,7 +299,7 @@ namespace NFirmwareEditor.Windows
 			dataflash.Params.ResistanceTi = (ushort)(ResistanceTiUpDown.Value * 100);
 			dataflash.Params.ResistanceTiLocked = ResistanceTiCheckBox.Checked;
 
-			dataflash.Params.ResistanceSS = (ushort)(resistanceSSUpDown.Value * 100);
+			dataflash.Params.ResistanceSS = (ushort)(ResistanceSSUpDown.Value * 100);
 			dataflash.Params.ResistanceSSLocked = ResistanceSSCheckBox.Checked;
 
 			dataflash.Params.ResistanceTCR = (ushort)(ResistanceTCRUpDown.Value * 100);
@@ -264,23 +310,26 @@ namespace NFirmwareEditor.Windows
 			dataflash.Params.TCR[2] = (ushort)TCRM3UpDown.Value;
 
 			// General -> Modes Tab
-			dataflash.Params.Mode = CurrentModeComboBox.GetSelectedItem<Mode>();
-			dataflash.Params.DisabledModes = Modes.None;
+			dataflash.Params.SelectedMode = SelectedModeComboBox.GetSelectedItem<VapeMode>();
+			dataflash.Params.SelectedTCRIndex = (byte)SelectedTCRComboBox.SelectedIndex;
+			dataflash.Params.DisabledModes = VapeModes.None;
 			{
-				if (!TempNiModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.TempNi;
-				if (!TempTiModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.TempTi;
-				if (!TempSSModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.TempSS;
-				if (!TCRModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.TCR;
-				if (!PowerModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.Power;
-				if (!BypassModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.Bypass;
-				if (!SmartModeCheckBox.Checked) dataflash.Params.DisabledModes |= Modes.Start;
+				if (!TempNiModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.TempNi;
+				if (!TempTiModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.TempTi;
+				if (!TempSSModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.TempSS;
+				if (!TCRModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.TCR;
+				if (!PowerModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.Power;
+				if (!BypassModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.Bypass;
+				if (!SmartModeCheckBox.Checked) dataflash.Params.DisabledModes |= VapeModes.Start;
 			}
 
 			// General -> Controls Tab
+			dataflash.Params.MClicks[0] = Clicks2ComboBox.GetSelectedItem<ClickAction>();
+			dataflash.Params.MClicks[1] = Clicks3ComboBox.GetSelectedItem<ClickAction>();
+			dataflash.Params.MClicks[2] = Clicks4ComboBox.GetSelectedItem<ClickAction>();
 			dataflash.Params.Status.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
 
 			// Screen -> Display Tab
-			//BrightnessTrackBar.Value = (int)(dataflash.Params.Contrast * 100f / 255);
 			dataflash.Params.Contrast = (byte)(BrightnessTrackBar.Value * 255f / 100);
 			dataflash.Params.ScreenDimTimeout = (byte)IdleTimeUpDow.Value;
 			dataflash.Params.StealthOn = StealthModeCheckBox.Checked;
@@ -290,10 +339,34 @@ namespace NFirmwareEditor.Windows
 			dataflash.Params.Status.BatteryPercent = BatteryPercentsCheckBox.Checked;
 			dataflash.Params.Status.NoLogo = !ShowLogoCheckBox.Checked;
 
+			var clockMode = ClockTypeComboBox.GetSelectedItem<ClockType>();
+			switch (clockMode)
+			{
+				case ClockType.Disabled:
+				{
+					dataflash.Params.Status.AnalogClock = false;
+					dataflash.Params.Status.DigitalClock = false;
+					break;
+				}
+				case ClockType.Analog:
+				{
+					dataflash.Params.Status.AnalogClock = true;
+					dataflash.Params.Status.DigitalClock = false;
+					break;
+				}
+				case ClockType.Digital:
+				{
+					dataflash.Params.Status.AnalogClock = true;
+					dataflash.Params.Status.DigitalClock = true;
+					break;
+				}
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+
 			// Screen -> Screensaver Tab
-			var clockMode = ClockModeComboBox.GetSelectedItem<ClockMode>();
-			dataflash.Params.Status.AnalogClock = clockMode == ClockMode.Analog;
-			dataflash.Params.Status.DigitalClock = clockMode == ClockMode.Digital;
+			dataflash.Params.ScreensaverType = ScreensaverTypeComboBox.GetSelectedItem<ScreensaverType>();
+			dataflash.Params.ScreenProtectionTime = ScreenProtectionTimeComboBox.GetSelectedItem<ScreenProtectionTime>();
 		}
 
 		private Dataflash ReadDataflash()

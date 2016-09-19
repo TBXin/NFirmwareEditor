@@ -19,7 +19,7 @@ namespace NFirmwareEditor.Models
 		public uint HardwareVersion { get; set; }
 		public byte Magic { get; set; }
 		public BootMode BootMode { get; set; }
-		public Mode Mode { get; set; }
+		public VapeMode SelectedMode { get; set; }
 
 		[BinaryOffset(Relative = 1)]
 		public ushort Power { get; set; }
@@ -59,17 +59,17 @@ namespace NFirmwareEditor.Models
 
 		public bool ResistanceSSLocked { get; set; }
 		public byte UIVersion { get; set; }
-		public byte TCRIndex { get; set; }
+		public byte SelectedTCRIndex { get; set; }
 
 		[BinaryOffset(Relative = 1), BinaryArray(Length = 3)]
 		public ushort[] TCR { get; set; }
 
 		public ushort ResistanceTCR { get; set; }
 		public bool ResistanceTCRLocked { get; set; }
-		public bool ScreenSaver { get; set; }
+		public ScreensaverType ScreensaverType { get; set; }
 		//[BinaryOffset(Relative = 1)]
 		public byte LastTCMode { get; set; }
-		public byte ScreenProtection { get; set; }
+		public ScreenProtectionTime ScreenProtectionTime { get; set; }
 
 		[ /*BinaryOffset(Relative = 1), */BinaryArray(Length = 10)]
 		public ushort[] SavedCfgRez { get; set; }
@@ -84,7 +84,7 @@ namespace NFirmwareEditor.Models
 		/// <summary>pc = ( ( 100 * dfContrast ) / 255 );</summary>
 		public byte Contrast { get; set; }
 
-		public Modes DisabledModes { get; set; }
+		public VapeModes DisabledModes { get; set; }
 		public ushort ClkRatio { get; set; }
 		public ushort PreheatPwr { get; set; }
 		public byte PreheatTime { get; set; }
@@ -205,7 +205,7 @@ namespace NFirmwareEditor.Models
 		LDROM = 1
 	}
 
-	internal enum Mode : byte
+	internal enum VapeMode : byte
 	{
 		TempNi = 0,
 		TempTi = 1,
@@ -217,7 +217,7 @@ namespace NFirmwareEditor.Models
 	}
 
 	[Flags]
-	internal enum Modes : byte
+	internal enum VapeModes : byte
 	{
 		None = 0,
 		TempNi = 1 << 0,
@@ -239,7 +239,26 @@ namespace NFirmwareEditor.Models
 		OnOff = 5
 	}
 
-	internal enum ClockMode
+	internal enum ScreensaverType : byte
+	{
+		None = 0,
+		Clock = 1,
+		Cube = 2
+	}
+
+	internal enum ScreenProtectionTime : byte
+	{
+		Min1 = 0,
+		Min2 = 1,
+		Min5 = 2,
+		Min10 = 3,
+		Min15 = 4,
+		Min20 = 5,
+		Min30 = 6,
+		Off = 7
+	}
+
+	internal enum ClockType
 	{
 		Disabled,
 		Analog,
