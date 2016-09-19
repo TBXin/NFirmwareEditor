@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.MainContainer = new NFirmwareEditor.UI.MultiPanel();
 			this.WelcomePage = new NFirmwareEditor.UI.MultiPanelPage();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
@@ -47,44 +48,44 @@
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.PowerTabPage = new System.Windows.Forms.TabPage();
+			this.TemperatureUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PreheatTimeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PreheatPowerUpDown = new System.Windows.Forms.NumericUpDown();
+			this.TCPowerUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PowerUpDown = new System.Windows.Forms.NumericUpDown();
 			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TemperatureDominantCheckBox = new System.Windows.Forms.CheckBox();
-			this.PowerTextBox = new System.Windows.Forms.TextBox();
 			this.label30 = new System.Windows.Forms.Label();
-			this.TCPowerTextBox = new System.Windows.Forms.TextBox();
 			this.label29 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.PreheatTimeTextBox = new System.Windows.Forms.TextBox();
-			this.TemperatureTextBox = new System.Windows.Forms.TextBox();
 			this.PreheatTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label28 = new System.Windows.Forms.Label();
 			this.TemperatureComboBox = new System.Windows.Forms.ComboBox();
-			this.PreheatPowerTextBox = new System.Windows.Forms.TextBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.CoilsManagerTabPage = new System.Windows.Forms.TabPage();
 			this.label19 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
-			this.M3TextBox = new System.Windows.Forms.TextBox();
+			this.TCRM3UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
-			this.M2TextBox = new System.Windows.Forms.TextBox();
-			this.ResistanceNiTextBox = new System.Windows.Forms.TextBox();
+			this.TCRM2UpDown = new System.Windows.Forms.NumericUpDown();
+			this.ResistanceNiUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label17 = new System.Windows.Forms.Label();
-			this.M1TextBox = new System.Windows.Forms.TextBox();
+			this.TCRM1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label14 = new System.Windows.Forms.Label();
-			this.ResistanceTiTextBox = new System.Windows.Forms.TextBox();
+			this.ResistanceTiUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.ResistanceTCRCheckBox = new System.Windows.Forms.CheckBox();
-			this.ResistanceSSTextBox = new System.Windows.Forms.TextBox();
+			this.resistanceSsUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ResistanceSSCheckBox = new System.Windows.Forms.CheckBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.ResistanceTiCheckBox = new System.Windows.Forms.CheckBox();
-			this.ResistanceTCRTextBox = new System.Windows.Forms.TextBox();
+			this.ResistanceTCRUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ResistanceNiCheckBox = new System.Windows.Forms.CheckBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.ModesTabPage = new System.Windows.Forms.TabPage();
@@ -118,7 +119,7 @@
 			this.label37 = new System.Windows.Forms.Label();
 			this.label33 = new System.Windows.Forms.Label();
 			this.StealthModeCheckBox = new System.Windows.Forms.CheckBox();
-			this.IdleTimeTextBox = new System.Windows.Forms.TextBox();
+			this.IdleTimeUpDow = new System.Windows.Forms.NumericUpDown();
 			this.label36 = new System.Windows.Forms.Label();
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
@@ -131,6 +132,7 @@
 			this.label38 = new System.Windows.Forms.Label();
 			this.ClockModeComboBox = new System.Windows.Forms.ComboBox();
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
+			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -139,15 +141,29 @@
 			this.GeneralTabPage.SuspendLayout();
 			this.tabControl2.SuspendLayout();
 			this.PowerTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCPowerUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).BeginInit();
 			this.CoilsManagerTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM3UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM2UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.resistanceSsUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).BeginInit();
 			this.ModesTabPage.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
 			this.ScreenTabPage.SuspendLayout();
 			this.tabControl3.SuspendLayout();
 			this.DisplayTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).BeginInit();
 			this.LayoutTabPage.SuspendLayout();
 			this.ScreensaverTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -366,21 +382,21 @@
 			// 
 			// PowerTabPage
 			// 
+			this.PowerTabPage.Controls.Add(this.TemperatureUpDown);
+			this.PowerTabPage.Controls.Add(this.PreheatTimeUpDown);
+			this.PowerTabPage.Controls.Add(this.PreheatPowerUpDown);
+			this.PowerTabPage.Controls.Add(this.TCPowerUpDown);
+			this.PowerTabPage.Controls.Add(this.PowerUpDown);
 			this.PowerTabPage.Controls.Add(this.Step1WCheckBox);
 			this.PowerTabPage.Controls.Add(this.label1);
 			this.PowerTabPage.Controls.Add(this.TemperatureDominantCheckBox);
-			this.PowerTabPage.Controls.Add(this.PowerTextBox);
 			this.PowerTabPage.Controls.Add(this.label30);
-			this.PowerTabPage.Controls.Add(this.TCPowerTextBox);
 			this.PowerTabPage.Controls.Add(this.label29);
 			this.PowerTabPage.Controls.Add(this.label3);
-			this.PowerTabPage.Controls.Add(this.PreheatTimeTextBox);
-			this.PowerTabPage.Controls.Add(this.TemperatureTextBox);
 			this.PowerTabPage.Controls.Add(this.PreheatTypeComboBox);
 			this.PowerTabPage.Controls.Add(this.label6);
 			this.PowerTabPage.Controls.Add(this.label28);
 			this.PowerTabPage.Controls.Add(this.TemperatureComboBox);
-			this.PowerTabPage.Controls.Add(this.PreheatPowerTextBox);
 			this.PowerTabPage.Controls.Add(this.label11);
 			this.PowerTabPage.Controls.Add(this.label12);
 			this.PowerTabPage.Location = new System.Drawing.Point(4, 22);
@@ -390,6 +406,120 @@
 			this.PowerTabPage.TabIndex = 0;
 			this.PowerTabPage.Text = "Power & Temp";
 			this.PowerTabPage.UseVisualStyleBackColor = true;
+			// 
+			// TemperatureUpDown
+			// 
+			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 89);
+			this.TemperatureUpDown.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+			this.TemperatureUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+			this.TemperatureUpDown.Name = "TemperatureUpDown";
+			this.TemperatureUpDown.Size = new System.Drawing.Size(106, 21);
+			this.TemperatureUpDown.TabIndex = 67;
+			this.TemperatureUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TemperatureUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+			// 
+			// PreheatTimeUpDown
+			// 
+			this.PreheatTimeUpDown.DecimalPlaces = 1;
+			this.PreheatTimeUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.PreheatTimeUpDown.Location = new System.Drawing.Point(101, 170);
+			this.PreheatTimeUpDown.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+			this.PreheatTimeUpDown.Name = "PreheatTimeUpDown";
+			this.PreheatTimeUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PreheatTimeUpDown.TabIndex = 66;
+			this.PreheatTimeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// PreheatPowerUpDown
+			// 
+			this.PreheatPowerUpDown.DecimalPlaces = 1;
+			this.PreheatPowerUpDown.Location = new System.Drawing.Point(101, 143);
+			this.PreheatPowerUpDown.Maximum = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+			this.PreheatPowerUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PreheatPowerUpDown.Name = "PreheatPowerUpDown";
+			this.PreheatPowerUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PreheatPowerUpDown.TabIndex = 65;
+			this.PreheatPowerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PreheatPowerUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
+			// TCPowerUpDown
+			// 
+			this.TCPowerUpDown.DecimalPlaces = 1;
+			this.TCPowerUpDown.Location = new System.Drawing.Point(101, 35);
+			this.TCPowerUpDown.Maximum = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+			this.TCPowerUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TCPowerUpDown.Name = "TCPowerUpDown";
+			this.TCPowerUpDown.Size = new System.Drawing.Size(106, 21);
+			this.TCPowerUpDown.TabIndex = 64;
+			this.TCPowerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCPowerUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
+			// PowerUpDown
+			// 
+			this.PowerUpDown.DecimalPlaces = 1;
+			this.PowerUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PowerUpDown.Maximum = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+			this.PowerUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PowerUpDown.Name = "PowerUpDown";
+			this.PowerUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PowerUpDown.TabIndex = 63;
+			this.PowerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PowerUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// Step1WCheckBox
 			// 
@@ -420,15 +550,6 @@
 			this.TemperatureDominantCheckBox.Text = "Temperature Dominant";
 			this.TemperatureDominantCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// PowerTextBox
-			// 
-			this.PowerTextBox.Location = new System.Drawing.Point(101, 8);
-			this.PowerTextBox.Name = "PowerTextBox";
-			this.PowerTextBox.Size = new System.Drawing.Size(106, 21);
-			this.PowerTextBox.TabIndex = 34;
-			this.PowerTextBox.TabStop = false;
-			this.PowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// label30
 			// 
 			this.label30.AutoSize = true;
@@ -437,15 +558,6 @@
 			this.label30.Size = new System.Drawing.Size(12, 13);
 			this.label30.TabIndex = 60;
 			this.label30.Text = "s";
-			// 
-			// TCPowerTextBox
-			// 
-			this.TCPowerTextBox.Location = new System.Drawing.Point(101, 35);
-			this.TCPowerTextBox.Name = "TCPowerTextBox";
-			this.TCPowerTextBox.Size = new System.Drawing.Size(106, 21);
-			this.TCPowerTextBox.TabIndex = 36;
-			this.TCPowerTextBox.TabStop = false;
-			this.TCPowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label29
 			// 
@@ -464,24 +576,6 @@
 			this.label3.Size = new System.Drawing.Size(57, 13);
 			this.label3.TabIndex = 37;
 			this.label3.Text = "TC Power:";
-			// 
-			// PreheatTimeTextBox
-			// 
-			this.PreheatTimeTextBox.Location = new System.Drawing.Point(101, 170);
-			this.PreheatTimeTextBox.Name = "PreheatTimeTextBox";
-			this.PreheatTimeTextBox.Size = new System.Drawing.Size(106, 21);
-			this.PreheatTimeTextBox.TabIndex = 58;
-			this.PreheatTimeTextBox.TabStop = false;
-			this.PreheatTimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// TemperatureTextBox
-			// 
-			this.TemperatureTextBox.Location = new System.Drawing.Point(101, 89);
-			this.TemperatureTextBox.Name = "TemperatureTextBox";
-			this.TemperatureTextBox.Size = new System.Drawing.Size(106, 21);
-			this.TemperatureTextBox.TabIndex = 38;
-			this.TemperatureTextBox.TabStop = false;
-			this.TemperatureTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// PreheatTypeComboBox
 			// 
@@ -525,15 +619,6 @@
 			this.TemperatureComboBox.Size = new System.Drawing.Size(42, 21);
 			this.TemperatureComboBox.TabIndex = 40;
 			// 
-			// PreheatPowerTextBox
-			// 
-			this.PreheatPowerTextBox.Location = new System.Drawing.Point(101, 143);
-			this.PreheatPowerTextBox.Name = "PreheatPowerTextBox";
-			this.PreheatPowerTextBox.Size = new System.Drawing.Size(106, 21);
-			this.PreheatPowerTextBox.TabIndex = 55;
-			this.PreheatPowerTextBox.TabStop = false;
-			this.PreheatPowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// label11
 			// 
 			this.label11.AutoSize = true;
@@ -556,30 +641,30 @@
 			// 
 			this.CoilsManagerTabPage.Controls.Add(this.label19);
 			this.CoilsManagerTabPage.Controls.Add(this.label16);
-			this.CoilsManagerTabPage.Controls.Add(this.M3TextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.TCRM3UpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.label7);
 			this.CoilsManagerTabPage.Controls.Add(this.label18);
 			this.CoilsManagerTabPage.Controls.Add(this.label15);
-			this.CoilsManagerTabPage.Controls.Add(this.M2TextBox);
-			this.CoilsManagerTabPage.Controls.Add(this.ResistanceNiTextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.TCRM2UpDown);
+			this.CoilsManagerTabPage.Controls.Add(this.ResistanceNiUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.label17);
-			this.CoilsManagerTabPage.Controls.Add(this.M1TextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.TCRM1UpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.label14);
-			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTiTextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTiUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.label13);
 			this.CoilsManagerTabPage.Controls.Add(this.label8);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTCRCheckBox);
-			this.CoilsManagerTabPage.Controls.Add(this.ResistanceSSTextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.resistanceSsUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceSSCheckBox);
 			this.CoilsManagerTabPage.Controls.Add(this.label9);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTiCheckBox);
-			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTCRTextBox);
+			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTCRUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceNiCheckBox);
 			this.CoilsManagerTabPage.Controls.Add(this.label10);
 			this.CoilsManagerTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CoilsManagerTabPage.Name = "CoilsManagerTabPage";
 			this.CoilsManagerTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.CoilsManagerTabPage.Size = new System.Drawing.Size(328, 226);
+			this.CoilsManagerTabPage.Size = new System.Drawing.Size(328, 225);
 			this.CoilsManagerTabPage.TabIndex = 1;
 			this.CoilsManagerTabPage.Text = "Coils Manager";
 			this.CoilsManagerTabPage.UseVisualStyleBackColor = true;
@@ -603,14 +688,29 @@
 			this.label16.TabIndex = 68;
 			this.label16.Text = "Ω";
 			// 
-			// M3TextBox
+			// TCRM3UpDown
 			// 
-			this.M3TextBox.Location = new System.Drawing.Point(101, 197);
-			this.M3TextBox.Name = "M3TextBox";
-			this.M3TextBox.Size = new System.Drawing.Size(106, 21);
-			this.M3TextBox.TabIndex = 40;
-			this.M3TextBox.TabStop = false;
-			this.M3TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM3UpDown.Location = new System.Drawing.Point(101, 197);
+			this.TCRM3UpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+			this.TCRM3UpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TCRM3UpDown.Name = "TCRM3UpDown";
+			this.TCRM3UpDown.Size = new System.Drawing.Size(106, 21);
+			this.TCRM3UpDown.TabIndex = 40;
+			this.TCRM3UpDown.TabStop = false;
+			this.TCRM3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM3UpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// label7
 			// 
@@ -640,23 +740,59 @@
 			this.label15.TabIndex = 69;
 			this.label15.Text = "Ω";
 			// 
-			// M2TextBox
+			// TCRM2UpDown
 			// 
-			this.M2TextBox.Location = new System.Drawing.Point(101, 170);
-			this.M2TextBox.Name = "M2TextBox";
-			this.M2TextBox.Size = new System.Drawing.Size(106, 21);
-			this.M2TextBox.TabIndex = 38;
-			this.M2TextBox.TabStop = false;
-			this.M2TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM2UpDown.Location = new System.Drawing.Point(101, 170);
+			this.TCRM2UpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+			this.TCRM2UpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TCRM2UpDown.Name = "TCRM2UpDown";
+			this.TCRM2UpDown.Size = new System.Drawing.Size(106, 21);
+			this.TCRM2UpDown.TabIndex = 38;
+			this.TCRM2UpDown.TabStop = false;
+			this.TCRM2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM2UpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
-			// ResistanceNiTextBox
+			// ResistanceNiUpDown
 			// 
-			this.ResistanceNiTextBox.Location = new System.Drawing.Point(101, 8);
-			this.ResistanceNiTextBox.Name = "ResistanceNiTextBox";
-			this.ResistanceNiTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceNiTextBox.TabIndex = 55;
-			this.ResistanceNiTextBox.TabStop = false;
-			this.ResistanceNiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceNiUpDown.DecimalPlaces = 3;
+			this.ResistanceNiUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+			this.ResistanceNiUpDown.Location = new System.Drawing.Point(101, 8);
+			this.ResistanceNiUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.ResistanceNiUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+			this.ResistanceNiUpDown.Name = "ResistanceNiUpDown";
+			this.ResistanceNiUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceNiUpDown.TabIndex = 55;
+			this.ResistanceNiUpDown.TabStop = false;
+			this.ResistanceNiUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceNiUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
 			// 
 			// label17
 			// 
@@ -667,14 +803,29 @@
 			this.label17.TabIndex = 37;
 			this.label17.Text = "TCR M1:";
 			// 
-			// M1TextBox
+			// TCRM1UpDown
 			// 
-			this.M1TextBox.Location = new System.Drawing.Point(101, 143);
-			this.M1TextBox.Name = "M1TextBox";
-			this.M1TextBox.Size = new System.Drawing.Size(106, 21);
-			this.M1TextBox.TabIndex = 36;
-			this.M1TextBox.TabStop = false;
-			this.M1TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM1UpDown.Location = new System.Drawing.Point(101, 143);
+			this.TCRM1UpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+			this.TCRM1UpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.TCRM1UpDown.Name = "TCRM1UpDown";
+			this.TCRM1UpDown.Size = new System.Drawing.Size(106, 21);
+			this.TCRM1UpDown.TabIndex = 36;
+			this.TCRM1UpDown.TabStop = false;
+			this.TCRM1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.TCRM1UpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// label14
 			// 
@@ -686,14 +837,35 @@
 			this.label14.TabIndex = 70;
 			this.label14.Text = "Ω";
 			// 
-			// ResistanceTiTextBox
+			// ResistanceTiUpDown
 			// 
-			this.ResistanceTiTextBox.Location = new System.Drawing.Point(101, 35);
-			this.ResistanceTiTextBox.Name = "ResistanceTiTextBox";
-			this.ResistanceTiTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceTiTextBox.TabIndex = 57;
-			this.ResistanceTiTextBox.TabStop = false;
-			this.ResistanceTiTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceTiUpDown.DecimalPlaces = 3;
+			this.ResistanceTiUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+			this.ResistanceTiUpDown.Location = new System.Drawing.Point(101, 35);
+			this.ResistanceTiUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.ResistanceTiUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+			this.ResistanceTiUpDown.Name = "ResistanceTiUpDown";
+			this.ResistanceTiUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceTiUpDown.TabIndex = 57;
+			this.ResistanceTiUpDown.TabStop = false;
+			this.ResistanceTiUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceTiUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
 			// 
 			// label13
 			// 
@@ -724,14 +896,35 @@
 			this.ResistanceTCRCheckBox.Text = "Locked";
 			this.ResistanceTCRCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// ResistanceSSTextBox
+			// resistanceSsUpDown
 			// 
-			this.ResistanceSSTextBox.Location = new System.Drawing.Point(101, 62);
-			this.ResistanceSSTextBox.Name = "ResistanceSSTextBox";
-			this.ResistanceSSTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceSSTextBox.TabIndex = 59;
-			this.ResistanceSSTextBox.TabStop = false;
-			this.ResistanceSSTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.resistanceSsUpDown.DecimalPlaces = 3;
+			this.resistanceSsUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+			this.resistanceSsUpDown.Location = new System.Drawing.Point(101, 62);
+			this.resistanceSsUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.resistanceSsUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+			this.resistanceSsUpDown.Name = "resistanceSsUpDown";
+			this.resistanceSsUpDown.Size = new System.Drawing.Size(106, 21);
+			this.resistanceSsUpDown.TabIndex = 59;
+			this.resistanceSsUpDown.TabStop = false;
+			this.resistanceSsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.resistanceSsUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
 			// 
 			// ResistanceSSCheckBox
 			// 
@@ -762,14 +955,35 @@
 			this.ResistanceTiCheckBox.Text = "Locked";
 			this.ResistanceTiCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// ResistanceTCRTextBox
+			// ResistanceTCRUpDown
 			// 
-			this.ResistanceTCRTextBox.Location = new System.Drawing.Point(101, 89);
-			this.ResistanceTCRTextBox.Name = "ResistanceTCRTextBox";
-			this.ResistanceTCRTextBox.Size = new System.Drawing.Size(106, 21);
-			this.ResistanceTCRTextBox.TabIndex = 61;
-			this.ResistanceTCRTextBox.TabStop = false;
-			this.ResistanceTCRTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceTCRUpDown.DecimalPlaces = 3;
+			this.ResistanceTCRUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+			this.ResistanceTCRUpDown.Location = new System.Drawing.Point(101, 89);
+			this.ResistanceTCRUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.ResistanceTCRUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+			this.ResistanceTCRUpDown.Name = "ResistanceTCRUpDown";
+			this.ResistanceTCRUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ResistanceTCRUpDown.TabIndex = 61;
+			this.ResistanceTCRUpDown.TabStop = false;
+			this.ResistanceTCRUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ResistanceTCRUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
 			// 
 			// ResistanceNiCheckBox
 			// 
@@ -812,7 +1026,7 @@
 			this.ModesTabPage.Controls.Add(this.TCRModeCheckBox);
 			this.ModesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ModesTabPage.Name = "ModesTabPage";
-			this.ModesTabPage.Size = new System.Drawing.Size(328, 226);
+			this.ModesTabPage.Size = new System.Drawing.Size(328, 225);
 			this.ModesTabPage.TabIndex = 2;
 			this.ModesTabPage.Text = "Modes";
 			this.ModesTabPage.UseVisualStyleBackColor = true;
@@ -999,7 +1213,7 @@
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ControlsTabPage.Name = "ControlsTabPage";
-			this.ControlsTabPage.Size = new System.Drawing.Size(328, 226);
+			this.ControlsTabPage.Size = new System.Drawing.Size(328, 225);
 			this.ControlsTabPage.TabIndex = 3;
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
@@ -1029,7 +1243,7 @@
 			this.ScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreenTabPage.Name = "ScreenTabPage";
 			this.ScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ScreenTabPage.Size = new System.Drawing.Size(346, 263);
+			this.ScreenTabPage.Size = new System.Drawing.Size(346, 262);
 			this.ScreenTabPage.TabIndex = 1;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
@@ -1045,7 +1259,7 @@
 			this.tabControl3.Location = new System.Drawing.Point(6, 6);
 			this.tabControl3.Name = "tabControl3";
 			this.tabControl3.SelectedIndex = 0;
-			this.tabControl3.Size = new System.Drawing.Size(336, 362);
+			this.tabControl3.Size = new System.Drawing.Size(336, 250);
 			this.tabControl3.TabIndex = 1;
 			// 
 			// DisplayTabPage
@@ -1056,7 +1270,7 @@
 			this.DisplayTabPage.Controls.Add(this.label37);
 			this.DisplayTabPage.Controls.Add(this.label33);
 			this.DisplayTabPage.Controls.Add(this.StealthModeCheckBox);
-			this.DisplayTabPage.Controls.Add(this.IdleTimeTextBox);
+			this.DisplayTabPage.Controls.Add(this.IdleTimeUpDow);
 			this.DisplayTabPage.Controls.Add(this.label36);
 			this.DisplayTabPage.Controls.Add(this.BrightnessTrackBar);
 			this.DisplayTabPage.Controls.Add(this.FlippedModeCheckBox);
@@ -1122,14 +1336,29 @@
 			this.StealthModeCheckBox.Text = "Enabled";
 			this.StealthModeCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// IdleTimeTextBox
+			// IdleTimeUpDow
 			// 
-			this.IdleTimeTextBox.Location = new System.Drawing.Point(101, 35);
-			this.IdleTimeTextBox.Name = "IdleTimeTextBox";
-			this.IdleTimeTextBox.Size = new System.Drawing.Size(106, 21);
-			this.IdleTimeTextBox.TabIndex = 77;
-			this.IdleTimeTextBox.TabStop = false;
-			this.IdleTimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.IdleTimeUpDow.Location = new System.Drawing.Point(101, 35);
+			this.IdleTimeUpDow.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+			this.IdleTimeUpDow.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.IdleTimeUpDow.Name = "IdleTimeUpDow";
+			this.IdleTimeUpDow.Size = new System.Drawing.Size(106, 21);
+			this.IdleTimeUpDow.TabIndex = 77;
+			this.IdleTimeUpDow.TabStop = false;
+			this.IdleTimeUpDow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.IdleTimeUpDow.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
 			// 
 			// label36
 			// 
@@ -1219,7 +1448,7 @@
 			this.ScreensaverTabPage.Controls.Add(this.ClockModeComboBox);
 			this.ScreensaverTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreensaverTabPage.Name = "ScreensaverTabPage";
-			this.ScreensaverTabPage.Size = new System.Drawing.Size(328, 336);
+			this.ScreensaverTabPage.Size = new System.Drawing.Size(328, 224);
 			this.ScreensaverTabPage.TabIndex = 4;
 			this.ScreensaverTabPage.Text = "Screensaver";
 			this.ScreensaverTabPage.UseVisualStyleBackColor = true;
@@ -1251,10 +1480,15 @@
 			this.DeveloperTabPage.Location = new System.Drawing.Point(4, 22);
 			this.DeveloperTabPage.Name = "DeveloperTabPage";
 			this.DeveloperTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.DeveloperTabPage.Size = new System.Drawing.Size(346, 263);
+			this.DeveloperTabPage.Size = new System.Drawing.Size(346, 262);
 			this.DeveloperTabPage.TabIndex = 2;
 			this.DeveloperTabPage.Text = "Developer";
 			this.DeveloperTabPage.UseVisualStyleBackColor = true;
+			// 
+			// MainErrorProvider
+			// 
+			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+			this.MainErrorProvider.ContainerControl = this;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -1278,8 +1512,20 @@
 			this.tabControl2.ResumeLayout(false);
 			this.PowerTabPage.ResumeLayout(false);
 			this.PowerTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCPowerUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).EndInit();
 			this.CoilsManagerTabPage.ResumeLayout(false);
 			this.CoilsManagerTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM3UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM2UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.resistanceSsUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).EndInit();
 			this.ModesTabPage.ResumeLayout(false);
 			this.ModesTabPage.PerformLayout();
 			this.ControlsTabPage.ResumeLayout(false);
@@ -1288,11 +1534,13 @@
 			this.tabControl3.ResumeLayout(false);
 			this.DisplayTabPage.ResumeLayout(false);
 			this.DisplayTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).EndInit();
 			this.LayoutTabPage.ResumeLayout(false);
 			this.LayoutTabPage.PerformLayout();
 			this.ScreensaverTabPage.ResumeLayout(false);
 			this.ScreensaverTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1313,20 +1561,17 @@
 		private System.Windows.Forms.TextBox FirmwareVersionTextBox;
 		private System.Windows.Forms.TextBox HardwareVersionTextBox;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox PowerTextBox;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox TCPowerTextBox;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox TemperatureTextBox;
 		private System.Windows.Forms.ComboBox TemperatureComboBox;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.TextBox M3TextBox;
+		private System.Windows.Forms.NumericUpDown TCRM3UpDown;
 		private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.TextBox M2TextBox;
+		private System.Windows.Forms.NumericUpDown TCRM2UpDown;
 		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.TextBox M1TextBox;
+		private System.Windows.Forms.NumericUpDown TCRM1UpDown;
 		private UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.CheckBox TempNiModeCheckBox;
@@ -1345,11 +1590,9 @@
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.ComboBox CurrentModeComboBox;
 		private System.Windows.Forms.Label label28;
-		private System.Windows.Forms.TextBox PreheatPowerTextBox;
 		private System.Windows.Forms.ComboBox PreheatTypeComboBox;
 		private System.Windows.Forms.Label label30;
 		private System.Windows.Forms.Label label29;
-		private System.Windows.Forms.TextBox PreheatTimeTextBox;
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label label14;
@@ -1359,13 +1602,13 @@
 		private System.Windows.Forms.CheckBox ResistanceTiCheckBox;
 		private System.Windows.Forms.CheckBox ResistanceNiCheckBox;
 		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.TextBox ResistanceTCRTextBox;
+		private System.Windows.Forms.NumericUpDown ResistanceTCRUpDown;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TextBox ResistanceSSTextBox;
+		private System.Windows.Forms.NumericUpDown resistanceSsUpDown;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox ResistanceTiTextBox;
+		private System.Windows.Forms.NumericUpDown ResistanceTiUpDown;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox ResistanceNiTextBox;
+		private System.Windows.Forms.NumericUpDown ResistanceNiUpDown;
 		private System.Windows.Forms.CheckBox TemperatureDominantCheckBox;
 		private System.Windows.Forms.CheckBox Step1WCheckBox;
 		private System.Windows.Forms.Label TCRIndexLabel;
@@ -1388,7 +1631,7 @@
 		private System.Windows.Forms.TrackBar BrightnessTrackBar;
 		private System.Windows.Forms.Label label31;
 		private System.Windows.Forms.Label label33;
-		private System.Windows.Forms.TextBox IdleTimeTextBox;
+		private System.Windows.Forms.NumericUpDown IdleTimeUpDow;
 		private System.Windows.Forms.CheckBox WakeUpByPlusMinusCheckBox;
 		private System.Windows.Forms.Label label39;
 		private System.Windows.Forms.TabPage ScreenTabPage;
@@ -1402,5 +1645,11 @@
 		private System.Windows.Forms.TabPage DisplayTabPage;
 		private System.Windows.Forms.TabPage LayoutTabPage;
 		private System.Windows.Forms.TabPage ScreensaverTabPage;
+		private System.Windows.Forms.ErrorProvider MainErrorProvider;
+		private System.Windows.Forms.NumericUpDown PowerUpDown;
+		private System.Windows.Forms.NumericUpDown PreheatTimeUpDown;
+		private System.Windows.Forms.NumericUpDown PreheatPowerUpDown;
+		private System.Windows.Forms.NumericUpDown TCPowerUpDown;
+		private System.Windows.Forms.NumericUpDown TemperatureUpDown;
 	}
 }

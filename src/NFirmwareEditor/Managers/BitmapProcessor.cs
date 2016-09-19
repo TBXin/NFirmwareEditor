@@ -257,6 +257,21 @@ namespace NFirmwareEditor.Managers
 			return output;
 		}
 
+
+		public static Icon CreateIcon(Bitmap bitmap)
+		{
+			try
+			{
+				var iconPtr = bitmap.GetHicon();
+				var result = Icon.FromHandle(iconPtr);
+				return result;
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
 		private static double GetGray(byte r, byte g, byte b)
 		{
 			return r * 0.299 + g * 0.587 + b * 0.114;
@@ -266,5 +281,8 @@ namespace NFirmwareEditor.Managers
 		{
 			return GetGray(r, g, b) / 255;
 		}
+
+		[DllImport("user32.dll", CharSet = CharSet.Auto)]
+		internal static extern bool DestroyIcon(IntPtr handle);
 	}
 }

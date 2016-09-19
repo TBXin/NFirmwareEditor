@@ -1219,6 +1219,7 @@
     <Content Include="Definitions\Vaporflask Stout 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\exclamation.png" />
     <None Include="Patches\RX200S 4.12\4.12_inc-dec_by_1w.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
