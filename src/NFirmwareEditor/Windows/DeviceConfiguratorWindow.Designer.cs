@@ -81,7 +81,7 @@
 			this.label13 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.ResistanceTCRCheckBox = new System.Windows.Forms.CheckBox();
-			this.resistanceSsUpDown = new System.Windows.Forms.NumericUpDown();
+			this.resistanceSSUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ResistanceSSCheckBox = new System.Windows.Forms.CheckBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.ResistanceTiCheckBox = new System.Windows.Forms.CheckBox();
@@ -152,7 +152,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.resistanceSsUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.resistanceSSUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).BeginInit();
 			this.ModesTabPage.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
@@ -654,7 +654,7 @@
 			this.CoilsManagerTabPage.Controls.Add(this.label13);
 			this.CoilsManagerTabPage.Controls.Add(this.label8);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTCRCheckBox);
-			this.CoilsManagerTabPage.Controls.Add(this.resistanceSsUpDown);
+			this.CoilsManagerTabPage.Controls.Add(this.resistanceSSUpDown);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceSSCheckBox);
 			this.CoilsManagerTabPage.Controls.Add(this.label9);
 			this.CoilsManagerTabPage.Controls.Add(this.ResistanceTiCheckBox);
@@ -778,11 +778,6 @@
             0,
             0,
             0});
-			this.ResistanceNiUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
 			this.ResistanceNiUpDown.Name = "ResistanceNiUpDown";
 			this.ResistanceNiUpDown.Size = new System.Drawing.Size(106, 21);
 			this.ResistanceNiUpDown.TabIndex = 55;
@@ -851,11 +846,6 @@
             0,
             0,
             0});
-			this.ResistanceTiUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
 			this.ResistanceTiUpDown.Name = "ResistanceTiUpDown";
 			this.ResistanceTiUpDown.Size = new System.Drawing.Size(106, 21);
 			this.ResistanceTiUpDown.TabIndex = 57;
@@ -896,31 +886,26 @@
 			this.ResistanceTCRCheckBox.Text = "Locked";
 			this.ResistanceTCRCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// resistanceSsUpDown
+			// resistanceSSUpDown
 			// 
-			this.resistanceSsUpDown.DecimalPlaces = 3;
-			this.resistanceSsUpDown.Increment = new decimal(new int[] {
+			this.resistanceSSUpDown.DecimalPlaces = 3;
+			this.resistanceSSUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-			this.resistanceSsUpDown.Location = new System.Drawing.Point(101, 62);
-			this.resistanceSsUpDown.Maximum = new decimal(new int[] {
+			this.resistanceSSUpDown.Location = new System.Drawing.Point(101, 62);
+			this.resistanceSSUpDown.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-			this.resistanceSsUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-			this.resistanceSsUpDown.Name = "resistanceSsUpDown";
-			this.resistanceSsUpDown.Size = new System.Drawing.Size(106, 21);
-			this.resistanceSsUpDown.TabIndex = 59;
-			this.resistanceSsUpDown.TabStop = false;
-			this.resistanceSsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.resistanceSsUpDown.Value = new decimal(new int[] {
+			this.resistanceSSUpDown.Name = "resistanceSSUpDown";
+			this.resistanceSSUpDown.Size = new System.Drawing.Size(106, 21);
+			this.resistanceSSUpDown.TabIndex = 59;
+			this.resistanceSSUpDown.TabStop = false;
+			this.resistanceSSUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.resistanceSSUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -969,11 +954,6 @@
             0,
             0,
             0});
-			this.ResistanceTCRUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
 			this.ResistanceTCRUpDown.Name = "ResistanceTCRUpDown";
 			this.ResistanceTCRUpDown.Size = new System.Drawing.Size(106, 21);
 			this.ResistanceTCRUpDown.TabIndex = 61;
@@ -1276,7 +1256,7 @@
 			this.DisplayTabPage.Controls.Add(this.FlippedModeCheckBox);
 			this.DisplayTabPage.Location = new System.Drawing.Point(4, 22);
 			this.DisplayTabPage.Name = "DisplayTabPage";
-			this.DisplayTabPage.Size = new System.Drawing.Size(328, 336);
+			this.DisplayTabPage.Size = new System.Drawing.Size(328, 224);
 			this.DisplayTabPage.TabIndex = 2;
 			this.DisplayTabPage.Text = "Display";
 			this.DisplayTabPage.UseVisualStyleBackColor = true;
@@ -1399,7 +1379,7 @@
 			this.LayoutTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
-			this.LayoutTabPage.Size = new System.Drawing.Size(328, 336);
+			this.LayoutTabPage.Size = new System.Drawing.Size(328, 224);
 			this.LayoutTabPage.TabIndex = 3;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
@@ -1501,7 +1481,7 @@
 			this.MaximizeBox = false;
 			this.Name = "DeviceConfiguratorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NFirmwareEditor - Device Configurator ";
+			this.Text = "NFirmwareEditor - Configurator ";
 			this.MainContainer.ResumeLayout(false);
 			this.WelcomePage.ResumeLayout(false);
 			this.WorkspacePage.ResumeLayout(false);
@@ -1524,7 +1504,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceNiUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRM1UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTiUpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.resistanceSsUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.resistanceSSUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).EndInit();
 			this.ModesTabPage.ResumeLayout(false);
 			this.ModesTabPage.PerformLayout();
@@ -1604,7 +1584,7 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.NumericUpDown ResistanceTCRUpDown;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.NumericUpDown resistanceSsUpDown;
+		private System.Windows.Forms.NumericUpDown resistanceSSUpDown;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.NumericUpDown ResistanceTiUpDown;
 		private System.Windows.Forms.Label label7;

@@ -219,6 +219,7 @@ namespace NFirmwareEditor.Models
 	[Flags]
 	internal enum Modes : byte
 	{
+		None = 0,
 		TempNi = 1 << 0,
 		TempTi = 1 << 1,
 		TempSS = 1 << 2,
@@ -236,5 +237,12 @@ namespace NFirmwareEditor.Models
 		TDom = 3,
 		NextMode = 4,
 		OnOff = 5
+	}
+
+	internal enum ClockMode
+	{
+		Disabled,
+		Analog,
+		Digital
 	}
 }

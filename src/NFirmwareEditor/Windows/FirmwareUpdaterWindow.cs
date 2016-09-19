@@ -336,7 +336,7 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				m_updater.ResetDataFlash();
+				m_updater.ResetDataflash();
 				UpdateStatusLabel.Text = @"Dataflash has been reseted.";
 			}
 			catch (Exception ex)

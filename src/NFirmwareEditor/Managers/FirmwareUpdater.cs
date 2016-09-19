@@ -190,7 +190,7 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
-		public void ResetDataFlash()
+		public void ResetDataflash()
 		{
 			using (var stream = OpenDeviceStream())
 			{
