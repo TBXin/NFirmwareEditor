@@ -34,24 +34,8 @@ namespace NFirmwareEditor.Windows
 			var errorIcon = BitmapProcessor.CreateIcon(Resources.exclamation);
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
-			SelectedModeComboBox.Items.Clear();
-			SelectedModeComboBox.Items.AddRange(new object[]
-			{
-				new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
-				new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
-				new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
-				new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
-				new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
-				new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
-				new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
-			});
+			InititalizeComboBoxes();
 
-			TemperatureTypeComboBox.Items.Clear();
-			TemperatureTypeComboBox.Items.AddRange(new object[]
-			{
-			    new NamedItemContainer<bool>("°F", false),
-			    new NamedItemContainer<bool>("°C", true)
-			});
 			TemperatureTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var isCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
@@ -67,12 +51,6 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 
-			PreheatTypeComboBox.Items.Clear();
-			PreheatTypeComboBox.Items.AddRange(new object[]
-			{
-				new NamedItemContainer<bool>("%", true),
-				new NamedItemContainer<bool>("W", false)
-			});
 			PreheatTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var isPercents = PreheatTypeComboBox.GetSelectedItem<bool>();
@@ -91,6 +69,33 @@ namespace NFirmwareEditor.Windows
 			SelectedModeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var mode = SelectedModeComboBox.GetSelectedItem<VapeMode>();
+				switch (mode)
+				{
+					case VapeMode.TempNi:
+						SetupModesCheckBoxes(TempNiModeCheckBox);
+						break;
+					case VapeMode.TempTi:
+						SetupModesCheckBoxes(TempTiModeCheckBox);
+						break;
+					case VapeMode.TempSS:
+						SetupModesCheckBoxes(TempSSModeCheckBox);
+						break;
+					case VapeMode.TCR:
+						SetupModesCheckBoxes(TCRModeCheckBox);
+						break;
+					case VapeMode.Power:
+						SetupModesCheckBoxes(PowerModeCheckBox);
+						break;
+					case VapeMode.Bypass:
+						SetupModesCheckBoxes(BypassModeCheckBox);
+						break;
+					case VapeMode.Start:
+						SetupModesCheckBoxes(SmartModeCheckBox);
+						break;
+					default:
+						throw new ArgumentOutOfRangeException();
+				}
+
 				if (mode == VapeMode.TCR)
 				{
 					SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = true;
@@ -101,6 +106,41 @@ namespace NFirmwareEditor.Windows
 					SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = false;
 				}
 			};
+
+			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
+
+			DownloadButton.Click += DownloadButton_Click;
+			UploadButton.Click += UploadButton_Click;
+			ResetButton.Click += ResetButton_Click;
+		}
+
+		private void InititalizeComboBoxes()
+		{
+			SelectedModeComboBox.Items.Clear();
+			SelectedModeComboBox.Items.AddRange(new object[]
+			{
+			    new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
+			    new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
+			    new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
+			    new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
+			    new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
+			    new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
+			    new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
+			});
+
+			TemperatureTypeComboBox.Items.Clear();
+			TemperatureTypeComboBox.Items.AddRange(new object[]
+			{
+			    new NamedItemContainer<bool>("°F", false),
+			    new NamedItemContainer<bool>("°C", true)
+			});
+
+			PreheatTypeComboBox.Items.Clear();
+			PreheatTypeComboBox.Items.AddRange(new object[]
+			{
+			    new NamedItemContainer<bool>("%", true),
+			    new NamedItemContainer<bool>("W", false)
+			});
 
 			var clicks = new object[]
 			{
@@ -124,9 +164,9 @@ namespace NFirmwareEditor.Windows
 			ClockTypeComboBox.Items.Clear();
 			ClockTypeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ClockType>("Disabled", ClockType.Disabled),
-				new NamedItemContainer<ClockType>("Analog", ClockType.Analog),
-				new NamedItemContainer<ClockType>("Digital", ClockType.Digital)
+			   new NamedItemContainer<ClockType>("Disabled", ClockType.Disabled),
+			   new NamedItemContainer<ClockType>("Analog", ClockType.Analog),
+			   new NamedItemContainer<ClockType>("Digital", ClockType.Digital)
 			});
 
 			ScreensaverTypeComboBox.Items.Clear();
@@ -140,49 +180,43 @@ namespace NFirmwareEditor.Windows
 			ScreenProtectionTimeComboBox.Items.Clear();
 			ScreenProtectionTimeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
-				new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
-				new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
-				new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
-				new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
-				new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
-				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
-				new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
+			    new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
+			    new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
+			    new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
+			    new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
+			    new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
+			    new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
+			    new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
+			    new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
 			});
-
-			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
-
-			DownloadButton.Click += DownloadButton_Click;
-			UploadButton.Click += UploadButton_Click;
-			ResetButton.Click += ResetButton_Click;
-
-			//PowerTextBox.Validating += (s, e) => TextBoxValidator(s, e, PowerValidator);
 		}
 
-		/*private string PowerValidator(string text)
+		private void SetupModesCheckBoxes(CheckBox selected)
 		{
-			int value;
-			if (!int.TryParse(text, out value)) return "Provide correct integer value.";
-			if (value > 75) return "Provide correct value: from 0 to 75.";
-			return null;
+			var checkBoxes = new[]
+			{
+				TempNiModeCheckBox,
+				TempTiModeCheckBox,
+				TempSSModeCheckBox,
+				TCRModeCheckBox,
+				PowerModeCheckBox,
+				BypassModeCheckBox,
+				SmartModeCheckBox
+			};
+
+			foreach (var checkBox in checkBoxes)
+			{
+				if (checkBox == selected)
+				{
+					checkBox.Checked = true;
+					checkBox.Enabled = false;
+				}
+				else
+				{
+					checkBox.Enabled = true;
+				}
+			}
 		}
-
-		private void TextBoxValidator(object sender, CancelEventArgs args, Func<string, string> validator)
-		{
-			var textBox = sender as TextBox;
-			if (textBox == null) throw new InvalidOperationException("Invalid TextBoxValidator usage.");
-
-			var errorMessage = validator(textBox.Text);
-			if (string.IsNullOrEmpty(errorMessage))
-			{
-				MainErrorProvider.Clear();
-			}
-			else
-			{
-				MainErrorProvider.SetError(textBox, errorMessage);
-				args.Cancel = true;
-			}
-		}*/
 
 		private void Initialize()
 		{
