@@ -34,6 +34,8 @@
 			this.WelcomeLabel = new System.Windows.Forms.Label();
 			this.WorkspacePage = new NFirmwareEditor.UI.MultiPanelPage();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.BuildTextBox = new System.Windows.Forms.TextBox();
+			this.label48 = new System.Windows.Forms.Label();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.DeviceNameLabel = new System.Windows.Forms.Label();
@@ -152,8 +154,6 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-			this.label48 = new System.Windows.Forms.Label();
-			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -263,13 +263,32 @@
 			this.groupPanel1.TabIndex = 34;
 			this.groupPanel1.TabStop = false;
 			// 
+			// BuildTextBox
+			// 
+			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BuildTextBox.Location = new System.Drawing.Point(303, 33);
+			this.BuildTextBox.Name = "BuildTextBox";
+			this.BuildTextBox.Size = new System.Drawing.Size(45, 21);
+			this.BuildTextBox.TabIndex = 34;
+			this.BuildTextBox.TabStop = false;
+			// 
+			// label48
+			// 
+			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label48.AutoSize = true;
+			this.label48.Location = new System.Drawing.Point(264, 36);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(33, 13);
+			this.label48.TabIndex = 33;
+			this.label48.Text = "Build:";
+			// 
 			// FirmwareVersionTextBox
 			// 
 			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 33);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(115, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(152, 21);
 			this.FirmwareVersionTextBox.TabIndex = 27;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
@@ -1724,25 +1743,6 @@
 			// 
 			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 			this.MainErrorProvider.ContainerControl = this;
-			// 
-			// label48
-			// 
-			this.label48.AutoSize = true;
-			this.label48.Location = new System.Drawing.Point(224, 36);
-			this.label48.Name = "label48";
-			this.label48.Size = new System.Drawing.Size(33, 13);
-			this.label48.TabIndex = 33;
-			this.label48.Text = "Build:";
-			// 
-			// BuildTextBox
-			// 
-			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.BuildTextBox.Location = new System.Drawing.Point(263, 33);
-			this.BuildTextBox.Name = "BuildTextBox";
-			this.BuildTextBox.Size = new System.Drawing.Size(85, 21);
-			this.BuildTextBox.TabIndex = 34;
-			this.BuildTextBox.TabStop = false;
 			// 
 			// DeviceConfiguratorWindow
 			// 

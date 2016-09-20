@@ -38,6 +38,8 @@ namespace NFirmwareEditor.Windows
 			var errorIcon = BitmapProcessor.CreateIcon(Resources.exclamation);
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
+			MainContainer.SelectedPage = WelcomePage;
+
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
 
@@ -310,8 +312,6 @@ namespace NFirmwareEditor.Windows
 		{
 			m_updater.DeviceConnected += DeviceConnected;
 			m_updater.StartMonitoring();
-
-			MainContainer.SelectedPageChanged += MainContainer_SelectedPageChanged;
 		}
 
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
@@ -545,6 +545,7 @@ namespace NFirmwareEditor.Windows
 
 				UpdateUI(() =>
 				{
+					InitializeWorkspaceFromDataflash(m_dataflash);
 					MainContainer.SelectedPage = WorkspacePage;
 					m_isDeviceWasConnectedOnce = true;
 				});
@@ -668,14 +669,6 @@ namespace NFirmwareEditor.Windows
 			       operationName +
 			       "...\n\n" +
 				   "To continue, please activate or reconnect your device.";
-		}
-
-		private void MainContainer_SelectedPageChanged(object sender, EventArgs e)
-		{
-			if (MainContainer.SelectedPage == WorkspacePage)
-			{
-				InitializeWorkspaceFromDataflash(m_dataflash);
-			}
 		}
 
 		internal enum ClockType
