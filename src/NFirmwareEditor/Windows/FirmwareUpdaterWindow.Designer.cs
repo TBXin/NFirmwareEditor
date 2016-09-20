@@ -53,7 +53,6 @@ namespace NFirmwareEditor.Windows
 			this.label3 = new System.Windows.Forms.Label();
 			this.DeviceNameTextBox = new System.Windows.Forms.TextBox();
 			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
-			this.ScreenshotButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel3.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -324,7 +323,6 @@ namespace NFirmwareEditor.Windows
 			this.ControlBorderedPanel.BorderRight = false;
 			this.ControlBorderedPanel.BorderTop = true;
 			this.ControlBorderedPanel.BorderWidth = 1F;
-			this.ControlBorderedPanel.Controls.Add(this.ScreenshotButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 348);
@@ -333,16 +331,6 @@ namespace NFirmwareEditor.Windows
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(332, 44);
 			this.ControlBorderedPanel.TabIndex = 3;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
-			// 
-			// ScreenshotButton
-			// 
-			this.ScreenshotButton.Location = new System.Drawing.Point(4, 5);
-			this.ScreenshotButton.Name = "ScreenshotButton";
-			this.ScreenshotButton.Size = new System.Drawing.Size(100, 35);
-			this.ScreenshotButton.TabIndex = 4;
-			this.ScreenshotButton.Text = "myEvic Screenshot";
-			this.ScreenshotButton.UseVisualStyleBackColor = true;
-			this.ScreenshotButton.Click += new System.EventHandler(this.ScreenshotButton_Click);
 			// 
 			// CancelButton
 			// 
@@ -410,6 +398,5 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.Button ReadDataflashButton;
 		private System.Windows.Forms.Button WriteDataflashButton;
 		private System.Windows.Forms.Button LogoButton;
-		private System.Windows.Forms.Button ScreenshotButton;
 	}
 }
