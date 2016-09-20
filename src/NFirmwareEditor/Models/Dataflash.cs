@@ -27,7 +27,7 @@ namespace NFirmwareEditor.Models
 		public ushort Temperature { get; set; }
 		public ushort TCPower { get; set; }
 		public ushort VWVolts { get; set; }
-		public byte APT { get; set; }
+		public LineContentType ThirdLineContent { get; set; }
 		public byte ResistanceType { get; set; }
 		public byte TemperatureAlgo { get; set; }
 		public bool IsCelsius { get; set; }
@@ -258,10 +258,15 @@ namespace NFirmwareEditor.Models
 		Off = 7
 	}
 
-	internal enum ClockType
+	internal enum LineContentType : byte
 	{
-		Disabled,
-		Analog,
-		Digital
+		Amps = 0,
+		Puffs = 1,
+		Time = 2,
+		BatteryVoltage = 3,
+		OutputVoltage = 4,
+		BoardTemperature = 5,
+		RealTimeResistance = 6,
+		DataTime = 7
 	}
 }

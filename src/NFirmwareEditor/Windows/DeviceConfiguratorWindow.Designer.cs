@@ -130,6 +130,8 @@
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.LayoutTabPage = new System.Windows.Forms.TabPage();
+			this.label45 = new System.Windows.Forms.Label();
+			this.ThirdLineContentComboBox = new System.Windows.Forms.ComboBox();
 			this.label38 = new System.Windows.Forms.Label();
 			this.ClockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label35 = new System.Windows.Forms.Label();
@@ -1452,6 +1454,8 @@
 			// 
 			// LayoutTabPage
 			// 
+			this.LayoutTabPage.Controls.Add(this.label45);
+			this.LayoutTabPage.Controls.Add(this.ThirdLineContentComboBox);
 			this.LayoutTabPage.Controls.Add(this.label38);
 			this.LayoutTabPage.Controls.Add(this.ClockTypeComboBox);
 			this.LayoutTabPage.Controls.Add(this.label35);
@@ -1465,10 +1469,32 @@
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
 			// 
+			// label45
+			// 
+			this.label45.AutoSize = true;
+			this.label45.Location = new System.Drawing.Point(4, 11);
+			this.label45.Name = "label45";
+			this.label45.Size = new System.Drawing.Size(91, 13);
+			this.label45.TabIndex = 78;
+			this.label45.Text = "3rd Line Content:";
+			// 
+			// ThirdLineContentComboBox
+			// 
+			this.ThirdLineContentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ThirdLineContentComboBox.FormattingEnabled = true;
+			this.ThirdLineContentComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ThirdLineContentComboBox.Location = new System.Drawing.Point(101, 8);
+			this.ThirdLineContentComboBox.Name = "ThirdLineContentComboBox";
+			this.ThirdLineContentComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ThirdLineContentComboBox.TabIndex = 79;
+			// 
 			// label38
 			// 
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(4, 65);
+			this.label38.Location = new System.Drawing.Point(3, 92);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(63, 13);
 			this.label38.TabIndex = 76;
@@ -1482,15 +1508,15 @@
             "Disabled",
             "Analog",
             "Digital"});
-			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 62);
+			this.ClockTypeComboBox.Location = new System.Drawing.Point(100, 89);
 			this.ClockTypeComboBox.Name = "ClockTypeComboBox";
-			this.ClockTypeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ClockTypeComboBox.Size = new System.Drawing.Size(140, 21);
 			this.ClockTypeComboBox.TabIndex = 77;
 			// 
 			// label35
 			// 
 			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(4, 11);
+			this.label35.Location = new System.Drawing.Point(3, 38);
 			this.label35.Name = "label35";
 			this.label35.Size = new System.Drawing.Size(92, 13);
 			this.label35.TabIndex = 68;
@@ -1499,7 +1525,7 @@
 			// BatteryPercentsCheckBox
 			// 
 			this.BatteryPercentsCheckBox.AutoSize = true;
-			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(101, 11);
+			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(100, 38);
 			this.BatteryPercentsCheckBox.Name = "BatteryPercentsCheckBox";
 			this.BatteryPercentsCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.BatteryPercentsCheckBox.TabIndex = 69;
@@ -1509,7 +1535,7 @@
 			// label34
 			// 
 			this.label34.AutoSize = true;
-			this.label34.Location = new System.Drawing.Point(4, 38);
+			this.label34.Location = new System.Drawing.Point(3, 65);
 			this.label34.Name = "label34";
 			this.label34.Size = new System.Drawing.Size(63, 13);
 			this.label34.TabIndex = 70;
@@ -1518,7 +1544,7 @@
 			// ShowLogoCheckBox
 			// 
 			this.ShowLogoCheckBox.AutoSize = true;
-			this.ShowLogoCheckBox.Location = new System.Drawing.Point(101, 38);
+			this.ShowLogoCheckBox.Location = new System.Drawing.Point(100, 65);
 			this.ShowLogoCheckBox.Name = "ShowLogoCheckBox";
 			this.ShowLogoCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowLogoCheckBox.TabIndex = 71;
@@ -1768,5 +1794,7 @@
 		private System.Windows.Forms.ComboBox Clicks4ComboBox;
 		private System.Windows.Forms.Label label43;
 		private System.Windows.Forms.ComboBox Clicks3ComboBox;
+		private System.Windows.Forms.Label label45;
+		private System.Windows.Forms.ComboBox ThirdLineContentComboBox;
 	}
 }

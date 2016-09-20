@@ -161,6 +161,19 @@ namespace NFirmwareEditor.Windows
 			Clicks4ComboBox.Items.Clear();
 			Clicks4ComboBox.Items.AddRange(clicks);
 
+			ThirdLineContentComboBox.Items.Clear();
+			ThirdLineContentComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<LineContentType>("Amps", LineContentType.Amps),
+				new NamedItemContainer<LineContentType>("Puffs", LineContentType.Puffs),
+				new NamedItemContainer<LineContentType>("Time", LineContentType.Time),
+				new NamedItemContainer<LineContentType>("Date and Time", LineContentType.DataTime),
+				new NamedItemContainer<LineContentType>("Battery Voltage", LineContentType.BatteryVoltage),
+				new NamedItemContainer<LineContentType>("Output Voltage", LineContentType.OutputVoltage),
+				new NamedItemContainer<LineContentType>("Board Temperature", LineContentType.BoardTemperature),
+				new NamedItemContainer<LineContentType>("Real-time Resistance", LineContentType.RealTimeResistance)
+			});
+
 			ClockTypeComboBox.Items.Clear();
 			ClockTypeComboBox.Items.AddRange(new object[]
 			{
@@ -288,6 +301,7 @@ namespace NFirmwareEditor.Windows
 			FlippedModeCheckBox.Checked = dataflash.Params.Status.Flipped;
 
 			// Screen -> Layout Tab
+			ThirdLineContentComboBox.SelectItem(dataflash.Params.ThirdLineContent);
 			BatteryPercentsCheckBox.Checked = dataflash.Params.Status.BatteryPercent;
 			ShowLogoCheckBox.Checked = !dataflash.Params.Status.NoLogo;
 
@@ -370,6 +384,7 @@ namespace NFirmwareEditor.Windows
 			dataflash.Params.Status.Flipped = FlippedModeCheckBox.Checked;
 
 			// Screen -> Layout Tab
+			dataflash.Params.ThirdLineContent = ThirdLineContentComboBox.GetSelectedItem<LineContentType>();
 			dataflash.Params.Status.BatteryPercent = BatteryPercentsCheckBox.Checked;
 			dataflash.Params.Status.NoLogo = !ShowLogoCheckBox.Checked;
 
@@ -459,7 +474,13 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("An error occurred during downloading settings...\n\n" + ex);
+				s_logger.Warn(ex);
+				InfoBox.Show
+				(
+					"An error occurred during downloading settings..." +
+					"\n\n" +
+					"To continue, please reconnect device."
+				);
 			}
 		}
 
@@ -478,7 +499,13 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("An error occurred during uploading settings...\n\n" + ex);
+				s_logger.Warn(ex);
+				InfoBox.Show
+				(
+					"An error occurred during uploading settings..." +
+					"\n\n" +
+					"To continue, please reconnect device."
+				);
 			}
 		}
 
@@ -494,7 +521,13 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("An error occurred during resetting settings...\n\n" + ex);
+				s_logger.Warn(ex);
+				InfoBox.Show
+				(
+					"An error occurred during resetting settings..." +
+					"\n\n" +
+					"To continue, please reconnect device."
+				);
 			}
 		}
 
@@ -538,6 +571,13 @@ namespace NFirmwareEditor.Windows
 			{
 				InitializeWorkspaceFromDataflash(m_dataflash);
 			}
+		}
+
+		internal enum ClockType
+		{
+			Disabled,
+			Analog,
+			Digital
 		}
 	}
 }
