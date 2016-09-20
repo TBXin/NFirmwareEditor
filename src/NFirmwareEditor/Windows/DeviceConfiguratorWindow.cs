@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
@@ -112,6 +115,65 @@ namespace NFirmwareEditor.Windows
 			DownloadButton.Click += DownloadButton_Click;
 			UploadButton.Click += UploadButton_Click;
 			ResetButton.Click += ResetButton_Click;
+
+			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
+			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
+		}
+
+		private bool ValidateConnectionStatus()
+		{
+			while (!m_isDeviceConnected)
+			{
+				var result = InfoBox.Show
+				(
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
+					MessageBoxButtons.OKCancel
+				);
+				if (result == DialogResult.Cancel)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		private Image TakeScreenshot()
+		{
+			try
+			{
+				var data = m_updater.Screenshot();
+				if (data == null || data.All(x => x == 0x00))
+				{
+					throw new InvalidOperationException("Invalid screenshot data!");
+				}
+				return BitmapProcessor.CreateBitmapFromBytesArray(64, 128, data);
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+				InfoBox.Show
+				(
+					"An error occurred during taking screenshot..." +
+					"\n\n" +
+					"To continue, please activate or reconnect your device."
+				);
+				return null;
+			}
+		}
+
+		private void ShowScreenshot([NotNull] Image screenshot)
+		{
+			if (screenshot == null) throw new ArgumentNullException("screenshot");
+			if (ScreenshotPictureBox.Image != null)
+			{
+				ScreenshotPictureBox.Image.Dispose();
+				ScreenshotPictureBox.Image = null;
+			}
+			ScreenshotPictureBox.Image = screenshot;
 		}
 
 		private void InititalizeComboBoxes()
@@ -483,12 +545,7 @@ namespace NFirmwareEditor.Windows
 			catch (Exception ex)
 			{
 				s_logger.Warn(ex);
-				InfoBox.Show
-				(
-					"An error occurred during downloading settings..." +
-					"\n\n" +
-					"To continue, please reconnect device."
-				);
+				InfoBox.Show(GetErrorMessage("downloading settings"));
 			}
 		}
 
@@ -508,12 +565,7 @@ namespace NFirmwareEditor.Windows
 			catch (Exception ex)
 			{
 				s_logger.Warn(ex);
-				InfoBox.Show
-				(
-					"An error occurred during uploading settings..." +
-					"\n\n" +
-					"To continue, please reconnect device."
-				);
+				InfoBox.Show(GetErrorMessage("uploading settings"));
 			}
 		}
 
@@ -530,34 +582,38 @@ namespace NFirmwareEditor.Windows
 			catch (Exception ex)
 			{
 				s_logger.Warn(ex);
-				InfoBox.Show
-				(
-					"An error occurred during resetting settings..." +
-					"\n\n" +
-					"To continue, please reconnect device."
-				);
+				InfoBox.Show(GetErrorMessage("resetting settings"));
 			}
 		}
 
-		private bool ValidateConnectionStatus()
+		private void TakeScreenshotButton_Click(object sender, EventArgs e)
 		{
-			while (!m_isDeviceConnected)
+			if (!ValidateConnectionStatus()) return;
+
+			var screenshot = TakeScreenshot();
+			if (screenshot == null) return;
+
+			ShowScreenshot(screenshot);
+		}
+
+		private void SaveScreenshotButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			var screenshot = TakeScreenshot();
+			if (screenshot == null) return;
+
+			ShowScreenshot(screenshot);
+			using (var export = new Bitmap(panel1.Width, panel1.Height))
 			{
-				var result = InfoBox.Show
-				(
-					"No compatible USB devices are connected." +
-					"\n\n" +
-					"To continue, please connect one." +
-					"\n\n" +
-					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-					MessageBoxButtons.OKCancel
-				);
-				if (result == DialogResult.Cancel)
+				panel1.DrawToBitmap(export, panel1.DisplayRectangle);
+
+				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = Consts.PngExportFilter })
 				{
-					return false;
+					if (sf.ShowDialog() != DialogResult.OK) return;
+					export.Save(sf.FileName, ImageFormat.Png);
 				}
 			}
-			return true;
 		}
 
 		// ReSharper disable once InconsistentNaming
@@ -571,6 +627,14 @@ namespace NFirmwareEditor.Windows
 			{
 				// Ignore
 			}
+		}
+
+		private string GetErrorMessage(string operationName)
+		{
+			return "An error occurred during " +
+			       operationName +
+			       "...\n\n" +
+				   "To continue, please activate or reconnect your device.";
 		}
 
 		private void MainContainer_SelectedPageChanged(object sender, EventArgs e)
