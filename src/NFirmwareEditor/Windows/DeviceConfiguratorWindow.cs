@@ -38,6 +38,18 @@ namespace NFirmwareEditor.Windows
 			var errorIcon = BitmapProcessor.CreateIcon(Resources.exclamation);
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
+			FirmwareVersionTextBox.ReadOnly = true;
+			FirmwareVersionTextBox.BackColor = Color.White;
+
+			BuildTextBox.ReadOnly = true;
+			BuildTextBox.BackColor = Color.White;
+
+			HardwareVersionTextBox.ReadOnly = true;
+			HardwareVersionTextBox.BackColor = Color.White;
+
+			BootModeTextBox.ReadOnly = true;
+			BootModeTextBox.BackColor = Color.White;
+
 			InititalizeComboBoxes();
 
 			TemperatureTypeComboBox.SelectedValueChanged += (s, e) =>
@@ -308,6 +320,7 @@ namespace NFirmwareEditor.Windows
 
 			DeviceNameLabel.Text = FirmwareUpdater.GetDeviceInfo(dataflash.InfoBlock.ProductID).Name;
 			FirmwareVersionTextBox.Text = (dataflash.InfoBlock.FWVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
+			BuildTextBox.Text = m_simple.Build.ToString();
 			HardwareVersionTextBox.Text = (dataflash.ParamsBlock.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 			BootModeTextBox.Text = dataflash.ParamsBlock.BootMode.ToString();
 
@@ -627,7 +640,11 @@ namespace NFirmwareEditor.Windows
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = Consts.PngExportFilter })
 				{
 					if (sf.ShowDialog() != DialogResult.OK) return;
-					export.Save(sf.FileName, ImageFormat.Png);
+
+					using (var export2 = BitmapProcessor.EnlargePixelSize(export, (int)PixelSizeUpDown.Value))
+					{
+						export2.Save(sf.FileName, ImageFormat.Png);
+					}
 				}
 			}
 		}

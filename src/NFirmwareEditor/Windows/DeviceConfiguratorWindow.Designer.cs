@@ -41,6 +41,9 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.BootModeTextBox = new System.Windows.Forms.TextBox();
+			this.ResetButton = new System.Windows.Forms.Button();
+			this.UploadButton = new System.Windows.Forms.Button();
+			this.DownloadButton = new System.Windows.Forms.Button();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -141,14 +144,16 @@
 			this.label41 = new System.Windows.Forms.Label();
 			this.label40 = new System.Windows.Forms.Label();
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
-			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.ResetButton = new System.Windows.Forms.Button();
-			this.UploadButton = new System.Windows.Forms.Button();
-			this.DownloadButton = new System.Windows.Forms.Button();
-			this.TakeScreenshotButton = new System.Windows.Forms.Button();
-			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
+			this.label47 = new System.Windows.Forms.Label();
+			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label46 = new System.Windows.Forms.Label();
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
+			this.TakeScreenshotButton = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
+			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.label48 = new System.Windows.Forms.Label();
+			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -180,9 +185,10 @@
 			this.LayoutTabPage.SuspendLayout();
 			this.ScreensaverTabPage.SuspendLayout();
 			this.DeveloperTabPage.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -240,6 +246,8 @@
 			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.BuildTextBox);
+			this.groupPanel1.Controls.Add(this.label48);
 			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
 			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
@@ -261,7 +269,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 33);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(242, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(115, 21);
 			this.FirmwareVersionTextBox.TabIndex = 27;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
@@ -322,6 +330,42 @@
 			this.BootModeTextBox.Size = new System.Drawing.Size(242, 21);
 			this.BootModeTextBox.TabIndex = 31;
 			this.BootModeTextBox.TabStop = false;
+			// 
+			// ResetButton
+			// 
+			this.ResetButton.Image = global::NFirmwareEditor.Properties.Resources.reset_settings;
+			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ResetButton.Location = new System.Drawing.Point(257, 10);
+			this.ResetButton.Name = "ResetButton";
+			this.ResetButton.Size = new System.Drawing.Size(107, 25);
+			this.ResetButton.TabIndex = 3;
+			this.ResetButton.Text = "Reset settings";
+			this.ResetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ResetButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadButton
+			// 
+			this.UploadButton.Image = global::NFirmwareEditor.Properties.Resources.upload_settings;
+			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UploadButton.Location = new System.Drawing.Point(141, 10);
+			this.UploadButton.Name = "UploadButton";
+			this.UploadButton.Size = new System.Drawing.Size(110, 25);
+			this.UploadButton.TabIndex = 2;
+			this.UploadButton.Text = "Upload settings";
+			this.UploadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.UploadButton.UseVisualStyleBackColor = true;
+			// 
+			// DownloadButton
+			// 
+			this.DownloadButton.Image = global::NFirmwareEditor.Properties.Resources.download_settings;
+			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DownloadButton.Location = new System.Drawing.Point(11, 10);
+			this.DownloadButton.Name = "DownloadButton";
+			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
+			this.DownloadButton.TabIndex = 1;
+			this.DownloadButton.Text = "Download settings";
+			this.DownloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.DownloadButton.UseVisualStyleBackColor = true;
 			// 
 			// MainTabControl
 			// 
@@ -1581,6 +1625,9 @@
 			// 
 			// DeveloperTabPage
 			// 
+			this.DeveloperTabPage.Controls.Add(this.label47);
+			this.DeveloperTabPage.Controls.Add(this.PixelSizeUpDown);
+			this.DeveloperTabPage.Controls.Add(this.label46);
 			this.DeveloperTabPage.Controls.Add(this.SaveScreenshotButton);
 			this.DeveloperTabPage.Controls.Add(this.TakeScreenshotButton);
 			this.DeveloperTabPage.Controls.Add(this.panel1);
@@ -1592,67 +1639,78 @@
 			this.DeveloperTabPage.Text = "Developer";
 			this.DeveloperTabPage.UseVisualStyleBackColor = true;
 			// 
-			// MainErrorProvider
+			// label47
 			// 
-			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-			this.MainErrorProvider.ContainerControl = this;
+			this.label47.AutoSize = true;
+			this.label47.Location = new System.Drawing.Point(4, 11);
+			this.label47.Name = "label47";
+			this.label47.Size = new System.Drawing.Size(85, 13);
+			this.label47.TabIndex = 39;
+			this.label47.Text = "Screen preview:";
 			// 
-			// panel1
+			// PixelSizeUpDown
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Black;
-			this.panel1.Controls.Add(this.ScreenshotPictureBox);
-			this.panel1.Location = new System.Drawing.Point(272, 6);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(68, 132);
-			this.panel1.TabIndex = 1;
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(123, 176);
+			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+			this.PixelSizeUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PixelSizeUpDown.Name = "PixelSizeUpDown";
+			this.PixelSizeUpDown.Size = new System.Drawing.Size(60, 21);
+			this.PixelSizeUpDown.TabIndex = 37;
+			this.PixelSizeUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
-			// ResetButton
+			// label46
 			// 
-			this.ResetButton.Image = global::NFirmwareEditor.Properties.Resources.reset_settings;
-			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.ResetButton.Location = new System.Drawing.Point(257, 10);
-			this.ResetButton.Name = "ResetButton";
-			this.ResetButton.Size = new System.Drawing.Size(107, 25);
-			this.ResetButton.TabIndex = 3;
-			this.ResetButton.Text = "Reset settings";
-			this.ResetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ResetButton.UseVisualStyleBackColor = true;
+			this.label46.AutoSize = true;
+			this.label46.Location = new System.Drawing.Point(4, 179);
+			this.label46.Name = "label46";
+			this.label46.Size = new System.Drawing.Size(99, 13);
+			this.label46.TabIndex = 38;
+			this.label46.Text = "Pixel size multiplier:";
 			// 
-			// UploadButton
+			// SaveScreenshotButton
 			// 
-			this.UploadButton.Image = global::NFirmwareEditor.Properties.Resources.upload_settings;
-			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.UploadButton.Location = new System.Drawing.Point(141, 10);
-			this.UploadButton.Name = "UploadButton";
-			this.UploadButton.Size = new System.Drawing.Size(110, 25);
-			this.UploadButton.TabIndex = 2;
-			this.UploadButton.Text = "Upload settings";
-			this.UploadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.UploadButton.UseVisualStyleBackColor = true;
+			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
+			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(123, 203);
+			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
+			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.SaveScreenshotButton.TabIndex = 36;
+			this.SaveScreenshotButton.Text = "Save screenshot";
+			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
 			// 
-			// DownloadButton
-			// 
-			this.DownloadButton.Image = global::NFirmwareEditor.Properties.Resources.download_settings;
-			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.DownloadButton.Location = new System.Drawing.Point(11, 10);
-			this.DownloadButton.Name = "DownloadButton";
-			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
-			this.DownloadButton.TabIndex = 1;
-			this.DownloadButton.Text = "Download settings";
-			this.DownloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.DownloadButton.UseVisualStyleBackColor = true;
-			// 
-			// ScreenshotButton
+			// TakeScreenshotButton
 			// 
 			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
 			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(6, 8);
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(123, 145);
 			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
 			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.TakeScreenshotButton.TabIndex = 35;
 			this.TakeScreenshotButton.Text = "Take screenshot";
 			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.Color.Black;
+			this.panel1.Controls.Add(this.ScreenshotPictureBox);
+			this.panel1.Location = new System.Drawing.Point(123, 9);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(68, 132);
+			this.panel1.TabIndex = 1;
 			// 
 			// ScreenshotPictureBox
 			// 
@@ -1662,17 +1720,29 @@
 			this.ScreenshotPictureBox.TabIndex = 0;
 			this.ScreenshotPictureBox.TabStop = false;
 			// 
-			// SaveScreenshotButton
+			// MainErrorProvider
 			// 
-			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(126, 8);
-			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
-			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.SaveScreenshotButton.TabIndex = 36;
-			this.SaveScreenshotButton.Text = "Save screenshot";
-			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
+			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+			this.MainErrorProvider.ContainerControl = this;
+			// 
+			// label48
+			// 
+			this.label48.AutoSize = true;
+			this.label48.Location = new System.Drawing.Point(224, 36);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(33, 13);
+			this.label48.TabIndex = 33;
+			this.label48.Text = "Build:";
+			// 
+			// BuildTextBox
+			// 
+			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.BuildTextBox.Location = new System.Drawing.Point(263, 33);
+			this.BuildTextBox.Name = "BuildTextBox";
+			this.BuildTextBox.Size = new System.Drawing.Size(85, 21);
+			this.BuildTextBox.TabIndex = 34;
+			this.BuildTextBox.TabStop = false;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -1725,9 +1795,11 @@
 			this.ScreensaverTabPage.ResumeLayout(false);
 			this.ScreensaverTabPage.PerformLayout();
 			this.DeveloperTabPage.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
+			this.DeveloperTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
 			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1854,5 +1926,10 @@
 		private System.Windows.Forms.PictureBox ScreenshotPictureBox;
 		private System.Windows.Forms.Button TakeScreenshotButton;
 		private System.Windows.Forms.Button SaveScreenshotButton;
+		private System.Windows.Forms.Label label46;
+		private System.Windows.Forms.NumericUpDown PixelSizeUpDown;
+		private System.Windows.Forms.Label label47;
+		private System.Windows.Forms.TextBox BuildTextBox;
+		private System.Windows.Forms.Label label48;
 	}
 }

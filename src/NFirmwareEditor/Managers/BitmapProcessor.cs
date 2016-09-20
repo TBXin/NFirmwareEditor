@@ -43,8 +43,7 @@ namespace NFirmwareEditor.Managers
 				{
 					for (var row = 0; row < size.Height; row++)
 					{
-						if (!imageData[col, row])
-							continue;
+						if (!imageData[col, row]) continue;
 
 						if (pixelSize <= 1)
 						{
@@ -257,6 +256,33 @@ namespace NFirmwareEditor.Managers
 			return output;
 		}
 
+		public static Image EnlargePixelSize([NotNull] Bitmap source, int pixelSize = 2)
+		{
+			if (source == null) throw new ArgumentNullException("source");
+
+			var result = new Bitmap(source.Width * pixelSize, source.Height * pixelSize);
+			using (var gfx = Graphics.FromImage(result))
+			{
+				gfx.Clear(Color.Black);
+				for (var col = 0; col < source.Width; col++)
+				{
+					for (var row = 0; row < source.Height; row++)
+					{
+						var pixel = source.GetPixel(col, row);
+
+						if (pixelSize <= 1)
+						{
+							result.SetPixel(col, row, pixel);
+						}
+						else
+						{
+							gfx.FillRectangle(new SolidBrush(pixel), col * pixelSize, row * pixelSize, pixelSize, pixelSize);
+						}
+					}
+				}
+			}
+			return result;
+		}
 
 		public static Icon CreateIcon(Bitmap bitmap)
 		{
