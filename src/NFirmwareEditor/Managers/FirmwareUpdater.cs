@@ -331,6 +331,8 @@ namespace NFirmwareEditor.Managers
 		private const int FwVerOffset = 256;
 		private const int ProductIdOffset = 312;
 		private const int ProductIdLength = 4;
+		private const int BuildOffset = 0x200;
+		private const int BuildLength = 3;
 
 		public int Checksum { get; set; }
 
@@ -362,6 +364,20 @@ namespace NFirmwareEditor.Managers
 			{
 				var hwInt = BitConverter.ToInt32(Data, FwVerOffset);
 				return hwInt / 100f;
+			}
+		}
+
+		public int Build
+		{
+			get
+			{
+				var buildString = string.Empty;
+				for (var i = BuildOffset; i < BuildOffset + BuildLength; i++)
+				{
+					buildString += Data[i].ToString("D2");
+				}
+				int build;
+				return int.TryParse(buildString, out build) ? build : -1;
 			}
 		}
 	}

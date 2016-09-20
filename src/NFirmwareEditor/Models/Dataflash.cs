@@ -7,13 +7,16 @@ namespace NFirmwareEditor.Models
 {
 	internal class Dataflash
 	{
-		public DataflashParams Params { get; set; }
+		public DataflashParamsBlock ParamsBlock { get; set; }
 
 		[BinaryOffset(Absolute = 0x100)]
-		public DataflashInfo Info { get; set; }
+		public DataflashInfoBlock InfoBlock { get; set; }
+
+		[BinaryOffset(Absolute = 0x200)]
+		public DataflashNFEBlock NFEBlock { get; set; }
 	}
 
-	internal class DataflashParams
+	internal class DataflashParamsBlock
 	{
 		public uint PageChecksum { get; set; }
 		public uint HardwareVersion { get; set; }
@@ -95,7 +98,7 @@ namespace NFirmwareEditor.Models
 		public byte ScreenDimTimeout { get; set; }
 	}
 
-	internal class DataflashInfo
+	internal class DataflashInfoBlock
 	{
 		public uint FWVersion { get; set; }
 		public uint LDVersion { get; set; }
@@ -122,6 +125,12 @@ namespace NFirmwareEditor.Models
 		public byte Hour { get; set; }
 		public byte Minute { get; set; }
 		public byte Second { get; set; }
+	}
+
+	internal class DataflashNFEBlock
+	{
+		[BinaryArray(Length = 3)]
+		public byte[] Build { get; set; }
 	}
 
 	internal class DataflashStatus : IBinaryReaderWriter
