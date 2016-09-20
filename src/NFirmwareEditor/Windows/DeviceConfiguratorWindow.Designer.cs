@@ -1634,7 +1634,7 @@
 			this.MaximizeBox = false;
 			this.Name = "DeviceConfiguratorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NFirmwareEditor - Configurator ";
+			this.Text = "myEvic NFE Edition - Configuration";
 			this.MainContainer.ResumeLayout(false);
 			this.WelcomePage.ResumeLayout(false);
 			this.WorkspacePage.ResumeLayout(false);
