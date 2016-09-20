@@ -416,6 +416,14 @@ namespace NFirmwareEditor.Windows
 			// Screen -> Screensaver Tab
 			dataflash.Params.ScreensaverType = ScreensaverTypeComboBox.GetSelectedItem<ScreensaverType>();
 			dataflash.Params.ScreenProtectionTime = ScreenProtectionTimeComboBox.GetSelectedItem<ScreenProtectionTime>();
+
+			// Setup DateTime
+			dataflash.Info.Year = (ushort)DateTime.Now.Year;
+			dataflash.Info.Month = (byte)DateTime.Now.Month;
+			dataflash.Info.Day = (byte)DateTime.Now.Day;
+			dataflash.Info.Hour = (byte)DateTime.Now.Hour;
+			dataflash.Info.Minute = (byte)DateTime.Now.Minute;
+			dataflash.Info.Second = (byte)DateTime.Now.Second;
 		}
 
 		private Dataflash ReadDataflash()
