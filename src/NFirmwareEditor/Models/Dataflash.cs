@@ -70,11 +70,10 @@ namespace NFirmwareEditor.Models
 		public ushort ResistanceTCR { get; set; }
 		public bool ResistanceTCRLocked { get; set; }
 		public ScreensaverType ScreensaverType { get; set; }
-		//[BinaryOffset(Relative = 1)]
 		public byte LastTCMode { get; set; }
 		public ScreenProtectionTime ScreenProtectionTime { get; set; }
 
-		[ /*BinaryOffset(Relative = 1), */BinaryArray(Length = 10)]
+		[BinaryArray(Length = 10)]
 		public ushort[] SavedCfgRez { get; set; }
 
 		[BinaryArray(Length = 10)]
