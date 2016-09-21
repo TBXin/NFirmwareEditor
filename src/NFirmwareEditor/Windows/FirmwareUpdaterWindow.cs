@@ -36,7 +36,12 @@ namespace NFirmwareEditor.Windows
 			m_worker.DoWork += BackgroundWorker_DoWork;
 			m_worker.ProgressChanged += BackgroundWorker_ProgressChanged;
 
-			if (Parent == null) CancelButton.Click += (s, e) => Application.Exit();
+			Load += (s, e) =>
+			{
+				// When form shown as dialog we dont need to handle click event to close it, 
+				// otherwise we need to close application mannualy.
+				if (!Modal) CancelButton.Click += (s1, e1) => Application.Exit();
+			};
 		}
 
 		private void DeviceConnected(bool isConnected)

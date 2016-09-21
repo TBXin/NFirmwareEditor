@@ -24,13 +24,18 @@ namespace NFirmwareEditor
 
 			if (args != null && args.Length == 1)
 			{
-				if (args[0] == "/configuration") Application.Run(new DeviceConfiguratorWindow());
-				if (args[0] == "/updater") Application.Run(new FirmwareUpdaterWindow(null, new FirmwareLoader(new FirmwareEncoder())));
+				if (args[0] == "/configuration")
+				{
+					Application.Run(new DeviceConfiguratorWindow());
+					return;
+				}
+				if (args[0] == "/updater")
+				{
+					Application.Run(new FirmwareUpdaterWindow(null, new FirmwareLoader(new FirmwareEncoder())));
+					return;
+				}
 			}
-			else
-			{
-				Application.Run(new MainWindow(args));
-			}
+			Application.Run(new MainWindow(args));
 		}
 
 		private static void UnhandledThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
