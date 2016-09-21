@@ -1221,6 +1221,9 @@
     <Content Include="Definitions\Vaporflask Stout 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\upload_settings.png" />
+    <None Include="Resources\download_settings.png" />
+    <None Include="Resources\reset_settings.png" />
     <None Include="Resources\disconnect.png" />
     <None Include="Resources\connect.png" />
     <None Include="Resources\save_screenshot.png" />
@@ -1229,9 +1232,6 @@
     <None Include="Patches\RX200S 4.12\4.12_inc-dec_by_1w.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\reset_settings.png" />
-    <None Include="Resources\upload_settings.png" />
-    <None Include="Resources\download_settings.png" />
     <None Include="Resources\device_configurator.png" />
     <None Include="Patches\RX200S 4.10\4.10_tc_ss_fix.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

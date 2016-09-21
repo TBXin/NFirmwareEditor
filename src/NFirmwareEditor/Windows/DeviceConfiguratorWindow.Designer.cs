@@ -118,6 +118,12 @@
 			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
 			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
 			this.label39 = new System.Windows.Forms.Label();
+			this.StatsTabPage = new System.Windows.Forms.TabPage();
+			this.label52 = new System.Windows.Forms.Label();
+			this.PuffsTimeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label50 = new System.Windows.Forms.Label();
+			this.label51 = new System.Windows.Forms.Label();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl3 = new System.Windows.Forms.TabControl();
 			this.DisplayTabPage = new System.Windows.Forms.TabPage();
@@ -185,6 +191,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceTCRUpDown)).BeginInit();
 			this.ModesTabPage.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
+			this.StatsTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).BeginInit();
 			this.ScreenTabPage.SuspendLayout();
 			this.tabControl3.SuspendLayout();
 			this.DisplayTabPage.SuspendLayout();
@@ -431,6 +440,7 @@
 			this.tabControl2.Controls.Add(this.CoilsManagerTabPage);
 			this.tabControl2.Controls.Add(this.ModesTabPage);
 			this.tabControl2.Controls.Add(this.ControlsTabPage);
+			this.tabControl2.Controls.Add(this.StatsTabPage);
 			this.tabControl2.Location = new System.Drawing.Point(6, 6);
 			this.tabControl2.Name = "tabControl2";
 			this.tabControl2.SelectedIndex = 0;
@@ -721,7 +731,7 @@
 			this.CoilsManagerTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CoilsManagerTabPage.Name = "CoilsManagerTabPage";
 			this.CoilsManagerTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.CoilsManagerTabPage.Size = new System.Drawing.Size(388, 228);
+			this.CoilsManagerTabPage.Size = new System.Drawing.Size(328, 228);
 			this.CoilsManagerTabPage.TabIndex = 1;
 			this.CoilsManagerTabPage.Text = "Coils Manager";
 			this.CoilsManagerTabPage.UseVisualStyleBackColor = true;
@@ -1063,7 +1073,7 @@
 			this.ModesTabPage.Controls.Add(this.TCRModeCheckBox);
 			this.ModesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ModesTabPage.Name = "ModesTabPage";
-			this.ModesTabPage.Size = new System.Drawing.Size(388, 228);
+			this.ModesTabPage.Size = new System.Drawing.Size(328, 228);
 			this.ModesTabPage.TabIndex = 2;
 			this.ModesTabPage.Text = "Modes";
 			this.ModesTabPage.UseVisualStyleBackColor = true;
@@ -1256,7 +1266,7 @@
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ControlsTabPage.Name = "ControlsTabPage";
-			this.ControlsTabPage.Size = new System.Drawing.Size(388, 228);
+			this.ControlsTabPage.Size = new System.Drawing.Size(328, 228);
 			this.ControlsTabPage.TabIndex = 3;
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
@@ -1342,6 +1352,74 @@
 			this.label39.Size = new System.Drawing.Size(96, 13);
 			this.label39.TabIndex = 80;
 			this.label39.Text = "Wake up by + / - :";
+			// 
+			// StatsTabPage
+			// 
+			this.StatsTabPage.Controls.Add(this.label52);
+			this.StatsTabPage.Controls.Add(this.PuffsTimeUpDown);
+			this.StatsTabPage.Controls.Add(this.PuffsUpDown);
+			this.StatsTabPage.Controls.Add(this.label50);
+			this.StatsTabPage.Controls.Add(this.label51);
+			this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.StatsTabPage.Name = "StatsTabPage";
+			this.StatsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.StatsTabPage.Size = new System.Drawing.Size(328, 228);
+			this.StatsTabPage.TabIndex = 4;
+			this.StatsTabPage.Text = "Stats";
+			this.StatsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label52
+			// 
+			this.label52.AutoSize = true;
+			this.label52.Location = new System.Drawing.Point(214, 38);
+			this.label52.Name = "label52";
+			this.label52.Size = new System.Drawing.Size(12, 13);
+			this.label52.TabIndex = 69;
+			this.label52.Text = "s";
+			// 
+			// PuffsTimeUpDown
+			// 
+			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
+			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsTimeUpDown.Name = "PuffsTimeUpDown";
+			this.PuffsTimeUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsTimeUpDown.TabIndex = 68;
+			this.PuffsTimeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// PuffsUpDown
+			// 
+			this.PuffsUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PuffsUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsUpDown.Name = "PuffsUpDown";
+			this.PuffsUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsUpDown.TabIndex = 67;
+			this.PuffsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label50
+			// 
+			this.label50.AutoSize = true;
+			this.label50.Location = new System.Drawing.Point(4, 11);
+			this.label50.Name = "label50";
+			this.label50.Size = new System.Drawing.Size(68, 13);
+			this.label50.TabIndex = 65;
+			this.label50.Text = "Puffs Count:";
+			// 
+			// label51
+			// 
+			this.label51.AutoSize = true;
+			this.label51.Location = new System.Drawing.Point(4, 38);
+			this.label51.Name = "label51";
+			this.label51.Size = new System.Drawing.Size(88, 13);
+			this.label51.TabIndex = 66;
+			this.label51.Text = "Total Puffs Time:";
 			// 
 			// ScreenTabPage
 			// 
@@ -1509,7 +1587,7 @@
 			this.LayoutTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
-			this.LayoutTabPage.Size = new System.Drawing.Size(388, 228);
+			this.LayoutTabPage.Size = new System.Drawing.Size(328, 228);
 			this.LayoutTabPage.TabIndex = 3;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
@@ -1604,7 +1682,7 @@
 			this.ScreensaverTabPage.Controls.Add(this.label40);
 			this.ScreensaverTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreensaverTabPage.Name = "ScreensaverTabPage";
-			this.ScreensaverTabPage.Size = new System.Drawing.Size(388, 228);
+			this.ScreensaverTabPage.Size = new System.Drawing.Size(328, 228);
 			this.ScreensaverTabPage.TabIndex = 4;
 			this.ScreensaverTabPage.Text = "Screensaver";
 			this.ScreensaverTabPage.UseVisualStyleBackColor = true;
@@ -1890,6 +1968,10 @@
 			this.ModesTabPage.PerformLayout();
 			this.ControlsTabPage.ResumeLayout(false);
 			this.ControlsTabPage.PerformLayout();
+			this.StatsTabPage.ResumeLayout(false);
+			this.StatsTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).EndInit();
 			this.ScreenTabPage.ResumeLayout(false);
 			this.tabControl3.ResumeLayout(false);
 			this.DisplayTabPage.ResumeLayout(false);
@@ -2049,5 +2131,11 @@
 		private System.Windows.Forms.Button ComConnectButton;
 		private System.Windows.Forms.Button ComDisconnectButton;
 		private System.Windows.Forms.TextBox TraceTextBox;
+		private System.Windows.Forms.TabPage StatsTabPage;
+		private System.Windows.Forms.NumericUpDown PuffsTimeUpDown;
+		private System.Windows.Forms.NumericUpDown PuffsUpDown;
+		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.Label label51;
+		private System.Windows.Forms.Label label52;
 	}
 }

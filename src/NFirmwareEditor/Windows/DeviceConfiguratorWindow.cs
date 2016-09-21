@@ -391,6 +391,10 @@ namespace NFirmwareEditor.Windows
 			Clicks4ComboBox.SelectItem(dataflash.ParamsBlock.MClicks[2]);
 			WakeUpByPlusMinusCheckBox.Checked = dataflash.ParamsBlock.Status.WakeUpByPlusMinus;
 
+			// General -> Stats Tab
+			PuffsUpDown.Value = Math.Max(0, Math.Min(dataflash.InfoBlock.PuffCount, 99999));
+			PuffsTimeUpDown.Value = Math.Max(0, Math.Min(dataflash.InfoBlock.TimeCount, 99999));
+
 			// Screen -> Display Tab
 			BrightnessTrackBar.Value = (int)(dataflash.ParamsBlock.Contrast * 100f / 255);
 			IdleTimeUpDow.Value = dataflash.ParamsBlock.ScreenDimTimeout;
@@ -473,6 +477,10 @@ namespace NFirmwareEditor.Windows
 			dataflash.ParamsBlock.MClicks[1] = Clicks3ComboBox.GetSelectedItem<ClickAction>();
 			dataflash.ParamsBlock.MClicks[2] = Clicks4ComboBox.GetSelectedItem<ClickAction>();
 			dataflash.ParamsBlock.Status.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
+
+			// General -> Stats Tab
+			dataflash.InfoBlock.PuffCount = (uint)PuffsUpDown.Value;
+			dataflash.InfoBlock.TimeCount = (uint)PuffsTimeUpDown.Value;
 
 			// Screen -> Display Tab
 			dataflash.ParamsBlock.Contrast = (byte)(BrightnessTrackBar.Value * 255f / 100);
