@@ -1412,6 +1412,7 @@
 			// 
 			// PuffsTimeUpDown
 			// 
+			this.PuffsTimeUpDown.DecimalPlaces = 1;
 			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
 			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
             99999,
@@ -1591,12 +1592,12 @@
 			this.BrightnessTrackBar.AutoSize = false;
 			this.BrightnessTrackBar.BackColor = System.Drawing.Color.White;
 			this.BrightnessTrackBar.Location = new System.Drawing.Point(96, 10);
-			this.BrightnessTrackBar.Maximum = 100;
+			this.BrightnessTrackBar.Maximum = 255;
 			this.BrightnessTrackBar.Name = "BrightnessTrackBar";
 			this.BrightnessTrackBar.Size = new System.Drawing.Size(115, 21);
 			this.BrightnessTrackBar.SmallChange = 5;
 			this.BrightnessTrackBar.TabIndex = 76;
-			this.BrightnessTrackBar.TickFrequency = 5;
+			this.BrightnessTrackBar.TickFrequency = 16;
 			// 
 			// FlippedModeCheckBox
 			// 

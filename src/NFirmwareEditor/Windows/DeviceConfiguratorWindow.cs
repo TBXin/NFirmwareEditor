@@ -135,7 +135,7 @@ namespace NFirmwareEditor.Windows
 			};
 
 			PortComboBox.SelectedIndex = 0;
-			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
+			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
 			DownloadButton.Click += DownloadButton_Click;
 			UploadButton.Click += UploadButton_Click;
@@ -400,10 +400,10 @@ namespace NFirmwareEditor.Windows
 
 			// General -> Stats Tab
 			PuffsUpDown.Value = Math.Max(0, Math.Min(dataflash.InfoBlock.PuffCount, 99999));
-			PuffsTimeUpDown.Value = Math.Max(0, Math.Min(dataflash.InfoBlock.TimeCount, 99999));
+			PuffsTimeUpDown.Value = Math.Max(0, Math.Min(dataflash.InfoBlock.TimeCount / 10m, 99999));
 
 			// Screen -> Display Tab
-			BrightnessTrackBar.Value = (int)(dataflash.ParamsBlock.Contrast * 100f / 255);
+			BrightnessTrackBar.Value = dataflash.ParamsBlock.Contrast;
 			IdleTimeUpDow.Value = dataflash.ParamsBlock.ScreenDimTimeout;
 			StealthModeCheckBox.Checked = dataflash.ParamsBlock.StealthOn;
 			FlippedModeCheckBox.Checked = dataflash.ParamsBlock.Status.Flipped;
@@ -487,10 +487,10 @@ namespace NFirmwareEditor.Windows
 
 			// General -> Stats Tab
 			dataflash.InfoBlock.PuffCount = (uint)PuffsUpDown.Value;
-			dataflash.InfoBlock.TimeCount = (uint)PuffsTimeUpDown.Value;
+			dataflash.InfoBlock.TimeCount = (uint)PuffsTimeUpDown.Value * 10;
 
 			// Screen -> Display Tab
-			dataflash.ParamsBlock.Contrast = (byte)(BrightnessTrackBar.Value * 255f / 100);
+			dataflash.ParamsBlock.Contrast = (byte)BrightnessTrackBar.Value;
 			dataflash.ParamsBlock.ScreenDimTimeout = (byte)IdleTimeUpDow.Value;
 			dataflash.ParamsBlock.StealthOn = StealthModeCheckBox.Checked;
 			dataflash.ParamsBlock.Status.Flipped = FlippedModeCheckBox.Checked;
