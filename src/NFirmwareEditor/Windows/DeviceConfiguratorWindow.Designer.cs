@@ -33,6 +33,9 @@
 			this.WelcomePage = new NFirmwareEditor.UI.MultiPanelPage();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
 			this.WorkspacePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
+			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
 			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.label48 = new System.Windows.Forms.Label();
@@ -171,6 +174,7 @@
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
+			this.MainStatusBar.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
@@ -219,7 +223,7 @@
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
 			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 461);
+			this.MainContainer.Size = new System.Drawing.Size(374, 477);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -230,7 +234,7 @@
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
 			this.WelcomePage.Name = "WelcomePage";
-			this.WelcomePage.Size = new System.Drawing.Size(825, 599);
+			this.WelcomePage.Size = new System.Drawing.Size(374, 477);
 			this.WelcomePage.TabIndex = 0;
 			this.WelcomePage.Text = "WelcomePage";
 			// 
@@ -241,13 +245,14 @@
 			this.WelcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.WelcomeLabel.Location = new System.Drawing.Point(0, 0);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(825, 599);
+			this.WelcomeLabel.Size = new System.Drawing.Size(374, 477);
 			this.WelcomeLabel.TabIndex = 0;
 			this.WelcomeLabel.Text = "Waiting for device...";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// WorkspacePage
 			// 
+			this.WorkspacePage.Controls.Add(this.MainStatusBar);
 			this.WorkspacePage.Controls.Add(this.groupPanel1);
 			this.WorkspacePage.Controls.Add(this.ResetButton);
 			this.WorkspacePage.Controls.Add(this.UploadButton);
@@ -257,9 +262,37 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 461);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 477);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "WorkspacePage";
+			// 
+			// MainStatusBar
+			// 
+			this.MainStatusBar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MainStatusBar.GripMargin = new System.Windows.Forms.Padding(0);
+			this.MainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusLabel,
+            this.ProgressLabel});
+			this.MainStatusBar.Location = new System.Drawing.Point(0, 455);
+			this.MainStatusBar.Name = "MainStatusBar";
+			this.MainStatusBar.Size = new System.Drawing.Size(374, 22);
+			this.MainStatusBar.SizingGrip = false;
+			this.MainStatusBar.TabIndex = 35;
+			this.MainStatusBar.Text = "statusStrip1";
+			// 
+			// StatusLabel
+			// 
+			this.StatusLabel.Name = "StatusLabel";
+			this.StatusLabel.Size = new System.Drawing.Size(321, 17);
+			this.StatusLabel.Spring = true;
+			this.StatusLabel.Text = "StatusLabel";
+			this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// ProgressLabel
+			// 
+			this.ProgressLabel.Name = "ProgressLabel";
+			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
+			this.ProgressLabel.Text = "Ready";
 			// 
 			// groupPanel1
 			// 
@@ -1932,7 +1965,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(374, 461);
+			this.ClientSize = new System.Drawing.Size(374, 477);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1943,6 +1976,9 @@
 			this.MainContainer.ResumeLayout(false);
 			this.WelcomePage.ResumeLayout(false);
 			this.WorkspacePage.ResumeLayout(false);
+			this.WorkspacePage.PerformLayout();
+			this.MainStatusBar.ResumeLayout(false);
+			this.MainStatusBar.PerformLayout();
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			this.MainTabControl.ResumeLayout(false);
@@ -2137,5 +2173,8 @@
 		private System.Windows.Forms.Label label50;
 		private System.Windows.Forms.Label label51;
 		private System.Windows.Forms.Label label52;
+		private System.Windows.Forms.StatusStrip MainStatusBar;
+		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
+		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
 	}
 }

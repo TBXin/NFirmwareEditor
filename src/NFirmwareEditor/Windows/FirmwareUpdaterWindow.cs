@@ -6,27 +6,15 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows
 {
 	internal partial class FirmwareUpdaterWindow : Form
 	{
-		private class AsyncProcessWrapper
-		{
-			public AsyncProcessWrapper([NotNull] Action<BackgroundWorker> processor)
-			{
-				if (processor == null) throw new ArgumentNullException("processor");
-				Processor = processor;
-			}
-
-			[NotNull]
-			public Action<BackgroundWorker> Processor { get; private set; }
-		}
-
 		private readonly USBConnector m_connector = new USBConnector();
 		private readonly Firmware m_firmware;
 		private readonly FirmwareLoader m_loader;

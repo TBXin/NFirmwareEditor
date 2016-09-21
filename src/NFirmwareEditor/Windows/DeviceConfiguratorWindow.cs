@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
@@ -19,6 +20,7 @@ namespace NFirmwareEditor.Windows
 		private const int MinimumSupportedBuildNumber = 160920;
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
+		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly USBConnector m_usbConnector = new USBConnector();
 		private readonly COMConnector m_comConnector = new COMConnector();
 		private readonly DataflashManager m_manager = new DataflashManager();
@@ -40,8 +42,9 @@ namespace NFirmwareEditor.Windows
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
 			MainContainer.SelectedPage = WelcomePage;
-			MainTabControl.SelectedTab = DeveloperTabPage;
-			tabControl1.SelectedTab = TraceTabPage;
+			//MainContainer.SelectedPage = WorkspacePage;
+			/*MainTabControl.SelectedTab = DeveloperTabPage;
+			tabControl1.SelectedTab = TraceTabPage;*/
 
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
@@ -330,6 +333,10 @@ namespace NFirmwareEditor.Windows
 
 		private void Initialize()
 		{
+			m_worker.DoWork += Worker_DoWork;
+			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
+			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
+
 			m_usbConnector.DeviceConnected += DeviceConnected;
 			m_usbConnector.StartMonitoring();
 			m_comConnector.MessageReceived += COMMessage_Received;
@@ -346,8 +353,8 @@ namespace NFirmwareEditor.Windows
 			BootModeTextBox.Text = dataflash.ParamsBlock.BootMode.ToString();
 
 			// General -> Power & Temp Tab
-			PowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.Power / 10, 75));
-			TCPowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.TCPower / 10, 75));
+			PowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.Power / 10m, 75));
+			TCPowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.TCPower / 10m, 75));
 			Step1WCheckBox.Checked = dataflash.ParamsBlock.Status.Step1W;
 
 			TemperatureTypeComboBox.SelectItem(dataflash.ParamsBlock.IsCelsius);
@@ -531,17 +538,35 @@ namespace NFirmwareEditor.Windows
 			dataflash.InfoBlock.Second = (byte)DateTime.Now.Second;
 		}
 
-		private Dataflash ReadDataflash()
+		private Dataflash ReadDataflash(BackgroundWorker worker = null)
 		{
-			m_simple = m_usbConnector.ReadDataflash();
+			m_simple = m_usbConnector.ReadDataflash(worker);
 			return m_simple.Build < MinimumSupportedBuildNumber
 				? null
 				: m_manager.Read(m_simple.Data);
 		}
 
+		private void Worker_DoWork(object sender, DoWorkEventArgs e)
+		{
+			var worker = (BackgroundWorker)sender;
+			var wrapper = (AsyncProcessWrapper)e.Argument;
+
+			try
+			{
+				UpdateUI(() => SetControlButtonsState(false));
+				wrapper.Processor(worker);
+			}
+			finally
+			{
+				UpdateUI(() => SetControlButtonsState(true));
+			}
+		}
+
 		private void DeviceConnected(bool isConnected)
 		{
 			m_isDeviceConnected = isConnected;
+			UpdateUI(() => StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected"));
+
 			if (m_isDeviceWasConnectedOnce) return;
 
 			if (!isConnected)
@@ -595,59 +620,69 @@ namespace NFirmwareEditor.Windows
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			try
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
 			{
-				var dataflash = ReadDataflash();
-				if (dataflash == null)
+				try
 				{
-					InfoBox.Show("Something strange happened! Please restart application.");
-					return;
+					var dataflash = ReadDataflash(worker);
+					if (dataflash == null)
+					{
+						InfoBox.Show("Something strange happened! Please restart application.");
+						return;
+					}
+					m_dataflash = dataflash;
+					UpdateUI(() => InitializeWorkspaceFromDataflash(m_dataflash));
 				}
-				m_dataflash = dataflash;
-				InitializeWorkspaceFromDataflash(m_dataflash);
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex);
-				InfoBox.Show(GetErrorMessage("downloading settings"));
-			}
+				catch (Exception ex)
+				{
+					s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("downloading settings"));
+				}
+			}));
 		}
 
 		private void UploadButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			try
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
 			{
-				var dataflashCopy = new byte[m_simple.Data.Length];
-				Buffer.BlockCopy(m_simple.Data, 0, dataflashCopy, 0, m_simple.Data.Length);
+				try
+				{
+					var dataflashCopy = new byte[m_simple.Data.Length];
+					Buffer.BlockCopy(m_simple.Data, 0, dataflashCopy, 0, m_simple.Data.Length);
 
-				SaveWorkspaceToDataflash(m_dataflash);
-				m_manager.Write(m_dataflash, dataflashCopy);
-				m_usbConnector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy });
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex);
-				InfoBox.Show(GetErrorMessage("uploading settings"));
-			}
+					UpdateUI(() => SaveWorkspaceToDataflash(m_dataflash));
+
+					m_manager.Write(m_dataflash, dataflashCopy);
+					m_usbConnector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy }, worker);
+				}
+				catch (Exception ex)
+				{
+					s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("uploading settings"));
+				}
+			}));
 		}
 
 		private void ResetButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			try
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
 			{
-				m_usbConnector.ResetDataflash();
-				m_dataflash = ReadDataflash();
-				InitializeWorkspaceFromDataflash(m_dataflash);
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex);
-				InfoBox.Show(GetErrorMessage("resetting settings"));
-			}
+				try
+				{
+					m_usbConnector.ResetDataflash();
+					m_dataflash = ReadDataflash(worker);
+					UpdateUI(() => InitializeWorkspaceFromDataflash(m_dataflash));
+				}
+				catch (Exception ex)
+				{
+					s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("resetting settings"));
+				}
+			}));
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -717,6 +752,11 @@ namespace NFirmwareEditor.Windows
 			{
 				// Ignore
 			}
+		}
+
+		private void SetControlButtonsState(bool enabled)
+		{
+			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
 		}
 
 		private void AppendTrace(string message)

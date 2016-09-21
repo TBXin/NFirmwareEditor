@@ -80,6 +80,7 @@
     <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Managers\PatchManager.cs" />
     <Compile Include="Managers\UpdatesManager.cs" />
+    <Compile Include="Models\AsyncProcessWrapper.cs" />
     <Compile Include="Models\BulkPatchResult.cs" />
     <Compile Include="Models\ApplicationConfiguration.cs" />
     <Compile Include="Core\Consts.cs" />
