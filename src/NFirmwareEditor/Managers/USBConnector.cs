@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
 {
-	internal class FirmwareUpdater
+	internal class USBConnector
 	{
 		private static class Commands
 		{
@@ -74,7 +74,7 @@ namespace NFirmwareEditor.Managers
 
 		public static readonly DeviceInfo UnknownDevice = new DeviceInfo("Unknown device");
 
-		public FirmwareUpdater()
+		public USBConnector()
 		{
 			m_monitoringTimer = new Timer(state =>
 			{

@@ -73,7 +73,7 @@
     <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
     <Compile Include="Managers\DataflashManager.cs" />
-    <Compile Include="Managers\FirmwareUpdater.cs" />
+    <Compile Include="Managers\USBConnector.cs" />
     <Compile Include="Managers\GitHubApi.cs" />
     <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Managers\PatchManager.cs" />

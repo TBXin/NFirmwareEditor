@@ -27,12 +27,12 @@ namespace NFirmwareEditor.Windows
 			public Action<BackgroundWorker> Processor { get; private set; }
 		}
 
-		private readonly FirmwareUpdater m_updater = new FirmwareUpdater();
+		private readonly USBConnector m_connector = new USBConnector();
 		private readonly Firmware m_firmware;
 		private readonly FirmwareLoader m_loader;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
-		private DeviceInfo m_deviceInfo = FirmwareUpdater.UnknownDevice;
+		private DeviceInfo m_deviceInfo = USBConnector.UnknownDevice;
 		private string m_connectedDeviceProductId;
 		private string m_hardwareVersion;
 		private string m_firmwareVersion;
@@ -58,7 +58,7 @@ namespace NFirmwareEditor.Windows
 
 				try
 				{
-					simpleDataflash = m_updater.ReadDataflash();
+					simpleDataflash = m_connector.ReadDataflash();
 				}
 				catch
 				{
@@ -66,7 +66,7 @@ namespace NFirmwareEditor.Windows
 				}
 
 				m_connectedDeviceProductId = simpleDataflash.ProductId;
-				m_deviceInfo = FirmwareUpdater.GetDeviceInfo(m_connectedDeviceProductId);
+				m_deviceInfo = USBConnector.GetDeviceInfo(m_connectedDeviceProductId);
 				m_hardwareVersion = simpleDataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 				m_firmwareVersion = simpleDataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
 
@@ -108,9 +108,9 @@ namespace NFirmwareEditor.Windows
 			FirmwareVersionTextBox.ReadOnly = true;
 			BootModeTextBox.ReadOnly = true;
 
-			m_updater.DeviceConnected += DeviceConnected;
-			m_updater.StartMonitoring();
-			Closing += (s, e) => m_updater.StopMonitoring();
+			m_connector.DeviceConnected += DeviceConnected;
+			m_connector.StartMonitoring();
+			Closing += (s, e) => m_connector.StopMonitoring();
 
 			LogoButton.Click += LogoButton_Click;
 			UpdateButton.Click += UpdateButton_Click;
@@ -146,18 +146,18 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
-				var dataflash = m_updater.ReadDataflash(worker);
+				var dataflash = m_connector.ReadDataflash(worker);
 				if (dataflash.LoadFromLdrom == false && dataflash.FirmwareVersion > 0)
 				{
 					dataflash.LoadFromLdrom = true;
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
-					m_updater.WriteDataflash(dataflash, worker);
-					m_updater.RestartDevice();
+					m_connector.WriteDataflash(dataflash, worker);
+					m_connector.RestartDevice();
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
 					Thread.Sleep(2000);
 				}
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
-				m_updater.WriteFirmware(firmware, worker);
+				m_connector.WriteFirmware(firmware, worker);
 
 				UpdateUI(() =>
 				{
@@ -186,18 +186,18 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
-				var dataflash = m_updater.ReadDataflash(worker);
+				var dataflash = m_connector.ReadDataflash(worker);
 				if (dataflash.LoadFromLdrom == false && dataflash.FirmwareVersion > 0)
 				{
 					dataflash.LoadFromLdrom = true;
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
-					m_updater.WriteDataflash(dataflash, worker);
-					m_updater.RestartDevice();
+					m_connector.WriteDataflash(dataflash, worker);
+					m_connector.RestartDevice();
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
 					Thread.Sleep(2000);
 				}
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading logo...");
-				m_updater.WriteLogo(block1ImageBytes, block2ImageBytes, worker);
+				m_connector.WriteLogo(block1ImageBytes, block2ImageBytes, worker);
 
 				UpdateUI(() =>
 				{
@@ -218,7 +218,7 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
-				var dataflash = m_updater.ReadDataflash(worker);
+				var dataflash = m_connector.ReadDataflash(worker);
 				File.WriteAllBytes(fileName, dataflash.Data);
 				UpdateUI(() => UpdateStatusLabel.Text = @"Dataflash was successfully read and saved to the file.");
 			}
@@ -233,7 +233,7 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
-				m_updater.WriteDataflash(simpleDataflash, worker);
+				m_connector.WriteDataflash(simpleDataflash, worker);
 				UpdateUI(() =>
 				{
 					UpdateStatusLabel.Text = @"Dataflash was successfully written.";
@@ -333,7 +333,7 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				m_updater.ResetDataflash();
+				m_connector.ResetDataflash();
 				UpdateStatusLabel.Text = @"Dataflash has been reseted.";
 			}
 			catch (Exception ex)
@@ -402,13 +402,13 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => SetAllButtonsState(false));
-				m_updater.StopMonitoring();
+				m_connector.StopMonitoring();
 				wrapper.Processor(worker);
 			}
 			finally
 			{
 				UpdateUI(() => SetAllButtonsState(true));
-				m_updater.StartMonitoring();
+				m_connector.StartMonitoring();
 			}
 		}
 	}

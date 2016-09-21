@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -19,7 +20,7 @@ namespace NFirmwareEditor.Windows
 		private const int MinimumSupportedBuildNumber = 160920;
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
-		private readonly FirmwareUpdater m_updater = new FirmwareUpdater();
+		private readonly USBConnector m_connector = new USBConnector();
 		private readonly DataflashManager m_manager = new DataflashManager();
 		private SimpleDataflash m_simple;
 		private Dataflash m_dataflash;
@@ -160,7 +161,7 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				var data = m_updater.Screenshot();
+				var data = m_connector.Screenshot();
 				if (data == null || data.All(x => x == 0x00))
 				{
 					throw new InvalidOperationException("Invalid screenshot data!");
@@ -310,15 +311,15 @@ namespace NFirmwareEditor.Windows
 
 		private void Initialize()
 		{
-			m_updater.DeviceConnected += DeviceConnected;
-			m_updater.StartMonitoring();
+			m_connector.DeviceConnected += DeviceConnected;
+			m_connector.StartMonitoring();
 		}
 
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
 		{
 			if (dataflash == null) throw new ArgumentNullException("dataflash");
 
-			DeviceNameLabel.Text = FirmwareUpdater.GetDeviceInfo(dataflash.InfoBlock.ProductID).Name;
+			DeviceNameLabel.Text = USBConnector.GetDeviceInfo(dataflash.InfoBlock.ProductID).Name;
 			FirmwareVersionTextBox.Text = (dataflash.InfoBlock.FWVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 			BuildTextBox.Text = m_simple.Build.ToString();
 			HardwareVersionTextBox.Text = (dataflash.ParamsBlock.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
@@ -504,7 +505,7 @@ namespace NFirmwareEditor.Windows
 
 		private Dataflash ReadDataflash()
 		{
-			m_simple = m_updater.ReadDataflash();
+			m_simple = m_connector.ReadDataflash();
 			return m_simple.Build < MinimumSupportedBuildNumber
 				? null
 				: m_manager.Read(m_simple.Data);
@@ -590,7 +591,7 @@ namespace NFirmwareEditor.Windows
 
 				SaveWorkspaceToDataflash(m_dataflash);
 				m_manager.Write(m_dataflash, dataflashCopy);
-				m_updater.WriteDataflash(new SimpleDataflash { Data = dataflashCopy });
+				m_connector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy });
 			}
 			catch (Exception ex)
 			{
@@ -605,7 +606,7 @@ namespace NFirmwareEditor.Windows
 
 			try
 			{
-				m_updater.ResetDataflash();
+				m_connector.ResetDataflash();
 				m_dataflash = ReadDataflash();
 				InitializeWorkspaceFromDataflash(m_dataflash);
 			}
