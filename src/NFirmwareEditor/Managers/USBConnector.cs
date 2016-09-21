@@ -12,6 +12,12 @@ namespace NFirmwareEditor.Managers
 {
 	internal class USBConnector
 	{
+		private const int VendorId = 0x0416;
+		private const int ProductId = 0x5020;
+		private const int DataflashLength = 2048;
+		private const int LogoOffset = 102400;
+		private const int LogoLength = 1024;
+
 		private static class Commands
 		{
 			public const byte ReadDataflash = 0x35;
@@ -23,12 +29,6 @@ namespace NFirmwareEditor.Managers
 
 			public const byte Screenshot = 0xC1;
 		}
-
-		private const int VendorId = 0x0416;
-		private const int ProductId = 0x5020;
-		private const int DataflashLength = 2048;
-		private const int LogoOffset = 102400;
-		private const int LogoLength = 1024;
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
