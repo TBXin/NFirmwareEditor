@@ -146,13 +146,21 @@
 			this.label41 = new System.Windows.Forms.Label();
 			this.label40 = new System.Windows.Forms.Label();
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.ScreenshotTabPage = new System.Windows.Forms.TabPage();
+			this.ScreenshotContainerPanel = new System.Windows.Forms.Panel();
+			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
+			this.TakeScreenshotButton = new System.Windows.Forms.Button();
 			this.label47 = new System.Windows.Forms.Label();
+			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label46 = new System.Windows.Forms.Label();
-			this.SaveScreenshotButton = new System.Windows.Forms.Button();
-			this.TakeScreenshotButton = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
+			this.TraceTabPage = new System.Windows.Forms.TabPage();
+			this.TraceTextBox = new System.Windows.Forms.TextBox();
+			this.ComDisconnectButton = new System.Windows.Forms.Button();
+			this.ComConnectButton = new System.Windows.Forms.Button();
+			this.PortComboBox = new System.Windows.Forms.ComboBox();
+			this.label49 = new System.Windows.Forms.Label();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
@@ -185,9 +193,12 @@
 			this.LayoutTabPage.SuspendLayout();
 			this.ScreensaverTabPage.SuspendLayout();
 			this.DeveloperTabPage.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
-			this.panel1.SuspendLayout();
+			this.tabControl1.SuspendLayout();
+			this.ScreenshotTabPage.SuspendLayout();
+			this.ScreenshotContainerPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
+			this.TraceTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -199,7 +210,7 @@
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
 			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 457);
+			this.MainContainer.Size = new System.Drawing.Size(374, 461);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -237,7 +248,7 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 457);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 461);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "WorkspacePage";
 			// 
@@ -397,7 +408,7 @@
 			this.MainTabControl.Location = new System.Drawing.Point(11, 159);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
-			this.MainTabControl.Size = new System.Drawing.Size(354, 288);
+			this.MainTabControl.Size = new System.Drawing.Size(354, 292);
 			this.MainTabControl.TabIndex = 0;
 			// 
 			// GeneralTabPage
@@ -406,7 +417,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(346, 262);
+			this.GeneralTabPage.Size = new System.Drawing.Size(346, 266);
 			this.GeneralTabPage.TabIndex = 0;
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -423,7 +434,7 @@
 			this.tabControl2.Location = new System.Drawing.Point(6, 6);
 			this.tabControl2.Name = "tabControl2";
 			this.tabControl2.SelectedIndex = 0;
-			this.tabControl2.Size = new System.Drawing.Size(336, 251);
+			this.tabControl2.Size = new System.Drawing.Size(336, 254);
 			this.tabControl2.TabIndex = 0;
 			// 
 			// PowerTabPage
@@ -448,7 +459,7 @@
 			this.PowerTabPage.Location = new System.Drawing.Point(4, 22);
 			this.PowerTabPage.Name = "PowerTabPage";
 			this.PowerTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.PowerTabPage.Size = new System.Drawing.Size(328, 225);
+			this.PowerTabPage.Size = new System.Drawing.Size(328, 228);
 			this.PowerTabPage.TabIndex = 0;
 			this.PowerTabPage.Text = "Power & Temp";
 			this.PowerTabPage.UseVisualStyleBackColor = true;
@@ -710,7 +721,7 @@
 			this.CoilsManagerTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CoilsManagerTabPage.Name = "CoilsManagerTabPage";
 			this.CoilsManagerTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.CoilsManagerTabPage.Size = new System.Drawing.Size(328, 225);
+			this.CoilsManagerTabPage.Size = new System.Drawing.Size(388, 228);
 			this.CoilsManagerTabPage.TabIndex = 1;
 			this.CoilsManagerTabPage.Text = "Coils Manager";
 			this.CoilsManagerTabPage.UseVisualStyleBackColor = true;
@@ -1052,7 +1063,7 @@
 			this.ModesTabPage.Controls.Add(this.TCRModeCheckBox);
 			this.ModesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ModesTabPage.Name = "ModesTabPage";
-			this.ModesTabPage.Size = new System.Drawing.Size(328, 225);
+			this.ModesTabPage.Size = new System.Drawing.Size(388, 228);
 			this.ModesTabPage.TabIndex = 2;
 			this.ModesTabPage.Text = "Modes";
 			this.ModesTabPage.UseVisualStyleBackColor = true;
@@ -1245,7 +1256,7 @@
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ControlsTabPage.Name = "ControlsTabPage";
-			this.ControlsTabPage.Size = new System.Drawing.Size(328, 225);
+			this.ControlsTabPage.Size = new System.Drawing.Size(388, 228);
 			this.ControlsTabPage.TabIndex = 3;
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
@@ -1338,7 +1349,7 @@
 			this.ScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreenTabPage.Name = "ScreenTabPage";
 			this.ScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ScreenTabPage.Size = new System.Drawing.Size(346, 262);
+			this.ScreenTabPage.Size = new System.Drawing.Size(346, 266);
 			this.ScreenTabPage.TabIndex = 1;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
@@ -1354,7 +1365,7 @@
 			this.tabControl3.Location = new System.Drawing.Point(6, 6);
 			this.tabControl3.Name = "tabControl3";
 			this.tabControl3.SelectedIndex = 0;
-			this.tabControl3.Size = new System.Drawing.Size(336, 250);
+			this.tabControl3.Size = new System.Drawing.Size(336, 254);
 			this.tabControl3.TabIndex = 1;
 			// 
 			// DisplayTabPage
@@ -1371,7 +1382,7 @@
 			this.DisplayTabPage.Controls.Add(this.FlippedModeCheckBox);
 			this.DisplayTabPage.Location = new System.Drawing.Point(4, 22);
 			this.DisplayTabPage.Name = "DisplayTabPage";
-			this.DisplayTabPage.Size = new System.Drawing.Size(328, 224);
+			this.DisplayTabPage.Size = new System.Drawing.Size(328, 228);
 			this.DisplayTabPage.TabIndex = 2;
 			this.DisplayTabPage.Text = "Display";
 			this.DisplayTabPage.UseVisualStyleBackColor = true;
@@ -1498,7 +1509,7 @@
 			this.LayoutTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
-			this.LayoutTabPage.Size = new System.Drawing.Size(328, 224);
+			this.LayoutTabPage.Size = new System.Drawing.Size(388, 228);
 			this.LayoutTabPage.TabIndex = 3;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
@@ -1593,7 +1604,7 @@
 			this.ScreensaverTabPage.Controls.Add(this.label40);
 			this.ScreensaverTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreensaverTabPage.Name = "ScreensaverTabPage";
-			this.ScreensaverTabPage.Size = new System.Drawing.Size(328, 224);
+			this.ScreensaverTabPage.Size = new System.Drawing.Size(388, 228);
 			this.ScreensaverTabPage.TabIndex = 4;
 			this.ScreensaverTabPage.Text = "Screensaver";
 			this.ScreensaverTabPage.UseVisualStyleBackColor = true;
@@ -1644,32 +1655,97 @@
 			// 
 			// DeveloperTabPage
 			// 
-			this.DeveloperTabPage.Controls.Add(this.label47);
-			this.DeveloperTabPage.Controls.Add(this.PixelSizeUpDown);
-			this.DeveloperTabPage.Controls.Add(this.label46);
-			this.DeveloperTabPage.Controls.Add(this.SaveScreenshotButton);
-			this.DeveloperTabPage.Controls.Add(this.TakeScreenshotButton);
-			this.DeveloperTabPage.Controls.Add(this.panel1);
+			this.DeveloperTabPage.Controls.Add(this.tabControl1);
 			this.DeveloperTabPage.Location = new System.Drawing.Point(4, 22);
 			this.DeveloperTabPage.Name = "DeveloperTabPage";
 			this.DeveloperTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.DeveloperTabPage.Size = new System.Drawing.Size(346, 262);
+			this.DeveloperTabPage.Size = new System.Drawing.Size(346, 266);
 			this.DeveloperTabPage.TabIndex = 2;
 			this.DeveloperTabPage.Text = "Developer";
 			this.DeveloperTabPage.UseVisualStyleBackColor = true;
 			// 
+			// tabControl1
+			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Controls.Add(this.ScreenshotTabPage);
+			this.tabControl1.Controls.Add(this.TraceTabPage);
+			this.tabControl1.Location = new System.Drawing.Point(6, 6);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(336, 254);
+			this.tabControl1.TabIndex = 40;
+			// 
+			// ScreenshotTabPage
+			// 
+			this.ScreenshotTabPage.Controls.Add(this.ScreenshotContainerPanel);
+			this.ScreenshotTabPage.Controls.Add(this.TakeScreenshotButton);
+			this.ScreenshotTabPage.Controls.Add(this.label47);
+			this.ScreenshotTabPage.Controls.Add(this.SaveScreenshotButton);
+			this.ScreenshotTabPage.Controls.Add(this.PixelSizeUpDown);
+			this.ScreenshotTabPage.Controls.Add(this.label46);
+			this.ScreenshotTabPage.Location = new System.Drawing.Point(4, 22);
+			this.ScreenshotTabPage.Name = "ScreenshotTabPage";
+			this.ScreenshotTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.ScreenshotTabPage.Size = new System.Drawing.Size(328, 228);
+			this.ScreenshotTabPage.TabIndex = 0;
+			this.ScreenshotTabPage.Text = "Screenshot";
+			this.ScreenshotTabPage.UseVisualStyleBackColor = true;
+			// 
+			// ScreenshotContainerPanel
+			// 
+			this.ScreenshotContainerPanel.BackColor = System.Drawing.Color.Black;
+			this.ScreenshotContainerPanel.Controls.Add(this.ScreenshotPictureBox);
+			this.ScreenshotContainerPanel.Location = new System.Drawing.Point(6, 6);
+			this.ScreenshotContainerPanel.Name = "ScreenshotContainerPanel";
+			this.ScreenshotContainerPanel.Size = new System.Drawing.Size(68, 132);
+			this.ScreenshotContainerPanel.TabIndex = 1;
+			// 
+			// ScreenshotPictureBox
+			// 
+			this.ScreenshotPictureBox.Location = new System.Drawing.Point(2, 2);
+			this.ScreenshotPictureBox.Name = "ScreenshotPictureBox";
+			this.ScreenshotPictureBox.Size = new System.Drawing.Size(64, 128);
+			this.ScreenshotPictureBox.TabIndex = 0;
+			this.ScreenshotPictureBox.TabStop = false;
+			// 
+			// TakeScreenshotButton
+			// 
+			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(190, 6);
+			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
+			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.TakeScreenshotButton.TabIndex = 35;
+			this.TakeScreenshotButton.Text = "Take screenshot";
+			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			// 
 			// label47
 			// 
 			this.label47.AutoSize = true;
-			this.label47.Location = new System.Drawing.Point(4, 11);
+			this.label47.Location = new System.Drawing.Point(80, 11);
 			this.label47.Name = "label47";
 			this.label47.Size = new System.Drawing.Size(85, 13);
 			this.label47.TabIndex = 39;
 			this.label47.Text = "Screen preview:";
 			// 
+			// SaveScreenshotButton
+			// 
+			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
+			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(190, 114);
+			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
+			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.SaveScreenshotButton.TabIndex = 36;
+			this.SaveScreenshotButton.Text = "Save screenshot";
+			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
+			// 
 			// PixelSizeUpDown
 			// 
-			this.PixelSizeUpDown.Location = new System.Drawing.Point(123, 176);
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(243, 87);
 			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
             8,
             0,
@@ -1692,52 +1768,82 @@
 			// label46
 			// 
 			this.label46.AutoSize = true;
-			this.label46.Location = new System.Drawing.Point(4, 179);
+			this.label46.Location = new System.Drawing.Point(80, 89);
 			this.label46.Name = "label46";
 			this.label46.Size = new System.Drawing.Size(99, 13);
 			this.label46.TabIndex = 38;
 			this.label46.Text = "Pixel size multiplier:";
 			// 
-			// SaveScreenshotButton
+			// TraceTabPage
 			// 
-			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
-			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(123, 203);
-			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
-			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.SaveScreenshotButton.TabIndex = 36;
-			this.SaveScreenshotButton.Text = "Save screenshot";
-			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
+			this.TraceTabPage.Controls.Add(this.TraceTextBox);
+			this.TraceTabPage.Controls.Add(this.ComDisconnectButton);
+			this.TraceTabPage.Controls.Add(this.ComConnectButton);
+			this.TraceTabPage.Controls.Add(this.PortComboBox);
+			this.TraceTabPage.Controls.Add(this.label49);
+			this.TraceTabPage.Location = new System.Drawing.Point(4, 22);
+			this.TraceTabPage.Name = "TraceTabPage";
+			this.TraceTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.TraceTabPage.Size = new System.Drawing.Size(328, 228);
+			this.TraceTabPage.TabIndex = 1;
+			this.TraceTabPage.Text = "Trace";
+			this.TraceTabPage.UseVisualStyleBackColor = true;
 			// 
-			// TakeScreenshotButton
+			// TraceTextBox
 			// 
-			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(123, 145);
-			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
-			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.TakeScreenshotButton.TabIndex = 35;
-			this.TakeScreenshotButton.Text = "Take screenshot";
-			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			this.TraceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.TraceTextBox.Font = new System.Drawing.Font("Courier New", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.TraceTextBox.Location = new System.Drawing.Point(4, 35);
+			this.TraceTextBox.Multiline = true;
+			this.TraceTextBox.Name = "TraceTextBox";
+			this.TraceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.TraceTextBox.Size = new System.Drawing.Size(320, 187);
+			this.TraceTextBox.TabIndex = 83;
 			// 
-			// panel1
+			// ComDisconnectButton
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Black;
-			this.panel1.Controls.Add(this.ScreenshotPictureBox);
-			this.panel1.Location = new System.Drawing.Point(123, 9);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(68, 132);
-			this.panel1.TabIndex = 1;
+			this.ComDisconnectButton.Enabled = false;
+			this.ComDisconnectButton.Image = global::NFirmwareEditor.Properties.Resources.disconnect;
+			this.ComDisconnectButton.Location = new System.Drawing.Point(266, 6);
+			this.ComDisconnectButton.Name = "ComDisconnectButton";
+			this.ComDisconnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComDisconnectButton.TabIndex = 82;
+			this.ComDisconnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComDisconnectButton.UseVisualStyleBackColor = true;
 			// 
-			// ScreenshotPictureBox
+			// ComConnectButton
 			// 
-			this.ScreenshotPictureBox.Location = new System.Drawing.Point(2, 2);
-			this.ScreenshotPictureBox.Name = "ScreenshotPictureBox";
-			this.ScreenshotPictureBox.Size = new System.Drawing.Size(64, 128);
-			this.ScreenshotPictureBox.TabIndex = 0;
-			this.ScreenshotPictureBox.TabStop = false;
+			this.ComConnectButton.Image = global::NFirmwareEditor.Properties.Resources.connect;
+			this.ComConnectButton.Location = new System.Drawing.Point(209, 6);
+			this.ComConnectButton.Name = "ComConnectButton";
+			this.ComConnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComConnectButton.TabIndex = 81;
+			this.ComConnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComConnectButton.UseVisualStyleBackColor = true;
+			// 
+			// PortComboBox
+			// 
+			this.PortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.PortComboBox.FormattingEnabled = true;
+			this.PortComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.PortComboBox.Location = new System.Drawing.Point(101, 8);
+			this.PortComboBox.Name = "PortComboBox";
+			this.PortComboBox.Size = new System.Drawing.Size(106, 21);
+			this.PortComboBox.TabIndex = 80;
+			// 
+			// label49
+			// 
+			this.label49.AutoSize = true;
+			this.label49.Location = new System.Drawing.Point(4, 11);
+			this.label49.Name = "label49";
+			this.label49.Size = new System.Drawing.Size(63, 13);
+			this.label49.TabIndex = 54;
+			this.label49.Text = "VCOM Port:";
 			// 
 			// MainErrorProvider
 			// 
@@ -1748,7 +1854,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(374, 457);
+			this.ClientSize = new System.Drawing.Size(374, 461);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1795,10 +1901,14 @@
 			this.ScreensaverTabPage.ResumeLayout(false);
 			this.ScreensaverTabPage.PerformLayout();
 			this.DeveloperTabPage.ResumeLayout(false);
-			this.DeveloperTabPage.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
-			this.panel1.ResumeLayout(false);
+			this.tabControl1.ResumeLayout(false);
+			this.ScreenshotTabPage.ResumeLayout(false);
+			this.ScreenshotTabPage.PerformLayout();
+			this.ScreenshotContainerPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
+			this.TraceTabPage.ResumeLayout(false);
+			this.TraceTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
@@ -1922,14 +2032,22 @@
 		private System.Windows.Forms.ComboBox Clicks3ComboBox;
 		private System.Windows.Forms.Label label45;
 		private System.Windows.Forms.ComboBox ThirdLineContentComboBox;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel ScreenshotContainerPanel;
 		private System.Windows.Forms.PictureBox ScreenshotPictureBox;
-		private System.Windows.Forms.Button TakeScreenshotButton;
 		private System.Windows.Forms.Button SaveScreenshotButton;
 		private System.Windows.Forms.Label label46;
 		private System.Windows.Forms.NumericUpDown PixelSizeUpDown;
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.TextBox BuildTextBox;
 		private System.Windows.Forms.Label label48;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage ScreenshotTabPage;
+		private System.Windows.Forms.TabPage TraceTabPage;
+		private System.Windows.Forms.Button TakeScreenshotButton;
+		private System.Windows.Forms.Label label49;
+		private System.Windows.Forms.ComboBox PortComboBox;
+		private System.Windows.Forms.Button ComConnectButton;
+		private System.Windows.Forms.Button ComDisconnectButton;
+		private System.Windows.Forms.TextBox TraceTextBox;
 	}
 }

@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
-using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -20,7 +19,8 @@ namespace NFirmwareEditor.Windows
 		private const int MinimumSupportedBuildNumber = 160920;
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
-		private readonly USBConnector m_connector = new USBConnector();
+		private readonly USBConnector m_usbConnector = new USBConnector();
+		private readonly COMConnector m_comConnector = new COMConnector();
 		private readonly DataflashManager m_manager = new DataflashManager();
 		private SimpleDataflash m_simple;
 		private Dataflash m_dataflash;
@@ -40,6 +40,8 @@ namespace NFirmwareEditor.Windows
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
 			MainContainer.SelectedPage = WelcomePage;
+			MainTabControl.SelectedTab = DeveloperTabPage;
+			tabControl1.SelectedTab = TraceTabPage;
 
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
@@ -52,6 +54,9 @@ namespace NFirmwareEditor.Windows
 
 			BootModeTextBox.ReadOnly = true;
 			BootModeTextBox.BackColor = Color.White;
+
+			TraceTextBox.ReadOnly = true;
+			TraceTextBox.BackColor = Color.White;
 
 			InititalizeComboBoxes();
 
@@ -126,6 +131,7 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 
+			PortComboBox.SelectedIndex = 0;
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = BrightnessTrackBar.Value + @"%";
 
 			DownloadButton.Click += DownloadButton_Click;
@@ -134,62 +140,9 @@ namespace NFirmwareEditor.Windows
 
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
-		}
 
-		private bool ValidateConnectionStatus()
-		{
-			while (!m_isDeviceConnected)
-			{
-				var result = InfoBox.Show
-				(
-					"No compatible USB devices are connected." +
-					"\n\n" +
-					"To continue, please connect one." +
-					"\n\n" +
-					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-					MessageBoxButtons.OKCancel
-				);
-				if (result == DialogResult.Cancel)
-				{
-					return false;
-				}
-			}
-			return true;
-		}
-
-		private Image TakeScreenshot()
-		{
-			try
-			{
-				var data = m_connector.Screenshot();
-				if (data == null || data.All(x => x == 0x00))
-				{
-					throw new InvalidOperationException("Invalid screenshot data!");
-				}
-				return BitmapProcessor.CreateBitmapFromBytesArray(64, 128, data);
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex);
-				InfoBox.Show
-				(
-					"An error occurred during taking screenshot..." +
-					"\n\n" +
-					"To continue, please activate or reconnect your device."
-				);
-				return null;
-			}
-		}
-
-		private void ShowScreenshot([NotNull] Image screenshot)
-		{
-			if (screenshot == null) throw new ArgumentNullException("screenshot");
-			if (ScreenshotPictureBox.Image != null)
-			{
-				ScreenshotPictureBox.Image.Dispose();
-				ScreenshotPictureBox.Image = null;
-			}
-			ScreenshotPictureBox.Image = screenshot;
+			ComConnectButton.Click += ComConnectButton_Click;
+			ComDisconnectButton.Click += ComDisconnectButton_Click;
 		}
 
 		private void InititalizeComboBoxes()
@@ -197,27 +150,27 @@ namespace NFirmwareEditor.Windows
 			SelectedModeComboBox.Items.Clear();
 			SelectedModeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
-			    new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
-			    new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
-			    new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
-			    new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
-			    new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
-			    new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
+				new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
+				new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
+				new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
+				new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
+				new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
+				new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
+				new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
 			});
 
 			TemperatureTypeComboBox.Items.Clear();
 			TemperatureTypeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<bool>("°F", false),
-			    new NamedItemContainer<bool>("°C", true)
+				new NamedItemContainer<bool>("°F", false),
+				new NamedItemContainer<bool>("°C", true)
 			});
 
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<bool>("%", true),
-			    new NamedItemContainer<bool>("W", false)
+				new NamedItemContainer<bool>("%", true),
+				new NamedItemContainer<bool>("W", false)
 			});
 
 			var clicks = new object[]
@@ -263,23 +216,89 @@ namespace NFirmwareEditor.Windows
 			ScreensaverTypeComboBox.Items.Clear();
 			ScreensaverTypeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<ScreensaverType>("None", ScreensaverType.None),
-			    new NamedItemContainer<ScreensaverType>("Clock", ScreensaverType.Clock),
-			    new NamedItemContainer<ScreensaverType>("Cube", ScreensaverType.Cube)
+				new NamedItemContainer<ScreensaverType>("None", ScreensaverType.None),
+				new NamedItemContainer<ScreensaverType>("Clock", ScreensaverType.Clock),
+				new NamedItemContainer<ScreensaverType>("Cube", ScreensaverType.Cube)
 			});
 
 			ScreenProtectionTimeComboBox.Items.Clear();
 			ScreenProtectionTimeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
-			    new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
-			    new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
-			    new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
-			    new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
-			    new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
-			    new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
-			    new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
+				new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
+				new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
+				new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
+				new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
+				new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
+				new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
+				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
+				new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
 			});
+
+			PortComboBox.Items.Clear();
+			var ports = new object[9];
+			ports[0] = new NamedItemContainer<string>("Auto", null);
+			for (var i = 1; i < ports.Length; i++)
+			{
+				var portName = "COM" + i;
+				ports[i] = new NamedItemContainer<string>(portName, portName);
+			}
+			PortComboBox.Items.AddRange(ports);
+		}
+
+		private bool ValidateConnectionStatus()
+		{
+			while (!m_isDeviceConnected)
+			{
+				var result = InfoBox.Show
+				(
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
+					MessageBoxButtons.OKCancel
+				);
+				if (result == DialogResult.Cancel)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		private Image TakeScreenshot()
+		{
+			try
+			{
+				var data = m_usbConnector.Screenshot();
+				if (data == null || data.All(x => x == 0x00))
+				{
+					throw new InvalidOperationException("Invalid screenshot data!");
+				}
+				return BitmapProcessor.CreateBitmapFromBytesArray(64, 128, data);
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+				InfoBox.Show
+				(
+					"An error occurred during taking screenshot..." +
+					"\n\n" +
+					"To continue, please activate or reconnect your device."
+				);
+				return null;
+			}
+		}
+
+		private void ShowScreenshot([NotNull] Image screenshot)
+		{
+			if (screenshot == null) throw new ArgumentNullException("screenshot");
+			if (ScreenshotPictureBox.Image != null)
+			{
+				ScreenshotPictureBox.Image.Dispose();
+				ScreenshotPictureBox.Image = null;
+			}
+			ScreenshotPictureBox.Image = screenshot;
 		}
 
 		private void SetupModesCheckBoxes(CheckBox selected)
@@ -311,8 +330,9 @@ namespace NFirmwareEditor.Windows
 
 		private void Initialize()
 		{
-			m_connector.DeviceConnected += DeviceConnected;
-			m_connector.StartMonitoring();
+			m_usbConnector.DeviceConnected += DeviceConnected;
+			m_usbConnector.StartMonitoring();
+			m_comConnector.MessageReceived += COMMessage_Received;
 		}
 
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
@@ -505,7 +525,7 @@ namespace NFirmwareEditor.Windows
 
 		private Dataflash ReadDataflash()
 		{
-			m_simple = m_connector.ReadDataflash();
+			m_simple = m_usbConnector.ReadDataflash();
 			return m_simple.Build < MinimumSupportedBuildNumber
 				? null
 				: m_manager.Read(m_simple.Data);
@@ -558,6 +578,11 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void COMMessage_Received(string message)
+		{
+			UpdateUI(() => AppendTrace(message));
+		}
+
 		private void DownloadButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
@@ -591,7 +616,7 @@ namespace NFirmwareEditor.Windows
 
 				SaveWorkspaceToDataflash(m_dataflash);
 				m_manager.Write(m_dataflash, dataflashCopy);
-				m_connector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy });
+				m_usbConnector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy });
 			}
 			catch (Exception ex)
 			{
@@ -606,7 +631,7 @@ namespace NFirmwareEditor.Windows
 
 			try
 			{
-				m_connector.ResetDataflash();
+				m_usbConnector.ResetDataflash();
 				m_dataflash = ReadDataflash();
 				InitializeWorkspaceFromDataflash(m_dataflash);
 			}
@@ -635,9 +660,9 @@ namespace NFirmwareEditor.Windows
 			if (screenshot == null) return;
 
 			ShowScreenshot(screenshot);
-			using (var export = new Bitmap(panel1.Width, panel1.Height))
+			using (var export = new Bitmap(ScreenshotContainerPanel.Width, ScreenshotContainerPanel.Height))
 			{
-				panel1.DrawToBitmap(export, panel1.DisplayRectangle);
+				ScreenshotContainerPanel.DrawToBitmap(export, ScreenshotContainerPanel.DisplayRectangle);
 
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = Consts.PngExportFilter })
 				{
@@ -651,6 +676,28 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void ComConnectButton_Click(object sender, EventArgs e)
+		{
+			var portName = PortComboBox.GetSelectedItem<string>();
+			var selectedPort = m_comConnector.Connect(portName);
+			if (string.IsNullOrEmpty(selectedPort))
+			{
+				InfoBox.Show("Switch USB mode to COM and try again.");
+				return;
+			}
+
+			ComConnectButton.Enabled = false;
+			ComDisconnectButton.Enabled = true;
+		}
+
+		private void ComDisconnectButton_Click(object sender, EventArgs e)
+		{
+			m_comConnector.Disconnect();
+
+			ComConnectButton.Enabled = true;
+			ComDisconnectButton.Enabled = false;
+		}
+
 		// ReSharper disable once InconsistentNaming
 		private void UpdateUI(Action action)
 		{
@@ -662,6 +709,12 @@ namespace NFirmwareEditor.Windows
 			{
 				// Ignore
 			}
+		}
+
+		private void AppendTrace(string message)
+		{
+			TraceTextBox.AppendText(message + Environment.NewLine);
+			TraceTextBox.ScrollToEnd();
 		}
 
 		private string GetErrorMessage(string operationName)

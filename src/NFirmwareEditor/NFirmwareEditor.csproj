@@ -1221,6 +1221,8 @@
     <Content Include="Definitions\Vaporflask Stout 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\disconnect.png" />
+    <None Include="Resources\connect.png" />
     <None Include="Resources\save_screenshot.png" />
     <None Include="Resources\screenshot.png" />
     <None Include="Resources\exclamation.png" />
