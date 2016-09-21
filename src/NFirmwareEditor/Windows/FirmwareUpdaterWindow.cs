@@ -35,6 +35,8 @@ namespace NFirmwareEditor.Windows
 			m_loader = loader;
 			m_worker.DoWork += BackgroundWorker_DoWork;
 			m_worker.ProgressChanged += BackgroundWorker_ProgressChanged;
+
+			if (Parent == null) CancelButton.Click += (s, e) => Application.Exit();
 		}
 
 		private void DeviceConnected(bool isConnected)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using NFirmware;
 using NFirmwareEditor.Windows;
 using NLog;
 
@@ -21,9 +22,10 @@ namespace NFirmwareEditor
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			if (args != null && args.Length == 1 && args[0] == "/configurator")
+			if (args != null && args.Length == 1)
 			{
-				Application.Run(new DeviceConfiguratorWindow());
+				if (args[0] == "/configuration") Application.Run(new DeviceConfiguratorWindow());
+				if (args[0] == "/updater") Application.Run(new FirmwareUpdaterWindow(null, new FirmwareLoader(new FirmwareEncoder())));
 			}
 			else
 			{

@@ -512,6 +512,11 @@ namespace NFirmwareEditor.Windows
 					SaveMenuItem.PerformClick();
 					return true;
 				}
+				if (keyData.HasFlag(Keys.U))
+				{
+					FirmwareUpdaterMenuItem.PerformClick();
+					return true;
+				}
 			}
 
 			return m_tabPages.Any(tabPage => tabPage.OnHotkey(keyData)) || base.ProcessCmdKey(ref msg, keyData);
