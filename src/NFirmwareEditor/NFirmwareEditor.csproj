@@ -807,6 +807,9 @@
     <None Include="Patches\RX200S 4.10\4.10_brightness75.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\RX200S 4.12\4.12_tc_ss_fix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\RX23 4.12\RX23_4.12_1w.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -820,6 +823,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX23 4.12\RX23_4.12_brightness75.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\RX23 4.12\RX23_4.12_cutoff.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Patches\RX23 4.12\RX23_4.12_tc_ss_fix.patch">

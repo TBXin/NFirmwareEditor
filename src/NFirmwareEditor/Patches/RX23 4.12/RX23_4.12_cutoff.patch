@@ -1,0 +1,7 @@
+﻿<Patch Definition="RX23 4.12" Name="Cutoff voltage" Version="1.0" Author="NFirmwareEditor Team">
+	<Description>Changes the cut-off voltage (to 3.00 V by default).
+Изменяет напряжение отсечки (по умолчанию до 3,00 В).</Description>
+	<Data>
+0000395A: 9B - 96
+</Data>
+</Patch>
