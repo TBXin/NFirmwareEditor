@@ -1145,7 +1145,7 @@
 			// label20
 			// 
 			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(4, 38);
+			this.label20.Location = new System.Drawing.Point(4, 119);
 			this.label20.Name = "label20";
 			this.label20.Size = new System.Drawing.Size(85, 13);
 			this.label20.TabIndex = 54;
@@ -1166,7 +1166,7 @@
 			// TempNiModeCheckBox
 			// 
 			this.TempNiModeCheckBox.AutoSize = true;
-			this.TempNiModeCheckBox.Location = new System.Drawing.Point(101, 38);
+			this.TempNiModeCheckBox.Location = new System.Drawing.Point(101, 119);
 			this.TempNiModeCheckBox.Name = "TempNiModeCheckBox";
 			this.TempNiModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.TempNiModeCheckBox.TabIndex = 55;
@@ -1176,7 +1176,7 @@
 			// SmartModeCheckBox
 			// 
 			this.SmartModeCheckBox.AutoSize = true;
-			this.SmartModeCheckBox.Location = new System.Drawing.Point(101, 200);
+			this.SmartModeCheckBox.Location = new System.Drawing.Point(101, 92);
 			this.SmartModeCheckBox.Name = "SmartModeCheckBox";
 			this.SmartModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.SmartModeCheckBox.TabIndex = 67;
@@ -1186,7 +1186,7 @@
 			// label22
 			// 
 			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(4, 65);
+			this.label22.Location = new System.Drawing.Point(4, 146);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(84, 13);
 			this.label22.TabIndex = 56;
@@ -1195,7 +1195,7 @@
 			// label27
 			// 
 			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(4, 200);
+			this.label27.Location = new System.Drawing.Point(4, 92);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(73, 13);
 			this.label27.TabIndex = 66;
@@ -1204,7 +1204,7 @@
 			// TempTiModeCheckBox
 			// 
 			this.TempTiModeCheckBox.AutoSize = true;
-			this.TempTiModeCheckBox.Location = new System.Drawing.Point(101, 65);
+			this.TempTiModeCheckBox.Location = new System.Drawing.Point(101, 146);
 			this.TempTiModeCheckBox.Name = "TempTiModeCheckBox";
 			this.TempTiModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.TempTiModeCheckBox.TabIndex = 57;
@@ -1214,7 +1214,7 @@
 			// BypassModeCheckBox
 			// 
 			this.BypassModeCheckBox.AutoSize = true;
-			this.BypassModeCheckBox.Location = new System.Drawing.Point(101, 173);
+			this.BypassModeCheckBox.Location = new System.Drawing.Point(101, 65);
 			this.BypassModeCheckBox.Name = "BypassModeCheckBox";
 			this.BypassModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.BypassModeCheckBox.TabIndex = 65;
@@ -1224,7 +1224,7 @@
 			// label23
 			// 
 			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(4, 92);
+			this.label23.Location = new System.Drawing.Point(4, 173);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(88, 13);
 			this.label23.TabIndex = 58;
@@ -1233,7 +1233,7 @@
 			// label26
 			// 
 			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(4, 173);
+			this.label26.Location = new System.Drawing.Point(4, 65);
 			this.label26.Name = "label26";
 			this.label26.Size = new System.Drawing.Size(45, 13);
 			this.label26.TabIndex = 64;
@@ -1242,7 +1242,7 @@
 			// TempSSModeCheckBox
 			// 
 			this.TempSSModeCheckBox.AutoSize = true;
-			this.TempSSModeCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.TempSSModeCheckBox.Location = new System.Drawing.Point(101, 173);
 			this.TempSSModeCheckBox.Name = "TempSSModeCheckBox";
 			this.TempSSModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.TempSSModeCheckBox.TabIndex = 59;
@@ -1252,7 +1252,7 @@
 			// PowerModeCheckBox
 			// 
 			this.PowerModeCheckBox.AutoSize = true;
-			this.PowerModeCheckBox.Location = new System.Drawing.Point(101, 146);
+			this.PowerModeCheckBox.Location = new System.Drawing.Point(101, 38);
 			this.PowerModeCheckBox.Name = "PowerModeCheckBox";
 			this.PowerModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.PowerModeCheckBox.TabIndex = 63;
@@ -1262,7 +1262,7 @@
 			// label24
 			// 
 			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(4, 119);
+			this.label24.Location = new System.Drawing.Point(4, 200);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(96, 13);
 			this.label24.TabIndex = 60;
@@ -1271,7 +1271,7 @@
 			// label25
 			// 
 			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(4, 146);
+			this.label25.Location = new System.Drawing.Point(4, 38);
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(41, 13);
 			this.label25.TabIndex = 62;
@@ -1280,7 +1280,7 @@
 			// TCRModeCheckBox
 			// 
 			this.TCRModeCheckBox.AutoSize = true;
-			this.TCRModeCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.TCRModeCheckBox.Location = new System.Drawing.Point(101, 200);
 			this.TCRModeCheckBox.Name = "TCRModeCheckBox";
 			this.TCRModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.TCRModeCheckBox.TabIndex = 61;

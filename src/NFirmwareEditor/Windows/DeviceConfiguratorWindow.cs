@@ -153,13 +153,13 @@ namespace NFirmwareEditor.Windows
 			SelectedModeComboBox.Items.Clear();
 			SelectedModeComboBox.Items.AddRange(new object[]
 			{
+				new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
+				new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
+				new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start),
 				new NamedItemContainer<VapeMode>("Temperature Ni", VapeMode.TempNi),
 				new NamedItemContainer<VapeMode>("Temperature Ti", VapeMode.TempTi),
 				new NamedItemContainer<VapeMode>("Temperature SS", VapeMode.TempSS),
 				new NamedItemContainer<VapeMode>("Temperature TCR", VapeMode.TCR),
-				new NamedItemContainer<VapeMode>("Power", VapeMode.Power),
-				new NamedItemContainer<VapeMode>("Bypass", VapeMode.Bypass),
-				new NamedItemContainer<VapeMode>("Smart / Start", VapeMode.Start)
 			});
 
 			TemperatureTypeComboBox.Items.Clear();
@@ -227,14 +227,14 @@ namespace NFirmwareEditor.Windows
 			ScreenProtectionTimeComboBox.Items.Clear();
 			ScreenProtectionTimeComboBox.Items.AddRange(new object[]
 			{
+				new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
 				new NamedItemContainer<ScreenProtectionTime>("1 Min", ScreenProtectionTime.Min1),
 				new NamedItemContainer<ScreenProtectionTime>("2 Min", ScreenProtectionTime.Min2),
 				new NamedItemContainer<ScreenProtectionTime>("5 Min", ScreenProtectionTime.Min5),
 				new NamedItemContainer<ScreenProtectionTime>("10 Min", ScreenProtectionTime.Min10),
 				new NamedItemContainer<ScreenProtectionTime>("15 Min", ScreenProtectionTime.Min15),
 				new NamedItemContainer<ScreenProtectionTime>("20 Min", ScreenProtectionTime.Min20),
-				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30),
-				new NamedItemContainer<ScreenProtectionTime>("Off", ScreenProtectionTime.Off),
+				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30)
 			});
 
 			PortComboBox.Items.Clear();
