@@ -1826,7 +1826,7 @@
 			// 
 			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
 			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(190, 6);
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(211, 6);
 			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
 			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.TakeScreenshotButton.TabIndex = 35;
@@ -1847,7 +1847,7 @@
 			// 
 			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
 			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(190, 114);
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(211, 114);
 			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
 			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.SaveScreenshotButton.TabIndex = 36;
@@ -1857,7 +1857,7 @@
 			// 
 			// PixelSizeUpDown
 			// 
-			this.PixelSizeUpDown.Location = new System.Drawing.Point(243, 87);
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(264, 87);
 			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
             8,
             0,
