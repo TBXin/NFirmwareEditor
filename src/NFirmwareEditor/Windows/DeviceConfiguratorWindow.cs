@@ -83,11 +83,15 @@ namespace NFirmwareEditor.Windows
 				var isPercents = PreheatTypeComboBox.GetSelectedItem<bool>();
 				if (isPercents)
 				{
+					PreheatPowerUpDown.DecimalPlaces = 0;
+					PreheatPowerUpDown.Increment = 1;
 					PreheatPowerUpDown.Minimum = 100;
 					PreheatPowerUpDown.Maximum = 250;
 				}
 				else
 				{
+					PreheatPowerUpDown.DecimalPlaces = 1;
+					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = 1;
 					PreheatPowerUpDown.Maximum = 75;
 				}
@@ -445,7 +449,7 @@ namespace NFirmwareEditor.Windows
 			dataflash.ParamsBlock.Status.TemperatureDominant = TemperatureDominantCheckBox.Checked;
 
 			dataflash.ParamsBlock.Status.PreheatPercent = PreheatTypeComboBox.GetSelectedItem<bool>();
-			dataflash.ParamsBlock.PreheatPwr = (ushort)PreheatPowerUpDown.Value;
+			dataflash.ParamsBlock.PreheatPwr = (ushort)(dataflash.ParamsBlock.Status.PreheatPercent ? PreheatPowerUpDown.Value : PreheatPowerUpDown.Value * 10);
 			dataflash.ParamsBlock.PreheatTime = (byte)(PreheatTimeUpDown.Value * 100);
 
 			// General -> Coils Manager Tab
