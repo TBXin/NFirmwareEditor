@@ -127,15 +127,8 @@ namespace NFirmwareEditor.Windows
 						throw new ArgumentOutOfRangeException();
 				}
 
-				if (mode == VapeMode.TCR)
-				{
-					SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = true;
-					SelectedTCRComboBox.SelectedIndex = m_dataflash.ParamsBlock.SelectedTCRIndex;
-				}
-				else
-				{
-					SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = false;
-				}
+				SelectedTCRComboBox.SelectedIndex = m_dataflash.ParamsBlock.SelectedTCRIndex;
+				SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = mode == VapeMode.TCR;
 			};
 
 			PortComboBox.SelectedIndex = 0;
