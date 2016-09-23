@@ -49,13 +49,14 @@ namespace NFirmwareEditor.Managers
 			m_port = null;
 		}
 
-		public void Send(string command)
+		public bool Send(string command)
 		{
 			if (string.IsNullOrEmpty(command)) throw new ArgumentNullException("command");
-			if (!IsConnected) return;
+			if (!IsConnected) return false;
 
 			var data = Encoding.ASCII.GetBytes(command);
 			m_port.Write(data, 0, data.Length);
+			return true;
 		}
 
 		[CanBeNull]

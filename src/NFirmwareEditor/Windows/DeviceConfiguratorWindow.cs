@@ -143,6 +143,7 @@ namespace NFirmwareEditor.Windows
 
 			ComConnectButton.Click += ComConnectButton_Click;
 			ComDisconnectButton.Click += ComDisconnectButton_Click;
+			CommandTextBox.KeyDown += CommandTextBox_KeyDown;
 		}
 
 		private void InititalizeComboBoxes()
@@ -736,6 +737,24 @@ namespace NFirmwareEditor.Windows
 
 			ComConnectButton.Enabled = true;
 			ComDisconnectButton.Enabled = false;
+		}
+
+		private void CommandTextBox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode != Keys.Enter) return;
+
+			var command = CommandTextBox.Text;
+			if (string.IsNullOrEmpty(command)) return;
+
+			CommandTextBox.Clear();
+			if (m_comConnector.Send(command))
+			{
+				AppendTrace("> " + command);
+			}
+			else
+			{
+				AppendTrace("Failed to send command.");
+			}
 		}
 
 		// ReSharper disable once InconsistentNaming

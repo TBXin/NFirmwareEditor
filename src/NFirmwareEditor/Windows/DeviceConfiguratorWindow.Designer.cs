@@ -171,6 +171,7 @@
 			this.PortComboBox = new System.Windows.Forms.ComboBox();
 			this.label49 = new System.Windows.Forms.Label();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -1888,6 +1889,7 @@
 			// 
 			// TraceTabPage
 			// 
+			this.TraceTabPage.Controls.Add(this.CommandTextBox);
 			this.TraceTabPage.Controls.Add(this.TraceTextBox);
 			this.TraceTabPage.Controls.Add(this.ComDisconnectButton);
 			this.TraceTabPage.Controls.Add(this.ComConnectButton);
@@ -1898,7 +1900,7 @@
 			this.TraceTabPage.Padding = new System.Windows.Forms.Padding(3);
 			this.TraceTabPage.Size = new System.Drawing.Size(328, 228);
 			this.TraceTabPage.TabIndex = 1;
-			this.TraceTabPage.Text = "Trace";
+			this.TraceTabPage.Text = "Terminal";
 			this.TraceTabPage.UseVisualStyleBackColor = true;
 			// 
 			// TraceTextBox
@@ -1911,7 +1913,7 @@
 			this.TraceTextBox.Multiline = true;
 			this.TraceTextBox.Name = "TraceTextBox";
 			this.TraceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.TraceTextBox.Size = new System.Drawing.Size(320, 187);
+			this.TraceTextBox.Size = new System.Drawing.Size(320, 169);
 			this.TraceTextBox.TabIndex = 83;
 			// 
 			// ComDisconnectButton
@@ -1961,6 +1963,13 @@
 			// 
 			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 			this.MainErrorProvider.ContainerControl = this;
+			// 
+			// CommandTextBox
+			// 
+			this.CommandTextBox.Location = new System.Drawing.Point(4, 203);
+			this.CommandTextBox.Name = "CommandTextBox";
+			this.CommandTextBox.Size = new System.Drawing.Size(320, 21);
+			this.CommandTextBox.TabIndex = 84;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -2177,5 +2186,6 @@
 		private System.Windows.Forms.StatusStrip MainStatusBar;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
+		private System.Windows.Forms.TextBox CommandTextBox;
 	}
 }
