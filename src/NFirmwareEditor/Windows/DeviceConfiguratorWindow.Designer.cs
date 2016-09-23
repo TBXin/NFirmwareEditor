@@ -157,21 +157,21 @@
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenshotTabPage = new System.Windows.Forms.TabPage();
+			this.RebootButton = new System.Windows.Forms.Button();
 			this.ScreenshotContainerPanel = new System.Windows.Forms.Panel();
 			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
 			this.TakeScreenshotButton = new System.Windows.Forms.Button();
-			this.label47 = new System.Windows.Forms.Label();
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label46 = new System.Windows.Forms.Label();
 			this.TraceTabPage = new System.Windows.Forms.TabPage();
+			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.TraceTextBox = new System.Windows.Forms.TextBox();
 			this.ComDisconnectButton = new System.Windows.Forms.Button();
 			this.ComConnectButton = new System.Windows.Forms.Button();
 			this.PortComboBox = new System.Windows.Forms.ComboBox();
 			this.label49 = new System.Windows.Forms.Label();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -1792,9 +1792,9 @@
 			// 
 			// ScreenshotTabPage
 			// 
+			this.ScreenshotTabPage.Controls.Add(this.RebootButton);
 			this.ScreenshotTabPage.Controls.Add(this.ScreenshotContainerPanel);
 			this.ScreenshotTabPage.Controls.Add(this.TakeScreenshotButton);
-			this.ScreenshotTabPage.Controls.Add(this.label47);
 			this.ScreenshotTabPage.Controls.Add(this.SaveScreenshotButton);
 			this.ScreenshotTabPage.Controls.Add(this.PixelSizeUpDown);
 			this.ScreenshotTabPage.Controls.Add(this.label46);
@@ -1803,8 +1803,17 @@
 			this.ScreenshotTabPage.Padding = new System.Windows.Forms.Padding(3);
 			this.ScreenshotTabPage.Size = new System.Drawing.Size(328, 228);
 			this.ScreenshotTabPage.TabIndex = 0;
-			this.ScreenshotTabPage.Text = "Screenshot";
+			this.ScreenshotTabPage.Text = "Tools";
 			this.ScreenshotTabPage.UseVisualStyleBackColor = true;
+			// 
+			// RebootButton
+			// 
+			this.RebootButton.Location = new System.Drawing.Point(232, 6);
+			this.RebootButton.Name = "RebootButton";
+			this.RebootButton.Size = new System.Drawing.Size(92, 25);
+			this.RebootButton.TabIndex = 40;
+			this.RebootButton.Text = "Reboot device";
+			this.RebootButton.UseVisualStyleBackColor = true;
 			// 
 			// ScreenshotContainerPanel
 			// 
@@ -1827,7 +1836,7 @@
 			// 
 			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
 			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(211, 6);
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(81, 6);
 			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
 			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.TakeScreenshotButton.TabIndex = 35;
@@ -1835,20 +1844,11 @@
 			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
 			// 
-			// label47
-			// 
-			this.label47.AutoSize = true;
-			this.label47.Location = new System.Drawing.Point(80, 11);
-			this.label47.Name = "label47";
-			this.label47.Size = new System.Drawing.Size(85, 13);
-			this.label47.TabIndex = 39;
-			this.label47.Text = "Screen preview:";
-			// 
 			// SaveScreenshotButton
 			// 
 			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
 			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(211, 114);
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(81, 113);
 			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
 			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.SaveScreenshotButton.TabIndex = 36;
@@ -1858,7 +1858,7 @@
 			// 
 			// PixelSizeUpDown
 			// 
-			this.PixelSizeUpDown.Location = new System.Drawing.Point(264, 87);
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(82, 86);
 			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
             8,
             0,
@@ -1881,7 +1881,7 @@
 			// label46
 			// 
 			this.label46.AutoSize = true;
-			this.label46.Location = new System.Drawing.Point(80, 89);
+			this.label46.Location = new System.Drawing.Point(80, 70);
 			this.label46.Name = "label46";
 			this.label46.Size = new System.Drawing.Size(99, 13);
 			this.label46.TabIndex = 38;
@@ -1902,6 +1902,13 @@
 			this.TraceTabPage.TabIndex = 1;
 			this.TraceTabPage.Text = "Terminal";
 			this.TraceTabPage.UseVisualStyleBackColor = true;
+			// 
+			// CommandTextBox
+			// 
+			this.CommandTextBox.Location = new System.Drawing.Point(4, 203);
+			this.CommandTextBox.Name = "CommandTextBox";
+			this.CommandTextBox.Size = new System.Drawing.Size(320, 21);
+			this.CommandTextBox.TabIndex = 84;
 			// 
 			// TraceTextBox
 			// 
@@ -1963,13 +1970,6 @@
 			// 
 			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 			this.MainErrorProvider.ContainerControl = this;
-			// 
-			// CommandTextBox
-			// 
-			this.CommandTextBox.Location = new System.Drawing.Point(4, 203);
-			this.CommandTextBox.Name = "CommandTextBox";
-			this.CommandTextBox.Size = new System.Drawing.Size(320, 21);
-			this.CommandTextBox.TabIndex = 84;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -2165,7 +2165,6 @@
 		private System.Windows.Forms.Button SaveScreenshotButton;
 		private System.Windows.Forms.Label label46;
 		private System.Windows.Forms.NumericUpDown PixelSizeUpDown;
-		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.TextBox BuildTextBox;
 		private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.TabControl tabControl1;
@@ -2187,5 +2186,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
 		private System.Windows.Forms.TextBox CommandTextBox;
+		private System.Windows.Forms.Button RebootButton;
 	}
 }

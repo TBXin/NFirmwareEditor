@@ -29,23 +29,16 @@ namespace NFirmwareEditor.Managers
 
 			m_port = new SerialPort(portName) { RtsEnable = true, DtrEnable = true };
 			m_port.DataReceived += COMPort_DataReceived;
-			try
-			{
-				m_port.Open();
-				return m_port.IsOpen ? portName : null;
-			}
-			catch(Exception ex)
-			{
-				return null;
-			}
+			m_port.Open();
+			return m_port.IsOpen ? portName : null;
 		}
 
 		public void Disconnect()
 		{
 			if (!IsConnected && m_port == null) return;
 
-			m_port.Close();
 			m_port.DataReceived -= COMPort_DataReceived;
+			m_port.Close();
 			m_port = null;
 		}
 

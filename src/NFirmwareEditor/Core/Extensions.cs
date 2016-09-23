@@ -105,7 +105,7 @@ namespace NFirmwareEditor.Core
 				var namedItem = comboBoxItem as NamedItemContainer<T>;
 				if (namedItem == null) continue;
 
-				if (Equals(namedItem.Data,item))
+				if (Equals(namedItem.Data, item))
 				{
 					comboBox.SelectedItem = namedItem;
 					return;

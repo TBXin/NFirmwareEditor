@@ -127,7 +127,7 @@ namespace NFirmwareEditor.Windows
 						throw new ArgumentOutOfRangeException();
 				}
 
-				SelectedTCRComboBox.SelectedIndex = m_dataflash.ParamsBlock.SelectedTCRIndex;
+				SelectedTCRComboBox.SelectedIndex = Math.Min(m_dataflash.ParamsBlock.SelectedTCRIndex, (byte)2);
 				SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = mode == VapeMode.TCR;
 			};
 
@@ -140,6 +140,7 @@ namespace NFirmwareEditor.Windows
 
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
+			RebootButton.Click += RebootButton_Click;
 
 			ComConnectButton.Click += ComConnectButton_Click;
 			ComDisconnectButton.Click += ComDisconnectButton_Click;
@@ -338,6 +339,8 @@ namespace NFirmwareEditor.Windows
 			m_usbConnector.DeviceConnected += DeviceConnected;
 			m_usbConnector.StartMonitoring();
 			m_comConnector.MessageReceived += COMMessage_Received;
+
+			Closing += (s, e) => Safe.Execute(() => m_comConnector.Disconnect());
 		}
 
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
@@ -717,10 +720,35 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void RebootButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			try
+			{
+				m_usbConnector.RestartDevice();
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+				InfoBox.Show(GetErrorMessage("restarting device"));
+			}
+		}
+
 		private void ComConnectButton_Click(object sender, EventArgs e)
 		{
 			var portName = PortComboBox.GetSelectedItem<string>();
-			var selectedPort = m_comConnector.Connect(portName);
+			string selectedPort = null;
+
+			try
+			{
+				selectedPort = m_comConnector.Connect(portName);
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+			}
+
 			if (string.IsNullOrEmpty(selectedPort))
 			{
 				InfoBox.Show("Switch USB mode to COM and try again.");
@@ -733,7 +761,14 @@ namespace NFirmwareEditor.Windows
 
 		private void ComDisconnectButton_Click(object sender, EventArgs e)
 		{
-			m_comConnector.Disconnect();
+			try
+			{
+				m_comConnector.Disconnect();
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+			}
 
 			ComConnectButton.Enabled = true;
 			ComDisconnectButton.Enabled = false;
@@ -746,15 +781,18 @@ namespace NFirmwareEditor.Windows
 			var command = CommandTextBox.Text;
 			if (string.IsNullOrEmpty(command)) return;
 
-			CommandTextBox.Clear();
-			if (m_comConnector.Send(command))
+			var sendResult = false;
+			try
 			{
-				AppendTrace("> " + command);
+				CommandTextBox.Clear();
+				sendResult = m_comConnector.Send(command);
 			}
-			else
+			catch (Exception ex)
 			{
-				AppendTrace("Failed to send command.");
+				s_logger.Warn(ex);
 			}
+
+			AppendTrace(sendResult ? ">" + command : "Failed to send command.");
 		}
 
 		// ReSharper disable once InconsistentNaming
