@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Management;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
@@ -46,6 +47,15 @@ namespace NFirmwareEditor.Managers
 			m_port.Close();
 			m_port.DataReceived -= COMPort_DataReceived;
 			m_port = null;
+		}
+
+		public void Send(string command)
+		{
+			if (string.IsNullOrEmpty(command)) throw new ArgumentNullException("command");
+			if (!IsConnected) return;
+
+			var data = Encoding.ASCII.GetBytes(command);
+			m_port.Write(data, 0, data.Length);
 		}
 
 		[CanBeNull]
