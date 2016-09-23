@@ -1,0 +1,9 @@
+﻿<FirmwareDefinition Name="RX23 4.13">
+  <Marker Offset="0x90" Bytes="0x79 0x23" />
+  <Marker Offset="0xC0" Bytes="0x39 0x77" />
+	<Marker Offset="0xA30" Bytes="0x4F 0xF4" />
+  <ImageTable1 From="0xCF7C" To="0xD380" />
+  <ImageTable2 From="0xAF68" To="0xB36C" />
+  <StringTable1 From="0xD484" To="0xD6FB" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

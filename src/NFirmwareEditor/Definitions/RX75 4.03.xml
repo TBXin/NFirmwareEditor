@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="RX75 4.03">
+  <Marker Offset="0x90" Bytes="0xA1 0x1D" />
+  <Marker Offset="0xC0" Bytes="0x99 0x70" />
+  <ImageTable1 From="0xC8B8" To="0xCCBC" />
+  <ImageTable2 From="0xA8A4" To="0xACA8" />
+  <StringTable1 From="0xCDC0" To="0xCFCF" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>

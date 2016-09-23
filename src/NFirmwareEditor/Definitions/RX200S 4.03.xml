@@ -1,0 +1,9 @@
+﻿<FirmwareDefinition Name="RX200S 4.03">
+  <Marker Offset="0x90" Bytes="0x85 0x22" />
+  <Marker Offset="0xC0" Bytes="0x35 0x76" />
+	<Marker Offset="0x1A88" Bytes="0x93 0x10" />
+  <ImageTable1 From="0xCE78" To="0xD27C" />
+  <ImageTable2 From="0xAE64" To="0xB268" />
+  <StringTable1 From="0xD380" To="0xD5F7" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>
