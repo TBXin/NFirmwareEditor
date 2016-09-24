@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
@@ -18,6 +19,18 @@ namespace NFirmwareEditor.Windows
 				return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
+		protected void UpdateUI(Action action)
+		{
+			try
+			{
+				Invoke(action);
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
 		}
 	}
 }

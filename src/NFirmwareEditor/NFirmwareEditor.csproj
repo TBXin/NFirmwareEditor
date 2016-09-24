@@ -63,6 +63,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +86,7 @@
     <Compile Include="Models\ApplicationConfiguration.cs" />
     <Compile Include="Core\Consts.cs" />
     <Compile Include="Models\Dataflash.cs" />
+    <Compile Include="Models\DeviceSensorsData.cs" />
     <Compile Include="Models\ExportedImage.cs" />
     <Compile Include="Core\Paths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
@@ -142,6 +144,12 @@
     </Compile>
     <Compile Include="Windows\DeviceConfiguratorWindow.Designer.cs">
       <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeviceMonitorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DeviceMonitorWindow.Designer.cs">
+      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditorDialogWindow.cs">
       <SubType>Form</SubType>
@@ -261,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DeviceConfiguratorWindow.resx">
       <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DeviceMonitorWindow.resx">
+      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>

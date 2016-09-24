@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Windows.Forms;
 using NFirmware;
+using NFirmwareEditor.Managers;
 using NFirmwareEditor.Windows;
 using NLog;
 
@@ -32,6 +33,11 @@ namespace NFirmwareEditor
 				if (args[0] == "/updater")
 				{
 					Application.Run(new FirmwareUpdaterWindow(null, new FirmwareLoader(new FirmwareEncoder())));
+					return;
+				}
+				if (args[0] == "/monitor")
+				{
+					Application.Run(new DeviceMonitorWindow(new COMConnector()));
 					return;
 				}
 			}

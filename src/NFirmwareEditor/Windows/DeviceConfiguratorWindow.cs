@@ -13,7 +13,6 @@ using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
 using NFirmwareEditor.UI;
 using NLog;
-using Timer = System.Threading.Timer;
 
 namespace NFirmwareEditor.Windows
 {
@@ -843,19 +842,6 @@ namespace NFirmwareEditor.Windows
 			}
 
 			AppendTrace(sendResult ? ">" + command : "Failed to send command.");
-		}
-
-		// ReSharper disable once InconsistentNaming
-		private void UpdateUI(Action action)
-		{
-			try
-			{
-				Invoke(action);
-			}
-			catch (Exception)
-			{
-				// Ignore
-			}
 		}
 
 		private void SetControlButtonsState(bool enabled)
