@@ -704,7 +704,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SaveScreenshotButton_Click(object sender, EventArgs e)
 		{
-			if (TakeScreenshotBeforeSaveCheckBox.Checked)
+			if (TakeScreenshotBeforeSaveCheckBox.Checked || ScreenshotPictureBox.Image == null)
 			{
 				if (!ValidateConnectionStatus()) return;
 
@@ -712,14 +712,6 @@ namespace NFirmwareEditor.Windows
 				if (screenshot == null) return;
 
 				ShowScreenshot(screenshot);
-			}
-			else
-			{
-				if (ScreenshotPictureBox.Image == null)
-				{
-					InfoBox.Show("Take screenshot first or activate \"Take before save\" option.");
-					return;
-				}
 			}
 
 			using (var containerImage = new Bitmap(ScreenshotContainerPanel.Width, ScreenshotContainerPanel.Height))
