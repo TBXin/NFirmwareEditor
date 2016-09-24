@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq;
+using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
@@ -42,8 +42,6 @@ namespace NFirmwareEditor.Windows
 				area.AxisX.LabelStyle.Enabled = false;
 				area.AxisY.MajorGrid.LineColor = Color.LightGray;
 				area.AxisY.LabelStyle.Enabled = false;
-				//area.AxisY.Maximum = 100;
-				//area.AxisY.Title = "CPU Usage %";
 			}
 			MainChart.ChartAreas.Add(area);
 
@@ -52,38 +50,26 @@ namespace NFirmwareEditor.Windows
 			AddSeries(SensorKeys.OutputCurrent, Color.Orange);
 			AddSeries(SensorKeys.Resistance, Color.BlueViolet);
 			AddSeries(SensorKeys.RealResistance, Color.Violet);
-
-			MainChart.PostPaint += MainChart_PostPaint;
-		}
-
-		private void MainChart_PostPaint(object sender, ChartPaintEventArgs e)
-		{
-			var area = e.Chart.ChartAreas[0];
-			if (area == null) return;
-
-			foreach (var series in e.Chart.Series)
-			{
-				if (series.Points.Count == 0) continue;
-
-				series.IsValueShownAsLabel = true;
-				var lastPoint = series.Points[series.Points.Count - 1];
-
-				var xPos = (float)area.AxisX.ValueToPixelPosition(lastPoint.XValue);
-				var yPos = (float)area.AxisY.ValueToPixelPosition(lastPoint.YValues.First());
-
-				e.ChartGraphics.Graphics.DrawString(lastPoint.YValues[0].ToString(), Font, Brushes.Black, xPos, yPos);
-			}
 		}
 
 		private void AddSeries(string name, Color color)
 		{
-			MainChart.Series.Add(new Series
+			var series = new Series
 			{
 				Name = name,
-				ChartType = SeriesChartType.FastLine,
+				ChartType = SeriesChartType.Line,
+				YValueType = ChartValueType.Double,
 				Color = color,
-				BorderWidth = 2
-			});
+				BorderWidth = 2,
+				SmartLabelStyle =
+				{
+					Enabled = true,
+					AllowOutsidePlotArea = LabelOutsidePlotAreaStyle.Yes,
+					IsMarkerOverlappingAllowed = false,
+					MovingDirection = LabelAlignmentStyles.Right
+				}
+			};
+			MainChart.Series.Add(series);
 		}
 
 		private void ComConnector_MessageReceived(string message)
@@ -98,11 +84,11 @@ namespace NFirmwareEditor.Windows
 
 				UpdateUI(() =>
 				{
-					MainChart.Series[SensorKeys.BatteryVoltage].Points.Add(sensors.BatteryVoltage);
-					MainChart.Series[SensorKeys.OutputVoltage].Points.Add(sensors.OutputVoltage);
-					MainChart.Series[SensorKeys.OutputCurrent].Points.Add(sensors.OutputCurrent);
-					MainChart.Series[SensorKeys.Resistance].Points.Add(sensors.Resistance);
-					MainChart.Series[SensorKeys.RealResistance].Points.Add(sensors.RealResistance);
+					if (sensors.BatteryVoltage >= 0) MainChart.Series[SensorKeys.BatteryVoltage].Points.Add(sensors.BatteryVoltage);
+					if (sensors.OutputVoltage >= 0) MainChart.Series[SensorKeys.OutputVoltage].Points.Add(sensors.OutputVoltage);
+					if (sensors.OutputCurrent >= 0) MainChart.Series[SensorKeys.OutputCurrent].Points.Add(sensors.OutputCurrent);
+					if (sensors.Resistance >= 0) MainChart.Series[SensorKeys.Resistance].Points.Add(sensors.Resistance);
+					if (sensors.RealResistance >= 0) MainChart.Series[SensorKeys.RealResistance].Points.Add(sensors.RealResistance);
 
 					foreach (var series in MainChart.Series)
 					{
@@ -110,9 +96,23 @@ namespace NFirmwareEditor.Windows
 						{
 							series.Points.RemoveAt(0);
 						}
+
+						if (series.Points.Count > 0)
+						{
+							var point = series.Points[series.Points.Count - 1];
+							if (point.YValues[0] != 0)
+							{
+								point.Label = Math.Round(point.YValues[0], 2).ToString(CultureInfo.InvariantCulture);
+								if (series.Points.Count > 1)
+								{
+									series.Points[series.Points.Count - 2].Label = null;
+								}
+							}
+						}
 					}
 
 					MainChart.ChartAreas[0].RecalculateAxesScale();
+					MainChart.ResetAutoValues();
 				});
 			}
 		}

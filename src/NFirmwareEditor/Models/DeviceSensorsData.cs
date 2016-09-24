@@ -80,7 +80,7 @@ namespace NFirmwareEditor.Models
 				Power = sensors[SensorKeys.Power] / 10f,
 				Temperature = sensors[SensorKeys.Temperature],
 				IsCelcius = sensors[SensorKeys.Celcius] == 1,
-				OutputVoltage = sensors[SensorKeys.OutputVoltage] / 10f,
+				OutputVoltage = sensors[SensorKeys.OutputVoltage] / 100f,
 				OutputCurrent = sensors[SensorKeys.OutputCurrent] / 10f
 			};
 			return result;
