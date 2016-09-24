@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
@@ -12,6 +13,7 @@ using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
 using NFirmwareEditor.UI;
 using NLog;
+using Timer = System.Threading.Timer;
 
 namespace NFirmwareEditor.Windows
 {
@@ -28,6 +30,7 @@ namespace NFirmwareEditor.Windows
 		private Dataflash m_dataflash;
 		private bool m_isDeviceWasConnectedOnce;
 		private bool m_isDeviceConnected;
+		private bool m_isBroadcasting;
 
 		public DeviceConfiguratorWindow()
 		{
@@ -140,6 +143,7 @@ namespace NFirmwareEditor.Windows
 
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
+			BroadcastButton.Click += BroadcastButton_Click;
 			RebootButton.Click += RebootButton_Click;
 
 			ComConnectButton.Click += ComConnectButton_Click;
@@ -268,7 +272,7 @@ namespace NFirmwareEditor.Windows
 			return true;
 		}
 
-		private Image TakeScreenshot()
+		private Image TakeScreenshot(bool ignoreErrors = false)
 		{
 			try
 			{
@@ -281,6 +285,8 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
+				if (ignoreErrors) return null;
+
 				s_logger.Warn(ex);
 				InfoBox.Show
 				(
@@ -720,6 +726,46 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void BroadcastButton_Click(object sender, EventArgs e)
+		{
+			if (m_isBroadcasting)
+			{
+				m_isBroadcasting = false;
+			}
+			else
+			{
+				if (!ValidateConnectionStatus()) return;
+
+				TraceTabPage.Enabled = false;
+				SetControlButtonsState(false);
+				BroadcastButton.Text = @"Stop broadcast";
+				m_isBroadcasting = true;
+				new Thread(() =>
+				{
+					while (m_isBroadcasting)
+					{
+						Image screenshot = null;
+						var ex = Safe.Execute(() =>
+						{
+							screenshot = TakeScreenshot(true);
+							if (screenshot == null) return;
+
+							UpdateUI(() => ShowScreenshot(screenshot));
+						});
+						if (ex != null || screenshot == null) break;
+					}
+
+					m_isBroadcasting = false;
+					UpdateUI(() =>
+					{
+						TraceTabPage.Enabled = true;
+						SetControlButtonsState(true);
+						BroadcastButton.Text = @"Start broadcast";
+					});
+				}) { IsBackground = true }.Start();
+			}
+		}
+
 		private void RebootButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
@@ -810,7 +856,8 @@ namespace NFirmwareEditor.Windows
 
 		private void SetControlButtonsState(bool enabled)
 		{
-			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
+			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = RebootButton.Enabled = enabled;
+			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = enabled;
 		}
 
 		private void AppendTrace(string message)

@@ -157,6 +157,7 @@
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenshotTabPage = new System.Windows.Forms.TabPage();
+			this.BroadcastButton = new System.Windows.Forms.Button();
 			this.RebootButton = new System.Windows.Forms.Button();
 			this.ScreenshotContainerPanel = new System.Windows.Forms.Panel();
 			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
@@ -1792,6 +1793,7 @@
 			// 
 			// ScreenshotTabPage
 			// 
+			this.ScreenshotTabPage.Controls.Add(this.BroadcastButton);
 			this.ScreenshotTabPage.Controls.Add(this.RebootButton);
 			this.ScreenshotTabPage.Controls.Add(this.ScreenshotContainerPanel);
 			this.ScreenshotTabPage.Controls.Add(this.TakeScreenshotButton);
@@ -1805,6 +1807,18 @@
 			this.ScreenshotTabPage.TabIndex = 0;
 			this.ScreenshotTabPage.Text = "Tools";
 			this.ScreenshotTabPage.UseVisualStyleBackColor = true;
+			// 
+			// BroadcastButton
+			// 
+			this.BroadcastButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.BroadcastButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BroadcastButton.Location = new System.Drawing.Point(81, 37);
+			this.BroadcastButton.Name = "BroadcastButton";
+			this.BroadcastButton.Size = new System.Drawing.Size(113, 25);
+			this.BroadcastButton.TabIndex = 41;
+			this.BroadcastButton.Text = "Start broadcast";
+			this.BroadcastButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.BroadcastButton.UseVisualStyleBackColor = true;
 			// 
 			// RebootButton
 			// 
@@ -2187,5 +2201,6 @@
 		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
 		private System.Windows.Forms.TextBox CommandTextBox;
 		private System.Windows.Forms.Button RebootButton;
+		private System.Windows.Forms.Button BroadcastButton;
 	}
 }
