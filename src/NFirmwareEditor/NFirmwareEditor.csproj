@@ -964,291 +964,291 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
-    <Content Include="Definitions\ASTER 1.01.xml">
+    <None Include="Definitions\ASTER 1.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\ASTER 1.02.xml">
+    </None>
+    <None Include="Definitions\ASTER 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Centurion 1.02.xml">
+    </None>
+    <None Include="Definitions\Centurion 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.00.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.01.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.02 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.02 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.02.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.03 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.03 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.03.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.10.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.10.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.11.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.11.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.12 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.12 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.12.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.12.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.13 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.13 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.13.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.13.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.14.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.14.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 5.04.xml">
+    </None>
+    <None Include="Definitions\Cuboid 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 5.14 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid 5.14 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 5.14.xml">
+    </None>
+    <None Include="Definitions\Cuboid 5.14.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.00.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.02 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.02 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.02.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.03 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.03 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.03.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 3.04.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 3.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid Mini 5.04.xml">
+    </None>
+    <None Include="Definitions\Cuboid Mini 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Cuboid 3.04.xml">
+    </None>
+    <None Include="Definitions\Cuboid 3.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 4.02 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\eGrip II 4.02 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 4.02.xml">
+    </None>
+    <None Include="Definitions\eGrip II 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 4.03 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\eGrip II 4.03 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 4.03.xml">
+    </None>
+    <None Include="Definitions\eGrip II 4.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 4.04.xml">
+    </None>
+    <None Include="Definitions\eGrip II 4.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\eGrip II 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eGrip II 5.04.xml">
+    </None>
+    <None Include="Definitions\eGrip II 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic AIO 4.02.xml">
+    </None>
+    <None Include="Definitions\eVic AIO 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic AIO 4.04.xml">
+    </None>
+    <None Include="Definitions\eVic AIO 4.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic AIO 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic AIO 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic AIO 5.04.xml">
+    </None>
+    <None Include="Definitions\eVic AIO 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic Basic 4.02.xml">
+    </None>
+    <None Include="Definitions\eVic Basic 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 2.00.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.00.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.01.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.02 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.02 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.02.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.03 %2831.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.03 %2831.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.03.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 3.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 3.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTC Mini 5.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTC Mini 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo 4.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo 4.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo 5.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo Mini 4.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo Mini 4.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo Mini 5.04 %2808.09.2016%29.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo Mini 5.04 %2808.09.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo Mini 5.04.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo Mini 5.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo 4.02.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\eVic VTwo Mini 4.02.xml">
+    </None>
+    <None Include="Definitions\eVic VTwo Mini 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iPower 1.01.xml">
+    </None>
+    <None Include="Definitions\iPower 1.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Pico 1.00.xml">
+    </None>
+    <None Include="Definitions\iStick Pico 1.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Pico 1.01.xml">
+    </None>
+    <None Include="Definitions\iStick Pico 1.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Pico 1.02.xml">
+    </None>
+    <None Include="Definitions\iStick Pico 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Pico Mega 1.01.xml">
+    </None>
+    <None Include="Definitions\iStick Pico Mega 1.01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Pico Mega 1.02.xml">
+    </None>
+    <None Include="Definitions\iStick Pico Mega 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick Power 1.02.xml">
+    </None>
+    <None Include="Definitions\iStick Power 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick TC100W 1.02.xml">
+    </None>
+    <None Include="Definitions\iStick TC100W 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick TC100W 1.10.xml">
+    </None>
+    <None Include="Definitions\iStick TC100W 1.10.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick TC100W 1.12.xml">
+    </None>
+    <None Include="Definitions\iStick TC100W 1.12.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick TC200W 1.00.xml">
+    </None>
+    <None Include="Definitions\iStick TC200W 1.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\iStick TC200W 1.02.xml">
+    </None>
+    <None Include="Definitions\iStick TC200W 1.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\myEvic.xml">
+    </None>
+    <None Include="Definitions\myEvic.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Presa TC75W 3.00.xml">
+    </None>
+    <None Include="Definitions\Presa TC75W 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.03.xml">
+    </None>
+    <None Include="Definitions\RX200 3.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.13.xml">
+    </None>
+    <None Include="Definitions\RX200 3.13.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.02.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.00 %2814.04.2016%29.xml">
+    </None>
+    <None Include="Definitions\RX200 3.00 %2814.04.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.00 %2824.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\RX200 3.00 %2824.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.00.xml">
+    </None>
+    <None Include="Definitions\RX200 3.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.10 %2824.05.2016%29.xml">
+    </None>
+    <None Include="Definitions\RX200 3.10 %2824.05.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200 3.10.xml">
+    </None>
+    <None Include="Definitions\RX200 3.10.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.00 %2827.06.2016%29.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.00 %2827.06.2016%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.00.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.03.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.10.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.10.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.12.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.12.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX200S 4.13.xml">
+    </None>
+    <None Include="Definitions\RX200S 4.13.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX23 4.02.xml">
+    </None>
+    <None Include="Definitions\RX23 4.02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX23 4.03.xml">
+    </None>
+    <None Include="Definitions\RX23 4.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX23 4.12.xml">
+    </None>
+    <None Include="Definitions\RX23 4.12.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX23 4.13.xml">
+    </None>
+    <None Include="Definitions\RX23 4.13.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\RX75 4.03.xml">
+    </None>
+    <None Include="Definitions\RX75 4.03.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Vaporflask Classic 2.00.xml">
+    </None>
+    <None Include="Definitions\Vaporflask Classic 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Vaporflask Lite 2.00.xml">
+    </None>
+    <None Include="Definitions\Vaporflask Lite 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Definitions\Vaporflask Stout 2.00.xml">
+    </None>
+    <None Include="Definitions\Vaporflask Stout 2.00.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="Resources\upload_settings.png" />
     <None Include="Resources\download_settings.png" />
     <None Include="Resources\reset_settings.png" />
