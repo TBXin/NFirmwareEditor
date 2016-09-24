@@ -704,23 +704,35 @@ namespace NFirmwareEditor.Windows
 
 		private void SaveScreenshotButton_Click(object sender, EventArgs e)
 		{
-			if (!ValidateConnectionStatus()) return;
-
-			var screenshot = TakeScreenshot();
-			if (screenshot == null) return;
-
-			ShowScreenshot(screenshot);
-			using (var export = new Bitmap(ScreenshotContainerPanel.Width, ScreenshotContainerPanel.Height))
+			if (TakeScreenshotBeforeSaveCheckBox.Checked)
 			{
-				ScreenshotContainerPanel.DrawToBitmap(export, ScreenshotContainerPanel.DisplayRectangle);
+				if (!ValidateConnectionStatus()) return;
+
+				var screenshot = TakeScreenshot();
+				if (screenshot == null) return;
+
+				ShowScreenshot(screenshot);
+			}
+			else
+			{
+				if (ScreenshotPictureBox.Image == null)
+				{
+					InfoBox.Show("Take screenshot first or activate \"Take before save\" option.");
+					return;
+				}
+			}
+
+			using (var containerImage = new Bitmap(ScreenshotContainerPanel.Width, ScreenshotContainerPanel.Height))
+			{
+				ScreenshotContainerPanel.DrawToBitmap(containerImage, ScreenshotContainerPanel.DisplayRectangle);
 
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = Consts.PngExportFilter })
 				{
 					if (sf.ShowDialog() != DialogResult.OK) return;
 
-					using (var export2 = BitmapProcessor.EnlargePixelSize(export, (int)PixelSizeUpDown.Value))
+					using (var exportImage = BitmapProcessor.EnlargePixelSize(containerImage, (int)PixelSizeUpDown.Value))
 					{
-						export2.Save(sf.FileName, ImageFormat.Png);
+						exportImage.Save(sf.FileName, ImageFormat.Png);
 					}
 				}
 			}
