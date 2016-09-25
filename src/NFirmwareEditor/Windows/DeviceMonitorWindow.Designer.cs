@@ -30,6 +30,13 @@
 		{
 			this.MainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.SensorsGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.panel8 = new System.Windows.Forms.Panel();
+			this.panel7 = new System.Windows.Forms.Panel();
+			this.panel6 = new System.Windows.Forms.Panel();
+			this.panel5 = new System.Windows.Forms.Panel();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.BoardTemperatureCheckBox = new System.Windows.Forms.CheckBox();
 			this.BoardTemperatureLabel = new System.Windows.Forms.Label();
@@ -48,13 +55,6 @@
 			this.BatteryCheckBox = new System.Windows.Forms.CheckBox();
 			this.PowerCheckBox = new System.Windows.Forms.CheckBox();
 			this.LineVewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.panel7 = new System.Windows.Forms.Panel();
-			this.panel8 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -108,12 +108,68 @@
 			this.SensorsGroupPanel.TabStop = false;
 			this.SensorsGroupPanel.Text = "Sensors";
 			// 
+			// panel8
+			// 
+			this.panel8.BackColor = System.Drawing.Color.Black;
+			this.panel8.Location = new System.Drawing.Point(6, 211);
+			this.panel8.Name = "panel8";
+			this.panel8.Size = new System.Drawing.Size(188, 2);
+			this.panel8.TabIndex = 22;
+			// 
+			// panel7
+			// 
+			this.panel7.BackColor = System.Drawing.Color.Black;
+			this.panel7.Location = new System.Drawing.Point(6, 188);
+			this.panel7.Name = "panel7";
+			this.panel7.Size = new System.Drawing.Size(188, 2);
+			this.panel7.TabIndex = 21;
+			// 
+			// panel6
+			// 
+			this.panel6.BackColor = System.Drawing.Color.Black;
+			this.panel6.Location = new System.Drawing.Point(6, 165);
+			this.panel6.Name = "panel6";
+			this.panel6.Size = new System.Drawing.Size(188, 2);
+			this.panel6.TabIndex = 20;
+			// 
+			// panel5
+			// 
+			this.panel5.BackColor = System.Drawing.Color.Black;
+			this.panel5.Location = new System.Drawing.Point(6, 142);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(188, 2);
+			this.panel5.TabIndex = 18;
+			// 
+			// panel4
+			// 
+			this.panel4.BackColor = System.Drawing.Color.Black;
+			this.panel4.Location = new System.Drawing.Point(6, 119);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(188, 2);
+			this.panel4.TabIndex = 19;
+			// 
+			// panel3
+			// 
+			this.panel3.BackColor = System.Drawing.Color.Black;
+			this.panel3.Location = new System.Drawing.Point(6, 96);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(188, 2);
+			this.panel3.TabIndex = 18;
+			// 
+			// panel2
+			// 
+			this.panel2.BackColor = System.Drawing.Color.Black;
+			this.panel2.Location = new System.Drawing.Point(6, 73);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(188, 2);
+			this.panel2.TabIndex = 17;
+			// 
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.Black;
 			this.panel1.Location = new System.Drawing.Point(6, 50);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(188, 3);
+			this.panel1.Size = new System.Drawing.Size(188, 2);
 			this.panel1.TabIndex = 16;
 			// 
 			// BoardTemperatureCheckBox
@@ -285,62 +341,6 @@
 			this.LineVewGroupPanel.TabIndex = 2;
 			this.LineVewGroupPanel.TabStop = false;
 			this.LineVewGroupPanel.Text = "Line view";
-			// 
-			// panel2
-			// 
-			this.panel2.BackColor = System.Drawing.Color.Black;
-			this.panel2.Location = new System.Drawing.Point(6, 73);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(188, 3);
-			this.panel2.TabIndex = 17;
-			// 
-			// panel3
-			// 
-			this.panel3.BackColor = System.Drawing.Color.Black;
-			this.panel3.Location = new System.Drawing.Point(6, 96);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(188, 3);
-			this.panel3.TabIndex = 18;
-			// 
-			// panel4
-			// 
-			this.panel4.BackColor = System.Drawing.Color.Black;
-			this.panel4.Location = new System.Drawing.Point(6, 119);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(188, 3);
-			this.panel4.TabIndex = 19;
-			// 
-			// panel5
-			// 
-			this.panel5.BackColor = System.Drawing.Color.Black;
-			this.panel5.Location = new System.Drawing.Point(6, 142);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(188, 3);
-			this.panel5.TabIndex = 18;
-			// 
-			// panel6
-			// 
-			this.panel6.BackColor = System.Drawing.Color.Black;
-			this.panel6.Location = new System.Drawing.Point(6, 165);
-			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(188, 3);
-			this.panel6.TabIndex = 20;
-			// 
-			// panel7
-			// 
-			this.panel7.BackColor = System.Drawing.Color.Black;
-			this.panel7.Location = new System.Drawing.Point(6, 188);
-			this.panel7.Name = "panel7";
-			this.panel7.Size = new System.Drawing.Size(188, 3);
-			this.panel7.TabIndex = 21;
-			// 
-			// panel8
-			// 
-			this.panel8.BackColor = System.Drawing.Color.Black;
-			this.panel8.Location = new System.Drawing.Point(6, 211);
-			this.panel8.Name = "panel8";
-			this.panel8.Size = new System.Drawing.Size(188, 3);
-			this.panel8.TabIndex = 22;
 			// 
 			// DeviceMonitorWindow
 			// 
