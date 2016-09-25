@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -12,16 +13,19 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
-		private static readonly Color s_batteryVoltageColor = Color.DarkSlateGray;
-		private static readonly Color s_powerColor = Color.LimeGreen;
-		private static readonly Color s_outputVoltageColor = Color.LightSkyBlue;
-		private static readonly Color s_outputCurrentColor = Color.Orange;
-		private static readonly Color s_resistanceColor = Color.BlueViolet;
-		private static readonly Color s_realResistanceColor = Color.Violet;
-		private static readonly Color s_temperatureColor = Color.DarkSlateGray;
-		private static readonly Color s_boardTemperatureColor = Color.SaddleBrown;
-
 		private const int MaxItems = 50;
+		private static readonly IDictionary<string, Color> s_sensorColorMap = new Dictionary<string, Color>
+		{
+			{ SensorKeys.BatteryVoltage,  Color.DarkSlateGray},
+			{ SensorKeys.Power,  Color.LimeGreen},
+			{ SensorKeys.OutputVoltage,  Color.LightSkyBlue},
+			{ SensorKeys.OutputCurrent,  Color.Orange},
+			{ SensorKeys.Resistance,  Color.BlueViolet},
+			{ SensorKeys.RealResistance,  Color.Violet},
+			{ SensorKeys.Temperature,  Color.DeepPink},
+			{ SensorKeys.BoardTemperature,  Color.SaddleBrown},
+		};
+
 		private readonly COMConnector m_comConnector;
 
 		public DeviceMonitorWindow([NotNull] COMConnector comConnector)
@@ -31,7 +35,6 @@ namespace NFirmwareEditor.Windows
 
 			InitializeComponent();
 			InitializeControls();
-			InitializeChart();
 
 			m_comConnector.MessageReceived += ComConnector_MessageReceived;
 			m_comConnector.Disconnected += ComConnector_Disconnected;
@@ -45,9 +48,72 @@ namespace NFirmwareEditor.Windows
 			});
 		}
 
-		private void ComConnector_Disconnected()
+		private void InitializeControls()
 		{
-			EnsureConnection();
+			InitializeChart();
+
+			InititalizeSeriesCheckbox(BatteryCheckBox, SensorKeys.BatteryVoltage);
+			InititalizeSeriesCheckbox(PowerCheckBox, SensorKeys.Power);
+			InititalizeSeriesCheckbox(OutputVoltageCheckBox, SensorKeys.OutputVoltage);
+			InititalizeSeriesCheckbox(OutputCurrentCheckBox, SensorKeys.OutputCurrent);
+			InititalizeSeriesCheckbox(ResistanceCheckBox, SensorKeys.Resistance);
+			InititalizeSeriesCheckbox(RealResistanceCheckBox, SensorKeys.RealResistance);
+			InititalizeSeriesCheckbox(TemperatureCheckBox, SensorKeys.Temperature);
+			InititalizeSeriesCheckbox(BoardTemperatureCheckBox, SensorKeys.BoardTemperature);
+
+			panel1.BackColor = s_sensorColorMap[BatteryCheckBox.Tag.ToString()];
+			panel2.BackColor = s_sensorColorMap[PowerCheckBox.Tag.ToString()];
+			panel3.BackColor = s_sensorColorMap[OutputVoltageCheckBox.Tag.ToString()];
+			panel4.BackColor = s_sensorColorMap[OutputCurrentCheckBox.Tag.ToString()];
+			panel5.BackColor = s_sensorColorMap[ResistanceCheckBox.Tag.ToString()];
+			panel6.BackColor = s_sensorColorMap[RealResistanceCheckBox.Tag.ToString()];
+			panel7.BackColor = s_sensorColorMap[TemperatureCheckBox.Tag.ToString()];
+			panel8.BackColor = s_sensorColorMap[BoardTemperatureCheckBox.Tag.ToString()];
+		}
+
+		private void InititalizeSeriesCheckbox(CheckBox checkbox, string seriesName)
+		{
+			checkbox.Tag = seriesName;
+			checkbox.CheckedChanged += SeriesCheckBox_CheckedChanged;
+			checkbox.Checked = true;
+		}
+
+		private void SeriesCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			var checkbox = sender as CheckBox;
+			if (checkbox == null || checkbox.Tag == null || string.IsNullOrEmpty(checkbox.Tag.ToString())) return;
+
+			var seriesName = checkbox.Tag.ToString();
+			if (checkbox.Checked)
+			{
+				var idx = MainChart.Series.IndexOf(seriesName);
+				if (idx != -1) return;
+
+				var series = CreateSeries(seriesName, s_sensorColorMap[seriesName]);
+				MainChart.Series.Add(series);
+			}
+			else
+			{
+				var idx = MainChart.Series.IndexOf(seriesName);
+				if (idx == -1) return;
+
+				MainChart.Series.RemoveAt(idx);
+			}
+		}
+
+		private void InitializeChart()
+		{
+			MainChart.Palette = ChartColorPalette.Pastel;
+			var area = new ChartArea();
+			{
+				area.AxisX.MajorGrid.LineColor = Color.LightGray;
+				area.AxisX.Maximum = MaxItems;
+				area.AxisX.IsMarginVisible = false;
+				area.AxisX.LabelStyle.Enabled = false;
+				area.AxisY.MajorGrid.LineColor = Color.LightGray;
+				area.AxisY.LabelStyle.Enabled = false;
+			}
+			MainChart.ChartAreas.Add(area);
 		}
 
 		private void EnsureConnection()
@@ -78,40 +144,7 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void InitializeControls()
-		{
-			panel1.BackColor = s_batteryVoltageColor;
-			panel2.BackColor = s_powerColor;
-			panel3.BackColor = s_outputVoltageColor;
-			panel4.BackColor = s_outputCurrentColor;
-			panel5.BackColor = s_resistanceColor;
-			panel6.BackColor = s_realResistanceColor;
-			panel7.BackColor = s_temperatureColor;
-			panel8.BackColor = s_boardTemperatureColor;
-		}
-
-		private void InitializeChart()
-		{
-			MainChart.Palette = ChartColorPalette.Pastel;
-			var area = new ChartArea();
-			{
-				area.AxisX.MajorGrid.LineColor = Color.LightGray;
-				area.AxisX.Maximum = MaxItems;
-				area.AxisX.IsMarginVisible = false;
-				area.AxisX.LabelStyle.Enabled = false;
-				area.AxisY.MajorGrid.LineColor = Color.LightGray;
-				area.AxisY.LabelStyle.Enabled = false;
-			}
-			MainChart.ChartAreas.Add(area);
-
-			AddSeries(SensorKeys.BatteryVoltage, s_batteryVoltageColor);
-			AddSeries(SensorKeys.OutputVoltage, s_outputVoltageColor);
-			AddSeries(SensorKeys.OutputCurrent, s_outputCurrentColor);
-			AddSeries(SensorKeys.Resistance, s_resistanceColor);
-			AddSeries(SensorKeys.RealResistance, s_realResistanceColor);
-		}
-
-		private void AddSeries(string name, Color color)
+		private Series CreateSeries(string name, Color color)
 		{
 			var series = new Series
 			{
@@ -128,7 +161,12 @@ namespace NFirmwareEditor.Windows
 					MovingDirection = LabelAlignmentStyles.Right
 				}
 			};
-			MainChart.Series.Add(series);
+			return series;
+		}
+
+		private void ComConnector_Disconnected()
+		{
+			EnsureConnection();
 		}
 
 		private void ComConnector_MessageReceived(string message)
@@ -143,11 +181,20 @@ namespace NFirmwareEditor.Windows
 
 				UpdateUI(() =>
 				{
-					if (sensors.BatteryVoltage >= 0) MainChart.Series[SensorKeys.BatteryVoltage].Points.Add(sensors.BatteryVoltage);
-					if (sensors.OutputVoltage >= 0) MainChart.Series[SensorKeys.OutputVoltage].Points.Add(sensors.OutputVoltage);
-					if (sensors.OutputCurrent >= 0) MainChart.Series[SensorKeys.OutputCurrent].Points.Add(sensors.OutputCurrent);
-					if (sensors.Resistance >= 0) MainChart.Series[SensorKeys.Resistance].Points.Add(sensors.Resistance);
-					if (sensors.RealResistance >= 0) MainChart.Series[SensorKeys.RealResistance].Points.Add(sensors.RealResistance);
+					if (!MainChart.Series.IsUniqueName(SensorKeys.BatteryVoltage) && sensors.BatteryVoltage >= 0)
+						MainChart.Series[SensorKeys.BatteryVoltage].Points.Add(sensors.BatteryVoltage);
+
+					if (!MainChart.Series.IsUniqueName(SensorKeys.OutputVoltage) && sensors.OutputVoltage >= 0)
+						MainChart.Series[SensorKeys.OutputVoltage].Points.Add(sensors.OutputVoltage);
+
+					if (!MainChart.Series.IsUniqueName(SensorKeys.OutputCurrent) && sensors.OutputCurrent >= 0)
+						MainChart.Series[SensorKeys.OutputCurrent].Points.Add(sensors.OutputCurrent);
+
+					if (!MainChart.Series.IsUniqueName(SensorKeys.Resistance) && sensors.Resistance >= 0)
+						MainChart.Series[SensorKeys.Resistance].Points.Add(sensors.Resistance);
+
+					if (!MainChart.Series.IsUniqueName(SensorKeys.RealResistance) && sensors.RealResistance >= 0)
+						MainChart.Series[SensorKeys.RealResistance].Points.Add(sensors.RealResistance);
 
 					foreach (var series in MainChart.Series)
 					{
