@@ -2,6 +2,7 @@
 using System.IO.Ports;
 using System.Management;
 using System.Text;
+using System.Threading;
 using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Managers
@@ -11,8 +12,10 @@ namespace NFirmwareEditor.Managers
 		private const string PnpDeviceIdMask = "VID_0416&PID_5020";
 		private static readonly char[] s_trimChars = { '\r', '\n' };
 		private SerialPort m_port;
+		private string m_opendPort;
 
 		public event Action<string> MessageReceived;
+		public event Action Disconnected;
 
 		public bool IsConnected
 		{
@@ -30,7 +33,12 @@ namespace NFirmwareEditor.Managers
 			m_port = new SerialPort(portName) { RtsEnable = true, DtrEnable = true };
 			m_port.DataReceived += COMPort_DataReceived;
 			m_port.Open();
-			return m_port.IsOpen ? portName : null;
+
+			if (!m_port.IsOpen) return null;
+
+			new Thread(PortMonitor) { IsBackground = true }.Start();
+			m_opendPort = portName;
+			return m_opendPort;
 		}
 
 		public void Disconnect()
@@ -38,8 +46,15 @@ namespace NFirmwareEditor.Managers
 			if (!IsConnected && m_port == null) return;
 
 			m_port.DataReceived -= COMPort_DataReceived;
-			m_port.Close();
-			m_port = null;
+			try
+			{
+				m_port.Close();
+			}
+			finally
+			{
+				m_port = null;
+				m_opendPort = null;
+			}
 		}
 
 		public bool Send(string command)
@@ -77,10 +92,31 @@ namespace NFirmwareEditor.Managers
 			OnMessageReceived(data);
 		}
 
+		private void PortMonitor(object dummy)
+		{
+			do
+			{
+				var connectedPort = TryGetPortName();
+				if (string.IsNullOrEmpty(connectedPort) || !string.Equals(m_opendPort, connectedPort))
+				{
+					OnDisconnected();
+					break;
+				}
+				Thread.Sleep(500);
+			}
+			while (!string.IsNullOrEmpty(m_opendPort));
+		}
+
 		private void OnMessageReceived(string obj)
 		{
 			var handler = MessageReceived;
 			if (handler != null) handler(obj);
+		}
+
+		protected virtual void OnDisconnected()
+		{
+			var handler = Disconnected;
+			if (handler != null) handler();
 		}
 	}
 }

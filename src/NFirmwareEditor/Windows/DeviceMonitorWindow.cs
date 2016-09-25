@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NFirmwareEditor.Core;
@@ -11,6 +12,15 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
+		private static readonly Color s_batteryVoltageColor = Color.DarkSlateGray;
+		private static readonly Color s_powerColor = Color.LimeGreen;
+		private static readonly Color s_outputVoltageColor = Color.LightSkyBlue;
+		private static readonly Color s_outputCurrentColor = Color.Orange;
+		private static readonly Color s_resistanceColor = Color.BlueViolet;
+		private static readonly Color s_realResistanceColor = Color.Violet;
+		private static readonly Color s_temperatureColor = Color.DarkSlateGray;
+		private static readonly Color s_boardTemperatureColor = Color.SaddleBrown;
+
 		private const int MaxItems = 50;
 		private readonly COMConnector m_comConnector;
 
@@ -20,15 +30,64 @@ namespace NFirmwareEditor.Windows
 			m_comConnector = comConnector;
 
 			InitializeComponent();
+			InitializeControls();
 			InitializeChart();
 
-			Load += (s, e) =>
+			m_comConnector.MessageReceived += ComConnector_MessageReceived;
+			m_comConnector.Disconnected += ComConnector_Disconnected;
+
+			Load += (s, e) => EnsureConnection();
+			Closing += (s, e) => Safe.Execute(() =>
 			{
-				m_comConnector.Connect();
-				m_comConnector.Send("M1");
-				m_comConnector.MessageReceived += ComConnector_MessageReceived;
-			};
-			Closing += (s, e) => Safe.Execute(() => m_comConnector.Disconnect());
+				m_comConnector.MessageReceived -= ComConnector_MessageReceived;
+				m_comConnector.Disconnected -= ComConnector_Disconnected;
+				m_comConnector.Disconnect();
+			});
+		}
+
+		private void ComConnector_Disconnected()
+		{
+			EnsureConnection();
+		}
+
+		private void EnsureConnection()
+		{
+			while (true)
+			{
+				var port = m_comConnector.Connect();
+				if (!string.IsNullOrEmpty(port))
+				{
+					m_comConnector.Send("M1");
+					break;
+				}
+
+				var result = InfoBox.Show
+				(
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
+					MessageBoxButtons.OKCancel
+				);
+				if (result == DialogResult.Cancel)
+				{
+					UpdateUI(() => Close());
+					return;
+				}
+			}
+		}
+
+		private void InitializeControls()
+		{
+			panel1.BackColor = s_batteryVoltageColor;
+			panel2.BackColor = s_powerColor;
+			panel3.BackColor = s_outputVoltageColor;
+			panel4.BackColor = s_outputCurrentColor;
+			panel5.BackColor = s_resistanceColor;
+			panel6.BackColor = s_realResistanceColor;
+			panel7.BackColor = s_temperatureColor;
+			panel8.BackColor = s_boardTemperatureColor;
 		}
 
 		private void InitializeChart()
@@ -45,11 +104,11 @@ namespace NFirmwareEditor.Windows
 			}
 			MainChart.ChartAreas.Add(area);
 
-			AddSeries(SensorKeys.BatteryVoltage, Color.DarkSlateGray);
-			AddSeries(SensorKeys.OutputVoltage, Color.LightSkyBlue);
-			AddSeries(SensorKeys.OutputCurrent, Color.Orange);
-			AddSeries(SensorKeys.Resistance, Color.BlueViolet);
-			AddSeries(SensorKeys.RealResistance, Color.Violet);
+			AddSeries(SensorKeys.BatteryVoltage, s_batteryVoltageColor);
+			AddSeries(SensorKeys.OutputVoltage, s_outputVoltageColor);
+			AddSeries(SensorKeys.OutputCurrent, s_outputCurrentColor);
+			AddSeries(SensorKeys.Resistance, s_resistanceColor);
+			AddSeries(SensorKeys.RealResistance, s_realResistanceColor);
 		}
 
 		private void AddSeries(string name, Color color)
