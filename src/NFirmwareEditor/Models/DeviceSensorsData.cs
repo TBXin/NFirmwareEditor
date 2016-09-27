@@ -48,7 +48,7 @@ namespace NFirmwareEditor.Models
 
 		public float OutputCurrent { get; set; }
 
-		public static DeviceSensorsData Parse([NotNull] string message)
+		public static IDictionary<string, float> Parse([NotNull] string message)
 		{
 			if (string.IsNullOrEmpty(message)) throw new ArgumentNullException("message");
 
@@ -70,7 +70,15 @@ namespace NFirmwareEditor.Models
 				sensors[pair[0]] = int.Parse(pair[1]);
 			}
 
-			var result = new DeviceSensorsData
+			sensors[SensorKeys.BatteryVoltage] /= 100f;
+			sensors[SensorKeys.Resistance] /= 100f;
+			sensors[SensorKeys.RealResistance] /= 1000f;
+			sensors[SensorKeys.Power] /= 10f;
+			sensors[SensorKeys.OutputVoltage] /= 100f;
+			sensors[SensorKeys.OutputCurrent] /= 10f;
+			return sensors;
+
+			/*var result = new DeviceSensorsData
 			{
 				BatteryVoltage = sensors[SensorKeys.BatteryVoltage] / 100f,
 				IsCharging = sensors[SensorKeys.Charging] == 1,
@@ -83,12 +91,12 @@ namespace NFirmwareEditor.Models
 				OutputVoltage = sensors[SensorKeys.OutputVoltage] / 100f,
 				OutputCurrent = sensors[SensorKeys.OutputCurrent] / 10f
 			};
-			return result;
+			return result;*/
 		}
 
-		private static Dictionary<string, int> CreateEmptySensorsData()
+		private static Dictionary<string, float> CreateEmptySensorsData()
 		{
-			return new Dictionary<string, int>
+			return new Dictionary<string, float>
 			{
 				{ SensorKeys.BatteryVoltage, 0 },
 				{ SensorKeys.Charging, 0 },

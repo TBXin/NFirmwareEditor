@@ -45,37 +45,40 @@ namespace NFirmwareEditor.Windows
 				while (true)
 				{
 					var resm = rnd.Next(990, 1020);
-					ComConnector_MessageReceived(string.Format("STANDBY BATT=417 RES=98 RESM={0}", resm));
+					var temp = m_cels ? rnd.Next(100, 120) : rnd.Next(300, 350);
+					ComConnector_MessageReceived(string.Format("STANDBY BATT=417 RES=98 RESM={0} CELS={1} TEMP={2}", resm, m_cels ? 1 : 0, temp));
 					Thread.Sleep(500);
 				}
 			}) { IsBackground = true }.Start();
 #endif
 		}
 
+#if DEBUG
+		private bool m_cels;
 		#region Overrides of EditorDialogWindow
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			if (keyData.HasFlag(Keys.Space))
 			{
-
+				m_cels = !m_cels;
 			}
 
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 		#endregion
-
+#endif
 		private void InitializeControls()
 		{
 			m_seriesData = new Dictionary<string, SeriesRelatedData>
 			{
-				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1) },
-				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2) },
-				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3) },
-				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4) },
-				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5) },
-				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6) },
-				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7) },
-				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8) }
+				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1, BatteryVoltageLabel, "{0} V") },
+				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2, PowerLabel, "{0} W") },
+				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3, OutputVoltageLabel, "{0} V") },
+				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4, OutputCurrentLabel, "{0} A") },
+				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5, ResistanceLabel, "{0} Ω") },
+				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6, RealResistanceLabel, "{0} Ω") },
+				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7, TemperatureLabel, "{0} °C") },
+				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8, BoardTemperatureLabel, "{0} °C") }
 			};
 
 			InitializeChart();
@@ -102,8 +105,8 @@ namespace NFirmwareEditor.Windows
 				var seriesName = kvp.Key;
 				var data = kvp.Value;
 
-				var series = CreateSeries(seriesName, data.Color);
-				MainChart.Series.Add(series);
+				data.Seires = CreateSeries(seriesName, data.Color);
+				MainChart.Series.Add(data.Seires);
 
 				data.CheckBox.Tag = seriesName;
 				data.CheckBox.CheckedChanged += SeriesCheckBox_CheckedChanged;
@@ -118,7 +121,7 @@ namespace NFirmwareEditor.Windows
 			if (checkbox == null || checkbox.Tag == null || string.IsNullOrEmpty(checkbox.Tag.ToString())) return;
 
 			var seriesName = checkbox.Tag.ToString();
-			MainChart.Series[seriesName].Enabled = checkbox.Checked;
+			m_seriesData[seriesName].Seires.Enabled = checkbox.Checked;
 		}
 
 		private void EnsureConnection()
@@ -189,20 +192,18 @@ namespace NFirmwareEditor.Windows
 
 				UpdateUI(() =>
 				{
-					if (!MainChart.Series.IsUniqueName(SensorKeys.BatteryVoltage) && sensors.BatteryVoltage >= 0)
-						MainChart.Series[SensorKeys.BatteryVoltage].Points.Add(sensors.BatteryVoltage);
+					var isCelcius = sensors[SensorKeys.Celcius] > 0;
+					m_seriesData[SensorKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 
-					if (!MainChart.Series.IsUniqueName(SensorKeys.OutputVoltage) && sensors.OutputVoltage >= 0)
-						MainChart.Series[SensorKeys.OutputVoltage].Points.Add(sensors.OutputVoltage);
+					foreach (var kvp in m_seriesData)
+					{
+						var sensorName = kvp.Key;
+						var data = kvp.Value;
 
-					if (!MainChart.Series.IsUniqueName(SensorKeys.OutputCurrent) && sensors.OutputCurrent >= 0)
-						MainChart.Series[SensorKeys.OutputCurrent].Points.Add(sensors.OutputCurrent);
-
-					if (!MainChart.Series.IsUniqueName(SensorKeys.Resistance) && sensors.Resistance >= 0)
-						MainChart.Series[SensorKeys.Resistance].Points.Add(sensors.Resistance);
-
-					if (!MainChart.Series.IsUniqueName(SensorKeys.RealResistance) && sensors.RealResistance >= 0)
-						MainChart.Series[SensorKeys.RealResistance].Points.Add(sensors.RealResistance);
+						var readings = sensors[sensorName];
+						data.Seires.Points.Add(readings);
+						data.SetLastValue(readings == 0 ? (float?)null : readings);
+					}
 
 					foreach (var series in MainChart.Series)
 					{
@@ -233,8 +234,14 @@ namespace NFirmwareEditor.Windows
 
 		private class SeriesRelatedData
 		{
-			public SeriesRelatedData(Color color, CheckBox checkBox, Panel panel)
+			private readonly Label m_lastValueLabel;
+			private string m_labelFormat;
+
+			public SeriesRelatedData(Color color, CheckBox checkBox, Panel panel, Label lastValueLabel, string labelFormat)
 			{
+				m_lastValueLabel = lastValueLabel;
+				m_labelFormat = labelFormat;
+
 				Color = color;
 				CheckBox = checkBox;
 				Panel = panel;
@@ -245,6 +252,20 @@ namespace NFirmwareEditor.Windows
 			public CheckBox CheckBox { get; private set; }
 
 			public Panel Panel { get; private set; }
+
+			public Series Seires { get; set; }
+
+			public void SetLastValueFormat(string format)
+			{
+				m_labelFormat = format;
+			}
+
+			public void SetLastValue(float? value)
+			{
+				m_lastValueLabel.Text = Seires.Enabled && value.HasValue
+					? string.Format(CultureInfo.InvariantCulture, m_labelFormat, value)
+					: "?";
+			}
 		}
 	}
 }
