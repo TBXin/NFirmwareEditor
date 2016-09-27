@@ -215,8 +215,10 @@ namespace NFirmwareEditor.Windows
 					{
 						var sensorName = kvp.Key;
 						var data = kvp.Value;
+						var readings = sensorName == SensorKeys.Power
+							? sensors[SensorKeys.OutputCurrent] * sensors[SensorKeys.OutputVoltage]
+							: sensors[sensorName];
 
-						var readings = sensors[sensorName];
 						var interpolatedValue = Interpolate(readings, data.InterpolationLimits);
 
 						var point = new DataPoint();
