@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
@@ -14,17 +15,7 @@ namespace NFirmwareEditor.Windows
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
 		private const int MaxItems = 50;
-		private static readonly IDictionary<string, Color> s_sensorColorMap = new Dictionary<string, Color>
-		{
-			{ SensorKeys.BatteryVoltage,  Color.DarkSlateGray},
-			{ SensorKeys.Power,  Color.LimeGreen},
-			{ SensorKeys.OutputVoltage,  Color.LightSkyBlue},
-			{ SensorKeys.OutputCurrent,  Color.Orange},
-			{ SensorKeys.Resistance,  Color.BlueViolet},
-			{ SensorKeys.RealResistance,  Color.Violet},
-			{ SensorKeys.Temperature,  Color.DeepPink},
-			{ SensorKeys.BoardTemperature,  Color.SaddleBrown},
-		};
+		private IDictionary<string, SeriesRelatedData> m_seriesData;
 
 		private readonly COMConnector m_comConnector;
 
@@ -46,36 +37,79 @@ namespace NFirmwareEditor.Windows
 				m_comConnector.Disconnected -= ComConnector_Disconnected;
 				m_comConnector.Disconnect();
 			});
+
+#if DEBUG
+			new Thread(() =>
+			{
+				var rnd = new Random();
+				while (true)
+				{
+					var resm = rnd.Next(990, 1020);
+					ComConnector_MessageReceived(string.Format("STANDBY BATT=417 RES=98 RESM={0}", resm));
+					Thread.Sleep(500);
+				}
+			}) { IsBackground = true }.Start();
+#endif
 		}
+
+		#region Overrides of EditorDialogWindow
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData.HasFlag(Keys.Space))
+			{
+
+			}
+
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+		#endregion
 
 		private void InitializeControls()
 		{
+			m_seriesData = new Dictionary<string, SeriesRelatedData>
+			{
+				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1) },
+				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2) },
+				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3) },
+				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4) },
+				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5) },
+				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6) },
+				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7) },
+				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8) }
+			};
+
 			InitializeChart();
-
-			InititalizeSeriesCheckbox(BatteryCheckBox, SensorKeys.BatteryVoltage);
-			InititalizeSeriesCheckbox(PowerCheckBox, SensorKeys.Power);
-			InititalizeSeriesCheckbox(OutputVoltageCheckBox, SensorKeys.OutputVoltage);
-			InititalizeSeriesCheckbox(OutputCurrentCheckBox, SensorKeys.OutputCurrent);
-			InititalizeSeriesCheckbox(ResistanceCheckBox, SensorKeys.Resistance);
-			InititalizeSeriesCheckbox(RealResistanceCheckBox, SensorKeys.RealResistance);
-			InititalizeSeriesCheckbox(TemperatureCheckBox, SensorKeys.Temperature);
-			InititalizeSeriesCheckbox(BoardTemperatureCheckBox, SensorKeys.BoardTemperature);
-
-			panel1.BackColor = s_sensorColorMap[BatteryCheckBox.Tag.ToString()];
-			panel2.BackColor = s_sensorColorMap[PowerCheckBox.Tag.ToString()];
-			panel3.BackColor = s_sensorColorMap[OutputVoltageCheckBox.Tag.ToString()];
-			panel4.BackColor = s_sensorColorMap[OutputCurrentCheckBox.Tag.ToString()];
-			panel5.BackColor = s_sensorColorMap[ResistanceCheckBox.Tag.ToString()];
-			panel6.BackColor = s_sensorColorMap[RealResistanceCheckBox.Tag.ToString()];
-			panel7.BackColor = s_sensorColorMap[TemperatureCheckBox.Tag.ToString()];
-			panel8.BackColor = s_sensorColorMap[BoardTemperatureCheckBox.Tag.ToString()];
+			InitializeSeries();
 		}
 
-		private void InititalizeSeriesCheckbox(CheckBox checkbox, string seriesName)
+		private void InitializeChart()
 		{
-			checkbox.Tag = seriesName;
-			checkbox.CheckedChanged += SeriesCheckBox_CheckedChanged;
-			checkbox.Checked = true;
+			MainChart.Palette = ChartColorPalette.Pastel;
+			var area = new ChartArea();
+			{
+				area.AxisX.IsMarginVisible = false;
+				area.AxisX.Maximum = MaxItems;
+				area.AxisX.Enabled = AxisEnabled.False;
+				area.AxisY.Enabled = AxisEnabled.False;
+			}
+			MainChart.ChartAreas.Add(area);
+		}
+
+		private void InitializeSeries()
+		{
+			foreach (var kvp in m_seriesData)
+			{
+				var seriesName = kvp.Key;
+				var data = kvp.Value;
+
+				var series = CreateSeries(seriesName, data.Color);
+				MainChart.Series.Add(series);
+
+				data.CheckBox.Tag = seriesName;
+				data.CheckBox.CheckedChanged += SeriesCheckBox_CheckedChanged;
+				data.CheckBox.Checked = true;
+				data.Panel.BackColor = data.Color;
+			}
 		}
 
 		private void SeriesCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -84,40 +118,14 @@ namespace NFirmwareEditor.Windows
 			if (checkbox == null || checkbox.Tag == null || string.IsNullOrEmpty(checkbox.Tag.ToString())) return;
 
 			var seriesName = checkbox.Tag.ToString();
-			if (checkbox.Checked)
-			{
-				var idx = MainChart.Series.IndexOf(seriesName);
-				if (idx != -1) return;
-
-				var series = CreateSeries(seriesName, s_sensorColorMap[seriesName]);
-				MainChart.Series.Add(series);
-			}
-			else
-			{
-				var idx = MainChart.Series.IndexOf(seriesName);
-				if (idx == -1) return;
-
-				MainChart.Series.RemoveAt(idx);
-			}
-		}
-
-		private void InitializeChart()
-		{
-			MainChart.Palette = ChartColorPalette.Pastel;
-			var area = new ChartArea();
-			{
-				area.AxisX.MajorGrid.LineColor = Color.LightGray;
-				area.AxisX.Maximum = MaxItems;
-				area.AxisX.IsMarginVisible = false;
-				area.AxisX.LabelStyle.Enabled = false;
-				area.AxisY.MajorGrid.LineColor = Color.LightGray;
-				area.AxisY.LabelStyle.Enabled = false;
-			}
-			MainChart.ChartAreas.Add(area);
+			MainChart.Series[seriesName].Enabled = checkbox.Checked;
 		}
 
 		private void EnsureConnection()
 		{
+#if DEBUG
+			return;
+#endif
 			while (true)
 			{
 				var port = m_comConnector.Connect();
@@ -206,7 +214,7 @@ namespace NFirmwareEditor.Windows
 						if (series.Points.Count > 0)
 						{
 							var point = series.Points[series.Points.Count - 1];
-							if (point.YValues[0] != 0)
+							if (Math.Abs(point.YValues[0]) > 0.01)
 							{
 								point.Label = Math.Round(point.YValues[0], 2).ToString(CultureInfo.InvariantCulture);
 								if (series.Points.Count > 1)
@@ -221,6 +229,22 @@ namespace NFirmwareEditor.Windows
 					MainChart.ResetAutoValues();
 				});
 			}
+		}
+
+		private class SeriesRelatedData
+		{
+			public SeriesRelatedData(Color color, CheckBox checkBox, Panel panel)
+			{
+				Color = color;
+				CheckBox = checkBox;
+				Panel = panel;
+			}
+
+			public Color Color { get; private set; }
+
+			public CheckBox CheckBox { get; private set; }
+
+			public Panel Panel { get; private set; }
 		}
 	}
 }
