@@ -46,8 +46,11 @@ namespace NFirmwareEditor.Windows
 				{
 					var resm = rnd.Next(990, 1020);
 					var temp = m_cels ? rnd.Next(100, 120) : rnd.Next(300, 350);
-					ComConnector_MessageReceived(string.Format("STANDBY BATT=417 RES=98 RESM={0} CELS={1} TEMP={2}", resm, m_cels ? 1 : 0, temp));
-					Thread.Sleep(500);
+					var brd = rnd.Next(28, 31);
+					var message = string.Format("STANDBY BATT=417 RES=98 RESM={0} CELS={1} TEMP={2} BRD={3}", resm, m_cels ? 1 : 0, temp, brd);
+					if (m_amps) message += " CUR=" + rnd.Next(10, 50);
+					ComConnector_MessageReceived(message);
+					Thread.Sleep(100);
 				}
 			}) { IsBackground = true }.Start();
 #endif
@@ -55,12 +58,14 @@ namespace NFirmwareEditor.Windows
 
 #if DEBUG
 		private bool m_cels;
+		private bool m_amps;
 		#region Overrides of EditorDialogWindow
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			if (keyData.HasFlag(Keys.Space))
 			{
-				m_cels = !m_cels;
+				m_amps = !m_amps;
+				//m_cels = !m_cels;
 			}
 
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -69,16 +74,25 @@ namespace NFirmwareEditor.Windows
 #endif
 		private void InitializeControls()
 		{
+			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 100) };
+			var powerLimits = new[] { new ValueLimit<float, int>(1, 50), new ValueLimit<float, int>(75, 80) };
+			var tempLimits = new[] { new ValueLimit<float, int>(100, 50), new ValueLimit<float, int>(600, 80) };
+			var resistanceLimits = new[] { new ValueLimit<float, int>(0.05f, 30), new ValueLimit<float, int>(3f, 50) };
+			var realResistanceLimits = new[] { new ValueLimit<float, int>(0.05f, 30), new ValueLimit<float, int>(3f, 50) };
+			var outputVoltageLimits = new[] { new ValueLimit<float, int>(1, 10), new ValueLimit<float, int>(10, 30) };
+			var outputCurrentLimits = new[] { new ValueLimit<float, int>(1, 10), new ValueLimit<float, int>(25, 30) };
+			var boardTemperatureLimits = new[] { new ValueLimit<float, int>(0, 1), new ValueLimit<float, int>(99, 10) };
+
 			m_seriesData = new Dictionary<string, SeriesRelatedData>
 			{
-				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1, BatteryVoltageLabel, "{0} V") },
-				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2, PowerLabel, "{0} W") },
-				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3, OutputVoltageLabel, "{0} V") },
-				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4, OutputCurrentLabel, "{0} A") },
-				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5, ResistanceLabel, "{0} Ω") },
-				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6, RealResistanceLabel, "{0} Ω") },
-				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7, TemperatureLabel, "{0} °C") },
-				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8, BoardTemperatureLabel, "{0} °C") }
+				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1, BatteryVoltageLabel, "{0} V", batteryLimits) },
+				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2, PowerLabel, "{0} W", powerLimits) },
+				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3, OutputVoltageLabel, "{0} V", outputVoltageLimits) },
+				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4, OutputCurrentLabel, "{0} A", outputCurrentLimits) },
+				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5, ResistanceLabel, "{0} Ω", resistanceLimits) },
+				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6, RealResistanceLabel, "{0} Ω", realResistanceLimits) },
+				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7, TemperatureLabel, "{0} °C", tempLimits) },
+				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8, BoardTemperatureLabel, "{0} °C", boardTemperatureLimits) }
 			};
 
 			InitializeChart();
@@ -115,15 +129,6 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void SeriesCheckBox_CheckedChanged(object sender, EventArgs e)
-		{
-			var checkbox = sender as CheckBox;
-			if (checkbox == null || checkbox.Tag == null || string.IsNullOrEmpty(checkbox.Tag.ToString())) return;
-
-			var seriesName = checkbox.Tag.ToString();
-			m_seriesData[seriesName].Seires.Enabled = checkbox.Checked;
-		}
-
 		private void EnsureConnection()
 		{
 #if DEBUG
@@ -149,7 +154,7 @@ namespace NFirmwareEditor.Windows
 				);
 				if (result == DialogResult.Cancel)
 				{
-					UpdateUI(() => Close());
+					UpdateUI(Close);
 					return;
 				}
 			}
@@ -173,6 +178,17 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 			return series;
+		}
+
+		private float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
+		{
+			var low = lowHigh[0];
+			var high = lowHigh[1];
+
+			if (value > high.Value) return high.Value;
+			if (value < low.Value) return low.Value;
+
+			return low.Limit + (value - low.Value) / (high.Value - low.Value) * (high.Limit - low.Limit);
 		}
 
 		private void ComConnector_Disconnected()
@@ -201,8 +217,21 @@ namespace NFirmwareEditor.Windows
 						var data = kvp.Value;
 
 						var readings = sensors[sensorName];
-						data.Seires.Points.Add(readings);
-						data.SetLastValue(readings == 0 ? (float?)null : readings);
+						var interpolatedValue = Interpolate(readings, data.InterpolationLimits);
+
+						var point = new DataPoint();
+						if (Math.Abs(readings) > 0.001)
+						{
+							point.YValues = new double[] { interpolatedValue };
+							point.Label = Math.Round(readings, 3).ToString(CultureInfo.InvariantCulture);
+							data.SetLastValue(readings);
+						}
+						else
+						{
+							point.IsEmpty = true;
+							data.SetLastValue(null);
+						}
+						data.Seires.Points.Add(point);
 					}
 
 					foreach (var series in MainChart.Series)
@@ -215,9 +244,9 @@ namespace NFirmwareEditor.Windows
 						if (series.Points.Count > 0)
 						{
 							var point = series.Points[series.Points.Count - 1];
-							if (Math.Abs(point.YValues[0]) > 0.01)
+							if (!point.IsEmpty)
 							{
-								point.Label = Math.Round(point.YValues[0], 2).ToString(CultureInfo.InvariantCulture);
+								//point.Label = Math.Round(point.YValues[0], 2).ToString(CultureInfo.InvariantCulture);
 								if (series.Points.Count > 1)
 								{
 									series.Points[series.Points.Count - 2].Label = null;
@@ -232,19 +261,31 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void SeriesCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			var checkbox = sender as CheckBox;
+			if (checkbox == null || checkbox.Tag == null || string.IsNullOrEmpty(checkbox.Tag.ToString())) return;
+
+			var seriesName = checkbox.Tag.ToString();
+			m_seriesData[seriesName].Seires.Enabled = checkbox.Checked;
+		}
+
 		private class SeriesRelatedData
 		{
 			private readonly Label m_lastValueLabel;
 			private string m_labelFormat;
 
-			public SeriesRelatedData(Color color, CheckBox checkBox, Panel panel, Label lastValueLabel, string labelFormat)
+			public SeriesRelatedData(Color color, CheckBox checkBox, Panel panel, Label lastValueLabel, string labelFormat, [NotNull] ValueLimit<float,int>[] interpolationLimits)
 			{
+				if (interpolationLimits == null || interpolationLimits.Length != 2) throw new ArgumentNullException("interpolationLimits");
+
 				m_lastValueLabel = lastValueLabel;
 				m_labelFormat = labelFormat;
 
 				Color = color;
 				CheckBox = checkBox;
 				Panel = panel;
+				InterpolationLimits = interpolationLimits;
 			}
 
 			public Color Color { get; private set; }
@@ -252,6 +293,8 @@ namespace NFirmwareEditor.Windows
 			public CheckBox CheckBox { get; private set; }
 
 			public Panel Panel { get; private set; }
+
+			public ValueLimit<float, int>[] InterpolationLimits { get; private set; }
 
 			public Series Seires { get; set; }
 
@@ -266,6 +309,19 @@ namespace NFirmwareEditor.Windows
 					? string.Format(CultureInfo.InvariantCulture, m_labelFormat, value)
 					: "?";
 			}
+		}
+
+		private class ValueLimit<TValue, TLimit>
+		{
+			public ValueLimit(TValue value, TLimit limit)
+			{
+				Value = value;
+				Limit = limit;
+			}
+
+			public TValue Value { get; private set; }
+
+			public TLimit Limit { get; private set; }
 		}
 	}
 }
