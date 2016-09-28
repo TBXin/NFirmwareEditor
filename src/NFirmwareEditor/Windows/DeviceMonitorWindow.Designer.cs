@@ -30,14 +30,20 @@
 		{
 			this.MainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.SensorsGroupPanel = new NFirmwareEditor.UI.GroupPanel();
-			this.panel8 = new System.Windows.Forms.Panel();
-			this.panel7 = new System.Windows.Forms.Panel();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.TemperatureSetPanel = new System.Windows.Forms.Panel();
+			this.TemperatureSetLabel = new System.Windows.Forms.Label();
+			this.TemperatureSetCheckBox = new System.Windows.Forms.CheckBox();
+			this.PowerSetPanel = new System.Windows.Forms.Panel();
+			this.PowerSetLabel = new System.Windows.Forms.Label();
+			this.PowerSetCheckBox = new System.Windows.Forms.CheckBox();
+			this.BoardTemperaturePanel = new System.Windows.Forms.Panel();
+			this.TemperaturePanel = new System.Windows.Forms.Panel();
+			this.RealResistancePanel = new System.Windows.Forms.Panel();
+			this.ResistancePanel = new System.Windows.Forms.Panel();
+			this.OutputCurrentPanel = new System.Windows.Forms.Panel();
+			this.OutputVoltagePanel = new System.Windows.Forms.Panel();
+			this.PowerPanel = new System.Windows.Forms.Panel();
+			this.BatteryPanel = new System.Windows.Forms.Panel();
 			this.BoardTemperatureCheckBox = new System.Windows.Forms.CheckBox();
 			this.BoardTemperatureLabel = new System.Windows.Forms.Label();
 			this.TemperatureLabel = new System.Windows.Forms.Label();
@@ -75,14 +81,20 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.SensorsGroupPanel.BackColor = System.Drawing.Color.White;
 			this.SensorsGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.SensorsGroupPanel.Controls.Add(this.panel8);
-			this.SensorsGroupPanel.Controls.Add(this.panel7);
-			this.SensorsGroupPanel.Controls.Add(this.panel6);
-			this.SensorsGroupPanel.Controls.Add(this.panel5);
-			this.SensorsGroupPanel.Controls.Add(this.panel4);
-			this.SensorsGroupPanel.Controls.Add(this.panel3);
-			this.SensorsGroupPanel.Controls.Add(this.panel2);
-			this.SensorsGroupPanel.Controls.Add(this.panel1);
+			this.SensorsGroupPanel.Controls.Add(this.TemperatureSetPanel);
+			this.SensorsGroupPanel.Controls.Add(this.TemperatureSetLabel);
+			this.SensorsGroupPanel.Controls.Add(this.TemperatureSetCheckBox);
+			this.SensorsGroupPanel.Controls.Add(this.PowerSetPanel);
+			this.SensorsGroupPanel.Controls.Add(this.PowerSetLabel);
+			this.SensorsGroupPanel.Controls.Add(this.PowerSetCheckBox);
+			this.SensorsGroupPanel.Controls.Add(this.BoardTemperaturePanel);
+			this.SensorsGroupPanel.Controls.Add(this.TemperaturePanel);
+			this.SensorsGroupPanel.Controls.Add(this.RealResistancePanel);
+			this.SensorsGroupPanel.Controls.Add(this.ResistancePanel);
+			this.SensorsGroupPanel.Controls.Add(this.OutputCurrentPanel);
+			this.SensorsGroupPanel.Controls.Add(this.OutputVoltagePanel);
+			this.SensorsGroupPanel.Controls.Add(this.PowerPanel);
+			this.SensorsGroupPanel.Controls.Add(this.BatteryPanel);
 			this.SensorsGroupPanel.Controls.Add(this.BoardTemperatureCheckBox);
 			this.SensorsGroupPanel.Controls.Add(this.BoardTemperatureLabel);
 			this.SensorsGroupPanel.Controls.Add(this.TemperatureLabel);
@@ -108,75 +120,129 @@
 			this.SensorsGroupPanel.TabStop = false;
 			this.SensorsGroupPanel.Text = "Sensors";
 			// 
-			// panel8
+			// TemperatureSetPanel
 			// 
-			this.panel8.BackColor = System.Drawing.Color.Black;
-			this.panel8.Location = new System.Drawing.Point(6, 211);
-			this.panel8.Name = "panel8";
-			this.panel8.Size = new System.Drawing.Size(188, 2);
-			this.panel8.TabIndex = 22;
+			this.TemperatureSetPanel.BackColor = System.Drawing.Color.Black;
+			this.TemperatureSetPanel.Location = new System.Drawing.Point(6, 146);
+			this.TemperatureSetPanel.Name = "TemperatureSetPanel";
+			this.TemperatureSetPanel.Size = new System.Drawing.Size(188, 2);
+			this.TemperatureSetPanel.TabIndex = 28;
 			// 
-			// panel7
+			// TemperatureSetLabel
 			// 
-			this.panel7.BackColor = System.Drawing.Color.Black;
-			this.panel7.Location = new System.Drawing.Point(6, 188);
-			this.panel7.Name = "panel7";
-			this.panel7.Size = new System.Drawing.Size(188, 2);
-			this.panel7.TabIndex = 21;
+			this.TemperatureSetLabel.Location = new System.Drawing.Point(127, 130);
+			this.TemperatureSetLabel.Name = "TemperatureSetLabel";
+			this.TemperatureSetLabel.Size = new System.Drawing.Size(70, 17);
+			this.TemperatureSetLabel.TabIndex = 27;
+			this.TemperatureSetLabel.Text = "?";
+			this.TemperatureSetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// panel6
+			// TemperatureSetCheckBox
 			// 
-			this.panel6.BackColor = System.Drawing.Color.Black;
-			this.panel6.Location = new System.Drawing.Point(6, 165);
-			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(188, 2);
-			this.panel6.TabIndex = 20;
+			this.TemperatureSetCheckBox.AutoSize = true;
+			this.TemperatureSetCheckBox.Location = new System.Drawing.Point(6, 130);
+			this.TemperatureSetCheckBox.Name = "TemperatureSetCheckBox";
+			this.TemperatureSetCheckBox.Size = new System.Drawing.Size(111, 17);
+			this.TemperatureSetCheckBox.TabIndex = 26;
+			this.TemperatureSetCheckBox.Text = "Temperature Set:";
+			this.TemperatureSetCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// panel5
+			// PowerSetPanel
 			// 
-			this.panel5.BackColor = System.Drawing.Color.Black;
-			this.panel5.Location = new System.Drawing.Point(6, 142);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(188, 2);
-			this.panel5.TabIndex = 18;
+			this.PowerSetPanel.BackColor = System.Drawing.Color.Black;
+			this.PowerSetPanel.Location = new System.Drawing.Point(6, 98);
+			this.PowerSetPanel.Name = "PowerSetPanel";
+			this.PowerSetPanel.Size = new System.Drawing.Size(188, 2);
+			this.PowerSetPanel.TabIndex = 25;
 			// 
-			// panel4
+			// PowerSetLabel
 			// 
-			this.panel4.BackColor = System.Drawing.Color.Black;
-			this.panel4.Location = new System.Drawing.Point(6, 119);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(188, 2);
-			this.panel4.TabIndex = 19;
+			this.PowerSetLabel.Location = new System.Drawing.Point(127, 82);
+			this.PowerSetLabel.Name = "PowerSetLabel";
+			this.PowerSetLabel.Size = new System.Drawing.Size(70, 17);
+			this.PowerSetLabel.TabIndex = 24;
+			this.PowerSetLabel.Text = "?";
+			this.PowerSetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// panel3
+			// PowerSetCheckBox
 			// 
-			this.panel3.BackColor = System.Drawing.Color.Black;
-			this.panel3.Location = new System.Drawing.Point(6, 96);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(188, 2);
-			this.panel3.TabIndex = 18;
+			this.PowerSetCheckBox.AutoSize = true;
+			this.PowerSetCheckBox.Location = new System.Drawing.Point(6, 82);
+			this.PowerSetCheckBox.Name = "PowerSetCheckBox";
+			this.PowerSetCheckBox.Size = new System.Drawing.Size(79, 17);
+			this.PowerSetCheckBox.TabIndex = 23;
+			this.PowerSetCheckBox.Text = "Power Set:";
+			this.PowerSetCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// panel2
+			// BoardTemperaturePanel
 			// 
-			this.panel2.BackColor = System.Drawing.Color.Black;
-			this.panel2.Location = new System.Drawing.Point(6, 73);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(188, 2);
-			this.panel2.TabIndex = 17;
+			this.BoardTemperaturePanel.BackColor = System.Drawing.Color.Black;
+			this.BoardTemperaturePanel.Location = new System.Drawing.Point(6, 265);
+			this.BoardTemperaturePanel.Name = "BoardTemperaturePanel";
+			this.BoardTemperaturePanel.Size = new System.Drawing.Size(188, 2);
+			this.BoardTemperaturePanel.TabIndex = 22;
 			// 
-			// panel1
+			// TemperaturePanel
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Black;
-			this.panel1.Location = new System.Drawing.Point(6, 50);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(188, 2);
-			this.panel1.TabIndex = 16;
+			this.TemperaturePanel.BackColor = System.Drawing.Color.Black;
+			this.TemperaturePanel.Location = new System.Drawing.Point(6, 122);
+			this.TemperaturePanel.Name = "TemperaturePanel";
+			this.TemperaturePanel.Size = new System.Drawing.Size(188, 2);
+			this.TemperaturePanel.TabIndex = 21;
+			// 
+			// RealResistancePanel
+			// 
+			this.RealResistancePanel.BackColor = System.Drawing.Color.Black;
+			this.RealResistancePanel.Location = new System.Drawing.Point(6, 241);
+			this.RealResistancePanel.Name = "RealResistancePanel";
+			this.RealResistancePanel.Size = new System.Drawing.Size(188, 2);
+			this.RealResistancePanel.TabIndex = 20;
+			// 
+			// ResistancePanel
+			// 
+			this.ResistancePanel.BackColor = System.Drawing.Color.Black;
+			this.ResistancePanel.Location = new System.Drawing.Point(6, 218);
+			this.ResistancePanel.Name = "ResistancePanel";
+			this.ResistancePanel.Size = new System.Drawing.Size(188, 2);
+			this.ResistancePanel.TabIndex = 18;
+			// 
+			// OutputCurrentPanel
+			// 
+			this.OutputCurrentPanel.BackColor = System.Drawing.Color.Black;
+			this.OutputCurrentPanel.Location = new System.Drawing.Point(6, 170);
+			this.OutputCurrentPanel.Name = "OutputCurrentPanel";
+			this.OutputCurrentPanel.Size = new System.Drawing.Size(188, 2);
+			this.OutputCurrentPanel.TabIndex = 19;
+			// 
+			// OutputVoltagePanel
+			// 
+			this.OutputVoltagePanel.BackColor = System.Drawing.Color.Black;
+			this.OutputVoltagePanel.Location = new System.Drawing.Point(6, 194);
+			this.OutputVoltagePanel.Name = "OutputVoltagePanel";
+			this.OutputVoltagePanel.Size = new System.Drawing.Size(188, 2);
+			this.OutputVoltagePanel.TabIndex = 18;
+			// 
+			// PowerPanel
+			// 
+			this.PowerPanel.BackColor = System.Drawing.Color.Black;
+			this.PowerPanel.Location = new System.Drawing.Point(6, 74);
+			this.PowerPanel.Name = "PowerPanel";
+			this.PowerPanel.Size = new System.Drawing.Size(188, 2);
+			this.PowerPanel.TabIndex = 17;
+			// 
+			// BatteryPanel
+			// 
+			this.BatteryPanel.BackColor = System.Drawing.Color.Black;
+			this.BatteryPanel.Location = new System.Drawing.Point(6, 50);
+			this.BatteryPanel.Name = "BatteryPanel";
+			this.BatteryPanel.Size = new System.Drawing.Size(188, 2);
+			this.BatteryPanel.TabIndex = 16;
 			// 
 			// BoardTemperatureCheckBox
 			// 
 			this.BoardTemperatureCheckBox.AutoSize = true;
 			this.BoardTemperatureCheckBox.BackColor = System.Drawing.Color.Transparent;
-			this.BoardTemperatureCheckBox.Location = new System.Drawing.Point(6, 195);
+			this.BoardTemperatureCheckBox.Location = new System.Drawing.Point(6, 249);
 			this.BoardTemperatureCheckBox.Name = "BoardTemperatureCheckBox";
 			this.BoardTemperatureCheckBox.Size = new System.Drawing.Size(123, 17);
 			this.BoardTemperatureCheckBox.TabIndex = 7;
@@ -185,7 +251,7 @@
 			// 
 			// BoardTemperatureLabel
 			// 
-			this.BoardTemperatureLabel.Location = new System.Drawing.Point(127, 195);
+			this.BoardTemperatureLabel.Location = new System.Drawing.Point(127, 249);
 			this.BoardTemperatureLabel.Name = "BoardTemperatureLabel";
 			this.BoardTemperatureLabel.Size = new System.Drawing.Size(70, 17);
 			this.BoardTemperatureLabel.TabIndex = 15;
@@ -194,7 +260,7 @@
 			// 
 			// TemperatureLabel
 			// 
-			this.TemperatureLabel.Location = new System.Drawing.Point(127, 172);
+			this.TemperatureLabel.Location = new System.Drawing.Point(127, 106);
 			this.TemperatureLabel.Name = "TemperatureLabel";
 			this.TemperatureLabel.Size = new System.Drawing.Size(70, 17);
 			this.TemperatureLabel.TabIndex = 14;
@@ -203,7 +269,7 @@
 			// 
 			// RealResistanceLabel
 			// 
-			this.RealResistanceLabel.Location = new System.Drawing.Point(127, 149);
+			this.RealResistanceLabel.Location = new System.Drawing.Point(127, 225);
 			this.RealResistanceLabel.Name = "RealResistanceLabel";
 			this.RealResistanceLabel.Size = new System.Drawing.Size(70, 17);
 			this.RealResistanceLabel.TabIndex = 13;
@@ -212,7 +278,7 @@
 			// 
 			// ResistanceLabel
 			// 
-			this.ResistanceLabel.Location = new System.Drawing.Point(127, 126);
+			this.ResistanceLabel.Location = new System.Drawing.Point(127, 202);
 			this.ResistanceLabel.Name = "ResistanceLabel";
 			this.ResistanceLabel.Size = new System.Drawing.Size(70, 17);
 			this.ResistanceLabel.TabIndex = 12;
@@ -221,7 +287,7 @@
 			// 
 			// OutputCurrentLabel
 			// 
-			this.OutputCurrentLabel.Location = new System.Drawing.Point(127, 103);
+			this.OutputCurrentLabel.Location = new System.Drawing.Point(127, 154);
 			this.OutputCurrentLabel.Name = "OutputCurrentLabel";
 			this.OutputCurrentLabel.Size = new System.Drawing.Size(70, 17);
 			this.OutputCurrentLabel.TabIndex = 11;
@@ -230,7 +296,7 @@
 			// 
 			// OutputVoltageLabel
 			// 
-			this.OutputVoltageLabel.Location = new System.Drawing.Point(127, 80);
+			this.OutputVoltageLabel.Location = new System.Drawing.Point(127, 178);
 			this.OutputVoltageLabel.Name = "OutputVoltageLabel";
 			this.OutputVoltageLabel.Size = new System.Drawing.Size(70, 17);
 			this.OutputVoltageLabel.TabIndex = 10;
@@ -239,7 +305,7 @@
 			// 
 			// PowerLabel
 			// 
-			this.PowerLabel.Location = new System.Drawing.Point(127, 57);
+			this.PowerLabel.Location = new System.Drawing.Point(127, 58);
 			this.PowerLabel.Name = "PowerLabel";
 			this.PowerLabel.Size = new System.Drawing.Size(70, 17);
 			this.PowerLabel.TabIndex = 9;
@@ -258,7 +324,7 @@
 			// TemperatureCheckBox
 			// 
 			this.TemperatureCheckBox.AutoSize = true;
-			this.TemperatureCheckBox.Location = new System.Drawing.Point(6, 172);
+			this.TemperatureCheckBox.Location = new System.Drawing.Point(6, 106);
 			this.TemperatureCheckBox.Name = "TemperatureCheckBox";
 			this.TemperatureCheckBox.Size = new System.Drawing.Size(92, 17);
 			this.TemperatureCheckBox.TabIndex = 6;
@@ -268,7 +334,7 @@
 			// RealResistanceCheckBox
 			// 
 			this.RealResistanceCheckBox.AutoSize = true;
-			this.RealResistanceCheckBox.Location = new System.Drawing.Point(6, 149);
+			this.RealResistanceCheckBox.Location = new System.Drawing.Point(6, 225);
 			this.RealResistanceCheckBox.Name = "RealResistanceCheckBox";
 			this.RealResistanceCheckBox.Size = new System.Drawing.Size(104, 17);
 			this.RealResistanceCheckBox.TabIndex = 5;
@@ -278,7 +344,7 @@
 			// ResistanceCheckBox
 			// 
 			this.ResistanceCheckBox.AutoSize = true;
-			this.ResistanceCheckBox.Location = new System.Drawing.Point(6, 126);
+			this.ResistanceCheckBox.Location = new System.Drawing.Point(6, 202);
 			this.ResistanceCheckBox.Name = "ResistanceCheckBox";
 			this.ResistanceCheckBox.Size = new System.Drawing.Size(106, 17);
 			this.ResistanceCheckBox.TabIndex = 4;
@@ -288,7 +354,7 @@
 			// OutputCurrentCheckBox
 			// 
 			this.OutputCurrentCheckBox.AutoSize = true;
-			this.OutputCurrentCheckBox.Location = new System.Drawing.Point(6, 103);
+			this.OutputCurrentCheckBox.Location = new System.Drawing.Point(6, 154);
 			this.OutputCurrentCheckBox.Name = "OutputCurrentCheckBox";
 			this.OutputCurrentCheckBox.Size = new System.Drawing.Size(104, 17);
 			this.OutputCurrentCheckBox.TabIndex = 3;
@@ -298,7 +364,7 @@
 			// OutputVoltageCheckBox
 			// 
 			this.OutputVoltageCheckBox.AutoSize = true;
-			this.OutputVoltageCheckBox.Location = new System.Drawing.Point(6, 80);
+			this.OutputVoltageCheckBox.Location = new System.Drawing.Point(6, 178);
 			this.OutputVoltageCheckBox.Name = "OutputVoltageCheckBox";
 			this.OutputVoltageCheckBox.Size = new System.Drawing.Size(103, 17);
 			this.OutputVoltageCheckBox.TabIndex = 2;
@@ -318,7 +384,7 @@
 			// PowerCheckBox
 			// 
 			this.PowerCheckBox.AutoSize = true;
-			this.PowerCheckBox.Location = new System.Drawing.Point(6, 57);
+			this.PowerCheckBox.Location = new System.Drawing.Point(6, 58);
 			this.PowerCheckBox.Name = "PowerCheckBox";
 			this.PowerCheckBox.Size = new System.Drawing.Size(60, 17);
 			this.PowerCheckBox.TabIndex = 0;
@@ -382,13 +448,19 @@
 		private System.Windows.Forms.Label OutputCurrentLabel;
 		private System.Windows.Forms.Label OutputVoltageLabel;
 		private System.Windows.Forms.Label PowerLabel;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Panel panel8;
-		private System.Windows.Forms.Panel panel7;
-		private System.Windows.Forms.Panel panel6;
-		private System.Windows.Forms.Panel panel5;
-		private System.Windows.Forms.Panel panel4;
-		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Panel BatteryPanel;
+		private System.Windows.Forms.Panel PowerPanel;
+		private System.Windows.Forms.Panel BoardTemperaturePanel;
+		private System.Windows.Forms.Panel TemperaturePanel;
+		private System.Windows.Forms.Panel RealResistancePanel;
+		private System.Windows.Forms.Panel ResistancePanel;
+		private System.Windows.Forms.Panel OutputCurrentPanel;
+		private System.Windows.Forms.Panel OutputVoltagePanel;
+		private System.Windows.Forms.Panel TemperatureSetPanel;
+		private System.Windows.Forms.Label TemperatureSetLabel;
+		private System.Windows.Forms.CheckBox TemperatureSetCheckBox;
+		private System.Windows.Forms.Panel PowerSetPanel;
+		private System.Windows.Forms.Label PowerSetLabel;
+		private System.Windows.Forms.CheckBox PowerSetCheckBox;
 	}
 }

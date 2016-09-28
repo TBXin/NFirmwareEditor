@@ -38,7 +38,7 @@ namespace NFirmwareEditor.Windows
 				m_comConnector.Disconnect();
 			});
 
-#if DEBUG
+/*#if DEBUG
 			new Thread(() =>
 			{
 				var rnd = new Random();
@@ -53,7 +53,7 @@ namespace NFirmwareEditor.Windows
 					Thread.Sleep(100);
 				}
 			}) { IsBackground = true }.Start();
-#endif
+#endif*/
 		}
 
 #if DEBUG
@@ -76,7 +76,9 @@ namespace NFirmwareEditor.Windows
 		{
 			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 100) };
 			var powerLimits = new[] { new ValueLimit<float, int>(1, 50), new ValueLimit<float, int>(75, 80) };
+			var powerSetLimits = new[] { new ValueLimit<float, int>(1, 50), new ValueLimit<float, int>(75, 80) };
 			var tempLimits = new[] { new ValueLimit<float, int>(100, 50), new ValueLimit<float, int>(600, 80) };
+			var tempSetLimits = new[] { new ValueLimit<float, int>(100, 50), new ValueLimit<float, int>(600, 80) };
 			var resistanceLimits = new[] { new ValueLimit<float, int>(0.05f, 30), new ValueLimit<float, int>(3f, 50) };
 			var realResistanceLimits = new[] { new ValueLimit<float, int>(0.05f, 30), new ValueLimit<float, int>(3f, 50) };
 			var outputVoltageLimits = new[] { new ValueLimit<float, int>(1, 10), new ValueLimit<float, int>(10, 30) };
@@ -85,14 +87,16 @@ namespace NFirmwareEditor.Windows
 
 			m_seriesData = new Dictionary<string, SeriesRelatedData>
 			{
-				{ SensorKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, panel1, BatteryVoltageLabel, "{0} V", batteryLimits) },
-				{ SensorKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, panel2, PowerLabel, "{0} W", powerLimits) },
-				{ SensorKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, panel3, OutputVoltageLabel, "{0} V", outputVoltageLimits) },
-				{ SensorKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, panel4, OutputCurrentLabel, "{0} A", outputCurrentLimits) },
-				{ SensorKeys.Resistance, new SeriesRelatedData(Color.BlueViolet, ResistanceCheckBox, panel5, ResistanceLabel, "{0} Ω", resistanceLimits) },
-				{ SensorKeys.RealResistance, new SeriesRelatedData(Color.Violet, RealResistanceCheckBox, panel6, RealResistanceLabel, "{0} Ω", realResistanceLimits) },
-				{ SensorKeys.Temperature, new SeriesRelatedData(Color.DeepPink, TemperatureCheckBox, panel7, TemperatureLabel, "{0} °C", tempLimits) },
-				{ SensorKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, panel8, BoardTemperatureLabel, "{0} °C", boardTemperatureLimits) }
+				{ SensorsKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, BatteryPanel, BatteryVoltageLabel, "{0} V", batteryLimits) },
+				{ SensorsKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, PowerPanel, PowerLabel, "{0} W", powerLimits) },
+				{ SensorsKeys.PowerSet, new SeriesRelatedData(Color.Green, PowerSetCheckBox, PowerSetPanel, PowerSetLabel, "{0} W", powerSetLimits) },
+				{ SensorsKeys.Temperature, new SeriesRelatedData(Color.Red, TemperatureCheckBox, TemperaturePanel, TemperatureLabel, "{0} °C", tempLimits) },
+				{ SensorsKeys.TemperatureSet, new SeriesRelatedData(Color.DarkRed, TemperatureSetCheckBox, TemperatureSetPanel, TemperatureSetLabel, "{0} °C", tempSetLimits) },
+				{ SensorsKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, OutputCurrentPanel, OutputCurrentLabel, "{0} A", outputCurrentLimits) },
+				{ SensorsKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, OutputVoltagePanel, OutputVoltageLabel, "{0} V", outputVoltageLimits) },
+				{ SensorsKeys.Resistance, new SeriesRelatedData(Color.Violet, ResistanceCheckBox, ResistancePanel, ResistanceLabel, "{0} Ω", resistanceLimits) },
+				{ SensorsKeys.RealResistance, new SeriesRelatedData(Color.BlueViolet, RealResistanceCheckBox, RealResistancePanel, RealResistanceLabel, "{0} Ω", realResistanceLimits) },
+				{ SensorsKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, BoardTemperaturePanel, BoardTemperatureLabel, "{0} °C", boardTemperatureLimits) }
 			};
 
 			InitializeChart();
@@ -131,9 +135,9 @@ namespace NFirmwareEditor.Windows
 
 		private void EnsureConnection()
 		{
-#if DEBUG
+/*#if DEBUG
 			return;
-#endif
+#endif*/
 			while (true)
 			{
 				var port = m_comConnector.Connect();
@@ -208,15 +212,16 @@ namespace NFirmwareEditor.Windows
 
 				UpdateUI(() =>
 				{
-					var isCelcius = sensors[SensorKeys.Celcius] > 0;
-					m_seriesData[SensorKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
+					var isCelcius = sensors[SensorsKeys.Celcius] > 0;
+					m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
+					m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 
 					foreach (var kvp in m_seriesData)
 					{
 						var sensorName = kvp.Key;
 						var data = kvp.Value;
-						var readings = sensorName == SensorKeys.Power
-							? sensors[SensorKeys.OutputCurrent] * sensors[SensorKeys.OutputVoltage]
+						var readings = sensorName == SensorsKeys.Power
+							? sensors[SensorsKeys.OutputCurrent] * sensors[SensorsKeys.OutputVoltage]
 							: sensors[sensorName];
 
 						var interpolatedValue = Interpolate(readings, data.InterpolationLimits);

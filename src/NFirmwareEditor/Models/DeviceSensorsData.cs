@@ -4,23 +4,20 @@ using JetBrains.Annotations;
 
 namespace NFirmwareEditor.Models
 {
-	internal static class SensorKeys
+	internal static class SensorsKeys
 	{
 		internal const string BatteryVoltage = "BATT";
 		internal const string Charging = "CHG";
 		internal const string BoardTemperature = "BRD";
-		internal const string Power = "PWR";
-		internal const string Temperature = "TEMP";
+		internal const string PowerSet = "SPWR";
+		internal const string TemperatureSet = "STEMP";
+		internal const string Power = "RPWR";
+		internal const string Temperature = "RTEMP";
 		internal const string Resistance = "RES";
 		internal const string RealResistance = "RESM";
 		internal const string Celcius = "CELS";
 		internal const string OutputVoltage = "VOUT";
 		internal const string OutputCurrent = "CUR";
-
-		internal static readonly string[] AllKeys =
-		{
-			BatteryVoltage, Charging, BoardTemperature, Power, Temperature, Resistance, RealResistance, Celcius, OutputVoltage, OutputCurrent
-		};
 	}
 
 	internal class DeviceSensorsData
@@ -70,44 +67,32 @@ namespace NFirmwareEditor.Models
 				sensors[pair[0]] = int.Parse(pair[1]);
 			}
 
-			sensors[SensorKeys.BatteryVoltage] /= 100f;
-			sensors[SensorKeys.Resistance] /= 100f;
-			sensors[SensorKeys.RealResistance] /= 1000f;
-			sensors[SensorKeys.Power] /= 10f;
-			sensors[SensorKeys.OutputVoltage] /= 100f;
-			sensors[SensorKeys.OutputCurrent] /= 10f;
+			sensors[SensorsKeys.BatteryVoltage] /= 100f;
+			sensors[SensorsKeys.Resistance] /= 100f;
+			sensors[SensorsKeys.RealResistance] /= 1000f;
+			sensors[SensorsKeys.PowerSet] /= 10f;
+			sensors[SensorsKeys.Power] /= 10f;
+			sensors[SensorsKeys.OutputVoltage] /= 100f;
+			sensors[SensorsKeys.OutputCurrent] /= 10f;
 			return sensors;
-
-			/*var result = new DeviceSensorsData
-			{
-				BatteryVoltage = sensors[SensorKeys.BatteryVoltage] / 100f,
-				IsCharging = sensors[SensorKeys.Charging] == 1,
-				BoardTemperature = sensors[SensorKeys.BoardTemperature],
-				Resistance = sensors[SensorKeys.Resistance] / 100f,
-				RealResistance = sensors[SensorKeys.RealResistance] / 1000f,
-				Power = sensors[SensorKeys.Power] / 10f,
-				Temperature = sensors[SensorKeys.Temperature],
-				IsCelcius = sensors[SensorKeys.Celcius] == 1,
-				OutputVoltage = sensors[SensorKeys.OutputVoltage] / 100f,
-				OutputCurrent = sensors[SensorKeys.OutputCurrent] / 10f
-			};
-			return result;*/
 		}
 
 		private static Dictionary<string, float> CreateEmptySensorsData()
 		{
 			return new Dictionary<string, float>
 			{
-				{ SensorKeys.BatteryVoltage, 0 },
-				{ SensorKeys.Charging, 0 },
-				{ SensorKeys.BoardTemperature, 0 },
-				{ SensorKeys.Resistance, 0 },
-				{ SensorKeys.RealResistance, 0 },
-				{ SensorKeys.Power, 0 },
-				{ SensorKeys.Temperature, 0 },
-				{ SensorKeys.Celcius, 0 },
-				{ SensorKeys.OutputVoltage, 0 },
-				{ SensorKeys.OutputCurrent, 0 }
+				{ SensorsKeys.BatteryVoltage, 0 },
+				{ SensorsKeys.Charging, 0 },
+				{ SensorsKeys.BoardTemperature, 0 },
+				{ SensorsKeys.Resistance, 0 },
+				{ SensorsKeys.RealResistance, 0 },
+				{ SensorsKeys.PowerSet, 0 },
+				{ SensorsKeys.Power, 0 },
+				{ SensorsKeys.TemperatureSet, 0 },
+				{ SensorsKeys.Temperature, 0 },
+				{ SensorsKeys.Celcius, 0 },
+				{ SensorsKeys.OutputVoltage, 0 },
+				{ SensorsKeys.OutputCurrent, 0 }
 			};
 		}
 	}
