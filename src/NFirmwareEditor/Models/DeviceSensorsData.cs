@@ -6,6 +6,12 @@ namespace NFirmwareEditor.Models
 {
 	internal static class SensorsKeys
 	{
+		internal const string MonitorOn = "Device Monitor On";
+		internal const string MonitorOff = "Device Monitor Off";
+
+		internal const string FiringKey = "FIRING";
+		internal const string StandbyKey = "STANDBY";
+
 		internal const string BatteryVoltage = "BATT";
 		internal const string Charging = "CHG";
 		internal const string BoardTemperature = "BRD";
@@ -22,40 +28,17 @@ namespace NFirmwareEditor.Models
 
 	internal class DeviceSensorsData
 	{
-		internal const string FiringKey = "FIRING";
-		internal const string StandbyKey = "STANDBY";
-
-		public float BatteryVoltage { get; set; }
-
-		public bool IsCharging { get; set; }
-
-		public float BoardTemperature { get; set; }
-
-		public float Resistance { get; set; }
-
-		public float RealResistance { get; set; }
-
-		public float Power { get; set; }
-
-		public float Temperature { get; set; }
-
-		public bool IsCelcius { get; set; }
-
-		public float OutputVoltage { get; set; }
-
-		public float OutputCurrent { get; set; }
-
 		public static IDictionary<string, float> Parse([NotNull] string message)
 		{
 			if (string.IsNullOrEmpty(message)) throw new ArgumentNullException("message");
 
-			var isStandby = message.StartsWith(StandbyKey, StringComparison.OrdinalIgnoreCase);
-			var isFiring = message.StartsWith(FiringKey, StringComparison.OrdinalIgnoreCase);
+			var isStandby = message.StartsWith(SensorsKeys.StandbyKey, StringComparison.OrdinalIgnoreCase);
+			var isFiring = message.StartsWith(SensorsKeys.FiringKey, StringComparison.OrdinalIgnoreCase);
 
 			if (!isFiring && !isStandby) return null;
 
-			if (isFiring) message = message.Substring(FiringKey.Length + 1);
-			if (isStandby) message = message.Substring(StandbyKey.Length + 1);
+			if (isFiring) message = message.Substring(SensorsKeys.FiringKey.Length + 1);
+			if (isStandby) message = message.Substring(SensorsKeys.StandbyKey.Length + 1);
 
 			var sensors = CreateEmptySensorsData();
 			var rawPairs = message.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);

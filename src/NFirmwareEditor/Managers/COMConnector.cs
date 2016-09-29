@@ -4,17 +4,20 @@ using System.Management;
 using System.Text;
 using System.Threading;
 using JetBrains.Annotations;
+using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class COMConnector
 	{
 		private const string PnpDeviceIdMask = "VID_0416&PID_5020";
-		private static readonly char[] s_trimChars = { '\r', '\n' };
+		private static readonly char[] s_separatorChars = { '\r', '\n' };
 		private SerialPort m_port;
 		private string m_opendPort;
+		private bool m_monitorEnabled;
 
 		public event Action<string> MessageReceived;
+		public event Action<string> MonitorDataReceived;
 		public event Action Disconnected;
 
 		public bool IsConnected
@@ -57,6 +60,24 @@ namespace NFirmwareEditor.Managers
 			}
 		}
 
+		public bool EnableDeviceMonitor()
+		{
+			if (m_monitorEnabled) return true;
+
+			var sendResult = Send("M1");
+			var waitResult = SpinWait.SpinUntil(() => m_monitorEnabled, TimeSpan.FromSeconds(2));
+			return sendResult && waitResult;
+		}
+
+		public bool DisableDeviceMonitor()
+		{
+			if (!m_monitorEnabled) return true;
+
+			var sendResult = Send("M0");
+			var waitResult = SpinWait.SpinUntil(() => !m_monitorEnabled, TimeSpan.FromSeconds(2));
+			return sendResult && waitResult;
+		}
+
 		public bool Send(string command)
 		{
 			if (string.IsNullOrEmpty(command)) throw new ArgumentNullException("command");
@@ -88,8 +109,33 @@ namespace NFirmwareEditor.Managers
 
 		private void COMPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
 		{
-			var data = m_port.ReadExisting().Replace("\n\r", Environment.NewLine).TrimEnd(s_trimChars);
-			OnMessageReceived(data);
+			var data = m_port.ReadExisting();
+			var messages = data.Split(s_separatorChars, StringSplitOptions.RemoveEmptyEntries);
+
+			System.Diagnostics.Trace.WriteLine("Received messages: " + messages.Length);
+			foreach (var message in messages)
+			{
+				OnMessageReceived(message);
+
+				System.Diagnostics.Trace.WriteLine(message);
+				if (message.StartsWith(SensorsKeys.MonitorOn, StringComparison.OrdinalIgnoreCase))
+				{
+					m_monitorEnabled = true;
+					System.Diagnostics.Trace.WriteLine("m_monitorEnabled = true");
+				}
+				if (message.StartsWith(SensorsKeys.MonitorOff, StringComparison.OrdinalIgnoreCase))
+				{
+					m_monitorEnabled = false;
+					System.Diagnostics.Trace.WriteLine("m_monitorEnabled = false");
+				}
+				if (m_monitorEnabled)
+				{
+					var isStandby = message.StartsWith(SensorsKeys.StandbyKey, StringComparison.OrdinalIgnoreCase);
+					var isFiring = message.StartsWith(SensorsKeys.FiringKey, StringComparison.OrdinalIgnoreCase);
+
+					if (isStandby || isFiring) OnMonitorDataReceived(message);
+				}
+			}
 		}
 
 		private void PortMonitor(object dummy)
@@ -110,6 +156,12 @@ namespace NFirmwareEditor.Managers
 		private void OnMessageReceived(string obj)
 		{
 			var handler = MessageReceived;
+			if (handler != null) handler(obj);
+		}
+
+		protected virtual void OnMonitorDataReceived(string obj)
+		{
+			var handler = MonitorDataReceived;
 			if (handler != null) handler(obj);
 		}
 

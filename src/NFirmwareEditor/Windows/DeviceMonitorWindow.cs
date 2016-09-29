@@ -31,51 +31,19 @@ namespace NFirmwareEditor.Windows
 			InitializeComponent();
 			InitializeControls();
 
-			m_comConnector.MessageReceived += ComConnector_MessageReceived;
+			m_comConnector.MonitorDataReceived += ComConnector_MonitorDataReceived;
 			m_comConnector.Disconnected += ComConnector_Disconnected;
 
 			Load += (s, e) => EnsureConnection();
 			Closing += (s, e) => Safe.Execute(() =>
 			{
-				m_comConnector.MessageReceived -= ComConnector_MessageReceived;
+				m_comConnector.DisableDeviceMonitor();
+				m_comConnector.MonitorDataReceived -= ComConnector_MonitorDataReceived;
 				m_comConnector.Disconnected -= ComConnector_Disconnected;
 				m_comConnector.Disconnect();
 			});
-
-/*#if DEBUG
-			new Thread(() =>
-			{
-				var rnd = new Random();
-				while (true)
-				{
-					var resm = rnd.Next(990, 1020);
-					var temp = m_cels ? rnd.Next(100, 120) : rnd.Next(300, 350);
-					var brd = rnd.Next(28, 31);
-					var message = string.Format("STANDBY BATT=417 RES=98 RESM={0} CELS={1} TEMP={2} BRD={3}", resm, m_cels ? 1 : 0, temp, brd);
-					if (m_amps) message += " CUR=" + rnd.Next(10, 50);
-					ComConnector_MessageReceived(message);
-					Thread.Sleep(100);
-				}
-			}) { IsBackground = true }.Start();
-#endif*/
 		}
 
-/*#if DEBUG
-		private bool m_cels;
-		private bool m_amps;
-		#region Overrides of EditorDialogWindow
-		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-		{
-			if (keyData.HasFlag(Keys.Space))
-			{
-				m_amps = !m_amps;
-				//m_cels = !m_cels;
-			}
-
-			return base.ProcessCmdKey(ref msg, keyData);
-		}
-		#endregion
-#endif*/
 		private void InitializeControls()
 		{
 			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 100) };
@@ -137,7 +105,7 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void EnsureConnection()
+		private bool EnsureConnection()
 		{
 			if (!m_usbConnector.IsDeviceConnected)
 			{
@@ -153,13 +121,12 @@ namespace NFirmwareEditor.Windows
 
 				if (result == DialogResult.OK)
 				{
-					EnsureConnection();
-					return;
+					return EnsureConnection();
 				}
 				if (result == DialogResult.Cancel)
 				{
 					UpdateUI(Close);
-					return;
+					return false;
 				}
 			}
 
@@ -180,17 +147,17 @@ namespace NFirmwareEditor.Windows
 				{
 					m_usbConnector.EnableCOM();
 					Thread.Sleep(2000);
-					EnsureConnection();
-					return;
+					return EnsureConnection();
 				}
 				if (result == DialogResult.Cancel)
 				{
 					UpdateUI(Close);
-					return;
+					return false;
 				}
 			}
 
-			m_comConnector.Send("M1");
+			m_comConnector.EnableDeviceMonitor();
+			return true;
 		}
 
 		private Series CreateSeries(string name, Color color)
@@ -213,7 +180,62 @@ namespace NFirmwareEditor.Windows
 			return series;
 		}
 
-		private float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
+		private void UpdateSeries(IDictionary<string, float> sensors)
+		{
+			var isCelcius = sensors[SensorsKeys.Celcius] > 0;
+			m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
+			m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
+
+			foreach (var kvp in m_seriesData)
+			{
+				var sensorName = kvp.Key;
+				var data = kvp.Value;
+				var readings = sensorName == SensorsKeys.Power
+					? sensors[SensorsKeys.OutputCurrent] * sensors[SensorsKeys.OutputVoltage]
+					: sensors[sensorName];
+
+				var interpolatedValue = Interpolate(readings, data.InterpolationLimits);
+
+				var point = new DataPoint();
+				if (Math.Abs(readings) > 0.001)
+				{
+					point.YValues = new double[] { interpolatedValue };
+					point.Label = Math.Round(readings, 3).ToString(CultureInfo.InvariantCulture);
+					data.SetLastValue(readings);
+				}
+				else
+				{
+					point.IsEmpty = true;
+					data.SetLastValue(null);
+				}
+				data.Seires.Points.Add(point);
+			}
+
+			foreach (var series in MainChart.Series)
+			{
+				while (series.Points.Count > MaxItems)
+				{
+					series.Points.RemoveAt(0);
+				}
+
+				if (series.Points.Count > 0)
+				{
+					var point = series.Points[series.Points.Count - 1];
+					if (!point.IsEmpty)
+					{
+						if (series.Points.Count > 1)
+						{
+							series.Points[series.Points.Count - 2].Label = null;
+						}
+					}
+				}
+			}
+
+			MainChart.ChartAreas[0].RecalculateAxesScale();
+			MainChart.ResetAutoValues();
+		}
+
+		private static float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
 		{
 			var low = lowHigh[0];
 			var high = lowHigh[1];
@@ -229,72 +251,14 @@ namespace NFirmwareEditor.Windows
 			EnsureConnection();
 		}
 
-		private void ComConnector_MessageReceived(string message)
+		private void ComConnector_MonitorDataReceived(string message)
 		{
 			if (string.IsNullOrEmpty(message)) return;
 
-			var dataMessages = message.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-			foreach (var dataMessage in dataMessages)
-			{
-				var sensors = DeviceSensorsData.Parse(dataMessage);
-				if (sensors == null) return;
+			var sensors = DeviceSensorsData.Parse(message);
+			if (sensors == null) return;
 
-				UpdateUI(() =>
-				{
-					var isCelcius = sensors[SensorsKeys.Celcius] > 0;
-					m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
-					m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
-
-					foreach (var kvp in m_seriesData)
-					{
-						var sensorName = kvp.Key;
-						var data = kvp.Value;
-						var readings = sensorName == SensorsKeys.Power
-							? sensors[SensorsKeys.OutputCurrent] * sensors[SensorsKeys.OutputVoltage]
-							: sensors[sensorName];
-
-						var interpolatedValue = Interpolate(readings, data.InterpolationLimits);
-
-						var point = new DataPoint();
-						if (Math.Abs(readings) > 0.001)
-						{
-							point.YValues = new double[] { interpolatedValue };
-							point.Label = Math.Round(readings, 3).ToString(CultureInfo.InvariantCulture);
-							data.SetLastValue(readings);
-						}
-						else
-						{
-							point.IsEmpty = true;
-							data.SetLastValue(null);
-						}
-						data.Seires.Points.Add(point);
-					}
-
-					foreach (var series in MainChart.Series)
-					{
-						while (series.Points.Count > MaxItems)
-						{
-							series.Points.RemoveAt(0);
-						}
-
-						if (series.Points.Count > 0)
-						{
-							var point = series.Points[series.Points.Count - 1];
-							if (!point.IsEmpty)
-							{
-								//point.Label = Math.Round(point.YValues[0], 2).ToString(CultureInfo.InvariantCulture);
-								if (series.Points.Count > 1)
-								{
-									series.Points[series.Points.Count - 2].Label = null;
-								}
-							}
-						}
-					}
-
-					MainChart.ChartAreas[0].RecalculateAxesScale();
-					MainChart.ResetAutoValues();
-				});
-			}
+			UpdateUI(() => UpdateSeries(sensors));
 		}
 
 		private void SeriesCheckBox_CheckedChanged(object sender, EventArgs e)
