@@ -28,7 +28,10 @@ namespace NFirmwareEditor.Managers
 			public const byte Restart = 0xB4;
 
 			public const byte Screenshot = 0xC1;
-			public const byte EnableVCOM = 0x42;
+
+			public const byte EnableCOM = 0x42;
+			public const byte DeviceMonitor = 0x43;
+			public const byte Puff = 0x44;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -101,13 +104,13 @@ namespace NFirmwareEditor.Managers
 			get { return s_loader.GetDeviceOrDefault(VendorId, ProductId) != null; }
 		}
 
-		public void StartMonitoring()
+		public void StartUSBConnectionMonitoring()
 		{
 			m_isDeviceConnected = null;
 			m_monitoringTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
 		}
 
-		public void StopMonitoring()
+		public void StopUSBConnectionMonitoring()
 		{
 			m_monitoringTimer.Change(Timeout.Infinite, Timeout.Infinite);
 			m_isDeviceConnected = null;
@@ -145,7 +148,23 @@ namespace NFirmwareEditor.Managers
 		{
 			using (var stream = OpenDeviceStream())
 			{
-				Write(stream, CreateCommand(Commands.EnableVCOM, 0, 0));
+				Write(stream, CreateCommand(Commands.EnableCOM, 0, 0));
+			}
+		}
+
+		public void SetupDeviceMonitor(bool enable)
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.DeviceMonitor, enable ? 1 : 0, 0));
+			}
+		}
+
+		public void MakePuff(int seconds)
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.Puff, seconds, 0));
 			}
 		}
 

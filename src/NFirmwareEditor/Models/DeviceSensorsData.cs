@@ -6,9 +6,6 @@ namespace NFirmwareEditor.Models
 {
 	internal static class SensorsKeys
 	{
-		internal const string MonitorOn = "Device Monitor On";
-		internal const string MonitorOff = "Device Monitor Off";
-
 		internal const string FiringKey = "FIRING";
 		internal const string StandbyKey = "STANDBY";
 

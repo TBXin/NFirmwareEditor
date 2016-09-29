@@ -104,8 +104,8 @@ namespace NFirmwareEditor.Windows
 			BootModeTextBox.ReadOnly = true;
 
 			m_connector.DeviceConnected += DeviceConnected;
-			m_connector.StartMonitoring();
-			Closing += (s, e) => m_connector.StopMonitoring();
+			m_connector.StartUSBConnectionMonitoring();
+			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
 
 			LogoButton.Click += LogoButton_Click;
 			UpdateButton.Click += UpdateButton_Click;
@@ -397,13 +397,13 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				UpdateUI(() => SetAllButtonsState(false));
-				m_connector.StopMonitoring();
+				m_connector.StopUSBConnectionMonitoring();
 				wrapper.Processor(worker);
 			}
 			finally
 			{
 				UpdateUI(() => SetAllButtonsState(true));
-				m_connector.StartMonitoring();
+				m_connector.StartUSBConnectionMonitoring();
 			}
 		}
 	}

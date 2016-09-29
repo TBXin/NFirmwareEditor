@@ -21,6 +21,7 @@ namespace NFirmwareEditor.Windows
 
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private ContextMenu m_puffsMenu;
+		private bool m_realClosing;
 
 		public DeviceMonitorWindow([NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
@@ -33,21 +34,33 @@ namespace NFirmwareEditor.Windows
 			InitializeComponent();
 			InitializeControls();
 
+			m_comConnector.Connected += COMConnector_Connected;
+			m_comConnector.Disconnected += COMConnector_Disconnected;
 			m_comConnector.MonitorDataReceived += ComConnector_MonitorDataReceived;
-			m_comConnector.Disconnected += ComConnector_Disconnected;
 
-			Load += (s, e) =>
+			Load += (s, e) => EnsureConnection();
+			Closing += (s, e) =>
 			{
-				if (!EnsureConnection()) return;
-				m_comConnector.EnableDeviceMonitor();
+				if (m_realClosing) return;
+
+				e.Cancel = true;
+				new Thread(() =>
+				{
+					// The serial port cannot close until the DataReceived event handler stops running. 
+					// But the Invoke() call cannot complete until the UI thread goes idle and pumps the message loop. 
+					// It isn't idle, it is stuck in the Close() call. So the event handler cannot make progress because 
+					// it is stuck in the Invoke() call and your main thread cannot make progress because 
+					// it is stuck in the Close() call, deadlock city.
+					m_usbConnector.SetupDeviceMonitor(false);
+					m_comConnector.MonitorDataReceived -= ComConnector_MonitorDataReceived;
+					m_comConnector.Connected -= COMConnector_Connected;
+					m_comConnector.Disconnected -= COMConnector_Disconnected;
+					m_comConnector.Disconnect();
+
+					m_realClosing = true;
+					UpdateUI(Close);
+				}).Start();
 			};
-			Closing += (s, e) => Safe.Execute(() =>
-			{
-				m_comConnector.DisableDeviceMonitor();
-				m_comConnector.MonitorDataReceived -= ComConnector_MonitorDataReceived;
-				m_comConnector.Disconnected -= ComConnector_Disconnected;
-				m_comConnector.Disconnect();
-			});
 		}
 
 		private void InitializeControls()
@@ -131,7 +144,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (!EnsureConnection()) return;
 
-			m_comConnector.Send("P" + seconds);
+			m_usbConnector.MakePuff(seconds);
 		}
 
 		private bool EnsureConnection()
@@ -273,7 +286,12 @@ namespace NFirmwareEditor.Windows
 			return low.Limit + (value - low.Value) / (high.Value - low.Value) * (high.Limit - low.Limit);
 		}
 
-		private void ComConnector_Disconnected()
+		private void COMConnector_Connected()
+		{
+			m_usbConnector.SetupDeviceMonitor(true);
+		}
+
+		private void COMConnector_Disconnected()
 		{
 			EnsureConnection();
 		}

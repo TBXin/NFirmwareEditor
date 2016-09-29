@@ -342,7 +342,7 @@ namespace NFirmwareEditor.Windows
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
 			m_usbConnector.DeviceConnected += DeviceConnected;
-			m_usbConnector.StartMonitoring();
+			m_usbConnector.StartUSBConnectionMonitoring();
 			m_comConnector.MessageReceived += COMMessage_Received;
 
 			Closing += (s, e) => Safe.Execute(() => m_comConnector.Disconnect());

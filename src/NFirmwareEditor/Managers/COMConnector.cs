@@ -14,11 +14,11 @@ namespace NFirmwareEditor.Managers
 		private static readonly char[] s_separatorChars = { '\r', '\n' };
 		private SerialPort m_port;
 		private string m_opendPort;
-		private bool m_monitorEnabled;
 
+		public event Action Connected;
+		public event Action Disconnected;
 		public event Action<string> MessageReceived;
 		public event Action<string> MonitorDataReceived;
-		public event Action Disconnected;
 
 		public bool IsConnected
 		{
@@ -43,6 +43,7 @@ namespace NFirmwareEditor.Managers
 
 			new Thread(PortMonitor) { IsBackground = true }.Start();
 			m_opendPort = portName;
+			OnConnected();
 			return m_opendPort;
 		}
 
@@ -53,6 +54,13 @@ namespace NFirmwareEditor.Managers
 			m_port.DataReceived -= COMPort_DataReceived;
 			try
 			{
+				if (m_port.BytesToRead > 0)
+				{
+					System.Diagnostics.Trace.WriteLine("Flushing COM buffer[Size: " + m_port.BytesToRead + "]");
+					var buffer = new byte[m_port.BytesToRead];
+					m_port.Read(buffer, 0, m_port.BytesToRead);
+					System.Diagnostics.Trace.WriteLine("COM buffer was flushed.");
+				}
 				System.Diagnostics.Trace.WriteLine("Attempt to close port: " + m_opendPort);
 				m_port.Close();
 				System.Diagnostics.Trace.WriteLine("Port: " + m_opendPort + " closed.");
@@ -62,24 +70,6 @@ namespace NFirmwareEditor.Managers
 				m_port = null;
 				m_opendPort = null;
 			}
-		}
-
-		public bool EnableDeviceMonitor()
-		{
-			if (m_monitorEnabled) return true;
-
-			var sendResult = Send("M1");
-			var waitResult = SpinWait.SpinUntil(() => m_monitorEnabled, TimeSpan.FromSeconds(2));
-			return sendResult && waitResult;
-		}
-
-		public bool DisableDeviceMonitor()
-		{
-			if (!m_monitorEnabled) return true;
-
-			var sendResult = Send("M0");
-			var waitResult = SpinWait.SpinUntil(() => !m_monitorEnabled, TimeSpan.FromSeconds(2));
-			return sendResult && waitResult;
 		}
 
 		public bool Send(string command)
@@ -121,24 +111,10 @@ namespace NFirmwareEditor.Managers
 			{
 				OnMessageReceived(message);
 
-				//System.Diagnostics.Trace.WriteLine(message);
-				if (message.StartsWith(SensorsKeys.MonitorOn, StringComparison.OrdinalIgnoreCase))
-				{
-					m_monitorEnabled = true;
-					System.Diagnostics.Trace.WriteLine("m_monitorEnabled = true");
-				}
-				if (message.StartsWith(SensorsKeys.MonitorOff, StringComparison.OrdinalIgnoreCase))
-				{
-					m_monitorEnabled = false;
-					System.Diagnostics.Trace.WriteLine("m_monitorEnabled = false");
-				}
-				if (m_monitorEnabled)
-				{
-					var isStandby = message.StartsWith(SensorsKeys.StandbyKey, StringComparison.OrdinalIgnoreCase);
-					var isFiring = message.StartsWith(SensorsKeys.FiringKey, StringComparison.OrdinalIgnoreCase);
+				var isStandby = message.StartsWith(SensorsKeys.StandbyKey, StringComparison.OrdinalIgnoreCase);
+				var isFiring = message.StartsWith(SensorsKeys.FiringKey, StringComparison.OrdinalIgnoreCase);
 
-					if (isStandby || isFiring) OnMonitorDataReceived(message);
-				}
+				if (isStandby || isFiring) OnMonitorDataReceived(message);
 			}
 		}
 
@@ -172,6 +148,12 @@ namespace NFirmwareEditor.Managers
 		protected virtual void OnDisconnected()
 		{
 			var handler = Disconnected;
+			if (handler != null) handler();
+		}
+
+		protected virtual void OnConnected()
+		{
+			var handler = Connected;
 			if (handler != null) handler();
 		}
 	}
