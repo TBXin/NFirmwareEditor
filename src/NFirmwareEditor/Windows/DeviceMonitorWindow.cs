@@ -289,10 +289,12 @@ namespace NFirmwareEditor.Windows
 		private void COMConnector_Connected()
 		{
 			m_usbConnector.SetupDeviceMonitor(true);
+			UpdateUI(() => Enabled = true);
 		}
 
 		private void COMConnector_Disconnected()
 		{
+			UpdateUI(() => Enabled = false);
 			EnsureConnection();
 		}
 

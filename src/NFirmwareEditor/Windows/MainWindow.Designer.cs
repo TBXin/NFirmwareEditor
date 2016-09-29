@@ -47,9 +47,11 @@
 			this.PatchCreatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageConverterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.FirmwareUpdaterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.DeviceConfiguratorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.myEvicMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DeviceConfiguratorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DeviceMonitorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.CheckForUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -70,6 +72,7 @@
 			this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuItem,
             this.ToolsMenuItem,
+            this.myEvicMenuItem,
             this.HelpMenuItem});
 			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip.Name = "MainMenuStrip";
@@ -188,7 +191,6 @@
             this.PatchCreatorMenuItem,
             this.ImageConverterMenuItem,
             this.FirmwareUpdaterMenuItem,
-            this.DeviceConfiguratorMenuItem,
             this.toolStripSeparator3,
             this.OptionsMenuItem});
 			this.ToolsMenuItem.Name = "ToolsMenuItem";
@@ -199,7 +201,7 @@
 			// 
 			this.EncryptDecryptMenuItem.Image = global::NFirmwareEditor.Properties.Resources.toolbox;
 			this.EncryptDecryptMenuItem.Name = "EncryptDecryptMenuItem";
-			this.EncryptDecryptMenuItem.Size = new System.Drawing.Size(232, 22);
+			this.EncryptDecryptMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.EncryptDecryptMenuItem.Text = "Encrypt / Decrypt";
 			this.EncryptDecryptMenuItem.Click += new System.EventHandler(this.EncryptDecryptToolStripMenuItem_Click);
 			// 
@@ -207,7 +209,7 @@
 			// 
 			this.PatchCreatorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.patch_creator;
 			this.PatchCreatorMenuItem.Name = "PatchCreatorMenuItem";
-			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(232, 22);
+			this.PatchCreatorMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.PatchCreatorMenuItem.Text = "Patch Creator";
 			this.PatchCreatorMenuItem.Click += new System.EventHandler(this.PatchCreatorMenuItem_Click);
 			// 
@@ -215,7 +217,7 @@
 			// 
 			this.ImageConverterMenuItem.Image = global::NFirmwareEditor.Properties.Resources.images;
 			this.ImageConverterMenuItem.Name = "ImageConverterMenuItem";
-			this.ImageConverterMenuItem.Size = new System.Drawing.Size(232, 22);
+			this.ImageConverterMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.ImageConverterMenuItem.Text = "Image Converter";
 			this.ImageConverterMenuItem.Click += new System.EventHandler(this.ImageConverterMenuItem_Click);
 			// 
@@ -224,30 +226,47 @@
 			this.FirmwareUpdaterMenuItem.Image = global::NFirmwareEditor.Properties.Resources.firmware_update;
 			this.FirmwareUpdaterMenuItem.Name = "FirmwareUpdaterMenuItem";
 			this.FirmwareUpdaterMenuItem.ShortcutKeyDisplayString = "Ctrl + U";
-			this.FirmwareUpdaterMenuItem.Size = new System.Drawing.Size(232, 22);
+			this.FirmwareUpdaterMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.FirmwareUpdaterMenuItem.Text = "Firmware Updater";
 			this.FirmwareUpdaterMenuItem.Click += new System.EventHandler(this.FirmwareUpdaterMenuItem_Click);
-			// 
-			// DeviceConfiguratorMenuItem
-			// 
-			this.DeviceConfiguratorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.device_configurator;
-			this.DeviceConfiguratorMenuItem.Name = "DeviceConfiguratorMenuItem";
-			this.DeviceConfiguratorMenuItem.Size = new System.Drawing.Size(232, 22);
-			this.DeviceConfiguratorMenuItem.Text = "myEvic NFE Edition Configuration";
-			this.DeviceConfiguratorMenuItem.Click += new System.EventHandler(this.DeviceConfiguratorMenuItem_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(229, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(202, 6);
 			// 
 			// OptionsMenuItem
 			// 
 			this.OptionsMenuItem.Image = global::NFirmwareEditor.Properties.Resources.options;
 			this.OptionsMenuItem.Name = "OptionsMenuItem";
-			this.OptionsMenuItem.Size = new System.Drawing.Size(232, 22);
+			this.OptionsMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.OptionsMenuItem.Text = "Options";
 			this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
+			// 
+			// myEvicMenuItem
+			// 
+			this.myEvicMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeviceConfiguratorMenuItem,
+            this.DeviceMonitorMenuItem});
+			this.myEvicMenuItem.Name = "myEvicMenuItem";
+			this.myEvicMenuItem.Size = new System.Drawing.Size(52, 20);
+			this.myEvicMenuItem.Text = "myEvic";
+			// 
+			// DeviceConfiguratorMenuItem
+			// 
+			this.DeviceConfiguratorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.device_configurator;
+			this.DeviceConfiguratorMenuItem.Name = "DeviceConfiguratorMenuItem";
+			this.DeviceConfiguratorMenuItem.Size = new System.Drawing.Size(174, 22);
+			this.DeviceConfiguratorMenuItem.Text = "Device Configuration";
+			this.DeviceConfiguratorMenuItem.Click += new System.EventHandler(this.DeviceConfiguratorMenuItem_Click);
+			// 
+			// DeviceMonitorMenuItem
+			// 
+			this.DeviceMonitorMenuItem.Image = global::NFirmwareEditor.Properties.Resources.device_monitor;
+			this.DeviceMonitorMenuItem.Name = "DeviceMonitorMenuItem";
+			this.DeviceMonitorMenuItem.Size = new System.Drawing.Size(174, 22);
+			this.DeviceMonitorMenuItem.Text = "Device Monitor";
+			this.DeviceMonitorMenuItem.Click += new System.EventHandler(this.DeviceMonitorToolStripMenuItem_Click);
 			// 
 			// HelpMenuItem
 			// 
@@ -394,6 +413,8 @@
 		private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem SaveDefinitionMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem DeviceMonitorMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem myEvicMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem DeviceConfiguratorMenuItem;
 	}
 }

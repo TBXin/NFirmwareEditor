@@ -444,6 +444,14 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void DeviceMonitorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (var monitor = new DeviceMonitorWindow(new USBConnector(), new COMConnector()))
+			{
+				monitor.ShowDialog();
+			}
+		}
+
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
 			var checkForUpdates = m_configuration.CheckForApplicationUpdates;

@@ -75,7 +75,7 @@
 			this.MainChart.Location = new System.Drawing.Point(1, 30);
 			this.MainChart.Name = "MainChart";
 			this.MainChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-			this.MainChart.Size = new System.Drawing.Size(587, 457);
+			this.MainChart.Size = new System.Drawing.Size(589, 463);
 			this.MainChart.TabIndex = 0;
 			// 
 			// SensorsGroupPanel
@@ -118,7 +118,7 @@
 			this.SensorsGroupPanel.HeaderHeight = 30;
 			this.SensorsGroupPanel.Location = new System.Drawing.Point(3, 3);
 			this.SensorsGroupPanel.Name = "SensorsGroupPanel";
-			this.SensorsGroupPanel.Size = new System.Drawing.Size(200, 274);
+			this.SensorsGroupPanel.Size = new System.Drawing.Size(200, 280);
 			this.SensorsGroupPanel.TabIndex = 1;
 			this.SensorsGroupPanel.TabStop = false;
 			this.SensorsGroupPanel.Text = "Sensors";
@@ -406,7 +406,7 @@
 			this.LineVewGroupPanel.Location = new System.Drawing.Point(206, 3);
 			this.LineVewGroupPanel.Name = "LineVewGroupPanel";
 			this.LineVewGroupPanel.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-			this.LineVewGroupPanel.Size = new System.Drawing.Size(589, 488);
+			this.LineVewGroupPanel.Size = new System.Drawing.Size(591, 494);
 			this.LineVewGroupPanel.TabIndex = 2;
 			this.LineVewGroupPanel.TabStop = false;
 			this.LineVewGroupPanel.Text = "Line view";
@@ -419,7 +419,7 @@
 			this.ControlGroupPanel.Controls.Add(this.PuffButton);
 			this.ControlGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.HeaderHeight = 30;
-			this.ControlGroupPanel.Location = new System.Drawing.Point(3, 280);
+			this.ControlGroupPanel.Location = new System.Drawing.Point(3, 286);
 			this.ControlGroupPanel.Name = "ControlGroupPanel";
 			this.ControlGroupPanel.Size = new System.Drawing.Size(200, 211);
 			this.ControlGroupPanel.TabIndex = 3;
@@ -439,7 +439,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(798, 494);
+			this.ClientSize = new System.Drawing.Size(800, 500);
 			this.Controls.Add(this.ControlGroupPanel);
 			this.Controls.Add(this.LineVewGroupPanel);
 			this.Controls.Add(this.SensorsGroupPanel);
