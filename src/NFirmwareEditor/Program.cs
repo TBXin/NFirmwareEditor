@@ -37,7 +37,7 @@ namespace NFirmwareEditor
 				}
 				if (args[0] == "/monitor")
 				{
-					Application.Run(new DeviceMonitorWindow(new COMConnector()));
+					Application.Run(new DeviceMonitorWindow(new USBConnector(), new COMConnector()));
 					return;
 				}
 			}

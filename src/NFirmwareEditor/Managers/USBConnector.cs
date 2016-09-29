@@ -28,6 +28,7 @@ namespace NFirmwareEditor.Managers
 			public const byte Restart = 0xB4;
 
 			public const byte Screenshot = 0xC1;
+			public const byte EnableVCOM = 0x42;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -137,6 +138,14 @@ namespace NFirmwareEditor.Managers
 			{
 				Write(stream, CreateCommand(Commands.Screenshot, 0, 0x400));
 				return Read(stream, 0x400);
+			}
+		}
+
+		public void EnableCOM()
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.EnableVCOM, 0, 0));
 			}
 		}
 

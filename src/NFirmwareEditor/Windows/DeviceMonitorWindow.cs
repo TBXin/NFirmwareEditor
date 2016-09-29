@@ -17,11 +17,15 @@ namespace NFirmwareEditor.Windows
 		private const int MaxItems = 50;
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 
+		private readonly USBConnector m_usbConnector;
 		private readonly COMConnector m_comConnector;
 
-		public DeviceMonitorWindow([NotNull] COMConnector comConnector)
+		public DeviceMonitorWindow([NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
+			if (usbConnector == null) throw new ArgumentNullException("usbConnector");
 			if (comConnector == null) throw new ArgumentNullException("comConnector");
+
+			m_usbConnector = usbConnector;
 			m_comConnector = comConnector;
 
 			InitializeComponent();
@@ -56,7 +60,7 @@ namespace NFirmwareEditor.Windows
 #endif*/
 		}
 
-#if DEBUG
+/*#if DEBUG
 		private bool m_cels;
 		private bool m_amps;
 		#region Overrides of EditorDialogWindow
@@ -71,7 +75,7 @@ namespace NFirmwareEditor.Windows
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 		#endregion
-#endif
+#endif*/
 		private void InitializeControls()
 		{
 			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 100) };
@@ -135,18 +139,8 @@ namespace NFirmwareEditor.Windows
 
 		private void EnsureConnection()
 		{
-/*#if DEBUG
-			return;
-#endif*/
-			while (true)
+			if (!m_usbConnector.IsDeviceConnected)
 			{
-				var port = m_comConnector.Connect();
-				if (!string.IsNullOrEmpty(port))
-				{
-					m_comConnector.Send("M1");
-					break;
-				}
-
 				var result = InfoBox.Show
 				(
 					"No compatible USB devices are connected." +
@@ -156,12 +150,47 @@ namespace NFirmwareEditor.Windows
 					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
 					MessageBoxButtons.OKCancel
 				);
+
+				if (result == DialogResult.OK)
+				{
+					EnsureConnection();
+					return;
+				}
 				if (result == DialogResult.Cancel)
 				{
 					UpdateUI(Close);
 					return;
 				}
 			}
+
+			var port = m_comConnector.Connect();
+			if (string.IsNullOrEmpty(port))
+			{
+				var result = InfoBox.Show
+				(
+					"Compatible USB device was found." +
+					"\n\n" +
+					"But VCOM connection could not be established." +
+					"\n\n" +
+					"Would you like to enable VCOM mode to continue?",
+					MessageBoxButtons.OKCancel
+				);
+
+				if (result == DialogResult.OK)
+				{
+					m_usbConnector.EnableCOM();
+					Thread.Sleep(2000);
+					EnsureConnection();
+					return;
+				}
+				if (result == DialogResult.Cancel)
+				{
+					UpdateUI(Close);
+					return;
+				}
+			}
+
+			m_comConnector.Send("M1");
 		}
 
 		private Series CreateSeries(string name, Color color)
