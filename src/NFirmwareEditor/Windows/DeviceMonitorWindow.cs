@@ -44,6 +44,7 @@ namespace NFirmwareEditor.Windows
 				if (m_realClosing) return;
 
 				e.Cancel = true;
+				m_realClosing = true;
 				new Thread(() =>
 				{
 					// The serial port cannot close until the DataReceived event handler stops running. 
@@ -57,7 +58,6 @@ namespace NFirmwareEditor.Windows
 					m_comConnector.Disconnected -= COMConnector_Disconnected;
 					m_comConnector.Disconnect();
 
-					m_realClosing = true;
 					UpdateUI(Close);
 				}).Start();
 			};
