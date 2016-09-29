@@ -61,9 +61,12 @@
 			this.BatteryCheckBox = new System.Windows.Forms.CheckBox();
 			this.PowerCheckBox = new System.Windows.Forms.CheckBox();
 			this.LineVewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.ControlGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.PuffButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
+			this.ControlGroupPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainChart
@@ -115,7 +118,7 @@
 			this.SensorsGroupPanel.HeaderHeight = 30;
 			this.SensorsGroupPanel.Location = new System.Drawing.Point(3, 3);
 			this.SensorsGroupPanel.Name = "SensorsGroupPanel";
-			this.SensorsGroupPanel.Size = new System.Drawing.Size(200, 488);
+			this.SensorsGroupPanel.Size = new System.Drawing.Size(200, 274);
 			this.SensorsGroupPanel.TabIndex = 1;
 			this.SensorsGroupPanel.TabStop = false;
 			this.SensorsGroupPanel.Text = "Sensors";
@@ -408,11 +411,36 @@
 			this.LineVewGroupPanel.TabStop = false;
 			this.LineVewGroupPanel.Text = "Line view";
 			// 
+			// ControlGroupPanel
+			// 
+			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
+			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlGroupPanel.Controls.Add(this.PuffButton);
+			this.ControlGroupPanel.HeaderBackColor = System.Drawing.Color.White;
+			this.ControlGroupPanel.HeaderHeight = 30;
+			this.ControlGroupPanel.Location = new System.Drawing.Point(3, 280);
+			this.ControlGroupPanel.Name = "ControlGroupPanel";
+			this.ControlGroupPanel.Size = new System.Drawing.Size(200, 211);
+			this.ControlGroupPanel.TabIndex = 3;
+			this.ControlGroupPanel.TabStop = false;
+			this.ControlGroupPanel.Text = "Control";
+			// 
+			// PuffButton
+			// 
+			this.PuffButton.Location = new System.Drawing.Point(5, 34);
+			this.PuffButton.Name = "PuffButton";
+			this.PuffButton.Size = new System.Drawing.Size(190, 23);
+			this.PuffButton.TabIndex = 0;
+			this.PuffButton.Text = "Puff...";
+			this.PuffButton.UseVisualStyleBackColor = true;
+			// 
 			// DeviceMonitorWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(798, 494);
+			this.Controls.Add(this.ControlGroupPanel);
 			this.Controls.Add(this.LineVewGroupPanel);
 			this.Controls.Add(this.SensorsGroupPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -423,6 +451,7 @@
 			this.SensorsGroupPanel.ResumeLayout(false);
 			this.SensorsGroupPanel.PerformLayout();
 			this.LineVewGroupPanel.ResumeLayout(false);
+			this.ControlGroupPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -462,5 +491,7 @@
 		private System.Windows.Forms.Panel PowerSetPanel;
 		private System.Windows.Forms.Label PowerSetLabel;
 		private System.Windows.Forms.CheckBox PowerSetCheckBox;
+		private UI.GroupPanel ControlGroupPanel;
+		private System.Windows.Forms.Button PuffButton;
 	}
 }

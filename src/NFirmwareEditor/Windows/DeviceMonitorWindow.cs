@@ -15,10 +15,12 @@ namespace NFirmwareEditor.Windows
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
 		private const int MaxItems = 50;
-		private IDictionary<string, SeriesRelatedData> m_seriesData;
 
 		private readonly USBConnector m_usbConnector;
 		private readonly COMConnector m_comConnector;
+
+		private IDictionary<string, SeriesRelatedData> m_seriesData;
+		private ContextMenu m_puffsMenu;
 
 		public DeviceMonitorWindow([NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
@@ -73,6 +75,7 @@ namespace NFirmwareEditor.Windows
 
 			InitializeChart();
 			InitializeSeries();
+			InitializePuffsMenu();
 		}
 
 		private void InitializeChart()
@@ -103,6 +106,28 @@ namespace NFirmwareEditor.Windows
 				data.CheckBox.Checked = true;
 				data.Panel.BackColor = data.Color;
 			}
+		}
+
+		private void InitializePuffsMenu()
+		{
+			m_puffsMenu = new ContextMenu();
+			for (var i = 1; i <= 9; i++)
+			{
+				var seconds = i;
+				m_puffsMenu.MenuItems.Add(seconds + (seconds == 1 ? " second" : " seconds"), (s, e) => PuffMenuItem_Click(seconds));
+			}
+			PuffButton.Click += (s, e) =>
+			{
+				var control = (Control)s;
+				m_puffsMenu.Show(control, new Point(control.Width, 0));
+			};
+		}
+
+		private void PuffMenuItem_Click(int seconds)
+		{
+			if (!EnsureConnection()) return;
+
+			m_comConnector.Send("P" + seconds);
 		}
 
 		private bool EnsureConnection()
