@@ -36,7 +36,11 @@ namespace NFirmwareEditor.Windows
 			m_comConnector.MonitorDataReceived += ComConnector_MonitorDataReceived;
 			m_comConnector.Disconnected += ComConnector_Disconnected;
 
-			Load += (s, e) => EnsureConnection();
+			Load += (s, e) =>
+			{
+				if (!EnsureConnection()) return;
+				m_comConnector.EnableDeviceMonitor();
+			};
 			Closing += (s, e) => Safe.Execute(() =>
 			{
 				m_comConnector.DisableDeviceMonitor();
@@ -180,8 +184,6 @@ namespace NFirmwareEditor.Windows
 					return false;
 				}
 			}
-
-			m_comConnector.EnableDeviceMonitor();
 			return true;
 		}
 

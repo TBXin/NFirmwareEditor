@@ -37,6 +37,8 @@ namespace NFirmwareEditor.Managers
 			m_port.DataReceived += COMPort_DataReceived;
 			m_port.Open();
 
+			System.Diagnostics.Trace.WriteLine("Port: " + portName + " opened. [IsOpen = " + m_port.IsOpen + "]");
+
 			if (!m_port.IsOpen) return null;
 
 			new Thread(PortMonitor) { IsBackground = true }.Start();
@@ -51,7 +53,9 @@ namespace NFirmwareEditor.Managers
 			m_port.DataReceived -= COMPort_DataReceived;
 			try
 			{
+				System.Diagnostics.Trace.WriteLine("Attempt to close port: " + m_opendPort);
 				m_port.Close();
+				System.Diagnostics.Trace.WriteLine("Port: " + m_opendPort + " closed.");
 			}
 			finally
 			{
@@ -85,6 +89,7 @@ namespace NFirmwareEditor.Managers
 
 			var data = Encoding.ASCII.GetBytes(command);
 			m_port.Write(data, 0, data.Length);
+			System.Diagnostics.Trace.WriteLine("Sent command: " + command);
 			return true;
 		}
 
@@ -112,12 +117,11 @@ namespace NFirmwareEditor.Managers
 			var data = m_port.ReadExisting();
 			var messages = data.Split(s_separatorChars, StringSplitOptions.RemoveEmptyEntries);
 
-			System.Diagnostics.Trace.WriteLine("Received messages: " + messages.Length);
 			foreach (var message in messages)
 			{
 				OnMessageReceived(message);
 
-				System.Diagnostics.Trace.WriteLine(message);
+				//System.Diagnostics.Trace.WriteLine(message);
 				if (message.StartsWith(SensorsKeys.MonitorOn, StringComparison.OrdinalIgnoreCase))
 				{
 					m_monitorEnabled = true;
