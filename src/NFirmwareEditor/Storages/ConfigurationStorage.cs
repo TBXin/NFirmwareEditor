@@ -21,16 +21,19 @@ namespace NFirmwareEditor.Storages
 		public ApplicationConfiguration TryLoad(string filePath)
 		{
 			ApplicationConfiguration result = null;
-			try
+			if (File.Exists(filePath))
 			{
-				using (var fs = File.OpenRead(filePath))
+				try
 				{
-					result = Serializer.Read<ApplicationConfiguration>(fs);
+					using (var fs = File.OpenRead(filePath))
+					{
+						result = Serializer.Read<ApplicationConfiguration>(fs);
+					}
 				}
-			}
-			catch (Exception ex)
-			{
-				s_logger.Warn(ex, "An error occurred during loading application configuration.");
+				catch (Exception ex)
+				{
+					s_logger.Warn(ex, "An error occurred during loading application configuration.");
+				}
 			}
 			return result ?? new ApplicationConfiguration();
 		}
