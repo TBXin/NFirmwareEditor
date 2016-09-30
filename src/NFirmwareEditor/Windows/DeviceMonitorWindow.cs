@@ -16,6 +16,7 @@ namespace NFirmwareEditor.Windows
 	{
 		private const int MaxItems = 50;
 
+		private readonly ApplicationConfiguration m_configuration;
 		private readonly USBConnector m_usbConnector;
 		private readonly COMConnector m_comConnector;
 
@@ -23,11 +24,13 @@ namespace NFirmwareEditor.Windows
 		private ContextMenu m_puffsMenu;
 		private bool m_realClosing;
 
-		public DeviceMonitorWindow([NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
+		public DeviceMonitorWindow([NotNull] ApplicationConfiguration configuration, [NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
+			if (configuration == null) throw new ArgumentNullException("configuration");
 			if (usbConnector == null) throw new ArgumentNullException("usbConnector");
 			if (comConnector == null) throw new ArgumentNullException("comConnector");
 
+			m_configuration = configuration;
 			m_usbConnector = usbConnector;
 			m_comConnector = comConnector;
 
@@ -43,6 +46,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (m_realClosing) return;
 
+				SaveCheckedSeries();
 				e.Cancel = true;
 				m_realClosing = true;
 				new Thread(() =>
@@ -78,16 +82,46 @@ namespace NFirmwareEditor.Windows
 
 			m_seriesData = new Dictionary<string, SeriesRelatedData>
 			{
-				{ SensorsKeys.BatteryVoltage, new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, BatteryPanel, BatteryVoltageLabel, "{0} V", batteryLimits) },
-				{ SensorsKeys.Power, new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, PowerPanel, PowerLabel, "{0} W", powerLimits) },
-				{ SensorsKeys.PowerSet, new SeriesRelatedData(Color.Green, PowerSetCheckBox, PowerSetPanel, PowerSetLabel, "{0} W", powerSetLimits) },
-				{ SensorsKeys.Temperature, new SeriesRelatedData(Color.Red, TemperatureCheckBox, TemperaturePanel, TemperatureLabel, "{0} °C", tempLimits) },
-				{ SensorsKeys.TemperatureSet, new SeriesRelatedData(Color.DarkRed, TemperatureSetCheckBox, TemperatureSetPanel, TemperatureSetLabel, "{0} °C", tempSetLimits) },
-				{ SensorsKeys.OutputCurrent, new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, OutputCurrentPanel, OutputCurrentLabel, "{0} A", outputCurrentLimits) },
-				{ SensorsKeys.OutputVoltage, new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, OutputVoltagePanel, OutputVoltageLabel, "{0} V", outputVoltageLimits) },
-				{ SensorsKeys.Resistance, new SeriesRelatedData(Color.Violet, ResistanceCheckBox, ResistancePanel, ResistanceLabel, "{0} Ω", resistanceLimits) },
-				{ SensorsKeys.RealResistance, new SeriesRelatedData(Color.BlueViolet, RealResistanceCheckBox, RealResistancePanel, RealResistanceLabel, "{0} Ω", realResistanceLimits) },
-				{ SensorsKeys.BoardTemperature, new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, BoardTemperaturePanel, BoardTemperatureLabel, "{0} °C", boardTemperatureLimits) }
+				{
+					SensorsKeys.BatteryVoltage,
+					new SeriesRelatedData(Color.DarkSlateGray, BatteryCheckBox, BatteryPanel, BatteryVoltageLabel, "{0} V", batteryLimits)
+				},
+				{
+					SensorsKeys.Power,
+					new SeriesRelatedData(Color.LimeGreen, PowerCheckBox, PowerPanel, PowerLabel, "{0} W", powerLimits)
+				},
+				{
+					SensorsKeys.PowerSet,
+					new SeriesRelatedData(Color.Green, PowerSetCheckBox, PowerSetPanel, PowerSetLabel, "{0} W", powerSetLimits)
+				},
+				{
+					SensorsKeys.Temperature,
+					new SeriesRelatedData(Color.Red, TemperatureCheckBox, TemperaturePanel, TemperatureLabel, "{0} °C", tempLimits)
+				},
+				{
+					SensorsKeys.TemperatureSet,
+					new SeriesRelatedData(Color.DarkRed, TemperatureSetCheckBox, TemperatureSetPanel, TemperatureSetLabel, "{0} °C", tempSetLimits)
+				},
+				{
+					SensorsKeys.OutputCurrent,
+					new SeriesRelatedData(Color.Orange, OutputCurrentCheckBox, OutputCurrentPanel, OutputCurrentLabel, "{0} A", outputCurrentLimits)
+				},
+				{
+					SensorsKeys.OutputVoltage,
+					new SeriesRelatedData(Color.LightSkyBlue, OutputVoltageCheckBox, OutputVoltagePanel, OutputVoltageLabel, "{0} V", outputVoltageLimits)
+				},
+				{
+					SensorsKeys.Resistance,
+					new SeriesRelatedData(Color.Violet, ResistanceCheckBox, ResistancePanel, ResistanceLabel, "{0} Ω", resistanceLimits)
+				},
+				{
+					SensorsKeys.RealResistance,
+					new SeriesRelatedData(Color.BlueViolet, RealResistanceCheckBox, RealResistancePanel, RealResistanceLabel, "{0} Ω", realResistanceLimits)
+				},
+				{
+					SensorsKeys.BoardTemperature,
+					new SeriesRelatedData(Color.SaddleBrown, BoardTemperatureCheckBox, BoardTemperaturePanel, BoardTemperatureLabel, "{0} °C", boardTemperatureLimits)
+				}
 			};
 
 			InitializeChart();
@@ -118,9 +152,12 @@ namespace NFirmwareEditor.Windows
 				data.Seires = CreateSeries(seriesName, data.Color);
 				MainChart.Series.Add(data.Seires);
 
+				bool isChecked;
+				if (!m_configuration.DeviceMonitorSeries.TryGetValue(seriesName, out isChecked)) isChecked = true;
+
 				data.CheckBox.Tag = seriesName;
+				data.CheckBox.Checked = data.Seires.Enabled = isChecked;
 				data.CheckBox.CheckedChanged += SeriesCheckBox_CheckedChanged;
-				data.CheckBox.Checked = true;
 				data.Panel.BackColor = data.Color;
 			}
 		}
@@ -140,11 +177,14 @@ namespace NFirmwareEditor.Windows
 			};
 		}
 
-		private void PuffMenuItem_Click(int seconds)
+		private void SaveCheckedSeries()
 		{
-			if (!EnsureConnection()) return;
-
-			m_usbConnector.MakePuff(seconds);
+			foreach (var kvp in m_seriesData)
+			{
+				var seriesName = kvp.Key;
+				var data = kvp.Value;
+				m_configuration.DeviceMonitorSeries[seriesName] = data.CheckBox.Checked;
+			}
 		}
 
 		private bool EnsureConnection()
@@ -289,12 +329,10 @@ namespace NFirmwareEditor.Windows
 		private void COMConnector_Connected()
 		{
 			m_usbConnector.SetupDeviceMonitor(true);
-			UpdateUI(() => Enabled = true);
 		}
 
 		private void COMConnector_Disconnected()
 		{
-			UpdateUI(() => Enabled = false);
 			EnsureConnection();
 		}
 
@@ -315,6 +353,14 @@ namespace NFirmwareEditor.Windows
 
 			var seriesName = checkbox.Tag.ToString();
 			m_seriesData[seriesName].Seires.Enabled = checkbox.Checked;
+		}
+
+
+		private void PuffMenuItem_Click(int seconds)
+		{
+			if (!EnsureConnection()) return;
+
+			m_usbConnector.MakePuff(seconds);
 		}
 
 		private class SeriesRelatedData

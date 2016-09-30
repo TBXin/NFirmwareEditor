@@ -446,9 +446,10 @@ namespace NFirmwareEditor.Windows
 
 		private void DeviceMonitorToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			using (var monitor = new DeviceMonitorWindow(new USBConnector(), new COMConnector()))
+			using (var monitor = new DeviceMonitorWindow(m_configuration, new USBConnector(), new COMConnector()))
 			{
 				monitor.ShowDialog();
+				m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
 			}
 		}
 

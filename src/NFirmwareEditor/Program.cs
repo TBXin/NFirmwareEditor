@@ -2,7 +2,10 @@
 using System.Threading;
 using System.Windows.Forms;
 using NFirmware;
+using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
+using NFirmwareEditor.Models;
+using NFirmwareEditor.Storages;
 using NFirmwareEditor.Windows;
 using NLog;
 
@@ -37,7 +40,10 @@ namespace NFirmwareEditor
 				}
 				if (args[0] == "/monitor")
 				{
-					Application.Run(new DeviceMonitorWindow(new USBConnector(), new COMConnector()));
+					var configurationStorage = new ConfigurationStorage();
+					var configuration = configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
+					Application.Run(new DeviceMonitorWindow(configuration, new USBConnector(), new COMConnector()));
+					configurationStorage.Save(Paths.SettingsFile, configuration);
 					return;
 				}
 			}
