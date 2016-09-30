@@ -22,6 +22,7 @@ namespace NFirmwareEditor.Windows
 
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private ContextMenu m_puffsMenu;
+		private bool m_isDeviceConnected;
 		private bool m_realClosing;
 
 		public DeviceMonitorWindow([NotNull] ApplicationConfiguration configuration, [NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
@@ -189,6 +190,7 @@ namespace NFirmwareEditor.Windows
 
 		private bool EnsureConnection()
 		{
+			if (m_isDeviceConnected) return true;
 			if (!m_usbConnector.IsDeviceConnected)
 			{
 				var result = InfoBox.Show
@@ -328,11 +330,13 @@ namespace NFirmwareEditor.Windows
 
 		private void COMConnector_Connected()
 		{
+			m_isDeviceConnected = true;
 			m_usbConnector.SetupDeviceMonitor(true);
 		}
 
 		private void COMConnector_Disconnected()
 		{
+			m_isDeviceConnected = false;
 			EnsureConnection();
 		}
 
@@ -361,6 +365,12 @@ namespace NFirmwareEditor.Windows
 			if (!EnsureConnection()) return;
 
 			m_usbConnector.MakePuff(seconds);
+			PuffButton.Enabled = false;
+			new Thread(() =>
+			{
+				Thread.Sleep(TimeSpan.FromSeconds(seconds));
+				UpdateUI(() => PuffButton.Enabled = true);
+			}) { IsBackground = true }.Start();
 		}
 
 		private class SeriesRelatedData
