@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NFirmwareEditor.Models;
 
@@ -16,6 +18,7 @@ namespace NFirmwareEditor.Windows
 			m_dataflash = dataflash;
 
 			InitializeComponent();
+			InitializeChart();
 			InitializeControls();
 			InitializeWorkspaceFromDataflash(m_dataflash);
 		}
@@ -40,6 +43,70 @@ namespace NFirmwareEditor.Windows
 			SaveButton.Click += SaveButton_Click;
 		}
 
+		private void VoltsUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			var control = sender as NumericUpDown;
+			if (control == null) return;
+
+			var point = control.Tag as DataPoint;
+			if (point == null) return;
+
+			point.YValues = new[] { (double)control.Value };
+		}
+
+		private void PercentsUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			var control = sender as NumericUpDown;
+			if (control == null) return;
+
+			var point = control.Tag as DataPoint;
+			if (point == null) return;
+
+			var value = (double)control.Value;
+			point.XValue = value;
+			point.Label = string.Format("{0} %", value);
+		}
+
+		private void InitializeChart()
+		{
+			DischargeChart.Palette = ChartColorPalette.Pastel;
+			var area = new ChartArea();
+			{
+				area.AxisX.IsMarginVisible = false;
+				area.AxisX.Maximum = 100;
+				area.AxisX.MajorGrid.Enabled = true;
+				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+				area.AxisX.LineColor = Color.DarkGray;
+				area.AxisX.IsReversed = true;
+				area.AxisX.Interval = 5;
+
+				area.AxisY.IsMarginVisible = false;
+				area.AxisY.Maximum = 4.5;
+				area.AxisY.MajorGrid.Enabled = true;
+				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+				area.AxisY.LineColor = Color.DarkGray;
+				area.AxisY.Interval = 0.5;
+			}
+			DischargeChart.ChartAreas.Add(area);
+
+			var series = new Series
+			{
+				ChartType = SeriesChartType.Spline,
+				YValueType = ChartValueType.Double,
+				Color = Color.YellowGreen,
+				BorderWidth = 2,
+				SmartLabelStyle =
+				{
+					Enabled = true,
+					AllowOutsidePlotArea = LabelOutsidePlotAreaStyle.Yes,
+					IsOverlappedHidden = false,
+					IsMarkerOverlappingAllowed = true,
+					MovingDirection = LabelAlignmentStyles.Right
+				}
+			};
+			DischargeChart.Series.Add(series);
+		}
+
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
 		{
 			if (dataflash == null) throw new ArgumentNullException("dataflash");
@@ -47,9 +114,23 @@ namespace NFirmwareEditor.Windows
 			for (var i = 0; i < dataflash.ParamsBlock.CustomBattery.Data.Length; i++)
 			{
 				var data = dataflash.ParamsBlock.CustomBattery.Data[i];
+				var percents = Math.Max((ushort)0, Math.Min(data.Percents, (ushort)100));
+				var voltage = Math.Max(3.0m, Math.Min(data.Voltage / 100m, 4.2m));
+				var point = new DataPoint(percents, (double)voltage)
+				{
+					MarkerStyle = MarkerStyle.Circle,
+					MarkerSize = 7,
+					Label = string.Format("{0} %", percents)
+				};
+				m_curveControls[i].PercentsUpDown.Value = percents;
+				m_curveControls[i].PercentsUpDown.Tag = point;
+				m_curveControls[i].PercentsUpDown.ValueChanged += PercentsUpDown_ValueChanged;
 
-				m_curveControls[i].PercentsUpDown.Value = Math.Max((ushort)0, Math.Min(data.Percents, (ushort)100));
-				m_curveControls[i].VoltsUpDown.Value = Math.Max(3.0m, Math.Min(data.Voltage / 100m, 4.2m));
+				m_curveControls[i].VoltsUpDown.Value = voltage;
+				m_curveControls[i].VoltsUpDown.Tag = point;
+				m_curveControls[i].VoltsUpDown.ValueChanged += VoltsUpDown_ValueChanged;
+
+				DischargeChart.Series[0].Points.Add(point);
 			}
 		}
 
