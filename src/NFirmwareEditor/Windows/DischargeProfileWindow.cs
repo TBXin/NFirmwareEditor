@@ -57,7 +57,8 @@ namespace NFirmwareEditor.Windows
 				area.AxisX.Interval = 5;
 
 				area.AxisY.IsMarginVisible = false;
-				area.AxisY.Maximum = 4.5;
+				area.AxisY.Minimum = 3.0;
+				area.AxisY.Maximum = 4.2;
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.LineColor = Color.DarkGray;
