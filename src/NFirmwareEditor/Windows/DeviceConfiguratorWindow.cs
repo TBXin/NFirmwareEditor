@@ -236,6 +236,19 @@ namespace NFirmwareEditor.Windows
 				new NamedItemContainer<ScreenProtectionTime>("30 Min", ScreenProtectionTime.Min30)
 			});
 
+			BatteryModelComboBox.Items.Clear();
+			BatteryModelComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<BatteryModel>("Generic Battery", BatteryModel.Generic),
+				new NamedItemContainer<BatteryModel>("Samsung 25R", BatteryModel.Samsung25R),
+				new NamedItemContainer<BatteryModel>("Samsung 30Q", BatteryModel.Samsung30Q),
+				new NamedItemContainer<BatteryModel>("LG HG2", BatteryModel.LGHG2),
+				new NamedItemContainer<BatteryModel>("LG HE4", BatteryModel.LGHE4),
+				new NamedItemContainer<BatteryModel>("Sony VTC4", BatteryModel.SonyVTC4),
+				new NamedItemContainer<BatteryModel>("Sony VTC5", BatteryModel.SonyVTC5),
+				new NamedItemContainer<BatteryModel>("Custom", BatteryModel.Custom),
+			});
+
 			PortComboBox.Items.Clear();
 			var ports = new object[9];
 			ports[0] = new NamedItemContainer<string>("Auto", null);
@@ -436,6 +449,7 @@ namespace NFirmwareEditor.Windows
 
 			// Developer -> Expert
 			ShuntCorrectionUpDown.Value = Math.Max((byte)85, Math.Min(dataflash.ParamsBlock.ShuntCorrection, (byte)115));
+			BatteryModelComboBox.SelectItem(dataflash.ParamsBlock.SelectedBatteryModel);
 		}
 
 		private void SaveWorkspaceToDataflash([NotNull] Dataflash dataflash)
@@ -539,6 +553,7 @@ namespace NFirmwareEditor.Windows
 
 			// Developer -> Expert
 			dataflash.ParamsBlock.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
+			dataflash.ParamsBlock.SelectedBatteryModel = BatteryModelComboBox.GetSelectedItem<BatteryModel>();
 
 			// Setup DateTime
 			dataflash.InfoBlock.Year = (ushort)DateTime.Now.Year;

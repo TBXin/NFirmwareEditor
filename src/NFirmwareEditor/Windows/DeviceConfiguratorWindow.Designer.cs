@@ -181,6 +181,8 @@
 			this.PortComboBox = new System.Windows.Forms.ComboBox();
 			this.label49 = new System.Windows.Forms.Label();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.label56 = new System.Windows.Forms.Label();
+			this.BatteryModelComboBox = new System.Windows.Forms.ComboBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -1825,6 +1827,8 @@
 			// 
 			// ExpertTabPage
 			// 
+			this.ExpertTabPage.Controls.Add(this.label56);
+			this.ExpertTabPage.Controls.Add(this.BatteryModelComboBox);
 			this.ExpertTabPage.Controls.Add(this.label54);
 			this.ExpertTabPage.Controls.Add(this.ShuntCorrectionUpDown);
 			this.ExpertTabPage.Controls.Add(this.label55);
@@ -1872,10 +1876,9 @@
 			// label55
 			// 
 			this.label55.AutoSize = true;
-			this.label55.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label55.Location = new System.Drawing.Point(213, 10);
 			this.label55.Name = "label55";
-			this.label55.Size = new System.Drawing.Size(20, 16);
+			this.label55.Size = new System.Drawing.Size(18, 13);
 			this.label55.TabIndex = 70;
 			this.label55.Text = "%";
 			// 
@@ -2095,6 +2098,27 @@
 			// 
 			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 			this.MainErrorProvider.ContainerControl = this;
+			// 
+			// label56
+			// 
+			this.label56.AutoSize = true;
+			this.label56.Location = new System.Drawing.Point(4, 38);
+			this.label56.Name = "label56";
+			this.label56.Size = new System.Drawing.Size(78, 13);
+			this.label56.TabIndex = 71;
+			this.label56.Text = "Battery Model:";
+			// 
+			// BatteryModelComboBox
+			// 
+			this.BatteryModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.BatteryModelComboBox.FormattingEnabled = true;
+			this.BatteryModelComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 35);
+			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
+			this.BatteryModelComboBox.Size = new System.Drawing.Size(120, 21);
+			this.BatteryModelComboBox.TabIndex = 72;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -2324,5 +2348,7 @@
 		private System.Windows.Forms.Label label54;
 		private System.Windows.Forms.NumericUpDown ShuntCorrectionUpDown;
 		private System.Windows.Forms.Label label55;
+		private System.Windows.Forms.Label label56;
+		private System.Windows.Forms.ComboBox BatteryModelComboBox;
 	}
 }

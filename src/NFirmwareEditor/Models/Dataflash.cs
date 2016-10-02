@@ -62,8 +62,9 @@ namespace NFirmwareEditor.Models
 		public bool ResistanceSSLocked { get; set; }
 		public byte UIVersion { get; set; }
 		public byte SelectedTCRIndex { get; set; }
+		public BatteryModel SelectedBatteryModel { get; set; }
 
-		[BinaryOffset(Relative = 1), BinaryArray(Length = 3)]
+		[BinaryArray(Length = 3)]
 		public ushort[] TCR { get; set; }
 
 		public ushort ResistanceTCR { get; set; }
@@ -278,5 +279,17 @@ namespace NFirmwareEditor.Models
 		BoardTemperature = 5,
 		RealTimeResistance = 6,
 		DataTime = 7
+	}
+
+	internal enum BatteryModel : byte
+	{
+		Generic = 0,
+		Samsung25R = 1,
+		LGHG2 = 2,
+		LGHE4 = 3,
+		Samsung30Q = 4,
+		SonyVTC4 = 5,
+		SonyVTC5 = 6,
+		Custom = 7
 	}
 }
