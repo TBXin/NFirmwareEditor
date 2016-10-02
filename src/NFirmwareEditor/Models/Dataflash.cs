@@ -56,8 +56,7 @@ namespace NFirmwareEditor.Models
 
 		/// <summary>0,1,2,3,4 = Open,Short,Low,Large,Ok</summary>
 		public byte AtomizerStatus { get; set; }
-
-		[BinaryOffset(Relative = 1)]
+		public byte ShuntCorrection { get; set; }
 		public ushort ResistanceSS { get; set; }
 
 		public bool ResistanceSSLocked { get; set; }
@@ -152,6 +151,7 @@ namespace NFirmwareEditor.Models
 		public bool BatteryPercent { get; set; }
 		public bool PreheatPercent { get; set; }
 		public bool WakeUpByPlusMinus { get; set; }
+		public bool UseClassicMenu { get; set; }
 
 		#region Implementation of IBinaryReaderWriter
 		public void Read(BinaryReader r)
@@ -178,6 +178,7 @@ namespace NFirmwareEditor.Models
 				BatteryPercent = DataflashManager.GetBit(b2, 5);
 				PreheatPercent = DataflashManager.GetBit(b2, 6);
 				WakeUpByPlusMinus = DataflashManager.GetBit(b2, 7);
+				UseClassicMenu = DataflashManager.GetBit(b2, 8);
 			}
 		}
 
@@ -201,6 +202,7 @@ namespace NFirmwareEditor.Models
 			b2 = DataflashManager.SetBit(b2, 5, BatteryPercent);
 			b2 = DataflashManager.SetBit(b2, 6, PreheatPercent);
 			b2 = DataflashManager.SetBit(b2, 7, WakeUpByPlusMinus);
+			b2 = DataflashManager.SetBit(b2, 8, UseClassicMenu);
 
 			r.Write(new byte[] { b1, b2, 0, 0 });
 		}

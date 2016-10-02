@@ -141,6 +141,8 @@
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.LayoutTabPage = new System.Windows.Forms.TabPage();
+			this.label53 = new System.Windows.Forms.Label();
+			this.UseClassicMenuCheckBox = new System.Windows.Forms.CheckBox();
 			this.label45 = new System.Windows.Forms.Label();
 			this.ThirdLineContentComboBox = new System.Windows.Forms.ComboBox();
 			this.label38 = new System.Windows.Forms.Label();
@@ -156,7 +158,11 @@
 			this.label40 = new System.Windows.Forms.Label();
 			this.DeveloperTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.ScreenshotTabPage = new System.Windows.Forms.TabPage();
+			this.ExpertTabPage = new System.Windows.Forms.TabPage();
+			this.label54 = new System.Windows.Forms.Label();
+			this.ShuntCorrectionUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label55 = new System.Windows.Forms.Label();
+			this.ToolsTabPage = new System.Windows.Forms.TabPage();
 			this.label47 = new System.Windows.Forms.Label();
 			this.TakeScreenshotBeforeSaveCheckBox = new System.Windows.Forms.CheckBox();
 			this.BroadcastButton = new System.Windows.Forms.Button();
@@ -167,7 +173,7 @@
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label46 = new System.Windows.Forms.Label();
-			this.TraceTabPage = new System.Windows.Forms.TabPage();
+			this.TerminalTabPage = new System.Windows.Forms.TabPage();
 			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.TraceTextBox = new System.Windows.Forms.TextBox();
 			this.ComDisconnectButton = new System.Windows.Forms.Button();
@@ -211,11 +217,13 @@
 			this.ScreensaverTabPage.SuspendLayout();
 			this.DeveloperTabPage.SuspendLayout();
 			this.tabControl1.SuspendLayout();
-			this.ScreenshotTabPage.SuspendLayout();
+			this.ExpertTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
+			this.ToolsTabPage.SuspendLayout();
 			this.ScreenshotContainerPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
-			this.TraceTabPage.SuspendLayout();
+			this.TerminalTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -1615,6 +1623,8 @@
 			// 
 			// LayoutTabPage
 			// 
+			this.LayoutTabPage.Controls.Add(this.label53);
+			this.LayoutTabPage.Controls.Add(this.UseClassicMenuCheckBox);
 			this.LayoutTabPage.Controls.Add(this.label45);
 			this.LayoutTabPage.Controls.Add(this.ThirdLineContentComboBox);
 			this.LayoutTabPage.Controls.Add(this.label38);
@@ -1629,6 +1639,25 @@
 			this.LayoutTabPage.TabIndex = 3;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label53
+			// 
+			this.label53.AutoSize = true;
+			this.label53.Location = new System.Drawing.Point(4, 119);
+			this.label53.Name = "label53";
+			this.label53.Size = new System.Drawing.Size(93, 13);
+			this.label53.TabIndex = 80;
+			this.label53.Text = "Use Classic Menu:";
+			// 
+			// UseClassicMenuCheckBox
+			// 
+			this.UseClassicMenuCheckBox.AutoSize = true;
+			this.UseClassicMenuCheckBox.Location = new System.Drawing.Point(100, 119);
+			this.UseClassicMenuCheckBox.Name = "UseClassicMenuCheckBox";
+			this.UseClassicMenuCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.UseClassicMenuCheckBox.TabIndex = 81;
+			this.UseClassicMenuCheckBox.Text = "Enabled";
+			this.UseClassicMenuCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label45
 			// 
@@ -1655,7 +1684,7 @@
 			// label38
 			// 
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(3, 92);
+			this.label38.Location = new System.Drawing.Point(4, 92);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(63, 13);
 			this.label38.TabIndex = 76;
@@ -1677,7 +1706,7 @@
 			// label35
 			// 
 			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(3, 38);
+			this.label35.Location = new System.Drawing.Point(4, 38);
 			this.label35.Name = "label35";
 			this.label35.Size = new System.Drawing.Size(92, 13);
 			this.label35.TabIndex = 68;
@@ -1696,7 +1725,7 @@
 			// label34
 			// 
 			this.label34.AutoSize = true;
-			this.label34.Location = new System.Drawing.Point(3, 65);
+			this.label34.Location = new System.Drawing.Point(4, 65);
 			this.label34.Name = "label34";
 			this.label34.Size = new System.Drawing.Size(63, 13);
 			this.label34.TabIndex = 70;
@@ -1785,32 +1814,89 @@
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.ScreenshotTabPage);
-			this.tabControl1.Controls.Add(this.TraceTabPage);
+			this.tabControl1.Controls.Add(this.ExpertTabPage);
+			this.tabControl1.Controls.Add(this.ToolsTabPage);
+			this.tabControl1.Controls.Add(this.TerminalTabPage);
 			this.tabControl1.Location = new System.Drawing.Point(6, 6);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(336, 254);
 			this.tabControl1.TabIndex = 40;
 			// 
-			// ScreenshotTabPage
+			// ExpertTabPage
 			// 
-			this.ScreenshotTabPage.Controls.Add(this.label47);
-			this.ScreenshotTabPage.Controls.Add(this.TakeScreenshotBeforeSaveCheckBox);
-			this.ScreenshotTabPage.Controls.Add(this.BroadcastButton);
-			this.ScreenshotTabPage.Controls.Add(this.RebootButton);
-			this.ScreenshotTabPage.Controls.Add(this.ScreenshotContainerPanel);
-			this.ScreenshotTabPage.Controls.Add(this.TakeScreenshotButton);
-			this.ScreenshotTabPage.Controls.Add(this.SaveScreenshotButton);
-			this.ScreenshotTabPage.Controls.Add(this.PixelSizeUpDown);
-			this.ScreenshotTabPage.Controls.Add(this.label46);
-			this.ScreenshotTabPage.Location = new System.Drawing.Point(4, 22);
-			this.ScreenshotTabPage.Name = "ScreenshotTabPage";
-			this.ScreenshotTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ScreenshotTabPage.Size = new System.Drawing.Size(328, 228);
-			this.ScreenshotTabPage.TabIndex = 0;
-			this.ScreenshotTabPage.Text = "Tools";
-			this.ScreenshotTabPage.UseVisualStyleBackColor = true;
+			this.ExpertTabPage.Controls.Add(this.label54);
+			this.ExpertTabPage.Controls.Add(this.ShuntCorrectionUpDown);
+			this.ExpertTabPage.Controls.Add(this.label55);
+			this.ExpertTabPage.Location = new System.Drawing.Point(4, 22);
+			this.ExpertTabPage.Name = "ExpertTabPage";
+			this.ExpertTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.ExpertTabPage.Size = new System.Drawing.Size(328, 228);
+			this.ExpertTabPage.TabIndex = 2;
+			this.ExpertTabPage.Text = "Expert";
+			this.ExpertTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label54
+			// 
+			this.label54.AutoSize = true;
+			this.label54.Location = new System.Drawing.Point(4, 11);
+			this.label54.Name = "label54";
+			this.label54.Size = new System.Drawing.Size(92, 13);
+			this.label54.TabIndex = 69;
+			this.label54.Text = "Shunt Correction:";
+			// 
+			// ShuntCorrectionUpDown
+			// 
+			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(101, 8);
+			this.ShuntCorrectionUpDown.Maximum = new decimal(new int[] {
+            115,
+            0,
+            0,
+            0});
+			this.ShuntCorrectionUpDown.Minimum = new decimal(new int[] {
+            85,
+            0,
+            0,
+            0});
+			this.ShuntCorrectionUpDown.Name = "ShuntCorrectionUpDown";
+			this.ShuntCorrectionUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ShuntCorrectionUpDown.TabIndex = 68;
+			this.ShuntCorrectionUpDown.TabStop = false;
+			this.ShuntCorrectionUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShuntCorrectionUpDown.Value = new decimal(new int[] {
+            85,
+            0,
+            0,
+            0});
+			// 
+			// label55
+			// 
+			this.label55.AutoSize = true;
+			this.label55.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label55.Location = new System.Drawing.Point(213, 10);
+			this.label55.Name = "label55";
+			this.label55.Size = new System.Drawing.Size(20, 16);
+			this.label55.TabIndex = 70;
+			this.label55.Text = "%";
+			// 
+			// ToolsTabPage
+			// 
+			this.ToolsTabPage.Controls.Add(this.label47);
+			this.ToolsTabPage.Controls.Add(this.TakeScreenshotBeforeSaveCheckBox);
+			this.ToolsTabPage.Controls.Add(this.BroadcastButton);
+			this.ToolsTabPage.Controls.Add(this.RebootButton);
+			this.ToolsTabPage.Controls.Add(this.ScreenshotContainerPanel);
+			this.ToolsTabPage.Controls.Add(this.TakeScreenshotButton);
+			this.ToolsTabPage.Controls.Add(this.SaveScreenshotButton);
+			this.ToolsTabPage.Controls.Add(this.PixelSizeUpDown);
+			this.ToolsTabPage.Controls.Add(this.label46);
+			this.ToolsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.ToolsTabPage.Name = "ToolsTabPage";
+			this.ToolsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.ToolsTabPage.Size = new System.Drawing.Size(328, 228);
+			this.ToolsTabPage.TabIndex = 0;
+			this.ToolsTabPage.Text = "Tools";
+			this.ToolsTabPage.UseVisualStyleBackColor = true;
 			// 
 			// label47
 			// 
@@ -1926,21 +2012,21 @@
 			this.label46.TabIndex = 38;
 			this.label46.Text = "Pixel size multiplier:";
 			// 
-			// TraceTabPage
+			// TerminalTabPage
 			// 
-			this.TraceTabPage.Controls.Add(this.CommandTextBox);
-			this.TraceTabPage.Controls.Add(this.TraceTextBox);
-			this.TraceTabPage.Controls.Add(this.ComDisconnectButton);
-			this.TraceTabPage.Controls.Add(this.ComConnectButton);
-			this.TraceTabPage.Controls.Add(this.PortComboBox);
-			this.TraceTabPage.Controls.Add(this.label49);
-			this.TraceTabPage.Location = new System.Drawing.Point(4, 22);
-			this.TraceTabPage.Name = "TraceTabPage";
-			this.TraceTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.TraceTabPage.Size = new System.Drawing.Size(328, 228);
-			this.TraceTabPage.TabIndex = 1;
-			this.TraceTabPage.Text = "Terminal";
-			this.TraceTabPage.UseVisualStyleBackColor = true;
+			this.TerminalTabPage.Controls.Add(this.CommandTextBox);
+			this.TerminalTabPage.Controls.Add(this.TraceTextBox);
+			this.TerminalTabPage.Controls.Add(this.ComDisconnectButton);
+			this.TerminalTabPage.Controls.Add(this.ComConnectButton);
+			this.TerminalTabPage.Controls.Add(this.PortComboBox);
+			this.TerminalTabPage.Controls.Add(this.label49);
+			this.TerminalTabPage.Location = new System.Drawing.Point(4, 22);
+			this.TerminalTabPage.Name = "TerminalTabPage";
+			this.TerminalTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.TerminalTabPage.Size = new System.Drawing.Size(328, 228);
+			this.TerminalTabPage.TabIndex = 1;
+			this.TerminalTabPage.Text = "Terminal";
+			this.TerminalTabPage.UseVisualStyleBackColor = true;
 			// 
 			// CommandTextBox
 			// 
@@ -2069,13 +2155,16 @@
 			this.ScreensaverTabPage.PerformLayout();
 			this.DeveloperTabPage.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
-			this.ScreenshotTabPage.ResumeLayout(false);
-			this.ScreenshotTabPage.PerformLayout();
+			this.ExpertTabPage.ResumeLayout(false);
+			this.ExpertTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
+			this.ToolsTabPage.ResumeLayout(false);
+			this.ToolsTabPage.PerformLayout();
 			this.ScreenshotContainerPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
-			this.TraceTabPage.ResumeLayout(false);
-			this.TraceTabPage.PerformLayout();
+			this.TerminalTabPage.ResumeLayout(false);
+			this.TerminalTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
@@ -2207,8 +2296,8 @@
 		private System.Windows.Forms.TextBox BuildTextBox;
 		private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage ScreenshotTabPage;
-		private System.Windows.Forms.TabPage TraceTabPage;
+		private System.Windows.Forms.TabPage ToolsTabPage;
+		private System.Windows.Forms.TabPage TerminalTabPage;
 		private System.Windows.Forms.Button TakeScreenshotButton;
 		private System.Windows.Forms.Label label49;
 		private System.Windows.Forms.ComboBox PortComboBox;
@@ -2229,5 +2318,11 @@
 		private System.Windows.Forms.Button BroadcastButton;
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.CheckBox TakeScreenshotBeforeSaveCheckBox;
+		private System.Windows.Forms.Label label53;
+		private System.Windows.Forms.CheckBox UseClassicMenuCheckBox;
+		private System.Windows.Forms.TabPage ExpertTabPage;
+		private System.Windows.Forms.Label label54;
+		private System.Windows.Forms.NumericUpDown ShuntCorrectionUpDown;
+		private System.Windows.Forms.Label label55;
 	}
 }

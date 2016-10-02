@@ -44,9 +44,6 @@ namespace NFirmwareEditor.Windows
 			if (errorIcon != null) MainErrorProvider.Icon = errorIcon;
 
 			MainContainer.SelectedPage = WelcomePage;
-			//MainContainer.SelectedPage = WorkspacePage;
-			/*MainTabControl.SelectedTab = DeveloperTabPage;
-			tabControl1.SelectedTab = TraceTabPage;*/
 
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
@@ -431,10 +428,14 @@ namespace NFirmwareEditor.Windows
 			{
 				ClockTypeComboBox.SelectItem(ClockType.Analog);
 			}
+			UseClassicMenuCheckBox.Checked = dataflash.ParamsBlock.Status.UseClassicMenu;
 
 			// Screen -> Screensaver Tab
 			ScreensaverTypeComboBox.SelectItem(dataflash.ParamsBlock.ScreensaverType);
 			ScreenProtectionTimeComboBox.SelectItem(dataflash.ParamsBlock.ScreenProtectionTime);
+
+			// Developer -> Expert
+			ShuntCorrectionUpDown.Value = Math.Max((byte)85, Math.Min(dataflash.ParamsBlock.ShuntCorrection, (byte)115));
 		}
 
 		private void SaveWorkspaceToDataflash([NotNull] Dataflash dataflash)
@@ -530,10 +531,14 @@ namespace NFirmwareEditor.Windows
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
+			dataflash.ParamsBlock.Status.UseClassicMenu = UseClassicMenuCheckBox.Checked;
 
 			// Screen -> Screensaver Tab
 			dataflash.ParamsBlock.ScreensaverType = ScreensaverTypeComboBox.GetSelectedItem<ScreensaverType>();
 			dataflash.ParamsBlock.ScreenProtectionTime = ScreenProtectionTimeComboBox.GetSelectedItem<ScreenProtectionTime>();
+
+			// Developer -> Expert
+			dataflash.ParamsBlock.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
 
 			// Setup DateTime
 			dataflash.InfoBlock.Year = (ushort)DateTime.Now.Year;
@@ -739,7 +744,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (!ValidateConnectionStatus()) return;
 
-				TraceTabPage.Enabled = false;
+				TerminalTabPage.Enabled = false;
 				SetControlButtonsState(false);
 				BroadcastButton.Text = @"Stop broadcast";
 				m_isBroadcasting = true;
@@ -761,7 +766,7 @@ namespace NFirmwareEditor.Windows
 					m_isBroadcasting = false;
 					UpdateUI(() =>
 					{
-						TraceTabPage.Enabled = true;
+						TerminalTabPage.Enabled = true;
 						SetControlButtonsState(true);
 						BroadcastButton.Text = @"Start broadcast";
 					});
