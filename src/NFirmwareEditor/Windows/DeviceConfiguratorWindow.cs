@@ -130,12 +130,20 @@ namespace NFirmwareEditor.Windows
 				SelectedTCRComboBox.Visible = TCRIndexLabel.Visible = mode == VapeMode.TCR;
 			};
 
+			BatteryModelComboBox.SelectedValueChanged += (s, e) =>
+			{
+				var batteryModel = BatteryModelComboBox.GetSelectedItem<BatteryModel>();
+				BatteryEditButton.Visible = batteryModel == BatteryModel.Custom;
+			};
+
 			PortComboBox.SelectedIndex = 0;
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
 			DownloadButton.Click += DownloadButton_Click;
 			UploadButton.Click += UploadButton_Click;
 			ResetButton.Click += ResetButton_Click;
+
+			BatteryEditButton.Click += BatteryEditButton_Click;
 
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
@@ -709,6 +717,14 @@ namespace NFirmwareEditor.Windows
 					InfoBox.Show(GetErrorMessage("resetting settings"));
 				}
 			}));
+		}
+
+		private void BatteryEditButton_Click(object sender, EventArgs e)
+		{
+			using (var editor = new DischargeProfileWindow(m_dataflash))
+			{
+				editor.ShowDialog();
+			}
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)

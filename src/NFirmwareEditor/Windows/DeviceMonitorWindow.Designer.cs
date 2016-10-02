@@ -121,7 +121,7 @@
 			this.SensorsGroupPanel.Size = new System.Drawing.Size(200, 280);
 			this.SensorsGroupPanel.TabIndex = 1;
 			this.SensorsGroupPanel.TabStop = false;
-			this.SensorsGroupPanel.Text = "Sensors";
+			this.SensorsGroupPanel.Text = "Sensors:";
 			// 
 			// TemperatureSetPanel
 			// 
@@ -409,7 +409,7 @@
 			this.LineVewGroupPanel.Size = new System.Drawing.Size(591, 494);
 			this.LineVewGroupPanel.TabIndex = 2;
 			this.LineVewGroupPanel.TabStop = false;
-			this.LineVewGroupPanel.Text = "Line view";
+			this.LineVewGroupPanel.Text = "Line view:";
 			// 
 			// ControlGroupPanel
 			// 
@@ -424,7 +424,7 @@
 			this.ControlGroupPanel.Size = new System.Drawing.Size(200, 211);
 			this.ControlGroupPanel.TabIndex = 3;
 			this.ControlGroupPanel.TabStop = false;
-			this.ControlGroupPanel.Text = "Control";
+			this.ControlGroupPanel.Text = "Control:";
 			// 
 			// PuffButton
 			// 

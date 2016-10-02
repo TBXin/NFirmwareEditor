@@ -151,6 +151,12 @@
     <Compile Include="Windows\DeviceMonitorWindow.Designer.cs">
       <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DischargeProfileWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DischargeProfileWindow.Designer.cs">
+      <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditorDialogWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DeviceMonitorWindow.resx">
       <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DischargeProfileWindow.resx">
+      <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
