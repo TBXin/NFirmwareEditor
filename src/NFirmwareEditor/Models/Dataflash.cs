@@ -56,6 +56,7 @@ namespace NFirmwareEditor.Models
 
 		/// <summary>0,1,2,3,4 = Open,Short,Low,Large,Ok</summary>
 		public byte AtomizerStatus { get; set; }
+
 		public byte ShuntCorrection { get; set; }
 		public ushort ResistanceSS { get; set; }
 
@@ -95,6 +96,9 @@ namespace NFirmwareEditor.Models
 		public ClickAction[] MClicks { get; set; }
 
 		public byte ScreenDimTimeout { get; set; }
+
+		[BinaryOffset(Relative = 1)]
+		public CustomBattery CustomBattery { get; set; }
 	}
 
 	internal class DataflashInfoBlock
@@ -208,6 +212,23 @@ namespace NFirmwareEditor.Models
 			r.Write(new byte[] { b1, b2, 0, 0 });
 		}
 		#endregion
+	}
+
+	public class CustomBattery
+	{
+		[BinaryArray(Length = 11)]
+		public PercentsVoltage[] Data { get; set; }
+
+		public ushort Cutoff { get; set; }
+
+		public ushort InternalResistance { get; set; }
+	}
+
+	public class PercentsVoltage
+	{
+		public ushort Percents { get; set; }
+
+		public ushort Voltage { get; set; }
 	}
 
 	internal enum BootMode : byte

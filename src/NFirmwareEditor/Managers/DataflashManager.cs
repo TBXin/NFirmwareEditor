@@ -56,7 +56,7 @@ namespace NFirmwareEditor.Managers
 
 				if (propertyType.IsPrimitive || propertyType.IsEnum)
 				{
-					var value = GetValue(propertyType, br);
+					var value = ReadValue(propertyType, br);
 					property.SetValue(obj, value, null);
 				}
 				else if (propertyType.IsArray)
@@ -68,8 +68,17 @@ namespace NFirmwareEditor.Managers
 
 						for (var i = 0; i < arrayAttribute.Length; i++)
 						{
-							var rawValue = GetValue(elType, br);
-							var value = elType.IsEnum ? Enum.ToObject(elType, rawValue) : rawValue;
+							object value;
+							if (elType.IsClass)
+							{
+								value = Activator.CreateInstance(elType);
+								RecursiveRead(value, br);
+							}
+							else
+							{
+								var rawValue = ReadValue(elType, br);
+								value = elType.IsEnum ? Enum.ToObject(elType, rawValue) : rawValue;
+							}
 							instance.SetValue(value, i);
 						}
 						property.SetValue(obj, instance, null);
@@ -117,11 +126,18 @@ namespace NFirmwareEditor.Managers
 					GetAttribute<BinaryArrayAttribute>(property, true, arrayAttribute =>
 					{
 						var elType = propertyType.GetElementType();
-						var value = (Array)property.GetValue(obj, null);
+						var array = (Array)property.GetValue(obj, null);
 
-						for (var i = 0; i < value.Length; i++)
+						for (var i = 0; i < array.Length; i++)
 						{
-							WriteValue(elType, value.GetValue(i), bw);
+							if (elType.IsClass)
+							{
+								RecursiveWrite(array.GetValue(i), bw);
+							}
+							else
+							{
+								WriteValue(elType, array.GetValue(i), bw);
+							}
 						}
 					});
 				}
@@ -161,13 +177,13 @@ namespace NFirmwareEditor.Managers
 			});
 		}
 
-		private object GetValue(Type type, BinaryReader br)
+		private object ReadValue(Type type, BinaryReader br)
 		{
 			if (type == typeof(bool)) return br.ReadBoolean();
 			if (type == typeof(byte)) return br.ReadByte();
 			if (type == typeof(ushort)) return br.ReadUInt16();
 			if (type == typeof(uint)) return br.ReadUInt32();
-			if (type.IsEnum) return GetValue(type.GetEnumUnderlyingType(), br);
+			if (type.IsEnum) return ReadValue(type.GetEnumUnderlyingType(), br);
 
 			throw new InvalidOperationException("Invalid type: " + type);
 		}
