@@ -11,7 +11,6 @@ namespace NFirmwareEditor.Windows
 	{
 		private readonly Dataflash m_dataflash;
 		private PercentVoltsControlGroup[] m_curveControls;
-		private bool m_isUpdating;
 
 		public DischargeProfileWindow([NotNull] Dataflash dataflash)
 		{
@@ -128,7 +127,6 @@ namespace NFirmwareEditor.Windows
 
 		private void VoltsUpDown_ValueChanged(object sender, EventArgs e)
 		{
-			if (m_isUpdating) return;
 			var control = sender as NumericUpDown;
 			if (control == null) return;
 
@@ -155,7 +153,6 @@ namespace NFirmwareEditor.Windows
 
 		private void PercentsUpDown_ValueChanged(object sender, EventArgs e)
 		{
-			if (m_isUpdating) return;
 			var control = sender as NumericUpDown;
 			if (control == null) return;
 
