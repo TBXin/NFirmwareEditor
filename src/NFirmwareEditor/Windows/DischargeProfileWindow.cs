@@ -11,6 +11,7 @@ namespace NFirmwareEditor.Windows
 	{
 		private readonly Dataflash m_dataflash;
 		private PercentVoltsControlGroup[] m_curveControls;
+		private bool m_isUpdating;
 
 		public DischargeProfileWindow([NotNull] Dataflash dataflash)
 		{
@@ -41,30 +42,6 @@ namespace NFirmwareEditor.Windows
 			};
 
 			SaveButton.Click += SaveButton_Click;
-		}
-
-		private void VoltsUpDown_ValueChanged(object sender, EventArgs e)
-		{
-			var control = sender as NumericUpDown;
-			if (control == null) return;
-
-			var point = control.Tag as DataPoint;
-			if (point == null) return;
-
-			point.YValues = new[] { (double)control.Value };
-		}
-
-		private void PercentsUpDown_ValueChanged(object sender, EventArgs e)
-		{
-			var control = sender as NumericUpDown;
-			if (control == null) return;
-
-			var point = control.Tag as DataPoint;
-			if (point == null) return;
-
-			var value = (double)control.Value;
-			point.XValue = value;
-			point.Label = string.Format("{0} %", value);
 		}
 
 		private void InitializeChart()
@@ -122,12 +99,14 @@ namespace NFirmwareEditor.Windows
 					MarkerSize = 7,
 					Label = string.Format("{0} %", percents)
 				};
+				var tag = new Tuple<int, DataPoint>(i, point);
+
 				m_curveControls[i].PercentsUpDown.Value = percents;
-				m_curveControls[i].PercentsUpDown.Tag = point;
+				m_curveControls[i].PercentsUpDown.Tag = tag;
 				m_curveControls[i].PercentsUpDown.ValueChanged += PercentsUpDown_ValueChanged;
 
 				m_curveControls[i].VoltsUpDown.Value = voltage;
-				m_curveControls[i].VoltsUpDown.Tag = point;
+				m_curveControls[i].VoltsUpDown.Tag = tag;
 				m_curveControls[i].VoltsUpDown.ValueChanged += VoltsUpDown_ValueChanged;
 
 				DischargeChart.Series[0].Points.Add(point);
@@ -145,6 +124,61 @@ namespace NFirmwareEditor.Windows
 				dataflash.ParamsBlock.CustomBattery.Data[i].Percents = (ushort)data.PercentsUpDown.Value;
 				dataflash.ParamsBlock.CustomBattery.Data[i].Voltage = (ushort)(data.VoltsUpDown.Value * 100);
 			}
+		}
+
+		private void VoltsUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			if (m_isUpdating) return;
+			var control = sender as NumericUpDown;
+			if (control == null) return;
+
+			var data = control.Tag as Tuple<int, DataPoint>;
+			if (data == null) return;
+
+			var idx = data.Item1;
+			var point = data.Item2;
+			var value = control.Value;
+
+			if (idx - 1 >= 0)
+			{
+				var prev = m_curveControls[idx - 1].VoltsUpDown;
+				if (prev.Value >= value) prev.Value = Math.Max(prev.Minimum, value - 0.01m);
+			}
+			if (idx + 1 < m_curveControls.Length)
+			{
+				var next = m_curveControls[idx + 1].VoltsUpDown;
+				if (next.Value <= value) next.Value = Math.Min(next.Maximum, value + 0.01m);
+			}
+
+			point.YValues = new[] { (double)value };
+		}
+
+		private void PercentsUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			if (m_isUpdating) return;
+			var control = sender as NumericUpDown;
+			if (control == null) return;
+
+			var data = control.Tag as Tuple<int, DataPoint>;
+			if (data == null) return;
+
+			var idx = data.Item1;
+			var point = data.Item2;
+			var value = control.Value;
+
+			if (idx - 1 >= 0)
+			{
+				var prev = m_curveControls[idx - 1].PercentsUpDown;
+				if (prev.Value >= value) prev.Value = Math.Max(prev.Minimum, value - 1);
+			}
+			if (idx + 1 < m_curveControls.Length)
+			{
+				var next = m_curveControls[idx + 1].PercentsUpDown;
+				if (next.Value <= value) next.Value = Math.Min(next.Maximum, value + 1);
+			}
+
+			point.XValue = (double)value;
+			point.Label = string.Format("{0} %", value);
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
