@@ -62,7 +62,7 @@ namespace NFirmwareEditor.Windows
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.LineColor = Color.DarkGray;
-				area.AxisY.Interval = 0.5;
+				area.AxisY.Interval = 0.1;
 			}
 			DischargeChart.ChartAreas.Add(area);
 
@@ -110,6 +110,7 @@ namespace NFirmwareEditor.Windows
 
 				DischargeChart.Series[0].Points.Add(point);
 			}
+			CutoffUpDown.Value = dataflash.ParamsBlock.CustomBattery.Cutoff / 100m;
 		}
 
 		private void SaveWorkspaceToDataflash([NotNull] Dataflash dataflash)
@@ -123,6 +124,7 @@ namespace NFirmwareEditor.Windows
 				dataflash.ParamsBlock.CustomBattery.Data[i].Percents = (ushort)data.PercentsUpDown.Value;
 				dataflash.ParamsBlock.CustomBattery.Data[i].Voltage = (ushort)(data.VoltsUpDown.Value * 100);
 			}
+			dataflash.ParamsBlock.CustomBattery.Cutoff = (ushort)(CutoffUpDown.Value * 100);
 		}
 
 		private void UpdatePointsMinMax()

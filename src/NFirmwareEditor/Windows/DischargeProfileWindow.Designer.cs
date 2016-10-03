@@ -78,6 +78,9 @@
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
+			this.label23 = new System.Windows.Forms.Label();
+			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).BeginInit();
@@ -104,6 +107,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).BeginInit();
 			this.groupPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).BeginInit();
+			this.groupPanel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ControlBorderedPanel
@@ -118,7 +123,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 344);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 403);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(784, 44);
@@ -152,6 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.groupPanel3);
 			this.groupPanel1.Controls.Add(this.label21);
 			this.groupPanel1.Controls.Add(this.Volts11UpDown);
 			this.groupPanel1.Controls.Add(this.label22);
@@ -200,7 +206,7 @@
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(200, 338);
+			this.groupPanel1.Size = new System.Drawing.Size(200, 397);
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
@@ -899,7 +905,7 @@
 			this.groupPanel2.HeaderHeight = 30;
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
-			this.groupPanel2.Size = new System.Drawing.Size(575, 338);
+			this.groupPanel2.Size = new System.Drawing.Size(575, 397);
 			this.groupPanel2.TabIndex = 1;
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "Discharge curve:";
@@ -909,14 +915,69 @@
 			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
 			this.DischargeChart.Name = "DischargeChart";
-			this.DischargeChart.Size = new System.Drawing.Size(569, 302);
+			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
+			// 
+			// groupPanel3
+			// 
+			this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel3.Controls.Add(this.label23);
+			this.groupPanel3.Controls.Add(this.CutoffUpDown);
+			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel3.HeaderHeight = 30;
+			this.groupPanel3.Location = new System.Drawing.Point(0, 333);
+			this.groupPanel3.Name = "groupPanel3";
+			this.groupPanel3.Size = new System.Drawing.Size(200, 64);
+			this.groupPanel3.TabIndex = 101;
+			this.groupPanel3.TabStop = false;
+			this.groupPanel3.Text = "Cutoff:";
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(95, 39);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(34, 13);
+			this.label23.TabIndex = 62;
+			this.label23.Text = "Volts:";
+			// 
+			// CutoffUpDown
+			// 
+			this.CutoffUpDown.DecimalPlaces = 2;
+			this.CutoffUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.CutoffUpDown.Location = new System.Drawing.Point(135, 36);
+			this.CutoffUpDown.Maximum = new decimal(new int[] {
+            35,
+            0,
+            0,
+            65536});
+			this.CutoffUpDown.Minimum = new decimal(new int[] {
+            275,
+            0,
+            0,
+            131072});
+			this.CutoffUpDown.Name = "CutoffUpDown";
+			this.CutoffUpDown.Size = new System.Drawing.Size(55, 21);
+			this.CutoffUpDown.TabIndex = 61;
+			this.CutoffUpDown.TabStop = false;
+			this.CutoffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.CutoffUpDown.Value = new decimal(new int[] {
+            35,
+            0,
+            0,
+            65536});
 			// 
 			// DischargeProfileWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 388);
+			this.ClientSize = new System.Drawing.Size(784, 447);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Controls.Add(this.groupPanel1);
@@ -954,6 +1015,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).EndInit();
 			this.groupPanel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).EndInit();
+			this.groupPanel3.ResumeLayout(false);
+			this.groupPanel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1010,5 +1074,8 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown Percents2UpDown;
 		private new System.Windows.Forms.DataVisualization.Charting.Chart DischargeChart;
+		private UI.GroupPanel groupPanel3;
+		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.NumericUpDown CutoffUpDown;
 	}
 }
