@@ -18,7 +18,7 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DeviceConfiguratorWindow : EditorDialogWindow
 	{
-		private const int MinimumSupportedBuildNumber = 160920;
+		private const int MinimumSupportedBuildNumber = 161002;
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
