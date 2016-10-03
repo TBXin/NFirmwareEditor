@@ -99,14 +99,13 @@ namespace NFirmwareEditor.Windows
 					MarkerSize = 7,
 					Label = string.Format("{0} %", percents)
 				};
-				var tag = new Tuple<int, DataPoint>(i, point);
 
 				m_curveControls[i].PercentsUpDown.Value = percents;
-				m_curveControls[i].PercentsUpDown.Tag = tag;
+				m_curveControls[i].PercentsUpDown.Tag = point;
 				m_curveControls[i].PercentsUpDown.ValueChanged += PercentsUpDown_ValueChanged;
 
 				m_curveControls[i].VoltsUpDown.Value = voltage;
-				m_curveControls[i].VoltsUpDown.Tag = tag;
+				m_curveControls[i].VoltsUpDown.Tag = point;
 				m_curveControls[i].VoltsUpDown.ValueChanged += VoltsUpDown_ValueChanged;
 
 				DischargeChart.Series[0].Points.Add(point);
@@ -126,29 +125,43 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
+		private void UpdatePointsMinMax()
+		{
+			for (var i = 0; i < m_curveControls.Length; i++)
+			{
+				var group = m_curveControls[i];
+
+				if (i - 1 >= 0)
+				{
+					var prevPercents = m_curveControls[i - 1].PercentsUpDown;
+					var prevVoltage = m_curveControls[i - 1].VoltsUpDown;
+
+					group.PercentsUpDown.Minimum = Math.Min(100, prevPercents.Value + 1);
+					group.VoltsUpDown.Minimum = Math.Min(4.2m, prevVoltage.Value + 0.01m);
+				}
+
+				if (i + 1 < m_curveControls.Length)
+				{
+					var nextPercents = m_curveControls[i + 1].PercentsUpDown;
+					var nextVoltage = m_curveControls[i + 1].VoltsUpDown;
+
+					group.PercentsUpDown.Maximum = Math.Max(0, nextPercents.Value - 1);
+					group.VoltsUpDown.Maximum = Math.Max(3.0m, nextVoltage.Value - 0.01m);
+				}
+			}
+		}
+
 		private void VoltsUpDown_ValueChanged(object sender, EventArgs e)
 		{
 			var control = sender as NumericUpDown;
 			if (control == null) return;
 
-			var data = control.Tag as Tuple<int, DataPoint>;
-			if (data == null) return;
+			var point = control.Tag as DataPoint;
+			if (point == null) return;
 
-			var idx = data.Item1;
-			var point = data.Item2;
 			var value = control.Value;
 
-			if (idx - 1 >= 0)
-			{
-				var prev = m_curveControls[idx - 1].VoltsUpDown;
-				if (prev.Value >= value) prev.Value = Math.Max(prev.Minimum, value - 0.01m);
-			}
-			if (idx + 1 < m_curveControls.Length)
-			{
-				var next = m_curveControls[idx + 1].VoltsUpDown;
-				if (next.Value <= value) next.Value = Math.Min(next.Maximum, value + 0.01m);
-			}
-
+			UpdatePointsMinMax();
 			point.YValues = new[] { (double)value };
 		}
 
@@ -157,23 +170,12 @@ namespace NFirmwareEditor.Windows
 			var control = sender as NumericUpDown;
 			if (control == null) return;
 
-			var data = control.Tag as Tuple<int, DataPoint>;
-			if (data == null) return;
+			var point = control.Tag as DataPoint;
+			if (point == null) return;
 
-			var idx = data.Item1;
-			var point = data.Item2;
 			var value = control.Value;
 
-			if (idx - 1 >= 0)
-			{
-				var prev = m_curveControls[idx - 1].PercentsUpDown;
-				if (prev.Value >= value) prev.Value = Math.Max(prev.Minimum, value - 1);
-			}
-			if (idx + 1 < m_curveControls.Length)
-			{
-				var next = m_curveControls[idx + 1].PercentsUpDown;
-				if (next.Value <= value) next.Value = Math.Min(next.Maximum, value + 1);
-			}
+			UpdatePointsMinMax();
 
 			point.XValue = (double)value;
 			point.Label = string.Format("{0} %", value);
