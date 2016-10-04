@@ -25,7 +25,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (!supressExceptions)
 			{
-				action();
+				Invoke(action);
 			}
 			else
 			{
