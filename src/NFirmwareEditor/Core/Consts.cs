@@ -2,7 +2,7 @@
 {
 	internal static class Consts
 	{
-		internal const string ApplicationVersion = "5.01";
+		internal const string ApplicationVersion = "5.1";
 		internal const string ApplicationTitleWoVersion = "NFirmwareEditor";
 		internal const string ApplicationTitle = ApplicationTitleWoVersion + " v" + ApplicationVersion;
 
