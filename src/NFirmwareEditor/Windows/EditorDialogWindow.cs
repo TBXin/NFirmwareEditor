@@ -21,15 +21,22 @@ namespace NFirmwareEditor.Windows
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
-		protected void UpdateUI(Action action)
+		protected void UpdateUI(Action action, bool supressExceptions = true)
 		{
-			try
+			if (!supressExceptions)
 			{
-				Invoke(action);
+				action();
 			}
-			catch (Exception)
+			else
 			{
-				// Ignore
+				try
+				{
+					Invoke(action);
+				}
+				catch (Exception)
+				{
+					// Ignore
+				}
 			}
 		}
 	}

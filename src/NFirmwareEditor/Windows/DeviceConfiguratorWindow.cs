@@ -603,7 +603,7 @@ namespace NFirmwareEditor.Windows
 
 			if (m_isDeviceWasConnectedOnce) return;
 
-			if (!isConnected)
+			if (!m_isDeviceConnected)
 			{
 				UpdateUI(() =>
 				{
@@ -636,7 +636,7 @@ namespace NFirmwareEditor.Windows
 					InitializeWorkspaceFromDataflash(m_dataflash);
 					MainContainer.SelectedPage = WorkspacePage;
 					m_isDeviceWasConnectedOnce = true;
-				});
+				}, false);
 			}
 			catch (Exception ex)
 			{
