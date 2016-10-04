@@ -121,7 +121,7 @@ namespace NFirmwareEditor.Windows
 				group.PercentsUpDown.Value = percents;
 
 				group.VoltsUpDown.Minimum = MinVolts;
-				group.VoltsUpDown.Maximum = MaxPrc;
+				group.VoltsUpDown.Maximum = MaxVolts;
 				group.VoltsUpDown.Value = voltage;
 			}
 			m_isInstallingPreset = false;
