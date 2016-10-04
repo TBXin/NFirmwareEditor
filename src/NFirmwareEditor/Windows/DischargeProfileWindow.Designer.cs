@@ -32,6 +32,9 @@
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
+			this.label23 = new System.Windows.Forms.Label();
+			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label21 = new System.Windows.Forms.Label();
 			this.Volts11UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label22 = new System.Windows.Forms.Label();
@@ -78,11 +81,11 @@
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
-			this.label23 = new System.Windows.Forms.Label();
-			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PresetsButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
+			this.groupPanel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents11UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).BeginInit();
@@ -107,8 +110,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).BeginInit();
 			this.groupPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).BeginInit();
-			this.groupPanel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ControlBorderedPanel
@@ -157,6 +158,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.PresetsButton);
 			this.groupPanel1.Controls.Add(this.groupPanel3);
 			this.groupPanel1.Controls.Add(this.label21);
 			this.groupPanel1.Controls.Add(this.Volts11UpDown);
@@ -210,6 +212,61 @@
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
+			// 
+			// groupPanel3
+			// 
+			this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel3.Controls.Add(this.label23);
+			this.groupPanel3.Controls.Add(this.CutoffUpDown);
+			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel3.HeaderHeight = 30;
+			this.groupPanel3.Location = new System.Drawing.Point(0, 333);
+			this.groupPanel3.Name = "groupPanel3";
+			this.groupPanel3.Size = new System.Drawing.Size(200, 64);
+			this.groupPanel3.TabIndex = 101;
+			this.groupPanel3.TabStop = false;
+			this.groupPanel3.Text = "Cutoff:";
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(95, 39);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(34, 13);
+			this.label23.TabIndex = 62;
+			this.label23.Text = "Volts:";
+			// 
+			// CutoffUpDown
+			// 
+			this.CutoffUpDown.DecimalPlaces = 2;
+			this.CutoffUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.CutoffUpDown.Location = new System.Drawing.Point(135, 36);
+			this.CutoffUpDown.Maximum = new decimal(new int[] {
+            35,
+            0,
+            0,
+            65536});
+			this.CutoffUpDown.Minimum = new decimal(new int[] {
+            275,
+            0,
+            0,
+            131072});
+			this.CutoffUpDown.Name = "CutoffUpDown";
+			this.CutoffUpDown.Size = new System.Drawing.Size(55, 21);
+			this.CutoffUpDown.TabIndex = 61;
+			this.CutoffUpDown.TabStop = false;
+			this.CutoffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.CutoffUpDown.Value = new decimal(new int[] {
+            35,
+            0,
+            0,
+            65536});
 			// 
 			// label21
 			// 
@@ -918,60 +975,15 @@
 			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
 			// 
-			// groupPanel3
+			// PresetsButton
 			// 
-			this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel3.Controls.Add(this.label23);
-			this.groupPanel3.Controls.Add(this.CutoffUpDown);
-			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
-			this.groupPanel3.HeaderHeight = 30;
-			this.groupPanel3.Location = new System.Drawing.Point(0, 333);
-			this.groupPanel3.Name = "groupPanel3";
-			this.groupPanel3.Size = new System.Drawing.Size(200, 64);
-			this.groupPanel3.TabIndex = 101;
-			this.groupPanel3.TabStop = false;
-			this.groupPanel3.Text = "Cutoff:";
-			// 
-			// label23
-			// 
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(95, 39);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(34, 13);
-			this.label23.TabIndex = 62;
-			this.label23.Text = "Volts:";
-			// 
-			// CutoffUpDown
-			// 
-			this.CutoffUpDown.DecimalPlaces = 2;
-			this.CutoffUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.CutoffUpDown.Location = new System.Drawing.Point(135, 36);
-			this.CutoffUpDown.Maximum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            65536});
-			this.CutoffUpDown.Minimum = new decimal(new int[] {
-            275,
-            0,
-            0,
-            131072});
-			this.CutoffUpDown.Name = "CutoffUpDown";
-			this.CutoffUpDown.Size = new System.Drawing.Size(55, 21);
-			this.CutoffUpDown.TabIndex = 61;
-			this.CutoffUpDown.TabStop = false;
-			this.CutoffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.CutoffUpDown.Value = new decimal(new int[] {
-            35,
-            0,
-            0,
-            65536});
+			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
+			this.PresetsButton.Name = "PresetsButton";
+			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
+			this.PresetsButton.TabIndex = 102;
+			this.PresetsButton.Text = "Presets";
+			this.PresetsButton.UseVisualStyleBackColor = true;
 			// 
 			// DischargeProfileWindow
 			// 
@@ -991,6 +1003,9 @@
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
+			this.groupPanel3.ResumeLayout(false);
+			this.groupPanel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents11UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).EndInit();
@@ -1015,9 +1030,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).EndInit();
 			this.groupPanel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).EndInit();
-			this.groupPanel3.ResumeLayout(false);
-			this.groupPanel3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1077,5 +1089,6 @@
 		private UI.GroupPanel groupPanel3;
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.NumericUpDown CutoffUpDown;
+		private System.Windows.Forms.Button PresetsButton;
 	}
 }

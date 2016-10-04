@@ -9,12 +9,20 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DischargeProfileWindow : EditorDialogWindow
 	{
+		private const ushort MinPrc = 0;
+		private const ushort MaxPrc = 100;
+		private const decimal MinVolts = 3.0m;
+		private const decimal MaxVolts = 4.2m;
+
 		private readonly Dataflash m_dataflash;
+
 		private PercentVoltsControlGroup[] m_curveControls;
+		private ContextMenu m_presetsMenu;
+		private bool m_isInstallingPreset;
 
 		public DischargeProfileWindow([NotNull] Dataflash dataflash)
 		{
-			if (dataflash == null) throw new ArgumentNullException("dataflash");
+			if (dataflash == null || dataflash.ParamsBlock == null || dataflash.ParamsBlock.CustomBattery == null) throw new ArgumentNullException("dataflash");
 			m_dataflash = dataflash;
 
 			InitializeComponent();
@@ -40,6 +48,19 @@ namespace NFirmwareEditor.Windows
 				new PercentVoltsControlGroup(Percents11UpDown, Volts11UpDown)
 			};
 
+			m_presetsMenu = new ContextMenu();
+			foreach (var kvp in BatteryPresets.Presets)
+			{
+				var presetName = kvp.Key;
+				var customBattery = kvp.Value;
+				m_presetsMenu.MenuItems.Add(presetName, (s, e) => InstallPreset(customBattery));
+			}
+
+			PresetsButton.Click += (s, e) =>
+			{
+				var control = (Control)s;
+				m_presetsMenu.Show(control, new Point(control.Width, 0));
+			};
 			SaveButton.Click += SaveButton_Click;
 		}
 
@@ -84,6 +105,29 @@ namespace NFirmwareEditor.Windows
 			DischargeChart.Series.Add(series);
 		}
 
+		private void InstallPreset(CustomBattery customBattery)
+		{
+			m_isInstallingPreset = true;
+			for (var i = 0; i < customBattery.Data.Length; i++)
+			{
+				var data = customBattery.Data[i];
+				var group = m_curveControls[i];
+
+				var percents = Math.Max(MinPrc, Math.Min(data.Percents, MaxPrc));
+				var voltage = Math.Max(MinVolts, Math.Min(data.Voltage / 100m, MaxVolts));
+
+				group.PercentsUpDown.Minimum = MinPrc;
+				group.PercentsUpDown.Maximum = MaxPrc;
+				group.PercentsUpDown.Value = percents;
+
+				group.VoltsUpDown.Minimum = MinVolts;
+				group.VoltsUpDown.Maximum = MaxPrc;
+				group.VoltsUpDown.Value = voltage;
+			}
+			m_isInstallingPreset = false;
+			UpdatePointsMinMax();
+		}
+
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
 		{
 			if (dataflash == null) throw new ArgumentNullException("dataflash");
@@ -91,8 +135,8 @@ namespace NFirmwareEditor.Windows
 			for (var i = 0; i < dataflash.ParamsBlock.CustomBattery.Data.Length; i++)
 			{
 				var data = dataflash.ParamsBlock.CustomBattery.Data[i];
-				var percents = Math.Max((ushort)0, Math.Min(data.Percents, (ushort)100));
-				var voltage = Math.Max(3.0m, Math.Min(data.Voltage / 100m, 4.2m));
+				var percents = Math.Max(MinPrc, Math.Min(data.Percents, MaxPrc));
+				var voltage = Math.Max(MinVolts, Math.Min(data.Voltage / 100m, MaxVolts));
 				var point = new DataPoint(percents, (double)voltage)
 				{
 					MarkerStyle = MarkerStyle.Circle,
@@ -129,6 +173,7 @@ namespace NFirmwareEditor.Windows
 
 		private void UpdatePointsMinMax()
 		{
+			if (m_isInstallingPreset) return;
 			for (var i = 0; i < m_curveControls.Length; i++)
 			{
 				var group = m_curveControls[i];
@@ -138,8 +183,8 @@ namespace NFirmwareEditor.Windows
 					var prevPercents = m_curveControls[i - 1].PercentsUpDown;
 					var prevVoltage = m_curveControls[i - 1].VoltsUpDown;
 
-					group.PercentsUpDown.Minimum = Math.Min(100, prevPercents.Value + 1);
-					group.VoltsUpDown.Minimum = Math.Min(4.2m, prevVoltage.Value + 0.01m);
+					group.PercentsUpDown.Minimum = Math.Min(MaxPrc, prevPercents.Value + 1);
+					group.VoltsUpDown.Minimum = Math.Min(MaxVolts, prevVoltage.Value + 0.01m);
 				}
 
 				if (i + 1 < m_curveControls.Length)
@@ -147,8 +192,8 @@ namespace NFirmwareEditor.Windows
 					var nextPercents = m_curveControls[i + 1].PercentsUpDown;
 					var nextVoltage = m_curveControls[i + 1].VoltsUpDown;
 
-					group.PercentsUpDown.Maximum = Math.Max(0, nextPercents.Value - 1);
-					group.VoltsUpDown.Maximum = Math.Max(3.0m, nextVoltage.Value - 0.01m);
+					group.PercentsUpDown.Maximum = Math.Max(MinPrc, nextPercents.Value - 1);
+					group.VoltsUpDown.Maximum = Math.Max(MinVolts, nextVoltage.Value - 0.01m);
 				}
 			}
 		}

@@ -216,6 +216,16 @@ namespace NFirmwareEditor.Models
 
 	public class CustomBattery
 	{
+		public CustomBattery()
+		{
+		}
+
+		public CustomBattery(PercentsVoltage[] data, ushort cutoff)
+		{
+			Data = data;
+			Cutoff = cutoff;
+		}
+
 		[BinaryArray(Length = 11)]
 		public PercentsVoltage[] Data { get; set; }
 
@@ -226,6 +236,16 @@ namespace NFirmwareEditor.Models
 
 	public class PercentsVoltage
 	{
+		public PercentsVoltage()
+		{
+		}
+
+		public PercentsVoltage(ushort percents, ushort voltage)
+		{
+			Percents = percents;
+			Voltage = voltage;
+		}
+
 		public ushort Percents { get; set; }
 
 		public ushort Voltage { get; set; }
