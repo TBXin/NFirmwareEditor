@@ -22,7 +22,7 @@ namespace NFirmwareEditor.Windows
 
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private ContextMenu m_puffsMenu;
-		private bool m_isDeviceConnected;
+		private bool m_isComPortConnected;
 		private bool m_realClosing;
 
 		public DeviceMonitorWindow([NotNull] ApplicationConfiguration configuration, [NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
@@ -57,12 +57,17 @@ namespace NFirmwareEditor.Windows
 					// It isn't idle, it is stuck in the Close() call. So the event handler cannot make progress because 
 					// it is stuck in the Invoke() call and your main thread cannot make progress because 
 					// it is stuck in the Close() call, deadlock city.
-					m_usbConnector.SetupDeviceMonitor(false);
+					if (m_usbConnector.IsDeviceConnected)
+					{
+						m_usbConnector.SetupDeviceMonitor(false);
+					}
 					m_comConnector.MonitorDataReceived -= ComConnector_MonitorDataReceived;
 					m_comConnector.Connected -= COMConnector_Connected;
 					m_comConnector.Disconnected -= COMConnector_Disconnected;
-					m_comConnector.Disconnect();
-
+					if (m_isComPortConnected)
+					{
+						m_comConnector.Disconnect();
+					}
 					UpdateUI(Close);
 				}).Start();
 			};
@@ -190,7 +195,7 @@ namespace NFirmwareEditor.Windows
 
 		private bool EnsureConnection()
 		{
-			if (m_isDeviceConnected) return true;
+			if (m_isComPortConnected) return true;
 			if (!m_usbConnector.IsDeviceConnected)
 			{
 				var result = InfoBox.Show
@@ -330,13 +335,13 @@ namespace NFirmwareEditor.Windows
 
 		private void COMConnector_Connected()
 		{
-			m_isDeviceConnected = true;
+			m_isComPortConnected = true;
 			m_usbConnector.SetupDeviceMonitor(true);
 		}
 
 		private void COMConnector_Disconnected()
 		{
-			m_isDeviceConnected = false;
+			m_isComPortConnected = false;
 			EnsureConnection();
 		}
 
