@@ -249,8 +249,8 @@
             this.DeviceConfiguratorMenuItem,
             this.DeviceMonitorMenuItem});
 			this.myEvicMenuItem.Name = "myEvicMenuItem";
-			this.myEvicMenuItem.Size = new System.Drawing.Size(52, 20);
-			this.myEvicMenuItem.Text = "myEvic";
+			this.myEvicMenuItem.Size = new System.Drawing.Size(109, 20);
+			this.myEvicMenuItem.Text = "myEvic NFE Edition";
 			// 
 			// DeviceConfiguratorMenuItem
 			// 
