@@ -1,4 +1,7 @@
 # NFirmwareEditor
+
+Nightly build: [![Build status](https://ci.appveyor.com/api/projects/status/github/TBXin/NFirmwareEditor?branch=master&svg=true)](https://ci.appveyor.com/project/TBXin/NFirmwareEditor/branch/master)
+
 Firmware editor and updater for vaping devices such as:
 
 * Joyetech: eVic VTC Mini, eVic VTwo, eVic VTwo Mini, eVic AIO, eVic Basic, Cuboid, Cuboid Mini, eGrip II;
@@ -27,3 +30,6 @@ Firmware editor and updater for vaping devices such as:
 
 #### myEvic NFE Edition Configuration Utility
 ![](http://i.imgur.com/V6HT1Go.png)
+
+#### myEvic NFE Edition Device Monitor
+![](http://i.imgur.com/UeoFDLu.png)
