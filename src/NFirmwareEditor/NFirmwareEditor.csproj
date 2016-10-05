@@ -501,6 +501,42 @@
     <None Include="Patches\Cuboid 3.14\Cuboid_3.14_timeout_10_sec.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_3V_lock.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_75DC.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_Correct_Resist.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_no_SMART.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_PowerMax.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_PWR_1W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_pwr_bugfix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_Realtime_Coil_in_VW_Mode.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_tc_1gr.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_tc_ss_fix.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_tc_ss_fix_Test.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Patches\Cuboid 5.14 %2808.09.2016%29\Cuboid_5.14_timeout_10_sec.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\Evic VTC Mini 3.01\3.01_3rd_line_aio.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

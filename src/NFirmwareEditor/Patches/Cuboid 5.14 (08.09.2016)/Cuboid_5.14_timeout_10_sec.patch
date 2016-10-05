@@ -1,0 +1,12 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Screen timeout 10 sec" Version="1.0" Author="Volhv">
+<Description>Таймаут экрана 10 сек.</Description>
+0A - 10sec
+0F - 15sec
+1E - 30sec (по умолчанию)
+<Data>
+0000163A: 1E - 0A
+00004B06: 1E - 0A
+00006452: 1E - 0A
+00008182: 1E - 0A
+</Data>
+</Patch>

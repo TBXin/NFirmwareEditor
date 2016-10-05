@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="TC SS Fix Test" Version="1.0" Author="Volhv">
+<Description>Исправляет ошибочное перекидывание в режим Варивата из режима TK SS при использовании композитных спиралей.</Description>
+<Data>
+0000373E: C8 - FA
+0000373F: 71 - 61
+</Data>
+</Patch>

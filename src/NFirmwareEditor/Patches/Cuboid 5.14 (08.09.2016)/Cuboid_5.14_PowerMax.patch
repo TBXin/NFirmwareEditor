@@ -1,0 +1,9 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="PowerMax" Version="1.0" Author="Volhv">
+<Description>Снятие ограничения мощности (если достаточно заряда; для тех, у кого стальные бубенцы).</Description>
+<Data>
+00009094: C1 - 41
+00009095: 00 - 10
+00009098: 01 - 41
+000090A2: 90 - 80
+</Data>
+</Patch>

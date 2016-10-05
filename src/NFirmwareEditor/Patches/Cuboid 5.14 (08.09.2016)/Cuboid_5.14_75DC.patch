@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Lock after 75 degrees Celsius" Version="1.0" Author="Volhv">
+<Description>Поднятие порога блокировки по перегреву с 70 до 75 градусов Цельсия.</Description>
+<Data>
+00003CD0: 46 - 4B
+00009358: 46 - 4B
+</Data>
+</Patch>

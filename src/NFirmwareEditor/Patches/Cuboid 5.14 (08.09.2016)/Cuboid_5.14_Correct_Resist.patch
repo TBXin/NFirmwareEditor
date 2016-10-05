@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Correct Resist" Version="1.0" Author="Volhv">
+<Description>Коррекция измерения спротивления.</Description>
+<Data>
+## 59 61 63 65 67 - 69 + 71 73 75 77 79
+000019FC: 69 - 61
+</Data>
+</Patch>

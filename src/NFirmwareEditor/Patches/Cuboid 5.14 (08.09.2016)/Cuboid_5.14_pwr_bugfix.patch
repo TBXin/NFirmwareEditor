@@ -1,0 +1,17 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Power Mode Bug Fix" Version="1.0" Author="Volhv">
+<Description>Исправление самопроизвольного снижения мощности.</Description>
+<Data>
+00001208: 40 - 01
+00001209: 43 - 48
+0000120A: 0A - 00
+0000120B: 21 - 8A
+0000120C: B0 - 02
+0000120D: FB - E0
+0000120E: F1 - 00
+0000120F: F0 - BF
+00001210: B0 - AC
+00001211: FB - 02
+00001212: F2 - 00
+00001213: F0 - 20
+</Data>
+</Patch>

@@ -1,0 +1,6 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Realtime Coil in VW Mode" Version="1.0" Author="Volhv">
+<Description>Отображение реального сопротивления при парении в режиме Варивата, как в режимах ТК.</Description>
+<Data>
+000072A6: 07 - 04
+</Data>
+</Patch>

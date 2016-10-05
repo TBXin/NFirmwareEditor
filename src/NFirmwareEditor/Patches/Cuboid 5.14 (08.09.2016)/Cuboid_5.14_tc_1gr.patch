@@ -1,0 +1,7 @@
+﻿<Patch Definition="Cuboid 5.14 (08.09.2016)" Name="Temperature adjustment" Version="1.0" Author="Volhv">
+<Description>Устанавливает шаг регулировки температуры в 1 градус (в Цельсиях).</Description>
+<Data>
+000046BD: 1D - 1C ; повышение
+00004A51: 1F - 1E ; понижение
+</Data>
+</Patch>
