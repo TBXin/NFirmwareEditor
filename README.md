@@ -1,6 +1,6 @@
 # NFirmwareEditor
 
-Nightly build: [![Build status](https://ci.appveyor.com/api/projects/status/github/TBXin/NFirmwareEditor?branch=master&svg=true)](https://ci.appveyor.com/project/TBXin/NFirmwareEditor/branch/master)
+Nightly build: [![Build status](https://ci.appveyor.com/api/projects/status/github/TBXin/NFirmwareEditor?branch=master&svg=true)](https://ci.appveyor.com/project/TBXin/NFirmwareEditor/branch/master/artifacts)
 
 Firmware editor and updater for vaping devices such as:
 
