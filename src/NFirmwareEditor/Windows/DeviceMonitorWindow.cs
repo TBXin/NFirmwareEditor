@@ -14,13 +14,16 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
-		private const int MaxItems = 50;
+		private const int MaxItems = 1000;
 
 		private readonly ApplicationConfiguration m_configuration;
 		private readonly USBConnector m_usbConnector;
 		private readonly COMConnector m_comConnector;
 
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
+		private TimeSpan m_timeScale = TimeSpan.FromSeconds(30);
+
+		private ContextMenu m_timeScaleMenu;
 		private ContextMenu m_puffsMenu;
 		private bool m_isComPortConnected;
 		private bool m_realClosing;
@@ -132,7 +135,7 @@ namespace NFirmwareEditor.Windows
 
 			InitializeChart();
 			InitializeSeries();
-			InitializePuffsMenu();
+			InitializeContextMenus();
 		}
 
 		private void InitializeChart()
@@ -141,9 +144,20 @@ namespace NFirmwareEditor.Windows
 			var area = new ChartArea();
 			{
 				area.AxisX.IsMarginVisible = false;
-				area.AxisX.Maximum = MaxItems;
-				area.AxisX.Enabled = AxisEnabled.False;
-				area.AxisY.Enabled = AxisEnabled.False;
+				area.AxisX.MajorGrid.Enabled = true;
+				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+				area.AxisX.MajorTickMark.TickMarkStyle = TickMarkStyle.None;
+				area.AxisX.LabelStyle.Enabled = false;
+				area.AxisX.LabelStyle.Format = "HH:mm:ss";
+				area.AxisX.LineColor = Color.DarkGray;
+				area.AxisX.IntervalOffsetType = DateTimeIntervalType.Milliseconds;
+
+				area.AxisY.IsMarginVisible = false;
+				area.AxisY.MajorGrid.Enabled = true;
+				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+				area.AxisY.MajorTickMark.TickMarkStyle = TickMarkStyle.None;
+				area.AxisY.LabelStyle.Enabled = false;
+				area.AxisY.LineColor = Color.DarkGray;
 			}
 			MainChart.ChartAreas.Add(area);
 		}
@@ -168,8 +182,23 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void InitializePuffsMenu()
+		private void InitializeContextMenus()
 		{
+			m_timeScaleMenu = new ContextMenu(new[]
+			{
+				new MenuItem("10 seconds", (s, e) => m_timeScale = TimeSpan.FromSeconds(10)),
+				new MenuItem("30 seconds", (s, e) => m_timeScale = TimeSpan.FromSeconds(30)),
+				new MenuItem("1 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(1)),
+				new MenuItem("2 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(2)),
+				new MenuItem("5 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(5)),
+				new MenuItem("10 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(10))
+			});
+			TimeScaleButton.Click += (s, e) =>
+			{
+				var control = (Control)s;
+				m_timeScaleMenu.Show(control, new Point(control.Width, 0));
+			};
+
 			m_puffsMenu = new ContextMenu();
 			for (var i = 1; i <= 9; i++)
 			{
@@ -253,6 +282,7 @@ namespace NFirmwareEditor.Windows
 			{
 				Name = name,
 				ChartType = SeriesChartType.Line,
+				XValueType = ChartValueType.DateTime,
 				YValueType = ChartValueType.Double,
 				Color = color,
 				BorderWidth = 2,
@@ -260,8 +290,14 @@ namespace NFirmwareEditor.Windows
 				{
 					Enabled = true,
 					AllowOutsidePlotArea = LabelOutsidePlotAreaStyle.Yes,
-					IsMarkerOverlappingAllowed = false,
-					MovingDirection = LabelAlignmentStyles.Right
+					IsOverlappedHidden = false,
+					IsMarkerOverlappingAllowed = true,
+					MinMovingDistance = 1,
+					CalloutStyle = LabelCalloutStyle.Underlined,
+					CalloutLineDashStyle = ChartDashStyle.Solid,
+					CalloutLineAnchorCapStyle = LineAnchorCapStyle.Arrow,
+					CalloutLineWidth = 0,
+					MovingDirection = LabelAlignmentStyles.BottomLeft
 				}
 			};
 			return series;
@@ -273,6 +309,7 @@ namespace NFirmwareEditor.Windows
 			m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 			m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 
+			var xValue = DateTime.Now.ToOADate();
 			foreach (var kvp in m_seriesData)
 			{
 				var sensorName = kvp.Key;
@@ -286,9 +323,11 @@ namespace NFirmwareEditor.Windows
 				var point = new DataPoint();
 				if (Math.Abs(readings) > 0.001)
 				{
+					var roundedValue = (float)Math.Round(readings, 3);
+					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
-					point.Label = Math.Round(readings, 3).ToString(CultureInfo.InvariantCulture);
-					data.SetLastValue(readings);
+					point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
+					data.SetLastValue(roundedValue);
 				}
 				else
 				{
@@ -318,8 +357,10 @@ namespace NFirmwareEditor.Windows
 				}
 			}
 
-			MainChart.ChartAreas[0].RecalculateAxesScale();
-			MainChart.ResetAutoValues();
+			MainChart.ChartAreas[0].AxisX.Minimum = DateTime.Now.Add(-m_timeScale).ToOADate();
+			MainChart.ChartAreas[0].AxisX.Maximum = xValue;
+			//MainChart.ChartAreas[0].RecalculateAxesScale();
+			//MainChart.ResetAutoValues();
 		}
 
 		private static float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
@@ -363,7 +404,6 @@ namespace NFirmwareEditor.Windows
 			var seriesName = checkbox.Tag.ToString();
 			m_seriesData[seriesName].Seires.Enabled = checkbox.Checked;
 		}
-
 
 		private void PuffMenuItem_Click(int seconds)
 		{

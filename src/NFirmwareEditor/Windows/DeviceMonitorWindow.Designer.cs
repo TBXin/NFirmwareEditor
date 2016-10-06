@@ -63,6 +63,7 @@
 			this.LineVewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
 			this.ControlGroupPanel = new NFirmwareEditor.UI.GroupPanel();
 			this.PuffButton = new System.Windows.Forms.Button();
+			this.TimeScaleButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -416,6 +417,7 @@
 			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlGroupPanel.Controls.Add(this.TimeScaleButton);
 			this.ControlGroupPanel.Controls.Add(this.PuffButton);
 			this.ControlGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.HeaderHeight = 30;
@@ -428,12 +430,21 @@
 			// 
 			// PuffButton
 			// 
-			this.PuffButton.Location = new System.Drawing.Point(5, 34);
+			this.PuffButton.Location = new System.Drawing.Point(5, 63);
 			this.PuffButton.Name = "PuffButton";
 			this.PuffButton.Size = new System.Drawing.Size(190, 23);
 			this.PuffButton.TabIndex = 0;
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
+			// 
+			// TimeScaleButton
+			// 
+			this.TimeScaleButton.Location = new System.Drawing.Point(5, 34);
+			this.TimeScaleButton.Name = "TimeScaleButton";
+			this.TimeScaleButton.Size = new System.Drawing.Size(190, 23);
+			this.TimeScaleButton.TabIndex = 1;
+			this.TimeScaleButton.Text = "Set Time Scale";
+			this.TimeScaleButton.UseVisualStyleBackColor = true;
 			// 
 			// DeviceMonitorWindow
 			// 
@@ -493,5 +504,6 @@
 		private System.Windows.Forms.CheckBox PowerSetCheckBox;
 		private UI.GroupPanel ControlGroupPanel;
 		private System.Windows.Forms.Button PuffButton;
+		private System.Windows.Forms.Button TimeScaleButton;
 	}
 }
