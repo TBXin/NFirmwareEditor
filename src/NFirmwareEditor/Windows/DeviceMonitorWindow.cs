@@ -27,6 +27,7 @@ namespace NFirmwareEditor.Windows
 		private ContextMenu m_puffsMenu;
 		private bool m_isComPortConnected;
 		private bool m_realClosing;
+		private bool m_isPaused;
 
 		public DeviceMonitorWindow([NotNull] ApplicationConfiguration configuration, [NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
@@ -136,6 +137,12 @@ namespace NFirmwareEditor.Windows
 			InitializeChart();
 			InitializeSeries();
 			InitializeContextMenus();
+
+			PauseButton.Click += (s, e) =>
+			{
+				m_isPaused = !m_isPaused;
+				PauseButton.Text = m_isPaused ? "Resume" : "Pause";
+			};
 		}
 
 		private void InitializeChart()
@@ -148,7 +155,6 @@ namespace NFirmwareEditor.Windows
 				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisX.MajorTickMark.TickMarkStyle = TickMarkStyle.None;
 				area.AxisX.LabelStyle.Enabled = false;
-				area.AxisX.LabelStyle.Format = "HH:mm:ss";
 				area.AxisX.LineColor = Color.DarkGray;
 				area.AxisX.IntervalOffsetType = DateTimeIntervalType.Milliseconds;
 
@@ -159,7 +165,33 @@ namespace NFirmwareEditor.Windows
 				area.AxisY.LabelStyle.Enabled = false;
 				area.AxisY.LineColor = Color.DarkGray;
 			}
+			var calloutAnnotation1 = new CalloutAnnotation
+			{
+				AxisX = area.AxisX,
+				AxisY = area.AxisY
+			};
 			MainChart.ChartAreas.Add(area);
+			MainChart.Annotations.Add(calloutAnnotation1);
+
+			MainChart.MouseMove += (s, e) =>
+			{
+				var result = MainChart.HitTest(e.X, e.Y);
+
+				if (result.ChartElementType != ChartElementType.DataPoint) return;
+				if (result.PointIndex < 0) return;
+				
+				if (result.Series.Points.Count <= result.PointIndex) return;
+				var point = result.Series.Points[result.PointIndex];
+
+				calloutAnnotation1.BeginPlacement();
+
+				// You must set AxisX before binding to xValue!
+				calloutAnnotation1.AnchorX = point.XValue;
+				calloutAnnotation1.AnchorY = point.YValues[0];
+				calloutAnnotation1.Text = point.Tag.ToString();
+
+				calloutAnnotation1.EndPlacement();
+			};
 		}
 
 		private void InitializeSeries()
@@ -326,7 +358,7 @@ namespace NFirmwareEditor.Windows
 					var roundedValue = (float)Math.Round(readings, 3);
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
-					point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
+					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
 					data.SetLastValue(roundedValue);
 				}
 				else
@@ -388,7 +420,7 @@ namespace NFirmwareEditor.Windows
 
 		private void ComConnector_MonitorDataReceived(string message)
 		{
-			if (string.IsNullOrEmpty(message)) return;
+			if (m_isPaused || string.IsNullOrEmpty(message)) return;
 
 			var sensors = DeviceSensorsData.Parse(message);
 			if (sensors == null) return;
