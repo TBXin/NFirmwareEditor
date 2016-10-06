@@ -48,10 +48,10 @@ namespace NFirmwareEditor.Models
 		[BinaryArray(Length = 21)]
 		public ushort[] TempCoefsTi { get; set; }
 
-		/// <summary>4 bytes structure.</summary>
 		[BinaryOffset(Relative = 2)]
 		public DataflashStatus Status { get; set; }
 
+		[BinaryOffset(Relative = 2)]
 		public ushort AtomizerResistance { get; set; }
 
 		/// <summary>0,1,2,3,4 = Open,Short,Low,Large,Ok</summary>
@@ -161,7 +161,7 @@ namespace NFirmwareEditor.Models
 		#region Implementation of IBinaryReaderWriter
 		public void Read(BinaryReader r)
 		{
-			var data = r.ReadBytes(4);
+			var data = r.ReadBytes(2);
 			var b1 = data[0];
 			{
 				Off = DataflashManager.GetBit(b1, 1);
@@ -209,7 +209,7 @@ namespace NFirmwareEditor.Models
 			b2 = DataflashManager.SetBit(b2, 7, WakeUpByPlusMinus);
 			b2 = DataflashManager.SetBit(b2, 8, UseClassicMenu);
 
-			r.Write(new byte[] { b1, b2, 0, 0 });
+			r.Write(new[] { b1, b2 });
 		}
 		#endregion
 	}
