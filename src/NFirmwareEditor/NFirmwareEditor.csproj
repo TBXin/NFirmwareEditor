@@ -867,6 +867,9 @@
     <None Include="Patches\RX200S 4.12\4.12_tc_ss_fix.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Patches\RX200S 4.13\RX200S 4.13_PWR_1W.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Patches\RX23 4.12\RX23_4.12_1w.patch">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
