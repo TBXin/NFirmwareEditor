@@ -241,11 +241,12 @@ namespace NFirmwareEditor.Windows
 		{
 			m_timeFrameMenu = new ContextMenu(new[]
 			{
+				new MenuItem("5 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(5))),
 				new MenuItem("10 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(10))),
+				new MenuItem("20 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(20))),
 				new MenuItem("30 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(30))),
-				new MenuItem("1 minute", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(1))),
-				new MenuItem("2 minutes", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(2))),
-				new MenuItem("5 minutes", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(5)))
+				new MenuItem("45 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(45))),
+				new MenuItem("60 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(60)))
 			});
 			TimeFrameButton.Click += (s, e) =>
 			{
@@ -365,7 +366,7 @@ namespace NFirmwareEditor.Windows
 
 			var now = DateTime.Now;
 			var xValue = now.ToOADate();
-			var xAxisMax = now.AddSeconds(m_timeFrame.TotalSeconds * 0.07).ToOADate();
+			var xAxisMax = now.AddSeconds(1).ToOADate();
 			foreach (var kvp in m_seriesData)
 			{
 				var sensorName = kvp.Key;
