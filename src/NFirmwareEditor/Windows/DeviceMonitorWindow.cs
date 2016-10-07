@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -14,20 +15,32 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
-		private const int MaxItems = 1000;
+		private const int MaxItems = 1200;
 
 		private readonly ApplicationConfiguration m_configuration;
 		private readonly USBConnector m_usbConnector;
 		private readonly COMConnector m_comConnector;
 
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
-		private TimeSpan m_timeScale = TimeSpan.FromSeconds(30);
+		private TimeSpan m_timeFrame = TimeSpan.FromSeconds(10);
+		private DateTime? m_startTime;
+		private bool m_isTracking = true;
 
-		private ContextMenu m_timeScaleMenu;
+		private ContextMenu m_timeFrameMenu;
 		private ContextMenu m_puffsMenu;
 		private bool m_isComPortConnected;
 		private bool m_realClosing;
 		private bool m_isPaused;
+
+		public bool IsTracking
+		{
+			get { return m_isTracking; }
+			set
+			{
+				m_isTracking = value;
+				TrackingButton.Enabled = !m_isTracking;
+			}
+		}
 
 		public DeviceMonitorWindow([NotNull] ApplicationConfiguration configuration, [NotNull] USBConnector usbConnector, [NotNull] COMConnector comConnector)
 		{
@@ -41,6 +54,9 @@ namespace NFirmwareEditor.Windows
 
 			InitializeComponent();
 			InitializeControls();
+			InitializeChart();
+			InitializeSeries();
+			InitializeContextMenus();
 
 			m_comConnector.Connected += COMConnector_Connected;
 			m_comConnector.Disconnected += COMConnector_Disconnected;
@@ -79,7 +95,7 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeControls()
 		{
-			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 100) };
+			var batteryLimits = new[] { new ValueLimit<float, int>(3.0f, 80), new ValueLimit<float, int>(4.2f, 95) };
 			var powerLimits = new[] { new ValueLimit<float, int>(1, 50), new ValueLimit<float, int>(75, 80) };
 			var powerSetLimits = new[] { new ValueLimit<float, int>(1, 50), new ValueLimit<float, int>(75, 80) };
 			var tempLimits = new[] { new ValueLimit<float, int>(100, 50), new ValueLimit<float, int>(600, 80) };
@@ -134,15 +150,13 @@ namespace NFirmwareEditor.Windows
 				}
 			};
 
-			InitializeChart();
-			InitializeSeries();
-			InitializeContextMenus();
-
 			PauseButton.Click += (s, e) =>
 			{
 				m_isPaused = !m_isPaused;
 				PauseButton.Text = m_isPaused ? "Resume" : "Pause";
 			};
+
+			TrackingButton.Click += (s, e) => ChangeTimeFrameAndTrack(m_timeFrame);
 		}
 
 		private void InitializeChart()
@@ -157,6 +171,8 @@ namespace NFirmwareEditor.Windows
 				area.AxisX.LabelStyle.Enabled = false;
 				area.AxisX.LineColor = Color.DarkGray;
 				area.AxisX.IntervalOffsetType = DateTimeIntervalType.Milliseconds;
+				area.AxisX.ScaleView.Zoomable = true;
+				area.AxisX.ScrollBar.Enabled = false;
 
 				area.AxisY.IsMarginVisible = false;
 				area.AxisY.MajorGrid.Enabled = true;
@@ -165,33 +181,40 @@ namespace NFirmwareEditor.Windows
 				area.AxisY.LabelStyle.Enabled = false;
 				area.AxisY.LineColor = Color.DarkGray;
 			}
-			var calloutAnnotation1 = new CalloutAnnotation
+			var valueAnnotation = new CalloutAnnotation
 			{
 				AxisX = area.AxisX,
 				AxisY = area.AxisY
 			};
 			MainChart.ChartAreas.Add(area);
-			MainChart.Annotations.Add(calloutAnnotation1);
-
+			MainChart.Annotations.Add(valueAnnotation);
 			MainChart.MouseMove += (s, e) =>
 			{
 				var result = MainChart.HitTest(e.X, e.Y);
 
-				if (result.ChartElementType != ChartElementType.DataPoint) return;
-				if (result.PointIndex < 0) return;
-				
+				if (result.ChartElementType != ChartElementType.DataPoint ||
+				    result.PointIndex < 0 ||
+				    result.Series.Points.Count <= result.PointIndex)
+				{
+					return;
+				}
+
 				if (result.Series.Points.Count <= result.PointIndex) return;
 				var point = result.Series.Points[result.PointIndex];
 
-				calloutAnnotation1.BeginPlacement();
+				valueAnnotation.BeginPlacement();
 
 				// You must set AxisX before binding to xValue!
-				calloutAnnotation1.AnchorX = point.XValue;
-				calloutAnnotation1.AnchorY = point.YValues[0];
-				calloutAnnotation1.Text = point.Tag.ToString();
+				valueAnnotation.AnchorX = point.XValue;
+				valueAnnotation.AnchorY = point.YValues[0];
+				valueAnnotation.Text = point.Tag.ToString();
 
-				calloutAnnotation1.EndPlacement();
+				valueAnnotation.EndPlacement();
+				valueAnnotation.Visible = true;
 			};
+
+			MainChartScrollBar.Scroll += (s, e) => IsTracking = MainChartScrollBar.Value == MainChartScrollBar.Maximum;
+			MainChartScrollBar.ValueChanged += (s, e) => ScrollChart(false);
 		}
 
 		private void InitializeSeries()
@@ -216,19 +239,18 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeContextMenus()
 		{
-			m_timeScaleMenu = new ContextMenu(new[]
+			m_timeFrameMenu = new ContextMenu(new[]
 			{
-				new MenuItem("10 seconds", (s, e) => m_timeScale = TimeSpan.FromSeconds(10)),
-				new MenuItem("30 seconds", (s, e) => m_timeScale = TimeSpan.FromSeconds(30)),
-				new MenuItem("1 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(1)),
-				new MenuItem("2 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(2)),
-				new MenuItem("5 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(5)),
-				new MenuItem("10 minutes", (s, e) => m_timeScale = TimeSpan.FromMinutes(10))
+				new MenuItem("10 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(10))),
+				new MenuItem("30 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(30))),
+				new MenuItem("1 minute", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(1))),
+				new MenuItem("2 minutes", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(2))),
+				new MenuItem("5 minutes", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromMinutes(5)))
 			});
-			TimeScaleButton.Click += (s, e) =>
+			TimeFrameButton.Click += (s, e) =>
 			{
 				var control = (Control)s;
-				m_timeScaleMenu.Show(control, new Point(control.Width, 0));
+				m_timeFrameMenu.Show(control, new Point(control.Width, 0));
 			};
 
 			m_puffsMenu = new ContextMenu();
@@ -242,16 +264,6 @@ namespace NFirmwareEditor.Windows
 				var control = (Control)s;
 				m_puffsMenu.Show(control, new Point(control.Width, 0));
 			};
-		}
-
-		private void SaveCheckedSeries()
-		{
-			foreach (var kvp in m_seriesData)
-			{
-				var seriesName = kvp.Key;
-				var data = kvp.Value;
-				m_configuration.DeviceMonitorSeries[seriesName] = data.CheckBox.Checked;
-			}
 		}
 
 		private bool EnsureConnection()
@@ -335,13 +347,25 @@ namespace NFirmwareEditor.Windows
 			return series;
 		}
 
+		private void ChangeTimeFrameAndTrack(TimeSpan timeFrame)
+		{
+			m_timeFrame = timeFrame;
+			MainChartScrollBar.Value = MainChartScrollBar.Maximum;
+			ScrollChart(true);
+			IsTracking = true;
+		}
+
 		private void UpdateSeries(IDictionary<string, float> sensors)
 		{
+			if (!m_startTime.HasValue) m_startTime = DateTime.Now;
+
 			var isCelcius = sensors[SensorsKeys.Celcius] > 0;
 			m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 			m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 
-			var xValue = DateTime.Now.ToOADate();
+			var now = DateTime.Now;
+			var xValue = now.ToOADate();
+			var xAxisMax = now.AddSeconds(m_timeFrame.TotalSeconds * 0.07).ToOADate();
 			foreach (var kvp in m_seriesData)
 			{
 				var sensorName = kvp.Key;
@@ -359,6 +383,8 @@ namespace NFirmwareEditor.Windows
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
+					point.MarkerSize = 5;
+					point.MarkerStyle = MarkerStyle.Circle;
 					data.SetLastValue(roundedValue);
 				}
 				else
@@ -389,10 +415,45 @@ namespace NFirmwareEditor.Windows
 				}
 			}
 
-			MainChart.ChartAreas[0].AxisX.Minimum = DateTime.Now.Add(-m_timeScale).ToOADate();
-			MainChart.ChartAreas[0].AxisX.Maximum = xValue;
-			//MainChart.ChartAreas[0].RecalculateAxesScale();
-			//MainChart.ResetAutoValues();
+			var points = MainChart.Series.SelectMany(x => x.Points).Where(x => !x.IsEmpty).ToArray();
+
+			var minDate = DateTime.FromOADate(points.Min(x => x.XValue));
+			var maxDate = DateTime.FromOADate(points.Max(x => x.XValue));
+
+			var range = maxDate - minDate;
+			var framesCount = Math.Floor(range.TotalSeconds / m_timeFrame.TotalSeconds);
+
+			MainChartScrollBar.Maximum = (int)(framesCount * 30);
+			if (IsTracking)
+			{
+				MainChartScrollBar.Value = MainChartScrollBar.Maximum;
+				ScrollChart(true);
+			}
+
+			MainChart.ChartAreas[0].AxisX.Minimum = m_startTime.Value.AddSeconds(-5).ToOADate();
+			MainChart.ChartAreas[0].AxisX.Maximum = xAxisMax;			
+		}
+		
+		private void ScrollChart(bool toEnd)
+		{
+			if (!m_startTime.HasValue) return;
+
+			if (toEnd)
+			{
+				var toValue = MainChart.ChartAreas[0].AxisX.Maximum;
+				var toDate = DateTime.FromOADate(toValue);
+				var fromValue = toDate.Add(-m_timeFrame).ToOADate();
+
+				MainChart.ChartAreas[0].AxisX.ScaleView.Zoom(fromValue, toValue);
+			}
+			else
+			{
+				var frameIndex = MainChartScrollBar.Value;
+				var fromValue = m_startTime.Value.AddSeconds(frameIndex / 30f * m_timeFrame.TotalSeconds).ToOADate();
+				var toValue = m_startTime.Value.AddSeconds((frameIndex / 30f + 1) * m_timeFrame.TotalSeconds).ToOADate();
+
+				MainChart.ChartAreas[0].AxisX.ScaleView.Zoom(fromValue, toValue);
+			}
 		}
 
 		private static float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
@@ -404,6 +465,16 @@ namespace NFirmwareEditor.Windows
 			if (value < low.Value) return low.Value;
 
 			return low.Limit + (value - low.Value) / (high.Value - low.Value) * (high.Limit - low.Limit);
+		}
+
+		private void SaveCheckedSeries()
+		{
+			foreach (var kvp in m_seriesData)
+			{
+				var seriesName = kvp.Key;
+				var data = kvp.Value;
+				m_configuration.DeviceMonitorSeries[seriesName] = data.CheckBox.Checked;
+			}
 		}
 
 		private void COMConnector_Connected()

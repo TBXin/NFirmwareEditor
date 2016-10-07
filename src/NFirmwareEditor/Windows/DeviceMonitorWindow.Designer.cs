@@ -61,10 +61,12 @@
 			this.BatteryCheckBox = new System.Windows.Forms.CheckBox();
 			this.PowerCheckBox = new System.Windows.Forms.CheckBox();
 			this.LineVewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.TrackingButton = new System.Windows.Forms.Button();
+			this.MainChartScrollBar = new System.Windows.Forms.HScrollBar();
 			this.ControlGroupPanel = new NFirmwareEditor.UI.GroupPanel();
-			this.TimeScaleButton = new System.Windows.Forms.Button();
-			this.PuffButton = new System.Windows.Forms.Button();
 			this.PauseButton = new System.Windows.Forms.Button();
+			this.TimeFrameButton = new System.Windows.Forms.Button();
+			this.PuffButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -77,7 +79,7 @@
 			this.MainChart.Location = new System.Drawing.Point(1, 30);
 			this.MainChart.Name = "MainChart";
 			this.MainChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-			this.MainChart.Size = new System.Drawing.Size(589, 463);
+			this.MainChart.Size = new System.Drawing.Size(589, 446);
 			this.MainChart.TabIndex = 0;
 			// 
 			// SensorsGroupPanel
@@ -402,7 +404,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.LineVewGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.LineVewGroupPanel.Controls.Add(this.TrackingButton);
 			this.LineVewGroupPanel.Controls.Add(this.MainChart);
+			this.LineVewGroupPanel.Controls.Add(this.MainChartScrollBar);
 			this.LineVewGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.LineVewGroupPanel.HeaderHeight = 30;
 			this.LineVewGroupPanel.Location = new System.Drawing.Point(206, 3);
@@ -413,13 +417,34 @@
 			this.LineVewGroupPanel.TabStop = false;
 			this.LineVewGroupPanel.Text = "Line view:";
 			// 
+			// TrackingButton
+			// 
+			this.TrackingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.TrackingButton.Enabled = false;
+			this.TrackingButton.Location = new System.Drawing.Point(517, 4);
+			this.TrackingButton.Name = "TrackingButton";
+			this.TrackingButton.Size = new System.Drawing.Size(70, 22);
+			this.TrackingButton.TabIndex = 2;
+			this.TrackingButton.Text = "Follow";
+			this.TrackingButton.UseVisualStyleBackColor = true;
+			// 
+			// MainChartScrollBar
+			// 
+			this.MainChartScrollBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainChartScrollBar.LargeChange = 1;
+			this.MainChartScrollBar.Location = new System.Drawing.Point(1, 476);
+			this.MainChartScrollBar.Maximum = 0;
+			this.MainChartScrollBar.Name = "MainChartScrollBar";
+			this.MainChartScrollBar.Size = new System.Drawing.Size(589, 17);
+			this.MainChartScrollBar.TabIndex = 1;
+			// 
 			// ControlGroupPanel
 			// 
 			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.ControlGroupPanel.Controls.Add(this.PauseButton);
-			this.ControlGroupPanel.Controls.Add(this.TimeScaleButton);
+			this.ControlGroupPanel.Controls.Add(this.TimeFrameButton);
 			this.ControlGroupPanel.Controls.Add(this.PuffButton);
 			this.ControlGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.HeaderHeight = 30;
@@ -430,14 +455,23 @@
 			this.ControlGroupPanel.TabStop = false;
 			this.ControlGroupPanel.Text = "Control:";
 			// 
-			// TimeScaleButton
+			// PauseButton
 			// 
-			this.TimeScaleButton.Location = new System.Drawing.Point(5, 34);
-			this.TimeScaleButton.Name = "TimeScaleButton";
-			this.TimeScaleButton.Size = new System.Drawing.Size(124, 23);
-			this.TimeScaleButton.TabIndex = 1;
-			this.TimeScaleButton.Text = "Set Time Scale";
-			this.TimeScaleButton.UseVisualStyleBackColor = true;
+			this.PauseButton.Location = new System.Drawing.Point(132, 34);
+			this.PauseButton.Name = "PauseButton";
+			this.PauseButton.Size = new System.Drawing.Size(63, 23);
+			this.PauseButton.TabIndex = 2;
+			this.PauseButton.Text = "Pause";
+			this.PauseButton.UseVisualStyleBackColor = true;
+			// 
+			// TimeFrameButton
+			// 
+			this.TimeFrameButton.Location = new System.Drawing.Point(5, 34);
+			this.TimeFrameButton.Name = "TimeFrameButton";
+			this.TimeFrameButton.Size = new System.Drawing.Size(124, 23);
+			this.TimeFrameButton.TabIndex = 1;
+			this.TimeFrameButton.Text = "Set Time Scale";
+			this.TimeFrameButton.UseVisualStyleBackColor = true;
 			// 
 			// PuffButton
 			// 
@@ -448,15 +482,6 @@
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
 			// 
-			// PauseButton
-			// 
-			this.PauseButton.Location = new System.Drawing.Point(132, 34);
-			this.PauseButton.Name = "PauseButton";
-			this.PauseButton.Size = new System.Drawing.Size(63, 23);
-			this.PauseButton.TabIndex = 2;
-			this.PauseButton.Text = "Pause";
-			this.PauseButton.UseVisualStyleBackColor = true;
-			// 
 			// DeviceMonitorWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,6 +491,7 @@
 			this.Controls.Add(this.LineVewGroupPanel);
 			this.Controls.Add(this.SensorsGroupPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MinimumSize = new System.Drawing.Size(816, 539);
 			this.Name = "DeviceMonitorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFirmwareEditor - Device Monitor";
@@ -515,7 +541,9 @@
 		private System.Windows.Forms.CheckBox PowerSetCheckBox;
 		private UI.GroupPanel ControlGroupPanel;
 		private System.Windows.Forms.Button PuffButton;
-		private System.Windows.Forms.Button TimeScaleButton;
+		private System.Windows.Forms.Button TimeFrameButton;
 		private System.Windows.Forms.Button PauseButton;
+		private System.Windows.Forms.HScrollBar MainChartScrollBar;
+		private System.Windows.Forms.Button TrackingButton;
 	}
 }
