@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -32,6 +34,11 @@ namespace NFirmwareEditor.Windows
 		private bool m_realClosing;
 		private bool m_isPaused;
 
+		private bool m_isRecording;
+		private DateTime m_recordStartTime = DateTime.Now;
+		private StreamWriter m_fileWriter;
+		private readonly StringBuilder m_lineBuilder = new StringBuilder();
+
 		public bool IsTracking
 		{
 			get { return m_isTracking; }
@@ -47,11 +54,11 @@ namespace NFirmwareEditor.Windows
 			if (configuration == null) throw new ArgumentNullException("configuration");
 			if (usbConnector == null) throw new ArgumentNullException("usbConnector");
 			if (comConnector == null) throw new ArgumentNullException("comConnector");
-
+			
 			m_configuration = configuration;
 			m_usbConnector = usbConnector;
 			m_comConnector = comConnector;
-
+			
 			InitializeComponent();
 			InitializeControls();
 			InitializeChart();
@@ -67,6 +74,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (m_realClosing) return;
 
+				StopRecording();
 				SaveCheckedSeries();
 				e.Cancel = true;
 				m_realClosing = true;
@@ -157,6 +165,17 @@ namespace NFirmwareEditor.Windows
 			};
 
 			TrackingButton.Click += (s, e) => ChangeTimeFrameAndTrack(m_timeFrame);
+			RecordButton.Click += (s, e) =>
+			{
+				if (m_isRecording)
+				{
+					StopRecording();
+				}
+				else
+				{
+					StartRecording();
+				}
+			};
 		}
 
 		private void InitializeChart()
@@ -360,6 +379,49 @@ namespace NFirmwareEditor.Windows
 			IsTracking = true;
 		}
 
+		private void StartRecording()
+		{
+			if (m_isRecording) return;
+
+			using (var sf = new SaveFileDialog { Filter = Consts.CsvFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				var fileName = sf.FileName;
+				var ex = Safe.Execute(() =>
+				{
+					m_fileWriter = new StreamWriter(File.Open(fileName, FileMode.Create, FileAccess.Write, FileShare.Read));
+					var header = "TIME," + string.Join(",", m_seriesData.Where(x => x.Value.CheckBox.Checked).Select(x => x.Key));
+					m_fileWriter.WriteLine(header);
+				});
+				if (ex != null)
+				{
+					InfoBox.Show("Unable to start recoding...\n" + ex.Message);
+					return;
+				}
+			}
+
+			m_recordStartTime = DateTime.Now;
+			m_isRecording = true;
+			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = false);
+			RecordButton.Text = @"Stop Recording";
+		}
+
+		private void StopRecording()
+		{
+			if (!m_isRecording) return;
+
+			Safe.Execute(() =>
+			{
+				m_fileWriter.Flush();
+				m_fileWriter.Dispose();
+			});
+
+			m_isRecording = false;
+			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = true);
+			RecordButton.Text = @"Record...";
+		}
+
 		private void UpdateSeries(IDictionary<string, float> sensors)
 		{
 			if (!m_startTime.HasValue) m_startTime = DateTime.Now;
@@ -398,6 +460,29 @@ namespace NFirmwareEditor.Windows
 					data.SetLastValue(null);
 				}
 				data.Seires.Points.Add(point);
+			}
+
+			if (m_isRecording)
+			{
+				m_lineBuilder.Clear();
+				m_lineBuilder.Append((now - m_recordStartTime).TotalSeconds.ToString(CultureInfo.InvariantCulture));
+				m_lineBuilder.Append(",");
+
+				var values = m_seriesData.Values
+				                         .Where(x => x.CheckBox.Checked)
+				                         .Select(x => x.LastValue.HasValue ? x.LastValue.Value.ToString(CultureInfo.InvariantCulture) : string.Empty);
+
+				m_lineBuilder.Append(string.Join(",", values));
+				var ex = Safe.Execute(() =>
+				{
+					m_fileWriter.WriteLine(m_lineBuilder.ToString());
+					m_fileWriter.Flush();
+				});
+				if (ex != null)
+				{
+					InfoBox.Show("Recording was stopped because of error:\n" + ex.Message);
+					RecordButton.PerformClick();
+				}
 			}
 
 			foreach (var series in MainChart.Series)
@@ -555,6 +640,8 @@ namespace NFirmwareEditor.Windows
 
 			public Series Seires { get; set; }
 
+			public float? LastValue { get; private set; }
+
 			public void SetLastValueFormat(string format)
 			{
 				m_labelFormat = format;
@@ -562,8 +649,9 @@ namespace NFirmwareEditor.Windows
 
 			public void SetLastValue(float? value)
 			{
-				m_lastValueLabel.Text = Seires.Enabled && value.HasValue
-					? string.Format(CultureInfo.InvariantCulture, m_labelFormat, value)
+				LastValue = value;
+				m_lastValueLabel.Text = Seires.Enabled && LastValue.HasValue
+					? string.Format(CultureInfo.InvariantCulture, m_labelFormat, LastValue)
 					: "?";
 			}
 		}

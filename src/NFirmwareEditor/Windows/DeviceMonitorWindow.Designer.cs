@@ -67,6 +67,7 @@
 			this.PauseButton = new System.Windows.Forms.Button();
 			this.TimeFrameButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
+			this.RecordButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -443,6 +444,7 @@
 			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlGroupPanel.Controls.Add(this.RecordButton);
 			this.ControlGroupPanel.Controls.Add(this.PauseButton);
 			this.ControlGroupPanel.Controls.Add(this.TimeFrameButton);
 			this.ControlGroupPanel.Controls.Add(this.PuffButton);
@@ -457,7 +459,7 @@
 			// 
 			// PauseButton
 			// 
-			this.PauseButton.Location = new System.Drawing.Point(132, 34);
+			this.PauseButton.Location = new System.Drawing.Point(132, 60);
 			this.PauseButton.Name = "PauseButton";
 			this.PauseButton.Size = new System.Drawing.Size(63, 23);
 			this.PauseButton.TabIndex = 2;
@@ -466,7 +468,7 @@
 			// 
 			// TimeFrameButton
 			// 
-			this.TimeFrameButton.Location = new System.Drawing.Point(5, 34);
+			this.TimeFrameButton.Location = new System.Drawing.Point(5, 60);
 			this.TimeFrameButton.Name = "TimeFrameButton";
 			this.TimeFrameButton.Size = new System.Drawing.Size(124, 23);
 			this.TimeFrameButton.TabIndex = 1;
@@ -475,12 +477,21 @@
 			// 
 			// PuffButton
 			// 
-			this.PuffButton.Location = new System.Drawing.Point(5, 60);
+			this.PuffButton.Location = new System.Drawing.Point(5, 86);
 			this.PuffButton.Name = "PuffButton";
 			this.PuffButton.Size = new System.Drawing.Size(190, 23);
 			this.PuffButton.TabIndex = 0;
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
+			// 
+			// RecordButton
+			// 
+			this.RecordButton.Location = new System.Drawing.Point(5, 34);
+			this.RecordButton.Name = "RecordButton";
+			this.RecordButton.Size = new System.Drawing.Size(190, 23);
+			this.RecordButton.TabIndex = 3;
+			this.RecordButton.Text = "Record...";
+			this.RecordButton.UseVisualStyleBackColor = true;
 			// 
 			// DeviceMonitorWindow
 			// 
@@ -545,5 +556,6 @@
 		private System.Windows.Forms.Button PauseButton;
 		private System.Windows.Forms.HScrollBar MainChartScrollBar;
 		private System.Windows.Forms.Button TrackingButton;
+		private System.Windows.Forms.Button RecordButton;
 	}
 }

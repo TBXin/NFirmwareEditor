@@ -24,6 +24,7 @@
 		internal const string BitmapExportFilter = "Common graphic files|*.bmp";
 		internal const string PngExportFilter = "Portable Network Graphics|*.png";
 		internal const string FontImportFilter = "Font files|*.ttf;*.otf";
+		internal const string CsvFilter = "Comma-separated values|*.csv";
 
 		internal const string SimpleBackupFileNameFormat = "{0}_backup";
 		internal const string ExtendedBackupDirectoryName = "Backups";
