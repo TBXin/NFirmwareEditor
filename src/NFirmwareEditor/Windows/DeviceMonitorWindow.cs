@@ -188,6 +188,8 @@ namespace NFirmwareEditor.Windows
 			};
 			MainChart.ChartAreas.Add(area);
 			MainChart.Annotations.Add(valueAnnotation);
+
+			DataPoint pointUnderCursor = null;
 			MainChart.MouseMove += (s, e) =>
 			{
 				var result = MainChart.HitTest(e.X, e.Y);
@@ -200,17 +202,19 @@ namespace NFirmwareEditor.Windows
 				}
 
 				if (result.Series.Points.Count <= result.PointIndex) return;
-				var point = result.Series.Points[result.PointIndex];
+				if (pointUnderCursor != null) pointUnderCursor.MarkerSize = 0;
+
+				pointUnderCursor = result.Series.Points[result.PointIndex];
+				pointUnderCursor.MarkerSize = 7;
 
 				valueAnnotation.BeginPlacement();
 
 				// You must set AxisX before binding to xValue!
-				valueAnnotation.AnchorX = point.XValue;
-				valueAnnotation.AnchorY = point.YValues[0];
-				valueAnnotation.Text = point.Tag.ToString();
+				valueAnnotation.AnchorX = pointUnderCursor.XValue;
+				valueAnnotation.AnchorY = pointUnderCursor.YValues[0];
+				valueAnnotation.Text = pointUnderCursor.Tag.ToString();
 
 				valueAnnotation.EndPlacement();
-				valueAnnotation.Visible = true;
 			};
 
 			MainChartScrollBar.Scroll += (s, e) => IsTracking = MainChartScrollBar.Value == MainChartScrollBar.Maximum;
@@ -241,7 +245,7 @@ namespace NFirmwareEditor.Windows
 		{
 			m_timeFrameMenu = new ContextMenu(new[]
 			{
-				new MenuItem("5 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(5))),
+				new MenuItem("5 seconds",  (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(5))),
 				new MenuItem("10 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(10))),
 				new MenuItem("20 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(20))),
 				new MenuItem("30 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(30))),
@@ -338,9 +342,9 @@ namespace NFirmwareEditor.Windows
 					IsOverlappedHidden = false,
 					IsMarkerOverlappingAllowed = true,
 					MinMovingDistance = 1,
-					CalloutStyle = LabelCalloutStyle.Underlined,
+					CalloutStyle = LabelCalloutStyle.None,
 					CalloutLineDashStyle = ChartDashStyle.Solid,
-					CalloutLineAnchorCapStyle = LineAnchorCapStyle.Arrow,
+					CalloutLineAnchorCapStyle = LineAnchorCapStyle.None,
 					CalloutLineWidth = 0,
 					MovingDirection = LabelAlignmentStyles.BottomLeft
 				}
@@ -384,7 +388,7 @@ namespace NFirmwareEditor.Windows
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
-					point.MarkerSize = 5;
+					point.MarkerSize = 7;
 					point.MarkerStyle = MarkerStyle.Circle;
 					data.SetLastValue(roundedValue);
 				}
@@ -405,13 +409,14 @@ namespace NFirmwareEditor.Windows
 
 				if (series.Points.Count > 0)
 				{
-					var point = series.Points[series.Points.Count - 1];
-					if (!point.IsEmpty)
+					var lastPoint = series.Points[series.Points.Count - 1];
+					if (lastPoint.IsEmpty) continue;
+
+					if (series.Points.Count > 1)
 					{
-						if (series.Points.Count > 1)
-						{
-							series.Points[series.Points.Count - 2].Label = null;
-						}
+						var preLastPoint = series.Points[series.Points.Count - 2];
+						preLastPoint.Label = null;
+						preLastPoint.MarkerSize = 0;
 					}
 				}
 			}
