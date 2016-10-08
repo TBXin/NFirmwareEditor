@@ -552,8 +552,8 @@ namespace NFirmwareEditor.Windows
 			var low = lowHigh[0];
 			var high = lowHigh[1];
 
-			if (value > high.Value) return high.Value;
-			if (value < low.Value) return low.Value;
+			if (value > high.Value) return high.Limit;
+			if (value < low.Value) return low.Limit;
 
 			return low.Limit + (value - low.Value) / (high.Value - low.Value) * (high.Limit - low.Limit);
 		}
