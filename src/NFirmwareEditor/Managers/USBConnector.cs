@@ -42,6 +42,7 @@ namespace NFirmwareEditor.Managers
 			{ "E052", new DeviceInfo("Joyetech eVic VTC Mini", 64, 40) },
 			{ "E043", new DeviceInfo("Joyetech eVic VTwo", 64, 40) },
 			{ "E115", new DeviceInfo("Joyetech eVic VTwo Mini", 64, 40) },
+			{ "E079", new DeviceInfo("Joyetech eVic VTC Dual", 64, 40) },
 			{ "E150", new DeviceInfo("Joyetech eVic Basic", 64, 40) },
 			{ "E092", new DeviceInfo("Joyetech eVic AIO", 64, 40) },
 

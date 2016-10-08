@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="eVic VTC Dual 4.02">
+  <Marker Offset="0x90" Bytes="0xA9 0x31" />
+  <Marker Offset="0xC0" Bytes="0xF1 0x99" />
+  <ImageTable1 From="0x10A38" To="0x10E54" />
+  <ImageTable2 From="0xE3C4" To="0xE7E0" />
+  <StringTable1 From="0x10F58" To="0x1127B" TwoBytesPerChar="true" />
+  <StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>
