@@ -148,7 +148,8 @@ namespace NFirmwareEditor.Windows
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
 			BroadcastButton.Click += BroadcastButton_Click;
-			RebootButton.Click += RebootButton_Click;
+			RestartButton.Click += RestartButton_Click;
+			ResetAndRestartButton.Click += ResetAndRestartButton_Click;
 
 			ComConnectButton.Click += ComConnectButton_Click;
 			ComDisconnectButton.Click += ComDisconnectButton_Click;
@@ -363,7 +364,11 @@ namespace NFirmwareEditor.Windows
 			m_usbConnector.StartUSBConnectionMonitoring();
 			m_comConnector.MessageReceived += COMMessage_Received;
 
-			Closing += (s, e) => Safe.Execute(() => m_comConnector.Disconnect());
+			Closing += (s, e) =>
+			{
+				m_isBroadcasting = false;
+				Safe.Execute(() => m_comConnector.Disconnect());
+			};
 		}
 
 		private void InitializeWorkspaceFromDataflash([NotNull] Dataflash dataflash)
@@ -805,7 +810,7 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void RebootButton_Click(object sender, EventArgs e)
+		private void RestartButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
@@ -817,6 +822,22 @@ namespace NFirmwareEditor.Windows
 			{
 				s_logger.Warn(ex);
 				InfoBox.Show(GetErrorMessage("restarting device"));
+			}
+		}
+
+		private void ResetAndRestartButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			try
+			{
+				m_usbConnector.ResetDataflash();
+				m_usbConnector.RestartDevice();
+			}
+			catch (Exception ex)
+			{
+				s_logger.Warn(ex);
+				InfoBox.Show(GetErrorMessage("resetting dataflash and restarting device"));
 			}
 		}
 
@@ -882,7 +903,7 @@ namespace NFirmwareEditor.Windows
 
 		private void SetControlButtonsState(bool enabled)
 		{
-			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = RebootButton.Enabled = enabled;
+			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = RestartButton.Enabled = ResetAndRestartButton.Enabled = enabled;
 			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = enabled;
 		}
 

@@ -166,16 +166,21 @@
 			this.ShuntCorrectionUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label55 = new System.Windows.Forms.Label();
 			this.ToolsTabPage = new System.Windows.Forms.TabPage();
-			this.label47 = new System.Windows.Forms.Label();
-			this.TakeScreenshotBeforeSaveCheckBox = new System.Windows.Forms.CheckBox();
-			this.BroadcastButton = new System.Windows.Forms.Button();
-			this.RebootButton = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.ResetAndRestartButton = new System.Windows.Forms.Button();
+			this.RestartButton = new System.Windows.Forms.Button();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.ScreenshotContainerPanel = new System.Windows.Forms.Panel();
 			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
-			this.TakeScreenshotButton = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
-			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label46 = new System.Windows.Forms.Label();
+			this.label47 = new System.Windows.Forms.Label();
+			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.TakeScreenshotBeforeSaveCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.TakeScreenshotButton = new System.Windows.Forms.Button();
+			this.BroadcastButton = new System.Windows.Forms.Button();
 			this.TerminalTabPage = new System.Windows.Forms.TabPage();
 			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.TraceTextBox = new System.Windows.Forms.TextBox();
@@ -223,9 +228,13 @@
 			this.ExpertTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
 			this.ToolsTabPage.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.ScreenshotContainerPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
+			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
+			this.groupBox1.SuspendLayout();
 			this.TerminalTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
 			this.SuspendLayout();
@@ -1842,7 +1851,7 @@
 			this.ExpertTabPage.Text = "Expert";
 			this.ExpertTabPage.UseVisualStyleBackColor = true;
 			// 
-			// BattetyEditButton
+			// BatteryEditButton
 			// 
 			this.BatteryEditButton.Location = new System.Drawing.Point(100, 62);
 			this.BatteryEditButton.Name = "BatteryEditButton";
@@ -1917,15 +1926,10 @@
 			// 
 			// ToolsTabPage
 			// 
-			this.ToolsTabPage.Controls.Add(this.label47);
-			this.ToolsTabPage.Controls.Add(this.TakeScreenshotBeforeSaveCheckBox);
-			this.ToolsTabPage.Controls.Add(this.BroadcastButton);
-			this.ToolsTabPage.Controls.Add(this.RebootButton);
-			this.ToolsTabPage.Controls.Add(this.ScreenshotContainerPanel);
-			this.ToolsTabPage.Controls.Add(this.TakeScreenshotButton);
-			this.ToolsTabPage.Controls.Add(this.SaveScreenshotButton);
-			this.ToolsTabPage.Controls.Add(this.PixelSizeUpDown);
-			this.ToolsTabPage.Controls.Add(this.label46);
+			this.ToolsTabPage.Controls.Add(this.groupBox4);
+			this.ToolsTabPage.Controls.Add(this.groupBox3);
+			this.ToolsTabPage.Controls.Add(this.groupBox2);
+			this.ToolsTabPage.Controls.Add(this.groupBox1);
 			this.ToolsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ToolsTabPage.Name = "ToolsTabPage";
 			this.ToolsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1934,53 +1938,50 @@
 			this.ToolsTabPage.Text = "Tools";
 			this.ToolsTabPage.UseVisualStyleBackColor = true;
 			// 
-			// label47
+			// groupBox4
 			// 
-			this.label47.AutoSize = true;
-			this.label47.Location = new System.Drawing.Point(80, 125);
-			this.label47.Name = "label47";
-			this.label47.Size = new System.Drawing.Size(95, 13);
-			this.label47.TabIndex = 66;
-			this.label47.Text = "Take before save:";
+			this.groupBox4.Controls.Add(this.ResetAndRestartButton);
+			this.groupBox4.Controls.Add(this.RestartButton);
+			this.groupBox4.Location = new System.Drawing.Point(6, 177);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(318, 48);
+			this.groupBox4.TabIndex = 71;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Device manipulations";
 			// 
-			// TakeScreenshotBeforeSaveCheckBox
+			// ResetAndRestartButton
 			// 
-			this.TakeScreenshotBeforeSaveCheckBox.AutoSize = true;
-			this.TakeScreenshotBeforeSaveCheckBox.Checked = true;
-			this.TakeScreenshotBeforeSaveCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.TakeScreenshotBeforeSaveCheckBox.Location = new System.Drawing.Point(233, 125);
-			this.TakeScreenshotBeforeSaveCheckBox.Name = "TakeScreenshotBeforeSaveCheckBox";
-			this.TakeScreenshotBeforeSaveCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.TakeScreenshotBeforeSaveCheckBox.TabIndex = 67;
-			this.TakeScreenshotBeforeSaveCheckBox.Text = "Enabled";
-			this.TakeScreenshotBeforeSaveCheckBox.UseVisualStyleBackColor = true;
+			this.ResetAndRestartButton.Location = new System.Drawing.Point(86, 16);
+			this.ResetAndRestartButton.Name = "ResetAndRestartButton";
+			this.ResetAndRestartButton.Size = new System.Drawing.Size(227, 25);
+			this.ResetAndRestartButton.TabIndex = 41;
+			this.ResetAndRestartButton.Text = "Reset dafaflash and restart";
+			this.ResetAndRestartButton.UseVisualStyleBackColor = true;
 			// 
-			// BroadcastButton
+			// RestartButton
 			// 
-			this.BroadcastButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.BroadcastButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BroadcastButton.Location = new System.Drawing.Point(81, 36);
-			this.BroadcastButton.Name = "BroadcastButton";
-			this.BroadcastButton.Size = new System.Drawing.Size(113, 25);
-			this.BroadcastButton.TabIndex = 41;
-			this.BroadcastButton.Text = "Start broadcast";
-			this.BroadcastButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.BroadcastButton.UseVisualStyleBackColor = true;
+			this.RestartButton.Location = new System.Drawing.Point(7, 16);
+			this.RestartButton.Name = "RestartButton";
+			this.RestartButton.Size = new System.Drawing.Size(75, 25);
+			this.RestartButton.TabIndex = 40;
+			this.RestartButton.Text = "Restart";
+			this.RestartButton.UseVisualStyleBackColor = true;
 			// 
-			// RebootButton
+			// groupBox3
 			// 
-			this.RebootButton.Location = new System.Drawing.Point(232, 5);
-			this.RebootButton.Name = "RebootButton";
-			this.RebootButton.Size = new System.Drawing.Size(92, 25);
-			this.RebootButton.TabIndex = 40;
-			this.RebootButton.Text = "Reboot device";
-			this.RebootButton.UseVisualStyleBackColor = true;
+			this.groupBox3.Controls.Add(this.ScreenshotContainerPanel);
+			this.groupBox3.Location = new System.Drawing.Point(6, 6);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(74, 165);
+			this.groupBox3.TabIndex = 70;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Screen";
 			// 
 			// ScreenshotContainerPanel
 			// 
 			this.ScreenshotContainerPanel.BackColor = System.Drawing.Color.Black;
 			this.ScreenshotContainerPanel.Controls.Add(this.ScreenshotPictureBox);
-			this.ScreenshotContainerPanel.Location = new System.Drawing.Point(6, 6);
+			this.ScreenshotContainerPanel.Location = new System.Drawing.Point(3, 20);
 			this.ScreenshotContainerPanel.Name = "ScreenshotContainerPanel";
 			this.ScreenshotContainerPanel.Size = new System.Drawing.Size(68, 132);
 			this.ScreenshotContainerPanel.TabIndex = 1;
@@ -1993,23 +1994,25 @@
 			this.ScreenshotPictureBox.TabIndex = 0;
 			this.ScreenshotPictureBox.TabStop = false;
 			// 
-			// TakeScreenshotButton
+			// groupBox2
 			// 
-			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(81, 5);
-			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
-			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.TakeScreenshotButton.TabIndex = 35;
-			this.TakeScreenshotButton.Text = "Take screenshot";
-			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			this.groupBox2.Controls.Add(this.SaveScreenshotButton);
+			this.groupBox2.Controls.Add(this.label46);
+			this.groupBox2.Controls.Add(this.label47);
+			this.groupBox2.Controls.Add(this.PixelSizeUpDown);
+			this.groupBox2.Controls.Add(this.TakeScreenshotBeforeSaveCheckBox);
+			this.groupBox2.Location = new System.Drawing.Point(86, 67);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(238, 104);
+			this.groupBox2.TabIndex = 69;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Saving screenshots";
 			// 
 			// SaveScreenshotButton
 			// 
 			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
 			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(81, 67);
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(5, 20);
 			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
 			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
 			this.SaveScreenshotButton.TabIndex = 36;
@@ -2017,9 +2020,27 @@
 			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
 			// 
+			// label46
+			// 
+			this.label46.AutoSize = true;
+			this.label46.Location = new System.Drawing.Point(5, 56);
+			this.label46.Name = "label46";
+			this.label46.Size = new System.Drawing.Size(99, 13);
+			this.label46.TabIndex = 38;
+			this.label46.Text = "Pixel size multiplier:";
+			// 
+			// label47
+			// 
+			this.label47.AutoSize = true;
+			this.label47.Location = new System.Drawing.Point(5, 81);
+			this.label47.Name = "label47";
+			this.label47.Size = new System.Drawing.Size(95, 13);
+			this.label47.TabIndex = 66;
+			this.label47.Text = "Take before save:";
+			// 
 			// PixelSizeUpDown
 			// 
-			this.PixelSizeUpDown.Location = new System.Drawing.Point(233, 98);
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(158, 54);
 			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
             8,
             0,
@@ -2039,14 +2060,50 @@
             0,
             0});
 			// 
-			// label46
+			// TakeScreenshotBeforeSaveCheckBox
 			// 
-			this.label46.AutoSize = true;
-			this.label46.Location = new System.Drawing.Point(80, 100);
-			this.label46.Name = "label46";
-			this.label46.Size = new System.Drawing.Size(99, 13);
-			this.label46.TabIndex = 38;
-			this.label46.Text = "Pixel size multiplier:";
+			this.TakeScreenshotBeforeSaveCheckBox.AutoSize = true;
+			this.TakeScreenshotBeforeSaveCheckBox.Location = new System.Drawing.Point(158, 81);
+			this.TakeScreenshotBeforeSaveCheckBox.Name = "TakeScreenshotBeforeSaveCheckBox";
+			this.TakeScreenshotBeforeSaveCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.TakeScreenshotBeforeSaveCheckBox.TabIndex = 67;
+			this.TakeScreenshotBeforeSaveCheckBox.Text = "Enabled";
+			this.TakeScreenshotBeforeSaveCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.TakeScreenshotButton);
+			this.groupBox1.Controls.Add(this.BroadcastButton);
+			this.groupBox1.Location = new System.Drawing.Point(86, 6);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(238, 55);
+			this.groupBox1.TabIndex = 68;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Taking screenshots";
+			// 
+			// TakeScreenshotButton
+			// 
+			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(5, 20);
+			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
+			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.TakeScreenshotButton.TabIndex = 35;
+			this.TakeScreenshotButton.Text = "Take screenshot";
+			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			// 
+			// BroadcastButton
+			// 
+			this.BroadcastButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.BroadcastButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BroadcastButton.Location = new System.Drawing.Point(120, 20);
+			this.BroadcastButton.Name = "BroadcastButton";
+			this.BroadcastButton.Size = new System.Drawing.Size(113, 25);
+			this.BroadcastButton.TabIndex = 41;
+			this.BroadcastButton.Text = "Start broadcast";
+			this.BroadcastButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.BroadcastButton.UseVisualStyleBackColor = true;
 			// 
 			// TerminalTabPage
 			// 
@@ -2195,10 +2252,14 @@
 			this.ExpertTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.ToolsTabPage.ResumeLayout(false);
-			this.ToolsTabPage.PerformLayout();
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
 			this.ScreenshotContainerPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
+			this.groupBox1.ResumeLayout(false);
 			this.TerminalTabPage.ResumeLayout(false);
 			this.TerminalTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
@@ -2350,7 +2411,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
 		private System.Windows.Forms.TextBox CommandTextBox;
-		private System.Windows.Forms.Button RebootButton;
+		private System.Windows.Forms.Button RestartButton;
 		private System.Windows.Forms.Button BroadcastButton;
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.CheckBox TakeScreenshotBeforeSaveCheckBox;
@@ -2363,5 +2424,10 @@
 		private System.Windows.Forms.Label label56;
 		private System.Windows.Forms.ComboBox BatteryModelComboBox;
 		private System.Windows.Forms.Button BatteryEditButton;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.Button ResetAndRestartButton;
 	}
 }
