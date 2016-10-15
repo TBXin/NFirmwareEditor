@@ -116,9 +116,11 @@ namespace NFirmwareEditor.Windows.Tabs
 		{
 			m_firmware = firmware;
 
-			Block1ImageRadioButton.Enabled = true;
-			Block1ImageRadioButton.Checked = true;
+			Block1ImageRadioButton.Enabled = m_firmware.Block1Images.Any();
 			Block2ImageRadioButton.Enabled = m_firmware.Block2Images.Any();
+
+			if (Block2ImageRadioButton.Enabled) Block2ImageRadioButton.Checked = true;
+			if (Block1ImageRadioButton.Enabled) Block1ImageRadioButton.Checked = true;
 
 			Block2ImageListBox.Fill(m_firmware.Block2Images.Values.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);
 			Block1ImageListBox.Fill(m_firmware.Block1Images.Values.Select(x => new ImagedItem<FirmwareImageMetadata>(x, x.Index, string.Format("0x{0:X2}", x.Index))), true);

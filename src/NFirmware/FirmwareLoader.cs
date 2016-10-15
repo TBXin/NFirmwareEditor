@@ -171,7 +171,7 @@ namespace NFirmware
 			{
 				long offsetFrom;
 				long offsetTo;
-				GetOffsets(imageTableDefinition, reader, out offsetFrom, out offsetTo);
+				if (!GetOffsets(imageTableDefinition, reader, out offsetFrom, out offsetTo)) return result;
 
 				var offsetsTable = new List<Tuple<long, long>>();
 				reader.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
@@ -206,7 +206,7 @@ namespace NFirmware
 			{
 				long offsetFrom;
 				long offsetTo;
-				GetOffsets(stringTableDefinition, reader, out offsetFrom, out offsetTo);
+				if (!GetOffsets(stringTableDefinition, reader, out offsetFrom, out offsetTo)) return result;
 
 				reader.BaseStream.Seek(offsetFrom, SeekOrigin.Begin);
 				while (reader.BaseStream.Position <= offsetTo)
@@ -239,20 +239,30 @@ namespace NFirmware
 			return result;
 		}
 
-		private void GetOffsets(FirmwareTableDefinition table, BinaryReader reader, out long offsetFrom, out long offsetTo)
+		private bool GetOffsets(FirmwareTableDefinition table, BinaryReader reader, out long offsetFrom, out long offsetTo)
 		{
+			offsetFrom = 0;
+			offsetTo = 0;
+
 			if (table.IsPtrTable)
 			{
 				reader.BaseStream.Seek(table.OffsetPtrFrom, SeekOrigin.Begin);
-				offsetFrom = reader.ReadUInt32();
+				var tempOffsetFrom = reader.ReadUInt32();
+				if (tempOffsetFrom == 0) return false;
+
 				reader.BaseStream.Seek(table.OffsetPtrTo, SeekOrigin.Begin);
-				offsetTo = reader.ReadUInt32() - 4;
+				var tempOffsetTo = reader.ReadUInt32();
+				if (tempOffsetTo == 0) return false;
+				if (tempOffsetFrom > tempOffsetTo - 4) return false;
+
+				offsetFrom = tempOffsetFrom;
+				offsetTo = tempOffsetTo - 4;
+				return true;
 			}
-			else
-			{
-				offsetFrom = table.OffsetFrom;
-				offsetTo = table.OffsetTo;
-			}
+
+			offsetFrom = table.OffsetFrom;
+			offsetTo = table.OffsetTo;
+			return true;
 		}
 
 		private short ReadChar(BinaryReader reader, bool twoBytesPerChar)
