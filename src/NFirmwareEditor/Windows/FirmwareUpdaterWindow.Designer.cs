@@ -32,14 +32,17 @@ namespace NFirmwareEditor.Windows
 		{
 			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.CommonTabPage = new System.Windows.Forms.TabPage();
 			this.LogoButton = new System.Windows.Forms.Button();
 			this.UpdateButton = new System.Windows.Forms.Button();
 			this.UpdateFromFileButton = new System.Windows.Forms.Button();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.DataflashTabPage = new System.Windows.Forms.TabPage();
 			this.WriteDataflashButton = new System.Windows.Forms.Button();
 			this.ReadDataflashButton = new System.Windows.Forms.Button();
 			this.ResetDataflashButton = new System.Windows.Forms.Button();
+			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
+			this.ChangeBootModeButton = new System.Windows.Forms.Button();
+			this.ChangeHWButton = new System.Windows.Forms.Button();
 			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
@@ -56,8 +59,9 @@ namespace NFirmwareEditor.Windows
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel3.SuspendLayout();
 			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.CommonTabPage.SuspendLayout();
+			this.DataflashTabPage.SuspendLayout();
+			this.AdvancedTabPage.SuspendLayout();
 			this.groupPanel2.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.ControlBorderedPanel.SuspendLayout();
@@ -83,9 +87,10 @@ namespace NFirmwareEditor.Windows
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.ItemSize = new System.Drawing.Size(158, 18);
+			this.tabControl1.Controls.Add(this.CommonTabPage);
+			this.tabControl1.Controls.Add(this.DataflashTabPage);
+			this.tabControl1.Controls.Add(this.AdvancedTabPage);
+			this.tabControl1.ItemSize = new System.Drawing.Size(105, 18);
 			this.tabControl1.Location = new System.Drawing.Point(4, 33);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -93,18 +98,18 @@ namespace NFirmwareEditor.Windows
 			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.tabControl1.TabIndex = 0;
 			// 
-			// tabPage1
+			// CommonTabPage
 			// 
-			this.tabPage1.Controls.Add(this.LogoButton);
-			this.tabPage1.Controls.Add(this.UpdateButton);
-			this.tabPage1.Controls.Add(this.UpdateFromFileButton);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(312, 36);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Common";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.CommonTabPage.Controls.Add(this.LogoButton);
+			this.CommonTabPage.Controls.Add(this.UpdateButton);
+			this.CommonTabPage.Controls.Add(this.UpdateFromFileButton);
+			this.CommonTabPage.Location = new System.Drawing.Point(4, 22);
+			this.CommonTabPage.Name = "CommonTabPage";
+			this.CommonTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.CommonTabPage.Size = new System.Drawing.Size(312, 36);
+			this.CommonTabPage.TabIndex = 0;
+			this.CommonTabPage.Text = "Common";
+			this.CommonTabPage.UseVisualStyleBackColor = true;
 			// 
 			// LogoButton
 			// 
@@ -136,18 +141,18 @@ namespace NFirmwareEditor.Windows
 			this.UpdateFromFileButton.Text = "Update from file";
 			this.UpdateFromFileButton.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// DataflashTabPage
 			// 
-			this.tabPage2.Controls.Add(this.WriteDataflashButton);
-			this.tabPage2.Controls.Add(this.ReadDataflashButton);
-			this.tabPage2.Controls.Add(this.ResetDataflashButton);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(312, 36);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Advanced";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.DataflashTabPage.Controls.Add(this.WriteDataflashButton);
+			this.DataflashTabPage.Controls.Add(this.ReadDataflashButton);
+			this.DataflashTabPage.Controls.Add(this.ResetDataflashButton);
+			this.DataflashTabPage.Location = new System.Drawing.Point(4, 22);
+			this.DataflashTabPage.Name = "DataflashTabPage";
+			this.DataflashTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.DataflashTabPage.Size = new System.Drawing.Size(312, 36);
+			this.DataflashTabPage.TabIndex = 1;
+			this.DataflashTabPage.Text = "Dataflash";
+			this.DataflashTabPage.UseVisualStyleBackColor = true;
 			// 
 			// WriteDataflashButton
 			// 
@@ -180,6 +185,38 @@ namespace NFirmwareEditor.Windows
 			this.ResetDataflashButton.TabIndex = 0;
 			this.ResetDataflashButton.Text = "Reset dataflash";
 			this.ResetDataflashButton.UseVisualStyleBackColor = true;
+			// 
+			// AdvancedTabPage
+			// 
+			this.AdvancedTabPage.Controls.Add(this.ChangeBootModeButton);
+			this.AdvancedTabPage.Controls.Add(this.ChangeHWButton);
+			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
+			this.AdvancedTabPage.Name = "AdvancedTabPage";
+			this.AdvancedTabPage.Size = new System.Drawing.Size(312, 36);
+			this.AdvancedTabPage.TabIndex = 2;
+			this.AdvancedTabPage.Text = "Advanced";
+			this.AdvancedTabPage.UseVisualStyleBackColor = true;
+			// 
+			// ChangeBootModeButton
+			// 
+			this.ChangeBootModeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ChangeBootModeButton.Enabled = false;
+			this.ChangeBootModeButton.Location = new System.Drawing.Point(158, 1);
+			this.ChangeBootModeButton.Name = "ChangeBootModeButton";
+			this.ChangeBootModeButton.Size = new System.Drawing.Size(153, 35);
+			this.ChangeBootModeButton.TabIndex = 3;
+			this.ChangeBootModeButton.Text = "Switch boot mode";
+			this.ChangeBootModeButton.UseVisualStyleBackColor = true;
+			// 
+			// ChangeHWButton
+			// 
+			this.ChangeHWButton.Enabled = false;
+			this.ChangeHWButton.Location = new System.Drawing.Point(-1, 1);
+			this.ChangeHWButton.Name = "ChangeHWButton";
+			this.ChangeHWButton.Size = new System.Drawing.Size(153, 35);
+			this.ChangeHWButton.TabIndex = 1;
+			this.ChangeHWButton.Text = "Change HW Version";
+			this.ChangeHWButton.UseVisualStyleBackColor = true;
 			// 
 			// groupPanel2
 			// 
@@ -362,8 +399,9 @@ namespace NFirmwareEditor.Windows
 			this.Text = "NFirmwareEditor - Updater";
 			this.groupPanel3.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
+			this.CommonTabPage.ResumeLayout(false);
+			this.DataflashTabPage.ResumeLayout(false);
+			this.AdvancedTabPage.ResumeLayout(false);
 			this.groupPanel2.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
@@ -393,10 +431,13 @@ namespace NFirmwareEditor.Windows
 		private GroupPanel groupPanel2;
 		private GroupPanel groupPanel3;
 		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage CommonTabPage;
+		private System.Windows.Forms.TabPage DataflashTabPage;
 		private System.Windows.Forms.Button ReadDataflashButton;
 		private System.Windows.Forms.Button WriteDataflashButton;
 		private System.Windows.Forms.Button LogoButton;
+		private System.Windows.Forms.TabPage AdvancedTabPage;
+		private System.Windows.Forms.Button ChangeHWButton;
+		private System.Windows.Forms.Button ChangeBootModeButton;
 	}
 }

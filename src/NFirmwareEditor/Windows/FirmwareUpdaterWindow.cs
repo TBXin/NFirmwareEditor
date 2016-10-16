@@ -20,6 +20,7 @@ namespace NFirmwareEditor.Windows
 		private readonly FirmwareLoader m_loader;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
+		private SimpleDataflash m_dataflash;
 		private DeviceInfo m_deviceInfo = USBConnector.UnknownDevice;
 		private string m_connectedDeviceProductId;
 		private string m_hardwareVersion;
@@ -49,28 +50,27 @@ namespace NFirmwareEditor.Windows
 			if (isConnected)
 			{
 				System.Diagnostics.Trace.WriteLine("Connected " + DateTime.Now);
-				SimpleDataflash simpleDataflash;
 
 				try
 				{
-					simpleDataflash = m_connector.ReadDataflash();
+					m_dataflash = m_connector.ReadDataflash();
 				}
 				catch
 				{
 					return;
 				}
 
-				m_connectedDeviceProductId = simpleDataflash.ProductId;
+				m_connectedDeviceProductId = m_dataflash.ProductId;
 				m_deviceInfo = USBConnector.GetDeviceInfo(m_connectedDeviceProductId);
-				m_hardwareVersion = simpleDataflash.HardwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
-				m_firmwareVersion = simpleDataflash.FirmwareVersion.ToString("0.00", CultureInfo.InvariantCulture);
+				m_hardwareVersion = (m_dataflash.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
+				m_firmwareVersion = (m_dataflash.FirmwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 
 				UpdateUI(() =>
 				{
 					DeviceNameTextBox.Text = m_deviceInfo.Name;
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
-					BootModeTextBox.Text = simpleDataflash.LoadFromLdrom ? "LDROM" : "APROM";
+					BootModeTextBox.Text = m_dataflash.LoadFromLdrom ? "LDROM" : "APROM";
 					UpdateStatusLabel.Text = @"Device is ready.";
 					SetUpdaterButtonsState(true);
 				});
@@ -78,6 +78,9 @@ namespace NFirmwareEditor.Windows
 			else
 			{
 				System.Diagnostics.Trace.WriteLine("Disconnected " + DateTime.Now);
+				m_connectedDeviceProductId = null;
+				m_dataflash = null;
+
 				UpdateUI(() =>
 				{
 					DeviceNameTextBox.Clear();
@@ -87,7 +90,6 @@ namespace NFirmwareEditor.Windows
 					UpdateStatusLabel.Text = @"Waiting for device...";
 					SetUpdaterButtonsState(false);
 				});
-				m_connectedDeviceProductId = null;
 			}
 		}
 
@@ -114,6 +116,9 @@ namespace NFirmwareEditor.Windows
 			ResetDataflashButton.Click += ResetDataflashButton_Click;
 			ReadDataflashButton.Click += ReadDataflashButton_Click;
 			WriteDataflashButton.Click += WriteDataflashButton_Click;
+
+			ChangeHWButton.Click += ChangeHWButton_Click;
+			ChangeBootModeButton.Click += ChangeBootModeButton_Click;
 		}
 
 		private void UpdateFirmware(Func<byte[]> firmwareFunc)
@@ -250,6 +255,9 @@ namespace NFirmwareEditor.Windows
 			ResetDataflashButton.Enabled = enabled;
 			ReadDataflashButton.Enabled = enabled;
 			WriteDataflashButton.Enabled = enabled;
+
+			ChangeHWButton.Enabled = enabled;
+			ChangeBootModeButton.Enabled = enabled;
 		}
 
 		private void SetAllButtonsState(bool enabled)
@@ -380,7 +388,50 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("An error occured during dataflash reading.\n" + ex.Message);
+				InfoBox.Show("An error occured during dataflash write.\n" + ex.Message);
+			}
+		}
+
+		private void ChangeHWButton_Click(object sender, EventArgs e)
+		{
+			if (m_dataflash == null) return;
+
+			using (var hwVersionDialog = new HardwareVersionWindow(m_dataflash.HardwareVersion))
+			{
+				if (hwVersionDialog.ShowDialog() != DialogResult.OK) return;
+				m_dataflash.HardwareVersion = hwVersionDialog.GetNewHWVersion();
+			}
+
+			try
+			{
+				m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+				{
+					WriteDataflashAsyncWorker(worker, m_dataflash);
+					m_connector.RestartDevice();
+				}));
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("An error occured during dataflash write.\n" + ex.Message);
+			}
+		}
+
+		private void ChangeBootModeButton_Click(object sender, EventArgs e)
+		{
+			if (m_dataflash == null) return;
+
+			m_dataflash.LoadFromLdrom = !m_dataflash.LoadFromLdrom;
+			try
+			{
+				m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+				{
+					WriteDataflashAsyncWorker(worker, m_dataflash);
+					m_connector.RestartDevice();
+				}));
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("An error occured during switching boot mode.\n" + ex.Message);
 			}
 		}
 

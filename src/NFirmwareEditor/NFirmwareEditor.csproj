@@ -167,6 +167,12 @@
     <Compile Include="Windows\FirmwareUpdaterWindow.Designer.cs">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.Designer.cs">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\HotkeyHelpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
       <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\HardwareVersionWindow.resx">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\HotkeyHelpWindow.resx">
       <DependentUpon>HotkeyHelpWindow.cs</DependentUpon>

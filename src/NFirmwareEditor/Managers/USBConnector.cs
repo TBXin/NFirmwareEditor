@@ -379,21 +379,26 @@ namespace NFirmwareEditor.Managers
 			get { return Encoding.UTF8.GetString(Data, ProductIdOffset, ProductIdLength); }
 		}
 
-		public float HardwareVersion
+		public int HardwareVersion
 		{
 			get
 			{
 				var hwInt = BitConverter.ToInt32(Data, HwVerOffset);
-				return hwInt / 100f;
+				return hwInt;
+			}
+			set
+			{
+				var newHwBytes = BitConverter.GetBytes(value);
+				Buffer.BlockCopy(newHwBytes, 0, Data, HwVerOffset, newHwBytes.Length);
 			}
 		}
 
-		public float FirmwareVersion
+		public int FirmwareVersion
 		{
 			get
 			{
 				var hwInt = BitConverter.ToInt32(Data, FwVerOffset);
-				return hwInt / 100f;
+				return hwInt;
 			}
 		}
 
