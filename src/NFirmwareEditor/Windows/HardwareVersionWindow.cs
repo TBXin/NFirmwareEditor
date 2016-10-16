@@ -6,8 +6,18 @@
 		{
 			InitializeComponent();
 
-			CurrentHWUpDown.Minimum = CurrentHWUpDown.Maximum = CurrentHWUpDown.Value = currentHwVersion / 100m;
-			NewHWUpDown.Value = currentHwVersion / 100m;
+			var version = currentHwVersion / 100m;
+			if (version < CurrentHWUpDown.Minimum || version > CurrentHWUpDown.Maximum)
+			{
+				CurrentHWUpDown.Minimum = 0;
+				CurrentHWUpDown.Maximum = 0;
+				CurrentHWUpDown.Value = 0;
+			}
+			else
+			{
+				CurrentHWUpDown.Minimum = CurrentHWUpDown.Maximum = version;
+				NewHWUpDown.Value = version;
+			}
 		}
 
 		public int GetNewHWVersion()
