@@ -1,0 +1,9 @@
+﻿<Patch Definition="iStick Pico 1.00" Name="Dim Timeout 5 s" Version="1.0" Author="NFirmwareEditor Team">
+  <Description>Sets screen dim timeout to 5 sec.</Description>
+  <Data>
+000010D2: 1E - 05
+000037B4: 1E - 05
+00004F50: 1E - 05
+000060B0: 1E - 05
+</Data>
+</Patch>

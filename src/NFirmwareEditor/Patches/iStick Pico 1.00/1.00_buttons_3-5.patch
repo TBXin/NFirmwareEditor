@@ -1,0 +1,20 @@
+﻿<Patch Definition="iStick Pico 1.00" Name="Button click changer" Version="1.0" Author="cz">
+	<Description>Change the number of button clicks for events. Based on MicroSur's mods to 1.01.
+old - menu:3 on-off:5 temp:10 fwver:20
+new - menu:5 on-off:3 temp: 6 fwver:7
+menu must now be accessed from off state
+	</Description>
+	<Data>
+#menu           3 -> 5
+#on/off         5 -> 3
+
+# greater than 6 here
+4026: 0A 06 ; show mod temp 6 From OFF state!
+402A: 14 07 ; show fw ver   7 From OFF state!
+
+#do not edit
+3FFA: 26 24 ; patch 5 click function to 3 click function
+4004: 1F 21 ; patch 3 click function to 5 click function From OFF state!
+
+	</Data>
+</Patch>
