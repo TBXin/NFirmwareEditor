@@ -19,6 +19,10 @@ namespace NFirmwareEditor.Windows
 	internal partial class DeviceConfiguratorWindow : EditorDialogWindow
 	{
 		private const int MinimumSupportedBuildNumber = 161002;
+
+		private const int MinimumWatts = 1;
+		private const int MaximumWatts = 250;
+		
 		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
@@ -62,6 +66,12 @@ namespace NFirmwareEditor.Windows
 
 			InititalizeComboBoxes();
 
+			PowerUpDown.Minimum = MinimumWatts;
+			PowerUpDown.Maximum = MaximumWatts;
+
+			TCPowerUpDown.Minimum = MinimumWatts;
+			TCPowerUpDown.Maximum = MaximumWatts;
+
 			TemperatureTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var isCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
@@ -91,8 +101,8 @@ namespace NFirmwareEditor.Windows
 				{
 					PreheatPowerUpDown.DecimalPlaces = 1;
 					PreheatPowerUpDown.Increment = 0.1m;
-					PreheatPowerUpDown.Minimum = 1;
-					PreheatPowerUpDown.Maximum = 75;
+					PreheatPowerUpDown.Minimum = MinimumWatts;
+					PreheatPowerUpDown.Maximum = MaximumWatts;
 				}
 			};
 
@@ -382,8 +392,8 @@ namespace NFirmwareEditor.Windows
 			BootModeTextBox.Text = dataflash.ParamsBlock.BootMode.ToString();
 
 			// General -> Power & Temp Tab
-			PowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.Power / 10m, 75));
-			TCPowerUpDown.Value = Math.Max(1, Math.Min(dataflash.ParamsBlock.TCPower / 10m, 75));
+			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(dataflash.ParamsBlock.Power / 10m, PowerUpDown.Maximum));
+			TCPowerUpDown.Value = Math.Max(TCPowerUpDown.Minimum, Math.Min(dataflash.ParamsBlock.TCPower / 10m, TCPowerUpDown.Maximum));
 			Step1WCheckBox.Checked = dataflash.ParamsBlock.Status.Step1W;
 
 			TemperatureTypeComboBox.SelectItem(dataflash.ParamsBlock.IsCelsius);
@@ -391,7 +401,7 @@ namespace NFirmwareEditor.Windows
 			TemperatureDominantCheckBox.Checked = dataflash.ParamsBlock.Status.TemperatureDominant;
 
 			PreheatTypeComboBox.SelectItem(dataflash.ParamsBlock.Status.PreheatPercent);
-			PreheatPowerUpDown.Value = dataflash.ParamsBlock.Status.PreheatPercent ? dataflash.ParamsBlock.PreheatPwr : Math.Max(1, Math.Min(dataflash.ParamsBlock.PreheatPwr / 10m, 75));
+			PreheatPowerUpDown.Value = dataflash.ParamsBlock.Status.PreheatPercent ? dataflash.ParamsBlock.PreheatPwr : Math.Max(PreheatPowerUpDown.Minimum, Math.Min(dataflash.ParamsBlock.PreheatPwr / 10m, PreheatPowerUpDown.Maximum));
 			PreheatTimeUpDown.Value = dataflash.ParamsBlock.PreheatTime / 100m;
 
 			// General -> Coils Manager Tab
