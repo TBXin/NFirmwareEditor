@@ -6,6 +6,8 @@ namespace NToolbox
 {
 	internal class ExtendedButton : Control
 	{
+		private const int ImageOffset = 5;
+
 		private static readonly TextFormatFlags s_headerFormatFlags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak;
 		private static readonly StringFormat s_headerStringFormat = new StringFormat
 		{
@@ -13,10 +15,17 @@ namespace NToolbox
 			LineAlignment = StringAlignment.Center
 		};
 
-		private const int ImageOffset = 5;
 		private bool m_isMouseOver;
+		private bool m_isMouseDown;
 		private string m_additionalText;
 		private Image m_image;
+
+		public ExtendedButton()
+		{
+			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+			SetStyle(ControlStyles.Selectable, false);
+			UpdateStyles();
+		}
 
 		public string AdditionalText
 		{
@@ -55,6 +64,22 @@ namespace NToolbox
 			Invalidate();
 		}
 
+		protected override void OnMouseDown(MouseEventArgs e)
+		{
+			base.OnMouseDown(e);
+
+			m_isMouseDown = true;
+			Invalidate();
+		}
+
+		protected override void OnMouseUp(MouseEventArgs e)
+		{
+			base.OnMouseUp(e);
+
+			m_isMouseDown = false;	
+			Invalidate();
+		}
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
@@ -77,10 +102,10 @@ namespace NToolbox
 
 		private void DrawBorder(Graphics gfx, Rectangle rect)
 		{
-			/*if (m_isMouseOver)
+			if (m_isMouseDown)
 			{
-				gfx.DrawRectangle(SystemPens.Highlight, rect);
-			}*/
+				gfx.FillRectangle(new SolidBrush(Color.FromArgb(25, SystemColors.Highlight)), rect);
+			}
 			gfx.DrawRectangle(m_isMouseOver ? SystemPens.Highlight : SystemPens.ActiveBorder, rect);
 		}
 
