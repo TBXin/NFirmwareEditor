@@ -123,7 +123,7 @@ namespace NToolbox
 			}
 			catch
 			{
-				gfx.DrawString(text, Font, new SolidBrush(ForeColor), rect, s_headerStringFormat);
+				gfx.DrawString(text, font, new SolidBrush(ForeColor), rect, s_headerStringFormat);
 			}
 		}
 
