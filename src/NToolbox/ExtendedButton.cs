@@ -6,7 +6,7 @@ namespace NToolbox
 {
 	internal class ExtendedButton : Control
 	{
-		private static readonly TextFormatFlags s_headerFormatFlags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter;
+		private static readonly TextFormatFlags s_headerFormatFlags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak;
 		private static readonly StringFormat s_headerStringFormat = new StringFormat
 		{
 			Alignment = StringAlignment.Near,
@@ -15,10 +15,28 @@ namespace NToolbox
 
 		private const int ImageOffset = 5;
 		private bool m_isMouseOver;
+		private string m_additionalText;
+		private Image m_image;
 
-		public string AdditionalText { get; set; }
+		public string AdditionalText
+		{
+			get { return m_additionalText; }
+			set
+			{
+				m_additionalText = value;
+				Invalidate();
+			}
+		}
 
-		public Image Image { get; set; }
+		public Image Image
+		{
+			get { return m_image; }
+			set
+			{
+				m_image = value;
+				Invalidate();
+			}
+		}
 
 		#region Overrides of Control
 		protected override void OnMouseEnter(EventArgs e)
@@ -59,10 +77,11 @@ namespace NToolbox
 
 		private void DrawBorder(Graphics gfx, Rectangle rect)
 		{
-			if (m_isMouseOver)
+			/*if (m_isMouseOver)
 			{
 				gfx.DrawRectangle(SystemPens.Highlight, rect);
-			}
+			}*/
+			gfx.DrawRectangle(m_isMouseOver ? SystemPens.Highlight : SystemPens.ActiveBorder, rect);
 		}
 
 		private void DrawText(Graphics gfx, Rectangle rect)

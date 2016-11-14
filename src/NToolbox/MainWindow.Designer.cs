@@ -30,6 +30,7 @@ namespace NToolbox
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.panel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.panel2 = new NFirmwareEditor.UI.BorderedPanel();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -44,7 +45,7 @@ namespace NToolbox
 			// 
 			// panel1
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Black;
+			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.BorderBottom = false;
 			this.panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.panel1.BorderLeft = false;
@@ -56,7 +57,7 @@ namespace NToolbox
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(256, 469);
+			this.panel1.Size = new System.Drawing.Size(218, 415);
 			this.panel1.TabIndex = 4;
 			// 
 			// panel2
@@ -75,25 +76,28 @@ namespace NToolbox
 			this.panel2.Controls.Add(this.extendedButton3);
 			this.panel2.Controls.Add(this.extendedButton1);
 			this.panel2.Controls.Add(this.extendedButton4);
-			this.panel2.Location = new System.Drawing.Point(0, 261);
+			this.panel2.Location = new System.Drawing.Point(0, 214);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(256, 208);
+			this.panel2.Size = new System.Drawing.Size(218, 201);
 			this.panel2.TabIndex = 4;
 			// 
 			// pictureBox1
 			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
-			this.pictureBox1.Location = new System.Drawing.Point(0, 1);
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Location = new System.Drawing.Point(17, 3);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(256, 258);
+			this.pictureBox1.Size = new System.Drawing.Size(184, 205);
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
 			// extendedButton2
 			// 
 			this.extendedButton2.AdditionalText = "";
-			this.extendedButton2.Image = global::NToolbox.Properties.Resources.myEvic_configuration;
-			this.extendedButton2.Location = new System.Drawing.Point(29, 60);
+			this.extendedButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.extendedButton2.Image = ((System.Drawing.Image)(resources.GetObject("extendedButton2.Image")));
+			this.extendedButton2.Location = new System.Drawing.Point(9, 54);
 			this.extendedButton2.Name = "extendedButton2";
 			this.extendedButton2.Size = new System.Drawing.Size(200, 42);
 			this.extendedButton2.TabIndex = 1;
@@ -102,8 +106,9 @@ namespace NToolbox
 			// extendedButton3
 			// 
 			this.extendedButton3.AdditionalText = "";
+			this.extendedButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.extendedButton3.Image = global::NToolbox.Properties.Resources.device_monitor;
-			this.extendedButton3.Location = new System.Drawing.Point(29, 108);
+			this.extendedButton3.Location = new System.Drawing.Point(9, 102);
 			this.extendedButton3.Name = "extendedButton3";
 			this.extendedButton3.Size = new System.Drawing.Size(200, 42);
 			this.extendedButton3.TabIndex = 2;
@@ -112,8 +117,9 @@ namespace NToolbox
 			// extendedButton1
 			// 
 			this.extendedButton1.AdditionalText = "";
-			this.extendedButton1.Image = global::NToolbox.Properties.Resources.af_configuration;
-			this.extendedButton1.Location = new System.Drawing.Point(29, 12);
+			this.extendedButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.extendedButton1.Image = ((System.Drawing.Image)(resources.GetObject("extendedButton1.Image")));
+			this.extendedButton1.Location = new System.Drawing.Point(9, 6);
 			this.extendedButton1.Name = "extendedButton1";
 			this.extendedButton1.Size = new System.Drawing.Size(200, 42);
 			this.extendedButton1.TabIndex = 0;
@@ -122,8 +128,9 @@ namespace NToolbox
 			// extendedButton4
 			// 
 			this.extendedButton4.AdditionalText = "";
+			this.extendedButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.extendedButton4.Image = global::NToolbox.Properties.Resources.firmware_updater;
-			this.extendedButton4.Location = new System.Drawing.Point(29, 156);
+			this.extendedButton4.Location = new System.Drawing.Point(9, 150);
 			this.extendedButton4.Name = "extendedButton4";
 			this.extendedButton4.Size = new System.Drawing.Size(200, 42);
 			this.extendedButton4.TabIndex = 3;
@@ -134,7 +141,7 @@ namespace NToolbox
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(256, 469);
+			this.ClientSize = new System.Drawing.Size(218, 415);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -63,9 +63,9 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap af_configuration {
+        internal static System.Drawing.Bitmap configuration {
             get {
-                object obj = ResourceManager.GetObject("af_configuration", resourceCulture);
+                object obj = ResourceManager.GetObject("configuration", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,16 +86,6 @@ namespace NToolbox.Properties {
         internal static System.Drawing.Bitmap firmware_updater {
             get {
                 object obj = ResourceManager.GetObject("firmware_updater", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap myEvic_configuration {
-            get {
-                object obj = ResourceManager.GetObject("myEvic_configuration", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
