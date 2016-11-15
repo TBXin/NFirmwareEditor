@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
+using NCore;
 using NCore.USB;
+using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
@@ -54,7 +56,8 @@ namespace NToolbox.Windows
 			if (!isConnected) return;
 
 			var data = m_connector.ReadConfiguration();
-			data = data;
+			var af = BinaryStructureManager.Read<ArcticFoxConfiguration>(data);
+			af = af;
 		}
 
 		private DialogResult ShowDialogWindow(Form window)
