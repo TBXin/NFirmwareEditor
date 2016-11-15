@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFirmware.Tests", "NFirmwar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NToolbox", "NToolbox\NToolbox.csproj", "{CCF4DA99-E644-4E9E-A4CC-6F30623FA2AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCore", "NCore\NCore.csproj", "{B256F46A-BFD9-4A53-B3D9-A808216F074B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CCF4DA99-E644-4E9E-A4CC-6F30623FA2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCF4DA99-E644-4E9E-A4CC-6F30623FA2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCF4DA99-E644-4E9E-A4CC-6F30623FA2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

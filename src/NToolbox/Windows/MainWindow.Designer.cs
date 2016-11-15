@@ -1,6 +1,4 @@
-﻿using NFirmwareEditor.UI;
-
-namespace NToolbox
+﻿namespace NToolbox.Windows
 {
 	partial class MainWindow
 	{
@@ -32,11 +30,11 @@ namespace NToolbox
 		{
 			this.panel1 = new NFirmwareEditor.UI.BorderedPanel();
 			this.panel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.MyEvicConfigurationButton = new NToolbox.ExtendedButton();
+			this.DeviceMonitorButton = new NToolbox.ExtendedButton();
+			this.ArcticFoxConfigurationButton = new NToolbox.ExtendedButton();
+			this.FirmwareUpdaterButton = new NToolbox.ExtendedButton();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.extendedButton2 = new NToolbox.ExtendedButton();
-			this.extendedButton3 = new NToolbox.ExtendedButton();
-			this.extendedButton1 = new NToolbox.ExtendedButton();
-			this.extendedButton4 = new NToolbox.ExtendedButton();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,14 +69,58 @@ namespace NToolbox
 			this.panel2.BorderRight = false;
 			this.panel2.BorderTop = false;
 			this.panel2.BorderWidth = 1F;
-			this.panel2.Controls.Add(this.extendedButton2);
-			this.panel2.Controls.Add(this.extendedButton3);
-			this.panel2.Controls.Add(this.extendedButton1);
-			this.panel2.Controls.Add(this.extendedButton4);
+			this.panel2.Controls.Add(this.MyEvicConfigurationButton);
+			this.panel2.Controls.Add(this.DeviceMonitorButton);
+			this.panel2.Controls.Add(this.ArcticFoxConfigurationButton);
+			this.panel2.Controls.Add(this.FirmwareUpdaterButton);
 			this.panel2.Location = new System.Drawing.Point(0, 214);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(240, 242);
 			this.panel2.TabIndex = 4;
+			// 
+			// MyEvicConfigurationButton
+			// 
+			this.MyEvicConfigurationButton.AdditionalText = "";
+			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
+			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
+			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
+			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.MyEvicConfigurationButton.TabIndex = 1;
+			this.MyEvicConfigurationButton.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorButton
+			// 
+			this.DeviceMonitorButton.AdditionalText = "";
+			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
+			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
+			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
+			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
+			this.DeviceMonitorButton.TabIndex = 2;
+			this.DeviceMonitorButton.Text = "Device Monitor";
+			// 
+			// ArcticFoxConfigurationButton
+			// 
+			this.ArcticFoxConfigurationButton.AdditionalText = "";
+			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
+			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
+			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
+			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.ArcticFoxConfigurationButton.TabIndex = 0;
+			this.ArcticFoxConfigurationButton.Text = "Arctic Fox Configuration";
+			// 
+			// FirmwareUpdaterButton
+			// 
+			this.FirmwareUpdaterButton.AdditionalText = "";
+			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 180);
+			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
+			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
+			this.FirmwareUpdaterButton.TabIndex = 3;
+			this.FirmwareUpdaterButton.Text = "Firmware Updater";
 			// 
 			// pictureBox1
 			// 
@@ -90,50 +132,6 @@ namespace NToolbox
 			this.pictureBox1.Size = new System.Drawing.Size(184, 205);
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
-			// 
-			// extendedButton2
-			// 
-			this.extendedButton2.AdditionalText = "";
-			this.extendedButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.extendedButton2.Image = global::NToolbox.Properties.Resources.configuration;
-			this.extendedButton2.Location = new System.Drawing.Point(10, 64);
-			this.extendedButton2.Name = "extendedButton2";
-			this.extendedButton2.Size = new System.Drawing.Size(220, 52);
-			this.extendedButton2.TabIndex = 1;
-			this.extendedButton2.Text = "myEvic Configuration";
-			// 
-			// extendedButton3
-			// 
-			this.extendedButton3.AdditionalText = "";
-			this.extendedButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.extendedButton3.Image = global::NToolbox.Properties.Resources.device_monitor;
-			this.extendedButton3.Location = new System.Drawing.Point(10, 122);
-			this.extendedButton3.Name = "extendedButton3";
-			this.extendedButton3.Size = new System.Drawing.Size(220, 52);
-			this.extendedButton3.TabIndex = 2;
-			this.extendedButton3.Text = "Device Monitor";
-			// 
-			// extendedButton1
-			// 
-			this.extendedButton1.AdditionalText = "";
-			this.extendedButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.extendedButton1.Image = global::NToolbox.Properties.Resources.arctic_fox;
-			this.extendedButton1.Location = new System.Drawing.Point(10, 6);
-			this.extendedButton1.Name = "extendedButton1";
-			this.extendedButton1.Size = new System.Drawing.Size(220, 52);
-			this.extendedButton1.TabIndex = 0;
-			this.extendedButton1.Text = "Arctic Fox Configuration";
-			// 
-			// extendedButton4
-			// 
-			this.extendedButton4.AdditionalText = "";
-			this.extendedButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.extendedButton4.Image = global::NToolbox.Properties.Resources.firmware_updater;
-			this.extendedButton4.Location = new System.Drawing.Point(10, 180);
-			this.extendedButton4.Name = "extendedButton4";
-			this.extendedButton4.Size = new System.Drawing.Size(220, 52);
-			this.extendedButton4.TabIndex = 3;
-			this.extendedButton4.Text = "Firmware Updater";
 			// 
 			// MainWindow
 			// 
@@ -158,10 +156,10 @@ namespace NToolbox
 
 		#endregion
 
-		private ExtendedButton extendedButton1;
-		private ExtendedButton extendedButton2;
-		private ExtendedButton extendedButton3;
-		private ExtendedButton extendedButton4;
+		private ExtendedButton ArcticFoxConfigurationButton;
+		private ExtendedButton MyEvicConfigurationButton;
+		private ExtendedButton DeviceMonitorButton;
+		private ExtendedButton FirmwareUpdaterButton;
 		private NFirmwareEditor.UI.BorderedPanel panel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private NFirmwareEditor.UI.BorderedPanel panel2;
