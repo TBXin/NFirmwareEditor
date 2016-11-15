@@ -28,12 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.panel1 = new NFirmwareEditor.UI.BorderedPanel();
-			this.panel2 = new NFirmwareEditor.UI.BorderedPanel();
-			this.MyEvicConfigurationButton = new NToolbox.ExtendedButton();
-			this.DeviceMonitorButton = new NToolbox.ExtendedButton();
-			this.ArcticFoxConfigurationButton = new NToolbox.ExtendedButton();
-			this.FirmwareUpdaterButton = new NToolbox.ExtendedButton();
+			this.panel1 = new NCore.UI.BorderedPanel();
+			this.panel2 = new NCore.UI.BorderedPanel();
+			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
+			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
+			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
+			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -156,13 +156,13 @@
 
 		#endregion
 
-		private ExtendedButton ArcticFoxConfigurationButton;
-		private ExtendedButton MyEvicConfigurationButton;
-		private ExtendedButton DeviceMonitorButton;
-		private ExtendedButton FirmwareUpdaterButton;
-		private NFirmwareEditor.UI.BorderedPanel panel1;
+		private NCore.UI.ExtendedButton ArcticFoxConfigurationButton;
+		private NCore.UI.ExtendedButton MyEvicConfigurationButton;
+		private NCore.UI.ExtendedButton DeviceMonitorButton;
+		private NCore.UI.ExtendedButton FirmwareUpdaterButton;
+		private NCore.UI.BorderedPanel panel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private NFirmwareEditor.UI.BorderedPanel panel2;
+		private NCore.UI.BorderedPanel panel2;
 	}
 }
 

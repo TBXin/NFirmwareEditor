@@ -19,7 +19,7 @@ namespace NToolbox
 			{
 				if (spi.IsCreated)
 				{
-					MessageBox.Show("NFE Toolbox already running!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("NFE Toolbox is already running!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 				}
 

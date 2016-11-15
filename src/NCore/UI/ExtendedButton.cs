@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NToolbox
+namespace NCore.UI
 {
-	internal class ExtendedButton : Control
+	public sealed class ExtendedButton : Control
 	{
 		private const int ImageOffset = 5;
 

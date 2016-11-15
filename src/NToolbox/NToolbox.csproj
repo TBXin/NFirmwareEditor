@@ -35,6 +35,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,9 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtendedButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Windows\ArcticFoxConfigurationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +77,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,10 +97,6 @@
     <ProjectReference Include="..\NCore\NCore.csproj">
       <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
       <Name>NCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NFirmwareEditor\NFirmwareEditor.csproj">
-      <Project>{8049648f-5281-41a8-a8a5-7177dc0d8646}</Project>
-      <Name>NFirmwareEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
