@@ -22,14 +22,18 @@ namespace NCore
 			}
 		}
 
-		public static byte[] Write<T>(T data) where T : class
+		public static byte[] Write<T>(T data, byte[] sourceBuffer = null) where T : class
 		{
-			return null;
-		}
+			if (data == null) throw new ArgumentNullException("data");
 
-		public static byte[] Overwrite<T>(T data, byte[] sourceBytes) where T : class
-		{
-			return null;
+			using (var ms = sourceBuffer == null ? new MemoryStream() : new MemoryStream(sourceBuffer))
+			{
+				using (var bw = new BinaryWriter(ms))
+				{
+					RecursiveWrite(data, bw);
+				}
+				return ms.ToArray();
+			}
 		}
 
 		private static void RecursiveRead(object obj, BinaryReader br)
@@ -94,6 +98,65 @@ namespace NCore
 			}
 		}
 
+		private static void RecursiveWrite(object obj, BinaryWriter bw)
+		{
+			foreach (var iterator in obj.GetType().GetFields())
+			{
+				var field = iterator;
+				var filedType = field.FieldType;
+
+				HandleOffsetAttribute(field, bw.BaseStream);
+
+				if (filedType.IsPrimitive || filedType.IsEnum)
+				{
+					var value = field.GetValue(obj);
+					WriteValue(filedType, value, bw);
+				}
+				else if (filedType.IsArray)
+				{
+					GetAttribute<BinaryArrayAttribute>(field, true, arrayAttribute =>
+					{
+						var elType = filedType.GetElementType();
+						var array = (Array)field.GetValue(obj);
+
+						for (var i = 0; i < array.Length; i++)
+						{
+							if (elType.IsClass)
+							{
+								RecursiveWrite(array.GetValue(i), bw);
+							}
+							else
+							{
+								WriteValue(elType, array.GetValue(i), bw);
+							}
+						}
+					});
+				}
+				else if (filedType == typeof(string))
+				{
+					GetAttribute<BinaryAsciiStringAttribute>(field, true, ascii =>
+					{
+						var value = (string)field.GetValue(obj);
+						var valueBytes = Encoding.ASCII.GetBytes(value);
+						var result = new byte[ascii.Length];
+						Buffer.BlockCopy(valueBytes, 0, result, 0, ascii.Length);
+
+						bw.Write(result);
+					});
+				}
+				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
+				{
+					var value = (IBinaryStructure)field.GetValue(obj);
+					value.Write(bw);
+				}
+				else if (filedType.IsClass)
+				{
+					var value = field.GetValue(obj);
+					RecursiveWrite(value, bw);
+				}
+			}
+		}
+
 		private static object ReadValue(Type type, BinaryReader br)
 		{
 			if (type == typeof(bool)) return br.ReadBoolean();
@@ -103,6 +166,16 @@ namespace NCore
 			if (type.IsEnum) return ReadValue(type.GetEnumUnderlyingType(), br);
 
 			throw new InvalidOperationException("Invalid type: " + type);
+		}
+
+		private static void WriteValue(Type type, object value, BinaryWriter bw)
+		{
+			if (type == typeof(bool)) bw.Write((bool)value);
+			else if (type == typeof(byte)) bw.Write((byte)value);
+			else if (type == typeof(ushort)) bw.Write((ushort)value);
+			else if (type == typeof(uint)) bw.Write((uint)value);
+			else if (type.IsEnum) WriteValue(type.GetEnumUnderlyingType(), value, bw);
+			else throw new InvalidOperationException("Invalid type: " + type);
 		}
 
 		private static void GetAttribute<T>(FieldInfo field, bool throwIfNotFound, Action<T> action) where T : class

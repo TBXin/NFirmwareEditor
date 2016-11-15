@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using NCore;
 using NCore.USB;
@@ -57,7 +59,15 @@ namespace NToolbox.Windows
 
 			var data = m_connector.ReadConfiguration();
 			var af = BinaryStructureManager.Read<ArcticFoxConfiguration>(data);
-			af = af;
+			
+			/*af.General.Profiles[0].Name = "ZBSVASHE";
+			af.Interface.VWLines.Line1 = ArcticFoxConfiguration.LineContent.DateTime;
+			af.Interface.VWLines.Line2 = ArcticFoxConfiguration.LineContent.Puffs;
+			af.Interface.VWLines.Line3 = ArcticFoxConfiguration.LineContent.Time;
+			af.Interface.VWLines.Line4 = (ArcticFoxConfiguration.LineContent)0x35 | ArcticFoxConfiguration.LineContent.FireTimeMask;*/
+
+			var data2 = BinaryStructureManager.Write(af, new byte[512]);
+			m_connector.WriteConfiguration(data2);
 		}
 
 		private DialogResult ShowDialogWindow(Form window)

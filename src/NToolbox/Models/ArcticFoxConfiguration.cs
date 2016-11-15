@@ -5,6 +5,7 @@ using NCore;
 
 namespace NToolbox.Models
 {
+	#pragma warning disable 0649
 	internal class ArcticFoxConfiguration
 	{
 		public DeviceInfo Info;
@@ -217,6 +218,7 @@ namespace NToolbox.Models
 				flags.SetBit(6, IsCelcius);
 				flags.SetBit(7, IsResistanceLocked);
 				flags.SetBit(8, IsPreheatInPercents);
+				bw.Write(flags);
 			}
 		}
 
@@ -229,4 +231,5 @@ namespace NToolbox.Models
 			TCR = 4
 		}
 	}
+	#pragma warning restore 0649
 }
