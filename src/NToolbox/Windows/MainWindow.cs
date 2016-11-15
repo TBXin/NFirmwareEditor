@@ -58,15 +58,16 @@ namespace NToolbox.Windows
 			if (!isConnected) return;
 
 			var data = m_connector.ReadConfiguration();
-			var af = BinaryStructureManager.Read<ArcticFoxConfiguration>(data);
+			var af = BinaryStructure.Read<ArcticFoxConfiguration>(data);
 			
 			/*af.General.Profiles[0].Name = "ZBSVASHE";
-			af.Interface.VWLines.Line1 = ArcticFoxConfiguration.LineContent.DateTime;
+			af.Interface.VWLines.Line1 = ArcticFoxConfiguration.LineContent.DateTime | ArcticFoxConfiguration.LineContent.FireTimeMask;
 			af.Interface.VWLines.Line2 = ArcticFoxConfiguration.LineContent.Puffs;
-			af.Interface.VWLines.Line3 = ArcticFoxConfiguration.LineContent.Time;
-			af.Interface.VWLines.Line4 = (ArcticFoxConfiguration.LineContent)0x35 | ArcticFoxConfiguration.LineContent.FireTimeMask;*/
-
-			var data2 = BinaryStructureManager.Write(af, new byte[512]);
+			af.Interface.VWLines.Line3 = ArcticFoxConfiguration.LineContent.Battery;
+			af.Interface.VWLines.Line4 = ArcticFoxConfiguration.LineContent.RealResistance | ArcticFoxConfiguration.LineContent.FireTimeMask;*/
+			
+			var data2 = BinaryStructure.Write(af, new byte[512]);
+			//var data2 = File.ReadAllBytes(@"C:\Users\void\Desktop\settings.bin");
 			m_connector.WriteConfiguration(data2);
 		}
 

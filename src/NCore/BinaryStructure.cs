@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 
 namespace NCore
 {
-	public static class BinaryStructureManager
+	public static class BinaryStructure
 	{
 		[NotNull]
 		public static T Read<T>(byte[] data) where T : class, new()

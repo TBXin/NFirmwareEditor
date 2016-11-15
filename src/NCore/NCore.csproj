@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryStructureManager.cs" />
+    <Compile Include="BinaryStructure.cs" />
     <Compile Include="USB\HidDeviceInfo.cs" />
     <Compile Include="USB\HidConnector.cs" />
     <Compile Include="SingleInstanceProvider.cs" />
