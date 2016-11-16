@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
 // ReSharper disable LocalizableElement
-namespace NFirmwareEditor.UI
+namespace NCore.UI
 {
 	[Designer(typeof(MultiPanelDesigner))]
 	public class MultiPanel : Panel

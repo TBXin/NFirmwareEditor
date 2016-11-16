@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.MainContainer = new NFirmwareEditor.UI.MultiPanel();
-			this.WelcomePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.MainContainer = new NCore.UI.MultiPanel();
+			this.WelcomePage = new NCore.UI.MultiPanelPage();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
-			this.WorkspacePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.WorkspacePage = new NCore.UI.MultiPanelPage();
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -2269,9 +2269,9 @@
 
 		#endregion
 
-		private UI.MultiPanel MainContainer;
-		private UI.MultiPanelPage WelcomePage;
-		private UI.MultiPanelPage WorkspacePage;
+		private NCore.UI.MultiPanel MainContainer;
+		private NCore.UI.MultiPanelPage WelcomePage;
+		private NCore.UI.MultiPanelPage WorkspacePage;
 		private System.Windows.Forms.Label WelcomeLabel;
 		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.TabPage GeneralTabPage;

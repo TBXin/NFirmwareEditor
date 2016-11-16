@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Windows.Forms;
 using NCore;
 using NCore.USB;

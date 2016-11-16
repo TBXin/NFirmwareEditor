@@ -109,9 +109,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
-    <Compile Include="UI\MultiPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
@@ -1378,6 +1375,10 @@
     <None Include="Resources\copy.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NCore\NCore.csproj">
+      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
+      <Name>NCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NFirmware\NFirmware.csproj">
       <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
       <Name>NFirmware</Name>
