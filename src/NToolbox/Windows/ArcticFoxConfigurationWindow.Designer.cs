@@ -47,6 +47,8 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -55,6 +57,8 @@
 			this.ProfilesTabControl.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.borderedPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -64,7 +68,7 @@
 			this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WelcomePage;
+			this.MainContainer.SelectedPage = this.WorkspacePage;
 			this.MainContainer.Size = new System.Drawing.Size(374, 516);
 			this.MainContainer.TabIndex = 0;
 			// 
@@ -94,6 +98,7 @@
 			// 
 			// WorkspacePage
 			// 
+			this.WorkspacePage.Controls.Add(this.borderedPanel1);
 			this.WorkspacePage.Controls.Add(this.MainTabControl);
 			this.WorkspacePage.Controls.Add(this.groupPanel1);
 			this.WorkspacePage.Description = null;
@@ -111,10 +116,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainTabControl.Controls.Add(this.ProfilesTabPage);
 			this.MainTabControl.Controls.Add(this.GeneralTabPage);
-			this.MainTabControl.Location = new System.Drawing.Point(11, 105);
+			this.MainTabControl.Location = new System.Drawing.Point(11, 75);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
-			this.MainTabControl.Size = new System.Drawing.Size(354, 399);
+			this.MainTabControl.Size = new System.Drawing.Size(354, 429);
 			this.MainTabControl.TabIndex = 36;
 			// 
 			// ProfilesTabPage
@@ -123,7 +128,7 @@
 			this.ProfilesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ProfilesTabPage.Name = "ProfilesTabPage";
 			this.ProfilesTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 373);
+			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 403);
 			this.ProfilesTabPage.TabIndex = 0;
 			this.ProfilesTabPage.Text = "Profiles";
 			this.ProfilesTabPage.UseVisualStyleBackColor = true;
@@ -139,7 +144,7 @@
 			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 6);
 			this.ProfilesTabControl.Name = "ProfilesTabControl";
 			this.ProfilesTabControl.SelectedIndex = 0;
-			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 361);
+			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 391);
 			this.ProfilesTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.ProfilesTabControl.TabIndex = 0;
 			// 
@@ -147,7 +152,7 @@
 			// 
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(328, 335);
+			this.tabPage1.Size = new System.Drawing.Size(328, 365);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "P1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -177,27 +182,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BackColor = System.Drawing.SystemColors.Control;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel1.Controls.Add(this.BuildTextBox);
-			this.groupPanel1.Controls.Add(this.label48);
-			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
+			this.groupPanel1.Controls.Add(this.BuildTextBox);
+			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
+			this.groupPanel1.Controls.Add(this.label48);
 			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
 			this.groupPanel1.Controls.Add(this.label5);
 			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
-			this.groupPanel1.Location = new System.Drawing.Point(11, 41);
+			this.groupPanel1.Location = new System.Drawing.Point(76, 11);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(352, 58);
+			this.groupPanel1.Size = new System.Drawing.Size(287, 58);
 			this.groupPanel1.TabIndex = 35;
 			this.groupPanel1.TabStop = false;
 			// 
 			// BuildTextBox
 			// 
 			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BuildTextBox.Location = new System.Drawing.Point(165, 33);
+			this.BuildTextBox.Location = new System.Drawing.Point(136, 33);
 			this.BuildTextBox.Name = "BuildTextBox";
-			this.BuildTextBox.Size = new System.Drawing.Size(60, 21);
+			this.BuildTextBox.Size = new System.Drawing.Size(45, 21);
 			this.BuildTextBox.TabIndex = 34;
 			this.BuildTextBox.TabStop = false;
 			this.BuildTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -206,7 +211,7 @@
 			// 
 			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label48.AutoSize = true;
-			this.label48.Location = new System.Drawing.Point(126, 36);
+			this.label48.Location = new System.Drawing.Point(106, 36);
 			this.label48.Name = "label48";
 			this.label48.Size = new System.Drawing.Size(33, 13);
 			this.label48.TabIndex = 33;
@@ -214,11 +219,10 @@
 			// 
 			// FirmwareVersionTextBox
 			// 
-			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(60, 33);
+			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(50, 33);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
 			this.FirmwareVersionTextBox.TabIndex = 27;
 			this.FirmwareVersionTextBox.TabStop = false;
 			this.FirmwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -226,9 +230,9 @@
 			// HardwareVersionTextBox
 			// 
 			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.HardwareVersionTextBox.Location = new System.Drawing.Point(284, 33);
+			this.HardwareVersionTextBox.Location = new System.Drawing.Point(236, 33);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
 			this.HardwareVersionTextBox.TabIndex = 28;
 			this.HardwareVersionTextBox.TabStop = false;
 			this.HardwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -248,7 +252,7 @@
 			// 
 			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(231, 36);
+			this.label5.Location = new System.Drawing.Point(192, 36);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(47, 13);
 			this.label5.TabIndex = 30;
@@ -256,8 +260,9 @@
 			// 
 			// label4
 			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(8, 36);
+			this.label4.Location = new System.Drawing.Point(7, 36);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(46, 13);
 			this.label4.TabIndex = 29;
@@ -273,6 +278,33 @@
 			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
 			this.pictureBox1.TabIndex = 3;
 			this.pictureBox1.TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pictureBox2.Image = global::NToolbox.Properties.Resources.arctic_fox_logo;
+			this.pictureBox2.Location = new System.Drawing.Point(1, 1);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(56, 56);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox2.TabIndex = 0;
+			this.pictureBox2.TabStop = false;
+			// 
+			// borderedPanel1
+			// 
+			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
+			this.borderedPanel1.BorderBottom = true;
+			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel1.BorderLeft = true;
+			this.borderedPanel1.BorderRight = true;
+			this.borderedPanel1.BorderTop = true;
+			this.borderedPanel1.BorderWidth = 1F;
+			this.borderedPanel1.Controls.Add(this.pictureBox2);
+			this.borderedPanel1.Location = new System.Drawing.Point(11, 11);
+			this.borderedPanel1.Name = "borderedPanel1";
+			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
+			this.borderedPanel1.Size = new System.Drawing.Size(58, 58);
+			this.borderedPanel1.TabIndex = 37;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -297,6 +329,8 @@
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			this.borderedPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -322,5 +356,7 @@
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private NCore.UI.BorderedPanel borderedPanel1;
 	}
 }
