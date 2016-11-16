@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using NCore.UI;
 using NToolbox.Models;
 
@@ -9,6 +10,26 @@ namespace NToolbox.Windows
 		private const int MinimumWatts = 1;
 		private const int MaximumWatts = 250;
 
+		private static readonly List<char> s_nameCharWhiteList = new List<char>();
+
+		static ProfileTabContent()
+		{
+			// 0..9
+			for (var i = 48; i <= 57; i++)
+			{
+				s_nameCharWhiteList.Add((char)i);
+			}
+
+			// A...Z
+			for (var i = 65; i <= 90; i++)
+			{
+				s_nameCharWhiteList.Add((char)i);
+			}
+
+			s_nameCharWhiteList.Add('.');
+			s_nameCharWhiteList.Add(' ');
+		}
+
 		public ProfileTabContent()
 		{
 			InitializeComponent();
@@ -17,6 +38,18 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
+			ProfileNameTextBox.TextChanged += (s, e) =>
+			{
+				var input = ProfileNameTextBox.Text;
+				for (var i = 0; i < input.Length; i++)
+				{
+					if (s_nameCharWhiteList.Contains(input[i])) continue;
+
+					input = input.Remove(i);
+				}
+				ProfileNameTextBox.Text = input;
+			};
+
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
 			{

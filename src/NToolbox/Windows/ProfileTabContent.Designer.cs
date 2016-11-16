@@ -61,7 +61,9 @@
 			// 
 			// ProfileNameTextBox
 			// 
+			this.ProfileNameTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.ProfileNameTextBox.Location = new System.Drawing.Point(101, 8);
+			this.ProfileNameTextBox.MaxLength = 8;
 			this.ProfileNameTextBox.Name = "ProfileNameTextBox";
 			this.ProfileNameTextBox.Size = new System.Drawing.Size(106, 21);
 			this.ProfileNameTextBox.TabIndex = 0;

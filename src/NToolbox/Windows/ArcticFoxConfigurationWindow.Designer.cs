@@ -133,7 +133,7 @@
 			this.ProfilesTabControl.Controls.Add(this.tabPage1);
 			this.ProfilesTabControl.Controls.Add(this.tabPage2);
 			this.ProfilesTabControl.ItemSize = new System.Drawing.Size(40, 18);
-			this.ProfilesTabControl.Location = new System.Drawing.Point(6, 6);
+			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 6);
 			this.ProfilesTabControl.Name = "ProfilesTabControl";
 			this.ProfilesTabControl.SelectedIndex = 0;
 			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 356);
@@ -179,6 +179,7 @@
 			this.BuildTextBox.Size = new System.Drawing.Size(60, 21);
 			this.BuildTextBox.TabIndex = 34;
 			this.BuildTextBox.TabStop = false;
+			this.BuildTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label48
 			// 
@@ -199,6 +200,7 @@
 			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
 			this.FirmwareVersionTextBox.TabIndex = 27;
 			this.FirmwareVersionTextBox.TabStop = false;
+			this.FirmwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// HardwareVersionTextBox
 			// 
@@ -208,6 +210,7 @@
 			this.HardwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
 			this.HardwareVersionTextBox.TabIndex = 28;
 			this.HardwareVersionTextBox.TabStop = false;
+			this.HardwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// DeviceNameLabel
 			// 
