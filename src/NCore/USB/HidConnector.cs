@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using HidSharp;
-using JetBrains.Annotations;
 using NCore.USB.Models;
 
 namespace NCore.USB
@@ -41,49 +39,11 @@ namespace NCore.USB
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
-
-		private static readonly IDictionary<string, HidDeviceInfo> s_supportedDevices = new Dictionary<string, HidDeviceInfo>
-		{
-			{ "E052", new HidDeviceInfo("Joyetech eVic VTC Mini", 64, 40) },
-			{ "E043", new HidDeviceInfo("Joyetech eVic VTwo", 64, 40) },
-			{ "E115", new HidDeviceInfo("Joyetech eVic VTwo Mini", 64, 40) },
-			{ "E079", new HidDeviceInfo("Joyetech eVic VTC Dual", 64, 40) },
-			{ "E150", new HidDeviceInfo("Joyetech eVic Basic", 64, 40) },
-			{ "E092", new HidDeviceInfo("Joyetech eVic AIO", 64, 40) },
-
-			{ "E060", new HidDeviceInfo("Joyetech Cuboid", 64, 40) },
-			{ "E056", new HidDeviceInfo("Joyetech Cuboid Mini", 64, 40) },
-
-			{ "E083", new HidDeviceInfo("Joyetech eGrip II", 64, 40) },
-
-			{ "M972", new HidDeviceInfo("Eleaf iStick TC200W", 96, 16) },
-			{ "M011", new HidDeviceInfo("Eleaf iStick TC100W", 96, 16) },
-			{ "M041", new HidDeviceInfo("Eleaf iStick Pico", 96, 16) },
-			{ "M045", new HidDeviceInfo("Eleaf iStick Pico Mega", 96, 16) },
-			{ "M046", new HidDeviceInfo("Eleaf iStick Power", 96, 16) },
-			{ "M037", new HidDeviceInfo("Eleaf ASTER", 96, 16) },
-
-			{ "W007", new HidDeviceInfo("Wismec Presa TC75W") },
-
-			{ "W018", new HidDeviceInfo("Wismec Reuleaux RX2/3", 64, 48) },
-			{ "W014", new HidDeviceInfo("Wismec Reuleaux RX200") },
-			{ "W033", new HidDeviceInfo("Wismec Reuleaux RX200S", 64, 48) },
-			{ "W026", new HidDeviceInfo("Wismec Reuleaux RX75", 64, 48) },
-
-			{ "W010", new HidDeviceInfo("Vaporflask Classic") },
-			{ "W011", new HidDeviceInfo("Vaporflask Lite") },
-			{ "W013", new HidDeviceInfo("Vaporflask Stout") },
-
-			{ "W016", new HidDeviceInfo("Beyondvape Centurion") }
-		};
-
 		private readonly Timer m_monitoringTimer;
 
 		private int m_receiveBufferLength;
 		private int m_sentBufferLength;
 		private bool? m_isDeviceConnected;
-
-		public static readonly HidDeviceInfo UnknownHidDevice = new HidDeviceInfo("Unknown device");
 
 		public HidConnector()
 		{
@@ -249,14 +209,6 @@ namespace NCore.USB
 			{
 				Write(stream, CreateCommand(Commands.ResetDataflash, 0, DataflashLength));
 			}
-		}
-
-		[NotNull]
-		public static HidDeviceInfo GetDeviceInfo([CanBeNull] string productId)
-		{
-			return string.IsNullOrEmpty(productId) || !s_supportedDevices.ContainsKey(productId)
-				? UnknownHidDevice
-				: s_supportedDevices[productId];
 		}
 
 		public HidStream OpenDeviceStream()
