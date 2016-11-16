@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using NCore.UI;
 using NToolbox.Models;
@@ -10,25 +10,7 @@ namespace NToolbox.Windows
 		private const int MinimumWatts = 1;
 		private const int MaximumWatts = 250;
 
-		private static readonly List<char> s_nameCharWhiteList = new List<char>();
-
-		static ProfileTabContent()
-		{
-			// 0..9
-			for (var i = 48; i <= 57; i++)
-			{
-				s_nameCharWhiteList.Add((char)i);
-			}
-
-			// A...Z
-			for (var i = 65; i <= 90; i++)
-			{
-				s_nameCharWhiteList.Add((char)i);
-			}
-
-			s_nameCharWhiteList.Add('.');
-			s_nameCharWhiteList.Add(' ');
-		}
+		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\.\\s]).", RegexOptions.Compiled);
 
 		public ProfileTabContent()
 		{
@@ -40,14 +22,16 @@ namespace NToolbox.Windows
 		{
 			ProfileNameTextBox.TextChanged += (s, e) =>
 			{
+				var position = ProfileNameTextBox.SelectionStart;
 				var input = ProfileNameTextBox.Text;
-				for (var i = 0; i < input.Length; i++)
+				var matches = s_blackList.Matches(input);
+				foreach (Match match in matches)
 				{
-					if (s_nameCharWhiteList.Contains(input[i])) continue;
-
-					input = input.Remove(i);
+					if (!match.Success) continue;
+					input = input.Replace(match.Value, string.Empty);
 				}
 				ProfileNameTextBox.Text = input;
+				ProfileNameTextBox.SelectionStart = position;
 			};
 
 			PreheatTypeComboBox.Items.Clear();
