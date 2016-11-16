@@ -42,59 +42,56 @@ namespace NCore
 			{
 				var field = iterator;
 				var fieldType = field.FieldType;
+				var value = (object)null;
 
 				HandleOffsetAttribute(field, br.BaseStream);
 
 				if (fieldType.IsPrimitive || fieldType.IsEnum)
 				{
-					var value = ReadValue(fieldType, br);
-					field.SetValue(obj, value);
+					value = ReadValue(fieldType, br);
 				}
 				else if (fieldType.IsArray)
 				{
-					GetAttribute<BinaryArrayAttribute>(field, true, arrayAttribute =>
-					{
-						var elType = fieldType.GetElementType();
-						var instance = Array.CreateInstance(elType, arrayAttribute.Length);
+					var arrayAttribute = GetAttribute<BinaryArrayAttribute>(field, true);
+					var elType = fieldType.GetElementType();
+					var instance = Array.CreateInstance(elType, arrayAttribute.Length);
 
-						for (var i = 0; i < arrayAttribute.Length; i++)
+					for (var i = 0; i < arrayAttribute.Length; i++)
+					{
+						object elementValue;
+						if (elType.IsClass)
 						{
-							object value;
-							if (elType.IsClass)
-							{
-								value = Activator.CreateInstance(elType);
-								RecursiveRead(value, br);
-							}
-							else
-							{
-								var rawValue = ReadValue(elType, br);
-								value = elType.IsEnum ? Enum.ToObject(elType, rawValue) : rawValue;
-							}
-							instance.SetValue(value, i);
+							elementValue = Activator.CreateInstance(elType);
+							RecursiveRead(elementValue, br);
 						}
-						field.SetValue(obj, instance);
-					});
+						else
+						{
+							var rawValue = ReadValue(elType, br);
+							elementValue = elType.IsEnum ? Enum.ToObject(elType, rawValue) : rawValue;
+						}
+						instance.SetValue(elementValue, i);
+					}
+					value = instance;
 				}
 				else if (fieldType == typeof(string))
 				{
-					GetAttribute<BinaryAsciiStringAttribute>(field, true, ascii =>
-					{
-						var value = Encoding.ASCII.GetString(br.ReadBytes(ascii.Length));
-						field.SetValue(obj, value);
-					});
+					var ascii = GetAttribute<BinaryAsciiStringAttribute>(field, true);
+					value = Encoding.ASCII.GetString(br.ReadBytes(ascii.Length));
 				}
 				else if (typeof(IBinaryStructure).IsAssignableFrom(fieldType))
 				{
 					var instance = (IBinaryStructure)Activator.CreateInstance(fieldType);
 					instance.Read(br);
-					field.SetValue(obj, instance);
+					value = instance;
 				}
 				else if (fieldType.IsClass)
 				{
 					var instance = Activator.CreateInstance(fieldType);
 					RecursiveRead(instance, br);
-					field.SetValue(obj, instance);
+					value = instance;
 				}
+
+				field.SetValue(obj, value);
 			}
 		}
 
@@ -114,35 +111,31 @@ namespace NCore
 				}
 				else if (filedType.IsArray)
 				{
-					GetAttribute<BinaryArrayAttribute>(field, true, arrayAttribute =>
-					{
-						var elType = filedType.GetElementType();
-						var array = (Array)field.GetValue(obj);
+					var arrayAttribute = GetAttribute<BinaryArrayAttribute>(field, true);
+					var elType = filedType.GetElementType();
+					var array = (Array)field.GetValue(obj);
 
-						for (var i = 0; i < array.Length; i++)
+					for (var i = 0; i < arrayAttribute.Length; i++)
+					{
+						if (elType.IsClass)
 						{
-							if (elType.IsClass)
-							{
-								RecursiveWrite(array.GetValue(i), bw);
-							}
-							else
-							{
-								WriteValue(elType, array.GetValue(i), bw);
-							}
+							RecursiveWrite(array.GetValue(i), bw);
 						}
-					});
+						else
+						{
+							WriteValue(elType, array.GetValue(i), bw);
+						}
+					}
 				}
 				else if (filedType == typeof(string))
 				{
-					GetAttribute<BinaryAsciiStringAttribute>(field, true, ascii =>
-					{
-						var value = (string)field.GetValue(obj);
-						var valueBytes = Encoding.ASCII.GetBytes(value);
-						var result = new byte[ascii.Length];
-						Buffer.BlockCopy(valueBytes, 0, result, 0, ascii.Length);
+					var ascii = GetAttribute<BinaryAsciiStringAttribute>(field, true);
+					var value = (string)field.GetValue(obj);
+					var valueBytes = Encoding.ASCII.GetBytes(value);
+					var result = new byte[ascii.Length];
+					Buffer.BlockCopy(valueBytes, 0, result, 0, ascii.Length);
 
-						bw.Write(result);
-					});
+					bw.Write(result);
 				}
 				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
 				{
@@ -178,33 +171,28 @@ namespace NCore
 			else throw new InvalidOperationException("Invalid type: " + type);
 		}
 
-		private static void GetAttribute<T>(FieldInfo field, bool throwIfNotFound, Action<T> action) where T : class
+		private static T GetAttribute<T>(FieldInfo field, bool throwIfNotFound) where T : class
 		{
 			var attribute = field.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T;
-			if (attribute == null)
+			if (attribute == null && throwIfNotFound)
 			{
-				if (throwIfNotFound)
-				{
-					throw new InvalidOperationException
-					(
-						string.Format("An obligatory attribute \"{0}\" missing. Property: \"{1}\".", typeof(T).Name, field.Name)
-					);
-				}
-				return;
+				throw new InvalidOperationException
+				(
+					string.Format("An obligatory attribute \"{0}\" missing. Property: \"{1}\".", typeof(T).Name, field.Name)
+				);
 			}
-
-			action(attribute);
+			return attribute;
 		}
 
 		private static void HandleOffsetAttribute(FieldInfo field, Stream stream)
 		{
-			GetAttribute<BinaryOffsetAttribute>(field, false, offset =>
-			{
-				if (offset.IsEmpty) throw new InvalidOperationException("Neither Relative nor Absolute values are defined.");
+			var offset = GetAttribute<BinaryOffsetAttribute>(field, false);
 
-				if (offset.Relative != 0) stream.Seek(offset.Relative, SeekOrigin.Current);
-				if (offset.Absolute != 0) stream.Seek(offset.Absolute, SeekOrigin.Begin);
-			});
+			if (offset == null) return;
+			if (offset.IsEmpty) throw new InvalidOperationException("Neither Relative nor Absolute values are defined.");
+
+			if (offset.Relative != 0) stream.Seek(offset.Relative, SeekOrigin.Current);
+			if (offset.Absolute != 0) stream.Seek(offset.Absolute, SeekOrigin.Begin);
 		}
 	}
 

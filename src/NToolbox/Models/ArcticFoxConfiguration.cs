@@ -108,6 +108,13 @@ namespace NToolbox.Models
 
 			public ushort Percents; // Value from 0 to 100
 			public ushort Voltage; // Value multiplied by 100, from 300 to 420
+
+			#region Overrides of Object
+			public override string ToString()
+			{
+				return Percents + "% - " + Voltage / 100f + "V";
+			}
+			#endregion
 		}
 
 		[SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -191,6 +198,23 @@ namespace NToolbox.Models
 			// Multiplied by 1000
 			public ushort Resistance;
 			public ushort TCR;
+
+			#region Overrides of Object
+			public override string ToString()
+			{
+				return string.Format
+				(
+					"{0}, Pwr: {1}, Temp: {2}, Res: {3}, PP: {4}, PT: {5}, TCR: {6}", 
+					Name, 
+					Power / 10f, 
+					Temperature, 
+					Resistance / 1000f, 
+					PreheatPower / 10f, 
+					PreheatTime / 100f, 
+					TCR
+				);
+			}
+			#endregion
 		}
 
 		internal class ProfileFlags : IBinaryStructure
