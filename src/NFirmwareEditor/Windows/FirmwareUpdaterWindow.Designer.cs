@@ -30,7 +30,7 @@ namespace NFirmwareEditor.Windows
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel3 = new NCore.UI.GroupPanel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.CommonTabPage = new System.Windows.Forms.TabPage();
 			this.LogoButton = new System.Windows.Forms.Button();
@@ -43,10 +43,10 @@ namespace NFirmwareEditor.Windows
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.ChangeBootModeButton = new System.Windows.Forms.Button();
 			this.ChangeHWButton = new System.Windows.Forms.Button();
-			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.BootModeTextBox = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace NFirmwareEditor.Windows
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.DeviceNameTextBox = new System.Windows.Forms.TextBox();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel3.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -412,7 +412,7 @@ namespace NFirmwareEditor.Windows
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button UpdateFromFileButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Label label5;
@@ -425,11 +425,11 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.Label UpdateStatusLabel;
 		private System.Windows.Forms.Button UpdateButton;
 		private System.Windows.Forms.Button ResetDataflashButton;
-		private GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox BootModeTextBox;
-		private GroupPanel groupPanel2;
-		private GroupPanel groupPanel3;
+		private NCore.UI.GroupPanel groupPanel2;
+		private NCore.UI.GroupPanel groupPanel3;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage CommonTabPage;
 		private System.Windows.Forms.TabPage DataflashTabPage;

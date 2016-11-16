@@ -51,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryStructure.cs" />
+    <Compile Include="UI\GroupPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\MultiPanel.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -28,18 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.SettingsTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.CheckForPatchesUpdatesCheckBox = new System.Windows.Forms.CheckBox();
 			this.CheckForApplicationUpdatesCheckBox = new System.Windows.Forms.CheckBox();
-			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupBox2 = new NCore.UI.GroupPanel();
 			this.BackupModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupBox1 = new NCore.UI.GroupPanel();
 			this.ImageEditorModeComboBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.CheckForDefinitionsUpdatesCheckBox = new System.Windows.Forms.CheckBox();
@@ -266,7 +266,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.TabControl SettingsTabControl;
@@ -275,9 +275,9 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.ComboBox BackupModeComboBox;
 		private System.Windows.Forms.Label label1;
-		private UI.GroupPanel groupBox1;
-		private UI.GroupPanel groupBox2;
-		private UI.GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupBox1;
+		private NCore.UI.GroupPanel groupBox2;
+		private NCore.UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.CheckBox CheckForApplicationUpdatesCheckBox;
 		private System.Windows.Forms.CheckBox CheckForPatchesUpdatesCheckBox;
 		private System.Windows.Forms.CheckBox CheckForDefinitionsUpdatesCheckBox;

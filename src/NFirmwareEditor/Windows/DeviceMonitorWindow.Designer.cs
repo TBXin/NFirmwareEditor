@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.MainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.SensorsGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.SensorsGroupPanel = new NCore.UI.GroupPanel();
 			this.TemperatureSetPanel = new System.Windows.Forms.Panel();
 			this.TemperatureSetLabel = new System.Windows.Forms.Label();
 			this.TemperatureSetCheckBox = new System.Windows.Forms.CheckBox();
@@ -60,10 +60,10 @@
 			this.OutputVoltageCheckBox = new System.Windows.Forms.CheckBox();
 			this.BatteryCheckBox = new System.Windows.Forms.CheckBox();
 			this.PowerCheckBox = new System.Windows.Forms.CheckBox();
-			this.LineVewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.LineVewGroupPanel = new NCore.UI.GroupPanel();
 			this.TrackingButton = new System.Windows.Forms.Button();
 			this.MainChartScrollBar = new System.Windows.Forms.HScrollBar();
-			this.ControlGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.ControlGroupPanel = new NCore.UI.GroupPanel();
 			this.PauseButton = new System.Windows.Forms.Button();
 			this.TimeFrameButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
@@ -518,8 +518,8 @@
 		#endregion
 
 		private System.Windows.Forms.DataVisualization.Charting.Chart MainChart;
-		private UI.GroupPanel SensorsGroupPanel;
-		private UI.GroupPanel LineVewGroupPanel;
+		private NCore.UI.GroupPanel SensorsGroupPanel;
+		private NCore.UI.GroupPanel LineVewGroupPanel;
 		private System.Windows.Forms.CheckBox PowerCheckBox;
 		private System.Windows.Forms.CheckBox BatteryCheckBox;
 		private System.Windows.Forms.CheckBox OutputVoltageCheckBox;
@@ -550,7 +550,7 @@
 		private System.Windows.Forms.Panel PowerSetPanel;
 		private System.Windows.Forms.Label PowerSetLabel;
 		private System.Windows.Forms.CheckBox PowerSetCheckBox;
-		private UI.GroupPanel ControlGroupPanel;
+		private NCore.UI.GroupPanel ControlGroupPanel;
 		private System.Windows.Forms.Button PuffButton;
 		private System.Windows.Forms.Button TimeFrameButton;
 		private System.Windows.Forms.Button PauseButton;

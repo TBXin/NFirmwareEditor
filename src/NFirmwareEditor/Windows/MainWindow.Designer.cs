@@ -59,7 +59,7 @@
 			this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.LoadedFirmwareLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.MainMenuStrip.SuspendLayout();
 			this.MainStatusStrip.SuspendLayout();
@@ -399,7 +399,7 @@
 		private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
 		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.ToolStripMenuItem PatchCreatorMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterMenuItem;

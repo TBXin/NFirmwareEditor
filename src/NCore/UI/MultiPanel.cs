@@ -11,11 +11,11 @@ using System.Windows.Forms.Design;
 namespace NCore.UI
 {
 	[Designer(typeof(MultiPanelDesigner))]
-	public class MultiPanel : Panel
+	public sealed class MultiPanel : Panel
 	{
 		public event EventHandler SelectedPageChanged;
 
-		public virtual void OnSelectedPageChanged(object sender, EventArgs e)
+		public void OnSelectedPageChanged(object sender, EventArgs e)
 		{
 			var handler = SelectedPageChanged;
 			if (handler != null) handler(sender, e);

@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NFirmwareEditor.UI
+namespace NCore.UI
 {
-	internal class GroupPanel : GroupBox
+	public sealed class GroupPanel : GroupBox
 	{
 		private static readonly TextFormatFlags s_headerFormatFlags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter;
 		private static readonly StringFormat s_headerStringFormat = new StringFormat

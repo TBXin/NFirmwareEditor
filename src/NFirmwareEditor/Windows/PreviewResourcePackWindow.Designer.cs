@@ -28,16 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.groupBox1 = new NCore.UI.GroupPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.RightLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.LeftLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.ImportButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.ResizeCheckBox = new System.Windows.Forms.CheckBox();
-			this.OptionsGroupBox = new NFirmwareEditor.UI.GroupPanel();
+			this.OptionsGroupBox = new NCore.UI.GroupPanel();
 			this.label3 = new System.Windows.Forms.Label();
 			this.ImportModeComboBox = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
@@ -243,15 +243,15 @@
 
 		private System.Windows.Forms.FlowLayoutPanel LeftLayoutPanel;
 		private System.Windows.Forms.FlowLayoutPanel RightLayoutPanel;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button ImportButton;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.CheckBox ResizeCheckBox;
 		private System.Windows.Forms.ComboBox ImportModeComboBox;
 		private System.Windows.Forms.Label label3;
-		private UI.GroupPanel groupBox1;
-		private UI.GroupPanel OptionsGroupBox;
+		private NCore.UI.GroupPanel groupBox1;
+		private NCore.UI.GroupPanel OptionsGroupBox;
 	}
 }

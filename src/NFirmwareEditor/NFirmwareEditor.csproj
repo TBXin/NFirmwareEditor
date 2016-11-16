@@ -105,9 +105,6 @@
     <Compile Include="UI\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\GroupPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
     <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
@@ -233,9 +230,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\BorderedPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ImagedItem.cs" />
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>

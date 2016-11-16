@@ -23,6 +23,8 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
+			MainContainer.SelectedPage = WelcomePage;
+
 			m_connector.DeviceConnected += DeviceConnected;
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();

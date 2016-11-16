@@ -28,14 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.EncryptDecryptButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.SourceGroupBox = new NFirmwareEditor.UI.GroupPanel();
+			this.SourceGroupBox = new NCore.UI.GroupPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.SelectSourceButton = new System.Windows.Forms.Button();
 			this.SourceTextBox = new System.Windows.Forms.TextBox();
-			this.DestinationGroupBox = new NFirmwareEditor.UI.GroupPanel();
+			this.DestinationGroupBox = new NCore.UI.GroupPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.SelectDestinationButton = new System.Windows.Forms.Button();
 			this.DestinationTextBox = new System.Windows.Forms.TextBox();
@@ -205,7 +205,7 @@
 		}
 
 		#endregion
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button EncryptDecryptButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Label label1;
@@ -214,7 +214,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button SelectDestinationButton;
 		private System.Windows.Forms.TextBox DestinationTextBox;
-		private UI.GroupPanel SourceGroupBox;
-		private UI.GroupPanel DestinationGroupBox;
+		private NCore.UI.GroupPanel SourceGroupBox;
+		private NCore.UI.GroupPanel DestinationGroupBox;
 	}
 }

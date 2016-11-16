@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.DownloadButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button DownloadButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Label label5;

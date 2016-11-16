@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.label3 = new System.Windows.Forms.Label();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
 			this.FontPreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
 			this.label1 = new System.Windows.Forms.Label();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.ControlBorderedPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeUpDown)).BeginInit();
 			this.groupPanel1.SuspendLayout();
@@ -374,7 +374,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button ShiftDownButton;
@@ -397,6 +397,6 @@
 		private System.Windows.Forms.Button ZeroNineButton;
 		private System.Windows.Forms.ToolTip MainToolTip;
 		private System.Windows.Forms.Label label3;
-		private UI.GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupPanel1;
 	}
 }

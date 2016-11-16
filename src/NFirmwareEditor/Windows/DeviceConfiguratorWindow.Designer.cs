@@ -36,7 +36,7 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.label48 = new System.Windows.Forms.Label();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
@@ -2294,7 +2294,7 @@
 		private System.Windows.Forms.NumericUpDown TCRM2UpDown;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.NumericUpDown TCRM1UpDown;
-		private UI.GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.CheckBox TempNiModeCheckBox;
 		private System.Windows.Forms.Label label20;
