@@ -47,6 +47,11 @@ namespace NCore.UI
 			}
 		}
 
+		public void PerformClick()
+		{
+			OnClick(EventArgs.Empty);
+		}
+
 		#region Overrides of Control
 		protected override void OnMouseEnter(EventArgs e)
 		{

@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
-using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {

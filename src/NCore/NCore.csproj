@@ -51,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryStructure.cs" />
+    <Compile Include="UI\ComboBoxExtensions.cs" />
     <Compile Include="UI\GroupPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\MultiPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="UI\WindowBase.cs">
       <SubType>Form</SubType>
     </Compile>

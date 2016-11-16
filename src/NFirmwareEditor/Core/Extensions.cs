@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NFirmware;
 using NFirmwareEditor.Managers;
-using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Core
 {
@@ -94,31 +93,6 @@ namespace NFirmwareEditor.Core
 			listView.BeginUpdate();
 			items.ForEach(item => listView.Items.Add(item));
 			listView.EndUpdate();
-		}
-
-		internal static void SelectItem<T>([NotNull] this ComboBox comboBox, T item)
-		{
-			if (comboBox == null) throw new ArgumentNullException("comboBox");
-
-			foreach (var comboBoxItem in comboBox.Items)
-			{
-				var namedItem = comboBoxItem as NamedItemContainer<T>;
-				if (namedItem == null) continue;
-
-				if (Equals(namedItem.Data, item))
-				{
-					comboBox.SelectedItem = namedItem;
-					return;
-				}
-			}
-		}
-
-		internal static T GetSelectedItem<T>(this ComboBox comboBox)
-		{
-			var item = comboBox.SelectedItem as NamedItemContainer<T>;
-			if (item == null) throw new InvalidOperationException("Invalid comboBox content.");
-
-			return item.Data;
 		}
 
 		internal static void ScrollToEnd([NotNull] this TextBox textBox)

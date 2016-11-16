@@ -46,9 +46,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.BootModeTextBox = new System.Windows.Forms.TextBox();
-			this.ResetButton = new System.Windows.Forms.Button();
-			this.UploadButton = new System.Windows.Forms.Button();
-			this.DownloadButton = new System.Windows.Forms.Button();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -171,24 +168,27 @@
 			this.RestartButton = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.ScreenshotContainerPanel = new System.Windows.Forms.Panel();
-			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.label46 = new System.Windows.Forms.Label();
 			this.label47 = new System.Windows.Forms.Label();
 			this.PixelSizeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.TakeScreenshotBeforeSaveCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.TakeScreenshotButton = new System.Windows.Forms.Button();
-			this.BroadcastButton = new System.Windows.Forms.Button();
 			this.TerminalTabPage = new System.Windows.Forms.TabPage();
 			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.TraceTextBox = new System.Windows.Forms.TextBox();
-			this.ComDisconnectButton = new System.Windows.Forms.Button();
-			this.ComConnectButton = new System.Windows.Forms.Button();
 			this.PortComboBox = new System.Windows.Forms.ComboBox();
 			this.label49 = new System.Windows.Forms.Label();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.ResetButton = new System.Windows.Forms.Button();
+			this.UploadButton = new System.Windows.Forms.Button();
+			this.DownloadButton = new System.Windows.Forms.Button();
+			this.ScreenshotPictureBox = new System.Windows.Forms.PictureBox();
+			this.SaveScreenshotButton = new System.Windows.Forms.Button();
+			this.TakeScreenshotButton = new System.Windows.Forms.Button();
+			this.BroadcastButton = new System.Windows.Forms.Button();
+			this.ComDisconnectButton = new System.Windows.Forms.Button();
+			this.ComConnectButton = new System.Windows.Forms.Button();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -231,12 +231,12 @@
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.ScreenshotContainerPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.TerminalTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -426,42 +426,6 @@
 			this.BootModeTextBox.Size = new System.Drawing.Size(242, 21);
 			this.BootModeTextBox.TabIndex = 31;
 			this.BootModeTextBox.TabStop = false;
-			// 
-			// ResetButton
-			// 
-			this.ResetButton.Image = global::NFirmwareEditor.Properties.Resources.reset_settings;
-			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.ResetButton.Location = new System.Drawing.Point(257, 10);
-			this.ResetButton.Name = "ResetButton";
-			this.ResetButton.Size = new System.Drawing.Size(107, 25);
-			this.ResetButton.TabIndex = 3;
-			this.ResetButton.Text = "Reset settings";
-			this.ResetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ResetButton.UseVisualStyleBackColor = true;
-			// 
-			// UploadButton
-			// 
-			this.UploadButton.Image = global::NFirmwareEditor.Properties.Resources.upload_settings;
-			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.UploadButton.Location = new System.Drawing.Point(141, 10);
-			this.UploadButton.Name = "UploadButton";
-			this.UploadButton.Size = new System.Drawing.Size(110, 25);
-			this.UploadButton.TabIndex = 2;
-			this.UploadButton.Text = "Upload settings";
-			this.UploadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.UploadButton.UseVisualStyleBackColor = true;
-			// 
-			// DownloadButton
-			// 
-			this.DownloadButton.Image = global::NFirmwareEditor.Properties.Resources.download_settings;
-			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.DownloadButton.Location = new System.Drawing.Point(11, 10);
-			this.DownloadButton.Name = "DownloadButton";
-			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
-			this.DownloadButton.TabIndex = 1;
-			this.DownloadButton.Text = "Download settings";
-			this.DownloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.DownloadButton.UseVisualStyleBackColor = true;
 			// 
 			// MainTabControl
 			// 
@@ -1986,14 +1950,6 @@
 			this.ScreenshotContainerPanel.Size = new System.Drawing.Size(68, 132);
 			this.ScreenshotContainerPanel.TabIndex = 1;
 			// 
-			// ScreenshotPictureBox
-			// 
-			this.ScreenshotPictureBox.Location = new System.Drawing.Point(2, 2);
-			this.ScreenshotPictureBox.Name = "ScreenshotPictureBox";
-			this.ScreenshotPictureBox.Size = new System.Drawing.Size(64, 128);
-			this.ScreenshotPictureBox.TabIndex = 0;
-			this.ScreenshotPictureBox.TabStop = false;
-			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.SaveScreenshotButton);
@@ -2007,18 +1963,6 @@
 			this.groupBox2.TabIndex = 69;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Saving screenshots";
-			// 
-			// SaveScreenshotButton
-			// 
-			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
-			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.SaveScreenshotButton.Location = new System.Drawing.Point(5, 20);
-			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
-			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.SaveScreenshotButton.TabIndex = 36;
-			this.SaveScreenshotButton.Text = "Save screenshot";
-			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
 			// 
 			// label46
 			// 
@@ -2081,38 +2025,14 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Taking screenshots";
 			// 
-			// TakeScreenshotButton
-			// 
-			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.TakeScreenshotButton.Location = new System.Drawing.Point(5, 20);
-			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
-			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
-			this.TakeScreenshotButton.TabIndex = 35;
-			this.TakeScreenshotButton.Text = "Take screenshot";
-			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
-			// 
-			// BroadcastButton
-			// 
-			this.BroadcastButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
-			this.BroadcastButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BroadcastButton.Location = new System.Drawing.Point(120, 20);
-			this.BroadcastButton.Name = "BroadcastButton";
-			this.BroadcastButton.Size = new System.Drawing.Size(113, 25);
-			this.BroadcastButton.TabIndex = 41;
-			this.BroadcastButton.Text = "Start broadcast";
-			this.BroadcastButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.BroadcastButton.UseVisualStyleBackColor = true;
-			// 
 			// TerminalTabPage
 			// 
 			this.TerminalTabPage.Controls.Add(this.CommandTextBox);
 			this.TerminalTabPage.Controls.Add(this.TraceTextBox);
-			this.TerminalTabPage.Controls.Add(this.ComDisconnectButton);
-			this.TerminalTabPage.Controls.Add(this.ComConnectButton);
 			this.TerminalTabPage.Controls.Add(this.PortComboBox);
 			this.TerminalTabPage.Controls.Add(this.label49);
+			this.TerminalTabPage.Controls.Add(this.ComDisconnectButton);
+			this.TerminalTabPage.Controls.Add(this.ComConnectButton);
 			this.TerminalTabPage.Location = new System.Drawing.Point(4, 22);
 			this.TerminalTabPage.Name = "TerminalTabPage";
 			this.TerminalTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2141,27 +2061,6 @@
 			this.TraceTextBox.Size = new System.Drawing.Size(320, 169);
 			this.TraceTextBox.TabIndex = 83;
 			// 
-			// ComDisconnectButton
-			// 
-			this.ComDisconnectButton.Enabled = false;
-			this.ComDisconnectButton.Image = global::NFirmwareEditor.Properties.Resources.disconnect;
-			this.ComDisconnectButton.Location = new System.Drawing.Point(266, 6);
-			this.ComDisconnectButton.Name = "ComDisconnectButton";
-			this.ComDisconnectButton.Size = new System.Drawing.Size(58, 25);
-			this.ComDisconnectButton.TabIndex = 82;
-			this.ComDisconnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ComDisconnectButton.UseVisualStyleBackColor = true;
-			// 
-			// ComConnectButton
-			// 
-			this.ComConnectButton.Image = global::NFirmwareEditor.Properties.Resources.connect;
-			this.ComConnectButton.Location = new System.Drawing.Point(209, 6);
-			this.ComConnectButton.Name = "ComConnectButton";
-			this.ComConnectButton.Size = new System.Drawing.Size(58, 25);
-			this.ComConnectButton.TabIndex = 81;
-			this.ComConnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ComConnectButton.UseVisualStyleBackColor = true;
-			// 
 			// PortComboBox
 			// 
 			this.PortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2188,6 +2087,107 @@
 			// 
 			this.MainErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 			this.MainErrorProvider.ContainerControl = this;
+			// 
+			// ResetButton
+			// 
+			this.ResetButton.Image = global::NFirmwareEditor.Properties.Resources.reset_settings;
+			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ResetButton.Location = new System.Drawing.Point(257, 10);
+			this.ResetButton.Name = "ResetButton";
+			this.ResetButton.Size = new System.Drawing.Size(107, 25);
+			this.ResetButton.TabIndex = 3;
+			this.ResetButton.Text = "Reset settings";
+			this.ResetButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ResetButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadButton
+			// 
+			this.UploadButton.Image = global::NFirmwareEditor.Properties.Resources.upload_settings;
+			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UploadButton.Location = new System.Drawing.Point(141, 10);
+			this.UploadButton.Name = "UploadButton";
+			this.UploadButton.Size = new System.Drawing.Size(110, 25);
+			this.UploadButton.TabIndex = 2;
+			this.UploadButton.Text = "Upload settings";
+			this.UploadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.UploadButton.UseVisualStyleBackColor = true;
+			// 
+			// DownloadButton
+			// 
+			this.DownloadButton.Image = global::NFirmwareEditor.Properties.Resources.download_settings;
+			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DownloadButton.Location = new System.Drawing.Point(11, 10);
+			this.DownloadButton.Name = "DownloadButton";
+			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
+			this.DownloadButton.TabIndex = 1;
+			this.DownloadButton.Text = "Download settings";
+			this.DownloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.DownloadButton.UseVisualStyleBackColor = true;
+			// 
+			// ScreenshotPictureBox
+			// 
+			this.ScreenshotPictureBox.Location = new System.Drawing.Point(2, 2);
+			this.ScreenshotPictureBox.Name = "ScreenshotPictureBox";
+			this.ScreenshotPictureBox.Size = new System.Drawing.Size(64, 128);
+			this.ScreenshotPictureBox.TabIndex = 0;
+			this.ScreenshotPictureBox.TabStop = false;
+			// 
+			// SaveScreenshotButton
+			// 
+			this.SaveScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.save_screenshot;
+			this.SaveScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.SaveScreenshotButton.Location = new System.Drawing.Point(5, 20);
+			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
+			this.SaveScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.SaveScreenshotButton.TabIndex = 36;
+			this.SaveScreenshotButton.Text = "Save screenshot";
+			this.SaveScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
+			// 
+			// TakeScreenshotButton
+			// 
+			this.TakeScreenshotButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.TakeScreenshotButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.TakeScreenshotButton.Location = new System.Drawing.Point(5, 20);
+			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
+			this.TakeScreenshotButton.Size = new System.Drawing.Size(113, 25);
+			this.TakeScreenshotButton.TabIndex = 35;
+			this.TakeScreenshotButton.Text = "Take screenshot";
+			this.TakeScreenshotButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
+			// 
+			// BroadcastButton
+			// 
+			this.BroadcastButton.Image = global::NFirmwareEditor.Properties.Resources.screenshot;
+			this.BroadcastButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BroadcastButton.Location = new System.Drawing.Point(120, 20);
+			this.BroadcastButton.Name = "BroadcastButton";
+			this.BroadcastButton.Size = new System.Drawing.Size(113, 25);
+			this.BroadcastButton.TabIndex = 41;
+			this.BroadcastButton.Text = "Start broadcast";
+			this.BroadcastButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.BroadcastButton.UseVisualStyleBackColor = true;
+			// 
+			// ComDisconnectButton
+			// 
+			this.ComDisconnectButton.Enabled = false;
+			this.ComDisconnectButton.Image = global::NFirmwareEditor.Properties.Resources.disconnect;
+			this.ComDisconnectButton.Location = new System.Drawing.Point(266, 6);
+			this.ComDisconnectButton.Name = "ComDisconnectButton";
+			this.ComDisconnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComDisconnectButton.TabIndex = 82;
+			this.ComDisconnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComDisconnectButton.UseVisualStyleBackColor = true;
+			// 
+			// ComConnectButton
+			// 
+			this.ComConnectButton.Image = global::NFirmwareEditor.Properties.Resources.connect;
+			this.ComConnectButton.Location = new System.Drawing.Point(209, 6);
+			this.ComConnectButton.Name = "ComConnectButton";
+			this.ComConnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComConnectButton.TabIndex = 81;
+			this.ComConnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComConnectButton.UseVisualStyleBackColor = true;
 			// 
 			// DeviceConfiguratorWindow
 			// 
@@ -2255,7 +2255,6 @@
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.ScreenshotContainerPanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PixelSizeUpDown)).EndInit();
@@ -2263,6 +2262,7 @@
 			this.TerminalTabPage.ResumeLayout(false);
 			this.TerminalTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MainErrorProvider)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ScreenshotPictureBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}

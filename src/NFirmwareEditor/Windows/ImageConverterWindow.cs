@@ -4,10 +4,10 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
-using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {

@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\ProfileTabContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\ProfileTabContent.Designer.cs">
+      <DependentUpon>ProfileTabContent.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows\ArcticFoxConfigurationWindow.resx">
       <DependentUpon>ArcticFoxConfigurationWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +82,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ProfileTabContent.resx">
+      <DependentUpon>ProfileTabContent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

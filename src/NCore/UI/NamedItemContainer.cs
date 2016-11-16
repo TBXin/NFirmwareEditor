@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace NFirmwareEditor.UI
+namespace NCore.UI
 {
-	internal class NamedItemContainer<T>
+	public class NamedItemContainer<T>
 	{
 		public NamedItemContainer(string name, T data)
 		{

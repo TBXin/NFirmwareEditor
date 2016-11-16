@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
-using NFirmwareEditor.UI;
 using NLog;
 
 namespace NFirmwareEditor.Windows
