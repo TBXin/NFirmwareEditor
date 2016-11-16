@@ -51,12 +51,16 @@
 			this.MaterialComboBox = new System.Windows.Forms.ComboBox();
 			this.label17 = new System.Windows.Forms.Label();
 			this.TCRUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PreheatDelayUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatDelayUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ProfileNameTextBox
@@ -81,7 +85,7 @@
 			// 
 			// TemperatureUpDown
 			// 
-			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 136);
+			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 163);
 			this.TemperatureUpDown.Maximum = new decimal(new int[] {
             300,
             0,
@@ -105,7 +109,7 @@
 			// TemperatureDominantCheckBox
 			// 
 			this.TemperatureDominantCheckBox.AutoSize = true;
-			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 163);
+			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 190);
 			this.TemperatureDominantCheckBox.Name = "TemperatureDominantCheckBox";
 			this.TemperatureDominantCheckBox.Size = new System.Drawing.Size(136, 17);
 			this.TemperatureDominantCheckBox.TabIndex = 70;
@@ -115,7 +119,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(4, 139);
+			this.label6.Location = new System.Drawing.Point(4, 166);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(73, 13);
 			this.label6.TabIndex = 68;
@@ -128,7 +132,7 @@
 			this.TemperatureTypeComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 136);
+			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 163);
 			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
 			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
 			this.TemperatureTypeComboBox.TabIndex = 69;
@@ -260,7 +264,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(4, 263);
+			this.label7.Location = new System.Drawing.Point(4, 290);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(63, 13);
 			this.label7.TabIndex = 84;
@@ -274,7 +278,7 @@
             0,
             0,
             196608});
-			this.ResistanceUpDown.Location = new System.Drawing.Point(101, 260);
+			this.ResistanceUpDown.Location = new System.Drawing.Point(101, 287);
 			this.ResistanceUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -295,7 +299,7 @@
 			// 
 			this.label13.AutoSize = true;
 			this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label13.Location = new System.Drawing.Point(213, 262);
+			this.label13.Location = new System.Drawing.Point(213, 289);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(17, 16);
 			this.label13.TabIndex = 86;
@@ -304,7 +308,7 @@
 			// ResistanceLockedCheckBox
 			// 
 			this.ResistanceLockedCheckBox.AutoSize = true;
-			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 287);
+			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 314);
 			this.ResistanceLockedCheckBox.Name = "ResistanceLockedCheckBox";
 			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(59, 17);
 			this.ResistanceLockedCheckBox.TabIndex = 85;
@@ -314,11 +318,11 @@
 			// label21
 			// 
 			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(4, 209);
+			this.label21.Location = new System.Drawing.Point(4, 236);
 			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(49, 13);
+			this.label21.Size = new System.Drawing.Size(69, 13);
 			this.label21.TabIndex = 87;
-			this.label21.Text = "Material:";
+			this.label21.Text = "Coil Material:";
 			// 
 			// MaterialComboBox
 			// 
@@ -327,7 +331,7 @@
 			this.MaterialComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.MaterialComboBox.Location = new System.Drawing.Point(101, 206);
+			this.MaterialComboBox.Location = new System.Drawing.Point(101, 233);
 			this.MaterialComboBox.Name = "MaterialComboBox";
 			this.MaterialComboBox.Size = new System.Drawing.Size(106, 21);
 			this.MaterialComboBox.TabIndex = 88;
@@ -335,7 +339,7 @@
 			// label17
 			// 
 			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(4, 236);
+			this.label17.Location = new System.Drawing.Point(4, 263);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(31, 13);
 			this.label17.TabIndex = 92;
@@ -343,7 +347,7 @@
 			// 
 			// TCRUpDown
 			// 
-			this.TCRUpDown.Location = new System.Drawing.Point(101, 233);
+			this.TCRUpDown.Location = new System.Drawing.Point(101, 260);
 			this.TCRUpDown.Maximum = new decimal(new int[] {
             999,
             0,
@@ -365,10 +369,50 @@
             0,
             0});
 			// 
+			// PreheatDelayUpDown
+			// 
+			this.PreheatDelayUpDown.DecimalPlaces = 1;
+			this.PreheatDelayUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.PreheatDelayUpDown.Location = new System.Drawing.Point(101, 116);
+			this.PreheatDelayUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.PreheatDelayUpDown.Name = "PreheatDelayUpDown";
+			this.PreheatDelayUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PreheatDelayUpDown.TabIndex = 95;
+			this.PreheatDelayUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(213, 119);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(12, 13);
+			this.label2.TabIndex = 94;
+			this.label2.Text = "s";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(4, 119);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(79, 13);
+			this.label8.TabIndex = 93;
+			this.label8.Text = "Preheat Delay:";
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.PreheatDelayUpDown);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label17);
 			this.Controls.Add(this.TCRUpDown);
 			this.Controls.Add(this.label21);
@@ -394,13 +438,14 @@
 			this.Controls.Add(this.ProfileNameTextBox);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.Name = "ProfileTabContent";
-			this.Size = new System.Drawing.Size(328, 309);
+			this.Size = new System.Drawing.Size(328, 338);
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PreheatDelayUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -431,5 +476,8 @@
 		public System.Windows.Forms.CheckBox ResistanceLockedCheckBox;
 		public System.Windows.Forms.ComboBox MaterialComboBox;
 		public System.Windows.Forms.NumericUpDown TCRUpDown;
+		public System.Windows.Forms.NumericUpDown PreheatDelayUpDown;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label8;
 	}
 }

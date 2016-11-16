@@ -11,7 +11,7 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161115;
+		private const int MinimumSupportedBuildNumber = 161116;
 
 		private readonly HidConnector m_connector = new HidConnector();
 
@@ -60,24 +60,7 @@ namespace NToolbox.Windows
 				{
 					var profile = general.Profiles[i];
 					var tabPage = new TabPage("P" + (i + 1));
-					var tab = new ProfileTabContent { Dock = DockStyle.Fill };
-					{
-						tab.ProfileNameTextBox.Text = profile.Name;
-						tab.PowerUpDown.Value = Math.Max(tab.PowerUpDown.Minimum, Math.Min(profile.Power / 10m, tab.PowerUpDown.Maximum));
-						tab.PreheatTypeComboBox.SelectItem(profile.Flags.IsPreheatInPercents);
-						tab.PreheatPowerUpDown.Value = profile.Flags.IsPreheatInPercents 
-							? profile.PreheatPower : Math.Max(tab.PreheatPowerUpDown.Minimum, Math.Min(profile.PreheatPower / 10m, tab.PreheatPowerUpDown.Maximum));
-						tab.PreheatTimeUpDown.Value = profile.PreheatTime / 100m;
-
-						tab.TemperatureTypeComboBox.SelectItem(profile.Flags.IsCelcius);
-						tab.TemperatureUpDown.Value =profile.Temperature;
-						tab.TemperatureDominantCheckBox.Checked = profile.Flags.IsTemperatureDominant;
-
-						tab.MaterialComboBox.SelectItem(profile.Flags.Material);
-						tab.TCRUpDown.Value = profile.TCR;
-						tab.ResistanceUpDown.Value = profile.Resistance / 1000m;
-						tab.ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
-					}
+					var tab = new ProfileTabContent(deviceInfo.MaxPower / 10, profile) { Dock = DockStyle.Fill };
 					tabPage.Controls.Add(tab);
 					ProfilesTabControl.TabPages.Add(tabPage);
 				}
@@ -106,7 +89,7 @@ namespace NToolbox.Windows
 			{
 				UpdateUI(() =>
 				{
-					UpdateUI(() => WelcomeLabel.Text = string.Format("Waiting for device with\n\nArctic Fox firmware\n\n{0} or newer", MinimumSupportedBuildNumber));
+					UpdateUI(() => WelcomeLabel.Text = string.Format("Connect device with\n\nArctic Fox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
 					MainContainer.SelectedPage = WelcomePage;
 				});
 				return;
@@ -116,7 +99,7 @@ namespace NToolbox.Windows
 			try
 			{
 				m_configuration = ReadConfiguration();
-				if (m_configuration == null)
+				if (m_configuration == null || m_configuration.Info.FirmwareBuild < MinimumSupportedBuildNumber)
 				{
 					DeviceConnected(false);
 					return;

@@ -190,6 +190,8 @@ namespace NToolbox.Models
 			public ProfileFlags Flags;
 			// 0 - Off, unit is 1/100 sec
 			public byte PreheatTime;
+			// 0 - Off, units is 1/10 sec
+			public byte PreheatDelay;
 			// Watts * 10
 			public ushort PreheatPower;
 			// Watts * 10

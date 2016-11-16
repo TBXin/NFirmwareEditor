@@ -35,6 +35,8 @@
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.ProfilesTabPage = new System.Windows.Forms.TabPage();
 			this.ProfilesTabControl = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.BuildTextBox = new System.Windows.Forms.TextBox();
@@ -44,8 +46,7 @@
 			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			this.WorkspacePage.SuspendLayout();
@@ -53,6 +54,7 @@
 			this.ProfilesTabPage.SuspendLayout();
 			this.ProfilesTabControl.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -62,32 +64,33 @@
 			this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 511);
+			this.MainContainer.SelectedPage = this.WelcomePage;
+			this.MainContainer.Size = new System.Drawing.Size(374, 516);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
 			// 
+			this.WelcomePage.Controls.Add(this.pictureBox1);
 			this.WelcomePage.Controls.Add(this.WelcomeLabel);
 			this.WelcomePage.Description = null;
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
 			this.WelcomePage.Name = "WelcomePage";
-			this.WelcomePage.Size = new System.Drawing.Size(374, 477);
+			this.WelcomePage.Size = new System.Drawing.Size(374, 516);
 			this.WelcomePage.TabIndex = 0;
 			this.WelcomePage.Text = "WelcomePage";
 			// 
 			// WelcomeLabel
 			// 
-			this.WelcomeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.WelcomeLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.WelcomeLabel.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.WelcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.WelcomeLabel.Location = new System.Drawing.Point(0, 0);
+			this.WelcomeLabel.Location = new System.Drawing.Point(0, 191);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(374, 477);
+			this.WelcomeLabel.Size = new System.Drawing.Size(374, 325);
 			this.WelcomeLabel.TabIndex = 2;
 			this.WelcomeLabel.Text = "Waiting for device...";
-			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// WorkspacePage
 			// 
@@ -97,7 +100,7 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 511);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 516);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "Workspace";
 			// 
@@ -111,7 +114,7 @@
 			this.MainTabControl.Location = new System.Drawing.Point(11, 105);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
-			this.MainTabControl.Size = new System.Drawing.Size(354, 394);
+			this.MainTabControl.Size = new System.Drawing.Size(354, 399);
 			this.MainTabControl.TabIndex = 36;
 			// 
 			// ProfilesTabPage
@@ -120,7 +123,7 @@
 			this.ProfilesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ProfilesTabPage.Name = "ProfilesTabPage";
 			this.ProfilesTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 368);
+			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 373);
 			this.ProfilesTabPage.TabIndex = 0;
 			this.ProfilesTabPage.Text = "Profiles";
 			this.ProfilesTabPage.UseVisualStyleBackColor = true;
@@ -136,16 +139,34 @@
 			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 6);
 			this.ProfilesTabControl.Name = "ProfilesTabControl";
 			this.ProfilesTabControl.SelectedIndex = 0;
-			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 356);
+			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 361);
 			this.ProfilesTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.ProfilesTabControl.TabIndex = 0;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Size = new System.Drawing.Size(328, 335);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "P1";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Size = new System.Drawing.Size(328, 335);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "P2";
+			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
 			// GeneralTabPage
 			// 
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(346, 334);
+			this.GeneralTabPage.Size = new System.Drawing.Size(346, 373);
 			this.GeneralTabPage.TabIndex = 1;
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -242,30 +263,23 @@
 			this.label4.TabIndex = 29;
 			this.label4.Text = "FW Ver:";
 			// 
-			// tabPage1
+			// pictureBox1
 			// 
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(328, 330);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "P1";
-			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(388, 330);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "P2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.arctic_fox_logo;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(374, 511);
+			this.ClientSize = new System.Drawing.Size(374, 516);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -282,6 +296,7 @@
 			this.ProfilesTabControl.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -306,5 +321,6 @@
 		private System.Windows.Forms.TabControl ProfilesTabControl;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }

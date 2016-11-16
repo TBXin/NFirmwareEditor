@@ -73,6 +73,16 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arctic_fox_logo {
+            get {
+                object obj = ResourceManager.GetObject("arctic_fox_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap configuration {
             get {
                 object obj = ResourceManager.GetObject("configuration", resourceCulture);

@@ -1,24 +1,52 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NCore.UI;
 using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
-	public partial class ProfileTabContent : UserControl
+	internal partial class ProfileTabContent : UserControl
 	{
 		private const int MinimumWatts = 1;
-		private const int MaximumWatts = 250;
-
 		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\.\\s]).", RegexOptions.Compiled);
 
-		public ProfileTabContent()
+		private readonly int m_maximumWatts;
+
+		internal ProfileTabContent(int maximumWatts, [NotNull] ArcticFoxConfiguration.Profile profile)
 		{
+			if (profile == null) throw new ArgumentNullException("profile");
+
+			m_maximumWatts = maximumWatts;
+
 			InitializeComponent();
-			Initialize();
+			InitializeControls();
+			Initialize(profile);
 		}
 
-		private void Initialize()
+		private void Initialize(ArcticFoxConfiguration.Profile profile)
+		{
+			ProfileNameTextBox.Text = profile.Name;
+			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(profile.Power / 10m, PowerUpDown.Maximum));
+			PreheatTypeComboBox.SelectItem(profile.Flags.IsPreheatInPercents);
+			PreheatPowerUpDown.Value = profile.Flags.IsPreheatInPercents
+				? profile.PreheatPower
+				: Math.Max(PreheatPowerUpDown.Minimum, Math.Min(profile.PreheatPower / 10m, PreheatPowerUpDown.Maximum));
+			PreheatTimeUpDown.Value = profile.PreheatTime / 100m;
+			PreheatDelayUpDown.Value = profile.PreheatDelay / 10m;
+
+			TemperatureTypeComboBox.SelectItem(profile.Flags.IsCelcius);
+			TemperatureUpDown.Value = profile.Temperature;
+			TemperatureDominantCheckBox.Checked = profile.Flags.IsTemperatureDominant;
+
+			MaterialComboBox.SelectItem(profile.Flags.Material);
+			TCRUpDown.Value = profile.TCR;
+			ResistanceUpDown.Value = profile.Resistance / 1000m;
+			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
+		}
+
+		private void InitializeControls()
 		{
 			ProfileNameTextBox.TextChanged += (s, e) =>
 			{
@@ -33,6 +61,9 @@ namespace NToolbox.Windows
 				ProfileNameTextBox.Text = input;
 				ProfileNameTextBox.SelectionStart = position;
 			};
+
+			PowerUpDown.Minimum = MinimumWatts;
+			PowerUpDown.Maximum = m_maximumWatts;
 
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
@@ -55,7 +86,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.DecimalPlaces = 1;
 					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = MinimumWatts;
-					PreheatPowerUpDown.Maximum = MaximumWatts;
+					PreheatPowerUpDown.Maximum = m_maximumWatts;
 				}
 			};
 
@@ -84,9 +115,9 @@ namespace NToolbox.Windows
 			MaterialComboBox.Items.AddRange(new object[]
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("VariWatt", ArcticFoxConfiguration.Material.VariWatt),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel", ArcticFoxConfiguration.Material.Nickel),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium", ArcticFoxConfiguration.Material.Titanium),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS316", ArcticFoxConfiguration.Material.StainlessSteel),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR)
 			});
 		}
