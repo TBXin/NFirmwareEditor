@@ -138,6 +138,7 @@ namespace NToolbox.Windows
 			MaterialComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var enableTemperatureEditing = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() != ArcticFoxConfiguration.Material.VariWatt;
+				ResistanceLockedCheckBox.Visible = enableTemperatureEditing;
 				TemperatureLabel.Visible = enableTemperatureEditing;
 				TemperatureUpDown.Visible = enableTemperatureEditing;
 				TemperatureTypeComboBox.Visible = enableTemperatureEditing;
