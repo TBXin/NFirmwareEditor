@@ -42,6 +42,25 @@ namespace NToolbox.Windows
 			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
 		}
 
+		public void Save(ArcticFoxConfiguration.Profile profile)
+		{
+			profile.Name = ProfileNameTextBox.Text;
+			profile.Power = (ushort)(PowerUpDown.Value * 10);
+			profile.Flags.IsPreheatInPercents = PreheatTypeComboBox.GetSelectedItem<bool>();
+			profile.PreheatPower = profile.Flags.IsPreheatInPercents ? (ushort)PreheatPowerUpDown.Value : (ushort)(PreheatPowerUpDown.Value * 10);
+			profile.PreheatTime = (byte)(PreheatTimeUpDown.Value * 100);
+			profile.PreheatDelay = (byte)(PreheatDelayUpDown.Value * 10);
+
+			profile.Flags.IsCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
+			profile.Temperature = (ushort)TemperatureUpDown.Value;
+			profile.Flags.IsTemperatureDominant = TemperatureDominantCheckBox.Checked;
+
+			profile.Flags.Material = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
+			profile.TCR = (ushort)TCRUpDown.Value;
+			profile.Resistance = (ushort)(ResistanceUpDown.Value * 1000);
+			profile.Flags.IsResistanceLocked = ResistanceLockedCheckBox.Checked;
+		}
+
 		private void InitializeControls()
 		{
 			ProfileNameTextBox.TextChanged += (s, e) =>

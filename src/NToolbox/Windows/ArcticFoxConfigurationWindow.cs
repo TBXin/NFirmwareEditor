@@ -228,7 +228,11 @@ namespace NToolbox.Windows
 
 		private void SaveWorkspace()
 		{
-
+			for (var i = 0; i < m_configuration.General.Profiles.Length; i++)
+			{
+				var tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
+				tabContent.Save(m_configuration.General.Profiles[i]);
+			}
 		}
 
 		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)

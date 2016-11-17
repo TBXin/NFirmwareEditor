@@ -133,7 +133,7 @@ namespace NCore
 					var value = (string)field.GetValue(obj);
 					var valueBytes = Encoding.ASCII.GetBytes(value);
 					var result = new byte[ascii.Length];
-					Buffer.BlockCopy(valueBytes, 0, result, 0, ascii.Length);
+					Buffer.BlockCopy(valueBytes, 0, result, 0, valueBytes.Length);
 
 					bw.Write(result);
 				}

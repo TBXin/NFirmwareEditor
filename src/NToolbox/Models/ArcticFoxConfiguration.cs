@@ -252,11 +252,11 @@ namespace NToolbox.Models
 
 			public void Write(BinaryWriter bw)
 			{
-				var flags = (byte)Material;
-				flags.SetBit(5, IsTemperatureDominant);
-				flags.SetBit(6, IsCelcius);
-				flags.SetBit(7, IsResistanceLocked);
-				flags.SetBit(8, IsPreheatInPercents);
+				var flags = ((byte)Material)
+					.SetBit(5, IsTemperatureDominant)
+					.SetBit(6, IsCelcius)
+					.SetBit(7, IsResistanceLocked)
+					.SetBit(8, IsPreheatInPercents);
 				bw.Write(flags);
 			}
 		}
