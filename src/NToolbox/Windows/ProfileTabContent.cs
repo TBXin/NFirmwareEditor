@@ -120,6 +120,14 @@ namespace NToolbox.Windows
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR)
 			});
+			MaterialComboBox.SelectedValueChanged += (s, e) =>
+			{
+				var enableTemperatureEditing = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() != ArcticFoxConfiguration.Material.VariWatt;
+				TemperatureLabel.Visible = enableTemperatureEditing;
+				TemperatureUpDown.Visible = enableTemperatureEditing;
+				TemperatureTypeComboBox.Visible = enableTemperatureEditing;
+				TemperatureDominantCheckBox.Visible = enableTemperatureEditing;
+			};
 		}
 	}
 }
