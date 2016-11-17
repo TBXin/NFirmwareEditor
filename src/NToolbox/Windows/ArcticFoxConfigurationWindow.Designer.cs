@@ -41,20 +41,18 @@
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
-			this.groupPanel1 = new NCore.UI.GroupPanel();
-			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.BuildTextBox = new System.Windows.Forms.TextBox();
-			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.label48 = new System.Windows.Forms.Label();
-			this.DeviceNameLabel = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
-			this.LayoutTabPage = new System.Windows.Forms.TabPage();
-			this.ControlsTabPage = new System.Windows.Forms.TabPage();
-			this.StatsTabPage = new System.Windows.Forms.TabPage();
+			this.ScreensaverTimeComboBox = new System.Windows.Forms.ComboBox();
+			this.label40 = new System.Windows.Forms.Label();
+			this.label53 = new System.Windows.Forms.Label();
+			this.UseClassicMenuCheckBox = new System.Windows.Forms.CheckBox();
+			this.label38 = new System.Windows.Forms.Label();
+			this.ClockTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label35 = new System.Windows.Forms.Label();
+			this.BatteryPercentsCheckBox = new System.Windows.Forms.CheckBox();
+			this.label34 = new System.Windows.Forms.Label();
+			this.ShowLogoCheckBox = new System.Windows.Forms.CheckBox();
 			this.label32 = new System.Windows.Forms.Label();
 			this.BrightnessPercentLabel = new System.Windows.Forms.Label();
 			this.label31 = new System.Windows.Forms.Label();
@@ -65,18 +63,9 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
-			this.label45 = new System.Windows.Forms.Label();
-			this.VWLine1ComboBox = new System.Windows.Forms.ComboBox();
-			this.VWLine1FireCheckBox = new System.Windows.Forms.CheckBox();
-			this.VWLine2FireCheckBox = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.VWLine2ComboBox = new System.Windows.Forms.ComboBox();
-			this.VWLine3FireCheckBox = new System.Windows.Forms.CheckBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.VWLine3ComboBox = new System.Windows.Forms.ComboBox();
-			this.VWLine4FireCheckBox = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.VWLine4ComboBox = new System.Windows.Forms.ComboBox();
+			this.LayoutTabPage = new System.Windows.Forms.TabPage();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
 			this.TCLine4FireCheckBox = new System.Windows.Forms.CheckBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TCLine4ComboBox = new System.Windows.Forms.ComboBox();
@@ -89,8 +78,44 @@
 			this.TCLine1FireCheckBox = new System.Windows.Forms.CheckBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.TCLine1ComboBox = new System.Windows.Forms.ComboBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
+			this.VWLine4FireCheckBox = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.VWLine4ComboBox = new System.Windows.Forms.ComboBox();
+			this.VWLine3FireCheckBox = new System.Windows.Forms.CheckBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.VWLine3ComboBox = new System.Windows.Forms.ComboBox();
+			this.VWLine2FireCheckBox = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.VWLine2ComboBox = new System.Windows.Forms.ComboBox();
+			this.VWLine1FireCheckBox = new System.Windows.Forms.CheckBox();
+			this.label45 = new System.Windows.Forms.Label();
+			this.VWLine1ComboBox = new System.Windows.Forms.ComboBox();
+			this.ControlsTabPage = new System.Windows.Forms.TabPage();
+			this.StatsTabPage = new System.Windows.Forms.TabPage();
+			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
+			this.BuildTextBox = new System.Windows.Forms.TextBox();
+			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
+			this.label48 = new System.Windows.Forms.Label();
+			this.DeviceNameLabel = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label44 = new System.Windows.Forms.Label();
+			this.Clicks4ComboBox = new System.Windows.Forms.ComboBox();
+			this.label43 = new System.Windows.Forms.Label();
+			this.Clicks3ComboBox = new System.Windows.Forms.ComboBox();
+			this.label42 = new System.Windows.Forms.Label();
+			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
+			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
+			this.label39 = new System.Windows.Forms.Label();
+			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
+			this.label25 = new System.Windows.Forms.Label();
+			this.label52 = new System.Windows.Forms.Label();
+			this.PuffsTimeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label50 = new System.Windows.Forms.Label();
+			this.label51 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,12 +126,16 @@
 			this.ProfilesTabPage.SuspendLayout();
 			this.ProfilesTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
-			this.groupPanel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.ScreenTabPage.SuspendLayout();
-			this.LayoutTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).BeginInit();
+			this.LayoutTabPage.SuspendLayout();
+			this.ControlsTabPage.SuspendLayout();
+			this.StatsTabPage.SuspendLayout();
+			this.groupPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -264,108 +293,6 @@
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
 			// 
-			// groupPanel1
-			// 
-			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupPanel1.BackColor = System.Drawing.SystemColors.Control;
-			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.BuildTextBox);
-			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.label48);
-			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
-			this.groupPanel1.Controls.Add(this.label5);
-			this.groupPanel1.Controls.Add(this.label4);
-			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
-			this.groupPanel1.HeaderHeight = 30;
-			this.groupPanel1.Location = new System.Drawing.Point(76, 11);
-			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(287, 58);
-			this.groupPanel1.TabIndex = 35;
-			this.groupPanel1.TabStop = false;
-			// 
-			// HardwareVersionTextBox
-			// 
-			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.HardwareVersionTextBox.Location = new System.Drawing.Point(236, 33);
-			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
-			this.HardwareVersionTextBox.TabIndex = 28;
-			this.HardwareVersionTextBox.TabStop = false;
-			this.HardwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// BuildTextBox
-			// 
-			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BuildTextBox.Location = new System.Drawing.Point(136, 33);
-			this.BuildTextBox.Name = "BuildTextBox";
-			this.BuildTextBox.Size = new System.Drawing.Size(45, 21);
-			this.BuildTextBox.TabIndex = 34;
-			this.BuildTextBox.TabStop = false;
-			this.BuildTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// FirmwareVersionTextBox
-			// 
-			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(50, 33);
-			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
-			this.FirmwareVersionTextBox.TabIndex = 27;
-			this.FirmwareVersionTextBox.TabStop = false;
-			this.FirmwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// label48
-			// 
-			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label48.AutoSize = true;
-			this.label48.Location = new System.Drawing.Point(106, 36);
-			this.label48.Name = "label48";
-			this.label48.Size = new System.Drawing.Size(33, 13);
-			this.label48.TabIndex = 33;
-			this.label48.Text = "Build:";
-			// 
-			// DeviceNameLabel
-			// 
-			this.DeviceNameLabel.AutoSize = true;
-			this.DeviceNameLabel.BackColor = System.Drawing.Color.White;
-			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
-			this.DeviceNameLabel.Name = "DeviceNameLabel";
-			this.DeviceNameLabel.Size = new System.Drawing.Size(123, 19);
-			this.DeviceNameLabel.TabIndex = 0;
-			this.DeviceNameLabel.Text = "LostVape Triade";
-			// 
-			// label5
-			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(192, 36);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(47, 13);
-			this.label5.TabIndex = 30;
-			this.label5.Text = "HW Ver:";
-			// 
-			// label4
-			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(7, 36);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(46, 13);
-			this.label4.TabIndex = 29;
-			this.label4.Text = "FW Ver:";
-			// 
-			// AdvancedTabPage
-			// 
-			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
-			this.AdvancedTabPage.Name = "AdvancedTabPage";
-			this.AdvancedTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.AdvancedTabPage.Size = new System.Drawing.Size(346, 403);
-			this.AdvancedTabPage.TabIndex = 2;
-			this.AdvancedTabPage.Text = "Advanced";
-			this.AdvancedTabPage.UseVisualStyleBackColor = true;
-			// 
 			// tabControl1
 			// 
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -384,6 +311,16 @@
 			// 
 			// ScreenTabPage
 			// 
+			this.ScreenTabPage.Controls.Add(this.ScreensaverTimeComboBox);
+			this.ScreenTabPage.Controls.Add(this.label40);
+			this.ScreenTabPage.Controls.Add(this.label53);
+			this.ScreenTabPage.Controls.Add(this.UseClassicMenuCheckBox);
+			this.ScreenTabPage.Controls.Add(this.label38);
+			this.ScreenTabPage.Controls.Add(this.ClockTypeComboBox);
+			this.ScreenTabPage.Controls.Add(this.label35);
+			this.ScreenTabPage.Controls.Add(this.BatteryPercentsCheckBox);
+			this.ScreenTabPage.Controls.Add(this.label34);
+			this.ScreenTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label32);
 			this.ScreenTabPage.Controls.Add(this.BrightnessPercentLabel);
 			this.ScreenTabPage.Controls.Add(this.label31);
@@ -401,58 +338,106 @@
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
 			// 
-			// LayoutTabPage
+			// ScreensaverTimeComboBox
 			// 
-			this.LayoutTabPage.Controls.Add(this.label12);
-			this.LayoutTabPage.Controls.Add(this.label10);
-			this.LayoutTabPage.Controls.Add(this.TCLine4FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label6);
-			this.LayoutTabPage.Controls.Add(this.TCLine4ComboBox);
-			this.LayoutTabPage.Controls.Add(this.TCLine3FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label7);
-			this.LayoutTabPage.Controls.Add(this.TCLine3ComboBox);
-			this.LayoutTabPage.Controls.Add(this.TCLine2FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label8);
-			this.LayoutTabPage.Controls.Add(this.TCLine2ComboBox);
-			this.LayoutTabPage.Controls.Add(this.TCLine1FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label9);
-			this.LayoutTabPage.Controls.Add(this.TCLine1ComboBox);
-			this.LayoutTabPage.Controls.Add(this.VWLine4FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label3);
-			this.LayoutTabPage.Controls.Add(this.VWLine4ComboBox);
-			this.LayoutTabPage.Controls.Add(this.VWLine3FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label2);
-			this.LayoutTabPage.Controls.Add(this.VWLine3ComboBox);
-			this.LayoutTabPage.Controls.Add(this.VWLine2FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label1);
-			this.LayoutTabPage.Controls.Add(this.VWLine2ComboBox);
-			this.LayoutTabPage.Controls.Add(this.VWLine1FireCheckBox);
-			this.LayoutTabPage.Controls.Add(this.label45);
-			this.LayoutTabPage.Controls.Add(this.VWLine1ComboBox);
-			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
-			this.LayoutTabPage.Name = "LayoutTabPage";
-			this.LayoutTabPage.Size = new System.Drawing.Size(328, 365);
-			this.LayoutTabPage.TabIndex = 1;
-			this.LayoutTabPage.Text = "Layout";
-			this.LayoutTabPage.UseVisualStyleBackColor = true;
+			this.ScreensaverTimeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ScreensaverTimeComboBox.FormattingEnabled = true;
+			this.ScreensaverTimeComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ScreensaverTimeComboBox.Location = new System.Drawing.Point(101, 224);
+			this.ScreensaverTimeComboBox.Name = "ScreensaverTimeComboBox";
+			this.ScreensaverTimeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ScreensaverTimeComboBox.TabIndex = 102;
 			// 
-			// ControlsTabPage
+			// label40
 			// 
-			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
-			this.ControlsTabPage.Name = "ControlsTabPage";
-			this.ControlsTabPage.Size = new System.Drawing.Size(328, 365);
-			this.ControlsTabPage.TabIndex = 2;
-			this.ControlsTabPage.Text = "Controls";
-			this.ControlsTabPage.UseVisualStyleBackColor = true;
+			this.label40.AutoSize = true;
+			this.label40.Location = new System.Drawing.Point(4, 227);
+			this.label40.Name = "label40";
+			this.label40.Size = new System.Drawing.Size(96, 13);
+			this.label40.TabIndex = 101;
+			this.label40.Text = "Screensaver Time:";
 			// 
-			// StatsTabPage
+			// label53
 			// 
-			this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
-			this.StatsTabPage.Name = "StatsTabPage";
-			this.StatsTabPage.Size = new System.Drawing.Size(328, 365);
-			this.StatsTabPage.TabIndex = 3;
-			this.StatsTabPage.Text = "Stats";
-			this.StatsTabPage.UseVisualStyleBackColor = true;
+			this.label53.AutoSize = true;
+			this.label53.Location = new System.Drawing.Point(4, 146);
+			this.label53.Name = "label53";
+			this.label53.Size = new System.Drawing.Size(93, 13);
+			this.label53.TabIndex = 96;
+			this.label53.Text = "Use Classic Menu:";
+			// 
+			// UseClassicMenuCheckBox
+			// 
+			this.UseClassicMenuCheckBox.AutoSize = true;
+			this.UseClassicMenuCheckBox.Location = new System.Drawing.Point(101, 146);
+			this.UseClassicMenuCheckBox.Name = "UseClassicMenuCheckBox";
+			this.UseClassicMenuCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.UseClassicMenuCheckBox.TabIndex = 97;
+			this.UseClassicMenuCheckBox.Text = "Enabled";
+			this.UseClassicMenuCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label38
+			// 
+			this.label38.AutoSize = true;
+			this.label38.Location = new System.Drawing.Point(4, 200);
+			this.label38.Name = "label38";
+			this.label38.Size = new System.Drawing.Size(63, 13);
+			this.label38.TabIndex = 94;
+			this.label38.Text = "Clock Type:";
+			// 
+			// ClockTypeComboBox
+			// 
+			this.ClockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClockTypeComboBox.FormattingEnabled = true;
+			this.ClockTypeComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 197);
+			this.ClockTypeComboBox.Name = "ClockTypeComboBox";
+			this.ClockTypeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ClockTypeComboBox.TabIndex = 95;
+			// 
+			// label35
+			// 
+			this.label35.AutoSize = true;
+			this.label35.Location = new System.Drawing.Point(4, 119);
+			this.label35.Name = "label35";
+			this.label35.Size = new System.Drawing.Size(92, 13);
+			this.label35.TabIndex = 90;
+			this.label35.Text = "Battery Percents:";
+			// 
+			// BatteryPercentsCheckBox
+			// 
+			this.BatteryPercentsCheckBox.AutoSize = true;
+			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.BatteryPercentsCheckBox.Name = "BatteryPercentsCheckBox";
+			this.BatteryPercentsCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.BatteryPercentsCheckBox.TabIndex = 91;
+			this.BatteryPercentsCheckBox.Text = "Enabled";
+			this.BatteryPercentsCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label34
+			// 
+			this.label34.AutoSize = true;
+			this.label34.Location = new System.Drawing.Point(4, 173);
+			this.label34.Name = "label34";
+			this.label34.Size = new System.Drawing.Size(63, 13);
+			this.label34.TabIndex = 92;
+			this.label34.Text = "Show Logo:";
+			// 
+			// ShowLogoCheckBox
+			// 
+			this.ShowLogoCheckBox.AutoSize = true;
+			this.ShowLogoCheckBox.Location = new System.Drawing.Point(101, 173);
+			this.ShowLogoCheckBox.Name = "ShowLogoCheckBox";
+			this.ShowLogoCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.ShowLogoCheckBox.TabIndex = 93;
+			this.ShowLogoCheckBox.Text = "Enabled";
+			this.ShowLogoCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label32
 			// 
@@ -564,133 +549,64 @@
 			this.FlippedModeCheckBox.Text = "Enabled";
 			this.FlippedModeCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// label45
+			// LayoutTabPage
 			// 
-			this.label45.AutoSize = true;
-			this.label45.Location = new System.Drawing.Point(4, 38);
-			this.label45.Name = "label45";
-			this.label45.Size = new System.Drawing.Size(39, 13);
-			this.label45.TabIndex = 80;
-			this.label45.Text = "Line 1:";
+			this.LayoutTabPage.Controls.Add(this.label12);
+			this.LayoutTabPage.Controls.Add(this.label10);
+			this.LayoutTabPage.Controls.Add(this.TCLine4FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label6);
+			this.LayoutTabPage.Controls.Add(this.TCLine4ComboBox);
+			this.LayoutTabPage.Controls.Add(this.TCLine3FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label7);
+			this.LayoutTabPage.Controls.Add(this.TCLine3ComboBox);
+			this.LayoutTabPage.Controls.Add(this.TCLine2FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label8);
+			this.LayoutTabPage.Controls.Add(this.TCLine2ComboBox);
+			this.LayoutTabPage.Controls.Add(this.TCLine1FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label9);
+			this.LayoutTabPage.Controls.Add(this.TCLine1ComboBox);
+			this.LayoutTabPage.Controls.Add(this.VWLine4FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label3);
+			this.LayoutTabPage.Controls.Add(this.VWLine4ComboBox);
+			this.LayoutTabPage.Controls.Add(this.VWLine3FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label2);
+			this.LayoutTabPage.Controls.Add(this.VWLine3ComboBox);
+			this.LayoutTabPage.Controls.Add(this.VWLine2FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label1);
+			this.LayoutTabPage.Controls.Add(this.VWLine2ComboBox);
+			this.LayoutTabPage.Controls.Add(this.VWLine1FireCheckBox);
+			this.LayoutTabPage.Controls.Add(this.label45);
+			this.LayoutTabPage.Controls.Add(this.VWLine1ComboBox);
+			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
+			this.LayoutTabPage.Name = "LayoutTabPage";
+			this.LayoutTabPage.Size = new System.Drawing.Size(328, 365);
+			this.LayoutTabPage.TabIndex = 1;
+			this.LayoutTabPage.Text = "Layout";
+			this.LayoutTabPage.UseVisualStyleBackColor = true;
 			// 
-			// VWLine1ComboBox
+			// label12
 			// 
-			this.VWLine1ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.VWLine1ComboBox.FormattingEnabled = true;
-			this.VWLine1ComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
-			this.VWLine1ComboBox.Location = new System.Drawing.Point(101, 35);
-			this.VWLine1ComboBox.Name = "VWLine1ComboBox";
-			this.VWLine1ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.VWLine1ComboBox.TabIndex = 81;
+			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label12.Location = new System.Drawing.Point(4, 143);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(318, 21);
+			this.label12.TabIndex = 120;
+			this.label12.Text = "TC Lines Layout:";
+			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// VWLine1FireCheckBox
+			// label10
 			// 
-			this.VWLine1FireCheckBox.AutoSize = true;
-			this.VWLine1FireCheckBox.Location = new System.Drawing.Point(247, 38);
-			this.VWLine1FireCheckBox.Name = "VWLine1FireCheckBox";
-			this.VWLine1FireCheckBox.Size = new System.Drawing.Size(71, 17);
-			this.VWLine1FireCheckBox.TabIndex = 96;
-			this.VWLine1FireCheckBox.Text = "Puff Time";
-			this.VWLine1FireCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// VWLine2FireCheckBox
-			// 
-			this.VWLine2FireCheckBox.AutoSize = true;
-			this.VWLine2FireCheckBox.Location = new System.Drawing.Point(247, 65);
-			this.VWLine2FireCheckBox.Name = "VWLine2FireCheckBox";
-			this.VWLine2FireCheckBox.Size = new System.Drawing.Size(71, 17);
-			this.VWLine2FireCheckBox.TabIndex = 99;
-			this.VWLine2FireCheckBox.Text = "Puff Time";
-			this.VWLine2FireCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(4, 65);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(39, 13);
-			this.label1.TabIndex = 97;
-			this.label1.Text = "Line 2:";
-			// 
-			// VWLine2ComboBox
-			// 
-			this.VWLine2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.VWLine2ComboBox.FormattingEnabled = true;
-			this.VWLine2ComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
-			this.VWLine2ComboBox.Location = new System.Drawing.Point(101, 62);
-			this.VWLine2ComboBox.Name = "VWLine2ComboBox";
-			this.VWLine2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.VWLine2ComboBox.TabIndex = 98;
-			// 
-			// VWLine3FireCheckBox
-			// 
-			this.VWLine3FireCheckBox.AutoSize = true;
-			this.VWLine3FireCheckBox.Location = new System.Drawing.Point(247, 92);
-			this.VWLine3FireCheckBox.Name = "VWLine3FireCheckBox";
-			this.VWLine3FireCheckBox.Size = new System.Drawing.Size(71, 17);
-			this.VWLine3FireCheckBox.TabIndex = 102;
-			this.VWLine3FireCheckBox.Text = "Puff Time";
-			this.VWLine3FireCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(4, 92);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(39, 13);
-			this.label2.TabIndex = 100;
-			this.label2.Text = "Line 3:";
-			// 
-			// VWLine3ComboBox
-			// 
-			this.VWLine3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.VWLine3ComboBox.FormattingEnabled = true;
-			this.VWLine3ComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
-			this.VWLine3ComboBox.Location = new System.Drawing.Point(101, 89);
-			this.VWLine3ComboBox.Name = "VWLine3ComboBox";
-			this.VWLine3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.VWLine3ComboBox.TabIndex = 101;
-			// 
-			// VWLine4FireCheckBox
-			// 
-			this.VWLine4FireCheckBox.AutoSize = true;
-			this.VWLine4FireCheckBox.Location = new System.Drawing.Point(247, 119);
-			this.VWLine4FireCheckBox.Name = "VWLine4FireCheckBox";
-			this.VWLine4FireCheckBox.Size = new System.Drawing.Size(71, 17);
-			this.VWLine4FireCheckBox.TabIndex = 105;
-			this.VWLine4FireCheckBox.Text = "Puff Time";
-			this.VWLine4FireCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(4, 119);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(39, 13);
-			this.label3.TabIndex = 103;
-			this.label3.Text = "Line 4:";
-			// 
-			// VWLine4ComboBox
-			// 
-			this.VWLine4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.VWLine4ComboBox.FormattingEnabled = true;
-			this.VWLine4ComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
-			this.VWLine4ComboBox.Location = new System.Drawing.Point(101, 116);
-			this.VWLine4ComboBox.Name = "VWLine4ComboBox";
-			this.VWLine4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.VWLine4ComboBox.TabIndex = 104;
+			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label10.Location = new System.Drawing.Point(4, 8);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(318, 21);
+			this.label10.TabIndex = 118;
+			this.label10.Text = "VW Lines Layout:";
+			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// TCLine4FireCheckBox
 			// 
@@ -820,29 +736,422 @@
 			this.TCLine1ComboBox.Size = new System.Drawing.Size(140, 21);
 			this.TCLine1ComboBox.TabIndex = 107;
 			// 
-			// label10
+			// VWLine4FireCheckBox
 			// 
-			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.VWLine4FireCheckBox.AutoSize = true;
+			this.VWLine4FireCheckBox.Location = new System.Drawing.Point(247, 119);
+			this.VWLine4FireCheckBox.Name = "VWLine4FireCheckBox";
+			this.VWLine4FireCheckBox.Size = new System.Drawing.Size(71, 17);
+			this.VWLine4FireCheckBox.TabIndex = 105;
+			this.VWLine4FireCheckBox.Text = "Puff Time";
+			this.VWLine4FireCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(4, 119);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(39, 13);
+			this.label3.TabIndex = 103;
+			this.label3.Text = "Line 4:";
+			// 
+			// VWLine4ComboBox
+			// 
+			this.VWLine4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.VWLine4ComboBox.FormattingEnabled = true;
+			this.VWLine4ComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.VWLine4ComboBox.Location = new System.Drawing.Point(101, 116);
+			this.VWLine4ComboBox.Name = "VWLine4ComboBox";
+			this.VWLine4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.VWLine4ComboBox.TabIndex = 104;
+			// 
+			// VWLine3FireCheckBox
+			// 
+			this.VWLine3FireCheckBox.AutoSize = true;
+			this.VWLine3FireCheckBox.Location = new System.Drawing.Point(247, 92);
+			this.VWLine3FireCheckBox.Name = "VWLine3FireCheckBox";
+			this.VWLine3FireCheckBox.Size = new System.Drawing.Size(71, 17);
+			this.VWLine3FireCheckBox.TabIndex = 102;
+			this.VWLine3FireCheckBox.Text = "Puff Time";
+			this.VWLine3FireCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(4, 92);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(39, 13);
+			this.label2.TabIndex = 100;
+			this.label2.Text = "Line 3:";
+			// 
+			// VWLine3ComboBox
+			// 
+			this.VWLine3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.VWLine3ComboBox.FormattingEnabled = true;
+			this.VWLine3ComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.VWLine3ComboBox.Location = new System.Drawing.Point(101, 89);
+			this.VWLine3ComboBox.Name = "VWLine3ComboBox";
+			this.VWLine3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.VWLine3ComboBox.TabIndex = 101;
+			// 
+			// VWLine2FireCheckBox
+			// 
+			this.VWLine2FireCheckBox.AutoSize = true;
+			this.VWLine2FireCheckBox.Location = new System.Drawing.Point(247, 65);
+			this.VWLine2FireCheckBox.Name = "VWLine2FireCheckBox";
+			this.VWLine2FireCheckBox.Size = new System.Drawing.Size(71, 17);
+			this.VWLine2FireCheckBox.TabIndex = 99;
+			this.VWLine2FireCheckBox.Text = "Puff Time";
+			this.VWLine2FireCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(4, 65);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(39, 13);
+			this.label1.TabIndex = 97;
+			this.label1.Text = "Line 2:";
+			// 
+			// VWLine2ComboBox
+			// 
+			this.VWLine2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.VWLine2ComboBox.FormattingEnabled = true;
+			this.VWLine2ComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.VWLine2ComboBox.Location = new System.Drawing.Point(101, 62);
+			this.VWLine2ComboBox.Name = "VWLine2ComboBox";
+			this.VWLine2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.VWLine2ComboBox.TabIndex = 98;
+			// 
+			// VWLine1FireCheckBox
+			// 
+			this.VWLine1FireCheckBox.AutoSize = true;
+			this.VWLine1FireCheckBox.Location = new System.Drawing.Point(247, 38);
+			this.VWLine1FireCheckBox.Name = "VWLine1FireCheckBox";
+			this.VWLine1FireCheckBox.Size = new System.Drawing.Size(71, 17);
+			this.VWLine1FireCheckBox.TabIndex = 96;
+			this.VWLine1FireCheckBox.Text = "Puff Time";
+			this.VWLine1FireCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label45
+			// 
+			this.label45.AutoSize = true;
+			this.label45.Location = new System.Drawing.Point(4, 38);
+			this.label45.Name = "label45";
+			this.label45.Size = new System.Drawing.Size(39, 13);
+			this.label45.TabIndex = 80;
+			this.label45.Text = "Line 1:";
+			// 
+			// VWLine1ComboBox
+			// 
+			this.VWLine1ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.VWLine1ComboBox.FormattingEnabled = true;
+			this.VWLine1ComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.VWLine1ComboBox.Location = new System.Drawing.Point(101, 35);
+			this.VWLine1ComboBox.Name = "VWLine1ComboBox";
+			this.VWLine1ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.VWLine1ComboBox.TabIndex = 81;
+			// 
+			// ControlsTabPage
+			// 
+			this.ControlsTabPage.Controls.Add(this.Step1WCheckBox);
+			this.ControlsTabPage.Controls.Add(this.label25);
+			this.ControlsTabPage.Controls.Add(this.label44);
+			this.ControlsTabPage.Controls.Add(this.Clicks4ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label43);
+			this.ControlsTabPage.Controls.Add(this.Clicks3ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label42);
+			this.ControlsTabPage.Controls.Add(this.Clicks2ComboBox);
+			this.ControlsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
+			this.ControlsTabPage.Controls.Add(this.label39);
+			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.ControlsTabPage.Name = "ControlsTabPage";
+			this.ControlsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.ControlsTabPage.TabIndex = 2;
+			this.ControlsTabPage.Text = "Controls";
+			this.ControlsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// StatsTabPage
+			// 
+			this.StatsTabPage.Controls.Add(this.label52);
+			this.StatsTabPage.Controls.Add(this.PuffsTimeUpDown);
+			this.StatsTabPage.Controls.Add(this.PuffsUpDown);
+			this.StatsTabPage.Controls.Add(this.label50);
+			this.StatsTabPage.Controls.Add(this.label51);
+			this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.StatsTabPage.Name = "StatsTabPage";
+			this.StatsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.StatsTabPage.TabIndex = 3;
+			this.StatsTabPage.Text = "Stats";
+			this.StatsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// AdvancedTabPage
+			// 
+			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
+			this.AdvancedTabPage.Name = "AdvancedTabPage";
+			this.AdvancedTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.AdvancedTabPage.Size = new System.Drawing.Size(346, 403);
+			this.AdvancedTabPage.TabIndex = 2;
+			this.AdvancedTabPage.Text = "Advanced";
+			this.AdvancedTabPage.UseVisualStyleBackColor = true;
+			// 
+			// groupPanel1
+			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label10.Location = new System.Drawing.Point(4, 8);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(318, 21);
-			this.label10.TabIndex = 118;
-			this.label10.Text = "VW Lines Layout:";
-			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.groupPanel1.BackColor = System.Drawing.SystemColors.Control;
+			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
+			this.groupPanel1.Controls.Add(this.BuildTextBox);
+			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
+			this.groupPanel1.Controls.Add(this.label48);
+			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
+			this.groupPanel1.Controls.Add(this.label5);
+			this.groupPanel1.Controls.Add(this.label4);
+			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel1.HeaderHeight = 30;
+			this.groupPanel1.Location = new System.Drawing.Point(76, 11);
+			this.groupPanel1.Name = "groupPanel1";
+			this.groupPanel1.Size = new System.Drawing.Size(287, 58);
+			this.groupPanel1.TabIndex = 35;
+			this.groupPanel1.TabStop = false;
 			// 
-			// label12
+			// HardwareVersionTextBox
 			// 
-			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label12.Location = new System.Drawing.Point(4, 143);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(318, 21);
-			this.label12.TabIndex = 120;
-			this.label12.Text = "TC Lines Layout:";
-			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.HardwareVersionTextBox.Location = new System.Drawing.Point(236, 33);
+			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
+			this.HardwareVersionTextBox.TabIndex = 28;
+			this.HardwareVersionTextBox.TabStop = false;
+			this.HardwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// BuildTextBox
+			// 
+			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BuildTextBox.Location = new System.Drawing.Point(136, 33);
+			this.BuildTextBox.Name = "BuildTextBox";
+			this.BuildTextBox.Size = new System.Drawing.Size(45, 21);
+			this.BuildTextBox.TabIndex = 34;
+			this.BuildTextBox.TabStop = false;
+			this.BuildTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// FirmwareVersionTextBox
+			// 
+			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(50, 33);
+			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(45, 21);
+			this.FirmwareVersionTextBox.TabIndex = 27;
+			this.FirmwareVersionTextBox.TabStop = false;
+			this.FirmwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// label48
+			// 
+			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label48.AutoSize = true;
+			this.label48.Location = new System.Drawing.Point(106, 36);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(33, 13);
+			this.label48.TabIndex = 33;
+			this.label48.Text = "Build:";
+			// 
+			// DeviceNameLabel
+			// 
+			this.DeviceNameLabel.BackColor = System.Drawing.Color.Transparent;
+			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
+			this.DeviceNameLabel.Name = "DeviceNameLabel";
+			this.DeviceNameLabel.Size = new System.Drawing.Size(123, 19);
+			this.DeviceNameLabel.TabIndex = 0;
+			this.DeviceNameLabel.Text = "LostVape Triade";
+			// 
+			// label5
+			// 
+			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(192, 36);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(47, 13);
+			this.label5.TabIndex = 30;
+			this.label5.Text = "HW Ver:";
+			// 
+			// label4
+			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(7, 36);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(46, 13);
+			this.label4.TabIndex = 29;
+			this.label4.Text = "FW Ver:";
+			// 
+			// label44
+			// 
+			this.label44.AutoSize = true;
+			this.label44.Location = new System.Drawing.Point(4, 65);
+			this.label44.Name = "label44";
+			this.label44.Size = new System.Drawing.Size(46, 13);
+			this.label44.TabIndex = 94;
+			this.label44.Text = "4 Clicks:";
+			// 
+			// Clicks4ComboBox
+			// 
+			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks4ComboBox.FormattingEnabled = true;
+			this.Clicks4ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
+			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
+			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks4ComboBox.TabIndex = 95;
+			// 
+			// label43
+			// 
+			this.label43.AutoSize = true;
+			this.label43.Location = new System.Drawing.Point(4, 38);
+			this.label43.Name = "label43";
+			this.label43.Size = new System.Drawing.Size(46, 13);
+			this.label43.TabIndex = 92;
+			this.label43.Text = "3 Clicks:";
+			// 
+			// Clicks3ComboBox
+			// 
+			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks3ComboBox.FormattingEnabled = true;
+			this.Clicks3ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
+			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
+			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks3ComboBox.TabIndex = 93;
+			// 
+			// label42
+			// 
+			this.label42.AutoSize = true;
+			this.label42.Location = new System.Drawing.Point(4, 11);
+			this.label42.Name = "label42";
+			this.label42.Size = new System.Drawing.Size(46, 13);
+			this.label42.TabIndex = 90;
+			this.label42.Text = "2 Clicks:";
+			// 
+			// Clicks2ComboBox
+			// 
+			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks2ComboBox.FormattingEnabled = true;
+			this.Clicks2ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
+			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
+			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks2ComboBox.TabIndex = 91;
+			// 
+			// WakeUpByPlusMinusCheckBox
+			// 
+			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
+			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.WakeUpByPlusMinusCheckBox.TabIndex = 89;
+			this.WakeUpByPlusMinusCheckBox.Text = "Enabled";
+			this.WakeUpByPlusMinusCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label39
+			// 
+			this.label39.AutoSize = true;
+			this.label39.Location = new System.Drawing.Point(4, 92);
+			this.label39.Name = "label39";
+			this.label39.Size = new System.Drawing.Size(96, 13);
+			this.label39.TabIndex = 88;
+			this.label39.Text = "Wake up by + / - :";
+			// 
+			// Step1WCheckBox
+			// 
+			this.Step1WCheckBox.AutoSize = true;
+			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.Step1WCheckBox.Name = "Step1WCheckBox";
+			this.Step1WCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.Step1WCheckBox.TabIndex = 97;
+			this.Step1WCheckBox.Text = "Enabled";
+			this.Step1WCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label25
+			// 
+			this.label25.AutoSize = true;
+			this.label25.Location = new System.Drawing.Point(4, 119);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(85, 13);
+			this.label25.TabIndex = 96;
+			this.label25.Text = "Power 1W Step:";
+			// 
+			// label52
+			// 
+			this.label52.AutoSize = true;
+			this.label52.Location = new System.Drawing.Point(214, 38);
+			this.label52.Name = "label52";
+			this.label52.Size = new System.Drawing.Size(12, 13);
+			this.label52.TabIndex = 74;
+			this.label52.Text = "s";
+			// 
+			// PuffsTimeUpDown
+			// 
+			this.PuffsTimeUpDown.DecimalPlaces = 1;
+			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
+			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsTimeUpDown.Name = "PuffsTimeUpDown";
+			this.PuffsTimeUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsTimeUpDown.TabIndex = 73;
+			this.PuffsTimeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// PuffsUpDown
+			// 
+			this.PuffsUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PuffsUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsUpDown.Name = "PuffsUpDown";
+			this.PuffsUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsUpDown.TabIndex = 72;
+			this.PuffsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label50
+			// 
+			this.label50.AutoSize = true;
+			this.label50.Location = new System.Drawing.Point(4, 11);
+			this.label50.Name = "label50";
+			this.label50.Size = new System.Drawing.Size(68, 13);
+			this.label50.TabIndex = 70;
+			this.label50.Text = "Puffs Count:";
+			// 
+			// label51
+			// 
+			this.label51.AutoSize = true;
+			this.label51.Location = new System.Drawing.Point(4, 38);
+			this.label51.Name = "label51";
+			this.label51.Size = new System.Drawing.Size(88, 13);
+			this.label51.TabIndex = 71;
+			this.label51.Text = "Total Puffs Time:";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -868,15 +1177,21 @@
 			this.ProfilesTabPage.ResumeLayout(false);
 			this.ProfilesTabControl.ResumeLayout(false);
 			this.GeneralTabPage.ResumeLayout(false);
-			this.groupPanel1.ResumeLayout(false);
-			this.groupPanel1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
 			this.ScreenTabPage.ResumeLayout(false);
 			this.ScreenTabPage.PerformLayout();
-			this.LayoutTabPage.ResumeLayout(false);
-			this.LayoutTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).EndInit();
+			this.LayoutTabPage.ResumeLayout(false);
+			this.LayoutTabPage.PerformLayout();
+			this.ControlsTabPage.ResumeLayout(false);
+			this.ControlsTabPage.PerformLayout();
+			this.StatsTabPage.ResumeLayout(false);
+			this.StatsTabPage.PerformLayout();
+			this.groupPanel1.ResumeLayout(false);
+			this.groupPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -946,5 +1261,30 @@
 		private System.Windows.Forms.ComboBox TCLine1ComboBox;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label53;
+		private System.Windows.Forms.CheckBox UseClassicMenuCheckBox;
+		private System.Windows.Forms.Label label38;
+		private System.Windows.Forms.ComboBox ClockTypeComboBox;
+		private System.Windows.Forms.Label label35;
+		private System.Windows.Forms.CheckBox BatteryPercentsCheckBox;
+		private System.Windows.Forms.Label label34;
+		private System.Windows.Forms.CheckBox ShowLogoCheckBox;
+		private System.Windows.Forms.ComboBox ScreensaverTimeComboBox;
+		private System.Windows.Forms.Label label40;
+		private System.Windows.Forms.Label label44;
+		private System.Windows.Forms.ComboBox Clicks4ComboBox;
+		private System.Windows.Forms.Label label43;
+		private System.Windows.Forms.ComboBox Clicks3ComboBox;
+		private System.Windows.Forms.Label label42;
+		private System.Windows.Forms.ComboBox Clicks2ComboBox;
+		private System.Windows.Forms.CheckBox WakeUpByPlusMinusCheckBox;
+		private System.Windows.Forms.Label label39;
+		private System.Windows.Forms.CheckBox Step1WCheckBox;
+		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Label label52;
+		private System.Windows.Forms.NumericUpDown PuffsTimeUpDown;
+		private System.Windows.Forms.NumericUpDown PuffsUpDown;
+		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.Label label51;
 	}
 }

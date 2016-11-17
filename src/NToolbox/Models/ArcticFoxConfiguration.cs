@@ -54,7 +54,7 @@ namespace NToolbox.Models
 			public bool IsClassicMenu;
 			public bool IsClockOnMainScreen;
 			public ClockType ClockType;
-			public byte ScreensaveDuration;
+			public ScreenProtectionTime ScreensaveDuration;
 		}
 
 		internal class CountersData
@@ -132,8 +132,21 @@ namespace NToolbox.Models
 
 		internal enum ClockType : byte
 		{
-			Analog = 0,
-			Digital = 1
+			Off = 0,
+			Analog = 1,
+			Digital = 2
+		}
+
+		internal enum ScreenProtectionTime : byte
+		{
+			Off = 0,
+			Min1 = 1,
+			Min2 = 2,
+			Min5 = 5,
+			Min10 = 10,
+			Min15 = 15,
+			Min20 = 20,
+			Min30 = 30
 		}
 
 		internal class LinesContent

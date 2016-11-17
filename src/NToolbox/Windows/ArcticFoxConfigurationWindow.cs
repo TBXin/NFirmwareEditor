@@ -75,6 +75,51 @@ namespace NToolbox.Windows
 				lineComboBox.Items.AddRange(lineContentItems);
 			}
 
+			ClockTypeComboBox.Items.Clear();
+			ClockTypeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Analog", ArcticFoxConfiguration.ClockType.Analog),
+				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Digital", ArcticFoxConfiguration.ClockType.Digital)
+			});
+
+			ScreensaverTimeComboBox.Items.Clear();
+			ScreensaverTimeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("Off", ArcticFoxConfiguration.ScreenProtectionTime.Off),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("1 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min1),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("2 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min2),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("5 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min5),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("10 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min10),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("15 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min15),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("20 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min20),
+				new NamedItemContainer<ArcticFoxConfiguration.ScreenProtectionTime>("30 Min", ArcticFoxConfiguration.ScreenProtectionTime.Min30)
+			});
+
+			var clickItems = new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("None", ArcticFoxConfiguration.ClickAction.None),
+
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Edit", ArcticFoxConfiguration.ClickAction.Edit),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Main Menu", ArcticFoxConfiguration.ClickAction.MainMenu),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Preheat Menu", ArcticFoxConfiguration.ClickAction.Preheat),
+
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Select Profile", ArcticFoxConfiguration.ClickAction.ProfileSelector),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Edit Profile", ArcticFoxConfiguration.ClickAction.ProfileEdit),
+
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("TDom", ArcticFoxConfiguration.ClickAction.TemperatureDominant),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Show Clock", ArcticFoxConfiguration.ClickAction.MainScreenClock),
+
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("LSL On / Off", ArcticFoxConfiguration.ClickAction.Lsl),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("On / Off", ArcticFoxConfiguration.ClickAction.OnOff)
+			};
+
+			var clickComboBoxes = new[] { Clicks2ComboBox, Clicks3ComboBox, Clicks4ComboBox };
+			foreach (var clickComboBox in clickComboBoxes)
+			{
+				clickComboBox.Items.Clear();
+				clickComboBox.Items.AddRange(clickItems);
+			}
+
 			m_connector.DeviceConnected += DeviceConnected;
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
@@ -109,6 +154,11 @@ namespace NToolbox.Windows
 				IdleTimeUpDow.Value = ui.DimTimeout;
 				StealthModeCheckBox.Checked = ui.IsStealthMode;
 				FlippedModeCheckBox.Checked = ui.IsFlipped;
+				BatteryPercentsCheckBox.Checked = ui.IsBatteryPercents;
+				UseClassicMenuCheckBox.Checked = ui.IsClassicMenu;
+				ShowLogoCheckBox.Checked = ui.IsLogoEnabled;
+				//ClockTypeComboBox.SelectItem(ui.ClockType);
+				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
 
 				InitializeLineContentEditor(ui.VWLines.Line1, VWLine1ComboBox, VWLine1FireCheckBox);
 				InitializeLineContentEditor(ui.VWLines.Line2, VWLine2ComboBox, VWLine2FireCheckBox);
@@ -119,6 +169,19 @@ namespace NToolbox.Windows
 				InitializeLineContentEditor(ui.TCLines.Line2, TCLine2ComboBox, TCLine2FireCheckBox);
 				InitializeLineContentEditor(ui.TCLines.Line3, TCLine3ComboBox, TCLine3FireCheckBox);
 				InitializeLineContentEditor(ui.TCLines.Line4, TCLine4ComboBox, TCLine4FireCheckBox);
+
+				Clicks2ComboBox.SelectItem(ui.Clicks[0]);
+				Clicks3ComboBox.SelectItem(ui.Clicks[1]);
+				Clicks4ComboBox.SelectItem(ui.Clicks[2]);
+
+				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
+				Step1WCheckBox.Checked = ui.IsPowerStep1W;
+			}
+
+			var stats = m_configuration.Counters;
+			{
+				PuffsUpDown.Value = Math.Max(0, Math.Min(stats.PuffsCount, 99999));
+				PuffsTimeUpDown.Value = Math.Max(0, Math.Min(stats.PuffsTime / 10m, 99999));
 			}
 		}
 
