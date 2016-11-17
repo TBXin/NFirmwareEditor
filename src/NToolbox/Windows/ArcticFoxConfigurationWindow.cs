@@ -38,6 +38,43 @@ namespace NToolbox.Windows
 			HardwareVersionTextBox.ReadOnly = true;
 			HardwareVersionTextBox.BackColor = Color.White;
 
+			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
+
+			var lineContentItems = new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Non dominant (Pwr / Temp)", ArcticFoxConfiguration.LineContent.NonDominant),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Volts", ArcticFoxConfiguration.LineContent.Volt),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Volts", ArcticFoxConfiguration.LineContent.Vout),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Amps", ArcticFoxConfiguration.LineContent.Amps),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Resistance", ArcticFoxConfiguration.LineContent.Resistance),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Live Resistance", ArcticFoxConfiguration.LineContent.RealResistance),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs", ArcticFoxConfiguration.LineContent.Puffs),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs Time", ArcticFoxConfiguration.LineContent.Time),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery(s) Volts", ArcticFoxConfiguration.LineContent.BatteryVolts),
+				
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Date/Time", ArcticFoxConfiguration.LineContent.DateTime),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Board Temperature", ArcticFoxConfiguration.LineContent.BoardTemperature),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery", ArcticFoxConfiguration.LineContent.Battery),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + %", ArcticFoxConfiguration.LineContent.BatteryWithPercents),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + V", ArcticFoxConfiguration.LineContent.BatteryWithVolts)
+			};
+
+			var linesComboBoxes = new[]
+			{
+				VWLine1ComboBox, VWLine2ComboBox, VWLine3ComboBox, VWLine4ComboBox,
+				TCLine1ComboBox, TCLine2ComboBox, TCLine3ComboBox, TCLine4ComboBox,
+			};
+
+			foreach (var lineComboBox in linesComboBoxes)
+			{
+				lineComboBox.Items.Clear();
+				lineComboBox.Items.AddRange(lineContentItems);
+			}
+
 			m_connector.DeviceConnected += DeviceConnected;
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
@@ -65,6 +102,32 @@ namespace NToolbox.Windows
 					ProfilesTabControl.TabPages.Add(tabPage);
 				}
 			}
+
+			var ui = m_configuration.Interface;
+			{
+				BrightnessTrackBar.Value = ui.Brightness;
+				IdleTimeUpDow.Value = ui.DimTimeout;
+				StealthModeCheckBox.Checked = ui.IsStealthMode;
+				FlippedModeCheckBox.Checked = ui.IsFlipped;
+
+				InitializeLineContentEditor(ui.VWLines.Line1, VWLine1ComboBox, VWLine1FireCheckBox);
+				InitializeLineContentEditor(ui.VWLines.Line2, VWLine2ComboBox, VWLine2FireCheckBox);
+				InitializeLineContentEditor(ui.VWLines.Line3, VWLine3ComboBox, VWLine3FireCheckBox);
+				InitializeLineContentEditor(ui.VWLines.Line4, VWLine4ComboBox, VWLine4FireCheckBox);
+
+				InitializeLineContentEditor(ui.TCLines.Line1, TCLine1ComboBox, TCLine1FireCheckBox);
+				InitializeLineContentEditor(ui.TCLines.Line2, TCLine2ComboBox, TCLine2FireCheckBox);
+				InitializeLineContentEditor(ui.TCLines.Line3, TCLine3ComboBox, TCLine3FireCheckBox);
+				InitializeLineContentEditor(ui.TCLines.Line4, TCLine4ComboBox, TCLine4FireCheckBox);
+			}
+		}
+
+		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)
+		{
+			var contentCopy = content;
+			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
+			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
+			comboBox.SelectItem(contentCopy);
 		}
 
 		private ArcticFoxConfiguration ReadConfiguration()

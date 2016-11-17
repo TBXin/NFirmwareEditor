@@ -45,14 +45,14 @@ namespace NToolbox.Models
 			public LinesContent TCLines;
 			public byte Brightness;
 			public byte DimTimeout;
-			public byte IsFlipped;
-			public byte IsStealthMode;
-			public byte WakeUpByPlusMinus;
-			public byte IsPowerStep1W;
-			public byte IsBatteryPercents;
-			public byte IsLogoEnabled;
-			public byte IsClassicMenu;
-			public byte IsClockOnMainScreen;
+			public bool IsFlipped;
+			public bool IsStealthMode;
+			public bool WakeUpByPlusMinus;
+			public bool IsPowerStep1W;
+			public bool IsBatteryPercents;
+			public bool IsLogoEnabled;
+			public bool IsClassicMenu;
+			public bool IsClockOnMainScreen;
 			public ClockType ClockType;
 			public byte ScreensaveDuration;
 		}
