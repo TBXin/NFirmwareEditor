@@ -266,7 +266,15 @@ namespace NToolbox.Models
 			Nickel = 1,
 			Titanium = 2,
 			StainlessSteel = 3,
-			TCR = 4
+			TCR = 4,
+			TFR1 = 5,
+			TFR2 = 6,
+			TFR3 = 7,
+			TFR4 = 8,
+			TFR5 = 9,
+			TFR6 = 10,
+			TFR7 = 11,
+			TFR8 = 12
 		}
 	}
 	#pragma warning restore 0649
