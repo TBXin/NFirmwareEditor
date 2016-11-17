@@ -12,7 +12,7 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161116;
+		private const int MinimumSupportedBuildNumber = 161117;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly HidConnector m_connector = new HidConnector();
@@ -183,14 +183,6 @@ namespace NToolbox.Windows
 			}));
 		}
 
-		private string GetErrorMessage(string operationName)
-		{
-			return "An error occurred during " +
-				   operationName +
-				   "...\n\n" +
-				   "To continue, please activate or reconnect your device.";
-		}
-
 		private void UploadButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
@@ -229,6 +221,14 @@ namespace NToolbox.Windows
 			}));
 		}
 
+		private string GetErrorMessage(string operationName)
+		{
+			return "An error occurred during " +
+				   operationName +
+				   "...\n\n" +
+				   "To continue, please activate or reconnect your device.";
+		}
+
 		private void InitializeWorkspace()
 		{
 			//MainContainer.
@@ -249,6 +249,8 @@ namespace NToolbox.Windows
 
 					if (ProfilesTabControl.TabPages.Count <= i)
 					{
+						SelectedProfleComboBox.Items.Add(new NamedItemContainer<byte>(tabName, (byte)i));
+
 						var tabPage = new TabPage(tabName);
 						tabContent = new ProfileTabContent(deviceInfo.MaxPower / 10) { Dock = DockStyle.Fill };
 						tabPage.Controls.Add(tabContent);
@@ -262,6 +264,9 @@ namespace NToolbox.Windows
 					var profile = general.Profiles[i];
 					tabContent.Initialize(profile);
 				}
+
+				SelectedProfleComboBox.SelectItem(general.SelectedProfile);
+				SmartCheckBox.Checked = general.IsSmartEnabled;
 			}
 
 			var ui = m_configuration.Interface;
@@ -311,6 +316,9 @@ namespace NToolbox.Windows
 					var tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
 					tabContent.Save(general.Profiles[i]);
 				}
+
+				general.SelectedProfile = SelectedProfleComboBox.GetSelectedItem<byte>();
+				general.IsSmartEnabled = SmartCheckBox.Checked;
 			}
 
 			var ui = m_configuration.Interface;
@@ -403,12 +411,12 @@ namespace NToolbox.Windows
 			return true;
 		}
 
-		private ArcticFoxConfiguration ReadConfiguration()
+		private ArcticFoxConfiguration ReadConfiguration(bool useWorker = true)
 		{
 			byte[] data = null;
 			try
 			{
-				data = m_connector.ReadConfiguration(m_worker);
+				data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
 			}
 			catch (TimeoutException)
 			{
@@ -449,7 +457,7 @@ namespace NToolbox.Windows
 			UpdateUI(() => WelcomeLabel.Text = @"Downloading settings...");
 			try
 			{
-				m_configuration = ReadConfiguration();
+				m_configuration = ReadConfiguration(false);
 				if (m_configuration == null || m_configuration.Info.FirmwareBuild < MinimumSupportedBuildNumber)
 				{
 					DeviceConnected(false);

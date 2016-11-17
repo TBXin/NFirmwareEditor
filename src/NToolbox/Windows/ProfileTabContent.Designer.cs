@@ -54,6 +54,7 @@
 			this.PreheatDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -406,10 +407,20 @@
 			this.label8.TabIndex = 93;
 			this.label8.Text = "Preheat Delay:";
 			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(213, 11);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(76, 13);
+			this.label6.TabIndex = 96;
+			this.label6.Text = "0-9, A-Z, \'.\', \' \'";
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.label6);
 			this.Controls.Add(this.PreheatDelayUpDown);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label8);
@@ -479,5 +490,6 @@
 		public System.Windows.Forms.NumericUpDown PreheatDelayUpDown;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label6;
 	}
 }

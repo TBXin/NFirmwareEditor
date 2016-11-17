@@ -122,6 +122,9 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.label11 = new System.Windows.Forms.Label();
+			this.SelectedProfleComboBox = new System.Windows.Forms.ComboBox();
+			this.SmartCheckBox = new System.Windows.Forms.CheckBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -283,7 +286,10 @@
 			// 
 			// ProfilesTabPage
 			// 
+			this.ProfilesTabPage.Controls.Add(this.SelectedProfleComboBox);
+			this.ProfilesTabPage.Controls.Add(this.SmartCheckBox);
 			this.ProfilesTabPage.Controls.Add(this.ProfilesTabControl);
+			this.ProfilesTabPage.Controls.Add(this.label11);
 			this.ProfilesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ProfilesTabPage.Name = "ProfilesTabPage";
 			this.ProfilesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -300,10 +306,10 @@
 			this.ProfilesTabControl.Controls.Add(this.tabPage1);
 			this.ProfilesTabControl.Controls.Add(this.tabPage2);
 			this.ProfilesTabControl.ItemSize = new System.Drawing.Size(40, 18);
-			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 6);
+			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 36);
 			this.ProfilesTabControl.Name = "ProfilesTabControl";
 			this.ProfilesTabControl.SelectedIndex = 0;
-			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 391);
+			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 361);
 			this.ProfilesTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.ProfilesTabControl.TabIndex = 0;
 			// 
@@ -311,7 +317,7 @@
 			// 
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(328, 365);
+			this.tabPage1.Size = new System.Drawing.Size(328, 335);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "P1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -320,7 +326,7 @@
 			// 
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(328, 365);
+			this.tabPage2.Size = new System.Drawing.Size(328, 348);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "P2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -1226,6 +1232,34 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(251, 11);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(41, 13);
+			this.label11.TabIndex = 96;
+			this.label11.Text = "Active:";
+			// 
+			// SelectedProfleComboBox
+			// 
+			this.SelectedProfleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.SelectedProfleComboBox.FormattingEnabled = true;
+			this.SelectedProfleComboBox.Location = new System.Drawing.Point(292, 8);
+			this.SelectedProfleComboBox.Name = "SelectedProfleComboBox";
+			this.SelectedProfleComboBox.Size = new System.Drawing.Size(45, 21);
+			this.SelectedProfleComboBox.TabIndex = 97;
+			// 
+			// SmartCheckBox
+			// 
+			this.SmartCheckBox.AutoSize = true;
+			this.SmartCheckBox.Location = new System.Drawing.Point(6, 10);
+			this.SmartCheckBox.Name = "SmartCheckBox";
+			this.SmartCheckBox.Size = new System.Drawing.Size(132, 17);
+			this.SmartCheckBox.TabIndex = 98;
+			this.SmartCheckBox.Text = "Smart profile selection";
+			this.SmartCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1249,6 +1283,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.MainTabControl.ResumeLayout(false);
 			this.ProfilesTabPage.ResumeLayout(false);
+			this.ProfilesTabPage.PerformLayout();
 			this.ProfilesTabControl.ResumeLayout(false);
 			this.GeneralTabPage.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
@@ -1369,5 +1404,8 @@
 		private System.Windows.Forms.StatusStrip MainStatusBar;
 		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.ComboBox SelectedProfleComboBox;
+		private System.Windows.Forms.CheckBox SmartCheckBox;
 	}
 }

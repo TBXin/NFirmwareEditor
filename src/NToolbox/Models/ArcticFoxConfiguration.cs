@@ -33,7 +33,7 @@ namespace NToolbox.Models
 			public Profile[] Profiles;
 
 			public byte SelectedProfile;
-			public byte IsSmartEnabled;
+			public bool IsSmartEnabled;
 		}
 
 		internal class UIConfiguration
