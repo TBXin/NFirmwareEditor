@@ -228,10 +228,26 @@ namespace NToolbox.Windows
 
 		private void SaveWorkspace()
 		{
-			for (var i = 0; i < m_configuration.General.Profiles.Length; i++)
+			var general = m_configuration.General;
 			{
-				var tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
-				tabContent.Save(m_configuration.General.Profiles[i]);
+				for (var i = 0; i < general.Profiles.Length; i++)
+				{
+					var tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
+					tabContent.Save(general.Profiles[i]);
+				}
+			}
+
+			var ui = m_configuration.Interface;
+			{
+				ui.VWLines.Line1 = SaveLineContent(VWLine1ComboBox, VWLine1FireCheckBox);
+				ui.VWLines.Line2 = SaveLineContent(VWLine2ComboBox, VWLine2FireCheckBox);
+				ui.VWLines.Line3 = SaveLineContent(VWLine3ComboBox, VWLine3FireCheckBox);
+				ui.VWLines.Line4 = SaveLineContent(VWLine4ComboBox, VWLine4FireCheckBox);
+
+				ui.TCLines.Line1 = SaveLineContent(TCLine1ComboBox, TCLine1FireCheckBox);
+				ui.TCLines.Line2 = SaveLineContent(TCLine2ComboBox, TCLine2FireCheckBox);
+				ui.TCLines.Line3 = SaveLineContent(TCLine3ComboBox, TCLine3FireCheckBox);
+				ui.TCLines.Line4 = SaveLineContent(TCLine4ComboBox, TCLine4FireCheckBox);
 			}
 		}
 
@@ -241,6 +257,16 @@ namespace NToolbox.Windows
 			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
 			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
 			comboBox.SelectItem(contentCopy);
+		}
+
+		private ArcticFoxConfiguration.LineContent SaveLineContent(ComboBox comboBox, CheckBox checkBox)
+		{
+			var result = comboBox.GetSelectedItem<ArcticFoxConfiguration.LineContent>();
+			if (checkBox.Checked)
+			{
+				result |= ArcticFoxConfiguration.LineContent.FireTimeMask;
+			}
+			return result;
 		}
 
 		private bool ValidateConnectionStatus()
