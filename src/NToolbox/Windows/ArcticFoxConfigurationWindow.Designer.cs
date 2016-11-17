@@ -116,6 +116,9 @@
 			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label50 = new System.Windows.Forms.Label();
 			this.label51 = new System.Windows.Forms.Label();
+			this.ResetButton = new System.Windows.Forms.Button();
+			this.UploadButton = new System.Windows.Forms.Button();
+			this.DownloadButton = new System.Windows.Forms.Button();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -146,7 +149,7 @@
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
 			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 516);
+			this.MainContainer.Size = new System.Drawing.Size(374, 548);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -186,6 +189,9 @@
 			// 
 			// WorkspacePage
 			// 
+			this.WorkspacePage.Controls.Add(this.ResetButton);
+			this.WorkspacePage.Controls.Add(this.UploadButton);
+			this.WorkspacePage.Controls.Add(this.DownloadButton);
 			this.WorkspacePage.Controls.Add(this.borderedPanel1);
 			this.WorkspacePage.Controls.Add(this.MainTabControl);
 			this.WorkspacePage.Controls.Add(this.groupPanel1);
@@ -193,7 +199,7 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 516);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 548);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "Workspace";
 			// 
@@ -1153,12 +1159,45 @@
 			this.label51.TabIndex = 71;
 			this.label51.Text = "Total Puffs Time:";
 			// 
+			// ResetButton
+			// 
+			this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ResetButton.Location = new System.Drawing.Point(257, 511);
+			this.ResetButton.Name = "ResetButton";
+			this.ResetButton.Size = new System.Drawing.Size(107, 25);
+			this.ResetButton.TabIndex = 40;
+			this.ResetButton.Text = "Reset settings";
+			this.ResetButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadButton
+			// 
+			this.UploadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UploadButton.Location = new System.Drawing.Point(141, 511);
+			this.UploadButton.Name = "UploadButton";
+			this.UploadButton.Size = new System.Drawing.Size(110, 25);
+			this.UploadButton.TabIndex = 39;
+			this.UploadButton.Text = "Upload settings";
+			this.UploadButton.UseVisualStyleBackColor = true;
+			// 
+			// DownloadButton
+			// 
+			this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DownloadButton.Location = new System.Drawing.Point(11, 511);
+			this.DownloadButton.Name = "DownloadButton";
+			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
+			this.DownloadButton.TabIndex = 38;
+			this.DownloadButton.Text = "Download settings";
+			this.DownloadButton.UseVisualStyleBackColor = true;
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(374, 516);
+			this.ClientSize = new System.Drawing.Size(374, 548);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1286,5 +1325,8 @@
 		private System.Windows.Forms.NumericUpDown PuffsUpDown;
 		private System.Windows.Forms.Label label50;
 		private System.Windows.Forms.Label label51;
+		private System.Windows.Forms.Button ResetButton;
+		private System.Windows.Forms.Button UploadButton;
+		private System.Windows.Forms.Button DownloadButton;
 	}
 }

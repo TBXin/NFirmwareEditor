@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using JetBrains.Annotations;
 using NCore.UI;
 using NToolbox.Models;
 
@@ -14,18 +13,15 @@ namespace NToolbox.Windows
 
 		private readonly int m_maximumWatts;
 
-		internal ProfileTabContent(int maximumWatts, [NotNull] ArcticFoxConfiguration.Profile profile)
+		internal ProfileTabContent(int maximumWatts)
 		{
-			if (profile == null) throw new ArgumentNullException("profile");
-
 			m_maximumWatts = maximumWatts;
 
 			InitializeComponent();
 			InitializeControls();
-			Initialize(profile);
 		}
 
-		private void Initialize(ArcticFoxConfiguration.Profile profile)
+		public void Initialize(ArcticFoxConfiguration.Profile profile)
 		{
 			ProfileNameTextBox.Text = profile.Name;
 			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(profile.Power / 10m, PowerUpDown.Maximum));

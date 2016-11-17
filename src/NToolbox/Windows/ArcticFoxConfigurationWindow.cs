@@ -28,6 +28,7 @@ namespace NToolbox.Windows
 		private void Initialize()
 		{
 			MainContainer.SelectedPage = WelcomePage;
+			ProfilesTabControl.TabPages.Clear();
 
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
@@ -123,10 +124,39 @@ namespace NToolbox.Windows
 			m_connector.DeviceConnected += DeviceConnected;
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
+
+			DownloadButton.Click += DownloadButton_Click;
+			UploadButton.Click += UploadButton_Click;
+			ResetButton.Click += ResetButton_Click;
+		}
+
+		private void DownloadButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_configuration = ReadConfiguration();
+			InitializeWorkspace();
+		}
+
+		private void UploadButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			SaveWorkspace();
+			WriteConfiguration();
+		}
+
+		private void ResetButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_connector.ResetDataflash();
+			DownloadButton_Click(null, EventArgs.Empty);
 		}
 
 		private void InitializeWorkspace()
 		{
+			//MainContainer.
 			var deviceInfo = m_configuration.Info;
 			{
 				DeviceNameLabel.Text = HidDeviceInfo.Get(deviceInfo.ProductId).Name;
@@ -137,14 +167,25 @@ namespace NToolbox.Windows
 
 			var general = m_configuration.General;
 			{
-				ProfilesTabControl.TabPages.Clear();
 				for (var i = 0; i < general.Profiles.Length; i++)
 				{
+					var tabName = "P" + (i + 1);
+					ProfileTabContent tabContent;
+
+					if (ProfilesTabControl.TabPages.Count <= i)
+					{
+						var tabPage = new TabPage(tabName);
+						tabContent = new ProfileTabContent(deviceInfo.MaxPower / 10) { Dock = DockStyle.Fill };
+						tabPage.Controls.Add(tabContent);
+						ProfilesTabControl.TabPages.Add(tabPage);
+					}
+					else
+					{
+						tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
+					}
+
 					var profile = general.Profiles[i];
-					var tabPage = new TabPage("P" + (i + 1));
-					var tab = new ProfileTabContent(deviceInfo.MaxPower / 10, profile) { Dock = DockStyle.Fill };
-					tabPage.Controls.Add(tab);
-					ProfilesTabControl.TabPages.Add(tabPage);
+					tabContent.Initialize(profile);
 				}
 			}
 
@@ -185,12 +226,39 @@ namespace NToolbox.Windows
 			}
 		}
 
+		private void SaveWorkspace()
+		{
+
+		}
+
 		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)
 		{
 			var contentCopy = content;
 			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
 			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
 			comboBox.SelectItem(contentCopy);
+		}
+
+		private bool ValidateConnectionStatus()
+		{
+			while (!m_isDeviceConnected)
+			{
+				var result = MessageBox.Show
+				(
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
+					"Information",
+					MessageBoxButtons.OKCancel
+				);
+				if (result == DialogResult.Cancel)
+				{
+					return false;
+				}
+			}
+			return true;
 		}
 
 		private ArcticFoxConfiguration ReadConfiguration()
@@ -204,6 +272,19 @@ namespace NToolbox.Windows
 			{
 			}
 			return data != null ? BinaryStructure.Read<ArcticFoxConfiguration>(data) : null;
+		}
+
+		private void WriteConfiguration()
+		{
+			var data = BinaryStructure.Write(m_configuration, new byte[512]);
+			try
+			{
+				m_connector.WriteConfiguration(data);
+			}
+			catch (TimeoutException)
+			{
+				MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
 		}
 
 		private void DeviceConnected(bool isConnected)
