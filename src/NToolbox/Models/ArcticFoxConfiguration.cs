@@ -52,7 +52,6 @@ namespace NToolbox.Models
 			public bool IsBatteryPercents;
 			public bool IsLogoEnabled;
 			public bool IsClassicMenu;
-			public bool IsClockOnMainScreen;
 			public ClockType ClockType;
 			public ScreenProtectionTime ScreensaveDuration;
 		}

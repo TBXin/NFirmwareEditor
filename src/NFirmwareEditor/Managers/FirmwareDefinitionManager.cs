@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using NCore;
 using NFirmware;
-using NFirmwareEditor.Core;
 using NLog;
 
 namespace NFirmwareEditor.Managers

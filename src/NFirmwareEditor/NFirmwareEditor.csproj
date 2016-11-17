@@ -81,7 +81,6 @@
     <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Managers\PatchManager.cs" />
     <Compile Include="Managers\UpdatesManager.cs" />
-    <Compile Include="Models\AsyncProcessWrapper.cs" />
     <Compile Include="Models\BatteryPresets.cs" />
     <Compile Include="Models\BulkPatchResult.cs" />
     <Compile Include="Models\ApplicationConfiguration.cs" />
@@ -126,7 +125,6 @@
     </Compile>
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
-    <Compile Include="Core\InfoBox.cs" />
     <Compile Include="Windows\DefinitionUpdatesAvailableWindow.cs">
       <SubType>Form</SubType>
     </Compile>

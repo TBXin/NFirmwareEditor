@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace NToolbox.Windows
 	{
 		private const int MinimumSupportedBuildNumber = 161116;
 
+		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly HidConnector m_connector = new HidConnector();
 
 		private bool m_isDeviceWasConnectedOnce;
@@ -27,6 +29,10 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
+			m_worker.DoWork += Worker_DoWork;
+			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
+			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
+
 			MainContainer.SelectedPage = WelcomePage;
 			ProfilesTabControl.TabPages.Clear();
 
@@ -79,6 +85,7 @@ namespace NToolbox.Windows
 			ClockTypeComboBox.Items.Clear();
 			ClockTypeComboBox.Items.AddRange(new object[]
 			{
+				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Off", ArcticFoxConfiguration.ClockType.Off),
 				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Analog", ArcticFoxConfiguration.ClockType.Analog),
 				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Digital", ArcticFoxConfiguration.ClockType.Digital)
 			});
@@ -130,28 +137,96 @@ namespace NToolbox.Windows
 			ResetButton.Click += ResetButton_Click;
 		}
 
+		private void Worker_DoWork(object sender, DoWorkEventArgs e)
+		{
+			var worker = (BackgroundWorker)sender;
+			var wrapper = (AsyncProcessWrapper)e.Argument;
+
+			try
+			{
+				UpdateUI(() => SetControlButtonsState(false));
+				wrapper.Processor(worker);
+			}
+			finally
+			{
+				UpdateUI(() => SetControlButtonsState(true));
+			}
+		}
+
+		private void SetControlButtonsState(bool enabled)
+		{
+			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
+		}
+
 		private void DownloadButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			m_configuration = ReadConfiguration();
-			InitializeWorkspace();
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					var configuration = ReadConfiguration();
+					if (configuration == null)
+					{
+						InfoBox.Show("Something strange happened! Please restart application.");
+						return;
+					}
+					m_configuration = configuration;
+					UpdateUI(InitializeWorkspace);
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("downloading settings"));
+				}
+			}));
+		}
+
+		private string GetErrorMessage(string operationName)
+		{
+			return "An error occurred during " +
+				   operationName +
+				   "...\n\n" +
+				   "To continue, please activate or reconnect your device.";
 		}
 
 		private void UploadButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			SaveWorkspace();
-			WriteConfiguration();
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					UpdateUI(SaveWorkspace);
+					WriteConfiguration();
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("uploading settings"));
+				}
+			}));
 		}
 
 		private void ResetButton_Click(object sender, EventArgs e)
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			m_connector.ResetDataflash();
-			DownloadButton_Click(null, EventArgs.Empty);
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					m_connector.ResetDataflash();
+					DownloadButton_Click(null, null);
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("resetting settings"));
+				}
+			}));
 		}
 
 		private void InitializeWorkspace()
@@ -198,7 +273,7 @@ namespace NToolbox.Windows
 				BatteryPercentsCheckBox.Checked = ui.IsBatteryPercents;
 				UseClassicMenuCheckBox.Checked = ui.IsClassicMenu;
 				ShowLogoCheckBox.Checked = ui.IsLogoEnabled;
-				//ClockTypeComboBox.SelectItem(ui.ClockType);
+				ClockTypeComboBox.SelectItem(ui.ClockType);
 				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
 
 				InitializeLineContentEditor(ui.VWLines.Line1, VWLine1ComboBox, VWLine1FireCheckBox);
@@ -230,6 +305,7 @@ namespace NToolbox.Windows
 		{
 			var general = m_configuration.General;
 			{
+				// Profiles Tab
 				for (var i = 0; i < general.Profiles.Length; i++)
 				{
 					var tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
@@ -239,6 +315,18 @@ namespace NToolbox.Windows
 
 			var ui = m_configuration.Interface;
 			{
+				// General -> Screen Tab
+				ui.Brightness = (byte)BrightnessTrackBar.Value;
+				ui.DimTimeout = (byte)IdleTimeUpDow.Value;
+				ui.IsStealthMode = StealthModeCheckBox.Checked;
+				ui.IsFlipped = FlippedModeCheckBox.Checked;
+				ui.IsBatteryPercents = BatteryPercentsCheckBox.Checked;
+				ui.IsClassicMenu = UseClassicMenuCheckBox.Checked;
+				ui.IsLogoEnabled = ShowLogoCheckBox.Checked;
+				ui.ClockType = ClockTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.ClockType>();
+				ui.ScreensaveDuration = ScreensaverTimeComboBox.GetSelectedItem<ArcticFoxConfiguration.ScreenProtectionTime>();
+
+				// General -> Layout Tab
 				ui.VWLines.Line1 = SaveLineContent(VWLine1ComboBox, VWLine1FireCheckBox);
 				ui.VWLines.Line2 = SaveLineContent(VWLine2ComboBox, VWLine2FireCheckBox);
 				ui.VWLines.Line3 = SaveLineContent(VWLine3ComboBox, VWLine3FireCheckBox);
@@ -248,6 +336,30 @@ namespace NToolbox.Windows
 				ui.TCLines.Line2 = SaveLineContent(TCLine2ComboBox, TCLine2FireCheckBox);
 				ui.TCLines.Line3 = SaveLineContent(TCLine3ComboBox, TCLine3FireCheckBox);
 				ui.TCLines.Line4 = SaveLineContent(TCLine4ComboBox, TCLine4FireCheckBox);
+
+				// General -> Controls Tab
+				ui.Clicks[0] = Clicks2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.Clicks[1] = Clicks3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.Clicks[2] = Clicks4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
+				ui.IsPowerStep1W = Step1WCheckBox.Checked;
+			}
+
+			var stats = m_configuration.Counters;
+			{
+				var now = DateTime.Now;
+
+				// General -> Stats Tab
+				stats.PuffsCount = (ushort)PuffsUpDown.Value;
+				stats.PuffsTime = (ushort)(PuffsTimeUpDown.Value * 10);
+
+				// Time sync
+				stats.Year = (ushort)now.Year;
+				stats.Month = (byte)now.Month;
+				stats.Day = (byte)now.Day;
+				stats.Hour = (byte)now.Hour;
+				stats.Minute = (byte)now.Minute;
+				stats.Second = (byte)now.Second;
 			}
 		}
 
@@ -296,7 +408,7 @@ namespace NToolbox.Windows
 			byte[] data = null;
 			try
 			{
-				data = m_connector.ReadConfiguration();
+				data = m_connector.ReadConfiguration(m_worker);
 			}
 			catch (TimeoutException)
 			{
@@ -309,7 +421,7 @@ namespace NToolbox.Windows
 			var data = BinaryStructure.Write(m_configuration, new byte[512]);
 			try
 			{
-				m_connector.WriteConfiguration(data);
+				m_connector.WriteConfiguration(data, m_worker);
 			}
 			catch (TimeoutException)
 			{
@@ -320,6 +432,8 @@ namespace NToolbox.Windows
 		private void DeviceConnected(bool isConnected)
 		{
 			m_isDeviceConnected = isConnected;
+			UpdateUI(() => StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected"));
+
 			if (m_isDeviceWasConnectedOnce) return;
 
 			if (!m_isDeviceConnected)

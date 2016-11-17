@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncProcessWrapper.cs" />
     <Compile Include="BinaryStructure.cs" />
+    <Compile Include="InfoBox.cs" />
     <Compile Include="UI\ComboBoxExtensions.cs" />
     <Compile Include="UI\GroupPanel.cs">
       <SubType>Component</SubType>

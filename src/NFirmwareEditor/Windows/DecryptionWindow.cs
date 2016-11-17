@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore;
 using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;

@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using JetBrains.Annotations;
 
-namespace NFirmwareEditor.Models
+namespace NCore
 {
-	internal class AsyncProcessWrapper
+	public class AsyncProcessWrapper
 	{
 		public AsyncProcessWrapper([NotNull] Action<BackgroundWorker> processor)
 		{

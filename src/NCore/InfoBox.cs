@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace NFirmwareEditor.Core
+namespace NCore
 {
-	internal static class InfoBox
+	public static class InfoBox
 	{
 		public static void Show(string text)
 		{

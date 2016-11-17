@@ -33,6 +33,9 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
 			this.WorkspacePage = new NCore.UI.MultiPanelPage();
+			this.ResetButton = new System.Windows.Forms.Button();
+			this.UploadButton = new System.Windows.Forms.Button();
+			this.DownloadButton = new System.Windows.Forms.Button();
 			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
@@ -91,7 +94,22 @@
 			this.label45 = new System.Windows.Forms.Label();
 			this.VWLine1ComboBox = new System.Windows.Forms.ComboBox();
 			this.ControlsTabPage = new System.Windows.Forms.TabPage();
+			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
+			this.label25 = new System.Windows.Forms.Label();
+			this.label44 = new System.Windows.Forms.Label();
+			this.Clicks4ComboBox = new System.Windows.Forms.ComboBox();
+			this.label43 = new System.Windows.Forms.Label();
+			this.Clicks3ComboBox = new System.Windows.Forms.ComboBox();
+			this.label42 = new System.Windows.Forms.Label();
+			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
+			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
+			this.label39 = new System.Windows.Forms.Label();
 			this.StatsTabPage = new System.Windows.Forms.TabPage();
+			this.label52 = new System.Windows.Forms.Label();
+			this.PuffsTimeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label50 = new System.Windows.Forms.Label();
+			this.label51 = new System.Windows.Forms.Label();
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
@@ -101,24 +119,9 @@
 			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label44 = new System.Windows.Forms.Label();
-			this.Clicks4ComboBox = new System.Windows.Forms.ComboBox();
-			this.label43 = new System.Windows.Forms.Label();
-			this.Clicks3ComboBox = new System.Windows.Forms.ComboBox();
-			this.label42 = new System.Windows.Forms.Label();
-			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
-			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
-			this.label39 = new System.Windows.Forms.Label();
-			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
-			this.label25 = new System.Windows.Forms.Label();
-			this.label52 = new System.Windows.Forms.Label();
-			this.PuffsTimeUpDown = new System.Windows.Forms.NumericUpDown();
-			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
-			this.label50 = new System.Windows.Forms.Label();
-			this.label51 = new System.Windows.Forms.Label();
-			this.ResetButton = new System.Windows.Forms.Button();
-			this.UploadButton = new System.Windows.Forms.Button();
-			this.DownloadButton = new System.Windows.Forms.Button();
+			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
+			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -136,9 +139,10 @@
 			this.LayoutTabPage.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
 			this.StatsTabPage.SuspendLayout();
-			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).BeginInit();
+			this.groupPanel1.SuspendLayout();
+			this.MainStatusBar.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -149,7 +153,7 @@
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
 			this.MainContainer.SelectedPage = this.WorkspacePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 548);
+			this.MainContainer.Size = new System.Drawing.Size(374, 567);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -199,9 +203,42 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 548);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 567);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "Workspace";
+			// 
+			// ResetButton
+			// 
+			this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ResetButton.Location = new System.Drawing.Point(257, 511);
+			this.ResetButton.Name = "ResetButton";
+			this.ResetButton.Size = new System.Drawing.Size(107, 25);
+			this.ResetButton.TabIndex = 40;
+			this.ResetButton.Text = "Reset settings";
+			this.ResetButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadButton
+			// 
+			this.UploadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.UploadButton.Location = new System.Drawing.Point(141, 511);
+			this.UploadButton.Name = "UploadButton";
+			this.UploadButton.Size = new System.Drawing.Size(110, 25);
+			this.UploadButton.TabIndex = 39;
+			this.UploadButton.Text = "Upload settings";
+			this.UploadButton.UseVisualStyleBackColor = true;
+			// 
+			// DownloadButton
+			// 
+			this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.DownloadButton.Location = new System.Drawing.Point(11, 511);
+			this.DownloadButton.Name = "DownloadButton";
+			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
+			this.DownloadButton.TabIndex = 38;
+			this.DownloadButton.Text = "Download settings";
+			this.DownloadButton.UseVisualStyleBackColor = true;
 			// 
 			// borderedPanel1
 			// 
@@ -889,6 +926,107 @@
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// Step1WCheckBox
+			// 
+			this.Step1WCheckBox.AutoSize = true;
+			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.Step1WCheckBox.Name = "Step1WCheckBox";
+			this.Step1WCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.Step1WCheckBox.TabIndex = 97;
+			this.Step1WCheckBox.Text = "Enabled";
+			this.Step1WCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label25
+			// 
+			this.label25.AutoSize = true;
+			this.label25.Location = new System.Drawing.Point(4, 119);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(85, 13);
+			this.label25.TabIndex = 96;
+			this.label25.Text = "Power 1W Step:";
+			// 
+			// label44
+			// 
+			this.label44.AutoSize = true;
+			this.label44.Location = new System.Drawing.Point(4, 65);
+			this.label44.Name = "label44";
+			this.label44.Size = new System.Drawing.Size(46, 13);
+			this.label44.TabIndex = 94;
+			this.label44.Text = "4 Clicks:";
+			// 
+			// Clicks4ComboBox
+			// 
+			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks4ComboBox.FormattingEnabled = true;
+			this.Clicks4ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
+			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
+			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks4ComboBox.TabIndex = 95;
+			// 
+			// label43
+			// 
+			this.label43.AutoSize = true;
+			this.label43.Location = new System.Drawing.Point(4, 38);
+			this.label43.Name = "label43";
+			this.label43.Size = new System.Drawing.Size(46, 13);
+			this.label43.TabIndex = 92;
+			this.label43.Text = "3 Clicks:";
+			// 
+			// Clicks3ComboBox
+			// 
+			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks3ComboBox.FormattingEnabled = true;
+			this.Clicks3ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
+			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
+			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks3ComboBox.TabIndex = 93;
+			// 
+			// label42
+			// 
+			this.label42.AutoSize = true;
+			this.label42.Location = new System.Drawing.Point(4, 11);
+			this.label42.Name = "label42";
+			this.label42.Size = new System.Drawing.Size(46, 13);
+			this.label42.TabIndex = 90;
+			this.label42.Text = "2 Clicks:";
+			// 
+			// Clicks2ComboBox
+			// 
+			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.Clicks2ComboBox.FormattingEnabled = true;
+			this.Clicks2ComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
+			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
+			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.Clicks2ComboBox.TabIndex = 91;
+			// 
+			// WakeUpByPlusMinusCheckBox
+			// 
+			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
+			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.WakeUpByPlusMinusCheckBox.TabIndex = 89;
+			this.WakeUpByPlusMinusCheckBox.Text = "Enabled";
+			this.WakeUpByPlusMinusCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label39
+			// 
+			this.label39.AutoSize = true;
+			this.label39.Location = new System.Drawing.Point(4, 92);
+			this.label39.Name = "label39";
+			this.label39.Size = new System.Drawing.Size(96, 13);
+			this.label39.TabIndex = 88;
+			this.label39.Text = "Wake up by + / - :";
+			// 
 			// StatsTabPage
 			// 
 			this.StatsTabPage.Controls.Add(this.label52);
@@ -902,6 +1040,60 @@
 			this.StatsTabPage.TabIndex = 3;
 			this.StatsTabPage.Text = "Stats";
 			this.StatsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label52
+			// 
+			this.label52.AutoSize = true;
+			this.label52.Location = new System.Drawing.Point(214, 38);
+			this.label52.Name = "label52";
+			this.label52.Size = new System.Drawing.Size(12, 13);
+			this.label52.TabIndex = 74;
+			this.label52.Text = "s";
+			// 
+			// PuffsTimeUpDown
+			// 
+			this.PuffsTimeUpDown.DecimalPlaces = 1;
+			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
+			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsTimeUpDown.Name = "PuffsTimeUpDown";
+			this.PuffsTimeUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsTimeUpDown.TabIndex = 73;
+			this.PuffsTimeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// PuffsUpDown
+			// 
+			this.PuffsUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PuffsUpDown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+			this.PuffsUpDown.Name = "PuffsUpDown";
+			this.PuffsUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffsUpDown.TabIndex = 72;
+			this.PuffsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label50
+			// 
+			this.label50.AutoSize = true;
+			this.label50.Location = new System.Drawing.Point(4, 11);
+			this.label50.Name = "label50";
+			this.label50.Size = new System.Drawing.Size(68, 13);
+			this.label50.TabIndex = 70;
+			this.label50.Text = "Puffs Count:";
+			// 
+			// label51
+			// 
+			this.label51.AutoSize = true;
+			this.label51.Location = new System.Drawing.Point(4, 38);
+			this.label51.Name = "label51";
+			this.label51.Size = new System.Drawing.Size(88, 13);
+			this.label51.TabIndex = 71;
+			this.label51.Text = "Total Puffs Time:";
 			// 
 			// AdvancedTabPage
 			// 
@@ -1004,200 +1196,43 @@
 			this.label4.TabIndex = 29;
 			this.label4.Text = "FW Ver:";
 			// 
-			// label44
+			// MainStatusBar
 			// 
-			this.label44.AutoSize = true;
-			this.label44.Location = new System.Drawing.Point(4, 65);
-			this.label44.Name = "label44";
-			this.label44.Size = new System.Drawing.Size(46, 13);
-			this.label44.TabIndex = 94;
-			this.label44.Text = "4 Clicks:";
+			this.MainStatusBar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MainStatusBar.GripMargin = new System.Windows.Forms.Padding(0);
+			this.MainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusLabel,
+            this.ProgressLabel});
+			this.MainStatusBar.Location = new System.Drawing.Point(0, 545);
+			this.MainStatusBar.Name = "MainStatusBar";
+			this.MainStatusBar.Size = new System.Drawing.Size(374, 22);
+			this.MainStatusBar.SizingGrip = false;
+			this.MainStatusBar.TabIndex = 36;
+			this.MainStatusBar.Text = "statusStrip1";
 			// 
-			// Clicks4ComboBox
+			// StatusLabel
 			// 
-			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks4ComboBox.FormattingEnabled = true;
-			this.Clicks4ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
-			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
-			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
-			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks4ComboBox.TabIndex = 95;
+			this.StatusLabel.BackColor = System.Drawing.SystemColors.Control;
+			this.StatusLabel.Name = "StatusLabel";
+			this.StatusLabel.Size = new System.Drawing.Size(321, 17);
+			this.StatusLabel.Spring = true;
+			this.StatusLabel.Text = "StatusLabel";
+			this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// label43
+			// ProgressLabel
 			// 
-			this.label43.AutoSize = true;
-			this.label43.Location = new System.Drawing.Point(4, 38);
-			this.label43.Name = "label43";
-			this.label43.Size = new System.Drawing.Size(46, 13);
-			this.label43.TabIndex = 92;
-			this.label43.Text = "3 Clicks:";
-			// 
-			// Clicks3ComboBox
-			// 
-			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks3ComboBox.FormattingEnabled = true;
-			this.Clicks3ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
-			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
-			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
-			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks3ComboBox.TabIndex = 93;
-			// 
-			// label42
-			// 
-			this.label42.AutoSize = true;
-			this.label42.Location = new System.Drawing.Point(4, 11);
-			this.label42.Name = "label42";
-			this.label42.Size = new System.Drawing.Size(46, 13);
-			this.label42.TabIndex = 90;
-			this.label42.Text = "2 Clicks:";
-			// 
-			// Clicks2ComboBox
-			// 
-			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks2ComboBox.FormattingEnabled = true;
-			this.Clicks2ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
-			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
-			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
-			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks2ComboBox.TabIndex = 91;
-			// 
-			// WakeUpByPlusMinusCheckBox
-			// 
-			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
-			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 92);
-			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
-			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.WakeUpByPlusMinusCheckBox.TabIndex = 89;
-			this.WakeUpByPlusMinusCheckBox.Text = "Enabled";
-			this.WakeUpByPlusMinusCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label39
-			// 
-			this.label39.AutoSize = true;
-			this.label39.Location = new System.Drawing.Point(4, 92);
-			this.label39.Name = "label39";
-			this.label39.Size = new System.Drawing.Size(96, 13);
-			this.label39.TabIndex = 88;
-			this.label39.Text = "Wake up by + / - :";
-			// 
-			// Step1WCheckBox
-			// 
-			this.Step1WCheckBox.AutoSize = true;
-			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 119);
-			this.Step1WCheckBox.Name = "Step1WCheckBox";
-			this.Step1WCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.Step1WCheckBox.TabIndex = 97;
-			this.Step1WCheckBox.Text = "Enabled";
-			this.Step1WCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label25
-			// 
-			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(4, 119);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(85, 13);
-			this.label25.TabIndex = 96;
-			this.label25.Text = "Power 1W Step:";
-			// 
-			// label52
-			// 
-			this.label52.AutoSize = true;
-			this.label52.Location = new System.Drawing.Point(214, 38);
-			this.label52.Name = "label52";
-			this.label52.Size = new System.Drawing.Size(12, 13);
-			this.label52.TabIndex = 74;
-			this.label52.Text = "s";
-			// 
-			// PuffsTimeUpDown
-			// 
-			this.PuffsTimeUpDown.DecimalPlaces = 1;
-			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
-			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-			this.PuffsTimeUpDown.Name = "PuffsTimeUpDown";
-			this.PuffsTimeUpDown.Size = new System.Drawing.Size(106, 21);
-			this.PuffsTimeUpDown.TabIndex = 73;
-			this.PuffsTimeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// PuffsUpDown
-			// 
-			this.PuffsUpDown.Location = new System.Drawing.Point(101, 8);
-			this.PuffsUpDown.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-			this.PuffsUpDown.Name = "PuffsUpDown";
-			this.PuffsUpDown.Size = new System.Drawing.Size(106, 21);
-			this.PuffsUpDown.TabIndex = 72;
-			this.PuffsUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label50
-			// 
-			this.label50.AutoSize = true;
-			this.label50.Location = new System.Drawing.Point(4, 11);
-			this.label50.Name = "label50";
-			this.label50.Size = new System.Drawing.Size(68, 13);
-			this.label50.TabIndex = 70;
-			this.label50.Text = "Puffs Count:";
-			// 
-			// label51
-			// 
-			this.label51.AutoSize = true;
-			this.label51.Location = new System.Drawing.Point(4, 38);
-			this.label51.Name = "label51";
-			this.label51.Size = new System.Drawing.Size(88, 13);
-			this.label51.TabIndex = 71;
-			this.label51.Text = "Total Puffs Time:";
-			// 
-			// ResetButton
-			// 
-			this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.ResetButton.Location = new System.Drawing.Point(257, 511);
-			this.ResetButton.Name = "ResetButton";
-			this.ResetButton.Size = new System.Drawing.Size(107, 25);
-			this.ResetButton.TabIndex = 40;
-			this.ResetButton.Text = "Reset settings";
-			this.ResetButton.UseVisualStyleBackColor = true;
-			// 
-			// UploadButton
-			// 
-			this.UploadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.UploadButton.Location = new System.Drawing.Point(141, 511);
-			this.UploadButton.Name = "UploadButton";
-			this.UploadButton.Size = new System.Drawing.Size(110, 25);
-			this.UploadButton.TabIndex = 39;
-			this.UploadButton.Text = "Upload settings";
-			this.UploadButton.UseVisualStyleBackColor = true;
-			// 
-			// DownloadButton
-			// 
-			this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.DownloadButton.Location = new System.Drawing.Point(11, 511);
-			this.DownloadButton.Name = "DownloadButton";
-			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
-			this.DownloadButton.TabIndex = 38;
-			this.DownloadButton.Text = "Download settings";
-			this.DownloadButton.UseVisualStyleBackColor = true;
+			this.ProgressLabel.BackColor = System.Drawing.SystemColors.Control;
+			this.ProgressLabel.Name = "ProgressLabel";
+			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
+			this.ProgressLabel.Text = "Ready";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(374, 548);
+			this.ClientSize = new System.Drawing.Size(374, 567);
+			this.Controls.Add(this.MainStatusBar);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1227,11 +1262,14 @@
 			this.ControlsTabPage.PerformLayout();
 			this.StatsTabPage.ResumeLayout(false);
 			this.StatsTabPage.PerformLayout();
-			this.groupPanel1.ResumeLayout(false);
-			this.groupPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).EndInit();
+			this.groupPanel1.ResumeLayout(false);
+			this.groupPanel1.PerformLayout();
+			this.MainStatusBar.ResumeLayout(false);
+			this.MainStatusBar.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -1328,5 +1366,8 @@
 		private System.Windows.Forms.Button ResetButton;
 		private System.Windows.Forms.Button UploadButton;
 		private System.Windows.Forms.Button DownloadButton;
+		private System.Windows.Forms.StatusStrip MainStatusBar;
+		private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
+		private System.Windows.Forms.ToolStripStatusLabel ProgressLabel;
 	}
 }
