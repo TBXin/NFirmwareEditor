@@ -14,7 +14,7 @@ namespace NCore.USB
 		private const int VendorId = 0x0416;
 		private const int ProductId = 0x5020;
 		private const int DataflashLength = 2048;
-		private const int ConfigurationLength = 512;
+		private const int ConfigurationLength = 768;
 		private const int LogoOffset = 102400;
 		private const int LogoLength = 1024;
 
@@ -114,8 +114,10 @@ namespace NCore.USB
 		{
 			using (var stream = OpenDeviceStream())
 			{
+				var tmp = new byte[ConfigurationLength];
+				Buffer.BlockCopy(data, 0, tmp, 0, data.Length);
 				Write(stream, CreateCommand(Commands.WriteConfiguration, 0, ConfigurationLength));
-				Write(stream, data, worker);
+				Write(stream, tmp, worker);
 			}
 		}
 

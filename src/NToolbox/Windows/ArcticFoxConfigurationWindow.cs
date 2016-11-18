@@ -262,7 +262,7 @@ namespace NToolbox.Windows
 					}
 
 					var profile = general.Profiles[i];
-					tabContent.Initialize(profile);
+					tabContent.Initialize(m_configuration.Advanced.TFRTables, profile);
 				}
 
 				SelectedProfleComboBox.SelectItem(general.SelectedProfile);
@@ -426,7 +426,7 @@ namespace NToolbox.Windows
 
 		private void WriteConfiguration()
 		{
-			var data = BinaryStructure.Write(m_configuration, new byte[512]);
+			var data = BinaryStructure.Write(m_configuration);
 			try
 			{
 				m_connector.WriteConfiguration(data, m_worker);

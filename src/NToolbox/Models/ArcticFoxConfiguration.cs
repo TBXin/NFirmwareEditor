@@ -34,6 +34,7 @@ namespace NToolbox.Models
 
 			public byte SelectedProfile;
 			public bool IsSmartEnabled;
+			public byte SmartRange; // 1..15, percents
 		}
 
 		internal class UIConfiguration
@@ -73,6 +74,28 @@ namespace NToolbox.Models
 			public byte ShuntCorrection; // Value from 85 to 115
 			public BatteryModel BatteryModel;
 			public CustomBattery CustomBatteryProfile;
+			public bool IsX32;
+			public bool IsLightSleepMode;
+			public bool IsUsbCharge;
+			public bool ResetCountersOnStartup;
+
+			[BinaryArray(Length = 8)]
+			public TFRTable[] TFRTables;
+		}
+
+		internal class TFRTable
+		{
+			[BinaryAsciiString(Length = 4)]
+			public string Name;
+
+			[BinaryArray(Length = 7)]
+			public TFRPoint[] Table;
+		}
+
+		internal class TFRPoint
+		{
+			public ushort Temperature;
+			public ushort Resistivity; // value * 10000
 		}
 
 		internal class CustomBattery

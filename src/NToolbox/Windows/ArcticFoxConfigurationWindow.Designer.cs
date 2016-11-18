@@ -40,9 +40,12 @@
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.ProfilesTabPage = new System.Windows.Forms.TabPage();
+			this.SelectedProfleComboBox = new System.Windows.Forms.ComboBox();
+			this.SmartCheckBox = new System.Windows.Forms.CheckBox();
 			this.ProfilesTabControl = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.label11 = new System.Windows.Forms.Label();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
@@ -122,9 +125,6 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label11 = new System.Windows.Forms.Label();
-			this.SelectedProfleComboBox = new System.Windows.Forms.ComboBox();
-			this.SmartCheckBox = new System.Windows.Forms.CheckBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -298,6 +298,25 @@
 			this.ProfilesTabPage.Text = "Profiles";
 			this.ProfilesTabPage.UseVisualStyleBackColor = true;
 			// 
+			// SelectedProfleComboBox
+			// 
+			this.SelectedProfleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.SelectedProfleComboBox.FormattingEnabled = true;
+			this.SelectedProfleComboBox.Location = new System.Drawing.Point(292, 8);
+			this.SelectedProfleComboBox.Name = "SelectedProfleComboBox";
+			this.SelectedProfleComboBox.Size = new System.Drawing.Size(45, 21);
+			this.SelectedProfleComboBox.TabIndex = 97;
+			// 
+			// SmartCheckBox
+			// 
+			this.SmartCheckBox.AutoSize = true;
+			this.SmartCheckBox.Location = new System.Drawing.Point(6, 10);
+			this.SmartCheckBox.Name = "SmartCheckBox";
+			this.SmartCheckBox.Size = new System.Drawing.Size(132, 17);
+			this.SmartCheckBox.TabIndex = 98;
+			this.SmartCheckBox.Text = "Smart profile selection";
+			this.SmartCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// ProfilesTabControl
 			// 
 			this.ProfilesTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -326,10 +345,19 @@
 			// 
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(328, 348);
+			this.tabPage2.Size = new System.Drawing.Size(328, 335);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "P2";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(251, 11);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(41, 13);
+			this.label11.TabIndex = 96;
+			this.label11.Text = "Active:";
 			// 
 			// GeneralTabPage
 			// 
@@ -1174,11 +1202,13 @@
 			// 
 			// DeviceNameLabel
 			// 
+			this.DeviceNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.DeviceNameLabel.BackColor = System.Drawing.Color.Transparent;
 			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
 			this.DeviceNameLabel.Name = "DeviceNameLabel";
-			this.DeviceNameLabel.Size = new System.Drawing.Size(123, 19);
+			this.DeviceNameLabel.Size = new System.Drawing.Size(275, 19);
 			this.DeviceNameLabel.TabIndex = 0;
 			this.DeviceNameLabel.Text = "LostVape Triade";
 			// 
@@ -1231,34 +1261,6 @@
 			this.ProgressLabel.Name = "ProgressLabel";
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(251, 11);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(41, 13);
-			this.label11.TabIndex = 96;
-			this.label11.Text = "Active:";
-			// 
-			// SelectedProfleComboBox
-			// 
-			this.SelectedProfleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.SelectedProfleComboBox.FormattingEnabled = true;
-			this.SelectedProfleComboBox.Location = new System.Drawing.Point(292, 8);
-			this.SelectedProfleComboBox.Name = "SelectedProfleComboBox";
-			this.SelectedProfleComboBox.Size = new System.Drawing.Size(45, 21);
-			this.SelectedProfleComboBox.TabIndex = 97;
-			// 
-			// SmartCheckBox
-			// 
-			this.SmartCheckBox.AutoSize = true;
-			this.SmartCheckBox.Location = new System.Drawing.Point(6, 10);
-			this.SmartCheckBox.Name = "SmartCheckBox";
-			this.SmartCheckBox.Size = new System.Drawing.Size(132, 17);
-			this.SmartCheckBox.TabIndex = 98;
-			this.SmartCheckBox.Text = "Smart profile selection";
-			this.SmartCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
