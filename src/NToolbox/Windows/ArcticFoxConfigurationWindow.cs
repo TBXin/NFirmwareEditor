@@ -13,6 +13,7 @@ namespace NToolbox.Windows
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
 		private const int MinimumSupportedBuildNumber = 161118;
+		private const int MaximumSupportedSettingsVersion = 1;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly HidConnector m_connector = new HidConnector();
@@ -464,6 +465,12 @@ namespace NToolbox.Windows
 			try
 			{
 				data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
+
+				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion > MaximumSupportedSettingsVersion)
+				{
+					return null;
+				}
 			}
 			catch (TimeoutException)
 			{
@@ -504,8 +511,9 @@ namespace NToolbox.Windows
 			UpdateUI(() => WelcomeLabel.Text = @"Downloading settings...");
 			try
 			{
+
 				m_configuration = ReadConfiguration(false);
-				if (m_configuration == null || m_configuration.Info.FirmwareBuild < MinimumSupportedBuildNumber)
+				if (m_configuration == null)
 				{
 					DeviceConnected(false);
 					return;
