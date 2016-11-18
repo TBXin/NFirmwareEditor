@@ -23,7 +23,7 @@ namespace NToolbox
 					return;
 				}
 
-				Application.Run(new ArcticFoxConfigurationWindow());
+				Application.Run(new MainWindow());
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
+using NCore;
 
 namespace NToolbox.Windows
 {
@@ -19,26 +20,25 @@ namespace NToolbox.Windows
 
 			MyEvicConfigurationButton.Click += (s, e) =>
 			{
-				using (var cfg = new ArcticFoxConfigurationWindow())
-				{
-					ShowDialogWindow(cfg);
-				}
+				InfoBox.Show("Work in progress... Be patient.");
 			};
 
 			DeviceMonitorButton.Click += (s, e) =>
 			{
-				using (var cfg = new ArcticFoxConfigurationWindow())
+				InfoBox.Show("Work in progress... Be patient.");
+			};
+
+			ScreenshooterButton.Click += (s, e) =>
+			{
+				using (var ss = new ScreenshooterWindow())
 				{
-					ShowDialogWindow(cfg);
+					ShowDialogWindow(ss);
 				}
 			};
 
 			FirmwareUpdaterButton.Click += (s, e) =>
 			{
-				using (var cfg = new ArcticFoxConfigurationWindow())
-				{
-					ShowDialogWindow(cfg);
-				}
+				InfoBox.Show("Work in progress... Be patient.");
 			};
 		}
 

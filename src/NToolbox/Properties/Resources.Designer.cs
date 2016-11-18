@@ -93,6 +93,16 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap device_broadcast {
+            get {
+                object obj = ResourceManager.GetObject("device_broadcast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap device_monitor {
             get {
                 object obj = ResourceManager.GetObject("device_monitor", resourceCulture);

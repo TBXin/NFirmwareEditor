@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NCore.UI
 {
-	public class EditorDialogWindow : Form
+	public class EditorDialogWindow : WindowBase
 	{
 		public EditorDialogWindow()
 		{
@@ -18,25 +17,6 @@ namespace NCore.UI
 				return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
-		}
-
-		protected void UpdateUI(Action action, bool supressExceptions = true)
-		{
-			if (!supressExceptions)
-			{
-				Invoke(action);
-			}
-			else
-			{
-				try
-				{
-					Invoke(action);
-				}
-				catch (Exception)
-				{
-					// Ignore
-				}
-			}
 		}
 	}
 }

@@ -30,6 +30,7 @@
 		{
 			this.panel1 = new NCore.UI.BorderedPanel();
 			this.panel2 = new NCore.UI.BorderedPanel();
+			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
 			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
 			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
 			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
@@ -54,7 +55,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(240, 456);
+			this.panel1.Size = new System.Drawing.Size(240, 514);
 			this.panel1.TabIndex = 4;
 			// 
 			// panel2
@@ -69,14 +70,26 @@
 			this.panel2.BorderRight = false;
 			this.panel2.BorderTop = false;
 			this.panel2.BorderWidth = 1F;
+			this.panel2.Controls.Add(this.ScreenshooterButton);
 			this.panel2.Controls.Add(this.MyEvicConfigurationButton);
 			this.panel2.Controls.Add(this.DeviceMonitorButton);
 			this.panel2.Controls.Add(this.ArcticFoxConfigurationButton);
 			this.panel2.Controls.Add(this.FirmwareUpdaterButton);
 			this.panel2.Location = new System.Drawing.Point(0, 214);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(240, 242);
+			this.panel2.Size = new System.Drawing.Size(240, 300);
 			this.panel2.TabIndex = 4;
+			// 
+			// ScreenshooterButton
+			// 
+			this.ScreenshooterButton.AdditionalText = "";
+			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
+			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
+			this.ScreenshooterButton.Name = "ScreenshooterButton";
+			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
+			this.ScreenshooterButton.TabIndex = 4;
+			this.ScreenshooterButton.Text = "Screenshooter";
 			// 
 			// MyEvicConfigurationButton
 			// 
@@ -116,7 +129,7 @@
 			this.FirmwareUpdaterButton.AdditionalText = "";
 			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
-			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 180);
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
 			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
 			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
 			this.FirmwareUpdaterButton.TabIndex = 3;
@@ -138,7 +151,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 456);
+			this.ClientSize = new System.Drawing.Size(240, 514);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -163,6 +176,7 @@
 		private NCore.UI.BorderedPanel panel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private NCore.UI.BorderedPanel panel2;
+		private NCore.UI.ExtendedButton ScreenshooterButton;
 	}
 }
 
