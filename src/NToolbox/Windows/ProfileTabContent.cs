@@ -22,27 +22,8 @@ namespace NToolbox.Windows
 			InitializeControls();
 		}
 
-		public void Initialize(ArcticFoxConfiguration.TFRTable[] tfrTables, ArcticFoxConfiguration.Profile profile)
+		public void Initialize(ArcticFoxConfiguration.Profile profile)
 		{
-			MaterialComboBox.Items.Clear();
-			MaterialComboBox.Items.AddRange(new object[]
-			{
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("VariWatt", ArcticFoxConfiguration.Material.VariWatt),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR),
-
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[0].Name, ArcticFoxConfiguration.Material.TFR1),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[1].Name, ArcticFoxConfiguration.Material.TFR2),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[2].Name, ArcticFoxConfiguration.Material.TFR3),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[3].Name, ArcticFoxConfiguration.Material.TFR4),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[4].Name, ArcticFoxConfiguration.Material.TFR5),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[5].Name, ArcticFoxConfiguration.Material.TFR6),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[6].Name, ArcticFoxConfiguration.Material.TFR7),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>(tfrTables[7].Name, ArcticFoxConfiguration.Material.TFR8)
-			});
-
 			ProfileNameTextBox.Text = profile.Name;
 			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(profile.Power / 10m, PowerUpDown.Maximum));
 			PreheatTypeComboBox.SelectItem(profile.Flags.IsPreheatInPercents);
@@ -60,6 +41,17 @@ namespace NToolbox.Windows
 			TCRUpDown.Value = profile.TCR;
 			ResistanceUpDown.Value = profile.Resistance / 1000m;
 			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
+		}
+
+		public void UpdateTFRNames(ArcticFoxConfiguration.TFRTable[] tables)
+		{
+			for (var i = 0; i < tables.Length; i++)
+			{
+				var item = MaterialComboBox.Items[5 + i] as NamedItemContainer<ArcticFoxConfiguration.Material>;
+				if (item == null) continue;
+
+				item.Name = "[TFR] " + tables[i].Name;
+			}
 		}
 
 		public void Save(ArcticFoxConfiguration.Profile profile)
@@ -146,6 +138,24 @@ namespace NToolbox.Windows
 				}
 			};
 
+			MaterialComboBox.Items.Clear();
+			MaterialComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("VariWatt", ArcticFoxConfiguration.Material.VariWatt),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR),
+
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR1", ArcticFoxConfiguration.Material.TFR1),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR2", ArcticFoxConfiguration.Material.TFR2),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR3", ArcticFoxConfiguration.Material.TFR3),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR4", ArcticFoxConfiguration.Material.TFR4),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR5", ArcticFoxConfiguration.Material.TFR5),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR6", ArcticFoxConfiguration.Material.TFR6),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR7", ArcticFoxConfiguration.Material.TFR7),
+				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR8", ArcticFoxConfiguration.Material.TFR8)
+			});
 			MaterialComboBox.SelectedValueChanged += (s, e) =>
 			{
 				if (MaterialComboBox.SelectedItem == null) return;

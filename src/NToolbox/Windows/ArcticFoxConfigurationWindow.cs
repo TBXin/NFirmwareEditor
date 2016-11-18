@@ -262,7 +262,8 @@ namespace NToolbox.Windows
 					}
 
 					var profile = general.Profiles[i];
-					tabContent.Initialize(m_configuration.Advanced.TFRTables, profile);
+					tabContent.Initialize(profile);
+					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
 				}
 
 				SelectedProfleComboBox.SelectItem(general.SelectedProfile);

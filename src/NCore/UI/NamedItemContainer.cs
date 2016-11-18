@@ -12,7 +12,7 @@ namespace NCore.UI
 			Data = data;
 		}
 
-		private string Name { get; set; }
+		public string Name { get; set; }
 
 		public T Data { get; private set; }
 
