@@ -128,6 +128,24 @@ namespace NToolbox.Windows
 				clickComboBox.Items.AddRange(clickItems);
 			}
 
+			BatteryModelComboBox.Items.Clear();
+			BatteryModelComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Generic Battery", ArcticFoxConfiguration.BatteryModel.Generic),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Samsung 25R", ArcticFoxConfiguration.BatteryModel.Samsung25R),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Samsung 30Q", ArcticFoxConfiguration.BatteryModel.Samsung30Q),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("LG HG2", ArcticFoxConfiguration.BatteryModel.LGHG2),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("LG HE4", ArcticFoxConfiguration.BatteryModel.LGHE4),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Sony VTC4", ArcticFoxConfiguration.BatteryModel.SonyVTC4),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Sony VTC5", ArcticFoxConfiguration.BatteryModel.SonyVTC5),
+				new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom", ArcticFoxConfiguration.BatteryModel.Custom)
+			});
+			BatteryModelComboBox.SelectedValueChanged += (s, e) =>
+			{
+				var batteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
+				BatteryEditButton.Visible = batteryModel == ArcticFoxConfiguration.BatteryModel.Custom;
+			};
+
 			m_connector.DeviceConnected += DeviceConnected;
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
@@ -305,6 +323,16 @@ namespace NToolbox.Windows
 				PuffsUpDown.Value = Math.Max(0, Math.Min(stats.PuffsCount, 99999));
 				PuffsTimeUpDown.Value = Math.Max(0, Math.Min(stats.PuffsTime / 10m, 99999));
 			}
+
+			var advanced = m_configuration.Advanced;
+			{
+				ShuntCorrectionUpDown.Value = Math.Max((byte)85, Math.Min(advanced.ShuntCorrection, (byte)115));
+				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
+				X32CheckBox.Checked = advanced.IsX32;
+				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;
+				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
+				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
+			}
 		}
 
 		private void SaveWorkspace()
@@ -369,6 +397,16 @@ namespace NToolbox.Windows
 				stats.Hour = (byte)now.Hour;
 				stats.Minute = (byte)now.Minute;
 				stats.Second = (byte)now.Second;
+			}
+
+			var advanced = m_configuration.Advanced;
+			{
+				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
+				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
+				advanced.IsX32 = X32CheckBox.Checked;
+				advanced.IsLightSleepMode = LightSleepCheckBox.Checked;
+				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
+				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
 			}
 		}
 

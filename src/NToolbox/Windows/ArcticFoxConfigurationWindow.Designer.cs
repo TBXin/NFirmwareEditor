@@ -125,6 +125,20 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.BatteryEditButton = new System.Windows.Forms.Button();
+			this.label56 = new System.Windows.Forms.Label();
+			this.BatteryModelComboBox = new System.Windows.Forms.ComboBox();
+			this.label54 = new System.Windows.Forms.Label();
+			this.ShuntCorrectionUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label55 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.ResetCountersCheckBox = new System.Windows.Forms.CheckBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.UsbChargeCheckBox = new System.Windows.Forms.CheckBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.X32CheckBox = new System.Windows.Forms.CheckBox();
+			this.label16 = new System.Windows.Forms.Label();
+			this.LightSleepCheckBox = new System.Windows.Forms.CheckBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -144,8 +158,10 @@
 			this.StatsTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).BeginInit();
+			this.AdvancedTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -1131,6 +1147,20 @@
 			// 
 			// AdvancedTabPage
 			// 
+			this.AdvancedTabPage.Controls.Add(this.label13);
+			this.AdvancedTabPage.Controls.Add(this.ResetCountersCheckBox);
+			this.AdvancedTabPage.Controls.Add(this.label14);
+			this.AdvancedTabPage.Controls.Add(this.UsbChargeCheckBox);
+			this.AdvancedTabPage.Controls.Add(this.label15);
+			this.AdvancedTabPage.Controls.Add(this.X32CheckBox);
+			this.AdvancedTabPage.Controls.Add(this.label16);
+			this.AdvancedTabPage.Controls.Add(this.LightSleepCheckBox);
+			this.AdvancedTabPage.Controls.Add(this.BatteryEditButton);
+			this.AdvancedTabPage.Controls.Add(this.label56);
+			this.AdvancedTabPage.Controls.Add(this.BatteryModelComboBox);
+			this.AdvancedTabPage.Controls.Add(this.label54);
+			this.AdvancedTabPage.Controls.Add(this.ShuntCorrectionUpDown);
+			this.AdvancedTabPage.Controls.Add(this.label55);
 			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
 			this.AdvancedTabPage.Name = "AdvancedTabPage";
 			this.AdvancedTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1262,6 +1292,155 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
+			// BatteryEditButton
+			// 
+			this.BatteryEditButton.Location = new System.Drawing.Point(222, 34);
+			this.BatteryEditButton.Name = "BatteryEditButton";
+			this.BatteryEditButton.Size = new System.Drawing.Size(60, 23);
+			this.BatteryEditButton.TabIndex = 79;
+			this.BatteryEditButton.Text = "Edit";
+			this.BatteryEditButton.UseVisualStyleBackColor = true;
+			this.BatteryEditButton.Visible = false;
+			// 
+			// label56
+			// 
+			this.label56.AutoSize = true;
+			this.label56.Location = new System.Drawing.Point(4, 38);
+			this.label56.Name = "label56";
+			this.label56.Size = new System.Drawing.Size(78, 13);
+			this.label56.TabIndex = 77;
+			this.label56.Text = "Battery Model:";
+			// 
+			// BatteryModelComboBox
+			// 
+			this.BatteryModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.BatteryModelComboBox.FormattingEnabled = true;
+			this.BatteryModelComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 35);
+			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
+			this.BatteryModelComboBox.Size = new System.Drawing.Size(120, 21);
+			this.BatteryModelComboBox.TabIndex = 78;
+			// 
+			// label54
+			// 
+			this.label54.AutoSize = true;
+			this.label54.Location = new System.Drawing.Point(4, 11);
+			this.label54.Name = "label54";
+			this.label54.Size = new System.Drawing.Size(92, 13);
+			this.label54.TabIndex = 75;
+			this.label54.Text = "Shunt Correction:";
+			// 
+			// ShuntCorrectionUpDown
+			// 
+			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(101, 8);
+			this.ShuntCorrectionUpDown.Maximum = new decimal(new int[] {
+            115,
+            0,
+            0,
+            0});
+			this.ShuntCorrectionUpDown.Minimum = new decimal(new int[] {
+            85,
+            0,
+            0,
+            0});
+			this.ShuntCorrectionUpDown.Name = "ShuntCorrectionUpDown";
+			this.ShuntCorrectionUpDown.Size = new System.Drawing.Size(106, 21);
+			this.ShuntCorrectionUpDown.TabIndex = 74;
+			this.ShuntCorrectionUpDown.TabStop = false;
+			this.ShuntCorrectionUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShuntCorrectionUpDown.Value = new decimal(new int[] {
+            85,
+            0,
+            0,
+            0});
+			// 
+			// label55
+			// 
+			this.label55.AutoSize = true;
+			this.label55.Location = new System.Drawing.Point(213, 10);
+			this.label55.Name = "label55";
+			this.label55.Size = new System.Drawing.Size(18, 13);
+			this.label55.TabIndex = 76;
+			this.label55.Text = "%";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(4, 146);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(46, 13);
+			this.label13.TabIndex = 104;
+			this.label13.Text = "RCOBC:";
+			// 
+			// ResetCountersCheckBox
+			// 
+			this.ResetCountersCheckBox.AutoSize = true;
+			this.ResetCountersCheckBox.Location = new System.Drawing.Point(101, 146);
+			this.ResetCountersCheckBox.Name = "ResetCountersCheckBox";
+			this.ResetCountersCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.ResetCountersCheckBox.TabIndex = 105;
+			this.ResetCountersCheckBox.Text = "Enabled";
+			this.ResetCountersCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(4, 119);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(68, 13);
+			this.label14.TabIndex = 102;
+			this.label14.Text = "USB Charge:";
+			// 
+			// UsbChargeCheckBox
+			// 
+			this.UsbChargeCheckBox.AutoSize = true;
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
+			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.UsbChargeCheckBox.TabIndex = 103;
+			this.UsbChargeCheckBox.Text = "Enabled";
+			this.UsbChargeCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(4, 65);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(29, 13);
+			this.label15.TabIndex = 98;
+			this.label15.Text = "X32:";
+			// 
+			// X32CheckBox
+			// 
+			this.X32CheckBox.AutoSize = true;
+			this.X32CheckBox.Location = new System.Drawing.Point(101, 65);
+			this.X32CheckBox.Name = "X32CheckBox";
+			this.X32CheckBox.Size = new System.Drawing.Size(64, 17);
+			this.X32CheckBox.TabIndex = 99;
+			this.X32CheckBox.Text = "Enabled";
+			this.X32CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Location = new System.Drawing.Point(4, 92);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(92, 13);
+			this.label16.TabIndex = 100;
+			this.label16.Text = "Light Sleep Mode:";
+			// 
+			// LightSleepCheckBox
+			// 
+			this.LightSleepCheckBox.AutoSize = true;
+			this.LightSleepCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.LightSleepCheckBox.Name = "LightSleepCheckBox";
+			this.LightSleepCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.LightSleepCheckBox.TabIndex = 101;
+			this.LightSleepCheckBox.Text = "Enabled";
+			this.LightSleepCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1301,10 +1480,13 @@
 			this.StatsTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).EndInit();
+			this.AdvancedTabPage.ResumeLayout(false);
+			this.AdvancedTabPage.PerformLayout();
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1409,5 +1591,19 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.ComboBox SelectedProfleComboBox;
 		private System.Windows.Forms.CheckBox SmartCheckBox;
+		private System.Windows.Forms.Button BatteryEditButton;
+		private System.Windows.Forms.Label label56;
+		private System.Windows.Forms.ComboBox BatteryModelComboBox;
+		private System.Windows.Forms.Label label54;
+		private System.Windows.Forms.NumericUpDown ShuntCorrectionUpDown;
+		private System.Windows.Forms.Label label55;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.CheckBox ResetCountersCheckBox;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.CheckBox UsbChargeCheckBox;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.CheckBox X32CheckBox;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.CheckBox LightSleepCheckBox;
 	}
 }
