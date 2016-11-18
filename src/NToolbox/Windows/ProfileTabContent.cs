@@ -9,7 +9,7 @@ namespace NToolbox.Windows
 	internal partial class ProfileTabContent : UserControl
 	{
 		private const int MinimumWatts = 1;
-		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\.\\s]).", RegexOptions.Compiled);
+		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 
 		private readonly int m_maximumWatts;
 

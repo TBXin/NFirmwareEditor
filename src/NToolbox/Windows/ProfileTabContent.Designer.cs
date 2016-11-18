@@ -412,9 +412,9 @@
 			this.label6.AutoSize = true;
 			this.label6.Location = new System.Drawing.Point(213, 11);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(76, 13);
+			this.label6.Size = new System.Drawing.Size(78, 13);
 			this.label6.TabIndex = 96;
-			this.label6.Text = "0-9, A-Z, \'.\', \' \'";
+			this.label6.Text = "0-9 A-Z + - . \' \'";
 			// 
 			// ProfileTabContent
 			// 
