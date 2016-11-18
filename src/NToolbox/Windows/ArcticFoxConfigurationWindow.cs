@@ -150,6 +150,14 @@ namespace NToolbox.Windows
 			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
 			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
 
+			BatteryEditButton.Click += (s, e) =>
+			{
+				using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
+				{
+					editor.ShowDialog();
+				}
+			};
+
 			DownloadButton.Click += DownloadButton_Click;
 			UploadButton.Click += UploadButton_Click;
 			ResetButton.Click += ResetButton_Click;

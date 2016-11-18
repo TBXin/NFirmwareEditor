@@ -54,6 +54,9 @@
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="InfoBox.cs" />
     <Compile Include="UI\ComboBoxExtensions.cs" />
+    <Compile Include="UI\EditorDialogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\GroupPanel.cs">
       <SubType>Component</SubType>
     </Compile>
