@@ -1532,7 +1532,7 @@
 			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
 			this.MaterialsTabPage.Size = new System.Drawing.Size(328, 365);
 			this.MaterialsTabPage.TabIndex = 1;
-			this.MaterialsTabPage.Text = "TFR Materials";
+			this.MaterialsTabPage.Text = "Materials";
 			this.MaterialsTabPage.UseVisualStyleBackColor = true;
 			// 
 			// TFR1Label

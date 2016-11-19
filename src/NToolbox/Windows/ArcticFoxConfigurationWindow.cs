@@ -18,6 +18,9 @@ namespace NToolbox.Windows
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly HidConnector m_connector = new HidConnector();
 
+		private Label[] m_tfrLabels;
+		private Button[] m_tfrButtons;
+
 		private bool m_isDeviceWasConnectedOnce;
 		private bool m_isDeviceConnected;
 		private ArcticFoxConfiguration m_configuration;
@@ -159,9 +162,29 @@ namespace NToolbox.Windows
 				}
 			};
 
+			m_tfrLabels = new[] { TFR1Label, TFR2Label, TFR3Label, TFR4Label, TFR5Label, TFR6Label, TFR7Label, TFR8Label };
+			m_tfrButtons = new[] { TFR1EditButton, TFR2EditButton, TFR3EditButton, TFR4EditButton, TFR5EditButton, TFR6EditButton, TFR7EditButton, TFR8EditButton };
+
+			for (var i = 0; i < m_tfrButtons.Length; i++)
+			{
+				var tfrIndex = i;
+				m_tfrButtons[i].Click += (s, e) =>
+				{
+					var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
+				};
+			}
+
 			DownloadButton.Click += DownloadButton_Click;
 			UploadButton.Click += UploadButton_Click;
 			ResetButton.Click += ResetButton_Click;
+		}
+
+		private void UpdateTFRLables(ArcticFoxConfiguration.TFRTable[] tfrTables)
+		{
+			for (var i = 0; i < m_tfrLabels.Length; i++)
+			{
+				m_tfrLabels[i].Text = "[TFR] " + tfrTables[i].Name + ":";
+			}
 		}
 
 		private void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -341,6 +364,8 @@ namespace NToolbox.Windows
 				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
+
+				UpdateTFRLables(advanced.TFRTables);
 			}
 		}
 
@@ -465,17 +490,25 @@ namespace NToolbox.Windows
 			try
 			{
 				data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
+				if (data == null) return null;
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
 				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion > MaximumSupportedSettingsVersion)
 				{
 					return null;
 				}
+
+				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
+				foreach (var table in configuration.Advanced.TFRTables)
+				{
+					table.Name = table.Name.TrimEnd('\0');
+				}
+				return configuration;
 			}
 			catch (TimeoutException)
 			{
+				return null;
 			}
-			return data != null ? BinaryStructure.Read<ArcticFoxConfiguration>(data) : null;
 		}
 
 		private void WriteConfiguration()
