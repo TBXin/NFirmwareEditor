@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
+using NCore;
 using NCore.UI;
 using NToolbox.Models;
 
@@ -21,6 +24,7 @@ namespace NToolbox.Windows
 		private readonly ArcticFoxConfiguration.TFRTable m_tfrTable;
 
 		private TempFactorControlGroup[] m_curveControls;
+		private bool m_isInstallingPreset;
 
 		public TFRProfileWindow([NotNull] ArcticFoxConfiguration.TFRTable tfrTable)
 		{
@@ -102,6 +106,9 @@ namespace NToolbox.Windows
 				NameTextBox.SelectionStart = position;
 			};
 
+			ExportButton.Click += ExportButton_Click;
+			ImportButton.Click += ImportButton_Click;
+
 			SaveButton.Click += SaveButton_Click;
 		}
 
@@ -153,6 +160,45 @@ namespace NToolbox.Windows
 			}
 		}
 
+		private void ImportTFRCurve(CsvFile file)
+		{
+			try
+			{
+				m_isInstallingPreset = true;
+				var counter = 0;
+				for (var i = file.Lines.Count - m_curveControls.Length; i < file.Lines.Count; i++)
+				{
+					var line = file.Lines[i];
+					var temp = line[0];
+					var factor = line[1];
+
+					m_curveControls[counter].TemperatureUpDown.Value = int.Parse(temp, CultureInfo.InvariantCulture);
+					m_curveControls[counter].FactorUpDown.Value = Math.Round(decimal.Parse(factor, CultureInfo.InvariantCulture), 4);
+					counter++;
+				}
+			}
+			catch (Exception ex)
+			{
+				m_isInstallingPreset = false;
+				InfoBox.Show("An error occurred during TFR curve import.\n" + ex);
+			}
+		}
+
+		public CsvFile ExportTFRCurve()
+		{
+			var headers = new[] { "Temperature (degF)", "Electrical Resistivity" };
+			var lines = new List<string[]>(m_curveControls.Length);
+			foreach (var group in m_curveControls)
+			{
+				lines.Add(new[]
+				{
+					group.TemperatureUpDown.Value.ToString(CultureInfo.InvariantCulture),
+					group.FactorUpDown.Value.ToString(CultureInfo.InvariantCulture)
+				});
+			}
+			return new CsvFile(headers, lines);
+		}
+
 		private void TemperatureUpDown_ValueChanged(object sender, EventArgs e)
 		{
 			var control = sender as NumericUpDown;
@@ -184,6 +230,8 @@ namespace NToolbox.Windows
 
 		private void UpdatePointsMinMax()
 		{
+			if (m_isInstallingPreset) return;
+
 			for (var i = 0; i < m_curveControls.Length; i++)
 			{
 				var group = m_curveControls[i];
@@ -205,6 +253,55 @@ namespace NToolbox.Windows
 					group.TemperatureUpDown.Maximum = Math.Max(MinTemperature, nextTemperature.Value - 1);
 					group.FactorUpDown.Maximum = Math.Max(MinFactor, nextFactor.Value - 0.0001m);
 				}
+			}
+		}
+
+		private void ImportButton_Click(object sender, EventArgs e)
+		{
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = FileFilters.CsvFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK)
+					return;
+				fileName = op.FileName;
+			}
+
+			CsvFile file;
+			try
+			{
+				file = CsvManager.Read(fileName);
+				if (file == null || file.Headers.Length != 2 || file.Lines.Any(x => x.Length != 2))
+				{
+					InfoBox.Show("Wrong file format. File should have header, and every line should have 2 values");
+				}
+			}
+			catch (Exception ex)
+			{
+				m_isInstallingPreset = false;
+				InfoBox.Show("An error occurred during parsing file.\n" + ex);
+				return;
+			}
+
+			ImportTFRCurve(file);
+		}
+
+		private void ExportButton_Click(object sender, EventArgs e)
+		{
+			string fileName;
+			using (var sf = new SaveFileDialog { FileName = string.Format("Arctic Fox-{0}-(TFR Curve)", NameTextBox.Text), Filter = FileFilters.CsvFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+				fileName = sf.FileName;
+			}
+
+			try
+			{
+				var file = ExportTFRCurve();
+				CsvManager.Write(file, fileName);
+			}
+			catch (Exception ex)
+			{
+				InfoBox.Show("An error occurred during TFR curve export.\n" + ex);
 			}
 		}
 
