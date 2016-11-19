@@ -159,12 +159,16 @@ namespace NToolbox.Windows
 			{
 				if (MaterialComboBox.SelectedItem == null) return;
 
-				var enableTemperatureEditing = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() != ArcticFoxConfiguration.Material.VariWatt;
-				ResistanceLockedCheckBox.Visible = enableTemperatureEditing;
-				TemperatureLabel.Visible = enableTemperatureEditing;
-				TemperatureUpDown.Visible = enableTemperatureEditing;
-				TemperatureTypeComboBox.Visible = enableTemperatureEditing;
-				TemperatureDominantCheckBox.Visible = enableTemperatureEditing;
+				var selectedMaterial = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
+				var enableTemperatureEditing = selectedMaterial != ArcticFoxConfiguration.Material.VariWatt;
+				{
+					ResistanceLockedCheckBox.Visible = enableTemperatureEditing;
+					TemperatureLabel.Visible = enableTemperatureEditing;
+					TemperatureUpDown.Visible = enableTemperatureEditing;
+					TemperatureTypeComboBox.Visible = enableTemperatureEditing;
+					TemperatureDominantCheckBox.Visible = enableTemperatureEditing;
+				}
+				TCRUpDown.Visible = selectedMaterial == ArcticFoxConfiguration.Material.TCR;
 			};
 		}
 	}
