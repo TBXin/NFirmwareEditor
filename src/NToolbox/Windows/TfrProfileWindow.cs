@@ -12,12 +12,15 @@ namespace NToolbox.Windows
 {
 	internal partial class TFRProfileWindow : EditorDialogWindow
 	{
+		private const ushort MinTemperature = 0;
+		private const ushort MaxTemperature = 600;
+		private const decimal MinFactor = 1.0m;
+		private const decimal MaxFactor = 4.0m;
+
 		private static readonly Regex s_blackList = new Regex("(?![a-zA-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 		private readonly ArcticFoxConfiguration.TFRTable m_tfrTable;
 
 		private TempFactorControlGroup[] m_curveControls;
-		private ContextMenu m_presetsMenu;
-		private bool m_isInstallingPreset;
 
 		public TFRProfileWindow([NotNull] ArcticFoxConfiguration.TFRTable tfrTable)
 		{
@@ -37,16 +40,16 @@ namespace NToolbox.Windows
 			var area = new ChartArea();
 			{
 				area.AxisX.IsMarginVisible = false;
-				area.AxisX.Minimum = 0;
-				area.AxisX.Maximum = 600;
+				area.AxisX.Minimum = MinTemperature;
+				area.AxisX.Maximum = MaxTemperature;
 				area.AxisX.MajorGrid.Enabled = true;
 				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisX.LineColor = Color.DarkGray;
 				area.AxisX.Interval = 100;
 
 				area.AxisY.IsMarginVisible = false;
-				area.AxisY.Minimum = 1;
-				area.AxisY.Maximum = 4;
+				area.AxisY.Minimum = (double)MinFactor;
+				area.AxisY.Maximum = (double)MaxFactor;
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.LineColor = Color.DarkGray;
@@ -112,9 +115,9 @@ namespace NToolbox.Windows
 				var temperatureUpDown = m_curveControls[i].TemperatureUpDown;
 				var factorUpDown = m_curveControls[i].FactorUpDown;
 
-				var temperature = Math.Max(temperatureUpDown.Minimum, Math.Min(data.Temperature, temperatureUpDown.Maximum));
-				var factor = Math.Max(factorUpDown.Minimum, Math.Min(data.Factor / 10000m, factorUpDown.Maximum));
-				var point = new DataPoint((double)temperature, (double)factor)
+				var temperature = Math.Max(MinTemperature, Math.Min(data.Temperature, MaxTemperature));
+				var factor = Math.Max(MinFactor, Math.Min(data.Factor / 10000m, MaxFactor));
+				var point = new DataPoint(temperature, (double)factor)
 				{
 					MarkerStyle = MarkerStyle.Circle,
 					MarkerSize = 7,
@@ -177,22 +180,26 @@ namespace NToolbox.Windows
 
 		private void UpdatePointsMinMax()
 		{
-			if (m_isInstallingPreset) return;
-
 			for (var i = 0; i < m_curveControls.Length; i++)
 			{
 				var group = m_curveControls[i];
 
 				if (i - 1 >= 0)
 				{
-					var prevPercents = m_curveControls[i - 1].TemperatureUpDown;
-					group.TemperatureUpDown.Minimum = Math.Min(600, prevPercents.Value + 1);
+					var prevTemperature = m_curveControls[i - 1].TemperatureUpDown;
+					var prevFactor = m_curveControls[i - 1].FactorUpDown;
+
+					group.TemperatureUpDown.Minimum = Math.Min(MaxTemperature, prevTemperature.Value + 1);
+					group.FactorUpDown.Minimum = Math.Min(MaxFactor, prevFactor.Value + 0.0001m);
 				}
 
 				if (i + 1 < m_curveControls.Length)
 				{
-					var nextPercents = m_curveControls[i + 1].TemperatureUpDown;
-					group.TemperatureUpDown.Maximum = Math.Max(0, nextPercents.Value - 1);
+					var nextTemperature = m_curveControls[i + 1].TemperatureUpDown;
+					var nextFactor = m_curveControls[i + 1].FactorUpDown;
+
+					group.TemperatureUpDown.Maximum = Math.Max(MinTemperature, nextTemperature.Value - 1);
+					group.FactorUpDown.Maximum = Math.Max(MinFactor, nextFactor.Value - 0.0001m);
 				}
 			}
 		}
