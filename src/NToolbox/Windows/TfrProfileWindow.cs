@@ -13,7 +13,7 @@ namespace NToolbox.Windows
 	internal partial class TFRProfileWindow : EditorDialogWindow
 	{
 		private const ushort MinTemperature = 0;
-		private const ushort MaxTemperature = 600;
+		private const ushort MaxTemperature = 800;
 		private const decimal MinFactor = 1.0m;
 		private const decimal MaxFactor = 4.0m;
 
@@ -124,10 +124,14 @@ namespace NToolbox.Windows
 					Label = factor.ToString(CultureInfo.InvariantCulture)
 				};
 
+				temperatureUpDown.Minimum = MinTemperature;
+				temperatureUpDown.Maximum = MaxTemperature;
 				temperatureUpDown.Value = temperature;
 				temperatureUpDown.Tag = point;
 				temperatureUpDown.ValueChanged += TemperatureUpDown_ValueChanged;
 
+				factorUpDown.Minimum = MinFactor;
+				factorUpDown.Maximum = MaxFactor;
 				factorUpDown.Value = factor;
 				factorUpDown.Tag = point;
 				factorUpDown.ValueChanged += FactorUpDown_ValueChanged;
