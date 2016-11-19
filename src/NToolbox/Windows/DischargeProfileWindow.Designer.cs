@@ -32,6 +32,7 @@
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.PresetsButton = new System.Windows.Forms.Button();
 			this.groupPanel3 = new NCore.UI.GroupPanel();
 			this.label23 = new System.Windows.Forms.Label();
 			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
@@ -81,7 +82,6 @@
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.PresetsButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.groupPanel3.SuspendLayout();
@@ -212,6 +212,16 @@
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
+			// 
+			// PresetsButton
+			// 
+			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
+			this.PresetsButton.Name = "PresetsButton";
+			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
+			this.PresetsButton.TabIndex = 102;
+			this.PresetsButton.Text = "Presets";
+			this.PresetsButton.UseVisualStyleBackColor = true;
 			// 
 			// groupPanel3
 			// 
@@ -975,16 +985,6 @@
 			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
 			// 
-			// PresetsButton
-			// 
-			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
-			this.PresetsButton.Name = "PresetsButton";
-			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
-			this.PresetsButton.TabIndex = 102;
-			this.PresetsButton.Text = "Presets";
-			this.PresetsButton.UseVisualStyleBackColor = true;
-			// 
 			// DischargeProfileWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -999,7 +999,7 @@
 			this.MinimizeBox = false;
 			this.Name = "DischargeProfileWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Discharge Profile";
+			this.Text = "ArcticFox - Discharge Profile";
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();

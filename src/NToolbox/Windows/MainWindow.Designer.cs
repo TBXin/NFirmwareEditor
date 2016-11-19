@@ -122,7 +122,7 @@
 			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
 			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
 			this.ArcticFoxConfigurationButton.TabIndex = 0;
-			this.ArcticFoxConfigurationButton.Text = "Arctic Fox Configuration";
+			this.ArcticFoxConfigurationButton.Text = "ArcticFox Configuration";
 			// 
 			// FirmwareUpdaterButton
 			// 

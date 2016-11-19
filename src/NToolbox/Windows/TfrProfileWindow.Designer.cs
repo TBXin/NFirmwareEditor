@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
+			this.ExportButton = new System.Windows.Forms.Button();
+			this.ImportButton = new System.Windows.Forms.Button();
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
@@ -63,8 +65,6 @@
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.TFRChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.ExportButton = new System.Windows.Forms.Button();
-			this.ImportButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).BeginInit();
@@ -105,6 +105,24 @@
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(784, 44);
 			this.ControlBorderedPanel.TabIndex = 4;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
+			// 
+			// ExportButton
+			// 
+			this.ExportButton.Location = new System.Drawing.Point(4, 5);
+			this.ExportButton.Name = "ExportButton";
+			this.ExportButton.Size = new System.Drawing.Size(100, 35);
+			this.ExportButton.TabIndex = 6;
+			this.ExportButton.Text = "Export";
+			this.ExportButton.UseVisualStyleBackColor = true;
+			// 
+			// ImportButton
+			// 
+			this.ImportButton.Location = new System.Drawing.Point(110, 5);
+			this.ImportButton.Name = "ImportButton";
+			this.ImportButton.Size = new System.Drawing.Size(100, 35);
+			this.ImportButton.TabIndex = 5;
+			this.ImportButton.Text = "Import";
+			this.ImportButton.UseVisualStyleBackColor = true;
 			// 
 			// SaveButton
 			// 
@@ -639,24 +657,6 @@
 			this.TFRChart.Size = new System.Drawing.Size(569, 190);
 			this.TFRChart.TabIndex = 0;
 			// 
-			// ExportButton
-			// 
-			this.ExportButton.Location = new System.Drawing.Point(4, 5);
-			this.ExportButton.Name = "ExportButton";
-			this.ExportButton.Size = new System.Drawing.Size(100, 35);
-			this.ExportButton.TabIndex = 6;
-			this.ExportButton.Text = "Export";
-			this.ExportButton.UseVisualStyleBackColor = true;
-			// 
-			// ImportButton
-			// 
-			this.ImportButton.Location = new System.Drawing.Point(110, 5);
-			this.ImportButton.Name = "ImportButton";
-			this.ImportButton.Size = new System.Drawing.Size(100, 35);
-			this.ImportButton.TabIndex = 5;
-			this.ImportButton.Text = "Import";
-			this.ImportButton.UseVisualStyleBackColor = true;
-			// 
 			// TFRProfileWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,7 +671,7 @@
 			this.MinimizeBox = false;
 			this.Name = "TFRProfileWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "TFR Profile";
+			this.Text = "ArcticFox - TFR Profile";
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();

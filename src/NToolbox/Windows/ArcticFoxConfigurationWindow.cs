@@ -546,7 +546,7 @@ namespace NToolbox.Windows
 			{
 				UpdateUI(() =>
 				{
-					UpdateUI(() => WelcomeLabel.Text = string.Format("Connect device with\n\nArctic Fox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
+					UpdateUI(() => WelcomeLabel.Text = string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
 					MainContainer.SelectedPage = WelcomePage;
 				});
 				return;
