@@ -50,6 +50,7 @@
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
+			this.label17 = new System.Windows.Forms.Label();
 			this.ScreensaverTimeComboBox = new System.Windows.Forms.ComboBox();
 			this.label40 = new System.Windows.Forms.Label();
 			this.label53 = new System.Windows.Forms.Label();
@@ -115,6 +116,7 @@
 			this.label50 = new System.Windows.Forms.Label();
 			this.label51 = new System.Windows.Forms.Label();
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
+			this.label18 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.ResetCountersCheckBox = new System.Windows.Forms.CheckBox();
 			this.label14 = new System.Windows.Forms.Label();
@@ -140,8 +142,9 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
+			this.tabControl2 = new System.Windows.Forms.TabControl();
+			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.MaterialsTabPage = new System.Windows.Forms.TabPage();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -165,6 +168,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			this.tabControl2.SuspendLayout();
+			this.SettingsTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -434,6 +439,17 @@
 			this.ScreenTabPage.TabIndex = 0;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label17
+			// 
+			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label17.Location = new System.Drawing.Point(4, 304);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(321, 59);
+			this.label17.TabIndex = 103;
+			this.label17.Text = "Battery Percents –  Show % of batteries during charging.\r\n\r\nUse Classic Menu –  A" +
+    "llows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
+    "c.";
 			// 
 			// ScreensaverTimeComboBox
 			// 
@@ -1151,21 +1167,7 @@
 			// 
 			// AdvancedTabPage
 			// 
-			this.AdvancedTabPage.Controls.Add(this.label18);
-			this.AdvancedTabPage.Controls.Add(this.label13);
-			this.AdvancedTabPage.Controls.Add(this.ResetCountersCheckBox);
-			this.AdvancedTabPage.Controls.Add(this.label14);
-			this.AdvancedTabPage.Controls.Add(this.UsbChargeCheckBox);
-			this.AdvancedTabPage.Controls.Add(this.label15);
-			this.AdvancedTabPage.Controls.Add(this.X32CheckBox);
-			this.AdvancedTabPage.Controls.Add(this.label16);
-			this.AdvancedTabPage.Controls.Add(this.LightSleepCheckBox);
-			this.AdvancedTabPage.Controls.Add(this.BatteryEditButton);
-			this.AdvancedTabPage.Controls.Add(this.label56);
-			this.AdvancedTabPage.Controls.Add(this.BatteryModelComboBox);
-			this.AdvancedTabPage.Controls.Add(this.label54);
-			this.AdvancedTabPage.Controls.Add(this.ShuntCorrectionUpDown);
-			this.AdvancedTabPage.Controls.Add(this.label55);
+			this.AdvancedTabPage.Controls.Add(this.tabControl2);
 			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
 			this.AdvancedTabPage.Name = "AdvancedTabPage";
 			this.AdvancedTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1173,6 +1175,15 @@
 			this.AdvancedTabPage.TabIndex = 2;
 			this.AdvancedTabPage.Text = "Advanced";
 			this.AdvancedTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label18
+			// 
+			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label18.Location = new System.Drawing.Point(4, 265);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(321, 98);
+			this.label18.TabIndex = 106;
+			this.label18.Text = resources.GetString("label18.Text");
 			// 
 			// label13
 			// 
@@ -1446,25 +1457,50 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
-			// label17
+			// tabControl2
 			// 
-			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label17.Location = new System.Drawing.Point(4, 304);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(321, 59);
-			this.label17.TabIndex = 103;
-			this.label17.Text = "Battery Percents –  Show % of batteries during charging.\r\n\r\nUse Classic Menu –  A" +
-    "llows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
-    "c.";
+			this.tabControl2.Controls.Add(this.SettingsTabPage);
+			this.tabControl2.Controls.Add(this.MaterialsTabPage);
+			this.tabControl2.Location = new System.Drawing.Point(5, 6);
+			this.tabControl2.Name = "tabControl2";
+			this.tabControl2.SelectedIndex = 0;
+			this.tabControl2.Size = new System.Drawing.Size(336, 391);
+			this.tabControl2.TabIndex = 107;
 			// 
-			// label18
+			// SettingsTabPage
 			// 
-			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label18.Location = new System.Drawing.Point(4, 303);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(321, 98);
-			this.label18.TabIndex = 106;
-			this.label18.Text = resources.GetString("label18.Text");
+			this.SettingsTabPage.Controls.Add(this.label54);
+			this.SettingsTabPage.Controls.Add(this.label18);
+			this.SettingsTabPage.Controls.Add(this.label55);
+			this.SettingsTabPage.Controls.Add(this.label13);
+			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionUpDown);
+			this.SettingsTabPage.Controls.Add(this.ResetCountersCheckBox);
+			this.SettingsTabPage.Controls.Add(this.BatteryModelComboBox);
+			this.SettingsTabPage.Controls.Add(this.label14);
+			this.SettingsTabPage.Controls.Add(this.label56);
+			this.SettingsTabPage.Controls.Add(this.UsbChargeCheckBox);
+			this.SettingsTabPage.Controls.Add(this.BatteryEditButton);
+			this.SettingsTabPage.Controls.Add(this.label15);
+			this.SettingsTabPage.Controls.Add(this.LightSleepCheckBox);
+			this.SettingsTabPage.Controls.Add(this.X32CheckBox);
+			this.SettingsTabPage.Controls.Add(this.label16);
+			this.SettingsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.SettingsTabPage.Name = "SettingsTabPage";
+			this.SettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.SettingsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.SettingsTabPage.TabIndex = 0;
+			this.SettingsTabPage.Text = "Settings";
+			this.SettingsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// MaterialsTabPage
+			// 
+			this.MaterialsTabPage.Location = new System.Drawing.Point(4, 22);
+			this.MaterialsTabPage.Name = "MaterialsTabPage";
+			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.MaterialsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.MaterialsTabPage.TabIndex = 1;
+			this.MaterialsTabPage.Text = "TFR Materials";
+			this.MaterialsTabPage.UseVisualStyleBackColor = true;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -1506,12 +1542,14 @@
 			((System.ComponentModel.ISupportInitialize)(this.PuffsTimeUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).EndInit();
 			this.AdvancedTabPage.ResumeLayout(false);
-			this.AdvancedTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			this.tabControl2.ResumeLayout(false);
+			this.SettingsTabPage.ResumeLayout(false);
+			this.SettingsTabPage.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1632,5 +1670,8 @@
 		private System.Windows.Forms.CheckBox LightSleepCheckBox;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.TabControl tabControl2;
+		private System.Windows.Forms.TabPage SettingsTabPage;
+		private System.Windows.Forms.TabPage MaterialsTabPage;
 	}
 }
