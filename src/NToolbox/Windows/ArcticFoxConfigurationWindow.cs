@@ -171,6 +171,19 @@ namespace NToolbox.Windows
 				m_tfrButtons[i].Click += (s, e) =>
 				{
 					var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
+					using (var editor = new TfrProfileWindow(tfrTable))
+					{
+						if (editor.ShowDialog() != DialogResult.OK) return;
+
+						UpdateTFRLables(m_configuration.Advanced.TFRTables);
+						foreach (TabPage tabPage in ProfilesTabControl.TabPages)
+						{
+							var tabContent = tabPage.Controls[0] as ProfileTabContent;
+							if (tabContent == null) continue;
+
+							tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
+						}
+					}
 				};
 			}
 

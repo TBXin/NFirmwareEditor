@@ -89,13 +89,13 @@ namespace NToolbox.Models
 			public string Name;
 
 			[BinaryArray(Length = 7)]
-			public TFRPoint[] Table;
+			public TFRPoint[] Points;
 		}
 
 		internal class TFRPoint
 		{
 			public ushort Temperature;
-			public ushort Resistivity; // value * 10000
+			public ushort Factor; // value * 10000
 		}
 
 		internal class CustomBattery

@@ -44,13 +44,22 @@ namespace NToolbox.Windows
 
 		public void UpdateTFRNames(ArcticFoxConfiguration.TFRTable[] tables)
 		{
+			var selectedValue = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
+
 			for (var i = 0; i < tables.Length; i++)
 			{
-				var item = MaterialComboBox.Items[5 + i] as NamedItemContainer<ArcticFoxConfiguration.Material>;
+				var index = 5 + i;
+				var item = MaterialComboBox.Items[index] as NamedItemContainer<ArcticFoxConfiguration.Material>;
 				if (item == null) continue;
 
-				item.Name = "[TFR] " + tables[i].Name;
+				var material = item.Data;
+				MaterialComboBox.BeginUpdate();
+				MaterialComboBox.Items.RemoveAt(index);
+				MaterialComboBox.Items.Insert(index, new NamedItemContainer<ArcticFoxConfiguration.Material>("[TFR] " + tables[i].Name, material));
+				MaterialComboBox.EndUpdate();
 			}
+
+			MaterialComboBox.SelectItem(selectedValue);
 		}
 
 		public void Save(ArcticFoxConfiguration.Profile profile)
