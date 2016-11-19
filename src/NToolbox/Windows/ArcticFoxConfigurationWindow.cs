@@ -274,7 +274,7 @@ namespace NToolbox.Windows
 				try
 				{
 					m_connector.ResetDataflash();
-					DownloadButton_Click(null, null);
+					UpdateUI(() => DownloadButton_Click(null, null));
 				}
 				catch (Exception ex)
 				{
