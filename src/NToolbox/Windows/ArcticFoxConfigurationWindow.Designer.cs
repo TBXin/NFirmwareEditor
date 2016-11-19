@@ -145,6 +145,22 @@
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
 			this.MaterialsTabPage = new System.Windows.Forms.TabPage();
+			this.TFR1Label = new System.Windows.Forms.Label();
+			this.TFR1EditButton = new System.Windows.Forms.Button();
+			this.TFR2EditButton = new System.Windows.Forms.Button();
+			this.TFR2Label = new System.Windows.Forms.Label();
+			this.TFR3EditButton = new System.Windows.Forms.Button();
+			this.TFR3Label = new System.Windows.Forms.Label();
+			this.TFR4EditButton = new System.Windows.Forms.Button();
+			this.TFR4Label = new System.Windows.Forms.Label();
+			this.TFR5EditButton = new System.Windows.Forms.Button();
+			this.TFR5Label = new System.Windows.Forms.Label();
+			this.TFR6EditButton = new System.Windows.Forms.Button();
+			this.TFR6Label = new System.Windows.Forms.Label();
+			this.TFR7EditButton = new System.Windows.Forms.Button();
+			this.TFR7Label = new System.Windows.Forms.Label();
+			this.TFR8EditButton = new System.Windows.Forms.Button();
+			this.TFR8Label = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,6 +186,7 @@
 			this.MainStatusBar.SuspendLayout();
 			this.tabControl2.SuspendLayout();
 			this.SettingsTabPage.SuspendLayout();
+			this.MaterialsTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -1494,6 +1511,22 @@
 			// 
 			// MaterialsTabPage
 			// 
+			this.MaterialsTabPage.Controls.Add(this.TFR8EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR8Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR7EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR7Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR6EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR6Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR5EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR5Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR4EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR4Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR3EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR3Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR2EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR2Label);
+			this.MaterialsTabPage.Controls.Add(this.TFR1EditButton);
+			this.MaterialsTabPage.Controls.Add(this.TFR1Label);
 			this.MaterialsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.MaterialsTabPage.Name = "MaterialsTabPage";
 			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1501,6 +1534,150 @@
 			this.MaterialsTabPage.TabIndex = 1;
 			this.MaterialsTabPage.Text = "TFR Materials";
 			this.MaterialsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// TFR1Label
+			// 
+			this.TFR1Label.AutoSize = true;
+			this.TFR1Label.Location = new System.Drawing.Point(4, 11);
+			this.TFR1Label.Name = "TFR1Label";
+			this.TFR1Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR1Label.TabIndex = 96;
+			this.TFR1Label.Text = "TFR N:";
+			// 
+			// TFR1EditButton
+			// 
+			this.TFR1EditButton.Location = new System.Drawing.Point(101, 8);
+			this.TFR1EditButton.Name = "TFR1EditButton";
+			this.TFR1EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR1EditButton.TabIndex = 98;
+			this.TFR1EditButton.Text = "Edit";
+			this.TFR1EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR2EditButton
+			// 
+			this.TFR2EditButton.Location = new System.Drawing.Point(101, 35);
+			this.TFR2EditButton.Name = "TFR2EditButton";
+			this.TFR2EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR2EditButton.TabIndex = 100;
+			this.TFR2EditButton.Text = "Edit";
+			this.TFR2EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR2Label
+			// 
+			this.TFR2Label.AutoSize = true;
+			this.TFR2Label.Location = new System.Drawing.Point(4, 38);
+			this.TFR2Label.Name = "TFR2Label";
+			this.TFR2Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR2Label.TabIndex = 99;
+			this.TFR2Label.Text = "TFR N:";
+			// 
+			// TFR3EditButton
+			// 
+			this.TFR3EditButton.Location = new System.Drawing.Point(101, 62);
+			this.TFR3EditButton.Name = "TFR3EditButton";
+			this.TFR3EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR3EditButton.TabIndex = 102;
+			this.TFR3EditButton.Text = "Edit";
+			this.TFR3EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR3Label
+			// 
+			this.TFR3Label.AutoSize = true;
+			this.TFR3Label.Location = new System.Drawing.Point(4, 65);
+			this.TFR3Label.Name = "TFR3Label";
+			this.TFR3Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR3Label.TabIndex = 101;
+			this.TFR3Label.Text = "TFR N:";
+			// 
+			// TFR4EditButton
+			// 
+			this.TFR4EditButton.Location = new System.Drawing.Point(101, 89);
+			this.TFR4EditButton.Name = "TFR4EditButton";
+			this.TFR4EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR4EditButton.TabIndex = 104;
+			this.TFR4EditButton.Text = "Edit";
+			this.TFR4EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR4Label
+			// 
+			this.TFR4Label.AutoSize = true;
+			this.TFR4Label.Location = new System.Drawing.Point(4, 92);
+			this.TFR4Label.Name = "TFR4Label";
+			this.TFR4Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR4Label.TabIndex = 103;
+			this.TFR4Label.Text = "TFR N:";
+			// 
+			// TFR5EditButton
+			// 
+			this.TFR5EditButton.Location = new System.Drawing.Point(101, 116);
+			this.TFR5EditButton.Name = "TFR5EditButton";
+			this.TFR5EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR5EditButton.TabIndex = 106;
+			this.TFR5EditButton.Text = "Edit";
+			this.TFR5EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR5Label
+			// 
+			this.TFR5Label.AutoSize = true;
+			this.TFR5Label.Location = new System.Drawing.Point(4, 119);
+			this.TFR5Label.Name = "TFR5Label";
+			this.TFR5Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR5Label.TabIndex = 105;
+			this.TFR5Label.Text = "TFR N:";
+			// 
+			// TFR6EditButton
+			// 
+			this.TFR6EditButton.Location = new System.Drawing.Point(101, 143);
+			this.TFR6EditButton.Name = "TFR6EditButton";
+			this.TFR6EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR6EditButton.TabIndex = 108;
+			this.TFR6EditButton.Text = "Edit";
+			this.TFR6EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR6Label
+			// 
+			this.TFR6Label.AutoSize = true;
+			this.TFR6Label.Location = new System.Drawing.Point(4, 146);
+			this.TFR6Label.Name = "TFR6Label";
+			this.TFR6Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR6Label.TabIndex = 107;
+			this.TFR6Label.Text = "TFR N:";
+			// 
+			// TFR7EditButton
+			// 
+			this.TFR7EditButton.Location = new System.Drawing.Point(101, 170);
+			this.TFR7EditButton.Name = "TFR7EditButton";
+			this.TFR7EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR7EditButton.TabIndex = 110;
+			this.TFR7EditButton.Text = "Edit";
+			this.TFR7EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR7Label
+			// 
+			this.TFR7Label.AutoSize = true;
+			this.TFR7Label.Location = new System.Drawing.Point(4, 173);
+			this.TFR7Label.Name = "TFR7Label";
+			this.TFR7Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR7Label.TabIndex = 109;
+			this.TFR7Label.Text = "TFR N:";
+			// 
+			// TFR8EditButton
+			// 
+			this.TFR8EditButton.Location = new System.Drawing.Point(102, 197);
+			this.TFR8EditButton.Name = "TFR8EditButton";
+			this.TFR8EditButton.Size = new System.Drawing.Size(106, 23);
+			this.TFR8EditButton.TabIndex = 112;
+			this.TFR8EditButton.Text = "Edit";
+			this.TFR8EditButton.UseVisualStyleBackColor = true;
+			// 
+			// TFR8Label
+			// 
+			this.TFR8Label.AutoSize = true;
+			this.TFR8Label.Location = new System.Drawing.Point(5, 200);
+			this.TFR8Label.Name = "TFR8Label";
+			this.TFR8Label.Size = new System.Drawing.Size(40, 13);
+			this.TFR8Label.TabIndex = 111;
+			this.TFR8Label.Text = "TFR N:";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -1550,6 +1727,8 @@
 			this.tabControl2.ResumeLayout(false);
 			this.SettingsTabPage.ResumeLayout(false);
 			this.SettingsTabPage.PerformLayout();
+			this.MaterialsTabPage.ResumeLayout(false);
+			this.MaterialsTabPage.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1673,5 +1852,21 @@
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage SettingsTabPage;
 		private System.Windows.Forms.TabPage MaterialsTabPage;
+		private System.Windows.Forms.Button TFR1EditButton;
+		private System.Windows.Forms.Label TFR1Label;
+		private System.Windows.Forms.Button TFR8EditButton;
+		private System.Windows.Forms.Label TFR8Label;
+		private System.Windows.Forms.Button TFR7EditButton;
+		private System.Windows.Forms.Label TFR7Label;
+		private System.Windows.Forms.Button TFR6EditButton;
+		private System.Windows.Forms.Label TFR6Label;
+		private System.Windows.Forms.Button TFR5EditButton;
+		private System.Windows.Forms.Label TFR5Label;
+		private System.Windows.Forms.Button TFR4EditButton;
+		private System.Windows.Forms.Label TFR4Label;
+		private System.Windows.Forms.Button TFR3EditButton;
+		private System.Windows.Forms.Label TFR3Label;
+		private System.Windows.Forms.Button TFR2EditButton;
+		private System.Windows.Forms.Label TFR2Label;
 	}
 }
