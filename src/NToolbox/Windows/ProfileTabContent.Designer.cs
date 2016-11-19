@@ -222,6 +222,11 @@
 			// PowerUpDown
 			// 
 			this.PowerUpDown.DecimalPlaces = 1;
+			this.PowerUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
 			this.PowerUpDown.Location = new System.Drawing.Point(101, 35);
 			this.PowerUpDown.Maximum = new decimal(new int[] {
             75,
