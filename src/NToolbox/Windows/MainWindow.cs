@@ -1,10 +1,11 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
 using NCore;
+using NCore.UI;
 
 namespace NToolbox.Windows
 {
-	public partial class MainWindow : Form
+	public partial class MainWindow : WindowBase
 	{
 		public MainWindow()
 		{

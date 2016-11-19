@@ -4,11 +4,6 @@ namespace NCore.UI
 {
 	public class EditorDialogWindow : WindowBase
 	{
-		public EditorDialogWindow()
-		{
-			//Icon = Paths.ApplicationIcon;
-		}
-
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			if (keyData == Keys.Escape)
