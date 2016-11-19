@@ -29,6 +29,7 @@ namespace NToolbox.Windows
 		{
 			InitializeComponent();
 			Initialize();
+			InitializeControls();
 		}
 
 		private void Initialize()
@@ -37,6 +38,14 @@ namespace NToolbox.Windows
 			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
+			m_connector.DeviceConnected += DeviceConnected;
+
+			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
+			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
+		}
+
+		private void InitializeControls()
+		{
 			MainContainer.SelectedPage = WelcomePage;
 			ProfilesTabControl.TabPages.Clear();
 
@@ -51,6 +60,26 @@ namespace NToolbox.Windows
 
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
+			m_tfrLabels = new[] { TFR1Label, TFR2Label, TFR3Label, TFR4Label, TFR5Label, TFR6Label, TFR7Label, TFR8Label };
+			m_tfrButtons = new[] { TFR1EditButton, TFR2EditButton, TFR3EditButton, TFR4EditButton, TFR5EditButton, TFR6EditButton, TFR7EditButton, TFR8EditButton };
+
+			for (var i = 0; i < m_tfrButtons.Length; i++)
+			{
+				m_tfrButtons[i].Tag = i;
+				m_tfrButtons[i].Click += TFREditButton_Click;
+			}
+
+			BatteryEditButton.Click += BatteryEditButton_Click;
+
+			DownloadButton.Click += DownloadButton_Click;
+			UploadButton.Click += UploadButton_Click;
+			ResetButton.Click += ResetButton_Click;
+
+			InitializeComboBoxes();
+		}
+
+		private void InitializeComboBoxes()
+		{
 			var lineContentItems = new object[]
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Non dominant (Pwr / Temp)", ArcticFoxConfiguration.LineContent.NonDominant),
@@ -65,7 +94,7 @@ namespace NToolbox.Windows
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs", ArcticFoxConfiguration.LineContent.Puffs),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs Time", ArcticFoxConfiguration.LineContent.Time),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery(s) Volts", ArcticFoxConfiguration.LineContent.BatteryVolts),
-				
+
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Date/Time", ArcticFoxConfiguration.LineContent.DateTime),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Board Temperature", ArcticFoxConfiguration.LineContent.BoardTemperature),
 
@@ -149,147 +178,67 @@ namespace NToolbox.Windows
 				var batteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				BatteryEditButton.Visible = batteryModel == ArcticFoxConfiguration.BatteryModel.Custom;
 			};
+		}
 
-			m_connector.DeviceConnected += DeviceConnected;
-			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
-			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
-
-			BatteryEditButton.Click += (s, e) =>
+		private bool ValidateConnectionStatus()
+		{
+			while (!m_isDeviceConnected)
 			{
-				using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
+				var result = MessageBox.Show
+				(
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
+					"Information",
+					MessageBoxButtons.OKCancel
+				);
+				if (result == DialogResult.Cancel)
 				{
-					editor.ShowDialog();
+					return false;
 				}
-			};
-
-			m_tfrLabels = new[] { TFR1Label, TFR2Label, TFR3Label, TFR4Label, TFR5Label, TFR6Label, TFR7Label, TFR8Label };
-			m_tfrButtons = new[] { TFR1EditButton, TFR2EditButton, TFR3EditButton, TFR4EditButton, TFR5EditButton, TFR6EditButton, TFR7EditButton, TFR8EditButton };
-
-			for (var i = 0; i < m_tfrButtons.Length; i++)
-			{
-				var tfrIndex = i;
-				m_tfrButtons[i].Click += (s, e) =>
-				{
-					var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
-					using (var editor = new TFRProfileWindow(tfrTable))
-					{
-						if (editor.ShowDialog() != DialogResult.OK) return;
-
-						UpdateTFRLables(m_configuration.Advanced.TFRTables);
-						foreach (TabPage tabPage in ProfilesTabControl.TabPages)
-						{
-							var tabContent = tabPage.Controls[0] as ProfileTabContent;
-							if (tabContent == null) continue;
-
-							tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
-						}
-					}
-				};
 			}
-
-			DownloadButton.Click += DownloadButton_Click;
-			UploadButton.Click += UploadButton_Click;
-			ResetButton.Click += ResetButton_Click;
+			return true;
 		}
 
-		private void UpdateTFRLables(ArcticFoxConfiguration.TFRTable[] tfrTables)
+		private ArcticFoxConfiguration ReadConfiguration(bool useWorker = true)
 		{
-			for (var i = 0; i < m_tfrLabels.Length; i++)
-			{
-				m_tfrLabels[i].Text = "[TFR] " + tfrTables[i].Name + ":";
-			}
-		}
-
-		private void Worker_DoWork(object sender, DoWorkEventArgs e)
-		{
-			var worker = (BackgroundWorker)sender;
-			var wrapper = (AsyncProcessWrapper)e.Argument;
-
 			try
 			{
-				UpdateUI(() => SetControlButtonsState(false));
-				wrapper.Processor(worker);
+				var data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
+				if (data == null) return null;
+
+				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion > MaximumSupportedSettingsVersion)
+				{
+					return null;
+				}
+
+				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
+				foreach (var table in configuration.Advanced.TFRTables)
+				{
+					table.Name = table.Name.TrimEnd('\0');
+				}
+				return configuration;
 			}
-			finally
+			catch (TimeoutException)
 			{
-				UpdateUI(() => SetControlButtonsState(true));
+				return null;
 			}
 		}
 
-		private void SetControlButtonsState(bool enabled)
+		private void WriteConfiguration()
 		{
-			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
-		}
-
-		private void DownloadButton_Click(object sender, EventArgs e)
-		{
-			if (!ValidateConnectionStatus()) return;
-
-			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			var data = BinaryStructure.Write(m_configuration);
+			try
 			{
-				try
-				{
-					var configuration = ReadConfiguration();
-					if (configuration == null)
-					{
-						InfoBox.Show("Something strange happened! Please restart application.");
-						return;
-					}
-					m_configuration = configuration;
-					UpdateUI(InitializeWorkspace);
-				}
-				catch (Exception ex)
-				{
-					//s_logger.Warn(ex);
-					InfoBox.Show(GetErrorMessage("downloading settings"));
-				}
-			}));
-		}
-
-		private void UploadButton_Click(object sender, EventArgs e)
-		{
-			if (!ValidateConnectionStatus()) return;
-
-			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+				m_connector.WriteConfiguration(data, m_worker);
+			}
+			catch (TimeoutException)
 			{
-				try
-				{
-					UpdateUI(SaveWorkspace);
-					WriteConfiguration();
-				}
-				catch (Exception ex)
-				{
-					//s_logger.Warn(ex);
-					InfoBox.Show(GetErrorMessage("uploading settings"));
-				}
-			}));
-		}
-
-		private void ResetButton_Click(object sender, EventArgs e)
-		{
-			if (!ValidateConnectionStatus()) return;
-
-			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
-			{
-				try
-				{
-					m_connector.ResetDataflash();
-					UpdateUI(() => DownloadButton_Click(null, null));
-				}
-				catch (Exception ex)
-				{
-					//s_logger.Warn(ex);
-					InfoBox.Show(GetErrorMessage("resetting settings"));
-				}
-			}));
-		}
-
-		private string GetErrorMessage(string operationName)
-		{
-			return "An error occurred during " +
-				   operationName +
-				   "...\n\n" +
-				   "To continue, please activate or reconnect your device.";
+				MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
 		}
 
 		private void InitializeWorkspace()
@@ -382,6 +331,14 @@ namespace NToolbox.Windows
 			}
 		}
 
+		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)
+		{
+			var contentCopy = content;
+			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
+			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
+			comboBox.SelectItem(contentCopy);
+		}
+
 		private void SaveWorkspace()
 		{
 			var general = m_configuration.General;
@@ -457,14 +414,6 @@ namespace NToolbox.Windows
 			}
 		}
 
-		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)
-		{
-			var contentCopy = content;
-			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
-			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
-			comboBox.SelectItem(contentCopy);
-		}
-
 		private ArcticFoxConfiguration.LineContent SaveLineContent(ComboBox comboBox, CheckBox checkBox)
 		{
 			var result = comboBox.GetSelectedItem<ArcticFoxConfiguration.LineContent>();
@@ -475,66 +424,115 @@ namespace NToolbox.Windows
 			return result;
 		}
 
-		private bool ValidateConnectionStatus()
+		private void SetControlButtonsState(bool enabled)
 		{
-			while (!m_isDeviceConnected)
-			{
-				var result = MessageBox.Show
-				(
-					"No compatible USB devices are connected." +
-					"\n\n" +
-					"To continue, please connect one." +
-					"\n\n" +
-					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-					"Information",
-					MessageBoxButtons.OKCancel
-				);
-				if (result == DialogResult.Cancel)
-				{
-					return false;
-				}
-			}
-			return true;
+			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
 		}
 
-		private ArcticFoxConfiguration ReadConfiguration(bool useWorker = true)
+		private void UpdateTFRLables(ArcticFoxConfiguration.TFRTable[] tfrTables)
 		{
-			byte[] data = null;
-			try
+			for (var i = 0; i < m_tfrLabels.Length; i++)
 			{
-				data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
-				if (data == null) return null;
-
-				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion > MaximumSupportedSettingsVersion)
-				{
-					return null;
-				}
-
-				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
-				foreach (var table in configuration.Advanced.TFRTables)
-				{
-					table.Name = table.Name.TrimEnd('\0');
-				}
-				return configuration;
-			}
-			catch (TimeoutException)
-			{
-				return null;
+				m_tfrLabels[i].Text = "[TFR] " + tfrTables[i].Name + ":";
 			}
 		}
 
-		private void WriteConfiguration()
+		private string GetErrorMessage(string operationName)
 		{
-			var data = BinaryStructure.Write(m_configuration);
-			try
+			return "An error occurred during " + operationName + "...\n\n" + "To continue, please activate or reconnect your device.";
+		}
+
+		private void BatteryEditButton_Click(object sender, EventArgs e)
+		{
+			using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
 			{
-				m_connector.WriteConfiguration(data, m_worker);
+				editor.ShowDialog();
 			}
-			catch (TimeoutException)
+		}
+
+		private void TFREditButton_Click(object sender, EventArgs e)
+		{
+			var button = sender as Button;
+			if (button == null) return;
+
+			var tfrIndex = (int)button.Tag;
+			var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
+			using (var editor = new TFRProfileWindow(tfrTable))
 			{
-				MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (editor.ShowDialog() != DialogResult.OK) return;
+
+				UpdateTFRLables(m_configuration.Advanced.TFRTables);
+				foreach (TabPage tabPage in ProfilesTabControl.TabPages)
+				{
+					var tabContent = tabPage.Controls[0] as ProfileTabContent;
+					if (tabContent == null) continue;
+
+					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
+				}
 			}
+		}
+
+		private void DownloadButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					var configuration = ReadConfiguration();
+					if (configuration == null)
+					{
+						InfoBox.Show("Something strange happened! Please restart application.");
+						return;
+					}
+					m_configuration = configuration;
+					UpdateUI(InitializeWorkspace);
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("downloading settings"));
+				}
+			}));
+		}
+
+		private void UploadButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					UpdateUI(SaveWorkspace);
+					WriteConfiguration();
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("uploading settings"));
+				}
+			}));
+		}
+
+		private void ResetButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					m_connector.ResetDataflash();
+					UpdateUI(() => DownloadButton_Click(null, null));
+				}
+				catch (Exception ex)
+				{
+					//s_logger.Warn(ex);
+					InfoBox.Show(GetErrorMessage("resetting settings"));
+				}
+			}));
 		}
 
 		private void DeviceConnected(bool isConnected)
@@ -576,6 +574,22 @@ namespace NToolbox.Windows
 			{
 				//s_logger.Warn(ex);
 				UpdateUI(() => WelcomeLabel.Text = @"Unable to download device settings. Reconnect your device.");
+			}
+		}
+
+		private void Worker_DoWork(object sender, DoWorkEventArgs e)
+		{
+			var worker = (BackgroundWorker)sender;
+			var wrapper = (AsyncProcessWrapper)e.Argument;
+
+			try
+			{
+				UpdateUI(() => SetControlButtonsState(false));
+				wrapper.Processor(worker);
+			}
+			finally
+			{
+				UpdateUI(() => SetControlButtonsState(true));
 			}
 		}
 	}
