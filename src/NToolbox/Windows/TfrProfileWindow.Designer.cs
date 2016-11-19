@@ -1,6 +1,6 @@
 ﻿namespace NToolbox.Windows
 {
-	partial class TfrProfileWindow
+	partial class TFRProfileWindow
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -33,7 +33,6 @@
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
 			this.Volts7UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts6UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts5UpDown = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +40,6 @@
 			this.Volts3UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts2UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts1UpDown = new System.Windows.Forms.NumericUpDown();
-			this.PresetsButton = new System.Windows.Forms.Button();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.Percents7UpDown = new System.Windows.Forms.NumericUpDown();
@@ -64,7 +62,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
-			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.TFRChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).BeginInit();
@@ -82,7 +80,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents2UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).BeginInit();
 			this.groupPanel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TFRChart)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ControlBorderedPanel
@@ -97,7 +95,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 264);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 232);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(784, 44);
@@ -132,7 +130,6 @@
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.NameTextBox);
-			this.groupPanel1.Controls.Add(this.label15);
 			this.groupPanel1.Controls.Add(this.Volts7UpDown);
 			this.groupPanel1.Controls.Add(this.Volts6UpDown);
 			this.groupPanel1.Controls.Add(this.Volts5UpDown);
@@ -140,7 +137,6 @@
 			this.groupPanel1.Controls.Add(this.Volts3UpDown);
 			this.groupPanel1.Controls.Add(this.Volts2UpDown);
 			this.groupPanel1.Controls.Add(this.Volts1UpDown);
-			this.groupPanel1.Controls.Add(this.PresetsButton);
 			this.groupPanel1.Controls.Add(this.label13);
 			this.groupPanel1.Controls.Add(this.label14);
 			this.groupPanel1.Controls.Add(this.Percents7UpDown);
@@ -166,27 +162,19 @@
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(200, 258);
+			this.groupPanel1.Size = new System.Drawing.Size(200, 226);
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
 			// 
 			// NameTextBox
 			// 
-			this.NameTextBox.Location = new System.Drawing.Point(134, 36);
+			this.NameTextBox.Location = new System.Drawing.Point(135, 4);
 			this.NameTextBox.MaxLength = 4;
 			this.NameTextBox.Name = "NameTextBox";
-			this.NameTextBox.Size = new System.Drawing.Size(56, 21);
-			this.NameTextBox.TabIndex = 103;
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(95, 39);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(38, 13);
-			this.label15.TabIndex = 104;
-			this.label15.Text = "Name:";
+			this.NameTextBox.Size = new System.Drawing.Size(55, 21);
+			this.NameTextBox.TabIndex = 14;
+			this.NameTextBox.TabStop = false;
 			// 
 			// Volts7UpDown
 			// 
@@ -196,7 +184,7 @@
             0,
             0,
             262144});
-			this.Volts7UpDown.Location = new System.Drawing.Point(135, 227);
+			this.Volts7UpDown.Location = new System.Drawing.Point(135, 198);
 			this.Volts7UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -209,7 +197,7 @@
             0});
 			this.Volts7UpDown.Name = "Volts7UpDown";
 			this.Volts7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts7UpDown.TabIndex = 83;
+			this.Volts7UpDown.TabIndex = 13;
 			this.Volts7UpDown.TabStop = false;
 			this.Volts7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts7UpDown.Value = new decimal(new int[] {
@@ -226,7 +214,7 @@
             0,
             0,
             262144});
-			this.Volts6UpDown.Location = new System.Drawing.Point(135, 200);
+			this.Volts6UpDown.Location = new System.Drawing.Point(135, 171);
 			this.Volts6UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -239,7 +227,7 @@
             0});
 			this.Volts6UpDown.Name = "Volts6UpDown";
 			this.Volts6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts6UpDown.TabIndex = 79;
+			this.Volts6UpDown.TabIndex = 11;
 			this.Volts6UpDown.TabStop = false;
 			this.Volts6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts6UpDown.Value = new decimal(new int[] {
@@ -256,7 +244,7 @@
             0,
             0,
             262144});
-			this.Volts5UpDown.Location = new System.Drawing.Point(135, 173);
+			this.Volts5UpDown.Location = new System.Drawing.Point(135, 144);
 			this.Volts5UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -269,7 +257,7 @@
             0});
 			this.Volts5UpDown.Name = "Volts5UpDown";
 			this.Volts5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts5UpDown.TabIndex = 75;
+			this.Volts5UpDown.TabIndex = 9;
 			this.Volts5UpDown.TabStop = false;
 			this.Volts5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts5UpDown.Value = new decimal(new int[] {
@@ -286,7 +274,7 @@
             0,
             0,
             262144});
-			this.Volts4UpDown.Location = new System.Drawing.Point(135, 146);
+			this.Volts4UpDown.Location = new System.Drawing.Point(135, 117);
 			this.Volts4UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -299,7 +287,7 @@
             0});
 			this.Volts4UpDown.Name = "Volts4UpDown";
 			this.Volts4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts4UpDown.TabIndex = 71;
+			this.Volts4UpDown.TabIndex = 7;
 			this.Volts4UpDown.TabStop = false;
 			this.Volts4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts4UpDown.Value = new decimal(new int[] {
@@ -316,7 +304,7 @@
             0,
             0,
             262144});
-			this.Volts3UpDown.Location = new System.Drawing.Point(135, 119);
+			this.Volts3UpDown.Location = new System.Drawing.Point(135, 90);
 			this.Volts3UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -329,7 +317,7 @@
             0});
 			this.Volts3UpDown.Name = "Volts3UpDown";
 			this.Volts3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts3UpDown.TabIndex = 67;
+			this.Volts3UpDown.TabIndex = 5;
 			this.Volts3UpDown.TabStop = false;
 			this.Volts3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts3UpDown.Value = new decimal(new int[] {
@@ -346,7 +334,7 @@
             0,
             0,
             262144});
-			this.Volts2UpDown.Location = new System.Drawing.Point(135, 92);
+			this.Volts2UpDown.Location = new System.Drawing.Point(135, 63);
 			this.Volts2UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -359,7 +347,7 @@
             0});
 			this.Volts2UpDown.Name = "Volts2UpDown";
 			this.Volts2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts2UpDown.TabIndex = 63;
+			this.Volts2UpDown.TabIndex = 3;
 			this.Volts2UpDown.TabStop = false;
 			this.Volts2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts2UpDown.Value = new decimal(new int[] {
@@ -376,7 +364,7 @@
             0,
             0,
             262144});
-			this.Volts1UpDown.Location = new System.Drawing.Point(135, 65);
+			this.Volts1UpDown.Location = new System.Drawing.Point(135, 36);
 			this.Volts1UpDown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -389,7 +377,7 @@
             0});
 			this.Volts1UpDown.Name = "Volts1UpDown";
 			this.Volts1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts1UpDown.TabIndex = 59;
+			this.Volts1UpDown.TabIndex = 1;
 			this.Volts1UpDown.TabStop = false;
 			this.Volts1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts1UpDown.Value = new decimal(new int[] {
@@ -398,20 +386,10 @@
             0,
             0});
 			// 
-			// PresetsButton
-			// 
-			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
-			this.PresetsButton.Name = "PresetsButton";
-			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
-			this.PresetsButton.TabIndex = 102;
-			this.PresetsButton.Text = "Presets";
-			this.PresetsButton.UseVisualStyleBackColor = true;
-			// 
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(95, 230);
+			this.label13.Location = new System.Drawing.Point(95, 201);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(42, 13);
 			this.label13.TabIndex = 84;
@@ -420,7 +398,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(6, 230);
+			this.label14.Location = new System.Drawing.Point(6, 201);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(25, 13);
 			this.label14.TabIndex = 82;
@@ -428,7 +406,7 @@
 			// 
 			// Percents7UpDown
 			// 
-			this.Percents7UpDown.Location = new System.Drawing.Point(34, 227);
+			this.Percents7UpDown.Location = new System.Drawing.Point(34, 198);
 			this.Percents7UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -436,14 +414,14 @@
             0});
 			this.Percents7UpDown.Name = "Percents7UpDown";
 			this.Percents7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents7UpDown.TabIndex = 81;
+			this.Percents7UpDown.TabIndex = 12;
 			this.Percents7UpDown.TabStop = false;
 			this.Percents7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(95, 203);
+			this.label11.Location = new System.Drawing.Point(95, 174);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(42, 13);
 			this.label11.TabIndex = 80;
@@ -452,7 +430,7 @@
 			// label12
 			// 
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(6, 203);
+			this.label12.Location = new System.Drawing.Point(6, 174);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(25, 13);
 			this.label12.TabIndex = 78;
@@ -460,7 +438,7 @@
 			// 
 			// Percents6UpDown
 			// 
-			this.Percents6UpDown.Location = new System.Drawing.Point(34, 200);
+			this.Percents6UpDown.Location = new System.Drawing.Point(34, 171);
 			this.Percents6UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -468,14 +446,14 @@
             0});
 			this.Percents6UpDown.Name = "Percents6UpDown";
 			this.Percents6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents6UpDown.TabIndex = 77;
+			this.Percents6UpDown.TabIndex = 10;
 			this.Percents6UpDown.TabStop = false;
 			this.Percents6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(95, 176);
+			this.label9.Location = new System.Drawing.Point(95, 147);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(42, 13);
 			this.label9.TabIndex = 76;
@@ -484,7 +462,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(6, 176);
+			this.label10.Location = new System.Drawing.Point(6, 147);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(25, 13);
 			this.label10.TabIndex = 74;
@@ -492,7 +470,7 @@
 			// 
 			// Percents5UpDown
 			// 
-			this.Percents5UpDown.Location = new System.Drawing.Point(34, 173);
+			this.Percents5UpDown.Location = new System.Drawing.Point(34, 144);
 			this.Percents5UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -500,14 +478,14 @@
             0});
 			this.Percents5UpDown.Name = "Percents5UpDown";
 			this.Percents5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents5UpDown.TabIndex = 73;
+			this.Percents5UpDown.TabIndex = 8;
 			this.Percents5UpDown.TabStop = false;
 			this.Percents5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(95, 149);
+			this.label7.Location = new System.Drawing.Point(95, 120);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(42, 13);
 			this.label7.TabIndex = 72;
@@ -516,7 +494,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(6, 149);
+			this.label8.Location = new System.Drawing.Point(6, 120);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(25, 13);
 			this.label8.TabIndex = 70;
@@ -524,7 +502,7 @@
 			// 
 			// Percents4UpDown
 			// 
-			this.Percents4UpDown.Location = new System.Drawing.Point(34, 146);
+			this.Percents4UpDown.Location = new System.Drawing.Point(34, 117);
 			this.Percents4UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -532,14 +510,14 @@
             0});
 			this.Percents4UpDown.Name = "Percents4UpDown";
 			this.Percents4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents4UpDown.TabIndex = 69;
+			this.Percents4UpDown.TabIndex = 6;
 			this.Percents4UpDown.TabStop = false;
 			this.Percents4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(95, 122);
+			this.label5.Location = new System.Drawing.Point(95, 93);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(42, 13);
 			this.label5.TabIndex = 68;
@@ -548,7 +526,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 122);
+			this.label6.Location = new System.Drawing.Point(6, 93);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(25, 13);
 			this.label6.TabIndex = 66;
@@ -556,7 +534,7 @@
 			// 
 			// Percents3UpDown
 			// 
-			this.Percents3UpDown.Location = new System.Drawing.Point(34, 119);
+			this.Percents3UpDown.Location = new System.Drawing.Point(34, 90);
 			this.Percents3UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -564,14 +542,14 @@
             0});
 			this.Percents3UpDown.Name = "Percents3UpDown";
 			this.Percents3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents3UpDown.TabIndex = 65;
+			this.Percents3UpDown.TabIndex = 4;
 			this.Percents3UpDown.TabStop = false;
 			this.Percents3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(95, 95);
+			this.label3.Location = new System.Drawing.Point(95, 66);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(42, 13);
 			this.label3.TabIndex = 64;
@@ -580,7 +558,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(6, 95);
+			this.label4.Location = new System.Drawing.Point(6, 66);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(25, 13);
 			this.label4.TabIndex = 62;
@@ -588,7 +566,7 @@
 			// 
 			// Percents2UpDown
 			// 
-			this.Percents2UpDown.Location = new System.Drawing.Point(34, 92);
+			this.Percents2UpDown.Location = new System.Drawing.Point(34, 63);
 			this.Percents2UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -596,14 +574,14 @@
             0});
 			this.Percents2UpDown.Name = "Percents2UpDown";
 			this.Percents2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents2UpDown.TabIndex = 61;
+			this.Percents2UpDown.TabIndex = 2;
 			this.Percents2UpDown.TabStop = false;
 			this.Percents2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(95, 68);
+			this.label2.Location = new System.Drawing.Point(95, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(42, 13);
 			this.label2.TabIndex = 60;
@@ -612,7 +590,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(6, 68);
+			this.label1.Location = new System.Drawing.Point(6, 39);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(25, 13);
 			this.label1.TabIndex = 58;
@@ -620,7 +598,7 @@
 			// 
 			// Percents1UpDown
 			// 
-			this.Percents1UpDown.Location = new System.Drawing.Point(34, 65);
+			this.Percents1UpDown.Location = new System.Drawing.Point(34, 36);
 			this.Percents1UpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -628,7 +606,7 @@
             0});
 			this.Percents1UpDown.Name = "Percents1UpDown";
 			this.Percents1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents1UpDown.TabIndex = 57;
+			this.Percents1UpDown.TabIndex = 0;
 			this.Percents1UpDown.TabStop = false;
 			this.Percents1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
@@ -639,29 +617,29 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel2.BackColor = System.Drawing.Color.White;
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel2.Controls.Add(this.DischargeChart);
+			this.groupPanel2.Controls.Add(this.TFRChart);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
-			this.groupPanel2.Size = new System.Drawing.Size(575, 258);
+			this.groupPanel2.Size = new System.Drawing.Size(575, 226);
 			this.groupPanel2.TabIndex = 1;
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "TFR Curve:";
 			// 
-			// DischargeChart
+			// TFRChart
 			// 
-			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
-			this.DischargeChart.Name = "DischargeChart";
-			this.DischargeChart.Size = new System.Drawing.Size(569, 222);
-			this.DischargeChart.TabIndex = 0;
+			this.TFRChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TFRChart.Location = new System.Drawing.Point(3, 33);
+			this.TFRChart.Name = "TFRChart";
+			this.TFRChart.Size = new System.Drawing.Size(569, 190);
+			this.TFRChart.TabIndex = 0;
 			// 
-			// TfrProfileWindow
+			// TFRProfileWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 308);
+			this.ClientSize = new System.Drawing.Size(784, 276);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Controls.Add(this.groupPanel1);
@@ -669,7 +647,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "TfrProfileWindow";
+			this.Name = "TFRProfileWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "TFR Profile";
 			this.ControlBorderedPanel.ResumeLayout(false);
@@ -690,7 +668,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.Percents2UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).EndInit();
 			this.groupPanel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TFRChart)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -730,9 +708,7 @@
 		private System.Windows.Forms.NumericUpDown Volts2UpDown;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown Percents2UpDown;
-		private new System.Windows.Forms.DataVisualization.Charting.Chart DischargeChart;
-		private System.Windows.Forms.Button PresetsButton;
-		private System.Windows.Forms.Label label15;
+		private new System.Windows.Forms.DataVisualization.Charting.Chart TFRChart;
 		private System.Windows.Forms.TextBox NameTextBox;
 	}
 }

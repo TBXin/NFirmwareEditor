@@ -89,11 +89,11 @@
     <Compile Include="Windows\ScreenshooterWindow.Designer.cs">
       <DependentUpon>ScreenshooterWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TfrProfileWindow.cs">
+    <Compile Include="Windows\TFRProfileWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\TfrProfileWindow.Designer.cs">
-      <DependentUpon>TfrProfileWindow.cs</DependentUpon>
+    <Compile Include="Windows\TFRProfileWindow.Designer.cs">
+      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Windows\ArcticFoxConfigurationWindow.resx">
       <DependentUpon>ArcticFoxConfigurationWindow.cs</DependentUpon>
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="Windows\ScreenshooterWindow.resx">
       <DependentUpon>ScreenshooterWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\TfrProfileWindow.resx">
-      <DependentUpon>TfrProfileWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\TFRProfileWindow.resx">
+      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

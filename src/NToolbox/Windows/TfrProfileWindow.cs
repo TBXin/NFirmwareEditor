@@ -10,7 +10,7 @@ using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
-	internal partial class TfrProfileWindow : EditorDialogWindow
+	internal partial class TFRProfileWindow : EditorDialogWindow
 	{
 		private static readonly Regex s_blackList = new Regex("(?![a-zA-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 		private readonly ArcticFoxConfiguration.TFRTable m_tfrTable;
@@ -19,7 +19,7 @@ namespace NToolbox.Windows
 		private ContextMenu m_presetsMenu;
 		private bool m_isInstallingPreset;
 
-		public TfrProfileWindow([NotNull] ArcticFoxConfiguration.TFRTable tfrTable)
+		public TFRProfileWindow([NotNull] ArcticFoxConfiguration.TFRTable tfrTable)
 		{
 			if (tfrTable == null) throw new ArgumentNullException("tfrTable");
 
@@ -33,7 +33,7 @@ namespace NToolbox.Windows
 
 		private void InitializeChart()
 		{
-			DischargeChart.Palette = ChartColorPalette.Pastel;
+			TFRChart.Palette = ChartColorPalette.Pastel;
 			var area = new ChartArea();
 			{
 				area.AxisX.IsMarginVisible = false;
@@ -52,7 +52,7 @@ namespace NToolbox.Windows
 				area.AxisY.LineColor = Color.DarkGray;
 				area.AxisY.Interval = 0.5;
 			}
-			DischargeChart.ChartAreas.Add(area);
+			TFRChart.ChartAreas.Add(area);
 
 			var series = new Series
 			{
@@ -69,7 +69,7 @@ namespace NToolbox.Windows
 					MovingDirection = LabelAlignmentStyles.Right
 				}
 			};
-			DischargeChart.Series.Add(series);
+			TFRChart.Series.Add(series);
 		}
 
 		private void InitializeControls()
@@ -129,7 +129,7 @@ namespace NToolbox.Windows
 				factorUpDown.Tag = point;
 				factorUpDown.ValueChanged += FactorUpDown_ValueChanged;
 
-				DischargeChart.Series[0].Points.Add(point);
+				TFRChart.Series[0].Points.Add(point);
 			}
 		}
 

@@ -171,7 +171,7 @@ namespace NToolbox.Windows
 				m_tfrButtons[i].Click += (s, e) =>
 				{
 					var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
-					using (var editor = new TfrProfileWindow(tfrTable))
+					using (var editor = new TFRProfileWindow(tfrTable))
 					{
 						if (editor.ShowDialog() != DialogResult.OK) return;
 
