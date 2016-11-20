@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 
-namespace NFirmware
+namespace NCore.Serialization
 {
 	public class NamespacelessObject
 	{

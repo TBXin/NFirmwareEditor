@@ -113,10 +113,8 @@ namespace NToolbox.Windows
 			try
 			{
 				var data = m_connector.Screenshot();
-				if (data == null || data.All(x => x == 0x00))
-				{
-					throw new InvalidOperationException("Invalid screenshot data!");
-				}
+				if (data == null) throw new InvalidOperationException("Invalid screenshot data!");
+
 				return CreateBitmapFromBytesArray(64, 128, data);
 			}
 			catch (Exception)

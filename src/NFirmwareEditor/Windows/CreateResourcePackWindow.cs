@@ -21,7 +21,7 @@ namespace NFirmwareEditor.Windows
 		public CreateResourcePackWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			OkButton.Click += OkButton_Click;
 		}

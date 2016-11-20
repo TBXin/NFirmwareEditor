@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NCore;
+using NCore.Serialization;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
@@ -18,10 +19,15 @@ namespace NToolbox.Windows
 {
 	public partial class DeviceMonitorWindow : EditorDialogWindow
 	{
+		private const string ConfigurationFileName = "NDeviceMonitor.xml";
+
 		private const int MaxItems = 1200;
+		private const int MarkerSize = 0;
+		private const int SelectedMarkerSize = 7;
 
 		private readonly HidConnector m_connector = new HidConnector();
 
+		private DeviceMonitorConfiguration m_configuration;
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private TimeSpan m_timeFrame = TimeSpan.FromSeconds(10);
 		private DateTime? m_startTime;
@@ -58,6 +64,22 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
+			try
+			{
+				using (var fs = File.OpenRead(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+				{
+					m_configuration = Serializer.Read<DeviceMonitorConfiguration>(fs);
+				}
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
+			finally
+			{
+				if (m_configuration == null || m_configuration.ActiveSeries == null) m_configuration = new DeviceMonitorConfiguration();
+			}
+
 			Opacity = 0;
 			Load += (s, e) =>
 			{
@@ -65,6 +87,21 @@ namespace NToolbox.Windows
 
 				Opacity = 1;
 				new Thread(MonitoringProc) { IsBackground = true }.Start();
+			};
+			Closing += (s, e) =>
+			{
+				try
+				{
+					SaveCheckedSeries();
+					using (var fs = File.Create(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+					{
+						Serializer.Write(m_configuration, fs);
+					}
+				}
+				catch (Exception)
+				{
+					// Ignore
+				}
 			};
 		}
 
@@ -234,10 +271,10 @@ namespace NToolbox.Windows
 					}
 
 					if (result.Series.Points.Count <= result.PointIndex) return;
-					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = 0;
+					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = MarkerSize;
 
 					pointUnderCursor = result.Series.Points[result.PointIndex];
-					pointUnderCursor.MarkerSize = 7;
+					pointUnderCursor.MarkerSize = SelectedMarkerSize;
 
 					valueAnnotation.BeginPlacement();
 
@@ -268,8 +305,8 @@ namespace NToolbox.Windows
 				data.Seires = CreateSeries(seriesName, data.Color);
 				MainChart.Series.Add(data.Seires);
 
-				bool isChecked = true;
-				//if (!m_configuration.DeviceMonitorSeries.TryGetValue(seriesName, out isChecked)) isChecked = true;
+				bool isChecked;
+				if (!m_configuration.ActiveSeries.TryGetValue(seriesName, out isChecked)) isChecked = true;
 
 				data.CheckBox.Tag = seriesName;
 				data.CheckBox.Checked = data.Seires.Enabled = isChecked;
@@ -433,7 +470,7 @@ namespace NToolbox.Windows
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
-					point.MarkerSize = 7;
+					point.MarkerSize = MarkerSize;
 					point.MarkerStyle = MarkerStyle.Circle;
 					data.SetLastValue(roundedValue);
 				}
@@ -478,14 +515,13 @@ namespace NToolbox.Windows
 				if (series.Points.Count > 0)
 				{
 					var lastPoint = series.Points[series.Points.Count - 1];
-					if (lastPoint.IsEmpty)
-						continue;
+					if (lastPoint.IsEmpty) continue;
 
 					if (series.Points.Count > 1)
 					{
 						var preLastPoint = series.Points[series.Points.Count - 2];
 						preLastPoint.Label = null;
-						preLastPoint.MarkerSize = 0;
+						//preLastPoint.MarkerSize = 0;
 					}
 				}
 			}
@@ -572,6 +608,16 @@ namespace NToolbox.Windows
 			m_isRecording = false;
 			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = true);
 			RecordButton.Text = @"Record...";
+		}
+
+		private void SaveCheckedSeries()
+		{
+			foreach (var kvp in m_seriesData)
+			{
+				var seriesName = kvp.Key;
+				var data = kvp.Value;
+				m_configuration.ActiveSeries[seriesName] = data.CheckBox.Checked;
+			}
 		}
 
 		private static float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)

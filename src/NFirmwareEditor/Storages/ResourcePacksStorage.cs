@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 using NCore;
+using NCore.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
@@ -22,10 +23,10 @@ namespace NFirmwareEditor.Storages
 		#region Implementation of IStorage
 		public void Initialize()
 		{
-			var initEx = Safe.Execute(() => Paths.EnsureDirectoryExists(Paths.ResourcePackDirectory));
+			var initEx = Safe.Execute(() => NFEPaths.EnsureDirectoryExists(NFEPaths.ResourcePackDirectory));
 			if (initEx == null) return;
 
-			s_logger.Warn(initEx, "An error occured during creating resource packs directory '{0}'.", Paths.ResourcePackDirectory);
+			s_logger.Warn(initEx, "An error occured during creating resource packs directory '{0}'.", NFEPaths.ResourcePackDirectory);
 		}
 		#endregion
 
@@ -73,7 +74,7 @@ namespace NFirmwareEditor.Storages
 		public IEnumerable<ResourcePack> LoadAll()
 		{
 			var result = new List<ResourcePack>();
-			var files = Directory.GetFiles(Paths.ResourcePackDirectory, Consts.ResourcePackFileExtension, SearchOption.AllDirectories);
+			var files = Directory.GetFiles(NFEPaths.ResourcePackDirectory, Consts.ResourcePackFileExtension, SearchOption.AllDirectories);
 			foreach (var filePath in files)
 			{
 				var resourcePack = TryLoad(filePath);

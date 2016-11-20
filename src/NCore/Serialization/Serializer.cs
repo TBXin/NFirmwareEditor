@@ -4,11 +4,10 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
-using NFirmware;
 
-namespace NFirmwareEditor.Core
+namespace NCore.Serialization
 {
-	internal static class Serializer
+	public static class Serializer
 	{
 		private static readonly XmlWriterSettings s_xmlWriterSettings = new XmlWriterSettings
 		{

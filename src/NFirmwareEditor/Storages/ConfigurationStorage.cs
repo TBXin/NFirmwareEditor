@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using NFirmwareEditor.Core;
+using NCore.Serialization;
 using NFirmwareEditor.Models;
 using NLog;
 

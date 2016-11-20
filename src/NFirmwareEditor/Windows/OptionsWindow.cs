@@ -15,7 +15,7 @@ namespace NFirmwareEditor.Windows
 		public OptionsWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			ImageEditorModeComboBox.Items.AddRange(new object[]
 			{

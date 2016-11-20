@@ -8,7 +8,7 @@ namespace NFirmwareEditor.Windows
 	{
 		public EditorDialogWindow()
 		{
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

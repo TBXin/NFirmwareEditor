@@ -8,7 +8,7 @@ namespace NFirmwareEditor.Windows
 		public HotkeyHelpWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			MessageTextBox.ReadOnly = true;
 			MessageTextBox.BackColor = Color.White;

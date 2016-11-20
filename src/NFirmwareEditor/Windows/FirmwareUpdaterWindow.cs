@@ -29,7 +29,7 @@ namespace NFirmwareEditor.Windows
 		public FirmwareUpdaterWindow(Firmware firmware, FirmwareLoader loader)
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			InitializeControls();
 
 			m_firmware = firmware;

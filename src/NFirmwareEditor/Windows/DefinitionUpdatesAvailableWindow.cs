@@ -50,9 +50,9 @@ namespace NFirmwareEditor.Windows
 			{
 				Parallel.ForEach(m_newDefinitions, definition =>
 				{
-					var localPath = Path.Combine(Paths.DefinitionsDirectory, definition.Name);
+					var localPath = Path.Combine(NFEPaths.DefinitionsDirectory, definition.Name);
 
-					Paths.EnsureDirectoryExists(Paths.DefinitionsDirectory);
+					NFEPaths.EnsureDirectoryExists(NFEPaths.DefinitionsDirectory);
 					GitHubApi.DownloadFile(definition.DownloadUrl, localPath);
 
 					this.UpdateUI(() => ChangesTextBox.AppendText(definition.Name + " done." + Environment.NewLine));

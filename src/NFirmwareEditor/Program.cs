@@ -41,9 +41,9 @@ namespace NFirmwareEditor
 				if (args[0] == "/monitor")
 				{
 					var configurationStorage = new ConfigurationStorage();
-					var configuration = configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
+					var configuration = configurationStorage.TryLoad(NFEPaths.SettingsFile) ?? new ApplicationConfiguration();
 					Application.Run(new DeviceMonitorWindow(configuration, new USBConnector(), new COMConnector()));
-					configurationStorage.Save(Paths.SettingsFile, configuration);
+					configurationStorage.Save(NFEPaths.SettingsFile, configuration);
 					return;
 				}
 			}

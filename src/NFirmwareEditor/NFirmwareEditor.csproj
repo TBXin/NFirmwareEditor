@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\MruList.cs" />
-    <Compile Include="Core\Serializer.cs" />
     <Compile Include="Managers\BackupManager.cs" />
     <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
@@ -87,7 +86,7 @@
     <Compile Include="Models\Dataflash.cs" />
     <Compile Include="Models\DeviceSensorsData.cs" />
     <Compile Include="Models\ExportedImage.cs" />
-    <Compile Include="Core\Paths.cs" />
+    <Compile Include="Core\NFEPaths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
     <Compile Include="Models\Updatable.cs" />
     <Compile Include="Models\LoadableObject.cs" />

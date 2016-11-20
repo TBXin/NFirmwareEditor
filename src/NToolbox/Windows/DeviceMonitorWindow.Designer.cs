@@ -30,6 +30,15 @@
 		{
 			this.MainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.SensorsGroupPanel = new NCore.UI.GroupPanel();
+			this.BatteryPackPanel = new System.Windows.Forms.Panel();
+			this.BatteryPackVoltageLabel = new System.Windows.Forms.Label();
+			this.BatteryPackCheckBox = new System.Windows.Forms.CheckBox();
+			this.Battery3Panel = new System.Windows.Forms.Panel();
+			this.Battery3VoltageLabel = new System.Windows.Forms.Label();
+			this.Battery3CheckBox = new System.Windows.Forms.CheckBox();
+			this.Battery2Panel = new System.Windows.Forms.Panel();
+			this.Battery2VoltageLabel = new System.Windows.Forms.Label();
+			this.Battery2CheckBox = new System.Windows.Forms.CheckBox();
 			this.TemperatureSetPanel = new System.Windows.Forms.Panel();
 			this.TemperatureSetLabel = new System.Windows.Forms.Label();
 			this.TemperatureSetCheckBox = new System.Windows.Forms.CheckBox();
@@ -68,15 +77,6 @@
 			this.PauseButton = new System.Windows.Forms.Button();
 			this.TimeFrameButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
-			this.Battery2Panel = new System.Windows.Forms.Panel();
-			this.Battery2VoltageLabel = new System.Windows.Forms.Label();
-			this.Battery2CheckBox = new System.Windows.Forms.CheckBox();
-			this.Battery3Panel = new System.Windows.Forms.Panel();
-			this.Battery3VoltageLabel = new System.Windows.Forms.Label();
-			this.Battery3CheckBox = new System.Windows.Forms.CheckBox();
-			this.BatteryPackPanel = new System.Windows.Forms.Panel();
-			this.BatteryPackVoltageLabel = new System.Windows.Forms.Label();
-			this.BatteryPackCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -145,6 +145,87 @@
 			this.SensorsGroupPanel.TabIndex = 1;
 			this.SensorsGroupPanel.TabStop = false;
 			this.SensorsGroupPanel.Text = "Sensors:";
+			// 
+			// BatteryPackPanel
+			// 
+			this.BatteryPackPanel.BackColor = System.Drawing.Color.Black;
+			this.BatteryPackPanel.Location = new System.Drawing.Point(5, 122);
+			this.BatteryPackPanel.Name = "BatteryPackPanel";
+			this.BatteryPackPanel.Size = new System.Drawing.Size(188, 2);
+			this.BatteryPackPanel.TabIndex = 37;
+			// 
+			// BatteryPackVoltageLabel
+			// 
+			this.BatteryPackVoltageLabel.Location = new System.Drawing.Point(126, 106);
+			this.BatteryPackVoltageLabel.Name = "BatteryPackVoltageLabel";
+			this.BatteryPackVoltageLabel.Size = new System.Drawing.Size(70, 17);
+			this.BatteryPackVoltageLabel.TabIndex = 36;
+			this.BatteryPackVoltageLabel.Text = "?";
+			this.BatteryPackVoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// BatteryPackCheckBox
+			// 
+			this.BatteryPackCheckBox.AutoSize = true;
+			this.BatteryPackCheckBox.Location = new System.Drawing.Point(5, 106);
+			this.BatteryPackCheckBox.Name = "BatteryPackCheckBox";
+			this.BatteryPackCheckBox.Size = new System.Drawing.Size(91, 17);
+			this.BatteryPackCheckBox.TabIndex = 35;
+			this.BatteryPackCheckBox.Text = "Battery Pack:";
+			this.BatteryPackCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// Battery3Panel
+			// 
+			this.Battery3Panel.BackColor = System.Drawing.Color.Black;
+			this.Battery3Panel.Location = new System.Drawing.Point(5, 98);
+			this.Battery3Panel.Name = "Battery3Panel";
+			this.Battery3Panel.Size = new System.Drawing.Size(188, 2);
+			this.Battery3Panel.TabIndex = 34;
+			// 
+			// Battery3VoltageLabel
+			// 
+			this.Battery3VoltageLabel.Location = new System.Drawing.Point(126, 82);
+			this.Battery3VoltageLabel.Name = "Battery3VoltageLabel";
+			this.Battery3VoltageLabel.Size = new System.Drawing.Size(70, 17);
+			this.Battery3VoltageLabel.TabIndex = 33;
+			this.Battery3VoltageLabel.Text = "?";
+			this.Battery3VoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// Battery3CheckBox
+			// 
+			this.Battery3CheckBox.AutoSize = true;
+			this.Battery3CheckBox.Location = new System.Drawing.Point(5, 82);
+			this.Battery3CheckBox.Name = "Battery3CheckBox";
+			this.Battery3CheckBox.Size = new System.Drawing.Size(72, 17);
+			this.Battery3CheckBox.TabIndex = 32;
+			this.Battery3CheckBox.Text = "Battery3:";
+			this.Battery3CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// Battery2Panel
+			// 
+			this.Battery2Panel.BackColor = System.Drawing.Color.Black;
+			this.Battery2Panel.Location = new System.Drawing.Point(5, 74);
+			this.Battery2Panel.Name = "Battery2Panel";
+			this.Battery2Panel.Size = new System.Drawing.Size(188, 2);
+			this.Battery2Panel.TabIndex = 31;
+			// 
+			// Battery2VoltageLabel
+			// 
+			this.Battery2VoltageLabel.Location = new System.Drawing.Point(126, 58);
+			this.Battery2VoltageLabel.Name = "Battery2VoltageLabel";
+			this.Battery2VoltageLabel.Size = new System.Drawing.Size(70, 17);
+			this.Battery2VoltageLabel.TabIndex = 30;
+			this.Battery2VoltageLabel.Text = "?";
+			this.Battery2VoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// Battery2CheckBox
+			// 
+			this.Battery2CheckBox.AutoSize = true;
+			this.Battery2CheckBox.Location = new System.Drawing.Point(5, 58);
+			this.Battery2CheckBox.Name = "Battery2CheckBox";
+			this.Battery2CheckBox.Size = new System.Drawing.Size(72, 17);
+			this.Battery2CheckBox.TabIndex = 29;
+			this.Battery2CheckBox.Text = "Battery2:";
+			this.Battery2CheckBox.UseVisualStyleBackColor = true;
 			// 
 			// TemperatureSetPanel
 			// 
@@ -259,7 +340,7 @@
 			// Battery1Panel
 			// 
 			this.Battery1Panel.BackColor = System.Drawing.Color.Black;
-			this.Battery1Panel.Location = new System.Drawing.Point(6, 50);
+			this.Battery1Panel.Location = new System.Drawing.Point(5, 50);
 			this.Battery1Panel.Name = "Battery1Panel";
 			this.Battery1Panel.Size = new System.Drawing.Size(188, 2);
 			this.Battery1Panel.TabIndex = 16;
@@ -340,7 +421,7 @@
 			// 
 			// Battery1VoltageLabel
 			// 
-			this.Battery1VoltageLabel.Location = new System.Drawing.Point(127, 34);
+			this.Battery1VoltageLabel.Location = new System.Drawing.Point(126, 34);
 			this.Battery1VoltageLabel.Name = "Battery1VoltageLabel";
 			this.Battery1VoltageLabel.Size = new System.Drawing.Size(70, 17);
 			this.Battery1VoltageLabel.TabIndex = 8;
@@ -400,7 +481,7 @@
 			// Battery1CheckBox
 			// 
 			this.Battery1CheckBox.AutoSize = true;
-			this.Battery1CheckBox.Location = new System.Drawing.Point(6, 34);
+			this.Battery1CheckBox.Location = new System.Drawing.Point(5, 34);
 			this.Battery1CheckBox.Name = "Battery1CheckBox";
 			this.Battery1CheckBox.Size = new System.Drawing.Size(72, 17);
 			this.Battery1CheckBox.TabIndex = 1;
@@ -510,87 +591,6 @@
 			this.PuffButton.TabIndex = 0;
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
-			// 
-			// Battery2Panel
-			// 
-			this.Battery2Panel.BackColor = System.Drawing.Color.Black;
-			this.Battery2Panel.Location = new System.Drawing.Point(5, 74);
-			this.Battery2Panel.Name = "Battery2Panel";
-			this.Battery2Panel.Size = new System.Drawing.Size(188, 2);
-			this.Battery2Panel.TabIndex = 31;
-			// 
-			// Battery2VoltageLabel
-			// 
-			this.Battery2VoltageLabel.Location = new System.Drawing.Point(126, 58);
-			this.Battery2VoltageLabel.Name = "Battery2VoltageLabel";
-			this.Battery2VoltageLabel.Size = new System.Drawing.Size(70, 17);
-			this.Battery2VoltageLabel.TabIndex = 30;
-			this.Battery2VoltageLabel.Text = "?";
-			this.Battery2VoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// Battery2CheckBox
-			// 
-			this.Battery2CheckBox.AutoSize = true;
-			this.Battery2CheckBox.Location = new System.Drawing.Point(5, 58);
-			this.Battery2CheckBox.Name = "Battery2CheckBox";
-			this.Battery2CheckBox.Size = new System.Drawing.Size(72, 17);
-			this.Battery2CheckBox.TabIndex = 29;
-			this.Battery2CheckBox.Text = "Battery2:";
-			this.Battery2CheckBox.UseVisualStyleBackColor = true;
-			// 
-			// Battery3Panel
-			// 
-			this.Battery3Panel.BackColor = System.Drawing.Color.Black;
-			this.Battery3Panel.Location = new System.Drawing.Point(5, 98);
-			this.Battery3Panel.Name = "Battery3Panel";
-			this.Battery3Panel.Size = new System.Drawing.Size(188, 2);
-			this.Battery3Panel.TabIndex = 34;
-			// 
-			// Battery3VoltageLabel
-			// 
-			this.Battery3VoltageLabel.Location = new System.Drawing.Point(126, 82);
-			this.Battery3VoltageLabel.Name = "Battery3VoltageLabel";
-			this.Battery3VoltageLabel.Size = new System.Drawing.Size(70, 17);
-			this.Battery3VoltageLabel.TabIndex = 33;
-			this.Battery3VoltageLabel.Text = "?";
-			this.Battery3VoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// Battery3CheckBox
-			// 
-			this.Battery3CheckBox.AutoSize = true;
-			this.Battery3CheckBox.Location = new System.Drawing.Point(5, 82);
-			this.Battery3CheckBox.Name = "Battery3CheckBox";
-			this.Battery3CheckBox.Size = new System.Drawing.Size(72, 17);
-			this.Battery3CheckBox.TabIndex = 32;
-			this.Battery3CheckBox.Text = "Battery3:";
-			this.Battery3CheckBox.UseVisualStyleBackColor = true;
-			// 
-			// BatteryPackPanel
-			// 
-			this.BatteryPackPanel.BackColor = System.Drawing.Color.Black;
-			this.BatteryPackPanel.Location = new System.Drawing.Point(5, 122);
-			this.BatteryPackPanel.Name = "BatteryPackPanel";
-			this.BatteryPackPanel.Size = new System.Drawing.Size(188, 2);
-			this.BatteryPackPanel.TabIndex = 37;
-			// 
-			// BatteryPackVoltageLabel
-			// 
-			this.BatteryPackVoltageLabel.Location = new System.Drawing.Point(126, 106);
-			this.BatteryPackVoltageLabel.Name = "BatteryPackVoltageLabel";
-			this.BatteryPackVoltageLabel.Size = new System.Drawing.Size(70, 17);
-			this.BatteryPackVoltageLabel.TabIndex = 36;
-			this.BatteryPackVoltageLabel.Text = "?";
-			this.BatteryPackVoltageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// BatteryPackCheckBox
-			// 
-			this.BatteryPackCheckBox.AutoSize = true;
-			this.BatteryPackCheckBox.Location = new System.Drawing.Point(5, 106);
-			this.BatteryPackCheckBox.Name = "BatteryPackCheckBox";
-			this.BatteryPackCheckBox.Size = new System.Drawing.Size(91, 17);
-			this.BatteryPackCheckBox.TabIndex = 35;
-			this.BatteryPackCheckBox.Text = "Battery Pack:";
-			this.BatteryPackCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// DeviceMonitorWindow
 			// 

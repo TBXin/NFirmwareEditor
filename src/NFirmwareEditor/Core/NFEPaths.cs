@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using JetBrains.Annotations;
+using NCore;
 
 namespace NFirmwareEditor.Core
 {
-	internal static class Paths
+	internal static class NFEPaths
 	{
 		private const string DefinitionsDirectoryName = "Definitions";
 		private const string PatchDirectoryName = "Patches";
@@ -14,11 +14,10 @@ namespace NFirmwareEditor.Core
 		private const string SettingsFileName = "settings.xml";
 		private const string DefinitionsFileName = "definitions.xml";
 
-		static Paths()
+		static NFEPaths()
 		{
-			var assemblyLocation = Assembly.GetExecutingAssembly().Location;
-			ApplicationIcon = Icon.ExtractAssociatedIcon(assemblyLocation);
-			ApplicationDirectory = Directory.GetParent(assemblyLocation).FullName;
+			ApplicationDirectory = Paths.ApplicationDirectory;
+			ApplicationIcon = Paths.ApplicationIcon;
 
 			SettingsFile = Path.Combine(ApplicationDirectory, SettingsFileName);
 			DefinitionsFile = Path.Combine(ApplicationDirectory, DefinitionsFileName);

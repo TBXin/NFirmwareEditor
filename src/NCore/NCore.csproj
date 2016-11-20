@@ -56,7 +56,11 @@
     <Compile Include="FileFilters.cs" />
     <Compile Include="CsvManager.cs" />
     <Compile Include="InfoBox.cs" />
+    <Compile Include="Paths.cs" />
+    <Compile Include="Serialization\NamespacelessObject.cs" />
     <Compile Include="Safe.cs" />
+    <Compile Include="Serialization\SerializableDictionary.cs" />
+    <Compile Include="Serialization\Serializer.cs" />
     <Compile Include="UI\ComboBoxExtensions.cs" />
     <Compile Include="UI\EditorDialogWindow.cs">
       <SubType>Form</SubType>

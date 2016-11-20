@@ -57,7 +57,7 @@ namespace NFirmwareEditor.Windows
 					var localPath = PatchManager.GetPatchFilePath(m_definition, patch.Name);
 					var directory = PatchManager.GetPatchDirectoryPath(m_definition);
 
-					Paths.EnsureDirectoryExists(directory);
+					NFEPaths.EnsureDirectoryExists(directory);
 					GitHubApi.DownloadFile(patch.DownloadUrl, localPath);
 
 					this.UpdateUI(() => ChangesTextBox.AppendText(patch.Name + " done." + Environment.NewLine));

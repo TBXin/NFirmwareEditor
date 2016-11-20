@@ -8,7 +8,7 @@ namespace NFirmwareEditor.Windows
 		public AboutWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			ApplicationTitleLable.Text = Consts.ApplicationTitle;
 
 			ReikoKitsuneLinkLabel.Click += ReikoKitsuneLinkLabel_Click;
