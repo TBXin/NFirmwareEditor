@@ -216,31 +216,42 @@ namespace NToolbox.Windows
 			MainChart.Annotations.Add(valueAnnotation);
 
 			DataPoint pointUnderCursor = null;
+			var isPlacingTooltip = false;
 			MainChart.MouseMove += (s, e) =>
 			{
-				/*var result = MainChart.HitTest(e.X, e.Y);
+				if (isPlacingTooltip) return;
 
-				if (result.ChartElementType != ChartElementType.DataPoint ||
-					result.PointIndex < 0 ||
-					result.Series.Points.Count <= result.PointIndex)
+				try
 				{
-					return;
+					isPlacingTooltip = true;
+					var result = MainChart.HitTest(e.X, e.Y);
+
+					if (result.ChartElementType != ChartElementType.DataPoint ||
+					    result.PointIndex < 0 ||
+					    result.Series.Points.Count <= result.PointIndex)
+					{
+						return;
+					}
+
+					if (result.Series.Points.Count <= result.PointIndex) return;
+					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = 0;
+
+					pointUnderCursor = result.Series.Points[result.PointIndex];
+					pointUnderCursor.MarkerSize = 7;
+
+					valueAnnotation.BeginPlacement();
+
+					// You must set AxisX before binding to xValue!
+					valueAnnotation.AnchorX = pointUnderCursor.XValue;
+					valueAnnotation.AnchorY = pointUnderCursor.YValues[0];
+					valueAnnotation.Text = pointUnderCursor.Tag.ToString();
+
+					valueAnnotation.EndPlacement();
 				}
-
-				if (result.Series.Points.Count <= result.PointIndex) return;
-				if (pointUnderCursor != null) pointUnderCursor.MarkerSize = 0;
-
-				pointUnderCursor = result.Series.Points[result.PointIndex];
-				pointUnderCursor.MarkerSize = 7;
-
-				valueAnnotation.BeginPlacement();
-
-				// You must set AxisX before binding to xValue!
-				valueAnnotation.AnchorX = pointUnderCursor.XValue;
-				valueAnnotation.AnchorY = pointUnderCursor.YValues[0];
-				valueAnnotation.Text = pointUnderCursor.Tag.ToString();
-
-				valueAnnotation.EndPlacement();*/
+				finally
+				{
+					isPlacingTooltip = false;
+				}
 			};
 
 			MainChartScrollBar.Scroll += (s, e) => IsTracking = MainChartScrollBar.Value == MainChartScrollBar.Maximum;
@@ -532,7 +543,7 @@ namespace NToolbox.Windows
 				var ex = Safe.Execute(() =>
 				{
 					m_fileWriter = new StreamWriter(File.Open(fileName, FileMode.Create, FileAccess.Write, FileShare.Read));
-					var header = "TIME," + string.Join(",", m_seriesData.Where(x => x.Value.CheckBox.Checked).Select(x => x.Key));
+					var header = "Time," + string.Join(",", m_seriesData.Where(x => x.Value.CheckBox.Checked).Select(x => x.Key));
 					m_fileWriter.WriteLine(header);
 				});
 				if (ex != null)
