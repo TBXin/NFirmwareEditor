@@ -26,7 +26,10 @@ namespace NToolbox.Windows
 
 			DeviceMonitorButton.Click += (s, e) =>
 			{
-				InfoBox.Show("Work in progress... Be patient.");
+				using (var dmw = new DeviceMonitorWindow())
+				{
+					ShowDialogWindow(dmw);
+				}
 			};
 
 			ScreenshooterButton.Click += (s, e) =>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;

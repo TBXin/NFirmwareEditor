@@ -15,6 +15,7 @@ namespace NCore.USB
 		private const int ProductId = 0x5020;
 		private const int DataflashLength = 2048;
 		private const int ConfigurationLength = 768;
+		private const int MonitoringDataLength = 64;
 		private const int LogoOffset = 102400;
 		private const int LogoLength = 1024;
 
@@ -35,6 +36,8 @@ namespace NCore.USB
 
 			public const byte ReadConfiguration = 0x60;
 			public const byte WriteConfiguration = 0x61;
+
+			public const byte ReadMonitoringData = 0x66;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -118,6 +121,15 @@ namespace NCore.USB
 				Buffer.BlockCopy(data, 0, tmp, 0, data.Length);
 				Write(stream, CreateCommand(Commands.WriteConfiguration, 0, ConfigurationLength));
 				Write(stream, tmp, worker);
+			}
+		}
+
+		public byte[] ReadMonitoringData()
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.ReadMonitoringData, 0, MonitoringDataLength));
+				return Read(stream, MonitoringDataLength);
 			}
 		}
 

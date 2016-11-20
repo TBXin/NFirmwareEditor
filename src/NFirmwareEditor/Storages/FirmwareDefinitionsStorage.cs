@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;

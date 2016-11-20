@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace NFirmwareEditor.Core
+namespace NCore
 {
-	internal static class Safe
+	public static class Safe
 	{
 		public static Exception Execute(Action action)
 		{
@@ -11,7 +11,7 @@ namespace NFirmwareEditor.Core
 				action();
 				return null;
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				return ex;
 			}

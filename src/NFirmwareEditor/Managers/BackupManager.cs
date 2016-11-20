@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using JetBrains.Annotations;
+using NCore;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
 
