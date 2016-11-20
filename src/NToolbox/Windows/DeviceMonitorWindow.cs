@@ -58,73 +58,41 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
+			Opacity = 0;
 			Load += (s, e) =>
 			{
-				EnsureConnection();
+				if (!EnsureConnection()) return;
+
+				Opacity = 1;
 				new Thread(MonitoringProc) { IsBackground = true }.Start();
 			};
 		}
 
 		private void MonitoringProc()
 		{
-			while (!m_isPaused)
+			while (true)
 			{
-				byte[] bytes;
-				try
+				if (!m_isPaused)
 				{
-					bytes = m_connector.ReadMonitoringData();
-				}
-				catch (TimeoutException)
-				{
-					m_isPaused = true;
-					break;
-				}
+					byte[] bytes;
+					try
+					{
+						bytes = m_connector.ReadMonitoringData();
+					}
+					catch (Exception)
+					{
+						break;
+					}
 
-				var data = BinaryStructure.Read<MonitoringData>(bytes);
-				var kvp = CreateMonitoringDataCollection(data);
+					var data = BinaryStructure.Read<MonitoringData>(bytes);
+					var kvp = CreateMonitoringDataCollection(data);
 
-				UpdateUI(() => UpdateSeries(kvp));
+					UpdateUI(() => UpdateSeries(kvp));
+				}
 				Thread.Sleep(100);
 			}
-		}
 
-		private IDictionary<string, float> CreateMonitoringDataCollection(MonitoringData data)
-		{
-			var battery1 = data.Battery1Voltage == 0 ? 0 : (data.Battery1Voltage + 275) / 100f;
-			var battery2 = data.Battery2Voltage == 0 ? 0 : (data.Battery2Voltage + 275) / 100f;
-			var battery3 = data.Battery3Voltage == 0 ? 0 : (data.Battery3Voltage + 275) / 100f;
-			var batteryPack = battery1 + battery2 + battery3;
-
-			var outputVoltage = data.OutputVoltage / 100f;
-			var outputCurrent = data.OutputCurrent / 100f;
-			var outputPower = outputVoltage * outputCurrent;
-
-			return new Dictionary<string, float>
-			{
-				{ SensorsKeys.Timestamp, data.Timestamp / 100f },
-
-				{ SensorsKeys.IsFiring, data.IsFiring ? 1 : 0 },
-				{ SensorsKeys.IsCharging, data.IsCharging ? 1 : 0 },
-				{ SensorsKeys.IsCelcius, data.IsCelcius ? 1 : 0 },
-
-				{ SensorsKeys.Battery1, battery1 },
-				{ SensorsKeys.Battery2, battery2 },
-				{ SensorsKeys.Battery3, battery3 },
-				{ SensorsKeys.BatteryPack, batteryPack },
-
-				{ SensorsKeys.Power, outputPower },
-				{ SensorsKeys.PowerSet, data.PowerSet / 10f },
-				{ SensorsKeys.TemperatureSet, data.TemperatureSet },
-				{ SensorsKeys.Temperature, data.Temperature },
-
-				{ SensorsKeys.OutputVoltage, outputVoltage },
-				{ SensorsKeys.OutputCurrent, outputCurrent },
-
-				{ SensorsKeys.Resistance, data.Resistance / 1000f },
-				{ SensorsKeys.RealResistance, data.RealResistance / 1000f },
-
-				{ SensorsKeys.BoardTemperature, data.BoardTemperature }
-			};
+			if (EnsureConnection()) MonitoringProc();
 		}
 
 		private void InitializeControls()
@@ -390,48 +358,43 @@ namespace NToolbox.Windows
 			IsTracking = true;
 		}
 
-		private void StartRecording()
+		private IDictionary<string, float> CreateMonitoringDataCollection(MonitoringData data)
 		{
-			if (m_isRecording) return;
+			var battery1 = data.Battery1Voltage == 0 ? 0 : (data.Battery1Voltage + 275) / 100f;
+			var battery2 = data.Battery2Voltage == 0 ? 0 : (data.Battery2Voltage + 275) / 100f;
+			var battery3 = data.Battery3Voltage == 0 ? 0 : (data.Battery3Voltage + 275) / 100f;
+			var batteryPack = battery1 + battery2 + battery3;
 
-			using (var sf = new SaveFileDialog { Filter = FileFilters.CsvFilter })
+			var outputVoltage = data.OutputVoltage / 100f;
+			var outputCurrent = data.OutputCurrent / 100f;
+			var outputPower = outputVoltage * outputCurrent;
+
+			return new Dictionary<string, float>
 			{
-				if (sf.ShowDialog() != DialogResult.OK) return;
+				{ SensorsKeys.Timestamp, data.Timestamp / 100f },
 
-				var fileName = sf.FileName;
-				var ex = Safe.Execute(() =>
-				{
-					m_fileWriter = new StreamWriter(File.Open(fileName, FileMode.Create, FileAccess.Write, FileShare.Read));
-					var header = "TIME," + string.Join(",", m_seriesData.Where(x => x.Value.CheckBox.Checked).Select(x => x.Key));
-					m_fileWriter.WriteLine(header);
-				});
-				if (ex != null)
-				{
-					InfoBox.Show("Unable to start recoding...\n" + ex.Message);
-					return;
-				}
-			}
+				{ SensorsKeys.IsFiring, data.IsFiring ? 1 : 0 },
+				{ SensorsKeys.IsCharging, data.IsCharging ? 1 : 0 },
+				{ SensorsKeys.IsCelcius, data.IsCelcius ? 1 : 0 },
 
-			m_recordStartTime = DateTime.Now;
-			m_isRecording = true;
-			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = false);
-			RecordButton.Text = @"Stop Recording";
-		}
+				{ SensorsKeys.Battery1, battery1 },
+				{ SensorsKeys.Battery2, battery2 },
+				{ SensorsKeys.Battery3, battery3 },
+				{ SensorsKeys.BatteryPack, batteryPack },
 
-		private void StopRecording()
-		{
-			if (!m_isRecording)
-				return;
+				{ SensorsKeys.Power, outputPower },
+				{ SensorsKeys.PowerSet, data.PowerSet / 10f },
+				{ SensorsKeys.TemperatureSet, data.TemperatureSet },
+				{ SensorsKeys.Temperature, data.Temperature },
 
-			Safe.Execute(() =>
-			{
-				m_fileWriter.Flush();
-				m_fileWriter.Dispose();
-			});
+				{ SensorsKeys.OutputVoltage, outputVoltage },
+				{ SensorsKeys.OutputCurrent, outputCurrent },
 
-			m_isRecording = false;
-			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = true);
-			RecordButton.Text = @"Record...";
+				{ SensorsKeys.Resistance, data.Resistance / 1000f },
+				{ SensorsKeys.RealResistance, data.RealResistance / 1000f },
+
+				{ SensorsKeys.BoardTemperature, data.BoardTemperature }
+			};
 		}
 
 		private void UpdateSeries(IDictionary<string, float> sensors)
@@ -555,6 +518,49 @@ namespace NToolbox.Windows
 
 				MainChart.ChartAreas[0].AxisX.ScaleView.Zoom(fromValue, toValue);
 			}
+		}
+
+		private void StartRecording()
+		{
+			if (m_isRecording) return;
+
+			using (var sf = new SaveFileDialog { Filter = FileFilters.CsvFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				var fileName = sf.FileName;
+				var ex = Safe.Execute(() =>
+				{
+					m_fileWriter = new StreamWriter(File.Open(fileName, FileMode.Create, FileAccess.Write, FileShare.Read));
+					var header = "TIME," + string.Join(",", m_seriesData.Where(x => x.Value.CheckBox.Checked).Select(x => x.Key));
+					m_fileWriter.WriteLine(header);
+				});
+				if (ex != null)
+				{
+					InfoBox.Show("Unable to start recoding...\n" + ex.Message);
+					return;
+				}
+			}
+
+			m_recordStartTime = DateTime.Now;
+			m_isRecording = true;
+			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = false);
+			RecordButton.Text = @"Stop Recording";
+		}
+
+		private void StopRecording()
+		{
+			if (!m_isRecording) return;
+
+			Safe.Execute(() =>
+			{
+				m_fileWriter.Flush();
+				m_fileWriter.Dispose();
+			});
+
+			m_isRecording = false;
+			m_seriesData.ForEach(x => x.Value.CheckBox.Enabled = true);
+			RecordButton.Text = @"Record...";
 		}
 
 		private static float Interpolate(float value, IList<ValueLimit<float, int>> lowHigh)
