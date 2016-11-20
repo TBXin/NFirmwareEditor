@@ -251,6 +251,7 @@
 			this.myEvicMenuItem.Name = "myEvicMenuItem";
 			this.myEvicMenuItem.Size = new System.Drawing.Size(109, 20);
 			this.myEvicMenuItem.Text = "myEvic NFE Edition";
+			this.myEvicMenuItem.Visible = false;
 			// 
 			// DeviceConfiguratorMenuItem
 			// 
