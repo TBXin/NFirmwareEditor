@@ -8,8 +8,11 @@ namespace NToolbox.Models
 	{
 		public DeviceMonitorConfiguration()
 		{
+			ShowPuffsBoundaries = true;
 			ActiveSeries = new SerializableDictionary<string, bool>();
 		}
+
+		public bool ShowPuffsBoundaries { get; set; }
 
 		public SerializableDictionary<string, bool> ActiveSeries { get; set; }
 	}

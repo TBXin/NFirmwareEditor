@@ -79,6 +79,7 @@
 			this.PauseButton = new System.Windows.Forms.Button();
 			this.SetXScaleButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
+			this.ShowPuffsBoundariesCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -560,6 +561,7 @@
 			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlGroupPanel.Controls.Add(this.ShowPuffsBoundariesCheckBox);
 			this.ControlGroupPanel.Controls.Add(this.SetYScaleButton);
 			this.ControlGroupPanel.Controls.Add(this.RecordButton);
 			this.ControlGroupPanel.Controls.Add(this.PauseButton);
@@ -619,6 +621,16 @@
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
 			// 
+			// ShowPuffsBoundariesCheckBox
+			// 
+			this.ShowPuffsBoundariesCheckBox.AutoSize = true;
+			this.ShowPuffsBoundariesCheckBox.Location = new System.Drawing.Point(6, 149);
+			this.ShowPuffsBoundariesCheckBox.Name = "ShowPuffsBoundariesCheckBox";
+			this.ShowPuffsBoundariesCheckBox.Size = new System.Drawing.Size(136, 17);
+			this.ShowPuffsBoundariesCheckBox.TabIndex = 5;
+			this.ShowPuffsBoundariesCheckBox.Text = "Show Puffs Boundaries";
+			this.ShowPuffsBoundariesCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// DeviceMonitorWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -637,6 +649,7 @@
 			this.SensorsGroupPanel.PerformLayout();
 			this.LineVewGroupPanel.ResumeLayout(false);
 			this.ControlGroupPanel.ResumeLayout(false);
+			this.ControlGroupPanel.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -694,5 +707,6 @@
 		private System.Windows.Forms.CheckBox Battery2CheckBox;
 		private System.Windows.Forms.VScrollBar MainChartVerticalScrollBar;
 		private System.Windows.Forms.Button SetYScaleButton;
+		private System.Windows.Forms.CheckBox ShowPuffsBoundariesCheckBox;
 	}
 }

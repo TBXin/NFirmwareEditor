@@ -79,21 +79,7 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
-			try
-			{
-				using (var fs = File.OpenRead(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
-				{
-					m_configuration = Serializer.Read<DeviceMonitorConfiguration>(fs);
-				}
-			}
-			catch (Exception)
-			{
-				// Ignore
-			}
-			finally
-			{
-				if (m_configuration == null || m_configuration.ActiveSeries == null) m_configuration = new DeviceMonitorConfiguration();
-			}
+			LoadMonitoringConfiguration();
 
 			Opacity = 0;
 			Load += (s, e) =>
@@ -103,21 +89,7 @@ namespace NToolbox.Windows
 				Opacity = 1;
 				new Thread(MonitoringProc) { IsBackground = true }.Start();
 			};
-			Closing += (s, e) =>
-			{
-				try
-				{
-					SaveCheckedSeries();
-					using (var fs = File.Create(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
-					{
-						Serializer.Write(m_configuration, fs);
-					}
-				}
-				catch (Exception)
-				{
-					// Ignore
-				}
-			};
+			Closing += (s, e) => SaveMonitoringConfiguration();
 		}
 
 		private void MonitoringProc()
@@ -541,17 +513,20 @@ namespace NToolbox.Windows
 			var xValue = now.ToOADate();
 			var xAxisMax = now.AddSeconds(1).ToOADate();
 
-			var isFiring = sensors[SensorsKeys.IsFiring] > 0;
-			if (isFiring && !m_isFiring)
+			if (ShowPuffsBoundariesCheckBox.Checked)
 			{
-				CreateFiringAnnotation(xValue, true);
+				var isFiring = sensors[SensorsKeys.IsFiring] > 0;
+				if (isFiring && !m_isFiring)
+				{
+					CreateFiringAnnotation(xValue, true);
+				}
+				if (!isFiring && m_isFiring && m_xPrevValue > 0)
+				{
+					CreateFiringAnnotation(m_xPrevValue, false);
+				}
+				m_isFiring = isFiring;
+				m_xPrevValue = xValue;
 			}
-			if (!isFiring && m_isFiring && m_xPrevValue > 0)
-			{
-				CreateFiringAnnotation(m_xPrevValue, false);
-			}
-			m_isFiring = isFiring;
-			m_xPrevValue = xValue;
 
 			var isCelcius = sensors[SensorsKeys.IsCelcius] > 0;
 			m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
@@ -724,13 +699,51 @@ namespace NToolbox.Windows
 			RecordButton.Text = @"Record...";
 		}
 
-		private void SaveCheckedSeries()
+		private void LoadMonitoringConfiguration()
 		{
+			try
+			{
+				using (var fs = File.OpenRead(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+				{
+					m_configuration = Serializer.Read<DeviceMonitorConfiguration>(fs);
+				}
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
+			finally
+			{
+				if (m_configuration == null || m_configuration.ActiveSeries == null)
+				{
+					m_configuration = new DeviceMonitorConfiguration();
+				}
+			}
+			ShowPuffsBoundariesCheckBox.Checked = m_configuration.ShowPuffsBoundaries;
+		}
+
+		private void SaveMonitoringConfiguration()
+		{
+			m_configuration.ShowPuffsBoundaries = ShowPuffsBoundariesCheckBox.Checked;
+			m_configuration.ActiveSeries.Clear();
+
 			foreach (var kvp in m_seriesData)
 			{
 				var seriesName = kvp.Key;
 				var data = kvp.Value;
 				m_configuration.ActiveSeries[seriesName] = data.CheckBox.Checked;
+			}
+
+			try
+			{
+				using (var fs = File.Create(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+				{
+					Serializer.Write(m_configuration, fs);
+				}
+			}
+			catch (Exception)
+			{
+				// Ignore
 			}
 		}
 
