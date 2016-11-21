@@ -22,6 +22,7 @@ namespace NToolbox.Windows
 		private const string ConfigurationFileName = "NDeviceMonitor.xml";
 
 		private const int ChartMaxDataPointsCount = 1200;
+		private const int ChartMaxFiringAnnotationsCount = 100;
 		private const int ChartMaxYValue = 100;
 		private const int ChartMarkerSize = 0;
 		private const int ChartSelectedMarkerSize = 7;
@@ -38,10 +39,20 @@ namespace NToolbox.Windows
 		private ContextMenu m_xScaleMenu;
 		private ContextMenu m_yScaleMenu;
 		private ContextMenu m_puffsMenu;
-		private bool m_isPaused;
 
+		private bool m_isChartUpdating;
+		private bool m_isChartPaused;
+
+		private CalloutAnnotation m_valueAnnotation;
+		private bool m_isPlacingAnnotation;
+		private DataPoint m_pointUnderCursor;
+
+		private bool m_isFiring;
 		private bool m_isRecording;
+
+		private double m_xPrevValue;
 		private DateTime m_recordStartTime = DateTime.Now;
+
 		private StreamWriter m_fileWriter;
 		private readonly StringBuilder m_lineBuilder = new StringBuilder();
 
@@ -112,7 +123,7 @@ namespace NToolbox.Windows
 		{
 			while (true)
 			{
-				if (!m_isPaused)
+				if (!m_isChartPaused)
 				{
 					byte[] bytes;
 					try
@@ -127,7 +138,18 @@ namespace NToolbox.Windows
 					var data = BinaryStructure.Read<MonitoringData>(bytes);
 					var kvp = CreateMonitoringDataCollection(data);
 
-					UpdateUI(() => UpdateSeries(kvp));
+					UpdateUI(() =>
+					{
+						try
+						{
+							m_isChartUpdating = true;
+							UpdateSeries(kvp);
+						}
+						finally
+						{
+							m_isChartUpdating = false;
+						}
+					});
 				}
 				Thread.Sleep(100);
 			}
@@ -207,8 +229,8 @@ namespace NToolbox.Windows
 
 			PauseButton.Click += (s, e) =>
 			{
-				m_isPaused = !m_isPaused;
-				PauseButton.Text = m_isPaused ? "Resume" : "Pause";
+				m_isChartPaused = !m_isChartPaused;
+				PauseButton.Text = m_isChartPaused ? "Resume" : "Pause";
 			};
 
 			TrackingButton.Click += (s, e) => ChangeXScale(m_timeFrame);
@@ -251,60 +273,65 @@ namespace NToolbox.Windows
 				area.AxisY.ScaleView.Zoomable = true;
 				area.AxisY.ScrollBar.Enabled = false;
 			}
-			var valueAnnotation = new CalloutAnnotation
+			m_valueAnnotation = new CalloutAnnotation
 			{
 				AxisX = area.AxisX,
 				AxisY = area.AxisY
 			};
 			MainChart.ChartAreas.Add(area);
-			MainChart.Annotations.Add(valueAnnotation);
-
-			DataPoint pointUnderCursor = null;
-			var isPlacingTooltip = false;
-			MainChart.MouseMove += (s, e) =>
-			{
-				if (isPlacingTooltip) return;
-
-				try
-				{
-					isPlacingTooltip = true;
-					var result = MainChart.HitTest(e.X, e.Y);
-
-					if (result.ChartElementType != ChartElementType.DataPoint ||
-					    result.PointIndex < 0 ||
-					    result.Series.Points.Count <= result.PointIndex)
-					{
-						return;
-					}
-
-					if (result.Series.Points.Count <= result.PointIndex) return;
-					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = ChartMarkerSize;
-
-					pointUnderCursor = result.Series.Points[result.PointIndex];
-					pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
-
-					valueAnnotation.BeginPlacement();
-
-					// You must set AxisX before binding to xValue!
-					valueAnnotation.AnchorX = pointUnderCursor.XValue;
-					valueAnnotation.AnchorY = pointUnderCursor.YValues[0];
-					valueAnnotation.Text = pointUnderCursor.Tag.ToString();
-
-					valueAnnotation.EndPlacement();
-				}
-				catch (Exception)
-				{
-					// Ignore
-				}
-				finally
-				{
-					isPlacingTooltip = false;
-				}
-			};
+			MainChart.Annotations.Add(m_valueAnnotation);
+			MainChart.MouseMove += MainChart_MouseMove;
 
 			MainChartHorizontalScrollBar.Scroll += (s, e) => IsTracking = MainChartHorizontalScrollBar.Value == MainChartHorizontalScrollBar.Maximum;
 			MainChartHorizontalScrollBar.ValueChanged += (s, e) => ScrollChartHorizontally(false);
 			MainChartVerticalScrollBar.ValueChanged += (s, e) => ScrollChartVertically();
+		}
+
+		private void MainChart_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (m_isPlacingAnnotation) return;
+
+			while (m_isChartUpdating)
+			{
+			}
+
+			try
+			{
+				m_isPlacingAnnotation = true;
+				var results = MainChart.HitTest(e.X, e.Y, true, ChartElementType.DataPoint);
+				if (results.Length == 0 ||
+					results[0].ChartElementType != ChartElementType.DataPoint ||
+					results[0].PointIndex < 0 ||
+					results[0].Series.Points.Count <= results[0].PointIndex)
+				{
+					return;
+				}
+
+				var result = results[0];
+
+				if (result.Series.Points.Count <= result.PointIndex) return;
+				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = ChartMarkerSize;
+
+				m_pointUnderCursor = result.Series.Points[result.PointIndex];
+				m_pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
+
+				m_valueAnnotation.BeginPlacement();
+				{
+					// You must set AxisX before binding to xValue!
+					m_valueAnnotation.AnchorX = m_pointUnderCursor.XValue;
+					m_valueAnnotation.AnchorY = m_pointUnderCursor.YValues[0];
+					m_valueAnnotation.Text = m_pointUnderCursor.Tag.ToString();
+				}
+				m_valueAnnotation.EndPlacement();
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
+			finally
+			{
+				m_isPlacingAnnotation = false;
+			}
 		}
 
 		private void InitializeSeries()
@@ -423,6 +450,22 @@ namespace NToolbox.Windows
 			return series;
 		}
 
+		private void CreateFiringAnnotation(double xAnchor, bool isStart)
+		{
+			var firingAnnotation = new VerticalLineAnnotation
+			{
+				AxisX = MainChart.ChartAreas[0].AxisX,
+				AxisY = MainChart.ChartAreas[0].AxisY,
+				AnchorX = xAnchor,
+				LineColor = isStart ? Color.CornflowerBlue : Color.CadetBlue,
+				LineWidth = 1,
+				IsInfinitive = true
+			};
+
+			MainChart.Annotations.Add(firingAnnotation);
+			firingAnnotation.ClipToChartArea = MainChart.ChartAreas[0].Name;
+		}
+
 		private void ChangeXScale(TimeSpan timeFrame)
 		{
 			m_timeFrame = timeFrame;
@@ -490,13 +533,26 @@ namespace NToolbox.Windows
 		{
 			if (!m_startTime.HasValue) m_startTime = DateTime.Now;
 
+			var now = DateTime.Now;
+			var xValue = now.ToOADate();
+			var xAxisMax = now.AddSeconds(1).ToOADate();
+
+			var isFiring = sensors[SensorsKeys.IsFiring] > 0;
+			if (isFiring && !m_isFiring)
+			{
+				CreateFiringAnnotation(xValue, true);
+			}
+			if (!isFiring && m_isFiring && m_xPrevValue > 0)
+			{
+				CreateFiringAnnotation(m_xPrevValue, false);
+			}
+			m_isFiring = isFiring;
+			m_xPrevValue = xValue;
+
 			var isCelcius = sensors[SensorsKeys.IsCelcius] > 0;
 			m_seriesData[SensorsKeys.Temperature].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 			m_seriesData[SensorsKeys.TemperatureSet].SetLastValueFormat(isCelcius ? "{0} °C" : "{0} °F");
 
-			var now = DateTime.Now;
-			var xValue = now.ToOADate();
-			var xAxisMax = now.AddSeconds(1).ToOADate();
 			foreach (var kvp in m_seriesData)
 			{
 				var sensorName = kvp.Key;
@@ -512,7 +568,7 @@ namespace NToolbox.Windows
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
 					point.MarkerSize = ChartMarkerSize;
-					point.MarkerStyle = MarkerStyle.Circle;
+					point.MarkerStyle = MarkerStyle.Square;
 					data.SetLastValue(roundedValue);
 				}
 				else
@@ -546,6 +602,11 @@ namespace NToolbox.Windows
 				}
 			}
 
+			while (MainChart.Annotations.Count > 1 && MainChart.Annotations.Count - 1 > ChartMaxFiringAnnotationsCount)
+			{
+				MainChart.Annotations.RemoveAt(1);
+			}
+
 			foreach (var series in MainChart.Series)
 			{
 				while (series.Points.Count > ChartMaxDataPointsCount)
@@ -562,7 +623,7 @@ namespace NToolbox.Windows
 					{
 						var preLastPoint = series.Points[series.Points.Count - 2];
 						preLastPoint.Label = null;
-						//preLastPoint.MarkerSize = 0;
+						preLastPoint.MarkerSize = ChartMarkerSize;
 					}
 				}
 			}
