@@ -21,19 +21,22 @@ namespace NToolbox.Windows
 	{
 		private const string ConfigurationFileName = "NDeviceMonitor.xml";
 
-		private const int MaxItems = 1200;
-		private const int MarkerSize = 0;
-		private const int SelectedMarkerSize = 7;
+		private const int ChartMaxDataPointsCount = 1200;
+		private const int ChartMaxYValue = 100;
+		private const int ChartMarkerSize = 0;
+		private const int ChartSelectedMarkerSize = 7;
 
 		private readonly HidConnector m_connector = new HidConnector();
 
 		private DeviceMonitorConfiguration m_configuration;
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private TimeSpan m_timeFrame = TimeSpan.FromSeconds(10);
+		private int m_verticalFrame = 100;
 		private DateTime? m_startTime;
 		private bool m_isTracking = true;
 
-		private ContextMenu m_timeFrameMenu;
+		private ContextMenu m_xScaleMenu;
+		private ContextMenu m_yScaleMenu;
 		private ContextMenu m_puffsMenu;
 		private bool m_isPaused;
 
@@ -208,7 +211,7 @@ namespace NToolbox.Windows
 				PauseButton.Text = m_isPaused ? "Resume" : "Pause";
 			};
 
-			TrackingButton.Click += (s, e) => ChangeTimeFrameAndTrack(m_timeFrame);
+			TrackingButton.Click += (s, e) => ChangeXScale(m_timeFrame);
 			RecordButton.Click += (s, e) =>
 			{
 				if (m_isRecording)
@@ -237,12 +240,16 @@ namespace NToolbox.Windows
 				area.AxisX.ScaleView.Zoomable = true;
 				area.AxisX.ScrollBar.Enabled = false;
 
+				area.AxisY.Minimum = 0;
+				area.AxisY.Maximum = ChartMaxYValue;
 				area.AxisY.IsMarginVisible = false;
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.MajorTickMark.TickMarkStyle = TickMarkStyle.None;
 				area.AxisY.LabelStyle.Enabled = false;
 				area.AxisY.LineColor = Color.DarkGray;
+				area.AxisY.ScaleView.Zoomable = true;
+				area.AxisY.ScrollBar.Enabled = false;
 			}
 			var valueAnnotation = new CalloutAnnotation
 			{
@@ -271,10 +278,10 @@ namespace NToolbox.Windows
 					}
 
 					if (result.Series.Points.Count <= result.PointIndex) return;
-					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = MarkerSize;
+					if (pointUnderCursor != null) pointUnderCursor.MarkerSize = ChartMarkerSize;
 
 					pointUnderCursor = result.Series.Points[result.PointIndex];
-					pointUnderCursor.MarkerSize = SelectedMarkerSize;
+					pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
 
 					valueAnnotation.BeginPlacement();
 
@@ -285,14 +292,19 @@ namespace NToolbox.Windows
 
 					valueAnnotation.EndPlacement();
 				}
+				catch (Exception)
+				{
+					// Ignore
+				}
 				finally
 				{
 					isPlacingTooltip = false;
 				}
 			};
 
-			MainChartScrollBar.Scroll += (s, e) => IsTracking = MainChartScrollBar.Value == MainChartScrollBar.Maximum;
-			MainChartScrollBar.ValueChanged += (s, e) => ScrollChart(false);
+			MainChartHorizontalScrollBar.Scroll += (s, e) => IsTracking = MainChartHorizontalScrollBar.Value == MainChartHorizontalScrollBar.Maximum;
+			MainChartHorizontalScrollBar.ValueChanged += (s, e) => ScrollChartHorizontally(false);
+			MainChartVerticalScrollBar.ValueChanged += (s, e) => ScrollChartVertically();
 		}
 
 		private void InitializeSeries()
@@ -317,19 +329,32 @@ namespace NToolbox.Windows
 
 		private void InitializeContextMenus()
 		{
-			m_timeFrameMenu = new ContextMenu(new[]
+			m_xScaleMenu = new ContextMenu(new[]
 			{
-				new MenuItem("5 seconds",  (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(5))),
-				new MenuItem("10 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(10))),
-				new MenuItem("20 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(20))),
-				new MenuItem("30 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(30))),
-				new MenuItem("45 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(45))),
-				new MenuItem("60 seconds", (s, e) => ChangeTimeFrameAndTrack(TimeSpan.FromSeconds(60)))
+				new MenuItem("5 seconds",  (s, e) => ChangeXScale(TimeSpan.FromSeconds(5))),
+				new MenuItem("10 seconds", (s, e) => ChangeXScale(TimeSpan.FromSeconds(10))),
+				new MenuItem("20 seconds", (s, e) => ChangeXScale(TimeSpan.FromSeconds(20))),
+				new MenuItem("30 seconds", (s, e) => ChangeXScale(TimeSpan.FromSeconds(30))),
+				new MenuItem("45 seconds", (s, e) => ChangeXScale(TimeSpan.FromSeconds(45))),
+				new MenuItem("60 seconds", (s, e) => ChangeXScale(TimeSpan.FromSeconds(60)))
 			});
-			TimeFrameButton.Click += (s, e) =>
+			SetXScaleButton.Click += (s, e) =>
 			{
 				var control = (Control)s;
-				m_timeFrameMenu.Show(control, new Point(control.Width, 0));
+				m_xScaleMenu.Show(control, new Point(control.Width, 0));
+			};
+			m_yScaleMenu = new ContextMenu(new[]
+			{
+				new MenuItem("5%", (s, e) => ChangeYScale(5)),
+				new MenuItem("10%", (s, e) => ChangeYScale(10)),
+				new MenuItem("25%", (s, e) => ChangeYScale(25)),
+				new MenuItem("50%", (s, e) => ChangeYScale(50)),
+				new MenuItem("100%", (s, e) => ChangeYScale(100))
+			});
+			SetYScaleButton.Click += (s, e) =>
+			{
+				var control = (Control)s;
+				m_yScaleMenu.Show(control, new Point(control.Width, 0));
 			};
 
 			m_puffsMenu = new ContextMenu();
@@ -378,7 +403,7 @@ namespace NToolbox.Windows
 				Name = name,
 				ChartType = SeriesChartType.Line,
 				XValueType = ChartValueType.DateTime,
-				YValueType = ChartValueType.Double,
+				YValueType = ChartValueType.Int32,
 				Color = color,
 				BorderWidth = 2,
 				SmartLabelStyle =
@@ -398,12 +423,28 @@ namespace NToolbox.Windows
 			return series;
 		}
 
-		private void ChangeTimeFrameAndTrack(TimeSpan timeFrame)
+		private void ChangeXScale(TimeSpan timeFrame)
 		{
 			m_timeFrame = timeFrame;
-			MainChartScrollBar.Value = MainChartScrollBar.Maximum;
-			ScrollChart(true);
+			MainChartHorizontalScrollBar.Value = MainChartHorizontalScrollBar.Maximum;
+			ScrollChartHorizontally(true);
 			IsTracking = true;
+		}
+
+		private void ChangeYScale(int yScale)
+		{
+			m_verticalFrame = Math.Max(0, Math.Min(ChartMaxYValue, yScale));
+			if (m_verticalFrame == ChartMaxYValue)
+			{
+				MainChartVerticalScrollBar.Value = 0;
+				MainChartVerticalScrollBar.Maximum = 0;
+			}
+			else
+			{
+				MainChartVerticalScrollBar.Maximum = ChartMaxYValue - m_verticalFrame;
+				MainChartVerticalScrollBar.Value = 0;
+			}
+			ScrollChartVertically();
 		}
 
 		private IDictionary<string, float> CreateMonitoringDataCollection(MonitoringData data)
@@ -470,7 +511,7 @@ namespace NToolbox.Windows
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
-					point.MarkerSize = MarkerSize;
+					point.MarkerSize = ChartMarkerSize;
 					point.MarkerStyle = MarkerStyle.Circle;
 					data.SetLastValue(roundedValue);
 				}
@@ -507,7 +548,7 @@ namespace NToolbox.Windows
 
 			foreach (var series in MainChart.Series)
 			{
-				while (series.Points.Count > MaxItems)
+				while (series.Points.Count > ChartMaxDataPointsCount)
 				{
 					series.Points.RemoveAt(0);
 				}
@@ -534,37 +575,45 @@ namespace NToolbox.Windows
 			var range = maxDate - minDate;
 			var framesCount = Math.Floor(range.TotalSeconds / m_timeFrame.TotalSeconds);
 
-			MainChartScrollBar.Maximum = (int)(framesCount * 30);
+			MainChartHorizontalScrollBar.Maximum = (int)(framesCount * 30);
 			if (IsTracking)
 			{
-				MainChartScrollBar.Value = MainChartScrollBar.Maximum;
-				ScrollChart(true);
+				MainChartHorizontalScrollBar.Value = MainChartHorizontalScrollBar.Maximum;
+				ScrollChartHorizontally(true);
 			}
 
 			MainChart.ChartAreas[0].AxisX.Minimum = m_startTime.Value.AddSeconds(-5).ToOADate();
 			MainChart.ChartAreas[0].AxisX.Maximum = xAxisMax;
 		}
 
-		private void ScrollChart(bool toEnd)
+		private void ScrollChartHorizontally(bool toEnd)
 		{
 			if (!m_startTime.HasValue) return;
 
 			if (toEnd)
 			{
 				var toValue = MainChart.ChartAreas[0].AxisX.Maximum;
-				var toDate = DateTime.FromOADate(toValue);
+				var toDate = double.IsNaN(toValue) ? m_startTime.Value : DateTime.FromOADate(toValue);
 				var fromValue = toDate.Add(-m_timeFrame).ToOADate();
 
 				MainChart.ChartAreas[0].AxisX.ScaleView.Zoom(fromValue, toValue);
 			}
 			else
 			{
-				var frameIndex = MainChartScrollBar.Value;
+				var frameIndex = MainChartHorizontalScrollBar.Value;
 				var fromValue = m_startTime.Value.AddSeconds(frameIndex / 30f * m_timeFrame.TotalSeconds).ToOADate();
 				var toValue = m_startTime.Value.AddSeconds((frameIndex / 30f + 1) * m_timeFrame.TotalSeconds).ToOADate();
 
 				MainChart.ChartAreas[0].AxisX.ScaleView.Zoom(fromValue, toValue);
 			}
+		}
+
+		private void ScrollChartVertically()
+		{
+			var fromValue = Math.Min(ChartMaxYValue - m_verticalFrame, ChartMaxYValue - MainChartVerticalScrollBar.Value - m_verticalFrame);
+			var toValue = Math.Min(ChartMaxYValue, ChartMaxYValue - MainChartVerticalScrollBar.Value);
+
+			MainChart.ChartAreas[0].AxisY.ScaleView.Zoom(fromValue, toValue);
 		}
 
 		private void StartRecording()

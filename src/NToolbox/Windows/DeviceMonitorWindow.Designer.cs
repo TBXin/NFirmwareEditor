@@ -71,11 +71,13 @@
 			this.PowerCheckBox = new System.Windows.Forms.CheckBox();
 			this.LineVewGroupPanel = new NCore.UI.GroupPanel();
 			this.TrackingButton = new System.Windows.Forms.Button();
-			this.MainChartScrollBar = new System.Windows.Forms.HScrollBar();
+			this.MainChartHorizontalScrollBar = new System.Windows.Forms.HScrollBar();
+			this.MainChartVerticalScrollBar = new System.Windows.Forms.VScrollBar();
 			this.ControlGroupPanel = new NCore.UI.GroupPanel();
+			this.SetYScaleButton = new System.Windows.Forms.Button();
 			this.RecordButton = new System.Windows.Forms.Button();
 			this.PauseButton = new System.Windows.Forms.Button();
-			this.TimeFrameButton = new System.Windows.Forms.Button();
+			this.SetXScaleButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
@@ -85,11 +87,13 @@
 			// 
 			// MainChart
 			// 
-			this.MainChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainChart.Location = new System.Drawing.Point(1, 30);
 			this.MainChart.Name = "MainChart";
 			this.MainChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-			this.MainChart.Size = new System.Drawing.Size(589, 543);
+			this.MainChart.Size = new System.Drawing.Size(572, 543);
 			this.MainChart.TabIndex = 0;
 			// 
 			// SensorsGroupPanel
@@ -506,7 +510,8 @@
 			this.LineVewGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.LineVewGroupPanel.Controls.Add(this.TrackingButton);
 			this.LineVewGroupPanel.Controls.Add(this.MainChart);
-			this.LineVewGroupPanel.Controls.Add(this.MainChartScrollBar);
+			this.LineVewGroupPanel.Controls.Add(this.MainChartHorizontalScrollBar);
+			this.LineVewGroupPanel.Controls.Add(this.MainChartVerticalScrollBar);
 			this.LineVewGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.LineVewGroupPanel.HeaderHeight = 30;
 			this.LineVewGroupPanel.Location = new System.Drawing.Point(206, 3);
@@ -528,24 +533,37 @@
 			this.TrackingButton.Text = "Follow";
 			this.TrackingButton.UseVisualStyleBackColor = true;
 			// 
-			// MainChartScrollBar
+			// MainChartHorizontalScrollBar
 			// 
-			this.MainChartScrollBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.MainChartScrollBar.LargeChange = 1;
-			this.MainChartScrollBar.Location = new System.Drawing.Point(1, 573);
-			this.MainChartScrollBar.Maximum = 0;
-			this.MainChartScrollBar.Name = "MainChartScrollBar";
-			this.MainChartScrollBar.Size = new System.Drawing.Size(589, 17);
-			this.MainChartScrollBar.TabIndex = 1;
+			this.MainChartHorizontalScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainChartHorizontalScrollBar.LargeChange = 1;
+			this.MainChartHorizontalScrollBar.Location = new System.Drawing.Point(1, 573);
+			this.MainChartHorizontalScrollBar.Maximum = 0;
+			this.MainChartHorizontalScrollBar.Name = "MainChartHorizontalScrollBar";
+			this.MainChartHorizontalScrollBar.Size = new System.Drawing.Size(572, 17);
+			this.MainChartHorizontalScrollBar.TabIndex = 1;
+			// 
+			// MainChartVerticalScrollBar
+			// 
+			this.MainChartVerticalScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainChartVerticalScrollBar.LargeChange = 1;
+			this.MainChartVerticalScrollBar.Location = new System.Drawing.Point(573, 30);
+			this.MainChartVerticalScrollBar.Maximum = 0;
+			this.MainChartVerticalScrollBar.Name = "MainChartVerticalScrollBar";
+			this.MainChartVerticalScrollBar.Size = new System.Drawing.Size(17, 543);
+			this.MainChartVerticalScrollBar.TabIndex = 3;
 			// 
 			// ControlGroupPanel
 			// 
 			this.ControlGroupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ControlGroupPanel.BackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ControlGroupPanel.Controls.Add(this.SetYScaleButton);
 			this.ControlGroupPanel.Controls.Add(this.RecordButton);
 			this.ControlGroupPanel.Controls.Add(this.PauseButton);
-			this.ControlGroupPanel.Controls.Add(this.TimeFrameButton);
+			this.ControlGroupPanel.Controls.Add(this.SetXScaleButton);
 			this.ControlGroupPanel.Controls.Add(this.PuffButton);
 			this.ControlGroupPanel.HeaderBackColor = System.Drawing.Color.White;
 			this.ControlGroupPanel.HeaderHeight = 30;
@@ -556,9 +574,18 @@
 			this.ControlGroupPanel.TabStop = false;
 			this.ControlGroupPanel.Text = "Control:";
 			// 
+			// SetYScaleButton
+			// 
+			this.SetYScaleButton.Location = new System.Drawing.Point(101, 91);
+			this.SetYScaleButton.Name = "SetYScaleButton";
+			this.SetYScaleButton.Size = new System.Drawing.Size(94, 23);
+			this.SetYScaleButton.TabIndex = 4;
+			this.SetYScaleButton.Text = "Set Y Scale";
+			this.SetYScaleButton.UseVisualStyleBackColor = true;
+			// 
 			// RecordButton
 			// 
-			this.RecordButton.Location = new System.Drawing.Point(5, 34);
+			this.RecordButton.Location = new System.Drawing.Point(5, 62);
 			this.RecordButton.Name = "RecordButton";
 			this.RecordButton.Size = new System.Drawing.Size(190, 23);
 			this.RecordButton.TabIndex = 3;
@@ -567,25 +594,25 @@
 			// 
 			// PauseButton
 			// 
-			this.PauseButton.Location = new System.Drawing.Point(132, 60);
+			this.PauseButton.Location = new System.Drawing.Point(5, 34);
 			this.PauseButton.Name = "PauseButton";
-			this.PauseButton.Size = new System.Drawing.Size(63, 23);
+			this.PauseButton.Size = new System.Drawing.Size(190, 23);
 			this.PauseButton.TabIndex = 2;
 			this.PauseButton.Text = "Pause";
 			this.PauseButton.UseVisualStyleBackColor = true;
 			// 
-			// TimeFrameButton
+			// SetXScaleButton
 			// 
-			this.TimeFrameButton.Location = new System.Drawing.Point(5, 60);
-			this.TimeFrameButton.Name = "TimeFrameButton";
-			this.TimeFrameButton.Size = new System.Drawing.Size(124, 23);
-			this.TimeFrameButton.TabIndex = 1;
-			this.TimeFrameButton.Text = "Set Time Scale";
-			this.TimeFrameButton.UseVisualStyleBackColor = true;
+			this.SetXScaleButton.Location = new System.Drawing.Point(5, 91);
+			this.SetXScaleButton.Name = "SetXScaleButton";
+			this.SetXScaleButton.Size = new System.Drawing.Size(94, 23);
+			this.SetXScaleButton.TabIndex = 1;
+			this.SetXScaleButton.Text = "Set X Scale";
+			this.SetXScaleButton.UseVisualStyleBackColor = true;
 			// 
 			// PuffButton
 			// 
-			this.PuffButton.Location = new System.Drawing.Point(5, 86);
+			this.PuffButton.Location = new System.Drawing.Point(5, 120);
 			this.PuffButton.Name = "PuffButton";
 			this.PuffButton.Size = new System.Drawing.Size(190, 23);
 			this.PuffButton.TabIndex = 0;
@@ -651,9 +678,9 @@
 		private System.Windows.Forms.CheckBox PowerSetCheckBox;
 		private NCore.UI.GroupPanel ControlGroupPanel;
 		private System.Windows.Forms.Button PuffButton;
-		private System.Windows.Forms.Button TimeFrameButton;
+		private System.Windows.Forms.Button SetXScaleButton;
 		private System.Windows.Forms.Button PauseButton;
-		private System.Windows.Forms.HScrollBar MainChartScrollBar;
+		private System.Windows.Forms.HScrollBar MainChartHorizontalScrollBar;
 		private System.Windows.Forms.Button TrackingButton;
 		private System.Windows.Forms.Button RecordButton;
 		private System.Windows.Forms.Panel BatteryPackPanel;
@@ -665,5 +692,7 @@
 		private System.Windows.Forms.Panel Battery2Panel;
 		private System.Windows.Forms.Label Battery2VoltageLabel;
 		private System.Windows.Forms.CheckBox Battery2CheckBox;
+		private System.Windows.Forms.VScrollBar MainChartVerticalScrollBar;
+		private System.Windows.Forms.Button SetYScaleButton;
 	}
 }
