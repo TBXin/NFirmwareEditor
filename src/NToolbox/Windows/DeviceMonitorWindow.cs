@@ -46,6 +46,7 @@ namespace NToolbox.Windows
 		private CalloutAnnotation m_valueAnnotation;
 		private bool m_isPlacingAnnotation;
 		private DataPoint m_pointUnderCursor;
+		private bool m_pointerUnderCursorSelected;
 
 		private bool m_isFiring;
 		private bool m_isRecording;
@@ -308,11 +309,14 @@ namespace NToolbox.Windows
 				}
 
 				var result = results[0];
-
 				if (result.Series.Points.Count <= result.PointIndex) return;
-				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = ChartMarkerSize;
+				if (m_pointUnderCursor != null && !m_pointerUnderCursorSelected)
+				{
+					m_pointUnderCursor.MarkerSize = ChartMarkerSize;
+				}
 
 				m_pointUnderCursor = result.Series.Points[result.PointIndex];
+				m_pointerUnderCursorSelected = m_pointUnderCursor.MarkerSize == ChartSelectedMarkerSize;
 				m_pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
 
 				m_valueAnnotation.BeginPlacement();
@@ -567,8 +571,8 @@ namespace NToolbox.Windows
 					point.XValue = xValue;
 					point.YValues = new double[] { interpolatedValue };
 					point.Tag = point.Label = roundedValue.ToString(CultureInfo.InvariantCulture);
-					point.MarkerSize = ChartMarkerSize;
-					point.MarkerStyle = MarkerStyle.Square;
+					point.MarkerSize = ChartSelectedMarkerSize;
+					point.MarkerStyle = MarkerStyle.Circle;
 					data.SetLastValue(roundedValue);
 				}
 				else
