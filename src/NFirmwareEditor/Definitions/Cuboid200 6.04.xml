@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Cuboid200 6.04">
+	<Marker Offset="0x90" Bytes="0xD5 0x22" />
+	<Marker Offset="0xC0" Bytes="0xE1 0x77" />
+	<ImageTable1 From="0xD2E4" To="0xD6EC" />
+	<ImageTable2 From="0xB2FC" To="0xB704" />
+	<StringTable1 From="0x8F94" To="0x91E6" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x88 0x91 0x9A" />
+</FirmwareDefinition>
