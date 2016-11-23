@@ -59,6 +59,7 @@
     <Compile Include="Models\BatteryPresets.cs" />
     <Compile Include="Models\DeviceMonitorConfiguration.cs" />
     <Compile Include="Models\MonitoringData.cs" />
+    <Compile Include="Models\StartupMode.cs" />
     <Compile Include="Windows\ArcticFoxConfigurationWindow.cs">
       <SubType>Form</SubType>
     </Compile>

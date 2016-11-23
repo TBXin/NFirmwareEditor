@@ -10,8 +10,12 @@ namespace NCore.UI
 			if (Paths.IsIconAvailable) Icon = Paths.ApplicationIcon;
 		}
 
+		protected bool IgnoreFirstInstanceMessages { get; set; }
+
 		protected void ShowFromTray()
 		{
+			if (Opacity <= 0) Opacity = 1;
+
 			Visible = true;
 			ShowInTaskbar = true;
 			Show();
@@ -47,7 +51,7 @@ namespace NCore.UI
 
 		protected override void WndProc(ref Message m)
 		{
-			if (m.Msg == SingleInstanceProvider.ShowFirstInstanceMessage)
+			if (!IgnoreFirstInstanceMessages && m.Msg == SingleInstanceProvider.ShowFirstInstanceMessage)
 			{
 				ShowFromTray();
 			}

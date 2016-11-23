@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using NCore;
+using NToolbox.Models;
 using NToolbox.Windows;
 
 namespace NToolbox
@@ -16,17 +17,25 @@ namespace NToolbox
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			var isMinimized = false;
-			var isArcticFoxConfiguration = false;
-			var isDeviceMonitor = false;
-			var isFirmwareUpdater = false;
-
+			var startupMode = StartupMode.None;
 			if (args != null && args.Length > 0)
 			{
-				isMinimized = string.Equals(args[0], "/minimized", StringComparison.OrdinalIgnoreCase);
-				isArcticFoxConfiguration = string.Equals(args[0], "/afconfig", StringComparison.OrdinalIgnoreCase);
-				isDeviceMonitor = string.Equals(args[0], "/monitor", StringComparison.OrdinalIgnoreCase);
-				isFirmwareUpdater = string.Equals(args[0], "/updater", StringComparison.OrdinalIgnoreCase);
+				var arg = args[0].ToLowerInvariant();
+				switch (arg)
+				{
+					case "/minimized":
+						startupMode = StartupMode.Minimized;
+						break;
+					case "/afconfig":
+						startupMode = StartupMode.ArcticFoxConfiguration;
+						break;
+					case "/monitor":
+						startupMode = StartupMode.DeviceMonitor;
+						break;
+					case "/updater":
+						startupMode = StartupMode.FirmwareUpdater;
+						break;
+				}
 			}
 
 			using (var spi = new SingleInstanceProvider("NFE Toolbox © Reiko Kitsune"))
@@ -36,7 +45,7 @@ namespace NToolbox
 					spi.ShowFirstInstance();
 					return;
 				}
-				Application.Run(new MainWindow(isMinimized));
+				Application.Run(new MainWindow(startupMode));
 			}
 		}
 	}

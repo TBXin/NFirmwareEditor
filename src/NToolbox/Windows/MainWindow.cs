@@ -2,16 +2,17 @@
 using System.Windows.Forms;
 using NCore;
 using NCore.UI;
+using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
-	public partial class MainWindow : WindowBase
+	internal partial class MainWindow : WindowBase
 	{
-		private readonly bool m_startMinimized;
+		private readonly StartupMode m_startupMode;
 
-		public MainWindow(bool startMinimized)
+		public MainWindow(StartupMode startupMode)
 		{
-			m_startMinimized = startMinimized;
+			m_startupMode = startupMode;
 
 			InitializeComponent();
 			Initialize();
@@ -20,7 +21,27 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
-			Visible = ShowInTaskbar = !m_startMinimized;
+			if (m_startupMode == StartupMode.Minimized)
+			{
+				Opacity = 0;
+				ShowInTaskbar = false;
+			}
+
+			Load += (s, e) =>
+			{
+				switch (m_startupMode)
+				{
+					case StartupMode.ArcticFoxConfiguration:
+						ArcticFoxConfigurationButton.PerformClick();
+						break;
+					case StartupMode.DeviceMonitor:
+						DeviceMonitorButton.PerformClick();
+						break;
+					case StartupMode.FirmwareUpdater:
+						FirmwareUpdaterButton.PerformClick();
+						break;
+				}
+			};
 
 			SizeChanged += (s, e) =>
 			{
@@ -65,18 +86,26 @@ namespace NToolbox.Windows
 		private void InitializeTray()
 		{
 			TrayNotifyIcon.Icon = Icon;
-			TrayNotifyIcon.DoubleClick += (s, e) => ShowFromTray();
+			TrayNotifyIcon.MouseDoubleClick += (s, e) =>
+			{
+				if (e.Button != MouseButtons.Left) return;
+				ShowFromTray();
+			};
 			ShowTrayMenuItem.Click += (s, e) => ShowFromTray();
 			ExitTrayMenuItem.Click += (s, e) => Application.Exit();
 		}
 
 		private DialogResult ShowDialogWindow(Form window)
 		{
-			Hide();
-			var result = window.ShowDialog();
-			Thread.Sleep(150);
-			Show();
-
+			DialogResult result;
+			IgnoreFirstInstanceMessages = true;
+			{
+				Hide();
+				result = window.ShowDialog();
+				Thread.Sleep(150);
+				Show();
+				IgnoreFirstInstanceMessages = false;
+			}
 			return result;
 		}
 	}
