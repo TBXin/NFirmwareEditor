@@ -7,9 +7,25 @@ namespace NToolbox.Windows
 {
 	public partial class MainWindow : WindowBase
 	{
-		public MainWindow()
+		private readonly bool m_startMinimized;
+
+		public MainWindow(bool startMinimized)
 		{
+			m_startMinimized = startMinimized;
+
 			InitializeComponent();
+			Initialize();
+			InitializeTray();
+		}
+
+		private void Initialize()
+		{
+			Visible = ShowInTaskbar = !m_startMinimized;
+
+			SizeChanged += (s, e) =>
+			{
+				if (WindowState == FormWindowState.Minimized) HideToTray();
+			};
 
 			ArcticFoxConfigurationButton.Click += (s, e) =>
 			{
@@ -44,6 +60,14 @@ namespace NToolbox.Windows
 			{
 				InfoBox.Show("Work in progress... Be patient.");
 			};
+		}
+
+		private void InitializeTray()
+		{
+			TrayNotifyIcon.Icon = Icon;
+			TrayNotifyIcon.DoubleClick += (s, e) => ShowFromTray();
+			ShowTrayMenuItem.Click += (s, e) => ShowFromTray();
+			ExitTrayMenuItem.Click += (s, e) => Application.Exit();
 		}
 
 		private DialogResult ShowDialogWindow(Form window)

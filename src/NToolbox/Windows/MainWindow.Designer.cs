@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.panel1 = new NCore.UI.BorderedPanel();
 			this.panel2 = new NCore.UI.BorderedPanel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
@@ -36,9 +37,15 @@
 			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
 			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.TrayContextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -146,6 +153,38 @@
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
+			// TrayNotifyIcon
+			// 
+			this.TrayNotifyIcon.ContextMenuStrip = this.TrayContextMenuStrip;
+			this.TrayNotifyIcon.Text = "NFE Toolbox";
+			this.TrayNotifyIcon.Visible = true;
+			// 
+			// TrayContextMenuStrip
+			// 
+			this.TrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShowTrayMenuItem,
+            this.toolStripSeparator1,
+            this.ExitTrayMenuItem});
+			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(104, 54);
+			// 
+			// ExitTrayMenuItem
+			// 
+			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
+			this.ExitTrayMenuItem.Size = new System.Drawing.Size(103, 22);
+			this.ExitTrayMenuItem.Text = "Exit";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+			// 
+			// ShowTrayMenuItem
+			// 
+			this.ShowTrayMenuItem.Name = "ShowTrayMenuItem";
+			this.ShowTrayMenuItem.Size = new System.Drawing.Size(103, 22);
+			this.ShowTrayMenuItem.Text = "Show";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -156,13 +195,13 @@
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.MinimizeBox = false;
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFE Toolbox";
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.TrayContextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -177,6 +216,11 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private NCore.UI.BorderedPanel panel2;
 		private NCore.UI.ExtendedButton ScreenshooterButton;
+		private System.Windows.Forms.NotifyIcon TrayNotifyIcon;
+		private System.Windows.Forms.ContextMenuStrip TrayContextMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem ShowTrayMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem ExitTrayMenuItem;
 	}
 }
 
