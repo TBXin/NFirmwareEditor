@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationService.cs" />
     <Compile Include="AsyncProcessWrapper.cs" />
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="Extensions.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="CsvManager.cs" />
     <Compile Include="InfoBox.cs" />
     <Compile Include="NativeMethods.cs" />
-    <Compile Include="Paths.cs" />
     <Compile Include="Serialization\NamespacelessObject.cs" />
     <Compile Include="Safe.cs" />
     <Compile Include="Serialization\SerializableDictionary.cs" />

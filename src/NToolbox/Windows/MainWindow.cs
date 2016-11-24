@@ -43,6 +43,9 @@ namespace NToolbox.Windows
 				}
 			};
 
+			AutorunCheckBox.Checked = GetAutorunState();
+			AutorunCheckBox.CheckedChanged += (s, e) => SetAutorunState(AutorunCheckBox.Checked);
+
 			SizeChanged += (s, e) =>
 			{
 				if (WindowState == FormWindowState.Minimized) HideToTray();
@@ -107,6 +110,16 @@ namespace NToolbox.Windows
 				IgnoreFirstInstanceMessages = false;
 			}
 			return result;
+		}
+
+		private bool GetAutorunState()
+		{
+			return ApplicationService.GetAutorunState(StartupArgs.Minimzed);
+		}
+
+		private bool SetAutorunState(bool enabled)
+		{
+			return ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
 		}
 	}
 }

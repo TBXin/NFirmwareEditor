@@ -16,8 +16,8 @@ namespace NFirmwareEditor.Core
 
 		static NFEPaths()
 		{
-			ApplicationDirectory = Paths.ApplicationDirectory;
-			ApplicationIcon = Paths.ApplicationIcon;
+			ApplicationDirectory = ApplicationService.ApplicationDirectory;
+			ApplicationIcon = ApplicationService.ApplicationIcon;
 
 			SettingsFile = Path.Combine(ApplicationDirectory, SettingsFileName);
 			DefinitionsFile = Path.Combine(ApplicationDirectory, DefinitionsFileName);

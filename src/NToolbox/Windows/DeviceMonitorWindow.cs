@@ -703,7 +703,7 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				using (var fs = File.OpenRead(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+				using (var fs = File.OpenRead(Path.Combine(ApplicationService.ApplicationDirectory, ConfigurationFileName)))
 				{
 					m_configuration = Serializer.Read<DeviceMonitorConfiguration>(fs);
 				}
@@ -736,7 +736,7 @@ namespace NToolbox.Windows
 
 			try
 			{
-				using (var fs = File.Create(Path.Combine(Paths.ApplicationDirectory, ConfigurationFileName)))
+				using (var fs = File.Create(Path.Combine(ApplicationService.ApplicationDirectory, ConfigurationFileName)))
 				{
 					Serializer.Write(m_configuration, fs);
 				}

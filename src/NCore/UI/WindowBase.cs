@@ -7,7 +7,7 @@ namespace NCore.UI
 	{
 		public WindowBase()
 		{
-			if (Paths.IsIconAvailable) Icon = Paths.ApplicationIcon;
+			if (ApplicationService.IsIconAvailable) Icon = ApplicationService.ApplicationIcon;
 		}
 
 		protected bool IgnoreFirstInstanceMessages { get; set; }

@@ -17,27 +17,7 @@ namespace NToolbox
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			var startupMode = StartupMode.None;
-			if (args != null && args.Length > 0)
-			{
-				var arg = args[0].ToLowerInvariant();
-				switch (arg)
-				{
-					case "/minimized":
-						startupMode = StartupMode.Minimized;
-						break;
-					case "/afconfig":
-						startupMode = StartupMode.ArcticFoxConfiguration;
-						break;
-					case "/monitor":
-						startupMode = StartupMode.DeviceMonitor;
-						break;
-					case "/updater":
-						startupMode = StartupMode.FirmwareUpdater;
-						break;
-				}
-			}
-
+			var startupMode = StartupArgs.GetMode(args != null && args.Length > 0 ? args[0] : string.Empty);
 			using (var spi = new SingleInstanceProvider("NFE Toolbox © Reiko Kitsune"))
 			{
 				if (spi.IsCreated)
@@ -45,6 +25,8 @@ namespace NToolbox
 					spi.ShowFirstInstance();
 					return;
 				}
+
+				ApplicationService.ApplicationName = "NFE Toolbox";
 				Application.Run(new MainWindow(startupMode));
 			}
 		}
