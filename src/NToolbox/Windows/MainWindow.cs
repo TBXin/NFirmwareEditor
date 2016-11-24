@@ -43,8 +43,8 @@ namespace NToolbox.Windows
 				}
 			};
 
-			AutorunCheckBox.Checked = GetAutorunState();
-			AutorunCheckBox.CheckedChanged += (s, e) => SetAutorunState(AutorunCheckBox.Checked);
+			AutorunTrayMenuItem.Checked = GetAutorunState();
+			AutorunTrayMenuItem.CheckedChanged += (s, e) => SetAutorunState(AutorunTrayMenuItem.Checked);
 
 			SizeChanged += (s, e) =>
 			{

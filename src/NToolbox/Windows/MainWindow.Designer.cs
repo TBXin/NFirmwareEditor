@@ -40,9 +40,12 @@
 			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.OpenArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TimeSyncTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.AutorunCheckBox = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,7 +66,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(240, 533);
+			this.panel1.Size = new System.Drawing.Size(240, 514);
 			this.panel1.TabIndex = 4;
 			// 
 			// panel2
@@ -78,7 +81,6 @@
 			this.panel2.BorderRight = false;
 			this.panel2.BorderTop = false;
 			this.panel2.BorderWidth = 1F;
-			this.panel2.Controls.Add(this.AutorunCheckBox);
 			this.panel2.Controls.Add(this.ScreenshooterButton);
 			this.panel2.Controls.Add(this.MyEvicConfigurationButton);
 			this.panel2.Controls.Add(this.DeviceMonitorButton);
@@ -86,7 +88,7 @@
 			this.panel2.Controls.Add(this.FirmwareUpdaterButton);
 			this.panel2.Location = new System.Drawing.Point(0, 214);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(240, 319);
+			this.panel2.Size = new System.Drawing.Size(240, 300);
 			this.panel2.TabIndex = 4;
 			// 
 			// ScreenshooterButton
@@ -165,44 +167,64 @@
 			// 
 			this.TrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ShowTrayMenuItem,
+            this.toolStripSeparator2,
+            this.OpenArcticFoxConfigurationTrayMenuItem,
+            this.TimeSyncTrayMenuItem,
+            this.AutorunTrayMenuItem,
             this.toolStripSeparator1,
             this.ExitTrayMenuItem});
 			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
-			this.TrayContextMenuStrip.Size = new System.Drawing.Size(104, 54);
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(348, 126);
 			// 
 			// ShowTrayMenuItem
 			// 
 			this.ShowTrayMenuItem.Name = "ShowTrayMenuItem";
-			this.ShowTrayMenuItem.Size = new System.Drawing.Size(103, 22);
-			this.ShowTrayMenuItem.Text = "Show";
+			this.ShowTrayMenuItem.Size = new System.Drawing.Size(347, 22);
+			this.ShowTrayMenuItem.Text = "Show NFE Toolbox window";
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(344, 6);
+			// 
+			// OpenArcticFoxConfigurationTrayMenuItem
+			// 
+			this.OpenArcticFoxConfigurationTrayMenuItem.CheckOnClick = true;
+			this.OpenArcticFoxConfigurationTrayMenuItem.Name = "OpenArcticFoxConfigurationTrayMenuItem";
+			this.OpenArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(347, 22);
+			this.OpenArcticFoxConfigurationTrayMenuItem.Text = "Open ArcticFox Configuration when device connect";
+			// 
+			// TimeSyncTrayMenuItem
+			// 
+			this.TimeSyncTrayMenuItem.CheckOnClick = true;
+			this.TimeSyncTrayMenuItem.Name = "TimeSyncTrayMenuItem";
+			this.TimeSyncTrayMenuItem.Size = new System.Drawing.Size(347, 22);
+			this.TimeSyncTrayMenuItem.Text = "Syncronize time when device connect";
+			// 
+			// AutorunTrayMenuItem
+			// 
+			this.AutorunTrayMenuItem.CheckOnClick = true;
+			this.AutorunTrayMenuItem.Name = "AutorunTrayMenuItem";
+			this.AutorunTrayMenuItem.Size = new System.Drawing.Size(347, 22);
+			this.AutorunTrayMenuItem.Text = "Run NFE Toolbox when Windows starts";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(344, 6);
 			// 
 			// ExitTrayMenuItem
 			// 
 			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
-			this.ExitTrayMenuItem.Size = new System.Drawing.Size(103, 22);
+			this.ExitTrayMenuItem.Size = new System.Drawing.Size(347, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
-			// 
-			// AutorunCheckBox
-			// 
-			this.AutorunCheckBox.AutoSize = true;
-			this.AutorunCheckBox.Location = new System.Drawing.Point(10, 296);
-			this.AutorunCheckBox.Name = "AutorunCheckBox";
-			this.AutorunCheckBox.Size = new System.Drawing.Size(214, 17);
-			this.AutorunCheckBox.TabIndex = 5;
-			this.AutorunCheckBox.Text = "Run NFE Toolbox when Windows starts";
-			this.AutorunCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 533);
+			this.ClientSize = new System.Drawing.Size(240, 514);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -212,7 +234,6 @@
 			this.Text = "NFE Toolbox";
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.TrayContextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -234,7 +255,10 @@
 		private System.Windows.Forms.ToolStripMenuItem ShowTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem ExitTrayMenuItem;
-		private System.Windows.Forms.CheckBox AutorunCheckBox;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem AutorunTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem OpenArcticFoxConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem TimeSyncTrayMenuItem;
 	}
 }
 
