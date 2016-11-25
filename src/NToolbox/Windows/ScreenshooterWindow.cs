@@ -139,12 +139,14 @@ namespace NToolbox.Windows
 		private void ShowScreenshot([NotNull] Image screenshot)
 		{
 			if (screenshot == null) throw new ArgumentNullException("screenshot");
-			if (ScreenPictureBox.Image != null)
-			{
-				ScreenPictureBox.Image.Dispose();
-				ScreenPictureBox.Image = null;
-			}
+
+			var prevImage = ScreenPictureBox.Image;
 			ScreenPictureBox.Image = screenshot;
+
+			if (prevImage != null)
+			{
+				prevImage.Dispose();
+			}
 		}
 
 		private void SetButtonState(bool enabled)
