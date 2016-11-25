@@ -4,13 +4,19 @@ using NCore.Serialization;
 namespace NToolbox.Models
 {
 	[XmlType("DeviceMonitorConfiguration")]
-	public class DeviceMonitorConfiguration : NamespacelessObject
+	public class ToolboxConfiguration : NamespacelessObject
 	{
-		public DeviceMonitorConfiguration()
+		public ToolboxConfiguration()
 		{
 			ShowPuffsBoundaries = true;
 			ActiveSeries = new SerializableDictionary<string, bool>();
 		}
+
+		public bool OpenArcticFoxConfigurationWhenDeviceIsConnected { get; set; }
+
+		public bool SynchronizeTimeWhenDeviceIsConnected { get; set; }
+
+		public bool TakeScreenshotBeforeSave { get; set; }
 
 		public bool ShowPuffsBoundaries { get; set; }
 

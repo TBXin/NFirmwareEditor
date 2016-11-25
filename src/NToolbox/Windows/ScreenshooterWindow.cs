@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -9,21 +8,27 @@ using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
 using NCore.USB;
+using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
 	public partial class ScreenshooterWindow : EditorDialogWindow
 	{
-		private readonly HidConnector m_connector = new HidConnector();
+		private readonly ToolboxConfiguration m_configuration;
 		private bool m_isBroadcasting;
 
-		public ScreenshooterWindow()
+		public ScreenshooterWindow(ToolboxConfiguration configuration)
 		{
+			m_configuration = configuration;
 			InitializeComponent();
 
+			TakeScreenshotBeforeSaveCheckBox.Checked = m_configuration.TakeScreenshotBeforeSave;
+			TakeScreenshotBeforeSaveCheckBox.CheckedChanged += (s, e) => m_configuration.TakeScreenshotBeforeSave = TakeScreenshotBeforeSaveCheckBox.Checked;
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			BroadcastButton.Click += BroadcastButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
+
+			Closing += (s, e) => m_isBroadcasting = false;
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -112,7 +117,7 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				var data = m_connector.Screenshot();
+				var data = HidConnector.Instance.Screenshot();
 				if (data == null) throw new InvalidOperationException("Invalid screenshot data!");
 
 				return CreateBitmapFromBytesArray(64, 128, data);

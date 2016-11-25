@@ -36,17 +36,24 @@ namespace NCore.USB
 
 			public const byte ReadConfiguration = 0x60;
 			public const byte WriteConfiguration = 0x61;
-
+			public const byte SetDateTime = 0x64;
 			public const byte ReadMonitoringData = 0x66;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
+		private static HidConnector s_instance = new HidConnector();
+
 		private readonly Timer m_monitoringTimer;
 
 		private int m_receiveBufferLength;
 		private int m_sentBufferLength;
 		private bool? m_isDeviceConnected;
+
+		public static HidConnector Instance
+		{
+			get { return s_instance; }
+		}
 
 		public HidConnector()
 		{
@@ -121,6 +128,15 @@ namespace NCore.USB
 				Buffer.BlockCopy(data, 0, tmp, 0, data.Length);
 				Write(stream, CreateCommand(Commands.WriteConfiguration, 0, ConfigurationLength));
 				Write(stream, tmp, worker);
+			}
+		}
+
+		public void SetDateTime(byte[] data)
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.SetDateTime, 0, 0));
+				Write(stream, data);
 			}
 		}
 

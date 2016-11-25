@@ -61,6 +61,11 @@ namespace NToolbox.Models
 		{
 			public ushort PuffsCount;
 			public ushort PuffsTime; // Value multiplied by 10
+			public DateTime DateTime;
+		}
+
+		internal class DateTime
+		{
 			public ushort Year;
 			public byte Month;
 			public byte Day;

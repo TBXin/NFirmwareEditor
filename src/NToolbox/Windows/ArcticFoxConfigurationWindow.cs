@@ -12,11 +12,10 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161118;
+		private const int MinimumSupportedBuildNumber = 161122;
 		private const int MaximumSupportedSettingsVersion = 1;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
-		private readonly HidConnector m_connector = new HidConnector();
 
 		private Label[] m_tfrLabels;
 		private Button[] m_tfrButtons;
@@ -38,10 +37,12 @@ namespace NToolbox.Windows
 			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
-			m_connector.DeviceConnected += DeviceConnected;
-
-			Load += (s, e) => m_connector.StartUSBConnectionMonitoring();
-			Closing += (s, e) => m_connector.StopUSBConnectionMonitoring();
+			HidConnector.Instance.DeviceConnected += DeviceConnected;
+			Load += (s, e) =>
+			{
+				DeviceConnected(HidConnector.Instance.IsDeviceConnected);
+				NativeMethods.SetForegroundWindow(Handle);
+			};
 		}
 
 		private void InitializeControls()
@@ -206,7 +207,7 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				var data = m_connector.ReadConfiguration(useWorker ? m_worker : null);
+				var data = HidConnector.Instance.ReadConfiguration(useWorker ? m_worker : null);
 				if (data == null) return null;
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
@@ -233,7 +234,7 @@ namespace NToolbox.Windows
 			var data = BinaryStructure.Write(m_configuration);
 			try
 			{
-				m_connector.WriteConfiguration(data, m_worker);
+				HidConnector.Instance.WriteConfiguration(data, m_worker);
 			}
 			catch (TimeoutException)
 			{
@@ -395,12 +396,12 @@ namespace NToolbox.Windows
 				stats.PuffsTime = (ushort)(PuffsTimeUpDown.Value * 10);
 
 				// Time sync
-				stats.Year = (ushort)now.Year;
-				stats.Month = (byte)now.Month;
-				stats.Day = (byte)now.Day;
-				stats.Hour = (byte)now.Hour;
-				stats.Minute = (byte)now.Minute;
-				stats.Second = (byte)now.Second;
+				stats.DateTime.Year = (ushort)now.Year;
+				stats.DateTime.Month = (byte)now.Month;
+				stats.DateTime.Day = (byte)now.Day;
+				stats.DateTime.Hour = (byte)now.Hour;
+				stats.DateTime.Minute = (byte)now.Minute;
+				stats.DateTime.Second = (byte)now.Second;
 			}
 
 			var advanced = m_configuration.Advanced;
@@ -524,7 +525,7 @@ namespace NToolbox.Windows
 			{
 				try
 				{
-					m_connector.ResetDataflash();
+					HidConnector.Instance.ResetDataflash();
 					UpdateUI(() => DownloadButton_Click(null, null));
 				}
 				catch (Exception ex)
@@ -555,7 +556,6 @@ namespace NToolbox.Windows
 			UpdateUI(() => WelcomeLabel.Text = @"Downloading settings...");
 			try
 			{
-
 				m_configuration = ReadConfiguration(false);
 				if (m_configuration == null)
 				{

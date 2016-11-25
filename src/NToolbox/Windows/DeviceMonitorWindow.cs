@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NCore;
-using NCore.Serialization;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
@@ -19,17 +18,15 @@ namespace NToolbox.Windows
 {
 	public partial class DeviceMonitorWindow : EditorDialogWindow
 	{
-		private const string ConfigurationFileName = "NDeviceMonitor.xml";
-
 		private const int ChartMaxDataPointsCount = 1200;
 		private const int ChartMaxFiringAnnotationsCount = 100;
 		private const int ChartMaxYValue = 100;
 		private const int ChartMarkerSize = 0;
 		private const int ChartSelectedMarkerSize = 7;
 
-		private readonly HidConnector m_connector = new HidConnector();
+		private readonly ToolboxConfiguration m_configuration;
+		private readonly StringBuilder m_lineBuilder = new StringBuilder();
 
-		private DeviceMonitorConfiguration m_configuration;
 		private IDictionary<string, SeriesRelatedData> m_seriesData;
 		private TimeSpan m_timeFrame = TimeSpan.FromSeconds(10);
 		private int m_verticalFrame = 100;
@@ -55,8 +52,7 @@ namespace NToolbox.Windows
 		private DateTime m_recordStartTime = DateTime.Now;
 
 		private StreamWriter m_fileWriter;
-		private readonly StringBuilder m_lineBuilder = new StringBuilder();
-
+		
 		public bool IsTracking
 		{
 			get { return m_isTracking; }
@@ -67,8 +63,10 @@ namespace NToolbox.Windows
 			}
 		}
 
-		public DeviceMonitorWindow()
+		public DeviceMonitorWindow(ToolboxConfiguration configuration)
 		{
+			m_configuration = configuration;
+
 			InitializeComponent();
 			Initialize();
 			InitializeControls();
@@ -79,8 +77,6 @@ namespace NToolbox.Windows
 
 		private void Initialize()
 		{
-			LoadMonitoringConfiguration();
-
 			Opacity = 0;
 			Load += (s, e) =>
 			{
@@ -101,7 +97,7 @@ namespace NToolbox.Windows
 					byte[] bytes;
 					try
 					{
-						bytes = m_connector.ReadMonitoringData();
+						bytes = HidConnector.Instance.ReadMonitoringData();
 					}
 					catch (Exception)
 					{
@@ -200,6 +196,7 @@ namespace NToolbox.Windows
 				}
 			};
 
+			ShowPuffsBoundariesCheckBox.Checked = m_configuration.ShowPuffsBoundaries;
 			PauseButton.Click += (s, e) =>
 			{
 				m_isChartPaused = !m_isChartPaused;
@@ -375,7 +372,7 @@ namespace NToolbox.Windows
 
 		private bool EnsureConnection()
 		{
-			if (m_connector.IsDeviceConnected) return true;
+			if (HidConnector.Instance.IsDeviceConnected) return true;
 
 			var result = InfoBox.Show
 			(
@@ -699,29 +696,6 @@ namespace NToolbox.Windows
 			RecordButton.Text = @"Record...";
 		}
 
-		private void LoadMonitoringConfiguration()
-		{
-			try
-			{
-				using (var fs = File.OpenRead(Path.Combine(ApplicationService.ApplicationDirectory, ConfigurationFileName)))
-				{
-					m_configuration = Serializer.Read<DeviceMonitorConfiguration>(fs);
-				}
-			}
-			catch (Exception)
-			{
-				// Ignore
-			}
-			finally
-			{
-				if (m_configuration == null || m_configuration.ActiveSeries == null)
-				{
-					m_configuration = new DeviceMonitorConfiguration();
-				}
-			}
-			ShowPuffsBoundariesCheckBox.Checked = m_configuration.ShowPuffsBoundaries;
-		}
-
 		private void SaveMonitoringConfiguration()
 		{
 			m_configuration.ShowPuffsBoundaries = ShowPuffsBoundariesCheckBox.Checked;
@@ -732,18 +706,6 @@ namespace NToolbox.Windows
 				var seriesName = kvp.Key;
 				var data = kvp.Value;
 				m_configuration.ActiveSeries[seriesName] = data.CheckBox.Checked;
-			}
-
-			try
-			{
-				using (var fs = File.Create(Path.Combine(ApplicationService.ApplicationDirectory, ConfigurationFileName)))
-				{
-					Serializer.Write(m_configuration, fs);
-				}
-			}
-			catch (Exception)
-			{
-				// Ignore
 			}
 		}
 
@@ -771,7 +733,7 @@ namespace NToolbox.Windows
 		{
 			if (!EnsureConnection()) return;
 
-			m_connector.MakePuff(seconds);
+			HidConnector.Instance.MakePuff(seconds);
 			PuffButton.Enabled = false;
 			new Thread(() =>
 			{

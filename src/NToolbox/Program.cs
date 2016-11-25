@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using NCore;
+using NCore.USB;
 using NToolbox.Models;
 using NToolbox.Windows;
 
@@ -26,8 +27,10 @@ namespace NToolbox
 					return;
 				}
 
+				HidConnector.Instance.StartUSBConnectionMonitoring();
 				ApplicationService.ApplicationName = "NFE Toolbox";
 				Application.Run(new MainWindow(startupMode));
+				HidConnector.Instance.StopUSBConnectionMonitoring();
 			}
 		}
 	}
