@@ -279,6 +279,7 @@ namespace NToolbox.Windows
 					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
 				}
 
+				ProfilesTabControl.SelectedIndex = Math.Max(0, Math.Min(general.SelectedProfile, ProfilesTabControl.TabCount));
 				SelectedProfleComboBox.SelectItem(general.SelectedProfile);
 				SmartCheckBox.Checked = general.IsSmartEnabled;
 			}
