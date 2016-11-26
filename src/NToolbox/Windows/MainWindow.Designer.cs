@@ -40,6 +40,12 @@
 			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.ArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MyEvicConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DeviceMonitorTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ScreenshooterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.OpenArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TimeSyncTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,12 +53,6 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-			this.ArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.MyEvicConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.DeviceMonitorTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ScreenshooterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -197,6 +197,42 @@
 			this.ShowTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ShowTrayMenuItem.Text = "Show NFE Toolbox window";
 			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
+			// 
+			// ArcticFoxConfigurationTrayMenuItem
+			// 
+			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
+			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
+			// 
+			// MyEvicConfigurationTrayMenuItem
+			// 
+			this.MyEvicConfigurationTrayMenuItem.Enabled = false;
+			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
+			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorTrayMenuItem
+			// 
+			this.DeviceMonitorTrayMenuItem.Name = "DeviceMonitorTrayMenuItem";
+			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.DeviceMonitorTrayMenuItem.Text = "Device Monitor";
+			// 
+			// ScreenshooterTrayMenuItem
+			// 
+			this.ScreenshooterTrayMenuItem.Name = "ScreenshooterTrayMenuItem";
+			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ScreenshooterTrayMenuItem.Text = "Screenshooter";
+			// 
+			// FirmwareUpdaterTrayMenuItem
+			// 
+			this.FirmwareUpdaterTrayMenuItem.Name = "FirmwareUpdaterTrayMenuItem";
+			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.FirmwareUpdaterTrayMenuItem.Text = "Firmware Updater";
+			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -238,41 +274,6 @@
 			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
-			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
-			// 
-			// ArcticFoxConfigurationTrayMenuItem
-			// 
-			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
-			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
-			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
-			// 
-			// MyEvicConfigurationTrayMenuItem
-			// 
-			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
-			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
-			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
-			// 
-			// DeviceMonitorTrayMenuItem
-			// 
-			this.DeviceMonitorTrayMenuItem.Name = "DeviceMonitorTrayMenuItem";
-			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(371, 22);
-			this.DeviceMonitorTrayMenuItem.Text = "Device Monitor";
-			// 
-			// ScreenshooterTrayMenuItem
-			// 
-			this.ScreenshooterTrayMenuItem.Name = "ScreenshooterTrayMenuItem";
-			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
-			this.ScreenshooterTrayMenuItem.Text = "Screenshooter";
-			// 
-			// FirmwareUpdaterTrayMenuItem
-			// 
-			this.FirmwareUpdaterTrayMenuItem.Name = "FirmwareUpdaterTrayMenuItem";
-			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
-			this.FirmwareUpdaterTrayMenuItem.Text = "Firmware Updater";
 			// 
 			// MainWindow
 			// 

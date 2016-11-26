@@ -184,7 +184,7 @@ namespace NToolbox.Windows
 		private void SetTrayItemsState(bool enable)
 		{
 			ArcticFoxConfigurationTrayMenuItem.Enabled =
-			MyEvicConfigurationTrayMenuItem.Enabled = 
+			//MyEvicConfigurationTrayMenuItem.Enabled = 
 			DeviceMonitorTrayMenuItem.Enabled = 
 			ScreenshooterTrayMenuItem.Enabled = 
 			FirmwareUpdaterTrayMenuItem.Enabled = enable;
