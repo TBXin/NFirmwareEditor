@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
+using NCore;
 
 namespace NFirmware
 {
@@ -58,7 +59,7 @@ namespace NFirmware
 			Save(filePath, firmware, false);
 		}
 
-		internal byte[] LoadFile([NotNull] string filePath)
+		public byte[] LoadFile([NotNull] string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
@@ -116,7 +117,7 @@ namespace NFirmware
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (m_encryptedFirmwareMark.Length > firmwareBytes.Length) return false;
 
-			var idx = FindByteArray(firmwareBytes, m_encryptedFirmwareMark);
+			var idx = firmwareBytes.FindByteArray(m_encryptedFirmwareMark);
 			return idx == -1;
 		}
 
@@ -273,26 +274,6 @@ namespace NFirmware
 		private int GetCharLength(bool twoBytesPerChar)
 		{
 			return twoBytesPerChar ? 2 : 1;
-		}
-
-		internal static int FindByteArray(byte[] source, byte[] searchedBytes)
-		{
-			if (searchedBytes.Length > source.Length) return -1;
-
-			for (var i = 0; i < source.Length - searchedBytes.Length; i++)
-			{
-				var match = true;
-				for (var j = 0; j < searchedBytes.Length; j++)
-				{
-					if (source[i + j] != searchedBytes[j])
-					{
-						match = false;
-						break;
-					}
-				}
-				if (match) return i;
-			}
-			return -1;
 		}
 	}
 }

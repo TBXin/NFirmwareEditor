@@ -79,25 +79,28 @@ namespace NToolbox.Windows
 
 			DeviceMonitorButton.Click += (s, e) =>
 			{
-				using (var dmw = new DeviceMonitorWindow(m_configuration))
+				using (var deviceMonitorWindow = new DeviceMonitorWindow(m_configuration))
 				{
-					ShowDialogWindow(dmw);
+					ShowDialogWindow(deviceMonitorWindow);
 				}
 				SaveConfiguration();
 			};
 
 			ScreenshooterButton.Click += (s, e) =>
 			{
-				using (var ss = new ScreenshooterWindow(m_configuration))
+				using (var screenshooterWindow = new ScreenshooterWindow(m_configuration))
 				{
-					ShowDialogWindow(ss);
+					ShowDialogWindow(screenshooterWindow);
 				}
 				SaveConfiguration();
 			};
 
 			FirmwareUpdaterButton.Click += (s, e) =>
 			{
-				InfoBox.Show("Work in progress... Be patient.");
+				using (var updaterWindow = new FirmwareUpdaterWindow())
+				{
+					ShowDialogWindow(updaterWindow);
+				}
 			};
 		}
 
@@ -146,6 +149,17 @@ namespace NToolbox.Windows
 				m_openedWindow = window;
 				Hide();
 				window.ShowDialog();
+
+				if (m_startupMode == StartupMode.ArcticFoxConfiguration ||
+				    m_startupMode == StartupMode.DeviceMonitor ||
+				    m_startupMode == StartupMode.FirmwareUpdater ||
+				    m_startupMode == StartupMode.MyEvicConfiguration)
+				{
+					Opacity = 0;
+					Application.Exit();
+					return;
+				}
+
 				Thread.Sleep(150);
 				m_openedWindow = null;
 				Show();

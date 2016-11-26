@@ -44,6 +44,12 @@ namespace NCore.USB
 		};
 
 		[NotNull]
+		public static HidDeviceInfo UnknownDevice
+		{
+			get { return s_unknownHidDevice; }
+		}
+
+		[NotNull]
 		public static HidDeviceInfo Get([CanBeNull] string productId)
 		{
 			return string.IsNullOrEmpty(productId) || !s_supportedDevices.ContainsKey(productId)

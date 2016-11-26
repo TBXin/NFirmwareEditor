@@ -79,6 +79,18 @@
     <Compile Include="Windows\DischargeProfileWindow.Designer.cs">
       <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\FirmwareUpdaterWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\FirmwareUpdaterWindow.Designer.cs">
+      <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.Designer.cs">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DischargeProfileWindow.resx">
       <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
+      <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\HardwareVersionWindow.resx">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -152,6 +170,10 @@
     <ProjectReference Include="..\NCore\NCore.csproj">
       <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
       <Name>NCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFirmware\NFirmware.csproj">
+      <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
+      <Name>NFirmware</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

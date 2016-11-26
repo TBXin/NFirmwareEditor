@@ -42,7 +42,7 @@ namespace NCore.USB
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
 		private static readonly HidDeviceLoader s_loader = new HidDeviceLoader();
-		private static HidConnector s_instance = new HidConnector();
+		private static readonly HidConnector s_instance = new HidConnector();
 
 		private readonly Timer m_monitoringTimer;
 
@@ -78,6 +78,11 @@ namespace NCore.USB
 		public bool IsDeviceConnected
 		{
 			get { return s_loader.GetDeviceOrDefault(VendorId, ProductId) != null; }
+		}
+
+		public bool LastConnectionState
+		{
+			get { return m_isDeviceConnected.HasValue && m_isDeviceConnected.Value; }
 		}
 
 		public void StartUSBConnectionMonitoring()

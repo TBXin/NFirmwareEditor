@@ -9,6 +9,26 @@ namespace NCore
 {
 	public static class Extensions
 	{
+		public static int FindByteArray(this byte[] source, byte[] searchedBytes)
+		{
+			if (searchedBytes.Length > source.Length) return -1;
+
+			for (var i = 0; i < source.Length - searchedBytes.Length; i++)
+			{
+				var match = true;
+				for (var j = 0; j < searchedBytes.Length; j++)
+				{
+					if (source[i + j] != searchedBytes[j])
+					{
+						match = false;
+						break;
+					}
+				}
+				if (match) return i;
+			}
+			return -1;
+		}
+
 		public static List<int> ToList([NotNull] this ListBox.SelectedIndexCollection indexCollection)
 		{
 			if (indexCollection == null) throw new ArgumentNullException("indexCollection");
