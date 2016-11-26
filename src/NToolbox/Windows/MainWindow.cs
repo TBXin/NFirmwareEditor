@@ -64,44 +64,11 @@ namespace NToolbox.Windows
 
 		private void InitializeControls()
 		{
-			ArcticFoxConfigurationButton.Click += (s, e) =>
-			{
-				using (var cfg = new ArcticFoxConfigurationWindow())
-				{
-					ShowDialogWindow(cfg);
-				}
-			};
-
-			MyEvicConfigurationButton.Click += (s, e) =>
-			{
-				InfoBox.Show("Work in progress... Be patient.");
-			};
-
-			DeviceMonitorButton.Click += (s, e) =>
-			{
-				using (var deviceMonitorWindow = new DeviceMonitorWindow(m_configuration))
-				{
-					ShowDialogWindow(deviceMonitorWindow);
-				}
-				SaveConfiguration();
-			};
-
-			ScreenshooterButton.Click += (s, e) =>
-			{
-				using (var screenshooterWindow = new ScreenshooterWindow(m_configuration))
-				{
-					ShowDialogWindow(screenshooterWindow);
-				}
-				SaveConfiguration();
-			};
-
-			FirmwareUpdaterButton.Click += (s, e) =>
-			{
-				using (var updaterWindow = new FirmwareUpdaterWindow())
-				{
-					ShowDialogWindow(updaterWindow);
-				}
-			};
+			ArcticFoxConfigurationButton.Click += StartArcticFoxConfiguration;
+			MyEvicConfigurationButton.Click += StartMyEvicConfiguration;
+			DeviceMonitorButton.Click += StartDeviceMonitor;
+			ScreenshooterButton.Click += StartScreenshooter;
+			FirmwareUpdaterButton.Click += StartFirmwareUpdater;
 		}
 
 		private void InitializeTray()
@@ -114,6 +81,12 @@ namespace NToolbox.Windows
 			};
 			ShowTrayMenuItem.Click += (s, e) => ShowFromTray();
 			ExitTrayMenuItem.Click += (s, e) => Application.Exit();
+
+			ArcticFoxConfigurationTrayMenuItem.Click += StartArcticFoxConfiguration;
+			MyEvicConfigurationTrayMenuItem.Click += StartMyEvicConfiguration;
+			DeviceMonitorTrayMenuItem.Click += StartDeviceMonitor;
+			ScreenshooterTrayMenuItem.Click += StartScreenshooter;
+			FirmwareUpdaterTrayMenuItem.Click += StartFirmwareUpdater;
 
 			OpenArcticFoxConfigurationTrayMenuItem.Checked = m_configuration.OpenArcticFoxConfigurationWhenDeviceIsConnected;
 			OpenArcticFoxConfigurationTrayMenuItem.CheckedChanged += (s, e) =>
@@ -142,9 +115,49 @@ namespace NToolbox.Windows
 			m_configurationStorage.Save(Path.Combine(ApplicationService.ApplicationDirectory, SettingsFileName), m_configuration);
 		}
 
+		private void StartArcticFoxConfiguration(object sender, EventArgs e)
+		{
+			using (var cfg = new ArcticFoxConfigurationWindow())
+			{
+				ShowDialogWindow(cfg);
+			}
+		}
+
+		private void StartMyEvicConfiguration(object sender, EventArgs e)
+		{
+			InfoBox.Show("Work in progress... Be patient.");
+		}
+
+		private void StartDeviceMonitor(object sender, EventArgs e)
+		{
+			using (var deviceMonitorWindow = new DeviceMonitorWindow(m_configuration))
+			{
+				ShowDialogWindow(deviceMonitorWindow);
+			}
+			SaveConfiguration();
+		}
+
+		private void StartScreenshooter(object sender, EventArgs e)
+		{
+			using (var screenshooterWindow = new ScreenshooterWindow(m_configuration))
+			{
+				ShowDialogWindow(screenshooterWindow);
+			}
+			SaveConfiguration();
+		}
+
+		private void StartFirmwareUpdater(object sender, EventArgs e)
+		{
+			using (var updaterWindow = new FirmwareUpdaterWindow())
+			{
+				ShowDialogWindow(updaterWindow);
+			}
+		}
+
 		private void ShowDialogWindow(WindowBase window)
 		{
 			IgnoreFirstInstanceMessages = true;
+			SetTrayItemsState(false);
 			{
 				m_openedWindow = window;
 				Hide();
@@ -164,7 +177,17 @@ namespace NToolbox.Windows
 				m_openedWindow = null;
 				Show();
 			}
+			SetTrayItemsState(true);
 			IgnoreFirstInstanceMessages = false;
+		}
+
+		private void SetTrayItemsState(bool enable)
+		{
+			ArcticFoxConfigurationTrayMenuItem.Enabled =
+			MyEvicConfigurationTrayMenuItem.Enabled = 
+			DeviceMonitorTrayMenuItem.Enabled = 
+			ScreenshooterTrayMenuItem.Enabled = 
+			FirmwareUpdaterTrayMenuItem.Enabled = enable;
 		}
 
 		private bool GetAutorunState()

@@ -47,6 +47,12 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.ArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MyEvicConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DeviceMonitorTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ScreenshooterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,6 +175,12 @@
 			// 
 			this.TrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ShowTrayMenuItem,
+            this.toolStripSeparator4,
+            this.ArcticFoxConfigurationTrayMenuItem,
+            this.MyEvicConfigurationTrayMenuItem,
+            this.DeviceMonitorTrayMenuItem,
+            this.ScreenshooterTrayMenuItem,
+            this.FirmwareUpdaterTrayMenuItem,
             this.toolStripSeparator2,
             this.OpenArcticFoxConfigurationTrayMenuItem,
             this.TimeSyncTrayMenuItem,
@@ -177,7 +189,7 @@
             this.toolStripSeparator1,
             this.ExitTrayMenuItem});
 			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
-			this.TrayContextMenuStrip.Size = new System.Drawing.Size(372, 132);
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(372, 248);
 			// 
 			// ShowTrayMenuItem
 			// 
@@ -227,6 +239,41 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
+			// 
+			// ArcticFoxConfigurationTrayMenuItem
+			// 
+			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
+			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
+			// 
+			// MyEvicConfigurationTrayMenuItem
+			// 
+			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
+			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorTrayMenuItem
+			// 
+			this.DeviceMonitorTrayMenuItem.Name = "DeviceMonitorTrayMenuItem";
+			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.DeviceMonitorTrayMenuItem.Text = "Device Monitor";
+			// 
+			// ScreenshooterTrayMenuItem
+			// 
+			this.ScreenshooterTrayMenuItem.Name = "ScreenshooterTrayMenuItem";
+			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ScreenshooterTrayMenuItem.Text = "Screenshooter";
+			// 
+			// FirmwareUpdaterTrayMenuItem
+			// 
+			this.FirmwareUpdaterTrayMenuItem.Name = "FirmwareUpdaterTrayMenuItem";
+			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.FirmwareUpdaterTrayMenuItem.Text = "Firmware Updater";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -268,6 +315,12 @@
 		private System.Windows.Forms.ToolStripMenuItem OpenArcticFoxConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem TimeSyncTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem ArcticFoxConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MyEvicConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem DeviceMonitorTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ScreenshooterTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
 	}
 }
 

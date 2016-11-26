@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using NFirmware;
-using NFirmwareEditor.Core;
-using NFirmwareEditor.Managers;
-using NFirmwareEditor.Models;
-using NFirmwareEditor.Storages;
 using NFirmwareEditor.Windows;
 using NLog;
 
@@ -25,28 +20,6 @@ namespace NFirmwareEditor
 			Application.ThreadException += UnhandledThreadExceptionHandler;
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
-			if (args != null && args.Length == 1)
-			{
-				if (args[0] == "/configuration")
-				{
-					Application.Run(new DeviceConfiguratorWindow());
-					return;
-				}
-				if (args[0] == "/updater")
-				{
-					Application.Run(new FirmwareUpdaterWindow(null, new FirmwareLoader(new FirmwareEncoder())));
-					return;
-				}
-				if (args[0] == "/monitor")
-				{
-					var configurationStorage = new ConfigurationStorage();
-					var configuration = configurationStorage.TryLoad(NFEPaths.SettingsFile) ?? new ApplicationConfiguration();
-					Application.Run(new DeviceMonitorWindow(configuration, new USBConnector(), new COMConnector()));
-					configurationStorage.Save(NFEPaths.SettingsFile, configuration);
-					return;
-				}
-			}
 			Application.Run(new MainWindow(args));
 		}
 

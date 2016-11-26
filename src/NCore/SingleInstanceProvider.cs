@@ -41,7 +41,6 @@ namespace NCore
 		public void Dispose()
 		{
 			Release();
-			GC.SuppressFinalize(this);
 		}
 
 		private void Release()
@@ -49,6 +48,7 @@ namespace NCore
 			if (!m_newMutedCreated) return;
 
 			m_mutex.ReleaseMutex();
+			m_mutex.Dispose();
 			m_newMutedCreated = false;
 		}
 	}
