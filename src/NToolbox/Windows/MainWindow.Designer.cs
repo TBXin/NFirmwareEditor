@@ -43,10 +43,10 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.OpenArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TimeSyncTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -107,6 +107,7 @@
 			// 
 			this.MyEvicConfigurationButton.AdditionalText = "";
 			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.MyEvicConfigurationButton.Enabled = false;
 			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
 			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
 			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
@@ -203,6 +204,11 @@
 			this.TimeSyncTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.TimeSyncTrayMenuItem.Text = "Synchronize time when device is connected";
 			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(368, 6);
+			// 
 			// AutorunTrayMenuItem
 			// 
 			this.AutorunTrayMenuItem.CheckOnClick = true;
@@ -220,11 +226,6 @@
 			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(368, 6);
 			// 
 			// MainWindow
 			// 

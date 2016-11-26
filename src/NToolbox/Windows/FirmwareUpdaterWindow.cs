@@ -34,7 +34,10 @@ namespace NToolbox.Windows
 			m_worker.ProgressChanged += BackgroundWorker_ProgressChanged;
 
 			HidConnector.Instance.DeviceConnected += DeviceConnected;
-			Load += (s, e) => DeviceConnected(HidConnector.Instance.LastConnectionState);
+			Load += (s, e) =>
+			{
+				new Thread(() => DeviceConnected(HidConnector.Instance.LastConnectionState)) { IsBackground = true }.Start();
+			};
 			Closing += (s, e) =>
 			{
 				if (!CancelButton.Enabled)
