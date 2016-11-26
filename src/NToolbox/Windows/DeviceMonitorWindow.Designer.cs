@@ -74,12 +74,12 @@
 			this.MainChartHorizontalScrollBar = new System.Windows.Forms.HScrollBar();
 			this.MainChartVerticalScrollBar = new System.Windows.Forms.VScrollBar();
 			this.ControlGroupPanel = new NCore.UI.GroupPanel();
+			this.ShowPuffsBoundariesCheckBox = new System.Windows.Forms.CheckBox();
 			this.SetYScaleButton = new System.Windows.Forms.Button();
 			this.RecordButton = new System.Windows.Forms.Button();
 			this.PauseButton = new System.Windows.Forms.Button();
 			this.SetXScaleButton = new System.Windows.Forms.Button();
 			this.PuffButton = new System.Windows.Forms.Button();
-			this.ShowPuffsBoundariesCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).BeginInit();
 			this.SensorsGroupPanel.SuspendLayout();
 			this.LineVewGroupPanel.SuspendLayout();
@@ -576,6 +576,16 @@
 			this.ControlGroupPanel.TabStop = false;
 			this.ControlGroupPanel.Text = "Control:";
 			// 
+			// ShowPuffsBoundariesCheckBox
+			// 
+			this.ShowPuffsBoundariesCheckBox.AutoSize = true;
+			this.ShowPuffsBoundariesCheckBox.Location = new System.Drawing.Point(6, 149);
+			this.ShowPuffsBoundariesCheckBox.Name = "ShowPuffsBoundariesCheckBox";
+			this.ShowPuffsBoundariesCheckBox.Size = new System.Drawing.Size(136, 17);
+			this.ShowPuffsBoundariesCheckBox.TabIndex = 5;
+			this.ShowPuffsBoundariesCheckBox.Text = "Show Puffs Boundaries";
+			this.ShowPuffsBoundariesCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// SetYScaleButton
 			// 
 			this.SetYScaleButton.Location = new System.Drawing.Point(101, 91);
@@ -621,16 +631,6 @@
 			this.PuffButton.Text = "Puff...";
 			this.PuffButton.UseVisualStyleBackColor = true;
 			// 
-			// ShowPuffsBoundariesCheckBox
-			// 
-			this.ShowPuffsBoundariesCheckBox.AutoSize = true;
-			this.ShowPuffsBoundariesCheckBox.Location = new System.Drawing.Point(6, 149);
-			this.ShowPuffsBoundariesCheckBox.Name = "ShowPuffsBoundariesCheckBox";
-			this.ShowPuffsBoundariesCheckBox.Size = new System.Drawing.Size(136, 17);
-			this.ShowPuffsBoundariesCheckBox.TabIndex = 5;
-			this.ShowPuffsBoundariesCheckBox.Text = "Show Puffs Boundaries";
-			this.ShowPuffsBoundariesCheckBox.UseVisualStyleBackColor = true;
-			// 
 			// DeviceMonitorWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,6 +640,7 @@
 			this.Controls.Add(this.LineVewGroupPanel);
 			this.Controls.Add(this.SensorsGroupPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(816, 539);
 			this.Name = "DeviceMonitorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
