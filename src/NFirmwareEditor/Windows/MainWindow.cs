@@ -437,23 +437,6 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void DeviceConfiguratorMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var configurator = new DeviceConfiguratorWindow())
-			{
-				configurator.ShowDialog();
-			}
-		}
-
-		private void DeviceMonitorToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var monitor = new DeviceMonitorWindow(m_configuration, new USBConnector(), new COMConnector()))
-			{
-				monitor.ShowDialog();
-				m_configurationStorage.Save(NFEPaths.SettingsFile, m_configuration);
-			}
-		}
-
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
 			var checkForUpdates = m_configuration.CheckForApplicationUpdates;
