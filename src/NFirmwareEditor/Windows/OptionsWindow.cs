@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
-using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
@@ -15,7 +15,7 @@ namespace NFirmwareEditor.Windows
 		public OptionsWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			ImageEditorModeComboBox.Items.AddRange(new object[]
 			{

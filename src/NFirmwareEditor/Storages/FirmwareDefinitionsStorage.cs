@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NCore;
+using NCore.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
-using NLog;
 
 namespace NFirmwareEditor.Storages
 {
 	internal class FirmwareDefinitionsStorage : IFileStorage<FirmwareDefinition>
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		#region Implementation of IStorage
 		public void Initialize()
 		{
-			var initEx = Safe.Execute(() => Paths.EnsureDirectoryExists(Paths.DefinitionsDirectory));
+			var initEx = Safe.Execute(() => NFEPaths.EnsureDirectoryExists(NFEPaths.DefinitionsDirectory));
 			if (initEx == null) return;
 
-			s_logger.Warn(initEx, "An error occured during creating definitions directory '{0}'.", Paths.DefinitionsDirectory);
+			Trace.Warn(initEx, "An error occured during creating definitions directory '{0}'.", NFEPaths.DefinitionsDirectory);
 		}
 		#endregion
 
@@ -36,7 +35,7 @@ namespace NFirmwareEditor.Storages
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occured during reading definition file '{0}'.", filePath);
+				Trace.Warn(ex, "An error occured during reading definition file '{0}'.", filePath);
 				return null;
 			}
 		}
@@ -44,7 +43,7 @@ namespace NFirmwareEditor.Storages
 		public IEnumerable<FirmwareDefinition> LoadAll()
 		{
 			var result = new List<FirmwareDefinition>();
-			var files = Directory.GetFiles(Paths.DefinitionsDirectory, Consts.DefinitionFileExtension, SearchOption.AllDirectories);
+			var files = Directory.GetFiles(NFEPaths.DefinitionsDirectory, Consts.DefinitionFileExtension, SearchOption.AllDirectories);
 			foreach (var filePath in files)
 			{
 				var definition = TryLoad(filePath);

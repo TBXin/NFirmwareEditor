@@ -30,7 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotkeyHelpWindow));
 			this.MessageTextBox = new System.Windows.Forms.TextBox();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.SuspendLayout();
@@ -101,7 +101,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.TextBox MessageTextBox;
 	}

@@ -28,11 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
-			this.groupPanel3 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.groupPanel3 = new NCore.UI.GroupPanel();
 			this.label23 = new System.Windows.Forms.Label();
 			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label21 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
 			this.Volts1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
-			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.PresetsButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
@@ -1036,11 +1036,11 @@
 
 		#endregion
 
-		private UI.GroupPanel groupPanel1;
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.GroupPanel groupPanel1;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button SaveButton;
-		private UI.GroupPanel groupPanel2;
+		private NCore.UI.GroupPanel groupPanel2;
 		private System.Windows.Forms.NumericUpDown Percents1UpDown;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -1086,7 +1086,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown Percents2UpDown;
 		private new System.Windows.Forms.DataVisualization.Charting.Chart DischargeChart;
-		private UI.GroupPanel groupPanel3;
+		private NCore.UI.GroupPanel groupPanel3;
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.NumericUpDown CutoffUpDown;
 		private System.Windows.Forms.Button PresetsButton;

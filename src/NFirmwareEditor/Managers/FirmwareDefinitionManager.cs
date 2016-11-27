@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using NCore;
 using NFirmware;
-using NFirmwareEditor.Core;
-using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class FirmwareDefinitionManager
 	{
 		private const string RegexPattern = @"(?<device>.+)\s(?<version>[0-9]{1,3}\.[0-9]{1,3}.+)";
-
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 		private static readonly Regex s_regex = new Regex(RegexPattern, RegexOptions.Compiled);
 
 		internal static IDictionary<string, SortedList<string, FirmwareDefinition>> CreateHierarchy(IEnumerable<FirmwareDefinition> definitions)
@@ -33,7 +30,7 @@ namespace NFirmwareEditor.Managers
 							var message = "Detected multiple definitions with the same code: " + definition.Name;
 							{
 								InfoBox.Show(message);
-								s_logger.Warn(message);
+								Trace.Warn(message);
 							}
 							continue;
 						}

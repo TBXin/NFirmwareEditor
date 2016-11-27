@@ -1,0 +1,341 @@
+﻿namespace NToolbox.Windows
+{
+	partial class MainWindow
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#region Windows Form Designer generated code
+
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			this.components = new System.ComponentModel.Container();
+			this.panel1 = new NCore.UI.BorderedPanel();
+			this.panel2 = new NCore.UI.BorderedPanel();
+			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
+			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
+			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
+			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
+			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.ArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MyEvicConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DeviceMonitorTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ScreenshooterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.OpenArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TimeSyncTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.VersionLabel = new System.Windows.Forms.Label();
+			this.panel1.SuspendLayout();
+			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.TrayContextMenuStrip.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.Color.White;
+			this.panel1.BorderBottom = false;
+			this.panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.panel1.BorderLeft = false;
+			this.panel1.BorderRight = false;
+			this.panel1.BorderTop = false;
+			this.panel1.BorderWidth = 1F;
+			this.panel1.Controls.Add(this.VersionLabel);
+			this.panel1.Controls.Add(this.panel2);
+			this.panel1.Controls.Add(this.pictureBox1);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(240, 514);
+			this.panel1.TabIndex = 4;
+			// 
+			// panel2
+			// 
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel2.BackColor = System.Drawing.Color.White;
+			this.panel2.BorderBottom = false;
+			this.panel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.panel2.BorderLeft = false;
+			this.panel2.BorderRight = false;
+			this.panel2.BorderTop = false;
+			this.panel2.BorderWidth = 1F;
+			this.panel2.Controls.Add(this.ScreenshooterButton);
+			this.panel2.Controls.Add(this.MyEvicConfigurationButton);
+			this.panel2.Controls.Add(this.DeviceMonitorButton);
+			this.panel2.Controls.Add(this.ArcticFoxConfigurationButton);
+			this.panel2.Controls.Add(this.FirmwareUpdaterButton);
+			this.panel2.Location = new System.Drawing.Point(0, 214);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(240, 300);
+			this.panel2.TabIndex = 4;
+			// 
+			// ScreenshooterButton
+			// 
+			this.ScreenshooterButton.AdditionalText = "";
+			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
+			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
+			this.ScreenshooterButton.Name = "ScreenshooterButton";
+			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
+			this.ScreenshooterButton.TabIndex = 4;
+			this.ScreenshooterButton.Text = "Screenshooter";
+			// 
+			// MyEvicConfigurationButton
+			// 
+			this.MyEvicConfigurationButton.AdditionalText = "";
+			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.MyEvicConfigurationButton.Enabled = false;
+			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
+			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
+			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
+			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.MyEvicConfigurationButton.TabIndex = 1;
+			this.MyEvicConfigurationButton.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorButton
+			// 
+			this.DeviceMonitorButton.AdditionalText = "";
+			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
+			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
+			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
+			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
+			this.DeviceMonitorButton.TabIndex = 2;
+			this.DeviceMonitorButton.Text = "Device Monitor";
+			// 
+			// ArcticFoxConfigurationButton
+			// 
+			this.ArcticFoxConfigurationButton.AdditionalText = "";
+			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
+			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
+			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
+			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.ArcticFoxConfigurationButton.TabIndex = 0;
+			this.ArcticFoxConfigurationButton.Text = "ArcticFox Configuration";
+			// 
+			// FirmwareUpdaterButton
+			// 
+			this.FirmwareUpdaterButton.AdditionalText = "";
+			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
+			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
+			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
+			this.FirmwareUpdaterButton.TabIndex = 3;
+			this.FirmwareUpdaterButton.Text = "Firmware Updater";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Location = new System.Drawing.Point(28, 3);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(184, 205);
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			// 
+			// TrayNotifyIcon
+			// 
+			this.TrayNotifyIcon.ContextMenuStrip = this.TrayContextMenuStrip;
+			this.TrayNotifyIcon.Text = "NFE Toolbox";
+			this.TrayNotifyIcon.Visible = true;
+			// 
+			// TrayContextMenuStrip
+			// 
+			this.TrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShowTrayMenuItem,
+            this.toolStripSeparator4,
+            this.ArcticFoxConfigurationTrayMenuItem,
+            this.MyEvicConfigurationTrayMenuItem,
+            this.DeviceMonitorTrayMenuItem,
+            this.ScreenshooterTrayMenuItem,
+            this.FirmwareUpdaterTrayMenuItem,
+            this.toolStripSeparator2,
+            this.OpenArcticFoxConfigurationTrayMenuItem,
+            this.TimeSyncTrayMenuItem,
+            this.toolStripSeparator3,
+            this.AutorunTrayMenuItem,
+            this.toolStripSeparator1,
+            this.ExitTrayMenuItem});
+			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(372, 248);
+			// 
+			// ShowTrayMenuItem
+			// 
+			this.ShowTrayMenuItem.Name = "ShowTrayMenuItem";
+			this.ShowTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ShowTrayMenuItem.Text = "Show NFE Toolbox window";
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
+			// 
+			// ArcticFoxConfigurationTrayMenuItem
+			// 
+			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
+			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
+			// 
+			// MyEvicConfigurationTrayMenuItem
+			// 
+			this.MyEvicConfigurationTrayMenuItem.Enabled = false;
+			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
+			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorTrayMenuItem
+			// 
+			this.DeviceMonitorTrayMenuItem.Name = "DeviceMonitorTrayMenuItem";
+			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.DeviceMonitorTrayMenuItem.Text = "Device Monitor";
+			// 
+			// ScreenshooterTrayMenuItem
+			// 
+			this.ScreenshooterTrayMenuItem.Name = "ScreenshooterTrayMenuItem";
+			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ScreenshooterTrayMenuItem.Text = "Screenshooter";
+			// 
+			// FirmwareUpdaterTrayMenuItem
+			// 
+			this.FirmwareUpdaterTrayMenuItem.Name = "FirmwareUpdaterTrayMenuItem";
+			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.FirmwareUpdaterTrayMenuItem.Text = "Firmware Updater";
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(368, 6);
+			// 
+			// OpenArcticFoxConfigurationTrayMenuItem
+			// 
+			this.OpenArcticFoxConfigurationTrayMenuItem.CheckOnClick = true;
+			this.OpenArcticFoxConfigurationTrayMenuItem.Name = "OpenArcticFoxConfigurationTrayMenuItem";
+			this.OpenArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.OpenArcticFoxConfigurationTrayMenuItem.Text = "Open ArcticFox Configuration when device is connected";
+			// 
+			// TimeSyncTrayMenuItem
+			// 
+			this.TimeSyncTrayMenuItem.CheckOnClick = true;
+			this.TimeSyncTrayMenuItem.Name = "TimeSyncTrayMenuItem";
+			this.TimeSyncTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.TimeSyncTrayMenuItem.Text = "Synchronize time when device is connected";
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(368, 6);
+			// 
+			// AutorunTrayMenuItem
+			// 
+			this.AutorunTrayMenuItem.CheckOnClick = true;
+			this.AutorunTrayMenuItem.Name = "AutorunTrayMenuItem";
+			this.AutorunTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.AutorunTrayMenuItem.Text = "Run NFE Toolbox when Windows starts";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(368, 6);
+			// 
+			// ExitTrayMenuItem
+			// 
+			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
+			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ExitTrayMenuItem.Text = "Exit";
+			// 
+			// VersionLabel
+			// 
+			this.VersionLabel.AutoSize = true;
+			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
+			this.VersionLabel.Name = "VersionLabel";
+			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
+			this.VersionLabel.TabIndex = 5;
+			this.VersionLabel.Text = "v1.0";
+			// 
+			// MainWindow
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.BackColor = System.Drawing.Color.White;
+			this.ClientSize = new System.Drawing.Size(240, 514);
+			this.Controls.Add(this.panel1);
+			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.Name = "MainWindow";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "NFE Toolbox";
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.TrayContextMenuStrip.ResumeLayout(false);
+			this.ResumeLayout(false);
+
+		}
+
+		#endregion
+
+		private NCore.UI.ExtendedButton ArcticFoxConfigurationButton;
+		private NCore.UI.ExtendedButton MyEvicConfigurationButton;
+		private NCore.UI.ExtendedButton DeviceMonitorButton;
+		private NCore.UI.ExtendedButton FirmwareUpdaterButton;
+		private NCore.UI.BorderedPanel panel1;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private NCore.UI.BorderedPanel panel2;
+		private NCore.UI.ExtendedButton ScreenshooterButton;
+		private System.Windows.Forms.NotifyIcon TrayNotifyIcon;
+		private System.Windows.Forms.ContextMenuStrip TrayContextMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem ShowTrayMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem ExitTrayMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem AutorunTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem OpenArcticFoxConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem TimeSyncTrayMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem ArcticFoxConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem MyEvicConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem DeviceMonitorTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ScreenshooterTrayMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
+		private System.Windows.Forms.Label VersionLabel;
+	}
+}
+

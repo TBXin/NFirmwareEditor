@@ -29,14 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.MainContainer = new NFirmwareEditor.UI.MultiPanel();
-			this.WelcomePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.MainContainer = new NCore.UI.MultiPanel();
+			this.WelcomePage = new NCore.UI.MultiPanelPage();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
-			this.WorkspacePage = new NFirmwareEditor.UI.MultiPanelPage();
+			this.WorkspacePage = new NCore.UI.MultiPanelPage();
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.label48 = new System.Windows.Forms.Label();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
@@ -184,10 +184,10 @@
 			this.TerminalTabPage = new System.Windows.Forms.TabPage();
 			this.CommandTextBox = new System.Windows.Forms.TextBox();
 			this.TraceTextBox = new System.Windows.Forms.TextBox();
-			this.ComDisconnectButton = new System.Windows.Forms.Button();
-			this.ComConnectButton = new System.Windows.Forms.Button();
 			this.PortComboBox = new System.Windows.Forms.ComboBox();
 			this.label49 = new System.Windows.Forms.Label();
+			this.ComDisconnectButton = new System.Windows.Forms.Button();
+			this.ComConnectButton = new System.Windows.Forms.Button();
 			this.MainErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
@@ -2109,10 +2109,10 @@
 			// 
 			this.TerminalTabPage.Controls.Add(this.CommandTextBox);
 			this.TerminalTabPage.Controls.Add(this.TraceTextBox);
-			this.TerminalTabPage.Controls.Add(this.ComDisconnectButton);
-			this.TerminalTabPage.Controls.Add(this.ComConnectButton);
 			this.TerminalTabPage.Controls.Add(this.PortComboBox);
 			this.TerminalTabPage.Controls.Add(this.label49);
+			this.TerminalTabPage.Controls.Add(this.ComDisconnectButton);
+			this.TerminalTabPage.Controls.Add(this.ComConnectButton);
 			this.TerminalTabPage.Location = new System.Drawing.Point(4, 22);
 			this.TerminalTabPage.Name = "TerminalTabPage";
 			this.TerminalTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2141,27 +2141,6 @@
 			this.TraceTextBox.Size = new System.Drawing.Size(320, 169);
 			this.TraceTextBox.TabIndex = 83;
 			// 
-			// ComDisconnectButton
-			// 
-			this.ComDisconnectButton.Enabled = false;
-			this.ComDisconnectButton.Image = global::NFirmwareEditor.Properties.Resources.disconnect;
-			this.ComDisconnectButton.Location = new System.Drawing.Point(266, 6);
-			this.ComDisconnectButton.Name = "ComDisconnectButton";
-			this.ComDisconnectButton.Size = new System.Drawing.Size(58, 25);
-			this.ComDisconnectButton.TabIndex = 82;
-			this.ComDisconnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ComDisconnectButton.UseVisualStyleBackColor = true;
-			// 
-			// ComConnectButton
-			// 
-			this.ComConnectButton.Image = global::NFirmwareEditor.Properties.Resources.connect;
-			this.ComConnectButton.Location = new System.Drawing.Point(209, 6);
-			this.ComConnectButton.Name = "ComConnectButton";
-			this.ComConnectButton.Size = new System.Drawing.Size(58, 25);
-			this.ComConnectButton.TabIndex = 81;
-			this.ComConnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ComConnectButton.UseVisualStyleBackColor = true;
-			// 
 			// PortComboBox
 			// 
 			this.PortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2183,6 +2162,27 @@
 			this.label49.Size = new System.Drawing.Size(63, 13);
 			this.label49.TabIndex = 54;
 			this.label49.Text = "VCOM Port:";
+			// 
+			// ComDisconnectButton
+			// 
+			this.ComDisconnectButton.Enabled = false;
+			this.ComDisconnectButton.Image = global::NFirmwareEditor.Properties.Resources.disconnect;
+			this.ComDisconnectButton.Location = new System.Drawing.Point(266, 6);
+			this.ComDisconnectButton.Name = "ComDisconnectButton";
+			this.ComDisconnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComDisconnectButton.TabIndex = 82;
+			this.ComDisconnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComDisconnectButton.UseVisualStyleBackColor = true;
+			// 
+			// ComConnectButton
+			// 
+			this.ComConnectButton.Image = global::NFirmwareEditor.Properties.Resources.connect;
+			this.ComConnectButton.Location = new System.Drawing.Point(209, 6);
+			this.ComConnectButton.Name = "ComConnectButton";
+			this.ComConnectButton.Size = new System.Drawing.Size(58, 25);
+			this.ComConnectButton.TabIndex = 81;
+			this.ComConnectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ComConnectButton.UseVisualStyleBackColor = true;
 			// 
 			// MainErrorProvider
 			// 
@@ -2269,9 +2269,9 @@
 
 		#endregion
 
-		private UI.MultiPanel MainContainer;
-		private UI.MultiPanelPage WelcomePage;
-		private UI.MultiPanelPage WorkspacePage;
+		private NCore.UI.MultiPanel MainContainer;
+		private NCore.UI.MultiPanelPage WelcomePage;
+		private NCore.UI.MultiPanelPage WorkspacePage;
 		private System.Windows.Forms.Label WelcomeLabel;
 		private System.Windows.Forms.TabControl MainTabControl;
 		private System.Windows.Forms.TabPage GeneralTabPage;
@@ -2294,7 +2294,7 @@
 		private System.Windows.Forms.NumericUpDown TCRM2UpDown;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.NumericUpDown TCRM1UpDown;
-		private UI.GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.CheckBox TempNiModeCheckBox;
 		private System.Windows.Forms.Label label20;

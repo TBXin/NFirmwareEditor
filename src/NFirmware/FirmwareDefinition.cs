@@ -1,5 +1,7 @@
 ﻿using System.Xml.Serialization;
 using JetBrains.Annotations;
+using NCore;
+using NCore.Serialization;
 
 namespace NFirmware
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 
@@ -18,7 +19,7 @@ namespace NFirmwareEditor.Windows
 		public DecryptionWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			m_encoder = new FirmwareEncoder();
 			m_loader = new FirmwareLoader(m_encoder);

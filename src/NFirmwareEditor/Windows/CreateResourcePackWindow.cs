@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
@@ -20,7 +21,7 @@ namespace NFirmwareEditor.Windows
 		public CreateResourcePackWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 
 			OkButton.Click += OkButton_Click;
 		}

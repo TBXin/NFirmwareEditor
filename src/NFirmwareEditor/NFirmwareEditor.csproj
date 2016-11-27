@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\out\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\out\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,15 +43,11 @@
       <HintPath>..\packages\HidSharp.1.5\lib\net35\HidSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JetBrains.Annotations, Version=10.1.4.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.0-beta5\lib\net40\NLog.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,8 +65,6 @@
   <ItemGroup>
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\MruList.cs" />
-    <Compile Include="Core\Safe.cs" />
-    <Compile Include="Core\Serializer.cs" />
     <Compile Include="Managers\BackupManager.cs" />
     <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
@@ -81,7 +75,6 @@
     <Compile Include="Managers\ImageCacheManager.cs" />
     <Compile Include="Managers\PatchManager.cs" />
     <Compile Include="Managers\UpdatesManager.cs" />
-    <Compile Include="Models\AsyncProcessWrapper.cs" />
     <Compile Include="Models\BatteryPresets.cs" />
     <Compile Include="Models\BulkPatchResult.cs" />
     <Compile Include="Models\ApplicationConfiguration.cs" />
@@ -89,7 +82,7 @@
     <Compile Include="Models\Dataflash.cs" />
     <Compile Include="Models\DeviceSensorsData.cs" />
     <Compile Include="Models\ExportedImage.cs" />
-    <Compile Include="Core\Paths.cs" />
+    <Compile Include="Core\NFEPaths.cs" />
     <Compile Include="Models\ImageImportMode.cs" />
     <Compile Include="Models\Updatable.cs" />
     <Compile Include="Models\LoadableObject.cs" />
@@ -105,14 +98,7 @@
     <Compile Include="UI\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\GroupPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
-    <Compile Include="UI\MultiPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\NamedItemContainer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +119,6 @@
     </Compile>
     <Compile Include="Managers\FirmwareDefinitionManager.cs" />
     <Compile Include="Managers\FirmwareImageProcessor.cs" />
-    <Compile Include="Core\InfoBox.cs" />
     <Compile Include="Windows\DefinitionUpdatesAvailableWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,12 +130,6 @@
     </Compile>
     <Compile Include="Windows\DeviceConfiguratorWindow.Designer.cs">
       <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\DeviceMonitorWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\DeviceMonitorWindow.Designer.cs">
-      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\DischargeProfileWindow.cs">
       <SubType>Form</SubType>
@@ -236,9 +215,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\BorderedPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ImagedItem.cs" />
     <Compile Include="UI\PixelGrid.cs">
       <SubType>Component</SubType>
@@ -282,9 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DeviceConfiguratorWindow.resx">
       <DependentUpon>DeviceConfiguratorWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\DeviceMonitorWindow.resx">
-      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\DischargeProfileWindow.resx">
       <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
@@ -1039,6 +1012,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <None Include="Definitions\ArcticFox.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Definitions\Cuboid200 6.04.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1381,6 +1357,10 @@
     <None Include="Resources\copy.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NCore\NCore.csproj">
+      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
+      <Name>NCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NFirmware\NFirmware.csproj">
       <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
       <Name>NFirmware</Name>

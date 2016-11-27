@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.groupBox1 = new NCore.UI.GroupPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupBox2 = new NCore.UI.GroupPanel();
 			this.DefinitionComboBox = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
@@ -292,14 +292,14 @@
 		private System.Windows.Forms.TextBox VersionTextBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox NameTextBox;
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.ComboBox DefinitionComboBox;
 		private System.Windows.Forms.Label label6;
-		private UI.GroupPanel groupBox2;
-		private UI.GroupPanel groupBox1;
+		private NCore.UI.GroupPanel groupBox2;
+		private NCore.UI.GroupPanel groupBox1;
 	}
 }

@@ -33,7 +33,7 @@
 			this.DescriptionGroupBox = new System.Windows.Forms.GroupBox();
 			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
 			this.ImportResourcePackButton = new System.Windows.Forms.Button();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.ResourcePackListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.FileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -177,7 +177,7 @@
 		private System.Windows.Forms.Button PreviewResourcePackButton;
 		private System.Windows.Forms.GroupBox DescriptionGroupBox;
 		private System.Windows.Forms.TextBox DescriptionTextBox;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.ListView ResourcePackListView;
 		private System.Windows.Forms.ColumnHeader NameColumnHeader;
 		private System.Windows.Forms.ColumnHeader VersionColumnHeader;

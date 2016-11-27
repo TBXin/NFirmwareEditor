@@ -29,7 +29,7 @@ namespace NFirmwareEditor.Windows
 		public PreviewResourcePackWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 

@@ -4,15 +4,13 @@ using System.Management;
 using System.Text;
 using System.Threading;
 using JetBrains.Annotations;
+using NCore;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class COMConnector
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		private const string PnpDeviceIdMask = "VID_0416&PID_5020";
 		private static readonly char[] s_separatorChars = { '\r', '\n' };
 		private SerialPort m_port;
@@ -107,14 +105,14 @@ namespace NFirmwareEditor.Managers
 
 		private void COMPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
 		{
-			var data = string.Empty;
+			string data;
 			try
 			{
 				data = m_port.ReadExisting();
 			}
 			catch (InvalidOperationException ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 				OnDisconnected();
 				return;
 			}

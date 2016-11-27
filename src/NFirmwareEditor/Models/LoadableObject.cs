@@ -1,5 +1,6 @@
 ﻿using System.Xml.Serialization;
-using NFirmware;
+using NCore;
+using NCore.Serialization;
 
 namespace NFirmwareEditor.Models
 {

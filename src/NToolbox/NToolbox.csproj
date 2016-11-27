@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCF4DA99-E644-4E9E-A4CC-6F30623FA2AF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NToolbox</RootNamespace>
+    <AssemblyName>NToolbox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\out\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\out\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NToolbox.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\ArcticFoxConfiguration.cs" />
+    <Compile Include="Models\BatteryPresets.cs" />
+    <Compile Include="Models\ToolboxConfiguration.cs" />
+    <Compile Include="Models\MonitoringData.cs" />
+    <Compile Include="Models\StartupMode.cs" />
+    <Compile Include="Storages\ConfigurationStorage.cs" />
+    <Compile Include="Windows\ArcticFoxConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ArcticFoxConfigurationWindow.Designer.cs">
+      <DependentUpon>ArcticFoxConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeviceMonitorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DeviceMonitorWindow.Designer.cs">
+      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DischargeProfileWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DischargeProfileWindow.Designer.cs">
+      <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FirmwareUpdaterWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\FirmwareUpdaterWindow.Designer.cs">
+      <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\HardwareVersionWindow.Designer.cs">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\ProfileTabContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\ProfileTabContent.Designer.cs">
+      <DependentUpon>ProfileTabContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ScreenshooterWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ScreenshooterWindow.Designer.cs">
+      <DependentUpon>ScreenshooterWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TFRProfileWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\TFRProfileWindow.Designer.cs">
+      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Windows\ArcticFoxConfigurationWindow.resx">
+      <DependentUpon>ArcticFoxConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DeviceMonitorWindow.resx">
+      <DependentUpon>DeviceMonitorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DischargeProfileWindow.resx">
+      <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\FirmwareUpdaterWindow.resx">
+      <DependentUpon>FirmwareUpdaterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\HardwareVersionWindow.resx">
+      <DependentUpon>HardwareVersionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ProfileTabContent.resx">
+      <DependentUpon>ProfileTabContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ScreenshooterWindow.resx">
+      <DependentUpon>ScreenshooterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\TFRProfileWindow.resx">
+      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NCore\NCore.csproj">
+      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
+      <Name>NCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFirmware\NFirmware.csproj">
+      <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
+      <Name>NFirmware</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nfetoolbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\device_monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\firmware_updater.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arctic_fox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arctic_fox_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\device_broadcast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NToolbox.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

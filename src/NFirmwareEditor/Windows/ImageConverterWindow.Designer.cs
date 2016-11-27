@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -39,20 +39,20 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.NewWidthUpDown = new System.Windows.Forms.NumericUpDown();
-			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel3 = new NCore.UI.BorderedPanel();
 			this.label2 = new System.Windows.Forms.Label();
-			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel5 = new NCore.UI.BorderedPanel();
 			this.ImagePreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.label5 = new System.Windows.Forms.Label();
-			this.ResizeContainerPanel = new NFirmwareEditor.UI.BorderedPanel();
-			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
+			this.ResizeContainerPanel = new NCore.UI.BorderedPanel();
+			this.borderedPanel4 = new NCore.UI.BorderedPanel();
 			this.label6 = new System.Windows.Forms.Label();
-			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel6 = new NCore.UI.BorderedPanel();
 			this.ConversionTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel2 = new NCore.UI.BorderedPanel();
 			this.label7 = new System.Windows.Forms.Label();
-			this.ConversionContainerPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ConversionContainerPanel = new NCore.UI.BorderedPanel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.ThresholdUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label8 = new System.Windows.Forms.Label();
@@ -524,31 +524,31 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button SelectSourceButton;
 		private System.Windows.Forms.TextBox SourceTextBox;
-		private UI.BorderedPanel borderedPanel3;
+		private NCore.UI.BorderedPanel borderedPanel3;
 		private System.Windows.Forms.Label label2;
-		private UI.BorderedPanel borderedPanel5;
+		private NCore.UI.BorderedPanel borderedPanel5;
 		private System.Windows.Forms.NumericUpDown NewHeightUpDown;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.NumericUpDown NewWidthUpDown;
 		private UI.DrawingSurface ImagePreviewSurface;
 		private System.Windows.Forms.Button JoyetechSizeButton;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.Label label5;
-		private UI.BorderedPanel ResizeContainerPanel;
-		private UI.BorderedPanel borderedPanel4;
+		private NCore.UI.BorderedPanel ResizeContainerPanel;
+		private NCore.UI.BorderedPanel borderedPanel4;
 		private System.Windows.Forms.Label label6;
-		private UI.BorderedPanel borderedPanel6;
+		private NCore.UI.BorderedPanel borderedPanel6;
 		private System.Windows.Forms.ComboBox ConversionTypeComboBox;
-		private UI.BorderedPanel borderedPanel2;
+		private NCore.UI.BorderedPanel borderedPanel2;
 		private System.Windows.Forms.Label label7;
-		private UI.BorderedPanel ConversionContainerPanel;
+		private NCore.UI.BorderedPanel ConversionContainerPanel;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.NumericUpDown ThresholdUpDown;

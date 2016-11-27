@@ -7,12 +7,12 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
 using NFirmwareEditor.Properties;
-using NFirmwareEditor.UI;
-using NLog;
 
 namespace NFirmwareEditor.Windows
 {
@@ -22,8 +22,6 @@ namespace NFirmwareEditor.Windows
 
 		private const int MinimumWatts = 1;
 		private const int MaximumWatts = 250;
-		
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly USBConnector m_usbConnector = new USBConnector();
@@ -315,7 +313,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (ignoreErrors) return null;
 
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 				InfoBox.Show
 				(
 					"An error occurred during taking screenshot..." +
@@ -655,7 +653,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 				UpdateUI(() => WelcomeLabel.Text = @"Unable to download device settings. Reconnect your device.");
 			}
 		}
@@ -684,7 +682,7 @@ namespace NFirmwareEditor.Windows
 				}
 				catch (Exception ex)
 				{
-					s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("downloading settings"));
 				}
 			}));
@@ -708,7 +706,7 @@ namespace NFirmwareEditor.Windows
 				}
 				catch (Exception ex)
 				{
-					s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("uploading settings"));
 				}
 			}));
@@ -728,7 +726,7 @@ namespace NFirmwareEditor.Windows
 				}
 				catch (Exception ex)
 				{
-					s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("resetting settings"));
 				}
 			}));
@@ -830,7 +828,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 				InfoBox.Show(GetErrorMessage("restarting device"));
 			}
 		}
@@ -846,7 +844,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 				InfoBox.Show(GetErrorMessage("resetting dataflash and restarting device"));
 			}
 		}
@@ -862,7 +860,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 			}
 
 			if (string.IsNullOrEmpty(selectedPort))
@@ -883,7 +881,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 			}
 
 			ComConnectButton.Enabled = true;
@@ -905,7 +903,7 @@ namespace NFirmwareEditor.Windows
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex);
+				Trace.Warn(ex);
 			}
 
 			AppendTrace(sendResult ? ">" + command : "Failed to send command.");

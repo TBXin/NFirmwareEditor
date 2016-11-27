@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -37,7 +38,7 @@ namespace NFirmwareEditor.Windows
 			InitializeComponent();
 			InitializeApplication();
 
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			Text = Consts.ApplicationTitle;
 			LoadedFirmwareLabel.Text = null;
 			StatusLabel.Text = null;
@@ -45,7 +46,7 @@ namespace NFirmwareEditor.Windows
 
 		public MainWindow(string[] args) : this()
 		{
-			m_firmwareFile = Paths.ValidateInputArgs(args);
+			m_firmwareFile = NFEPaths.ValidateInputArgs(args);
 			if (!string.IsNullOrEmpty(m_firmwareFile))
 			{
 				Shown += (s, e) =>
@@ -90,7 +91,7 @@ namespace NFirmwareEditor.Windows
 			m_resourcePackStorage.Initialize();
 
 			m_definitions = m_firmwareDefinitionStorage.LoadAll().ToList();
-			m_configuration = m_configurationStorage.TryLoad(Paths.SettingsFile) ?? new ApplicationConfiguration();
+			m_configuration = m_configurationStorage.TryLoad(NFEPaths.SettingsFile) ?? new ApplicationConfiguration();
 			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
 			m_patchManager.InitializeStorage(m_definitions);
 			m_updatesManager.SetupInitialData(Consts.ApplicationVersion, m_definitions);
@@ -312,7 +313,7 @@ namespace NFirmwareEditor.Windows
 				}
 			}
 			m_configuration.MostRecentlyUsed = m_mruFirmwares.Items;
-			m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
+			m_configurationStorage.Save(NFEPaths.SettingsFile, m_configuration);
 		}
 
 		private void MainWindow_Move(object sender, EventArgs e)
@@ -436,23 +437,6 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void DeviceConfiguratorMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var configurator = new DeviceConfiguratorWindow())
-			{
-				configurator.ShowDialog();
-			}
-		}
-
-		private void DeviceMonitorToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var monitor = new DeviceMonitorWindow(m_configuration, new USBConnector(), new COMConnector()))
-			{
-				monitor.ShowDialog();
-				m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
-			}
-		}
-
 		private void OptionsMenuItem_Click(object sender, EventArgs e)
 		{
 			var checkForUpdates = m_configuration.CheckForApplicationUpdates;
@@ -460,7 +444,7 @@ namespace NFirmwareEditor.Windows
 			{
 				if (optionsWindow.ShowDialog() != DialogResult.OK) return;
 
-				m_configurationStorage.Save(Paths.SettingsFile, m_configuration);
+				m_configurationStorage.Save(NFEPaths.SettingsFile, m_configuration);
 				m_tabPages.ForEach(x => x.Initialize(this, m_configuration));
 
 				if (checkForUpdates != m_configuration.CheckForApplicationUpdates)

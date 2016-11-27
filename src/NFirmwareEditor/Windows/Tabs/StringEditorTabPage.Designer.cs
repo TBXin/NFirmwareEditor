@@ -30,15 +30,15 @@
 		{
 			this.Block1StringRadioButton = new System.Windows.Forms.RadioButton();
 			this.Block2StringRadioButton = new System.Windows.Forms.RadioButton();
-			this.StringPreviewGroupPanel = new NFirmwareEditor.UI.GroupPanel();
+			this.StringPreviewGroupPanel = new NCore.UI.GroupPanel();
 			this.BlockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.StringPrewviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.StringEditGroupPanel = new NFirmwareEditor.UI.GroupPanel();
-			this.borderedPanel10 = new NFirmwareEditor.UI.BorderedPanel();
+			this.StringEditGroupPanel = new NCore.UI.GroupPanel();
+			this.borderedPanel10 = new NCore.UI.BorderedPanel();
 			this.CharLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.StringStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StringStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.borderedPanel6 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel6 = new NCore.UI.BorderedPanel();
 			this.Block1StringListBox = new System.Windows.Forms.ListBox();
 			this.Block2StringListBox = new System.Windows.Forms.ListBox();
 			this.StringPreviewGroupPanel.SuspendLayout();
@@ -258,18 +258,18 @@
 		}
 
 		#endregion
-		private UI.BorderedPanel borderedPanel10;
+		private NCore.UI.BorderedPanel borderedPanel10;
 		private System.Windows.Forms.FlowLayoutPanel CharLayoutPanel;
 		private UI.PixelGrid StringPrewviewPixelGrid;
 		private System.Windows.Forms.RadioButton Block1StringRadioButton;
 		private System.Windows.Forms.RadioButton Block2StringRadioButton;
-		private UI.BorderedPanel borderedPanel6;
+		private NCore.UI.BorderedPanel borderedPanel6;
 		private System.Windows.Forms.ListBox Block1StringListBox;
 		private System.Windows.Forms.ListBox Block2StringListBox;
 		private System.Windows.Forms.ComboBox BlockTypeComboBox;
 		private System.Windows.Forms.StatusStrip StringStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel StringStatusLabel;
-		private UI.GroupPanel StringEditGroupPanel;
-		private UI.GroupPanel StringPreviewGroupPanel;
+		private NCore.UI.GroupPanel StringEditGroupPanel;
+		private NCore.UI.GroupPanel StringPreviewGroupPanel;
 	}
 }

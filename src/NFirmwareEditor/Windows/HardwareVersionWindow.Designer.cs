@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.CurrentHWUpDown = new System.Windows.Forms.NumericUpDown();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.NewHWUpDown = new System.Windows.Forms.NumericUpDown();
@@ -184,7 +184,7 @@
 
 		#endregion
 		private System.Windows.Forms.NumericUpDown CurrentHWUpDown;
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.NumericUpDown NewHWUpDown;

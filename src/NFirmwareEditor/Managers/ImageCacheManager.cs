@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using JetBrains.Annotations;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 

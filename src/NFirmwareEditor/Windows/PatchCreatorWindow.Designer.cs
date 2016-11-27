@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox1 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupBox1 = new NCore.UI.GroupPanel();
 			this.CreateDiffLink = new System.Windows.Forms.LinkLabel();
 			this.label8 = new System.Windows.Forms.Label();
 			this.DataTextBox = new System.Windows.Forms.TextBox();
@@ -38,7 +38,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.SelectSource1Button = new System.Windows.Forms.Button();
 			this.Source1TextBox = new System.Windows.Forms.TextBox();
-			this.groupBox2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupBox2 = new NCore.UI.GroupPanel();
 			this.DefinitionComboBox = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
 			this.VersionTextBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
@@ -359,7 +359,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Label label1;
@@ -381,7 +381,7 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TextBox DataTextBox;
 		private System.Windows.Forms.LinkLabel CreateDiffLink;
-		private UI.GroupPanel groupBox1;
-		private UI.GroupPanel groupBox2;
+		private NCore.UI.GroupPanel groupBox1;
+		private NCore.UI.GroupPanel groupBox2;
 	}
 }

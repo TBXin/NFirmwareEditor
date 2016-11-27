@@ -10,7 +10,7 @@ namespace NFirmwareEditor.Windows
 		public ResizeImageWindow()
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			NewWidthUpDown.Maximum = NewHeightUpDown.Maximum = Consts.MaximumImageWidthAndHeight;
 
 			Load += (s, e) => { NewWidthUpDown.Select(); };

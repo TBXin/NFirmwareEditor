@@ -59,12 +59,12 @@
 			this.ShiftUpButton = new System.Windows.Forms.Button();
 			this.ShiftRightButton = new System.Windows.Forms.Button();
 			this.ShiftLeftButton = new System.Windows.Forms.Button();
-			this.borderedPanel3 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel3 = new NCore.UI.BorderedPanel();
 			this.label2 = new System.Windows.Forms.Label();
-			this.borderedPanel5 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel5 = new NCore.UI.BorderedPanel();
 			this.ImagePreviewPixelGrid = new NFirmwareEditor.UI.PixelGrid();
-			this.borderedPanel2 = new NFirmwareEditor.UI.BorderedPanel();
-			this.borderedPanel4 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel2 = new NCore.UI.BorderedPanel();
+			this.borderedPanel4 = new NCore.UI.BorderedPanel();
 			this.ImagePixelGrid = new NFirmwareEditor.UI.PixelGrid();
 			this.ImageEditorStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.ImageStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -72,7 +72,7 @@
 			this.ShowGridCheckBox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GridSizeUpDown = new System.Windows.Forms.NumericUpDown();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.Block1ImageListBox = new System.Windows.Forms.ListBox();
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
 			this.ImageListBoxStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -695,15 +695,15 @@
 
 		private System.Windows.Forms.ListBox Block2ImageListBox;
 		private System.Windows.Forms.ListBox Block1ImageListBox;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private UI.PixelGrid ImagePreviewPixelGrid;
-		private UI.BorderedPanel borderedPanel5;
+		private NCore.UI.BorderedPanel borderedPanel5;
 		private System.Windows.Forms.Label label2;
-		private UI.BorderedPanel borderedPanel3;
+		private NCore.UI.BorderedPanel borderedPanel3;
 		private System.Windows.Forms.RadioButton Block2ImageRadioButton;
 		private UI.PixelGrid ImagePixelGrid;
-		private UI.BorderedPanel borderedPanel4;
-		private UI.BorderedPanel borderedPanel2;
+		private NCore.UI.BorderedPanel borderedPanel4;
+		private NCore.UI.BorderedPanel borderedPanel2;
 		private System.Windows.Forms.RadioButton Block1ImageRadioButton;
 		private System.Windows.Forms.NumericUpDown GridSizeUpDown;
 		private System.Windows.Forms.Label label1;

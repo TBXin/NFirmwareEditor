@@ -1,0 +1,24 @@
+﻿using System;
+
+namespace NCore.UI
+{
+	public class NamedItemContainer<T>
+	{
+		public NamedItemContainer(string name, T data)
+		{
+			if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
+
+			Name = name;
+			Data = data;
+		}
+
+		public string Name { get; set; }
+
+		public T Data { get; private set; }
+
+		public override string ToString()
+		{
+			return Name;
+		}
+	}
+}

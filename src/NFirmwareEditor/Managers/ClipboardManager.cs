@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore;
+using NCore.Serialization;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
 using NFirmwareEditor.Storages;

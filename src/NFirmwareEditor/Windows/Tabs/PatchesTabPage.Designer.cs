@@ -35,7 +35,7 @@
 			this.ReloadPatchesButton = new System.Windows.Forms.Button();
 			this.ConflictsGroupBox = new System.Windows.Forms.GroupBox();
 			this.ConflictsTextBox = new System.Windows.Forms.TextBox();
-			this.borderedPanel1 = new NFirmwareEditor.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.PatchListView = new System.Windows.Forms.ListView();
 			this.NameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.FileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -244,7 +244,7 @@
 		private System.Windows.Forms.ColumnHeader VersionColumnHeader;
 		private System.Windows.Forms.ColumnHeader InstalledColumnHeader;
 		private System.Windows.Forms.GroupBox DescriptionGroupBox;
-		private UI.BorderedPanel borderedPanel1;
+		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.ListView PatchListView;
 		private System.Windows.Forms.Button ApplyPatchesButton;
 		private System.Windows.Forms.Button RollbackPatchesButton;

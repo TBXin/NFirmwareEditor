@@ -36,11 +36,11 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.CurrentWidthUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
-			this.ControlBorderedPanel = new NFirmwareEditor.UI.BorderedPanel();
+			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
-			this.groupPanel1 = new NFirmwareEditor.UI.GroupPanel();
-			this.groupPanel2 = new NFirmwareEditor.UI.GroupPanel();
+			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.groupPanel2 = new NCore.UI.GroupPanel();
 			((System.ComponentModel.ISupportInitialize)(this.NewHeightUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NewWidthUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CurrentHeightUpDown)).BeginInit();
@@ -285,7 +285,7 @@
 
 		#endregion
 
-		private UI.BorderedPanel ControlBorderedPanel;
+		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.NumericUpDown CurrentHeightUpDown;
@@ -296,7 +296,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.NumericUpDown NewWidthUpDown;
-		private UI.GroupPanel groupPanel1;
-		private UI.GroupPanel groupPanel2;
+		private NCore.UI.GroupPanel groupPanel1;
+		private NCore.UI.GroupPanel groupPanel2;
 	}
 }

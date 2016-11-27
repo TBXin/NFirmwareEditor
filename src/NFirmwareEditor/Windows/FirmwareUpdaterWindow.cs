@@ -6,10 +6,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
-using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows
 {
@@ -29,7 +29,7 @@ namespace NFirmwareEditor.Windows
 		public FirmwareUpdaterWindow(Firmware firmware, FirmwareLoader loader)
 		{
 			InitializeComponent();
-			Icon = Paths.ApplicationIcon;
+			Icon = NFEPaths.ApplicationIcon;
 			InitializeControls();
 
 			m_firmware = firmware;
@@ -127,7 +127,7 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				var firmware = firmwareFunc();
-				if (!skipValidation && FirmwareLoader.FindByteArray(firmware, Encoding.UTF8.GetBytes(m_connectedDeviceProductId)) == -1)
+				if (!skipValidation && firmware.FindByteArray(Encoding.UTF8.GetBytes(m_connectedDeviceProductId)) == -1)
 				{
 					InfoBox.Show("Opened firmware file is not suitable for the connected device.");
 					return;

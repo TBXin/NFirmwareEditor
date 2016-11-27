@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using NFirmwareEditor.Core;
+using NCore;
+using NCore.Serialization;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Storages
 {
 	internal class ConfigurationStorage : IFileStorage<ApplicationConfiguration>
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		#region Implementation of IStorage
 		public void Initialize()
 		{
@@ -32,7 +30,7 @@ namespace NFirmwareEditor.Storages
 				}
 				catch (Exception ex)
 				{
-					s_logger.Warn(ex, "An error occurred during loading application configuration.");
+					Trace.Warn(ex, "An error occurred during loading application configuration.");
 				}
 			}
 			return result ?? new ApplicationConfiguration();
@@ -58,7 +56,7 @@ namespace NFirmwareEditor.Storages
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during saving application configuration.");
+				Trace.Warn(ex, "An error occurred during saving application configuration.");
 			}
 		}
 	}
