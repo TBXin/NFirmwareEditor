@@ -12,6 +12,7 @@ namespace NToolbox.Windows
 {
 	internal partial class MainWindow : WindowBase
 	{
+		private const string ApplicationVersion = "1.0";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
@@ -64,6 +65,7 @@ namespace NToolbox.Windows
 
 		private void InitializeControls()
 		{
+			VersionLabel.Text = @"v" + ApplicationVersion;
 			ArcticFoxConfigurationButton.Click += StartArcticFoxConfiguration;
 			MyEvicConfigurationButton.Click += StartMyEvicConfiguration;
 			DeviceMonitorButton.Click += StartDeviceMonitor;
@@ -73,6 +75,7 @@ namespace NToolbox.Windows
 
 		private void InitializeTray()
 		{
+			TrayNotifyIcon.Text = @"NToolbox v" + ApplicationVersion + @" © ReikoKitsune";
 			TrayNotifyIcon.Icon = Icon;
 			TrayNotifyIcon.MouseDoubleClick += (s, e) =>
 			{

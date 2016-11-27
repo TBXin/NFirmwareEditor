@@ -53,6 +53,7 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.VersionLabel = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,6 +69,7 @@
 			this.panel1.BorderRight = false;
 			this.panel1.BorderTop = false;
 			this.panel1.BorderWidth = 1F;
+			this.panel1.Controls.Add(this.VersionLabel);
 			this.panel1.Controls.Add(this.panel2);
 			this.panel1.Controls.Add(this.pictureBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -275,6 +277,16 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
+			// VersionLabel
+			// 
+			this.VersionLabel.AutoSize = true;
+			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
+			this.VersionLabel.Name = "VersionLabel";
+			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
+			this.VersionLabel.TabIndex = 5;
+			this.VersionLabel.Text = "v1.0";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -289,6 +301,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFE Toolbox";
 			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.TrayContextMenuStrip.ResumeLayout(false);
@@ -322,6 +335,7 @@
 		private System.Windows.Forms.ToolStripMenuItem DeviceMonitorTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ScreenshooterTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
+		private System.Windows.Forms.Label VersionLabel;
 	}
 }
 
