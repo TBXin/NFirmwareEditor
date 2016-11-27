@@ -93,11 +93,12 @@ namespace NToolbox.Windows
 				return;
 			}
 
-			using (var containerImage = new Bitmap(ScreenPictureBox.Width + 4, ScreenPictureBox.Height + 4))
+			using (var containerImage = new Bitmap(ScreenPictureBox.Width + 2, ScreenPictureBox.Height + 2))
 			{
 				using (var gfx = Graphics.FromImage(containerImage))
 				{
-					gfx.DrawImage(ScreenPictureBox.Image, 2, 2, ScreenPictureBox.Image.Width, ScreenPictureBox.Image.Height);
+					gfx.Clear(Color.Black);
+					gfx.DrawImage(ScreenPictureBox.Image, 1, 1, ScreenPictureBox.Image.Width, ScreenPictureBox.Image.Height);
 				}
 
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = @"Portable Network Graphics|*.png" })
