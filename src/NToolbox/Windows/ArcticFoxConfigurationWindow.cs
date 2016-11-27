@@ -185,14 +185,14 @@ namespace NToolbox.Windows
 		{
 			while (!m_isDeviceConnected)
 			{
-				var result = MessageBox.Show
+				var result = InfoBox.Show
 				(
+					// ReSharper disable once LocalizableElement
 					"No compatible USB devices are connected." +
 					"\n\n" +
 					"To continue, please connect one." +
 					"\n\n" +
 					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-					"Information",
 					MessageBoxButtons.OKCancel
 				);
 				if (result == DialogResult.Cancel)
@@ -238,13 +238,12 @@ namespace NToolbox.Windows
 			}
 			catch (TimeoutException)
 			{
-				MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				InfoBox.Show("Unable to write configuration.");
 			}
 		}
 
 		private void InitializeWorkspace()
 		{
-			//MainContainer.
 			var deviceInfo = m_configuration.Info;
 			{
 				DeviceNameLabel.Text = HidDeviceInfo.Get(deviceInfo.ProductId).Name;
@@ -435,7 +434,7 @@ namespace NToolbox.Windows
 		{
 			for (var i = 0; i < m_tfrLabels.Length; i++)
 			{
-				m_tfrLabels[i].Text = "[TFR] " + tfrTables[i].Name + ":";
+				m_tfrLabels[i].Text = @"[TFR] " + tfrTables[i].Name + @":";
 			}
 		}
 
@@ -493,7 +492,7 @@ namespace NToolbox.Windows
 				}
 				catch (Exception ex)
 				{
-					//s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("downloading settings"));
 				}
 			}));
@@ -512,7 +511,7 @@ namespace NToolbox.Windows
 				}
 				catch (Exception ex)
 				{
-					//s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("uploading settings"));
 				}
 			}));
@@ -531,7 +530,7 @@ namespace NToolbox.Windows
 				}
 				catch (Exception ex)
 				{
-					//s_logger.Warn(ex);
+					Trace.Warn(ex);
 					InfoBox.Show(GetErrorMessage("resetting settings"));
 				}
 			}));
@@ -573,7 +572,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
-				//s_logger.Warn(ex);
+				Trace.Warn(ex);
 				UpdateUI(() => WelcomeLabel.Text = @"Unable to download device settings. Reconnect your device.");
 			}
 		}

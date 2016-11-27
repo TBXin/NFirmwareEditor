@@ -11,14 +11,11 @@ using NCore.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class PatchManager
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		public static string GetPatchDirectoryPath(FirmwareDefinition definition)
 		{
 			if (definition == null) throw new ArgumentNullException("definition");
@@ -40,7 +37,7 @@ namespace NFirmwareEditor.Managers
 			var patchDirEx = Safe.Execute(() => NFEPaths.EnsureDirectoryExists(NFEPaths.PatchDirectory));
 			if (patchDirEx != null)
 			{
-				s_logger.Warn(patchDirEx, "An error occured during creating primary pathes directory '{0}'.", NFEPaths.PatchDirectory);
+				Trace.Warn(patchDirEx, "An error occured during creating primary pathes directory '{0}'.", NFEPaths.PatchDirectory);
 				return;
 			}
 
@@ -50,7 +47,7 @@ namespace NFirmwareEditor.Managers
 				var ex = Safe.Execute(() => NFEPaths.EnsureDirectoryExists(definitionPatchDir));
 				if (ex != null)
 				{
-					s_logger.Warn(ex, "An error occured during creating patches directory '{0}'.", definitionPatchDir);
+					Trace.Warn(ex, "An error occured during creating patches directory '{0}'.", definitionPatchDir);
 				}
 			}
 		}
@@ -87,7 +84,7 @@ namespace NFirmwareEditor.Managers
 				}
 				catch (Exception ex)
 				{
-					s_logger.Warn(ex, "An error occurred during loading patch: " + file);
+					Trace.Warn(ex, "An error occurred during loading patch: " + file);
 				}
 			}
 			return result;

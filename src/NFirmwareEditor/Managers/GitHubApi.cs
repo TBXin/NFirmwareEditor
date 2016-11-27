@@ -8,8 +8,8 @@ using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
 using JetBrains.Annotations;
+using NCore;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Managers
 {
@@ -17,8 +17,6 @@ namespace NFirmwareEditor.Managers
 	{
 		private const string LatestReleaseUrl = "https://api.github.com/repos/TBXin/NFirmwareEditor/releases/latest";
 		private const string RepositoryRootUrl = "https://api.github.com/repos/tbxin/NFirmwareEditor/contents/src/NFirmwareEditor/";
-
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
 
 		[CanBeNull]
 		public static GitHubRelease GetLatestRelease()
@@ -35,7 +33,7 @@ namespace NFirmwareEditor.Managers
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during checking for updates.");
+				Trace.Warn(ex, "An error occurred during checking for updates.");
 				return null;
 			}
 		}
@@ -64,17 +62,17 @@ namespace NFirmwareEditor.Managers
 				var httpWebresponse = ex.Response as HttpWebResponse;
 				if (httpWebresponse == null)
 				{
-					s_logger.Warn(ex, "An unexpected response received. Path: '{0}'.", relativePath);
+					Trace.Warn(ex, "An unexpected response received. Path: '{0}'.", relativePath);
 				}
 				else if (httpWebresponse.StatusCode == HttpStatusCode.NotFound)
 				{
-					s_logger.Info(ex, "Requested repository directory '{0}' not found.", relativePath);
+					Trace.Info("Requested repository directory '{0}' not found.", relativePath);
 				}
 				return null;
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during retrieving rep files from '{0}'.", relativePath);
+				Trace.Warn(ex, "An error occurred during retrieving rep files from '{0}'.", relativePath);
 				return null;
 			}
 		}
@@ -93,7 +91,7 @@ namespace NFirmwareEditor.Managers
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occurred during file download. " + url);
+				Trace.Warn(ex, "An error occurred during file download. " + url);
 			}
 		}
 

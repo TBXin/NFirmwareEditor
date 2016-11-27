@@ -9,14 +9,11 @@ using NCore.Serialization;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Storages
 {
 	internal class ResourcePacksStorage : IFileStorage<ResourcePack>
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		private const char TrueChar = 'X';
 		private const char FalseChar = '.';
 
@@ -26,7 +23,7 @@ namespace NFirmwareEditor.Storages
 			var initEx = Safe.Execute(() => NFEPaths.EnsureDirectoryExists(NFEPaths.ResourcePackDirectory));
 			if (initEx == null) return;
 
-			s_logger.Warn(initEx, "An error occured during creating resource packs directory '{0}'.", NFEPaths.ResourcePackDirectory);
+			Trace.Warn(initEx, "An error occured during creating resource packs directory '{0}'.", NFEPaths.ResourcePackDirectory);
 		}
 		#endregion
 
@@ -53,7 +50,7 @@ namespace NFirmwareEditor.Storages
 
 				if (result.Images == null)
 				{
-					s_logger.Warn("Resource pack '{0}' does not contains any images.", filePath);
+					Trace.Warn("Resource pack '{0}' does not contains any images.", filePath);
 					return null;
 				}
 
@@ -66,7 +63,7 @@ namespace NFirmwareEditor.Storages
 			}
 			catch (Exception ex)
 			{
-				s_logger.Warn(ex, "An error occured during reading resource pack file '{0}'.", filePath);
+				Trace.Warn(ex, "An error occured during reading resource pack file '{0}'.", filePath);
 				return null;
 			}
 		}

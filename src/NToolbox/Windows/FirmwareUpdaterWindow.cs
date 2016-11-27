@@ -134,6 +134,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during firmware update.\n" + ex.Message);
 			}
 		}
@@ -168,6 +169,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An exception occured during firmware update.\n" + ex.Message);
 			}
 			finally
@@ -190,6 +192,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An exception occured during dataflash reading.\n" + ex.Message);
 			}
 		}
@@ -208,6 +211,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An exception occured during dataflash reading.\n" + ex.Message);
 			}
 		}
@@ -255,6 +259,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during dataflash reset.\n" + ex.Message);
 			}
 		}
@@ -275,6 +280,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during dataflash reading.\n" + ex.Message);
 			}
 		}
@@ -302,6 +308,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during dataflash write.\n" + ex.Message);
 			}
 		}
@@ -326,6 +333,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during dataflash write.\n" + ex.Message);
 			}
 		}
@@ -345,6 +353,7 @@ namespace NToolbox.Windows
 			}
 			catch (Exception ex)
 			{
+				Trace.Warn(ex);
 				InfoBox.Show("An error occured during switching boot mode.\n" + ex.Message);
 			}
 		}

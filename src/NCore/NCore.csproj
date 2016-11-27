@@ -38,6 +38,10 @@
     <Reference Include="JetBrains.Annotations">
       <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.11\lib\net40\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -62,6 +66,7 @@
     <Compile Include="Safe.cs" />
     <Compile Include="Serialization\SerializableDictionary.cs" />
     <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="Trace.cs" />
     <Compile Include="UI\ComboBoxExtensions.cs" />
     <Compile Include="UI\EditorDialogWindow.cs">
       <SubType>Form</SubType>

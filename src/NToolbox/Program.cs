@@ -15,6 +15,9 @@ namespace NToolbox
 		[STAThread]
 		private static void Main(string[] args)
 		{
+			AppDomain.CurrentDomain.UnhandledException += Trace.CurrentDomain_UnhandledExceptionHandler;
+			Application.ThreadException += Trace.Application_UnhandledThreadExceptionHandler;
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 

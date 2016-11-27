@@ -4,16 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using JetBrains.Annotations;
+using NCore;
 using NFirmware;
 using NFirmwareEditor.Models;
-using NLog;
 
 namespace NFirmwareEditor.Managers
 {
 	internal class UpdatesManager
 	{
-		private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
-
 		private readonly TimeSpan m_checkForUpdatesInterval;
 		private readonly Timer m_checkForUpdatesTimer;
 
@@ -50,11 +48,11 @@ namespace NFirmwareEditor.Managers
 		[CanBeNull]
 		public static ReleaseInfo CheckForNewRelease(string applicationVersion)
 		{
-			s_logger.Info("Checking for application updates...");
+			Trace.Info("Checking for application updates...");
 			var latestRelease = GitHubApi.GetLatestRelease();
 			if (latestRelease == null || latestRelease.Assets.Length == 0)
 			{
-				s_logger.Info("No application updates found.");
+				Trace.Info("No application updates found.");
 				return null;
 			}
 
@@ -68,17 +66,17 @@ namespace NFirmwareEditor.Managers
 			{
 				if (string.Equals(applicationVersion, latestRelease.Tag))
 				{
-					s_logger.Info("Your are using latest version (string checking).");
+					Trace.Info("Your are using latest version (string checking).");
 					return null;
 				}
 			}
 			else if (currentVersionFloat >= newVersionFloat)
 			{
-				s_logger.Info("Your are using latest version (float checking).");
+				Trace.Info("Your are using latest version (float checking).");
 				return null;
 			}
 
-			s_logger.Info("New application version is available: " + latestRelease.Tag);
+			Trace.Info("New application version is available: " + latestRelease.Tag);
 			return new ReleaseInfo
 			{
 				Version = latestRelease.Tag,
@@ -92,11 +90,11 @@ namespace NFirmwareEditor.Managers
 		{
 			if (definitions == null) throw new ArgumentNullException("definitions");
 
-			s_logger.Info("Checking for definitions updates...");
+			Trace.Info("Checking for definitions updates...");
 			var definitionsInRepository = GitHubApi.GetFiles("Definitions");
 			if (definitionsInRepository == null)
 			{
-				s_logger.Info("Definitions repository is not found.");
+				Trace.Info("Definitions repository is not found.");
 				return null;
 			}
 
@@ -109,7 +107,7 @@ namespace NFirmwareEditor.Managers
 
 			if (entitiesForUpdate.Count == 0)
 			{
-				s_logger.Info("No new definitions were found.");
+				Trace.Info("No new definitions were found.");
 			}
 			return entitiesForUpdate;
 		}
