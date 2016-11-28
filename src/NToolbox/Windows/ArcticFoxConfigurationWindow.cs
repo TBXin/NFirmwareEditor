@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
 using NCore.USB;
@@ -203,17 +204,22 @@ namespace NToolbox.Windows
 			return true;
 		}
 
-		private ArcticFoxConfiguration ReadConfiguration(bool useWorker = true)
+		[NotNull]
+		private ConfigurationReadResult ReadConfiguration(bool useWorker = true)
 		{
 			try
 			{
 				var data = HidConnector.Instance.ReadConfiguration(useWorker ? m_worker : null);
-				if (data == null) return null;
+				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion > MaximumSupportedSettingsVersion)
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber)
 				{
-					return null;
+					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
+				}
+				if (info.SettingsVersion > MaximumSupportedSettingsVersion)
+				{
+					return new ConfigurationReadResult(null, ReadResult.OutdatedToolbox);
 				}
 
 				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
@@ -221,11 +227,11 @@ namespace NToolbox.Windows
 				{
 					table.Name = table.Name.TrimEnd('\0');
 				}
-				return configuration;
+				return new ConfigurationReadResult(configuration, ReadResult.Success);
 			}
 			catch (TimeoutException)
 			{
-				return null;
+				return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 			}
 		}
 
@@ -481,13 +487,13 @@ namespace NToolbox.Windows
 			{
 				try
 				{
-					var configuration = ReadConfiguration();
-					if (configuration == null)
+					var readResult = ReadConfiguration();
+					if (readResult.Result != ReadResult.Success)
 					{
 						InfoBox.Show("Something strange happened! Please restart application.");
 						return;
 					}
-					m_configuration = configuration;
+					m_configuration = readResult.Configuration;
 					UpdateUI(InitializeWorkspace);
 				}
 				catch (Exception ex)
@@ -542,39 +548,53 @@ namespace NToolbox.Windows
 			UpdateUI(() => StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected"));
 
 			if (m_isDeviceWasConnectedOnce) return;
-
 			if (!m_isDeviceConnected)
 			{
-				UpdateUI(() =>
-				{
-					UpdateUI(() => WelcomeLabel.Text = string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
-					MainContainer.SelectedPage = WelcomePage;
-				});
+				ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
 				return;
 			}
 
-			UpdateUI(() => WelcomeLabel.Text = @"Downloading settings...");
+			ShowWelcomeScreen("Downloading settings...");
 			try
 			{
-				m_configuration = ReadConfiguration(false);
-				if (m_configuration == null)
+				var readResult = ReadConfiguration(false);
+				m_configuration = readResult.Configuration;
+				if (readResult.Result == ReadResult.Success)
 				{
-					DeviceConnected(false);
-					return;
+					UpdateUI(() =>
+					{
+						InitializeWorkspace();
+						MainContainer.SelectedPage = WorkspacePage;
+						m_isDeviceWasConnectedOnce = true;
+					}, false);
 				}
-
-				UpdateUI(() =>
+				else if (readResult.Result == ReadResult.OutdatedFirmware)
 				{
-					InitializeWorkspace();
-					MainContainer.SelectedPage = WorkspacePage;
-					m_isDeviceWasConnectedOnce = true;
-				}, false);
+					ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
+				}
+				else if (readResult.Result == ReadResult.OutdatedToolbox)
+				{
+					ShowWelcomeScreen("NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.");
+				}
+				else if (readResult.Result == ReadResult.UnableToRead)
+				{
+					ShowWelcomeScreen("Unable to download device settings. Reconnect your device.");
+				}
 			}
 			catch (Exception ex)
 			{
 				Trace.Warn(ex);
-				UpdateUI(() => WelcomeLabel.Text = @"Unable to download device settings. Reconnect your device.");
+				ShowWelcomeScreen("Unable to download device settings. Reconnect your device.");
 			}
+		}
+
+		private void ShowWelcomeScreen(string message)
+		{
+			UpdateUI(() =>
+			{
+				WelcomeLabel.Text = message;
+				MainContainer.SelectedPage = WelcomePage;
+			});
 		}
 
 		private void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -591,6 +611,27 @@ namespace NToolbox.Windows
 			{
 				UpdateUI(() => SetControlButtonsState(true));
 			}
+		}
+
+		private class ConfigurationReadResult
+		{
+			public ConfigurationReadResult(ArcticFoxConfiguration configuration, ReadResult result)
+			{
+				Configuration = configuration;
+				Result = result;
+			}
+
+			public ArcticFoxConfiguration Configuration { get; private set; }
+
+			public ReadResult Result { get; private set; }
+		}
+
+		private enum ReadResult
+		{
+			Success,
+			UnableToRead,
+			OutdatedFirmware,
+			OutdatedToolbox
 		}
 	}
 }
