@@ -54,7 +54,14 @@ namespace NToolbox.Windows
 						break;
 				}
 			};
-
+			Closing += (s, e) =>
+			{
+				if (m_startupMode == StartupMode.Minimized)
+				{
+					e.Cancel = true;
+					WindowState = FormWindowState.Minimized;
+				}
+			};
 			SizeChanged += (s, e) =>
 			{
 				if (WindowState == FormWindowState.Minimized) HideToTray();
