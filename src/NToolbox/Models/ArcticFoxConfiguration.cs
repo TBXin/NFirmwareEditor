@@ -194,10 +194,11 @@ namespace NToolbox.Models
 			TemperatureDominant = 3,
 			MainScreenClock = 4,
 			OnOff = 5,
-			Lsl = 6,
+			LslOnOff = 6,
 			MainMenu = 7,
 			Preheat = 8,
-			ProfileEdit = 9
+			ProfileEdit = 9,
+			SmartOnOff = 10
 		}
 
 		[Flags]
