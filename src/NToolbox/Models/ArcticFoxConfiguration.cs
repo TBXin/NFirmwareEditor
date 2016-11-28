@@ -86,6 +86,8 @@ namespace NToolbox.Models
 
 			[BinaryArray(Length = 8)]
 			public TFRTable[] TFRTables;
+
+			public byte PuffCutOff; // Value from 10 to 150
 		}
 
 		internal class TFRTable

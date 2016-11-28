@@ -161,6 +161,9 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
+			this.PuffCutOffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -187,6 +190,7 @@
 			this.MaterialsTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -1205,6 +1209,9 @@
 			// 
 			// SettingsTabPage
 			// 
+			this.SettingsTabPage.Controls.Add(this.label19);
+			this.SettingsTabPage.Controls.Add(this.label20);
+			this.SettingsTabPage.Controls.Add(this.PuffCutOffUpDown);
 			this.SettingsTabPage.Controls.Add(this.label54);
 			this.SettingsTabPage.Controls.Add(this.label18);
 			this.SettingsTabPage.Controls.Add(this.label55);
@@ -1231,7 +1238,7 @@
 			// label54
 			// 
 			this.label54.AutoSize = true;
-			this.label54.Location = new System.Drawing.Point(4, 11);
+			this.label54.Location = new System.Drawing.Point(4, 38);
 			this.label54.Name = "label54";
 			this.label54.Size = new System.Drawing.Size(92, 13);
 			this.label54.TabIndex = 75;
@@ -1249,7 +1256,7 @@
 			// label55
 			// 
 			this.label55.AutoSize = true;
-			this.label55.Location = new System.Drawing.Point(213, 10);
+			this.label55.Location = new System.Drawing.Point(213, 37);
 			this.label55.Name = "label55";
 			this.label55.Size = new System.Drawing.Size(18, 13);
 			this.label55.TabIndex = 76;
@@ -1258,7 +1265,7 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(4, 146);
+			this.label13.Location = new System.Drawing.Point(4, 173);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(46, 13);
 			this.label13.TabIndex = 104;
@@ -1266,7 +1273,7 @@
 			// 
 			// ShuntCorrectionUpDown
 			// 
-			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(101, 8);
+			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(101, 35);
 			this.ShuntCorrectionUpDown.Maximum = new decimal(new int[] {
             115,
             0,
@@ -1291,7 +1298,7 @@
 			// ResetCountersCheckBox
 			// 
 			this.ResetCountersCheckBox.AutoSize = true;
-			this.ResetCountersCheckBox.Location = new System.Drawing.Point(101, 146);
+			this.ResetCountersCheckBox.Location = new System.Drawing.Point(101, 173);
 			this.ResetCountersCheckBox.Name = "ResetCountersCheckBox";
 			this.ResetCountersCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ResetCountersCheckBox.TabIndex = 105;
@@ -1305,7 +1312,7 @@
 			this.BatteryModelComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 35);
+			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 62);
 			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
 			this.BatteryModelComboBox.Size = new System.Drawing.Size(120, 21);
 			this.BatteryModelComboBox.TabIndex = 78;
@@ -1313,7 +1320,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(4, 119);
+			this.label14.Location = new System.Drawing.Point(4, 146);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(68, 13);
 			this.label14.TabIndex = 102;
@@ -1322,7 +1329,7 @@
 			// label56
 			// 
 			this.label56.AutoSize = true;
-			this.label56.Location = new System.Drawing.Point(4, 38);
+			this.label56.Location = new System.Drawing.Point(4, 65);
 			this.label56.Name = "label56";
 			this.label56.Size = new System.Drawing.Size(78, 13);
 			this.label56.TabIndex = 77;
@@ -1331,7 +1338,7 @@
 			// UsbChargeCheckBox
 			// 
 			this.UsbChargeCheckBox.AutoSize = true;
-			this.UsbChargeCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(101, 146);
 			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
@@ -1340,7 +1347,7 @@
 			// 
 			// BatteryEditButton
 			// 
-			this.BatteryEditButton.Location = new System.Drawing.Point(222, 34);
+			this.BatteryEditButton.Location = new System.Drawing.Point(222, 61);
 			this.BatteryEditButton.Name = "BatteryEditButton";
 			this.BatteryEditButton.Size = new System.Drawing.Size(60, 23);
 			this.BatteryEditButton.TabIndex = 79;
@@ -1351,7 +1358,7 @@
 			// label15
 			// 
 			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(4, 65);
+			this.label15.Location = new System.Drawing.Point(4, 92);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(29, 13);
 			this.label15.TabIndex = 98;
@@ -1360,7 +1367,7 @@
 			// LightSleepCheckBox
 			// 
 			this.LightSleepCheckBox.AutoSize = true;
-			this.LightSleepCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.LightSleepCheckBox.Location = new System.Drawing.Point(101, 119);
 			this.LightSleepCheckBox.Name = "LightSleepCheckBox";
 			this.LightSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.LightSleepCheckBox.TabIndex = 101;
@@ -1370,7 +1377,7 @@
 			// X32CheckBox
 			// 
 			this.X32CheckBox.AutoSize = true;
-			this.X32CheckBox.Location = new System.Drawing.Point(101, 65);
+			this.X32CheckBox.Location = new System.Drawing.Point(101, 92);
 			this.X32CheckBox.Name = "X32CheckBox";
 			this.X32CheckBox.Size = new System.Drawing.Size(64, 17);
 			this.X32CheckBox.TabIndex = 99;
@@ -1380,7 +1387,7 @@
 			// label16
 			// 
 			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(4, 92);
+			this.label16.Location = new System.Drawing.Point(4, 119);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(92, 13);
 			this.label16.TabIndex = 100;
@@ -1679,6 +1686,54 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(213, 11);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(12, 13);
+			this.label19.TabIndex = 109;
+			this.label19.Text = "s";
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(4, 11);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(71, 13);
+			this.label20.TabIndex = 108;
+			this.label20.Text = "Puff Cut-Off:";
+			// 
+			// PuffCutOffUpDown
+			// 
+			this.PuffCutOffUpDown.DecimalPlaces = 1;
+			this.PuffCutOffUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.PuffCutOffUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PuffCutOffUpDown.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+			this.PuffCutOffUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PuffCutOffUpDown.Name = "PuffCutOffUpDown";
+			this.PuffCutOffUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffCutOffUpDown.TabIndex = 107;
+			this.PuffCutOffUpDown.TabStop = false;
+			this.PuffCutOffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PuffCutOffUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1729,6 +1784,7 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1868,5 +1924,8 @@
 		private System.Windows.Forms.Label TFR3Label;
 		private System.Windows.Forms.Button TFR2EditButton;
 		private System.Windows.Forms.Label TFR2Label;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.NumericUpDown PuffCutOffUpDown;
 	}
 }

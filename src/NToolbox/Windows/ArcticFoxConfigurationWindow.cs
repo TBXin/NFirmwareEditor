@@ -13,8 +13,8 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161128;
-		private const int MaximumSupportedSettingsVersion = 1;
+		private const int MinimumSupportedBuildNumber = 161129;
+		private const int MaximumSupportedSettingsVersion = 2;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
@@ -331,7 +331,8 @@ namespace NToolbox.Windows
 
 			var advanced = m_configuration.Advanced;
 			{
-				ShuntCorrectionUpDown.Value = Math.Max((byte)85, Math.Min(advanced.ShuntCorrection, (byte)115));
+				PuffCutOffUpDown.Value = Math.Max(PuffCutOffUpDown.Minimum, Math.Min(advanced.PuffCutOff / 10m, PuffCutOffUpDown.Maximum));
+				ShuntCorrectionUpDown.Value = Math.Max(ShuntCorrectionUpDown.Minimum, Math.Min(advanced.ShuntCorrection, ShuntCorrectionUpDown.Maximum));
 				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
 				X32CheckBox.Checked = advanced.IsX32;
 				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;
@@ -416,6 +417,7 @@ namespace NToolbox.Windows
 
 			var advanced = m_configuration.Advanced;
 			{
+				advanced.PuffCutOff = (byte)(PuffCutOffUpDown.Value * 10);
 				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
 				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				advanced.IsX32 = X32CheckBox.Checked;
