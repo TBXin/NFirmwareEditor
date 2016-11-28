@@ -213,6 +213,9 @@ namespace NToolbox.Models
 			BoardTemperature = 0x35,
 			RealResistance = 0x36,
 			DateTime = 0x37,
+			LastPuff = 0x38,
+			LastTemperature = 0x39,
+			LastPower = 0x3A,
 
 			Battery = 0x40,
 			BatteryWithPercents = 0x41,
