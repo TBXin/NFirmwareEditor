@@ -121,10 +121,16 @@ namespace NToolbox.Windows
 				lineComboBox.Items.AddRange(lineContentItems);
 			}
 
+			ChargeScreenComboBox.Items.Clear();
+			ChargeScreenComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.ChargeScreenType>("Classic", ArcticFoxConfiguration.ChargeScreenType.Classic),
+				new NamedItemContainer<ArcticFoxConfiguration.ChargeScreenType>("Extended", ArcticFoxConfiguration.ChargeScreenType.Extended)
+			});
+
 			ClockTypeComboBox.Items.Clear();
 			ClockTypeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Off", ArcticFoxConfiguration.ClockType.Off),
 				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Analog", ArcticFoxConfiguration.ClockType.Analog),
 				new NamedItemContainer<ArcticFoxConfiguration.ClockType>("Digital", ArcticFoxConfiguration.ClockType.Digital)
 			});
@@ -300,9 +306,10 @@ namespace NToolbox.Windows
 				IdleTimeUpDow.Value = ui.DimTimeout;
 				StealthModeCheckBox.Checked = ui.IsStealthMode;
 				FlippedModeCheckBox.Checked = ui.IsFlipped;
-				BatteryPercentsCheckBox.Checked = ui.IsBatteryPercents;
+				ChargeScreenComboBox.SelectItem(ui.ChargeScreenType);
 				UseClassicMenuCheckBox.Checked = ui.IsClassicMenu;
 				ShowLogoCheckBox.Checked = ui.IsLogoEnabled;
+				ShowClockCheckBox.Checked = ui.IsClockOnMainScreen;
 				ClockTypeComboBox.SelectItem(ui.ClockType);
 				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
 
@@ -374,9 +381,10 @@ namespace NToolbox.Windows
 				ui.DimTimeout = (byte)IdleTimeUpDow.Value;
 				ui.IsStealthMode = StealthModeCheckBox.Checked;
 				ui.IsFlipped = FlippedModeCheckBox.Checked;
-				ui.IsBatteryPercents = BatteryPercentsCheckBox.Checked;
+				ui.ChargeScreenType = ChargeScreenComboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeScreenType>();
 				ui.IsClassicMenu = UseClassicMenuCheckBox.Checked;
 				ui.IsLogoEnabled = ShowLogoCheckBox.Checked;
+				ui.IsClockOnMainScreen = ShowClockCheckBox.Checked;
 				ui.ClockType = ClockTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.ClockType>();
 				ui.ScreensaveDuration = ScreensaverTimeComboBox.GetSelectedItem<ArcticFoxConfiguration.ScreenProtectionTime>();
 

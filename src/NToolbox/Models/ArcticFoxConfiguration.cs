@@ -50,10 +50,11 @@ namespace NToolbox.Models
 			public bool IsStealthMode;
 			public bool WakeUpByPlusMinus;
 			public bool IsPowerStep1W;
-			public bool IsBatteryPercents;
+			public ChargeScreenType ChargeScreenType;
 			public bool IsLogoEnabled;
 			public bool IsClassicMenu;
 			public ClockType ClockType;
+			public bool IsClockOnMainScreen;
 			public ScreenProtectionTime ScreensaveDuration;
 		}
 
@@ -159,11 +160,16 @@ namespace NToolbox.Models
 			Custom = 7
 		}
 
+		internal enum ChargeScreenType : byte
+		{
+			Classic = 0,
+			Extended = 1
+		}
+
 		internal enum ClockType : byte
 		{
-			Off = 0,
-			Analog = 1,
-			Digital = 2
+			Analog = 0,
+			Digital = 1
 		}
 
 		internal enum ScreenProtectionTime : byte

@@ -58,7 +58,6 @@
 			this.label38 = new System.Windows.Forms.Label();
 			this.ClockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label35 = new System.Windows.Forms.Label();
-			this.BatteryPercentsCheckBox = new System.Windows.Forms.CheckBox();
 			this.label34 = new System.Windows.Forms.Label();
 			this.ShowLogoCheckBox = new System.Windows.Forms.CheckBox();
 			this.label32 = new System.Windows.Forms.Label();
@@ -118,6 +117,9 @@
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
+			this.PuffCutOffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label54 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label55 = new System.Windows.Forms.Label();
@@ -161,9 +163,9 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label19 = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
-			this.PuffCutOffUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label21 = new System.Windows.Forms.Label();
+			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
+			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -186,11 +188,11 @@
 			this.AdvancedTabPage.SuspendLayout();
 			this.tabControl2.SuspendLayout();
 			this.SettingsTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
 			this.MaterialsTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -433,6 +435,9 @@
 			// 
 			// ScreenTabPage
 			// 
+			this.ScreenTabPage.Controls.Add(this.ChargeScreenComboBox);
+			this.ScreenTabPage.Controls.Add(this.label21);
+			this.ScreenTabPage.Controls.Add(this.ShowClockCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label17);
 			this.ScreenTabPage.Controls.Add(this.ScreensaverTimeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label40);
@@ -441,7 +446,6 @@
 			this.ScreenTabPage.Controls.Add(this.label38);
 			this.ScreenTabPage.Controls.Add(this.ClockTypeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label35);
-			this.ScreenTabPage.Controls.Add(this.BatteryPercentsCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label34);
 			this.ScreenTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label32);
@@ -466,11 +470,10 @@
 			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
 			this.label17.Location = new System.Drawing.Point(4, 304);
 			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(321, 59);
+			this.label17.Size = new System.Drawing.Size(321, 58);
 			this.label17.TabIndex = 103;
-			this.label17.Text = "Battery Percents –  Show % of batteries during charging.\r\n\r\nUse Classic Menu –  A" +
-    "llows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
-    "c.";
+			this.label17.Text = "Show Clock – Show the clock on the main screen.\r\n\r\nUse Classic Menu –  Allows to " +
+    "switch profiles in the classical way, like old modes: Power, Ni, Ti, etc.";
 			// 
 			// ScreensaverTimeComboBox
 			// 
@@ -480,7 +483,7 @@
             "Disabled",
             "Analog",
             "Digital"});
-			this.ScreensaverTimeComboBox.Location = new System.Drawing.Point(101, 224);
+			this.ScreensaverTimeComboBox.Location = new System.Drawing.Point(101, 251);
 			this.ScreensaverTimeComboBox.Name = "ScreensaverTimeComboBox";
 			this.ScreensaverTimeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ScreensaverTimeComboBox.TabIndex = 102;
@@ -488,7 +491,7 @@
 			// label40
 			// 
 			this.label40.AutoSize = true;
-			this.label40.Location = new System.Drawing.Point(4, 227);
+			this.label40.Location = new System.Drawing.Point(4, 254);
 			this.label40.Name = "label40";
 			this.label40.Size = new System.Drawing.Size(96, 13);
 			this.label40.TabIndex = 101;
@@ -516,7 +519,7 @@
 			// label38
 			// 
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(4, 200);
+			this.label38.Location = new System.Drawing.Point(4, 227);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(63, 13);
 			this.label38.TabIndex = 94;
@@ -530,7 +533,7 @@
             "Disabled",
             "Analog",
             "Digital"});
-			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 197);
+			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 224);
 			this.ClockTypeComboBox.Name = "ClockTypeComboBox";
 			this.ClockTypeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ClockTypeComboBox.TabIndex = 95;
@@ -540,19 +543,9 @@
 			this.label35.AutoSize = true;
 			this.label35.Location = new System.Drawing.Point(4, 119);
 			this.label35.Name = "label35";
-			this.label35.Size = new System.Drawing.Size(92, 13);
+			this.label35.Size = new System.Drawing.Size(82, 13);
 			this.label35.TabIndex = 90;
-			this.label35.Text = "Battery Percents:";
-			// 
-			// BatteryPercentsCheckBox
-			// 
-			this.BatteryPercentsCheckBox.AutoSize = true;
-			this.BatteryPercentsCheckBox.Location = new System.Drawing.Point(101, 119);
-			this.BatteryPercentsCheckBox.Name = "BatteryPercentsCheckBox";
-			this.BatteryPercentsCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.BatteryPercentsCheckBox.TabIndex = 91;
-			this.BatteryPercentsCheckBox.Text = "Enabled";
-			this.BatteryPercentsCheckBox.UseVisualStyleBackColor = true;
+			this.label35.Text = "Charge Screen:";
 			// 
 			// label34
 			// 
@@ -1235,6 +1228,54 @@
 			this.SettingsTabPage.Text = "Settings";
 			this.SettingsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(213, 11);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(12, 13);
+			this.label19.TabIndex = 109;
+			this.label19.Text = "s";
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(4, 11);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(71, 13);
+			this.label20.TabIndex = 108;
+			this.label20.Text = "Puff Cut-Off:";
+			// 
+			// PuffCutOffUpDown
+			// 
+			this.PuffCutOffUpDown.DecimalPlaces = 1;
+			this.PuffCutOffUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.PuffCutOffUpDown.Location = new System.Drawing.Point(101, 8);
+			this.PuffCutOffUpDown.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+			this.PuffCutOffUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PuffCutOffUpDown.Name = "PuffCutOffUpDown";
+			this.PuffCutOffUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffCutOffUpDown.TabIndex = 107;
+			this.PuffCutOffUpDown.TabStop = false;
+			this.PuffCutOffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PuffCutOffUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
 			// label54
 			// 
 			this.label54.AutoSize = true;
@@ -1686,53 +1727,37 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
-			// label19
+			// label21
 			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(213, 11);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(12, 13);
-			this.label19.TabIndex = 109;
-			this.label19.Text = "s";
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(4, 200);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(65, 13);
+			this.label21.TabIndex = 104;
+			this.label21.Text = "Show Clock:";
 			// 
-			// label20
+			// ShowClockCheckBox
 			// 
-			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(4, 11);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(71, 13);
-			this.label20.TabIndex = 108;
-			this.label20.Text = "Puff Cut-Off:";
+			this.ShowClockCheckBox.AutoSize = true;
+			this.ShowClockCheckBox.Location = new System.Drawing.Point(101, 200);
+			this.ShowClockCheckBox.Name = "ShowClockCheckBox";
+			this.ShowClockCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.ShowClockCheckBox.TabIndex = 105;
+			this.ShowClockCheckBox.Text = "Enabled";
+			this.ShowClockCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// PuffCutOffUpDown
+			// ChargeScreenComboBox
 			// 
-			this.PuffCutOffUpDown.DecimalPlaces = 1;
-			this.PuffCutOffUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.PuffCutOffUpDown.Location = new System.Drawing.Point(101, 8);
-			this.PuffCutOffUpDown.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-			this.PuffCutOffUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.PuffCutOffUpDown.Name = "PuffCutOffUpDown";
-			this.PuffCutOffUpDown.Size = new System.Drawing.Size(106, 21);
-			this.PuffCutOffUpDown.TabIndex = 107;
-			this.PuffCutOffUpDown.TabStop = false;
-			this.PuffCutOffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.PuffCutOffUpDown.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+			this.ChargeScreenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ChargeScreenComboBox.FormattingEnabled = true;
+			this.ChargeScreenComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 116);
+			this.ChargeScreenComboBox.Name = "ChargeScreenComboBox";
+			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ChargeScreenComboBox.TabIndex = 106;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -1777,6 +1802,7 @@
 			this.tabControl2.ResumeLayout(false);
 			this.SettingsTabPage.ResumeLayout(false);
 			this.SettingsTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.MaterialsTabPage.ResumeLayout(false);
 			this.MaterialsTabPage.PerformLayout();
@@ -1784,7 +1810,6 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1860,7 +1885,6 @@
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.ComboBox ClockTypeComboBox;
 		private System.Windows.Forms.Label label35;
-		private System.Windows.Forms.CheckBox BatteryPercentsCheckBox;
 		private System.Windows.Forms.Label label34;
 		private System.Windows.Forms.CheckBox ShowLogoCheckBox;
 		private System.Windows.Forms.ComboBox ScreensaverTimeComboBox;
@@ -1927,5 +1951,8 @@
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.NumericUpDown PuffCutOffUpDown;
+		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.CheckBox ShowClockCheckBox;
+		private System.Windows.Forms.ComboBox ChargeScreenComboBox;
 	}
 }
