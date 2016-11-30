@@ -36,7 +36,17 @@ namespace NToolbox.Windows
 			TemperatureUpDown.Value = profile.Temperature;
 			TemperatureDominantCheckBox.Checked = profile.Flags.IsTemperatureDominant;
 
-			MaterialComboBox.SelectItem(profile.Flags.Material);
+			if (profile.Flags.Material == ArcticFoxConfiguration.Material.VariWatt)
+			{
+				ModeComboBox.SelectItem(Mode.Power);
+				MaterialComboBox.SelectedIndex = 0;
+			}
+			else
+			{
+				ModeComboBox.SelectItem(Mode.TemperatureControl);
+				MaterialComboBox.SelectItem(profile.Flags.Material);
+			}
+			
 			TCRUpDown.Value = profile.TCR;
 			ResistanceUpDown.Value = profile.Resistance / 1000m;
 			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
@@ -48,7 +58,8 @@ namespace NToolbox.Windows
 
 			for (var i = 0; i < tables.Length; i++)
 			{
-				var index = 5 + i;
+				// 4 : Default Non-TFR materials, Ni, Ti, SS, TCR
+				var index = 4 + i;
 				var item = MaterialComboBox.Items[index] as NamedItemContainer<ArcticFoxConfiguration.Material>;
 				if (item == null) continue;
 
@@ -75,7 +86,11 @@ namespace NToolbox.Windows
 			profile.Temperature = (ushort)TemperatureUpDown.Value;
 			profile.Flags.IsTemperatureDominant = TemperatureDominantCheckBox.Checked;
 
-			profile.Flags.Material = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
+			var mode = ModeComboBox.GetSelectedItem<Mode>();
+			profile.Flags.Material = mode == Mode.TemperatureControl
+				? MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>()
+				: ArcticFoxConfiguration.Material.VariWatt;
+
 			profile.TCR = (ushort)TCRUpDown.Value;
 			profile.Resistance = (ushort)(ResistanceUpDown.Value * 1000);
 			profile.Flags.IsResistanceLocked = ResistanceLockedCheckBox.Checked;
@@ -146,10 +161,33 @@ namespace NToolbox.Windows
 				}
 			};
 
+			ModeComboBox.Items.Clear();
+			ModeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<Mode>("Power", Mode.Power),
+				new NamedItemContainer<Mode>("Temp. Control", Mode.TemperatureControl)
+			});
+			ModeComboBox.SelectedValueChanged += (s, e) =>
+			{
+				var isTemperatureSensing = ModeComboBox.GetSelectedItem<Mode>() == Mode.TemperatureControl;
+
+				MaterialComboBox.Visible = isTemperatureSensing;
+				MaterialLabel.Visible = isTemperatureSensing;
+
+				ResistanceLabel.Visible = isTemperatureSensing;
+				ResistanceUpDown.Visible = isTemperatureSensing;
+				ResistanceLockedCheckBox.Visible = isTemperatureSensing;
+				OhmLabel.Visible = isTemperatureSensing;
+
+				TemperatureLabel.Visible = isTemperatureSensing;
+				TemperatureUpDown.Visible = isTemperatureSensing;
+				TemperatureTypeComboBox.Visible = isTemperatureSensing;
+				TemperatureDominantCheckBox.Visible = isTemperatureSensing;
+			};
+
 			MaterialComboBox.Items.Clear();
 			MaterialComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("VariWatt", ArcticFoxConfiguration.Material.VariWatt),
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
 				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
@@ -169,16 +207,14 @@ namespace NToolbox.Windows
 				if (MaterialComboBox.SelectedItem == null) return;
 
 				var selectedMaterial = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
-				var enableTemperatureEditing = selectedMaterial != ArcticFoxConfiguration.Material.VariWatt;
-				{
-					ResistanceLockedCheckBox.Visible = enableTemperatureEditing;
-					TemperatureLabel.Visible = enableTemperatureEditing;
-					TemperatureUpDown.Visible = enableTemperatureEditing;
-					TemperatureTypeComboBox.Visible = enableTemperatureEditing;
-					TemperatureDominantCheckBox.Visible = enableTemperatureEditing;
-				}
 				TCRUpDown.Visible = selectedMaterial == ArcticFoxConfiguration.Material.TCR;
 			};
+		}
+
+		private enum Mode
+		{
+			Power,
+			TemperatureControl
 		}
 	}
 }

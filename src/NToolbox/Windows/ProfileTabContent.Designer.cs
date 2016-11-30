@@ -43,17 +43,19 @@
 			this.PowerUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
+			this.ResistanceLabel = new System.Windows.Forms.Label();
 			this.ResistanceUpDown = new System.Windows.Forms.NumericUpDown();
-			this.label13 = new System.Windows.Forms.Label();
+			this.OhmLabel = new System.Windows.Forms.Label();
 			this.ResistanceLockedCheckBox = new System.Windows.Forms.CheckBox();
-			this.label21 = new System.Windows.Forms.Label();
+			this.MaterialLabel = new System.Windows.Forms.Label();
 			this.MaterialComboBox = new System.Windows.Forms.ComboBox();
 			this.TCRUpDown = new System.Windows.Forms.NumericUpDown();
 			this.PreheatDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.ModeComboBox = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -85,7 +87,7 @@
 			// 
 			// TemperatureUpDown
 			// 
-			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 260);
+			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 247);
 			this.TemperatureUpDown.Maximum = new decimal(new int[] {
             300,
             0,
@@ -109,7 +111,7 @@
 			// TemperatureDominantCheckBox
 			// 
 			this.TemperatureDominantCheckBox.AutoSize = true;
-			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 287);
+			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 274);
 			this.TemperatureDominantCheckBox.Name = "TemperatureDominantCheckBox";
 			this.TemperatureDominantCheckBox.Size = new System.Drawing.Size(136, 17);
 			this.TemperatureDominantCheckBox.TabIndex = 70;
@@ -119,7 +121,7 @@
 			// TemperatureLabel
 			// 
 			this.TemperatureLabel.AutoSize = true;
-			this.TemperatureLabel.Location = new System.Drawing.Point(4, 263);
+			this.TemperatureLabel.Location = new System.Drawing.Point(4, 250);
 			this.TemperatureLabel.Name = "TemperatureLabel";
 			this.TemperatureLabel.Size = new System.Drawing.Size(73, 13);
 			this.TemperatureLabel.TabIndex = 68;
@@ -132,7 +134,7 @@
 			this.TemperatureTypeComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 260);
+			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 247);
 			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
 			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
 			this.TemperatureTypeComboBox.TabIndex = 69;
@@ -266,14 +268,14 @@
 			this.label4.TabIndex = 79;
 			this.label4.Text = "W";
 			// 
-			// label7
+			// ResistanceLabel
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(4, 193);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(63, 13);
-			this.label7.TabIndex = 84;
-			this.label7.Text = "Resistance:";
+			this.ResistanceLabel.AutoSize = true;
+			this.ResistanceLabel.Location = new System.Drawing.Point(4, 200);
+			this.ResistanceLabel.Name = "ResistanceLabel";
+			this.ResistanceLabel.Size = new System.Drawing.Size(63, 13);
+			this.ResistanceLabel.TabIndex = 84;
+			this.ResistanceLabel.Text = "Resistance:";
 			// 
 			// ResistanceUpDown
 			// 
@@ -283,7 +285,7 @@
             0,
             0,
             196608});
-			this.ResistanceUpDown.Location = new System.Drawing.Point(101, 190);
+			this.ResistanceUpDown.Location = new System.Drawing.Point(101, 197);
 			this.ResistanceUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -300,34 +302,34 @@
             0,
             131072});
 			// 
-			// label13
+			// OhmLabel
 			// 
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label13.Location = new System.Drawing.Point(213, 192);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(17, 16);
-			this.label13.TabIndex = 86;
-			this.label13.Text = "Ω";
+			this.OhmLabel.AutoSize = true;
+			this.OhmLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.OhmLabel.Location = new System.Drawing.Point(213, 199);
+			this.OhmLabel.Name = "OhmLabel";
+			this.OhmLabel.Size = new System.Drawing.Size(17, 16);
+			this.OhmLabel.TabIndex = 86;
+			this.OhmLabel.Text = "Ω";
 			// 
 			// ResistanceLockedCheckBox
 			// 
 			this.ResistanceLockedCheckBox.AutoSize = true;
-			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 217);
+			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 224);
 			this.ResistanceLockedCheckBox.Name = "ResistanceLockedCheckBox";
 			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(59, 17);
 			this.ResistanceLockedCheckBox.TabIndex = 85;
 			this.ResistanceLockedCheckBox.Text = "Locked";
 			this.ResistanceLockedCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// label21
+			// MaterialLabel
 			// 
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(4, 166);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(69, 13);
-			this.label21.TabIndex = 87;
-			this.label21.Text = "Coil Material:";
+			this.MaterialLabel.AutoSize = true;
+			this.MaterialLabel.Location = new System.Drawing.Point(4, 173);
+			this.MaterialLabel.Name = "MaterialLabel";
+			this.MaterialLabel.Size = new System.Drawing.Size(69, 13);
+			this.MaterialLabel.TabIndex = 87;
+			this.MaterialLabel.Text = "Coil Material:";
 			// 
 			// MaterialComboBox
 			// 
@@ -336,14 +338,14 @@
 			this.MaterialComboBox.Items.AddRange(new object[] {
             "°C",
             "°F"});
-			this.MaterialComboBox.Location = new System.Drawing.Point(101, 163);
+			this.MaterialComboBox.Location = new System.Drawing.Point(101, 170);
 			this.MaterialComboBox.Name = "MaterialComboBox";
 			this.MaterialComboBox.Size = new System.Drawing.Size(106, 21);
 			this.MaterialComboBox.TabIndex = 88;
 			// 
 			// TCRUpDown
 			// 
-			this.TCRUpDown.Location = new System.Drawing.Point(213, 163);
+			this.TCRUpDown.Location = new System.Drawing.Point(213, 170);
 			this.TCRUpDown.Maximum = new decimal(new int[] {
             999,
             0,
@@ -411,20 +413,43 @@
 			this.label6.TabIndex = 96;
 			this.label6.Text = "0-9 A-Z + - . \' \'";
 			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(4, 146);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(37, 13);
+			this.label9.TabIndex = 97;
+			this.label9.Text = "Mode:";
+			// 
+			// VapeModeComboBox
+			// 
+			this.ModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ModeComboBox.FormattingEnabled = true;
+			this.ModeComboBox.Items.AddRange(new object[] {
+            "°C",
+            "°F"});
+			this.ModeComboBox.Location = new System.Drawing.Point(101, 143);
+			this.ModeComboBox.Name = "ModeComboBox";
+			this.ModeComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ModeComboBox.TabIndex = 98;
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.label9);
+			this.Controls.Add(this.ModeComboBox);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.PreheatDelayUpDown);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.TCRUpDown);
-			this.Controls.Add(this.label21);
+			this.Controls.Add(this.MaterialLabel);
 			this.Controls.Add(this.MaterialComboBox);
-			this.Controls.Add(this.label7);
+			this.Controls.Add(this.ResistanceLabel);
 			this.Controls.Add(this.ResistanceUpDown);
-			this.Controls.Add(this.label13);
+			this.Controls.Add(this.OhmLabel);
 			this.Controls.Add(this.ResistanceLockedCheckBox);
 			this.Controls.Add(this.PowerUpDown);
 			this.Controls.Add(this.label3);
@@ -466,9 +491,9 @@
 		private System.Windows.Forms.Label label28;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label ResistanceLabel;
+		private System.Windows.Forms.Label OhmLabel;
+		private System.Windows.Forms.Label MaterialLabel;
 		public System.Windows.Forms.NumericUpDown TemperatureUpDown;
 		public System.Windows.Forms.CheckBox TemperatureDominantCheckBox;
 		public System.Windows.Forms.ComboBox TemperatureTypeComboBox;
@@ -484,5 +509,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label9;
+		public System.Windows.Forms.ComboBox ModeComboBox;
 	}
 }
