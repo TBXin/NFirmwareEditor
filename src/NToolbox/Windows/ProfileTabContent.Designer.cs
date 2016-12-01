@@ -377,7 +377,7 @@
             65536});
 			this.PreheatDelayUpDown.Location = new System.Drawing.Point(101, 116);
 			this.PreheatDelayUpDown.Maximum = new decimal(new int[] {
-            10,
+            25,
             0,
             0,
             0});
@@ -422,7 +422,7 @@
 			this.label9.TabIndex = 97;
 			this.label9.Text = "Mode:";
 			// 
-			// VapeModeComboBox
+			// ModeComboBox
 			// 
 			this.ModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ModeComboBox.FormattingEnabled = true;
