@@ -37,6 +37,7 @@ namespace NToolbox.Windows
 		private ContextMenu m_yScaleMenu;
 		private ContextMenu m_puffsMenu;
 
+		private bool m_stopRequested;
 		private bool m_isChartUpdating;
 		private bool m_isChartPaused;
 
@@ -85,13 +86,18 @@ namespace NToolbox.Windows
 				Opacity = 1;
 				new Thread(MonitoringProc) { IsBackground = true }.Start();
 			};
-			Closing += (s, e) => SaveMonitoringConfiguration();
+			Closing += (s, e) =>
+			{
+				m_stopRequested = true;
+				SaveMonitoringConfiguration();
+			};
 		}
 
 		private void MonitoringProc()
 		{
 			while (true)
 			{
+				if (m_stopRequested) return;
 				if (!m_isChartPaused)
 				{
 					byte[] bytes;
