@@ -145,7 +145,6 @@ namespace NToolbox.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
-
 				Trace.Info("Reading dataflash...");
 				var dataflash = HidConnector.Instance.ReadDataflash(worker);
 				Trace.Info("Reading dataflash... Done.");
@@ -156,14 +155,15 @@ namespace NToolbox.Windows
 					dataflash.LoadFromLdrom = true;
 
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
-
 					Trace.Info("Writing dataflash...");
 					HidConnector.Instance.WriteDataflash(dataflash, worker);
 					Trace.Info("Writing dataflash... Done. Waiting 500 msec.");
 					Thread.Sleep(500);
 
-					Trace.Info("Restarting device... 2000 msec wait.");
+					UpdateUI(() => UpdateStatusLabel.Text = @"Restarting device...");
+					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
+					Trace.Info("Restarting device... Done. Waiting 2000 msec.");
 					Thread.Sleep(2000);
 
 					Trace.Info("Waiting for device after reset...");
