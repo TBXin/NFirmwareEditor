@@ -162,9 +162,9 @@ namespace NToolbox.Windows
 					Trace.Info("Writing dataflash... Done. Waiting 500 msec.");
 					Thread.Sleep(500);
 
-					Trace.Info("Restarting device...");
+					Trace.Info("Restarting device... 2000 msec wait.");
 					HidConnector.Instance.RestartDevice();
-					Thread.Sleep(250);
+					Thread.Sleep(2000);
 
 					Trace.Info("Waiting for device after reset...");
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
