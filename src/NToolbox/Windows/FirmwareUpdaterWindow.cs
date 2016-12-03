@@ -145,15 +145,43 @@ namespace NToolbox.Windows
 			try
 			{
 				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
+
+				Trace.Info("Reading dataflash...");
 				var dataflash = HidConnector.Instance.ReadDataflash(worker);
+				Trace.Info("Reading dataflash... Done.");
+
 				if (dataflash.LoadFromLdrom == false && dataflash.FirmwareVersion > 0)
 				{
+					Trace.Info("Switching boot mode...");
 					dataflash.LoadFromLdrom = true;
+
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
+
+					Trace.Info("Writing dataflash...");
 					HidConnector.Instance.WriteDataflash(dataflash, worker);
+					Trace.Info("Writing dataflash... Done. Waiting 500 msec.");
+					Thread.Sleep(500);
+
+					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
+					Thread.Sleep(250);
+
+					Trace.Info("Waiting for device after reset...");
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
-					Thread.Sleep(2000);
+
+					var result = SpinWait.SpinUntil(() =>
+					{
+						Thread.Sleep(100);
+						return HidConnector.Instance.IsDeviceConnected;
+					}, TimeSpan.FromSeconds(5));
+
+					if (result) Trace.Info("Waiting for device after reset... Done.");
+					if (!result)
+					{
+						Trace.Info("Waiting for device after reset... Failed.");
+						InfoBox.Show("Device is not connected. Update process interrupted.");
+						return;
+					}
 				}
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
 				HidConnector.Instance.WriteFirmware(firmware, worker);
