@@ -635,6 +635,7 @@ namespace NToolbox.Windows
 				{
 					series.Points.RemoveAt(0);
 				}
+				MainChart.ChartAreas[0].AxisX.Minimum = MainChart.Series[0].Points[0].XValue - 1;
 
 				if (series.Points.Count > 0)
 				{
@@ -677,7 +678,7 @@ namespace NToolbox.Windows
 			else
 			{
 				MainChart.ChartAreas[0].AxisX.Maximum = potentialAxisXMax;
-				MainChartHorizontalScrollBar.Maximum = (int)Math.Ceiling(potentialAxisXMax - timeFrameInSeconds);
+				MainChartHorizontalScrollBar.Maximum = (int)Math.Ceiling(potentialAxisXMax - timeFrameInSeconds - MainChart.ChartAreas[0].AxisX.Minimum);
 			}
 		}
 
