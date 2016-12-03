@@ -183,8 +183,12 @@ namespace NToolbox.Windows
 						return;
 					}
 				}
+
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
+
+				Trace.Info("Uploading firmware...");
 				HidConnector.Instance.WriteFirmware(firmware, worker);
+				Trace.Info("Uploading firmware... Done.");
 
 				UpdateUI(() =>
 				{
