@@ -275,33 +275,33 @@ namespace NToolbox.Windows
 			{
 				m_isPlacingAnnotation = true;
 				var results = MainChart.HitTest(e.X, e.Y, true, ChartElementType.DataPoint);
-				if (results.Length == 0 ||
-					results[0].ChartElementType != ChartElementType.DataPoint ||
-					results[0].PointIndex < 0 ||
-					results[0].Series.Points.Count <= results[0].PointIndex)
+				foreach (var result in results)
 				{
-					return;
-				}
+					if (result.ChartElementType != ChartElementType.DataPoint) continue;
 
-				var result = results[0];
-				if (result.Series.Points.Count <= result.PointIndex) return;
-				if (m_pointUnderCursor != null && !m_pointerUnderCursorSelected)
-				{
-					m_pointUnderCursor.MarkerSize = ChartMarkerSize;
-				}
+					var point = result.Object as DataPoint;
+					if (point == null) continue;
+					if (point.Tag == null) continue;
 
-				m_pointUnderCursor = result.Series.Points[result.PointIndex];
-				m_pointerUnderCursorSelected = m_pointUnderCursor.MarkerSize == ChartSelectedMarkerSize;
-				m_pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
+					if (m_pointUnderCursor != null && !m_pointerUnderCursorSelected)
+					{
+						m_pointUnderCursor.MarkerSize = ChartMarkerSize;
+					}
 
-				m_valueAnnotation.BeginPlacement();
-				{
-					// You must set AxisX before binding to xValue!
-					m_valueAnnotation.AnchorX = m_pointUnderCursor.XValue;
-					m_valueAnnotation.AnchorY = m_pointUnderCursor.YValues[0];
-					m_valueAnnotation.Text = m_pointUnderCursor.Tag.ToString();
+					m_pointUnderCursor = point;
+					m_pointerUnderCursorSelected = m_pointUnderCursor.MarkerSize == ChartSelectedMarkerSize;
+					m_pointUnderCursor.MarkerSize = ChartSelectedMarkerSize;
+
+					m_valueAnnotation.BeginPlacement();
+					{
+						// You must set AxisX before binding to xValue!
+						m_valueAnnotation.AnchorX = m_pointUnderCursor.XValue;
+						m_valueAnnotation.AnchorY = m_pointUnderCursor.YValues[0];
+						m_valueAnnotation.Text = m_pointUnderCursor.Tag.ToString();
+					}
+					m_valueAnnotation.EndPlacement();
+					break;
 				}
-				m_valueAnnotation.EndPlacement();
 			}
 			catch (Exception)
 			{
