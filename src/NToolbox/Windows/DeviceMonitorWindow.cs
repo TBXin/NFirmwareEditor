@@ -24,6 +24,33 @@ namespace NToolbox.Windows
 		private const int ChartMarkerSize = 0;
 		private const int ChartSelectedMarkerSize = 7;
 
+		private readonly IDictionary<string, float> m_sensorsData = new Dictionary<string, float>
+		{
+			{ SensorsKeys.Timestamp, 0 },
+
+			{ SensorsKeys.IsFiring, 0 },
+			{ SensorsKeys.IsCharging, 0 },
+			{ SensorsKeys.IsCelcius, 0 },
+
+			{ SensorsKeys.Battery1, 0 },
+			{ SensorsKeys.Battery2, 0 },
+			{ SensorsKeys.Battery3, 0 },
+			{ SensorsKeys.BatteryPack, 0 },
+
+			{ SensorsKeys.Power, 0 },
+			{ SensorsKeys.PowerSet, 0 },
+			{ SensorsKeys.TemperatureSet, 0 },
+			{ SensorsKeys.Temperature, 0 },
+
+			{ SensorsKeys.OutputVoltage, 0 },
+			{ SensorsKeys.OutputCurrent, 0 },
+
+			{ SensorsKeys.Resistance, 0 },
+			{ SensorsKeys.RealResistance, 0 },
+
+			{ SensorsKeys.BoardTemperature, 0 }
+		};
+
 		private readonly ToolboxConfiguration m_configuration;
 		private readonly StringBuilder m_lineBuilder = new StringBuilder();
 
@@ -31,12 +58,14 @@ namespace NToolbox.Windows
 		private TimeSpan m_timeFrame = TimeSpan.FromSeconds(10);
 		private int m_verticalFrame = 100;
 		private DateTime? m_startTime;
-		private bool m_isTracking = true;
-
+		
 		private ContextMenu m_xScaleMenu;
 		private ContextMenu m_yScaleMenu;
 		private ContextMenu m_puffsMenu;
 
+		private DateTime? m_prevReceiveTime;
+
+		private bool m_isTracking = true;
 		private bool m_stopRequested;
 		private bool m_isChartUpdating;
 		private bool m_isChartPaused;
@@ -480,32 +509,31 @@ namespace NToolbox.Windows
 			var outputCurrent = data.OutputCurrent / 100f;
 			var outputPower = outputVoltage * outputCurrent;
 
-			return new Dictionary<string, float>
 			{
-				{ SensorsKeys.Timestamp, data.Timestamp / 100f },
+				//m_sensorsData[SensorsKeys.Timestamp] = data.Timestamp / 100f;
+				m_sensorsData[SensorsKeys.IsFiring] = data.IsFiring ? 1 : 0;
+				m_sensorsData[SensorsKeys.IsCharging] = data.IsCharging ? 1 : 0;
+				m_sensorsData[SensorsKeys.IsCelcius] = data.IsCelcius ? 1 : 0;
 
-				{ SensorsKeys.IsFiring, data.IsFiring ? 1 : 0 },
-				{ SensorsKeys.IsCharging, data.IsCharging ? 1 : 0 },
-				{ SensorsKeys.IsCelcius, data.IsCelcius ? 1 : 0 },
+				m_sensorsData[SensorsKeys.Battery1] = battery1;
+				m_sensorsData[SensorsKeys.Battery2] = battery2;
+				m_sensorsData[SensorsKeys.Battery3] = battery3;
+				m_sensorsData[SensorsKeys.BatteryPack] = batteryPack;
 
-				{ SensorsKeys.Battery1, battery1 },
-				{ SensorsKeys.Battery2, battery2 },
-				{ SensorsKeys.Battery3, battery3 },
-				{ SensorsKeys.BatteryPack, batteryPack },
+				m_sensorsData[SensorsKeys.Power] = outputPower;
+				m_sensorsData[SensorsKeys.PowerSet] = data.PowerSet / 10f;
+				m_sensorsData[SensorsKeys.TemperatureSet] = data.TemperatureSet;
+				m_sensorsData[SensorsKeys.Temperature] = data.Temperature;
 
-				{ SensorsKeys.Power, outputPower },
-				{ SensorsKeys.PowerSet, data.PowerSet / 10f },
-				{ SensorsKeys.TemperatureSet, data.TemperatureSet },
-				{ SensorsKeys.Temperature, data.Temperature },
+				m_sensorsData[SensorsKeys.OutputVoltage] = outputVoltage;
+				m_sensorsData[SensorsKeys.OutputCurrent] = outputCurrent;
 
-				{ SensorsKeys.OutputVoltage, outputVoltage },
-				{ SensorsKeys.OutputCurrent, outputCurrent },
+				m_sensorsData[SensorsKeys.Resistance] = data.Resistance / 1000f;
+				m_sensorsData[SensorsKeys.RealResistance] = data.RealResistance / 1000f;
 
-				{ SensorsKeys.Resistance, data.Resistance / 1000f },
-				{ SensorsKeys.RealResistance, data.RealResistance / 1000f },
-
-				{ SensorsKeys.BoardTemperature, data.BoardTemperature }
-			};
+				m_sensorsData[SensorsKeys.BoardTemperature] = data.BoardTemperature;
+			}
+			return m_sensorsData;
 		}
 
 		private void UpdateSeries(IDictionary<string, float> sensors)
