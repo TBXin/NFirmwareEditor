@@ -153,9 +153,8 @@ namespace NFirmwareEditor.Windows
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
 					m_connector.WriteDataflash(dataflash, worker);
 					m_connector.RestartDevice();
-					Thread.Sleep(2000);
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
-					Thread.Sleep(2000);
+					Thread.Sleep(3000);
 				}
 				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
 				m_connector.WriteFirmware(firmware, worker);

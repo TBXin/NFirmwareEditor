@@ -163,8 +163,8 @@ namespace NToolbox.Windows
 					UpdateUI(() => UpdateStatusLabel.Text = @"Restarting device...");
 					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
-					Trace.Info("Restarting device... Done. Waiting 2000 msec.");
-					Thread.Sleep(2000);
+					Trace.Info("Restarting device... Done. Waiting 3000 msec.");
+					Thread.Sleep(3000);
 
 					Trace.Info("Waiting for device after reset...");
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
