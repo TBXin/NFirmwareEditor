@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
+using NCore.USB;
+using NCore.USB.Models;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
@@ -24,7 +26,6 @@ namespace NFirmwareEditor.Windows
 		private const int MaximumWatts = 250;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
-		private readonly USBConnector m_usbConnector = new USBConnector();
 		private readonly COMConnector m_comConnector = new COMConnector();
 		private readonly DataflashManager m_manager = new DataflashManager();
 		private SimpleDataflash m_simple;
@@ -302,7 +303,7 @@ namespace NFirmwareEditor.Windows
 		{
 			try
 			{
-				var data = m_usbConnector.Screenshot();
+				var data = HidConnector.Instance.Screenshot();
 				if (data == null || data.All(x => x == 0x00))
 				{
 					throw new InvalidOperationException("Invalid screenshot data!");
@@ -368,8 +369,8 @@ namespace NFirmwareEditor.Windows
 			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
-			m_usbConnector.DeviceConnected += DeviceConnected;
-			m_usbConnector.StartUSBConnectionMonitoring();
+			HidConnector.Instance.DeviceConnected += DeviceConnected;
+			HidConnector.Instance.StartUSBConnectionMonitoring();
 			m_comConnector.MessageReceived += COMMessage_Received;
 
 			Closing += (s, e) =>
@@ -383,9 +384,9 @@ namespace NFirmwareEditor.Windows
 		{
 			if (dataflash == null) throw new ArgumentNullException("dataflash");
 
-			DeviceNameLabel.Text = USBConnector.GetDeviceInfo(dataflash.InfoBlock.ProductID).Name;
+			DeviceNameLabel.Text = HidDeviceInfo.Get(dataflash.InfoBlock.ProductID).Name;
 			FirmwareVersionTextBox.Text = (dataflash.InfoBlock.FWVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
-			BuildTextBox.Text = m_simple.Build.ToString();
+			//BuildTextBox.Text = m_simple.Build.ToString();
 			HardwareVersionTextBox.Text = (dataflash.ParamsBlock.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 			BootModeTextBox.Text = dataflash.ParamsBlock.BootMode.ToString();
 
@@ -587,10 +588,10 @@ namespace NFirmwareEditor.Windows
 
 		private Dataflash ReadDataflash(BackgroundWorker worker = null)
 		{
-			m_simple = m_usbConnector.ReadDataflash(worker);
-			return m_simple.Build < MinimumSupportedBuildNumber
+			m_simple = HidConnector.Instance.ReadDataflash(worker);
+			return /*m_simple.Build < MinimumSupportedBuildNumber
 				? null
-				: m_manager.Read(m_simple.Data);
+				: */m_manager.Read(m_simple.Data);
 		}
 
 		private void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -702,7 +703,7 @@ namespace NFirmwareEditor.Windows
 					UpdateUI(() => SaveWorkspaceToDataflash(m_dataflash));
 
 					m_manager.Write(m_dataflash, dataflashCopy);
-					m_usbConnector.WriteDataflash(new SimpleDataflash { Data = dataflashCopy }, worker);
+					HidConnector.Instance.WriteDataflash(new SimpleDataflash { Data = dataflashCopy }, worker);
 				}
 				catch (Exception ex)
 				{
@@ -720,7 +721,7 @@ namespace NFirmwareEditor.Windows
 			{
 				try
 				{
-					m_usbConnector.ResetDataflash();
+					HidConnector.Instance.ResetDataflash();
 					m_dataflash = ReadDataflash(worker);
 					UpdateUI(() => InitializeWorkspaceFromDataflash(m_dataflash));
 				}
@@ -824,7 +825,7 @@ namespace NFirmwareEditor.Windows
 
 			try
 			{
-				m_usbConnector.RestartDevice();
+				HidConnector.Instance.RestartDevice();
 			}
 			catch (Exception ex)
 			{
@@ -839,8 +840,8 @@ namespace NFirmwareEditor.Windows
 
 			try
 			{
-				m_usbConnector.ResetDataflash();
-				m_usbConnector.RestartDevice();
+				HidConnector.Instance.ResetDataflash();
+				HidConnector.Instance.RestartDevice();
 			}
 			catch (Exception ex)
 			{

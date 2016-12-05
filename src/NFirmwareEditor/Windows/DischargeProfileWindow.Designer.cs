@@ -1,4 +1,5 @@
-﻿namespace NFirmwareEditor.Windows
+﻿#pragma warning disable 108, 114
+namespace NFirmwareEditor.Windows
 {
 	partial class DischargeProfileWindow
 	{
@@ -1085,7 +1086,7 @@
 		private System.Windows.Forms.NumericUpDown Volts2UpDown;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown Percents2UpDown;
-		private new System.Windows.Forms.DataVisualization.Charting.Chart DischargeChart;
+		private System.Windows.Forms.DataVisualization.Charting.Chart DischargeChart;
 		private NCore.UI.GroupPanel groupPanel3;
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.NumericUpDown CutoffUpDown;

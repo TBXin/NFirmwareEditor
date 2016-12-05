@@ -1,4 +1,5 @@
-﻿namespace NFirmwareEditor.Windows
+﻿#pragma warning disable 108, 114
+namespace NFirmwareEditor.Windows
 {
 	partial class ResizeImageWindow
 	{
