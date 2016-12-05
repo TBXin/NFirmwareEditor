@@ -1,4 +1,5 @@
-﻿namespace NToolbox.Windows
+﻿#pragma warning disable 108, 114
+namespace NToolbox.Windows
 {
 	partial class HardwareVersionWindow
 	{

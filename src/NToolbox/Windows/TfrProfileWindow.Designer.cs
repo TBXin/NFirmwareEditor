@@ -1,4 +1,5 @@
-﻿namespace NToolbox.Windows
+﻿#pragma warning disable 108, 114
+namespace NToolbox.Windows
 {
 	partial class TFRProfileWindow
 	{
@@ -730,7 +731,7 @@
 		private System.Windows.Forms.NumericUpDown Volts2UpDown;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown Percents2UpDown;
-		private new System.Windows.Forms.DataVisualization.Charting.Chart TFRChart;
+		private System.Windows.Forms.DataVisualization.Charting.Chart TFRChart;
 		private System.Windows.Forms.TextBox NameTextBox;
 		private System.Windows.Forms.Button ExportButton;
 		private System.Windows.Forms.Button ImportButton;
