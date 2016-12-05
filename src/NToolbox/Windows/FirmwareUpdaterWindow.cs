@@ -163,17 +163,34 @@ namespace NToolbox.Windows
 					UpdateUI(() => UpdateStatusLabel.Text = @"Restarting device...");
 					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
-					Trace.Info("Restarting device... Done. Waiting 3000 msec.");
-					Thread.Sleep(3000);
+					Trace.Info("Restarting device... Done.");
 
 					Trace.Info("Waiting for device after reset...");
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
 
 					var result = SpinWait.SpinUntil(() =>
 					{
-						Thread.Sleep(100);
-						return HidConnector.Instance.IsDeviceConnected;
-					}, TimeSpan.FromSeconds(5));
+						Thread.Sleep(1000);
+						var isConnected = HidConnector.Instance.IsDeviceConnected;
+						if (!isConnected)
+						{
+							Trace.Info("Device is not connected. Next attempt in 1 sec.");
+							return false;
+						}
+						try
+						{
+							var df = HidConnector.Instance.ReadDataflash();
+							Trace.Info(df.LoadFromLdrom
+								? "Device found in the LDROM boot mode."
+								: "Device found in the APROM boot mode. Waiting for the LDROM boot mode.");
+							return df.LoadFromLdrom;
+						}
+						catch (Exception ex)
+						{
+							Trace.Info("Device found, but an error occured during attemp to read dataflash...\n" + ex);
+							return false;
+						}
+					}, TimeSpan.FromSeconds(15));
 
 					if (result) Trace.Info("Waiting for device after reset... Done.");
 					if (!result)
