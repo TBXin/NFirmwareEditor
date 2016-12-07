@@ -62,7 +62,7 @@ namespace NToolbox.Windows
 
 			var series = new Series
 			{
-				ChartType = SeriesChartType.Spline,
+				ChartType = SeriesChartType.Line,
 				YValueType = ChartValueType.Double,
 				Color = Color.YellowGreen,
 				BorderWidth = 2,
