@@ -497,7 +497,7 @@ namespace NToolbox.Windows
 			var curveIndex = (int)button.Tag;
 			var curve = m_configuration.Advanced.PowerCurves[curveIndex];
 
-			/*using (var editor = new TFRProfileWindow(curve))
+			using (var editor = new PowerCurveProfileWindow(curve))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 
@@ -509,7 +509,7 @@ namespace NToolbox.Windows
 
 					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
 				}
-			}*/
+			}
 		}
 
 		private void TFREditButton_Click(object sender, EventArgs e)
