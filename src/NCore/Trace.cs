@@ -9,6 +9,11 @@ namespace NCore
 	{
 		private static readonly Logger s_logger = LogManager.GetCurrentClassLogger();
 
+		public static void Info(Exception ex, string format, params object[] args)
+		{
+			s_logger.Info(ex, format, args);
+		}
+
 		public static void Info(string format, params object[] args)
 		{
 			Log(LogLevel.Info, format, args);
