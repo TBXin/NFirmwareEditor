@@ -39,7 +39,7 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label29 = new System.Windows.Forms.Label();
 			this.PreheatTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.label28 = new System.Windows.Forms.Label();
+			this.PreheatPowerLabel = new System.Windows.Forms.Label();
 			this.PowerUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.ModeComboBox = new System.Windows.Forms.ComboBox();
+			this.PowerCurveComboBox = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -209,17 +210,17 @@
             "%"});
 			this.PreheatTypeComboBox.Location = new System.Drawing.Point(213, 62);
 			this.PreheatTypeComboBox.Name = "PreheatTypeComboBox";
-			this.PreheatTypeComboBox.Size = new System.Drawing.Size(42, 21);
+			this.PreheatTypeComboBox.Size = new System.Drawing.Size(55, 21);
 			this.PreheatTypeComboBox.TabIndex = 73;
 			// 
-			// label28
+			// PreheatPowerLabel
 			// 
-			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(4, 65);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(82, 13);
-			this.label28.TabIndex = 72;
-			this.label28.Text = "Preheat Power:";
+			this.PreheatPowerLabel.AutoSize = true;
+			this.PreheatPowerLabel.Location = new System.Drawing.Point(4, 65);
+			this.PreheatPowerLabel.Name = "PreheatPowerLabel";
+			this.PreheatPowerLabel.Size = new System.Drawing.Size(82, 13);
+			this.PreheatPowerLabel.TabIndex = 72;
+			this.PreheatPowerLabel.Text = "Preheat Power:";
 			// 
 			// PowerUpDown
 			// 
@@ -434,10 +435,21 @@
 			this.ModeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ModeComboBox.TabIndex = 98;
 			// 
+			// PowerCurveComboBox
+			// 
+			this.PowerCurveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.PowerCurveComboBox.FormattingEnabled = true;
+			this.PowerCurveComboBox.Location = new System.Drawing.Point(101, 62);
+			this.PowerCurveComboBox.Name = "PowerCurveComboBox";
+			this.PowerCurveComboBox.Size = new System.Drawing.Size(106, 21);
+			this.PowerCurveComboBox.TabIndex = 99;
+			this.PowerCurveComboBox.Visible = false;
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.PowerCurveComboBox);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.ModeComboBox);
 			this.Controls.Add(this.label6);
@@ -459,7 +471,7 @@
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label29);
 			this.Controls.Add(this.PreheatTypeComboBox);
-			this.Controls.Add(this.label28);
+			this.Controls.Add(this.PreheatPowerLabel);
 			this.Controls.Add(this.TemperatureUpDown);
 			this.Controls.Add(this.TemperatureDominantCheckBox);
 			this.Controls.Add(this.TemperatureLabel);
@@ -488,7 +500,7 @@
 		private System.Windows.Forms.Label TemperatureLabel;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label29;
-		private System.Windows.Forms.Label label28;
+		private System.Windows.Forms.Label PreheatPowerLabel;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label ResistanceLabel;
@@ -511,5 +523,6 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label9;
 		public System.Windows.Forms.ComboBox ModeComboBox;
+		public System.Windows.Forms.ComboBox PowerCurveComboBox;
 	}
 }

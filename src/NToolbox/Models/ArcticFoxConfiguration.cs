@@ -89,6 +89,9 @@ namespace NToolbox.Models
 			public TFRTable[] TFRTables;
 
 			public byte PuffCutOff; // Value from 10 to 150
+
+			[BinaryArray(Length = 8)]
+			public PowerCurve[] PowerCurves;
 		}
 
 		internal class TFRTable
@@ -104,6 +107,21 @@ namespace NToolbox.Models
 		{
 			public ushort Temperature;
 			public ushort Factor; // value * 10000
+		}
+
+		internal class PowerCurve
+		{
+			[BinaryAsciiString(Length = 8)]
+			public string Name;
+
+			[BinaryArray(Length = 12)]
+			public PowerCurvePoint[] Points;
+		}
+
+		internal class PowerCurvePoint
+		{
+			public byte Time; // X * 10
+			public byte Percent; // 0 - 255%
 		}
 
 		internal class CustomBattery
@@ -240,6 +258,8 @@ namespace NToolbox.Models
 			public string Name;
 
 			public ProfileFlags Flags;
+			public PreheatType PreheatType;
+			public byte SelectedCurve;
 			// 0 - Off, unit is 1/100 sec
 			public byte PreheatTime;
 			// 0 - Off, units is 1/10 sec
@@ -277,7 +297,6 @@ namespace NToolbox.Models
 			public bool IsTemperatureDominant;
 			public bool IsCelcius;
 			public bool IsResistanceLocked;
-			public bool IsPreheatInPercents;
 			
 			public void Read(BinaryReader br)
 			{
@@ -286,7 +305,6 @@ namespace NToolbox.Models
 				IsTemperatureDominant = flags.GetBit(5);
 				IsCelcius = flags.GetBit(6);
 				IsResistanceLocked = flags.GetBit(7);
-				IsPreheatInPercents = flags.GetBit(8);
 			}
 
 			public void Write(BinaryWriter bw)
@@ -294,8 +312,7 @@ namespace NToolbox.Models
 				var flags = ((byte)Material)
 					.SetBit(5, IsTemperatureDominant)
 					.SetBit(6, IsCelcius)
-					.SetBit(7, IsResistanceLocked)
-					.SetBit(8, IsPreheatInPercents);
+					.SetBit(7, IsResistanceLocked);
 				bw.Write(flags);
 			}
 		}
@@ -315,6 +332,13 @@ namespace NToolbox.Models
 			TFR6 = 10,
 			TFR7 = 11,
 			TFR8 = 12
+		}
+
+		internal enum PreheatType : byte
+		{
+			Watts = 0,
+			Percents = 1,
+			Curve = 2
 		}
 	}
 	#pragma warning restore 0649

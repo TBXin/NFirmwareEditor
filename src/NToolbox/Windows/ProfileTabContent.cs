@@ -25,10 +25,19 @@ namespace NToolbox.Windows
 		{
 			ProfileNameTextBox.Text = profile.Name;
 			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(profile.Power / 10m, PowerUpDown.Maximum));
-			PreheatTypeComboBox.SelectItem(profile.Flags.IsPreheatInPercents);
-			PreheatPowerUpDown.Value = profile.Flags.IsPreheatInPercents
-				? profile.PreheatPower
-				: Math.Max(PreheatPowerUpDown.Minimum, Math.Min(profile.PreheatPower / 10m, PreheatPowerUpDown.Maximum));
+			PreheatTypeComboBox.SelectItem(profile.PreheatType);
+
+			var preheatPower = 0;
+			if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Watts)
+			{
+				preheatPower = profile.PreheatPower / 10;
+			}
+			else if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Percents)
+			{
+				preheatPower = profile.PreheatPower;
+			}
+			PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(preheatPower, PreheatPowerUpDown.Maximum));
+			PowerCurveComboBox.SelectItem(profile.SelectedCurve);
 			PreheatTimeUpDown.Value = profile.PreheatTime / 100m;
 			PreheatDelayUpDown.Value = profile.PreheatDelay / 10m;
 
@@ -52,10 +61,27 @@ namespace NToolbox.Windows
 			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
 		}
 
+		public void UpdatePowerCurveNames(ArcticFoxConfiguration.PowerCurve[] curves)
+		{
+			var selectedValue = PowerCurveComboBox.GetSelectedItem<byte>();
+			PowerCurveComboBox.BeginUpdate();
+			for (byte i = 0; i < curves.Length; i++)
+			{
+				// 4 : Default Non-TFR materials, Ni, Ti, SS, TCR
+				var item = PowerCurveComboBox.Items[i] as NamedItemContainer<byte>;
+				if (item == null) continue;
+
+				PowerCurveComboBox.Items.RemoveAt(i);
+				PowerCurveComboBox.Items.Insert(i, new NamedItemContainer<byte>(curves[i].Name, i));
+			}
+			PowerCurveComboBox.EndUpdate();
+			PowerCurveComboBox.SelectItem(selectedValue);
+		}
+
 		public void UpdateTFRNames(ArcticFoxConfiguration.TFRTable[] tables)
 		{
 			var selectedValue = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
-
+			MaterialComboBox.BeginUpdate();
 			for (var i = 0; i < tables.Length; i++)
 			{
 				// 4 : Default Non-TFR materials, Ni, Ti, SS, TCR
@@ -64,12 +90,10 @@ namespace NToolbox.Windows
 				if (item == null) continue;
 
 				var material = item.Data;
-				MaterialComboBox.BeginUpdate();
 				MaterialComboBox.Items.RemoveAt(index);
 				MaterialComboBox.Items.Insert(index, new NamedItemContainer<ArcticFoxConfiguration.Material>("[TFR] " + tables[i].Name, material));
-				MaterialComboBox.EndUpdate();
 			}
-
+			MaterialComboBox.EndUpdate();
 			MaterialComboBox.SelectItem(selectedValue);
 		}
 
@@ -77,8 +101,19 @@ namespace NToolbox.Windows
 		{
 			profile.Name = ProfileNameTextBox.Text;
 			profile.Power = (ushort)(PowerUpDown.Value * 10);
-			profile.Flags.IsPreheatInPercents = PreheatTypeComboBox.GetSelectedItem<bool>();
-			profile.PreheatPower = profile.Flags.IsPreheatInPercents ? (ushort)PreheatPowerUpDown.Value : (ushort)(PreheatPowerUpDown.Value * 10);
+			profile.PreheatType = PreheatTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.PreheatType>();
+			if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Watts)
+			{
+				profile.PreheatPower = (ushort)(PreheatPowerUpDown.Value * 10);
+			}
+			else if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Percents)
+			{
+				profile.PreheatPower = (ushort)PreheatPowerUpDown.Value;
+			}
+			else if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Curve)
+			{
+				profile.SelectedCurve = (byte)PowerCurveComboBox.SelectedIndex;
+			}
 			profile.PreheatTime = (byte)(PreheatTimeUpDown.Value * 100);
 			profile.PreheatDelay = (byte)(PreheatDelayUpDown.Value * 10);
 
@@ -118,27 +153,56 @@ namespace NToolbox.Windows
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<bool>("%", true),
-				new NamedItemContainer<bool>("W", false)
+			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("W", ArcticFoxConfiguration.PreheatType.Watts),
+			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("%", ArcticFoxConfiguration.PreheatType.Percents),
+			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Curve", ArcticFoxConfiguration.PreheatType.Curve)
 			});
 			PreheatTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
-				var isPercents = PreheatTypeComboBox.GetSelectedItem<bool>();
-				if (isPercents)
-				{
-					PreheatPowerUpDown.DecimalPlaces = 0;
-					PreheatPowerUpDown.Increment = 1;
-					PreheatPowerUpDown.Minimum = 100;
-					PreheatPowerUpDown.Maximum = 250;
-				}
-				else
+				var type = PreheatTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.PreheatType>();
+				if (type == ArcticFoxConfiguration.PreheatType.Watts)
 				{
 					PreheatPowerUpDown.DecimalPlaces = 1;
 					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = MinimumWatts;
 					PreheatPowerUpDown.Maximum = m_maximumWatts;
 				}
+				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
+				{
+					PreheatPowerUpDown.DecimalPlaces = 0;
+					PreheatPowerUpDown.Increment = 1;
+					PreheatPowerUpDown.Minimum = 100;
+					PreheatPowerUpDown.Maximum = 250;
+				}
+
+				if (type == ArcticFoxConfiguration.PreheatType.Curve)
+				{
+					PreheatPowerLabel.Text = @"Power Curve:";
+					PowerCurveComboBox.Visible = true;
+					PreheatTimeUpDown.Enabled = false;
+					PreheatDelayUpDown.Enabled = false;
+				}
+				else
+				{
+					PreheatPowerLabel.Text = @"Preheat Power:";
+					PowerCurveComboBox.Visible = false;
+					PreheatTimeUpDown.Enabled = true;
+					PreheatDelayUpDown.Enabled = true;
+				}
 			};
+
+			PowerCurveComboBox.Items.Clear();
+			PowerCurveComboBox.Items.AddRange(new object[]
+			{
+			    new NamedItemContainer<byte>("Curve 1", 0),
+			    new NamedItemContainer<byte>("Curve 2", 1),
+			    new NamedItemContainer<byte>("Curve 3", 2),
+			    new NamedItemContainer<byte>("Curve 4", 3),
+			    new NamedItemContainer<byte>("Curve 5", 4),
+			    new NamedItemContainer<byte>("Curve 6", 5),
+			    new NamedItemContainer<byte>("Curve 7", 6),
+			    new NamedItemContainer<byte>("Curve 8", 7),
+			});
 
 			TemperatureTypeComboBox.Items.Clear();
 			TemperatureTypeComboBox.Items.AddRange(new object[]

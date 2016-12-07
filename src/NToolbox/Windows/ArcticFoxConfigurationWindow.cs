@@ -13,8 +13,8 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161129;
-		private const int MaximumSupportedSettingsVersion = 2;
+		private const int MinimumSupportedBuildNumber = 161206;
+		private const int MaximumSupportedSettingsVersion = 3;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
@@ -292,6 +292,7 @@ namespace NToolbox.Windows
 
 					var profile = general.Profiles[i];
 					tabContent.Initialize(profile);
+					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
 					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
 				}
 
