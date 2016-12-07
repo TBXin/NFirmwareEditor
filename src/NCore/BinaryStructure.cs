@@ -76,7 +76,7 @@ namespace NCore
 				else if (fieldType == typeof(string))
 				{
 					var ascii = GetAttribute<BinaryAsciiStringAttribute>(field, true);
-					value = Encoding.ASCII.GetString(br.ReadBytes(ascii.Length));
+					value = Encoding.ASCII.GetString(br.ReadBytes(ascii.Length)).TrimEnd('\0');
 				}
 				else if (typeof(IBinaryStructure).IsAssignableFrom(fieldType))
 				{

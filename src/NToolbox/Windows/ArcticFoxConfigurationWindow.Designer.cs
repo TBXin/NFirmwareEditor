@@ -50,6 +50,9 @@
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
+			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
+			this.label21 = new System.Windows.Forms.Label();
+			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
 			this.label17 = new System.Windows.Forms.Label();
 			this.ScreensaverTimeComboBox = new System.Windows.Forms.ComboBox();
 			this.label40 = new System.Windows.Forms.Label();
@@ -163,9 +166,23 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label21 = new System.Windows.Forms.Label();
-			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
-			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
+			this.PowerCurvesTabPage = new System.Windows.Forms.TabPage();
+			this.PowerCurve8EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve8Label = new System.Windows.Forms.Label();
+			this.PowerCurve7EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve7Label = new System.Windows.Forms.Label();
+			this.PowerCurve6EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve6Label = new System.Windows.Forms.Label();
+			this.PowerCurve5EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve5Label = new System.Windows.Forms.Label();
+			this.PowerCurve4EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve4Label = new System.Windows.Forms.Label();
+			this.PowerCurve3EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve3Label = new System.Windows.Forms.Label();
+			this.PowerCurve2EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve2Label = new System.Windows.Forms.Label();
+			this.PowerCurve1EditButton = new System.Windows.Forms.Button();
+			this.PowerCurve1Label = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -193,6 +210,7 @@
 			this.MaterialsTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			this.PowerCurvesTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -464,6 +482,38 @@
 			this.ScreenTabPage.TabIndex = 0;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
+			// 
+			// ChargeScreenComboBox
+			// 
+			this.ChargeScreenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ChargeScreenComboBox.FormattingEnabled = true;
+			this.ChargeScreenComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Analog",
+            "Digital"});
+			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 116);
+			this.ChargeScreenComboBox.Name = "ChargeScreenComboBox";
+			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
+			this.ChargeScreenComboBox.TabIndex = 106;
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(4, 200);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(65, 13);
+			this.label21.TabIndex = 104;
+			this.label21.Text = "Show Clock:";
+			// 
+			// ShowClockCheckBox
+			// 
+			this.ShowClockCheckBox.AutoSize = true;
+			this.ShowClockCheckBox.Location = new System.Drawing.Point(101, 200);
+			this.ShowClockCheckBox.Name = "ShowClockCheckBox";
+			this.ShowClockCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.ShowClockCheckBox.TabIndex = 105;
+			this.ShowClockCheckBox.Text = "Enabled";
+			this.ShowClockCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label17
 			// 
@@ -1193,6 +1243,7 @@
 			// tabControl2
 			// 
 			this.tabControl2.Controls.Add(this.SettingsTabPage);
+			this.tabControl2.Controls.Add(this.PowerCurvesTabPage);
 			this.tabControl2.Controls.Add(this.MaterialsTabPage);
 			this.tabControl2.Location = new System.Drawing.Point(5, 6);
 			this.tabControl2.Name = "tabControl2";
@@ -1462,7 +1513,7 @@
 			// 
 			// TFR8EditButton
 			// 
-			this.TFR8EditButton.Location = new System.Drawing.Point(102, 197);
+			this.TFR8EditButton.Location = new System.Drawing.Point(101, 197);
 			this.TFR8EditButton.Name = "TFR8EditButton";
 			this.TFR8EditButton.Size = new System.Drawing.Size(106, 23);
 			this.TFR8EditButton.TabIndex = 112;
@@ -1727,37 +1778,175 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
-			// label21
+			// PowerCurvesTabPage
 			// 
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(4, 200);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(65, 13);
-			this.label21.TabIndex = 104;
-			this.label21.Text = "Show Clock:";
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve8EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve8Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve7EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve7Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve6EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve6Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve5EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve5Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve4EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve4Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve3EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve3Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve2EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve2Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve1EditButton);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve1Label);
+			this.PowerCurvesTabPage.Location = new System.Drawing.Point(4, 22);
+			this.PowerCurvesTabPage.Name = "PowerCurvesTabPage";
+			this.PowerCurvesTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.PowerCurvesTabPage.Size = new System.Drawing.Size(328, 365);
+			this.PowerCurvesTabPage.TabIndex = 2;
+			this.PowerCurvesTabPage.Text = "Power Curves";
+			this.PowerCurvesTabPage.UseVisualStyleBackColor = true;
 			// 
-			// ShowClockCheckBox
+			// PowerCurve8EditButton
 			// 
-			this.ShowClockCheckBox.AutoSize = true;
-			this.ShowClockCheckBox.Location = new System.Drawing.Point(101, 200);
-			this.ShowClockCheckBox.Name = "ShowClockCheckBox";
-			this.ShowClockCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.ShowClockCheckBox.TabIndex = 105;
-			this.ShowClockCheckBox.Text = "Enabled";
-			this.ShowClockCheckBox.UseVisualStyleBackColor = true;
+			this.PowerCurve8EditButton.Location = new System.Drawing.Point(101, 197);
+			this.PowerCurve8EditButton.Name = "PowerCurve8EditButton";
+			this.PowerCurve8EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve8EditButton.TabIndex = 128;
+			this.PowerCurve8EditButton.Text = "Edit";
+			this.PowerCurve8EditButton.UseVisualStyleBackColor = true;
 			// 
-			// ChargeScreenComboBox
+			// PowerCurve8Label
 			// 
-			this.ChargeScreenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ChargeScreenComboBox.FormattingEnabled = true;
-			this.ChargeScreenComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
-			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 116);
-			this.ChargeScreenComboBox.Name = "ChargeScreenComboBox";
-			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
-			this.ChargeScreenComboBox.TabIndex = 106;
+			this.PowerCurve8Label.AutoSize = true;
+			this.PowerCurve8Label.Location = new System.Drawing.Point(5, 200);
+			this.PowerCurve8Label.Name = "PowerCurve8Label";
+			this.PowerCurve8Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve8Label.TabIndex = 127;
+			this.PowerCurve8Label.Text = "Power Curve:";
+			// 
+			// PowerCurve7EditButton
+			// 
+			this.PowerCurve7EditButton.Location = new System.Drawing.Point(101, 170);
+			this.PowerCurve7EditButton.Name = "PowerCurve7EditButton";
+			this.PowerCurve7EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve7EditButton.TabIndex = 126;
+			this.PowerCurve7EditButton.Text = "Edit";
+			this.PowerCurve7EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve7Label
+			// 
+			this.PowerCurve7Label.AutoSize = true;
+			this.PowerCurve7Label.Location = new System.Drawing.Point(4, 173);
+			this.PowerCurve7Label.Name = "PowerCurve7Label";
+			this.PowerCurve7Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve7Label.TabIndex = 125;
+			this.PowerCurve7Label.Text = "Power Curve:";
+			// 
+			// PowerCurve6EditButton
+			// 
+			this.PowerCurve6EditButton.Location = new System.Drawing.Point(101, 143);
+			this.PowerCurve6EditButton.Name = "PowerCurve6EditButton";
+			this.PowerCurve6EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve6EditButton.TabIndex = 124;
+			this.PowerCurve6EditButton.Text = "Edit";
+			this.PowerCurve6EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve6Label
+			// 
+			this.PowerCurve6Label.AutoSize = true;
+			this.PowerCurve6Label.Location = new System.Drawing.Point(4, 146);
+			this.PowerCurve6Label.Name = "PowerCurve6Label";
+			this.PowerCurve6Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve6Label.TabIndex = 123;
+			this.PowerCurve6Label.Text = "Power Curve:";
+			// 
+			// PowerCurve5EditButton
+			// 
+			this.PowerCurve5EditButton.Location = new System.Drawing.Point(101, 116);
+			this.PowerCurve5EditButton.Name = "PowerCurve5EditButton";
+			this.PowerCurve5EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve5EditButton.TabIndex = 122;
+			this.PowerCurve5EditButton.Text = "Edit";
+			this.PowerCurve5EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve5Label
+			// 
+			this.PowerCurve5Label.AutoSize = true;
+			this.PowerCurve5Label.Location = new System.Drawing.Point(4, 119);
+			this.PowerCurve5Label.Name = "PowerCurve5Label";
+			this.PowerCurve5Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve5Label.TabIndex = 121;
+			this.PowerCurve5Label.Text = "Power Curve:";
+			// 
+			// PowerCurve4EditButton
+			// 
+			this.PowerCurve4EditButton.Location = new System.Drawing.Point(101, 89);
+			this.PowerCurve4EditButton.Name = "PowerCurve4EditButton";
+			this.PowerCurve4EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve4EditButton.TabIndex = 120;
+			this.PowerCurve4EditButton.Text = "Edit";
+			this.PowerCurve4EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve4Label
+			// 
+			this.PowerCurve4Label.AutoSize = true;
+			this.PowerCurve4Label.Location = new System.Drawing.Point(4, 92);
+			this.PowerCurve4Label.Name = "PowerCurve4Label";
+			this.PowerCurve4Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve4Label.TabIndex = 119;
+			this.PowerCurve4Label.Text = "Power Curve:";
+			// 
+			// PowerCurve3EditButton
+			// 
+			this.PowerCurve3EditButton.Location = new System.Drawing.Point(101, 62);
+			this.PowerCurve3EditButton.Name = "PowerCurve3EditButton";
+			this.PowerCurve3EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve3EditButton.TabIndex = 118;
+			this.PowerCurve3EditButton.Text = "Edit";
+			this.PowerCurve3EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve3Label
+			// 
+			this.PowerCurve3Label.AutoSize = true;
+			this.PowerCurve3Label.Location = new System.Drawing.Point(4, 65);
+			this.PowerCurve3Label.Name = "PowerCurve3Label";
+			this.PowerCurve3Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve3Label.TabIndex = 117;
+			this.PowerCurve3Label.Text = "Power Curve:";
+			// 
+			// PowerCurve2EditButton
+			// 
+			this.PowerCurve2EditButton.Location = new System.Drawing.Point(101, 35);
+			this.PowerCurve2EditButton.Name = "PowerCurve2EditButton";
+			this.PowerCurve2EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve2EditButton.TabIndex = 116;
+			this.PowerCurve2EditButton.Text = "Edit";
+			this.PowerCurve2EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve2Label
+			// 
+			this.PowerCurve2Label.AutoSize = true;
+			this.PowerCurve2Label.Location = new System.Drawing.Point(4, 38);
+			this.PowerCurve2Label.Name = "PowerCurve2Label";
+			this.PowerCurve2Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve2Label.TabIndex = 115;
+			this.PowerCurve2Label.Text = "Power Curve:";
+			// 
+			// PowerCurve1EditButton
+			// 
+			this.PowerCurve1EditButton.Location = new System.Drawing.Point(101, 8);
+			this.PowerCurve1EditButton.Name = "PowerCurve1EditButton";
+			this.PowerCurve1EditButton.Size = new System.Drawing.Size(106, 23);
+			this.PowerCurve1EditButton.TabIndex = 114;
+			this.PowerCurve1EditButton.Text = "Edit";
+			this.PowerCurve1EditButton.UseVisualStyleBackColor = true;
+			// 
+			// PowerCurve1Label
+			// 
+			this.PowerCurve1Label.AutoSize = true;
+			this.PowerCurve1Label.Location = new System.Drawing.Point(4, 11);
+			this.PowerCurve1Label.Name = "PowerCurve1Label";
+			this.PowerCurve1Label.Size = new System.Drawing.Size(73, 13);
+			this.PowerCurve1Label.TabIndex = 113;
+			this.PowerCurve1Label.Text = "Power Curve:";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -1810,6 +1999,8 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			this.PowerCurvesTabPage.ResumeLayout(false);
+			this.PowerCurvesTabPage.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1954,5 +2145,22 @@
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.CheckBox ShowClockCheckBox;
 		private System.Windows.Forms.ComboBox ChargeScreenComboBox;
+		private System.Windows.Forms.TabPage PowerCurvesTabPage;
+		private System.Windows.Forms.Button PowerCurve8EditButton;
+		private System.Windows.Forms.Label PowerCurve8Label;
+		private System.Windows.Forms.Button PowerCurve7EditButton;
+		private System.Windows.Forms.Label PowerCurve7Label;
+		private System.Windows.Forms.Button PowerCurve6EditButton;
+		private System.Windows.Forms.Label PowerCurve6Label;
+		private System.Windows.Forms.Button PowerCurve5EditButton;
+		private System.Windows.Forms.Label PowerCurve5Label;
+		private System.Windows.Forms.Button PowerCurve4EditButton;
+		private System.Windows.Forms.Label PowerCurve4Label;
+		private System.Windows.Forms.Button PowerCurve3EditButton;
+		private System.Windows.Forms.Label PowerCurve3Label;
+		private System.Windows.Forms.Button PowerCurve2EditButton;
+		private System.Windows.Forms.Label PowerCurve2Label;
+		private System.Windows.Forms.Button PowerCurve1EditButton;
+		private System.Windows.Forms.Label PowerCurve1Label;
 	}
 }

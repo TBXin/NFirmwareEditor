@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NCore.UI;
 using NToolbox.Models;
 
@@ -10,6 +11,7 @@ namespace NToolbox.Windows
 	{
 		private const int MinimumWatts = 1;
 		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
+		private ArcticFoxConfiguration.Profile m_profile;
 
 		private readonly int m_maximumWatts;
 
@@ -21,44 +23,36 @@ namespace NToolbox.Windows
 			InitializeControls();
 		}
 
-		public void Initialize(ArcticFoxConfiguration.Profile profile)
+		public void Initialize([NotNull] ArcticFoxConfiguration.Profile profile)
 		{
-			ProfileNameTextBox.Text = profile.Name;
-			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(profile.Power / 10m, PowerUpDown.Maximum));
-			PreheatTypeComboBox.SelectItem(profile.PreheatType);
+			if (profile == null) throw new ArgumentNullException("profile");
 
-			var preheatPower = 0;
-			if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Watts)
-			{
-				preheatPower = profile.PreheatPower / 10;
-			}
-			else if (profile.PreheatType == ArcticFoxConfiguration.PreheatType.Percents)
-			{
-				preheatPower = profile.PreheatPower;
-			}
-			PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(preheatPower, PreheatPowerUpDown.Maximum));
-			PowerCurveComboBox.SelectItem(profile.SelectedCurve);
-			PreheatTimeUpDown.Value = profile.PreheatTime / 100m;
-			PreheatDelayUpDown.Value = profile.PreheatDelay / 10m;
+			m_profile = profile;
+			ProfileNameTextBox.Text = m_profile.Name;
+			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(m_profile.Power / 10m, PowerUpDown.Maximum));
+			PreheatTypeComboBox.SelectItem(m_profile.PreheatType);
+			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
+			PreheatTimeUpDown.Value = m_profile.PreheatTime / 100m;
+			PreheatDelayUpDown.Value = m_profile.PreheatDelay / 10m;
 
-			TemperatureTypeComboBox.SelectItem(profile.Flags.IsCelcius);
-			TemperatureUpDown.Value = profile.Temperature;
-			TemperatureDominantCheckBox.Checked = profile.Flags.IsTemperatureDominant;
+			TemperatureTypeComboBox.SelectItem(m_profile.Flags.IsCelcius);
+			TemperatureUpDown.Value = m_profile.Temperature;
+			TemperatureDominantCheckBox.Checked = m_profile.Flags.IsTemperatureDominant;
 
-			if (profile.Flags.Material == ArcticFoxConfiguration.Material.VariWatt)
+			if (m_profile.Flags.Material == ArcticFoxConfiguration.Material.VariWatt)
 			{
-				ModeComboBox.SelectItem(Mode.Power);
 				MaterialComboBox.SelectedIndex = 0;
+				ModeComboBox.SelectItem(Mode.Power);
 			}
 			else
 			{
+				MaterialComboBox.SelectItem(m_profile.Flags.Material);
 				ModeComboBox.SelectItem(Mode.TemperatureControl);
-				MaterialComboBox.SelectItem(profile.Flags.Material);
 			}
 			
-			TCRUpDown.Value = profile.TCR;
-			ResistanceUpDown.Value = profile.Resistance / 1000m;
-			ResistanceLockedCheckBox.Checked = profile.Flags.IsResistanceLocked;
+			TCRUpDown.Value = m_profile.TCR;
+			ResistanceUpDown.Value = m_profile.Resistance / 1000m;
+			ResistanceLockedCheckBox.Checked = m_profile.Flags.IsResistanceLocked;
 		}
 
 		public void UpdatePowerCurveNames(ArcticFoxConfiguration.PowerCurve[] curves)
@@ -166,6 +160,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = MinimumWatts;
 					PreheatPowerUpDown.Maximum = m_maximumWatts;
+					PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(m_profile.PreheatPower / 10m, PreheatPowerUpDown.Maximum));
 				}
 				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
 				{
@@ -173,6 +168,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Increment = 1;
 					PreheatPowerUpDown.Minimum = 100;
 					PreheatPowerUpDown.Maximum = 250;
+					PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(m_profile.PreheatPower, PreheatPowerUpDown.Maximum));
 				}
 
 				if (type == ArcticFoxConfiguration.PreheatType.Curve)
@@ -247,6 +243,7 @@ namespace NToolbox.Windows
 				TemperatureUpDown.Visible = isTemperatureSensing;
 				TemperatureTypeComboBox.Visible = isTemperatureSensing;
 				TemperatureDominantCheckBox.Visible = isTemperatureSensing;
+				TCRUpDown.Visible = isTemperatureSensing && MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() == ArcticFoxConfiguration.Material.TCR;
 			};
 
 			MaterialComboBox.Items.Clear();

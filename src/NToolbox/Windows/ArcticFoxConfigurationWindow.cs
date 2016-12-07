@@ -18,6 +18,8 @@ namespace NToolbox.Windows
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
+		private Label[] m_powerCurveLabels;
+		private Button[] m_powerCurveButtons;
 		private Label[] m_tfrLabels;
 		private Button[] m_tfrButtons;
 
@@ -62,8 +64,17 @@ namespace NToolbox.Windows
 
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
+			m_powerCurveLabels = new[] { PowerCurve1Label, PowerCurve2Label, PowerCurve3Label, PowerCurve4Label, PowerCurve5Label, PowerCurve6Label, PowerCurve7Label, PowerCurve8Label };
+			m_powerCurveButtons = new[] { PowerCurve1EditButton, PowerCurve2EditButton, PowerCurve3EditButton, PowerCurve4EditButton, PowerCurve5EditButton, PowerCurve6EditButton, PowerCurve7EditButton, PowerCurve8EditButton };
+
 			m_tfrLabels = new[] { TFR1Label, TFR2Label, TFR3Label, TFR4Label, TFR5Label, TFR6Label, TFR7Label, TFR8Label };
 			m_tfrButtons = new[] { TFR1EditButton, TFR2EditButton, TFR3EditButton, TFR4EditButton, TFR5EditButton, TFR6EditButton, TFR7EditButton, TFR8EditButton };
+
+			for (var i = 0; i < m_tfrButtons.Length; i++)
+			{
+				m_powerCurveButtons[i].Tag = i;
+				m_powerCurveButtons[i].Click += PowerCurveEditButton_Click;
+			}
 
 			for (var i = 0; i < m_tfrButtons.Length; i++)
 			{
@@ -234,10 +245,6 @@ namespace NToolbox.Windows
 				}
 
 				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
-				foreach (var table in configuration.Advanced.TFRTables)
-				{
-					table.Name = table.Name.TrimEnd('\0');
-				}
 				return new ConfigurationReadResult(configuration, ReadResult.Success);
 			}
 			catch (TimeoutException)
@@ -348,6 +355,7 @@ namespace NToolbox.Windows
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
 
+				UpdatePowerCurveLabels(advanced.PowerCurves);
 				UpdateTFRLables(advanced.TFRTables);
 			}
 		}
@@ -452,6 +460,14 @@ namespace NToolbox.Windows
 			DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = enabled;
 		}
 
+		private void UpdatePowerCurveLabels(ArcticFoxConfiguration.PowerCurve[] curves)
+		{
+			for (var i = 0; i < m_tfrLabels.Length; i++)
+			{
+				m_powerCurveLabels[i].Text = curves[i].Name + @":";
+			}
+		}
+
 		private void UpdateTFRLables(ArcticFoxConfiguration.TFRTable[] tfrTables)
 		{
 			for (var i = 0; i < m_tfrLabels.Length; i++)
@@ -471,6 +487,29 @@ namespace NToolbox.Windows
 			{
 				editor.ShowDialog();
 			}
+		}
+
+		private void PowerCurveEditButton_Click(object sender, EventArgs e)
+		{
+			var button = sender as Button;
+			if (button == null) return;
+
+			var curveIndex = (int)button.Tag;
+			var curve = m_configuration.Advanced.PowerCurves[curveIndex];
+
+			/*using (var editor = new TFRProfileWindow(curve))
+			{
+				if (editor.ShowDialog() != DialogResult.OK) return;
+
+				UpdatePowerCurveLabels(m_configuration.Advanced.PowerCurves);
+				foreach (TabPage tabPage in ProfilesTabControl.TabPages)
+				{
+					var tabContent = tabPage.Controls[0] as ProfileTabContent;
+					if (tabContent == null) continue;
+
+					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
+				}
+			}*/
 		}
 
 		private void TFREditButton_Click(object sender, EventArgs e)
