@@ -213,11 +213,15 @@ namespace NToolbox.Windows
 						Trace.Info("Uploading firmware... Done.");
 						return true;
 					}
-					catch (TimeoutException)
+					catch (Exception ex)
 					{
-						Trace.Info("Uploading firmware... Failed. Next attempt in 1 sec.");
-						Thread.Sleep(1000);
-						return false;
+						if (ex is TimeoutException || ex is IOException)
+						{
+							Trace.Info("Uploading firmware... Failed. Next attempt in 1 sec.");
+							Thread.Sleep(1000);
+							return false;
+						}
+						throw;
 					}
 				}, TimeSpan.FromSeconds(15));
 
