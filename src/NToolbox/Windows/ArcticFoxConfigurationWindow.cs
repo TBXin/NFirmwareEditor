@@ -481,6 +481,26 @@ namespace NToolbox.Windows
 			return "An error occurred during " + operationName + "...\n\n" + "To continue, please activate or reconnect your device.";
 		}
 
+		private void DownloadSettings()
+		{
+			try
+			{
+				var readResult = ReadConfiguration();
+				if (readResult.Result != ReadResult.Success)
+				{
+					InfoBox.Show("Something strange happened! Please restart application.");
+					return;
+				}
+				m_configuration = readResult.Configuration;
+				UpdateUI(InitializeWorkspace);
+			}
+			catch (Exception ex)
+			{
+				Trace.Warn(ex);
+				InfoBox.Show(GetErrorMessage("downloading settings"));
+			}
+		}
+
 		private void BatteryEditButton_Click(object sender, EventArgs e)
 		{
 			using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
@@ -538,25 +558,7 @@ namespace NToolbox.Windows
 		{
 			if (!ValidateConnectionStatus()) return;
 
-			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
-			{
-				try
-				{
-					var readResult = ReadConfiguration();
-					if (readResult.Result != ReadResult.Success)
-					{
-						InfoBox.Show("Something strange happened! Please restart application.");
-						return;
-					}
-					m_configuration = readResult.Configuration;
-					UpdateUI(InitializeWorkspace);
-				}
-				catch (Exception ex)
-				{
-					Trace.Warn(ex);
-					InfoBox.Show(GetErrorMessage("downloading settings"));
-				}
-			}));
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker => DownloadSettings()));
 		}
 
 		private void UploadButton_Click(object sender, EventArgs e)
@@ -587,7 +589,7 @@ namespace NToolbox.Windows
 				try
 				{
 					HidConnector.Instance.ResetDataflash();
-					UpdateUI(() => DownloadButton_Click(null, null));
+					DownloadSettings();
 				}
 				catch (Exception ex)
 				{
