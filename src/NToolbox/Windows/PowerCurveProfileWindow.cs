@@ -14,13 +14,16 @@ namespace NToolbox.Windows
 	{
 		private const ushort MinTime = 0;
 		private const ushort MaxTime = 25;
-		private const decimal MinPercents = 0;
-		private const decimal MaxPercents = 250;
+		private const int MinPercents = 0;
+		private const int MaxPercents = 250;
 
 		private static readonly Regex s_blackList = new Regex("(?![a-zA-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 		private readonly ArcticFoxConfiguration.PowerCurve m_curve;
 
 		private TimePercentControlGroup[] m_curveControls;
+		private bool m_isDragginPoint;
+		private DataPoint m_pointUnderCursor;
+		private int m_pointUnderCursorIndex;
 
 		public PowerCurveProfileWindow([NotNull] ArcticFoxConfiguration.PowerCurve curve)
 		{
@@ -48,8 +51,8 @@ namespace NToolbox.Windows
 				area.AxisX.Interval = 1;
 
 				area.AxisY.IsMarginVisible = false;
-				area.AxisY.Minimum = (double)MinPercents;
-				area.AxisY.Maximum = (double)MaxPercents;
+				area.AxisY.Minimum = MinPercents;
+				area.AxisY.Maximum = MaxPercents;
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.LineColor = Color.DarkGray;
@@ -82,6 +85,76 @@ namespace NToolbox.Windows
 			PowerCurveChart.Series.Add(centerSeries);
 			PowerCurveChart.Series[1].Points.Add(new DataPoint(0, 100));
 			PowerCurveChart.Series[1].Points.Add(new DataPoint(25, 100));
+
+			PowerCurveChart.MouseMove += PowerCurveChart_MouseMove;
+			PowerCurveChart.MouseDown += PowerCurveChart_MouseDown;
+			PowerCurveChart.MouseUp += PowerCurveChart_MouseUp;
+		}
+
+		private void PowerCurveChart_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (m_isDragginPoint && m_pointUnderCursor != null)
+			{
+				var xValueUnderCursor = PowerCurveChart.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+				var yValueUnderCursor = PowerCurveChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+
+				var leftBound = m_pointUnderCursorIndex == 0 ? MinTime : PowerCurveChart.Series[0].Points[m_pointUnderCursorIndex - 1].XValue + 0.1;
+				var rightBound = m_pointUnderCursorIndex == m_curve.Points.Length - 1 ? MaxTime : PowerCurveChart.Series[0].Points[m_pointUnderCursorIndex + 1].XValue - 0.1;
+
+				double tempXValue;
+				if (xValueUnderCursor <= leftBound) tempXValue = leftBound;
+				else if (xValueUnderCursor >= rightBound) tempXValue = rightBound;
+				else tempXValue = xValueUnderCursor;
+
+				double tempYValue;
+				if (yValueUnderCursor <= MinPercents) tempYValue = MinPercents;
+				else if (yValueUnderCursor >= MaxPercents) tempYValue = MaxPercents;
+				else tempYValue = yValueUnderCursor;
+
+				tempXValue = Math.Round(tempXValue, 1);
+				tempYValue = Math.Round(tempYValue);
+
+				m_curveControls[m_pointUnderCursorIndex].TimeUpDown.Value = (decimal)tempXValue;
+				m_curveControls[m_pointUnderCursorIndex].PercentsUpDown.Value = (decimal)tempYValue;
+			}
+			else
+			{
+				var results = PowerCurveChart.HitTest(e.X, e.Y, false, ChartElementType.DataPoint);
+
+				DataPoint point = null;
+				foreach (var result in results)
+				{
+					if (result.ChartElementType != ChartElementType.DataPoint) continue;
+
+					var tmpPoint = result.Object as DataPoint;
+					if (tmpPoint == null) continue;
+					if (!Equals(tmpPoint.Tag, "draggable")) continue;
+
+					var pointX = PowerCurveChart.ChartAreas[0].AxisX.ValueToPixelPosition(tmpPoint.XValue);
+					var pointY = PowerCurveChart.ChartAreas[0].AxisY.ValueToPixelPosition(tmpPoint.YValues[0]);
+
+					if (Math.Abs(e.X - pointX) <= 12 && Math.Abs(e.Y - pointY) <= 12)
+					{
+						point = tmpPoint;
+						m_pointUnderCursorIndex = result.PointIndex;
+						break;
+					}
+				}
+
+				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = 7;
+				m_pointUnderCursor = point;
+				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = 10;
+			}
+		}
+
+		private void PowerCurveChart_MouseDown(object sender, MouseEventArgs e)
+		{
+			m_isDragginPoint = true;
+		}
+
+		private void PowerCurveChart_MouseUp(object sender, MouseEventArgs e)
+		{
+			m_isDragginPoint = false;
 		}
 
 		private void InitializeControls()
@@ -130,12 +203,13 @@ namespace NToolbox.Windows
 				var percentsUpDown = m_curveControls[i].PercentsUpDown;
 
 				var time = Math.Max(MinTime, Math.Min(data.Time / 10m, MaxTime));
-				var percents = Math.Max(MinPercents, Math.Min(data.Percent, MaxPercents));
+				var percents = Math.Max(MinPercents, Math.Min(data.Percent, (decimal)MaxPercents));
 				var point = new DataPoint((double)time, (double)percents)
 				{
 					MarkerStyle = MarkerStyle.Circle,
 					MarkerSize = 7,
-					Label = percents.ToString(CultureInfo.InvariantCulture)
+					Label = percents.ToString(CultureInfo.InvariantCulture),
+					Tag = "draggable"
 				};
 
 				timeUpDown.Minimum = MinTime;
