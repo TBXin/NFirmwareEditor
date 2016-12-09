@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore;
 using NCore.UI;
 using NToolbox.Models;
 
@@ -29,14 +30,14 @@ namespace NToolbox.Windows
 
 			m_profile = profile;
 			ProfileNameTextBox.Text = m_profile.Name;
-			PowerUpDown.Value = Math.Max(PowerUpDown.Minimum, Math.Min(m_profile.Power / 10m, PowerUpDown.Maximum));
+			PowerUpDown.SetValue(m_profile.Power / 10m);
 			PreheatTypeComboBox.SelectItem(m_profile.PreheatType);
 			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
-			PreheatTimeUpDown.Value = m_profile.PreheatTime / 100m;
-			PreheatDelayUpDown.Value = m_profile.PreheatDelay / 10m;
+			PreheatTimeUpDown.SetValue(m_profile.PreheatTime / 100m);
+			PreheatDelayUpDown.SetValue(m_profile.PreheatDelay / 10m);
 
 			TemperatureTypeComboBox.SelectItem(m_profile.Flags.IsCelcius);
-			TemperatureUpDown.Value = m_profile.Temperature;
+			TemperatureUpDown.SetValue(m_profile.Temperature);
 			TemperatureDominantCheckBox.Checked = m_profile.Flags.IsTemperatureDominant;
 
 			if (m_profile.Flags.Material == ArcticFoxConfiguration.Material.VariWatt)
@@ -49,9 +50,9 @@ namespace NToolbox.Windows
 				MaterialComboBox.SelectItem(m_profile.Flags.Material);
 				ModeComboBox.SelectItem(Mode.TemperatureControl);
 			}
-			
-			TCRUpDown.Value = m_profile.TCR;
-			ResistanceUpDown.Value = m_profile.Resistance / 1000m;
+
+			TCRUpDown.SetValue(m_profile.TCR);
+			ResistanceUpDown.SetValue(m_profile.Resistance / 1000m);
 			ResistanceLockedCheckBox.Checked = m_profile.Flags.IsResistanceLocked;
 		}
 
@@ -160,7 +161,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = MinimumWatts;
 					PreheatPowerUpDown.Maximum = m_maximumWatts;
-					PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(m_profile.PreheatPower / 10m, PreheatPowerUpDown.Maximum));
+					PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
 				}
 				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
 				{
@@ -168,7 +169,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Increment = 1;
 					PreheatPowerUpDown.Minimum = 100;
 					PreheatPowerUpDown.Maximum = 250;
-					PreheatPowerUpDown.Value = Math.Max(PreheatPowerUpDown.Minimum, Math.Min(m_profile.PreheatPower, PreheatPowerUpDown.Maximum));
+					PreheatPowerUpDown.SetValue(m_profile.PreheatPower);
 				}
 
 				if (type == ArcticFoxConfiguration.PreheatType.Curve)

@@ -347,8 +347,8 @@ namespace NToolbox.Windows
 
 			var advanced = m_configuration.Advanced;
 			{
-				PuffCutOffUpDown.Value = Math.Max(PuffCutOffUpDown.Minimum, Math.Min(advanced.PuffCutOff / 10m, PuffCutOffUpDown.Maximum));
-				ShuntCorrectionUpDown.Value = Math.Max(ShuntCorrectionUpDown.Minimum, Math.Min(advanced.ShuntCorrection, ShuntCorrectionUpDown.Maximum));
+				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
+				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
 				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
 				X32CheckBox.Checked = advanced.IsX32;
 				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;

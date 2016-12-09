@@ -120,6 +120,13 @@ namespace NCore
 			textBox.ScrollToCaret();
 		}
 
+		public static void SetValue([NotNull] this NumericUpDown upDown, decimal value)
+		{
+			if (upDown == null) throw new ArgumentNullException("upDown");
+
+			upDown.Value = Math.Max(upDown.Minimum, Math.Min(upDown.Maximum, value));
+		}
+
 		public static StringBuilder AppendLine([NotNull] this StringBuilder sb, [NotNull] string format, params object[] args)
 		{
 			if (sb == null) throw new ArgumentNullException("sb");
