@@ -57,6 +57,8 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.ModeComboBox = new System.Windows.Forms.ComboBox();
 			this.PowerCurveComboBox = new System.Windows.Forms.ComboBox();
+			this.PowerCurveEditButton = new System.Windows.Forms.Button();
+			this.TFRCurveEditButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -445,10 +447,32 @@
 			this.PowerCurveComboBox.TabIndex = 99;
 			this.PowerCurveComboBox.Visible = false;
 			// 
+			// PowerCurveEditButton
+			// 
+			this.PowerCurveEditButton.Location = new System.Drawing.Point(268, 61);
+			this.PowerCurveEditButton.Name = "PowerCurveEditButton";
+			this.PowerCurveEditButton.Size = new System.Drawing.Size(60, 23);
+			this.PowerCurveEditButton.TabIndex = 100;
+			this.PowerCurveEditButton.Text = "Edit";
+			this.PowerCurveEditButton.UseVisualStyleBackColor = true;
+			this.PowerCurveEditButton.Visible = false;
+			// 
+			// TFRCurveEditButton
+			// 
+			this.TFRCurveEditButton.Location = new System.Drawing.Point(213, 169);
+			this.TFRCurveEditButton.Name = "TFRCurveEditButton";
+			this.TFRCurveEditButton.Size = new System.Drawing.Size(60, 23);
+			this.TFRCurveEditButton.TabIndex = 101;
+			this.TFRCurveEditButton.Text = "Edit";
+			this.TFRCurveEditButton.UseVisualStyleBackColor = true;
+			this.TFRCurveEditButton.Visible = false;
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.TFRCurveEditButton);
+			this.Controls.Add(this.PowerCurveEditButton);
 			this.Controls.Add(this.PowerCurveComboBox);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.ModeComboBox);
@@ -524,5 +548,7 @@
 		private System.Windows.Forms.Label label9;
 		public System.Windows.Forms.ComboBox ModeComboBox;
 		public System.Windows.Forms.ComboBox PowerCurveComboBox;
+		private System.Windows.Forms.Button PowerCurveEditButton;
+		private System.Windows.Forms.Button TFRCurveEditButton;
 	}
 }

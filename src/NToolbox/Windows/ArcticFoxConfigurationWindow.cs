@@ -41,7 +41,7 @@ namespace NToolbox.Windows
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
 			HidConnector.Instance.DeviceConnected += DeviceConnected;
-			Load += (s, e) =>
+			Shown += (s, e) =>
 			{
 				DeviceConnected(HidConnector.Instance.IsDeviceConnected);
 				NativeMethods.SetForegroundWindow(Handle);
@@ -288,7 +288,7 @@ namespace NToolbox.Windows
 						SelectedProfleComboBox.Items.Add(new NamedItemContainer<byte>(tabName, (byte)i));
 
 						var tabPage = new TabPage(tabName);
-						tabContent = new ProfileTabContent(deviceInfo.MaxPower / 10) { Dock = DockStyle.Fill };
+						tabContent = new ProfileTabContent(this) { Dock = DockStyle.Fill };
 						tabPage.Controls.Add(tabContent);
 						ProfilesTabControl.TabPages.Add(tabPage);
 					}
@@ -297,8 +297,7 @@ namespace NToolbox.Windows
 						tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
 					}
 
-					var profile = general.Profiles[i];
-					tabContent.Initialize(profile);
+					tabContent.Initialize(m_configuration, i);
 					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
 					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
 				}
@@ -501,6 +500,30 @@ namespace NToolbox.Windows
 			}
 		}
 
+		internal void UpdatePowerCurveNames()
+		{
+			UpdatePowerCurveLabels(m_configuration.Advanced.PowerCurves);
+			foreach (TabPage tabPage in ProfilesTabControl.TabPages)
+			{
+				var tabContent = tabPage.Controls[0] as ProfileTabContent;
+				if (tabContent == null) continue;
+
+				tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
+			}
+		}
+
+		internal void UpdateTFRCurveNames()
+		{
+			UpdateTFRLables(m_configuration.Advanced.TFRTables);
+			foreach (TabPage tabPage in ProfilesTabControl.TabPages)
+			{
+				var tabContent = tabPage.Controls[0] as ProfileTabContent;
+				if (tabContent == null) continue;
+
+				tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
+			}
+		}
+
 		private void BatteryEditButton_Click(object sender, EventArgs e)
 		{
 			using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
@@ -521,14 +544,7 @@ namespace NToolbox.Windows
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 
-				UpdatePowerCurveLabels(m_configuration.Advanced.PowerCurves);
-				foreach (TabPage tabPage in ProfilesTabControl.TabPages)
-				{
-					var tabContent = tabPage.Controls[0] as ProfileTabContent;
-					if (tabContent == null) continue;
-
-					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
-				}
+				UpdatePowerCurveNames();
 			}
 		}
 
@@ -543,14 +559,7 @@ namespace NToolbox.Windows
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 
-				UpdateTFRLables(m_configuration.Advanced.TFRTables);
-				foreach (TabPage tabPage in ProfilesTabControl.TabPages)
-				{
-					var tabContent = tabPage.Controls[0] as ProfileTabContent;
-					if (tabContent == null) continue;
-
-					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
-				}
+				UpdateTFRCurveNames();
 			}
 		}
 

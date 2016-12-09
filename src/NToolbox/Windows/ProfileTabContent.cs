@@ -10,26 +10,31 @@ namespace NToolbox.Windows
 {
 	internal partial class ProfileTabContent : UserControl
 	{
+		private readonly ArcticFoxConfigurationWindow m_host;
 		private const int MinimumWatts = 1;
 		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
+
+		private ArcticFoxConfiguration m_configuration;
 		private ArcticFoxConfiguration.Profile m_profile;
 
-		private readonly int m_maximumWatts;
-
-		internal ProfileTabContent(int maximumWatts)
+		internal ProfileTabContent([NotNull] ArcticFoxConfigurationWindow host)
 		{
-			m_maximumWatts = maximumWatts;
+			if (host == null) throw new ArgumentNullException("host");
+			m_host = host;
 
 			InitializeComponent();
 			InitializeControls();
 		}
 
-		public void Initialize([NotNull] ArcticFoxConfiguration.Profile profile)
+		public void Initialize([NotNull] ArcticFoxConfiguration configuration, int profileIndex)
 		{
-			if (profile == null) throw new ArgumentNullException("profile");
+			if (configuration == null) throw new ArgumentNullException("configuration");
 
-			m_profile = profile;
+			m_configuration = configuration;
+			m_profile = configuration.General.Profiles[profileIndex];
+
 			ProfileNameTextBox.Text = m_profile.Name;
+			PowerUpDown.Maximum = configuration.Info.MaxPower / 10m;
 			PowerUpDown.SetValue(m_profile.Power / 10m);
 			PreheatTypeComboBox.SelectItem(m_profile.PreheatType);
 			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
@@ -143,14 +148,14 @@ namespace NToolbox.Windows
 			};
 
 			PowerUpDown.Minimum = MinimumWatts;
-			PowerUpDown.Maximum = m_maximumWatts;
+			PowerUpDown.Maximum = 60;
 
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("W", ArcticFoxConfiguration.PreheatType.Watts),
-			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("%", ArcticFoxConfiguration.PreheatType.Percents),
-			    new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Curve", ArcticFoxConfiguration.PreheatType.Curve)
+				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("W", ArcticFoxConfiguration.PreheatType.Watts),
+				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("%", ArcticFoxConfiguration.PreheatType.Percents),
+				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Curve", ArcticFoxConfiguration.PreheatType.Curve)
 			});
 			PreheatTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -160,7 +165,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.DecimalPlaces = 1;
 					PreheatPowerUpDown.Increment = 0.1m;
 					PreheatPowerUpDown.Minimum = MinimumWatts;
-					PreheatPowerUpDown.Maximum = m_maximumWatts;
+					PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
 					PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
 				}
 				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
@@ -176,6 +181,7 @@ namespace NToolbox.Windows
 				{
 					PreheatPowerLabel.Text = @"Power Curve:";
 					PowerCurveComboBox.Visible = true;
+					PowerCurveEditButton.Visible = true;
 					PreheatTimeUpDown.Enabled = false;
 					PreheatDelayUpDown.Enabled = false;
 				}
@@ -183,6 +189,7 @@ namespace NToolbox.Windows
 				{
 					PreheatPowerLabel.Text = @"Preheat Power:";
 					PowerCurveComboBox.Visible = false;
+					PowerCurveEditButton.Visible = false;
 					PreheatTimeUpDown.Enabled = true;
 					PreheatDelayUpDown.Enabled = true;
 				}
@@ -204,8 +211,8 @@ namespace NToolbox.Windows
 			TemperatureTypeComboBox.Items.Clear();
 			TemperatureTypeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<bool>("°F", false),
-				new NamedItemContainer<bool>("°C", true)
+			    new NamedItemContainer<bool>("°F", false),
+			    new NamedItemContainer<bool>("°C", true)
 			});
 			TemperatureTypeComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -225,8 +232,8 @@ namespace NToolbox.Windows
 			ModeComboBox.Items.Clear();
 			ModeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<Mode>("Power", Mode.Power),
-				new NamedItemContainer<Mode>("Temp. Control", Mode.TemperatureControl)
+			    new NamedItemContainer<Mode>("Power", Mode.Power),
+			    new NamedItemContainer<Mode>("Temp. Control", Mode.TemperatureControl)
 			});
 			ModeComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -244,25 +251,30 @@ namespace NToolbox.Windows
 				TemperatureUpDown.Visible = isTemperatureSensing;
 				TemperatureTypeComboBox.Visible = isTemperatureSensing;
 				TemperatureDominantCheckBox.Visible = isTemperatureSensing;
-				TCRUpDown.Visible = isTemperatureSensing && MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() == ArcticFoxConfiguration.Material.TCR;
+
+				var selectedMaterial = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
+				TCRUpDown.Visible = isTemperatureSensing && selectedMaterial == ArcticFoxConfiguration.Material.TCR;
+				TFRCurveEditButton.Visible = isTemperatureSensing &&
+				                             (int)selectedMaterial >= (int)ArcticFoxConfiguration.Material.TFR1 &&
+				                             (int)selectedMaterial <= (int)ArcticFoxConfiguration.Material.TFR8;
 			};
 
 			MaterialComboBox.Items.Clear();
 			MaterialComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("Nickel 200", ArcticFoxConfiguration.Material.Nickel),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("Titanium 1", ArcticFoxConfiguration.Material.Titanium),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("SS 316", ArcticFoxConfiguration.Material.StainlessSteel),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TCR", ArcticFoxConfiguration.Material.TCR),
 
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR1", ArcticFoxConfiguration.Material.TFR1),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR2", ArcticFoxConfiguration.Material.TFR2),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR3", ArcticFoxConfiguration.Material.TFR3),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR4", ArcticFoxConfiguration.Material.TFR4),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR5", ArcticFoxConfiguration.Material.TFR5),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR6", ArcticFoxConfiguration.Material.TFR6),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR7", ArcticFoxConfiguration.Material.TFR7),
-				new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR8", ArcticFoxConfiguration.Material.TFR8)
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR1", ArcticFoxConfiguration.Material.TFR1),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR2", ArcticFoxConfiguration.Material.TFR2),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR3", ArcticFoxConfiguration.Material.TFR3),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR4", ArcticFoxConfiguration.Material.TFR4),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR5", ArcticFoxConfiguration.Material.TFR5),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR6", ArcticFoxConfiguration.Material.TFR6),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR7", ArcticFoxConfiguration.Material.TFR7),
+			    new NamedItemContainer<ArcticFoxConfiguration.Material>("TFR8", ArcticFoxConfiguration.Material.TFR8)
 			});
 			MaterialComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -270,7 +282,36 @@ namespace NToolbox.Windows
 
 				var selectedMaterial = MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>();
 				TCRUpDown.Visible = selectedMaterial == ArcticFoxConfiguration.Material.TCR;
+				TFRCurveEditButton.Visible = (int)selectedMaterial >= (int)ArcticFoxConfiguration.Material.TFR1 &&
+				                             (int)selectedMaterial <= (int)ArcticFoxConfiguration.Material.TFR8;
 			};
+
+			PowerCurveEditButton.Click += PowerCurveEditButton_Click;
+			TFRCurveEditButton.Click += TFRCurveEditButton_Click;
+		}
+
+		private void PowerCurveEditButton_Click(object sender, EventArgs e)
+		{
+			var curveIndex = PowerCurveComboBox.SelectedIndex;
+			var curve = m_configuration.Advanced.PowerCurves[curveIndex];
+
+			using (var editor = new PowerCurveProfileWindow(curve))
+			{
+				if (editor.ShowDialog() != DialogResult.OK) return;
+				m_host.UpdatePowerCurveNames();
+			}
+		}
+
+		private void TFRCurveEditButton_Click(object sender, EventArgs e)
+		{
+			var curveIndex = (int)MaterialComboBox.GetSelectedItem<ArcticFoxConfiguration.Material>() - 5;
+			var tfrTable = m_configuration.Advanced.TFRTables[curveIndex];
+
+			using (var editor = new TFRProfileWindow(tfrTable))
+			{
+				if (editor.ShowDialog() != DialogResult.OK) return;
+				m_host.UpdateTFRCurveNames();
+			}
 		}
 
 		private enum Mode
