@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
@@ -43,8 +44,11 @@ namespace NToolbox.Windows
 			HidConnector.Instance.DeviceConnected += DeviceConnected;
 			Shown += (s, e) =>
 			{
-				DeviceConnected(HidConnector.Instance.IsDeviceConnected);
-				NativeMethods.SetForegroundWindow(Handle);
+				new Thread(() =>
+				{
+					DeviceConnected(HidConnector.Instance.IsDeviceConnected);
+					UpdateUI(() => NativeMethods.SetForegroundWindow(Handle));
+				}).Start();
 			};
 		}
 
