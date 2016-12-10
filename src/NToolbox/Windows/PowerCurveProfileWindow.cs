@@ -14,7 +14,7 @@ namespace NToolbox.Windows
 	{
 		private const ushort MinTime = 0;
 		private const ushort MaxTime = 25;
-		private const double TimeInterval = 0.5;
+		
 		private const int MinPercents = 0;
 		private const int MaxPercents = 250;
 		private const string PointsSeriesName = "points";
@@ -29,6 +29,7 @@ namespace NToolbox.Windows
 		private int m_pointUnderCursorIndex;
 
 		private ContextMenu m_timeScaleMenu;
+		private double m_timeInterval = 0.5;
 		private int m_timeFrame = 5;
 
 		public PowerCurveProfileWindow([NotNull] ArcticFoxConfiguration.PowerCurve curve)
@@ -56,7 +57,7 @@ namespace NToolbox.Windows
 				area.AxisX.MajorGrid.Enabled = true;
 				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisX.LineColor = Color.DarkGray;
-				area.AxisX.Interval = TimeInterval;
+				area.AxisX.Interval = m_timeInterval;
 				area.AxisX.ScaleView.Zoomable = true;
 				area.AxisX.ScrollBar.Enabled = false;
 
@@ -223,14 +224,15 @@ namespace NToolbox.Windows
 		private void ZoomChart(int timeFrame)
 		{
 			m_timeFrame = timeFrame;
-			PowerCurveChart.ChartAreas[0].AxisX.Interval = timeFrame > 2 ? TimeInterval : 0.1;
-			ChartHorizontalScrollBar.Maximum = Math.Max(0, (int)((MaxTime - m_timeFrame) / TimeInterval));
+			m_timeInterval = timeFrame > 2 ? 0.5 : 0.1;
+			PowerCurveChart.ChartAreas[0].AxisX.Interval = m_timeInterval;
+			ChartHorizontalScrollBar.Maximum = Math.Max(0, (int)((MaxTime - m_timeFrame) / m_timeInterval));
 			ScrollChart();
 		}
 
 		private void ScrollChart()
 		{
-			var from = ChartHorizontalScrollBar.Value * TimeInterval;
+			var from = ChartHorizontalScrollBar.Value * m_timeInterval;
 			var to = from + m_timeFrame;
 
 			PowerCurveChart.ChartAreas[0].AxisX.ScaleView.Zoom(from, to);
