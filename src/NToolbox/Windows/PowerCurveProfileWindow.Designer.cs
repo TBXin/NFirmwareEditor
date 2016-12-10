@@ -83,7 +83,9 @@ namespace NToolbox.Windows
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
+			this.TimeScaleButton = new System.Windows.Forms.Button();
 			this.PowerCurveChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.ChartHorizontalScrollBar = new System.Windows.Forms.HScrollBar();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Time12UpDown)).BeginInit();
@@ -858,7 +860,9 @@ namespace NToolbox.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel2.BackColor = System.Drawing.Color.White;
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel2.Controls.Add(this.TimeScaleButton);
 			this.groupPanel2.Controls.Add(this.PowerCurveChart);
+			this.groupPanel2.Controls.Add(this.ChartHorizontalScrollBar);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
@@ -868,13 +872,33 @@ namespace NToolbox.Windows
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "Power Curve:";
 			// 
+			// TimeScaleButton
+			// 
+			this.TimeScaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.TimeScaleButton.Location = new System.Drawing.Point(501, 4);
+			this.TimeScaleButton.Name = "TimeScaleButton";
+			this.TimeScaleButton.Size = new System.Drawing.Size(70, 22);
+			this.TimeScaleButton.TabIndex = 3;
+			this.TimeScaleButton.Text = "Time Scale";
+			this.TimeScaleButton.UseVisualStyleBackColor = true;
+			// 
 			// PowerCurveChart
 			// 
 			this.PowerCurveChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PowerCurveChart.Location = new System.Drawing.Point(3, 33);
 			this.PowerCurveChart.Name = "PowerCurveChart";
-			this.PowerCurveChart.Size = new System.Drawing.Size(569, 326);
+			this.PowerCurveChart.Size = new System.Drawing.Size(569, 309);
 			this.PowerCurveChart.TabIndex = 0;
+			// 
+			// ChartHorizontalScrollBar
+			// 
+			this.ChartHorizontalScrollBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.ChartHorizontalScrollBar.LargeChange = 1;
+			this.ChartHorizontalScrollBar.Location = new System.Drawing.Point(3, 342);
+			this.ChartHorizontalScrollBar.Maximum = 0;
+			this.ChartHorizontalScrollBar.Name = "ChartHorizontalScrollBar";
+			this.ChartHorizontalScrollBar.Size = new System.Drawing.Size(569, 17);
+			this.ChartHorizontalScrollBar.TabIndex = 1;
 			// 
 			// PowerCurveProfileWindow
 			// 
@@ -980,5 +1004,7 @@ namespace NToolbox.Windows
 		private System.Windows.Forms.NumericUpDown Percents12UpDown;
 		private System.Windows.Forms.Label label24;
 		private System.Windows.Forms.NumericUpDown Time12UpDown;
+		private System.Windows.Forms.HScrollBar ChartHorizontalScrollBar;
+		private System.Windows.Forms.Button TimeScaleButton;
 	}
 }

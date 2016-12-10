@@ -14,16 +14,22 @@ namespace NToolbox.Windows
 	{
 		private const ushort MinTime = 0;
 		private const ushort MaxTime = 25;
+		private const double TimeInterval = 0.5;
 		private const int MinPercents = 0;
 		private const int MaxPercents = 250;
+		private const string PointsSeriesName = "points";
 
 		private static readonly Regex s_blackList = new Regex("(?![a-zA-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 		private readonly ArcticFoxConfiguration.PowerCurve m_curve;
 
 		private TimePercentControlGroup[] m_curveControls;
+
 		private bool m_isDragginPoint;
 		private DataPoint m_pointUnderCursor;
 		private int m_pointUnderCursorIndex;
+
+		private ContextMenu m_timeScaleMenu;
+		private int m_timeFrame = 5;
 
 		public PowerCurveProfileWindow([NotNull] ArcticFoxConfiguration.PowerCurve curve)
 		{
@@ -35,6 +41,8 @@ namespace NToolbox.Windows
 			InitializeChart();
 			InitializeControls();
 			InitializeWorkspace();
+
+			Load += (s, e) => ZoomChart(m_timeFrame);
 		}
 
 		private void InitializeChart()
@@ -48,7 +56,9 @@ namespace NToolbox.Windows
 				area.AxisX.MajorGrid.Enabled = true;
 				area.AxisX.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisX.LineColor = Color.DarkGray;
-				area.AxisX.Interval = 1;
+				area.AxisX.Interval = TimeInterval;
+				area.AxisX.ScaleView.Zoomable = true;
+				area.AxisX.ScrollBar.Enabled = false;
 
 				area.AxisY.IsMarginVisible = false;
 				area.AxisY.Minimum = MinPercents;
@@ -56,12 +66,12 @@ namespace NToolbox.Windows
 				area.AxisY.MajorGrid.Enabled = true;
 				area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
 				area.AxisY.LineColor = Color.DarkGray;
-				//area.AxisY.Interval = 0.5;
 			}
 			PowerCurveChart.ChartAreas.Add(area);
 
 			var series = new Series
 			{
+				Name = PointsSeriesName,
 				ChartType = SeriesChartType.Line,
 				YValueType = ChartValueType.Double,
 				Color = Color.YellowGreen,
@@ -81,11 +91,12 @@ namespace NToolbox.Windows
 				Color = Color.DeepSkyBlue,
 				BorderWidth = 1
 			};
-			PowerCurveChart.Series.Add(series);
-			PowerCurveChart.Series.Add(centerSeries);
-			PowerCurveChart.Series[1].Points.Add(new DataPoint(0, 100));
-			PowerCurveChart.Series[1].Points.Add(new DataPoint(25, 100));
+			
+			centerSeries.Points.Add(new DataPoint(0, 100));
+			centerSeries.Points.Add(new DataPoint(25, 100));
 
+			PowerCurveChart.Series.Add(centerSeries);
+			PowerCurveChart.Series.Add(series);
 			PowerCurveChart.MouseMove += PowerCurveChart_MouseMove;
 			PowerCurveChart.MouseDown += PowerCurveChart_MouseDown;
 			PowerCurveChart.MouseUp += PowerCurveChart_MouseUp;
@@ -98,8 +109,8 @@ namespace NToolbox.Windows
 				var xValueUnderCursor = PowerCurveChart.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
 				var yValueUnderCursor = PowerCurveChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
 
-				var leftBound = m_pointUnderCursorIndex == 0 ? MinTime : PowerCurveChart.Series[0].Points[m_pointUnderCursorIndex - 1].XValue + 0.1;
-				var rightBound = m_pointUnderCursorIndex == m_curve.Points.Length - 1 ? MaxTime : PowerCurveChart.Series[0].Points[m_pointUnderCursorIndex + 1].XValue - 0.1;
+				var leftBound = m_pointUnderCursorIndex == 0 ? MinTime : PowerCurveChart.Series[PointsSeriesName].Points[m_pointUnderCursorIndex - 1].XValue + 0.1;
+				var rightBound = m_pointUnderCursorIndex == m_curve.Points.Length - 1 ? MaxTime : PowerCurveChart.Series[PointsSeriesName].Points[m_pointUnderCursorIndex + 1].XValue - 0.1;
 
 				double tempXValue;
 				if (xValueUnderCursor <= leftBound) tempXValue = leftBound;
@@ -175,6 +186,23 @@ namespace NToolbox.Windows
 				new TimePercentControlGroup(Time12UpDown, Percents12UpDown)
 			};
 
+			m_timeScaleMenu = new ContextMenu(new[]
+			{
+				new MenuItem("1 second", (s, e) => ZoomChart(1)),
+				new MenuItem("2 seconds", (s, e) => ZoomChart(2)),
+				new MenuItem("5 seconds", (s, e) => ZoomChart(5)),
+				new MenuItem("10 seconds", (s, e) => ZoomChart(10)),
+				new MenuItem("25 seconds", (s, e) => ZoomChart(25))
+			});
+
+			TimeScaleButton.Click += (s, e) =>
+			{
+				var control = (Control)s;
+				m_timeScaleMenu.Show(control, new Point(control.Width, 0));
+			};
+
+			ChartHorizontalScrollBar.ValueChanged += (s, e) => ScrollChart();
+
 			NameTextBox.TextChanged += (s, e) =>
 			{
 				var position = NameTextBox.SelectionStart;
@@ -190,6 +218,22 @@ namespace NToolbox.Windows
 			};
 
 			SaveButton.Click += SaveButton_Click;
+		}
+
+		private void ZoomChart(int timeFrame)
+		{
+			m_timeFrame = timeFrame;
+			PowerCurveChart.ChartAreas[0].AxisX.Interval = timeFrame > 2 ? TimeInterval : 0.1;
+			ChartHorizontalScrollBar.Maximum = Math.Max(0, (int)((MaxTime - m_timeFrame) / TimeInterval));
+			ScrollChart();
+		}
+
+		private void ScrollChart()
+		{
+			var from = ChartHorizontalScrollBar.Value * TimeInterval;
+			var to = from + m_timeFrame;
+
+			PowerCurveChart.ChartAreas[0].AxisX.ScaleView.Zoom(from, to);
 		}
 
 		private void InitializeWorkspace()
@@ -224,7 +268,7 @@ namespace NToolbox.Windows
 				percentsUpDown.Tag = point;
 				percentsUpDown.ValueChanged += FactorUpDown_ValueChanged;
 
-				PowerCurveChart.Series[0].Points.Add(point);
+				PowerCurveChart.Series[PointsSeriesName].Points.Add(point);
 			}
 		}
 
