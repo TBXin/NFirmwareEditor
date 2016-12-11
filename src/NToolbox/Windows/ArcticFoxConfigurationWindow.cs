@@ -14,7 +14,7 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161206;
+		private const int MinimumSupportedBuildNumber = 161209;
 		private const int MaximumSupportedSettingsVersion = 3;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
