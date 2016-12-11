@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new NCore.UI.BorderedPanel();
+			this.VersionLabel = new System.Windows.Forms.Label();
 			this.panel2 = new NCore.UI.BorderedPanel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
 			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
@@ -53,7 +54,6 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.VersionLabel = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,6 +77,16 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(240, 514);
 			this.panel1.TabIndex = 4;
+			// 
+			// VersionLabel
+			// 
+			this.VersionLabel.AutoSize = true;
+			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
+			this.VersionLabel.Name = "VersionLabel";
+			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
+			this.VersionLabel.TabIndex = 5;
+			this.VersionLabel.Text = "v1.1";
 			// 
 			// panel2
 			// 
@@ -276,16 +286,6 @@
 			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
-			// 
-			// VersionLabel
-			// 
-			this.VersionLabel.AutoSize = true;
-			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
-			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
-			this.VersionLabel.Name = "VersionLabel";
-			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
-			this.VersionLabel.TabIndex = 5;
-			this.VersionLabel.Text = "v1.0";
 			// 
 			// MainWindow
 			// 

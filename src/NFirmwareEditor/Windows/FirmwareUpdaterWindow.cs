@@ -150,13 +150,25 @@ namespace NFirmwareEditor.Windows
 				var dataflash = HidConnector.Instance.ReadDataflash(worker);
 				if (dataflash.LoadFromLdrom == false && dataflash.FirmwareVersion > 0)
 				{
+					Trace.Info("Switching boot mode...");
 					dataflash.LoadFromLdrom = true;
+
 					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
+					Trace.Info("Writing dataflash...");
 					HidConnector.Instance.WriteDataflash(dataflash, worker);
+					Trace.Info("Writing dataflash... Done. Waiting 500 msec.");
+					Thread.Sleep(100);
+
+					UpdateUI(() => UpdateStatusLabel.Text = @"Restarting device...");
+					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
+					Thread.Sleep(200);
+					Trace.Info("Restarting device... Done.");
+
+					Trace.Info("Waiting for device after reset...");
 					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
 
-					var result = SpinWait.SpinUntil(() =>
+					var deviceFoundResult = SpinWait.SpinUntil(() =>
 					{
 						Thread.Sleep(1000);
 						var isConnected = HidConnector.Instance.IsDeviceConnected;
@@ -180,32 +192,55 @@ namespace NFirmwareEditor.Windows
 						}
 					}, TimeSpan.FromSeconds(15));
 
-					if (result) Trace.Info("Waiting for device after reset... Done.");
-					if (!result)
+					if (deviceFoundResult) Trace.Info("Waiting for device after reset... Done.");
+					if (!deviceFoundResult)
 					{
 						Trace.Info("Waiting for device after reset... Failed.");
 						InfoBox.Show("Device is not connected. Update process interrupted.");
 						return;
 					}
 				}
-				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
-				HidConnector.Instance.WriteFirmware(firmware, worker);
 
+				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
+
+				var writeFirmwareResult = SpinWait.SpinUntil(() =>
+				{
+					try
+					{
+						Trace.Info("Uploading firmware...");
+						HidConnector.Instance.WriteFirmware(firmware, worker);
+						Trace.Info("Uploading firmware... Done.");
+						return true;
+					}
+					catch (Exception ex)
+					{
+						Trace.Info(ex, "Uploading firmware... Failed. Next attempt in 1 sec.");
+						Thread.Sleep(1000);
+						return false;
+					}
+				}, TimeSpan.FromSeconds(15));
+
+				if (!writeFirmwareResult)
+				{
+					InfoBox.Show("Firmware update failed!");
+					return;
+				}
+
+				isSuccess = true;
+			}
+			catch (Exception ex)
+			{
+				Trace.Warn(ex);
+				InfoBox.Show("An exception occured during firmware update.\n" + ex.Message);
+			}
+			finally
+			{
 				UpdateUI(() =>
 				{
 					UpdateStatusLabel.Text = string.Empty;
 					worker.ReportProgress(0);
 				});
-				isSuccess = true;
 
-				Thread.Sleep(500);
-			}
-			catch (Exception ex)
-			{
-				InfoBox.Show("An exception occured during firmware update.\n" + ex.Message);
-			}
-			finally
-			{
 				if (isSuccess)
 				{
 					InfoBox.Show("Firmware successfully updated.");
