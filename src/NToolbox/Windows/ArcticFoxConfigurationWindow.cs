@@ -14,8 +14,8 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const int MinimumSupportedBuildNumber = 161209;
-		private const int MaximumSupportedSettingsVersion = 3;
+		private const int MinimumSupportedBuildNumber = 161215;
+		private const int MaximumSupportedSettingsVersion = 4;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
@@ -314,7 +314,8 @@ namespace NToolbox.Windows
 			var ui = m_configuration.Interface;
 			{
 				BrightnessTrackBar.Value = ui.Brightness;
-				IdleTimeUpDow.Value = ui.DimTimeout;
+				IdleTimeUpDow.SetValue(ui.DimTimeout);
+				PuffScreenDelayUpDown.SetValue(ui.PuffScreenDelay / 10m);
 				StealthModeCheckBox.Checked = ui.IsStealthMode;
 				FlippedModeCheckBox.Checked = ui.IsFlipped;
 				ChargeScreenComboBox.SelectItem(ui.ChargeScreenType);
@@ -391,6 +392,7 @@ namespace NToolbox.Windows
 				// General -> Screen Tab
 				ui.Brightness = (byte)BrightnessTrackBar.Value;
 				ui.DimTimeout = (byte)IdleTimeUpDow.Value;
+				ui.PuffScreenDelay = (byte)(PuffScreenDelayUpDown.Value * 10);
 				ui.IsStealthMode = StealthModeCheckBox.Checked;
 				ui.IsFlipped = FlippedModeCheckBox.Checked;
 				ui.ChargeScreenType = ChargeScreenComboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeScreenType>();

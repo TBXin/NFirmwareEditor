@@ -56,6 +56,7 @@ namespace NToolbox.Models
 			public ClockType ClockType;
 			public bool IsClockOnMainScreen;
 			public ScreenProtectionTime ScreensaveDuration;
+			public byte PuffScreenDelay;
 		}
 
 		internal class CountersData
