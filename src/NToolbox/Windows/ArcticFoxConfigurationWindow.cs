@@ -132,6 +132,7 @@ namespace NToolbox.Windows
 
 				try
 				{
+					SaveWorkspace();
 					var cfgCopy = BinaryStructure.Copy(m_configuration);
 					{
 						cfgCopy.Info.FirmwareVersion = 0;
