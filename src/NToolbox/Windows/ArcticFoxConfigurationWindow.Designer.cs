@@ -186,6 +186,11 @@
 			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.ConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.NewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SaveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -217,6 +222,7 @@
 			this.PowerCurvesTabPage.SuspendLayout();
 			this.MaterialsTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -227,8 +233,8 @@
 			this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WelcomePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 567);
+			this.MainContainer.SelectedPage = this.WorkspacePage;
+			this.MainContainer.Size = new System.Drawing.Size(374, 587);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -242,7 +248,7 @@
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
 			this.WelcomePage.Name = "WelcomePage";
-			this.WelcomePage.Size = new System.Drawing.Size(374, 567);
+			this.WelcomePage.Size = new System.Drawing.Size(374, 587);
 			this.WelcomePage.TabIndex = 0;
 			this.WelcomePage.Text = "WelcomePage";
 			// 
@@ -267,7 +273,6 @@
 			this.OpenConfigurationLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
 			this.OpenConfigurationLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.OpenConfigurationLinkLabel.Enabled = false;
 			this.OpenConfigurationLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.OpenConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.OpenConfigurationLinkLabel.Location = new System.Drawing.Point(0, 510);
@@ -284,7 +289,6 @@
 			this.CreateConfigurationLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
 			this.CreateConfigurationLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.CreateConfigurationLinkLabel.Enabled = false;
 			this.CreateConfigurationLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.CreateConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.CreateConfigurationLinkLabel.Location = new System.Drawing.Point(0, 485);
@@ -316,7 +320,7 @@
 			this.WelcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.WelcomeLabel.Location = new System.Drawing.Point(0, 242);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(374, 156);
+			this.WelcomeLabel.Size = new System.Drawing.Size(374, 176);
 			this.WelcomeLabel.TabIndex = 2;
 			this.WelcomeLabel.Text = "Connect device with\r\n\r\nArcticFox\r\n[{0}]\r\n\r\nfirmware or newer";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -329,19 +333,21 @@
 			this.WorkspacePage.Controls.Add(this.borderedPanel1);
 			this.WorkspacePage.Controls.Add(this.MainTabControl);
 			this.WorkspacePage.Controls.Add(this.groupPanel1);
+			this.WorkspacePage.Controls.Add(this.menuStrip1);
 			this.WorkspacePage.Description = null;
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 567);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 587);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "Workspace";
 			// 
 			// ResetButton
 			// 
 			this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.ResetButton.Enabled = false;
 			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.ResetButton.Location = new System.Drawing.Point(257, 511);
+			this.ResetButton.Location = new System.Drawing.Point(257, 531);
 			this.ResetButton.Name = "ResetButton";
 			this.ResetButton.Size = new System.Drawing.Size(107, 25);
 			this.ResetButton.TabIndex = 40;
@@ -351,8 +357,9 @@
 			// UploadButton
 			// 
 			this.UploadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.UploadButton.Enabled = false;
 			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.UploadButton.Location = new System.Drawing.Point(141, 511);
+			this.UploadButton.Location = new System.Drawing.Point(141, 531);
 			this.UploadButton.Name = "UploadButton";
 			this.UploadButton.Size = new System.Drawing.Size(110, 25);
 			this.UploadButton.TabIndex = 39;
@@ -362,8 +369,9 @@
 			// DownloadButton
 			// 
 			this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.DownloadButton.Enabled = false;
 			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.DownloadButton.Location = new System.Drawing.Point(11, 511);
+			this.DownloadButton.Location = new System.Drawing.Point(11, 531);
 			this.DownloadButton.Name = "DownloadButton";
 			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
 			this.DownloadButton.TabIndex = 38;
@@ -380,7 +388,7 @@
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
 			this.borderedPanel1.Controls.Add(this.pictureBox2);
-			this.borderedPanel1.Location = new System.Drawing.Point(11, 11);
+			this.borderedPanel1.Location = new System.Drawing.Point(11, 31);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
 			this.borderedPanel1.Size = new System.Drawing.Size(58, 58);
@@ -405,7 +413,7 @@
 			this.MainTabControl.Controls.Add(this.ProfilesTabPage);
 			this.MainTabControl.Controls.Add(this.GeneralTabPage);
 			this.MainTabControl.Controls.Add(this.AdvancedTabPage);
-			this.MainTabControl.Location = new System.Drawing.Point(11, 75);
+			this.MainTabControl.Location = new System.Drawing.Point(11, 95);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
 			this.MainTabControl.Size = new System.Drawing.Size(354, 429);
@@ -1943,7 +1951,7 @@
 			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
-			this.groupPanel1.Location = new System.Drawing.Point(76, 11);
+			this.groupPanel1.Location = new System.Drawing.Point(76, 31);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(287, 58);
 			this.groupPanel1.TabIndex = 35;
@@ -2021,6 +2029,44 @@
 			this.label4.TabIndex = 29;
 			this.label4.Text = "FW Ver:";
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ConfigurationMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(374, 24);
+			this.menuStrip1.TabIndex = 41;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// ConfigurationMenuItem
+			// 
+			this.ConfigurationMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewMenuItem,
+            this.OpenMenuItem,
+            this.SaveAsMenuItem});
+			this.ConfigurationMenuItem.Name = "ConfigurationMenuItem";
+			this.ConfigurationMenuItem.Size = new System.Drawing.Size(93, 20);
+			this.ConfigurationMenuItem.Text = "Configuration";
+			// 
+			// NewMenuItem
+			// 
+			this.NewMenuItem.Name = "NewMenuItem";
+			this.NewMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.NewMenuItem.Text = "New";
+			// 
+			// OpenMenuItem
+			// 
+			this.OpenMenuItem.Name = "OpenMenuItem";
+			this.OpenMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.OpenMenuItem.Text = "Open";
+			// 
+			// SaveAsMenuItem
+			// 
+			this.SaveAsMenuItem.Name = "SaveAsMenuItem";
+			this.SaveAsMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.SaveAsMenuItem.Text = "Save As";
+			// 
 			// MainStatusBar
 			// 
 			this.MainStatusBar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2028,7 +2074,7 @@
 			this.MainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel,
             this.ProgressLabel});
-			this.MainStatusBar.Location = new System.Drawing.Point(0, 545);
+			this.MainStatusBar.Location = new System.Drawing.Point(0, 565);
 			this.MainStatusBar.Name = "MainStatusBar";
 			this.MainStatusBar.Size = new System.Drawing.Size(374, 22);
 			this.MainStatusBar.SizingGrip = false;
@@ -2056,11 +2102,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(374, 567);
+			this.ClientSize = new System.Drawing.Size(374, 587);
 			this.Controls.Add(this.MainStatusBar);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ArcticFoxConfigurationWindow";
@@ -2070,6 +2117,7 @@
 			this.WelcomePage.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.WorkspacePage.ResumeLayout(false);
+			this.WorkspacePage.PerformLayout();
 			this.borderedPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.MainTabControl.ResumeLayout(false);
@@ -2103,6 +2151,8 @@
 			this.MaterialsTabPage.PerformLayout();
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
 			this.ResumeLayout(false);
@@ -2272,5 +2322,10 @@
 		private System.Windows.Forms.LinkLabel CreateConfigurationLinkLabel;
 		private System.Windows.Forms.LinkLabel OpenConfigurationLinkLabel;
 		private System.Windows.Forms.LinkLabel ConnectLinkLabel;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem ConfigurationMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem NewMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem SaveAsMenuItem;
 	}
 }

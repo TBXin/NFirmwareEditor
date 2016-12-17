@@ -5,5 +5,6 @@
 		public const string CsvFilter = "Comma-separated values|*.csv";
 		public const string FirmwareFilter = "Firmware file|*.bin";
 		public const string DataflashFilter = "Dataflash file|*.dataflash";
+		public const string ArcticFoxConfigFilter = "ArcticFox configuration file|*.afc";
 	}
 }

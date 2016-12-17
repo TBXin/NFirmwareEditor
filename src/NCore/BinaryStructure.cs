@@ -36,6 +36,11 @@ namespace NCore
 			}
 		}
 
+		public static T Copy<T>(T source) where T : class, new()
+		{
+			return Read<T>(Write(source));
+		}
+
 		private static void RecursiveRead(object obj, BinaryReader br)
 		{
 			foreach (var iterator in obj.GetType().GetFields())

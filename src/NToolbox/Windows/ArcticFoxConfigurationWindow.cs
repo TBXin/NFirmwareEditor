@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -9,17 +10,19 @@ using NCore;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
+using NToolbox.Properties;
 
 namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
+		private const ushort MaxPower = 2500;
 		private const int MinimumSupportedBuildNumber = 161215;
 		private const int MaximumSupportedSettingsVersion = 4;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
-		private Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
+		private readonly Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
 
 		private Label[] m_powerCurveLabels;
 		private Button[] m_powerCurveButtons;
@@ -99,6 +102,52 @@ namespace NToolbox.Windows
 			ResetButton.Click += ResetButton_Click;
 
 			InitializeComboBoxes();
+			InitializeMenu();
+		}
+
+		private void InitializeMenu()
+		{
+			NewMenuItem.Click += NewMenuItem_Click;
+			OpenMenuItem.Click += OpenMenuItem_Click;
+			SaveAsMenuItem.Click += SaveAsMenuItem_Click;
+		}
+
+		private void NewMenuItem_Click(object sender, EventArgs e)
+		{
+			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration, m_configuration));
+		}
+
+		private void OpenMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenConfigurationFile(m_configuration);
+		}
+
+		private void SaveAsMenuItem_Click(object sender, EventArgs e)
+		{
+			if (m_configuration == null) return;
+
+			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				try
+				{
+					var cfgCopy = BinaryStructure.Copy(m_configuration);
+					{
+						cfgCopy.Info.FirmwareVersion = 0;
+						cfgCopy.Info.HardwareVersion = 0;
+						cfgCopy.Info.MaxPower = 0;
+						cfgCopy.Info.NumberOfBatteries = 0;
+						cfgCopy.Info.ProductId = string.Empty;
+					}
+					var bytes = BinaryStructure.Write(cfgCopy);
+					File.WriteAllBytes(sf.FileName, bytes);
+				}
+				catch (Exception ex)
+				{
+					Trace.ErrorException("An error occurred during save arctic fox configuration.", ex);
+				}
+			}
 		}
 
 		private void ConnectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -109,12 +158,12 @@ namespace NToolbox.Windows
 
 		private void CreateConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			InfoBox.Show("2");
+			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration));
 		}
 
 		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			InfoBox.Show("3");
+			OpenConfigurationFile(m_configuration);
 		}
 
 		private void InitializeComboBoxes()
@@ -260,7 +309,6 @@ namespace NToolbox.Windows
 			try
 			{
 				var data = configurationProvider(m_worker);
-				/*var data = HidConnector.Instance.ReadConfiguration(useWorker ? m_worker : null);*/
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
@@ -555,6 +603,60 @@ namespace NToolbox.Windows
 			}
 		}
 
+		private byte[] PrepairConfiguration(byte[] source, ArcticFoxConfiguration existedConfiguration = null)
+		{
+			var result = BinaryStructure.Read<ArcticFoxConfiguration>(source);
+			if (existedConfiguration == null)
+			{
+				result.Info.MaxPower = MaxPower;
+			}
+			else
+			{
+				result.Info = existedConfiguration.Info;
+			}
+			return BinaryStructure.Write(result);
+		}
+
+		private void OpenConfigurationFile(ArcticFoxConfiguration existedConfiguration)
+		{
+			string fileName;
+			using (var op = new OpenFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				fileName = op.FileName;
+			}
+
+			var result = ReadConfiguration(w => File.ReadAllBytes(fileName));
+			if (result.Result == ReadResult.Success)
+			{
+				if (existedConfiguration == null)
+				{
+					result.Configuration.Info.MaxPower = MaxPower;
+				}
+				else
+				{
+					result.Configuration.Info = existedConfiguration.Info;
+				}
+				OpenWorkspace(result.Configuration);
+			}
+			else if (result.Result == ReadResult.OutdatedFirmware)
+			{
+				InfoBox.Show("You are trying to open the configuration file from a legacy ArcticFox firmware versions. This operation is not supported.");
+			}
+			else if (result.Result == ReadResult.OutdatedToolbox)
+			{
+				InfoBox.Show("You are trying to open the configuration file from a future ArcticFox firmware versions. This operation is not supported.");
+			}
+			else if (result.Result == ReadResult.UnableToRead)
+			{
+				InfoBox.Show("Invalid configuration file!");
+			}
+			else
+			{
+				InfoBox.Show("Shit happens!");
+			}
+		}
+
 		private void BatteryEditButton_Click(object sender, EventArgs e)
 		{
 			using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
@@ -642,7 +744,11 @@ namespace NToolbox.Windows
 		private void DeviceConnected(bool isConnected, bool onStartup)
 		{
 			m_isDeviceConnected = isConnected;
-			UpdateUI(() => StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected"));
+			UpdateUI(() =>
+			{
+				DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = m_isDeviceConnected;
+				StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected");
+			});
 
 			if (m_isWorkspaceOpen || !onStartup) return;
 			if (!m_isDeviceConnected)
@@ -662,16 +768,11 @@ namespace NToolbox.Windows
 				m_configuration = readResult.Configuration;
 				if (readResult.Result == ReadResult.Success)
 				{
-					UpdateUI(() =>
-					{
-						InitializeWorkspace();
-						MainContainer.SelectedPage = WorkspacePage;
-						m_isWorkspaceOpen = true;
-					}, false);
+					OpenWorkspace(readResult.Configuration);
 				}
 				else if (readResult.Result == ReadResult.OutdatedFirmware)
 				{
-					ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
+					ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer", MinimumSupportedBuildNumber));
 				}
 				else if (readResult.Result == ReadResult.OutdatedToolbox)
 				{
@@ -687,6 +788,17 @@ namespace NToolbox.Windows
 				Trace.Warn(ex);
 				ShowWelcomeScreen("Unable to download device settings. Reconnect your device.");
 			}
+		}
+
+		private void OpenWorkspace(ArcticFoxConfiguration configuration)
+		{
+			m_configuration = configuration;
+			UpdateUI(() =>
+			{
+				InitializeWorkspace();
+				MainContainer.SelectedPage = WorkspacePage;
+				m_isWorkspaceOpen = true;
+			}, false);
 		}
 
 		private void ShowWelcomeScreen(string message)

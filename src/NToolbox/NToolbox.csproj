@@ -186,6 +186,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\new_configuration.afc" />
     <None Include="Resources\nfetoolbox.png" />
   </ItemGroup>
   <ItemGroup>
