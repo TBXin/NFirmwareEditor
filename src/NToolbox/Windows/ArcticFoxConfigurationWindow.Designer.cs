@@ -31,6 +31,9 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArcticFoxConfigurationWindow));
 			this.MainContainer = new NCore.UI.MultiPanel();
 			this.WelcomePage = new NCore.UI.MultiPanelPage();
+			this.ConnectLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.OpenConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.CreateConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
 			this.WorkspacePage = new NCore.UI.MultiPanelPage();
@@ -50,6 +53,9 @@
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
+			this.PuffScreenDelayUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label22 = new System.Windows.Forms.Label();
+			this.label23 = new System.Windows.Forms.Label();
 			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
 			this.label21 = new System.Windows.Forms.Label();
 			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
@@ -183,9 +189,6 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label22 = new System.Windows.Forms.Label();
-			this.label23 = new System.Windows.Forms.Label();
-			this.PuffScreenDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -198,6 +201,7 @@
 			this.GeneralTabPage.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.ScreenTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).BeginInit();
 			this.LayoutTabPage.SuspendLayout();
@@ -214,7 +218,6 @@
 			this.MaterialsTabPage.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -224,21 +227,74 @@
 			this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WorkspacePage;
+			this.MainContainer.SelectedPage = this.WelcomePage;
 			this.MainContainer.Size = new System.Drawing.Size(374, 567);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
 			// 
+			this.WelcomePage.Controls.Add(this.ConnectLinkLabel);
+			this.WelcomePage.Controls.Add(this.OpenConfigurationLinkLabel);
+			this.WelcomePage.Controls.Add(this.CreateConfigurationLinkLabel);
 			this.WelcomePage.Controls.Add(this.pictureBox1);
 			this.WelcomePage.Controls.Add(this.WelcomeLabel);
 			this.WelcomePage.Description = null;
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
 			this.WelcomePage.Name = "WelcomePage";
-			this.WelcomePage.Size = new System.Drawing.Size(374, 516);
+			this.WelcomePage.Size = new System.Drawing.Size(374, 567);
 			this.WelcomePage.TabIndex = 0;
 			this.WelcomePage.Text = "WelcomePage";
+			// 
+			// ConnectLinkLabel
+			// 
+			this.ConnectLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
+			this.ConnectLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.ConnectLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ConnectLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.ConnectLinkLabel.Location = new System.Drawing.Point(0, 460);
+			this.ConnectLinkLabel.Name = "ConnectLinkLabel";
+			this.ConnectLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.ConnectLinkLabel.TabIndex = 7;
+			this.ConnectLinkLabel.TabStop = true;
+			this.ConnectLinkLabel.Text = "Connect and Download configuration";
+			this.ConnectLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.ConnectLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			// 
+			// OpenConfigurationLinkLabel
+			// 
+			this.OpenConfigurationLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
+			this.OpenConfigurationLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.OpenConfigurationLinkLabel.Enabled = false;
+			this.OpenConfigurationLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.OpenConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.OpenConfigurationLinkLabel.Location = new System.Drawing.Point(0, 510);
+			this.OpenConfigurationLinkLabel.Name = "OpenConfigurationLinkLabel";
+			this.OpenConfigurationLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.OpenConfigurationLinkLabel.TabIndex = 6;
+			this.OpenConfigurationLinkLabel.TabStop = true;
+			this.OpenConfigurationLinkLabel.Text = "Open existing configuration";
+			this.OpenConfigurationLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.OpenConfigurationLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			// 
+			// CreateConfigurationLinkLabel
+			// 
+			this.CreateConfigurationLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
+			this.CreateConfigurationLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CreateConfigurationLinkLabel.Enabled = false;
+			this.CreateConfigurationLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CreateConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.CreateConfigurationLinkLabel.Location = new System.Drawing.Point(0, 485);
+			this.CreateConfigurationLinkLabel.Name = "CreateConfigurationLinkLabel";
+			this.CreateConfigurationLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.CreateConfigurationLinkLabel.TabIndex = 5;
+			this.CreateConfigurationLinkLabel.TabStop = true;
+			this.CreateConfigurationLinkLabel.Text = "Create new configuration";
+			this.CreateConfigurationLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.CreateConfigurationLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			// 
 			// pictureBox1
 			// 
@@ -253,14 +309,16 @@
 			// 
 			// WelcomeLabel
 			// 
-			this.WelcomeLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.WelcomeLabel.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.WelcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.WelcomeLabel.Location = new System.Drawing.Point(0, 191);
+			this.WelcomeLabel.Location = new System.Drawing.Point(0, 242);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(374, 325);
+			this.WelcomeLabel.Size = new System.Drawing.Size(374, 156);
 			this.WelcomeLabel.TabIndex = 2;
-			this.WelcomeLabel.Text = "Waiting for device...";
+			this.WelcomeLabel.Text = "Connect device with\r\n\r\nArcticFox\r\n[{0}]\r\n\r\nfirmware or newer";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// WorkspacePage
@@ -489,6 +547,44 @@
 			this.ScreenTabPage.TabIndex = 0;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
+			// 
+			// PuffScreenDelayUpDown
+			// 
+			this.PuffScreenDelayUpDown.DecimalPlaces = 1;
+			this.PuffScreenDelayUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.PuffScreenDelayUpDown.Location = new System.Drawing.Point(101, 62);
+			this.PuffScreenDelayUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.PuffScreenDelayUpDown.Name = "PuffScreenDelayUpDown";
+			this.PuffScreenDelayUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PuffScreenDelayUpDown.TabIndex = 107;
+			this.PuffScreenDelayUpDown.TabStop = false;
+			this.PuffScreenDelayUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label22
+			// 
+			this.label22.AutoSize = true;
+			this.label22.Location = new System.Drawing.Point(213, 65);
+			this.label22.Name = "label22";
+			this.label22.Size = new System.Drawing.Size(12, 13);
+			this.label22.TabIndex = 109;
+			this.label22.Text = "s";
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(4, 65);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(97, 13);
+			this.label23.TabIndex = 108;
+			this.label23.Text = "Puff Screen Delay:";
 			// 
 			// ChargeScreenComboBox
 			// 
@@ -1955,44 +2051,6 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
-			// label22
-			// 
-			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(213, 65);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(12, 13);
-			this.label22.TabIndex = 109;
-			this.label22.Text = "s";
-			// 
-			// label23
-			// 
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(4, 65);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(97, 13);
-			this.label23.TabIndex = 108;
-			this.label23.Text = "Puff Screen Delay:";
-			// 
-			// PuffScreenDelayUpDown
-			// 
-			this.PuffScreenDelayUpDown.DecimalPlaces = 1;
-			this.PuffScreenDelayUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.PuffScreenDelayUpDown.Location = new System.Drawing.Point(101, 62);
-			this.PuffScreenDelayUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-			this.PuffScreenDelayUpDown.Name = "PuffScreenDelayUpDown";
-			this.PuffScreenDelayUpDown.Size = new System.Drawing.Size(106, 21);
-			this.PuffScreenDelayUpDown.TabIndex = 107;
-			this.PuffScreenDelayUpDown.TabStop = false;
-			this.PuffScreenDelayUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2022,6 +2080,7 @@
 			this.tabControl1.ResumeLayout(false);
 			this.ScreenTabPage.ResumeLayout(false);
 			this.ScreenTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).EndInit();
 			this.LayoutTabPage.ResumeLayout(false);
@@ -2046,7 +2105,6 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -2211,5 +2269,8 @@
 		private System.Windows.Forms.NumericUpDown PuffScreenDelayUpDown;
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.LinkLabel CreateConfigurationLinkLabel;
+		private System.Windows.Forms.LinkLabel OpenConfigurationLinkLabel;
+		private System.Windows.Forms.LinkLabel ConnectLinkLabel;
 	}
 }

@@ -19,12 +19,14 @@ namespace NToolbox.Windows
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
+		private Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
+
 		private Label[] m_powerCurveLabels;
 		private Button[] m_powerCurveButtons;
 		private Label[] m_tfrLabels;
 		private Button[] m_tfrButtons;
 
-		private bool m_isDeviceWasConnectedOnce;
+		private bool m_isWorkspaceOpen;
 		private bool m_isDeviceConnected;
 		private ArcticFoxConfiguration m_configuration;
 
@@ -41,12 +43,12 @@ namespace NToolbox.Windows
 			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
 			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
 
-			HidConnector.Instance.DeviceConnected += DeviceConnected;
+			HidConnector.Instance.DeviceConnected += isConnected => DeviceConnected(isConnected, false);
 			Shown += (s, e) =>
 			{
 				new Thread(() =>
 				{
-					DeviceConnected(HidConnector.Instance.IsDeviceConnected);
+					DeviceConnected(HidConnector.Instance.IsDeviceConnected, true);
 					UpdateUI(() => NativeMethods.SetForegroundWindow(Handle));
 				}).Start();
 			};
@@ -55,6 +57,10 @@ namespace NToolbox.Windows
 		private void InitializeControls()
 		{
 			MainContainer.SelectedPage = WelcomePage;
+			ConnectLinkLabel.LinkClicked += ConnectLinkLabel_LinkClicked;
+			CreateConfigurationLinkLabel.LinkClicked += CreateConfigurationLinkLabel_LinkClicked;
+			OpenConfigurationLinkLabel.LinkClicked += OpenConfigurationLinkLabel_LinkClicked;
+
 			ProfilesTabControl.TabPages.Clear();
 
 			FirmwareVersionTextBox.ReadOnly = true;
@@ -93,6 +99,22 @@ namespace NToolbox.Windows
 			ResetButton.Click += ResetButton_Click;
 
 			InitializeComboBoxes();
+		}
+
+		private void ConnectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
+		}
+
+		private void CreateConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			InfoBox.Show("2");
+		}
+
+		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			InfoBox.Show("3");
 		}
 
 		private void InitializeComboBoxes()
@@ -231,11 +253,14 @@ namespace NToolbox.Windows
 		}
 
 		[NotNull]
-		private ConfigurationReadResult ReadConfiguration(bool useWorker = true)
+		private ConfigurationReadResult ReadConfiguration([NotNull] Func<BackgroundWorker, byte[]> configurationProvider, bool useWorker = true)
 		{
+			if (configurationProvider == null) throw new ArgumentNullException("configurationProvider");
+
 			try
 			{
-				var data = HidConnector.Instance.ReadConfiguration(useWorker ? m_worker : null);
+				var data = configurationProvider(m_worker);
+				/*var data = HidConnector.Instance.ReadConfiguration(useWorker ? m_worker : null);*/
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
@@ -490,7 +515,7 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				var readResult = ReadConfiguration();
+				var readResult = ReadConfiguration(m_deviceConfigurationProvider);
 				if (readResult.Result != ReadResult.Success)
 				{
 					InfoBox.Show("Something strange happened! Please restart application.");
@@ -614,22 +639,26 @@ namespace NToolbox.Windows
 			}));
 		}
 
-		private void DeviceConnected(bool isConnected)
+		private void DeviceConnected(bool isConnected, bool onStartup)
 		{
 			m_isDeviceConnected = isConnected;
 			UpdateUI(() => StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected"));
 
-			if (m_isDeviceWasConnectedOnce) return;
+			if (m_isWorkspaceOpen || !onStartup) return;
 			if (!m_isDeviceConnected)
 			{
-				ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer\nto continue...", MinimumSupportedBuildNumber));
+				ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer", MinimumSupportedBuildNumber));
 				return;
 			}
+			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
+		}
 
+		private void ReadConfigurationAndShowResult(Func<BackgroundWorker, byte[]> configurationProvider)
+		{
 			ShowWelcomeScreen("Downloading settings...");
 			try
 			{
-				var readResult = ReadConfiguration(false);
+				var readResult = ReadConfiguration(configurationProvider, false);
 				m_configuration = readResult.Configuration;
 				if (readResult.Result == ReadResult.Success)
 				{
@@ -637,7 +666,7 @@ namespace NToolbox.Windows
 					{
 						InitializeWorkspace();
 						MainContainer.SelectedPage = WorkspacePage;
-						m_isDeviceWasConnectedOnce = true;
+						m_isWorkspaceOpen = true;
 					}, false);
 				}
 				else if (readResult.Result == ReadResult.OutdatedFirmware)
