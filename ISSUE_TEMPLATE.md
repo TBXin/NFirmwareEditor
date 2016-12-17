@@ -5,6 +5,7 @@ Before you click that big tempting "Submit New Issue" button though, can you qui
 
 * This is not a request to create a patch for your firmware version
 * This is not a request to port any kind of patches to your firmware version
+* This is not an issue about any kind of patches and related things
 * I have checked that there are no issues with similar or the same content
 * I have double checked and can reproduce the issue
 
