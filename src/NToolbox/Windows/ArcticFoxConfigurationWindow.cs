@@ -107,64 +107,13 @@ namespace NToolbox.Windows
 
 		private void InitializeMenu()
 		{
-			NewMenuItem.Click += NewMenuItem_Click;
-			OpenMenuItem.Click += OpenMenuItem_Click;
-			SaveAsMenuItem.Click += SaveAsMenuItem_Click;
-		}
-
-		private void NewMenuItem_Click(object sender, EventArgs e)
-		{
-			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration, m_configuration));
-		}
-
-		private void OpenMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenConfigurationFile(m_configuration);
-		}
-
-		private void SaveAsMenuItem_Click(object sender, EventArgs e)
-		{
-			if (m_configuration == null) return;
-
-			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
+			var menu = new ContextMenu(new[]
 			{
-				if (sf.ShowDialog() != DialogResult.OK) return;
-
-				try
-				{
-					SaveWorkspace();
-					var cfgCopy = BinaryStructure.Copy(m_configuration);
-					{
-						cfgCopy.Info.FirmwareVersion = 0;
-						cfgCopy.Info.HardwareVersion = 0;
-						cfgCopy.Info.MaxPower = 0;
-						cfgCopy.Info.NumberOfBatteries = 0;
-						cfgCopy.Info.ProductId = string.Empty;
-					}
-					var bytes = BinaryStructure.Write(cfgCopy);
-					File.WriteAllBytes(sf.FileName, bytes);
-				}
-				catch (Exception ex)
-				{
-					Trace.ErrorException("An error occurred during save arctic fox configuration.", ex);
-				}
-			}
-		}
-
-		private void ConnectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			if (!ValidateConnectionStatus()) return;
-			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
-		}
-
-		private void CreateConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration));
-		}
-
-		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			OpenConfigurationFile(m_configuration);
+				new MenuItem("New", NewMenuItem_Click),
+				new MenuItem("Open", OpenMenuItem_Click),
+				new MenuItem("Save As", SaveAsMenuItem_Click)
+			});
+			ConfigurationMenuButton.Click += (s, e) => menu.Show(ConfigurationMenuButton, new Point(0, ConfigurationMenuButton.Height));
 		}
 
 		private void InitializeComboBoxes()
@@ -695,6 +644,61 @@ namespace NToolbox.Windows
 
 				UpdateTFRCurveNames();
 			}
+		}
+
+		private void NewMenuItem_Click(object sender, EventArgs e)
+		{
+			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration, m_configuration));
+		}
+
+		private void OpenMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenConfigurationFile(m_configuration);
+		}
+
+		private void SaveAsMenuItem_Click(object sender, EventArgs e)
+		{
+			if (m_configuration == null) return;
+
+			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+
+				try
+				{
+					SaveWorkspace();
+					var cfgCopy = BinaryStructure.Copy(m_configuration);
+					{
+						cfgCopy.Info.FirmwareVersion = 0;
+						cfgCopy.Info.HardwareVersion = 0;
+						cfgCopy.Info.MaxPower = 0;
+						cfgCopy.Info.NumberOfBatteries = 0;
+						cfgCopy.Info.ProductId = string.Empty;
+					}
+					var bytes = BinaryStructure.Write(cfgCopy);
+					File.WriteAllBytes(sf.FileName, bytes);
+				}
+				catch (Exception ex)
+				{
+					Trace.ErrorException("An error occurred during save arctic fox configuration.", ex);
+				}
+			}
+		}
+
+		private void ConnectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
+		}
+
+		private void CreateConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration));
+		}
+
+		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			OpenConfigurationFile(m_configuration);
 		}
 
 		private void DownloadButton_Click(object sender, EventArgs e)
