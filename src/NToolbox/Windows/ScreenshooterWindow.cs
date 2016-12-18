@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,12 +17,19 @@ namespace NToolbox.Windows
 	{
 		private readonly ToolboxConfiguration m_configuration;
 		private bool m_isBroadcasting;
+		private Size m_screenSize;
 
-		public ScreenshooterWindow(ToolboxConfiguration configuration)
+		public ScreenshooterWindow([NotNull] ToolboxConfiguration configuration)
 		{
+			if (configuration == null) throw new ArgumentNullException("configuration");
 			m_configuration = configuration;
-			InitializeComponent();
 
+			InitializeComponent();
+			InitializeControls();
+		}
+
+		private void InitializeControls()
+		{
 			TakeScreenshotBeforeSaveCheckBox.Checked = m_configuration.TakeScreenshotBeforeSave;
 			TakeScreenshotBeforeSaveCheckBox.CheckedChanged += (s, e) => m_configuration.TakeScreenshotBeforeSave = TakeScreenshotBeforeSaveCheckBox.Checked;
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
@@ -29,6 +37,15 @@ namespace NToolbox.Windows
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
 
 			Closing += (s, e) => m_isBroadcasting = false;
+
+			ScreenSizeComboBox.Items.Clear();
+			ScreenSizeComboBox.Items.AddRange(new object[]
+			{
+				new NamedItemContainer<Size>("[64x128] VTC, Cuboid, etc...", new Size(64, 128)),
+				new NamedItemContainer<Size>("[96x16] iStick, etc...", new Size(96, 16))
+			});
+			ScreenSizeComboBox.SelectedValueChanged += (s, e) => m_screenSize = ScreenSizeComboBox.GetSelectedItem<Size>();
+			ScreenSizeComboBox.SelectedIndex = 0;
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -121,7 +138,8 @@ namespace NToolbox.Windows
 				var data = HidConnector.Instance.Screenshot();
 				if (data == null) throw new InvalidOperationException("Invalid screenshot data!");
 
-				return CreateBitmapFromBytesArray(64, 128, data);
+				data = data.Take(m_screenSize.Width * m_screenSize.Height / 8).ToArray();
+				return CreateBitmapFromBytesArray(m_screenSize.Width, m_screenSize.Height, data);
 			}
 			catch (Exception)
 			{

@@ -39,6 +39,7 @@
 			this.BroadcastButton = new System.Windows.Forms.Button();
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.TakeScreenshotButton = new System.Windows.Forms.Button();
+			this.ScreenSizeComboBox = new System.Windows.Forms.ComboBox();
 			this.groupPanel1.SuspendLayout();
 			this.ScreenBordersPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenPictureBox)).BeginInit();
@@ -49,30 +50,38 @@
 			// groupPanel1
 			// 
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.ScreenSizeComboBox);
 			this.groupPanel1.Controls.Add(this.ScreenBordersPanel);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(12, 12);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(80, 173);
+			this.groupPanel1.Size = new System.Drawing.Size(224, 173);
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Screen:";
 			// 
 			// ScreenBordersPanel
 			// 
+			this.ScreenBordersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ScreenBordersPanel.BackColor = System.Drawing.Color.Black;
 			this.ScreenBordersPanel.Controls.Add(this.ScreenPictureBox);
 			this.ScreenBordersPanel.Location = new System.Drawing.Point(5, 34);
 			this.ScreenBordersPanel.Name = "ScreenBordersPanel";
-			this.ScreenBordersPanel.Size = new System.Drawing.Size(70, 134);
+			this.ScreenBordersPanel.Size = new System.Drawing.Size(214, 134);
 			this.ScreenBordersPanel.TabIndex = 1;
 			// 
 			// ScreenPictureBox
 			// 
+			this.ScreenPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ScreenPictureBox.Location = new System.Drawing.Point(3, 3);
 			this.ScreenPictureBox.Name = "ScreenPictureBox";
-			this.ScreenPictureBox.Size = new System.Drawing.Size(64, 128);
+			this.ScreenPictureBox.Size = new System.Drawing.Size(208, 128);
+			this.ScreenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.ScreenPictureBox.TabIndex = 0;
 			this.ScreenPictureBox.TabStop = false;
 			// 
@@ -88,7 +97,7 @@
 			this.groupPanel2.Controls.Add(this.TakeScreenshotButton);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
-			this.groupPanel2.Location = new System.Drawing.Point(98, 12);
+			this.groupPanel2.Location = new System.Drawing.Point(12, 191);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(224, 173);
 			this.groupPanel2.TabIndex = 1;
@@ -172,12 +181,21 @@
 			this.TakeScreenshotButton.Text = "Take screenshot";
 			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
 			// 
+			// ScreenSizeComboBox
+			// 
+			this.ScreenSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ScreenSizeComboBox.FormattingEnabled = true;
+			this.ScreenSizeComboBox.Location = new System.Drawing.Point(50, 5);
+			this.ScreenSizeComboBox.Name = "ScreenSizeComboBox";
+			this.ScreenSizeComboBox.Size = new System.Drawing.Size(169, 21);
+			this.ScreenSizeComboBox.TabIndex = 2;
+			// 
 			// ScreenshooterWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(334, 197);
+			this.ClientSize = new System.Drawing.Size(248, 377);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.groupPanel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -209,5 +227,6 @@
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.NumericUpDown PixelSizeUpDown;
 		private System.Windows.Forms.CheckBox TakeScreenshotBeforeSaveCheckBox;
+		private System.Windows.Forms.ComboBox ScreenSizeComboBox;
 	}
 }
