@@ -110,7 +110,7 @@ namespace NToolbox.Windows
 				return;
 			}
 
-			using (var containerImage = new Bitmap(ScreenPictureBox.Width + 2, ScreenPictureBox.Height + 2))
+			using (var containerImage = new Bitmap(ScreenPictureBox.Image.Width + 2, ScreenPictureBox.Image.Height + 2))
 			{
 				using (var gfx = Graphics.FromImage(containerImage))
 				{
