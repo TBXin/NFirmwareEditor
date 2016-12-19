@@ -179,6 +179,7 @@
 			this.TFR1EditButton = new System.Windows.Forms.Button();
 			this.TFR1Label = new System.Windows.Forms.Label();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.ConfigurationMenuButton = new System.Windows.Forms.Button();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
 			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
@@ -189,7 +190,6 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.ConfigurationMenuButton = new System.Windows.Forms.Button();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1952,6 +1952,18 @@
 			this.groupPanel1.TabIndex = 35;
 			this.groupPanel1.TabStop = false;
 			// 
+			// ConfigurationMenuButton
+			// 
+			this.ConfigurationMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ConfigurationMenuButton.Location = new System.Drawing.Point(192, 3);
+			this.ConfigurationMenuButton.Name = "ConfigurationMenuButton";
+			this.ConfigurationMenuButton.Size = new System.Drawing.Size(90, 24);
+			this.ConfigurationMenuButton.TabIndex = 35;
+			this.ConfigurationMenuButton.TabStop = false;
+			this.ConfigurationMenuButton.Text = "Configuration▾";
+			this.ConfigurationMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.ConfigurationMenuButton.UseVisualStyleBackColor = true;
+			// 
 			// HardwareVersionTextBox
 			// 
 			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1997,10 +2009,10 @@
 			this.DeviceNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DeviceNameLabel.BackColor = System.Drawing.Color.Transparent;
-			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeviceNameLabel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
 			this.DeviceNameLabel.Name = "DeviceNameLabel";
-			this.DeviceNameLabel.Size = new System.Drawing.Size(175, 19);
+			this.DeviceNameLabel.Size = new System.Drawing.Size(195, 19);
 			this.DeviceNameLabel.TabIndex = 0;
 			this.DeviceNameLabel.Text = "Eleaf iStick Pico Mega";
 			// 
@@ -2053,18 +2065,6 @@
 			this.ProgressLabel.Name = "ProgressLabel";
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
-			// 
-			// ConfigurationMenuButton
-			// 
-			this.ConfigurationMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ConfigurationMenuButton.Location = new System.Drawing.Point(182, 3);
-			this.ConfigurationMenuButton.Name = "ConfigurationMenuButton";
-			this.ConfigurationMenuButton.Size = new System.Drawing.Size(100, 24);
-			this.ConfigurationMenuButton.TabIndex = 35;
-			this.ConfigurationMenuButton.TabStop = false;
-			this.ConfigurationMenuButton.Text = "Configuration▾";
-			this.ConfigurationMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.ConfigurationMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
