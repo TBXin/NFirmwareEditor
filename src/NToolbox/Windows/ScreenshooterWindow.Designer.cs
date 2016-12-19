@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.ScreenSizeComboBox = new System.Windows.Forms.ComboBox();
 			this.ScreenBordersPanel = new System.Windows.Forms.Panel();
 			this.ScreenPictureBox = new System.Windows.Forms.PictureBox();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
@@ -39,7 +40,6 @@
 			this.BroadcastButton = new System.Windows.Forms.Button();
 			this.SaveScreenshotButton = new System.Windows.Forms.Button();
 			this.TakeScreenshotButton = new System.Windows.Forms.Button();
-			this.ScreenSizeComboBox = new System.Windows.Forms.ComboBox();
 			this.groupPanel1.SuspendLayout();
 			this.ScreenBordersPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ScreenPictureBox)).BeginInit();
@@ -49,6 +49,8 @@
 			// 
 			// groupPanel1
 			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.ScreenSizeComboBox);
 			this.groupPanel1.Controls.Add(this.ScreenBordersPanel);
@@ -60,6 +62,15 @@
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Screen:";
+			// 
+			// ScreenSizeComboBox
+			// 
+			this.ScreenSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ScreenSizeComboBox.FormattingEnabled = true;
+			this.ScreenSizeComboBox.Location = new System.Drawing.Point(50, 5);
+			this.ScreenSizeComboBox.Name = "ScreenSizeComboBox";
+			this.ScreenSizeComboBox.Size = new System.Drawing.Size(169, 21);
+			this.ScreenSizeComboBox.TabIndex = 2;
 			// 
 			// ScreenBordersPanel
 			// 
@@ -75,12 +86,10 @@
 			// 
 			// ScreenPictureBox
 			// 
-			this.ScreenPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.ScreenPictureBox.Location = new System.Drawing.Point(3, 3);
+			this.ScreenPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.ScreenPictureBox.Location = new System.Drawing.Point(76, 3);
 			this.ScreenPictureBox.Name = "ScreenPictureBox";
-			this.ScreenPictureBox.Size = new System.Drawing.Size(208, 128);
+			this.ScreenPictureBox.Size = new System.Drawing.Size(64, 128);
 			this.ScreenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.ScreenPictureBox.TabIndex = 0;
 			this.ScreenPictureBox.TabStop = false;
@@ -180,15 +189,6 @@
 			this.TakeScreenshotButton.TabIndex = 0;
 			this.TakeScreenshotButton.Text = "Take screenshot";
 			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
-			// 
-			// ScreenSizeComboBox
-			// 
-			this.ScreenSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ScreenSizeComboBox.FormattingEnabled = true;
-			this.ScreenSizeComboBox.Location = new System.Drawing.Point(50, 5);
-			this.ScreenSizeComboBox.Name = "ScreenSizeComboBox";
-			this.ScreenSizeComboBox.Size = new System.Drawing.Size(169, 21);
-			this.ScreenSizeComboBox.TabIndex = 2;
 			// 
 			// ScreenshooterWindow
 			// 

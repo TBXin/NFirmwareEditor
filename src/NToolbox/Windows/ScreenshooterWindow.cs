@@ -15,6 +15,7 @@ namespace NToolbox.Windows
 {
 	public partial class ScreenshooterWindow : EditorDialogWindow
 	{
+		private const int ScreenshotMargin = 1;
 		private readonly ToolboxConfiguration m_configuration;
 		private bool m_isBroadcasting;
 		private Size m_screenSize;
@@ -44,8 +45,32 @@ namespace NToolbox.Windows
 				new NamedItemContainer<Size>("[64x128] VTC, Cuboid, etc...", new Size(64, 128)),
 				new NamedItemContainer<Size>("[96x16] iStick, etc...", new Size(96, 16))
 			});
-			ScreenSizeComboBox.SelectedValueChanged += (s, e) => m_screenSize = ScreenSizeComboBox.GetSelectedItem<Size>();
+			ScreenSizeComboBox.SelectedValueChanged += (s, e) =>
+			{
+				m_screenSize = ScreenSizeComboBox.GetSelectedItem<Size>();
+				ResizeScreenPictureBox();
+				PlaceScreePictureBox();
+				if (ScreenPictureBox.Image != null)
+				{
+					ScreenPictureBox.Image.Dispose();
+					ScreenPictureBox.Image = null;
+				}
+			};
 			ScreenSizeComboBox.SelectedIndex = 0;
+		}
+
+		private void ResizeScreenPictureBox()
+		{
+			ScreenPictureBox.Size = new Size(m_screenSize.Width + ScreenshotMargin * 2, m_screenSize.Height + ScreenshotMargin * 2);
+		}
+
+		private void PlaceScreePictureBox()
+		{
+			ScreenPictureBox.Location = new Point
+			(
+				ScreenBordersPanel.Width / 2 - ScreenPictureBox.Width / 2,
+				ScreenBordersPanel.Height / 2 - ScreenPictureBox.Height / 2
+			);
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -110,12 +135,12 @@ namespace NToolbox.Windows
 				return;
 			}
 
-			using (var containerImage = new Bitmap(ScreenPictureBox.Image.Width + 2, ScreenPictureBox.Image.Height + 2))
+			using (var containerImage = new Bitmap(m_screenSize.Width + ScreenshotMargin * 2, m_screenSize.Height + ScreenshotMargin * 2))
 			{
 				using (var gfx = Graphics.FromImage(containerImage))
 				{
 					gfx.Clear(Color.Black);
-					gfx.DrawImage(ScreenPictureBox.Image, 1, 1, ScreenPictureBox.Image.Width, ScreenPictureBox.Image.Height);
+					gfx.DrawImage(ScreenPictureBox.Image, ScreenshotMargin, ScreenshotMargin, m_screenSize.Width, m_screenSize.Height);
 				}
 
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = @"Portable Network Graphics|*.png" })
@@ -170,6 +195,7 @@ namespace NToolbox.Windows
 
 		private void SetButtonState(bool enabled)
 		{
+			ScreenSizeComboBox.Enabled = PixelSizeUpDown.Enabled = TakeScreenshotBeforeSaveCheckBox.Enabled = enabled;
 			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = BroadcastButton.Enabled = enabled;
 		}
 
