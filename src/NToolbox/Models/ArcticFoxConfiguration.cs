@@ -16,6 +16,8 @@ namespace NToolbox.Models
 
 		internal class DeviceInfo
 		{
+			public byte SettingsVersion;
+
 			[BinaryAsciiString(Length = 4)]
 			public string ProductId;
 
@@ -24,7 +26,6 @@ namespace NToolbox.Models
 			public byte NumberOfBatteries;
 			public uint FirmwareVersion;
 			public uint FirmwareBuild;
-			public byte SettingsVersion;
 		}
 
 		internal class GeneralConfiguration
@@ -42,8 +43,15 @@ namespace NToolbox.Models
 			[BinaryArray(Length = 3)]
 			public ClickAction[] Clicks;
 
-			public LinesContent VWLines;
-			public LinesContent TCLines;
+			public ClassicLinesContent ClassicSkinVWLines;
+			public ClassicLinesContent ClassicSkinTCLines;
+
+			public CircleLinesContent CircleSkinVWLines;
+			public CircleLinesContent CircleSkinTCLines;
+
+			public SmallLinesContent SmallSkinVWLines;
+			public SmallLinesContent SmallSkinTCLines;
+
 			public byte Brightness;
 			public byte DimTimeout;
 			public bool IsFlipped;
@@ -93,6 +101,9 @@ namespace NToolbox.Models
 
 			[BinaryArray(Length = 8)]
 			public PowerCurve[] PowerCurves;
+
+			[BinaryArray(Length = 3)]
+			public sbyte[] BatteryVoltageOffsets; // Value from (-30 to 30) * 100
 		}
 
 		internal class TFRTable
@@ -203,12 +214,25 @@ namespace NToolbox.Models
 			Min30 = 30
 		}
 
-		internal class LinesContent
+		internal class ClassicLinesContent
 		{
 			public LineContent Line1;
 			public LineContent Line2;
 			public LineContent Line3;
 			public LineContent Line4;
+		}
+
+		internal class CircleLinesContent
+		{
+			public LineContent Line1; // 0x20, 0x30...0x3A
+			public LineContent Line2; // 0x20, 0x30...0x3A
+			public LineContent Line3; // 0x40...0x43 | 0x80
+		}
+
+		internal class SmallLinesContent
+		{
+			public LineContent Line1; // 0x20, 0x30...0x3A | 0x80
+			public LineContent Line2; // 0x20, 0x30...0x3A | 0x80
 		}
 
 		internal enum ClickAction : byte

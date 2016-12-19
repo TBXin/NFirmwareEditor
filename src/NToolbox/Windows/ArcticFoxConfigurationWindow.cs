@@ -17,8 +17,8 @@ namespace NToolbox.Windows
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
 		private const ushort MaxPower = 2500;
-		private const int MinimumSupportedBuildNumber = 161215;
-		private const int MaximumSupportedSettingsVersion = 4;
+		private const int MinimumSupportedBuildNumber = 161219;
+		private const int MaximumSupportedSettingsVersion = 5;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
@@ -118,7 +118,7 @@ namespace NToolbox.Windows
 
 		private void InitializeComboBoxes()
 		{
-			var lineContentItems = new object[]
+			var classicSkinLineContentItems = new object[]
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Non dominant (Pwr / Temp)", ArcticFoxConfiguration.LineContent.NonDominant),
 
@@ -145,16 +145,76 @@ namespace NToolbox.Windows
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + V", ArcticFoxConfiguration.LineContent.BatteryWithVolts)
 			};
 
-			var linesComboBoxes = new[]
+			var circleAndSmallSkinLineContentItems = new object[]
 			{
-				VWLine1ComboBox, VWLine2ComboBox, VWLine3ComboBox, VWLine4ComboBox,
-				TCLine1ComboBox, TCLine2ComboBox, TCLine3ComboBox, TCLine4ComboBox,
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Volts", ArcticFoxConfiguration.LineContent.Vout),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Amps", ArcticFoxConfiguration.LineContent.Amps),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Resistance", ArcticFoxConfiguration.LineContent.Resistance),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Live Resistance", ArcticFoxConfiguration.LineContent.RealResistance),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs", ArcticFoxConfiguration.LineContent.Puffs),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs Time", ArcticFoxConfiguration.LineContent.Time),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery(s) Volts", ArcticFoxConfiguration.LineContent.BatteryVolts),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Date/Time", ArcticFoxConfiguration.LineContent.DateTime),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Board Temperature", ArcticFoxConfiguration.LineContent.BoardTemperature),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Puff Time", ArcticFoxConfiguration.LineContent.LastPuff),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Power", ArcticFoxConfiguration.LineContent.LastPower),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Temperature", ArcticFoxConfiguration.LineContent.LastTemperature),
 			};
 
-			foreach (var lineComboBox in linesComboBoxes)
+			var circleSkin3RdLineContentItems = new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery", ArcticFoxConfiguration.LineContent.Battery),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + %", ArcticFoxConfiguration.LineContent.BatteryWithPercents),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + V", ArcticFoxConfiguration.LineContent.BatteryWithVolts)
+			};
+
+			var classicLinesComboBoxes = new[]
+			{
+				ClassicVWLine1ComboBox, ClassicVWLine2ComboBox, ClassicVWLine3ComboBox, ClassicVWLine4ComboBox,
+				ClassicTCLine1ComboBox, ClassicTCLine2ComboBox, ClassicTCLine3ComboBox, ClassicTCLine4ComboBox,
+			};
+
+			var circleLinesComboBoxes = new[]
+			{
+				CircleVWLine1ComboBox, CircleVWLine2ComboBox,
+				CircleTCLine1ComboBox, CircleTCLine2ComboBox
+			};
+
+			var smallLinesComboBoxes = new[]
+			{
+				SmallVWLine1ComboBox, SmallVWLine2ComboBox,
+				SmallTCLine1ComboBox, SmallTCLine2ComboBox,
+			};
+
+			// Fill Classic Skin ComboBoxes
+			foreach (var lineComboBox in classicLinesComboBoxes)
 			{
 				lineComboBox.Items.Clear();
-				lineComboBox.Items.AddRange(lineContentItems);
+				lineComboBox.Items.AddRange(classicSkinLineContentItems);
+			}
+
+			// Fill Circle Skin ComboBoxes
+			foreach (var lineComboBox in circleLinesComboBoxes)
+			{
+				lineComboBox.Items.Clear();
+				lineComboBox.Items.AddRange(circleAndSmallSkinLineContentItems);
+			}
+
+			CircleVWLine3ComboBox.Items.Clear();
+			CircleVWLine3ComboBox.Items.AddRange(circleSkin3RdLineContentItems);
+
+			CircleTCLine3ComboBox.Items.Clear();
+			CircleTCLine3ComboBox.Items.AddRange(circleSkin3RdLineContentItems);
+
+			// Fill Small Skin ComboBoxes
+			foreach (var lineComboBox in smallLinesComboBoxes)
+			{
+				lineComboBox.Items.Clear();
+				lineComboBox.Items.AddRange(circleAndSmallSkinLineContentItems);
 			}
 
 			ChargeScreenComboBox.Items.Clear();
@@ -262,7 +322,7 @@ namespace NToolbox.Windows
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber)
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion == 'E' || info.SettingsVersion == 'M' || info.SettingsVersion == 'W')
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
 				}
@@ -301,6 +361,9 @@ namespace NToolbox.Windows
 				FirmwareVersionTextBox.Text = (deviceInfo.FirmwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 				BuildTextBox.Text = deviceInfo.FirmwareBuild.ToString();
 				HardwareVersionTextBox.Text = (deviceInfo.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
+
+				Battery2OffsetLabel.Visible = Battery2OffsetUpDown.Visible = Battery2OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 1;
+				Battery3OffsetLabel.Visible = Battery3OffsetUpDown.Visible = Battery3OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 2;
 			}
 
 			var general = m_configuration.General;
@@ -348,15 +411,32 @@ namespace NToolbox.Windows
 				ClockTypeComboBox.SelectItem(ui.ClockType);
 				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
 
-				InitializeLineContentEditor(ui.VWLines.Line1, VWLine1ComboBox, VWLine1FireCheckBox);
-				InitializeLineContentEditor(ui.VWLines.Line2, VWLine2ComboBox, VWLine2FireCheckBox);
-				InitializeLineContentEditor(ui.VWLines.Line3, VWLine3ComboBox, VWLine3FireCheckBox);
-				InitializeLineContentEditor(ui.VWLines.Line4, VWLine4ComboBox, VWLine4FireCheckBox);
+				// Classic Screen
+				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line1, ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line2, ClassicVWLine2ComboBox, ClassicVWLine2FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line3, ClassicVWLine3ComboBox, ClassicVWLine3FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line4, ClassicVWLine4ComboBox, ClassicVWLine4FireCheckBox);
 
-				InitializeLineContentEditor(ui.TCLines.Line1, TCLine1ComboBox, TCLine1FireCheckBox);
-				InitializeLineContentEditor(ui.TCLines.Line2, TCLine2ComboBox, TCLine2FireCheckBox);
-				InitializeLineContentEditor(ui.TCLines.Line3, TCLine3ComboBox, TCLine3FireCheckBox);
-				InitializeLineContentEditor(ui.TCLines.Line4, TCLine4ComboBox, TCLine4FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line1, ClassicTCLine1ComboBox, ClassicTCLine1FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line2, ClassicTCLine2ComboBox, ClassicTCLine2FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line3, ClassicTCLine3ComboBox, ClassicTCLine3FireCheckBox);
+				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line4, ClassicTCLine4ComboBox, ClassicTCLine4FireCheckBox);
+
+				// Circle Screen
+				InitializeLineContentEditor(ui.CircleSkinVWLines.Line1, CircleVWLine1ComboBox);
+				InitializeLineContentEditor(ui.CircleSkinVWLines.Line2, CircleVWLine2ComboBox);
+				InitializeLineContentEditor(ui.CircleSkinVWLines.Line3, CircleVWLine3ComboBox, CircleVWLine3FireCheckBox);
+
+				InitializeLineContentEditor(ui.CircleSkinTCLines.Line1, CircleTCLine1ComboBox);
+				InitializeLineContentEditor(ui.CircleSkinTCLines.Line2, CircleTCLine2ComboBox);
+				InitializeLineContentEditor(ui.CircleSkinTCLines.Line3, CircleTCLine3ComboBox, CircleTCLine3FireCheckBox);
+
+				// Small Screen
+				InitializeLineContentEditor(ui.SmallSkinVWLines.Line1, SmallVWLine1ComboBox, SmallVWLine1FireCheckBox);
+				InitializeLineContentEditor(ui.SmallSkinVWLines.Line2, SmallVWLine2ComboBox, SmallVWLine2FireCheckBox);
+
+				InitializeLineContentEditor(ui.SmallSkinTCLines.Line1, SmallTCLine1ComboBox, SmallTCLine1FireCheckBox);
+				InitializeLineContentEditor(ui.SmallSkinTCLines.Line2, SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
 				Clicks2ComboBox.SelectItem(ui.Clicks[0]);
 				Clicks3ComboBox.SelectItem(ui.Clicks[1]);
@@ -384,13 +464,20 @@ namespace NToolbox.Windows
 
 				UpdatePowerCurveLabels(advanced.PowerCurves);
 				UpdateTFRLables(advanced.TFRTables);
+
+				Battery1OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[0] / 100m);
+				Battery2OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[1] / 100m);
+				Battery3OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[2] / 100m);
 			}
 		}
 
-		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox)
+		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox = null)
 		{
 			var contentCopy = content;
-			checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
+			if (checkBox != null)
+			{
+				checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.LineContent.FireTimeMask);
+			}
 			contentCopy &= ~ArcticFoxConfiguration.LineContent.FireTimeMask;
 			comboBox.SelectItem(contentCopy);
 		}
@@ -425,16 +512,32 @@ namespace NToolbox.Windows
 				ui.ClockType = ClockTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.ClockType>();
 				ui.ScreensaveDuration = ScreensaverTimeComboBox.GetSelectedItem<ArcticFoxConfiguration.ScreenProtectionTime>();
 
-				// General -> Layout Tab
-				ui.VWLines.Line1 = SaveLineContent(VWLine1ComboBox, VWLine1FireCheckBox);
-				ui.VWLines.Line2 = SaveLineContent(VWLine2ComboBox, VWLine2FireCheckBox);
-				ui.VWLines.Line3 = SaveLineContent(VWLine3ComboBox, VWLine3FireCheckBox);
-				ui.VWLines.Line4 = SaveLineContent(VWLine4ComboBox, VWLine4FireCheckBox);
+				// General -> Layout Tab -> Classic Screen
+				ui.ClassicSkinVWLines.Line1 = SaveLineContent(ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);
+				ui.ClassicSkinVWLines.Line2 = SaveLineContent(ClassicVWLine2ComboBox, ClassicVWLine2FireCheckBox);
+				ui.ClassicSkinVWLines.Line3 = SaveLineContent(ClassicVWLine3ComboBox, ClassicVWLine3FireCheckBox);
+				ui.ClassicSkinVWLines.Line4 = SaveLineContent(ClassicVWLine4ComboBox, ClassicVWLine4FireCheckBox);
 
-				ui.TCLines.Line1 = SaveLineContent(TCLine1ComboBox, TCLine1FireCheckBox);
-				ui.TCLines.Line2 = SaveLineContent(TCLine2ComboBox, TCLine2FireCheckBox);
-				ui.TCLines.Line3 = SaveLineContent(TCLine3ComboBox, TCLine3FireCheckBox);
-				ui.TCLines.Line4 = SaveLineContent(TCLine4ComboBox, TCLine4FireCheckBox);
+				ui.ClassicSkinTCLines.Line1 = SaveLineContent(ClassicTCLine1ComboBox, ClassicTCLine1FireCheckBox);
+				ui.ClassicSkinTCLines.Line2 = SaveLineContent(ClassicTCLine2ComboBox, ClassicTCLine2FireCheckBox);
+				ui.ClassicSkinTCLines.Line3 = SaveLineContent(ClassicTCLine3ComboBox, ClassicTCLine3FireCheckBox);
+				ui.ClassicSkinTCLines.Line4 = SaveLineContent(ClassicTCLine4ComboBox, ClassicTCLine4FireCheckBox);
+
+				// General -> Layout Tab -> Circle Screen
+				ui.CircleSkinVWLines.Line1 = SaveLineContent(CircleVWLine1ComboBox);
+				ui.CircleSkinVWLines.Line2 = SaveLineContent(CircleVWLine2ComboBox);
+				ui.CircleSkinVWLines.Line3 = SaveLineContent(CircleVWLine3ComboBox, CircleVWLine3FireCheckBox);
+
+				ui.CircleSkinTCLines.Line1 = SaveLineContent(CircleTCLine1ComboBox);
+				ui.CircleSkinTCLines.Line2 = SaveLineContent(CircleTCLine2ComboBox);
+				ui.CircleSkinTCLines.Line3 = SaveLineContent(CircleTCLine3ComboBox, CircleTCLine3FireCheckBox);
+
+				// General -> Layout Tab -> Small Screen
+				ui.SmallSkinVWLines.Line1 = SaveLineContent(SmallVWLine1ComboBox, SmallVWLine1FireCheckBox);
+				ui.SmallSkinVWLines.Line2 = SaveLineContent(SmallVWLine2ComboBox, SmallVWLine2FireCheckBox);
+
+				ui.SmallSkinTCLines.Line1 = SaveLineContent(SmallTCLine1ComboBox, SmallTCLine1FireCheckBox);
+				ui.SmallSkinTCLines.Line2 = SaveLineContent(SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
 				// General -> Controls Tab
 				ui.Clicks[0] = Clicks2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
@@ -470,13 +573,16 @@ namespace NToolbox.Windows
 				advanced.IsLightSleepMode = LightSleepCheckBox.Checked;
 				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
 				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
+				advanced.BatteryVoltageOffsets[0] = (sbyte)(Battery1OffsetUpDown.Value * 100);
+				advanced.BatteryVoltageOffsets[1] = (sbyte)(Battery2OffsetUpDown.Value * 100);
+				advanced.BatteryVoltageOffsets[2] = (sbyte)(Battery3OffsetUpDown.Value * 100);
 			}
 		}
 
-		private ArcticFoxConfiguration.LineContent SaveLineContent(ComboBox comboBox, CheckBox checkBox)
+		private ArcticFoxConfiguration.LineContent SaveLineContent(ComboBox comboBox, CheckBox checkBox = null)
 		{
 			var result = comboBox.GetSelectedItem<ArcticFoxConfiguration.LineContent>();
-			if (checkBox.Checked)
+			if (checkBox != null && checkBox.Checked)
 			{
 				result |= ArcticFoxConfiguration.LineContent.FireTimeMask;
 			}

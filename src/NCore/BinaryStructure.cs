@@ -159,6 +159,7 @@ namespace NCore
 		{
 			if (type == typeof(bool)) return br.ReadBoolean();
 			if (type == typeof(byte)) return br.ReadByte();
+			if (type == typeof(sbyte)) return br.ReadSByte();
 			if (type == typeof(ushort)) return br.ReadUInt16();
 			if (type == typeof(uint)) return br.ReadUInt32();
 			if (type.IsEnum) return ReadValue(type.GetEnumUnderlyingType(), br);
@@ -170,6 +171,7 @@ namespace NCore
 		{
 			if (type == typeof(bool)) bw.Write((bool)value);
 			else if (type == typeof(byte)) bw.Write((byte)value);
+			else if (type == typeof(sbyte)) bw.Write((sbyte)value);
 			else if (type == typeof(ushort)) bw.Write((ushort)value);
 			else if (type == typeof(uint)) bw.Write((uint)value);
 			else if (type.IsEnum) WriteValue(type.GetEnumUnderlyingType(), value, bw);
