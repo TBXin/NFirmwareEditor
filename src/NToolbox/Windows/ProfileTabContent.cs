@@ -153,8 +153,8 @@ namespace NToolbox.Windows
 			PreheatTypeComboBox.Items.Clear();
 			PreheatTypeComboBox.Items.AddRange(new object[]
 			{
-				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("W", ArcticFoxConfiguration.PreheatType.Watts),
-				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("%", ArcticFoxConfiguration.PreheatType.Percents),
+				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Absolute (W)", ArcticFoxConfiguration.PreheatType.Watts),
+				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Relative (%)", ArcticFoxConfiguration.PreheatType.Percents),
 				new NamedItemContainer<ArcticFoxConfiguration.PreheatType>("Curve", ArcticFoxConfiguration.PreheatType.Curve)
 			});
 			PreheatTypeComboBox.SelectedValueChanged += (s, e) =>
@@ -167,6 +167,7 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Minimum = MinimumWatts;
 					PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
 					PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
+					PreheatPowerUnitLabel.Text = @"W";
 				}
 				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
 				{
@@ -175,21 +176,25 @@ namespace NToolbox.Windows
 					PreheatPowerUpDown.Minimum = 100;
 					PreheatPowerUpDown.Maximum = 250;
 					PreheatPowerUpDown.SetValue(m_profile.PreheatPower);
+					PreheatPowerUnitLabel.Text = @"%";
 				}
 
 				if (type == ArcticFoxConfiguration.PreheatType.Curve)
 				{
-					PreheatPowerLabel.Text = @"Power Curve:";
+					PreheatPowerLabel.Text = @"Preheat Curve:";
 					PowerCurveComboBox.Visible = true;
 					PowerCurveEditButton.Visible = true;
+
 					PreheatTimeUpDown.Enabled = false;
 					PreheatDelayUpDown.Enabled = false;
+					PreheatPowerUnitLabel.Text = string.Empty;
 				}
 				else
 				{
 					PreheatPowerLabel.Text = @"Preheat Power:";
 					PowerCurveComboBox.Visible = false;
 					PowerCurveEditButton.Visible = false;
+
 					PreheatTimeUpDown.Enabled = true;
 					PreheatDelayUpDown.Enabled = true;
 				}
