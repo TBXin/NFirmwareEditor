@@ -17,6 +17,7 @@ namespace NToolbox.Windows
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
 		private const ushort MaxPower = 2500;
+		private const byte MaxBatteries = 3;
 		private const int MinimumSupportedBuildNumber = 161219;
 		private const int MaximumSupportedSettingsVersion = 5;
 
@@ -665,6 +666,7 @@ namespace NToolbox.Windows
 			if (existedConfiguration == null)
 			{
 				result.Info.MaxPower = MaxPower;
+				result.Info.NumberOfBatteries = MaxBatteries;
 			}
 			else
 			{
