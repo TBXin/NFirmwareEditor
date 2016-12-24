@@ -19,10 +19,12 @@ namespace NToolbox.Windows
 
 		private ToolboxConfiguration m_configuration;
 		private WindowBase m_openedWindow;
+		private bool m_hideToTray;
 
 		public MainWindow(StartupMode startupMode)
 		{
 			m_startupMode = startupMode;
+			m_hideToTray = m_startupMode.HasFlag(StartupMode.Minimized) || GetAutorunState();
 
 			InitializeComponent();
 			Initialize();
@@ -56,7 +58,7 @@ namespace NToolbox.Windows
 			};
 			Closing += (s, e) =>
 			{
-				if (m_startupMode == StartupMode.Minimized)
+				if (m_hideToTray)
 				{
 					e.Cancel = true;
 					WindowState = FormWindowState.Minimized;
@@ -64,7 +66,7 @@ namespace NToolbox.Windows
 			};
 			SizeChanged += (s, e) =>
 			{
-				if (WindowState == FormWindowState.Minimized) HideToTray();
+				if (m_hideToTray) HideToTray();
 			};
 
 			HidConnector.Instance.DeviceConnected += DeviceConnected;
@@ -120,7 +122,11 @@ namespace NToolbox.Windows
 			};
 
 			AutorunTrayMenuItem.Checked = GetAutorunState();
-			AutorunTrayMenuItem.CheckedChanged += (s, e) => SetAutorunState(AutorunTrayMenuItem.Checked);
+			AutorunTrayMenuItem.CheckedChanged += (s, e) =>
+			{
+				m_hideToTray = AutorunTrayMenuItem.Checked;
+				SetAutorunState(AutorunTrayMenuItem.Checked);
+			};
 		}
 
 		private ToolboxConfiguration LoadConfiguration()
