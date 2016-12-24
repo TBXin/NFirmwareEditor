@@ -61,6 +61,12 @@
     <Compile Include="Models\MonitoringData.cs" />
     <Compile Include="Models\StartupMode.cs" />
     <Compile Include="Storages\ConfigurationStorage.cs" />
+    <Compile Include="Windows\AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\AboutWindow.Designer.cs">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ArcticFoxConfigurationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Windows\TFRProfileWindow.Designer.cs">
       <DependentUpon>TFRProfileWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Windows\AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\ArcticFoxConfigurationWindow.resx">
       <DependentUpon>ArcticFoxConfigurationWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NToolbox.ico" />
+    <None Include="Resources\team_logo.png" />
+    <None Include="Resources\nfetoolbox_logo.png" />
+    <None Include="Resources\www_page.png" />
+    <None Include="Resources\ru.png" />
+    <None Include="Resources\GitHub.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

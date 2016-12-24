@@ -30,7 +30,6 @@
 		{
 			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.ApplicationTitleLable = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.ProjectPageLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -40,20 +39,19 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.MaelstromLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.WebsiteLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.label10 = new System.Windows.Forms.Label();
+			this.ReikoKitsuneLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ZingerLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.InfinumLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.ReikoKitsuneLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.MaelstromLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.ControlBorderedPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -86,16 +84,6 @@
 			this.OkButton.TabIndex = 0;
 			this.OkButton.Text = "Ok";
 			this.OkButton.UseVisualStyleBackColor = true;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Image = global::NFirmwareEditor.Properties.Resources.app_logo;
-			this.pictureBox1.Location = new System.Drawing.Point(258, 12);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox1.TabIndex = 2;
-			this.pictureBox1.TabStop = false;
 			// 
 			// ApplicationTitleLable
 			// 
@@ -187,23 +175,16 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(14, 138);
+			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label5.Location = new System.Drawing.Point(14, 150);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(119, 13);
+			this.label5.Size = new System.Drawing.Size(64, 13);
 			this.label5.TabIndex = 11;
-			this.label5.Text = "NFirmwareEditor Team:";
-			// 
-			// label6
-			// 
-			this.label6.Image = global::NFirmwareEditor.Properties.Resources.ru;
-			this.label6.Location = new System.Drawing.Point(17, 159);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(16, 16);
-			this.label6.TabIndex = 12;
+			this.label5.Text = "NFE Team:";
 			// 
 			// label7
 			// 
-			this.label7.Location = new System.Drawing.Point(62, 159);
+			this.label7.Location = new System.Drawing.Point(62, 171);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(120, 16);
 			this.label7.TabIndex = 14;
@@ -212,53 +193,66 @@
 			// 
 			// label8
 			// 
-			this.label8.Location = new System.Drawing.Point(62, 202);
+			this.label8.Location = new System.Drawing.Point(62, 192);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(120, 16);
 			this.label8.TabIndex = 18;
 			this.label8.Text = "maelstrom2001";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// MaelstromLinkLabel
-			// 
-			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.MaelstromLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.www_page;
-			this.MaelstromLinkLabel.Location = new System.Drawing.Point(41, 203);
-			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
-			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.MaelstromLinkLabel.TabIndex = 17;
-			// 
-			// label9
-			// 
-			this.label9.Image = global::NFirmwareEditor.Properties.Resources.ru;
-			this.label9.Location = new System.Drawing.Point(17, 202);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(16, 16);
-			this.label9.TabIndex = 16;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(14, 182);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(71, 13);
-			this.label10.TabIndex = 15;
-			this.label10.Text = "Contributors:";
-			// 
 			// label11
 			// 
-			this.label11.Location = new System.Drawing.Point(62, 223);
+			this.label11.Location = new System.Drawing.Point(62, 213);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(120, 16);
 			this.label11.TabIndex = 21;
 			this.label11.Text = "Zinger";
 			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(14, 327);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(136, 13);
+			this.label15.TabIndex = 25;
+			this.label15.Text = "ReikoKitsune © 2016-2017";
+			// 
+			// WebsiteLinkLabel
+			// 
+			this.WebsiteLinkLabel.AutoSize = true;
+			this.WebsiteLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.WebsiteLinkLabel.Location = new System.Drawing.Point(59, 261);
+			this.WebsiteLinkLabel.Name = "WebsiteLinkLabel";
+			this.WebsiteLinkLabel.Size = new System.Drawing.Size(99, 13);
+			this.WebsiteLinkLabel.TabIndex = 28;
+			this.WebsiteLinkLabel.TabStop = true;
+			this.WebsiteLinkLabel.Text = "http://nfeteam.org";
+			this.WebsiteLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(14, 261);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(50, 13);
+			this.label10.TabIndex = 27;
+			this.label10.Text = "Website:";
+			// 
+			// ReikoKitsuneLinkLabel
+			// 
+			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ReikoKitsuneLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.GitHub;
+			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(40, 171);
+			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
+			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.ReikoKitsuneLinkLabel.TabIndex = 26;
+			// 
 			// ZingerLinkLabel
 			// 
 			this.ZingerLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ZingerLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.www_page;
-			this.ZingerLinkLabel.Location = new System.Drawing.Point(41, 224);
+			this.ZingerLinkLabel.Location = new System.Drawing.Point(41, 214);
 			this.ZingerLinkLabel.Name = "ZingerLinkLabel";
 			this.ZingerLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.ZingerLinkLabel.TabIndex = 20;
@@ -266,54 +260,45 @@
 			// label12
 			// 
 			this.label12.Image = global::NFirmwareEditor.Properties.Resources.ru;
-			this.label12.Location = new System.Drawing.Point(17, 223);
+			this.label12.Location = new System.Drawing.Point(17, 213);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(16, 16);
 			this.label12.TabIndex = 19;
 			// 
-			// label13
+			// MaelstromLinkLabel
 			// 
-			this.label13.Location = new System.Drawing.Point(62, 244);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(120, 16);
-			this.label13.TabIndex = 24;
-			this.label13.Text = "iNFiNUM";
-			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.MaelstromLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.GitHub;
+			this.MaelstromLinkLabel.Location = new System.Drawing.Point(41, 193);
+			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
+			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.MaelstromLinkLabel.TabIndex = 17;
 			// 
-			// InfinumLinkLabel
+			// label9
 			// 
-			this.InfinumLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.InfinumLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.www_page;
-			this.InfinumLinkLabel.Location = new System.Drawing.Point(41, 245);
-			this.InfinumLinkLabel.Name = "InfinumLinkLabel";
-			this.InfinumLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.InfinumLinkLabel.TabIndex = 23;
+			this.label9.Image = global::NFirmwareEditor.Properties.Resources.ru;
+			this.label9.Location = new System.Drawing.Point(17, 192);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(16, 16);
+			this.label9.TabIndex = 16;
 			// 
-			// label14
+			// label6
 			// 
-			this.label14.Image = global::NFirmwareEditor.Properties.Resources.ru;
-			this.label14.Location = new System.Drawing.Point(17, 244);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(16, 16);
-			this.label14.TabIndex = 22;
+			this.label6.Image = global::NFirmwareEditor.Properties.Resources.ru;
+			this.label6.Location = new System.Drawing.Point(17, 171);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(16, 16);
+			this.label6.TabIndex = 12;
 			// 
-			// label15
+			// pictureBox1
 			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(14, 327);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(108, 13);
-			this.label15.TabIndex = 25;
-			this.label15.Text = "ReikoKitsune © 2016";
-			// 
-			// ReikoKitsuneLinkLabel
-			// 
-			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ReikoKitsuneLinkLabel.Image = global::NFirmwareEditor.Properties.Resources.GitHub;
-			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(40, 159);
-			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
-			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.ReikoKitsuneLinkLabel.TabIndex = 26;
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Image = global::NFirmwareEditor.Properties.Resources.app_logo;
+			this.pictureBox1.Location = new System.Drawing.Point(258, 12);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox1.TabIndex = 2;
+			this.pictureBox1.TabStop = false;
 			// 
 			// AboutWindow
 			// 
@@ -321,18 +306,16 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(398, 391);
+			this.Controls.Add(this.WebsiteLinkLabel);
+			this.Controls.Add(this.label10);
 			this.Controls.Add(this.ReikoKitsuneLinkLabel);
 			this.Controls.Add(this.label15);
-			this.Controls.Add(this.label13);
-			this.Controls.Add(this.InfinumLinkLabel);
-			this.Controls.Add(this.label14);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.ZingerLinkLabel);
 			this.Controls.Add(this.label12);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.MaelstromLinkLabel);
 			this.Controls.Add(this.label9);
-			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
@@ -379,14 +362,12 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.LinkLabel MaelstromLinkLabel;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.LinkLabel ZingerLinkLabel;
 		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.LinkLabel InfinumLinkLabel;
-		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.LinkLabel ReikoKitsuneLinkLabel;
+		private System.Windows.Forms.LinkLabel WebsiteLinkLabel;
+		private System.Windows.Forms.Label label10;
 	}
 }

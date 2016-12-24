@@ -78,6 +78,14 @@ namespace NToolbox.Windows
 			DeviceMonitorButton.Click += StartDeviceMonitor;
 			ScreenshooterButton.Click += StartScreenshooter;
 			FirmwareUpdaterButton.Click += StartFirmwareUpdater;
+
+			AboutLinkLabel.Click += (s, e) =>
+			{
+				using (var aboutWindow = new AboutWindow())
+				{
+					aboutWindow.ShowDialog();
+				}
+			};
 		}
 
 		private void InitializeTray()

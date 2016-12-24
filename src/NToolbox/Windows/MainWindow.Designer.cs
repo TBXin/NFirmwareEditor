@@ -32,12 +32,6 @@
 			this.panel1 = new NCore.UI.BorderedPanel();
 			this.VersionLabel = new System.Windows.Forms.Label();
 			this.panel2 = new NCore.UI.BorderedPanel();
-			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
-			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
-			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
-			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
-			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,10 +48,17 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
+			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
+			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
+			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
+			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.TrayContextMenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -75,7 +76,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(240, 514);
+			this.panel1.Size = new System.Drawing.Size(240, 534);
 			this.panel1.TabIndex = 4;
 			// 
 			// VersionLabel
@@ -100,6 +101,7 @@
 			this.panel2.BorderRight = false;
 			this.panel2.BorderTop = false;
 			this.panel2.BorderWidth = 1F;
+			this.panel2.Controls.Add(this.AboutLinkLabel);
 			this.panel2.Controls.Add(this.ScreenshooterButton);
 			this.panel2.Controls.Add(this.MyEvicConfigurationButton);
 			this.panel2.Controls.Add(this.DeviceMonitorButton);
@@ -107,75 +109,8 @@
 			this.panel2.Controls.Add(this.FirmwareUpdaterButton);
 			this.panel2.Location = new System.Drawing.Point(0, 214);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(240, 300);
+			this.panel2.Size = new System.Drawing.Size(240, 320);
 			this.panel2.TabIndex = 4;
-			// 
-			// ScreenshooterButton
-			// 
-			this.ScreenshooterButton.AdditionalText = "";
-			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
-			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
-			this.ScreenshooterButton.Name = "ScreenshooterButton";
-			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
-			this.ScreenshooterButton.TabIndex = 4;
-			this.ScreenshooterButton.Text = "Screenshooter";
-			// 
-			// MyEvicConfigurationButton
-			// 
-			this.MyEvicConfigurationButton.AdditionalText = "";
-			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.MyEvicConfigurationButton.Enabled = false;
-			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
-			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
-			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
-			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
-			this.MyEvicConfigurationButton.TabIndex = 1;
-			this.MyEvicConfigurationButton.Text = "myEvic Configuration";
-			// 
-			// DeviceMonitorButton
-			// 
-			this.DeviceMonitorButton.AdditionalText = "";
-			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
-			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
-			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
-			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
-			this.DeviceMonitorButton.TabIndex = 2;
-			this.DeviceMonitorButton.Text = "Device Monitor";
-			// 
-			// ArcticFoxConfigurationButton
-			// 
-			this.ArcticFoxConfigurationButton.AdditionalText = "";
-			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
-			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
-			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
-			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
-			this.ArcticFoxConfigurationButton.TabIndex = 0;
-			this.ArcticFoxConfigurationButton.Text = "ArcticFox Configuration";
-			// 
-			// FirmwareUpdaterButton
-			// 
-			this.FirmwareUpdaterButton.AdditionalText = "";
-			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
-			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
-			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
-			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
-			this.FirmwareUpdaterButton.TabIndex = 3;
-			this.FirmwareUpdaterButton.Text = "Firmware Updater";
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.pictureBox1.Location = new System.Drawing.Point(28, 3);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(184, 205);
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
 			// 
 			// TrayNotifyIcon
 			// 
@@ -287,12 +222,95 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
+			// ScreenshooterButton
+			// 
+			this.ScreenshooterButton.AdditionalText = "";
+			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
+			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
+			this.ScreenshooterButton.Name = "ScreenshooterButton";
+			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
+			this.ScreenshooterButton.TabIndex = 4;
+			this.ScreenshooterButton.Text = "Screenshooter";
+			// 
+			// MyEvicConfigurationButton
+			// 
+			this.MyEvicConfigurationButton.AdditionalText = "";
+			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.MyEvicConfigurationButton.Enabled = false;
+			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
+			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
+			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
+			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.MyEvicConfigurationButton.TabIndex = 1;
+			this.MyEvicConfigurationButton.Text = "myEvic Configuration";
+			// 
+			// DeviceMonitorButton
+			// 
+			this.DeviceMonitorButton.AdditionalText = "";
+			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
+			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
+			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
+			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
+			this.DeviceMonitorButton.TabIndex = 2;
+			this.DeviceMonitorButton.Text = "Device Monitor";
+			// 
+			// ArcticFoxConfigurationButton
+			// 
+			this.ArcticFoxConfigurationButton.AdditionalText = "";
+			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
+			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
+			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
+			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.ArcticFoxConfigurationButton.TabIndex = 0;
+			this.ArcticFoxConfigurationButton.Text = "ArcticFox Configuration";
+			// 
+			// FirmwareUpdaterButton
+			// 
+			this.FirmwareUpdaterButton.AdditionalText = "";
+			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
+			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
+			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
+			this.FirmwareUpdaterButton.TabIndex = 3;
+			this.FirmwareUpdaterButton.Text = "Firmware Updater";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Location = new System.Drawing.Point(28, 3);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(184, 205);
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			// 
+			// AboutLinkLabel
+			// 
+			this.AboutLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
+			this.AboutLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AboutLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.AboutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.AboutLinkLabel.Location = new System.Drawing.Point(10, 294);
+			this.AboutLinkLabel.Name = "AboutLinkLabel";
+			this.AboutLinkLabel.Size = new System.Drawing.Size(220, 18);
+			this.AboutLinkLabel.TabIndex = 8;
+			this.AboutLinkLabel.TabStop = true;
+			this.AboutLinkLabel.Text = "About && Links";
+			this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 514);
+			this.ClientSize = new System.Drawing.Size(240, 534);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -303,8 +321,8 @@
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.TrayContextMenuStrip.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -336,6 +354,7 @@
 		private System.Windows.Forms.ToolStripMenuItem ScreenshooterTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
 		private System.Windows.Forms.Label VersionLabel;
+		private System.Windows.Forms.LinkLabel AboutLinkLabel;
 	}
 }
 

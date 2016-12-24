@@ -14,7 +14,7 @@ namespace NFirmwareEditor.Windows
 			ReikoKitsuneLinkLabel.Click += ReikoKitsuneLinkLabel_Click;
 			MaelstromLinkLabel.Click += MaelstromLinkLabel_Click;
 			ZingerLinkLabel.Click += ZingerLinkLabel_Click;
-			InfinumLinkLabel.Click += InfinumLinkLabel_Click;
+			WebsiteLinkLabel.Click += WebsiteLinkLabel_Click;
 			ProjectPageLinkLabel.Click += ProjectPageLinkLabel_Click;
 			ReleasesLinkLabel.Click += ReleasesLinkLabel_Click;
 			IssuesLinkLabel.Click += IssuesLinkLabel_Click;
@@ -32,7 +32,7 @@ namespace NFirmwareEditor.Windows
 
 		private void MaelstromLinkLabel_Click(object sender, System.EventArgs e)
 		{
-			OpenUrl("http://www.ecigtalk.ru/members/u23466.html");
+			OpenUrl("https://github.com/maelstrom2001");
 		}
 
 		private void ZingerLinkLabel_Click(object sender, System.EventArgs e)
@@ -40,9 +40,9 @@ namespace NFirmwareEditor.Windows
 			OpenUrl("http://www.ecigtalk.ru/members/u75453.html");
 		}
 
-		private void InfinumLinkLabel_Click(object sender, System.EventArgs e)
+		private void WebsiteLinkLabel_Click(object sender, System.EventArgs e)
 		{
-			OpenUrl("http://www.ecigtalk.ru/members/u80189.html");
+			OpenUrl(WebsiteLinkLabel.Text);
 		}
 
 		private void ProjectPageLinkLabel_Click(object sender, System.EventArgs e)
