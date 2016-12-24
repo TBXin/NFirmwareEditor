@@ -247,7 +247,8 @@ namespace NToolbox.Models
 			MainMenu = 7,
 			Preheat = 8,
 			ProfileEdit = 9,
-			SmartOnOff = 10
+			SmartOnOff = 10,
+			InfoScreen = 11
 		}
 
 		[Flags]
@@ -268,6 +269,7 @@ namespace NToolbox.Models
 			LastPuff = 0x38,
 			LastTemperature = 0x39,
 			LastPower = 0x3A,
+			BatteryPercents = 0x3B,
 
 			Battery = 0x40,
 			BatteryWithPercents = 0x41,

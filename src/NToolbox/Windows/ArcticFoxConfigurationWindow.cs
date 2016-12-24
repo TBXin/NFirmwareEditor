@@ -18,7 +18,7 @@ namespace NToolbox.Windows
 	{
 		private const ushort MaxPower = 2500;
 		private const byte MaxBatteries = 3;
-		private const int MinimumSupportedBuildNumber = 161219;
+		private const int MinimumSupportedBuildNumber = 161223;
 		private const int MaximumSupportedSettingsVersion = 5;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
@@ -146,7 +146,7 @@ namespace NToolbox.Windows
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery + V", ArcticFoxConfiguration.LineContent.BatteryWithVolts)
 			};
 
-			var circleAndSmallSkinLineContentItems = new object[]
+			var circleSkinLineContentItems = new object[]
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Volts", ArcticFoxConfiguration.LineContent.Vout),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Amps", ArcticFoxConfiguration.LineContent.Amps),
@@ -157,6 +157,27 @@ namespace NToolbox.Windows
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs", ArcticFoxConfiguration.LineContent.Puffs),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs Time", ArcticFoxConfiguration.LineContent.Time),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery(s) Volts", ArcticFoxConfiguration.LineContent.BatteryVolts),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Date/Time", ArcticFoxConfiguration.LineContent.DateTime),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Board Temperature", ArcticFoxConfiguration.LineContent.BoardTemperature),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Puff Time", ArcticFoxConfiguration.LineContent.LastPuff),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Power", ArcticFoxConfiguration.LineContent.LastPower),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Temperature", ArcticFoxConfiguration.LineContent.LastTemperature),
+			};
+
+			var smallScreenLineContentItems = new object[]
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Volts", ArcticFoxConfiguration.LineContent.Vout),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Output Amps", ArcticFoxConfiguration.LineContent.Amps),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Resistance", ArcticFoxConfiguration.LineContent.Resistance),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Live Resistance", ArcticFoxConfiguration.LineContent.RealResistance),
+
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs", ArcticFoxConfiguration.LineContent.Puffs),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Puffs Time", ArcticFoxConfiguration.LineContent.Time),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery Volts", ArcticFoxConfiguration.LineContent.BatteryVolts),
+				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Battery %", ArcticFoxConfiguration.LineContent.BatteryPercents),
 
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Date/Time", ArcticFoxConfiguration.LineContent.DateTime),
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Board Temperature", ArcticFoxConfiguration.LineContent.BoardTemperature),
@@ -202,7 +223,7 @@ namespace NToolbox.Windows
 			foreach (var lineComboBox in circleLinesComboBoxes)
 			{
 				lineComboBox.Items.Clear();
-				lineComboBox.Items.AddRange(circleAndSmallSkinLineContentItems);
+				lineComboBox.Items.AddRange(circleSkinLineContentItems);
 			}
 
 			CircleVWLine3ComboBox.Items.Clear();
@@ -215,7 +236,7 @@ namespace NToolbox.Windows
 			foreach (var lineComboBox in smallLinesComboBoxes)
 			{
 				lineComboBox.Items.Clear();
-				lineComboBox.Items.AddRange(circleAndSmallSkinLineContentItems);
+				lineComboBox.Items.AddRange(smallScreenLineContentItems);
 			}
 
 			ChargeScreenComboBox.Items.Clear();
@@ -258,6 +279,7 @@ namespace NToolbox.Windows
 
 				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("TDom", ArcticFoxConfiguration.ClickAction.TemperatureDominant),
 				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Show Clock", ArcticFoxConfiguration.ClickAction.MainScreenClock),
+				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Info Screen", ArcticFoxConfiguration.ClickAction.InfoScreen),
 
 				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Smart On / Off", ArcticFoxConfiguration.ClickAction.SmartOnOff),
 				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("LSL On / Off", ArcticFoxConfiguration.ClickAction.LslOnOff),
