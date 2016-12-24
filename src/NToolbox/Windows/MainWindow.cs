@@ -66,9 +66,11 @@ namespace NToolbox.Windows
 			};
 			SizeChanged += (s, e) =>
 			{
-				if (m_hideToTray) HideToTray();
+				if (WindowState == FormWindowState.Minimized)
+				{
+					HideToTray();
+				}
 			};
-
 			HidConnector.Instance.DeviceConnected += DeviceConnected;
 		}
 
