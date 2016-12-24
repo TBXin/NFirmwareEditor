@@ -48,6 +48,8 @@ namespace NFirmwareEditor.Storages
 					.Select(x => x.Trim())
 					.ToArray();
 
+				result.FilePath = filePath;
+				result.FileName = Path.GetFileName(filePath);
 				if (result.Images == null)
 				{
 					Trace.Warn("Resource pack '{0}' does not contains any images.", filePath);
