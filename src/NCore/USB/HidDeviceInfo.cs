@@ -29,10 +29,11 @@ namespace NCore.USB
 			{ "M046", new HidDeviceInfo("Eleaf iStick Power", 96, 16) },
 			{ "M037", new HidDeviceInfo("Eleaf ASTER", 96, 16) },
 
-			{ "W007", new HidDeviceInfo("Wismec Presa TC75W") },
+			{ "W007", new HidDeviceInfo("Wismec Presa TC75W", 64, 48) },
+			{ "W017", new HidDeviceInfo("Wismec Presa TC100W", 64, 48) },
 
 			{ "W018", new HidDeviceInfo("Wismec Reuleaux RX2/3", 64, 48) },
-			{ "W014", new HidDeviceInfo("Wismec Reuleaux RX200") },
+			{ "W014", new HidDeviceInfo("Wismec Reuleaux RX200", 96, 16) },
 			{ "W033", new HidDeviceInfo("Wismec Reuleaux RX200S", 64, 48) },
 			{ "W026", new HidDeviceInfo("Wismec Reuleaux RX75", 64, 48) },
 
