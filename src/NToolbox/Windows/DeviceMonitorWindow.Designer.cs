@@ -644,7 +644,7 @@
 			this.MinimumSize = new System.Drawing.Size(816, 539);
 			this.Name = "DeviceMonitorWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NToolbox - Device Monitor";
+			this.Text = "NFE Toolbox - Device Monitor";
 			((System.ComponentModel.ISupportInitialize)(this.MainChart)).EndInit();
 			this.SensorsGroupPanel.ResumeLayout(false);
 			this.SensorsGroupPanel.PerformLayout();

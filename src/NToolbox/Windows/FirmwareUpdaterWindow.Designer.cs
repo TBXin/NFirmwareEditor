@@ -371,7 +371,7 @@ namespace NToolbox.Windows
 			this.MinimizeBox = false;
 			this.Name = "FirmwareUpdaterWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NFirmwareEditor - Updater";
+			this.Text = "NFE Toolbox - Updater";
 			this.groupPanel3.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
 			this.CommonTabPage.ResumeLayout(false);
