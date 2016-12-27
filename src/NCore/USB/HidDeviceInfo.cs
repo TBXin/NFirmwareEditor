@@ -36,6 +36,7 @@ namespace NCore.USB
 			{ "W014", new HidDeviceInfo("Wismec Reuleaux RX200", 96, 16) },
 			{ "W033", new HidDeviceInfo("Wismec Reuleaux RX200S", 64, 48) },
 			{ "W026", new HidDeviceInfo("Wismec Reuleaux RX75", 64, 48) },
+			{ "W073", new HidDeviceInfo("Wismec Reuleaux RXmini", 64, 48) },
 
 			{ "W010", new HidDeviceInfo("Vaporflask Classic") },
 			{ "W011", new HidDeviceInfo("Vaporflask Lite") },
