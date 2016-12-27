@@ -51,5 +51,5 @@ NFE Toolbox is a companion application, that was designed especially for the [Ar
 * [Get latest release](https://github.com/TBXin/NFirmwareEditor/releases)
 * [Official NFE Team (Editor, Toolbox, ArcticFox) forum thread (Ru)](http://www.ecigtalk.ru/forum/f16/t101098.html)
 
-
-
+# Donations:
+If you like our project and you want to help in its development, you can [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZLFDYGBRXQJGE) us the amount of money you deem acceptable.
