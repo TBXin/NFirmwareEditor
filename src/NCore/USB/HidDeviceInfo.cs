@@ -19,6 +19,7 @@ namespace NCore.USB
 
 			{ "E060", new HidDeviceInfo("Joyetech Cuboid", 64, 40) },
 			{ "E056", new HidDeviceInfo("Joyetech Cuboid Mini", 64, 40) },
+			{ "E166", new HidDeviceInfo("Joyetech Cuboid 200", 64, 40) },
 
 			{ "E083", new HidDeviceInfo("Joyetech eGrip II", 64, 40) },
 
@@ -36,6 +37,7 @@ namespace NCore.USB
 			{ "W014", new HidDeviceInfo("Wismec Reuleaux RX200", 96, 16) },
 			{ "W033", new HidDeviceInfo("Wismec Reuleaux RX200S", 64, 48) },
 			{ "W026", new HidDeviceInfo("Wismec Reuleaux RX75", 64, 48) },
+			{ "W069", new HidDeviceInfo("Wismec Reuleaux RX300", 64, 48) },
 			{ "W073", new HidDeviceInfo("Wismec Reuleaux RXmini", 64, 48) },
 
 			{ "W010", new HidDeviceInfo("Vaporflask Classic") },
