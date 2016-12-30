@@ -244,6 +244,8 @@ namespace NToolbox.Windows
 			{
 				var isTemperatureSensing = ModeComboBox.GetSelectedItem<Mode>() == Mode.TemperatureControl;
 
+				SetupTempControlButton.Visible = isTemperatureSensing;
+
 				MaterialComboBox.Visible = isTemperatureSensing;
 				MaterialLabel.Visible = isTemperatureSensing;
 
@@ -293,6 +295,7 @@ namespace NToolbox.Windows
 
 			PowerCurveEditButton.Click += PowerCurveEditButton_Click;
 			TFRCurveEditButton.Click += TFRCurveEditButton_Click;
+			SetupTempControlButton.Click += SetupTempControlButton_Click;
 		}
 
 		private void PowerCurveEditButton_Click(object sender, EventArgs e)
@@ -316,6 +319,14 @@ namespace NToolbox.Windows
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 				m_host.UpdateTFRCurveNames();
+			}
+		}
+
+		private void SetupTempControlButton_Click(object sender, EventArgs e)
+		{
+			using (var editor = new TempControlSetupWindow())
+			{
+				if (editor.ShowDialog() != DialogResult.OK) return;
 			}
 		}
 

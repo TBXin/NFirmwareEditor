@@ -28,14 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArcticFoxConfigurationWindow));
+			this.components = new System.ComponentModel.Container();
 			this.MainContainer = new NCore.UI.MultiPanel();
 			this.WelcomePage = new NCore.UI.MultiPanelPage();
 			this.ConnectLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.OpenConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.CreateConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.WorkspacePage = new NCore.UI.MultiPanelPage();
 			this.ResetButton = new System.Windows.Forms.Button();
 			this.UploadButton = new System.Windows.Forms.Button();
@@ -160,11 +160,14 @@
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.label61 = new System.Windows.Forms.Label();
+			this.CheckTCRCheckBox = new System.Windows.Forms.CheckBox();
+			this.label60 = new System.Windows.Forms.Label();
+			this.UsbNoSleepCheckBox = new System.Windows.Forms.CheckBox();
 			this.label19 = new System.Windows.Forms.Label();
 			this.label20 = new System.Windows.Forms.Label();
 			this.PuffCutOffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label54 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
 			this.label55 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.ShuntCorrectionUpDown = new System.Windows.Forms.NumericUpDown();
@@ -222,7 +225,6 @@
 			this.Battery1OffsetVoltsLabel = new System.Windows.Forms.Label();
 			this.Battery1OffsetLabel = new System.Windows.Forms.Label();
 			this.Battery1OffsetUpDown = new System.Windows.Forms.NumericUpDown();
-			this.label58 = new System.Windows.Forms.Label();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.ConfigurationMenuButton = new System.Windows.Forms.Button();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
@@ -235,6 +237,8 @@
 			this.MainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.label18 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -281,8 +285,8 @@
 			this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WelcomePage;
-			this.MainContainer.Size = new System.Drawing.Size(374, 567);
+			this.MainContainer.SelectedPage = this.WorkspacePage;
+			this.MainContainer.Size = new System.Drawing.Size(374, 581);
 			this.MainContainer.TabIndex = 0;
 			// 
 			// WelcomePage
@@ -290,8 +294,8 @@
 			this.WelcomePage.Controls.Add(this.ConnectLinkLabel);
 			this.WelcomePage.Controls.Add(this.OpenConfigurationLinkLabel);
 			this.WelcomePage.Controls.Add(this.CreateConfigurationLinkLabel);
-			this.WelcomePage.Controls.Add(this.pictureBox1);
 			this.WelcomePage.Controls.Add(this.WelcomeLabel);
+			this.WelcomePage.Controls.Add(this.pictureBox1);
 			this.WelcomePage.Description = null;
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
@@ -348,17 +352,6 @@
 			this.CreateConfigurationLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.CreateConfigurationLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.arctic_fox_logo;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
-			// 
 			// WelcomeLabel
 			// 
 			this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -373,6 +366,17 @@
 			this.WelcomeLabel.Text = "Connect device with\r\n\r\nArcticFox\r\n[{0}]\r\n\r\nfirmware or newer";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.arctic_fox_logo;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
+			// 
 			// WorkspacePage
 			// 
 			this.WorkspacePage.Controls.Add(this.ResetButton);
@@ -385,7 +389,7 @@
 			this.WorkspacePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.WorkspacePage.Location = new System.Drawing.Point(0, 0);
 			this.WorkspacePage.Name = "WorkspacePage";
-			this.WorkspacePage.Size = new System.Drawing.Size(374, 567);
+			this.WorkspacePage.Size = new System.Drawing.Size(374, 581);
 			this.WorkspacePage.TabIndex = 1;
 			this.WorkspacePage.Text = "Workspace";
 			// 
@@ -394,7 +398,7 @@
 			this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ResetButton.Enabled = false;
 			this.ResetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.ResetButton.Location = new System.Drawing.Point(257, 511);
+			this.ResetButton.Location = new System.Drawing.Point(257, 525);
 			this.ResetButton.Name = "ResetButton";
 			this.ResetButton.Size = new System.Drawing.Size(107, 25);
 			this.ResetButton.TabIndex = 40;
@@ -406,7 +410,7 @@
 			this.UploadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.UploadButton.Enabled = false;
 			this.UploadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.UploadButton.Location = new System.Drawing.Point(141, 511);
+			this.UploadButton.Location = new System.Drawing.Point(141, 525);
 			this.UploadButton.Name = "UploadButton";
 			this.UploadButton.Size = new System.Drawing.Size(110, 25);
 			this.UploadButton.TabIndex = 39;
@@ -418,7 +422,7 @@
 			this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.DownloadButton.Enabled = false;
 			this.DownloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.DownloadButton.Location = new System.Drawing.Point(11, 511);
+			this.DownloadButton.Location = new System.Drawing.Point(11, 525);
 			this.DownloadButton.Name = "DownloadButton";
 			this.DownloadButton.Size = new System.Drawing.Size(124, 25);
 			this.DownloadButton.TabIndex = 38;
@@ -463,7 +467,7 @@
 			this.MainTabControl.Location = new System.Drawing.Point(11, 75);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
-			this.MainTabControl.Size = new System.Drawing.Size(354, 429);
+			this.MainTabControl.Size = new System.Drawing.Size(354, 443);
 			this.MainTabControl.TabIndex = 36;
 			// 
 			// ProfilesTabPage
@@ -475,7 +479,7 @@
 			this.ProfilesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ProfilesTabPage.Name = "ProfilesTabPage";
 			this.ProfilesTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 403);
+			this.ProfilesTabPage.Size = new System.Drawing.Size(346, 417);
 			this.ProfilesTabPage.TabIndex = 0;
 			this.ProfilesTabPage.Text = "Profiles";
 			this.ProfilesTabPage.UseVisualStyleBackColor = true;
@@ -510,7 +514,7 @@
 			this.ProfilesTabControl.Location = new System.Drawing.Point(5, 36);
 			this.ProfilesTabControl.Name = "ProfilesTabControl";
 			this.ProfilesTabControl.SelectedIndex = 0;
-			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 361);
+			this.ProfilesTabControl.Size = new System.Drawing.Size(336, 375);
 			this.ProfilesTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.ProfilesTabControl.TabIndex = 0;
 			// 
@@ -518,7 +522,7 @@
 			// 
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(328, 335);
+			this.tabPage1.Size = new System.Drawing.Size(328, 349);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "P1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -527,7 +531,7 @@
 			// 
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(328, 335);
+			this.tabPage2.Size = new System.Drawing.Size(328, 349);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "P2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -547,7 +551,7 @@
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.GeneralTabPage.Size = new System.Drawing.Size(346, 403);
+			this.GeneralTabPage.Size = new System.Drawing.Size(346, 417);
 			this.GeneralTabPage.TabIndex = 1;
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
@@ -565,7 +569,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(5, 6);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(336, 391);
+			this.tabControl1.Size = new System.Drawing.Size(336, 405);
 			this.tabControl1.TabIndex = 1;
 			// 
 			// ScreenTabPage
@@ -598,7 +602,7 @@
 			this.ScreenTabPage.Controls.Add(this.FlippedModeCheckBox);
 			this.ScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreenTabPage.Name = "ScreenTabPage";
-			this.ScreenTabPage.Size = new System.Drawing.Size(328, 365);
+			this.ScreenTabPage.Size = new System.Drawing.Size(328, 379);
 			this.ScreenTabPage.TabIndex = 0;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
@@ -676,7 +680,7 @@
 			// label17
 			// 
 			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label17.Location = new System.Drawing.Point(4, 304);
+			this.label17.Location = new System.Drawing.Point(4, 319);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(321, 58);
 			this.label17.TabIndex = 103;
@@ -889,7 +893,7 @@
 			this.LayoutTabPage.Controls.Add(this.tabControl3);
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
-			this.LayoutTabPage.Size = new System.Drawing.Size(328, 365);
+			this.LayoutTabPage.Size = new System.Drawing.Size(328, 379);
 			this.LayoutTabPage.TabIndex = 1;
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
@@ -1540,7 +1544,7 @@
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ControlsTabPage.Name = "ControlsTabPage";
-			this.ControlsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.ControlsTabPage.Size = new System.Drawing.Size(328, 379);
 			this.ControlsTabPage.TabIndex = 2;
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
@@ -1655,7 +1659,7 @@
 			this.StatsTabPage.Controls.Add(this.label51);
 			this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.StatsTabPage.Name = "StatsTabPage";
-			this.StatsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.StatsTabPage.Size = new System.Drawing.Size(328, 379);
 			this.StatsTabPage.TabIndex = 3;
 			this.StatsTabPage.Text = "Stats";
 			this.StatsTabPage.UseVisualStyleBackColor = true;
@@ -1720,13 +1724,16 @@
 			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
 			this.AdvancedTabPage.Name = "AdvancedTabPage";
 			this.AdvancedTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.AdvancedTabPage.Size = new System.Drawing.Size(346, 403);
+			this.AdvancedTabPage.Size = new System.Drawing.Size(346, 417);
 			this.AdvancedTabPage.TabIndex = 2;
 			this.AdvancedTabPage.Text = "Advanced";
 			this.AdvancedTabPage.UseVisualStyleBackColor = true;
 			// 
 			// tabControl2
 			// 
+			this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl2.Controls.Add(this.SettingsTabPage);
 			this.tabControl2.Controls.Add(this.PowerCurvesTabPage);
 			this.tabControl2.Controls.Add(this.MaterialsTabPage);
@@ -1734,16 +1741,20 @@
 			this.tabControl2.Location = new System.Drawing.Point(5, 6);
 			this.tabControl2.Name = "tabControl2";
 			this.tabControl2.SelectedIndex = 0;
-			this.tabControl2.Size = new System.Drawing.Size(336, 391);
+			this.tabControl2.Size = new System.Drawing.Size(336, 405);
 			this.tabControl2.TabIndex = 107;
 			// 
 			// SettingsTabPage
 			// 
+			this.SettingsTabPage.Controls.Add(this.label18);
+			this.SettingsTabPage.Controls.Add(this.label61);
+			this.SettingsTabPage.Controls.Add(this.CheckTCRCheckBox);
+			this.SettingsTabPage.Controls.Add(this.label60);
+			this.SettingsTabPage.Controls.Add(this.UsbNoSleepCheckBox);
 			this.SettingsTabPage.Controls.Add(this.label19);
 			this.SettingsTabPage.Controls.Add(this.label20);
 			this.SettingsTabPage.Controls.Add(this.PuffCutOffUpDown);
 			this.SettingsTabPage.Controls.Add(this.label54);
-			this.SettingsTabPage.Controls.Add(this.label18);
 			this.SettingsTabPage.Controls.Add(this.label55);
 			this.SettingsTabPage.Controls.Add(this.label13);
 			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionUpDown);
@@ -1760,10 +1771,54 @@
 			this.SettingsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.SettingsTabPage.Name = "SettingsTabPage";
 			this.SettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.SettingsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.SettingsTabPage.Size = new System.Drawing.Size(328, 379);
 			this.SettingsTabPage.TabIndex = 0;
 			this.SettingsTabPage.Text = "Settings";
 			this.SettingsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label61
+			// 
+			this.label61.AutoSize = true;
+			this.label61.Location = new System.Drawing.Point(4, 173);
+			this.label61.Name = "label61";
+			this.label61.Size = new System.Drawing.Size(63, 13);
+			this.label61.TabIndex = 112;
+			this.label61.Text = "Check TCR:";
+			this.MainToolTip.SetToolTip(this.label61, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
+        "heavy coils.");
+			// 
+			// CheckTCRCheckBox
+			// 
+			this.CheckTCRCheckBox.AutoSize = true;
+			this.CheckTCRCheckBox.Location = new System.Drawing.Point(101, 173);
+			this.CheckTCRCheckBox.Name = "CheckTCRCheckBox";
+			this.CheckTCRCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.CheckTCRCheckBox.TabIndex = 113;
+			this.CheckTCRCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.CheckTCRCheckBox, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
+        "heavy coils.");
+			this.CheckTCRCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label60
+			// 
+			this.label60.AutoSize = true;
+			this.label60.Location = new System.Drawing.Point(4, 227);
+			this.label60.Name = "label60";
+			this.label60.Size = new System.Drawing.Size(75, 13);
+			this.label60.TabIndex = 110;
+			this.label60.Text = "USB No Sleep:";
+			this.MainToolTip.SetToolTip(this.label60, "Do not enter deep sleep mode while connected to USB.");
+			// 
+			// UsbNoSleepCheckBox
+			// 
+			this.UsbNoSleepCheckBox.AutoSize = true;
+			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(101, 227);
+			this.UsbNoSleepCheckBox.Name = "UsbNoSleepCheckBox";
+			this.UsbNoSleepCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.UsbNoSleepCheckBox.TabIndex = 111;
+			this.UsbNoSleepCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.UsbNoSleepCheckBox, "Do not enter deep sleep mode while connected to USB.");
+			this.UsbNoSleepCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label19
 			// 
@@ -1782,6 +1837,7 @@
 			this.label20.Size = new System.Drawing.Size(71, 13);
 			this.label20.TabIndex = 108;
 			this.label20.Text = "Puff Cut-Off:";
+			this.MainToolTip.SetToolTip(this.label20, "Maximum puff time correction.");
 			// 
 			// PuffCutOffUpDown
 			// 
@@ -1807,6 +1863,7 @@
 			this.PuffCutOffUpDown.TabIndex = 107;
 			this.PuffCutOffUpDown.TabStop = false;
 			this.PuffCutOffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.PuffCutOffUpDown, "Maximum puff time correction.");
 			this.PuffCutOffUpDown.Value = new decimal(new int[] {
             10,
             0,
@@ -1821,15 +1878,7 @@
 			this.label54.Size = new System.Drawing.Size(92, 13);
 			this.label54.TabIndex = 75;
 			this.label54.Text = "Shunt Correction:";
-			// 
-			// label18
-			// 
-			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label18.Location = new System.Drawing.Point(4, 265);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(321, 98);
-			this.label18.TabIndex = 106;
-			this.label18.Text = resources.GetString("label18.Text");
+			this.MainToolTip.SetToolTip(this.label54, "Ohm-meter correction.");
 			// 
 			// label55
 			// 
@@ -1843,11 +1892,12 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(4, 173);
+			this.label13.Location = new System.Drawing.Point(4, 146);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(46, 13);
 			this.label13.TabIndex = 104;
 			this.label13.Text = "RCOBC:";
+			this.MainToolTip.SetToolTip(this.label13, "Reset Counters on Battery Change, clear vaping statistics.");
 			// 
 			// ShuntCorrectionUpDown
 			// 
@@ -1867,6 +1917,7 @@
 			this.ShuntCorrectionUpDown.TabIndex = 74;
 			this.ShuntCorrectionUpDown.TabStop = false;
 			this.ShuntCorrectionUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.ShuntCorrectionUpDown, "Ohm-meter correction.");
 			this.ShuntCorrectionUpDown.Value = new decimal(new int[] {
             85,
             0,
@@ -1876,11 +1927,12 @@
 			// ResetCountersCheckBox
 			// 
 			this.ResetCountersCheckBox.AutoSize = true;
-			this.ResetCountersCheckBox.Location = new System.Drawing.Point(101, 173);
+			this.ResetCountersCheckBox.Location = new System.Drawing.Point(101, 146);
 			this.ResetCountersCheckBox.Name = "ResetCountersCheckBox";
 			this.ResetCountersCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ResetCountersCheckBox.TabIndex = 105;
 			this.ResetCountersCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.ResetCountersCheckBox, "Reset Counters on Battery Change, clear vaping statistics.");
 			this.ResetCountersCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// BatteryModelComboBox
@@ -1898,11 +1950,12 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(4, 146);
+			this.label14.Location = new System.Drawing.Point(4, 200);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(68, 13);
 			this.label14.TabIndex = 102;
 			this.label14.Text = "USB Charge:";
+			this.MainToolTip.SetToolTip(this.label14, "Enables or disables charging via USB.");
 			// 
 			// label56
 			// 
@@ -1916,11 +1969,12 @@
 			// UsbChargeCheckBox
 			// 
 			this.UsbChargeCheckBox.AutoSize = true;
-			this.UsbChargeCheckBox.Location = new System.Drawing.Point(101, 146);
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(101, 200);
 			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
 			this.UsbChargeCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.UsbChargeCheckBox, "Enables or disables charging via USB.");
 			this.UsbChargeCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// BatteryEditButton
@@ -1941,6 +1995,7 @@
 			this.label15.Size = new System.Drawing.Size(29, 13);
 			this.label15.TabIndex = 98;
 			this.label15.Text = "X32:";
+			this.MainToolTip.SetToolTip(this.label15, "Enables or disables usage of the X32 crystal of the PCB.");
 			// 
 			// LightSleepCheckBox
 			// 
@@ -1950,6 +2005,9 @@
 			this.LightSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.LightSleepCheckBox.TabIndex = 101;
 			this.LightSleepCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.LightSleepCheckBox, "Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It " +
+        "takes some more energy in standby mode, so user will be warned by ! sign right o" +
+        "f battery indicator.");
 			this.LightSleepCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// X32CheckBox
@@ -1960,6 +2018,7 @@
 			this.X32CheckBox.Size = new System.Drawing.Size(64, 17);
 			this.X32CheckBox.TabIndex = 99;
 			this.X32CheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.X32CheckBox, "Enables or disables usage of the X32 crystal of the PCB.");
 			this.X32CheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label16
@@ -1970,6 +2029,9 @@
 			this.label16.Size = new System.Drawing.Size(92, 13);
 			this.label16.TabIndex = 100;
 			this.label16.Text = "Light Sleep Mode:";
+			this.MainToolTip.SetToolTip(this.label16, "Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It " +
+        "takes some more energy in standby mode, so user will be warned by ! sign right o" +
+        "f battery indicator.");
 			// 
 			// PowerCurvesTabPage
 			// 
@@ -1992,7 +2054,7 @@
 			this.PowerCurvesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.PowerCurvesTabPage.Name = "PowerCurvesTabPage";
 			this.PowerCurvesTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.PowerCurvesTabPage.Size = new System.Drawing.Size(328, 365);
+			this.PowerCurvesTabPage.Size = new System.Drawing.Size(328, 379);
 			this.PowerCurvesTabPage.TabIndex = 2;
 			this.PowerCurvesTabPage.Text = "Power Curves";
 			this.PowerCurvesTabPage.UseVisualStyleBackColor = true;
@@ -2162,7 +2224,7 @@
 			this.MaterialsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.MaterialsTabPage.Name = "MaterialsTabPage";
 			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.MaterialsTabPage.Size = new System.Drawing.Size(328, 365);
+			this.MaterialsTabPage.Size = new System.Drawing.Size(328, 379);
 			this.MaterialsTabPage.TabIndex = 1;
 			this.MaterialsTabPage.Text = "Materials";
 			this.MaterialsTabPage.UseVisualStyleBackColor = true;
@@ -2322,10 +2384,9 @@
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetVoltsLabel);
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetLabel);
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetUpDown);
-			this.BVOTabPage.Controls.Add(this.label58);
 			this.BVOTabPage.Location = new System.Drawing.Point(4, 22);
 			this.BVOTabPage.Name = "BVOTabPage";
-			this.BVOTabPage.Size = new System.Drawing.Size(328, 365);
+			this.BVOTabPage.Size = new System.Drawing.Size(328, 379);
 			this.BVOTabPage.TabIndex = 3;
 			this.BVOTabPage.Text = "BVO";
 			this.BVOTabPage.UseVisualStyleBackColor = true;
@@ -2347,6 +2408,7 @@
 			this.Battery3OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery3OffsetLabel.TabIndex = 117;
 			this.Battery3OffsetLabel.Text = "Battery 3:";
+			this.MainToolTip.SetToolTip(this.Battery3OffsetLabel, "Battery3 Voltage Offset");
 			// 
 			// Battery3OffsetUpDown
 			// 
@@ -2372,6 +2434,7 @@
 			this.Battery3OffsetUpDown.TabIndex = 116;
 			this.Battery3OffsetUpDown.TabStop = false;
 			this.Battery3OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.Battery3OffsetUpDown, "Battery3 Voltage Offset");
 			// 
 			// Battery2OffsetVoltsLabel
 			// 
@@ -2390,6 +2453,7 @@
 			this.Battery2OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery2OffsetLabel.TabIndex = 114;
 			this.Battery2OffsetLabel.Text = "Battery 2:";
+			this.MainToolTip.SetToolTip(this.Battery2OffsetLabel, "Battery2 Voltage Offset");
 			// 
 			// Battery2OffsetUpDown
 			// 
@@ -2415,6 +2479,7 @@
 			this.Battery2OffsetUpDown.TabIndex = 113;
 			this.Battery2OffsetUpDown.TabStop = false;
 			this.Battery2OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.Battery2OffsetUpDown, "Battery2 Voltage Offset");
 			// 
 			// Battery1OffsetVoltsLabel
 			// 
@@ -2433,6 +2498,7 @@
 			this.Battery1OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery1OffsetLabel.TabIndex = 111;
 			this.Battery1OffsetLabel.Text = "Battery 1:";
+			this.MainToolTip.SetToolTip(this.Battery1OffsetLabel, "Battery1 Voltage Offset");
 			// 
 			// Battery1OffsetUpDown
 			// 
@@ -2458,15 +2524,7 @@
 			this.Battery1OffsetUpDown.TabIndex = 110;
 			this.Battery1OffsetUpDown.TabStop = false;
 			this.Battery1OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label58
-			// 
-			this.label58.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label58.Location = new System.Drawing.Point(4, 345);
-			this.label58.Name = "label58";
-			this.label58.Size = new System.Drawing.Size(321, 16);
-			this.label58.TabIndex = 107;
-			this.label58.Text = "BVO – Battery Voltage Offset";
+			this.MainToolTip.SetToolTip(this.Battery1OffsetUpDown, "Battery1 Voltage Offset");
 			// 
 			// groupPanel1
 			// 
@@ -2581,7 +2639,7 @@
 			this.MainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel,
             this.ProgressLabel});
-			this.MainStatusBar.Location = new System.Drawing.Point(0, 545);
+			this.MainStatusBar.Location = new System.Drawing.Point(0, 559);
 			this.MainStatusBar.Name = "MainStatusBar";
 			this.MainStatusBar.Size = new System.Drawing.Size(374, 22);
 			this.MainStatusBar.SizingGrip = false;
@@ -2604,12 +2662,27 @@
 			this.ProgressLabel.Size = new System.Drawing.Size(38, 17);
 			this.ProgressLabel.Text = "Ready";
 			// 
+			// MainToolTip
+			// 
+			this.MainToolTip.AutoPopDelay = 10000;
+			this.MainToolTip.InitialDelay = 500;
+			this.MainToolTip.ReshowDelay = 100;
+			// 
+			// label18
+			// 
+			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label18.Location = new System.Drawing.Point(4, 360);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(321, 17);
+			this.label18.TabIndex = 114;
+			this.label18.Text = "Move mouse to the checkbox or label to show tooltip.";
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(374, 567);
+			this.ClientSize = new System.Drawing.Size(374, 581);
 			this.Controls.Add(this.MainStatusBar);
 			this.Controls.Add(this.MainContainer);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -2787,7 +2860,6 @@
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.CheckBox LightSleepCheckBox;
 		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage SettingsTabPage;
 		private System.Windows.Forms.TabPage MaterialsTabPage;
@@ -2872,7 +2944,6 @@
 		private System.Windows.Forms.Label label64;
 		private System.Windows.Forms.ComboBox SmallTCLine1ComboBox;
 		private System.Windows.Forms.TabPage BVOTabPage;
-		private System.Windows.Forms.Label label58;
 		private System.Windows.Forms.Label Battery1OffsetVoltsLabel;
 		private System.Windows.Forms.Label Battery1OffsetLabel;
 		private System.Windows.Forms.NumericUpDown Battery1OffsetUpDown;
@@ -2882,5 +2953,11 @@
 		private System.Windows.Forms.Label Battery2OffsetVoltsLabel;
 		private System.Windows.Forms.Label Battery2OffsetLabel;
 		private System.Windows.Forms.NumericUpDown Battery2OffsetUpDown;
+		private System.Windows.Forms.Label label60;
+		private System.Windows.Forms.CheckBox UsbNoSleepCheckBox;
+		private System.Windows.Forms.Label label61;
+		private System.Windows.Forms.CheckBox CheckTCRCheckBox;
+		private System.Windows.Forms.ToolTip MainToolTip;
+		private System.Windows.Forms.Label label18;
 	}
 }
