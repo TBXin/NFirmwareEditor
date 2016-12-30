@@ -684,7 +684,7 @@ namespace NToolbox.Windows
 
 		private byte[] PrepairConfiguration(byte[] source, ArcticFoxConfiguration existedConfiguration = null)
 		{
-			var result = BinaryStructure.Read<ArcticFoxConfiguration>(source);
+			var result = BinaryStructure.Read<ArcticFoxConfiguration>(CryptoProvider.Decode(source));
 			if (existedConfiguration == null)
 			{
 				result.Info.MaxPower = MaxPower;
@@ -706,7 +706,7 @@ namespace NToolbox.Windows
 				fileName = op.FileName;
 			}
 
-			var result = ReadConfiguration(w => File.ReadAllBytes(fileName));
+			var result = ReadConfiguration(w => CryptoProvider.Decode(File.ReadAllBytes(fileName)));
 			if (result.Result == ReadResult.Success)
 			{
 				if (existedConfiguration == null)
@@ -806,7 +806,7 @@ namespace NToolbox.Windows
 						cfgCopy.Info.ProductId = string.Empty;
 					}
 					var bytes = BinaryStructure.Write(cfgCopy);
-					File.WriteAllBytes(sf.FileName, bytes);
+					File.WriteAllBytes(sf.FileName, CryptoProvider.Encode(bytes));
 				}
 				catch (Exception ex)
 				{

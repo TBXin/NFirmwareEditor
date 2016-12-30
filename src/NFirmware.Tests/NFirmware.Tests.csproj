@@ -50,10 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CryptoProviderTests.cs" />
     <Compile Include="FirmwareStreamTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NCore\NCore.csproj">
+      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
+      <Name>NCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NFirmware\NFirmware.csproj">
       <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
       <Name>NFirmware</Name>
