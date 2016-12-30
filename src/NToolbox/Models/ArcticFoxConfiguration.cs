@@ -64,13 +64,13 @@ namespace NToolbox.Models
 			public ClockType ClockType;
 			public bool IsClockOnMainScreen;
 			public ScreenProtectionTime ScreensaveDuration;
-			public byte PuffScreenDelay;
+			public byte PuffScreenDelay; // 0..50 = 0,0..5,0 sec
 		}
 
 		internal class CountersData
 		{
-			public ushort PuffsCount;
-			public ushort PuffsTime; // Value multiplied by 10
+			public uint PuffsCount;
+			public uint PuffsTime; // Value multiplied by 10
 			public DateTime DateTime;
 		}
 
@@ -104,6 +104,9 @@ namespace NToolbox.Models
 
 			[BinaryArray(Length = 3)]
 			public sbyte[] BatteryVoltageOffsets; // Value from (-30 to 30) * 100
+
+			public bool CheckTCR;
+			public bool USBNoSleep;
 		}
 
 		internal class TFRTable
@@ -299,19 +302,20 @@ namespace NToolbox.Models
 			// Multiplied by 1000
 			public ushort Resistance;
 			public ushort TCR;
+			public PIRegulator PIRegulator;
 
 			#region Overrides of Object
 			public override string ToString()
 			{
 				return string.Format
 				(
-					"{0}, Pwr: {1}, Temp: {2}, Res: {3}, PP: {4}, PT: {5}, TCR: {6}", 
-					Name, 
-					Power / 10f, 
-					Temperature, 
-					Resistance / 1000f, 
-					PreheatPower / 10f, 
-					PreheatTime / 100f, 
+					"{0}, Pwr: {1}, Temp: {2}, Res: {3}, PP: {4}, PT: {5}, TCR: {6}",
+					Name,
+					Power / 10f,
+					Temperature,
+					Resistance / 1000f,
+					PreheatPower / 10f,
+					PreheatTime / 100f,
 					TCR
 				);
 			}
@@ -324,7 +328,8 @@ namespace NToolbox.Models
 			public bool IsTemperatureDominant;
 			public bool IsCelcius;
 			public bool IsResistanceLocked;
-			
+			public bool IsEnabled;
+
 			public void Read(BinaryReader br)
 			{
 				var flags = br.ReadByte();
@@ -332,6 +337,7 @@ namespace NToolbox.Models
 				IsTemperatureDominant = flags.GetBit(5);
 				IsCelcius = flags.GetBit(6);
 				IsResistanceLocked = flags.GetBit(7);
+				IsEnabled = flags.GetBit(8);
 			}
 
 			public void Write(BinaryWriter bw)
@@ -339,7 +345,8 @@ namespace NToolbox.Models
 				var flags = ((byte)Material)
 					.SetBit(5, IsTemperatureDominant)
 					.SetBit(6, IsCelcius)
-					.SetBit(7, IsResistanceLocked);
+					.SetBit(7, IsResistanceLocked)
+					.SetBit(8, IsEnabled);
 				bw.Write(flags);
 			}
 		}
@@ -366,6 +373,15 @@ namespace NToolbox.Models
 			Watts = 0,
 			Percents = 1,
 			Curve = 2
+		}
+
+		internal class PIRegulator
+		{
+			public bool IsEnabled;
+			public byte Range; // 0 - 100
+			public ushort PValue; // 10 - 6000
+			// ReSharper disable once InconsistentNaming
+			public ushort IValue; // 0 - 9000
 		}
 	}
 	#pragma warning restore 0649
