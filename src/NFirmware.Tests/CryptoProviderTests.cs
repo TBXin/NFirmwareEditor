@@ -20,12 +20,13 @@ namespace NFirmware.Tests
 				rnd.NextBytes(buffer);
 				data.Add(buffer);
 			}
+			var encryption = new ArcticFoxEncryption();
 
 			// Act & Assert
 			foreach (var buffer in data)
 			{
-				var encrypted = CryptoProvider.Encode(buffer, rnd.Next());
-				var decrypted = CryptoProvider.Decode(encrypted);
+				var encrypted = encryption.Encode(buffer, rnd.Next());
+				var decrypted = encryption.Decode(encrypted);
 
 				Assert.AreEqual(buffer.Length, decrypted.Length);
 				CollectionAssert.AreEqual(buffer, decrypted);

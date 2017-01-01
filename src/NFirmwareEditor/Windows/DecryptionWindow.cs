@@ -9,7 +9,7 @@ namespace NFirmwareEditor.Windows
 {
 	internal partial class DecryptionWindow : EditorDialogWindow
 	{
-		private readonly FirmwareEncoder m_encoder;
+		private readonly JoyetechEncryption m_encoder;
 		private readonly FirmwareLoader m_loader;
 
 		private string m_sourceFileName;
@@ -21,8 +21,8 @@ namespace NFirmwareEditor.Windows
 			InitializeComponent();
 			Icon = NFEPaths.ApplicationIcon;
 
-			m_encoder = new FirmwareEncoder();
-			m_loader = new FirmwareLoader(m_encoder);
+			m_encoder = new JoyetechEncryption();
+			m_loader = new FirmwareLoader();
 
 			SelectSourceButton.Click += SelectSourceButton_Click;
 			SourceTextBox.TextChanged += (s, e) =>

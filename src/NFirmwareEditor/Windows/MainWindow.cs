@@ -24,7 +24,7 @@ namespace NFirmwareEditor.Windows
 		private readonly BackupManager m_backupManager = new BackupManager();
 
 		private readonly UpdatesManager m_updatesManager = new UpdatesManager(TimeSpan.FromHours(1));
-		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
+		private readonly FirmwareLoader m_loader = new FirmwareLoader();
 		
 		private IList<IEditorTabPage> m_tabPages;
 		private IEnumerable<FirmwareDefinition> m_definitions = new List<FirmwareDefinition>();
@@ -197,7 +197,7 @@ namespace NFirmwareEditor.Windows
 		private void UpdateOpenedFirmwareInfo()
 		{
 			Text = string.Format("{0} - {1}", Consts.ApplicationTitle, m_firmwareFile);
-			LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, m_firmware.IsEncrypted ? "Encrypted" : "Decrypted");
+			LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, m_firmware.EncryptionType != EncryptionType.None ? "Encrypted" : "Decrypted");
 			SaveDefinitionMenuItem.Visible = !m_definitions.Any(x => x.Name.Equals(m_firmware.Definition.Name));
 		}
 
@@ -224,7 +224,7 @@ namespace NFirmwareEditor.Windows
 
 				SaveMenuItem.Enabled = true;
 				SaveEncryptedMenuItem.Enabled = true;
-				SaveDecryptedMenuItem.Enabled = true;
+				SaveDecryptedMenuItem.Enabled = SaveDecryptedMenuItem.Visible = m_firmware.EncryptionType != EncryptionType.ArcticFox;
 				StatusLabel.Text = @"Firmware file has been successfully loaded.";
 
 				m_mruFirmwares.Add(firmwareFile);
@@ -348,11 +348,11 @@ namespace NFirmwareEditor.Windows
 			try
 			{
 				m_backupManager.CreateBackup(m_firmwareFile, m_configuration.BackupCreationMode);
-				if (m_firmware.IsEncrypted)
+				if (m_firmware.EncryptionType != EncryptionType.None)
 				{
 					m_loader.SaveEncrypted(m_firmwareFile, m_firmware);
 				}
-				else if (m_firmware.IsEncrypted == false)
+				else
 				{
 					m_loader.SaveDecrypted(m_firmwareFile, m_firmware);
 				}
@@ -369,8 +369,8 @@ namespace NFirmwareEditor.Windows
 		{
 			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) =>
 			{
+				firmware.EncryptionType = EncryptionType.Joyetech;
 				m_loader.SaveEncrypted(filePath, firmware);
-				firmware.IsEncrypted = true;
 			});
 		}
 
@@ -378,8 +378,8 @@ namespace NFirmwareEditor.Windows
 		{
 			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) =>
 			{
+				firmware.EncryptionType = EncryptionType.None;
 				m_loader.SaveDecrypted(filePath, firmware);
-				firmware.IsEncrypted = false;
 			});
 		}
 

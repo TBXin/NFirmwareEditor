@@ -16,7 +16,7 @@ namespace NToolbox.Windows
 {
 	internal partial class FirmwareUpdaterWindow : WindowBase
 	{
-		private readonly FirmwareLoader m_loader = new FirmwareLoader(new FirmwareEncoder());
+		private readonly FirmwareLoader m_loader = new FirmwareLoader();
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
 		private SimpleDataflash m_dataflash;

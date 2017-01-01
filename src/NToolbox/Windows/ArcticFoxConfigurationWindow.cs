@@ -22,7 +22,7 @@ namespace NToolbox.Windows
 		private const int MaximumSupportedSettingsVersion = 5;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
-
+		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
 		private readonly Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
 
 		private Label[] m_powerCurveLabels;
@@ -684,7 +684,7 @@ namespace NToolbox.Windows
 
 		private byte[] PrepairConfiguration(byte[] source, ArcticFoxConfiguration existedConfiguration = null)
 		{
-			var result = BinaryStructure.Read<ArcticFoxConfiguration>(CryptoProvider.Decode(source));
+			var result = BinaryStructure.Read<ArcticFoxConfiguration>(m_encryption.Decode(source));
 			if (existedConfiguration == null)
 			{
 				result.Info.MaxPower = MaxPower;
@@ -706,7 +706,7 @@ namespace NToolbox.Windows
 				fileName = op.FileName;
 			}
 
-			var result = ReadConfiguration(w => CryptoProvider.Decode(File.ReadAllBytes(fileName)));
+			var result = ReadConfiguration(w => m_encryption.Decode(File.ReadAllBytes(fileName)));
 			if (result.Result == ReadResult.Success)
 			{
 				if (existedConfiguration == null)
@@ -806,7 +806,7 @@ namespace NToolbox.Windows
 						cfgCopy.Info.ProductId = string.Empty;
 					}
 					var bytes = BinaryStructure.Write(cfgCopy);
-					File.WriteAllBytes(sf.FileName, CryptoProvider.Encode(bytes));
+					File.WriteAllBytes(sf.FileName, m_encryption.Encode(bytes));
 				}
 				catch (Exception ex)
 				{

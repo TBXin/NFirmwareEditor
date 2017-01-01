@@ -58,10 +58,11 @@
     <Compile Include="ApplicationService.cs" />
     <Compile Include="AsyncProcessWrapper.cs" />
     <Compile Include="BinaryStructure.cs" />
-    <Compile Include="CryptoProvider.cs" />
+    <Compile Include="ArcticFoxEncryption.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileFilters.cs" />
     <Compile Include="CsvManager.cs" />
+    <Compile Include="IEncryption.cs" />
     <Compile Include="InfoBox.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Serialization\NamespacelessObject.cs" />

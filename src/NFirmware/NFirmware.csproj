@@ -49,7 +49,7 @@
     <Compile Include="Firmware.cs" />
     <Compile Include="FirmwareAnalyzer.cs" />
     <Compile Include="FirmwareDefinition.cs" />
-    <Compile Include="FirmwareEncoder.cs" />
+    <Compile Include="JoyetechEncryption.cs" />
     <Compile Include="FirmwareImage1Metadata.cs" />
     <Compile Include="FirmwareImage2Metadata.cs" />
     <Compile Include="FirmwareImageBlocks.cs" />

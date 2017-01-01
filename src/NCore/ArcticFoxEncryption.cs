@@ -3,26 +3,20 @@ using JetBrains.Annotations;
 
 namespace NCore
 {
-	public static class CryptoProvider
+	public class ArcticFoxEncryption : IEncryption
 	{
-		public static byte[] Encode([NotNull] byte[] source, int? key = null)
+		#region Implementation of IEncryption
+		public EncryptionType Type
 		{
-			if (source == null) throw new ArgumentNullException("source");
-
-			var initialKey = key ?? CreateKey();
-			var table = CreateTable(initialKey);
-			var keyBytes = WriteKey(initialKey);
-			var result = new byte[source.Length + keyBytes.Length];
-			for (var i = keyBytes.Length; i < result.Length; i++)
-			{
-				var outerIndex = i - keyBytes.Length;
-				result[i] = (byte)(source[outerIndex] ^ table[outerIndex % table.Length]);
-			}
-			Buffer.BlockCopy(keyBytes, 0, result, 0, keyBytes.Length);
-			return result;
+			get { return EncryptionType.ArcticFox; }
 		}
 
-		public static byte[] Decode([NotNull] byte[] source)
+		public byte[] Encode(byte[] source)
+		{
+			return Encode(source, null);
+		}
+
+		public byte[] Decode([NotNull] byte[] source)
 		{
 			if (source == null || source.Length <= 4) throw new ArgumentNullException("source");
 
@@ -36,6 +30,24 @@ namespace NCore
 				var outerIndex = i + keyBytes.Length;
 				result[i] = (byte)(source[outerIndex] ^ table[i % table.Length]);
 			}
+			return result;
+		}
+		#endregion
+
+		public byte[] Encode([NotNull] byte[] source, int? key)
+		{
+			if (source == null) throw new ArgumentNullException("source");
+
+			var initialKey = key ?? CreateKey();
+			var table = CreateTable(initialKey);
+			var keyBytes = WriteKey(initialKey);
+			var result = new byte[source.Length + keyBytes.Length];
+			for (var i = keyBytes.Length; i < result.Length; i++)
+			{
+				var outerIndex = i - keyBytes.Length;
+				result[i] = (byte)(source[outerIndex] ^ table[outerIndex % table.Length]);
+			}
+			Buffer.BlockCopy(keyBytes, 0, result, 0, keyBytes.Length);
 			return result;
 		}
 

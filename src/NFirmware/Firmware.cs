@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
+using NCore;
 
 namespace NFirmware
 {
@@ -19,7 +20,7 @@ namespace NFirmware
 			[NotNull] FirmwareImageBlocks imageBlocks, 
 			[NotNull] FirmwareStringBlocks stringBlocks, 
 			[NotNull] FirmwareDefinition definition,
-			bool isEncrypted
+			EncryptionType encryptionType
 		)
 		{
 			if (body == null) throw new ArgumentNullException("body");
@@ -28,7 +29,7 @@ namespace NFirmware
 			if (definition == null) throw new ArgumentNullException("definition");
 
 			Definition = definition;
-			IsEncrypted = isEncrypted;
+			EncryptionType = encryptionType;
 			m_bodyStream = new FirmwareStream(body);
 			m_imageBlocks = imageBlocks;
 			m_stringBlocks = stringBlocks;
@@ -43,7 +44,7 @@ namespace NFirmware
 		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
 
-		public bool IsEncrypted { get; internal set; }
+		public EncryptionType EncryptionType { get; internal set; }
 
 		[NotNull]
 		public IDictionary<int, FirmwareImageMetadata> Block1Images
@@ -104,7 +105,12 @@ namespace NFirmware
 		public IEnumerable<bool[,]> ReadImages([NotNull, ItemNotNull] IEnumerable<FirmwareImageMetadata> metadata)
 		{
 			if (metadata == null) throw new ArgumentNullException("metadata");
-			return metadata.Select(ReadImage).ToList();
+			var result = new List<bool[,]>();
+			foreach (var imageMetadata in metadata)
+			{
+				result.Add(ReadImage(imageMetadata));
+			}
+			return result;
 		}
 
 		public void WriteImage([NotNull] bool[,] imageData, [NotNull] FirmwareImageMetadata imageMetadata)

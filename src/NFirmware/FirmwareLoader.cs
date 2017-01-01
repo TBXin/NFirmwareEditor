@@ -10,14 +10,13 @@ namespace NFirmware
 {
 	public class FirmwareLoader
 	{
-		private readonly byte[] m_encryptedFirmwareMark = Encoding.ASCII.GetBytes("Joyetech APROM");
-		private readonly FirmwareEncoder m_encoder;
-
-		public FirmwareLoader([NotNull] FirmwareEncoder encoder)
+		private static readonly IDictionary<EncryptionType, IEncryption> s_encryptors = new Dictionary<EncryptionType, IEncryption>
 		{
-			if (encoder == null) throw new ArgumentNullException("encoder");
-			m_encoder = encoder;
-		}
+			{ EncryptionType.Joyetech, new JoyetechEncryption() },
+			{ EncryptionType.ArcticFox, new ArcticFoxEncryption() }
+		};
+
+		private readonly byte[] m_encryptedFirmwareMark = Encoding.ASCII.GetBytes("Joyetech APROM");
 
 		[CanBeNull]
 		public Firmware TryLoad([NotNull] string filePath, [ItemNotNull] [NotNull] IEnumerable<FirmwareDefinition> definitions)
@@ -34,13 +33,13 @@ namespace NFirmware
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (definitions == null) throw new ArgumentNullException("definitions");
 
-			bool wasEncrypted;
-			var bytes = DecryptIfNecessary(firmwareBytes, out wasEncrypted);
+			EncryptionType encryptionType;
+			var bytes = DecryptIfNecessary(firmwareBytes, out encryptionType);
 			var definition = DetermineDefinition(bytes, definitions) ?? FirmwareAnalyzer.Analyze(bytes);
 
 			return definition == null
 				? null
-				: Load(bytes, definition, wasEncrypted);
+				: Load(bytes, definition, encryptionType);
 		}
 
 		[CanBeNull]
@@ -51,12 +50,12 @@ namespace NFirmware
 
 		public void SaveEncrypted([NotNull] string filePath, [NotNull] Firmware firmware)
 		{
-			Save(filePath, firmware, true);
+			Save(filePath, firmware, firmware.EncryptionType);
 		}
 
 		public void SaveDecrypted([NotNull] string filePath, [NotNull] Firmware firmware)
 		{
-			Save(filePath, firmware, false);
+			Save(filePath, firmware, EncryptionType.None);
 		}
 
 		public byte[] LoadFile([NotNull] string filePath)
@@ -64,22 +63,35 @@ namespace NFirmware
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
 			var data = File.ReadAllBytes(filePath);
-			bool wasEncrytpted;
-			return DecryptIfNecessary(data, out wasEncrytpted);
+			EncryptionType encryptionType;
+			return DecryptIfNecessary(data, out encryptionType);
 		}
 
-		private byte[] DecryptIfNecessary(byte[] firmwareBytes, out bool wasEncrypted)
+		private byte[] DecryptIfNecessary(byte[] firmwareBytes, out EncryptionType encryptionType)
 		{
-			wasEncrypted = IsFirmwareEncrypted(firmwareBytes);
-			return wasEncrypted ? m_encoder.Decode(firmwareBytes) : firmwareBytes;
+			foreach (var encryptor in s_encryptors.Values)
+			{
+				var result = encryptor.Decode(firmwareBytes);
+				if (!IsFirmwareEncrypted(result))
+				{
+					encryptionType = encryptor.Type;
+					return result;
+				}
+			}
+
+			encryptionType = EncryptionType.None;
+			return firmwareBytes;
 		}
 
-		private void Save([NotNull] string filePath, Firmware firmware, bool encode)
+		private void Save([NotNull] string filePath, Firmware firmware, EncryptionType encryptionType)
 		{
 			if (firmware == null) throw new ArgumentNullException("firmware");
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
 
-			var data = encode ? m_encoder.Encode(firmware.GetBody()) : firmware.GetBody();
+			var data = s_encryptors.ContainsKey(encryptionType)
+				? s_encryptors[encryptionType].Encode(firmware.GetBody())
+				: firmware.GetBody();
+
 			File.WriteAllBytes(filePath, data);
 		}
 
@@ -121,14 +133,14 @@ namespace NFirmware
 			return idx == -1;
 		}
 
-		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition, bool isEncrypted)
+		private Firmware Load([NotNull] byte[] data, [NotNull] FirmwareDefinition definition, EncryptionType encryptionType)
 		{
 			if (data == null) throw new ArgumentNullException("data");
 			if (definition == null) throw new ArgumentNullException("definition");
 
 			var imageBlocks = LoadImageBlocks(data, definition);
 			var stringBlocks = LoadStringBlocks(data, definition);
-			return new Firmware(data, imageBlocks, stringBlocks, definition, isEncrypted);
+			return new Firmware(data, imageBlocks, stringBlocks, definition, encryptionType);
 		}
 
 		internal FirmwareImageBlocks LoadImageBlocks([NotNull] byte[] firmware, [NotNull] FirmwareDefinition definition)
