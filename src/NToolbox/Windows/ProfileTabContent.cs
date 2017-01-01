@@ -32,6 +32,12 @@ namespace NToolbox.Windows
 			set { ProfileEnabledCheckBox.Checked = value; }
 		}
 
+		public bool CanDeactive
+		{
+			get { return ProfileEnabledCheckBox.Enabled; }
+			set { ProfileEnabledCheckBox.Enabled = value; }
+		}
+
 		public void Initialize([NotNull] ArcticFoxConfiguration configuration, int profileIndex)
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");

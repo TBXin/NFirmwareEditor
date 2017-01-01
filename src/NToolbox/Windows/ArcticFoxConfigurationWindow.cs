@@ -315,11 +315,22 @@ namespace NToolbox.Windows
 				var profileIndex = SelectedProfleComboBox.GetSelectedItem<byte>();
 				if (profileIndex >= ProfilesTabControl.TabCount) return;
 
-				var tabPage = ProfilesTabControl.TabPages[profileIndex];
-				var tabContent = tabPage.Controls[0] as ProfileTabContent;
-				if (tabContent == null) return;
+				for (var i = 0; i < ProfilesTabControl.TabCount; i++)
+				{
+					var tabPage = ProfilesTabControl.TabPages[i];
+					var tabContent = tabPage.Controls[0] as ProfileTabContent;
+					if (tabContent == null) return;
 
-				tabContent.IsProfileActivated = true;
+					if (i == profileIndex)
+					{
+						tabContent.CanDeactive = false;
+						tabContent.IsProfileActivated = true;
+					}
+					else
+					{
+						tabContent.CanDeactive = true;
+					}
+				}
 			};
 		}
 
