@@ -19,7 +19,7 @@ namespace NToolbox.Windows
 		private const ushort MaxPower = 2500;
 		private const byte MaxBatteries = 3;
 		private const int MinimumSupportedBuildNumber = 170101;
-		private const int MaximumSupportedSettingsVersion = 6;
+		private const int SupportedSettingsVersion = 6;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
@@ -356,11 +356,14 @@ namespace NToolbox.Windows
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion == 'E' || info.SettingsVersion == 'M' || info.SettingsVersion == 'W')
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion < SupportedSettingsVersion ||
+				    info.SettingsVersion == 'E' ||
+				    info.SettingsVersion == 'M' ||
+				    info.SettingsVersion == 'W')
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
 				}
-				if (info.SettingsVersion > MaximumSupportedSettingsVersion)
+				if (info.SettingsVersion > SupportedSettingsVersion)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedToolbox);
 				}
