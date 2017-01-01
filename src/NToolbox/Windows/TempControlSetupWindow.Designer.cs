@@ -32,20 +32,20 @@
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
-			this.ResistanceLabel = new System.Windows.Forms.Label();
-			this.ResistanceLockedCheckBox = new System.Windows.Forms.CheckBox();
-			this.PowerUpDown = new System.Windows.Forms.NumericUpDown();
-			this.label3 = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.label1 = new System.Windows.Forms.Label();
-			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-			this.label2 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.RangeUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
+			this.IValueUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label1 = new System.Windows.Forms.Label();
+			this.PValueUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label3 = new System.Windows.Forms.Label();
+			this.ResistanceLabel = new System.Windows.Forms.Label();
+			this.EnabledCheckBox = new System.Windows.Forms.CheckBox();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.RangeUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.IValueUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PValueUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ControlBorderedPanel
@@ -96,14 +96,14 @@
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.label4);
-			this.groupPanel1.Controls.Add(this.numericUpDown2);
+			this.groupPanel1.Controls.Add(this.RangeUpDown);
 			this.groupPanel1.Controls.Add(this.label2);
-			this.groupPanel1.Controls.Add(this.numericUpDown1);
+			this.groupPanel1.Controls.Add(this.IValueUpDown);
 			this.groupPanel1.Controls.Add(this.label1);
-			this.groupPanel1.Controls.Add(this.PowerUpDown);
+			this.groupPanel1.Controls.Add(this.PValueUpDown);
 			this.groupPanel1.Controls.Add(this.label3);
 			this.groupPanel1.Controls.Add(this.ResistanceLabel);
-			this.groupPanel1.Controls.Add(this.ResistanceLockedCheckBox);
+			this.groupPanel1.Controls.Add(this.EnabledCheckBox);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
@@ -113,86 +113,22 @@
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "PI-Regulator Setup:";
 			// 
-			// ResistanceLabel
+			// label4
 			// 
-			this.ResistanceLabel.AutoSize = true;
-			this.ResistanceLabel.Location = new System.Drawing.Point(4, 36);
-			this.ResistanceLabel.Name = "ResistanceLabel";
-			this.ResistanceLabel.Size = new System.Drawing.Size(93, 13);
-			this.ResistanceLabel.TabIndex = 86;
-			this.ResistanceLabel.Text = "Use PI-Regulator:";
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(213, 63);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(18, 13);
+			this.label4.TabIndex = 95;
+			this.label4.Text = "%";
 			// 
-			// ResistanceLockedCheckBox
+			// RangeUpDown
 			// 
-			this.ResistanceLockedCheckBox.AutoSize = true;
-			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 36);
-			this.ResistanceLockedCheckBox.Name = "ResistanceLockedCheckBox";
-			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.ResistanceLockedCheckBox.TabIndex = 0;
-			this.ResistanceLockedCheckBox.Text = "Enabled";
-			this.ResistanceLockedCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// PowerUpDown
-			// 
-			this.PowerUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.PowerUpDown.Location = new System.Drawing.Point(101, 87);
-			this.PowerUpDown.Maximum = new decimal(new int[] {
-            6000,
-            0,
-            0,
-            0});
-			this.PowerUpDown.Name = "PowerUpDown";
-			this.PowerUpDown.Size = new System.Drawing.Size(106, 21);
-			this.PowerUpDown.TabIndex = 2;
-			this.PowerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(4, 90);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(46, 13);
-			this.label3.TabIndex = 88;
-			this.label3.Text = "P Value:";
-			// 
-			// numericUpDown1
-			// 
-			this.numericUpDown1.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Location = new System.Drawing.Point(101, 114);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
-            6000,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(106, 21);
-			this.numericUpDown1.TabIndex = 3;
-			this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(4, 117);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(44, 13);
-			this.label1.TabIndex = 91;
-			this.label1.Text = "I Value:";
-			// 
-			// numericUpDown2
-			// 
-			this.numericUpDown2.Location = new System.Drawing.Point(101, 60);
-			this.numericUpDown2.Name = "numericUpDown2";
-			this.numericUpDown2.Size = new System.Drawing.Size(106, 21);
-			this.numericUpDown2.TabIndex = 1;
-			this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.RangeUpDown.Location = new System.Drawing.Point(101, 60);
+			this.RangeUpDown.Name = "RangeUpDown";
+			this.RangeUpDown.Size = new System.Drawing.Size(106, 21);
+			this.RangeUpDown.TabIndex = 1;
+			this.RangeUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label2
 			// 
@@ -203,14 +139,88 @@
 			this.label2.TabIndex = 93;
 			this.label2.Text = "Range:";
 			// 
-			// label4
+			// IValueUpDown
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(213, 63);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(18, 13);
-			this.label4.TabIndex = 95;
-			this.label4.Text = "%";
+			this.IValueUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.IValueUpDown.Location = new System.Drawing.Point(101, 114);
+			this.IValueUpDown.Maximum = new decimal(new int[] {
+            9000,
+            0,
+            0,
+            0});
+			this.IValueUpDown.Name = "IValueUpDown";
+			this.IValueUpDown.Size = new System.Drawing.Size(106, 21);
+			this.IValueUpDown.TabIndex = 3;
+			this.IValueUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(4, 117);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(44, 13);
+			this.label1.TabIndex = 91;
+			this.label1.Text = "I Value:";
+			// 
+			// PValueUpDown
+			// 
+			this.PValueUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.PValueUpDown.Location = new System.Drawing.Point(101, 87);
+			this.PValueUpDown.Maximum = new decimal(new int[] {
+            6000,
+            0,
+            0,
+            0});
+			this.PValueUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.PValueUpDown.Name = "PValueUpDown";
+			this.PValueUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PValueUpDown.TabIndex = 2;
+			this.PValueUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PValueUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(4, 90);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(46, 13);
+			this.label3.TabIndex = 88;
+			this.label3.Text = "P Value:";
+			// 
+			// ResistanceLabel
+			// 
+			this.ResistanceLabel.AutoSize = true;
+			this.ResistanceLabel.Location = new System.Drawing.Point(4, 36);
+			this.ResistanceLabel.Name = "ResistanceLabel";
+			this.ResistanceLabel.Size = new System.Drawing.Size(93, 13);
+			this.ResistanceLabel.TabIndex = 86;
+			this.ResistanceLabel.Text = "Use PI-Regulator:";
+			// 
+			// EnabledCheckBox
+			// 
+			this.EnabledCheckBox.AutoSize = true;
+			this.EnabledCheckBox.Location = new System.Drawing.Point(101, 36);
+			this.EnabledCheckBox.Name = "EnabledCheckBox";
+			this.EnabledCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.EnabledCheckBox.TabIndex = 0;
+			this.EnabledCheckBox.Text = "Enabled";
+			this.EnabledCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// TempControlSetupWindow
 			// 
@@ -229,9 +239,9 @@
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PowerUpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.RangeUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.IValueUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PValueUpDown)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -243,12 +253,12 @@
 		private System.Windows.Forms.Button CancelButton;
 		private NCore.UI.GroupPanel groupPanel1;
 		private System.Windows.Forms.Label ResistanceLabel;
-		public System.Windows.Forms.CheckBox ResistanceLockedCheckBox;
-		public System.Windows.Forms.NumericUpDown PowerUpDown;
+		public System.Windows.Forms.CheckBox EnabledCheckBox;
+		public System.Windows.Forms.NumericUpDown PValueUpDown;
 		private System.Windows.Forms.Label label3;
-		public System.Windows.Forms.NumericUpDown numericUpDown1;
+		public System.Windows.Forms.NumericUpDown IValueUpDown;
 		private System.Windows.Forms.Label label1;
-		public System.Windows.Forms.NumericUpDown numericUpDown2;
+		public System.Windows.Forms.NumericUpDown RangeUpDown;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label4;
 	}

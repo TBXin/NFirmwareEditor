@@ -352,14 +352,11 @@ namespace NToolbox.Windows
 
 			try
 			{
-				var data = configurationProvider(m_worker);
+				var data = configurationProvider(useWorker ? m_worker : null);
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion < SupportedSettingsVersion ||
-				    info.SettingsVersion == 'E' ||
-				    info.SettingsVersion == 'M' ||
-				    info.SettingsVersion == 'W')
+				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion < SupportedSettingsVersion)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
 				}

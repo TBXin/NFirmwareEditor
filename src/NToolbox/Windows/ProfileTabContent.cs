@@ -29,7 +29,7 @@ namespace NToolbox.Windows
 		public bool IsProfileActivated
 		{
 			get { return ProfileEnabledCheckBox.Checked; }
-			set { ProfileEnabledCheckBox.Checked = true; }
+			set { ProfileEnabledCheckBox.Checked = value; }
 		}
 
 		public void Initialize([NotNull] ArcticFoxConfiguration configuration, int profileIndex)
@@ -332,9 +332,10 @@ namespace NToolbox.Windows
 
 		private void SetupTempControlButton_Click(object sender, EventArgs e)
 		{
-			using (var editor = new TempControlSetupWindow())
+			using (var editor = new TempControlSetupWindow(m_profile.PIRegulator))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
+				m_profile.PIRegulator = editor.SaveWorkspace();
 			}
 		}
 
