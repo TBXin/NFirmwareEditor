@@ -106,7 +106,7 @@ namespace NToolbox.Models
 			public sbyte[] BatteryVoltageOffsets; // Value from (-30 to 30) * 100
 
 			public bool CheckTCR;
-			public bool USBNoSleep;
+			public bool UsbNoSleep;
 		}
 
 		internal class TFRTable

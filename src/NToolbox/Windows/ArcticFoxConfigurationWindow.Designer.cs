@@ -160,6 +160,7 @@
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.label18 = new System.Windows.Forms.Label();
 			this.label61 = new System.Windows.Forms.Label();
 			this.CheckTCRCheckBox = new System.Windows.Forms.CheckBox();
 			this.label60 = new System.Windows.Forms.Label();
@@ -238,7 +239,6 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.label18 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1776,6 +1776,15 @@
 			this.SettingsTabPage.Text = "Settings";
 			this.SettingsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// label18
+			// 
+			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label18.Location = new System.Drawing.Point(4, 360);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(321, 17);
+			this.label18.TabIndex = 114;
+			this.label18.Text = "Move mouse to the checkbox or label to show tooltip.";
+			// 
 			// label61
 			// 
 			this.label61.AutoSize = true;
@@ -1944,7 +1953,7 @@
             "°F"});
 			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 62);
 			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
-			this.BatteryModelComboBox.Size = new System.Drawing.Size(120, 21);
+			this.BatteryModelComboBox.Size = new System.Drawing.Size(106, 21);
 			this.BatteryModelComboBox.TabIndex = 78;
 			// 
 			// label14
@@ -1979,7 +1988,7 @@
 			// 
 			// BatteryEditButton
 			// 
-			this.BatteryEditButton.Location = new System.Drawing.Point(222, 61);
+			this.BatteryEditButton.Location = new System.Drawing.Point(213, 61);
 			this.BatteryEditButton.Name = "BatteryEditButton";
 			this.BatteryEditButton.Size = new System.Drawing.Size(60, 23);
 			this.BatteryEditButton.TabIndex = 79;
@@ -2667,15 +2676,6 @@
 			this.MainToolTip.AutoPopDelay = 10000;
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
-			// 
-			// label18
-			// 
-			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label18.Location = new System.Drawing.Point(4, 360);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(321, 17);
-			this.label18.TabIndex = 114;
-			this.label18.Text = "Move mouse to the checkbox or label to show tooltip.";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 

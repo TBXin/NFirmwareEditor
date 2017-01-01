@@ -18,8 +18,8 @@ namespace NToolbox.Windows
 	{
 		private const ushort MaxPower = 2500;
 		private const byte MaxBatteries = 3;
-		private const int MinimumSupportedBuildNumber = 161223;
-		private const int MaximumSupportedSettingsVersion = 5;
+		private const int MinimumSupportedBuildNumber = 170101;
+		private const int MaximumSupportedSettingsVersion = 6;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
@@ -310,6 +310,17 @@ namespace NToolbox.Windows
 				var batteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				BatteryEditButton.Visible = batteryModel == ArcticFoxConfiguration.BatteryModel.Custom;
 			};
+			SelectedProfleComboBox.SelectedValueChanged += (s, e) =>
+			{
+				var profileIndex = SelectedProfleComboBox.GetSelectedItem<byte>();
+				if (profileIndex >= ProfilesTabControl.TabCount) return;
+
+				var tabPage = ProfilesTabControl.TabPages[profileIndex];
+				var tabContent = tabPage.Controls[0] as ProfileTabContent;
+				if (tabContent == null) return;
+
+				tabContent.IsProfileActivated = true;
+			};
 		}
 
 		private bool ValidateConnectionStatus()
@@ -398,12 +409,12 @@ namespace NToolbox.Windows
 
 					if (ProfilesTabControl.TabPages.Count <= i)
 					{
-						SelectedProfleComboBox.Items.Add(new NamedItemContainer<byte>(tabName, (byte)i));
-
 						var tabPage = new TabPage(tabName);
 						tabContent = new ProfileTabContent(this) { Dock = DockStyle.Fill };
 						tabPage.Controls.Add(tabContent);
 						ProfilesTabControl.TabPages.Add(tabPage);
+
+						SelectedProfleComboBox.Items.Add(new NamedItemContainer<byte>(tabName, (byte)i));
 					}
 					else
 					{
@@ -482,8 +493,10 @@ namespace NToolbox.Windows
 				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
 				X32CheckBox.Checked = advanced.IsX32;
 				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;
-				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
+				CheckTCRCheckBox.Checked = advanced.CheckTCR;
+				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
+				UsbNoSleepCheckBox.Checked = advanced.UsbNoSleep;
 
 				UpdatePowerCurveLabels(advanced.PowerCurves);
 				UpdateTFRLables(advanced.TFRTables);
@@ -594,8 +607,11 @@ namespace NToolbox.Windows
 				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				advanced.IsX32 = X32CheckBox.Checked;
 				advanced.IsLightSleepMode = LightSleepCheckBox.Checked;
-				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
 				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
+				advanced.CheckTCR = CheckTCRCheckBox.Checked;
+				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
+				advanced.UsbNoSleep = UsbNoSleepCheckBox.Checked;
+				
 				advanced.BatteryVoltageOffsets[0] = (sbyte)(Battery1OffsetUpDown.Value * 100);
 				advanced.BatteryVoltageOffsets[1] = (sbyte)(Battery2OffsetUpDown.Value * 100);
 				advanced.BatteryVoltageOffsets[2] = (sbyte)(Battery3OffsetUpDown.Value * 100);

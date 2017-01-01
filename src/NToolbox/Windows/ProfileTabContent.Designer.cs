@@ -575,8 +575,6 @@
 		}
 
 		#endregion
-
-		public System.Windows.Forms.TextBox ProfileNameTextBox;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label TemperatureLabel;
 		private System.Windows.Forms.Label label5;
@@ -587,30 +585,31 @@
 		private System.Windows.Forms.Label ResistanceLabel;
 		private System.Windows.Forms.Label OhmLabel;
 		private System.Windows.Forms.Label MaterialLabel;
-		public System.Windows.Forms.NumericUpDown TemperatureUpDown;
-		public System.Windows.Forms.CheckBox TemperatureDominantCheckBox;
-		public System.Windows.Forms.ComboBox TemperatureTypeComboBox;
-		public System.Windows.Forms.NumericUpDown PreheatTimeUpDown;
-		public System.Windows.Forms.NumericUpDown PreheatPowerUpDown;
-		public System.Windows.Forms.ComboBox PreheatTypeComboBox;
-		public System.Windows.Forms.NumericUpDown PowerUpDown;
-		public System.Windows.Forms.NumericUpDown ResistanceUpDown;
-		public System.Windows.Forms.CheckBox ResistanceLockedCheckBox;
-		public System.Windows.Forms.ComboBox MaterialComboBox;
-		public System.Windows.Forms.NumericUpDown TCRUpDown;
-		public System.Windows.Forms.NumericUpDown PreheatDelayUpDown;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label9;
-		public System.Windows.Forms.ComboBox ModeComboBox;
-		public System.Windows.Forms.ComboBox PowerCurveComboBox;
 		private System.Windows.Forms.Button PowerCurveEditButton;
 		private System.Windows.Forms.Button TFRCurveEditButton;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label PreheatPowerUnitLabel;
 		private System.Windows.Forms.Button SetupTempControlButton;
 		private System.Windows.Forms.Label label37;
+		private System.Windows.Forms.TextBox ProfileNameTextBox;
+		private System.Windows.Forms.NumericUpDown TemperatureUpDown;
+		private System.Windows.Forms.CheckBox TemperatureDominantCheckBox;
+		private System.Windows.Forms.ComboBox TemperatureTypeComboBox;
+		private System.Windows.Forms.NumericUpDown PreheatTimeUpDown;
+		private System.Windows.Forms.NumericUpDown PreheatPowerUpDown;
+		private System.Windows.Forms.ComboBox PreheatTypeComboBox;
+		private System.Windows.Forms.NumericUpDown PowerUpDown;
+		private System.Windows.Forms.NumericUpDown ResistanceUpDown;
+		private System.Windows.Forms.CheckBox ResistanceLockedCheckBox;
+		private System.Windows.Forms.ComboBox MaterialComboBox;
+		private System.Windows.Forms.NumericUpDown TCRUpDown;
+		private System.Windows.Forms.NumericUpDown PreheatDelayUpDown;
+		private System.Windows.Forms.ComboBox ModeComboBox;
+		private System.Windows.Forms.ComboBox PowerCurveComboBox;
 		private System.Windows.Forms.CheckBox ProfileEnabledCheckBox;
 	}
 }

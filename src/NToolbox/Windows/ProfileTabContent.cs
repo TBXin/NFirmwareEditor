@@ -26,6 +26,12 @@ namespace NToolbox.Windows
 			InitializeControls();
 		}
 
+		public bool IsProfileActivated
+		{
+			get { return ProfileEnabledCheckBox.Checked; }
+			set { ProfileEnabledCheckBox.Checked = true; }
+		}
+
 		public void Initialize([NotNull] ArcticFoxConfiguration configuration, int profileIndex)
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");
@@ -33,6 +39,7 @@ namespace NToolbox.Windows
 			m_configuration = configuration;
 			m_profile = configuration.General.Profiles[profileIndex];
 
+			ProfileEnabledCheckBox.Checked = m_profile.Flags.IsEnabled;
 			ProfileNameTextBox.Text = m_profile.Name;
 			PowerUpDown.Maximum = configuration.Info.MaxPower / 10m;
 			PowerUpDown.SetValue(m_profile.Power / 10m);
@@ -99,6 +106,7 @@ namespace NToolbox.Windows
 
 		public void Save(ArcticFoxConfiguration.Profile profile)
 		{
+			profile.Flags.IsEnabled = ProfileEnabledCheckBox.Checked;
 			profile.Name = ProfileNameTextBox.Text;
 			profile.Power = (ushort)(PowerUpDown.Value * 10);
 			profile.PreheatType = PreheatTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.PreheatType>();
