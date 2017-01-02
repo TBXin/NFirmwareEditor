@@ -139,9 +139,6 @@
 			// 
 			this.TemperatureTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.TemperatureTypeComboBox.FormattingEnabled = true;
-			this.TemperatureTypeComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 301);
 			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
 			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
@@ -212,9 +209,6 @@
 			// 
 			this.PreheatTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.PreheatTypeComboBox.FormattingEnabled = true;
-			this.PreheatTypeComboBox.Items.AddRange(new object[] {
-            "W",
-            "%"});
 			this.PreheatTypeComboBox.Location = new System.Drawing.Point(101, 88);
 			this.PreheatTypeComboBox.Name = "PreheatTypeComboBox";
 			this.PreheatTypeComboBox.Size = new System.Drawing.Size(106, 21);
@@ -343,9 +337,6 @@
 			// 
 			this.MaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.MaterialComboBox.FormattingEnabled = true;
-			this.MaterialComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.MaterialComboBox.Location = new System.Drawing.Point(101, 224);
 			this.MaterialComboBox.Name = "MaterialComboBox";
 			this.MaterialComboBox.Size = new System.Drawing.Size(106, 21);
@@ -434,9 +425,6 @@
 			// 
 			this.ModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ModeComboBox.FormattingEnabled = true;
-			this.ModeComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.ModeComboBox.Location = new System.Drawing.Point(101, 197);
 			this.ModeComboBox.Name = "ModeComboBox";
 			this.ModeComboBox.Size = new System.Drawing.Size(106, 21);

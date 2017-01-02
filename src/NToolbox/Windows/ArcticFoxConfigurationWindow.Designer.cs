@@ -152,6 +152,8 @@
 			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
 			this.label39 = new System.Windows.Forms.Label();
 			this.StatsTabPage = new System.Windows.Forms.TabPage();
+			this.PuffsTimeFormatComboBox = new System.Windows.Forms.ComboBox();
+			this.label58 = new System.Windows.Forms.Label();
 			this.label52 = new System.Windows.Forms.Label();
 			this.PuffsTimeUpDown = new System.Windows.Forms.NumericUpDown();
 			this.PuffsUpDown = new System.Windows.Forms.NumericUpDown();
@@ -649,10 +651,6 @@
 			// 
 			this.ChargeScreenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ChargeScreenComboBox.FormattingEnabled = true;
-			this.ChargeScreenComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
 			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 143);
 			this.ChargeScreenComboBox.Name = "ChargeScreenComboBox";
 			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
@@ -691,10 +689,6 @@
 			// 
 			this.ScreensaverTimeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ScreensaverTimeComboBox.FormattingEnabled = true;
-			this.ScreensaverTimeComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
 			this.ScreensaverTimeComboBox.Location = new System.Drawing.Point(101, 278);
 			this.ScreensaverTimeComboBox.Name = "ScreensaverTimeComboBox";
 			this.ScreensaverTimeComboBox.Size = new System.Drawing.Size(106, 21);
@@ -741,10 +735,6 @@
 			// 
 			this.ClockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ClockTypeComboBox.FormattingEnabled = true;
-			this.ClockTypeComboBox.Items.AddRange(new object[] {
-            "Disabled",
-            "Analog",
-            "Digital"});
 			this.ClockTypeComboBox.Location = new System.Drawing.Point(101, 251);
 			this.ClockTypeComboBox.Name = "ClockTypeComboBox";
 			this.ClockTypeComboBox.Size = new System.Drawing.Size(106, 21);
@@ -900,13 +890,16 @@
 			// 
 			// tabControl3
 			// 
+			this.tabControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl3.Controls.Add(this.ClassicScreenTabPage);
 			this.tabControl3.Controls.Add(this.CircleScreenTabPage);
 			this.tabControl3.Controls.Add(this.SmallScreenTabPage);
 			this.tabControl3.Location = new System.Drawing.Point(5, 6);
 			this.tabControl3.Name = "tabControl3";
 			this.tabControl3.SelectedIndex = 0;
-			this.tabControl3.Size = new System.Drawing.Size(320, 356);
+			this.tabControl3.Size = new System.Drawing.Size(320, 370);
 			this.tabControl3.TabIndex = 121;
 			// 
 			// ClassicScreenTabPage
@@ -940,7 +933,7 @@
 			this.ClassicScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ClassicScreenTabPage.Name = "ClassicScreenTabPage";
 			this.ClassicScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.ClassicScreenTabPage.Size = new System.Drawing.Size(312, 330);
+			this.ClassicScreenTabPage.Size = new System.Drawing.Size(312, 344);
 			this.ClassicScreenTabPage.TabIndex = 0;
 			this.ClassicScreenTabPage.Text = "Classic Screen";
 			this.ClassicScreenTabPage.UseVisualStyleBackColor = true;
@@ -1214,7 +1207,7 @@
 			this.CircleScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CircleScreenTabPage.Name = "CircleScreenTabPage";
 			this.CircleScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.CircleScreenTabPage.Size = new System.Drawing.Size(312, 330);
+			this.CircleScreenTabPage.Size = new System.Drawing.Size(312, 344);
 			this.CircleScreenTabPage.TabIndex = 1;
 			this.CircleScreenTabPage.Text = "Circle Screen";
 			this.CircleScreenTabPage.UseVisualStyleBackColor = true;
@@ -1389,7 +1382,7 @@
 			this.SmallScreenTabPage.Controls.Add(this.SmallTCLine1ComboBox);
 			this.SmallScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.SmallScreenTabPage.Name = "SmallScreenTabPage";
-			this.SmallScreenTabPage.Size = new System.Drawing.Size(312, 330);
+			this.SmallScreenTabPage.Size = new System.Drawing.Size(312, 344);
 			this.SmallScreenTabPage.TabIndex = 2;
 			this.SmallScreenTabPage.Text = "Small Screen";
 			this.SmallScreenTabPage.UseVisualStyleBackColor = true;
@@ -1581,9 +1574,6 @@
 			// 
 			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.Clicks4ComboBox.FormattingEnabled = true;
-			this.Clicks4ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
 			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
 			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
@@ -1602,9 +1592,6 @@
 			// 
 			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.Clicks3ComboBox.FormattingEnabled = true;
-			this.Clicks3ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
 			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
 			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
@@ -1623,9 +1610,6 @@
 			// 
 			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.Clicks2ComboBox.FormattingEnabled = true;
-			this.Clicks2ComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
 			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
 			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
@@ -1652,6 +1636,8 @@
 			// 
 			// StatsTabPage
 			// 
+			this.StatsTabPage.Controls.Add(this.PuffsTimeFormatComboBox);
+			this.StatsTabPage.Controls.Add(this.label58);
 			this.StatsTabPage.Controls.Add(this.label52);
 			this.StatsTabPage.Controls.Add(this.PuffsTimeUpDown);
 			this.StatsTabPage.Controls.Add(this.PuffsUpDown);
@@ -1663,6 +1649,24 @@
 			this.StatsTabPage.TabIndex = 3;
 			this.StatsTabPage.Text = "Stats";
 			this.StatsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// PuffsTimeFormatComboBox
+			// 
+			this.PuffsTimeFormatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.PuffsTimeFormatComboBox.FormattingEnabled = true;
+			this.PuffsTimeFormatComboBox.Location = new System.Drawing.Point(101, 62);
+			this.PuffsTimeFormatComboBox.Name = "PuffsTimeFormatComboBox";
+			this.PuffsTimeFormatComboBox.Size = new System.Drawing.Size(106, 21);
+			this.PuffsTimeFormatComboBox.TabIndex = 108;
+			// 
+			// label58
+			// 
+			this.label58.AutoSize = true;
+			this.label58.Location = new System.Drawing.Point(4, 65);
+			this.label58.Name = "label58";
+			this.label58.Size = new System.Drawing.Size(98, 13);
+			this.label58.TabIndex = 107;
+			this.label58.Text = "Puffs Time Format:";
 			// 
 			// label52
 			// 
@@ -1676,6 +1680,11 @@
 			// PuffsTimeUpDown
 			// 
 			this.PuffsTimeUpDown.DecimalPlaces = 1;
+			this.PuffsTimeUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
 			this.PuffsTimeUpDown.Location = new System.Drawing.Point(101, 35);
 			this.PuffsTimeUpDown.Maximum = new decimal(new int[] {
             99999,
@@ -1948,9 +1957,6 @@
 			// 
 			this.BatteryModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.BatteryModelComboBox.FormattingEnabled = true;
-			this.BatteryModelComboBox.Items.AddRange(new object[] {
-            "°C",
-            "°F"});
 			this.BatteryModelComboBox.Location = new System.Drawing.Point(101, 62);
 			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
 			this.BatteryModelComboBox.Size = new System.Drawing.Size(106, 21);
@@ -2959,5 +2965,7 @@
 		private System.Windows.Forms.CheckBox CheckTCRCheckBox;
 		private System.Windows.Forms.ToolTip MainToolTip;
 		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.ComboBox PuffsTimeFormatComboBox;
+		private System.Windows.Forms.Label label58;
 	}
 }

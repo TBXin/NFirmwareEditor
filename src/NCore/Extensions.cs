@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 
 namespace NCore
 {
@@ -110,6 +111,14 @@ namespace NCore
 			listView.BeginUpdate();
 			items.ForEach(item => listView.Items.Add(item));
 			listView.EndUpdate();
+		}
+
+		public static void Fill(this ComboBox comboBox, object[] items)
+		{
+			comboBox.BeginUpdate();
+			comboBox.Items.Clear();
+			comboBox.Items.AddRange(items);
+			comboBox.EndUpdate();
 		}
 
 		public static void ScrollToEnd([NotNull] this TextBox textBox)

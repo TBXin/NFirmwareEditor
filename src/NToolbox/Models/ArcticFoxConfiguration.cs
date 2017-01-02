@@ -65,6 +65,7 @@ namespace NToolbox.Models
 			public bool IsClockOnMainScreen;
 			public ScreenProtectionTime ScreensaveDuration;
 			public byte PuffScreenDelay; // 0..50 = 0,0..5,0 sec
+			public PuffsTimeFormat PuffsTimeFormat;
 		}
 
 		internal class CountersData
@@ -203,6 +204,12 @@ namespace NToolbox.Models
 		{
 			Analog = 0,
 			Digital = 1
+		}
+
+		internal enum PuffsTimeFormat : byte
+		{
+			Seconds = 0,
+			HourMinuteSeconds = 1
 		}
 
 		internal enum ScreenProtectionTime : byte

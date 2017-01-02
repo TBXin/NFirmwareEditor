@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Models\ArcticFoxConfiguration.cs" />
     <Compile Include="Models\BatteryPresets.cs" />
+    <Compile Include="Models\PredefinedData.cs" />
     <Compile Include="Models\ToolboxConfiguration.cs" />
     <Compile Include="Models\MonitoringData.cs" />
     <Compile Include="Models\StartupMode.cs" />
