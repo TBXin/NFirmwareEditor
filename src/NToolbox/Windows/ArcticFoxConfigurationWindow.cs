@@ -18,7 +18,7 @@ namespace NToolbox.Windows
 	{
 		private const ushort MaxPower = 2500;
 		private const byte MaxBatteries = 3;
-		private const int MinimumSupportedBuildNumber = 170102;
+		private const int MinimumSupportedBuildNumber = 170103;
 		private const int SupportedSettingsVersion = 6;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
