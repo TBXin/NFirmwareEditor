@@ -59,7 +59,6 @@
 			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
 			this.label21 = new System.Windows.Forms.Label();
 			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
-			this.label17 = new System.Windows.Forms.Label();
 			this.ScreensaverTimeComboBox = new System.Windows.Forms.ComboBox();
 			this.label40 = new System.Windows.Forms.Label();
 			this.label53 = new System.Windows.Forms.Label();
@@ -241,6 +240,9 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.MainScreenSkinComboBox = new System.Windows.Forms.ComboBox();
+			this.label63 = new System.Windows.Forms.Label();
+			this.label17 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -576,13 +578,15 @@
 			// 
 			// ScreenTabPage
 			// 
+			this.ScreenTabPage.Controls.Add(this.label17);
+			this.ScreenTabPage.Controls.Add(this.MainScreenSkinComboBox);
+			this.ScreenTabPage.Controls.Add(this.label63);
 			this.ScreenTabPage.Controls.Add(this.PuffScreenDelayUpDown);
 			this.ScreenTabPage.Controls.Add(this.label22);
 			this.ScreenTabPage.Controls.Add(this.label23);
 			this.ScreenTabPage.Controls.Add(this.ChargeScreenComboBox);
 			this.ScreenTabPage.Controls.Add(this.label21);
 			this.ScreenTabPage.Controls.Add(this.ShowClockCheckBox);
-			this.ScreenTabPage.Controls.Add(this.label17);
 			this.ScreenTabPage.Controls.Add(this.ScreensaverTimeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label40);
 			this.ScreenTabPage.Controls.Add(this.label53);
@@ -651,7 +655,7 @@
 			// 
 			this.ChargeScreenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ChargeScreenComboBox.FormattingEnabled = true;
-			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 143);
+			this.ChargeScreenComboBox.Location = new System.Drawing.Point(101, 305);
 			this.ChargeScreenComboBox.Name = "ChargeScreenComboBox";
 			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ChargeScreenComboBox.TabIndex = 106;
@@ -664,6 +668,7 @@
 			this.label21.Size = new System.Drawing.Size(65, 13);
 			this.label21.TabIndex = 104;
 			this.label21.Text = "Show Clock:";
+			this.MainToolTip.SetToolTip(this.label21, "Show the clock on the main screen.");
 			// 
 			// ShowClockCheckBox
 			// 
@@ -673,17 +678,8 @@
 			this.ShowClockCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowClockCheckBox.TabIndex = 105;
 			this.ShowClockCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.ShowClockCheckBox, "Show the clock on the main screen.");
 			this.ShowClockCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label17
-			// 
-			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label17.Location = new System.Drawing.Point(4, 319);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(321, 58);
-			this.label17.TabIndex = 103;
-			this.label17.Text = "Show Clock – Show the clock on the main screen.\r\n\r\nUse Classic Menu –  Allows to " +
-    "switch profiles in the classical way, like old modes: Power, Ni, Ti, etc.";
 			// 
 			// ScreensaverTimeComboBox
 			// 
@@ -711,6 +707,8 @@
 			this.label53.Size = new System.Drawing.Size(93, 13);
 			this.label53.TabIndex = 96;
 			this.label53.Text = "Use Classic Menu:";
+			this.MainToolTip.SetToolTip(this.label53, "Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
+        "c.");
 			// 
 			// UseClassicMenuCheckBox
 			// 
@@ -720,6 +718,8 @@
 			this.UseClassicMenuCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UseClassicMenuCheckBox.TabIndex = 97;
 			this.UseClassicMenuCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.UseClassicMenuCheckBox, "Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
+        "c.");
 			this.UseClassicMenuCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label38
@@ -743,7 +743,7 @@
 			// label35
 			// 
 			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(4, 146);
+			this.label35.Location = new System.Drawing.Point(4, 308);
 			this.label35.Name = "label35";
 			this.label35.Size = new System.Drawing.Size(82, 13);
 			this.label35.TabIndex = 90;
@@ -757,6 +757,7 @@
 			this.label34.Size = new System.Drawing.Size(63, 13);
 			this.label34.TabIndex = 92;
 			this.label34.Text = "Show Logo:";
+			this.MainToolTip.SetToolTip(this.label34, "Show the logo on the main screen");
 			// 
 			// ShowLogoCheckBox
 			// 
@@ -766,6 +767,7 @@
 			this.ShowLogoCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowLogoCheckBox.TabIndex = 93;
 			this.ShowLogoCheckBox.Text = "Enabled";
+			this.MainToolTip.SetToolTip(this.ShowLogoCheckBox, "Show the logo on the main screen");
 			this.ShowLogoCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label32
@@ -2683,6 +2685,35 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
+			// MainScreenSkinComboBox
+			// 
+			this.MainScreenSkinComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.MainScreenSkinComboBox.FormattingEnabled = true;
+			this.MainScreenSkinComboBox.Location = new System.Drawing.Point(101, 143);
+			this.MainScreenSkinComboBox.Name = "MainScreenSkinComboBox";
+			this.MainScreenSkinComboBox.Size = new System.Drawing.Size(106, 21);
+			this.MainScreenSkinComboBox.TabIndex = 111;
+			this.MainToolTip.SetToolTip(this.MainScreenSkinComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
+			// 
+			// label63
+			// 
+			this.label63.AutoSize = true;
+			this.label63.Location = new System.Drawing.Point(4, 146);
+			this.label63.Name = "label63";
+			this.label63.Size = new System.Drawing.Size(91, 13);
+			this.label63.TabIndex = 110;
+			this.label63.Text = "Main Screen Skin:";
+			this.MainToolTip.SetToolTip(this.label63, "Change main screen style. Applicable only for devices with big screen (64x128).");
+			// 
+			// label17
+			// 
+			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label17.Location = new System.Drawing.Point(4, 360);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(321, 17);
+			this.label17.TabIndex = 115;
+			this.label17.Text = "Move mouse to the checkbox or label to show tooltip.";
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2865,7 +2896,6 @@
 		private System.Windows.Forms.CheckBox X32CheckBox;
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.CheckBox LightSleepCheckBox;
-		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage SettingsTabPage;
 		private System.Windows.Forms.TabPage MaterialsTabPage;
@@ -2967,5 +2997,8 @@
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.ComboBox PuffsTimeFormatComboBox;
 		private System.Windows.Forms.Label label58;
+		private System.Windows.Forms.ComboBox MainScreenSkinComboBox;
+		private System.Windows.Forms.Label label63;
+		private System.Windows.Forms.Label label17;
 	}
 }

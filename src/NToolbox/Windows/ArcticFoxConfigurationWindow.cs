@@ -148,6 +148,7 @@ namespace NToolbox.Windows
 				comboBox.Fill(PredefinedData.ArcticFox.SmallScreenLineContentItems);
 			}
 
+			MainScreenSkinComboBox.Fill(PredefinedData.ArcticFox.MainScreenSkins);
 			ChargeScreenComboBox.Fill(PredefinedData.ArcticFox.ChargeScreenTypes);
 			ClockTypeComboBox.Fill(PredefinedData.ArcticFox.ClockTypes);
 			ScreensaverTimeComboBox.Fill(PredefinedData.ArcticFox.ScreenSaverTimes);
@@ -304,12 +305,13 @@ namespace NToolbox.Windows
 				PuffScreenDelayUpDown.SetValue(ui.PuffScreenDelay / 10m);
 				StealthModeCheckBox.Checked = ui.IsStealthMode;
 				FlippedModeCheckBox.Checked = ui.IsFlipped;
-				ChargeScreenComboBox.SelectItem(ui.ChargeScreenType);
+				MainScreenSkinComboBox.SelectItem(ui.MainScreenSkin);
 				UseClassicMenuCheckBox.Checked = ui.IsClassicMenu;
 				ShowLogoCheckBox.Checked = ui.IsLogoEnabled;
 				ShowClockCheckBox.Checked = ui.IsClockOnMainScreen;
 				ClockTypeComboBox.SelectItem(ui.ClockType);
 				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
+				ChargeScreenComboBox.SelectItem(ui.ChargeScreenType);
 
 				// Classic Screen
 				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line1, ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);
@@ -408,12 +410,13 @@ namespace NToolbox.Windows
 				ui.PuffScreenDelay = (byte)(PuffScreenDelayUpDown.Value * 10);
 				ui.IsStealthMode = StealthModeCheckBox.Checked;
 				ui.IsFlipped = FlippedModeCheckBox.Checked;
-				ui.ChargeScreenType = ChargeScreenComboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeScreenType>();
+				ui.MainScreenSkin = MainScreenSkinComboBox.GetSelectedItem<ArcticFoxConfiguration.Skin>();
 				ui.IsClassicMenu = UseClassicMenuCheckBox.Checked;
 				ui.IsLogoEnabled = ShowLogoCheckBox.Checked;
 				ui.IsClockOnMainScreen = ShowClockCheckBox.Checked;
 				ui.ClockType = ClockTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.ClockType>();
 				ui.ScreensaveDuration = ScreensaverTimeComboBox.GetSelectedItem<ArcticFoxConfiguration.ScreenProtectionTime>();
+				ui.ChargeScreenType = ChargeScreenComboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeScreenType>();
 
 				// General -> Layout Tab -> Classic Screen
 				ui.ClassicSkinVWLines.Line1 = SaveLineContent(ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);

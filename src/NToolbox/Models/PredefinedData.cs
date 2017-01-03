@@ -126,6 +126,12 @@ namespace NToolbox.Models
 				new NamedItemContainer<ArcticFoxConfiguration.LineContent>("Last Temperature", ArcticFoxConfiguration.LineContent.LastTemperature),
 			};
 
+			public static readonly object[] MainScreenSkins =
+			{
+				new NamedItemContainer<ArcticFoxConfiguration.Skin>("Classic", ArcticFoxConfiguration.Skin.Classic),
+				new NamedItemContainer<ArcticFoxConfiguration.Skin>("Circle", ArcticFoxConfiguration.Skin.Circle)
+			};
+
 			public static readonly object[] ChargeScreenTypes =
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.ChargeScreenType>("Classic", ArcticFoxConfiguration.ChargeScreenType.Classic),
