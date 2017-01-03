@@ -53,6 +53,9 @@
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
+			this.label17 = new System.Windows.Forms.Label();
+			this.MainScreenSkinComboBox = new System.Windows.Forms.ComboBox();
+			this.label63 = new System.Windows.Forms.Label();
 			this.PuffScreenDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label22 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
@@ -184,39 +187,9 @@
 			this.X32CheckBox = new System.Windows.Forms.CheckBox();
 			this.label16 = new System.Windows.Forms.Label();
 			this.PowerCurvesTabPage = new System.Windows.Forms.TabPage();
-			this.PowerCurve8EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve8Label = new System.Windows.Forms.Label();
-			this.PowerCurve7EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve7Label = new System.Windows.Forms.Label();
-			this.PowerCurve6EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve6Label = new System.Windows.Forms.Label();
-			this.PowerCurve5EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve5Label = new System.Windows.Forms.Label();
-			this.PowerCurve4EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve4Label = new System.Windows.Forms.Label();
-			this.PowerCurve3EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve3Label = new System.Windows.Forms.Label();
-			this.PowerCurve2EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve2Label = new System.Windows.Forms.Label();
-			this.PowerCurve1EditButton = new System.Windows.Forms.Button();
-			this.PowerCurve1Label = new System.Windows.Forms.Label();
+			this.PowerCurvesListView = new System.Windows.Forms.ListView();
 			this.MaterialsTabPage = new System.Windows.Forms.TabPage();
-			this.TFR8EditButton = new System.Windows.Forms.Button();
-			this.TFR8Label = new System.Windows.Forms.Label();
-			this.TFR7EditButton = new System.Windows.Forms.Button();
-			this.TFR7Label = new System.Windows.Forms.Label();
-			this.TFR6EditButton = new System.Windows.Forms.Button();
-			this.TFR6Label = new System.Windows.Forms.Label();
-			this.TFR5EditButton = new System.Windows.Forms.Button();
-			this.TFR5Label = new System.Windows.Forms.Label();
-			this.TFR4EditButton = new System.Windows.Forms.Button();
-			this.TFR4Label = new System.Windows.Forms.Label();
-			this.TFR3EditButton = new System.Windows.Forms.Button();
-			this.TFR3Label = new System.Windows.Forms.Label();
-			this.TFR2EditButton = new System.Windows.Forms.Button();
-			this.TFR2Label = new System.Windows.Forms.Label();
-			this.TFR1EditButton = new System.Windows.Forms.Button();
-			this.TFR1Label = new System.Windows.Forms.Label();
+			this.MaterialsListView = new System.Windows.Forms.ListView();
 			this.BVOTabPage = new System.Windows.Forms.TabPage();
 			this.Battery3OffsetVoltsLabel = new System.Windows.Forms.Label();
 			this.Battery3OffsetLabel = new System.Windows.Forms.Label();
@@ -240,9 +213,6 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.MainScreenSkinComboBox = new System.Windows.Forms.ComboBox();
-			this.label63 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -612,6 +582,35 @@
 			this.ScreenTabPage.TabIndex = 0;
 			this.ScreenTabPage.Text = "Screen";
 			this.ScreenTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label17
+			// 
+			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label17.Location = new System.Drawing.Point(4, 360);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(321, 17);
+			this.label17.TabIndex = 115;
+			this.label17.Text = "Move mouse to the checkbox or label to show tooltip.";
+			// 
+			// MainScreenSkinComboBox
+			// 
+			this.MainScreenSkinComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.MainScreenSkinComboBox.FormattingEnabled = true;
+			this.MainScreenSkinComboBox.Location = new System.Drawing.Point(101, 143);
+			this.MainScreenSkinComboBox.Name = "MainScreenSkinComboBox";
+			this.MainScreenSkinComboBox.Size = new System.Drawing.Size(106, 21);
+			this.MainScreenSkinComboBox.TabIndex = 111;
+			this.MainToolTip.SetToolTip(this.MainScreenSkinComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
+			// 
+			// label63
+			// 
+			this.label63.AutoSize = true;
+			this.label63.Location = new System.Drawing.Point(4, 146);
+			this.label63.Name = "label63";
+			this.label63.Size = new System.Drawing.Size(91, 13);
+			this.label63.TabIndex = 110;
+			this.label63.Text = "Main Screen Skin:";
+			this.MainToolTip.SetToolTip(this.label63, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// PuffScreenDelayUpDown
 			// 
@@ -2052,22 +2051,7 @@
 			// 
 			// PowerCurvesTabPage
 			// 
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve8EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve8Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve7EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve7Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve6EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve6Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve5EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve5Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve4EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve4Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve3EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve3Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve2EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve2Label);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve1EditButton);
-			this.PowerCurvesTabPage.Controls.Add(this.PowerCurve1Label);
+			this.PowerCurvesTabPage.Controls.Add(this.PowerCurvesListView);
 			this.PowerCurvesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.PowerCurvesTabPage.Name = "PowerCurvesTabPage";
 			this.PowerCurvesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2076,168 +2060,26 @@
 			this.PowerCurvesTabPage.Text = "Power Curves";
 			this.PowerCurvesTabPage.UseVisualStyleBackColor = true;
 			// 
-			// PowerCurve8EditButton
+			// PowerCurvesListView
 			// 
-			this.PowerCurve8EditButton.Location = new System.Drawing.Point(101, 197);
-			this.PowerCurve8EditButton.Name = "PowerCurve8EditButton";
-			this.PowerCurve8EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve8EditButton.TabIndex = 128;
-			this.PowerCurve8EditButton.Text = "Edit";
-			this.PowerCurve8EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve8Label
-			// 
-			this.PowerCurve8Label.AutoSize = true;
-			this.PowerCurve8Label.Location = new System.Drawing.Point(5, 200);
-			this.PowerCurve8Label.Name = "PowerCurve8Label";
-			this.PowerCurve8Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve8Label.TabIndex = 127;
-			this.PowerCurve8Label.Text = "Power Curve:";
-			// 
-			// PowerCurve7EditButton
-			// 
-			this.PowerCurve7EditButton.Location = new System.Drawing.Point(101, 170);
-			this.PowerCurve7EditButton.Name = "PowerCurve7EditButton";
-			this.PowerCurve7EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve7EditButton.TabIndex = 126;
-			this.PowerCurve7EditButton.Text = "Edit";
-			this.PowerCurve7EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve7Label
-			// 
-			this.PowerCurve7Label.AutoSize = true;
-			this.PowerCurve7Label.Location = new System.Drawing.Point(4, 173);
-			this.PowerCurve7Label.Name = "PowerCurve7Label";
-			this.PowerCurve7Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve7Label.TabIndex = 125;
-			this.PowerCurve7Label.Text = "Power Curve:";
-			// 
-			// PowerCurve6EditButton
-			// 
-			this.PowerCurve6EditButton.Location = new System.Drawing.Point(101, 143);
-			this.PowerCurve6EditButton.Name = "PowerCurve6EditButton";
-			this.PowerCurve6EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve6EditButton.TabIndex = 124;
-			this.PowerCurve6EditButton.Text = "Edit";
-			this.PowerCurve6EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve6Label
-			// 
-			this.PowerCurve6Label.AutoSize = true;
-			this.PowerCurve6Label.Location = new System.Drawing.Point(4, 146);
-			this.PowerCurve6Label.Name = "PowerCurve6Label";
-			this.PowerCurve6Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve6Label.TabIndex = 123;
-			this.PowerCurve6Label.Text = "Power Curve:";
-			// 
-			// PowerCurve5EditButton
-			// 
-			this.PowerCurve5EditButton.Location = new System.Drawing.Point(101, 116);
-			this.PowerCurve5EditButton.Name = "PowerCurve5EditButton";
-			this.PowerCurve5EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve5EditButton.TabIndex = 122;
-			this.PowerCurve5EditButton.Text = "Edit";
-			this.PowerCurve5EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve5Label
-			// 
-			this.PowerCurve5Label.AutoSize = true;
-			this.PowerCurve5Label.Location = new System.Drawing.Point(4, 119);
-			this.PowerCurve5Label.Name = "PowerCurve5Label";
-			this.PowerCurve5Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve5Label.TabIndex = 121;
-			this.PowerCurve5Label.Text = "Power Curve:";
-			// 
-			// PowerCurve4EditButton
-			// 
-			this.PowerCurve4EditButton.Location = new System.Drawing.Point(101, 89);
-			this.PowerCurve4EditButton.Name = "PowerCurve4EditButton";
-			this.PowerCurve4EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve4EditButton.TabIndex = 120;
-			this.PowerCurve4EditButton.Text = "Edit";
-			this.PowerCurve4EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve4Label
-			// 
-			this.PowerCurve4Label.AutoSize = true;
-			this.PowerCurve4Label.Location = new System.Drawing.Point(4, 92);
-			this.PowerCurve4Label.Name = "PowerCurve4Label";
-			this.PowerCurve4Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve4Label.TabIndex = 119;
-			this.PowerCurve4Label.Text = "Power Curve:";
-			// 
-			// PowerCurve3EditButton
-			// 
-			this.PowerCurve3EditButton.Location = new System.Drawing.Point(101, 62);
-			this.PowerCurve3EditButton.Name = "PowerCurve3EditButton";
-			this.PowerCurve3EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve3EditButton.TabIndex = 118;
-			this.PowerCurve3EditButton.Text = "Edit";
-			this.PowerCurve3EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve3Label
-			// 
-			this.PowerCurve3Label.AutoSize = true;
-			this.PowerCurve3Label.Location = new System.Drawing.Point(4, 65);
-			this.PowerCurve3Label.Name = "PowerCurve3Label";
-			this.PowerCurve3Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve3Label.TabIndex = 117;
-			this.PowerCurve3Label.Text = "Power Curve:";
-			// 
-			// PowerCurve2EditButton
-			// 
-			this.PowerCurve2EditButton.Location = new System.Drawing.Point(101, 35);
-			this.PowerCurve2EditButton.Name = "PowerCurve2EditButton";
-			this.PowerCurve2EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve2EditButton.TabIndex = 116;
-			this.PowerCurve2EditButton.Text = "Edit";
-			this.PowerCurve2EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve2Label
-			// 
-			this.PowerCurve2Label.AutoSize = true;
-			this.PowerCurve2Label.Location = new System.Drawing.Point(4, 38);
-			this.PowerCurve2Label.Name = "PowerCurve2Label";
-			this.PowerCurve2Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve2Label.TabIndex = 115;
-			this.PowerCurve2Label.Text = "Power Curve:";
-			// 
-			// PowerCurve1EditButton
-			// 
-			this.PowerCurve1EditButton.Location = new System.Drawing.Point(101, 8);
-			this.PowerCurve1EditButton.Name = "PowerCurve1EditButton";
-			this.PowerCurve1EditButton.Size = new System.Drawing.Size(106, 23);
-			this.PowerCurve1EditButton.TabIndex = 114;
-			this.PowerCurve1EditButton.Text = "Edit";
-			this.PowerCurve1EditButton.UseVisualStyleBackColor = true;
-			// 
-			// PowerCurve1Label
-			// 
-			this.PowerCurve1Label.AutoSize = true;
-			this.PowerCurve1Label.Location = new System.Drawing.Point(4, 11);
-			this.PowerCurve1Label.Name = "PowerCurve1Label";
-			this.PowerCurve1Label.Size = new System.Drawing.Size(73, 13);
-			this.PowerCurve1Label.TabIndex = 113;
-			this.PowerCurve1Label.Text = "Power Curve:";
+			this.PowerCurvesListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
+			this.PowerCurvesListView.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+			this.PowerCurvesListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.PowerCurvesListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.PowerCurvesListView.Location = new System.Drawing.Point(4, 4);
+			this.PowerCurvesListView.MultiSelect = false;
+			this.PowerCurvesListView.Name = "PowerCurvesListView";
+			this.PowerCurvesListView.Size = new System.Drawing.Size(318, 370);
+			this.PowerCurvesListView.TabIndex = 129;
+			this.PowerCurvesListView.TileSize = new System.Drawing.Size(150, 48);
+			this.PowerCurvesListView.UseCompatibleStateImageBehavior = false;
+			this.PowerCurvesListView.View = System.Windows.Forms.View.Tile;
 			// 
 			// MaterialsTabPage
 			// 
-			this.MaterialsTabPage.Controls.Add(this.TFR8EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR8Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR7EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR7Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR6EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR6Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR5EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR5Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR4EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR4Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR3EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR3Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR2EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR2Label);
-			this.MaterialsTabPage.Controls.Add(this.TFR1EditButton);
-			this.MaterialsTabPage.Controls.Add(this.TFR1Label);
+			this.MaterialsTabPage.Controls.Add(this.MaterialsListView);
 			this.MaterialsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.MaterialsTabPage.Name = "MaterialsTabPage";
 			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2246,149 +2088,22 @@
 			this.MaterialsTabPage.Text = "Materials";
 			this.MaterialsTabPage.UseVisualStyleBackColor = true;
 			// 
-			// TFR8EditButton
+			// MaterialsListView
 			// 
-			this.TFR8EditButton.Location = new System.Drawing.Point(101, 197);
-			this.TFR8EditButton.Name = "TFR8EditButton";
-			this.TFR8EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR8EditButton.TabIndex = 112;
-			this.TFR8EditButton.Text = "Edit";
-			this.TFR8EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR8Label
-			// 
-			this.TFR8Label.AutoSize = true;
-			this.TFR8Label.Location = new System.Drawing.Point(5, 200);
-			this.TFR8Label.Name = "TFR8Label";
-			this.TFR8Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR8Label.TabIndex = 111;
-			this.TFR8Label.Text = "TFR N:";
-			// 
-			// TFR7EditButton
-			// 
-			this.TFR7EditButton.Location = new System.Drawing.Point(101, 170);
-			this.TFR7EditButton.Name = "TFR7EditButton";
-			this.TFR7EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR7EditButton.TabIndex = 110;
-			this.TFR7EditButton.Text = "Edit";
-			this.TFR7EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR7Label
-			// 
-			this.TFR7Label.AutoSize = true;
-			this.TFR7Label.Location = new System.Drawing.Point(4, 173);
-			this.TFR7Label.Name = "TFR7Label";
-			this.TFR7Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR7Label.TabIndex = 109;
-			this.TFR7Label.Text = "TFR N:";
-			// 
-			// TFR6EditButton
-			// 
-			this.TFR6EditButton.Location = new System.Drawing.Point(101, 143);
-			this.TFR6EditButton.Name = "TFR6EditButton";
-			this.TFR6EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR6EditButton.TabIndex = 108;
-			this.TFR6EditButton.Text = "Edit";
-			this.TFR6EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR6Label
-			// 
-			this.TFR6Label.AutoSize = true;
-			this.TFR6Label.Location = new System.Drawing.Point(4, 146);
-			this.TFR6Label.Name = "TFR6Label";
-			this.TFR6Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR6Label.TabIndex = 107;
-			this.TFR6Label.Text = "TFR N:";
-			// 
-			// TFR5EditButton
-			// 
-			this.TFR5EditButton.Location = new System.Drawing.Point(101, 116);
-			this.TFR5EditButton.Name = "TFR5EditButton";
-			this.TFR5EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR5EditButton.TabIndex = 106;
-			this.TFR5EditButton.Text = "Edit";
-			this.TFR5EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR5Label
-			// 
-			this.TFR5Label.AutoSize = true;
-			this.TFR5Label.Location = new System.Drawing.Point(4, 119);
-			this.TFR5Label.Name = "TFR5Label";
-			this.TFR5Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR5Label.TabIndex = 105;
-			this.TFR5Label.Text = "TFR N:";
-			// 
-			// TFR4EditButton
-			// 
-			this.TFR4EditButton.Location = new System.Drawing.Point(101, 89);
-			this.TFR4EditButton.Name = "TFR4EditButton";
-			this.TFR4EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR4EditButton.TabIndex = 104;
-			this.TFR4EditButton.Text = "Edit";
-			this.TFR4EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR4Label
-			// 
-			this.TFR4Label.AutoSize = true;
-			this.TFR4Label.Location = new System.Drawing.Point(4, 92);
-			this.TFR4Label.Name = "TFR4Label";
-			this.TFR4Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR4Label.TabIndex = 103;
-			this.TFR4Label.Text = "TFR N:";
-			// 
-			// TFR3EditButton
-			// 
-			this.TFR3EditButton.Location = new System.Drawing.Point(101, 62);
-			this.TFR3EditButton.Name = "TFR3EditButton";
-			this.TFR3EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR3EditButton.TabIndex = 102;
-			this.TFR3EditButton.Text = "Edit";
-			this.TFR3EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR3Label
-			// 
-			this.TFR3Label.AutoSize = true;
-			this.TFR3Label.Location = new System.Drawing.Point(4, 65);
-			this.TFR3Label.Name = "TFR3Label";
-			this.TFR3Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR3Label.TabIndex = 101;
-			this.TFR3Label.Text = "TFR N:";
-			// 
-			// TFR2EditButton
-			// 
-			this.TFR2EditButton.Location = new System.Drawing.Point(101, 35);
-			this.TFR2EditButton.Name = "TFR2EditButton";
-			this.TFR2EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR2EditButton.TabIndex = 100;
-			this.TFR2EditButton.Text = "Edit";
-			this.TFR2EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR2Label
-			// 
-			this.TFR2Label.AutoSize = true;
-			this.TFR2Label.Location = new System.Drawing.Point(4, 38);
-			this.TFR2Label.Name = "TFR2Label";
-			this.TFR2Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR2Label.TabIndex = 99;
-			this.TFR2Label.Text = "TFR N:";
-			// 
-			// TFR1EditButton
-			// 
-			this.TFR1EditButton.Location = new System.Drawing.Point(101, 8);
-			this.TFR1EditButton.Name = "TFR1EditButton";
-			this.TFR1EditButton.Size = new System.Drawing.Size(106, 23);
-			this.TFR1EditButton.TabIndex = 98;
-			this.TFR1EditButton.Text = "Edit";
-			this.TFR1EditButton.UseVisualStyleBackColor = true;
-			// 
-			// TFR1Label
-			// 
-			this.TFR1Label.AutoSize = true;
-			this.TFR1Label.Location = new System.Drawing.Point(4, 11);
-			this.TFR1Label.Name = "TFR1Label";
-			this.TFR1Label.Size = new System.Drawing.Size(40, 13);
-			this.TFR1Label.TabIndex = 96;
-			this.TFR1Label.Text = "TFR N:";
+			this.MaterialsListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
+			this.MaterialsListView.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+			this.MaterialsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.MaterialsListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.MaterialsListView.Location = new System.Drawing.Point(4, 4);
+			this.MaterialsListView.MultiSelect = false;
+			this.MaterialsListView.Name = "MaterialsListView";
+			this.MaterialsListView.Size = new System.Drawing.Size(318, 370);
+			this.MaterialsListView.TabIndex = 113;
+			this.MaterialsListView.TileSize = new System.Drawing.Size(150, 48);
+			this.MaterialsListView.UseCompatibleStateImageBehavior = false;
+			this.MaterialsListView.View = System.Windows.Forms.View.Tile;
 			// 
 			// BVOTabPage
 			// 
@@ -2685,35 +2400,6 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
-			// MainScreenSkinComboBox
-			// 
-			this.MainScreenSkinComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.MainScreenSkinComboBox.FormattingEnabled = true;
-			this.MainScreenSkinComboBox.Location = new System.Drawing.Point(101, 143);
-			this.MainScreenSkinComboBox.Name = "MainScreenSkinComboBox";
-			this.MainScreenSkinComboBox.Size = new System.Drawing.Size(106, 21);
-			this.MainScreenSkinComboBox.TabIndex = 111;
-			this.MainToolTip.SetToolTip(this.MainScreenSkinComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
-			// 
-			// label63
-			// 
-			this.label63.AutoSize = true;
-			this.label63.Location = new System.Drawing.Point(4, 146);
-			this.label63.Name = "label63";
-			this.label63.Size = new System.Drawing.Size(91, 13);
-			this.label63.TabIndex = 110;
-			this.label63.Text = "Main Screen Skin:";
-			this.MainToolTip.SetToolTip(this.label63, "Change main screen style. Applicable only for devices with big screen (64x128).");
-			// 
-			// label17
-			// 
-			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label17.Location = new System.Drawing.Point(4, 360);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(321, 17);
-			this.label17.TabIndex = 115;
-			this.label17.Text = "Move mouse to the checkbox or label to show tooltip.";
-			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2767,9 +2453,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.PowerCurvesTabPage.ResumeLayout(false);
-			this.PowerCurvesTabPage.PerformLayout();
 			this.MaterialsTabPage.ResumeLayout(false);
-			this.MaterialsTabPage.PerformLayout();
 			this.BVOTabPage.ResumeLayout(false);
 			this.BVOTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Battery3OffsetUpDown)).EndInit();
@@ -2899,22 +2583,6 @@
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage SettingsTabPage;
 		private System.Windows.Forms.TabPage MaterialsTabPage;
-		private System.Windows.Forms.Button TFR1EditButton;
-		private System.Windows.Forms.Label TFR1Label;
-		private System.Windows.Forms.Button TFR8EditButton;
-		private System.Windows.Forms.Label TFR8Label;
-		private System.Windows.Forms.Button TFR7EditButton;
-		private System.Windows.Forms.Label TFR7Label;
-		private System.Windows.Forms.Button TFR6EditButton;
-		private System.Windows.Forms.Label TFR6Label;
-		private System.Windows.Forms.Button TFR5EditButton;
-		private System.Windows.Forms.Label TFR5Label;
-		private System.Windows.Forms.Button TFR4EditButton;
-		private System.Windows.Forms.Label TFR4Label;
-		private System.Windows.Forms.Button TFR3EditButton;
-		private System.Windows.Forms.Label TFR3Label;
-		private System.Windows.Forms.Button TFR2EditButton;
-		private System.Windows.Forms.Label TFR2Label;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.NumericUpDown PuffCutOffUpDown;
@@ -2922,22 +2590,6 @@
 		private System.Windows.Forms.CheckBox ShowClockCheckBox;
 		private System.Windows.Forms.ComboBox ChargeScreenComboBox;
 		private System.Windows.Forms.TabPage PowerCurvesTabPage;
-		private System.Windows.Forms.Button PowerCurve8EditButton;
-		private System.Windows.Forms.Label PowerCurve8Label;
-		private System.Windows.Forms.Button PowerCurve7EditButton;
-		private System.Windows.Forms.Label PowerCurve7Label;
-		private System.Windows.Forms.Button PowerCurve6EditButton;
-		private System.Windows.Forms.Label PowerCurve6Label;
-		private System.Windows.Forms.Button PowerCurve5EditButton;
-		private System.Windows.Forms.Label PowerCurve5Label;
-		private System.Windows.Forms.Button PowerCurve4EditButton;
-		private System.Windows.Forms.Label PowerCurve4Label;
-		private System.Windows.Forms.Button PowerCurve3EditButton;
-		private System.Windows.Forms.Label PowerCurve3Label;
-		private System.Windows.Forms.Button PowerCurve2EditButton;
-		private System.Windows.Forms.Label PowerCurve2Label;
-		private System.Windows.Forms.Button PowerCurve1EditButton;
-		private System.Windows.Forms.Label PowerCurve1Label;
 		private System.Windows.Forms.NumericUpDown PuffScreenDelayUpDown;
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.Label label23;
@@ -3000,5 +2652,7 @@
 		private System.Windows.Forms.ComboBox MainScreenSkinComboBox;
 		private System.Windows.Forms.Label label63;
 		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.ListView MaterialsListView;
+		private System.Windows.Forms.ListView PowerCurvesListView;
 	}
 }

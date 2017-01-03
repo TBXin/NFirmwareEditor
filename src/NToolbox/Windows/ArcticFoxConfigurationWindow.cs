@@ -11,6 +11,7 @@ using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
 using NToolbox.Properties;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -24,11 +25,6 @@ namespace NToolbox.Windows
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
 		private readonly Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
-
-		private Label[] m_powerCurveLabels;
-		private Button[] m_powerCurveButtons;
-		private Label[] m_tfrLabels;
-		private Button[] m_tfrButtons;
 
 		private bool m_isWorkspaceOpen;
 		private bool m_isDeviceConnected;
@@ -79,23 +75,11 @@ namespace NToolbox.Windows
 			SmartCheckBox.CheckedChanged += (s, e) => SelectedProfleComboBox.Enabled = !SmartCheckBox.Checked;
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
-			m_powerCurveLabels = new[] { PowerCurve1Label, PowerCurve2Label, PowerCurve3Label, PowerCurve4Label, PowerCurve5Label, PowerCurve6Label, PowerCurve7Label, PowerCurve8Label };
-			m_powerCurveButtons = new[] { PowerCurve1EditButton, PowerCurve2EditButton, PowerCurve3EditButton, PowerCurve4EditButton, PowerCurve5EditButton, PowerCurve6EditButton, PowerCurve7EditButton, PowerCurve8EditButton };
+			PowerCurvesListView.LargeImageList = new ImageList { ImageSize = new Size(60, 30) };
+			PowerCurvesListView.Click += PowerCurvesListView_Click;
 
-			m_tfrLabels = new[] { TFR1Label, TFR2Label, TFR3Label, TFR4Label, TFR5Label, TFR6Label, TFR7Label, TFR8Label };
-			m_tfrButtons = new[] { TFR1EditButton, TFR2EditButton, TFR3EditButton, TFR4EditButton, TFR5EditButton, TFR6EditButton, TFR7EditButton, TFR8EditButton };
-
-			for (var i = 0; i < m_tfrButtons.Length; i++)
-			{
-				m_powerCurveButtons[i].Tag = i;
-				m_powerCurveButtons[i].Click += PowerCurveEditButton_Click;
-			}
-
-			for (var i = 0; i < m_tfrButtons.Length; i++)
-			{
-				m_tfrButtons[i].Tag = i;
-				m_tfrButtons[i].Click += TFREditButton_Click;
-			}
+			MaterialsListView.LargeImageList = new ImageList { ImageSize = new Size(60, 30) };
+			MaterialsListView.Click += MaterialsListView_Click;
 
 			BatteryEditButton.Click += BatteryEditButton_Click;
 
@@ -367,12 +351,29 @@ namespace NToolbox.Windows
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
 				UsbNoSleepCheckBox.Checked = advanced.UsbNoSleep;
 
-				UpdatePowerCurveLabels(advanced.PowerCurves);
-				UpdateTFRLables(advanced.TFRTables);
-
 				Battery1OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[0] / 100m);
 				Battery2OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[1] / 100m);
 				Battery3OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[2] / 100m);
+
+				PowerCurvesListView.Items.Clear();
+				PowerCurvesListView.LargeImageList.Images.Clear();
+				for (var i = 0; i < m_configuration.Advanced.PowerCurves.Length; i++)
+				{
+					var powerCurve = m_configuration.Advanced.PowerCurves[i];
+					var bitmap = ChartPreviewService.CreatePowerCurvePreview(powerCurve, PowerCurvesListView.LargeImageList.ImageSize);
+					PowerCurvesListView.LargeImageList.Images.Add(bitmap);
+					PowerCurvesListView.Items.Add(new ListViewItem(powerCurve.Name, i) { Tag = i });
+				}
+
+				MaterialsListView.Items.Clear();
+				MaterialsListView.LargeImageList.Images.Clear();
+				for (var i = 0; i < m_configuration.Advanced.TFRTables.Length; i++)
+				{
+					var tfrTable = m_configuration.Advanced.TFRTables[i];
+					var bitmap = ChartPreviewService.CreateTFRCurvePreview(tfrTable, PowerCurvesListView.LargeImageList.ImageSize);
+					MaterialsListView.LargeImageList.Images.Add(bitmap);
+					MaterialsListView.Items.Add(new ListViewItem("[TFR] " + tfrTable.Name, i) { Tag = i });
+				}
 			}
 		}
 
@@ -507,17 +508,17 @@ namespace NToolbox.Windows
 
 		private void UpdatePowerCurveLabels(ArcticFoxConfiguration.PowerCurve[] curves)
 		{
-			for (var i = 0; i < m_tfrLabels.Length; i++)
+			for (var i = 0; i < curves.Length; i++)
 			{
-				m_powerCurveLabels[i].Text = curves[i].Name + @":";
+				PowerCurvesListView.Items[i].Text = curves[i].Name;
 			}
 		}
 
 		private void UpdateTFRLables(ArcticFoxConfiguration.TFRTable[] tfrTables)
 		{
-			for (var i = 0; i < m_tfrLabels.Length; i++)
+			for (var i = 0; i < tfrTables.Length; i++)
 			{
-				m_tfrLabels[i].Text = @"[TFR] " + tfrTables[i].Name + @":";
+				MaterialsListView.Items[i].Text = @"[TFR] " + tfrTables[i].Name;
 			}
 		}
 
@@ -558,6 +559,12 @@ namespace NToolbox.Windows
 			}
 		}
 
+		internal void UpdatePowerCurvePreview(int powerCurveIndex)
+		{
+			var powerCurve = m_configuration.Advanced.PowerCurves[powerCurveIndex];
+			UpdateListViewPreview(PowerCurvesListView, powerCurveIndex, ChartPreviewService.CreatePowerCurvePreview(powerCurve, PowerCurvesListView.LargeImageList.ImageSize));
+		}
+
 		internal void UpdateTFRCurveNames()
 		{
 			UpdateTFRLables(m_configuration.Advanced.TFRTables);
@@ -568,6 +575,12 @@ namespace NToolbox.Windows
 
 				tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
 			}
+		}
+
+		internal void UpdateTFRCurvePreview(int tfrTableIndex)
+		{
+			var tfrTable = m_configuration.Advanced.TFRTables[tfrTableIndex];
+			UpdateListViewPreview(MaterialsListView, tfrTableIndex, ChartPreviewService.CreateTFRCurvePreview(tfrTable, MaterialsListView.LargeImageList.ImageSize));
 		}
 
 		private byte[] PrepairConfiguration(byte[] source, ArcticFoxConfiguration existedConfiguration = null)
@@ -633,35 +646,53 @@ namespace NToolbox.Windows
 			}
 		}
 
-		private void PowerCurveEditButton_Click(object sender, EventArgs e)
+		private void PowerCurvesListView_Click(object sender, EventArgs e)
 		{
-			var button = sender as Button;
-			if (button == null) return;
+			var curveIndex = PowerCurvesListView.SelectedItems.Count == 0
+				? null
+				: PowerCurvesListView.SelectedItems[0].Tag as int?;
+			if (!curveIndex.HasValue) return;
 
-			var curveIndex = (int)button.Tag;
-			var curve = m_configuration.Advanced.PowerCurves[curveIndex];
+			var curve = m_configuration.Advanced.PowerCurves[curveIndex.Value];
 
+			PowerCurvesListView.SelectedItems.Clear();
 			using (var editor = new PowerCurveProfileWindow(curve))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 
 				UpdatePowerCurveNames();
+				UpdatePowerCurvePreview(curveIndex.Value);
 			}
 		}
 
-		private void TFREditButton_Click(object sender, EventArgs e)
+		private void MaterialsListView_Click(object sender, EventArgs e)
 		{
-			var button = sender as Button;
-			if (button == null) return;
+			var tfrTableIndex = MaterialsListView.SelectedItems.Count == 0
+				? null
+				: MaterialsListView.SelectedItems[0].Tag as int?;
+			if (!tfrTableIndex.HasValue) return;
 
-			var tfrIndex = (int)button.Tag;
-			var tfrTable = m_configuration.Advanced.TFRTables[tfrIndex];
+			var tfrTable = m_configuration.Advanced.TFRTables[tfrTableIndex.Value];
+
+			MaterialsListView.SelectedItems.Clear();
 			using (var editor = new TFRProfileWindow(tfrTable))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
 
 				UpdateTFRCurveNames();
+				UpdateTFRCurvePreview(tfrTableIndex.Value);
 			}
+		}
+
+		private void UpdateListViewPreview(ListView listview, int imageIndex, Image newPreview)
+		{
+			if (listview.LargeImageList == null) return;
+			if (listview.LargeImageList.Images.Count < imageIndex) return;
+
+			var prevImage = listview.LargeImageList.Images[imageIndex];
+			listview.LargeImageList.Images[imageIndex] = newPreview;
+
+			prevImage.Dispose();
 		}
 
 		private void NewMenuItem_Click(object sender, EventArgs e)

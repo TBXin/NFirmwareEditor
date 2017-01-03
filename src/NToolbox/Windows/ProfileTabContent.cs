@@ -281,7 +281,9 @@ namespace NToolbox.Windows
 			using (var editor = new PowerCurveProfileWindow(curve))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
+
 				m_host.UpdatePowerCurveNames();
+				m_host.UpdatePowerCurvePreview(curveIndex);
 			}
 		}
 
@@ -293,7 +295,9 @@ namespace NToolbox.Windows
 			using (var editor = new TFRProfileWindow(tfrTable))
 			{
 				if (editor.ShowDialog() != DialogResult.OK) return;
+
 				m_host.UpdateTFRCurveNames();
+				m_host.UpdateTFRCurvePreview(curveIndex);
 			}
 		}
 
