@@ -20,6 +20,8 @@ namespace NToolbox.Models
 
 		public int SelectedScreenSize { get; set; }
 
+		public int PixelSizeMultiplier { get; set; }
+
 		public bool ShowPuffsBoundaries { get; set; }
 
 		public SerializableDictionary<string, bool> ActiveSeries { get; set; }

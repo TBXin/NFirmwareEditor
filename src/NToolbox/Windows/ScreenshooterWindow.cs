@@ -33,6 +33,7 @@ namespace NToolbox.Windows
 		{
 			TakeScreenshotBeforeSaveCheckBox.Checked = m_configuration.TakeScreenshotBeforeSave;
 			TakeScreenshotBeforeSaveCheckBox.CheckedChanged += (s, e) => m_configuration.TakeScreenshotBeforeSave = TakeScreenshotBeforeSaveCheckBox.Checked;
+			PixelSizeUpDown.ValueChanged += (s, e) => m_configuration.PixelSizeMultiplier = (int)PixelSizeUpDown.Value;
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			BroadcastButton.Click += BroadcastButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
@@ -57,6 +58,7 @@ namespace NToolbox.Windows
 				}
 				m_configuration.SelectedScreenSize = ScreenSizeComboBox.SelectedIndex;
 			};
+			PixelSizeUpDown.SetValue(m_configuration.PixelSizeMultiplier);
 			ScreenSizeComboBox.SelectedIndex = Math.Max(Math.Min(m_configuration.SelectedScreenSize, ScreenSizeComboBox.Items.Count), 0);
 		}
 
