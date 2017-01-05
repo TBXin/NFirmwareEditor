@@ -18,6 +18,8 @@ namespace NToolbox.Models
 
 		public bool TakeScreenshotBeforeSave { get; set; }
 
+		public int SelectedScreenSize { get; set; }
+
 		public bool ShowPuffsBoundaries { get; set; }
 
 		public SerializableDictionary<string, bool> ActiveSeries { get; set; }

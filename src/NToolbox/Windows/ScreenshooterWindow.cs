@@ -55,8 +55,9 @@ namespace NToolbox.Windows
 					ScreenPictureBox.Image.Dispose();
 					ScreenPictureBox.Image = null;
 				}
+				m_configuration.SelectedScreenSize = ScreenSizeComboBox.SelectedIndex;
 			};
-			ScreenSizeComboBox.SelectedIndex = 0;
+			ScreenSizeComboBox.SelectedIndex = Math.Max(Math.Min(m_configuration.SelectedScreenSize, ScreenSizeComboBox.Items.Count), 0);
 		}
 
 		private void ResizeScreenPictureBox()
