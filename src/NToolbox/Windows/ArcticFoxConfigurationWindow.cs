@@ -17,8 +17,8 @@ namespace NToolbox.Windows
 {
 	public partial class ArcticFoxConfigurationWindow : WindowBase
 	{
-		private const ushort MaxPower = 2500;
-		private const byte MaxBatteries = 3;
+		private const ushort MaxPower = 3000;
+		private const byte MaxBatteries = 4;
 		private const int MinimumSupportedBuildNumber = 170103;
 		private const int SupportedSettingsVersion = 6;
 
@@ -249,6 +249,7 @@ namespace NToolbox.Windows
 
 				Battery2OffsetLabel.Visible = Battery2OffsetUpDown.Visible = Battery2OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 1;
 				Battery3OffsetLabel.Visible = Battery3OffsetUpDown.Visible = Battery3OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 2;
+				Battery4OffsetLabel.Visible = Battery4OffsetUpDown.Visible = Battery4OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 3;
 			}
 
 			var general = m_configuration.General;

@@ -213,6 +213,9 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.Battery4OffsetVoltsLabel = new System.Windows.Forms.Label();
+			this.Battery4OffsetLabel = new System.Windows.Forms.Label();
+			this.Battery4OffsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -250,6 +253,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.Battery1OffsetUpDown)).BeginInit();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -2107,6 +2111,9 @@
 			// 
 			// BVOTabPage
 			// 
+			this.BVOTabPage.Controls.Add(this.Battery4OffsetVoltsLabel);
+			this.BVOTabPage.Controls.Add(this.Battery4OffsetLabel);
+			this.BVOTabPage.Controls.Add(this.Battery4OffsetUpDown);
 			this.BVOTabPage.Controls.Add(this.Battery3OffsetVoltsLabel);
 			this.BVOTabPage.Controls.Add(this.Battery3OffsetLabel);
 			this.BVOTabPage.Controls.Add(this.Battery3OffsetUpDown);
@@ -2400,6 +2407,51 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
+			// Battery4OffsetVoltsLabel
+			// 
+			this.Battery4OffsetVoltsLabel.AutoSize = true;
+			this.Battery4OffsetVoltsLabel.Location = new System.Drawing.Point(213, 92);
+			this.Battery4OffsetVoltsLabel.Name = "Battery4OffsetVoltsLabel";
+			this.Battery4OffsetVoltsLabel.Size = new System.Drawing.Size(13, 13);
+			this.Battery4OffsetVoltsLabel.TabIndex = 121;
+			this.Battery4OffsetVoltsLabel.Text = "v";
+			// 
+			// Battery4OffsetLabel
+			// 
+			this.Battery4OffsetLabel.AutoSize = true;
+			this.Battery4OffsetLabel.Location = new System.Drawing.Point(4, 92);
+			this.Battery4OffsetLabel.Name = "Battery4OffsetLabel";
+			this.Battery4OffsetLabel.Size = new System.Drawing.Size(56, 13);
+			this.Battery4OffsetLabel.TabIndex = 120;
+			this.Battery4OffsetLabel.Text = "Battery 4:";
+			this.MainToolTip.SetToolTip(this.Battery4OffsetLabel, "Battery3 Voltage Offset");
+			// 
+			// Battery4OffsetUpDown
+			// 
+			this.Battery4OffsetUpDown.DecimalPlaces = 2;
+			this.Battery4OffsetUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.Battery4OffsetUpDown.Location = new System.Drawing.Point(101, 89);
+			this.Battery4OffsetUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            65536});
+			this.Battery4OffsetUpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            -2147418112});
+			this.Battery4OffsetUpDown.Name = "Battery4OffsetUpDown";
+			this.Battery4OffsetUpDown.Size = new System.Drawing.Size(106, 21);
+			this.Battery4OffsetUpDown.TabIndex = 119;
+			this.Battery4OffsetUpDown.TabStop = false;
+			this.Battery4OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.Battery4OffsetUpDown, "Battery3 Voltage Offset");
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2463,6 +2515,7 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -2654,5 +2707,8 @@
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.ListView MaterialsListView;
 		private System.Windows.Forms.ListView PowerCurvesListView;
+		private System.Windows.Forms.Label Battery4OffsetVoltsLabel;
+		private System.Windows.Forms.Label Battery4OffsetLabel;
+		private System.Windows.Forms.NumericUpDown Battery4OffsetUpDown;
 	}
 }

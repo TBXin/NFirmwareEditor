@@ -104,6 +104,8 @@ namespace NToolbox.Models
 			[BinaryArray(Length = 8)]
 			public PowerCurve[] PowerCurves;
 
+			// TODO: 4 batteries
+			// [BinaryArray(Length = 4)]
 			[BinaryArray(Length = 3)]
 			public sbyte[] BatteryVoltageOffsets; // Value from (-30 to 30) * 100
 

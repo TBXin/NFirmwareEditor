@@ -37,6 +37,7 @@ namespace NToolbox.Windows
 			{ SensorsKeys.Battery1, 0 },
 			{ SensorsKeys.Battery2, 0 },
 			{ SensorsKeys.Battery3, 0 },
+			{ SensorsKeys.Battery4, 0 },
 			{ SensorsKeys.BatteryPack, 0 },
 
 			{ SensorsKeys.Power, 0 },
@@ -188,6 +189,10 @@ namespace NToolbox.Windows
 				{
 					SensorsKeys.Battery3,
 					new SeriesRelatedData(Color.DarkSlateGray, Battery3CheckBox, Battery3Panel, Battery3VoltageLabel, "{0} V", batteryLimits)
+				},
+				{
+					SensorsKeys.Battery4,
+					new SeriesRelatedData(Color.DarkSlateGray, Battery4CheckBox, Battery4Panel, Battery4VoltageLabel, "{0} V", batteryLimits)
 				},
 				{
 					SensorsKeys.BatteryPack,
@@ -513,14 +518,15 @@ namespace NToolbox.Windows
 			var battery1 = data.Battery1Voltage == 0 ? 0 : (data.Battery1Voltage + 275) / 100f;
 			var battery2 = data.Battery2Voltage == 0 ? 0 : (data.Battery2Voltage + 275) / 100f;
 			var battery3 = data.Battery3Voltage == 0 ? 0 : (data.Battery3Voltage + 275) / 100f;
-			var batteryPack = battery1 + battery2 + battery3;
+			// TODO: 4 batteries
+			//var battery4 = data.Battery4Voltage == 0 ? 0 : (data.Battery4Voltage + 275) / 100f;
+			var batteryPack = battery1 + battery2 + battery3 /* + battery4*/;
 
 			var outputVoltage = data.OutputVoltage / 100f;
 			var outputCurrent = data.OutputCurrent / 100f;
 			var outputPower = outputVoltage * outputCurrent;
 
 			{
-				//m_sensorsData[SensorsKeys.Timestamp] = data.Timestamp / 100f;
 				m_sensorsData[SensorsKeys.IsFiring] = data.IsFiring ? 1 : 0;
 				m_sensorsData[SensorsKeys.IsCharging] = data.IsCharging ? 1 : 0;
 				m_sensorsData[SensorsKeys.IsCelcius] = data.IsCelcius ? 1 : 0;
@@ -528,6 +534,8 @@ namespace NToolbox.Windows
 				m_sensorsData[SensorsKeys.Battery1] = battery1;
 				m_sensorsData[SensorsKeys.Battery2] = battery2;
 				m_sensorsData[SensorsKeys.Battery3] = battery3;
+				// TODO: 4 batteries
+				//m_sensorsData[SensorsKeys.Battery4] = battery4;
 				m_sensorsData[SensorsKeys.BatteryPack] = batteryPack;
 
 				m_sensorsData[SensorsKeys.Power] = outputPower;
@@ -867,6 +875,7 @@ namespace NToolbox.Windows
 			internal const string Battery1 = "Battery1Voltage";
 			internal const string Battery2 = "Battery2Voltage";
 			internal const string Battery3 = "Battery3Voltage";
+			internal const string Battery4 = "Battery4Voltage";
 			internal const string BatteryPack = "BatteryPack";
 
 			internal const string Power = "Power";

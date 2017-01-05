@@ -16,6 +16,9 @@
 		public byte Battery2Voltage;
 		// Offsetted by 275, 420 - 275 = value
 		public byte Battery3Voltage;
+		// Offsetted by 275, 420 - 275 = value
+		// TODO: 4 batteries
+		// public byte Battery4Voltage;
 
 		// X * 10
 		public ushort PowerSet;
