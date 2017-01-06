@@ -369,7 +369,10 @@ namespace NFirmwareEditor.Windows
 		{
 			OpenDialogAndSaveFirmwareOnOk((filePath, firmware) =>
 			{
-				firmware.EncryptionType = EncryptionType.Joyetech;
+				if (firmware.EncryptionType == EncryptionType.None)
+				{
+					firmware.EncryptionType = EncryptionType.Joyetech;
+				}
 				m_loader.SaveEncrypted(filePath, firmware);
 			});
 		}
