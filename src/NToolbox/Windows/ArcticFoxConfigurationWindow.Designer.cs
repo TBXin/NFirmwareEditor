@@ -51,7 +51,7 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.label11 = new System.Windows.Forms.Label();
 			this.GeneralTabPage = new System.Windows.Forms.TabPage();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.GeneralTabControl = new System.Windows.Forms.TabControl();
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
 			this.label17 = new System.Windows.Forms.Label();
 			this.MainScreenSkinComboBox = new System.Windows.Forms.ComboBox();
@@ -82,7 +82,7 @@
 			this.BrightnessTrackBar = new System.Windows.Forms.TrackBar();
 			this.FlippedModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.LayoutTabPage = new System.Windows.Forms.TabPage();
-			this.tabControl3 = new System.Windows.Forms.TabControl();
+			this.LayoutTabControl = new System.Windows.Forms.TabControl();
 			this.ClassicScreenTabPage = new System.Windows.Forms.TabPage();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
@@ -146,11 +146,11 @@
 			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
 			this.label25 = new System.Windows.Forms.Label();
 			this.label44 = new System.Windows.Forms.Label();
-			this.Clicks4ComboBox = new System.Windows.Forms.ComboBox();
+			this.ClicksVW4ComboBox = new System.Windows.Forms.ComboBox();
 			this.label43 = new System.Windows.Forms.Label();
-			this.Clicks3ComboBox = new System.Windows.Forms.ComboBox();
+			this.ClicksVW3ComboBox = new System.Windows.Forms.ComboBox();
 			this.label42 = new System.Windows.Forms.Label();
-			this.Clicks2ComboBox = new System.Windows.Forms.ComboBox();
+			this.ClicksVW2ComboBox = new System.Windows.Forms.ComboBox();
 			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
 			this.label39 = new System.Windows.Forms.Label();
 			this.StatsTabPage = new System.Windows.Forms.TabPage();
@@ -191,6 +191,9 @@
 			this.MaterialsTabPage = new System.Windows.Forms.TabPage();
 			this.MaterialsListView = new System.Windows.Forms.ListView();
 			this.BVOTabPage = new System.Windows.Forms.TabPage();
+			this.Battery4OffsetVoltsLabel = new System.Windows.Forms.Label();
+			this.Battery4OffsetLabel = new System.Windows.Forms.Label();
+			this.Battery4OffsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.Battery3OffsetVoltsLabel = new System.Windows.Forms.Label();
 			this.Battery3OffsetLabel = new System.Windows.Forms.Label();
 			this.Battery3OffsetUpDown = new System.Windows.Forms.NumericUpDown();
@@ -213,9 +216,17 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.Battery4OffsetVoltsLabel = new System.Windows.Forms.Label();
-			this.Battery4OffsetLabel = new System.Windows.Forms.Label();
-			this.Battery4OffsetUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label65 = new System.Windows.Forms.Label();
+			this.UpDownButtonsComboBox = new System.Windows.Forms.ComboBox();
+			this.label66 = new System.Windows.Forms.Label();
+			this.label67 = new System.Windows.Forms.Label();
+			this.label68 = new System.Windows.Forms.Label();
+			this.ClicksTC4ComboBox = new System.Windows.Forms.ComboBox();
+			this.label69 = new System.Windows.Forms.Label();
+			this.ClicksTC3ComboBox = new System.Windows.Forms.ComboBox();
+			this.label70 = new System.Windows.Forms.Label();
+			this.ClicksTC2ComboBox = new System.Windows.Forms.ComboBox();
+			this.label71 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -226,13 +237,13 @@
 			this.ProfilesTabPage.SuspendLayout();
 			this.ProfilesTabControl.SuspendLayout();
 			this.GeneralTabPage.SuspendLayout();
-			this.tabControl1.SuspendLayout();
+			this.GeneralTabControl.SuspendLayout();
 			this.ScreenTabPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).BeginInit();
 			this.LayoutTabPage.SuspendLayout();
-			this.tabControl3.SuspendLayout();
+			this.LayoutTabControl.SuspendLayout();
 			this.ClassicScreenTabPage.SuspendLayout();
 			this.CircleScreenTabPage.SuspendLayout();
 			this.SmallScreenTabPage.SuspendLayout();
@@ -248,12 +259,12 @@
 			this.PowerCurvesTabPage.SuspendLayout();
 			this.MaterialsTabPage.SuspendLayout();
 			this.BVOTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery3OffsetUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery2OffsetUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery1OffsetUpDown)).BeginInit();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -525,7 +536,7 @@
 			// 
 			// GeneralTabPage
 			// 
-			this.GeneralTabPage.Controls.Add(this.tabControl1);
+			this.GeneralTabPage.Controls.Add(this.GeneralTabControl);
 			this.GeneralTabPage.Location = new System.Drawing.Point(4, 22);
 			this.GeneralTabPage.Name = "GeneralTabPage";
 			this.GeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -534,21 +545,21 @@
 			this.GeneralTabPage.Text = "General";
 			this.GeneralTabPage.UseVisualStyleBackColor = true;
 			// 
-			// tabControl1
+			// GeneralTabControl
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.GeneralTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.ScreenTabPage);
-			this.tabControl1.Controls.Add(this.LayoutTabPage);
-			this.tabControl1.Controls.Add(this.ControlsTabPage);
-			this.tabControl1.Controls.Add(this.StatsTabPage);
-			this.tabControl1.ItemSize = new System.Drawing.Size(40, 18);
-			this.tabControl1.Location = new System.Drawing.Point(5, 6);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(336, 405);
-			this.tabControl1.TabIndex = 1;
+			this.GeneralTabControl.Controls.Add(this.ScreenTabPage);
+			this.GeneralTabControl.Controls.Add(this.LayoutTabPage);
+			this.GeneralTabControl.Controls.Add(this.ControlsTabPage);
+			this.GeneralTabControl.Controls.Add(this.StatsTabPage);
+			this.GeneralTabControl.ItemSize = new System.Drawing.Size(40, 18);
+			this.GeneralTabControl.Location = new System.Drawing.Point(5, 6);
+			this.GeneralTabControl.Name = "GeneralTabControl";
+			this.GeneralTabControl.SelectedIndex = 0;
+			this.GeneralTabControl.Size = new System.Drawing.Size(336, 405);
+			this.GeneralTabControl.TabIndex = 1;
 			// 
 			// ScreenTabPage
 			// 
@@ -885,7 +896,7 @@
 			// 
 			// LayoutTabPage
 			// 
-			this.LayoutTabPage.Controls.Add(this.tabControl3);
+			this.LayoutTabPage.Controls.Add(this.LayoutTabControl);
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
 			this.LayoutTabPage.Size = new System.Drawing.Size(328, 379);
@@ -893,19 +904,19 @@
 			this.LayoutTabPage.Text = "Layout";
 			this.LayoutTabPage.UseVisualStyleBackColor = true;
 			// 
-			// tabControl3
+			// LayoutTabControl
 			// 
-			this.tabControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.LayoutTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl3.Controls.Add(this.ClassicScreenTabPage);
-			this.tabControl3.Controls.Add(this.CircleScreenTabPage);
-			this.tabControl3.Controls.Add(this.SmallScreenTabPage);
-			this.tabControl3.Location = new System.Drawing.Point(5, 6);
-			this.tabControl3.Name = "tabControl3";
-			this.tabControl3.SelectedIndex = 0;
-			this.tabControl3.Size = new System.Drawing.Size(320, 370);
-			this.tabControl3.TabIndex = 121;
+			this.LayoutTabControl.Controls.Add(this.ClassicScreenTabPage);
+			this.LayoutTabControl.Controls.Add(this.CircleScreenTabPage);
+			this.LayoutTabControl.Controls.Add(this.SmallScreenTabPage);
+			this.LayoutTabControl.Location = new System.Drawing.Point(5, 6);
+			this.LayoutTabControl.Name = "LayoutTabControl";
+			this.LayoutTabControl.SelectedIndex = 0;
+			this.LayoutTabControl.Size = new System.Drawing.Size(320, 370);
+			this.LayoutTabControl.TabIndex = 121;
 			// 
 			// ClassicScreenTabPage
 			// 
@@ -1530,14 +1541,25 @@
 			// 
 			// ControlsTabPage
 			// 
+			this.ControlsTabPage.Controls.Add(this.label71);
+			this.ControlsTabPage.Controls.Add(this.label68);
+			this.ControlsTabPage.Controls.Add(this.ClicksTC4ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label69);
+			this.ControlsTabPage.Controls.Add(this.ClicksTC3ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label70);
+			this.ControlsTabPage.Controls.Add(this.ClicksTC2ComboBox);
+			this.ControlsTabPage.Controls.Add(this.label67);
+			this.ControlsTabPage.Controls.Add(this.label66);
+			this.ControlsTabPage.Controls.Add(this.UpDownButtonsComboBox);
+			this.ControlsTabPage.Controls.Add(this.label65);
 			this.ControlsTabPage.Controls.Add(this.Step1WCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label25);
 			this.ControlsTabPage.Controls.Add(this.label44);
-			this.ControlsTabPage.Controls.Add(this.Clicks4ComboBox);
+			this.ControlsTabPage.Controls.Add(this.ClicksVW4ComboBox);
 			this.ControlsTabPage.Controls.Add(this.label43);
-			this.ControlsTabPage.Controls.Add(this.Clicks3ComboBox);
+			this.ControlsTabPage.Controls.Add(this.ClicksVW3ComboBox);
 			this.ControlsTabPage.Controls.Add(this.label42);
-			this.ControlsTabPage.Controls.Add(this.Clicks2ComboBox);
+			this.ControlsTabPage.Controls.Add(this.ClicksVW2ComboBox);
 			this.ControlsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
@@ -1550,7 +1572,7 @@
 			// Step1WCheckBox
 			// 
 			this.Step1WCheckBox.AutoSize = true;
-			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 119);
+			this.Step1WCheckBox.Location = new System.Drawing.Point(101, 306);
 			this.Step1WCheckBox.Name = "Step1WCheckBox";
 			this.Step1WCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.Step1WCheckBox.TabIndex = 97;
@@ -1560,7 +1582,7 @@
 			// label25
 			// 
 			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(4, 119);
+			this.label25.Location = new System.Drawing.Point(4, 306);
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(85, 13);
 			this.label25.TabIndex = 96;
@@ -1569,61 +1591,61 @@
 			// label44
 			// 
 			this.label44.AutoSize = true;
-			this.label44.Location = new System.Drawing.Point(4, 65);
+			this.label44.Location = new System.Drawing.Point(4, 90);
 			this.label44.Name = "label44";
 			this.label44.Size = new System.Drawing.Size(46, 13);
 			this.label44.TabIndex = 94;
 			this.label44.Text = "4 Clicks:";
 			// 
-			// Clicks4ComboBox
+			// ClicksVW4ComboBox
 			// 
-			this.Clicks4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks4ComboBox.FormattingEnabled = true;
-			this.Clicks4ComboBox.Location = new System.Drawing.Point(101, 62);
-			this.Clicks4ComboBox.Name = "Clicks4ComboBox";
-			this.Clicks4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks4ComboBox.TabIndex = 95;
+			this.ClicksVW4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksVW4ComboBox.FormattingEnabled = true;
+			this.ClicksVW4ComboBox.Location = new System.Drawing.Point(101, 87);
+			this.ClicksVW4ComboBox.Name = "ClicksVW4ComboBox";
+			this.ClicksVW4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksVW4ComboBox.TabIndex = 95;
 			// 
 			// label43
 			// 
 			this.label43.AutoSize = true;
-			this.label43.Location = new System.Drawing.Point(4, 38);
+			this.label43.Location = new System.Drawing.Point(4, 63);
 			this.label43.Name = "label43";
 			this.label43.Size = new System.Drawing.Size(46, 13);
 			this.label43.TabIndex = 92;
 			this.label43.Text = "3 Clicks:";
 			// 
-			// Clicks3ComboBox
+			// ClicksVW3ComboBox
 			// 
-			this.Clicks3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks3ComboBox.FormattingEnabled = true;
-			this.Clicks3ComboBox.Location = new System.Drawing.Point(101, 35);
-			this.Clicks3ComboBox.Name = "Clicks3ComboBox";
-			this.Clicks3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks3ComboBox.TabIndex = 93;
+			this.ClicksVW3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksVW3ComboBox.FormattingEnabled = true;
+			this.ClicksVW3ComboBox.Location = new System.Drawing.Point(101, 60);
+			this.ClicksVW3ComboBox.Name = "ClicksVW3ComboBox";
+			this.ClicksVW3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksVW3ComboBox.TabIndex = 93;
 			// 
 			// label42
 			// 
 			this.label42.AutoSize = true;
-			this.label42.Location = new System.Drawing.Point(4, 11);
+			this.label42.Location = new System.Drawing.Point(4, 36);
 			this.label42.Name = "label42";
 			this.label42.Size = new System.Drawing.Size(46, 13);
 			this.label42.TabIndex = 90;
 			this.label42.Text = "2 Clicks:";
 			// 
-			// Clicks2ComboBox
+			// ClicksVW2ComboBox
 			// 
-			this.Clicks2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks2ComboBox.FormattingEnabled = true;
-			this.Clicks2ComboBox.Location = new System.Drawing.Point(101, 8);
-			this.Clicks2ComboBox.Name = "Clicks2ComboBox";
-			this.Clicks2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks2ComboBox.TabIndex = 91;
+			this.ClicksVW2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksVW2ComboBox.FormattingEnabled = true;
+			this.ClicksVW2ComboBox.Location = new System.Drawing.Point(101, 33);
+			this.ClicksVW2ComboBox.Name = "ClicksVW2ComboBox";
+			this.ClicksVW2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksVW2ComboBox.TabIndex = 91;
 			// 
 			// WakeUpByPlusMinusCheckBox
 			// 
 			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
-			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 92);
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(101, 279);
 			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
 			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.WakeUpByPlusMinusCheckBox.TabIndex = 89;
@@ -1633,7 +1655,7 @@
 			// label39
 			// 
 			this.label39.AutoSize = true;
-			this.label39.Location = new System.Drawing.Point(4, 92);
+			this.label39.Location = new System.Drawing.Point(4, 279);
 			this.label39.Name = "label39";
 			this.label39.Size = new System.Drawing.Size(96, 13);
 			this.label39.TabIndex = 88;
@@ -2130,6 +2152,51 @@
 			this.BVOTabPage.Text = "BVO";
 			this.BVOTabPage.UseVisualStyleBackColor = true;
 			// 
+			// Battery4OffsetVoltsLabel
+			// 
+			this.Battery4OffsetVoltsLabel.AutoSize = true;
+			this.Battery4OffsetVoltsLabel.Location = new System.Drawing.Point(213, 92);
+			this.Battery4OffsetVoltsLabel.Name = "Battery4OffsetVoltsLabel";
+			this.Battery4OffsetVoltsLabel.Size = new System.Drawing.Size(13, 13);
+			this.Battery4OffsetVoltsLabel.TabIndex = 121;
+			this.Battery4OffsetVoltsLabel.Text = "v";
+			// 
+			// Battery4OffsetLabel
+			// 
+			this.Battery4OffsetLabel.AutoSize = true;
+			this.Battery4OffsetLabel.Location = new System.Drawing.Point(4, 92);
+			this.Battery4OffsetLabel.Name = "Battery4OffsetLabel";
+			this.Battery4OffsetLabel.Size = new System.Drawing.Size(56, 13);
+			this.Battery4OffsetLabel.TabIndex = 120;
+			this.Battery4OffsetLabel.Text = "Battery 4:";
+			this.MainToolTip.SetToolTip(this.Battery4OffsetLabel, "Battery3 Voltage Offset");
+			// 
+			// Battery4OffsetUpDown
+			// 
+			this.Battery4OffsetUpDown.DecimalPlaces = 2;
+			this.Battery4OffsetUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.Battery4OffsetUpDown.Location = new System.Drawing.Point(101, 89);
+			this.Battery4OffsetUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            65536});
+			this.Battery4OffsetUpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            -2147418112});
+			this.Battery4OffsetUpDown.Name = "Battery4OffsetUpDown";
+			this.Battery4OffsetUpDown.Size = new System.Drawing.Size(106, 21);
+			this.Battery4OffsetUpDown.TabIndex = 119;
+			this.Battery4OffsetUpDown.TabStop = false;
+			this.Battery4OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MainToolTip.SetToolTip(this.Battery4OffsetUpDown, "Battery3 Voltage Offset");
+			// 
 			// Battery3OffsetVoltsLabel
 			// 
 			this.Battery3OffsetVoltsLabel.AutoSize = true;
@@ -2407,50 +2474,113 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
-			// Battery4OffsetVoltsLabel
+			// label65
 			// 
-			this.Battery4OffsetVoltsLabel.AutoSize = true;
-			this.Battery4OffsetVoltsLabel.Location = new System.Drawing.Point(213, 92);
-			this.Battery4OffsetVoltsLabel.Name = "Battery4OffsetVoltsLabel";
-			this.Battery4OffsetVoltsLabel.Size = new System.Drawing.Size(13, 13);
-			this.Battery4OffsetVoltsLabel.TabIndex = 121;
-			this.Battery4OffsetVoltsLabel.Text = "v";
+			this.label65.AutoSize = true;
+			this.label65.Location = new System.Drawing.Point(4, 252);
+			this.label65.Name = "label65";
+			this.label65.Size = new System.Drawing.Size(95, 13);
+			this.label65.TabIndex = 98;
+			this.label65.Text = "Up/Down Buttons:";
 			// 
-			// Battery4OffsetLabel
+			// UpDownButtonsComboBox
 			// 
-			this.Battery4OffsetLabel.AutoSize = true;
-			this.Battery4OffsetLabel.Location = new System.Drawing.Point(4, 92);
-			this.Battery4OffsetLabel.Name = "Battery4OffsetLabel";
-			this.Battery4OffsetLabel.Size = new System.Drawing.Size(56, 13);
-			this.Battery4OffsetLabel.TabIndex = 120;
-			this.Battery4OffsetLabel.Text = "Battery 4:";
-			this.MainToolTip.SetToolTip(this.Battery4OffsetLabel, "Battery3 Voltage Offset");
+			this.UpDownButtonsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.UpDownButtonsComboBox.FormattingEnabled = true;
+			this.UpDownButtonsComboBox.Location = new System.Drawing.Point(101, 249);
+			this.UpDownButtonsComboBox.Name = "UpDownButtonsComboBox";
+			this.UpDownButtonsComboBox.Size = new System.Drawing.Size(140, 21);
+			this.UpDownButtonsComboBox.TabIndex = 99;
 			// 
-			// Battery4OffsetUpDown
+			// label66
 			// 
-			this.Battery4OffsetUpDown.DecimalPlaces = 2;
-			this.Battery4OffsetUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.Battery4OffsetUpDown.Location = new System.Drawing.Point(101, 89);
-			this.Battery4OffsetUpDown.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            65536});
-			this.Battery4OffsetUpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            -2147418112});
-			this.Battery4OffsetUpDown.Name = "Battery4OffsetUpDown";
-			this.Battery4OffsetUpDown.Size = new System.Drawing.Size(106, 21);
-			this.Battery4OffsetUpDown.TabIndex = 119;
-			this.Battery4OffsetUpDown.TabStop = false;
-			this.Battery4OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.Battery4OffsetUpDown, "Battery3 Voltage Offset");
+			this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label66.Location = new System.Drawing.Point(4, 6);
+			this.label66.Name = "label66";
+			this.label66.Size = new System.Drawing.Size(318, 21);
+			this.label66.TabIndex = 119;
+			this.label66.Text = "VW Mode Clicks:";
+			this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label67
+			// 
+			this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label67.Location = new System.Drawing.Point(4, 114);
+			this.label67.Name = "label67";
+			this.label67.Size = new System.Drawing.Size(318, 21);
+			this.label67.TabIndex = 120;
+			this.label67.Text = "TC Mode Clicks:";
+			this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label68
+			// 
+			this.label68.AutoSize = true;
+			this.label68.Location = new System.Drawing.Point(4, 198);
+			this.label68.Name = "label68";
+			this.label68.Size = new System.Drawing.Size(46, 13);
+			this.label68.TabIndex = 125;
+			this.label68.Text = "4 Clicks:";
+			// 
+			// ClicksTC4ComboBox
+			// 
+			this.ClicksTC4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC4ComboBox.FormattingEnabled = true;
+			this.ClicksTC4ComboBox.Location = new System.Drawing.Point(101, 195);
+			this.ClicksTC4ComboBox.Name = "ClicksTC4ComboBox";
+			this.ClicksTC4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC4ComboBox.TabIndex = 126;
+			// 
+			// label69
+			// 
+			this.label69.AutoSize = true;
+			this.label69.Location = new System.Drawing.Point(4, 171);
+			this.label69.Name = "label69";
+			this.label69.Size = new System.Drawing.Size(46, 13);
+			this.label69.TabIndex = 123;
+			this.label69.Text = "3 Clicks:";
+			// 
+			// ClicksTC3ComboBox
+			// 
+			this.ClicksTC3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC3ComboBox.FormattingEnabled = true;
+			this.ClicksTC3ComboBox.Location = new System.Drawing.Point(101, 168);
+			this.ClicksTC3ComboBox.Name = "ClicksTC3ComboBox";
+			this.ClicksTC3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC3ComboBox.TabIndex = 124;
+			// 
+			// label70
+			// 
+			this.label70.AutoSize = true;
+			this.label70.Location = new System.Drawing.Point(4, 144);
+			this.label70.Name = "label70";
+			this.label70.Size = new System.Drawing.Size(46, 13);
+			this.label70.TabIndex = 121;
+			this.label70.Text = "2 Clicks:";
+			// 
+			// ClicksTC2ComboBox
+			// 
+			this.ClicksTC2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC2ComboBox.FormattingEnabled = true;
+			this.ClicksTC2ComboBox.Location = new System.Drawing.Point(101, 141);
+			this.ClicksTC2ComboBox.Name = "ClicksTC2ComboBox";
+			this.ClicksTC2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC2ComboBox.TabIndex = 122;
+			// 
+			// label71
+			// 
+			this.label71.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label71.Location = new System.Drawing.Point(4, 222);
+			this.label71.Name = "label71";
+			this.label71.Size = new System.Drawing.Size(318, 21);
+			this.label71.TabIndex = 127;
+			this.label71.Text = "Shared:";
+			this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -2478,14 +2608,14 @@
 			this.ProfilesTabPage.PerformLayout();
 			this.ProfilesTabControl.ResumeLayout(false);
 			this.GeneralTabPage.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
+			this.GeneralTabControl.ResumeLayout(false);
 			this.ScreenTabPage.ResumeLayout(false);
 			this.ScreenTabPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PuffScreenDelayUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.IdleTimeUpDow)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BrightnessTrackBar)).EndInit();
 			this.LayoutTabPage.ResumeLayout(false);
-			this.tabControl3.ResumeLayout(false);
+			this.LayoutTabControl.ResumeLayout(false);
 			this.ClassicScreenTabPage.ResumeLayout(false);
 			this.ClassicScreenTabPage.PerformLayout();
 			this.CircleScreenTabPage.ResumeLayout(false);
@@ -2508,6 +2638,7 @@
 			this.MaterialsTabPage.ResumeLayout(false);
 			this.BVOTabPage.ResumeLayout(false);
 			this.BVOTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery3OffsetUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery2OffsetUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Battery1OffsetUpDown)).EndInit();
@@ -2515,7 +2646,6 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.Battery4OffsetUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -2545,7 +2675,7 @@
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.TabPage AdvancedTabPage;
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl GeneralTabControl;
 		private System.Windows.Forms.TabPage ScreenTabPage;
 		private System.Windows.Forms.TabPage LayoutTabPage;
 		private System.Windows.Forms.TabPage ControlsTabPage;
@@ -2596,11 +2726,11 @@
 		private System.Windows.Forms.ComboBox ScreensaverTimeComboBox;
 		private System.Windows.Forms.Label label40;
 		private System.Windows.Forms.Label label44;
-		private System.Windows.Forms.ComboBox Clicks4ComboBox;
+		private System.Windows.Forms.ComboBox ClicksVW4ComboBox;
 		private System.Windows.Forms.Label label43;
-		private System.Windows.Forms.ComboBox Clicks3ComboBox;
+		private System.Windows.Forms.ComboBox ClicksVW3ComboBox;
 		private System.Windows.Forms.Label label42;
-		private System.Windows.Forms.ComboBox Clicks2ComboBox;
+		private System.Windows.Forms.ComboBox ClicksVW2ComboBox;
 		private System.Windows.Forms.CheckBox WakeUpByPlusMinusCheckBox;
 		private System.Windows.Forms.Label label39;
 		private System.Windows.Forms.CheckBox Step1WCheckBox;
@@ -2650,7 +2780,7 @@
 		private System.Windows.Forms.LinkLabel OpenConfigurationLinkLabel;
 		private System.Windows.Forms.LinkLabel ConnectLinkLabel;
 		private System.Windows.Forms.Button ConfigurationMenuButton;
-		private System.Windows.Forms.TabControl tabControl3;
+		private System.Windows.Forms.TabControl LayoutTabControl;
 		private System.Windows.Forms.TabPage ClassicScreenTabPage;
 		private System.Windows.Forms.TabPage CircleScreenTabPage;
 		private System.Windows.Forms.TabPage SmallScreenTabPage;
@@ -2710,5 +2840,16 @@
 		private System.Windows.Forms.Label Battery4OffsetVoltsLabel;
 		private System.Windows.Forms.Label Battery4OffsetLabel;
 		private System.Windows.Forms.NumericUpDown Battery4OffsetUpDown;
+		private System.Windows.Forms.ComboBox UpDownButtonsComboBox;
+		private System.Windows.Forms.Label label65;
+		private System.Windows.Forms.Label label71;
+		private System.Windows.Forms.Label label68;
+		private System.Windows.Forms.ComboBox ClicksTC4ComboBox;
+		private System.Windows.Forms.Label label69;
+		private System.Windows.Forms.ComboBox ClicksTC3ComboBox;
+		private System.Windows.Forms.Label label70;
+		private System.Windows.Forms.ComboBox ClicksTC2ComboBox;
+		private System.Windows.Forms.Label label67;
+		private System.Windows.Forms.Label label66;
 	}
 }

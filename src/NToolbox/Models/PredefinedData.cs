@@ -176,6 +176,12 @@ namespace NToolbox.Models
 				new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("On / Off", ArcticFoxConfiguration.ClickAction.OnOff)
 			};
 
+			public static readonly object[] UpDownButtons =
+			{
+				new NamedItemContainer<bool>("Normal", false),
+				new NamedItemContainer<bool>("Swapped", true)
+			};
+
 			public static readonly object[] PuffTimeFormats =
 			{
 				new NamedItemContainer<ArcticFoxConfiguration.PuffsTimeFormat>("Seconds", ArcticFoxConfiguration.PuffsTimeFormat.Seconds),

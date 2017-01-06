@@ -19,8 +19,8 @@ namespace NToolbox.Windows
 	{
 		private const ushort MaxPower = 3000;
 		private const byte MaxBatteries = 4;
-		private const int MinimumSupportedBuildNumber = 170103;
-		private const int SupportedSettingsVersion = 6;
+		private const int MinimumSupportedBuildNumber = 170106;
+		private const int SupportedSettingsVersion = 7;
 
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
@@ -137,10 +137,15 @@ namespace NToolbox.Windows
 			ClockTypeComboBox.Fill(PredefinedData.ArcticFox.ClockTypes);
 			ScreensaverTimeComboBox.Fill(PredefinedData.ArcticFox.ScreenSaverTimes);
 
-			foreach (var clickComboBox in new[] { Clicks2ComboBox, Clicks3ComboBox, Clicks4ComboBox })
+			foreach (var clickComboBox in new[]
+			{
+				ClicksVW2ComboBox, ClicksVW3ComboBox, ClicksVW4ComboBox,
+				ClicksTC2ComboBox, ClicksTC3ComboBox, ClicksTC4ComboBox
+			})
 			{
 				clickComboBox.Fill(PredefinedData.ArcticFox.ClickActions);
 			}
+			UpDownButtonsComboBox.Fill(PredefinedData.ArcticFox.UpDownButtons);
 
 			PuffsTimeFormatComboBox.Fill(PredefinedData.ArcticFox.PuffTimeFormats);
 			BatteryModelComboBox.Fill(PredefinedData.ArcticFox.BatteryModels);
@@ -207,7 +212,7 @@ namespace NToolbox.Windows
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.FirmwareBuild < MinimumSupportedBuildNumber || info.SettingsVersion < SupportedSettingsVersion)
+				if (info.SettingsVersion < SupportedSettingsVersion || info.FirmwareBuild < MinimumSupportedBuildNumber)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
 				}
@@ -325,12 +330,23 @@ namespace NToolbox.Windows
 				InitializeLineContentEditor(ui.SmallSkinTCLines.Line1, SmallTCLine1ComboBox, SmallTCLine1FireCheckBox);
 				InitializeLineContentEditor(ui.SmallSkinTCLines.Line2, SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
-				Clicks2ComboBox.SelectItem(ui.Clicks[0]);
-				Clicks3ComboBox.SelectItem(ui.Clicks[1]);
-				Clicks4ComboBox.SelectItem(ui.Clicks[2]);
+				ClicksVW2ComboBox.SelectItem(ui.ClicksVW[0]);
+				ClicksVW3ComboBox.SelectItem(ui.ClicksVW[1]);
+				ClicksVW4ComboBox.SelectItem(ui.ClicksVW[2]);
 
+				ClicksTC2ComboBox.SelectItem(ui.ClicksTC[0]);
+				ClicksTC3ComboBox.SelectItem(ui.ClicksTC[1]);
+				ClicksTC4ComboBox.SelectItem(ui.ClicksTC[2]);
+
+				UpDownButtonsComboBox.SelectItem(ui.IsUpDownSwapped);
 				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
 				Step1WCheckBox.Checked = ui.IsPowerStep1W;
+
+				LayoutTabControl.SelectedTab = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.S64X128
+					? ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Classic
+						? ClassicScreenTabPage
+						: CircleScreenTabPage
+					: SmallScreenTabPage;
 			}
 
 			var stats = m_configuration.Counters;
@@ -448,9 +464,15 @@ namespace NToolbox.Windows
 				ui.SmallSkinTCLines.Line2 = SaveLineContent(SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
 				// General -> Controls Tab
-				ui.Clicks[0] = Clicks2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.Clicks[1] = Clicks3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.Clicks[2] = Clicks4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[0] = ClicksVW2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[1] = ClicksVW3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[2] = ClicksVW4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+
+				ui.ClicksTC[0] = ClicksTC2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksTC[1] = ClicksTC3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksTC[2] = ClicksTC4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+
+				ui.IsUpDownSwapped = UpDownButtonsComboBox.GetSelectedItem<bool>();
 				ui.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
 				ui.IsPowerStep1W = Step1WCheckBox.Checked;
 			}

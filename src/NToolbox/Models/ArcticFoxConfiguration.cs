@@ -24,6 +24,7 @@ namespace NToolbox.Models
 			public uint HardwareVersion;
 			public ushort MaxPower;
 			public byte NumberOfBatteries;
+			public DisplaySize DisplaySize;
 			public uint FirmwareVersion;
 			public uint FirmwareBuild;
 		}
@@ -41,7 +42,10 @@ namespace NToolbox.Models
 		internal class UIConfiguration
 		{
 			[BinaryArray(Length = 3)]
-			public ClickAction[] Clicks;
+			public ClickAction[] ClicksVW;
+
+			[BinaryArray(Length = 3)]
+			public ClickAction[] ClicksTC;
 
 			public ClassicLinesContent ClassicSkinVWLines;
 			public ClassicLinesContent ClassicSkinTCLines;
@@ -67,6 +71,7 @@ namespace NToolbox.Models
 			public byte PuffScreenDelay; // 0..50 = 0,0..5,0 sec
 			public PuffsTimeFormat PuffsTimeFormat;
 			public Skin MainScreenSkin;
+			public bool IsUpDownSwapped;
 		}
 
 		internal class CountersData
@@ -104,9 +109,7 @@ namespace NToolbox.Models
 			[BinaryArray(Length = 8)]
 			public PowerCurve[] PowerCurves;
 
-			// TODO: 4 batteries
-			// [BinaryArray(Length = 4)]
-			[BinaryArray(Length = 3)]
+			[BinaryArray(Length = 4)]
 			public sbyte[] BatteryVoltageOffsets; // Value from (-30 to 30) * 100
 
 			public bool CheckTCR;
@@ -389,6 +392,12 @@ namespace NToolbox.Models
 			Watts = 0,
 			Percents = 1,
 			Curve = 2
+		}
+
+		internal enum DisplaySize : byte
+		{
+			S64X128 = 0,
+			S96X16 = 1
 		}
 
 		internal class PIRegulator
