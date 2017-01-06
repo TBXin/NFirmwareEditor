@@ -518,9 +518,8 @@ namespace NToolbox.Windows
 			var battery1 = data.Battery1Voltage == 0 ? 0 : (data.Battery1Voltage + 275) / 100f;
 			var battery2 = data.Battery2Voltage == 0 ? 0 : (data.Battery2Voltage + 275) / 100f;
 			var battery3 = data.Battery3Voltage == 0 ? 0 : (data.Battery3Voltage + 275) / 100f;
-			// TODO: 4 batteries
-			//var battery4 = data.Battery4Voltage == 0 ? 0 : (data.Battery4Voltage + 275) / 100f;
-			var batteryPack = battery1 + battery2 + battery3 /* + battery4*/;
+			var battery4 = data.Battery4Voltage == 0 ? 0 : (data.Battery4Voltage + 275) / 100f;
+			var batteryPack = battery1 + battery2 + battery3  + battery4;
 
 			var outputVoltage = data.OutputVoltage / 100f;
 			var outputCurrent = data.OutputCurrent / 100f;
@@ -534,8 +533,7 @@ namespace NToolbox.Windows
 				m_sensorsData[SensorsKeys.Battery1] = battery1;
 				m_sensorsData[SensorsKeys.Battery2] = battery2;
 				m_sensorsData[SensorsKeys.Battery3] = battery3;
-				// TODO: 4 batteries
-				//m_sensorsData[SensorsKeys.Battery4] = battery4;
+				m_sensorsData[SensorsKeys.Battery4] = battery4;
 				m_sensorsData[SensorsKeys.BatteryPack] = batteryPack;
 
 				m_sensorsData[SensorsKeys.Power] = outputPower;

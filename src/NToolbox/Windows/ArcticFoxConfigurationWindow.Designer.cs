@@ -143,6 +143,17 @@
 			this.label64 = new System.Windows.Forms.Label();
 			this.SmallTCLine1ComboBox = new System.Windows.Forms.ComboBox();
 			this.ControlsTabPage = new System.Windows.Forms.TabPage();
+			this.label71 = new System.Windows.Forms.Label();
+			this.label68 = new System.Windows.Forms.Label();
+			this.ClicksTC4ComboBox = new System.Windows.Forms.ComboBox();
+			this.label69 = new System.Windows.Forms.Label();
+			this.ClicksTC3ComboBox = new System.Windows.Forms.ComboBox();
+			this.label70 = new System.Windows.Forms.Label();
+			this.ClicksTC2ComboBox = new System.Windows.Forms.ComboBox();
+			this.label67 = new System.Windows.Forms.Label();
+			this.label66 = new System.Windows.Forms.Label();
+			this.UpDownButtonsComboBox = new System.Windows.Forms.ComboBox();
+			this.label65 = new System.Windows.Forms.Label();
 			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
 			this.label25 = new System.Windows.Forms.Label();
 			this.label44 = new System.Windows.Forms.Label();
@@ -216,17 +227,6 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.label65 = new System.Windows.Forms.Label();
-			this.UpDownButtonsComboBox = new System.Windows.Forms.ComboBox();
-			this.label66 = new System.Windows.Forms.Label();
-			this.label67 = new System.Windows.Forms.Label();
-			this.label68 = new System.Windows.Forms.Label();
-			this.ClicksTC4ComboBox = new System.Windows.Forms.ComboBox();
-			this.label69 = new System.Windows.Forms.Label();
-			this.ClicksTC3ComboBox = new System.Windows.Forms.ComboBox();
-			this.label70 = new System.Windows.Forms.Label();
-			this.ClicksTC2ComboBox = new System.Windows.Forms.ComboBox();
-			this.label71 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -963,7 +963,7 @@
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(302, 21);
 			this.label10.TabIndex = 118;
-			this.label10.Text = "VW Lines Layout:";
+			this.label10.Text = "VW Mode Lines Layout:";
 			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// label12
@@ -975,7 +975,7 @@
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(302, 21);
 			this.label12.TabIndex = 120;
-			this.label12.Text = "TC Lines Layout:";
+			this.label12.Text = "TC Mode Lines Layout:";
 			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ClassicVWLine1ComboBox
@@ -1568,6 +1568,114 @@
 			this.ControlsTabPage.TabIndex = 2;
 			this.ControlsTabPage.Text = "Controls";
 			this.ControlsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label71
+			// 
+			this.label71.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label71.Location = new System.Drawing.Point(4, 222);
+			this.label71.Name = "label71";
+			this.label71.Size = new System.Drawing.Size(318, 21);
+			this.label71.TabIndex = 127;
+			this.label71.Text = "Shared:";
+			this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label68
+			// 
+			this.label68.AutoSize = true;
+			this.label68.Location = new System.Drawing.Point(4, 198);
+			this.label68.Name = "label68";
+			this.label68.Size = new System.Drawing.Size(46, 13);
+			this.label68.TabIndex = 125;
+			this.label68.Text = "4 Clicks:";
+			// 
+			// ClicksTC4ComboBox
+			// 
+			this.ClicksTC4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC4ComboBox.FormattingEnabled = true;
+			this.ClicksTC4ComboBox.Location = new System.Drawing.Point(101, 195);
+			this.ClicksTC4ComboBox.Name = "ClicksTC4ComboBox";
+			this.ClicksTC4ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC4ComboBox.TabIndex = 126;
+			// 
+			// label69
+			// 
+			this.label69.AutoSize = true;
+			this.label69.Location = new System.Drawing.Point(4, 171);
+			this.label69.Name = "label69";
+			this.label69.Size = new System.Drawing.Size(46, 13);
+			this.label69.TabIndex = 123;
+			this.label69.Text = "3 Clicks:";
+			// 
+			// ClicksTC3ComboBox
+			// 
+			this.ClicksTC3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC3ComboBox.FormattingEnabled = true;
+			this.ClicksTC3ComboBox.Location = new System.Drawing.Point(101, 168);
+			this.ClicksTC3ComboBox.Name = "ClicksTC3ComboBox";
+			this.ClicksTC3ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC3ComboBox.TabIndex = 124;
+			// 
+			// label70
+			// 
+			this.label70.AutoSize = true;
+			this.label70.Location = new System.Drawing.Point(4, 144);
+			this.label70.Name = "label70";
+			this.label70.Size = new System.Drawing.Size(46, 13);
+			this.label70.TabIndex = 121;
+			this.label70.Text = "2 Clicks:";
+			// 
+			// ClicksTC2ComboBox
+			// 
+			this.ClicksTC2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClicksTC2ComboBox.FormattingEnabled = true;
+			this.ClicksTC2ComboBox.Location = new System.Drawing.Point(101, 141);
+			this.ClicksTC2ComboBox.Name = "ClicksTC2ComboBox";
+			this.ClicksTC2ComboBox.Size = new System.Drawing.Size(140, 21);
+			this.ClicksTC2ComboBox.TabIndex = 122;
+			// 
+			// label67
+			// 
+			this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label67.Location = new System.Drawing.Point(4, 114);
+			this.label67.Name = "label67";
+			this.label67.Size = new System.Drawing.Size(318, 21);
+			this.label67.TabIndex = 120;
+			this.label67.Text = "TC Mode Fire Button Multi Clicks:";
+			this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label66
+			// 
+			this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label66.Location = new System.Drawing.Point(4, 6);
+			this.label66.Name = "label66";
+			this.label66.Size = new System.Drawing.Size(318, 21);
+			this.label66.TabIndex = 119;
+			this.label66.Text = "VW Mode Fire Button Multi Clicks:";
+			this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// UpDownButtonsComboBox
+			// 
+			this.UpDownButtonsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.UpDownButtonsComboBox.FormattingEnabled = true;
+			this.UpDownButtonsComboBox.Location = new System.Drawing.Point(101, 249);
+			this.UpDownButtonsComboBox.Name = "UpDownButtonsComboBox";
+			this.UpDownButtonsComboBox.Size = new System.Drawing.Size(140, 21);
+			this.UpDownButtonsComboBox.TabIndex = 99;
+			// 
+			// label65
+			// 
+			this.label65.AutoSize = true;
+			this.label65.Location = new System.Drawing.Point(4, 252);
+			this.label65.Name = "label65";
+			this.label65.Size = new System.Drawing.Size(95, 13);
+			this.label65.TabIndex = 98;
+			this.label65.Text = "Up/Down Buttons:";
 			// 
 			// Step1WCheckBox
 			// 
@@ -2473,114 +2581,6 @@
 			this.MainToolTip.AutoPopDelay = 10000;
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
-			// 
-			// label65
-			// 
-			this.label65.AutoSize = true;
-			this.label65.Location = new System.Drawing.Point(4, 252);
-			this.label65.Name = "label65";
-			this.label65.Size = new System.Drawing.Size(95, 13);
-			this.label65.TabIndex = 98;
-			this.label65.Text = "Up/Down Buttons:";
-			// 
-			// UpDownButtonsComboBox
-			// 
-			this.UpDownButtonsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.UpDownButtonsComboBox.FormattingEnabled = true;
-			this.UpDownButtonsComboBox.Location = new System.Drawing.Point(101, 249);
-			this.UpDownButtonsComboBox.Name = "UpDownButtonsComboBox";
-			this.UpDownButtonsComboBox.Size = new System.Drawing.Size(140, 21);
-			this.UpDownButtonsComboBox.TabIndex = 99;
-			// 
-			// label66
-			// 
-			this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label66.Location = new System.Drawing.Point(4, 6);
-			this.label66.Name = "label66";
-			this.label66.Size = new System.Drawing.Size(318, 21);
-			this.label66.TabIndex = 119;
-			this.label66.Text = "VW Mode Clicks:";
-			this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// label67
-			// 
-			this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label67.Location = new System.Drawing.Point(4, 114);
-			this.label67.Name = "label67";
-			this.label67.Size = new System.Drawing.Size(318, 21);
-			this.label67.TabIndex = 120;
-			this.label67.Text = "TC Mode Clicks:";
-			this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// label68
-			// 
-			this.label68.AutoSize = true;
-			this.label68.Location = new System.Drawing.Point(4, 198);
-			this.label68.Name = "label68";
-			this.label68.Size = new System.Drawing.Size(46, 13);
-			this.label68.TabIndex = 125;
-			this.label68.Text = "4 Clicks:";
-			// 
-			// ClicksTC4ComboBox
-			// 
-			this.ClicksTC4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC4ComboBox.FormattingEnabled = true;
-			this.ClicksTC4ComboBox.Location = new System.Drawing.Point(101, 195);
-			this.ClicksTC4ComboBox.Name = "ClicksTC4ComboBox";
-			this.ClicksTC4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC4ComboBox.TabIndex = 126;
-			// 
-			// label69
-			// 
-			this.label69.AutoSize = true;
-			this.label69.Location = new System.Drawing.Point(4, 171);
-			this.label69.Name = "label69";
-			this.label69.Size = new System.Drawing.Size(46, 13);
-			this.label69.TabIndex = 123;
-			this.label69.Text = "3 Clicks:";
-			// 
-			// ClicksTC3ComboBox
-			// 
-			this.ClicksTC3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC3ComboBox.FormattingEnabled = true;
-			this.ClicksTC3ComboBox.Location = new System.Drawing.Point(101, 168);
-			this.ClicksTC3ComboBox.Name = "ClicksTC3ComboBox";
-			this.ClicksTC3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC3ComboBox.TabIndex = 124;
-			// 
-			// label70
-			// 
-			this.label70.AutoSize = true;
-			this.label70.Location = new System.Drawing.Point(4, 144);
-			this.label70.Name = "label70";
-			this.label70.Size = new System.Drawing.Size(46, 13);
-			this.label70.TabIndex = 121;
-			this.label70.Text = "2 Clicks:";
-			// 
-			// ClicksTC2ComboBox
-			// 
-			this.ClicksTC2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC2ComboBox.FormattingEnabled = true;
-			this.ClicksTC2ComboBox.Location = new System.Drawing.Point(101, 141);
-			this.ClicksTC2ComboBox.Name = "ClicksTC2ComboBox";
-			this.ClicksTC2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC2ComboBox.TabIndex = 122;
-			// 
-			// label71
-			// 
-			this.label71.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label71.Location = new System.Drawing.Point(4, 222);
-			this.label71.Name = "label71";
-			this.label71.Size = new System.Drawing.Size(318, 21);
-			this.label71.TabIndex = 127;
-			this.label71.Text = "Shared:";
-			this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
