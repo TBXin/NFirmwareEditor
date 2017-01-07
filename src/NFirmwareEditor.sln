@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NToolbox", "NToolbox\NToolb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCore", "NCore\NCore.csproj", "{B256F46A-BFD9-4A53-B3D9-A808216F074B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLauncher", "NLauncher\NLauncher.csproj", "{41713E63-37A2-42AF-932F-6BD777F9EA72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B256F46A-BFD9-4A53-B3D9-A808216F074B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41713E63-37A2-42AF-932F-6BD777F9EA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41713E63-37A2-42AF-932F-6BD777F9EA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41713E63-37A2-42AF-932F-6BD777F9EA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41713E63-37A2-42AF-932F-6BD777F9EA72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

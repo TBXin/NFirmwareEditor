@@ -16,14 +16,16 @@ namespace NToolbox.Windows
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
+		private readonly string m_firmwareFile;
 
 		private ToolboxConfiguration m_configuration;
 		private WindowBase m_openedWindow;
 		private bool m_hideToTray;
 
-		public MainWindow(StartupMode startupMode)
+		public MainWindow(StartupMode startupMode, string[] args)
 		{
 			m_startupMode = startupMode;
+			m_firmwareFile = args.Length > 0 ? args[0] : null;
 			m_hideToTray = m_startupMode.HasFlag(StartupMode.Minimized) || GetAutorunState();
 
 			InitializeComponent();
@@ -174,7 +176,7 @@ namespace NToolbox.Windows
 
 		private void StartFirmwareUpdater(object sender, EventArgs e)
 		{
-			using (var updaterWindow = new FirmwareUpdaterWindow())
+			using (var updaterWindow = new FirmwareUpdaterWindow(m_firmwareFile))
 			{
 				ShowDialogWindow(updaterWindow);
 			}

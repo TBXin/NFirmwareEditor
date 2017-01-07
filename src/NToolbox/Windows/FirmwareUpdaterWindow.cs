@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
 using NCore.USB;
@@ -16,6 +17,10 @@ namespace NToolbox.Windows
 {
 	internal partial class FirmwareUpdaterWindow : WindowBase
 	{
+		[CanBeNull]
+		private readonly string m_firmwareFile;
+
+		private readonly bool m_firmwareFileExist;
 		private readonly FirmwareLoader m_loader = new FirmwareLoader();
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 
@@ -25,8 +30,11 @@ namespace NToolbox.Windows
 		private string m_hardwareVersion;
 		private string m_firmwareVersion;
 
-		public FirmwareUpdaterWindow()
+		public FirmwareUpdaterWindow([CanBeNull] string firmwareFile = null)
 		{
+			m_firmwareFile = firmwareFile;
+			m_firmwareFileExist = !string.IsNullOrEmpty(m_firmwareFile) && File.Exists(firmwareFile);
+
 			InitializeComponent();
 			InitializeControls();
 
@@ -108,6 +116,8 @@ namespace NToolbox.Windows
 			HardwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.ReadOnly = true;
 			BootModeTextBox.ReadOnly = true;
+
+			UpdateFromFileButton.Text = m_firmwareFileExist ? @"Update" : @"Update from file";
 
 			UpdateFromFileButton.Click += UpdateFromFileButton_Click;
 
@@ -309,12 +319,17 @@ namespace NToolbox.Windows
 
 		private void UpdateFromFileButton_Click(object sender, EventArgs e)
 		{
-			string fileName;
-			using (var op = new OpenFileDialog { Title = @"Select encrypted or decrypted firmware file ...", Filter = FileFilters.FirmwareFilter })
+			var fileName = m_firmwareFile;
+			if (!m_firmwareFileExist)
 			{
-				if (op.ShowDialog() != DialogResult.OK) return;
-				fileName = op.FileName;
+				using (var op = new OpenFileDialog { Title = @"Select encrypted or decrypted firmware file ...", Filter = FileFilters.FirmwareFilter })
+				{
+					if (op.ShowDialog() != DialogResult.OK) return;
+					fileName = op.FileName;
+				}
 			}
+			if (string.IsNullOrEmpty(fileName)) return;
+
 			UpdateFirmware(() => m_loader.LoadFile(fileName));
 		}
 
