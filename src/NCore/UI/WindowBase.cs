@@ -51,7 +51,7 @@ namespace NCore.UI
 
 		protected override void WndProc(ref Message m)
 		{
-			if (!IgnoreFirstInstanceMessages && m.Msg == SingleInstanceProvider.ShowFirstInstanceMessage)
+			if (!IgnoreFirstInstanceMessages && m.Msg == CrossApplicationSynchronizer.ShowFirstInstanceMessage)
 			{
 				ShowFromTray();
 			}

@@ -59,6 +59,7 @@
     <Compile Include="AsyncProcessWrapper.cs" />
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="ArcticFoxEncryption.cs" />
+    <Compile Include="CrossApplicationIndentifiers.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileFilters.cs" />
     <Compile Include="CsvManager.cs" />
@@ -86,7 +87,7 @@
     </Compile>
     <Compile Include="USB\HidDeviceInfo.cs" />
     <Compile Include="USB\HidConnector.cs" />
-    <Compile Include="SingleInstanceProvider.cs" />
+    <Compile Include="CrossApplicationSynchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\BorderedPanel.cs">
       <SubType>Component</SubType>

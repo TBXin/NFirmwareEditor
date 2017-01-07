@@ -28,11 +28,11 @@ namespace NToolbox
 			{
 				remainingArgs = args.Skip(1).ToArray();
 			}
-			using (var spi = new SingleInstanceProvider("NFE Toolbox © Reiko Kitsune"))
+			using (var sync = new CrossApplicationSynchronizer(CrossApplicationIndentifiers.NToolbox))
 			{
-				if (spi.IsCreated)
+				if (!sync.IsLockObtained)
 				{
-					spi.ShowFirstInstance();
+					sync.ShowFirstInstance();
 					return;
 				}
 

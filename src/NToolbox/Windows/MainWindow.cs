@@ -176,9 +176,18 @@ namespace NToolbox.Windows
 
 		private void StartFirmwareUpdater(object sender, EventArgs e)
 		{
-			using (var updaterWindow = new FirmwareUpdaterWindow(m_firmwareFile))
+			using (var sync = new CrossApplicationSynchronizer(CrossApplicationIndentifiers.FirmwareUpdater))
 			{
-				ShowDialogWindow(updaterWindow);
+				if (!sync.IsLockObtained)
+				{
+					InfoBox.Show("\"NFirmwareEditor - Firmware Updater\" is already running.\n\nTo continue you need to close it first.");
+					return;
+				}
+
+				using (var updaterWindow = new FirmwareUpdaterWindow(m_firmwareFile))
+				{
+					ShowDialogWindow(updaterWindow);
+				}
 			}
 		}
 
