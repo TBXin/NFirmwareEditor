@@ -25,7 +25,7 @@ namespace NToolbox.Windows
 		public MainWindow(StartupMode startupMode, string[] args)
 		{
 			m_startupMode = startupMode;
-			m_firmwareFile = args.Length > 0 ? args[0] : null;
+			m_firmwareFile = args != null && args.Length > 0 ? args[0] : null;
 			m_hideToTray = m_startupMode.HasFlag(StartupMode.Minimized) || GetAutorunState();
 
 			InitializeComponent();
