@@ -228,6 +228,15 @@ namespace NToolbox.Windows
 			return ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
 		}
 
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Escape)
+			{
+				WindowState = FormWindowState.Minimized;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
 		private void DeviceConnected(bool isConnected)
 		{
 			try

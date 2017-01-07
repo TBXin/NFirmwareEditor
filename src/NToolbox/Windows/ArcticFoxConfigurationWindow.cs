@@ -16,7 +16,7 @@ using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
-	internal partial class ArcticFoxConfigurationWindow : WindowBase
+	internal partial class ArcticFoxConfigurationWindow : EditorDialogWindow
 	{
 		private const ushort MaxPower = 3000;
 		private const byte MaxBatteries = 4;
