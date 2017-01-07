@@ -16,7 +16,7 @@ using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
-	public partial class DeviceMonitorWindow : EditorDialogWindow
+	internal partial class DeviceMonitorWindow : EditorDialogWindow
 	{
 		private const int RequestDataIntervalInMs = 100;
 
@@ -140,7 +140,7 @@ namespace NToolbox.Windows
 						break;
 					}
 
-					var data = BinaryStructure.Read<MonitoringData>(bytes);
+					var data = BinaryStructure.ReadBinary<MonitoringData>(bytes);
 					var kvp = CreateMonitoringDataCollection(data);
 
 					UpdateUI(() =>

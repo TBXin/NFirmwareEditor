@@ -242,7 +242,7 @@ namespace NToolbox.Windows
 						Minute = (byte)now.Minute,
 						Second = (byte)now.Second
 					};
-					var data = BinaryStructure.Write(dateTime);
+					var data = BinaryStructure.WriteBinary(dateTime);
 					HidConnector.Instance.SetDateTime(data);
 				}
 

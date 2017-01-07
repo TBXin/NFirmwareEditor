@@ -3,7 +3,7 @@ using NCore.UI;
 
 namespace NToolbox.Windows
 {
-	public partial class AboutWindow : EditorDialogWindow
+	internal partial class AboutWindow : EditorDialogWindow
 	{
 		public AboutWindow()
 		{

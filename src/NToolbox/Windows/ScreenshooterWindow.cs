@@ -13,7 +13,7 @@ using NToolbox.Models;
 
 namespace NToolbox.Windows
 {
-	public partial class ScreenshooterWindow : EditorDialogWindow
+	internal partial class ScreenshooterWindow : EditorDialogWindow
 	{
 		private const int ScreenshotMargin = 1;
 		private readonly ToolboxConfiguration m_configuration;

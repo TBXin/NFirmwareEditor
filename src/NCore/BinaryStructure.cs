@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,10 +9,20 @@ using JetBrains.Annotations;
 
 namespace NCore
 {
+	/// <summary>
+	/// Provides a helper methods to read/write binary structures.
+	/// </summary>
 	public static class BinaryStructure
 	{
+		private static readonly Dictionary<Type, TypeConverter> s_convertersCache = new Dictionary<Type, TypeConverter>();
+
+		/// <summary>
+		/// Constructs an object from a binary data.
+		/// </summary>
+		/// <typeparam name="T">Source object type.</typeparam>
+		/// <param name="data">Source object.</param>
 		[NotNull]
-		public static T Read<T>(byte[] data) where T : class, new()
+		public static T ReadBinary<T>([NotNull] byte[] data) where T : class, new()
 		{
 			if (data == null) throw new ArgumentNullException("data");
 
@@ -22,7 +34,14 @@ namespace NCore
 			}
 		}
 
-		public static byte[] Write<T>(T data, byte[] sourceBuffer = null) where T : class
+		/// <summary>
+		/// Transforms an object to binary data.
+		/// </summary>
+		/// <typeparam name="T">Source object type.</typeparam>
+		/// <param name="data">Source object.</param>
+		/// <param name="sourceBuffer">Existed binary buffer, on top of which the object will be written.</param>
+		[NotNull]
+		public static byte[] WriteBinary<T>([NotNull] T data, byte[] sourceBuffer = null) where T : class
 		{
 			if (data == null) throw new ArgumentNullException("data");
 
@@ -36,9 +55,47 @@ namespace NCore
 			}
 		}
 
-		public static T Copy<T>(T source) where T : class, new()
+		/// <summary>
+		/// Fills an existing object with data from key-value collection, where each key is pointing to the object field.
+		/// </summary>
+		/// <typeparam name="T">Source object type.</typeparam>
+		/// <param name="data">Source object.</param>
+		/// <param name="kvp">Values collection.</param>
+		[NotNull]
+		public static T ReadFromDictionary<T>([NotNull] T data, [NotNull] IDictionary<string, string> kvp)
 		{
-			return Read<T>(Write(source));
+			if (data == null) throw new ArgumentNullException("data");
+			if (kvp == null) throw new ArgumentNullException("kvp");
+
+			RecursiveReadFromDictionary(data, "Model", kvp);
+			return data;
+		}
+
+		/// <summary>
+		/// Creates a key-value collection for the each object field, where field path + name is a key, and field value is value.
+		/// </summary>
+		/// <typeparam name="T">Source object type.</typeparam>
+		/// <param name="data">Source object.</param>
+		[NotNull]
+		public static IDictionary<string, string> WriteToDictionary<T>([NotNull] T data) where T : class
+		{
+			if (data == null) throw new ArgumentNullException("data");
+
+			var result = new Dictionary<string, string>();
+			RecursiveWriteToDictionary(data, "Model", result);
+			return result;
+		}
+
+		/// <summary>
+		/// Creates a copy of the serializable to binary structure.
+		/// </summary>
+		/// <typeparam name="T">Source object type.</typeparam>
+		/// <param name="source">Source object.</param>
+		[NotNull]
+		public static T Copy<T>([NotNull] T source) where T : class, new()
+		{
+			if (source == null) throw new ArgumentNullException("source");
+			return ReadBinary<T>(WriteBinary(source));
 		}
 
 		private static void RecursiveRead(object obj, BinaryReader br)
@@ -153,6 +210,118 @@ namespace NCore
 					RecursiveWrite(value, bw);
 				}
 			}
+		}
+
+		private static void RecursiveReadFromDictionary(object obj, string path, IDictionary<string, string> kvp)
+		{
+			foreach (var iterator in obj.GetType().GetFields())
+			{
+				var field = iterator;
+				var filedType = field.FieldType;
+				var key = path + "." + field.Name;
+
+				if (filedType.IsPrimitive || filedType.IsEnum)
+				{
+					if (kvp.ContainsKey(key))
+					{
+						field.SetValue(obj, GetTypeConverter(filedType).ConvertFromString(kvp[key]));
+					}
+				}
+				else if (filedType.IsArray)
+				{
+					var elType = filedType.GetElementType();
+					var array = (Array)field.GetValue(obj);
+
+					for (var i = 0; i < array.Length; i++)
+					{
+						var arrayKey = path + "." + field.Name + "[" + i + "]";
+						if (elType.IsClass)
+						{
+							RecursiveReadFromDictionary(array.GetValue(i), arrayKey, kvp);
+						}
+						else
+						{
+							if (kvp.ContainsKey(arrayKey))
+							{
+								array.SetValue(GetTypeConverter(elType).ConvertFromString(kvp[arrayKey]), i);
+							}
+						}
+					}
+				}
+				else if (filedType == typeof(string))
+				{
+					if (kvp.ContainsKey(key))
+					{
+						field.SetValue(obj, kvp[key]);
+					}
+				}
+				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
+				{
+					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp);
+				}
+				else if (filedType.IsClass)
+				{
+					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp);
+				}
+			}
+		}
+
+		private static void RecursiveWriteToDictionary(object obj, string path, IDictionary<string, string> result)
+		{
+			foreach (var iterator in obj.GetType().GetFields())
+			{
+				var field = iterator;
+				var filedType = field.FieldType;
+				var key = path + "." + field.Name;
+
+				if (filedType.IsPrimitive || filedType.IsEnum)
+				{
+					var value = field.GetValue(obj);
+					result[key] = Convert.ToString(value);
+				}
+				else if (filedType.IsArray)
+				{
+					var elType = filedType.GetElementType();
+					var array = (Array)field.GetValue(obj);
+
+					for (var i = 0; i < array.Length; i++)
+					{
+						var arrayKey = path + "." + field.Name + "[" + i + "]";
+						if (elType.IsClass)
+						{
+							RecursiveWriteToDictionary(array.GetValue(i), arrayKey, result);
+						}
+						else
+						{
+							result[arrayKey] = Convert.ToString(array.GetValue(i));
+						}
+					}
+				}
+				else if (filedType == typeof(string))
+				{
+					result[key] = (string)field.GetValue(obj);
+				}
+				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
+				{
+					RecursiveWriteToDictionary(field.GetValue(obj), key, result);
+				}
+				else if (filedType.IsClass)
+				{
+					RecursiveWriteToDictionary(field.GetValue(obj), key, result);
+				}
+			}
+		}
+
+		private static TypeConverter GetTypeConverter(Type type)
+		{
+			if (s_convertersCache.ContainsKey(type))
+			{
+				return s_convertersCache[type];
+			}
+
+			var result = TypeDescriptor.GetConverter(type);
+			s_convertersCache[type] = result;
+			return result;
 		}
 
 		private static object ReadValue(Type type, BinaryReader br)

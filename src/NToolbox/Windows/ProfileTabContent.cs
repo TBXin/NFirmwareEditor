@@ -49,7 +49,17 @@ namespace NToolbox.Windows
 			ProfileNameTextBox.Text = m_profile.Name;
 			PowerUpDown.Maximum = configuration.Info.MaxPower / 10m;
 			PowerUpDown.SetValue(m_profile.Power / 10m);
-			PreheatTypeComboBox.SelectItem(m_profile.PreheatType);
+
+			var selectedPreheatType = PreheatTypeComboBox.SelectedItem as NamedItemContainer<ArcticFoxConfiguration.PreheatType>;
+			if (selectedPreheatType != null && selectedPreheatType.Data == m_profile.PreheatType)
+			{
+				PreheatTypeComboBox_SelectedValueChanged(null, EventArgs.Empty);
+			}
+			else
+			{
+				PreheatTypeComboBox.SelectItem(m_profile.PreheatType);
+			}
+
 			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
 			PreheatTimeUpDown.SetValue(m_profile.PreheatTime / 100m);
 			PreheatDelayUpDown.SetValue(m_profile.PreheatDelay / 10m);
@@ -165,48 +175,7 @@ namespace NToolbox.Windows
 			PowerUpDown.Maximum = 60;
 
 			PreheatTypeComboBox.Fill(PredefinedData.ArcticFox.Profile.PreheatTypes);
-			PreheatTypeComboBox.SelectedValueChanged += (s, e) =>
-			{
-				var type = PreheatTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.PreheatType>();
-				if (type == ArcticFoxConfiguration.PreheatType.Watts)
-				{
-					PreheatPowerUpDown.DecimalPlaces = 1;
-					PreheatPowerUpDown.Increment = 0.1m;
-					PreheatPowerUpDown.Minimum = MinimumWatts;
-					PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
-					PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
-					PreheatPowerUnitLabel.Text = @"W";
-				}
-				else if (type == ArcticFoxConfiguration.PreheatType.Percents)
-				{
-					PreheatPowerUpDown.DecimalPlaces = 0;
-					PreheatPowerUpDown.Increment = 1;
-					PreheatPowerUpDown.Minimum = 100;
-					PreheatPowerUpDown.Maximum = 250;
-					PreheatPowerUpDown.SetValue(m_profile.PreheatPower);
-					PreheatPowerUnitLabel.Text = @"%";
-				}
-
-				if (type == ArcticFoxConfiguration.PreheatType.Curve)
-				{
-					PreheatPowerLabel.Text = @"Preheat Curve:";
-					PowerCurveComboBox.Visible = true;
-					PowerCurveEditButton.Visible = true;
-
-					PreheatTimeUpDown.Enabled = false;
-					PreheatDelayUpDown.Enabled = false;
-					PreheatPowerUnitLabel.Text = string.Empty;
-				}
-				else
-				{
-					PreheatPowerLabel.Text = @"Preheat Power:";
-					PowerCurveComboBox.Visible = false;
-					PowerCurveEditButton.Visible = false;
-
-					PreheatTimeUpDown.Enabled = true;
-					PreheatDelayUpDown.Enabled = true;
-				}
-			};
+			PreheatTypeComboBox.SelectedValueChanged += PreheatTypeComboBox_SelectedValueChanged;
 
 			PowerCurveComboBox.Fill(PredefinedData.ArcticFox.Profile.PowerCurves);
 			TemperatureTypeComboBox.Fill(PredefinedData.ArcticFox.Profile.TemperatureTypes);
@@ -271,6 +240,49 @@ namespace NToolbox.Windows
 			PowerCurveEditButton.Click += PowerCurveEditButton_Click;
 			TFRCurveEditButton.Click += TFRCurveEditButton_Click;
 			SetupTempControlButton.Click += SetupTempControlButton_Click;
+		}
+
+		private void PreheatTypeComboBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			var type = PreheatTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.PreheatType>();
+			if (type == ArcticFoxConfiguration.PreheatType.Watts)
+			{
+				PreheatPowerUpDown.DecimalPlaces = 1;
+				PreheatPowerUpDown.Increment = 0.1m;
+				PreheatPowerUpDown.Minimum = MinimumWatts;
+				PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
+				PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
+				PreheatPowerUnitLabel.Text = @"W";
+			}
+			else if (type == ArcticFoxConfiguration.PreheatType.Percents)
+			{
+				PreheatPowerUpDown.DecimalPlaces = 0;
+				PreheatPowerUpDown.Increment = 1;
+				PreheatPowerUpDown.Minimum = 100;
+				PreheatPowerUpDown.Maximum = 250;
+				PreheatPowerUpDown.SetValue(m_profile.PreheatPower);
+				PreheatPowerUnitLabel.Text = @"%";
+			}
+
+			if (type == ArcticFoxConfiguration.PreheatType.Curve)
+			{
+				PreheatPowerLabel.Text = @"Preheat Curve:";
+				PowerCurveComboBox.Visible = true;
+				PowerCurveEditButton.Visible = true;
+
+				PreheatTimeUpDown.Enabled = false;
+				PreheatDelayUpDown.Enabled = false;
+				PreheatPowerUnitLabel.Text = string.Empty;
+			}
+			else
+			{
+				PreheatPowerLabel.Text = @"Preheat Power:";
+				PowerCurveComboBox.Visible = false;
+				PowerCurveEditButton.Visible = false;
+
+				PreheatTimeUpDown.Enabled = true;
+				PreheatDelayUpDown.Enabled = true;
+			}
 		}
 
 		private void PowerCurveEditButton_Click(object sender, EventArgs e)

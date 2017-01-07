@@ -27,6 +27,11 @@ namespace NToolbox.Models
 			public DisplaySize DisplaySize;
 			public uint FirmwareVersion;
 			public uint FirmwareBuild;
+
+			public DeviceInfo Copy()
+			{
+				return (DeviceInfo)MemberwiseClone();
+			}
 		}
 
 		internal class GeneralConfiguration
@@ -396,8 +401,8 @@ namespace NToolbox.Models
 
 		internal enum DisplaySize : byte
 		{
-			S64X128 = 0,
-			S96X16 = 1
+			W64H128 = 0,
+			W96H16 = 1
 		}
 
 		internal class PIRegulator

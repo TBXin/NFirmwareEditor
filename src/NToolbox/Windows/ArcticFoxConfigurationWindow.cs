@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
+using NCore.Serialization;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
@@ -15,7 +16,7 @@ using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
-	public partial class ArcticFoxConfigurationWindow : WindowBase
+	internal partial class ArcticFoxConfigurationWindow : WindowBase
 	{
 		private const ushort MaxPower = 3000;
 		private const byte MaxBatteries = 4;
@@ -202,7 +203,7 @@ namespace NToolbox.Windows
 		}
 
 		[NotNull]
-		private ConfigurationReadResult ReadConfiguration([NotNull] Func<BackgroundWorker, byte[]> configurationProvider, bool useWorker = true)
+		private ConfigurationReadResult ReadBinaryConfiguration([NotNull] Func<BackgroundWorker, byte[]> configurationProvider, bool useWorker = true)
 		{
 			if (configurationProvider == null) throw new ArgumentNullException("configurationProvider");
 
@@ -211,7 +212,7 @@ namespace NToolbox.Windows
 				var data = configurationProvider(useWorker ? m_worker : null);
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
-				var info = BinaryStructure.Read<ArcticFoxConfiguration.DeviceInfo>(data);
+				var info = BinaryStructure.ReadBinary<ArcticFoxConfiguration.DeviceInfo>(data);
 				if (info.SettingsVersion < SupportedSettingsVersion || info.FirmwareBuild < MinimumSupportedBuildNumber)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
@@ -221,7 +222,7 @@ namespace NToolbox.Windows
 					return new ConfigurationReadResult(null, ReadResult.OutdatedToolbox);
 				}
 
-				var configuration = BinaryStructure.Read<ArcticFoxConfiguration>(data);
+				var configuration = BinaryStructure.ReadBinary<ArcticFoxConfiguration>(data);
 				return new ConfigurationReadResult(configuration, ReadResult.Success);
 			}
 			catch (TimeoutException)
@@ -232,7 +233,7 @@ namespace NToolbox.Windows
 
 		private void WriteConfiguration()
 		{
-			var data = BinaryStructure.Write(m_configuration);
+			var data = BinaryStructure.WriteBinary(m_configuration);
 			try
 			{
 				HidConnector.Instance.WriteConfiguration(data, m_worker);
@@ -342,7 +343,7 @@ namespace NToolbox.Windows
 				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
 				Step1WCheckBox.Checked = ui.IsPowerStep1W;
 
-				LayoutTabControl.SelectedTab = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.S64X128
+				LayoutTabControl.SelectedTab = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128
 					? ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Classic
 						? ClassicScreenTabPage
 						: CircleScreenTabPage
@@ -554,7 +555,7 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				var readResult = ReadConfiguration(m_deviceConfigurationProvider);
+				var readResult = ReadBinaryConfiguration(m_deviceConfigurationProvider);
 				if (readResult.Result != ReadResult.Success)
 				{
 					InfoBox.Show("Something strange happened! Please restart application.");
@@ -608,17 +609,18 @@ namespace NToolbox.Windows
 
 		private byte[] PrepairConfiguration(byte[] source, ArcticFoxConfiguration existedConfiguration = null)
 		{
-			var result = BinaryStructure.Read<ArcticFoxConfiguration>(m_encryption.Decode(source));
+			var result = BinaryStructure.ReadBinary<ArcticFoxConfiguration>(m_encryption.Decode(source));
 			if (existedConfiguration == null)
 			{
 				result.Info.MaxPower = MaxPower;
 				result.Info.NumberOfBatteries = MaxBatteries;
+				result.Info.DisplaySize = ArcticFoxConfiguration.DisplaySize.W64H128;
 			}
 			else
 			{
 				result.Info = existedConfiguration.Info;
 			}
-			return BinaryStructure.Write(result);
+			return BinaryStructure.WriteBinary(result);
 		}
 
 		private void OpenConfigurationFile(ArcticFoxConfiguration existedConfiguration)
@@ -630,34 +632,27 @@ namespace NToolbox.Windows
 				fileName = op.FileName;
 			}
 
-			var result = ReadConfiguration(w => m_encryption.Decode(File.ReadAllBytes(fileName)));
-			if (result.Result == ReadResult.Success)
+			try
 			{
-				if (existedConfiguration == null)
+				var existedInfoBlock = existedConfiguration != null ? existedConfiguration.Info.Copy() : null;
+				var result = existedConfiguration ?? BinaryStructure.ReadBinary<ArcticFoxConfiguration>(m_encryption.Decode(Resources.new_configuration));
+				var serializableConfiguration = Serializer.Read<SerializableConfiguration>(new MemoryStream(m_encryption.Decode(File.ReadAllBytes(fileName))));
+				if (serializableConfiguration == null)
 				{
-					result.Configuration.Info.MaxPower = MaxPower;
+					InfoBox.Show("Most likely you are trying to open an obsolete configuration file. This operation is not supported.");
+					return;
 				}
-				else
+				BinaryStructure.ReadFromDictionary(result, serializableConfiguration.GetDictionary());
+				if (existedInfoBlock != null)
 				{
-					result.Configuration.Info = existedConfiguration.Info;
+					result.Info = existedInfoBlock;
 				}
-				OpenWorkspace(result.Configuration);
+				OpenWorkspace(result);
 			}
-			else if (result.Result == ReadResult.OutdatedFirmware)
+			catch (Exception ex)
 			{
-				InfoBox.Show("You are trying to open the configuration file from a legacy ArcticFox firmware versions. This operation is not supported.");
-			}
-			else if (result.Result == ReadResult.OutdatedToolbox)
-			{
-				InfoBox.Show("You are trying to open the configuration file from a future ArcticFox firmware versions. This operation is not supported.");
-			}
-			else if (result.Result == ReadResult.UnableToRead)
-			{
-				InfoBox.Show("Invalid configuration file!");
-			}
-			else
-			{
-				InfoBox.Show("Shit happens!");
+				Trace.Info(ex, "An error occurred during reading saved configuration file.");
+				InfoBox.Show("Most likely you are trying to open an obsolete configuration file. This operation is not supported.");
 			}
 		}
 
@@ -732,6 +727,7 @@ namespace NToolbox.Windows
 		{
 			if (m_configuration == null) return;
 
+			var isBinary = ModifierKeys.HasFlag(Keys.Control) && ModifierKeys.HasFlag(Keys.Alt);
 			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
@@ -747,12 +743,25 @@ namespace NToolbox.Windows
 						cfgCopy.Info.NumberOfBatteries = 0;
 						cfgCopy.Info.ProductId = string.Empty;
 					}
-					var bytes = BinaryStructure.Write(cfgCopy);
+
+					byte[] bytes;
+					if (isBinary)
+					{
+						bytes = BinaryStructure.WriteBinary(cfgCopy);
+					}
+					else
+					{
+						using (var ms = new MemoryStream())
+						{
+							Serializer.Write(new SerializableConfiguration(BinaryStructure.WriteToDictionary(cfgCopy)), ms);
+							bytes = ms.ToArray();
+						}
+					}
 					File.WriteAllBytes(sf.FileName, m_encryption.Encode(bytes));
 				}
 				catch (Exception ex)
 				{
-					Trace.ErrorException("An error occurred during save arctic fox configuration.", ex);
+					Trace.ErrorException("An error occurred during save ArcticFox configuration.", ex);
 				}
 			}
 		}
@@ -841,7 +850,7 @@ namespace NToolbox.Windows
 			ShowWelcomeScreen("Downloading settings...");
 			try
 			{
-				var readResult = ReadConfiguration(configurationProvider, false);
+				var readResult = ReadBinaryConfiguration(configurationProvider, false);
 				m_configuration = readResult.Configuration;
 				if (readResult.Result == ReadResult.Success)
 				{
