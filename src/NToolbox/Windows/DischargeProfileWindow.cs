@@ -20,6 +20,9 @@ namespace NToolbox.Windows
 		private PercentVoltsControlGroup[] m_curveControls;
 		private ContextMenu m_presetsMenu;
 		private bool m_isInstallingPreset;
+		private bool m_isDragginPoint;
+		private DataPoint m_pointUnderCursor;
+		private int m_pointUnderCursorIndex;
 
 		public DischargeProfileWindow([NotNull] ArcticFoxConfiguration.CustomBattery battery)
 		{
@@ -37,17 +40,17 @@ namespace NToolbox.Windows
 		{
 			m_curveControls = new[]
 			{
-				new PercentVoltsControlGroup(Percents1UpDown, Volts1UpDown),
-				new PercentVoltsControlGroup(Percents2UpDown, Volts2UpDown),
-				new PercentVoltsControlGroup(Percents3UpDown, Volts3UpDown),
-				new PercentVoltsControlGroup(Percents4UpDown, Volts4UpDown),
-				new PercentVoltsControlGroup(Percents5UpDown, Volts5UpDown),
-				new PercentVoltsControlGroup(Percents6UpDown, Volts6UpDown),
-				new PercentVoltsControlGroup(Percents7UpDown, Volts7UpDown),
-				new PercentVoltsControlGroup(Percents8UpDown, Volts8UpDown),
-				new PercentVoltsControlGroup(Percents9UpDown, Volts9UpDown),
+				new PercentVoltsControlGroup(Percents11UpDown, Volts11UpDown),
 				new PercentVoltsControlGroup(Percents10UpDown, Volts10UpDown),
-				new PercentVoltsControlGroup(Percents11UpDown, Volts11UpDown)
+				new PercentVoltsControlGroup(Percents9UpDown, Volts9UpDown),
+				new PercentVoltsControlGroup(Percents8UpDown, Volts8UpDown),
+				new PercentVoltsControlGroup(Percents7UpDown, Volts7UpDown),
+				new PercentVoltsControlGroup(Percents6UpDown, Volts6UpDown),
+				new PercentVoltsControlGroup(Percents5UpDown, Volts5UpDown),
+				new PercentVoltsControlGroup(Percents4UpDown, Volts4UpDown),
+				new PercentVoltsControlGroup(Percents3UpDown, Volts3UpDown),
+				new PercentVoltsControlGroup(Percents2UpDown, Volts2UpDown),
+				new PercentVoltsControlGroup(Percents1UpDown, Volts1UpDown)
 			};
 
 			m_presetsMenu = new ContextMenu();
@@ -100,11 +103,14 @@ namespace NToolbox.Windows
 					Enabled = true,
 					AllowOutsidePlotArea = LabelOutsidePlotAreaStyle.Yes,
 					IsOverlappedHidden = false,
-					IsMarkerOverlappingAllowed = true,
-					MovingDirection = LabelAlignmentStyles.Right
+					IsMarkerOverlappingAllowed = false,
+					MovingDirection = LabelAlignmentStyles.Top
 				}
 			};
 			DischargeChart.Series.Add(series);
+			DischargeChart.MouseMove += DischargeChart_MouseMove;
+			DischargeChart.MouseDown += DischargeChart_MouseDown;
+			DischargeChart.MouseUp += DischargeChart_MouseUp;
 		}
 
 		private void InstallPreset(ArcticFoxConfiguration.CustomBattery customBattery)
@@ -143,7 +149,8 @@ namespace NToolbox.Windows
 				{
 					MarkerStyle = MarkerStyle.Circle,
 					MarkerSize = 7,
-					Label = string.Format("{0} %", percents)
+					Label = string.Format("{0} %", percents),
+					Tag = "draggable"
 				};
 
 				m_curveControls[i].PercentsUpDown.Value = percents;
@@ -228,6 +235,75 @@ namespace NToolbox.Windows
 
 			point.XValue = (double)value;
 			point.Label = string.Format("{0} %", value);
+		}
+
+		private void DischargeChart_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (m_isDragginPoint && m_pointUnderCursor != null)
+			{
+				var xValueUnderCursor = DischargeChart.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+				var yValueUnderCursor = DischargeChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+
+				var leftBound = m_pointUnderCursorIndex == m_battery.Data.Length - 1 ? MaxPrc : DischargeChart.Series[0].Points[m_pointUnderCursorIndex + 1].XValue -1;
+				var rightBound = m_pointUnderCursorIndex == 0 ? MinPrc : DischargeChart.Series[0].Points[m_pointUnderCursorIndex -1].XValue + 1;
+
+				var upperBound = m_pointUnderCursorIndex == m_battery.Data.Length - 1 ? (double)MaxVolts : DischargeChart.Series[0].Points[m_pointUnderCursorIndex + 1].YValues[0] - 0.01;
+				var lowerBound = m_pointUnderCursorIndex == 0 ? (double)MinVolts : DischargeChart.Series[0].Points[m_pointUnderCursorIndex - 1].YValues[0] + 0.01;
+
+				double tempXValue;
+				if (xValueUnderCursor >= leftBound) tempXValue = leftBound;
+				else if (xValueUnderCursor <= rightBound) tempXValue = rightBound;
+				else tempXValue = xValueUnderCursor;
+
+				double tempYValue;
+				if (yValueUnderCursor >= upperBound) tempYValue = upperBound;
+				else if (yValueUnderCursor <= lowerBound) tempYValue = lowerBound;
+				else tempYValue = yValueUnderCursor;
+
+				tempXValue = Math.Round(tempXValue, 0);
+				tempYValue = Math.Round(tempYValue, 2);
+
+				m_curveControls[m_pointUnderCursorIndex].VoltsUpDown.Value = (decimal)tempYValue;
+				m_curveControls[m_pointUnderCursorIndex].PercentsUpDown.Value = (decimal)tempXValue;
+			}
+			else
+			{
+				var results = DischargeChart.HitTest(e.X, e.Y, false, ChartElementType.DataPoint);
+
+				DataPoint point = null;
+				foreach (var result in results)
+				{
+					if (result.ChartElementType != ChartElementType.DataPoint) continue;
+
+					var tmpPoint = result.Object as DataPoint;
+					if (tmpPoint == null) continue;
+					if (!Equals(tmpPoint.Tag, "draggable")) continue;
+
+					var pointX = DischargeChart.ChartAreas[0].AxisX.ValueToPixelPosition(tmpPoint.XValue);
+					var pointY = DischargeChart.ChartAreas[0].AxisY.ValueToPixelPosition(tmpPoint.YValues[0]);
+
+					if (Math.Abs(e.X - pointX) <= 12 && Math.Abs(e.Y - pointY) <= 12)
+					{
+						point = tmpPoint;
+						m_pointUnderCursorIndex = result.PointIndex;
+						break;
+					}
+				}
+
+				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = 7;
+				m_pointUnderCursor = point;
+				if (m_pointUnderCursor != null) m_pointUnderCursor.MarkerSize = 10;
+			}
+		}
+
+		private void DischargeChart_MouseDown(object sender, MouseEventArgs e)
+		{
+			m_isDragginPoint = true;
+		}
+
+		private void DischargeChart_MouseUp(object sender, MouseEventArgs e)
+		{
+			m_isDragginPoint = false;
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
