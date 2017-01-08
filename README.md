@@ -1,5 +1,7 @@
 # NFirmwareEditor + NFE Toolbox
 
+Supported OS: Windows 7 and higher.  
+
 Nightly build: [![Build status](https://ci.appveyor.com/api/projects/status/github/TBXin/NFirmwareEditor?branch=master&svg=true)](https://ci.appveyor.com/project/TBXin/NFirmwareEditor/branch/master/artifacts)
 
 ## NFirmwareEditor
