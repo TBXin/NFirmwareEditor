@@ -78,6 +78,9 @@
     <Compile Include="UI\GroupPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\LocalizationExtender.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\MultiPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -99,6 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\WindowBase.resx">
+      <DependentUpon>WindowBase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

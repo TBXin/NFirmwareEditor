@@ -63,6 +63,7 @@
 			// 
 			this.VersionLabel.AutoSize = true;
 			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+			this.MainLocalizationExtender.SetKey(this.VersionLabel, "");
 			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
 			this.VersionLabel.Name = "VersionLabel";
 			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
@@ -87,6 +88,7 @@
 			this.ButtonsPanel.Controls.Add(this.DeviceMonitorButton);
 			this.ButtonsPanel.Controls.Add(this.ArcticFoxConfigurationButton);
 			this.ButtonsPanel.Controls.Add(this.FirmwareUpdaterButton);
+			this.MainLocalizationExtender.SetKey(this.ButtonsPanel, "");
 			this.ButtonsPanel.Location = new System.Drawing.Point(0, 214);
 			this.ButtonsPanel.Name = "ButtonsPanel";
 			this.ButtonsPanel.Size = new System.Drawing.Size(240, 320);
@@ -98,6 +100,7 @@
 			this.AboutLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.AboutLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MainLocalizationExtender.SetKey(this.AboutLinkLabel, "");
 			this.AboutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.AboutLinkLabel.Location = new System.Drawing.Point(10, 294);
 			this.AboutLinkLabel.Name = "AboutLinkLabel";
@@ -113,6 +116,7 @@
 			this.ScreenshooterButton.AdditionalText = "";
 			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
+			this.MainLocalizationExtender.SetKey(this.ScreenshooterButton, "Toolbox.MainWindow.ScreenshooterButton");
 			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
 			this.ScreenshooterButton.Name = "ScreenshooterButton";
 			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
@@ -125,6 +129,7 @@
 			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.MyEvicConfigurationButton.Enabled = false;
 			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
+			this.MainLocalizationExtender.SetKey(this.MyEvicConfigurationButton, "Toolbox.MainWindow.MyEvicConfigurationButton");
 			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
 			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
 			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
@@ -136,6 +141,7 @@
 			this.DeviceMonitorButton.AdditionalText = "";
 			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
+			this.MainLocalizationExtender.SetKey(this.DeviceMonitorButton, "Toolbox.MainWindow.DeviceMonitorButton");
 			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
 			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
 			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
@@ -147,6 +153,7 @@
 			this.ArcticFoxConfigurationButton.AdditionalText = "";
 			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
+			this.MainLocalizationExtender.SetKey(this.ArcticFoxConfigurationButton, "Toolbox.MainWindow.ArcticFoxConfigurationButton");
 			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
 			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
 			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
@@ -158,6 +165,7 @@
 			this.FirmwareUpdaterButton.AdditionalText = "";
 			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
+			this.MainLocalizationExtender.SetKey(this.FirmwareUpdaterButton, "Toolbox.MainWindow.FirmwareUpdaterButton");
 			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
 			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
 			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
@@ -169,6 +177,7 @@
 			this.LogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.LogoPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
 			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
 			this.LogoPictureBox.Location = new System.Drawing.Point(28, 3);
 			this.LogoPictureBox.Name = "LogoPictureBox";
 			this.LogoPictureBox.Size = new System.Drawing.Size(184, 205);
@@ -198,6 +207,7 @@
             this.AutorunTrayMenuItem,
             this.toolStripSeparator1,
             this.ExitTrayMenuItem});
+			this.MainLocalizationExtender.SetKey(this.TrayContextMenuStrip, "");
 			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
 			this.TrayContextMenuStrip.Size = new System.Drawing.Size(372, 248);
 			// 
@@ -296,6 +306,7 @@
 			this.Controls.Add(this.LogoPictureBox);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
