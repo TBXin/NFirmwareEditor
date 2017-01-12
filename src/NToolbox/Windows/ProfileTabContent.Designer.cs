@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.ProfileNameTextBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TemperatureUpDown = new System.Windows.Forms.NumericUpDown();
@@ -64,6 +65,7 @@
 			this.SetupTempControlButton = new System.Windows.Forms.Button();
 			this.label37 = new System.Windows.Forms.Label();
 			this.ProfileEnabledCheckBox = new System.Windows.Forms.CheckBox();
+			this.ProfileLocalizationExtender = new NCore.UI.LocalizationExtender(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -76,6 +78,7 @@
 			// ProfileNameTextBox
 			// 
 			this.ProfileNameTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.ProfileLocalizationExtender.SetKey(this.ProfileNameTextBox, "");
 			this.ProfileNameTextBox.Location = new System.Drawing.Point(101, 35);
 			this.ProfileNameTextBox.MaxLength = 8;
 			this.ProfileNameTextBox.Name = "ProfileNameTextBox";
@@ -87,6 +90,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label1, "Toolbox.ArcticFoxConfiguration.Profile.NameLabel");
 			this.label1.Location = new System.Drawing.Point(4, 38);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(38, 13);
@@ -95,6 +99,7 @@
 			// 
 			// TemperatureUpDown
 			// 
+			this.ProfileLocalizationExtender.SetKey(this.TemperatureUpDown, "");
 			this.TemperatureUpDown.Location = new System.Drawing.Point(101, 301);
 			this.TemperatureUpDown.Maximum = new decimal(new int[] {
             300,
@@ -119,6 +124,7 @@
 			// TemperatureDominantCheckBox
 			// 
 			this.TemperatureDominantCheckBox.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.TemperatureDominantCheckBox, "Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox");
 			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(101, 328);
 			this.TemperatureDominantCheckBox.Name = "TemperatureDominantCheckBox";
 			this.TemperatureDominantCheckBox.Size = new System.Drawing.Size(136, 17);
@@ -129,6 +135,7 @@
 			// TemperatureLabel
 			// 
 			this.TemperatureLabel.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.TemperatureLabel, "Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel");
 			this.TemperatureLabel.Location = new System.Drawing.Point(4, 304);
 			this.TemperatureLabel.Name = "TemperatureLabel";
 			this.TemperatureLabel.Size = new System.Drawing.Size(73, 13);
@@ -139,6 +146,7 @@
 			// 
 			this.TemperatureTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.TemperatureTypeComboBox.FormattingEnabled = true;
+			this.ProfileLocalizationExtender.SetKey(this.TemperatureTypeComboBox, "");
 			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(213, 301);
 			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
 			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
@@ -152,6 +160,7 @@
             0,
             0,
             65536});
+			this.ProfileLocalizationExtender.SetKey(this.PreheatTimeUpDown, "");
 			this.PreheatTimeUpDown.Location = new System.Drawing.Point(101, 143);
 			this.PreheatTimeUpDown.Maximum = new decimal(new int[] {
             2,
@@ -166,6 +175,7 @@
 			// PreheatPowerUpDown
 			// 
 			this.PreheatPowerUpDown.DecimalPlaces = 1;
+			this.ProfileLocalizationExtender.SetKey(this.PreheatPowerUpDown, "");
 			this.PreheatPowerUpDown.Location = new System.Drawing.Point(101, 116);
 			this.PreheatPowerUpDown.Maximum = new decimal(new int[] {
             75,
@@ -190,6 +200,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.SecondsLabel");
 			this.label5.Location = new System.Drawing.Point(213, 146);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(12, 13);
@@ -199,6 +210,7 @@
 			// label29
 			// 
 			this.label29.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label29, "Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel");
 			this.label29.Location = new System.Drawing.Point(4, 146);
 			this.label29.Name = "label29";
 			this.label29.Size = new System.Drawing.Size(74, 13);
@@ -209,6 +221,7 @@
 			// 
 			this.PreheatTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.PreheatTypeComboBox.FormattingEnabled = true;
+			this.ProfileLocalizationExtender.SetKey(this.PreheatTypeComboBox, "");
 			this.PreheatTypeComboBox.Location = new System.Drawing.Point(101, 88);
 			this.PreheatTypeComboBox.Name = "PreheatTypeComboBox";
 			this.PreheatTypeComboBox.Size = new System.Drawing.Size(106, 21);
@@ -217,6 +230,7 @@
 			// PreheatPowerLabel
 			// 
 			this.PreheatPowerLabel.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.PreheatPowerLabel, "Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel");
 			this.PreheatPowerLabel.Location = new System.Drawing.Point(4, 119);
 			this.PreheatPowerLabel.Name = "PreheatPowerLabel";
 			this.PreheatPowerLabel.Size = new System.Drawing.Size(82, 13);
@@ -231,6 +245,7 @@
             0,
             0,
             65536});
+			this.ProfileLocalizationExtender.SetKey(this.PowerUpDown, "");
 			this.PowerUpDown.Location = new System.Drawing.Point(101, 62);
 			this.PowerUpDown.Maximum = new decimal(new int[] {
             75,
@@ -255,6 +270,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.Profile.PowerLabel");
 			this.label3.Location = new System.Drawing.Point(4, 65);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(41, 13);
@@ -264,6 +280,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label4, "Toolbox.ArcticFoxConfiguration.Profile.WattsLabel");
 			this.label4.Location = new System.Drawing.Point(213, 65);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(17, 13);
@@ -273,6 +290,7 @@
 			// ResistanceLabel
 			// 
 			this.ResistanceLabel.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.ResistanceLabel, "Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel");
 			this.ResistanceLabel.Location = new System.Drawing.Point(4, 254);
 			this.ResistanceLabel.Name = "ResistanceLabel";
 			this.ResistanceLabel.Size = new System.Drawing.Size(63, 13);
@@ -287,6 +305,7 @@
             0,
             0,
             196608});
+			this.ProfileLocalizationExtender.SetKey(this.ResistanceUpDown, "");
 			this.ResistanceUpDown.Location = new System.Drawing.Point(101, 251);
 			this.ResistanceUpDown.Maximum = new decimal(new int[] {
             5,
@@ -308,6 +327,7 @@
 			// 
 			this.OhmLabel.AutoSize = true;
 			this.OhmLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ProfileLocalizationExtender.SetKey(this.OhmLabel, "");
 			this.OhmLabel.Location = new System.Drawing.Point(213, 253);
 			this.OhmLabel.Name = "OhmLabel";
 			this.OhmLabel.Size = new System.Drawing.Size(17, 16);
@@ -317,6 +337,7 @@
 			// ResistanceLockedCheckBox
 			// 
 			this.ResistanceLockedCheckBox.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.ResistanceLockedCheckBox, "Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox");
 			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(101, 278);
 			this.ResistanceLockedCheckBox.Name = "ResistanceLockedCheckBox";
 			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(59, 17);
@@ -327,6 +348,7 @@
 			// MaterialLabel
 			// 
 			this.MaterialLabel.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.MaterialLabel, "Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel");
 			this.MaterialLabel.Location = new System.Drawing.Point(4, 227);
 			this.MaterialLabel.Name = "MaterialLabel";
 			this.MaterialLabel.Size = new System.Drawing.Size(69, 13);
@@ -337,6 +359,7 @@
 			// 
 			this.MaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.MaterialComboBox.FormattingEnabled = true;
+			this.ProfileLocalizationExtender.SetKey(this.MaterialComboBox, "");
 			this.MaterialComboBox.Location = new System.Drawing.Point(101, 224);
 			this.MaterialComboBox.Name = "MaterialComboBox";
 			this.MaterialComboBox.Size = new System.Drawing.Size(106, 21);
@@ -344,6 +367,7 @@
 			// 
 			// TCRUpDown
 			// 
+			this.ProfileLocalizationExtender.SetKey(this.TCRUpDown, "");
 			this.TCRUpDown.Location = new System.Drawing.Point(214, 224);
 			this.TCRUpDown.Maximum = new decimal(new int[] {
             999,
@@ -374,6 +398,7 @@
             0,
             0,
             65536});
+			this.ProfileLocalizationExtender.SetKey(this.PreheatDelayUpDown, "");
 			this.PreheatDelayUpDown.Location = new System.Drawing.Point(101, 170);
 			this.PreheatDelayUpDown.Maximum = new decimal(new int[] {
             25,
@@ -388,6 +413,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.SecondsLabel");
 			this.label2.Location = new System.Drawing.Point(213, 173);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(12, 13);
@@ -397,6 +423,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label8, "Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel");
 			this.label8.Location = new System.Drawing.Point(4, 173);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(79, 13);
@@ -406,6 +433,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label6, "");
 			this.label6.Location = new System.Drawing.Point(213, 38);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(78, 13);
@@ -415,6 +443,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.Profile.ModeLabel");
 			this.label9.Location = new System.Drawing.Point(4, 200);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(37, 13);
@@ -425,6 +454,7 @@
 			// 
 			this.ModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ModeComboBox.FormattingEnabled = true;
+			this.ProfileLocalizationExtender.SetKey(this.ModeComboBox, "");
 			this.ModeComboBox.Location = new System.Drawing.Point(101, 197);
 			this.ModeComboBox.Name = "ModeComboBox";
 			this.ModeComboBox.Size = new System.Drawing.Size(106, 21);
@@ -434,6 +464,7 @@
 			// 
 			this.PowerCurveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.PowerCurveComboBox.FormattingEnabled = true;
+			this.ProfileLocalizationExtender.SetKey(this.PowerCurveComboBox, "");
 			this.PowerCurveComboBox.Location = new System.Drawing.Point(101, 116);
 			this.PowerCurveComboBox.Name = "PowerCurveComboBox";
 			this.PowerCurveComboBox.Size = new System.Drawing.Size(106, 21);
@@ -442,6 +473,7 @@
 			// 
 			// PowerCurveEditButton
 			// 
+			this.ProfileLocalizationExtender.SetKey(this.PowerCurveEditButton, "Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton");
 			this.PowerCurveEditButton.Location = new System.Drawing.Point(213, 115);
 			this.PowerCurveEditButton.Name = "PowerCurveEditButton";
 			this.PowerCurveEditButton.Size = new System.Drawing.Size(60, 23);
@@ -452,6 +484,7 @@
 			// 
 			// TFRCurveEditButton
 			// 
+			this.ProfileLocalizationExtender.SetKey(this.TFRCurveEditButton, "Toolbox.ArcticFoxConfiguration.Profile.TFREditButton");
 			this.TFRCurveEditButton.Location = new System.Drawing.Point(213, 223);
 			this.TFRCurveEditButton.Name = "TFRCurveEditButton";
 			this.TFRCurveEditButton.Size = new System.Drawing.Size(60, 23);
@@ -463,6 +496,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel");
 			this.label7.Location = new System.Drawing.Point(4, 92);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(76, 13);
@@ -472,6 +506,7 @@
 			// PreheatPowerUnitLabel
 			// 
 			this.PreheatPowerUnitLabel.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.PreheatPowerUnitLabel, "");
 			this.PreheatPowerUnitLabel.Location = new System.Drawing.Point(213, 119);
 			this.PreheatPowerUnitLabel.Name = "PreheatPowerUnitLabel";
 			this.PreheatPowerUnitLabel.Size = new System.Drawing.Size(18, 13);
@@ -480,6 +515,7 @@
 			// 
 			// SetupTempControlButton
 			// 
+			this.ProfileLocalizationExtender.SetKey(this.SetupTempControlButton, "Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton");
 			this.SetupTempControlButton.Location = new System.Drawing.Point(213, 196);
 			this.SetupTempControlButton.Name = "SetupTempControlButton";
 			this.SetupTempControlButton.Size = new System.Drawing.Size(60, 23);
@@ -491,6 +527,7 @@
 			// label37
 			// 
 			this.label37.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.label37, "Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel");
 			this.label37.Location = new System.Drawing.Point(4, 11);
 			this.label37.Name = "label37";
 			this.label37.Size = new System.Drawing.Size(41, 13);
@@ -500,6 +537,7 @@
 			// ProfileEnabledCheckBox
 			// 
 			this.ProfileEnabledCheckBox.AutoSize = true;
+			this.ProfileLocalizationExtender.SetKey(this.ProfileEnabledCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
 			this.ProfileEnabledCheckBox.Location = new System.Drawing.Point(101, 11);
 			this.ProfileEnabledCheckBox.Name = "ProfileEnabledCheckBox";
 			this.ProfileEnabledCheckBox.Size = new System.Drawing.Size(64, 17);
@@ -548,6 +586,7 @@
 			this.Controls.Add(this.ProfileNameTextBox);
 			this.Controls.Add(this.PreheatPowerUnitLabel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.ProfileLocalizationExtender.SetKey(this, "");
 			this.Name = "ProfileTabContent";
 			this.Size = new System.Drawing.Size(328, 350);
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).EndInit();
@@ -599,5 +638,6 @@
 		private System.Windows.Forms.ComboBox ModeComboBox;
 		private System.Windows.Forms.ComboBox PowerCurveComboBox;
 		private System.Windows.Forms.CheckBox ProfileEnabledCheckBox;
+		private NCore.UI.LocalizationExtender ProfileLocalizationExtender;
 	}
 }

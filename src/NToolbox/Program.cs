@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using NCore;
+using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
 using NToolbox.Windows;
@@ -35,6 +36,8 @@ namespace NToolbox
 					sync.ShowFirstInstance();
 					return;
 				}
+
+				LocalizationManager.Instance.InitializeLanguagePack("Languages\\Russian.lpack.txt");
 
 				HidConnector.Instance.StartUSBConnectionMonitoring();
 				ApplicationService.ApplicationName = "NFE Toolbox";

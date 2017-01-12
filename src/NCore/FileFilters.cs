@@ -6,5 +6,6 @@
 		public const string FirmwareFilter = "Firmware file|*.bin";
 		public const string DataflashFilter = "Dataflash file|*.dataflash";
 		public const string ArcticFoxConfigFilter = "ArcticFox configuration file|*.afc";
+		public const string LanguagePackExtension = "*.lpack.txt";
 	}
 }

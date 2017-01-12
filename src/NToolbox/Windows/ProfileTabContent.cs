@@ -24,6 +24,25 @@ namespace NToolbox.Windows
 
 			InitializeComponent();
 			InitializeControls();
+
+			var localizableControls = ProfileLocalizationExtender.GetLocalizableControls();
+			#if DEBUG
+			LocalizationManager.Instance.RegisterLocalizationKeyValue(localizableControls);
+			#endif
+
+			var localizationDictionary = LocalizationManager.Instance.GetLocalizationDictionary();
+			if (localizationDictionary == null || localizationDictionary.Count == 0) return;
+
+			foreach (var kvp in localizableControls)
+			{
+				var control = kvp.Key;
+				var key = kvp.Value;
+
+				if (localizationDictionary.ContainsKey(key))
+				{
+					control.Text = localizationDictionary[key];
+				}
+			}
 		}
 
 		public bool IsProfileActivated
@@ -252,7 +271,7 @@ namespace NToolbox.Windows
 				PreheatPowerUpDown.Minimum = MinimumWatts;
 				PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
 				PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
-				PreheatPowerUnitLabel.Text = @"W";
+				PreheatPowerUnitLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.WattsLabel", "W");
 			}
 			else if (type == ArcticFoxConfiguration.PreheatType.Percents)
 			{
@@ -266,7 +285,7 @@ namespace NToolbox.Windows
 
 			if (type == ArcticFoxConfiguration.PreheatType.Curve)
 			{
-				PreheatPowerLabel.Text = @"Preheat Curve:";
+				PreheatPowerLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel", "Preheat Curve:");
 				PowerCurveComboBox.Visible = true;
 				PowerCurveEditButton.Visible = true;
 
@@ -276,7 +295,7 @@ namespace NToolbox.Windows
 			}
 			else
 			{
-				PreheatPowerLabel.Text = @"Preheat Power:";
+				PreheatPowerLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel", "Preheat Power:");
 				PowerCurveComboBox.Visible = false;
 				PowerCurveEditButton.Visible = false;
 

@@ -10,6 +10,7 @@ namespace NCore
 	{
 		private static string s_applicationName;
 		private const string AutorunRegistryPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+		private const string LanguagePackDirectoryName = "Languages";
 
 		static ApplicationService()
 		{
@@ -24,11 +25,14 @@ namespace NCore
 				IsIconAvailable = false;
 			}
 			ApplicationDirectory = Directory.GetParent(ApplicationExecutableLocation).FullName;
+			LanguagePacksDirectory = Path.Combine(ApplicationDirectory, LanguagePackDirectoryName);
 		}
 
 		public static string ApplicationExecutableLocation { get; private set; }
 
 		public static string ApplicationDirectory { get; private set; }
+
+		public static string LanguagePacksDirectory { get; private set; }
 
 		public static bool IsIconAvailable { get; private set; }
 
