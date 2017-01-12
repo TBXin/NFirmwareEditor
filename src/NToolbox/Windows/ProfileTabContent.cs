@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
 using NToolbox.Models;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -216,8 +217,8 @@ namespace NToolbox.Windows
 			ModeComboBox.Items.Clear();
 			ModeComboBox.Items.AddRange(new object[]
 			{
-			    new NamedItemContainer<Mode>("Power", Mode.Power),
-			    new NamedItemContainer<Mode>("Temp. Control", Mode.TemperatureControl)
+			    new NamedItemContainer<Mode>(LocalizableStrings.VapeModePower, Mode.Power),
+			    new NamedItemContainer<Mode>(LocalizableStrings.VapeModeTempControl, Mode.TemperatureControl)
 			});
 			ModeComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -271,7 +272,7 @@ namespace NToolbox.Windows
 				PreheatPowerUpDown.Minimum = MinimumWatts;
 				PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
 				PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
-				PreheatPowerUnitLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.WattsLabel", "W");
+				PreheatPowerUnitLabel.Text = LocalizableStrings.WattsLabel;
 			}
 			else if (type == ArcticFoxConfiguration.PreheatType.Percents)
 			{
@@ -285,7 +286,7 @@ namespace NToolbox.Windows
 
 			if (type == ArcticFoxConfiguration.PreheatType.Curve)
 			{
-				PreheatPowerLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel", "Preheat Curve:");
+				PreheatPowerLabel.Text = LocalizableStrings.PreheatCurveLabel;
 				PowerCurveComboBox.Visible = true;
 				PowerCurveEditButton.Visible = true;
 
@@ -295,7 +296,7 @@ namespace NToolbox.Windows
 			}
 			else
 			{
-				PreheatPowerLabel.Text = LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel", "Preheat Power:");
+				PreheatPowerLabel.Text = LocalizableStrings.PreheatPowerLabel;
 				PowerCurveComboBox.Visible = false;
 				PowerCurveEditButton.Visible = false;
 

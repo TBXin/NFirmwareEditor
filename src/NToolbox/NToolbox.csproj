@@ -63,6 +63,7 @@
     <Compile Include="Models\MonitoringData.cs" />
     <Compile Include="Models\StartupMode.cs" />
     <Compile Include="Services\ChartPreviewService.cs" />
+    <Compile Include="Services\LocalizableStrings.cs" />
     <Compile Include="Storages\ConfigurationStorage.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>

@@ -42,8 +42,8 @@ namespace NCore.UI
 
 					var key = line.Substring(0, separatorIndex);
 					var value = line.Substring(separatorIndex + 1, line.Length - 1 - separatorIndex)
-						.Replace("\\r", "\r")
-						.Replace("\\n", "\n");
+					                .Replace("\\r", "\r")
+					                .Replace("\\n", "\n");
 
 					result[key] = value;
 				}

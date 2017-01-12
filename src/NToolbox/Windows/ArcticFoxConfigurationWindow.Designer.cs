@@ -1110,7 +1110,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label1, "");
+			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label");
 			this.label1.Location = new System.Drawing.Point(4, 63);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(39, 13);
@@ -1142,7 +1142,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label7, "");
+			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label");
 			this.label7.Location = new System.Drawing.Point(4, 225);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(39, 13);
@@ -1172,7 +1172,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label2, "");
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label");
 			this.label2.Location = new System.Drawing.Point(4, 90);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(39, 13);
@@ -1204,7 +1204,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label8, "");
+			this.MainLocalizationExtender.SetKey(this.label8, "Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label");
 			this.label8.Location = new System.Drawing.Point(4, 198);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(39, 13);
@@ -2069,7 +2069,7 @@
 			// label18
 			// 
 			this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.MainLocalizationExtender.SetKey(this.label18, "");
+			this.MainLocalizationExtender.SetKey(this.label18, "Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel");
 			this.label18.Location = new System.Drawing.Point(4, 360);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(321, 17);
