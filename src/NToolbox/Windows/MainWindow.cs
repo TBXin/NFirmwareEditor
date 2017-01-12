@@ -159,6 +159,7 @@ namespace NToolbox.Windows
 				LocalizationManager.Instance.InitializeLanguagePack(selectedLanguagePack);
 				LocalizeSelf();
 			};
+			if (LanguageComboBox.Items.Count > 0) LanguageComboBox.SelectedIndex = 0;
 		}
 
 		private ToolboxConfiguration LoadConfiguration()
