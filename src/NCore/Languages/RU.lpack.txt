@@ -1,4 +1,24 @@
-﻿// Static
+﻿// NToolbox Window
+Toolbox.MainWindow.AboutLink=О Программе && Ссылки
+Toolbox.MainWindow.ArcticFoxConfigurationButton=Настройка ArcticFox
+Toolbox.MainWindow.DeviceMonitorButton=Монитор устройства
+Toolbox.MainWindow.FirmwareUpdaterButton=Обновление прошивки
+Toolbox.MainWindow.MyEvicConfigurationButton=Настройка myEvic
+Toolbox.MainWindow.ScreenshooterButton=Снимок экрана
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Подключите устройство с прошивкой \n\nArcticFox\n[{0}]\n\nили с более новой версией
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Загрузка настроек...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=Ваш NFE Toolbox устарел.\n\nДля продолжения скачайте, пожалуйста\n\nпоследний доступный релиз.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Совместимые устройства не обнаружены.\n\nДля продолжения попробуйте подключить совместимое устройство.\n\nЕсли устройство подключено, то попробуйте отключить и подключить его снова, возможно у вас проблемы с кабелем или разъемом.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Не удалось прочитать данные с утройства. Попробуйте переподключить ваше устройство.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Устройство
+Toolbox.ArcticFoxConfiguration.Status.Connected=подключено
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=отключено
+Toolbox.ArcticFoxConfiguration.Status.Ready=Я жажду служить
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Операция выполнена
+
 Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Актив:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Аккумулятор 1:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Аккумулятор 2:
@@ -19,6 +39,9 @@ Toolbox.ArcticFoxConfiguration.BVOTab=BVO
 Toolbox.ArcticFoxConfiguration.CircleScreenTab=Круглый скин
 Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Классический скин
 Toolbox.ArcticFoxConfiguration.ConfigurationButton=Настройки▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Новые
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Открыть
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Сохранить как
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Подключить устройство
 Toolbox.ArcticFoxConfiguration.ControlsTab=Управление
 Toolbox.ArcticFoxConfiguration.DownloadButton=Скачать
@@ -31,7 +54,7 @@ Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Общие:
 Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=Клики в режиме ТК:
 Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Кнопки +/-:
 Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=Клики в режиме ВВ:
-Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Пробужение по +/-:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Пробужение +/-:
 Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Линия 1:
 Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Линия 2:
 Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Линия 3:
@@ -91,12 +114,6 @@ Toolbox.ArcticFoxConfiguration.SmartCheckBox=Умный выбор профил�
 Toolbox.ArcticFoxConfiguration.StatsTab=Статистика
 Toolbox.ArcticFoxConfiguration.UploadButton=Установить
 Toolbox.ArcticFoxConfiguration.VoltsLabel=Вольт
-Toolbox.MainWindow.AboutLink=О Программе && Ссылки
-Toolbox.MainWindow.ArcticFoxConfigurationButton=Настройка ArcticFox
-Toolbox.MainWindow.DeviceMonitorButton=Монитор устройства
-Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
-Toolbox.MainWindow.MyEvicConfigurationButton=Настройка myEvic
-Toolbox.MainWindow.ScreenshooterButton=Снимок экрана
 
 // Static Dropdowns
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Ватты
@@ -152,3 +169,40 @@ Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Секунды
 Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=ЧЧ:ММ:СС
 Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Общий
 Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Пользовательский
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=Настройка PI-регулятора:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=PI-регулятор:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Включить
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Диапазон:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=Значение P:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=Значение I:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Отмена
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurve.NameLabel=Имя кривой:
+Toolbox.ArcticFoxConfiguration.PowerCurve.ChartNameLabel=Кривая нагрева:
+Toolbox.ArcticFoxConfiguration.PowerCurve.TimeLabel=Сек:
+Toolbox.ArcticFoxConfiguration.PowerCurve.PercentLabel=%:
+Toolbox.ArcticFoxConfiguration.PowerCurve.TimeScaleButton=Масштаб
+Toolbox.ArcticFoxConfiguration.PowerCurve.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.PowerCurve.CancelButton=Отмена
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurve.NameLabel=TFR профиль:
+Toolbox.ArcticFoxConfiguration.TFRCurve.ChartNameLabel=TFR кривая:
+Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel=Коэф.:
+Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton=Экспорт
+Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton=Импорт
+Toolbox.ArcticFoxConfiguration.TFRCurve.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.TFRCurve.CancelButton=Отмена
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel=Профиль:
+Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel=Кривая разряда:
+Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel=Вольт:
+Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Отсечка:
+Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Пресет
+Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Отмена

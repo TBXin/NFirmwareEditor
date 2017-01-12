@@ -275,7 +275,7 @@
 			this.MainLocalizationExtender.SetKey(this.MainContainer, "");
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WorkspacePage;
+			this.MainContainer.SelectedPage = this.WelcomePage;
 			this.MainContainer.Size = new System.Drawing.Size(374, 581);
 			this.MainContainer.TabIndex = 0;
 			// 
@@ -356,7 +356,7 @@
 			this.MainLocalizationExtender.SetKey(this.WelcomeLabel, "");
 			this.WelcomeLabel.Location = new System.Drawing.Point(0, 242);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(374, 170);
+			this.WelcomeLabel.Size = new System.Drawing.Size(374, 218);
 			this.WelcomeLabel.TabIndex = 2;
 			this.WelcomeLabel.Text = "Connect device with\r\n\r\nArcticFox\r\n[{0}]\r\n\r\nfirmware or newer";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;

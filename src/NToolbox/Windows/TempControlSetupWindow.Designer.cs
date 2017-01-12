@@ -60,6 +60,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 148);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -70,6 +71,7 @@
 			// SaveButton
 			// 
 			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton");
 			this.SaveButton.Location = new System.Drawing.Point(44, 5);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(100, 35);
@@ -81,6 +83,7 @@
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(150, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -106,6 +109,7 @@
 			this.groupPanel1.Controls.Add(this.EnabledCheckBox);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(248, 142);
@@ -116,6 +120,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label4, "");
 			this.label4.Location = new System.Drawing.Point(213, 63);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(18, 13);
@@ -124,6 +129,7 @@
 			// 
 			// RangeUpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.RangeUpDown, "");
 			this.RangeUpDown.Location = new System.Drawing.Point(101, 60);
 			this.RangeUpDown.Name = "RangeUpDown";
 			this.RangeUpDown.Size = new System.Drawing.Size(106, 21);
@@ -133,6 +139,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel");
 			this.label2.Location = new System.Drawing.Point(4, 63);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(42, 13);
@@ -146,6 +153,7 @@
             0,
             0,
             0});
+			this.MainLocalizationExtender.SetKey(this.IValueUpDown, "");
 			this.IValueUpDown.Location = new System.Drawing.Point(101, 114);
 			this.IValueUpDown.Maximum = new decimal(new int[] {
             9000,
@@ -160,6 +168,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel");
 			this.label1.Location = new System.Drawing.Point(4, 117);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(44, 13);
@@ -173,6 +182,7 @@
             0,
             0,
             0});
+			this.MainLocalizationExtender.SetKey(this.PValueUpDown, "");
 			this.PValueUpDown.Location = new System.Drawing.Point(101, 87);
 			this.PValueUpDown.Maximum = new decimal(new int[] {
             6000,
@@ -197,6 +207,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel");
 			this.label3.Location = new System.Drawing.Point(4, 90);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(46, 13);
@@ -206,6 +217,7 @@
 			// ResistanceLabel
 			// 
 			this.ResistanceLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.ResistanceLabel, "Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel");
 			this.ResistanceLabel.Location = new System.Drawing.Point(4, 36);
 			this.ResistanceLabel.Name = "ResistanceLabel";
 			this.ResistanceLabel.Size = new System.Drawing.Size(93, 13);
@@ -215,6 +227,7 @@
 			// EnabledCheckBox
 			// 
 			this.EnabledCheckBox.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.EnabledCheckBox, "Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox");
 			this.EnabledCheckBox.Location = new System.Drawing.Point(101, 36);
 			this.EnabledCheckBox.Name = "EnabledCheckBox";
 			this.EnabledCheckBox.Size = new System.Drawing.Size(64, 17);
@@ -231,6 +244,7 @@
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TempControlSetupWindow";

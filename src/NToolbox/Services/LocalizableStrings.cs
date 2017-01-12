@@ -4,6 +4,64 @@ namespace NToolbox.Services
 {
 	internal static class LocalizableStrings
 	{
+		public static string MessageConnectDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.ConnectDevice", "Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer"); }
+		}
+
+		public static string MessageDownloadingSettings
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings", "Downloading settings..."); }
+		}
+
+		public static string MessageOutdatedToolbox
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox", "NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release."); }
+		}
+
+		public static string MessageNoCompatibleUSBDevice
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice",
+					"No compatible USB devices are connected." +
+					"\n\n" +
+					"To continue, please connect one." +
+					"\n\n" +
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.");
+			}
+		}
+
+		public static string MessageUnableToReadData
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.UnableToReadData", "Unable to download device settings. Reconnect your device."); }
+		}
+
+		public static string StatusDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.Device", "Device is"); }
+		}
+
+		public static string StatusDeviceConnected
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.Connected", "connected"); }
+		}
+
+		public static string StatusDeviceDisconnected
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.Disconnected", "disconnected"); }
+		}
+
+		public static string StatusReady
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.Ready", "Ready"); }
+		}
+
+		public static string StatusOperationComplete
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.OperationCompleted", "Operation completed"); }
+		}
+
 		public static string WattsLabel
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.WattsLabel", "W"); }
@@ -34,6 +92,24 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve", "Curve"); }
 		}
 
+		#region ConfigurationMenu
+		public static string ConfigurationMenuNew
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New", "New"); }
+		}
+
+		public static string ConfigurationMenuOpen
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open", "Open"); }
+		}
+
+		public static string ConfigurationMenuSaveAs
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs", "Save As"); }
+		}
+		#endregion
+
+		#region VapeMode
 		public static string VapeModePower
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.Mode.Power", "Power"); }
@@ -43,7 +119,9 @@ namespace NToolbox.Services
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl", "Temp. Control"); }
 		}
+		#endregion
 
+		#region BatteryModels
 		public static string BatteryModelGeneric
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Generic", "Generic Battery"); }
@@ -53,6 +131,7 @@ namespace NToolbox.Services
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Custom", "Custom"); }
 		}
+		#endregion
 
 		#region InfoLines
 		public static string InfoLineNonDominant

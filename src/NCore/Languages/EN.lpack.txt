@@ -1,4 +1,24 @@
-﻿// Static
+﻿// NToolbox Window
+Toolbox.MainWindow.AboutLink=About && Links
+Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuration
+Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
+Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Configuration
+Toolbox.MainWindow.ScreenshooterButton=Screenshooter
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Downloading settings...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=No compatible USB devices are connected.\n\nTo continue, please connect one.\n\nIf one already IS connected, try unplugging and plugging it back in. The cable may be loose.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Unable to download device settings. Reconnect your device.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Device is
+Toolbox.ArcticFoxConfiguration.Status.Connected=connected
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=disconnected
+Toolbox.ArcticFoxConfiguration.Status.Ready=Ready
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Operation completed
+
 Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Active:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Battery 1:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Battery 2:
@@ -19,6 +39,9 @@ Toolbox.ArcticFoxConfiguration.BVOTab=BVO
 Toolbox.ArcticFoxConfiguration.CircleScreenTab=Circle Screen
 Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Classic Screen
 Toolbox.ArcticFoxConfiguration.ConfigurationButton=Configuration▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=New
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Open
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Save As
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Connect and Download configuration
 Toolbox.ArcticFoxConfiguration.ControlsTab=Controls
 Toolbox.ArcticFoxConfiguration.DownloadButton=Download settings
@@ -91,12 +114,6 @@ Toolbox.ArcticFoxConfiguration.SmartCheckBox=Smart profile selection
 Toolbox.ArcticFoxConfiguration.StatsTab=Stats
 Toolbox.ArcticFoxConfiguration.UploadButton=Upload settings
 Toolbox.ArcticFoxConfiguration.VoltsLabel=v
-Toolbox.MainWindow.AboutLink=About & Links
-Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuration
-Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
-Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
-Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Configuration
-Toolbox.MainWindow.ScreenshooterButton=Screenshooter
 
 // Static Dropdowns
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Absolute (W)
@@ -152,3 +169,40 @@ Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Seconds
 Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
 Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Generic Battery
 Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Custom
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=PI-Regulator Setup:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=Use PI-Regulator:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Enabled
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Range:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P Value:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I Value:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Cancel
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurve.NameLabel=Power Curve Name:
+Toolbox.ArcticFoxConfiguration.PowerCurve.ChartNameLabel=Power Curve:
+Toolbox.ArcticFoxConfiguration.PowerCurve.TimeLabel=Time:
+Toolbox.ArcticFoxConfiguration.PowerCurve.PercentLabel=Pct:
+Toolbox.ArcticFoxConfiguration.PowerCurve.TimeScaleButton=Time Scale
+Toolbox.ArcticFoxConfiguration.PowerCurve.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.PowerCurve.CancelButton=Cancel
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurve.NameLabel=Profile:
+Toolbox.ArcticFoxConfiguration.TFRCurve.ChartNameLabel=TFR Curve:
+Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel=Factor:
+Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.TFRCurve.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.TFRCurve.CancelButton=Cancel
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel=Profile:
+Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel=Discharge curve:
+Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel=Volts:
+Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Cutoff:
+Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Presets
+Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Cancel

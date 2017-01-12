@@ -32,6 +32,7 @@ namespace NToolbox.Windows
 			Initialize();
 			InitializeControls();
 			InitializeTray();
+			InitializeLanguages();
 		}
 
 		private void Initialize()
@@ -130,6 +131,33 @@ namespace NToolbox.Windows
 			{
 				m_hideToTray = AutorunTrayMenuItem.Checked;
 				SetAutorunState(AutorunTrayMenuItem.Checked);
+			};
+		}
+
+		private void InitializeLanguages()
+		{
+			var files = Directory.GetFiles(ApplicationService.LanguagePacksDirectory, FileFilters.LanguagePackExtension);
+			foreach (var file in files)
+			{
+				var fileName = Path.GetFileNameWithoutExtension(file);
+				string lpName;
+				if (string.IsNullOrEmpty(fileName))
+				{
+					lpName = file;
+				}
+				else
+				{
+					var dotIndex = fileName.IndexOf(".", StringComparison.InvariantCulture);
+					lpName = dotIndex == -1 ? fileName : fileName.Substring(0, dotIndex);
+				}
+				LanguageComboBox.Items.Add(new NamedItemContainer<string>(lpName, file));
+			}
+
+			LanguageComboBox.SelectedIndexChanged += (s, e) =>
+			{
+				var selectedLanguagePack = LanguageComboBox.GetSelectedItem<string>();
+				LocalizationManager.Instance.InitializeLanguagePack(selectedLanguagePack);
+				LocalizeSelf();
 			};
 		}
 

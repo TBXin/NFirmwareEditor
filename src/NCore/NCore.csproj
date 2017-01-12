@@ -110,10 +110,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Languages\English.lpack.txt">
+    <None Include="Languages\EN.lpack.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Languages\Russian.lpack.txt">
+    <None Include="Languages\RU.lpack.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

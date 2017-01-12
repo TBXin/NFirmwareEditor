@@ -54,6 +54,7 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.LanguageComboBox = new System.Windows.Forms.ComboBox();
 			this.ButtonsPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.TrayContextMenuStrip.SuspendLayout();
@@ -295,12 +296,24 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
+			// LanguageComboBox
+			// 
+			this.LanguageComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.LanguageComboBox.FormattingEnabled = true;
+			this.MainLocalizationExtender.SetKey(this.LanguageComboBox, "");
+			this.LanguageComboBox.Location = new System.Drawing.Point(171, 134);
+			this.LanguageComboBox.Name = "LanguageComboBox";
+			this.LanguageComboBox.Size = new System.Drawing.Size(41, 21);
+			this.LanguageComboBox.TabIndex = 9;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(240, 534);
+			this.Controls.Add(this.LanguageComboBox);
 			this.Controls.Add(this.VersionLabel);
 			this.Controls.Add(this.ButtonsPanel);
 			this.Controls.Add(this.LogoPictureBox);
@@ -346,6 +359,7 @@
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
 		private System.Windows.Forms.Label VersionLabel;
 		private System.Windows.Forms.LinkLabel AboutLinkLabel;
+		private System.Windows.Forms.ComboBox LanguageComboBox;
 	}
 }
 

@@ -125,6 +125,7 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 403);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -135,6 +136,7 @@ namespace NToolbox.Windows
 			// SaveButton
 			// 
 			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.Discharge.SaveButton");
 			this.SaveButton.Location = new System.Drawing.Point(574, 5);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(100, 35);
@@ -146,6 +148,7 @@ namespace NToolbox.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.Discharge.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(680, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -159,54 +162,55 @@ namespace NToolbox.Windows
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.Volts11UpDown);
+			this.groupPanel1.Controls.Add(this.Volts10UpDown);
+			this.groupPanel1.Controls.Add(this.Volts9UpDown);
+			this.groupPanel1.Controls.Add(this.Volts8UpDown);
+			this.groupPanel1.Controls.Add(this.Volts7UpDown);
+			this.groupPanel1.Controls.Add(this.Volts6UpDown);
+			this.groupPanel1.Controls.Add(this.Volts5UpDown);
+			this.groupPanel1.Controls.Add(this.Volts4UpDown);
+			this.groupPanel1.Controls.Add(this.Volts3UpDown);
+			this.groupPanel1.Controls.Add(this.Volts2UpDown);
+			this.groupPanel1.Controls.Add(this.Volts1UpDown);
 			this.groupPanel1.Controls.Add(this.PresetsButton);
 			this.groupPanel1.Controls.Add(this.groupPanel3);
 			this.groupPanel1.Controls.Add(this.label21);
-			this.groupPanel1.Controls.Add(this.Volts11UpDown);
 			this.groupPanel1.Controls.Add(this.label22);
 			this.groupPanel1.Controls.Add(this.Percents11UpDown);
 			this.groupPanel1.Controls.Add(this.label19);
-			this.groupPanel1.Controls.Add(this.Volts10UpDown);
 			this.groupPanel1.Controls.Add(this.label20);
 			this.groupPanel1.Controls.Add(this.Percents10UpDown);
 			this.groupPanel1.Controls.Add(this.label17);
-			this.groupPanel1.Controls.Add(this.Volts9UpDown);
 			this.groupPanel1.Controls.Add(this.label18);
 			this.groupPanel1.Controls.Add(this.Percents9UpDown);
 			this.groupPanel1.Controls.Add(this.label15);
-			this.groupPanel1.Controls.Add(this.Volts8UpDown);
 			this.groupPanel1.Controls.Add(this.label16);
 			this.groupPanel1.Controls.Add(this.Percents8UpDown);
 			this.groupPanel1.Controls.Add(this.label13);
-			this.groupPanel1.Controls.Add(this.Volts7UpDown);
 			this.groupPanel1.Controls.Add(this.label14);
 			this.groupPanel1.Controls.Add(this.Percents7UpDown);
 			this.groupPanel1.Controls.Add(this.label11);
-			this.groupPanel1.Controls.Add(this.Volts6UpDown);
 			this.groupPanel1.Controls.Add(this.label12);
 			this.groupPanel1.Controls.Add(this.Percents6UpDown);
 			this.groupPanel1.Controls.Add(this.label9);
-			this.groupPanel1.Controls.Add(this.Volts5UpDown);
 			this.groupPanel1.Controls.Add(this.label10);
 			this.groupPanel1.Controls.Add(this.Percents5UpDown);
 			this.groupPanel1.Controls.Add(this.label7);
-			this.groupPanel1.Controls.Add(this.Volts4UpDown);
 			this.groupPanel1.Controls.Add(this.label8);
 			this.groupPanel1.Controls.Add(this.Percents4UpDown);
 			this.groupPanel1.Controls.Add(this.label5);
-			this.groupPanel1.Controls.Add(this.Volts3UpDown);
 			this.groupPanel1.Controls.Add(this.label6);
 			this.groupPanel1.Controls.Add(this.Percents3UpDown);
 			this.groupPanel1.Controls.Add(this.label3);
-			this.groupPanel1.Controls.Add(this.Volts2UpDown);
 			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.Controls.Add(this.Percents2UpDown);
 			this.groupPanel1.Controls.Add(this.label2);
-			this.groupPanel1.Controls.Add(this.Volts1UpDown);
 			this.groupPanel1.Controls.Add(this.label1);
 			this.groupPanel1.Controls.Add(this.Percents1UpDown);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(200, 397);
@@ -217,6 +221,7 @@ namespace NToolbox.Windows
 			// PresetsButton
 			// 
 			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.PresetsButton, "Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton");
 			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
 			this.PresetsButton.Name = "PresetsButton";
 			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
@@ -229,10 +234,11 @@ namespace NToolbox.Windows
 			this.groupPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel3.Controls.Add(this.label23);
 			this.groupPanel3.Controls.Add(this.CutoffUpDown);
+			this.groupPanel3.Controls.Add(this.label23);
 			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel3.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel3, "Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel");
 			this.groupPanel3.Location = new System.Drawing.Point(0, 333);
 			this.groupPanel3.Name = "groupPanel3";
 			this.groupPanel3.Size = new System.Drawing.Size(200, 64);
@@ -243,6 +249,7 @@ namespace NToolbox.Windows
 			// label23
 			// 
 			this.label23.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label23.Location = new System.Drawing.Point(95, 39);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(34, 13);
@@ -257,6 +264,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.CutoffUpDown, "");
 			this.CutoffUpDown.Location = new System.Drawing.Point(135, 36);
 			this.CutoffUpDown.Maximum = new decimal(new int[] {
             35,
@@ -282,6 +290,7 @@ namespace NToolbox.Windows
 			// label21
 			// 
 			this.label21.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label21, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label21.Location = new System.Drawing.Point(95, 309);
 			this.label21.Name = "label21";
 			this.label21.Size = new System.Drawing.Size(34, 13);
@@ -296,6 +305,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts11UpDown, "");
 			this.Volts11UpDown.Location = new System.Drawing.Point(135, 306);
 			this.Volts11UpDown.Maximum = new decimal(new int[] {
             42,
@@ -321,6 +331,7 @@ namespace NToolbox.Windows
 			// label22
 			// 
 			this.label22.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label22, "");
 			this.label22.Location = new System.Drawing.Point(6, 309);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(22, 13);
@@ -329,6 +340,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents11UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents11UpDown, "");
 			this.Percents11UpDown.Location = new System.Drawing.Point(34, 306);
 			this.Percents11UpDown.Name = "Percents11UpDown";
 			this.Percents11UpDown.Size = new System.Drawing.Size(55, 21);
@@ -344,6 +356,7 @@ namespace NToolbox.Windows
 			// label19
 			// 
 			this.label19.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label19, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label19.Location = new System.Drawing.Point(95, 282);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(34, 13);
@@ -358,6 +371,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts10UpDown, "");
 			this.Volts10UpDown.Location = new System.Drawing.Point(135, 279);
 			this.Volts10UpDown.Maximum = new decimal(new int[] {
             42,
@@ -383,6 +397,7 @@ namespace NToolbox.Windows
 			// label20
 			// 
 			this.label20.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label20, "");
 			this.label20.Location = new System.Drawing.Point(6, 282);
 			this.label20.Name = "label20";
 			this.label20.Size = new System.Drawing.Size(22, 13);
@@ -391,6 +406,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents10UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents10UpDown, "");
 			this.Percents10UpDown.Location = new System.Drawing.Point(34, 279);
 			this.Percents10UpDown.Name = "Percents10UpDown";
 			this.Percents10UpDown.Size = new System.Drawing.Size(55, 21);
@@ -406,6 +422,7 @@ namespace NToolbox.Windows
 			// label17
 			// 
 			this.label17.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label17.Location = new System.Drawing.Point(95, 255);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(34, 13);
@@ -420,6 +437,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts9UpDown, "");
 			this.Volts9UpDown.Location = new System.Drawing.Point(135, 252);
 			this.Volts9UpDown.Maximum = new decimal(new int[] {
             42,
@@ -445,6 +463,7 @@ namespace NToolbox.Windows
 			// label18
 			// 
 			this.label18.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label18, "");
 			this.label18.Location = new System.Drawing.Point(6, 255);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(22, 13);
@@ -453,6 +472,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents9UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents9UpDown, "");
 			this.Percents9UpDown.Location = new System.Drawing.Point(34, 252);
 			this.Percents9UpDown.Name = "Percents9UpDown";
 			this.Percents9UpDown.Size = new System.Drawing.Size(55, 21);
@@ -468,6 +488,7 @@ namespace NToolbox.Windows
 			// label15
 			// 
 			this.label15.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label15.Location = new System.Drawing.Point(95, 228);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(34, 13);
@@ -482,6 +503,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts8UpDown, "");
 			this.Volts8UpDown.Location = new System.Drawing.Point(135, 225);
 			this.Volts8UpDown.Maximum = new decimal(new int[] {
             42,
@@ -507,6 +529,7 @@ namespace NToolbox.Windows
 			// label16
 			// 
 			this.label16.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label16, "");
 			this.label16.Location = new System.Drawing.Point(6, 228);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(22, 13);
@@ -515,6 +538,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents8UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents8UpDown, "");
 			this.Percents8UpDown.Location = new System.Drawing.Point(34, 225);
 			this.Percents8UpDown.Name = "Percents8UpDown";
 			this.Percents8UpDown.Size = new System.Drawing.Size(55, 21);
@@ -530,6 +554,7 @@ namespace NToolbox.Windows
 			// label13
 			// 
 			this.label13.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label13.Location = new System.Drawing.Point(95, 201);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(34, 13);
@@ -544,6 +569,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts7UpDown, "");
 			this.Volts7UpDown.Location = new System.Drawing.Point(135, 198);
 			this.Volts7UpDown.Maximum = new decimal(new int[] {
             42,
@@ -569,6 +595,7 @@ namespace NToolbox.Windows
 			// label14
 			// 
 			this.label14.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label14, "");
 			this.label14.Location = new System.Drawing.Point(6, 201);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(22, 13);
@@ -577,6 +604,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents7UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents7UpDown, "");
 			this.Percents7UpDown.Location = new System.Drawing.Point(34, 198);
 			this.Percents7UpDown.Name = "Percents7UpDown";
 			this.Percents7UpDown.Size = new System.Drawing.Size(55, 21);
@@ -592,6 +620,7 @@ namespace NToolbox.Windows
 			// label11
 			// 
 			this.label11.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label11.Location = new System.Drawing.Point(95, 174);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(34, 13);
@@ -606,6 +635,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts6UpDown, "");
 			this.Volts6UpDown.Location = new System.Drawing.Point(135, 171);
 			this.Volts6UpDown.Maximum = new decimal(new int[] {
             42,
@@ -631,6 +661,7 @@ namespace NToolbox.Windows
 			// label12
 			// 
 			this.label12.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label12, "");
 			this.label12.Location = new System.Drawing.Point(6, 174);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(22, 13);
@@ -639,6 +670,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents6UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents6UpDown, "");
 			this.Percents6UpDown.Location = new System.Drawing.Point(34, 171);
 			this.Percents6UpDown.Name = "Percents6UpDown";
 			this.Percents6UpDown.Size = new System.Drawing.Size(55, 21);
@@ -654,6 +686,7 @@ namespace NToolbox.Windows
 			// label9
 			// 
 			this.label9.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label9.Location = new System.Drawing.Point(95, 147);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(34, 13);
@@ -668,6 +701,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts5UpDown, "");
 			this.Volts5UpDown.Location = new System.Drawing.Point(135, 144);
 			this.Volts5UpDown.Maximum = new decimal(new int[] {
             42,
@@ -693,6 +727,7 @@ namespace NToolbox.Windows
 			// label10
 			// 
 			this.label10.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label10, "");
 			this.label10.Location = new System.Drawing.Point(6, 147);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(22, 13);
@@ -701,6 +736,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents5UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents5UpDown, "");
 			this.Percents5UpDown.Location = new System.Drawing.Point(34, 144);
 			this.Percents5UpDown.Name = "Percents5UpDown";
 			this.Percents5UpDown.Size = new System.Drawing.Size(55, 21);
@@ -716,6 +752,7 @@ namespace NToolbox.Windows
 			// label7
 			// 
 			this.label7.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label7.Location = new System.Drawing.Point(95, 120);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(34, 13);
@@ -730,6 +767,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts4UpDown, "");
 			this.Volts4UpDown.Location = new System.Drawing.Point(135, 117);
 			this.Volts4UpDown.Maximum = new decimal(new int[] {
             42,
@@ -755,6 +793,7 @@ namespace NToolbox.Windows
 			// label8
 			// 
 			this.label8.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label8, "");
 			this.label8.Location = new System.Drawing.Point(6, 120);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(22, 13);
@@ -763,6 +802,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents4UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents4UpDown, "");
 			this.Percents4UpDown.Location = new System.Drawing.Point(34, 117);
 			this.Percents4UpDown.Name = "Percents4UpDown";
 			this.Percents4UpDown.Size = new System.Drawing.Size(55, 21);
@@ -778,6 +818,7 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label5.Location = new System.Drawing.Point(95, 93);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(34, 13);
@@ -792,6 +833,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts3UpDown, "");
 			this.Volts3UpDown.Location = new System.Drawing.Point(135, 90);
 			this.Volts3UpDown.Maximum = new decimal(new int[] {
             42,
@@ -817,6 +859,7 @@ namespace NToolbox.Windows
 			// label6
 			// 
 			this.label6.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label6, "");
 			this.label6.Location = new System.Drawing.Point(6, 93);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(22, 13);
@@ -825,6 +868,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents3UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents3UpDown, "");
 			this.Percents3UpDown.Location = new System.Drawing.Point(34, 90);
 			this.Percents3UpDown.Name = "Percents3UpDown";
 			this.Percents3UpDown.Size = new System.Drawing.Size(55, 21);
@@ -840,6 +884,7 @@ namespace NToolbox.Windows
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label3.Location = new System.Drawing.Point(95, 66);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(34, 13);
@@ -854,6 +899,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts2UpDown, "");
 			this.Volts2UpDown.Location = new System.Drawing.Point(135, 63);
 			this.Volts2UpDown.Maximum = new decimal(new int[] {
             42,
@@ -879,6 +925,7 @@ namespace NToolbox.Windows
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label4, "");
 			this.label4.Location = new System.Drawing.Point(6, 66);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(22, 13);
@@ -887,6 +934,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents2UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents2UpDown, "");
 			this.Percents2UpDown.Location = new System.Drawing.Point(34, 63);
 			this.Percents2UpDown.Name = "Percents2UpDown";
 			this.Percents2UpDown.Size = new System.Drawing.Size(55, 21);
@@ -902,6 +950,7 @@ namespace NToolbox.Windows
 			// label2
 			// 
 			this.label2.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
 			this.label2.Location = new System.Drawing.Point(95, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
@@ -916,6 +965,7 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
+			this.MainLocalizationExtender.SetKey(this.Volts1UpDown, "");
 			this.Volts1UpDown.Location = new System.Drawing.Point(135, 36);
 			this.Volts1UpDown.Maximum = new decimal(new int[] {
             42,
@@ -941,6 +991,7 @@ namespace NToolbox.Windows
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label1, "");
 			this.label1.Location = new System.Drawing.Point(6, 39);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(22, 13);
@@ -949,6 +1000,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents1UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents1UpDown, "");
 			this.Percents1UpDown.Location = new System.Drawing.Point(34, 36);
 			this.Percents1UpDown.Name = "Percents1UpDown";
 			this.Percents1UpDown.Size = new System.Drawing.Size(55, 21);
@@ -971,6 +1023,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Controls.Add(this.DischargeChart);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(575, 397);
@@ -981,6 +1034,7 @@ namespace NToolbox.Windows
 			// DischargeChart
 			// 
 			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainLocalizationExtender.SetKey(this.DischargeChart, "");
 			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
 			this.DischargeChart.Name = "DischargeChart";
 			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
@@ -996,6 +1050,7 @@ namespace NToolbox.Windows
 			this.Controls.Add(this.groupPanel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "DischargeProfileWindow";
