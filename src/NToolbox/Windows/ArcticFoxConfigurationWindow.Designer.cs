@@ -2452,7 +2452,6 @@
 			this.Battery4OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery4OffsetLabel.TabIndex = 120;
 			this.Battery4OffsetLabel.Text = "Battery 4:";
-			this.MainToolTip.SetToolTip(this.Battery4OffsetLabel, "Battery4 Voltage Offset");
 			// 
 			// Battery4OffsetUpDown
 			// 
@@ -2479,7 +2478,6 @@
 			this.Battery4OffsetUpDown.TabIndex = 119;
 			this.Battery4OffsetUpDown.TabStop = false;
 			this.Battery4OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.Battery4OffsetUpDown, "Battery3 Voltage Offset");
 			// 
 			// Battery3OffsetVoltsLabel
 			// 
@@ -2500,7 +2498,6 @@
 			this.Battery3OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery3OffsetLabel.TabIndex = 117;
 			this.Battery3OffsetLabel.Text = "Battery 3:";
-			this.MainToolTip.SetToolTip(this.Battery3OffsetLabel, "Battery3 Voltage Offset");
 			// 
 			// Battery3OffsetUpDown
 			// 
@@ -2527,7 +2524,6 @@
 			this.Battery3OffsetUpDown.TabIndex = 116;
 			this.Battery3OffsetUpDown.TabStop = false;
 			this.Battery3OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.Battery3OffsetUpDown, "Battery3 Voltage Offset");
 			// 
 			// Battery2OffsetVoltsLabel
 			// 
@@ -2548,7 +2544,6 @@
 			this.Battery2OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery2OffsetLabel.TabIndex = 114;
 			this.Battery2OffsetLabel.Text = "Battery 2:";
-			this.MainToolTip.SetToolTip(this.Battery2OffsetLabel, "Battery2 Voltage Offset");
 			// 
 			// Battery2OffsetUpDown
 			// 
@@ -2575,7 +2570,6 @@
 			this.Battery2OffsetUpDown.TabIndex = 113;
 			this.Battery2OffsetUpDown.TabStop = false;
 			this.Battery2OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.Battery2OffsetUpDown, "Battery2 Voltage Offset");
 			// 
 			// Battery1OffsetVoltsLabel
 			// 
@@ -2596,7 +2590,6 @@
 			this.Battery1OffsetLabel.Size = new System.Drawing.Size(56, 13);
 			this.Battery1OffsetLabel.TabIndex = 111;
 			this.Battery1OffsetLabel.Text = "Battery 1:";
-			this.MainToolTip.SetToolTip(this.Battery1OffsetLabel, "Battery1 Voltage Offset");
 			// 
 			// Battery1OffsetUpDown
 			// 
@@ -2623,7 +2616,6 @@
 			this.Battery1OffsetUpDown.TabIndex = 110;
 			this.Battery1OffsetUpDown.TabStop = false;
 			this.Battery1OffsetUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.Battery1OffsetUpDown, "Battery1 Voltage Offset");
 			// 
 			// groupPanel1
 			// 
