@@ -72,6 +72,7 @@ namespace NToolbox.Windows
 			this.groupPanel3.Controls.Add(this.tabControl1);
 			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel3.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel3, "Toolbox.FirmwareUpdater.OperationsGroupLabel");
 			this.groupPanel3.Location = new System.Drawing.Point(3, 244);
 			this.groupPanel3.Name = "groupPanel3";
 			this.groupPanel3.Size = new System.Drawing.Size(326, 98);
@@ -88,6 +89,7 @@ namespace NToolbox.Windows
 			this.tabControl1.Controls.Add(this.DataflashTabPage);
 			this.tabControl1.Controls.Add(this.AdvancedTabPage);
 			this.tabControl1.ItemSize = new System.Drawing.Size(105, 18);
+			this.MainLocalizationExtender.SetKey(this.tabControl1, "");
 			this.tabControl1.Location = new System.Drawing.Point(4, 33);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -98,6 +100,7 @@ namespace NToolbox.Windows
 			// CommonTabPage
 			// 
 			this.CommonTabPage.Controls.Add(this.UpdateFromFileButton);
+			this.MainLocalizationExtender.SetKey(this.CommonTabPage, "Toolbox.FirmwareUpdater.CommonTab");
 			this.CommonTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CommonTabPage.Name = "CommonTabPage";
 			this.CommonTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -110,6 +113,7 @@ namespace NToolbox.Windows
 			// 
 			this.UpdateFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.UpdateFromFileButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.UpdateFromFileButton, "Toolbox.FirmwareUpdater.UpdateButton");
 			this.UpdateFromFileButton.Location = new System.Drawing.Point(-1, 1);
 			this.UpdateFromFileButton.Name = "UpdateFromFileButton";
 			this.UpdateFromFileButton.Size = new System.Drawing.Size(312, 35);
@@ -122,6 +126,7 @@ namespace NToolbox.Windows
 			this.DataflashTabPage.Controls.Add(this.WriteDataflashButton);
 			this.DataflashTabPage.Controls.Add(this.ReadDataflashButton);
 			this.DataflashTabPage.Controls.Add(this.ResetDataflashButton);
+			this.MainLocalizationExtender.SetKey(this.DataflashTabPage, "Toolbox.FirmwareUpdater.DatalfashTab");
 			this.DataflashTabPage.Location = new System.Drawing.Point(4, 22);
 			this.DataflashTabPage.Name = "DataflashTabPage";
 			this.DataflashTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -134,6 +139,7 @@ namespace NToolbox.Windows
 			// 
 			this.WriteDataflashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.WriteDataflashButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.WriteDataflashButton, "Toolbox.FirmwareUpdater.WriteDataflashButton");
 			this.WriteDataflashButton.Location = new System.Drawing.Point(105, 1);
 			this.WriteDataflashButton.Name = "WriteDataflashButton";
 			this.WriteDataflashButton.Size = new System.Drawing.Size(100, 35);
@@ -145,6 +151,7 @@ namespace NToolbox.Windows
 			// 
 			this.ReadDataflashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ReadDataflashButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.ReadDataflashButton, "Toolbox.FirmwareUpdater.ReadDataflashButton");
 			this.ReadDataflashButton.Location = new System.Drawing.Point(-1, 1);
 			this.ReadDataflashButton.Name = "ReadDataflashButton";
 			this.ReadDataflashButton.Size = new System.Drawing.Size(100, 35);
@@ -155,6 +162,7 @@ namespace NToolbox.Windows
 			// ResetDataflashButton
 			// 
 			this.ResetDataflashButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.ResetDataflashButton, "Toolbox.FirmwareUpdater.ResetDataFlashButton");
 			this.ResetDataflashButton.Location = new System.Drawing.Point(211, 1);
 			this.ResetDataflashButton.Name = "ResetDataflashButton";
 			this.ResetDataflashButton.Size = new System.Drawing.Size(100, 35);
@@ -166,6 +174,7 @@ namespace NToolbox.Windows
 			// 
 			this.AdvancedTabPage.Controls.Add(this.ChangeBootModeButton);
 			this.AdvancedTabPage.Controls.Add(this.ChangeHWButton);
+			this.MainLocalizationExtender.SetKey(this.AdvancedTabPage, "Toolbox.FirmwareUpdater.AdvancedTab");
 			this.AdvancedTabPage.Location = new System.Drawing.Point(4, 22);
 			this.AdvancedTabPage.Name = "AdvancedTabPage";
 			this.AdvancedTabPage.Size = new System.Drawing.Size(312, 36);
@@ -177,6 +186,7 @@ namespace NToolbox.Windows
 			// 
 			this.ChangeBootModeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ChangeBootModeButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.ChangeBootModeButton, "Toolbox.FirmwareUpdater.SwitchBootModeButton");
 			this.ChangeBootModeButton.Location = new System.Drawing.Point(158, 1);
 			this.ChangeBootModeButton.Name = "ChangeBootModeButton";
 			this.ChangeBootModeButton.Size = new System.Drawing.Size(153, 35);
@@ -187,6 +197,7 @@ namespace NToolbox.Windows
 			// ChangeHWButton
 			// 
 			this.ChangeHWButton.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.ChangeHWButton, "Toolbox.FirmwareUpdater.ChangeHWVerButton");
 			this.ChangeHWButton.Location = new System.Drawing.Point(-1, 1);
 			this.ChangeHWButton.Name = "ChangeHWButton";
 			this.ChangeHWButton.Size = new System.Drawing.Size(153, 35);
@@ -203,6 +214,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Controls.Add(this.UpdateProgressBar);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.FirmwareUpdater.ProgressGroupLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(3, 148);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(326, 90);
@@ -214,6 +226,7 @@ namespace NToolbox.Windows
 			// 
 			this.UpdateStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.UpdateStatusLabel, "");
 			this.UpdateStatusLabel.Location = new System.Drawing.Point(4, 33);
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
 			this.UpdateStatusLabel.Size = new System.Drawing.Size(318, 20);
@@ -224,6 +237,7 @@ namespace NToolbox.Windows
 			// 
 			this.UpdateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.UpdateProgressBar, "");
 			this.UpdateProgressBar.Location = new System.Drawing.Point(4, 56);
 			this.UpdateProgressBar.Name = "UpdateProgressBar";
 			this.UpdateProgressBar.Size = new System.Drawing.Size(318, 30);
@@ -234,16 +248,17 @@ namespace NToolbox.Windows
 			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel1.Controls.Add(this.label1);
 			this.groupPanel1.Controls.Add(this.BootModeTextBox);
-			this.groupPanel1.Controls.Add(this.label5);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.label3);
 			this.groupPanel1.Controls.Add(this.DeviceNameTextBox);
+			this.groupPanel1.Controls.Add(this.label1);
+			this.groupPanel1.Controls.Add(this.label5);
+			this.groupPanel1.Controls.Add(this.label4);
+			this.groupPanel1.Controls.Add(this.label3);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.FirmwareUpdater.DeviceInfoGroupLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(326, 139);
@@ -254,6 +269,7 @@ namespace NToolbox.Windows
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.FirmwareUpdater.BootModeLabel");
 			this.label1.Location = new System.Drawing.Point(9, 117);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(62, 13);
@@ -264,6 +280,7 @@ namespace NToolbox.Windows
 			// 
 			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.BootModeTextBox, "");
 			this.BootModeTextBox.Location = new System.Drawing.Point(106, 114);
 			this.BootModeTextBox.Name = "BootModeTextBox";
 			this.BootModeTextBox.Size = new System.Drawing.Size(216, 21);
@@ -273,6 +290,7 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.FirmwareUpdater.HardwareVersionLabel");
 			this.label5.Location = new System.Drawing.Point(9, 90);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(96, 13);
@@ -283,6 +301,7 @@ namespace NToolbox.Windows
 			// 
 			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.HardwareVersionTextBox, "");
 			this.HardwareVersionTextBox.Location = new System.Drawing.Point(106, 87);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
 			this.HardwareVersionTextBox.Size = new System.Drawing.Size(216, 21);
@@ -292,6 +311,7 @@ namespace NToolbox.Windows
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.FirmwareUpdater.FirmwareVersionLabel");
 			this.label4.Location = new System.Drawing.Point(9, 63);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(93, 13);
@@ -302,6 +322,7 @@ namespace NToolbox.Windows
 			// 
 			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.FirmwareVersionTextBox, "");
 			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(106, 60);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
 			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(216, 21);
@@ -311,6 +332,7 @@ namespace NToolbox.Windows
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.FirmwareUpdater.DeviceNameLabel");
 			this.label3.Location = new System.Drawing.Point(9, 36);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(72, 13);
@@ -321,6 +343,7 @@ namespace NToolbox.Windows
 			// 
 			this.DeviceNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.DeviceNameTextBox, "");
 			this.DeviceNameTextBox.Location = new System.Drawing.Point(106, 33);
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
 			this.DeviceNameTextBox.Size = new System.Drawing.Size(216, 21);
@@ -338,6 +361,7 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.BorderWidth = 1F;
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 348);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -349,6 +373,7 @@ namespace NToolbox.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.FirmwareUpdater.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(228, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -367,6 +392,7 @@ namespace NToolbox.Windows
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FirmwareUpdaterWindow";

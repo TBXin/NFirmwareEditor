@@ -1,0 +1,305 @@
+﻿// Shared
+Toolbox.Shared.SecondString=сек
+Toolbox.Shared.SecondsString=сек
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=Настройка ArcticFox
+Toolbox.MainWindow.MyEvicConfigurationButton=Настройка myEvic
+Toolbox.MainWindow.DeviceMonitorButton=Мониторинг устройства
+Toolbox.MainWindow.ScreenshooterButton=Снимок экрана
+Toolbox.MainWindow.FirmwareUpdaterButton=Обновление прошивки
+Toolbox.MainWindow.AboutLink=О Программе && Ссылки
+
+Toolbox.MainWindow.Tray.ShowToolbox=Показать NFE Toolbox
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Запускать ArcticFox Configuration при подключении устройства
+Toolbox.MainWindow.Tray.TimeSync=Синхронизация времени при подключении устройства
+Toolbox.MainWindow.Tray.StartWithWindows=Запускать вместе с Windows
+Toolbox.MainWindow.Tray.Exit=Выход
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Подключите устройство\nс прошивкой\n\nArcticFox\n[{0}]\n\nили более новой
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Загрузка настроек...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=Текущий NFE Toolbox устарел.\n\nДля продолжения пожалуйста скачайте\n\nпоследний доступный релиз.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Совместимые устройства не обнаружены.\n\nДля продолжения подключите совместимое устройство.\n\nЕсли устройство подключено, попробуйте отключить и подключить его снова - возможно у вас проблемы с кабелем или разъемом.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Не удалось считать данные с утройства. Попробуйте переподключить ваше устройство.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Устройство
+Toolbox.ArcticFoxConfiguration.Status.Connected=подключено
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=отключено
+Toolbox.ArcticFoxConfiguration.Status.Ready=Готов
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Операция выполнена
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Текущий профиль:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Аккумулятор 1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Аккумулятор 2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Аккумулятор 3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Аккумулятор 4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Настр.
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Модель АКБ:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=Проверка TCR:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=Дремать:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Лимит затяжки:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Калибр. шунта:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB Зарядка:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=USB Не спать:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Дополнительные
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Круглая тема
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Классическая тема
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Настройки▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Новые
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Открыть
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Сохранить как
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Подключить устройство
+Toolbox.ArcticFoxConfiguration.ControlsTab=Управление
+Toolbox.ArcticFoxConfiguration.DownloadButton=Выгрузить из мода
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Вкл
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Клика:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Клика:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Клика:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Шаг по 1 Ватту:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Общие:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=Клики в режиме ТК:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Кнопки +/-:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=Клики в режиме ВВ:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Пробуждение +/-:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Линия 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Линия 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Линия 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Линия 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Затяжка
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=Инфолинии в режиме ТК:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=Инфолинии в режиме ВВ:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Яркость:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Экран зарядки:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Вид часов:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Переверн. экран:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Затухание через:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Основная тема:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Показ затяжки:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Заставка:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Часы:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Лого:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Стелс режим:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Наведите курсор для всплывающей подсказки.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Старое меню:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Кол-во затяжек:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Формат времени:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Время затяжек:
+Toolbox.ArcticFoxConfiguration.GeneralTab=Основные
+Toolbox.ArcticFoxConfiguration.LayoutTab=Вид
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Материалы
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Создать конфигурацию
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Открыть конфигурацию
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Кривые
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Материал:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Заблокировано
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Основной режим:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Имя профиля:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Настр.
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Мощность:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Задержка:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Кривая прехита:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Прехит:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Длительность:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Тип прехита:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Профиль виден:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Сопротивление:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Настр.
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Температура - основной регулятор ТК
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Температура:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Настр.
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=Ватт
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=Мощность
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Темп. Контроль
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Профили
+Toolbox.ArcticFoxConfiguration.ResetButton=Сброс
+Toolbox.ArcticFoxConfiguration.ScreenTab=Экран
+Toolbox.ArcticFoxConfiguration.SecondsLabel=Сек
+Toolbox.ArcticFoxConfiguration.SettingsTab=Настройки
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Маленький экран
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Автовыбор профилей
+Toolbox.ArcticFoxConfiguration.StatsTab=Статистика
+Toolbox.ArcticFoxConfiguration.UploadButton=Загрузить в мод
+Toolbox.ArcticFoxConfiguration.VoltsLabel=Вольт
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Выбор внешнего вида главного экрана. Применимо только к большим экранам (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Выбор профиля, так же как смена режима в оригинальной прошивке.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Отображение пользовательского логотипа вместо основной информации на главном экране.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Отображение часов на рабочем столе.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Коррекция максимальной длительности затяжки.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Коррекция значения измерительного шунта - подстройка омметра мода для более точных показаний.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Использование генератора 32768 Гц (если он есть физически) модулем RTC.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Режим Light Sleep, позволяет достаточно точно идти часам на модах, где аппаратной поддержки часов изначально нет; повышенное энергопотребление в режиме ожидания; включенный режим символизирует знак "!" справа от аккумулятора.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Предложение о сбросе счетчиков парения после замены аккумулятора.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Проверка на ТКС материала спирали (в режиме термоконтроля), может быть отключена при использовании очень затейливых намоток, которые вызывают появление ошибки TCR (по аналогии - переключают стоковую прошивку в режим вариватта).
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Зарядка аккумуляторов от USB, только для мультибатарейных модов.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Запрет ухода в сон по окончании зарядки, если подключен USB.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Ватты
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Проценты
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Кривая
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Мощность/Температура
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Расчетное напряжение
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Выходное напряжение
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Выходной ток
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Сопротивление
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Реальное сопротивление
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Кол-во затяжек
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Время затяжек
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Напряжение на акб
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Дата/Время
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Температура платы
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Посл. время затяжки
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Посл. мощность
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Посл. температура
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Индикатор АКБ
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Индкикатор АКБ + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Индикатор АКБ + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Проценты АКБ
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Классическая
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Круглая
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Обычный
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Расширенный
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Аналоговые
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Цифровые
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Выкл
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 Мин
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 Мин
+Toolbox.ArcticFoxConfiguration.ClickActions.None=Нет
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Ред. главный экран
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Главное меню
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Настр. прехита
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Выбор профиля
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Ред. профиль
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=ТК регулятор W/Temp
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Показать часы
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Информация
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Смарт Вкл / Выкл
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=Дремать Вкл / Выкл
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Вкл / Выкл
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Как обычно
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Перевернуты
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Секунды
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=ЧЧ:ММ:СС
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Общий
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Пользовательский
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=Настройка PI-регулятора:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=PI-регулятор:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Включить
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Диапазон:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=Значение P:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=Значение I:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Отмена
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Имя кривой:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Кривая нагрева:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Сек:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=%:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Масштаб
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Отмена
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=TFR профиль:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR кривая:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Коэф.:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Экспорт
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Импорт
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Отмена
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Профиль:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Кривая разряда:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Вольт:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Отсечка:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Пресет
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Экспорт
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Импорт
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Отмена
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Датчики:
+Toolbox.DeviceMonitor.ControlsLabel=Управление:
+Toolbox.DeviceMonitor.ChartNameLabel=Графики:
+Toolbox.DeviceMonitor.FollowButton=Следовать
+
+Toolbox.DeviceMonitor.Battery1Label=Аккумулятор 1:
+Toolbox.DeviceMonitor.Battery2Label=Аккумулятор 2:
+Toolbox.DeviceMonitor.Battery3Label=Аккумулятор 3:
+Toolbox.DeviceMonitor.Battery4Label=Аккумулятор 4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Сумма всех АКБ:
+Toolbox.DeviceMonitor.PowerLabel=Мощность:
+Toolbox.DeviceMonitor.PowerSetLabel=Уст. Мощность:
+Toolbox.DeviceMonitor.TemperatureLabel=Температура:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Уст. Температура:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Сила тока:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Напряжение:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Сопротивление:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Живое Сопротивление:
+Toolbox.DeviceMonitor.BoardTempLabel=Температура платы:
+
+Toolbox.DeviceMonitor.PauseButton=Пауза
+Toolbox.DeviceMonitor.PauseResumeButton=Продолжить
+Toolbox.DeviceMonitor.RecordButton=Запись...
+Toolbox.DeviceMonitor.RecordStopButton=Остановить запись
+Toolbox.DeviceMonitor.SetXScaleButton=Масштаб по X
+Toolbox.DeviceMonitor.SetYScaleButton=Масштаб по Y
+Toolbox.DeviceMonitor.PuffButton=Затяжка...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Рисовать границы затяжек
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Экран:
+Toolbox.Screenshooter.ControlsGroupLabel=Управление:
+Toolbox.Screenshooter.TakeScreenshotButton=Сделать снимок
+Toolbox.Screenshooter.SaveScreenshotButton=Сохранить снимок
+Toolbox.Screenshooter.PixelSizeLabel=Увеличить размер в N раз:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Снимок перед сохранением:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Вкл
+Toolbox.Screenshooter.StartBroadcastButton=Трансляция экрана
+Toolbox.Screenshooter.StopBroadcastButton=Остановить
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Информация:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Устройство:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Версия прошивки:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Версия платы:
+Toolbox.FirmwareUpdater.BootModeLabel=Режим загрузки:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Прогресс:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Операции:
+Toolbox.FirmwareUpdater.CommonTab=Основные
+Toolbox.FirmwareUpdater.UpdateButton=Обновить
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Прочитать
+Toolbox.FirmwareUpdater.WriteDataflashButton=Записать
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Сбросить
+Toolbox.FirmwareUpdater.AdvancedTab=Эксперт
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Сменить версию платы
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Переключить загручик
+Toolbox.FirmwareUpdater.CancelButton=Отмена
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Устройство обнаружено.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Ожидание устройства...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Ожидание устройства после перезагрузки...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Чтение dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Запись dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Перезагрузка устройства...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Загрузка прошивки...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash был успешно прочитан и сохранен в файл.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash успешно записан.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash успешно сброшен.

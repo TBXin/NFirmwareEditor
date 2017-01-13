@@ -10,6 +10,7 @@ using NCore;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -97,7 +98,7 @@ namespace NToolbox.Windows
 			{
 				SetButtonState(false);
 				BroadcastButton.Enabled = true;
-				BroadcastButton.Text = @"Stop broadcast";
+				BroadcastButton.Text = LocalizableStrings.ScreenshooterStopBroadcast;
 				m_isBroadcasting = true;
 				new Thread(() =>
 				{
@@ -113,7 +114,7 @@ namespace NToolbox.Windows
 					UpdateUI(() =>
 					{
 						SetButtonState(true);
-						BroadcastButton.Text = @"Start broadcast";
+						BroadcastButton.Text = LocalizableStrings.ScreenshooterStartBroadcast;
 					});
 				})
 				{
@@ -173,12 +174,7 @@ namespace NToolbox.Windows
 			{
 				if (ignoreErrors) return null;
 
-				InfoBox.Show
-				(
-					"An error occurred during taking screenshot..." +
-					"\n\n" +
-					"To continue, please activate or reconnect your device."
-				);
+				InfoBox.Show(LocalizableStrings.MessageNoCompatibleUSBDevice);
 				return null;
 			}
 		}

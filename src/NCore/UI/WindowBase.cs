@@ -17,14 +17,36 @@ namespace NCore.UI
 			Load += WindowBase_Load;
 		}
 
-		private void WindowBase_Load(object sender, EventArgs e)
+		protected void LocalizeSelf()
 		{
-			var localizableControls = MainLocalizationExtender.GetDictionary();
+			var localizableControls = MainLocalizationExtender.GetLocalizableControls();
+			#if DEBUG
+			LocalizationManager.Instance.RegisterLocalizationKeyValue(localizableControls);
+			#endif
+
+			var localizationDictionary = LocalizationManager.Instance.GetLocalizationDictionary();
+			if (localizationDictionary == null || localizationDictionary.Count == 0) return;
+
 			foreach (var kvp in localizableControls)
 			{
 				var control = kvp.Key;
 				var key = kvp.Value;
+
+				if (localizationDictionary.ContainsKey(key))
+				{
+					control.Text = localizationDictionary[key];
+				}
 			}
+			OnLocalization();
+		}
+
+		protected virtual void OnLocalization()
+		{
+		}
+
+		private void WindowBase_Load(object sender, EventArgs e)
+		{
+			LocalizeSelf();
 		}
 
 		protected bool IgnoreFirstInstanceMessages { get; set; }

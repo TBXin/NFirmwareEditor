@@ -18,16 +18,16 @@ namespace NCore.UI
 		[Description("This is used by some code somewhere to do something")]
 		public string GetKey(Control control)
 		{
-			return m_controls.ContainsKey(control) ? m_controls[control] : string.Empty;
+			return control != null && m_controls.ContainsKey(control) ? m_controls[control] : string.Empty;
 		}
 
 		public void SetKey(Control control, string value)
 		{
-			if (string.IsNullOrEmpty(value)) return;
+			if (control == null || string.IsNullOrEmpty(value)) return;
 			m_controls[control] = value;
 		}
 
-		public IDictionary<Control, string> GetDictionary()
+		public IDictionary<Control, string> GetLocalizableControls()
 		{
 			return m_controls;
 		}
@@ -36,7 +36,6 @@ namespace NCore.UI
 		public bool CanExtend(object extendee)
 		{
 			return true;
-			//return extendee is Control;
 		}
 		#endregion
 	}

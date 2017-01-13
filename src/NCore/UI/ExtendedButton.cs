@@ -25,6 +25,8 @@ namespace NCore.UI
 			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
 			SetStyle(ControlStyles.Selectable, false);
 			UpdateStyles();
+
+			TextChanged += (s, e) => Invalidate();
 		}
 
 		public string AdditionalText

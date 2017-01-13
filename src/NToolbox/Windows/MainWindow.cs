@@ -6,6 +6,7 @@ using NCore;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
+using NToolbox.Services;
 using NToolbox.Storages;
 
 namespace NToolbox.Windows
@@ -32,6 +33,7 @@ namespace NToolbox.Windows
 			Initialize();
 			InitializeControls();
 			InitializeTray();
+			InitializeLanguages();
 		}
 
 		private void Initialize()
@@ -131,6 +133,36 @@ namespace NToolbox.Windows
 				m_hideToTray = AutorunTrayMenuItem.Checked;
 				SetAutorunState(AutorunTrayMenuItem.Checked);
 			};
+		}
+
+		private void InitializeLanguages()
+		{
+			var languages = LocalizationManager.GetAvailableLanguages();
+			foreach (var itemContainer in languages)
+			{
+				LanguageComboBox.Items.Add(itemContainer);
+			}
+			LanguageComboBox.SelectedIndexChanged += (s, e) =>
+			{
+				var selectedContainer = LanguageComboBox.SelectedItem as NamedItemContainer<string>;
+				if (selectedContainer == null) return;
+
+				LocalizationManager.Instance.InitializeLanguagePack(selectedContainer.Data);
+				LocalizeSelf();
+
+				m_configuration.Language = selectedContainer.Name;
+				SaveConfiguration();
+			};
+
+			if (string.IsNullOrEmpty(m_configuration.Language) && LanguageComboBox.Items.Count > 0)
+			{
+				LanguageComboBox.SelectedIndex = 0;
+			}
+			else
+			{
+				var activeLanguage = languages.FindIndex(x => string.Equals(x.Name, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
+				if (activeLanguage != -1) LanguageComboBox.SelectedIndex = activeLanguage;
+			}
 		}
 
 		private ToolboxConfiguration LoadConfiguration()
@@ -236,6 +268,22 @@ namespace NToolbox.Windows
 		{
 			return ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
 		}
+
+		#region Overrides of WindowBase
+		protected override void OnLocalization()
+		{
+			ShowTrayMenuItem.Text = LocalizableStrings.TrayShowToolbox;
+			ArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfiguration;
+			MyEvicConfigurationTrayMenuItem.Text = LocalizableStrings.TrayMyEvicConfiguration;
+			DeviceMonitorTrayMenuItem.Text = LocalizableStrings.TrayDeviceMonitor;
+			ScreenshooterTrayMenuItem.Text = LocalizableStrings.TrayScreenshooter;
+			FirmwareUpdaterTrayMenuItem.Text = LocalizableStrings.TrayFirmwareUpdater;
+			OpenArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfigurationAutostart;
+			AutorunTrayMenuItem.Text = LocalizableStrings.TrayToolboxAutostart;
+			TimeSyncTrayMenuItem.Text = LocalizableStrings.TrayTimeSync;
+			ExitTrayMenuItem.Text = LocalizableStrings.TrayExit;
+		}
+		#endregion
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{

@@ -7,6 +7,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
 using NCore.UI;
 using NToolbox.Models;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -189,11 +190,11 @@ namespace NToolbox.Windows
 
 			m_timeScaleMenu = new ContextMenu(new[]
 			{
-				new MenuItem("1 second", (s, e) => ZoomChart(1)),
-				new MenuItem("2 seconds", (s, e) => ZoomChart(2)),
-				new MenuItem("5 seconds", (s, e) => ZoomChart(5)),
-				new MenuItem("10 seconds", (s, e) => ZoomChart(10)),
-				new MenuItem("25 seconds", (s, e) => ZoomChart(25))
+				new MenuItem("1 " + LocalizableStrings.Second, (s, e) => ZoomChart(1)),
+				new MenuItem("2 " + LocalizableStrings.Seconds, (s, e) => ZoomChart(2)),
+				new MenuItem("5 " + LocalizableStrings.Seconds, (s, e) => ZoomChart(5)),
+				new MenuItem("10 " + LocalizableStrings.Seconds, (s, e) => ZoomChart(10)),
+				new MenuItem("25 " + LocalizableStrings.Seconds, (s, e) => ZoomChart(25))
 			});
 
 			TimeScaleButton.Click += (s, e) =>

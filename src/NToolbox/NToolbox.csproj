@@ -57,12 +57,14 @@
   <ItemGroup>
     <Compile Include="Models\ArcticFoxConfiguration.cs" />
     <Compile Include="Models\BatteryPresets.cs" />
+    <Compile Include="Models\Export\BatteryProfile.cs" />
     <Compile Include="Models\PredefinedData.cs" />
     <Compile Include="Models\SerializableConfiguration.cs" />
     <Compile Include="Models\ToolboxConfiguration.cs" />
     <Compile Include="Models\MonitoringData.cs" />
     <Compile Include="Models\StartupMode.cs" />
     <Compile Include="Services\ChartPreviewService.cs" />
+    <Compile Include="Services\LocalizableStrings.cs" />
     <Compile Include="Storages\ConfigurationStorage.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>

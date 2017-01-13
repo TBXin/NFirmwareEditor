@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
+using NCore;
+using NCore.Serialization;
 using NCore.UI;
 using NToolbox.Models;
+using NToolbox.Models.Export;
 
 namespace NToolbox.Windows
 {
@@ -66,6 +71,8 @@ namespace NToolbox.Windows
 				var control = (Control)s;
 				m_presetsMenu.Show(control, new Point(control.Width, 0));
 			};
+			ExportButton.Click += ExportButton_Click;
+			ImportButton.Click += ImportButton_Click;
 			SaveButton.Click += SaveButton_Click;
 		}
 
@@ -304,6 +311,78 @@ namespace NToolbox.Windows
 		private void DischargeChart_MouseUp(object sender, MouseEventArgs e)
 		{
 			m_isDragginPoint = false;
+		}
+
+		private void ExportButton_Click(object sender, EventArgs e)
+		{
+			string filePath;
+			using (var sf = new SaveFileDialog { Filter = FileFilters.XmlFilter })
+			{
+				if (sf.ShowDialog() != DialogResult.OK)
+					return;
+				filePath = sf.FileName;
+			}
+
+			try
+			{
+				using (var fs = File.Open(filePath, FileMode.Create))
+				{
+					var data = new BatteryProfile
+					{
+						Cutoff = CutoffUpDown.Value,
+						Points = m_curveControls.Select(x => new BatteryProfilePoint
+						{
+							Percent = (byte)x.PercentsUpDown.Value,
+							Voltage = x.VoltsUpDown.Value
+						}).ToArray()
+					};
+
+					Serializer.Write(data, fs);
+				}
+			}
+			catch (Exception ex)
+			{
+				Trace.Warn(ex);
+				InfoBox.Show("An error occurred during battery profile export.");
+			}
+		}
+
+		private void ImportButton_Click(object sender, EventArgs e)
+		{
+			string filePath;
+			using (var op = new OpenFileDialog { Filter = FileFilters.XmlFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				filePath = op.FileName;
+			}
+
+			try
+			{
+				using (var fs = File.Open(filePath, FileMode.Open))
+				{
+					var data = Serializer.Read<BatteryProfile>(fs);
+					if (data == null || data.Points == null || data.Points.Length != m_curveControls.Length)
+					{
+						InfoBox.Show("Invalid battery profile file.");
+						return;
+					}
+					var custom = new ArcticFoxConfiguration.CustomBattery
+					{
+						Cutoff = (ushort)(data.Cutoff * 100),
+						Data = data.Points.Select(x => new ArcticFoxConfiguration.PercentsVoltage
+						{
+							Percents = x.Percent,
+							Voltage = (ushort)(x.Voltage * 100)
+						}).ToArray()
+					};
+					InstallPreset(custom);
+				}
+			}
+			catch (Exception ex)
+			{
+				Trace.Warn(ex);
+				InfoBox.Show("An error occurred during battery profile import.");
+			}
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)

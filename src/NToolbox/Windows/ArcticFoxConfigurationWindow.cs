@@ -42,7 +42,7 @@ namespace NToolbox.Windows
 		{
 			m_worker.DoWork += Worker_DoWork;
 			m_worker.ProgressChanged += (s, e) => ProgressLabel.Text = e.ProgressPercentage + @"%";
-			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = @"Operation completed";
+			m_worker.RunWorkerCompleted += (s, e) => ProgressLabel.Text = LocalizableStrings.StatusOperationComplete;
 
 			HidConnector.Instance.DeviceConnected += isConnected => DeviceConnected(isConnected, false);
 			Shown += (s, e) =>
@@ -73,6 +73,8 @@ namespace NToolbox.Windows
 			HardwareVersionTextBox.ReadOnly = true;
 			HardwareVersionTextBox.BackColor = Color.White;
 
+			ProgressLabel.Text = LocalizableStrings.StatusReady;
+
 			SmartCheckBox.CheckedChanged += (s, e) => SelectedProfleComboBox.Enabled = !SmartCheckBox.Checked;
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
@@ -90,17 +92,57 @@ namespace NToolbox.Windows
 
 			InitializeComboBoxes();
 			InitializeMenu();
+			InitializeTooltips();
 		}
 
 		private void InitializeMenu()
 		{
 			var menu = new ContextMenu(new[]
 			{
-				new MenuItem("New", NewMenuItem_Click),
-				new MenuItem("Open", OpenMenuItem_Click),
-				new MenuItem("Save As", SaveAsMenuItem_Click)
+				new MenuItem(LocalizableStrings.ConfigurationMenuNew, NewMenuItem_Click),
+				new MenuItem(LocalizableStrings.ConfigurationMenuOpen, OpenMenuItem_Click),
+				new MenuItem(LocalizableStrings.ConfigurationMenuSaveAs, SaveAsMenuItem_Click)
 			});
 			ConfigurationMenuButton.Click += (s, e) => menu.Show(ConfigurationMenuButton, new Point(0, ConfigurationMenuButton.Height));
+		}
+
+		private void InitializeTooltips()
+		{
+			MainToolTip.SetToolTip(MainScreenSkinLabel, LocalizableStrings.MainScreenSkinTooltip);
+			MainToolTip.SetToolTip(MainScreenSkinComboBox, LocalizableStrings.MainScreenSkinTooltip);
+
+			MainToolTip.SetToolTip(UseClassicMenuLabel, LocalizableStrings.UseClassicMenuTooltip);
+			MainToolTip.SetToolTip(UseClassicMenuCheckBox, LocalizableStrings.UseClassicMenuTooltip);
+
+			MainToolTip.SetToolTip(ShowLogoLabel, LocalizableStrings.ShowLogoTooltip);
+			MainToolTip.SetToolTip(ShowLogoCheckBox, LocalizableStrings.ShowLogoTooltip);
+
+			MainToolTip.SetToolTip(ShowClockLabel, LocalizableStrings.ShowClockTooltip);
+			MainToolTip.SetToolTip(ShowClockCheckBox, LocalizableStrings.ShowClockTooltip);
+
+			MainToolTip.SetToolTip(PuffCutOffLabel, LocalizableStrings.MaxPuffTimeTooltip);
+			MainToolTip.SetToolTip(PuffCutOffUpDown, LocalizableStrings.MaxPuffTimeTooltip);
+
+			MainToolTip.SetToolTip(ShuntCorrectionLabel, LocalizableStrings.ShuntCorrectionTooltip);
+			MainToolTip.SetToolTip(ShuntCorrectionUpDown, LocalizableStrings.ShuntCorrectionTooltip);
+
+			MainToolTip.SetToolTip(X32Label, LocalizableStrings.X32Tooltip);
+			MainToolTip.SetToolTip(X32CheckBox, LocalizableStrings.X32Tooltip);
+
+			MainToolTip.SetToolTip(LightSleepLabel, LocalizableStrings.LightSleepTooltip);
+			MainToolTip.SetToolTip(LightSleepCheckBox, LocalizableStrings.LightSleepTooltip);
+
+			MainToolTip.SetToolTip(ResetCountersLabel, LocalizableStrings.RcobcTooltip);
+			MainToolTip.SetToolTip(ResetCountersCheckBox, LocalizableStrings.RcobcTooltip);
+
+			MainToolTip.SetToolTip(CheckTCRLabel, LocalizableStrings.CheckTCRTooltip);
+			MainToolTip.SetToolTip(CheckTCRCheckBox, LocalizableStrings.CheckTCRTooltip);
+
+			MainToolTip.SetToolTip(UsbChargeLabel, LocalizableStrings.UsbChargeTooltip);
+			MainToolTip.SetToolTip(UsbChargeCheckBox, LocalizableStrings.UsbChargeTooltip);
+
+			MainToolTip.SetToolTip(UsbNoSleepLabel, LocalizableStrings.UsbNoSleepTooltip);
+			MainToolTip.SetToolTip(UsbNoSleepCheckBox, LocalizableStrings.UsbNoSleepTooltip);
 		}
 
 		private void InitializeComboBoxes()
@@ -184,20 +226,8 @@ namespace NToolbox.Windows
 		{
 			while (!m_isDeviceConnected)
 			{
-				var result = InfoBox.Show
-				(
-					// ReSharper disable once LocalizableElement
-					"No compatible USB devices are connected." +
-					"\n\n" +
-					"To continue, please connect one." +
-					"\n\n" +
-					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-					MessageBoxButtons.OKCancel
-				);
-				if (result == DialogResult.Cancel)
-				{
-					return false;
-				}
+				var result = InfoBox.Show(LocalizableStrings.MessageNoCompatibleUSBDevice, MessageBoxButtons.OKCancel);
+				if (result == DialogResult.Cancel) return false;
 			}
 			return true;
 		}
@@ -833,13 +863,13 @@ namespace NToolbox.Windows
 			UpdateUI(() =>
 			{
 				DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = m_isDeviceConnected;
-				StatusLabel.Text = @"Device is " + (m_isDeviceConnected ? "connected" : "disconnected");
+				StatusLabel.Text = LocalizableStrings.StatusDevice + @" " + (m_isDeviceConnected ? LocalizableStrings.StatusDeviceConnected : LocalizableStrings.StatusDeviceDisconnected);
 			});
 
 			if (m_isWorkspaceOpen || !onStartup) return;
 			if (!m_isDeviceConnected)
 			{
-				ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer", MinimumSupportedBuildNumber));
+				ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, MinimumSupportedBuildNumber));
 				return;
 			}
 			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
@@ -847,7 +877,7 @@ namespace NToolbox.Windows
 
 		private void ReadConfigurationAndShowResult(Func<BackgroundWorker, byte[]> configurationProvider)
 		{
-			ShowWelcomeScreen("Downloading settings...");
+			ShowWelcomeScreen(LocalizableStrings.MessageDownloadingSettings);
 			try
 			{
 				var readResult = ReadBinaryConfiguration(configurationProvider, false);
@@ -858,21 +888,21 @@ namespace NToolbox.Windows
 				}
 				else if (readResult.Result == ReadResult.OutdatedFirmware)
 				{
-					ShowWelcomeScreen(string.Format("Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer", MinimumSupportedBuildNumber));
+					ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, MinimumSupportedBuildNumber));
 				}
 				else if (readResult.Result == ReadResult.OutdatedToolbox)
 				{
-					ShowWelcomeScreen("NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.");
+					ShowWelcomeScreen(LocalizableStrings.MessageOutdatedToolbox);
 				}
 				else if (readResult.Result == ReadResult.UnableToRead)
 				{
-					ShowWelcomeScreen("Unable to download device settings. Reconnect your device.");
+					ShowWelcomeScreen(LocalizableStrings.MessageUnableToReadData);
 				}
 			}
 			catch (Exception ex)
 			{
 				Trace.Warn(ex);
-				ShowWelcomeScreen("Unable to download device settings. Reconnect your device.");
+				ShowWelcomeScreen(LocalizableStrings.MessageUnableToReadData);
 			}
 		}
 

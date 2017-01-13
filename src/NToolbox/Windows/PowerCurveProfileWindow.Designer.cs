@@ -128,6 +128,7 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
 			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 368);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -138,6 +139,7 @@ namespace NToolbox.Windows
 			// SaveButton
 			// 
 			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton");
 			this.SaveButton.Location = new System.Drawing.Point(574, 5);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(100, 35);
@@ -149,6 +151,7 @@ namespace NToolbox.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(680, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -213,6 +216,7 @@ namespace NToolbox.Windows
 			this.groupPanel1.Controls.Add(this.label1);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(200, 362);
@@ -228,6 +232,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time12UpDown, "");
 			this.Time12UpDown.Location = new System.Drawing.Point(38, 333);
 			this.Time12UpDown.Maximum = new decimal(new int[] {
             25,
@@ -248,6 +253,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time11UpDown, "");
 			this.Time11UpDown.Location = new System.Drawing.Point(38, 306);
 			this.Time11UpDown.Maximum = new decimal(new int[] {
             25,
@@ -268,6 +274,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time10UpDown, "");
 			this.Time10UpDown.Location = new System.Drawing.Point(38, 279);
 			this.Time10UpDown.Maximum = new decimal(new int[] {
             25,
@@ -288,6 +295,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time9UpDown, "");
 			this.Time9UpDown.Location = new System.Drawing.Point(38, 252);
 			this.Time9UpDown.Maximum = new decimal(new int[] {
             25,
@@ -308,6 +316,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time8UpDown, "");
 			this.Time8UpDown.Location = new System.Drawing.Point(38, 225);
 			this.Time8UpDown.Maximum = new decimal(new int[] {
             25,
@@ -328,6 +337,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time7UpDown, "");
 			this.Time7UpDown.Location = new System.Drawing.Point(38, 198);
 			this.Time7UpDown.Maximum = new decimal(new int[] {
             25,
@@ -348,6 +358,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time6UpDown, "");
 			this.Time6UpDown.Location = new System.Drawing.Point(38, 171);
 			this.Time6UpDown.Maximum = new decimal(new int[] {
             25,
@@ -368,6 +379,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time5UpDown, "");
 			this.Time5UpDown.Location = new System.Drawing.Point(38, 144);
 			this.Time5UpDown.Maximum = new decimal(new int[] {
             25,
@@ -388,6 +400,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time4UpDown, "");
 			this.Time4UpDown.Location = new System.Drawing.Point(38, 117);
 			this.Time4UpDown.Maximum = new decimal(new int[] {
             25,
@@ -408,6 +421,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time3UpDown, "");
 			this.Time3UpDown.Location = new System.Drawing.Point(38, 90);
 			this.Time3UpDown.Maximum = new decimal(new int[] {
             25,
@@ -428,6 +442,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time2UpDown, "");
 			this.Time2UpDown.Location = new System.Drawing.Point(38, 63);
 			this.Time2UpDown.Maximum = new decimal(new int[] {
             25,
@@ -448,6 +463,7 @@ namespace NToolbox.Windows
             0,
             0,
             65536});
+			this.MainLocalizationExtender.SetKey(this.Time1UpDown, "");
 			this.Time1UpDown.Location = new System.Drawing.Point(38, 36);
 			this.Time1UpDown.Maximum = new decimal(new int[] {
             25,
@@ -463,6 +479,7 @@ namespace NToolbox.Windows
 			// label23
 			// 
 			this.label23.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label23.Location = new System.Drawing.Point(103, 336);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(26, 13);
@@ -471,6 +488,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents12UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents12UpDown, "");
 			this.Percents12UpDown.Location = new System.Drawing.Point(135, 333);
 			this.Percents12UpDown.Maximum = new decimal(new int[] {
             250,
@@ -486,6 +504,7 @@ namespace NToolbox.Windows
 			// label24
 			// 
 			this.label24.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label24, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label24.Location = new System.Drawing.Point(6, 336);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(33, 13);
@@ -494,6 +513,7 @@ namespace NToolbox.Windows
 			// 
 			// NameTextBox
 			// 
+			this.MainLocalizationExtender.SetKey(this.NameTextBox, "");
 			this.NameTextBox.Location = new System.Drawing.Point(135, 4);
 			this.NameTextBox.MaxLength = 8;
 			this.NameTextBox.Name = "NameTextBox";
@@ -504,6 +524,7 @@ namespace NToolbox.Windows
 			// label21
 			// 
 			this.label21.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label21, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label21.Location = new System.Drawing.Point(103, 309);
 			this.label21.Name = "label21";
 			this.label21.Size = new System.Drawing.Size(26, 13);
@@ -512,6 +533,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents11UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents11UpDown, "");
 			this.Percents11UpDown.Location = new System.Drawing.Point(135, 306);
 			this.Percents11UpDown.Maximum = new decimal(new int[] {
             250,
@@ -527,6 +549,7 @@ namespace NToolbox.Windows
 			// label22
 			// 
 			this.label22.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label22, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label22.Location = new System.Drawing.Point(6, 309);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(33, 13);
@@ -536,6 +559,7 @@ namespace NToolbox.Windows
 			// label19
 			// 
 			this.label19.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label19, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label19.Location = new System.Drawing.Point(103, 282);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(26, 13);
@@ -544,6 +568,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents10UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents10UpDown, "");
 			this.Percents10UpDown.Location = new System.Drawing.Point(135, 279);
 			this.Percents10UpDown.Maximum = new decimal(new int[] {
             250,
@@ -559,6 +584,7 @@ namespace NToolbox.Windows
 			// label20
 			// 
 			this.label20.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label20, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label20.Location = new System.Drawing.Point(6, 282);
 			this.label20.Name = "label20";
 			this.label20.Size = new System.Drawing.Size(33, 13);
@@ -568,6 +594,7 @@ namespace NToolbox.Windows
 			// label17
 			// 
 			this.label17.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label17.Location = new System.Drawing.Point(103, 255);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(26, 13);
@@ -576,6 +603,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents9UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents9UpDown, "");
 			this.Percents9UpDown.Location = new System.Drawing.Point(135, 252);
 			this.Percents9UpDown.Maximum = new decimal(new int[] {
             250,
@@ -591,6 +619,7 @@ namespace NToolbox.Windows
 			// label18
 			// 
 			this.label18.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label18, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label18.Location = new System.Drawing.Point(6, 255);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(33, 13);
@@ -600,6 +629,7 @@ namespace NToolbox.Windows
 			// label15
 			// 
 			this.label15.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label15.Location = new System.Drawing.Point(103, 228);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(26, 13);
@@ -608,6 +638,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents8UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents8UpDown, "");
 			this.Percents8UpDown.Location = new System.Drawing.Point(135, 225);
 			this.Percents8UpDown.Maximum = new decimal(new int[] {
             250,
@@ -623,6 +654,7 @@ namespace NToolbox.Windows
 			// label16
 			// 
 			this.label16.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label16, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label16.Location = new System.Drawing.Point(6, 228);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(33, 13);
@@ -632,6 +664,7 @@ namespace NToolbox.Windows
 			// label13
 			// 
 			this.label13.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label13.Location = new System.Drawing.Point(103, 201);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(26, 13);
@@ -640,6 +673,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents7UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents7UpDown, "");
 			this.Percents7UpDown.Location = new System.Drawing.Point(135, 198);
 			this.Percents7UpDown.Maximum = new decimal(new int[] {
             250,
@@ -655,6 +689,7 @@ namespace NToolbox.Windows
 			// label14
 			// 
 			this.label14.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label14, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label14.Location = new System.Drawing.Point(6, 201);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(33, 13);
@@ -664,6 +699,7 @@ namespace NToolbox.Windows
 			// label11
 			// 
 			this.label11.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label11.Location = new System.Drawing.Point(103, 174);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(26, 13);
@@ -672,6 +708,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents6UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents6UpDown, "");
 			this.Percents6UpDown.Location = new System.Drawing.Point(135, 171);
 			this.Percents6UpDown.Maximum = new decimal(new int[] {
             250,
@@ -687,6 +724,7 @@ namespace NToolbox.Windows
 			// label12
 			// 
 			this.label12.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label12, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label12.Location = new System.Drawing.Point(6, 174);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(33, 13);
@@ -696,6 +734,7 @@ namespace NToolbox.Windows
 			// label9
 			// 
 			this.label9.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label9.Location = new System.Drawing.Point(103, 147);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(26, 13);
@@ -704,6 +743,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents5UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents5UpDown, "");
 			this.Percents5UpDown.Location = new System.Drawing.Point(135, 144);
 			this.Percents5UpDown.Maximum = new decimal(new int[] {
             250,
@@ -719,6 +759,7 @@ namespace NToolbox.Windows
 			// label10
 			// 
 			this.label10.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label10, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label10.Location = new System.Drawing.Point(6, 147);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(33, 13);
@@ -728,6 +769,7 @@ namespace NToolbox.Windows
 			// label7
 			// 
 			this.label7.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label7.Location = new System.Drawing.Point(103, 120);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(26, 13);
@@ -736,6 +778,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents4UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents4UpDown, "");
 			this.Percents4UpDown.Location = new System.Drawing.Point(135, 117);
 			this.Percents4UpDown.Maximum = new decimal(new int[] {
             250,
@@ -751,6 +794,7 @@ namespace NToolbox.Windows
 			// label8
 			// 
 			this.label8.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label8, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label8.Location = new System.Drawing.Point(6, 120);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(33, 13);
@@ -760,6 +804,7 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label5.Location = new System.Drawing.Point(103, 93);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(26, 13);
@@ -768,6 +813,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents3UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents3UpDown, "");
 			this.Percents3UpDown.Location = new System.Drawing.Point(135, 90);
 			this.Percents3UpDown.Maximum = new decimal(new int[] {
             250,
@@ -783,6 +829,7 @@ namespace NToolbox.Windows
 			// label6
 			// 
 			this.label6.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label6, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label6.Location = new System.Drawing.Point(6, 93);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(33, 13);
@@ -792,6 +839,7 @@ namespace NToolbox.Windows
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label3.Location = new System.Drawing.Point(103, 66);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(26, 13);
@@ -800,6 +848,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents2UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents2UpDown, "");
 			this.Percents2UpDown.Location = new System.Drawing.Point(135, 63);
 			this.Percents2UpDown.Maximum = new decimal(new int[] {
             250,
@@ -815,6 +864,7 @@ namespace NToolbox.Windows
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label4.Location = new System.Drawing.Point(6, 66);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(33, 13);
@@ -824,6 +874,7 @@ namespace NToolbox.Windows
 			// label2
 			// 
 			this.label2.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel");
 			this.label2.Location = new System.Drawing.Point(103, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(26, 13);
@@ -832,6 +883,7 @@ namespace NToolbox.Windows
 			// 
 			// Percents1UpDown
 			// 
+			this.MainLocalizationExtender.SetKey(this.Percents1UpDown, "");
 			this.Percents1UpDown.Location = new System.Drawing.Point(135, 36);
 			this.Percents1UpDown.Maximum = new decimal(new int[] {
             250,
@@ -847,6 +899,7 @@ namespace NToolbox.Windows
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel");
 			this.label1.Location = new System.Drawing.Point(6, 39);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(33, 13);
@@ -865,6 +918,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Controls.Add(this.ChartHorizontalScrollBar);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(575, 362);
@@ -875,6 +929,7 @@ namespace NToolbox.Windows
 			// TimeScaleButton
 			// 
 			this.TimeScaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.MainLocalizationExtender.SetKey(this.TimeScaleButton, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton");
 			this.TimeScaleButton.Location = new System.Drawing.Point(501, 4);
 			this.TimeScaleButton.Name = "TimeScaleButton";
 			this.TimeScaleButton.Size = new System.Drawing.Size(70, 22);
@@ -885,6 +940,7 @@ namespace NToolbox.Windows
 			// PowerCurveChart
 			// 
 			this.PowerCurveChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainLocalizationExtender.SetKey(this.PowerCurveChart, "");
 			this.PowerCurveChart.Location = new System.Drawing.Point(3, 33);
 			this.PowerCurveChart.Name = "PowerCurveChart";
 			this.PowerCurveChart.Size = new System.Drawing.Size(569, 309);
@@ -893,6 +949,7 @@ namespace NToolbox.Windows
 			// ChartHorizontalScrollBar
 			// 
 			this.ChartHorizontalScrollBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.ChartHorizontalScrollBar, "");
 			this.ChartHorizontalScrollBar.LargeChange = 1;
 			this.ChartHorizontalScrollBar.Location = new System.Drawing.Point(3, 342);
 			this.ChartHorizontalScrollBar.Maximum = 0;
@@ -909,6 +966,7 @@ namespace NToolbox.Windows
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Controls.Add(this.groupPanel1);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "PowerCurveProfileWindow";

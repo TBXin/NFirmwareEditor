@@ -81,6 +81,7 @@
     <Compile Include="UI\LocalizationExtender.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\LocalizationManager.cs" />
     <Compile Include="UI\MultiPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -107,6 +108,14 @@
     <EmbeddedResource Include="UI\WindowBase.resx">
       <DependentUpon>WindowBase.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Languages\EN.lpack.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\RU.lpack.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

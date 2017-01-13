@@ -1,0 +1,305 @@
+﻿// Shared
+Toolbox.Shared.SecondString=second
+Toolbox.Shared.SecondsString=seconds
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuration
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Configuration
+Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
+Toolbox.MainWindow.ScreenshooterButton=Screenshooter
+Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
+Toolbox.MainWindow.AboutLink=About && Links
+
+Toolbox.MainWindow.Tray.ShowToolbox=Show NFE Toolbox window
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Open ArcticFox Configuration when device is connected
+Toolbox.MainWindow.Tray.TimeSync=Synchronize time when device is connected
+Toolbox.MainWindow.Tray.StartWithWindows=Run NFE Toolbox when Windows starts
+Toolbox.MainWindow.Tray.Exit=Exit
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Downloading settings...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=No compatible USB devices are connected.\n\nTo continue, please connect one.\n\nIf one already IS connected, try unplugging and plugging it back in. The cable may be loose.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Unable to download device settings. Reconnect your device.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Device is
+Toolbox.ArcticFoxConfiguration.Status.Connected=connected
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=disconnected
+Toolbox.ArcticFoxConfiguration.Status.Ready=Ready
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Operation completed
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Active:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Battery 1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Battery 2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Battery 3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Battery 4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Edit
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Battery Model:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=Check TCR:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=Light Sleep Mode:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Puff Cut-Off:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Shunt Correction:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB Charge:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=USB No Sleep:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Advanced
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Circle Screen
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Classic Screen
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Configuration▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=New
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Open
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Save As
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Connect and Download configuration
+Toolbox.ArcticFoxConfiguration.ControlsTab=Controls
+Toolbox.ArcticFoxConfiguration.DownloadButton=Download settings
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Enabled
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Clicks:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Clicks:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Clicks:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Power 1W Step:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Shared:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=TC Mode Fire Button Multi Clicks:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Up/Down Buttons:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=VW Mode Fire Button Multi Clicks:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Wake up by + / - :
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Line 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Line 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Line 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Line 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Puff Time
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=TC Lines Layout:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=VW Lines Layout:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Brightness:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Charge Screen:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Clock Type:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Flipped:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Idle Time:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Main Screen Skin:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Puff Screen Delay:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Screensaver Time:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Show Clock:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Show Logo:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Stealth Mode:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Move mouse to the checkbox or label to show tooltip.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Use Classic Menu:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Puffs Count:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Puffs Time Format:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Total Puffs Time:
+Toolbox.ArcticFoxConfiguration.GeneralTab=General
+Toolbox.ArcticFoxConfiguration.LayoutTab=Layout
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Materials
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Create new configuration
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Open existing configuration
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Power Curves
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Coil Material:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Locked
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Mode:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Name:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Edit
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Power:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Preheat Delay:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Preheat Curve:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Preheat Power:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Preheat Time:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Preheat Type:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Profile:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Resistance:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Setup
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Temperature Dominant
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Temperature:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Edit
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=W
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=Power
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Temp. Control
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Profiles
+Toolbox.ArcticFoxConfiguration.ResetButton=Reset settings
+Toolbox.ArcticFoxConfiguration.ScreenTab=Screen
+Toolbox.ArcticFoxConfiguration.SecondsLabel=s
+Toolbox.ArcticFoxConfiguration.SettingsTab=Settings
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Small Screen
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Smart profile selection
+Toolbox.ArcticFoxConfiguration.StatsTab=Stats
+Toolbox.ArcticFoxConfiguration.UploadButton=Upload settings
+Toolbox.ArcticFoxConfiguration.VoltsLabel=v
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Change main screen style. Applicable only for devices with big screen (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, etc.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Show the logo on the main screen.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Show the clock on the main screen.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maximum puff time correction.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohm-meter correction.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Enables or disables usage of the X32 crystal of the PCB.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It takes some more energy in standby mode, so user will be warned by ! sign right of battery indicator.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Reset Counters on Battery Change, clear vaping statistics.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Check coil material TCR, switching this option to off can eliminate TCR Error on heavy coils.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Enables or disables charging via USB.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Do not enter deep sleep mode while connected to USB.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Absolute (W)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Relative (%)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Curve
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Non dominant (Pwr / Temp)
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Volts
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Output Volts
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Output Amps
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Resistance
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Live Resistance
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Puffs
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Puffs Time
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Battery(s) Volts
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Date/Time
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Board Temperature
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Last Puff Time
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Last Power
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Last Temperature
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Battery
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Battery + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Battery + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Battery %
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Classic
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Circle
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Classic
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Extended
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Analog
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Digital
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Off
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 Min
+Toolbox.ArcticFoxConfiguration.ClickActions.None=None
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Edit
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Main Menu
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Preheat Menu
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Select Profile
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Edit Profile
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TDom
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Show Clock
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Info Screen
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart On / Off
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL On / Off
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=On / Off
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Normal
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Swapped
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Seconds
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Generic Battery
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Custom
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=PI-Regulator Setup:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=Use PI-Regulator:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Enabled
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Range:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P Value:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I Value:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Cancel
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Power Curve Name:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Power Curve:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Time:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=Pct:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Time Scale
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Cancel
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profile:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Curve:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Factor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Cancel
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profile:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Discharge curve:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Volts:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Cutoff:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Presets
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Cancel
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Sensors:
+Toolbox.DeviceMonitor.ControlsLabel=Control:
+Toolbox.DeviceMonitor.ChartNameLabel=Line view:
+Toolbox.DeviceMonitor.FollowButton=Follow
+
+Toolbox.DeviceMonitor.Battery1Label=Battery1:
+Toolbox.DeviceMonitor.Battery2Label=Battery2:
+Toolbox.DeviceMonitor.Battery3Label=Battery3:
+Toolbox.DeviceMonitor.Battery4Label=Battery4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Battery Pack:
+Toolbox.DeviceMonitor.PowerLabel=Power:
+Toolbox.DeviceMonitor.PowerSetLabel=Power Set:
+Toolbox.DeviceMonitor.TemperatureLabel=Temperature:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Temperature Set:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Output Current:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Output Voltage:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Cold Resistance:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Live Resistance:
+Toolbox.DeviceMonitor.BoardTempLabel=Board Temperature:
+
+Toolbox.DeviceMonitor.PauseButton=Pause
+Toolbox.DeviceMonitor.PauseResumeButton=Resume
+Toolbox.DeviceMonitor.RecordButton=Record...
+Toolbox.DeviceMonitor.RecordStopButton=Stop Recording
+Toolbox.DeviceMonitor.SetXScaleButton=Set X Scale
+Toolbox.DeviceMonitor.SetYScaleButton=Set Y Scale
+Toolbox.DeviceMonitor.PuffButton=Puff...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Show Puffs Boundaries
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Screen:
+Toolbox.Screenshooter.ControlsGroupLabel=Controls:
+Toolbox.Screenshooter.TakeScreenshotButton=Take screenshot
+Toolbox.Screenshooter.SaveScreenshotButton=Save screenshot
+Toolbox.Screenshooter.PixelSizeLabel=Pixel size multiplier:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Take before save:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Enabled
+Toolbox.Screenshooter.StartBroadcastButton=Start broadcast
+Toolbox.Screenshooter.StopBroadcastButton=Stop broadcast
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Device info:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Device name:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Firmware version:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Hardware version:
+Toolbox.FirmwareUpdater.BootModeLabel=Boot mode:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Progress:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Operations:
+Toolbox.FirmwareUpdater.CommonTab=Common
+Toolbox.FirmwareUpdater.UpdateButton=Update from file
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Read dataflash
+Toolbox.FirmwareUpdater.WriteDataflashButton=Write dataflash
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset dataflash
+Toolbox.FirmwareUpdater.AdvancedTab=Advanced
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Change HW Version
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Switch boot mode
+Toolbox.FirmwareUpdater.CancelButton=Cancel
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Device is ready.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Waiting for device...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Waiting for device after reset...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Reading dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Writing dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Restarting device...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Uploading firmware...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash was successfully read and saved to the file.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash was successfully written.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash has been reseted.
