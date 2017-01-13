@@ -33,81 +33,83 @@ namespace NToolbox.Windows
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.Volts11UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts10UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts9UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts8UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts7UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts6UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts5UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts4UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts3UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts2UpDown = new System.Windows.Forms.NumericUpDown();
+			this.Volts1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.PresetsButton = new System.Windows.Forms.Button();
 			this.groupPanel3 = new NCore.UI.GroupPanel();
-			this.label23 = new System.Windows.Forms.Label();
 			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label23 = new System.Windows.Forms.Label();
 			this.label21 = new System.Windows.Forms.Label();
-			this.Volts11UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label22 = new System.Windows.Forms.Label();
 			this.Percents11UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label19 = new System.Windows.Forms.Label();
-			this.Volts10UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label20 = new System.Windows.Forms.Label();
 			this.Percents10UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label17 = new System.Windows.Forms.Label();
-			this.Volts9UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label18 = new System.Windows.Forms.Label();
 			this.Percents9UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label15 = new System.Windows.Forms.Label();
-			this.Volts8UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label16 = new System.Windows.Forms.Label();
 			this.Percents8UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label13 = new System.Windows.Forms.Label();
-			this.Volts7UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label14 = new System.Windows.Forms.Label();
 			this.Percents7UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label11 = new System.Windows.Forms.Label();
-			this.Volts6UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label12 = new System.Windows.Forms.Label();
 			this.Percents6UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label9 = new System.Windows.Forms.Label();
-			this.Volts5UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label10 = new System.Windows.Forms.Label();
 			this.Percents5UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label7 = new System.Windows.Forms.Label();
-			this.Volts4UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label8 = new System.Windows.Forms.Label();
 			this.Percents4UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label5 = new System.Windows.Forms.Label();
-			this.Volts3UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label6 = new System.Windows.Forms.Label();
 			this.Percents3UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label3 = new System.Windows.Forms.Label();
-			this.Volts2UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label4 = new System.Windows.Forms.Label();
 			this.Percents2UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
-			this.Volts1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.ExportButton = new System.Windows.Forms.Button();
+			this.ImportButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts9UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts8UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts6UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts5UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts4UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts3UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts2UpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts1UpDown)).BeginInit();
 			this.groupPanel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents11UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents10UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts9UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents9UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts8UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents8UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents7UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts6UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents6UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts5UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents5UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts4UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents4UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts3UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents3UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts2UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents2UpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts1UpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).BeginInit();
 			this.groupPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).BeginInit();
@@ -122,6 +124,8 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.BorderRight = false;
 			this.ControlBorderedPanel.BorderTop = true;
 			this.ControlBorderedPanel.BorderWidth = 1F;
+			this.ControlBorderedPanel.Controls.Add(this.ExportButton);
+			this.ControlBorderedPanel.Controls.Add(this.ImportButton);
 			this.ControlBorderedPanel.Controls.Add(this.SaveButton);
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -218,6 +222,347 @@ namespace NToolbox.Windows
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
 			// 
+			// Volts11UpDown
+			// 
+			this.Volts11UpDown.DecimalPlaces = 2;
+			this.Volts11UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts11UpDown, "");
+			this.Volts11UpDown.Location = new System.Drawing.Point(135, 306);
+			this.Volts11UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts11UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts11UpDown.Name = "Volts11UpDown";
+			this.Volts11UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts11UpDown.TabIndex = 99;
+			this.Volts11UpDown.TabStop = false;
+			this.Volts11UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts11UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts10UpDown
+			// 
+			this.Volts10UpDown.DecimalPlaces = 2;
+			this.Volts10UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts10UpDown, "");
+			this.Volts10UpDown.Location = new System.Drawing.Point(135, 279);
+			this.Volts10UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts10UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts10UpDown.Name = "Volts10UpDown";
+			this.Volts10UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts10UpDown.TabIndex = 95;
+			this.Volts10UpDown.TabStop = false;
+			this.Volts10UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts10UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts9UpDown
+			// 
+			this.Volts9UpDown.DecimalPlaces = 2;
+			this.Volts9UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts9UpDown, "");
+			this.Volts9UpDown.Location = new System.Drawing.Point(135, 252);
+			this.Volts9UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts9UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts9UpDown.Name = "Volts9UpDown";
+			this.Volts9UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts9UpDown.TabIndex = 91;
+			this.Volts9UpDown.TabStop = false;
+			this.Volts9UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts9UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts8UpDown
+			// 
+			this.Volts8UpDown.DecimalPlaces = 2;
+			this.Volts8UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts8UpDown, "");
+			this.Volts8UpDown.Location = new System.Drawing.Point(135, 225);
+			this.Volts8UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts8UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts8UpDown.Name = "Volts8UpDown";
+			this.Volts8UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts8UpDown.TabIndex = 87;
+			this.Volts8UpDown.TabStop = false;
+			this.Volts8UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts8UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts7UpDown
+			// 
+			this.Volts7UpDown.DecimalPlaces = 2;
+			this.Volts7UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts7UpDown, "");
+			this.Volts7UpDown.Location = new System.Drawing.Point(135, 198);
+			this.Volts7UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts7UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts7UpDown.Name = "Volts7UpDown";
+			this.Volts7UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts7UpDown.TabIndex = 83;
+			this.Volts7UpDown.TabStop = false;
+			this.Volts7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts7UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts6UpDown
+			// 
+			this.Volts6UpDown.DecimalPlaces = 2;
+			this.Volts6UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts6UpDown, "");
+			this.Volts6UpDown.Location = new System.Drawing.Point(135, 171);
+			this.Volts6UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts6UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts6UpDown.Name = "Volts6UpDown";
+			this.Volts6UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts6UpDown.TabIndex = 79;
+			this.Volts6UpDown.TabStop = false;
+			this.Volts6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts6UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts5UpDown
+			// 
+			this.Volts5UpDown.DecimalPlaces = 2;
+			this.Volts5UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts5UpDown, "");
+			this.Volts5UpDown.Location = new System.Drawing.Point(135, 144);
+			this.Volts5UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts5UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts5UpDown.Name = "Volts5UpDown";
+			this.Volts5UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts5UpDown.TabIndex = 75;
+			this.Volts5UpDown.TabStop = false;
+			this.Volts5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts5UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts4UpDown
+			// 
+			this.Volts4UpDown.DecimalPlaces = 2;
+			this.Volts4UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts4UpDown, "");
+			this.Volts4UpDown.Location = new System.Drawing.Point(135, 117);
+			this.Volts4UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts4UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts4UpDown.Name = "Volts4UpDown";
+			this.Volts4UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts4UpDown.TabIndex = 71;
+			this.Volts4UpDown.TabStop = false;
+			this.Volts4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts4UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts3UpDown
+			// 
+			this.Volts3UpDown.DecimalPlaces = 2;
+			this.Volts3UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts3UpDown, "");
+			this.Volts3UpDown.Location = new System.Drawing.Point(135, 90);
+			this.Volts3UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts3UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts3UpDown.Name = "Volts3UpDown";
+			this.Volts3UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts3UpDown.TabIndex = 67;
+			this.Volts3UpDown.TabStop = false;
+			this.Volts3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts3UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts2UpDown
+			// 
+			this.Volts2UpDown.DecimalPlaces = 2;
+			this.Volts2UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts2UpDown, "");
+			this.Volts2UpDown.Location = new System.Drawing.Point(135, 63);
+			this.Volts2UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts2UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts2UpDown.Name = "Volts2UpDown";
+			this.Volts2UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts2UpDown.TabIndex = 63;
+			this.Volts2UpDown.TabStop = false;
+			this.Volts2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts2UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
+			// Volts1UpDown
+			// 
+			this.Volts1UpDown.DecimalPlaces = 2;
+			this.Volts1UpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.MainLocalizationExtender.SetKey(this.Volts1UpDown, "");
+			this.Volts1UpDown.Location = new System.Drawing.Point(135, 36);
+			this.Volts1UpDown.Maximum = new decimal(new int[] {
+            42,
+            0,
+            0,
+            65536});
+			this.Volts1UpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.Volts1UpDown.Name = "Volts1UpDown";
+			this.Volts1UpDown.Size = new System.Drawing.Size(55, 21);
+			this.Volts1UpDown.TabIndex = 59;
+			this.Volts1UpDown.TabStop = false;
+			this.Volts1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.Volts1UpDown.Value = new decimal(new int[] {
+            419,
+            0,
+            0,
+            131072});
+			// 
 			// PresetsButton
 			// 
 			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -245,16 +590,6 @@ namespace NToolbox.Windows
 			this.groupPanel3.TabIndex = 101;
 			this.groupPanel3.TabStop = false;
 			this.groupPanel3.Text = "Cutoff:";
-			// 
-			// label23
-			// 
-			this.label23.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
-			this.label23.Location = new System.Drawing.Point(95, 39);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(34, 13);
-			this.label23.TabIndex = 62;
-			this.label23.Text = "Volts:";
 			// 
 			// CutoffUpDown
 			// 
@@ -287,6 +622,16 @@ namespace NToolbox.Windows
             0,
             65536});
 			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.label23.Location = new System.Drawing.Point(95, 39);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(34, 13);
+			this.label23.TabIndex = 62;
+			this.label23.Text = "Volts:";
+			// 
 			// label21
 			// 
 			this.label21.AutoSize = true;
@@ -296,37 +641,6 @@ namespace NToolbox.Windows
 			this.label21.Size = new System.Drawing.Size(34, 13);
 			this.label21.TabIndex = 100;
 			this.label21.Text = "Volts:";
-			// 
-			// Volts11UpDown
-			// 
-			this.Volts11UpDown.DecimalPlaces = 2;
-			this.Volts11UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts11UpDown, "");
-			this.Volts11UpDown.Location = new System.Drawing.Point(135, 306);
-			this.Volts11UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts11UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts11UpDown.Name = "Volts11UpDown";
-			this.Volts11UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts11UpDown.TabIndex = 99;
-			this.Volts11UpDown.TabStop = false;
-			this.Volts11UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts11UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label22
 			// 
@@ -363,37 +677,6 @@ namespace NToolbox.Windows
 			this.label19.TabIndex = 96;
 			this.label19.Text = "Volts:";
 			// 
-			// Volts10UpDown
-			// 
-			this.Volts10UpDown.DecimalPlaces = 2;
-			this.Volts10UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts10UpDown, "");
-			this.Volts10UpDown.Location = new System.Drawing.Point(135, 279);
-			this.Volts10UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts10UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts10UpDown.Name = "Volts10UpDown";
-			this.Volts10UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts10UpDown.TabIndex = 95;
-			this.Volts10UpDown.TabStop = false;
-			this.Volts10UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts10UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
-			// 
 			// label20
 			// 
 			this.label20.AutoSize = true;
@@ -428,37 +711,6 @@ namespace NToolbox.Windows
 			this.label17.Size = new System.Drawing.Size(34, 13);
 			this.label17.TabIndex = 92;
 			this.label17.Text = "Volts:";
-			// 
-			// Volts9UpDown
-			// 
-			this.Volts9UpDown.DecimalPlaces = 2;
-			this.Volts9UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts9UpDown, "");
-			this.Volts9UpDown.Location = new System.Drawing.Point(135, 252);
-			this.Volts9UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts9UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts9UpDown.Name = "Volts9UpDown";
-			this.Volts9UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts9UpDown.TabIndex = 91;
-			this.Volts9UpDown.TabStop = false;
-			this.Volts9UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts9UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label18
 			// 
@@ -495,37 +747,6 @@ namespace NToolbox.Windows
 			this.label15.TabIndex = 88;
 			this.label15.Text = "Volts:";
 			// 
-			// Volts8UpDown
-			// 
-			this.Volts8UpDown.DecimalPlaces = 2;
-			this.Volts8UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts8UpDown, "");
-			this.Volts8UpDown.Location = new System.Drawing.Point(135, 225);
-			this.Volts8UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts8UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts8UpDown.Name = "Volts8UpDown";
-			this.Volts8UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts8UpDown.TabIndex = 87;
-			this.Volts8UpDown.TabStop = false;
-			this.Volts8UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts8UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
-			// 
 			// label16
 			// 
 			this.label16.AutoSize = true;
@@ -560,37 +781,6 @@ namespace NToolbox.Windows
 			this.label13.Size = new System.Drawing.Size(34, 13);
 			this.label13.TabIndex = 84;
 			this.label13.Text = "Volts:";
-			// 
-			// Volts7UpDown
-			// 
-			this.Volts7UpDown.DecimalPlaces = 2;
-			this.Volts7UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts7UpDown, "");
-			this.Volts7UpDown.Location = new System.Drawing.Point(135, 198);
-			this.Volts7UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts7UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts7UpDown.Name = "Volts7UpDown";
-			this.Volts7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts7UpDown.TabIndex = 83;
-			this.Volts7UpDown.TabStop = false;
-			this.Volts7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts7UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label14
 			// 
@@ -627,37 +817,6 @@ namespace NToolbox.Windows
 			this.label11.TabIndex = 80;
 			this.label11.Text = "Volts:";
 			// 
-			// Volts6UpDown
-			// 
-			this.Volts6UpDown.DecimalPlaces = 2;
-			this.Volts6UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts6UpDown, "");
-			this.Volts6UpDown.Location = new System.Drawing.Point(135, 171);
-			this.Volts6UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts6UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts6UpDown.Name = "Volts6UpDown";
-			this.Volts6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts6UpDown.TabIndex = 79;
-			this.Volts6UpDown.TabStop = false;
-			this.Volts6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts6UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
-			// 
 			// label12
 			// 
 			this.label12.AutoSize = true;
@@ -692,37 +851,6 @@ namespace NToolbox.Windows
 			this.label9.Size = new System.Drawing.Size(34, 13);
 			this.label9.TabIndex = 76;
 			this.label9.Text = "Volts:";
-			// 
-			// Volts5UpDown
-			// 
-			this.Volts5UpDown.DecimalPlaces = 2;
-			this.Volts5UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts5UpDown, "");
-			this.Volts5UpDown.Location = new System.Drawing.Point(135, 144);
-			this.Volts5UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts5UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts5UpDown.Name = "Volts5UpDown";
-			this.Volts5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts5UpDown.TabIndex = 75;
-			this.Volts5UpDown.TabStop = false;
-			this.Volts5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts5UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label10
 			// 
@@ -759,37 +887,6 @@ namespace NToolbox.Windows
 			this.label7.TabIndex = 72;
 			this.label7.Text = "Volts:";
 			// 
-			// Volts4UpDown
-			// 
-			this.Volts4UpDown.DecimalPlaces = 2;
-			this.Volts4UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts4UpDown, "");
-			this.Volts4UpDown.Location = new System.Drawing.Point(135, 117);
-			this.Volts4UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts4UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts4UpDown.Name = "Volts4UpDown";
-			this.Volts4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts4UpDown.TabIndex = 71;
-			this.Volts4UpDown.TabStop = false;
-			this.Volts4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts4UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
-			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
@@ -824,37 +921,6 @@ namespace NToolbox.Windows
 			this.label5.Size = new System.Drawing.Size(34, 13);
 			this.label5.TabIndex = 68;
 			this.label5.Text = "Volts:";
-			// 
-			// Volts3UpDown
-			// 
-			this.Volts3UpDown.DecimalPlaces = 2;
-			this.Volts3UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts3UpDown, "");
-			this.Volts3UpDown.Location = new System.Drawing.Point(135, 90);
-			this.Volts3UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts3UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts3UpDown.Name = "Volts3UpDown";
-			this.Volts3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts3UpDown.TabIndex = 67;
-			this.Volts3UpDown.TabStop = false;
-			this.Volts3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts3UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label6
 			// 
@@ -891,37 +957,6 @@ namespace NToolbox.Windows
 			this.label3.TabIndex = 64;
 			this.label3.Text = "Volts:";
 			// 
-			// Volts2UpDown
-			// 
-			this.Volts2UpDown.DecimalPlaces = 2;
-			this.Volts2UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts2UpDown, "");
-			this.Volts2UpDown.Location = new System.Drawing.Point(135, 63);
-			this.Volts2UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts2UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts2UpDown.Name = "Volts2UpDown";
-			this.Volts2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts2UpDown.TabIndex = 63;
-			this.Volts2UpDown.TabStop = false;
-			this.Volts2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts2UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -956,37 +991,6 @@ namespace NToolbox.Windows
 			this.label2.Size = new System.Drawing.Size(34, 13);
 			this.label2.TabIndex = 60;
 			this.label2.Text = "Volts:";
-			// 
-			// Volts1UpDown
-			// 
-			this.Volts1UpDown.DecimalPlaces = 2;
-			this.Volts1UpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.MainLocalizationExtender.SetKey(this.Volts1UpDown, "");
-			this.Volts1UpDown.Location = new System.Drawing.Point(135, 36);
-			this.Volts1UpDown.Maximum = new decimal(new int[] {
-            42,
-            0,
-            0,
-            65536});
-			this.Volts1UpDown.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.Volts1UpDown.Name = "Volts1UpDown";
-			this.Volts1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts1UpDown.TabIndex = 59;
-			this.Volts1UpDown.TabStop = false;
-			this.Volts1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.Volts1UpDown.Value = new decimal(new int[] {
-            419,
-            0,
-            0,
-            131072});
 			// 
 			// label1
 			// 
@@ -1040,6 +1044,26 @@ namespace NToolbox.Windows
 			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
 			// 
+			// ExportButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.ExportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton");
+			this.ExportButton.Location = new System.Drawing.Point(4, 5);
+			this.ExportButton.Name = "ExportButton";
+			this.ExportButton.Size = new System.Drawing.Size(100, 35);
+			this.ExportButton.TabIndex = 8;
+			this.ExportButton.Text = "Export";
+			this.ExportButton.UseVisualStyleBackColor = true;
+			// 
+			// ImportButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.ImportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton");
+			this.ImportButton.Location = new System.Drawing.Point(110, 5);
+			this.ImportButton.Name = "ImportButton";
+			this.ImportButton.Size = new System.Drawing.Size(100, 35);
+			this.ImportButton.TabIndex = 7;
+			this.ImportButton.Text = "Import";
+			this.ImportButton.UseVisualStyleBackColor = true;
+			// 
 			// DischargeProfileWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1059,30 +1083,30 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.groupPanel1.ResumeLayout(false);
 			this.groupPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts9UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts8UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts6UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts5UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts4UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts3UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts2UpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Volts1UpDown)).EndInit();
 			this.groupPanel3.ResumeLayout(false);
 			this.groupPanel3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CutoffUpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents11UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts10UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents10UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts9UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents9UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts8UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents8UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts7UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents7UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts6UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents6UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts5UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents5UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts4UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents4UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts3UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents3UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts2UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents2UpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.Volts1UpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Percents1UpDown)).EndInit();
 			this.groupPanel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.DischargeChart)).EndInit();
@@ -1146,5 +1170,7 @@ namespace NToolbox.Windows
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.NumericUpDown CutoffUpDown;
 		private System.Windows.Forms.Button PresetsButton;
+		private System.Windows.Forms.Button ExportButton;
+		private System.Windows.Forms.Button ImportButton;
 	}
 }
