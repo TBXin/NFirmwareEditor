@@ -174,12 +174,7 @@ namespace NToolbox.Windows
 			{
 				if (ignoreErrors) return null;
 
-				InfoBox.Show
-				(
-					"An error occurred during taking screenshot..." +
-					"\n\n" +
-					"To continue, please activate or reconnect your device."
-				);
+				InfoBox.Show(LocalizableStrings.MessageNoCompatibleUSBDevice);
 				return null;
 			}
 		}
