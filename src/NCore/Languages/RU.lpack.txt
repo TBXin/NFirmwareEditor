@@ -1,4 +1,8 @@
-﻿// NToolbox Window
+﻿// Shared
+Toolbox.Shared.SecondString=сек
+Toolbox.Shared.SecondsString=сек
+
+// NToolbox Window
 Toolbox.MainWindow.AboutLink=О Программе && Ссылки
 Toolbox.MainWindow.ArcticFoxConfigurationButton=Настройка ArcticFox
 Toolbox.MainWindow.DeviceMonitorButton=Монитор устройства
@@ -115,6 +119,20 @@ Toolbox.ArcticFoxConfiguration.StatsTab=Статистика
 Toolbox.ArcticFoxConfiguration.UploadButton=Установить
 Toolbox.ArcticFoxConfiguration.VoltsLabel=Вольт
 
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Выбор внешнего вида главного экрана. Применимо только к большим экранам (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Выбор профиля, так же, как смена режима в оригинальной прошивке.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Отображение пользовательского логотипа вместо основной регулировки на главном экране.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Отображение часов на рабочем столе.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Коррекция максимальной длительности затяжки.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Коррекция значения измерительного шунта - подстройка омметра мода для более точных показаний.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Использование генератора 32768 Гц (если он есть физически) модулем RTC.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Режим Light Sleep, позволяет достаточно точно идти часам на модах, где аппаратной поддержки изначально нет; повышенное энергопотребление в режиме ожидания; включенный режим индицируется знаком "!" рядом с аккумулятором.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Предложение о сбросе счетчиков парения после замены аккумулятора.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Проверка на ТКС материала спирали (в режиме термоконтроля), может быть отключена при использовании очень затейливых намоток, которые вызывают появление ошибки TCR (или переключают стоковую прошивку в режим вариватта).
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Зарядка аккумуляторов от USB, только для мультибатарейных модов.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Запрет ухода в сон по окончании зарядки, если подключен USB.
+
 // Static Dropdowns
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Ватты
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Проценты
@@ -181,37 +199,39 @@ Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Сохранить
 Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Отмена
 
 // ArcticFox Configuration - Power Curve Editor Window
-Toolbox.ArcticFoxConfiguration.PowerCurve.NameLabel=Имя кривой:
-Toolbox.ArcticFoxConfiguration.PowerCurve.ChartNameLabel=Кривая нагрева:
-Toolbox.ArcticFoxConfiguration.PowerCurve.TimeLabel=Сек:
-Toolbox.ArcticFoxConfiguration.PowerCurve.PercentLabel=%:
-Toolbox.ArcticFoxConfiguration.PowerCurve.TimeScaleButton=Масштаб
-Toolbox.ArcticFoxConfiguration.PowerCurve.SaveButton=Сохранить
-Toolbox.ArcticFoxConfiguration.PowerCurve.CancelButton=Отмена
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Имя кривой:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Кривая нагрева:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Сек:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=%:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Масштаб
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Отмена
 
 // ArcticFox Configuration - TFR Curve Editor Window
-Toolbox.ArcticFoxConfiguration.TFRCurve.NameLabel=TFR профиль:
-Toolbox.ArcticFoxConfiguration.TFRCurve.ChartNameLabel=TFR кривая:
-Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel=Коэф.:
-Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton=Экспорт
-Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton=Импорт
-Toolbox.ArcticFoxConfiguration.TFRCurve.SaveButton=Сохранить
-Toolbox.ArcticFoxConfiguration.TFRCurve.CancelButton=Отмена
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=TFR профиль:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR кривая:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Коэф.:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Экспорт
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Импорт
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Отмена
 
 // ArcticFox Configuration - Discharge Curve Editor Window
-Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel=Профиль:
-Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel=Кривая разряда:
-Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel=Вольт:
-Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Отсечка:
-Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Пресет
-Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Сохранить
-Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Отмена
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Профиль:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Кривая разряда:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Вольт:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Отсечка:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Пресет
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Экспорт
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Импорт
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Сохранить
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Отмена
 
 // Device Monitor Window
 Toolbox.DeviceMonitor.SensorsLabel=Датчики:
 Toolbox.DeviceMonitor.ControlsLabel=Управление:
 Toolbox.DeviceMonitor.ChartNameLabel=Графики:
-Toolbox.DeviceMonitor.FollowButton=В конец
+Toolbox.DeviceMonitor.FollowButton=Следовать
 
 Toolbox.DeviceMonitor.Battery1Label=Аккумулятор 1:
 Toolbox.DeviceMonitor.Battery2Label=Аккумулятор 2:
@@ -231,6 +251,7 @@ Toolbox.DeviceMonitor.BoardTempLabel=Температура платы:
 Toolbox.DeviceMonitor.PauseButton=Пауза
 Toolbox.DeviceMonitor.PauseResumeButton=Продолжить
 Toolbox.DeviceMonitor.RecordButton=Запись...
+Toolbox.DeviceMonitor.RecordStopButton=Остановить запись
 Toolbox.DeviceMonitor.SetXScaleButton=Масштаб по X
 Toolbox.DeviceMonitor.SetYScaleButton=Масштаб по Y
 Toolbox.DeviceMonitor.PuffButton=Затяжка...

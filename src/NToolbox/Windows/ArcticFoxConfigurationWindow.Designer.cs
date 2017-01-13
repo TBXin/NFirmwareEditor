@@ -55,21 +55,21 @@
 			this.ScreenTabPage = new System.Windows.Forms.TabPage();
 			this.label17 = new System.Windows.Forms.Label();
 			this.MainScreenSkinComboBox = new System.Windows.Forms.ComboBox();
-			this.label63 = new System.Windows.Forms.Label();
+			this.MainScreenSkinLabel = new System.Windows.Forms.Label();
 			this.PuffScreenDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label22 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
 			this.ChargeScreenComboBox = new System.Windows.Forms.ComboBox();
-			this.label21 = new System.Windows.Forms.Label();
+			this.ShowClockLabel = new System.Windows.Forms.Label();
 			this.ShowClockCheckBox = new System.Windows.Forms.CheckBox();
 			this.ScreensaverTimeComboBox = new System.Windows.Forms.ComboBox();
 			this.label40 = new System.Windows.Forms.Label();
-			this.label53 = new System.Windows.Forms.Label();
+			this.UseClassicMenuLabel = new System.Windows.Forms.Label();
 			this.UseClassicMenuCheckBox = new System.Windows.Forms.CheckBox();
 			this.label38 = new System.Windows.Forms.Label();
 			this.ClockTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label35 = new System.Windows.Forms.Label();
-			this.label34 = new System.Windows.Forms.Label();
+			this.ShowLogoLabel = new System.Windows.Forms.Label();
 			this.ShowLogoCheckBox = new System.Windows.Forms.CheckBox();
 			this.label32 = new System.Windows.Forms.Label();
 			this.BrightnessPercentLabel = new System.Windows.Forms.Label();
@@ -176,27 +176,27 @@
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
 			this.label18 = new System.Windows.Forms.Label();
-			this.label61 = new System.Windows.Forms.Label();
+			this.CheckTCRLabel = new System.Windows.Forms.Label();
 			this.CheckTCRCheckBox = new System.Windows.Forms.CheckBox();
-			this.label60 = new System.Windows.Forms.Label();
+			this.UsbNoSleepLabel = new System.Windows.Forms.Label();
 			this.UsbNoSleepCheckBox = new System.Windows.Forms.CheckBox();
 			this.label19 = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
+			this.PuffCutOffLabel = new System.Windows.Forms.Label();
 			this.PuffCutOffUpDown = new System.Windows.Forms.NumericUpDown();
-			this.label54 = new System.Windows.Forms.Label();
+			this.ShuntCorrectionLabel = new System.Windows.Forms.Label();
 			this.label55 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
+			this.ResetCountersLabel = new System.Windows.Forms.Label();
 			this.ShuntCorrectionUpDown = new System.Windows.Forms.NumericUpDown();
 			this.ResetCountersCheckBox = new System.Windows.Forms.CheckBox();
 			this.BatteryModelComboBox = new System.Windows.Forms.ComboBox();
-			this.label14 = new System.Windows.Forms.Label();
+			this.UsbChargeLabel = new System.Windows.Forms.Label();
 			this.label56 = new System.Windows.Forms.Label();
 			this.UsbChargeCheckBox = new System.Windows.Forms.CheckBox();
 			this.BatteryEditButton = new System.Windows.Forms.Button();
-			this.label15 = new System.Windows.Forms.Label();
+			this.X32Label = new System.Windows.Forms.Label();
 			this.LightSleepCheckBox = new System.Windows.Forms.CheckBox();
 			this.X32CheckBox = new System.Windows.Forms.CheckBox();
-			this.label16 = new System.Windows.Forms.Label();
+			this.LightSleepLabel = new System.Windows.Forms.Label();
 			this.PowerCurvesTabPage = new System.Windows.Forms.TabPage();
 			this.PowerCurvesListView = new System.Windows.Forms.ListView();
 			this.MaterialsTabPage = new System.Windows.Forms.TabPage();
@@ -588,21 +588,21 @@
 			// 
 			this.ScreenTabPage.Controls.Add(this.label17);
 			this.ScreenTabPage.Controls.Add(this.MainScreenSkinComboBox);
-			this.ScreenTabPage.Controls.Add(this.label63);
+			this.ScreenTabPage.Controls.Add(this.MainScreenSkinLabel);
 			this.ScreenTabPage.Controls.Add(this.PuffScreenDelayUpDown);
 			this.ScreenTabPage.Controls.Add(this.label22);
 			this.ScreenTabPage.Controls.Add(this.label23);
 			this.ScreenTabPage.Controls.Add(this.ChargeScreenComboBox);
-			this.ScreenTabPage.Controls.Add(this.label21);
+			this.ScreenTabPage.Controls.Add(this.ShowClockLabel);
 			this.ScreenTabPage.Controls.Add(this.ShowClockCheckBox);
 			this.ScreenTabPage.Controls.Add(this.ScreensaverTimeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label40);
-			this.ScreenTabPage.Controls.Add(this.label53);
+			this.ScreenTabPage.Controls.Add(this.UseClassicMenuLabel);
 			this.ScreenTabPage.Controls.Add(this.UseClassicMenuCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label38);
 			this.ScreenTabPage.Controls.Add(this.ClockTypeComboBox);
 			this.ScreenTabPage.Controls.Add(this.label35);
-			this.ScreenTabPage.Controls.Add(this.label34);
+			this.ScreenTabPage.Controls.Add(this.ShowLogoLabel);
 			this.ScreenTabPage.Controls.Add(this.ShowLogoCheckBox);
 			this.ScreenTabPage.Controls.Add(this.label32);
 			this.ScreenTabPage.Controls.Add(this.BrightnessPercentLabel);
@@ -643,16 +643,16 @@
 			this.MainScreenSkinComboBox.TabIndex = 111;
 			this.MainToolTip.SetToolTip(this.MainScreenSkinComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
-			// label63
+			// MainScreenSkinLabel
 			// 
-			this.label63.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label63, "Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel");
-			this.label63.Location = new System.Drawing.Point(4, 146);
-			this.label63.Name = "label63";
-			this.label63.Size = new System.Drawing.Size(91, 13);
-			this.label63.TabIndex = 110;
-			this.label63.Text = "Main Screen Skin:";
-			this.MainToolTip.SetToolTip(this.label63, "Change main screen style. Applicable only for devices with big screen (64x128).");
+			this.MainScreenSkinLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.MainScreenSkinLabel, "Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel");
+			this.MainScreenSkinLabel.Location = new System.Drawing.Point(4, 146);
+			this.MainScreenSkinLabel.Name = "MainScreenSkinLabel";
+			this.MainScreenSkinLabel.Size = new System.Drawing.Size(91, 13);
+			this.MainScreenSkinLabel.TabIndex = 110;
+			this.MainScreenSkinLabel.Text = "Main Screen Skin:";
+			this.MainToolTip.SetToolTip(this.MainScreenSkinLabel, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// PuffScreenDelayUpDown
 			// 
@@ -705,16 +705,16 @@
 			this.ChargeScreenComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ChargeScreenComboBox.TabIndex = 106;
 			// 
-			// label21
+			// ShowClockLabel
 			// 
-			this.label21.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label21, "Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel");
-			this.label21.Location = new System.Drawing.Point(4, 227);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(65, 13);
-			this.label21.TabIndex = 104;
-			this.label21.Text = "Show Clock:";
-			this.MainToolTip.SetToolTip(this.label21, "Show the clock on the main screen.");
+			this.ShowClockLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.ShowClockLabel, "Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel");
+			this.ShowClockLabel.Location = new System.Drawing.Point(4, 227);
+			this.ShowClockLabel.Name = "ShowClockLabel";
+			this.ShowClockLabel.Size = new System.Drawing.Size(65, 13);
+			this.ShowClockLabel.TabIndex = 104;
+			this.ShowClockLabel.Text = "Show Clock:";
+			this.MainToolTip.SetToolTip(this.ShowClockLabel, "Show the clock on the main screen.");
 			// 
 			// ShowClockCheckBox
 			// 
@@ -748,16 +748,16 @@
 			this.label40.TabIndex = 101;
 			this.label40.Text = "Screensaver Time:";
 			// 
-			// label53
+			// UseClassicMenuLabel
 			// 
-			this.label53.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label53, "Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel");
-			this.label53.Location = new System.Drawing.Point(4, 173);
-			this.label53.Name = "label53";
-			this.label53.Size = new System.Drawing.Size(93, 13);
-			this.label53.TabIndex = 96;
-			this.label53.Text = "Use Classic Menu:";
-			this.MainToolTip.SetToolTip(this.label53, "Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
+			this.UseClassicMenuLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.UseClassicMenuLabel, "Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel");
+			this.UseClassicMenuLabel.Location = new System.Drawing.Point(4, 173);
+			this.UseClassicMenuLabel.Name = "UseClassicMenuLabel";
+			this.UseClassicMenuLabel.Size = new System.Drawing.Size(93, 13);
+			this.UseClassicMenuLabel.TabIndex = 96;
+			this.UseClassicMenuLabel.Text = "Use Classic Menu:";
+			this.MainToolTip.SetToolTip(this.UseClassicMenuLabel, "Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, et" +
         "c.");
 			// 
 			// UseClassicMenuCheckBox
@@ -803,16 +803,16 @@
 			this.label35.TabIndex = 90;
 			this.label35.Text = "Charge Screen:";
 			// 
-			// label34
+			// ShowLogoLabel
 			// 
-			this.label34.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label34, "Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel");
-			this.label34.Location = new System.Drawing.Point(4, 200);
-			this.label34.Name = "label34";
-			this.label34.Size = new System.Drawing.Size(63, 13);
-			this.label34.TabIndex = 92;
-			this.label34.Text = "Show Logo:";
-			this.MainToolTip.SetToolTip(this.label34, "Show the logo on the main screen");
+			this.ShowLogoLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.ShowLogoLabel, "Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel");
+			this.ShowLogoLabel.Location = new System.Drawing.Point(4, 200);
+			this.ShowLogoLabel.Name = "ShowLogoLabel";
+			this.ShowLogoLabel.Size = new System.Drawing.Size(63, 13);
+			this.ShowLogoLabel.TabIndex = 92;
+			this.ShowLogoLabel.Text = "Show Logo:";
+			this.MainToolTip.SetToolTip(this.ShowLogoLabel, "Show the logo on the main screen");
 			// 
 			// ShowLogoCheckBox
 			// 
@@ -2036,27 +2036,27 @@
 			// SettingsTabPage
 			// 
 			this.SettingsTabPage.Controls.Add(this.label18);
-			this.SettingsTabPage.Controls.Add(this.label61);
+			this.SettingsTabPage.Controls.Add(this.CheckTCRLabel);
 			this.SettingsTabPage.Controls.Add(this.CheckTCRCheckBox);
-			this.SettingsTabPage.Controls.Add(this.label60);
+			this.SettingsTabPage.Controls.Add(this.UsbNoSleepLabel);
 			this.SettingsTabPage.Controls.Add(this.UsbNoSleepCheckBox);
 			this.SettingsTabPage.Controls.Add(this.label19);
-			this.SettingsTabPage.Controls.Add(this.label20);
+			this.SettingsTabPage.Controls.Add(this.PuffCutOffLabel);
 			this.SettingsTabPage.Controls.Add(this.PuffCutOffUpDown);
-			this.SettingsTabPage.Controls.Add(this.label54);
+			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionLabel);
 			this.SettingsTabPage.Controls.Add(this.label55);
-			this.SettingsTabPage.Controls.Add(this.label13);
+			this.SettingsTabPage.Controls.Add(this.ResetCountersLabel);
 			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionUpDown);
 			this.SettingsTabPage.Controls.Add(this.ResetCountersCheckBox);
 			this.SettingsTabPage.Controls.Add(this.BatteryModelComboBox);
-			this.SettingsTabPage.Controls.Add(this.label14);
+			this.SettingsTabPage.Controls.Add(this.UsbChargeLabel);
 			this.SettingsTabPage.Controls.Add(this.label56);
 			this.SettingsTabPage.Controls.Add(this.UsbChargeCheckBox);
 			this.SettingsTabPage.Controls.Add(this.BatteryEditButton);
-			this.SettingsTabPage.Controls.Add(this.label15);
+			this.SettingsTabPage.Controls.Add(this.X32Label);
 			this.SettingsTabPage.Controls.Add(this.LightSleepCheckBox);
 			this.SettingsTabPage.Controls.Add(this.X32CheckBox);
-			this.SettingsTabPage.Controls.Add(this.label16);
+			this.SettingsTabPage.Controls.Add(this.LightSleepLabel);
 			this.MainLocalizationExtender.SetKey(this.SettingsTabPage, "Toolbox.ArcticFoxConfiguration.SettingsTab");
 			this.SettingsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.SettingsTabPage.Name = "SettingsTabPage";
@@ -2076,16 +2076,16 @@
 			this.label18.TabIndex = 114;
 			this.label18.Text = "Move mouse to the checkbox or label to show tooltip.";
 			// 
-			// label61
+			// CheckTCRLabel
 			// 
-			this.label61.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label61, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel");
-			this.label61.Location = new System.Drawing.Point(4, 173);
-			this.label61.Name = "label61";
-			this.label61.Size = new System.Drawing.Size(63, 13);
-			this.label61.TabIndex = 112;
-			this.label61.Text = "Check TCR:";
-			this.MainToolTip.SetToolTip(this.label61, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
+			this.CheckTCRLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.CheckTCRLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel");
+			this.CheckTCRLabel.Location = new System.Drawing.Point(4, 173);
+			this.CheckTCRLabel.Name = "CheckTCRLabel";
+			this.CheckTCRLabel.Size = new System.Drawing.Size(63, 13);
+			this.CheckTCRLabel.TabIndex = 112;
+			this.CheckTCRLabel.Text = "Check TCR:";
+			this.MainToolTip.SetToolTip(this.CheckTCRLabel, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
         "heavy coils.");
 			// 
 			// CheckTCRCheckBox
@@ -2101,16 +2101,16 @@
         "heavy coils.");
 			this.CheckTCRCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// label60
+			// UsbNoSleepLabel
 			// 
-			this.label60.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label60, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel");
-			this.label60.Location = new System.Drawing.Point(4, 227);
-			this.label60.Name = "label60";
-			this.label60.Size = new System.Drawing.Size(75, 13);
-			this.label60.TabIndex = 110;
-			this.label60.Text = "USB No Sleep:";
-			this.MainToolTip.SetToolTip(this.label60, "Do not enter deep sleep mode while connected to USB.");
+			this.UsbNoSleepLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.UsbNoSleepLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel");
+			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 227);
+			this.UsbNoSleepLabel.Name = "UsbNoSleepLabel";
+			this.UsbNoSleepLabel.Size = new System.Drawing.Size(75, 13);
+			this.UsbNoSleepLabel.TabIndex = 110;
+			this.UsbNoSleepLabel.Text = "USB No Sleep:";
+			this.MainToolTip.SetToolTip(this.UsbNoSleepLabel, "Do not enter deep sleep mode while connected to USB.");
 			// 
 			// UsbNoSleepCheckBox
 			// 
@@ -2134,16 +2134,16 @@
 			this.label19.TabIndex = 109;
 			this.label19.Text = "s";
 			// 
-			// label20
+			// PuffCutOffLabel
 			// 
-			this.label20.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label20, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel");
-			this.label20.Location = new System.Drawing.Point(4, 11);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(71, 13);
-			this.label20.TabIndex = 108;
-			this.label20.Text = "Puff Cut-Off:";
-			this.MainToolTip.SetToolTip(this.label20, "Maximum puff time correction.");
+			this.PuffCutOffLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.PuffCutOffLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel");
+			this.PuffCutOffLabel.Location = new System.Drawing.Point(4, 11);
+			this.PuffCutOffLabel.Name = "PuffCutOffLabel";
+			this.PuffCutOffLabel.Size = new System.Drawing.Size(71, 13);
+			this.PuffCutOffLabel.TabIndex = 108;
+			this.PuffCutOffLabel.Text = "Puff Cut-Off:";
+			this.MainToolTip.SetToolTip(this.PuffCutOffLabel, "Maximum puff time correction.");
 			// 
 			// PuffCutOffUpDown
 			// 
@@ -2177,16 +2177,16 @@
             0,
             0});
 			// 
-			// label54
+			// ShuntCorrectionLabel
 			// 
-			this.label54.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label54, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel");
-			this.label54.Location = new System.Drawing.Point(4, 38);
-			this.label54.Name = "label54";
-			this.label54.Size = new System.Drawing.Size(92, 13);
-			this.label54.TabIndex = 75;
-			this.label54.Text = "Shunt Correction:";
-			this.MainToolTip.SetToolTip(this.label54, "Ohm-meter correction.");
+			this.ShuntCorrectionLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.ShuntCorrectionLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel");
+			this.ShuntCorrectionLabel.Location = new System.Drawing.Point(4, 38);
+			this.ShuntCorrectionLabel.Name = "ShuntCorrectionLabel";
+			this.ShuntCorrectionLabel.Size = new System.Drawing.Size(92, 13);
+			this.ShuntCorrectionLabel.TabIndex = 75;
+			this.ShuntCorrectionLabel.Text = "Shunt Correction:";
+			this.MainToolTip.SetToolTip(this.ShuntCorrectionLabel, "Ohm-meter correction.");
 			// 
 			// label55
 			// 
@@ -2198,16 +2198,16 @@
 			this.label55.TabIndex = 76;
 			this.label55.Text = "%";
 			// 
-			// label13
+			// ResetCountersLabel
 			// 
-			this.label13.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel");
-			this.label13.Location = new System.Drawing.Point(4, 146);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(46, 13);
-			this.label13.TabIndex = 104;
-			this.label13.Text = "RCOBC:";
-			this.MainToolTip.SetToolTip(this.label13, "Reset Counters on Battery Change, clear vaping statistics.");
+			this.ResetCountersLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.ResetCountersLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel");
+			this.ResetCountersLabel.Location = new System.Drawing.Point(4, 146);
+			this.ResetCountersLabel.Name = "ResetCountersLabel";
+			this.ResetCountersLabel.Size = new System.Drawing.Size(46, 13);
+			this.ResetCountersLabel.TabIndex = 104;
+			this.ResetCountersLabel.Text = "RCOBC:";
+			this.MainToolTip.SetToolTip(this.ResetCountersLabel, "Reset Counters on Battery Change, clear vaping statistics.");
 			// 
 			// ShuntCorrectionUpDown
 			// 
@@ -2257,16 +2257,16 @@
 			this.BatteryModelComboBox.Size = new System.Drawing.Size(106, 21);
 			this.BatteryModelComboBox.TabIndex = 78;
 			// 
-			// label14
+			// UsbChargeLabel
 			// 
-			this.label14.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label14, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel");
-			this.label14.Location = new System.Drawing.Point(4, 200);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(68, 13);
-			this.label14.TabIndex = 102;
-			this.label14.Text = "USB Charge:";
-			this.MainToolTip.SetToolTip(this.label14, "Enables or disables charging via USB.");
+			this.UsbChargeLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.UsbChargeLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel");
+			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 200);
+			this.UsbChargeLabel.Name = "UsbChargeLabel";
+			this.UsbChargeLabel.Size = new System.Drawing.Size(68, 13);
+			this.UsbChargeLabel.TabIndex = 102;
+			this.UsbChargeLabel.Text = "USB Charge:";
+			this.MainToolTip.SetToolTip(this.UsbChargeLabel, "Enables or disables charging via USB.");
 			// 
 			// label56
 			// 
@@ -2301,16 +2301,16 @@
 			this.BatteryEditButton.UseVisualStyleBackColor = true;
 			this.BatteryEditButton.Visible = false;
 			// 
-			// label15
+			// X32Label
 			// 
-			this.label15.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label");
-			this.label15.Location = new System.Drawing.Point(4, 92);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(29, 13);
-			this.label15.TabIndex = 98;
-			this.label15.Text = "X32:";
-			this.MainToolTip.SetToolTip(this.label15, "Enables or disables usage of the X32 crystal of the PCB.");
+			this.X32Label.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.X32Label, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label");
+			this.X32Label.Location = new System.Drawing.Point(4, 92);
+			this.X32Label.Name = "X32Label";
+			this.X32Label.Size = new System.Drawing.Size(29, 13);
+			this.X32Label.TabIndex = 98;
+			this.X32Label.Text = "X32:";
+			this.MainToolTip.SetToolTip(this.X32Label, "Enables or disables usage of the X32 crystal of the PCB.");
 			// 
 			// LightSleepCheckBox
 			// 
@@ -2338,16 +2338,16 @@
 			this.MainToolTip.SetToolTip(this.X32CheckBox, "Enables or disables usage of the X32 crystal of the PCB.");
 			this.X32CheckBox.UseVisualStyleBackColor = true;
 			// 
-			// label16
+			// LightSleepLabel
 			// 
-			this.label16.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label16, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel");
-			this.label16.Location = new System.Drawing.Point(4, 119);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(92, 13);
-			this.label16.TabIndex = 100;
-			this.label16.Text = "Light Sleep Mode:";
-			this.MainToolTip.SetToolTip(this.label16, "Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It " +
+			this.LightSleepLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.LightSleepLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel");
+			this.LightSleepLabel.Location = new System.Drawing.Point(4, 119);
+			this.LightSleepLabel.Name = "LightSleepLabel";
+			this.LightSleepLabel.Size = new System.Drawing.Size(92, 13);
+			this.LightSleepLabel.TabIndex = 100;
+			this.LightSleepLabel.Text = "Light Sleep Mode:";
+			this.MainToolTip.SetToolTip(this.LightSleepLabel, "Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It " +
         "takes some more energy in standby mode, so user will be warned by ! sign right o" +
         "f battery indicator.");
 			// 
@@ -2658,7 +2658,6 @@
 			this.ConfigurationMenuButton.TabIndex = 35;
 			this.ConfigurationMenuButton.TabStop = false;
 			this.ConfigurationMenuButton.Text = "Configuration▾";
-			this.ConfigurationMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.ConfigurationMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// HardwareVersionTextBox
@@ -2912,12 +2911,12 @@
 		private System.Windows.Forms.ComboBox ClassicTCLine1ComboBox;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label53;
+		private System.Windows.Forms.Label UseClassicMenuLabel;
 		private System.Windows.Forms.CheckBox UseClassicMenuCheckBox;
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.ComboBox ClockTypeComboBox;
 		private System.Windows.Forms.Label label35;
-		private System.Windows.Forms.Label label34;
+		private System.Windows.Forms.Label ShowLogoLabel;
 		private System.Windows.Forms.CheckBox ShowLogoCheckBox;
 		private System.Windows.Forms.ComboBox ScreensaverTimeComboBox;
 		private System.Windows.Forms.Label label40;
@@ -2948,24 +2947,24 @@
 		private System.Windows.Forms.Button BatteryEditButton;
 		private System.Windows.Forms.Label label56;
 		private System.Windows.Forms.ComboBox BatteryModelComboBox;
-		private System.Windows.Forms.Label label54;
+		private System.Windows.Forms.Label ShuntCorrectionLabel;
 		private System.Windows.Forms.NumericUpDown ShuntCorrectionUpDown;
 		private System.Windows.Forms.Label label55;
-		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label ResetCountersLabel;
 		private System.Windows.Forms.CheckBox ResetCountersCheckBox;
-		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label UsbChargeLabel;
 		private System.Windows.Forms.CheckBox UsbChargeCheckBox;
-		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label X32Label;
 		private System.Windows.Forms.CheckBox X32CheckBox;
-		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label LightSleepLabel;
 		private System.Windows.Forms.CheckBox LightSleepCheckBox;
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage SettingsTabPage;
 		private System.Windows.Forms.TabPage MaterialsTabPage;
 		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.Label PuffCutOffLabel;
 		private System.Windows.Forms.NumericUpDown PuffCutOffUpDown;
-		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label ShowClockLabel;
 		private System.Windows.Forms.CheckBox ShowClockCheckBox;
 		private System.Windows.Forms.ComboBox ChargeScreenComboBox;
 		private System.Windows.Forms.TabPage PowerCurvesTabPage;
@@ -3020,16 +3019,15 @@
 		private System.Windows.Forms.Label Battery2OffsetVoltsLabel;
 		private System.Windows.Forms.Label Battery2OffsetLabel;
 		private System.Windows.Forms.NumericUpDown Battery2OffsetUpDown;
-		private System.Windows.Forms.Label label60;
+		private System.Windows.Forms.Label UsbNoSleepLabel;
 		private System.Windows.Forms.CheckBox UsbNoSleepCheckBox;
-		private System.Windows.Forms.Label label61;
 		private System.Windows.Forms.CheckBox CheckTCRCheckBox;
 		private System.Windows.Forms.ToolTip MainToolTip;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.ComboBox PuffsTimeFormatComboBox;
 		private System.Windows.Forms.Label label58;
 		private System.Windows.Forms.ComboBox MainScreenSkinComboBox;
-		private System.Windows.Forms.Label label63;
+		private System.Windows.Forms.Label MainScreenSkinLabel;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.ListView MaterialsListView;
 		private System.Windows.Forms.ListView PowerCurvesListView;
@@ -3047,5 +3045,6 @@
 		private System.Windows.Forms.ComboBox ClicksTC2ComboBox;
 		private System.Windows.Forms.Label label67;
 		private System.Windows.Forms.Label label66;
+		private System.Windows.Forms.Label CheckTCRLabel;
 	}
 }

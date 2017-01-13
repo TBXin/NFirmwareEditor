@@ -4,6 +4,16 @@ namespace NToolbox.Services
 {
 	internal static class LocalizableStrings
 	{
+		public static string Second
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Shared.SecondString", "second"); }
+		}
+
+		public static string Seconds
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Shared.SecondsString", "seconds"); }
+		}
+
 		public static string MessageConnectDevice
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.ConnectDevice", "Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer"); }
@@ -18,8 +28,11 @@ namespace NToolbox.Services
 		{
 			get
 			{
-				return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox",
-					"NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.");
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox",
+					"NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release."
+				);
 			}
 		}
 
@@ -27,12 +40,15 @@ namespace NToolbox.Services
 		{
 			get
 			{
-				return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice",
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice",
 					"No compatible USB devices are connected." +
 					"\n\n" +
 					"To continue, please connect one." +
 					"\n\n" +
-					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.");
+					"If one already IS connected, try unplugging and plugging it back in. The cable may be loose."
+				);
 			}
 		}
 
@@ -388,6 +404,16 @@ namespace NToolbox.Services
 		#endregion
 
 		#region DeviceMonitorPause
+		public static string DeviceMonitorRecord
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.DeviceMonitor.RecordButton", "Record..."); }
+		}
+
+		public static string DeviceMonitorStopRecording
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.DeviceMonitor.RecordStopButton", "Stop Recording"); }
+		}
+
 		public static string DeviceMonitorPauseButton
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.DeviceMonitor.PauseButton", "Pause"); }
@@ -460,6 +486,96 @@ namespace NToolbox.Services
 		public static string FirmwareUpdaterDataflashReseted
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashReseted", "Dataflash has been reseted."); }
+		}
+		#endregion
+
+		#region Tooltips
+		public static string MainScreenSkinTooltip
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin",
+					"Change main screen style. Applicable only for devices with big screen (64x128)."
+				);
+			}
+		}
+
+		public static string UseClassicMenuTooltip
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu",
+					"Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, etc."
+				);
+			}
+		}
+
+		public static string ShowLogoTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo", "Show the logo on the main screen."); }
+		}
+
+		public static string ShowClockTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock", "Show the clock on the main screen."); }
+		}
+
+		public static string MaxPuffTimeTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime", "Maximum puff time correction."); }
+		}
+
+		public static string ShuntCorrectionTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection", "Ohm-meter correction."); }
+		}
+
+		public static string X32Tooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.X32", "Enables or disables usage of the X32 crystal of the PCB."); }
+		}
+
+		public static string LightSleepTooltip
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep",
+					"Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It takes some more energy in standby mode, so user will be warned by ! sign right of battery indicator."
+				);
+			}
+		}
+
+		public static string RcobcTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc", "Reset Counters on Battery Change, clear vaping statistics."); }
+		}
+
+		public static string CheckTCRTooltip
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR",
+					"Check coil material TCR, switching this option to off can eliminate TCR Error on heavy coils."
+				);
+			}
+		}
+
+		public static string UsbChargeTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge", "Enables or disables charging via USB."); }
+		}
+
+		public static string UsbNoSleepTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep", "Do not enter deep sleep mode while connected to USB."); }
 		}
 		#endregion
 	}

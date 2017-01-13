@@ -1,4 +1,8 @@
-﻿// NToolbox Window
+﻿// Shared
+Toolbox.Shared.SecondString=second
+Toolbox.Shared.SecondsString=seconds
+
+// NToolbox Window
 Toolbox.MainWindow.AboutLink=About && Links
 Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuration
 Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
@@ -115,6 +119,20 @@ Toolbox.ArcticFoxConfiguration.StatsTab=Stats
 Toolbox.ArcticFoxConfiguration.UploadButton=Upload settings
 Toolbox.ArcticFoxConfiguration.VoltsLabel=v
 
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Change main screen style. Applicable only for devices with big screen (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, etc.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Show the logo on the main screen.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Show the clock on the main screen.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maximum puff time correction.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohm-meter correction.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Enables or disables usage of the X32 crystal of the PCB.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Light Sleep Mode, for devices without secondary oscillator keep RTC accurate. It takes some more energy in standby mode, so user will be warned by ! sign right of battery indicator.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Reset Counters on Battery Change, clear vaping statistics.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Check coil material TCR, switching this option to off can eliminate TCR Error on heavy coils.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Enables or disables charging via USB.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Do not enter deep sleep mode while connected to USB.
+
 // Static Dropdowns
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Absolute (W)
 Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Relative (%)
@@ -181,31 +199,33 @@ Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Cancel
 
 // ArcticFox Configuration - Power Curve Editor Window
-Toolbox.ArcticFoxConfiguration.PowerCurve.NameLabel=Power Curve Name:
-Toolbox.ArcticFoxConfiguration.PowerCurve.ChartNameLabel=Power Curve:
-Toolbox.ArcticFoxConfiguration.PowerCurve.TimeLabel=Time:
-Toolbox.ArcticFoxConfiguration.PowerCurve.PercentLabel=Pct:
-Toolbox.ArcticFoxConfiguration.PowerCurve.TimeScaleButton=Time Scale
-Toolbox.ArcticFoxConfiguration.PowerCurve.SaveButton=Save
-Toolbox.ArcticFoxConfiguration.PowerCurve.CancelButton=Cancel
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Power Curve Name:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Power Curve:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Time:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=Pct:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Time Scale
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Cancel
 
 // ArcticFox Configuration - TFR Curve Editor Window
-Toolbox.ArcticFoxConfiguration.TFRCurve.NameLabel=Profile:
-Toolbox.ArcticFoxConfiguration.TFRCurve.ChartNameLabel=TFR Curve:
-Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel=Factor:
-Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton=Export
-Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton=Import
-Toolbox.ArcticFoxConfiguration.TFRCurve.SaveButton=Save
-Toolbox.ArcticFoxConfiguration.TFRCurve.CancelButton=Cancel
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profile:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Curve:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Factor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Cancel
 
 // ArcticFox Configuration - Discharge Curve Editor Window
-Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel=Profile:
-Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel=Discharge curve:
-Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel=Volts:
-Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Cutoff:
-Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Presets
-Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Save
-Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Cancel
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profile:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Discharge curve:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Volts:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Cutoff:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Presets
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Save
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Cancel
 
 // Device Monitor Window
 Toolbox.DeviceMonitor.SensorsLabel=Sensors:
@@ -231,6 +251,7 @@ Toolbox.DeviceMonitor.BoardTempLabel=Board Temperature:
 Toolbox.DeviceMonitor.PauseButton=Pause
 Toolbox.DeviceMonitor.PauseResumeButton=Resume
 Toolbox.DeviceMonitor.RecordButton=Record...
+Toolbox.DeviceMonitor.RecordStopButton=Stop Recording
 Toolbox.DeviceMonitor.SetXScaleButton=Set X Scale
 Toolbox.DeviceMonitor.SetYScaleButton=Set Y Scale
 Toolbox.DeviceMonitor.PuffButton=Puff...

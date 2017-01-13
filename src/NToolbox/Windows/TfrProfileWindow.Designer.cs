@@ -110,7 +110,7 @@ namespace NToolbox.Windows
 			// 
 			// ExportButton
 			// 
-			this.MainLocalizationExtender.SetKey(this.ExportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton");
+			this.MainLocalizationExtender.SetKey(this.ExportButton, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton");
 			this.ExportButton.Location = new System.Drawing.Point(4, 5);
 			this.ExportButton.Name = "ExportButton";
 			this.ExportButton.Size = new System.Drawing.Size(100, 35);
@@ -120,7 +120,7 @@ namespace NToolbox.Windows
 			// 
 			// ImportButton
 			// 
-			this.MainLocalizationExtender.SetKey(this.ImportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton");
+			this.MainLocalizationExtender.SetKey(this.ImportButton, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton");
 			this.ImportButton.Location = new System.Drawing.Point(110, 5);
 			this.ImportButton.Name = "ImportButton";
 			this.ImportButton.Size = new System.Drawing.Size(100, 35);
@@ -131,7 +131,7 @@ namespace NToolbox.Windows
 			// SaveButton
 			// 
 			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.SaveButton");
+			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton");
 			this.SaveButton.Location = new System.Drawing.Point(574, 5);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(100, 35);
@@ -143,7 +143,7 @@ namespace NToolbox.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.CancelButton");
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(680, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -188,7 +188,7 @@ namespace NToolbox.Windows
 			this.groupPanel1.Controls.Add(this.Percents1UpDown);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.TFRCurve.NameLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(200, 226);
@@ -426,7 +426,7 @@ namespace NToolbox.Windows
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label13.Location = new System.Drawing.Point(95, 201);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(42, 13);
@@ -461,7 +461,7 @@ namespace NToolbox.Windows
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label11.Location = new System.Drawing.Point(95, 174);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(42, 13);
@@ -496,7 +496,7 @@ namespace NToolbox.Windows
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label9.Location = new System.Drawing.Point(95, 147);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(42, 13);
@@ -531,7 +531,7 @@ namespace NToolbox.Windows
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label7.Location = new System.Drawing.Point(95, 120);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(42, 13);
@@ -566,7 +566,7 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label5.Location = new System.Drawing.Point(95, 93);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(42, 13);
@@ -601,7 +601,7 @@ namespace NToolbox.Windows
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label3.Location = new System.Drawing.Point(95, 66);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(42, 13);
@@ -636,7 +636,7 @@ namespace NToolbox.Windows
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.TFRCurve.FactorLabel");
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel");
 			this.label2.Location = new System.Drawing.Point(95, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(42, 13);
@@ -678,7 +678,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Controls.Add(this.TFRChart);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.TFRCurve.ChartNameLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(575, 226);

@@ -30,6 +30,8 @@ namespace NToolbox.Windows
 		private void InitializeComponent()
 		{
 			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
+			this.ExportButton = new System.Windows.Forms.Button();
+			this.ImportButton = new System.Windows.Forms.Button();
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
@@ -83,8 +85,6 @@ namespace NToolbox.Windows
 			this.Percents1UpDown = new System.Windows.Forms.NumericUpDown();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.DischargeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.ExportButton = new System.Windows.Forms.Button();
-			this.ImportButton = new System.Windows.Forms.Button();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.groupPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Volts11UpDown)).BeginInit();
@@ -137,10 +137,30 @@ namespace NToolbox.Windows
 			this.ControlBorderedPanel.TabIndex = 4;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
+			// ExportButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.ExportButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton");
+			this.ExportButton.Location = new System.Drawing.Point(4, 5);
+			this.ExportButton.Name = "ExportButton";
+			this.ExportButton.Size = new System.Drawing.Size(100, 35);
+			this.ExportButton.TabIndex = 8;
+			this.ExportButton.Text = "Export";
+			this.ExportButton.UseVisualStyleBackColor = true;
+			// 
+			// ImportButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.ImportButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton");
+			this.ImportButton.Location = new System.Drawing.Point(110, 5);
+			this.ImportButton.Name = "ImportButton";
+			this.ImportButton.Size = new System.Drawing.Size(100, 35);
+			this.ImportButton.TabIndex = 7;
+			this.ImportButton.Text = "Import";
+			this.ImportButton.UseVisualStyleBackColor = true;
+			// 
 			// SaveButton
 			// 
 			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.Discharge.SaveButton");
+			this.MainLocalizationExtender.SetKey(this.SaveButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton");
 			this.SaveButton.Location = new System.Drawing.Point(574, 5);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(100, 35);
@@ -152,7 +172,7 @@ namespace NToolbox.Windows
 			// 
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.Discharge.CancelButton");
+			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton");
 			this.CancelButton.Location = new System.Drawing.Point(680, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
@@ -214,7 +234,7 @@ namespace NToolbox.Windows
 			this.groupPanel1.Controls.Add(this.Percents1UpDown);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.Discharge.ProfileLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
 			this.groupPanel1.Size = new System.Drawing.Size(200, 397);
@@ -566,7 +586,7 @@ namespace NToolbox.Windows
 			// PresetsButton
 			// 
 			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.MainLocalizationExtender.SetKey(this.PresetsButton, "Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton");
+			this.MainLocalizationExtender.SetKey(this.PresetsButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton");
 			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
 			this.PresetsButton.Name = "PresetsButton";
 			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
@@ -583,7 +603,7 @@ namespace NToolbox.Windows
 			this.groupPanel3.Controls.Add(this.label23);
 			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel3.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel3, "Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel3, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel");
 			this.groupPanel3.Location = new System.Drawing.Point(0, 333);
 			this.groupPanel3.Name = "groupPanel3";
 			this.groupPanel3.Size = new System.Drawing.Size(200, 64);
@@ -625,7 +645,7 @@ namespace NToolbox.Windows
 			// label23
 			// 
 			this.label23.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label23.Location = new System.Drawing.Point(95, 39);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(34, 13);
@@ -635,7 +655,7 @@ namespace NToolbox.Windows
 			// label21
 			// 
 			this.label21.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label21, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label21, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label21.Location = new System.Drawing.Point(95, 309);
 			this.label21.Name = "label21";
 			this.label21.Size = new System.Drawing.Size(34, 13);
@@ -670,7 +690,7 @@ namespace NToolbox.Windows
 			// label19
 			// 
 			this.label19.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label19, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label19, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label19.Location = new System.Drawing.Point(95, 282);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(34, 13);
@@ -705,7 +725,7 @@ namespace NToolbox.Windows
 			// label17
 			// 
 			this.label17.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label17.Location = new System.Drawing.Point(95, 255);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(34, 13);
@@ -740,7 +760,7 @@ namespace NToolbox.Windows
 			// label15
 			// 
 			this.label15.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label15.Location = new System.Drawing.Point(95, 228);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(34, 13);
@@ -775,7 +795,7 @@ namespace NToolbox.Windows
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label13, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label13.Location = new System.Drawing.Point(95, 201);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(34, 13);
@@ -810,7 +830,7 @@ namespace NToolbox.Windows
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label11.Location = new System.Drawing.Point(95, 174);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(34, 13);
@@ -845,7 +865,7 @@ namespace NToolbox.Windows
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label9.Location = new System.Drawing.Point(95, 147);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(34, 13);
@@ -880,7 +900,7 @@ namespace NToolbox.Windows
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label7, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label7.Location = new System.Drawing.Point(95, 120);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(34, 13);
@@ -915,7 +935,7 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label5.Location = new System.Drawing.Point(95, 93);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(34, 13);
@@ -950,7 +970,7 @@ namespace NToolbox.Windows
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label3.Location = new System.Drawing.Point(95, 66);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(34, 13);
@@ -985,7 +1005,7 @@ namespace NToolbox.Windows
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.Discharge.VoltsLabel");
+			this.MainLocalizationExtender.SetKey(this.label2, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel");
 			this.label2.Location = new System.Drawing.Point(95, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
@@ -1027,7 +1047,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Controls.Add(this.DischargeChart);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.Discharge.ChartNameLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
 			this.groupPanel2.Size = new System.Drawing.Size(575, 397);
@@ -1043,26 +1063,6 @@ namespace NToolbox.Windows
 			this.DischargeChart.Name = "DischargeChart";
 			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
-			// 
-			// ExportButton
-			// 
-			this.MainLocalizationExtender.SetKey(this.ExportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ExportButton");
-			this.ExportButton.Location = new System.Drawing.Point(4, 5);
-			this.ExportButton.Name = "ExportButton";
-			this.ExportButton.Size = new System.Drawing.Size(100, 35);
-			this.ExportButton.TabIndex = 8;
-			this.ExportButton.Text = "Export";
-			this.ExportButton.UseVisualStyleBackColor = true;
-			// 
-			// ImportButton
-			// 
-			this.MainLocalizationExtender.SetKey(this.ImportButton, "Toolbox.ArcticFoxConfiguration.TFRCurve.ImportButton");
-			this.ImportButton.Location = new System.Drawing.Point(110, 5);
-			this.ImportButton.Name = "ImportButton";
-			this.ImportButton.Size = new System.Drawing.Size(100, 35);
-			this.ImportButton.TabIndex = 7;
-			this.ImportButton.Text = "Import";
-			this.ImportButton.UseVisualStyleBackColor = true;
 			// 
 			// DischargeProfileWindow
 			// 

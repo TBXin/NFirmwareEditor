@@ -92,6 +92,7 @@ namespace NToolbox.Windows
 
 			InitializeComboBoxes();
 			InitializeMenu();
+			InitializeTooltips();
 		}
 
 		private void InitializeMenu()
@@ -103,6 +104,45 @@ namespace NToolbox.Windows
 				new MenuItem(LocalizableStrings.ConfigurationMenuSaveAs, SaveAsMenuItem_Click)
 			});
 			ConfigurationMenuButton.Click += (s, e) => menu.Show(ConfigurationMenuButton, new Point(0, ConfigurationMenuButton.Height));
+		}
+
+		private void InitializeTooltips()
+		{
+			MainToolTip.SetToolTip(MainScreenSkinLabel, LocalizableStrings.MainScreenSkinTooltip);
+			MainToolTip.SetToolTip(MainScreenSkinComboBox, LocalizableStrings.MainScreenSkinTooltip);
+
+			MainToolTip.SetToolTip(UseClassicMenuLabel, LocalizableStrings.UseClassicMenuTooltip);
+			MainToolTip.SetToolTip(UseClassicMenuCheckBox, LocalizableStrings.UseClassicMenuTooltip);
+
+			MainToolTip.SetToolTip(ShowLogoLabel, LocalizableStrings.ShowLogoTooltip);
+			MainToolTip.SetToolTip(ShowLogoCheckBox, LocalizableStrings.ShowLogoTooltip);
+
+			MainToolTip.SetToolTip(ShowClockLabel, LocalizableStrings.ShowClockTooltip);
+			MainToolTip.SetToolTip(ShowClockCheckBox, LocalizableStrings.ShowClockTooltip);
+
+			MainToolTip.SetToolTip(PuffCutOffLabel, LocalizableStrings.MaxPuffTimeTooltip);
+			MainToolTip.SetToolTip(PuffCutOffUpDown, LocalizableStrings.MaxPuffTimeTooltip);
+
+			MainToolTip.SetToolTip(ShuntCorrectionLabel, LocalizableStrings.ShuntCorrectionTooltip);
+			MainToolTip.SetToolTip(ShuntCorrectionUpDown, LocalizableStrings.ShuntCorrectionTooltip);
+
+			MainToolTip.SetToolTip(X32Label, LocalizableStrings.X32Tooltip);
+			MainToolTip.SetToolTip(X32CheckBox, LocalizableStrings.X32Tooltip);
+
+			MainToolTip.SetToolTip(LightSleepLabel, LocalizableStrings.LightSleepTooltip);
+			MainToolTip.SetToolTip(LightSleepCheckBox, LocalizableStrings.LightSleepTooltip);
+
+			MainToolTip.SetToolTip(ResetCountersLabel, LocalizableStrings.RcobcTooltip);
+			MainToolTip.SetToolTip(ResetCountersCheckBox, LocalizableStrings.RcobcTooltip);
+
+			MainToolTip.SetToolTip(CheckTCRLabel, LocalizableStrings.CheckTCRTooltip);
+			MainToolTip.SetToolTip(CheckTCRCheckBox, LocalizableStrings.CheckTCRTooltip);
+
+			MainToolTip.SetToolTip(UsbChargeLabel, LocalizableStrings.UsbChargeTooltip);
+			MainToolTip.SetToolTip(UsbChargeCheckBox, LocalizableStrings.UsbChargeTooltip);
+
+			MainToolTip.SetToolTip(UsbNoSleepLabel, LocalizableStrings.UsbNoSleepTooltip);
+			MainToolTip.SetToolTip(UsbNoSleepCheckBox, LocalizableStrings.UsbNoSleepTooltip);
 		}
 
 		private void InitializeComboBoxes()
