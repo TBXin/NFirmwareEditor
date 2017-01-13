@@ -206,3 +206,73 @@ Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Cutoff:
 Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Presets
 Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Cancel
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Sensors:
+Toolbox.DeviceMonitor.ControlsLabel=Control:
+Toolbox.DeviceMonitor.ChartNameLabel=Line view:
+Toolbox.DeviceMonitor.FollowButton=Follow
+
+Toolbox.DeviceMonitor.Battery1Label=Battery1:
+Toolbox.DeviceMonitor.Battery2Label=Battery2:
+Toolbox.DeviceMonitor.Battery3Label=Battery3:
+Toolbox.DeviceMonitor.Battery4Label=Battery4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Battery Pack:
+Toolbox.DeviceMonitor.PowerLabel=Power:
+Toolbox.DeviceMonitor.PowerSetLabel=Power Set:
+Toolbox.DeviceMonitor.TemperatureLabel=Temperature:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Temperature Set:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Output Current:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Output Voltage:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Cold Resistance:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Live Resistance:
+Toolbox.DeviceMonitor.BoardTempLabel=Board Temperature:
+
+Toolbox.DeviceMonitor.PauseButton=Pause
+Toolbox.DeviceMonitor.PauseResumeButton=Resume
+Toolbox.DeviceMonitor.RecordButton=Record...
+Toolbox.DeviceMonitor.SetXScaleButton=Set X Scale
+Toolbox.DeviceMonitor.SetYScaleButton=Set Y Scale
+Toolbox.DeviceMonitor.PuffButton=Puff...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Show Puffs Boundaries
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Screen:
+Toolbox.Screenshooter.ControlsGroupLabel=Controls:
+Toolbox.Screenshooter.TakeScreenshotButton=Take screenshot
+Toolbox.Screenshooter.SaveScreenshotButton=Save screenshot
+Toolbox.Screenshooter.PixelSizeLabel=Pixel size multiplier:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Take before save:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Enabled
+Toolbox.Screenshooter.StartBroadcastButton=Start broadcast
+Toolbox.Screenshooter.StopBroadcastButton=Stop broadcast
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Device info:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Device name:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Firmware version:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Hardware version:
+Toolbox.FirmwareUpdater.BootModeLabel=Boot mode:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Progress:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Operations:
+Toolbox.FirmwareUpdater.CommonTab=Common
+Toolbox.FirmwareUpdater.UpdateButton=Update from file
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Read dataflash
+Toolbox.FirmwareUpdater.WriteDataflashButton=Write dataflash
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset dataflash
+Toolbox.FirmwareUpdater.AdvancedTab=Advanced
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Change HW Version
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Switch boot mode
+Toolbox.FirmwareUpdater.CancelButton=Cancel
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Device is ready.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Waiting for device...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Waiting for device after reset...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Reading dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Writing dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Restarting device...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Uploading firmware...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash was successfully read and saved to the file.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash was successfully written.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash has been reseted.

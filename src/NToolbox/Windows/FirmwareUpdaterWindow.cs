@@ -12,6 +12,7 @@ using NCore.UI;
 using NCore.USB;
 using NCore.USB.Models;
 using NFirmware;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -83,7 +84,7 @@ namespace NToolbox.Windows
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
 					BootModeTextBox.Text = m_dataflash.LoadFromLdrom ? "LDROM" : "APROM";
-					UpdateStatusLabel.Text = @"Device is ready.";
+					UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterDeviceIsReady;
 					SetUpdaterButtonsState(true);
 				});
 			}
@@ -99,7 +100,7 @@ namespace NToolbox.Windows
 					HardwareVersionTextBox.Clear();
 					FirmwareVersionTextBox.Clear();
 					BootModeTextBox.Clear();
-					UpdateStatusLabel.Text = @"Waiting for device...";
+					UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterWaitingForDevice;
 					SetUpdaterButtonsState(false);
 				});
 			}
@@ -154,7 +155,7 @@ namespace NToolbox.Windows
 			var isSuccess = false;
 			try
 			{
-				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
+				UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterReadingDataflash);
 				Trace.Info("Reading dataflash...");
 				var dataflash = HidConnector.Instance.ReadDataflash(worker);
 				Trace.Info("Reading dataflash... Done.");
@@ -164,20 +165,20 @@ namespace NToolbox.Windows
 					Trace.Info("Switching boot mode...");
 					dataflash.LoadFromLdrom = true;
 
-					UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
+					UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterWritingDataflash);
 					Trace.Info("Writing dataflash...");
 					HidConnector.Instance.WriteDataflash(dataflash, worker);
 					Trace.Info("Writing dataflash... Done. Waiting 500 msec.");
 					Thread.Sleep(100);
 
-					UpdateUI(() => UpdateStatusLabel.Text = @"Restarting device...");
+					UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterRestartingDevice);
 					Trace.Info("Restarting device...");
 					HidConnector.Instance.RestartDevice();
 					Thread.Sleep(200);
 					Trace.Info("Restarting device... Done.");
 
 					Trace.Info("Waiting for device after reset...");
-					UpdateUI(() => UpdateStatusLabel.Text = @"Waiting for device after reset...");
+					UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterWaitingForDeviceAfterReset);
 
 					var deviceFoundResult = SpinWait.SpinUntil(() =>
 					{
@@ -212,7 +213,7 @@ namespace NToolbox.Windows
 					}
 				}
 
-				UpdateUI(() => UpdateStatusLabel.Text = @"Uploading firmware...");
+				UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterUploadingFirmware);
 
 				var writeFirmwareResult = SpinWait.SpinUntil(() =>
 				{
@@ -263,10 +264,10 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				UpdateUI(() => UpdateStatusLabel.Text = @"Reading dataflash...");
+				UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterReadingDataflash);
 				var dataflash = HidConnector.Instance.ReadDataflash(worker);
 				File.WriteAllBytes(fileName, dataflash.Data);
-				UpdateUI(() => UpdateStatusLabel.Text = @"Dataflash was successfully read and saved to the file.");
+				UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterDataflashReadAndSave);
 			}
 			catch (Exception ex)
 			{
@@ -279,11 +280,11 @@ namespace NToolbox.Windows
 		{
 			try
 			{
-				UpdateUI(() => UpdateStatusLabel.Text = @"Writing dataflash...");
+				UpdateUI(() => UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterWritingDataflash);
 				HidConnector.Instance.WriteDataflash(simpleDataflash, worker);
 				UpdateUI(() =>
 				{
-					UpdateStatusLabel.Text = @"Dataflash was successfully written.";
+					UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterDataflashWritten;
 					worker.ReportProgress(0);
 				});
 			}
@@ -338,7 +339,7 @@ namespace NToolbox.Windows
 			try
 			{
 				HidConnector.Instance.ResetDataflash();
-				UpdateStatusLabel.Text = @"Dataflash has been reseted.";
+				UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterDataflashReseted;
 			}
 			catch (Exception ex)
 			{

@@ -13,6 +13,7 @@ using NCore;
 using NCore.UI;
 using NCore.USB;
 using NToolbox.Models;
+using NToolbox.Services;
 
 namespace NToolbox.Windows
 {
@@ -244,7 +245,7 @@ namespace NToolbox.Windows
 					m_prevReceiveTime = DateTime.Now.Add(-TimeSpan.FromMilliseconds(RequestDataIntervalInMs));
 				}
 				m_isChartPaused = !m_isChartPaused;
-				PauseButton.Text = m_isChartPaused ? "Resume" : "Pause";
+				PauseButton.Text = m_isChartPaused ? LocalizableStrings.DeviceMonitorPauseResumeButton : LocalizableStrings.DeviceMonitorPauseButton;
 			};
 
 			TrackingButton.Click += (s, e) => ChangeXScale(m_timeFrame);
@@ -423,16 +424,7 @@ namespace NToolbox.Windows
 		{
 			if (HidConnector.Instance.IsDeviceConnected) return true;
 
-			var result = InfoBox.Show
-			(
-				"No compatible USB devices are connected." +
-				"\n\n" +
-				"To continue, please connect one." +
-				"\n\n" +
-				"If one already IS connected, try unplugging and plugging it back in. The cable may be loose.",
-				MessageBoxButtons.OKCancel
-			);
-
+			var result = InfoBox.Show(LocalizableStrings.MessageNoCompatibleUSBDevice, MessageBoxButtons.OKCancel);
 			if (result == DialogResult.OK)
 			{
 				return EnsureConnection();

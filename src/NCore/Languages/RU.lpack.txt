@@ -129,7 +129,7 @@ Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Кол-во затяжек
 Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Время затяжек
 Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Напряжение на акб
 Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Дата/Время
-Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Температура мода
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Температура платы
 Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=После. время затяжки
 Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Посл. мощность
 Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Посл. температура
@@ -206,3 +206,73 @@ Toolbox.ArcticFoxConfiguration.Discharge.CutoffLabel=Отсечка:
 Toolbox.ArcticFoxConfiguration.Discharge.PresetsButton=Пресет
 Toolbox.ArcticFoxConfiguration.Discharge.SaveButton=Сохранить
 Toolbox.ArcticFoxConfiguration.Discharge.CancelButton=Отмена
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Датчики:
+Toolbox.DeviceMonitor.ControlsLabel=Управление:
+Toolbox.DeviceMonitor.ChartNameLabel=Графики:
+Toolbox.DeviceMonitor.FollowButton=В конец
+
+Toolbox.DeviceMonitor.Battery1Label=Аккумулятор 1:
+Toolbox.DeviceMonitor.Battery2Label=Аккумулятор 2:
+Toolbox.DeviceMonitor.Battery3Label=Аккумулятор 3:
+Toolbox.DeviceMonitor.Battery4Label=Аккумулятор 4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Сумма всех АКБ:
+Toolbox.DeviceMonitor.PowerLabel=Мощность:
+Toolbox.DeviceMonitor.PowerSetLabel=Мощность (У):
+Toolbox.DeviceMonitor.TemperatureLabel=Температура:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Температура (У):
+Toolbox.DeviceMonitor.OutputCurrentLabel=Сила тока:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Напряжение:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Сопротивление:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Сопротивление (Ж):
+Toolbox.DeviceMonitor.BoardTempLabel=Температура платы:
+
+Toolbox.DeviceMonitor.PauseButton=Пауза
+Toolbox.DeviceMonitor.PauseResumeButton=Продолжить
+Toolbox.DeviceMonitor.RecordButton=Запись...
+Toolbox.DeviceMonitor.SetXScaleButton=Масштаб по X
+Toolbox.DeviceMonitor.SetYScaleButton=Масштаб по Y
+Toolbox.DeviceMonitor.PuffButton=Затяжка...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Рисовать границы затяжек
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Экран:
+Toolbox.Screenshooter.ControlsGroupLabel=Управление:
+Toolbox.Screenshooter.TakeScreenshotButton=Сделать снимок
+Toolbox.Screenshooter.SaveScreenshotButton=Сохранить снимок
+Toolbox.Screenshooter.PixelSizeLabel=Увеличить размер в N раз:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Снимок перед сохранением:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Вкл
+Toolbox.Screenshooter.StartBroadcastButton=Начать вещание
+Toolbox.Screenshooter.StopBroadcastButton=Остановить вещание
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Информация:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Устройство:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Версия прошивки:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Версия платы:
+Toolbox.FirmwareUpdater.BootModeLabel=Режим загрузки:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Прогресс:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Операции:
+Toolbox.FirmwareUpdater.CommonTab=Основные
+Toolbox.FirmwareUpdater.UpdateButton=Обновить
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Прочитать
+Toolbox.FirmwareUpdater.WriteDataflashButton=Записать
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Сбросить
+Toolbox.FirmwareUpdater.AdvancedTab=Эксперт
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Сменить версию платы
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Переключить загручик
+Toolbox.FirmwareUpdater.CancelButton=Отмена
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Устройство обнаружено.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Ожидание устройства...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Ожидание устройства после перезагрузки...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Чтение dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Запись dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Перезагрузка устройства...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Загрузка прошивки...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash был успешно прочитан и сохранен в файл.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash успешно записан.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash успешно сброшен.

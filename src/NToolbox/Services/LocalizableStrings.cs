@@ -16,7 +16,11 @@ namespace NToolbox.Services
 
 		public static string MessageOutdatedToolbox
 		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox", "NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release."); }
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox",
+					"NFE Toolbox is outdated.\n\nTo continue, please download\n\nlatest available release.");
+			}
 		}
 
 		public static string MessageNoCompatibleUSBDevice
@@ -380,6 +384,82 @@ namespace NToolbox.Services
 		public static string PuffsTimeFormatHhMmSs
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS", "HH:MM:SS"); }
+		}
+		#endregion
+
+		#region DeviceMonitorPause
+		public static string DeviceMonitorPauseButton
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.DeviceMonitor.PauseButton", "Pause"); }
+		}
+
+		public static string DeviceMonitorPauseResumeButton
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.DeviceMonitor.PauseResumeButton", "Resume"); }
+		}
+		#endregion
+
+		#region BroadcastStartStop
+		public static string ScreenshooterStartBroadcast
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Screenshooter.StartBroadcastButton", "Start broadcast"); }
+		}
+
+		public static string ScreenshooterStopBroadcast
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Screenshooter.StopBroadcastButton", "Stop broadcast"); }
+		}
+		#endregion
+
+		#region FirmwareUpdater
+		public static string FirmwareUpdaterDeviceIsReady
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DeviceIsReady", "Device is ready."); }
+		}
+
+		public static string FirmwareUpdaterWaitingForDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.WaitingForDevice", "Waiting for device..."); }
+		}
+
+		public static string FirmwareUpdaterWaitingForDeviceAfterReset
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset", "Waiting for device after reset..."); }
+		}
+
+		public static string FirmwareUpdaterReadingDataflash
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.ReadingDataflash", "Reading dataflash..."); }
+		}
+
+		public static string FirmwareUpdaterWritingDataflash
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.WritingDataflash", "Writing dataflash..."); }
+		}
+
+		public static string FirmwareUpdaterRestartingDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.RestartingDevice", "Restarting device..."); }
+		}
+
+		public static string FirmwareUpdaterUploadingFirmware
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.UploadingFirmware", "Uploading firmware..."); }
+		}
+
+		public static string FirmwareUpdaterDataflashReadAndSave
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave", "Dataflash was successfully read and saved to the file."); }
+		}
+
+		public static string FirmwareUpdaterDataflashWritten
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashWritten", "Dataflash was successfully written."); }
+		}
+
+		public static string FirmwareUpdaterDataflashReseted
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashReseted", "Dataflash has been reseted."); }
 		}
 		#endregion
 	}
