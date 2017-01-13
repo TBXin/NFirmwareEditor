@@ -25,6 +25,36 @@ namespace NCore.UI
 			return m_localizationDictionary;
 		}
 
+		[NotNull]
+		public static List<NamedItemContainer<string>> GetAvailableLanguages()
+		{
+			var result = new List<NamedItemContainer<string>>();
+			try
+			{
+				var files = Directory.GetFiles(ApplicationService.LanguagePacksDirectory, FileFilters.LanguagePackExtension);
+				foreach (var file in files)
+				{
+					var fileName = Path.GetFileNameWithoutExtension(file);
+					string lpName;
+					if (string.IsNullOrEmpty(fileName))
+					{
+						lpName = file;
+					}
+					else
+					{
+						var dotIndex = fileName.IndexOf(".", StringComparison.InvariantCulture);
+						lpName = dotIndex == -1 ? fileName : fileName.Substring(0, dotIndex);
+					}
+					result.Add(new NamedItemContainer<string>(lpName, file));
+				}
+			}
+			catch (Exception ex)
+			{
+				Trace.Warn(ex);
+			}
+			return result;
+		}
+
 		public void InitializeLanguagePack([NotNull] string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");

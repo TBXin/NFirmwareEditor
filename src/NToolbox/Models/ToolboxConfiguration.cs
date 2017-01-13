@@ -10,7 +10,10 @@ namespace NToolbox.Models
 		{
 			ShowPuffsBoundaries = true;
 			ActiveSeries = new SerializableDictionary<string, bool>();
+			Language = "EN";
 		}
+
+		public string Language { get; set; }
 
 		public bool OpenArcticFoxConfigurationWhenDeviceIsConnected { get; set; }
 

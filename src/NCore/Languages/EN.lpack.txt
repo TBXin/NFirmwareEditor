@@ -3,12 +3,18 @@ Toolbox.Shared.SecondString=second
 Toolbox.Shared.SecondsString=seconds
 
 // NToolbox Window
-Toolbox.MainWindow.AboutLink=About && Links
 Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuration
-Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
-Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
 Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Configuration
+Toolbox.MainWindow.DeviceMonitorButton=Device Monitor
 Toolbox.MainWindow.ScreenshooterButton=Screenshooter
+Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
+Toolbox.MainWindow.AboutLink=About && Links
+
+Toolbox.MainWindow.Tray.ShowToolbox=Show NFE Toolbox window
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Open ArcticFox Configuration when device is connected
+Toolbox.MainWindow.Tray.TimeSync=Synchronize time when device is connected
+Toolbox.MainWindow.Tray.StartWithWindows=Run NFE Toolbox when Windows starts
+Toolbox.MainWindow.Tray.Exit=Exit
 
 // ArcticFox Configuration Window
 Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer

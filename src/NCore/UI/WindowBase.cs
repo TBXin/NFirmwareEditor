@@ -37,6 +37,11 @@ namespace NCore.UI
 					control.Text = localizationDictionary[key];
 				}
 			}
+			OnLocalization();
+		}
+
+		protected virtual void OnLocalization()
+		{
 		}
 
 		private void WindowBase_Load(object sender, EventArgs e)

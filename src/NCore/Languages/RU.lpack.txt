@@ -3,12 +3,18 @@ Toolbox.Shared.SecondString=сек
 Toolbox.Shared.SecondsString=сек
 
 // NToolbox Window
-Toolbox.MainWindow.AboutLink=О Программе && Ссылки
 Toolbox.MainWindow.ArcticFoxConfigurationButton=Настройка ArcticFox
-Toolbox.MainWindow.DeviceMonitorButton=Мониторинг устройства
-Toolbox.MainWindow.FirmwareUpdaterButton=Обновление прошивки
 Toolbox.MainWindow.MyEvicConfigurationButton=Настройка myEvic
+Toolbox.MainWindow.DeviceMonitorButton=Мониторинг устройства
 Toolbox.MainWindow.ScreenshooterButton=Снимок экрана
+Toolbox.MainWindow.FirmwareUpdaterButton=Обновление прошивки
+Toolbox.MainWindow.AboutLink=О Программе && Ссылки
+
+Toolbox.MainWindow.Tray.ShowToolbox=Показать NFE Toolbox
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Запускать ArcticFox Configuration при подключении устройства
+Toolbox.MainWindow.Tray.TimeSync=Синхронизация времени при подключении устройства
+Toolbox.MainWindow.Tray.StartWithWindows=Запускать вместе с Windows
+Toolbox.MainWindow.Tray.Exit=Выход
 
 // ArcticFox Configuration Window
 Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Подключите устройство\nс прошивкой\n\nArcticFox\n[{0}]\n\nили более новой
@@ -53,7 +59,7 @@ Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Вкл
 Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Клика:
 Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Клика:
 Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Клика:
-Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Шаг 1 Ватт:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Шаг по 1 Ватту:
 Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Общие:
 Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=Клики в режиме ТК:
 Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Кнопки +/-:
@@ -111,10 +117,10 @@ Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Темп. Контрол
 Toolbox.ArcticFoxConfiguration.ProfilesTab=Профили
 Toolbox.ArcticFoxConfiguration.ResetButton=Сброс
 Toolbox.ArcticFoxConfiguration.ScreenTab=Экран
-Toolbox.ArcticFoxConfiguration.SecondsLabel=Секунд
+Toolbox.ArcticFoxConfiguration.SecondsLabel=Сек
 Toolbox.ArcticFoxConfiguration.SettingsTab=Настройки
 Toolbox.ArcticFoxConfiguration.SmallScreenTab=Маленький экран
-Toolbox.ArcticFoxConfiguration.SmartCheckBox=Автовыбор профиля
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Автовыбор профилей
 Toolbox.ArcticFoxConfiguration.StatsTab=Статистика
 Toolbox.ArcticFoxConfiguration.UploadButton=Загрузить в мод
 Toolbox.ArcticFoxConfiguration.VoltsLabel=Вольт

@@ -578,5 +578,57 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep", "Do not enter deep sleep mode while connected to USB."); }
 		}
 		#endregion
+
+		#region MainWindowContextMenu
+		public static string TrayShowToolbox
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.ShowToolbox", "Show NFE Toolbox window"); }
+		}
+
+		public static string TrayArcticFoxConfiguration
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ArcticFoxConfigurationButton", "ArcticFox Configuration"); }
+		}
+
+		public static string TrayMyEvicConfiguration
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.MyEvicConfigurationButton", "myEvic Configuration"); }
+		}
+
+		public static string TrayDeviceMonitor
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.DeviceMonitorButton", "Device Monitor"); }
+		}
+
+		public static string TrayScreenshooter
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ScreenshooterButton", "Screenshooter"); }
+		}
+
+		public static string TrayFirmwareUpdater
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.FirmwareUpdaterButton", "Firmware Updater"); }
+		}
+
+		public static string TrayArcticFoxConfigurationAutostart
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected", "Open ArcticFox Configuration when device is connected"); }
+		}
+
+		public static string TrayTimeSync
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.TimeSync", "Synchronize time when device is connected"); }
+		}
+
+		public static string TrayToolboxAutostart
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.StartWithWindows", "Run NFE Toolbox when Windows starts"); }
+		}
+
+		public static string TrayExit
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.Exit", "Exit"); }
+		}
+		#endregion
 	}
 }
