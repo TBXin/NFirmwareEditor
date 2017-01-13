@@ -275,7 +275,7 @@
 			this.MainLocalizationExtender.SetKey(this.MainContainer, "");
 			this.MainContainer.Location = new System.Drawing.Point(0, 0);
 			this.MainContainer.Name = "MainContainer";
-			this.MainContainer.SelectedPage = this.WelcomePage;
+			this.MainContainer.SelectedPage = this.WorkspacePage;
 			this.MainContainer.Size = new System.Drawing.Size(374, 581);
 			this.MainContainer.TabIndex = 0;
 			// 
@@ -547,13 +547,13 @@
 			// 
 			// label11
 			// 
-			this.label11.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.ActiveProfileLabel");
-			this.label11.Location = new System.Drawing.Point(251, 11);
+			this.label11.Location = new System.Drawing.Point(170, 11);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(41, 13);
+			this.label11.Size = new System.Drawing.Size(122, 13);
 			this.label11.TabIndex = 96;
 			this.label11.Text = "Active:";
+			this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// GeneralTabPage
 			// 

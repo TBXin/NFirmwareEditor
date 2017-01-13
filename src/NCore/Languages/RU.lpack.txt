@@ -19,7 +19,7 @@ Toolbox.ArcticFoxConfiguration.Status.Disconnected=отключено
 Toolbox.ArcticFoxConfiguration.Status.Ready=Я жажду служить
 Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Операция выполнена
 
-Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Актив:
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Активный профиль:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Аккумулятор 1:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Аккумулятор 2:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Аккумулятор 3:
