@@ -402,6 +402,7 @@ namespace NToolbox.Windows
 				Battery1OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[0] / 100m);
 				Battery2OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[1] / 100m);
 				Battery3OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[2] / 100m);
+				Battery4OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[3] / 100m);
 
 				PowerCurvesListView.Items.Clear();
 				PowerCurvesListView.LargeImageList.Images.Clear();
@@ -538,10 +539,11 @@ namespace NToolbox.Windows
 				advanced.CheckTCR = CheckTCRCheckBox.Checked;
 				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
 				advanced.UsbNoSleep = UsbNoSleepCheckBox.Checked;
-				
+
 				advanced.BatteryVoltageOffsets[0] = (sbyte)(Battery1OffsetUpDown.Value * 100);
 				advanced.BatteryVoltageOffsets[1] = (sbyte)(Battery2OffsetUpDown.Value * 100);
 				advanced.BatteryVoltageOffsets[2] = (sbyte)(Battery3OffsetUpDown.Value * 100);
+				advanced.BatteryVoltageOffsets[3] = (sbyte)(Battery4OffsetUpDown.Value * 100);
 			}
 		}
 
