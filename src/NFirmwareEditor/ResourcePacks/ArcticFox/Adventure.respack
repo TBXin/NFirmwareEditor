@@ -1,4 +1,4 @@
-<ResourcePack Definition="ArcticFox" Name="Adventure" Version="1.2" Author="ArionWT">
+<ResourcePack Definition="ArcticFox" Name="Adventure" Version="1.3" Author="ArionWT">
   <Description>ArcticFox resource pack in adventure games style.
 Пак ресурсов ArcticFox в стиле приключенческих игр.</Description>
   <Images>
@@ -522,7 +522,7 @@ XX......XX..
 .XXXXXXX....
 </Data>
     </Image>
-    <Image Index="23" Width="12" Height="16">
+<Image Index="23" Width="12" Height="16">
       <Data>
 ............
 .XXXX.XXXX..
@@ -534,8 +534,8 @@ XX........X.
 XX........X.
 XX........X.
 XX........X.
-XX........X.
 .XXXXX....X.
+....XX....X.
 ....XX....X.
 ....XX....X.
 ....XX....X.
@@ -590,11 +590,11 @@ XX........X.
 XX........X.
 XX........X.
 .XXXXX....X.
+...XXX....X.
+..XX......X.
+..XX......X.
+...XXX....X.
 ....XX....X.
-...XXX....X.
-..XX......X.
-..XX......X.
-...XXX....X.
 ....XX....X.
 ....XX....X.
 ....XX....X.
@@ -770,8 +770,8 @@ XX............X.
 XX............X.
 XX............X.
 XX............X.
-XX............X.
 .XXXXXXX......X.
+......XX......X.
 ......XX......X.
 ......XX......X.
 ......XX......X.
@@ -849,12 +849,12 @@ XX............X.
 XX............X.
 .XXXXXXX......X.
 ......XX......X.
+....XXXX......X.
+...XX.........X.
+...XX.........X.
+...XX.........X.
+....XXXX......X.
 ......XX......X.
-....XXXX......X.
-...XX.........X.
-...XX.........X.
-...XX.........X.
-....XXXX......X.
 ......XX......X.
 ......XX......X.
 ......XX......X.
@@ -1589,9 +1589,9 @@ XX...X.
 XX...X.
 XX...X.
 XX...X.
+XX...X.
 XX..X..
 XXXX...
-.......
 </Data>
     </Image>
     <Image Index="6B" Width="7" Height="8">
@@ -1669,10 +1669,10 @@ XX...X.
     <Image Index="71" Width="7" Height="8">
       <Data>
 XX...X.
-XX..X..
-XXXX...
-XX..X..
 XX...X.
+XX...X.
+XXXXX..
+XX..X..
 XX...X.
 XX...X.
 XX...X.
