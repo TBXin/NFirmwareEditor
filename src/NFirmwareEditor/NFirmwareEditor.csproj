@@ -901,6 +901,9 @@
     <None Include="ResourcePacks\ArcticFox\ArcticFox_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ResourcePacks\ArcticFox\ArcticFox_fonts_fix.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\ArcticFox\Neo.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
