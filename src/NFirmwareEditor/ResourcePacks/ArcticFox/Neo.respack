@@ -1345,13 +1345,13 @@ X...X.
     <Image Index="56" Width="4" Height="8">
       <Data>
 ....
-..X.
-..X.
-..X.
-..X.
-..X.
-..X.
-XXX.
+.X..
+.X..
+.X..
+.X..
+.X..
+.X..
+XX..
 </Data>
     </Image>
     <Image Index="57" Width="6" Height="8">
