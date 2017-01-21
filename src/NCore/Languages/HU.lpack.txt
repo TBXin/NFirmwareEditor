@@ -1,0 +1,305 @@
+﻿// Shared
+Toolbox.Shared.SecondString=másodperc
+Toolbox.Shared.SecondsString=másodperc
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox konfigurátor
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic konfigurátor
+Toolbox.MainWindow.DeviceMonitorButton=Eszköz monitor
+Toolbox.MainWindow.ScreenshooterButton=Képernyőkép
+Toolbox.MainWindow.FirmwareUpdaterButton=Firmware frissítő
+Toolbox.MainWindow.AboutLink=Névjegy && Linkek
+
+Toolbox.MainWindow.Tray.ShowToolbox=NFE Toolbox ablak mutatása
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=ArcticFox konfigurátor megnyitása eszköz csatlakoztatásakor
+Toolbox.MainWindow.Tray.TimeSync=Idő szinkronizálása eszköz csatlakoztatásakor
+Toolbox.MainWindow.Tray.StartWithWindows=NFE Toolbox futtatása Windows indításakor
+Toolbox.MainWindow.Tray.Exit=Kilépés
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Csatlakoztasd az eszközt amin\n\nArcticFox\n[{0}]\n\nfirmware vagy újabb van
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Beállítások letöltése...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=Az NFE Toolbox túl régi.\n\nA folytatáshoz töltsd le\n\na legfrissebb verziót.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Nem található kompatibilis USB eszköz.\n\nFolytatáshoz csatlakoztass egyet.\n\nHa csatlakoztatva van, próbáld meg újracsatlakoztatni. Lehet sérült a kábel.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Nem lehet letölteni a beállításokat. Csatlakoztasd újra a készüléket.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Az eszköz
+Toolbox.ArcticFoxConfiguration.Status.Connected=csatlakoztatva
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=Leválasztva
+Toolbox.ArcticFoxConfiguration.Status.Ready=Kész
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Folyamat befejeződött
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Aktív:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Akkumulátor 1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Akkumulátor 2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Akkumulátor 3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Akkumulátor 4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Szerk...
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Akkumulátor típus:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=TCR ellenőrzés:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=Csökkentett alvás:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Max. Slukk hossz:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Shunt korrekció:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB töltés:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=USB ébrenlét:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Haladó
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Karika stílus
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Klasszikus stílus
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Konfiguráció▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Új
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Megnyitás
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Mentés mint...
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Csatlakozás és beállítás letöltés
+Toolbox.ArcticFoxConfiguration.ControlsTab=Vezérlők
+Toolbox.ArcticFoxConfiguration.DownloadButton=Beállítás letöltés
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Engedélyez
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 kattintás:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 kattintás:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 kattintás:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=1W lépték:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Megosztott:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=TC Mód tűzgomb kattintások:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Fel/Le gombok:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=VW Mód tűzgomb kattintások:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=+ / - gomb ébreszt:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=1. sor:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=2. sor:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=3. sor:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=4. sor:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Slukk idő
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=TC sor kiosztás:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=VW sor kiosztás:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Fényerő:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Töltő képernyő:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Óra típusa:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Fordított kép:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Készenléti idő:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Főképernyő stílusa:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Slukk utáni kép:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Képernyővédő idő:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Óra mutatása:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Logó mutatása:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Lopakodó mód:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Segítségért vidd az egeret a nyégzetre vagy a listára.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Klasszikus menü:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Slukk számláló:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Slukk idő formátum:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Összes slukk ideje:
+Toolbox.ArcticFoxConfiguration.GeneralTab=Általános
+Toolbox.ArcticFoxConfiguration.LayoutTab=Elrendezés
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Huzalok
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Új konfiguráció létrehozása
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Meglévő konfiguráció megnyitása
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Teljesítmény görbék
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Huzal anyaga:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zárolva
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Mód:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Név:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Szerk...
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Teljesítmény:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Előfűtés szünet:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Előfűtés görbe:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Előfűtés teljesítmény:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Előfűtés idő:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Előfűtés típus:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Profil:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Ellenállás:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Beállítás
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Hőmérséklet domináns
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Hőmérséklet:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Szerk...
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=W
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=Teljesítmény
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Hőfok szabályzás
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Profil
+Toolbox.ArcticFoxConfiguration.ResetButton=Visszaállítás
+Toolbox.ArcticFoxConfiguration.ScreenTab=Képernyő
+Toolbox.ArcticFoxConfiguration.SecondsLabel=mp
+Toolbox.ArcticFoxConfiguration.SettingsTab=Beállítások
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Kis képernyő
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Smart profile selection
+Toolbox.ArcticFoxConfiguration.StatsTab=Statisztikák
+Toolbox.ArcticFoxConfiguration.UploadButton=Beállítás feltöltés
+Toolbox.ArcticFoxConfiguration.VoltsLabel=V
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Főképernyő kinézetének megváltoztatása. Csak nagy kijelző esetén működik (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Profil választás klasszikus módon, úgy mint a gyáriban: Power, Ni, Ti, etc.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Logó megjelenítése a főképernyőn és töltéskor.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Óra megjelenítése a főképernyőn.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Összes slukk idő korrekció.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohm-mérő korrekció.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Engedélyezi vagy letiltja a panelra épített X32 oszcillátor kristályt (Nincs minden készülékben).
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=A csökkentett alvás az X32 oszcillátorral nem rendelkező készülékeknél segít pontosan tartani az időt. Növeli az energia használatot alvás alatt, erre az akkumulátor jel mellet egy ! figyelmeztet.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Akkumulátor csere után felajánlja a statisztikák törlését (slukkidő, slukkok száma).
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Huzal anyag ellenőrzés. Vastag huzal esetén ha TCR Error hibát kapsz, kapcsold ki.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=USB-n való töltés engedélyezése vagy letiltása.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Ha az USB csatlakoztatva van, a készülék nem megy mély alvásba.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Abszolút (W)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Relatív (%)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Görbe
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Nem domináns (Pwr / Temp)
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Feszültség (V)
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Kimeneti feszültség (V)
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Kimeneti áramerősség (A)
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Ellenállás
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Élő ellenállás
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Slukk számláló
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Slukk idő
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Akkumulátor(ok) feszültsége
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Dátum/Idő
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Panel hőmérséklet
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Utolsó slukk hossza
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Utolsó teljesítmény
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Utolsó hőmérséklet
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Akkumulátor
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Akkumulátor + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Akkumulátor + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Akkumulátor %
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Klasszikus
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Karika
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Klasszikus
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Bővített
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Analóg
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Digitális
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Kikapcsolva
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 perc
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 perc
+Toolbox.ArcticFoxConfiguration.ClickActions.None=Nincs
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Szerkesztés
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Főmenü
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Előfűtés menü
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Profil választó
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Profil szerkesztő
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=Hőmérséklet dominancia Be / Ki
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Óra mutatása
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Információs kép
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Be / Ki
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Be / Ki
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Be / Ki
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Normál
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Felcserélt
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Másodpercek
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Általános akku
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Egyedi
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=PI-Szabályzás beállítás:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=PI-szabályzás:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Engedélyez
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Kezdés:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P érték:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I érték:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Mentés
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Mégse
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Profil:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Teljesítmény görbe:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Idő:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=%:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Idő skála
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Mentés
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Mégse
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profil:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Görbe:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Faktor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Exportálás
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Importálás
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Mentés
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Mégse
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profil:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Merülési görbe:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Volt:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Kikapcsolás:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Presets
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Exportálás
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Importálás
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Mentés
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Mégse
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Szenzorok:
+Toolbox.DeviceMonitor.ControlsLabel=Vezérlők:
+Toolbox.DeviceMonitor.ChartNameLabel=Görbék:
+Toolbox.DeviceMonitor.FollowButton=Ugrás a végére
+
+Toolbox.DeviceMonitor.Battery1Label=Akkumulátor 1:
+Toolbox.DeviceMonitor.Battery2Label=Akkumulátor 2:
+Toolbox.DeviceMonitor.Battery3Label=Akkumulátor 3:
+Toolbox.DeviceMonitor.Battery4Label=Akkumulátor 4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Akkumulátor csomag:
+Toolbox.DeviceMonitor.PowerLabel=Aktuális teljesítmény:
+Toolbox.DeviceMonitor.PowerSetLabel=Beállított teljesítmény:
+Toolbox.DeviceMonitor.TemperatureLabel=Aktuális hőmérséklet:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Beállított hőmérséklet:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Kimeneti áramerősség:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Kimeneti feszültség:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Hideg ellenállás:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Aktuális ellenállás:
+Toolbox.DeviceMonitor.BoardTempLabel=Panel hőmérséklet:
+
+Toolbox.DeviceMonitor.PauseButton=Szünet
+Toolbox.DeviceMonitor.PauseResumeButton=Folytatás
+Toolbox.DeviceMonitor.RecordButton=Felvétel...
+Toolbox.DeviceMonitor.RecordStopButton=Felvétel állj
+Toolbox.DeviceMonitor.SetXScaleButton=X skála beállítás
+Toolbox.DeviceMonitor.SetYScaleButton=Y skála beállítás
+Toolbox.DeviceMonitor.PuffButton=Slukk...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Slukk határok mutatása
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Méret:
+Toolbox.Screenshooter.ControlsGroupLabel=Vezérlők:
+Toolbox.Screenshooter.TakeScreenshotButton=Kép készítés
+Toolbox.Screenshooter.SaveScreenshotButton=Kép mentés
+Toolbox.Screenshooter.PixelSizeLabel=Pixel méret szorzó:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Mentés előtt kép készítése:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Enged
+Toolbox.Screenshooter.StartBroadcastButton=Élőkép indítás
+Toolbox.Screenshooter.StopBroadcastButton=Élőkép leállítás
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Készülék információ:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Készülék neve:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Firmware verzió:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Hardware verzió:
+Toolbox.FirmwareUpdater.BootModeLabel=Boot mód:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Folyamat:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Feladatok:
+Toolbox.FirmwareUpdater.CommonTab=Általános
+Toolbox.FirmwareUpdater.UpdateButton=Frissítés fileból
+Toolbox.FirmwareUpdater.DatalfashTab=Adattároló
+Toolbox.FirmwareUpdater.ReadDataflashButton=Adattároló mentése
+Toolbox.FirmwareUpdater.WriteDataflashButton=Adattároló visszaállítása
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Adattároló törlése
+Toolbox.FirmwareUpdater.AdvancedTab=Haladó
+Toolbox.FirmwareUpdater.ChangeHWVerButton=HW Verzió átírása
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Boot mód váltás
+Toolbox.FirmwareUpdater.CancelButton=Mégse
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Eszköz kész.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Várakozás az eszközre...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Várakozás az eszköz újraindulására...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Adattároló olvasása...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Adattároló írása...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Eszköz újraindítása...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Firmware feltöltése...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Adattároló sikeresen elmentve a fileba.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Adattároló sikeresen visszatöltve a készülékre.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Adattároló törölve.
