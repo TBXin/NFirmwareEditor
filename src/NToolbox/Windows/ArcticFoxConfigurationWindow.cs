@@ -644,15 +644,20 @@ namespace NToolbox.Windows
 			var result = BinaryStructure.ReadBinary<ArcticFoxConfiguration>(m_encryption.Decode(source));
 			if (existedConfiguration == null)
 			{
-				result.Info.MaxPower = MaxPower;
-				result.Info.NumberOfBatteries = MaxBatteries;
-				result.Info.DisplaySize = ArcticFoxConfiguration.DisplaySize.W64H128;
+				SetSharedDeviceInfo(result.Info);
 			}
 			else
 			{
 				result.Info = existedConfiguration.Info;
 			}
 			return BinaryStructure.WriteBinary(result);
+		}
+
+		private static void SetSharedDeviceInfo(ArcticFoxConfiguration.DeviceInfo deviceInfo)
+		{
+			deviceInfo.MaxPower = MaxPower;
+			deviceInfo.NumberOfBatteries = MaxBatteries;
+			deviceInfo.DisplaySize = ArcticFoxConfiguration.DisplaySize.W64H128;
 		}
 
 		private void OpenConfigurationFile(ArcticFoxConfiguration existedConfiguration)
@@ -678,6 +683,10 @@ namespace NToolbox.Windows
 				if (existedInfoBlock != null)
 				{
 					result.Info = existedInfoBlock;
+				}
+				else
+				{
+					SetSharedDeviceInfo(result.Info);
 				}
 				OpenWorkspace(result);
 			}
