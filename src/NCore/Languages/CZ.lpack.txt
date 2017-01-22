@@ -1,0 +1,305 @@
+﻿// Shared
+Toolbox.Shared.SecondString=sekunda
+Toolbox.Shared.SecondsString=sekundy
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=Konfigurace ArcticFox
+Toolbox.MainWindow.MyEvicConfigurationButton=Konfigurace myEvic
+Toolbox.MainWindow.DeviceMonitorButton=Sledování zařízení
+Toolbox.MainWindow.ScreenshooterButton=Snímání obrazovky
+Toolbox.MainWindow.FirmwareUpdaterButton=Aktualizace Firmware
+Toolbox.MainWindow.AboutLink=O programu && Odkazy
+
+Toolbox.MainWindow.Tray.ShowToolbox=Zobrazit okno NFE Toolbox
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Otevřít konfiguraci ArcticFox je-li zařízení připojeno
+Toolbox.MainWindow.Tray.TimeSync=Synchronizace času je-li zařízení připojeno
+Toolbox.MainWindow.Tray.StartWithWindows=Sputit NFE Toolbox po startu Windows
+Toolbox.MainWindow.Tray.Exit=Konec
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Připojte zařízení s\n\nArcticFox\n[{0}]\n\nfirmware nebo novější
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Stahuji nastavení...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox je zastaralý.\n\nPro pokračování, prosím stáhněte\n\nnejnovější vydanou verzi.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Žádné kompatibilní zařízení není připojeno.\n\nPro pokračování jej prosím připojte.\n\nPokud je již připojeno, zkuste jej odpojit a znovu připojit. Kabel může být uvolněný.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Nebylo možné načíst nastavení zařízení. Znovu jej prosím pripojte.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Zařízení je
+Toolbox.ArcticFoxConfiguration.Status.Connected=připojeno
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=odpojeno
+Toolbox.ArcticFoxConfiguration.Status.Ready=Připraven
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Operace dokončena
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Aktivní:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Baterie 1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Baterie 2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Baterie 3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Baterie 4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Upravit
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Model baterie:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=Kontrola TCR:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=Lehký spánek:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Přerušení potahu:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Korekce odporu:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB Nabíjení:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=Neuspávat USB:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Pokročilé
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Kruhová obrazovka
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Klasická obrazovka
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Konfigurace▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Nová
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Otevřít
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Uložit jako
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Připojit a stáhnout konfiguraci
+Toolbox.ArcticFoxConfiguration.ControlsTab=Ovládání
+Toolbox.ArcticFoxConfiguration.DownloadButton=Stáhnout nastavení
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Zapnuto
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Kliknutí:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Kliknutí:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Kliknutí:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=1W krok výkonu:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Sdílené:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=Kliknutí žhavícího tlačítka v TC režimu:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Tlačítka +/-:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=Kliknutí žhavícího tlačítka ve VW režimu:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Probudit tlač. +/-:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Řádek 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Řádek 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Řádek 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Řádek 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Čas potažení
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=Rozložení řádků TC:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=Rozložení řádků VW:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Jas podsvícení:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Obr. nabíjení:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Typ hodin:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Převráceno:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Čas nečinnosti:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Skin hlavní obr.:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Zpoždění obr. pot.:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Čas spořiče obr.:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Zobrazit hodiny:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Zobrazit logo:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Stealth režim:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Najeďte myší na zaškrtávátko nebo popisek pro zobrazení nápovědy.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Klasické menu:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Počet potažení:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Formát času pot.:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Celk. čas potažení:
+Toolbox.ArcticFoxConfiguration.GeneralTab=Obecné
+Toolbox.ArcticFoxConfiguration.LayoutTab=Rozložení
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Materiály
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Vytvořit novou konfiguraci
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Otevřít existující konfiguraci
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Výkonové křivky
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Materiál spirály:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zamknuto
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Režim:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Název:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Upravit
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Výkon:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Zpoždění předehř.:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Křivka předehřátí:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Výkon předehřátí:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Čas předehřátí:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Typ předehřátí:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Profil:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Odpor:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Nastav.
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Dominantní teplota
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Teplota:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Upravit
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=W
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=Výkon
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Ovládání teploty
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Profily
+Toolbox.ArcticFoxConfiguration.ResetButton=Resetovat nastavení
+Toolbox.ArcticFoxConfiguration.ScreenTab=Obrazovka
+Toolbox.ArcticFoxConfiguration.SecondsLabel=s
+Toolbox.ArcticFoxConfiguration.SettingsTab=Nastavení
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Malá Obrazovka
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Chytré vybírání profilů
+Toolbox.ArcticFoxConfiguration.StatsTab=Statistiky
+Toolbox.ArcticFoxConfiguration.UploadButton=Nahrát nastavení
+Toolbox.ArcticFoxConfiguration.VoltsLabel=v
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Změní vzhled hlavní obrazovky. Použitelné pouze u zařízení s vekou obrazovkou (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Umožní měnit profily klasickou cestou, jako: Power, Ni, Ti, atd.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Zobrazit logo na hlavní obrazovce.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Zobrazit hodiny na hlavní obrazovce.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maximální korekce času potažení.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Korekce měření odporu (Ohm-metr).
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Vypne nebo zapne X32 krystal na PCB.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Režim lehkého spánky, pro zařízení bez sekundárního oscilátoru, aby udržel hodiny přesné. Bude zvýšena spotřeba energie, proto bude uživatel varován pomocí vykřičníku (!) vpravo od indikátoru baterie.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Resetovat počitadla při výměně baterií, vymaže statistiky vapování.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Kontrola materiálu spirály TCR, vypnutí může zabránit TCR chybám na velkých spirálách.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Zapne nebo vypne nabíjení přes USB.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Nepoužívat režim hlubokého spánku, je-li připojeno USB.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Absolutní (W)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Relativní (%)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Křivka
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Ne-dominantní (Pwr / Temp)
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Volty
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Výstupní volty
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Výstupní ampéry
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Odpor
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Živý odpors
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Potažení
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Čas potažení
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Volty baterie(í)
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Datum/Čas
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Teplota desky
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Poslední čas potažení
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Poslední výkon
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Poslední teplota
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Baterie
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Baterie + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Baterie + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Baterie %
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Klasická
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Kruhová
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Klasická
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Rozšířená
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Analogové
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Digitální
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Vyp.
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 Min
+Toolbox.ArcticFoxConfiguration.ClickActions.None=Nic
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Upravit
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Hlavní menu
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Menu předehřátí
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Výběr profilu
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Upravit profil
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TDom
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Zobrazit hodiny
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Informační obrazovka
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Zap / Vyp
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Zap / Vyp
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Zap / Vyp
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Normální
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Prohozené
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Sekundy
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Generická baterie
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Vlastní
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=Nastavení PI-Regulátoru:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=Použít PI-Regulátor:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Zapnuto
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Rozsah:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=Hodnota P:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=Hodnova I:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Uložit
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Zrušit
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Název křivky výkonu:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Křivka výkonu:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Čas:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=Proc:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Časový škála
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Uložit
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Zrušit
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profil:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=Křivka TFR:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Faktor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Uložit
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Zrušit
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profil:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Křivka vybíjení:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Volty:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Přerušení:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Přednastavení
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Uložit
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Zrušit
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Senzory:
+Toolbox.DeviceMonitor.ControlsLabel=Ovládání:
+Toolbox.DeviceMonitor.ChartNameLabel=Řádkové zobrazení:
+Toolbox.DeviceMonitor.FollowButton=Následovat
+
+Toolbox.DeviceMonitor.Battery1Label=Baterie1:
+Toolbox.DeviceMonitor.Battery2Label=Baterie2:
+Toolbox.DeviceMonitor.Battery3Label=Baterie3:
+Toolbox.DeviceMonitor.Battery4Label=Baterie4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Balíček baterií:
+Toolbox.DeviceMonitor.PowerLabel=Výkon:
+Toolbox.DeviceMonitor.PowerSetLabel=Výkon nastavení:
+Toolbox.DeviceMonitor.TemperatureLabel=Teplota:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Teplota nastavená:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Výstupní proud:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Výstupní napětí:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Odpor za studena:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Živý odpor:
+Toolbox.DeviceMonitor.BoardTempLabel=Teplota desky:
+
+Toolbox.DeviceMonitor.PauseButton=Pauza
+Toolbox.DeviceMonitor.PauseResumeButton=Pokračovat
+Toolbox.DeviceMonitor.RecordButton=Zaznamenat...
+Toolbox.DeviceMonitor.RecordStopButton=Konec záznamu
+Toolbox.DeviceMonitor.SetXScaleButton=Nastavit osu X
+Toolbox.DeviceMonitor.SetYScaleButton=Nastavit osu Y
+Toolbox.DeviceMonitor.PuffButton=Potažení...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Zobrazit hranice potažení
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Obr.:
+Toolbox.Screenshooter.ControlsGroupLabel=Ovládání:
+Toolbox.Screenshooter.TakeScreenshotButton=Snímek obrazovky
+Toolbox.Screenshooter.SaveScreenshotButton=Uložení snímku
+Toolbox.Screenshooter.PixelSizeLabel=Násobitel velikosti pixelu:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Sejmout před uložením:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Zapnuto
+Toolbox.Screenshooter.StartBroadcastButton=Začít vysílání
+Toolbox.Screenshooter.StopBroadcastButton=Zastavit vysílání
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Informace o zařízení:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Jméno zařízení:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Verze firmware:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Verze hardware:
+Toolbox.FirmwareUpdater.BootModeLabel=Režim spuštění:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Postup:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Operace:
+Toolbox.FirmwareUpdater.CommonTab=Běžné
+Toolbox.FirmwareUpdater.UpdateButton=Aktualizovat ze souboru
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Číst dataflash
+Toolbox.FirmwareUpdater.WriteDataflashButton=Zapsat dataflash
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset dataflash
+Toolbox.FirmwareUpdater.AdvancedTab=Pokročilé
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Změnit verzi HW
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Přepnout spouštěcí režim
+Toolbox.FirmwareUpdater.CancelButton=Zrušit
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Zařízení je připraveno.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Čekám na zařízení...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Čekám na zařízení po restartu...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Čtu dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Zapisuji dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Restartuji zařízení...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Nahrávám firmware...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash byl úspěšně načten a uložen do souboru.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash byl úspěšně zapsán.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash byl úspěšně resetován.
