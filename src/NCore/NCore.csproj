@@ -118,6 +118,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Languages\CZ.lpack.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Languages\HU.lpack.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
