@@ -11,9 +11,9 @@ Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
 Toolbox.MainWindow.AboutLink=über && Links
 
 Toolbox.MainWindow.Tray.ShowToolbox=Zeige NFE Toolbox Fenster
-Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=öffne ArcticFox Configuration when device is connected
-Toolbox.MainWindow.Tray.TimeSync=Synkronisiere Uhrzeit, wenn Gerät verbunden ist
-Toolbox.MainWindow.Tray.StartWithWindows=Starte NFE Toolbox wenn Windows hochfährt
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=öffne ArcticFox Konfiguration sobald Gerät angeschlossen
+Toolbox.MainWindow.Tray.TimeSync=Syncronisiere Uhrzeit, wenn Gerät verbunden ist
+Toolbox.MainWindow.Tray.StartWithWindows=Starte NFE Toolbox wenn Windows startet
 Toolbox.MainWindow.Tray.Exit=Ende
 
 // ArcticFox Configuration Window
@@ -29,7 +29,7 @@ Toolbox.ArcticFoxConfiguration.Status.Disconnected=nicht verbunden
 Toolbox.ArcticFoxConfiguration.Status.Ready=Fertig
 Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Vorgang beendet
 
-Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Active:
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Aktiv:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Batterie 1:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Batterie 2:
 Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Batterie 3:
@@ -60,15 +60,15 @@ Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Clicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Clicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Clicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Leistung 1W:
-Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Geteilt:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=+/- Schalter:
 Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=TC Mode Feuerknopf Multiklicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Auf/Ab Schalter:
 Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=VW Mode Feuerknopf Multiklicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Wecken mit + / - :
-Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Line 1:
-Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Line 2:
-Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Line 3:
-Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Line 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Linie 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Linie 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Linie 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Linie 4:
 Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Zugdauer
 Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=TC Linienansicht:
 Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=VW Linienansicht:
@@ -131,11 +131,11 @@ Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Erlaubt Profile auf klass
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Zeige Logo auf Hauptbildschirm.
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Zeige Uhr auf Hauptbildschirm.
 Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maximum Zugzeit Korrektur.
-Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohm-meter Korrektur.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohmmeter Korrektur.
 Toolbox.ArcticFoxConfiguration.Tooltips.X32=Aktivieren oder deaktivieren des X32 Kristals des  PCB.
 Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Einfacher Schlafmode, für Geräte ohne zweiten Osscilator um die RTC genau zu halten. Verbraucht mehr Energie im standby-mode, Nutzer wird durch ! Rechts neben der Batterieanzeige gewarnt.
 Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Zugzähler bei Batteriewechsel zurücksetzen. Statistiken löschen.
-Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Prüfe Wicklung TCR, dies Option ausschalten, kann TCR-Fehler bei dicken Wicklungen beheben. 
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Prüfe Wicklung TCR, diese Option ausschalten, kann TCR-Fehler bei dicken Wicklungen beheben. 
 Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Aktiviert oder deaktiviert Laden über USB.
 Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Nicht in Tiefschlafmodus gehen, wenn über USB verbunden.
 
@@ -264,7 +264,7 @@ Toolbox.DeviceMonitor.PuffButton=Zug...
 Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Zeige Zugbegrenzung
 
 // Screenshooter Window
-Toolbox.Screenshooter.ScreenGroupLabel=Bildschirm:
+Toolbox.Screenshooter.ScreenGroupLabel=Anzeige:
 Toolbox.Screenshooter.ControlsGroupLabel=Steuerung:
 Toolbox.Screenshooter.TakeScreenshotButton=Mache Bildschirmfoto
 Toolbox.Screenshooter.SaveScreenshotButton=Speichere Bildschirmfoto
