@@ -44,14 +44,14 @@ namespace NToolbox.Windows
 			this.UpdateStatusLabel = new System.Windows.Forms.Label();
 			this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
-			this.label1 = new System.Windows.Forms.Label();
 			this.BootModeTextBox = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.DeviceNameTextBox = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel3.SuspendLayout();
@@ -266,16 +266,6 @@ namespace NToolbox.Windows
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Device info:";
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.FirmwareUpdater.BootModeLabel");
-			this.label1.Location = new System.Drawing.Point(9, 117);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(62, 13);
-			this.label1.TabIndex = 26;
-			this.label1.Text = "Boot mode:";
-			// 
 			// BootModeTextBox
 			// 
 			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -286,16 +276,6 @@ namespace NToolbox.Windows
 			this.BootModeTextBox.Size = new System.Drawing.Size(216, 21);
 			this.BootModeTextBox.TabIndex = 25;
 			this.BootModeTextBox.TabStop = false;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.FirmwareUpdater.HardwareVersionLabel");
-			this.label5.Location = new System.Drawing.Point(9, 90);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(96, 13);
-			this.label5.TabIndex = 24;
-			this.label5.Text = "Hardware version:";
 			// 
 			// HardwareVersionTextBox
 			// 
@@ -308,16 +288,6 @@ namespace NToolbox.Windows
 			this.HardwareVersionTextBox.TabIndex = 21;
 			this.HardwareVersionTextBox.TabStop = false;
 			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.FirmwareUpdater.FirmwareVersionLabel");
-			this.label4.Location = new System.Drawing.Point(9, 63);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(93, 13);
-			this.label4.TabIndex = 23;
-			this.label4.Text = "Firmware version:";
-			// 
 			// FirmwareVersionTextBox
 			// 
 			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -329,16 +299,6 @@ namespace NToolbox.Windows
 			this.FirmwareVersionTextBox.TabIndex = 20;
 			this.FirmwareVersionTextBox.TabStop = false;
 			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.FirmwareUpdater.DeviceNameLabel");
-			this.label3.Location = new System.Drawing.Point(9, 36);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(72, 13);
-			this.label3.TabIndex = 22;
-			this.label3.Text = "Device name:";
-			// 
 			// DeviceNameTextBox
 			// 
 			this.DeviceNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -349,6 +309,46 @@ namespace NToolbox.Windows
 			this.DeviceNameTextBox.Size = new System.Drawing.Size(216, 21);
 			this.DeviceNameTextBox.TabIndex = 19;
 			this.DeviceNameTextBox.TabStop = false;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.FirmwareUpdater.BootModeLabel");
+			this.label1.Location = new System.Drawing.Point(9, 117);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(62, 13);
+			this.label1.TabIndex = 26;
+			this.label1.Text = "Boot mode:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.FirmwareUpdater.HardwareVersionLabel");
+			this.label5.Location = new System.Drawing.Point(9, 90);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(96, 13);
+			this.label5.TabIndex = 24;
+			this.label5.Text = "Hardware version:";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.FirmwareUpdater.FirmwareVersionLabel");
+			this.label4.Location = new System.Drawing.Point(9, 63);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(93, 13);
+			this.label4.TabIndex = 23;
+			this.label4.Text = "Firmware version:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label3, "Toolbox.FirmwareUpdater.DeviceNameLabel");
+			this.label3.Location = new System.Drawing.Point(9, 36);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(72, 13);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "Device name:";
 			// 
 			// ControlBorderedPanel
 			// 
@@ -383,8 +383,8 @@ namespace NToolbox.Windows
 			// 
 			// FirmwareUpdaterWindow
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(332, 392);
 			this.Controls.Add(this.groupPanel3);
 			this.Controls.Add(this.groupPanel2);

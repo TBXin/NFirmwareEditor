@@ -1059,15 +1059,15 @@ namespace NToolbox.Windows
 			// 
 			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.DischargeChart, "");
-			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
+			this.DischargeChart.Location = new System.Drawing.Point(3, 3);
 			this.DischargeChart.Name = "DischargeChart";
-			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
+			this.DischargeChart.Size = new System.Drawing.Size(569, 391);
 			this.DischargeChart.TabIndex = 0;
 			// 
 			// DischargeProfileWindow
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(784, 447);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.ControlBorderedPanel);

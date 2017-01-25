@@ -105,6 +105,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UI\EditorDialogWindow.resx">
+      <DependentUpon>EditorDialogWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\WindowBase.resx">
       <DependentUpon>WindowBase.cs</DependentUpon>
     </EmbeddedResource>

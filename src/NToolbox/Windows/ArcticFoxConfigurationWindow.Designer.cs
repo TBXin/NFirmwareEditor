@@ -586,34 +586,34 @@
 			// 
 			// ScreenTabPage
 			// 
-			this.ScreenTabPage.Controls.Add(this.label17);
 			this.ScreenTabPage.Controls.Add(this.MainScreenSkinComboBox);
-			this.ScreenTabPage.Controls.Add(this.MainScreenSkinLabel);
 			this.ScreenTabPage.Controls.Add(this.PuffScreenDelayUpDown);
 			this.ScreenTabPage.Controls.Add(this.label22);
-			this.ScreenTabPage.Controls.Add(this.label23);
 			this.ScreenTabPage.Controls.Add(this.ChargeScreenComboBox);
-			this.ScreenTabPage.Controls.Add(this.ShowClockLabel);
 			this.ScreenTabPage.Controls.Add(this.ShowClockCheckBox);
 			this.ScreenTabPage.Controls.Add(this.ScreensaverTimeComboBox);
-			this.ScreenTabPage.Controls.Add(this.label40);
-			this.ScreenTabPage.Controls.Add(this.UseClassicMenuLabel);
 			this.ScreenTabPage.Controls.Add(this.UseClassicMenuCheckBox);
-			this.ScreenTabPage.Controls.Add(this.label38);
 			this.ScreenTabPage.Controls.Add(this.ClockTypeComboBox);
-			this.ScreenTabPage.Controls.Add(this.label35);
-			this.ScreenTabPage.Controls.Add(this.ShowLogoLabel);
 			this.ScreenTabPage.Controls.Add(this.ShowLogoCheckBox);
-			this.ScreenTabPage.Controls.Add(this.label32);
 			this.ScreenTabPage.Controls.Add(this.BrightnessPercentLabel);
 			this.ScreenTabPage.Controls.Add(this.label31);
-			this.ScreenTabPage.Controls.Add(this.label37);
-			this.ScreenTabPage.Controls.Add(this.label33);
 			this.ScreenTabPage.Controls.Add(this.StealthModeCheckBox);
 			this.ScreenTabPage.Controls.Add(this.IdleTimeUpDow);
-			this.ScreenTabPage.Controls.Add(this.label36);
 			this.ScreenTabPage.Controls.Add(this.BrightnessTrackBar);
 			this.ScreenTabPage.Controls.Add(this.FlippedModeCheckBox);
+			this.ScreenTabPage.Controls.Add(this.label17);
+			this.ScreenTabPage.Controls.Add(this.MainScreenSkinLabel);
+			this.ScreenTabPage.Controls.Add(this.label23);
+			this.ScreenTabPage.Controls.Add(this.ShowClockLabel);
+			this.ScreenTabPage.Controls.Add(this.label40);
+			this.ScreenTabPage.Controls.Add(this.UseClassicMenuLabel);
+			this.ScreenTabPage.Controls.Add(this.label38);
+			this.ScreenTabPage.Controls.Add(this.label35);
+			this.ScreenTabPage.Controls.Add(this.ShowLogoLabel);
+			this.ScreenTabPage.Controls.Add(this.label32);
+			this.ScreenTabPage.Controls.Add(this.label37);
+			this.ScreenTabPage.Controls.Add(this.label33);
+			this.ScreenTabPage.Controls.Add(this.label36);
 			this.MainLocalizationExtender.SetKey(this.ScreenTabPage, "Toolbox.ArcticFoxConfiguration.ScreenTab");
 			this.ScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreenTabPage.Name = "ScreenTabPage";
@@ -1654,6 +1654,8 @@
 			// 
 			// ControlsTabPage
 			// 
+			this.ControlsTabPage.Controls.Add(this.Step1WCheckBox);
+			this.ControlsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label71);
 			this.ControlsTabPage.Controls.Add(this.label68);
 			this.ControlsTabPage.Controls.Add(this.ClicksTC4ComboBox);
@@ -1665,7 +1667,6 @@
 			this.ControlsTabPage.Controls.Add(this.label66);
 			this.ControlsTabPage.Controls.Add(this.UpDownButtonsComboBox);
 			this.ControlsTabPage.Controls.Add(this.label65);
-			this.ControlsTabPage.Controls.Add(this.Step1WCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label25);
 			this.ControlsTabPage.Controls.Add(this.label44);
 			this.ControlsTabPage.Controls.Add(this.ClicksVW4ComboBox);
@@ -1673,7 +1674,6 @@
 			this.ControlsTabPage.Controls.Add(this.ClicksVW3ComboBox);
 			this.ControlsTabPage.Controls.Add(this.label42);
 			this.ControlsTabPage.Controls.Add(this.ClicksVW2ComboBox);
-			this.ControlsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
 			this.ControlsTabPage.Controls.Add(this.label39);
 			this.MainLocalizationExtender.SetKey(this.ControlsTabPage, "Toolbox.ArcticFoxConfiguration.ControlsTab");
 			this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
@@ -2035,27 +2035,27 @@
 			// 
 			// SettingsTabPage
 			// 
-			this.SettingsTabPage.Controls.Add(this.label18);
-			this.SettingsTabPage.Controls.Add(this.CheckTCRLabel);
 			this.SettingsTabPage.Controls.Add(this.CheckTCRCheckBox);
-			this.SettingsTabPage.Controls.Add(this.UsbNoSleepLabel);
 			this.SettingsTabPage.Controls.Add(this.UsbNoSleepCheckBox);
 			this.SettingsTabPage.Controls.Add(this.label19);
-			this.SettingsTabPage.Controls.Add(this.PuffCutOffLabel);
 			this.SettingsTabPage.Controls.Add(this.PuffCutOffUpDown);
-			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionLabel);
 			this.SettingsTabPage.Controls.Add(this.label55);
-			this.SettingsTabPage.Controls.Add(this.ResetCountersLabel);
 			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionUpDown);
 			this.SettingsTabPage.Controls.Add(this.ResetCountersCheckBox);
 			this.SettingsTabPage.Controls.Add(this.BatteryModelComboBox);
-			this.SettingsTabPage.Controls.Add(this.UsbChargeLabel);
-			this.SettingsTabPage.Controls.Add(this.label56);
 			this.SettingsTabPage.Controls.Add(this.UsbChargeCheckBox);
 			this.SettingsTabPage.Controls.Add(this.BatteryEditButton);
-			this.SettingsTabPage.Controls.Add(this.X32Label);
 			this.SettingsTabPage.Controls.Add(this.LightSleepCheckBox);
 			this.SettingsTabPage.Controls.Add(this.X32CheckBox);
+			this.SettingsTabPage.Controls.Add(this.label18);
+			this.SettingsTabPage.Controls.Add(this.CheckTCRLabel);
+			this.SettingsTabPage.Controls.Add(this.UsbNoSleepLabel);
+			this.SettingsTabPage.Controls.Add(this.PuffCutOffLabel);
+			this.SettingsTabPage.Controls.Add(this.ShuntCorrectionLabel);
+			this.SettingsTabPage.Controls.Add(this.ResetCountersLabel);
+			this.SettingsTabPage.Controls.Add(this.UsbChargeLabel);
+			this.SettingsTabPage.Controls.Add(this.label56);
+			this.SettingsTabPage.Controls.Add(this.X32Label);
 			this.SettingsTabPage.Controls.Add(this.LightSleepLabel);
 			this.MainLocalizationExtender.SetKey(this.SettingsTabPage, "Toolbox.ArcticFoxConfiguration.SettingsTab");
 			this.SettingsTabPage.Location = new System.Drawing.Point(4, 22);

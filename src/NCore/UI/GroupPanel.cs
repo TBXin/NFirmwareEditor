@@ -14,6 +14,7 @@ namespace NCore.UI
 		};
 
 		private int m_headerHeight = 30;
+		private int m_actualHeaderHeight;
 		private Color m_borderColor = Color.FromArgb(185, 185, 185);
 		private Color m_headerBackgroundColor = Color.White;
 
@@ -42,15 +43,17 @@ namespace NCore.UI
 				return new Rectangle
 				(
 					Padding.Left,
-					Padding.Top + m_headerHeight,
+					Padding.Top + m_actualHeaderHeight,
 					Math.Max(Width - Padding.Horizontal, 0),
-					Math.Max(Height - m_headerHeight - Padding.Vertical, 0)
+					Math.Max(Height - m_actualHeaderHeight - Padding.Vertical, 0)
 				);
 			}
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
+			m_actualHeaderHeight = (int)(m_headerHeight * (e.Graphics.DpiX / 96f));
+
 			var clientRect = GetClientRect();
 			var headerRect = GetHedearRect(clientRect);
 			var containerRect = GetContainerRect(clientRect);
@@ -58,7 +61,7 @@ namespace NCore.UI
 
 			// Draw header
 			e.Graphics.FillRectangle(new SolidBrush(HeaderBackColor), headerRect);
-			e.Graphics.DrawLine(borderPen, clientRect.X, clientRect.Y + m_headerHeight - 1, clientRect.Width, clientRect.Y + m_headerHeight - 1);
+			e.Graphics.DrawLine(borderPen, clientRect.X, clientRect.Y + m_actualHeaderHeight - 1, clientRect.Width, clientRect.Y + m_actualHeaderHeight - 1);
 			try
 			{
 				TextRenderer.DrawText(e.Graphics, Text, Font, GetHeaderTextRect(headerRect), ForeColor, s_headerFormatFlags);
@@ -81,12 +84,12 @@ namespace NCore.UI
 
 		private RectangleF GetHedearRect(Rectangle clientRect)
 		{
-			return new RectangleF(clientRect.X, clientRect.Y, clientRect.Width, m_headerHeight - 1);
+			return new RectangleF(clientRect.X, clientRect.Y, clientRect.Width, m_actualHeaderHeight - 1);
 		}
 
 		private Rectangle GetContainerRect(Rectangle clientRect)
 		{
-			return new Rectangle(clientRect.X, clientRect.Y + m_headerHeight + 1, clientRect.Width, clientRect.Height - m_headerHeight - 1);
+			return new Rectangle(clientRect.X, clientRect.Y + m_actualHeaderHeight + 1, clientRect.Width, clientRect.Height - m_actualHeaderHeight - 1);
 		}
 
 		private Rectangle GetHeaderTextRect(RectangleF headerRect)
