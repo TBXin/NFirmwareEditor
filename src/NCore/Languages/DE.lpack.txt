@@ -11,16 +11,16 @@ Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
 Toolbox.MainWindow.AboutLink=über && Links
 
 Toolbox.MainWindow.Tray.ShowToolbox=Zeige NFE Toolbox Fenster
-Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Öffne ArcticFox Konfiguration sobald Gerät angeschlossen
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Öffne ArcticFox Konfiguration sobald Gerät angeschlossen wird.
 Toolbox.MainWindow.Tray.TimeSync=Syncronisiere Uhrzeit, wenn Gerät verbunden ist
 Toolbox.MainWindow.Tray.StartWithWindows=Starte NFE Toolbox wenn Windows startet
 Toolbox.MainWindow.Tray.Exit=Beenden
 
 // ArcticFox Configuration Window
-Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Verbinde Box mit\n\nArcticFox Firmware\nV [{0}]\n\noder neuer Version erwartet.
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Verbinde Gerät: \n\nerwarte ArcticFox Firmware\nV [{0}]\n\noder neuere Version.
 Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Lade von Gerät...
-Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox ist veraltet.\n\nUm fortzufahren laden Sie bitte\n\ndie neuste Version.
-Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Kein passendes Gerät verbunden.\n\nZum fortfahen, verbinden Sie bitte ein Gerät.\n\nWenn Sie bereits ein Gerät angeschlossen haben, trennen Sie es und verbinden es wieder.
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox ist veraltet.\n\nUm fortzufahren laden Sie bitte\n\ndie neueste Version.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Kein passendes Gerät verbunden.\n\nZum fortfahen, verbinden Sie bitte ein Gerät.\n\nWenn Sie bereits ein Gerät angeschlossen haben, trennen Sie es und verbinden es wieder. Sollte das Gerät dann noch nicht erkannt werden, prüfen Sie das USB-Kabel.
 Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Kann Einstellungen nicht laden. Verbinden Sie das Gerät erneut.
 
 Toolbox.ArcticFoxConfiguration.Status.Device=Gerät ist
@@ -83,7 +83,7 @@ Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Schonerzeit:
 Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Zeige Uhr:
 Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Zeige Logo:
 Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Stealth Mode:
-Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Bewege Maus über Box oder Titel um Hilfe anzuzeigen.
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Bewege Maus über Kästchen oder Titel um Hilfe anzuzeigen.
 Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Klassikmenue:
 Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Zugzahl:
 Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Zugdauer Format:
@@ -123,10 +123,10 @@ Toolbox.ArcticFoxConfiguration.SmallScreenTab=Kleine Anzeige
 Toolbox.ArcticFoxConfiguration.SmartCheckBox=Intelligente Profilwahl
 Toolbox.ArcticFoxConfiguration.StatsTab=Statistiken
 Toolbox.ArcticFoxConfiguration.UploadButton=Setup hochladen
-Toolbox.ArcticFoxConfiguration.VoltsLabel=v
+Toolbox.ArcticFoxConfiguration.VoltsLabel=V
 
 // Tooltips
-Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Ändere Anzeigestil. Nur für Geräte mit großen Anzeigen (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Ändere Anzeigestil. Nur für Geräte mit großer Anzeige (64x128).
 Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Erlaubt Profile auf klassische Art zu wechseln, wie die Arten: Power, Ni, Ti, etc.
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Zeige Logo auf Hauptanzeige.
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Zeige Uhr auf Hauptanzeige.
@@ -287,11 +287,11 @@ Toolbox.FirmwareUpdater.UpdateButton=Update aus Datei
 Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
 Toolbox.FirmwareUpdater.ReadDataflashButton=Lese dataflash
 Toolbox.FirmwareUpdater.WriteDataflashButton=Schreibe dataflash
-Toolbox.FirmwareUpdater.ResetDataFlashButton=Zurücksetzen dataflash
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Setze dataflash zurück
 Toolbox.FirmwareUpdater.AdvancedTab=Experte
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Ändere HW Version
-Toolbox.FirmwareUpdater.SwitchBootModeButton=Wechsel boot Art
-Toolbox.FirmwareUpdater.CancelButton=Verwerfen
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Wechsel Boot Art
+Toolbox.FirmwareUpdater.CancelButton=Zurück
 
 Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Gerät ist fertig.
 Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Warte auf Gerät...
