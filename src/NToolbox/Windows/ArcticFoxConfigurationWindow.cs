@@ -283,8 +283,12 @@ namespace NToolbox.Windows
 				BuildTextBox.Text = deviceInfo.FirmwareBuild.ToString();
 				HardwareVersionTextBox.Text = (deviceInfo.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 
-				MainScreenSkinLabel.Visible = MainScreenSkinComboBox.Visible = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128;
-				ClockTypeLabel.Visible = ClockTypeComboBox.Visible = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128;
+				if (deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W96H16)
+				{
+					MainScreenSkinLabel.Visible = MainScreenSkinComboBox.Visible = false;
+					ClockTypeLabel.Visible = ClockTypeComboBox.Visible = false;
+					UseClassicMenuLabel.Visible = UseClassicMenuCheckBox.Visible = false;
+				}
 
 				Battery2OffsetLabel.Visible = Battery2OffsetUpDown.Visible = Battery2OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 1;
 				Battery3OffsetLabel.Visible = Battery3OffsetUpDown.Visible = Battery3OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 2;
