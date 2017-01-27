@@ -283,6 +283,9 @@ namespace NToolbox.Windows
 				BuildTextBox.Text = deviceInfo.FirmwareBuild.ToString();
 				HardwareVersionTextBox.Text = (deviceInfo.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 
+				MainScreenSkinLabel.Visible = MainScreenSkinComboBox.Visible = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128;
+				ClockTypeLabel.Visible = ClockTypeComboBox.Visible = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128;
+
 				Battery2OffsetLabel.Visible = Battery2OffsetUpDown.Visible = Battery2OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 1;
 				Battery3OffsetLabel.Visible = Battery3OffsetUpDown.Visible = Battery3OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 2;
 				Battery4OffsetLabel.Visible = Battery4OffsetUpDown.Visible = Battery4OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 3;
