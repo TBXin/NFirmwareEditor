@@ -273,6 +273,7 @@ Toolbox.Screenshooter.TakeBeforeSaveLabel=Mentés előtt kép készítése:
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Enged
 Toolbox.Screenshooter.StartBroadcastButton=Élőkép indítás
 Toolbox.Screenshooter.StopBroadcastButton=Élőkép leállítás
+Toolbox.Screenshooter.CancelButton=Mégse
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Készülék információ:

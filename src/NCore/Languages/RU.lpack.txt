@@ -273,6 +273,7 @@ Toolbox.Screenshooter.TakeBeforeSaveLabel=Снимок перед сохране
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Вкл
 Toolbox.Screenshooter.StartBroadcastButton=Трансляция экрана
 Toolbox.Screenshooter.StopBroadcastButton=Остановить
+Toolbox.Screenshooter.CancelButton=Отмена
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Информация:

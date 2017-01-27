@@ -273,6 +273,7 @@ Toolbox.Screenshooter.TakeBeforeSaveLabel=Sejmout před uložením:
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Zapnuto
 Toolbox.Screenshooter.StartBroadcastButton=Začít vysílání
 Toolbox.Screenshooter.StopBroadcastButton=Zastavit vysílání
+Toolbox.Screenshooter.CancelButton=Zrušit
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Informace o zařízení:

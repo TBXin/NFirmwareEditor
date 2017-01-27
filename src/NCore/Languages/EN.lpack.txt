@@ -273,6 +273,7 @@ Toolbox.Screenshooter.TakeBeforeSaveLabel=Take before save:
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Enabled
 Toolbox.Screenshooter.StartBroadcastButton=Start broadcast
 Toolbox.Screenshooter.StopBroadcastButton=Stop broadcast
+Toolbox.Screenshooter.CancelButton=Cancel
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Device info:

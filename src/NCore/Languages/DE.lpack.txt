@@ -273,6 +273,7 @@ Toolbox.Screenshooter.TakeBeforeSaveLabel=Foto vorm Speichern:
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Aktiv
 Toolbox.Screenshooter.StartBroadcastButton=Starte Bildschirmfilm
 Toolbox.Screenshooter.StopBroadcastButton=Stoppe Bildschirmfilm
+Toolbox.Screenshooter.CancelButton=Zurück
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Geräteinformation:
