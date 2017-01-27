@@ -175,12 +175,13 @@
 			// 
 			// LogoPictureBox
 			// 
-			this.LogoPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
 			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.nfetoolbox;
 			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
-			this.LogoPictureBox.Location = new System.Drawing.Point(28, 3);
+			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
 			this.LogoPictureBox.Name = "LogoPictureBox";
-			this.LogoPictureBox.Size = new System.Drawing.Size(184, 205);
+			this.LogoPictureBox.Size = new System.Drawing.Size(180, 200);
+			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.LogoPictureBox.TabIndex = 0;
 			this.LogoPictureBox.TabStop = false;
 			// 

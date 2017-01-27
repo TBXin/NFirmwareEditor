@@ -364,12 +364,13 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.arctic_fox_logo;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.Image = global::NToolbox.Properties.Resources.arctic_fox_logo;
 			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
 			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 3;
 			this.pictureBox1.TabStop = false;
 			// 
