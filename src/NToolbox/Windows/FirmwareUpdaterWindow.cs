@@ -56,6 +56,13 @@ namespace NToolbox.Windows
 				}
 				HidConnector.Instance.DeviceConnected -= DeviceConnected;
 			};
+
+			var multiplier = ApplicationService.GetDpiMultiplier();
+			tabControl1.ItemSize = new Size
+			(
+				(int)(tabControl1.ItemSize.Width * multiplier),
+				(int)(tabControl1.ItemSize.Height * multiplier)
+			);
 		}
 
 		private void DeviceConnected(bool isConnected)

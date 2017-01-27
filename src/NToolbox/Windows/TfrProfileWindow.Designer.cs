@@ -690,9 +690,9 @@ namespace NToolbox.Windows
 			// 
 			this.TFRChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.TFRChart, "");
-			this.TFRChart.Location = new System.Drawing.Point(3, 3);
+			this.TFRChart.Location = new System.Drawing.Point(3, 33);
 			this.TFRChart.Name = "TFRChart";
-			this.TFRChart.Size = new System.Drawing.Size(569, 220);
+			this.TFRChart.Size = new System.Drawing.Size(569, 190);
 			this.TFRChart.TabIndex = 0;
 			// 
 			// TFRProfileWindow

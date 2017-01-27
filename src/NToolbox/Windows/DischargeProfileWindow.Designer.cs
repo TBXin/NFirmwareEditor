@@ -1059,9 +1059,9 @@ namespace NToolbox.Windows
 			// 
 			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.DischargeChart, "");
-			this.DischargeChart.Location = new System.Drawing.Point(3, 3);
+			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
 			this.DischargeChart.Name = "DischargeChart";
-			this.DischargeChart.Size = new System.Drawing.Size(569, 391);
+			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
 			this.DischargeChart.TabIndex = 0;
 			// 
 			// DischargeProfileWindow

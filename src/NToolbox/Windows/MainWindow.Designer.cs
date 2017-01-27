@@ -115,7 +115,7 @@
 			// ScreenshooterButton
 			// 
 			this.ScreenshooterButton.AdditionalText = "";
-			this.ScreenshooterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ScreenshooterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
 			this.MainLocalizationExtender.SetKey(this.ScreenshooterButton, "Toolbox.MainWindow.ScreenshooterButton");
 			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
@@ -127,8 +127,8 @@
 			// MyEvicConfigurationButton
 			// 
 			this.MyEvicConfigurationButton.AdditionalText = "";
-			this.MyEvicConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.MyEvicConfigurationButton.Enabled = false;
+			this.MyEvicConfigurationButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
 			this.MainLocalizationExtender.SetKey(this.MyEvicConfigurationButton, "Toolbox.MainWindow.MyEvicConfigurationButton");
 			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
@@ -140,7 +140,7 @@
 			// DeviceMonitorButton
 			// 
 			this.DeviceMonitorButton.AdditionalText = "";
-			this.DeviceMonitorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.DeviceMonitorButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
 			this.MainLocalizationExtender.SetKey(this.DeviceMonitorButton, "Toolbox.MainWindow.DeviceMonitorButton");
 			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
@@ -152,7 +152,7 @@
 			// ArcticFoxConfigurationButton
 			// 
 			this.ArcticFoxConfigurationButton.AdditionalText = "";
-			this.ArcticFoxConfigurationButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ArcticFoxConfigurationButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
 			this.MainLocalizationExtender.SetKey(this.ArcticFoxConfigurationButton, "Toolbox.MainWindow.ArcticFoxConfigurationButton");
 			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
@@ -164,7 +164,7 @@
 			// FirmwareUpdaterButton
 			// 
 			this.FirmwareUpdaterButton.AdditionalText = "";
-			this.FirmwareUpdaterButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.FirmwareUpdaterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
 			this.MainLocalizationExtender.SetKey(this.FirmwareUpdaterButton, "Toolbox.MainWindow.FirmwareUpdaterButton");
 			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
@@ -175,7 +175,6 @@
 			// 
 			// LogoPictureBox
 			// 
-			this.LogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.LogoPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox;
 			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
@@ -298,7 +297,6 @@
 			// 
 			// LanguageComboBox
 			// 
-			this.LanguageComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.LanguageComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.LanguageComboBox, "");

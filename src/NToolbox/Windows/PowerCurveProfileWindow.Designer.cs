@@ -941,9 +941,9 @@ namespace NToolbox.Windows
 			// 
 			this.PowerCurveChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.PowerCurveChart, "");
-			this.PowerCurveChart.Location = new System.Drawing.Point(3, 3);
+			this.PowerCurveChart.Location = new System.Drawing.Point(3, 33);
 			this.PowerCurveChart.Name = "PowerCurveChart";
-			this.PowerCurveChart.Size = new System.Drawing.Size(569, 339);
+			this.PowerCurveChart.Size = new System.Drawing.Size(569, 309);
 			this.PowerCurveChart.TabIndex = 0;
 			// 
 			// ChartHorizontalScrollBar

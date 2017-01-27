@@ -547,6 +547,7 @@
 			// 
 			// label11
 			// 
+			this.label11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.label11, "Toolbox.ArcticFoxConfiguration.ActiveProfileLabel");
 			this.label11.Location = new System.Drawing.Point(170, 11);
 			this.label11.Name = "label11";
@@ -576,7 +577,6 @@
 			this.GeneralTabControl.Controls.Add(this.LayoutTabPage);
 			this.GeneralTabControl.Controls.Add(this.ControlsTabPage);
 			this.GeneralTabControl.Controls.Add(this.StatsTabPage);
-			this.GeneralTabControl.ItemSize = new System.Drawing.Size(40, 18);
 			this.MainLocalizationExtender.SetKey(this.GeneralTabControl, "");
 			this.GeneralTabControl.Location = new System.Drawing.Point(5, 6);
 			this.GeneralTabControl.Name = "GeneralTabControl";

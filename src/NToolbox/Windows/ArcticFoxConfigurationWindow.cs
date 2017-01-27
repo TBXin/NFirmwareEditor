@@ -93,6 +93,13 @@ namespace NToolbox.Windows
 			InitializeComboBoxes();
 			InitializeMenu();
 			InitializeTooltips();
+
+			var multiplier = ApplicationService.GetDpiMultiplier();
+			ProfilesTabControl.ItemSize = new Size
+			(
+				(int)(ProfilesTabControl.ItemSize.Width * multiplier),
+				(int)(ProfilesTabControl.ItemSize.Height * multiplier)
+			);
 		}
 
 		private void InitializeMenu()

@@ -442,6 +442,7 @@
 			// 
 			// Battery4VoltageLabel
 			// 
+			this.Battery4VoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.Battery4VoltageLabel, "");
 			this.Battery4VoltageLabel.Location = new System.Drawing.Point(126, 106);
 			this.Battery4VoltageLabel.Name = "Battery4VoltageLabel";
@@ -452,6 +453,7 @@
 			// 
 			// BatteryPackVoltageLabel
 			// 
+			this.BatteryPackVoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.BatteryPackVoltageLabel, "");
 			this.BatteryPackVoltageLabel.Location = new System.Drawing.Point(126, 130);
 			this.BatteryPackVoltageLabel.Name = "BatteryPackVoltageLabel";
@@ -462,6 +464,7 @@
 			// 
 			// Battery3VoltageLabel
 			// 
+			this.Battery3VoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.Battery3VoltageLabel, "");
 			this.Battery3VoltageLabel.Location = new System.Drawing.Point(126, 82);
 			this.Battery3VoltageLabel.Name = "Battery3VoltageLabel";
@@ -472,6 +475,7 @@
 			// 
 			// Battery2VoltageLabel
 			// 
+			this.Battery2VoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.Battery2VoltageLabel, "");
 			this.Battery2VoltageLabel.Location = new System.Drawing.Point(126, 58);
 			this.Battery2VoltageLabel.Name = "Battery2VoltageLabel";
@@ -482,6 +486,7 @@
 			// 
 			// TemperatureSetLabel
 			// 
+			this.TemperatureSetLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.TemperatureSetLabel, "");
 			this.TemperatureSetLabel.Location = new System.Drawing.Point(127, 250);
 			this.TemperatureSetLabel.Name = "TemperatureSetLabel";
@@ -492,6 +497,7 @@
 			// 
 			// PowerSetLabel
 			// 
+			this.PowerSetLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.PowerSetLabel, "");
 			this.PowerSetLabel.Location = new System.Drawing.Point(127, 202);
 			this.PowerSetLabel.Name = "PowerSetLabel";
@@ -502,6 +508,7 @@
 			// 
 			// BoardTemperatureLabel
 			// 
+			this.BoardTemperatureLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.BoardTemperatureLabel, "");
 			this.BoardTemperatureLabel.Location = new System.Drawing.Point(127, 369);
 			this.BoardTemperatureLabel.Name = "BoardTemperatureLabel";
@@ -512,6 +519,7 @@
 			// 
 			// TemperatureLabel
 			// 
+			this.TemperatureLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.TemperatureLabel, "");
 			this.TemperatureLabel.Location = new System.Drawing.Point(127, 226);
 			this.TemperatureLabel.Name = "TemperatureLabel";
@@ -522,6 +530,7 @@
 			// 
 			// RealResistanceLabel
 			// 
+			this.RealResistanceLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.RealResistanceLabel, "");
 			this.RealResistanceLabel.Location = new System.Drawing.Point(127, 345);
 			this.RealResistanceLabel.Name = "RealResistanceLabel";
@@ -532,6 +541,7 @@
 			// 
 			// ResistanceLabel
 			// 
+			this.ResistanceLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.ResistanceLabel, "");
 			this.ResistanceLabel.Location = new System.Drawing.Point(127, 322);
 			this.ResistanceLabel.Name = "ResistanceLabel";
@@ -542,6 +552,7 @@
 			// 
 			// OutputCurrentLabel
 			// 
+			this.OutputCurrentLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.OutputCurrentLabel, "");
 			this.OutputCurrentLabel.Location = new System.Drawing.Point(127, 274);
 			this.OutputCurrentLabel.Name = "OutputCurrentLabel";
@@ -552,6 +563,7 @@
 			// 
 			// OutputVoltageLabel
 			// 
+			this.OutputVoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.OutputVoltageLabel, "");
 			this.OutputVoltageLabel.Location = new System.Drawing.Point(127, 298);
 			this.OutputVoltageLabel.Name = "OutputVoltageLabel";
@@ -562,6 +574,7 @@
 			// 
 			// PowerLabel
 			// 
+			this.PowerLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.PowerLabel, "");
 			this.PowerLabel.Location = new System.Drawing.Point(127, 178);
 			this.PowerLabel.Name = "PowerLabel";
@@ -572,6 +585,7 @@
 			// 
 			// Battery1VoltageLabel
 			// 
+			this.Battery1VoltageLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.Battery1VoltageLabel, "");
 			this.Battery1VoltageLabel.Location = new System.Drawing.Point(126, 34);
 			this.Battery1VoltageLabel.Name = "Battery1VoltageLabel";

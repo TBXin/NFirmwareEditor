@@ -196,6 +196,7 @@ namespace NToolbox.Windows
 			// 
 			// ChangeHWButton
 			// 
+			this.ChangeHWButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ChangeHWButton.Enabled = false;
 			this.MainLocalizationExtender.SetKey(this.ChangeHWButton, "Toolbox.FirmwareUpdater.ChangeHWVerButton");
 			this.ChangeHWButton.Location = new System.Drawing.Point(-1, 1);
