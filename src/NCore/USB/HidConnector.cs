@@ -30,14 +30,12 @@ namespace NCore.USB
 
 			public const byte Screenshot = 0xC1;
 
-			public const byte EnableCOM = 0x42;
-			public const byte DeviceMonitor = 0x43;
+			public const byte ReadMonitoringData = 0x66;
 			public const byte Puff = 0x44;
 
 			public const byte ReadConfiguration = 0x60;
 			public const byte WriteConfiguration = 0x61;
 			public const byte SetDateTime = 0x64;
-			public const byte ReadMonitoringData = 0x66;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -160,22 +158,6 @@ namespace NCore.USB
 			{
 				Write(stream, CreateCommand(Commands.Screenshot, 0, 0x400));
 				return Read(stream, 0x400);
-			}
-		}
-
-		public void EnableCOM()
-		{
-			using (var stream = OpenDeviceStream())
-			{
-				Write(stream, CreateCommand(Commands.EnableCOM, 0, 0));
-			}
-		}
-
-		public void SetupDeviceMonitor(bool enable)
-		{
-			using (var stream = OpenDeviceStream())
-			{
-				Write(stream, CreateCommand(Commands.DeviceMonitor, enable ? 1 : 0, 0));
 			}
 		}
 
