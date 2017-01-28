@@ -54,7 +54,7 @@ Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Öffnen
 Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Speichern unter
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Verbinde und Lade Einstellungen
 Toolbox.ArcticFoxConfiguration.ControlsTab=Steuerung
-Toolbox.ArcticFoxConfiguration.DownloadButton=Lade von Box
+Toolbox.ArcticFoxConfiguration.DownloadButton=Setup von Gerät laden
 Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Aktiv
 Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Klicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Klicks:
@@ -202,7 +202,7 @@ Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Bereich:
 Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P Wert:
 Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I Wert:
 Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Speichern
-Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Verwerfen
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Abbrechen
 
 // ArcticFox Configuration - Power Curve Editor Window
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Leistungskurven Name:
@@ -211,7 +211,7 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Zeit:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=%:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Zeiteinheit
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Speichern
-Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Verwerfen
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Abbrechen
 
 // ArcticFox Configuration - TFR Curve Editor Window
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profil:
@@ -220,7 +220,7 @@ Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Faktor:
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Speichern
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Verwerfen
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Abbrechen
 
 // ArcticFox Configuration - Discharge Curve Editor Window
 Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profil:
@@ -231,7 +231,7 @@ Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Preset
 Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Export
 Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Import
 Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Speichern
-Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Verwerfen
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Abbrechen
 
 // Device Monitor Window
 Toolbox.DeviceMonitor.SensorsLabel=Sensoren:
@@ -266,7 +266,7 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Zeige Zugbegrenzung
 // Screenshooter Window
 Toolbox.Screenshooter.ScreenGroupLabel=Anzeige:
 Toolbox.Screenshooter.ControlsGroupLabel=Steuerung:
-Toolbox.Screenshooter.TakeScreenshotButton=Mache Bildschirmfoto
+Toolbox.Screenshooter.TakeScreenshotButton=Erstelle Bildschirmfoto
 Toolbox.Screenshooter.SaveScreenshotButton=Speichere Bildschirmfoto
 Toolbox.Screenshooter.PixelSizeLabel=Pixel Größe multiplizieren:
 Toolbox.Screenshooter.TakeBeforeSaveLabel=Foto vorm Speichern:
