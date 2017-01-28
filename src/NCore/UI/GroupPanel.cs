@@ -36,7 +36,7 @@ namespace NCore.UI
 			set { m_headerBackgroundColor = value; }
 		}
 
-		public override Rectangle DisplayRectangle
+		/*public override Rectangle DisplayRectangle
 		{
 			get
 			{
@@ -48,7 +48,7 @@ namespace NCore.UI
 					Math.Max(Height - m_actualHeaderHeight - Padding.Vertical, 0)
 				);
 			}
-		}
+		}*/
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
