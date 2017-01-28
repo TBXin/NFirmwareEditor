@@ -1,0 +1,306 @@
+﻿// Shared
+Toolbox.Shared.SecondString=sekunda
+Toolbox.Shared.SecondsString=sekunde
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Konfiguracija
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Konfiguracija
+Toolbox.MainWindow.DeviceMonitorButton=Monitor Uređaja
+Toolbox.MainWindow.ScreenshooterButton=Slika sa Ekrana
+Toolbox.MainWindow.FirmwareUpdaterButton=Nadogradnja softvera
+Toolbox.MainWindow.AboutLink=O nama && Linkovi
+
+Toolbox.MainWindow.Tray.ShowToolbox=Pokaži NFO Toolbox prozor
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Otvori ArcticFox Konfiguraciju kada je priključen uređaj
+Toolbox.MainWindow.Tray.TimeSync=Sinhronizacija vremena kada je uređaj povezan
+Toolbox.MainWindow.Tray.StartWithWindows=Pokreni NFO Toolbox kada se Windows pokrene
+Toolbox.MainWindow.Tray.Exit=Izlaz
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Povezivanje uređaja sa\n\nArcticFox\n[{0}]\n\nfirmver ili noviji
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Preuzimanje postavki ...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFO Toolbox je zastareo. \n\nZa nastavak, molimo preuzmite\n\nposlednji dostupan za javnost.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Nema kompatibilnih USB uređaja među povezanim. \n\nZa nastavak, povežite se. \n\nUkoliko ste već povezani, pokušajte isključivanjem i ponovnim priključivanjem. Moguća greška u kablu. \n\nAko ni nakon drndanja celog dana ništa ne uradite obratite se članu "ivanneko" sa e-ciginfo.net foruma za pomoć :)
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Nije moguće preuzeti postavke uređaja. Ponovo spojite vaš uređaj.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Uređaj je
+Toolbox.ArcticFoxConfiguration.Status.Connected=povezan
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=isključen
+Toolbox.ArcticFoxConfiguration.Status.Ready=U pripravnosti
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Operacija završena
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Prijavljen
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Baterija  1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Baterija  2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Baterija  3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Baterija  4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Uredi
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Model Baterije:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=TCR Provera:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=LSL režim:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Puff trajanje:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Šent korekcija:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB Punjenje:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=USB pripravan:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Napredno
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Kružna Tema
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Klasična Tema
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Konfiguracija
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Nova
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Otvori
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Sačuvaj kao..
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Konektovanje i preuzimanje konfiguracije
+Toolbox.ArcticFoxConfiguration.ControlsTab=Kontrola
+Toolbox.ArcticFoxConfiguration.DownloadButton=Preuzimanje
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Dozvoli
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Klika:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Klika:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 Klika:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Snaga koraka 1W:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Zajednička kontrola:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=Višestruki Klik Dugmeta za Paljenje u TC Režimu:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=Gore/Dole Tasteri:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=Višestruki Klik Dugmeta za Paljenje u VW Režimu:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Buđenje sa + / - :
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Linija 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Linija 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Linija 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Linija 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Puff tajmer
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=TC Izgled:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=VW Izgled:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Osvetljenost:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Ekran Punjenja:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Tip Sata:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Rotiran ekran:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Vreme Mirovanja:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Tema Ekrana:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Zadrži Puff:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Čuvar Ekrana:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Pokaži Sat:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Pokaži Logo:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Nevidljivi Režim:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Pomerite miša na polje ili oznaku za više informacija.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Klasičan Meni:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Puff Brojač:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Puff Format:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Puff Ukupno Vreme:
+Toolbox.ArcticFoxConfiguration.GeneralTab=Glavno
+Toolbox.ArcticFoxConfiguration.LayoutTab=Podešavanje
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Vrsta Žice
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Kreiraj novu konfiguraciju
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Otvori postojeću konfiguraciju
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Kriva Snage
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Vrsta Žice:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zaključan
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Režim:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Naziv:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Uredi
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Snaga:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Preheat kašnjenje:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Preheat Kriva:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Preheat snaga:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Preheat trajanje:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Preheat način:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Profil:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Otpor:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Podesi
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Temperatura Dominira
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Temperatura:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Uredi
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=W
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=VW
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=TC
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Profili
+Toolbox.ArcticFoxConfiguration.ResetButton=Reset parametara
+Toolbox.ArcticFoxConfiguration.ScreenTab=Ekran
+Toolbox.ArcticFoxConfiguration.SecondsLabel=s
+Toolbox.ArcticFoxConfiguration.SettingsTab=Podešavanja
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Mali Ekran
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Pametan izbor profila
+Toolbox.ArcticFoxConfiguration.StatsTab=Statistika
+Toolbox.ArcticFoxConfiguration.UploadButton=Otprema
+Toolbox.ArcticFoxConfiguration.VoltsLabel=v
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Promeni glavni stil ekrana. Primenjivo samo za uređaje sa velikim ekranom (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Omogućava prebacivanje profila na klasičan način, kao u starom režimu: Power, Ni, Ti, itd
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Pokaži Logo na glavnom ekranu.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Pokaži Sat na glavnom ekranu.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maksimalno vreme Puffa.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Kalibracija Ohm-metra.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Omogućuje ili onemogućuje upotrebu X32 kristala na PCB.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Light Sleep Mode, za uređaje bez sekundarnog oscilatora održava RTC precizan. Potrebno je malo više energije u stanju mirovanja, tako da će korisnik biti upozoren sa znakom ( ! ) pored indikatora baterije.
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Reset brojača pri promeni baterije,utiče na statistiku.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Provera materijala , uključivanjem ove opcije uređaj će nas obavestiti ukoliko koristimo neadekvatnu žicu za kontrolu temp.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=Omogućuje ili onemogućuje punjenje putem USB-a.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Ne ulaziti u duboko stanje mirovanja dok je spojen na USB.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Potpun (W)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Relativan (%)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Kriva
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Snaga/ Temperatura
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Napon
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Izlazni Napon
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Izlazna Struja
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Otpor
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Otpor Uživo
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Puff tajmer
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Puff vreme
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Napon Baterije
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Datum/ Vreme
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Temperatura Ploče
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Poslednji Puff
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Poslednja snage
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Poslednja Temperatura
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Indikator Baterija
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Indikator Baterija + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Indikator Baterija + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Indikator Baterija u %
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Klasična
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Kružna
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Klasičan
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Proširen
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Analogni
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Digitalni
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Isključen
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 Min
+Toolbox.ArcticFoxConfiguration.ClickActions.None=Ništa
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Promeni
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Glavni Meni
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Preheat Meni
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Odabir Profila
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Uredi profil
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=Temp. Dominira
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Pokaži sat
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Informacije
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Da/Ne
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Da./Ne
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Gašenje
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Normalno
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Zamenjeno
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Sekunde
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Generic
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Prilagođen
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=PI-Regulator parametri:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=PI-Regulator:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Omogući
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Opseg:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P Vrednost:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I Vrednost:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Sačuvaj
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Otkaži
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Profil:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Kriva Snage:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Vreme:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=%:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Opseg
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Sačuvaj
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Otkaži
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profil:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Kriva:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Faktor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Izvoz
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Uvoz
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Sačuvaj
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Otkaži
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Prilagodi profil:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Kriva Pražnjenja:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Napon:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Prekid rada uređaja:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Izbor
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Izvoz
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Uvoz
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Sačuvaj
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Otkaži
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Senzori:
+Toolbox.DeviceMonitor.ControlsLabel=Kontrola:
+Toolbox.DeviceMonitor.ChartNameLabel=Linijski Prikaz:
+Toolbox.DeviceMonitor.FollowButton=Prati
+
+Toolbox.DeviceMonitor.Battery1Label=Baterija1:
+Toolbox.DeviceMonitor.Battery2Label=Baterija2:
+Toolbox.DeviceMonitor.Battery3Label=Baterija3:
+Toolbox.DeviceMonitor.Battery4Label=Baterija4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Paket Baterija:
+Toolbox.DeviceMonitor.PowerLabel=Snaga:
+Toolbox.DeviceMonitor.PowerSetLabel=Podešena Snaga:
+Toolbox.DeviceMonitor.TemperatureLabel=Temperatura:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Podešena Temperatura:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Struja na izlazu:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Napon na izlazu:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Hladan Otpor:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Otpor Uživo:
+Toolbox.DeviceMonitor.BoardTempLabel=Temperatura table:
+
+Toolbox.DeviceMonitor.PauseButton=Pauza
+Toolbox.DeviceMonitor.PauseResumeButton=Nastavi
+Toolbox.DeviceMonitor.RecordButton=Snimaj...
+Toolbox.DeviceMonitor.RecordStopButton=Zaustavi snimanje
+Toolbox.DeviceMonitor.SetXScaleButton=Odredi X Skalu
+Toolbox.DeviceMonitor.SetYScaleButton=Odredi Y Skalu
+Toolbox.DeviceMonitor.PuffButton=Puff...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Puff Prikaz granica
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Ekran:
+Toolbox.Screenshooter.ControlsGroupLabel=Kontrola:
+Toolbox.Screenshooter.TakeScreenshotButton=Slikaj ekran
+Toolbox.Screenshooter.SaveScreenshotButton=Sačuvaj ekran
+Toolbox.Screenshooter.PixelSizeLabel=Multiplikator veličine pixela:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Slikaj pre čuvanja:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Omogući
+Toolbox.Screenshooter.StartBroadcastButton=Pokreni emitovanje
+Toolbox.Screenshooter.StopBroadcastButton=Zaustavi emitovanje
+Toolbox.Screenshooter.CancelButton=Otkaži
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Informacije o uređaju:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Ime uređaja:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Verzija firmvera:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Verzija hardvera:
+Toolbox.FirmwareUpdater.BootModeLabel=Boot mod:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Napredak:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Operacije:
+Toolbox.FirmwareUpdater.CommonTab=Osnovno
+Toolbox.FirmwareUpdater.UpdateButton=Ažuriranje iz datoteke
+Toolbox.FirmwareUpdater.DatalfashTab=Fleš podaci
+Toolbox.FirmwareUpdater.ReadDataflashButton=Čitanje fleša
+Toolbox.FirmwareUpdater.WriteDataflashButton=Pisanje fleša
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset fleša
+Toolbox.FirmwareUpdater.AdvancedTab=Napredno
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Promena HW Verzije
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Promena Boot moda
+Toolbox.FirmwareUpdater.CancelButton=Otkaži
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Uređaj je spreman.
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Čeka se uređaj...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Čeka se uređaj nakon resetovanja...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Čitanje fleš podataka...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Pisanje fleš podataka...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Resetovanje uređaja...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Prenos firmvera...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Fleš podaci uspešno pročitani i sačuvani u datoteci.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Fleš podaci uspešno zapisani.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Fleš podaci resetovani.
