@@ -18,10 +18,10 @@ Toolbox.MainWindow.Tray.Exit=Wyjście
 
 // ArcticFox Configuration Window
 Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Podłącz urządzenie z\n\nArcticFox\n[{0}]\n\nfirmwarem lub nowszym
-Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Ściąganie ustawień...
-Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox jest niaktualny.\n\nAby kontynuować, proszę ściągnąć\n\nostatnią dostępną realizację.
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Pobieranie ustawień...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox jest niaktualny.\n\nAby kontynuować, proszę pobrać\n\nostatnią dostępną realizację.
 Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Nie podłączono kompatybilnego urządzenia USB.\n\nAby kontynuować podłącz poprawne.\n\nJeśli jest poprawne, spróbuj odłączyć i podłączyć raz jeszcze, może luźny kabel itp.
-Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Nie można ściągnąć ustawień urządzenia. Podłącz raz jeszcze urządzenie.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Nie można pobrać ustawień urządzenia. Podłącz raz jeszcze urządzenie.
 
 Toolbox.ArcticFoxConfiguration.Status.Device=Urządzenie jest
 Toolbox.ArcticFoxConfiguration.Status.Connected=połączone
@@ -52,9 +52,9 @@ Toolbox.ArcticFoxConfiguration.ConfigurationButton=Konfiguracja▾
 Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Nowa
 Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Otwórz
 Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Zapisz jako
-Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Podłącz i ściągnij konfigurację
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Podłącz i pobierz konfigurację
 Toolbox.ArcticFoxConfiguration.ControlsTab=Kontrola
-Toolbox.ArcticFoxConfiguration.DownloadButton=Ściągnij ustawienia
+Toolbox.ArcticFoxConfiguration.DownloadButton=Pobierz ustawienia
 Toolbox.ArcticFoxConfiguration.EnabledCheckBox=aktywne
 Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 kliki:
 Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 kliki:
@@ -261,7 +261,7 @@ Toolbox.DeviceMonitor.RecordStopButton=Stop nagrywania
 Toolbox.DeviceMonitor.SetXScaleButton=Ustaw skalę X
 Toolbox.DeviceMonitor.SetYScaleButton=Ustaw skalę Y
 Toolbox.DeviceMonitor.PuffButton=Wapuj...
-Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Pokaż barierę wapów
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=pokaż barierę wapów
 
 // Screenshooter Window
 Toolbox.Screenshooter.ScreenGroupLabel=Ekran:
@@ -286,7 +286,7 @@ Toolbox.FirmwareUpdater.OperationsGroupLabel=Operacje:
 Toolbox.FirmwareUpdater.CommonTab=Podstawowe
 Toolbox.FirmwareUpdater.UpdateButton=Aktualizacja z pliku
 Toolbox.FirmwareUpdater.DatalfashTab=Dane
-Toolbox.FirmwareUpdater.ReadDataflashButton=Ściągnij dane
+Toolbox.FirmwareUpdater.ReadDataflashButton=Pobierz dane
 Toolbox.FirmwareUpdater.WriteDataflashButton=Wyślij dane
 Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset danych
 Toolbox.FirmwareUpdater.AdvancedTab=Rozszerzone
