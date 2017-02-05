@@ -907,6 +907,9 @@
     <None Include="ResourcePacks\ArcticFox\Neo.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ResourcePacks\ArcticFox\Pico_sans-serif.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\ArcticFox\Segment_capital_digits.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
