@@ -1,6 +1,5 @@
-<ResourcePack Definition="ArcticFox" Name="Default" Version="1.0" Author="ArionWT">
+<ResourcePack Definition="ArcticFox" Name="Default" Version="1.0" Author="NFE Team">
   <Description>Default ArcticFox resource pack.
-
 Стандартный пак ресурсов ArcticFox.</Description>
   <Images>
     <Image Index="01" Width="6" Height="8">

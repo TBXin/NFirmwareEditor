@@ -1,6 +1,8 @@
 <ResourcePack Definition="ArcticFox" Name="ArcticFox fonts fix" Version="1.5" Author="ArionWT">
     <Description>ArcticFox fonts imbalance fix.
-Исправляет дисбаланс в шрифтах ArcticFox.</Description>
+WARNING! Import only on a clean firmware or after the Default respack import.
+Исправляет дисбаланс в шрифтах ArcticFox.
+ВНИМАНИЕ! Имортируйте только поверх чистой прошивки или после импорта Default респака.</Description>
   <Images>
     <Image Index="0D" Width="6" Height="8">
       <Data>
