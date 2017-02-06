@@ -14,8 +14,11 @@ namespace NCore.UI
 			InitializeComponent();
 			if (ApplicationService.IsIconAvailable) Icon = ApplicationService.ApplicationIcon;
 
+			InfoBox = new InfoBox(this);
 			Load += WindowBase_Load;
 		}
+
+		protected InfoBox InfoBox { get; private set; }
 
 		protected void LocalizeSelf()
 		{
@@ -69,7 +72,16 @@ namespace NCore.UI
 			Hide();
 		}
 
-		protected void UpdateUI(Action action, bool supressExceptions = true)
+		protected override void WndProc(ref Message m)
+		{
+			if (!IgnoreFirstInstanceMessages && m.Msg == CrossApplicationSynchronizer.ShowFirstInstanceMessage)
+			{
+				ShowFromTray();
+			}
+			base.WndProc(ref m);
+		}
+
+		protected internal void UpdateUI(Action action, bool supressExceptions = true)
 		{
 			if (!supressExceptions)
 			{
@@ -88,13 +100,11 @@ namespace NCore.UI
 			}
 		}
 
-		protected override void WndProc(ref Message m)
+		internal T UpdateUI<T>(Func<T> action)
 		{
-			if (!IgnoreFirstInstanceMessages && m.Msg == CrossApplicationSynchronizer.ShowFirstInstanceMessage)
-			{
-				ShowFromTray();
-			}
-			base.WndProc(ref m);
+			var result = default(T);
+			Invoke(new Action(() => result = action()));
+			return result;
 		}
 
 		private void InitializeComponent()
@@ -111,7 +121,6 @@ namespace NCore.UI
 			this.MainLocalizationExtender.SetKey(this, "");
 			this.Name = "WindowBase";
 			this.ResumeLayout(false);
-
 		}
 	}
 }

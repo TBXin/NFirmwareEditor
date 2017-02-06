@@ -208,7 +208,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (resourcePack == null || string.IsNullOrEmpty(resourcePack.Definition)) return;
 			if (!resourcePack.SuitableDefinitions.Contains(m_firmware.Definition.Name))
 			{
-				InfoBox.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
+				InfoBox.Global.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
 				             + resourcePack.Definition
 				             + "\nOpend firmware is: "
 				             + m_firmware.Definition.Name);

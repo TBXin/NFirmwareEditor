@@ -291,7 +291,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			catch
 			{
-				InfoBox.Show("Invalid string data.");
+				InfoBox.Global.Show("Invalid string data.");
 			}
 		}
 

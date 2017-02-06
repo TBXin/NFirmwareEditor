@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 

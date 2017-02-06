@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -60,10 +61,10 @@ namespace NFirmwareEditor.Windows
 					NFEPaths.EnsureDirectoryExists(directory);
 					GitHubApi.DownloadFile(patch.DownloadUrl, localPath);
 
-					this.UpdateUI(() => ChangesTextBox.AppendText(patch.Name + " done." + Environment.NewLine));
+					UpdateUI(() => ChangesTextBox.AppendText(patch.Name + " done." + Environment.NewLine));
 				});
 
-				this.UpdateUI(() =>
+				UpdateUI(() =>
 				{
 					DialogResult = DialogResult.OK;
 				});

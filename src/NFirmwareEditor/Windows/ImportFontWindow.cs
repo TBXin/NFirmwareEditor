@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;

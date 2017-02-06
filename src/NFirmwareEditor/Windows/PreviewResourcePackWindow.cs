@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -29,7 +30,6 @@ namespace NFirmwareEditor.Windows
 		public PreviewResourcePackWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 			ResizeCheckBox.CheckedChanged += ResizeCheckBox_CheckedChanged;
 		}
 

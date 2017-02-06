@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NCore;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -13,7 +14,7 @@ using NFirmwareEditor.Windows.Tabs;
 
 namespace NFirmwareEditor.Windows
 {
-	internal sealed partial class MainWindow :  Form, IEditorTabPageHost
+	internal sealed partial class MainWindow :  WindowBase, IEditorTabPageHost
 	{
 		private const int MinimizedWindowLeftTop = -32000;
 

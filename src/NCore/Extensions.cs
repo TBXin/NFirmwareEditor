@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
-using NCore.UI;
 
 namespace NCore
 {
@@ -68,14 +67,6 @@ namespace NCore
 					yield return element;
 				}
 			}
-		}
-
-		public static void UpdateUI([NotNull] this Control control, [NotNull] Action action)
-		{
-			if (control == null) throw new ArgumentNullException("control");
-			if (action == null) throw new ArgumentNullException("action");
-
-			control.Invoke(action);
 		}
 
 		public static void ForEach([NotNull] this ListView.CheckedListViewItemCollection collection, [NotNull] Action<ListViewItem> action)

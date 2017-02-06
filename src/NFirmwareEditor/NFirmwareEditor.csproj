@@ -136,9 +136,6 @@
     <Compile Include="Windows\DischargeProfileWindow.Designer.cs">
       <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\EditorDialogWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Windows\FirmwareUpdaterWindow.cs">
       <SubType>Form</SubType>
     </Compile>

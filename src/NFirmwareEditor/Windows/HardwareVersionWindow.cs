@@ -1,4 +1,6 @@
-﻿namespace NFirmwareEditor.Windows
+﻿using NCore.UI;
+
+namespace NFirmwareEditor.Windows
 {
 	internal partial class HardwareVersionWindow : EditorDialogWindow
 	{

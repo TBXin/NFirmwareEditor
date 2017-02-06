@@ -104,7 +104,7 @@ namespace NFirmwareEditor.Storages
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("Unable to export resource pack.\n" + ex.Message);
+				InfoBox.Global.Show("Unable to export resource pack.\n" + ex.Message);
 			}
 		}
 

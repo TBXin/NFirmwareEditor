@@ -29,7 +29,7 @@ namespace NFirmwareEditor.Managers
 						{
 							var message = "Detected multiple definitions with the same code: " + definition.Name;
 							{
-								InfoBox.Show(message);
+								InfoBox.Global.Show(message);
 								Trace.Warn(message);
 							}
 							continue;

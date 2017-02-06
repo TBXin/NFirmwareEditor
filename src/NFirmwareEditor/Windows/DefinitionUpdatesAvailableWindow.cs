@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JetBrains.Annotations;
+using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 
@@ -55,10 +56,10 @@ namespace NFirmwareEditor.Windows
 					NFEPaths.EnsureDirectoryExists(NFEPaths.DefinitionsDirectory);
 					GitHubApi.DownloadFile(definition.DownloadUrl, localPath);
 
-					this.UpdateUI(() => ChangesTextBox.AppendText(definition.Name + " done." + Environment.NewLine));
+					UpdateUI(() => ChangesTextBox.AppendText(definition.Name + " done." + Environment.NewLine));
 				});
 
-				this.UpdateUI(() =>
+				UpdateUI(() =>
 				{
 					DialogResult = DialogResult.OK;
 				});
