@@ -1,0 +1,306 @@
+﻿// Shared
+Toolbox.Shared.SecondString=seconde
+Toolbox.Shared.SecondsString=seconden
+
+// NToolbox Window
+Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox Configuratie
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic Configuratie
+Toolbox.MainWindow.DeviceMonitorButton=Live Monitor
+Toolbox.MainWindow.ScreenshooterButton=Schermopname
+Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
+Toolbox.MainWindow.AboutLink=Over && Links
+
+Toolbox.MainWindow.Tray.ShowToolbox=Open NFE Toolbox venster
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Open ArcticFox Configuratie als het apparaat verbonden word
+Toolbox.MainWindow.Tray.TimeSync=Synchronizeer de tijd als het apparaat verbonden is
+Toolbox.MainWindow.Tray.StartWithWindows=Open NFE Toolbox bij het opstarten van Windows
+Toolbox.MainWindow.Tray.Exit=Sluiten
+
+// ArcticFox Configuration Window
+Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Verbind Apparaat met\n\nArcticFox\n[{0}]\n\nfirmware of nieuwer
+Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Instellingen downloaden...
+Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=NFE Toolbox is verouderd.\n\nOm verder te gaan downoad \n\nde meest recente versie.
+Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Geen beschikbare USB Apparaten verbonden.\n\nOm verder tegaan, verbind een apparaat.\n\nAls deze al is verbonden, probeer dan opnieuw te verbinden.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Niet mogenlijk om apparaatinstellingen te downloaden, verbind uw apparaat opnieuw.
+
+Toolbox.ArcticFoxConfiguration.Status.Device=Apparaat is
+Toolbox.ArcticFoxConfiguration.Status.Connected=verbonden!
+Toolbox.ArcticFoxConfiguration.Status.Disconnected=niet verbonden!
+Toolbox.ArcticFoxConfiguration.Status.Ready=Klaar voor gebruik
+Toolbox.ArcticFoxConfiguration.Status.OperationCompleted=Opdracht voltooid
+
+Toolbox.ArcticFoxConfiguration.ActiveProfileLabel=Actief:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery1Label=Batterij 1:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery2Label=Batterij 2:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery3Label=Batterij 3:
+Toolbox.ArcticFoxConfiguration.Advanced.BVO.Battery4Label=Batterij 4:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Aanpassen
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Batterij model:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=Check TCR:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.LSLLabel=Lichte Slaapmodus:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Puff Cut-Off:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel=Shunt Correctie:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel=USB Opladen:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel=USB Niet Slapen:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.X32Label=X32:
+Toolbox.ArcticFoxConfiguration.AdvancedTab=Geavanceerd
+Toolbox.ArcticFoxConfiguration.BVOTab=BVO
+Toolbox.ArcticFoxConfiguration.CircleScreenTab=Cirkel Thema
+Toolbox.ArcticFoxConfiguration.ClassicScreenTab=Klassiek Thema
+Toolbox.ArcticFoxConfiguration.ConfigurationButton=Configuratie▾
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.New=Nieuw
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Open
+Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Opslaan als...
+Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Verbind en download configuratie
+Toolbox.ArcticFoxConfiguration.ControlsTab=Bediening
+Toolbox.ArcticFoxConfiguration.DownloadButton=Download instellingen
+Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Zichtbaar
+Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 keer klikken:
+Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 keer klikken:
+Toolbox.ArcticFoxConfiguration.General.Controls.4ClicksLabel=4 keer klikken:
+Toolbox.ArcticFoxConfiguration.General.Controls.Power1WStepLabel=Power per 1W:
+Toolbox.ArcticFoxConfiguration.General.Controls.SharedLabel=Gedeeld:
+Toolbox.ArcticFoxConfiguration.General.Controls.TCModeClicksLabel=TC Modus Fire Button Multi Kliks:
+Toolbox.ArcticFoxConfiguration.General.Controls.UpDownButtonsLabel=+/- knoppen:
+Toolbox.ArcticFoxConfiguration.General.Controls.VWModeClicksLabel=VW Modus Fire Button Multi Kliks:
+Toolbox.ArcticFoxConfiguration.General.Controls.WakeUpPlusMinusLabel=Activeren met + / - :
+Toolbox.ArcticFoxConfiguration.General.Layout.Line1Label=Regel 1:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line2Label=Regel 2:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line3Label=Regel 3:
+Toolbox.ArcticFoxConfiguration.General.Layout.Line4Label=Regel 4:
+Toolbox.ArcticFoxConfiguration.General.Layout.PuffTimeLabel=Puff Tijd
+Toolbox.ArcticFoxConfiguration.General.Layout.TCModeLayoutLabel=TC modus layout:
+Toolbox.ArcticFoxConfiguration.General.Layout.VWModeLayoutLabel=VW modus layout:
+Toolbox.ArcticFoxConfiguration.General.Screen.BrightnessLabel=Helderheid:
+Toolbox.ArcticFoxConfiguration.General.Screen.ChargeScreenLabel=Oplaadscherm:
+Toolbox.ArcticFoxConfiguration.General.Screen.ClockTypeLabel=Klok Type:
+Toolbox.ArcticFoxConfiguration.General.Screen.FlippedLabel=Sch. Omgedraait:
+Toolbox.ArcticFoxConfiguration.General.Screen.IdleTimeLabel=Inactief Timer:
+Toolbox.ArcticFoxConfiguration.General.Screen.MainScreenSkinLabel=Hoofdscherm Thema:
+Toolbox.ArcticFoxConfiguration.General.Screen.PuffScreenDelayLabel=Puffscherm vertr.:
+Toolbox.ArcticFoxConfiguration.General.Screen.ScreensaverTimeLabel=Schermbev. tijd:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowClockLabel=Laat klok zien:
+Toolbox.ArcticFoxConfiguration.General.Screen.ShowLogoLabel=Laat logo zien:
+Toolbox.ArcticFoxConfiguration.General.Screen.StealthModeLabel=Stealth Modus:
+Toolbox.ArcticFoxConfiguration.General.Screen.TooltipLabel=Beweeg de muis over de keuze om de tips te laten zien.
+Toolbox.ArcticFoxConfiguration.General.Screen.UseClassicMenuLabel=Klassiek Menu:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsCountLabel=Puffs Teller:
+Toolbox.ArcticFoxConfiguration.General.Stats.PuffsTimeFormatLabel=Puffs Tijd Formaat:
+Toolbox.ArcticFoxConfiguration.General.Stats.TotalPuffsTimeLabel=Totale pufftijd:
+Toolbox.ArcticFoxConfiguration.GeneralTab=Algemeen
+Toolbox.ArcticFoxConfiguration.LayoutTab=Uiterlijk
+Toolbox.ArcticFoxConfiguration.MaterialsTab=Materialen
+Toolbox.ArcticFoxConfiguration.NewConfigurationLink=Creër een nieuwe configuratie
+Toolbox.ArcticFoxConfiguration.OpenConfigurationLink=Open bestaande configuratie
+Toolbox.ArcticFoxConfiguration.PowerCurvesTab=Power Curves
+Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Coil Materiaal:
+Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Vergrendeld
+Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Modus:
+Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Naam:
+Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Aanpassen
+Toolbox.ArcticFoxConfiguration.Profile.PowerLabel=Power:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatDelayLabel=Preheat uitstel:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatCurveLabel=Preheat Curve:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatPowerLabel=Preheat Power:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTimeLabel=Preheat Tijd:
+Toolbox.ArcticFoxConfiguration.Profile.PreheatTypeLabel=Preheat Type:
+Toolbox.ArcticFoxConfiguration.Profile.ProfileLabel=Profiel:
+Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel=Weerstand:
+Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton=Instellingen
+Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox=Temperatuur Dominant
+Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel=Temperatuur:
+Toolbox.ArcticFoxConfiguration.Profile.TFREditButton=Aanpassen
+Toolbox.ArcticFoxConfiguration.Profile.WattsLabel=W
+Toolbox.ArcticFoxConfiguration.Profile.Mode.Power=Power
+Toolbox.ArcticFoxConfiguration.Profile.Mode.TempControl=Temp. Controle
+Toolbox.ArcticFoxConfiguration.ProfilesTab=Profielen
+Toolbox.ArcticFoxConfiguration.ResetButton=Reset instellingen
+Toolbox.ArcticFoxConfiguration.ScreenTab=Scherm
+Toolbox.ArcticFoxConfiguration.SecondsLabel=s
+Toolbox.ArcticFoxConfiguration.SettingsTab=Instellingen
+Toolbox.ArcticFoxConfiguration.SmallScreenTab=Klein Scherm
+Toolbox.ArcticFoxConfiguration.SmartCheckBox=Slimme profiel selectie
+Toolbox.ArcticFoxConfiguration.StatsTab=Statistieken
+Toolbox.ArcticFoxConfiguration.UploadButton=Upload instellingen
+Toolbox.ArcticFoxConfiguration.VoltsLabel=v
+
+// Tooltips
+Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin=Verander het thema, alleen voor apparaten met een groot scherm (64x128).
+Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu=Wissel profielen op de klassieke manier, zoals de oude modussen: Power, Ni, Ti, etc.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Laat het logo zien op het hoofdscherm.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Laat de klok zien op het hoofdscherm.
+Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Maximum puff tijd.
+Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Ohm-meter correctie.
+Toolbox.ArcticFoxConfiguration.Tooltips.X32=Schakelt het gebruik van de X32 kristal op de PCB in of uit.
+Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Lichte slaap modus, voor apparaten die geen tweede oscillator hebben om de klok gelijk te houden. Let op: dit kan een hoger verbruik tot gevolg hebben. Dit word aangegeven door een uitroepteken naast de batterij indicator
+Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Reset de Tellers bij een batterij wissel, verwijderd de statistieken.
+Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Check het gebruikte materiaal van de coil in TCR modus, uitzetten kan TCR errors voorkomen met het gebruik van zware setups.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbCharge=In- of Uit-schakelen van opladen via USB.
+Toolbox.ArcticFoxConfiguration.Tooltips.UsbNoSleep=Ga niet in slaapstand als het apparaat via USB is aangesloten.
+
+// Static Dropdowns
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Absolute=Watt (W)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Relative=Percentage (%)
+Toolbox.ArcticFoxConfiguration.Profile.PreheatType.Curve=Curve
+Toolbox.ArcticFoxConfiguration.InfoLines.NonDominant=Niet Dominant (Pwr / Temp)
+Toolbox.ArcticFoxConfiguration.InfoLines.Volts=Voltage
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputVolts=Output Voltage
+Toolbox.ArcticFoxConfiguration.InfoLines.OutputAmps=Output Amperage
+Toolbox.ArcticFoxConfiguration.InfoLines.Resistance=Weerstand
+Toolbox.ArcticFoxConfiguration.InfoLines.LiveResistance=Live Weerstan
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffs=Puffs
+Toolbox.ArcticFoxConfiguration.InfoLines.LinePuffsTime=Puffs Tijd
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteriesVolts=Batterij(en) Voltage
+Toolbox.ArcticFoxConfiguration.InfoLines.DateTime=Datum/Tijd
+Toolbox.ArcticFoxConfiguration.InfoLines.BoardTemp=Moederbord Temperatuur
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPuffTime=Laatste Puff Tijd
+Toolbox.ArcticFoxConfiguration.InfoLines.LastPower=Laatst gebruikte Power
+Toolbox.ArcticFoxConfiguration.InfoLines.LastTemperature=Laatste temperatuur
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicator=Batterij
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorPercents=Batterij + %
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryIndicatorVolts=Batterij + V
+Toolbox.ArcticFoxConfiguration.InfoLines.BatteryPercents=Batterij %
+Toolbox.ArcticFoxConfiguration.Skin.Classic=Klassiek
+Toolbox.ArcticFoxConfiguration.Skin.Circle=Cirkel
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic=Klassiek
+Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended=Uitgebreid
+Toolbox.ArcticFoxConfiguration.ClockType.Analog=Analoog
+Toolbox.ArcticFoxConfiguration.ClockType.Digital=Digitaal
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.Off=Uit
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.1Min=1 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.2Min=2 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.5Min=5 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.10Min=10 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.15Min=15 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.20Min=20 Min
+Toolbox.ArcticFoxConfiguration.ScreenProtectionTime.30Min=30 Min
+Toolbox.ArcticFoxConfiguration.ClickActions.None=Geen
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit=Aanpassen
+Toolbox.ArcticFoxConfiguration.ClickActions.MainMenu=Hoofdmenu
+Toolbox.ArcticFoxConfiguration.ClickActions.PreheatMenu=Preheat Menu
+Toolbox.ArcticFoxConfiguration.ClickActions.SelectProfile=Selecteer het Profiel
+Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Pas het Profiel aan
+Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TemperatuurDominant
+Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Laat klok zien
+Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Laat Infoscherm zien
+Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Slimme modus Aan / Uit
+Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Aan / Uit
+Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Aan / Uit
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Normal=Normaal
+Toolbox.ArcticFoxConfiguration.UpDownButtons.Swapped=Omgedraaid
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.Seconds=Seconden
+Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS=HH:MM:SS
+Toolbox.ArcticFoxConfiguration.BatteryModel.Generic=Universele Batterij
+Toolbox.ArcticFoxConfiguration.BatteryModel.Custom=Custom
+
+// ArcticFox Configuration - PiRegulator Setup Window
+Toolbox.ArcticFoxConfiguration.PiRegulator.SetupLabel=PI-Regulator Setup:
+Toolbox.ArcticFoxConfiguration.PiRegulator.UsePiRegulatorLabel=Gebruik PI-Regulator:
+Toolbox.ArcticFoxConfiguration.PiRegulator.EnabledCheckBox=Ingeschakeld:
+Toolbox.ArcticFoxConfiguration.PiRegulator.RangeLabel=Bereik:
+Toolbox.ArcticFoxConfiguration.PiRegulator.PLabel=P Waarde:
+Toolbox.ArcticFoxConfiguration.PiRegulator.ILabel=I Waarde:
+Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Opslaan
+Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Annuleren
+
+// ArcticFox Configuration - Power Curve Editor Window
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Power Curve Naam:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Power Curve:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Tijd:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=Pct:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=TijdsSchaal
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Opslaan
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Annuleren
+
+// ArcticFox Configuration - TFR Curve Editor Window
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profiel:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Curve:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Factor:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Opslaan
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Annuleren
+
+// ArcticFox Configuration - Discharge Curve Editor Window
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profiel:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel=Ontladings curve:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.VoltsLabel=Voltage:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CutoffLabel=Cutoff:
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton=Voorinstelling
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ExportButton=Export
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ImportButton=Import
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.SaveButton=Opslaan
+Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.CancelButton=Annuleren
+
+// Device Monitor Window
+Toolbox.DeviceMonitor.SensorsLabel=Sensoren:
+Toolbox.DeviceMonitor.ControlsLabel=Controle:
+Toolbox.DeviceMonitor.ChartNameLabel=Tabel:
+Toolbox.DeviceMonitor.FollowButton=Volg
+
+Toolbox.DeviceMonitor.Battery1Label=Batterij1:
+Toolbox.DeviceMonitor.Battery2Label=Batterij2:
+Toolbox.DeviceMonitor.Battery3Label=Batterij3:
+Toolbox.DeviceMonitor.Battery4Label=Batterij4:
+Toolbox.DeviceMonitor.BatteryPackLabel=Batterij totaal:
+Toolbox.DeviceMonitor.PowerLabel=Power:
+Toolbox.DeviceMonitor.PowerSetLabel=Power ingesteld:
+Toolbox.DeviceMonitor.TemperatureLabel=Temperatuur:
+Toolbox.DeviceMonitor.TemperatureSetLabel=Temperatuur ingesteld:
+Toolbox.DeviceMonitor.OutputCurrentLabel=Uitvoer Vermogen:
+Toolbox.DeviceMonitor.OutputVoltageLabel=Uitvoer Voltage:
+Toolbox.DeviceMonitor.ColdResistanceLabel=Koude Weerstand:
+Toolbox.DeviceMonitor.LiveResistanceLabel=Live Weerstand:
+Toolbox.DeviceMonitor.BoardTempLabel=Mobo Temperatuur:
+
+Toolbox.DeviceMonitor.PauseButton=Pauze
+Toolbox.DeviceMonitor.PauseResumeButton=Verder
+Toolbox.DeviceMonitor.RecordButton=Opnemen...
+Toolbox.DeviceMonitor.RecordStopButton=Stop met Opnemen
+Toolbox.DeviceMonitor.SetXScaleButton=Schaal van X
+Toolbox.DeviceMonitor.SetYScaleButton=Schaal van Y
+Toolbox.DeviceMonitor.PuffButton=Puff...
+Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Laat Puff grenzen zien
+
+// Screenshooter Window
+Toolbox.Screenshooter.ScreenGroupLabel=Scherm:
+Toolbox.Screenshooter.ControlsGroupLabel=Knoppen:
+Toolbox.Screenshooter.TakeScreenshotButton=Neem een schermafbeelding
+Toolbox.Screenshooter.SaveScreenshotButton=Sla schermafbeelding op
+Toolbox.Screenshooter.PixelSizeLabel=Pixel formaat vergroter:
+Toolbox.Screenshooter.TakeBeforeSaveLabel=Neem voor opslaan:
+Toolbox.Screenshooter.TakeBeforeSaveCheckbox=Ingesch.
+Toolbox.Screenshooter.StartBroadcastButton=Start live
+Toolbox.Screenshooter.StopBroadcastButton=Stop live
+Toolbox.Screenshooter.CancelButton=Annuleren
+
+// Firmware Updater Window
+Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Apparaat info:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Apparaat naam:
+Toolbox.FirmwareUpdater.FirmwareVersionLabel=Firmware versie:
+Toolbox.FirmwareUpdater.HardwareVersionLabel=Hardware versie:
+Toolbox.FirmwareUpdater.BootModeLabel=Opstartmodus:
+Toolbox.FirmwareUpdater.ProgressGroupLabel=Voortgang:
+Toolbox.FirmwareUpdater.OperationsGroupLabel=Taken:
+Toolbox.FirmwareUpdater.CommonTab=Algemeen
+Toolbox.FirmwareUpdater.UpdateButton=Update met een bestand
+Toolbox.FirmwareUpdater.DatalfashTab=Dataflash
+Toolbox.FirmwareUpdater.ReadDataflashButton=Lees dataflash
+Toolbox.FirmwareUpdater.WriteDataflashButton=Schrijf dataflash
+Toolbox.FirmwareUpdater.ResetDataFlashButton=Reset dataflash
+Toolbox.FirmwareUpdater.AdvancedTab=Geavanceerd
+Toolbox.FirmwareUpdater.ChangeHWVerButton=Verander HW Versie
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Wissel opstartmodus
+Toolbox.FirmwareUpdater.CancelButton=Annuleren
+
+Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Apparaat is klaar voor gebruik...
+Toolbox.FirmwareUpdater.Messages.WaitingForDevice=Wachten op het apparaat...
+Toolbox.FirmwareUpdater.Messages.WaitingForDeviceAfterReset=Wachten op apparaat na een reset...
+Toolbox.FirmwareUpdater.Messages.ReadingDataflash=Leest dataflash...
+Toolbox.FirmwareUpdater.Messages.WritingDataflash=Schrijft dataflash...
+Toolbox.FirmwareUpdater.Messages.RestartingDevice=Opnieuw opstarten van het apparaat...
+Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Uploaden van firmware...
+Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash is succesvol uitgelezen en opgeslagen naar een bestand.
+Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash is succesvol weggeschreven.
+Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash is gereset.
