@@ -277,7 +277,7 @@ Toolbox.Screenshooter.CancelButton=Annulla
 
 // Firmware Updater Window
 Toolbox.FirmwareUpdater.DeviceInfoGroupLabel=Info dispositivo:
-Toolbox.FirmwareUpdater.DeviceNameLabel=Nome del dispositivo:
+Toolbox.FirmwareUpdater.DeviceNameLabel=Nome dispositivo:
 Toolbox.FirmwareUpdater.FirmwareVersionLabel=Versione firmware:
 Toolbox.FirmwareUpdater.HardwareVersionLabel=Versione hardware:
 Toolbox.FirmwareUpdater.BootModeLabel=Modalità di boot:
