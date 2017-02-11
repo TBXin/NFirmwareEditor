@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
 using NFirmware;
-using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
 using NFirmwareEditor.Models;
 using NFirmwareEditor.UI;
@@ -137,22 +136,25 @@ namespace NFirmwareEditor.Windows.Tabs
 
 		private void CheckForUpdatesWithUserInteraction(bool notifyWhenNoUpdatesAvailable)
 		{
-			this.UpdateUI(() =>
+			Invoke(new Action(() =>
 			{
 				CheckForUpdatesButton.Enabled = false;
 				PatchListView.Focus();
-			});
+			}));
 			var checkForUpdates = new Action(() =>
 			{
 				var newPatches = UpdatesManager.CheckForNewPatches(m_firmware.Definition, m_suitablePatches);
-				this.UpdateUI(() =>
+				Invoke(new Action(() =>
 				{
+					CheckForUpdatesButton.Enabled = false;
+					PatchListView.Focus();
+
 					CheckForUpdatesButton.Enabled = true;
 					if (newPatches == null || newPatches.Count == 0)
 					{
 						if (notifyWhenNoUpdatesAvailable)
 						{
-							InfoBox.Show("No updates available!");
+							InfoBox.Global.Show("No updates available!");
 						}
 						return;
 					}
@@ -162,7 +164,7 @@ namespace NFirmwareEditor.Windows.Tabs
 						if (newPatchesWindow.ShowDialog() != DialogResult.OK) return;
 						ReloadPatchesButton_Click(null, EventArgs.Empty);
 					}
-				});
+				}));
 			});
 			checkForUpdates.BeginInvoke(null, null);
 		}
@@ -204,7 +206,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Focus();
 			if (!candidates.Any())
 			{
-				InfoBox.Show("Selected patches were already installed.");
+				InfoBox.Global.Show("Selected patches were already installed.");
 				return;
 			}
 
@@ -236,7 +238,7 @@ namespace NFirmwareEditor.Windows.Tabs
 					sb.AppendLine(" - " + patch);
 				}
 			}
-			InfoBox.Show(sb.ToString());
+			InfoBox.Global.Show(sb.ToString());
 		}
 		private void RollbackPatchesButton_Click(object sender, EventArgs e)
 		{
@@ -247,7 +249,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			PatchListView.Focus();
 			if (!candidates.Any())
 			{
-				InfoBox.Show("Selected patches are not installed.");
+				InfoBox.Global.Show("Selected patches are not installed.");
 				return;
 			}
 
@@ -279,7 +281,7 @@ namespace NFirmwareEditor.Windows.Tabs
 					sb.AppendLine(" - " + patch);
 				}
 			}
-			InfoBox.Show(sb.ToString());
+			InfoBox.Global.Show(sb.ToString());
 		}
 
 		private void OpenInEditorButton_Click(object sender, EventArgs e)
@@ -287,7 +289,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			if (SelectedPatch == null) return;
 
 			var ex = Safe.Execute(() => Process.Start(SelectedPatch.FilePath));
-			if (ex != null) InfoBox.Show("An error occured during opening patch file.\n" + ex.Message);
+			if (ex != null) InfoBox.Global.Show("An error occured during opening patch file.\n" + ex.Message);
 		}
 
 		private void CheckForUpdatesButton_Click(object sender, EventArgs e)

@@ -241,7 +241,7 @@ namespace NToolbox.Windows
 
 				if (!writeFirmwareResult)
 				{
-					InfoBox.Show("Firmware update failed!");
+					InfoBox.Show(LocalizableStrings.FirmwareUpdateFailed);
 					return;
 				}
 
@@ -250,7 +250,7 @@ namespace NToolbox.Windows
 			catch (Exception ex)
 			{
 				Trace.Warn(ex);
-				InfoBox.Show("An exception occured during firmware update.\n" + ex.Message);
+				InfoBox.Show(LocalizableStrings.FirmwareUpdateFatalError + "\n" + ex.Message);
 			}
 			finally
 			{
@@ -262,7 +262,7 @@ namespace NToolbox.Windows
 
 				if (isSuccess)
 				{
-					InfoBox.Show("Firmware successfully updated.");
+					InfoBox.Show(LocalizableStrings.FirmwareSuccessfullyUpdated);
 				}
 			}
 		}

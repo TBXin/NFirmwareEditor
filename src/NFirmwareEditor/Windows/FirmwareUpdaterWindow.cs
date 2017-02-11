@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using NCore;
+using NCore.UI;
 using NCore.USB;
 using NCore.USB.Models;
 using NFirmware;
@@ -15,7 +16,7 @@ using NFirmwareEditor.Managers;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class FirmwareUpdaterWindow : Form
+	internal partial class FirmwareUpdaterWindow : EditorDialogWindow
 	{
 		private readonly Firmware m_firmware;
 		private readonly FirmwareLoader m_loader;
@@ -43,6 +44,16 @@ namespace NFirmwareEditor.Windows
 				// When form shown as dialog we dont need to handle click event to close it, 
 				// otherwise we need to close application mannualy.
 				if (!Modal) CancelButton.Click += (s1, e1) => Application.Exit();
+			};
+
+			Closing += (s, e) =>
+			{
+				if (!CancelButton.Enabled)
+				{
+					e.Cancel = true;
+					return;
+				}
+				HidConnector.Instance.DeviceConnected -= DeviceConnected;
 			};
 		}
 

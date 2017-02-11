@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using NCore;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 
@@ -19,7 +20,6 @@ namespace NFirmwareEditor.Windows
 		public DecryptionWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 
 			m_encoder = new JoyetechEncryption();
 			m_loader = new FirmwareLoader();

@@ -26,7 +26,6 @@ namespace NCore.UI
 			this.MainLocalizationExtender.SetKey(this, "");
 			this.Name = "EditorDialogWindow";
 			this.ResumeLayout(false);
-
 		}
 	}
 }

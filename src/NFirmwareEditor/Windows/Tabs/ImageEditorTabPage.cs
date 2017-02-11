@@ -438,7 +438,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			catch (Exception)
 			{
-				InfoBox.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
+				InfoBox.Global.Show("Invalid image data. Possibly firmware definition is incompatible with loaded firmware.");
 			}
 		}
 
@@ -612,7 +612,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			}
 			catch (Exception ex)
 			{
-				InfoBox.Show("Unable to import bitmap image.\n" + ex.Message);
+				InfoBox.Global.Show("Unable to import bitmap image.\n" + ex.Message);
 			}
 		}
 

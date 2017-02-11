@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using NCore.UI;
 using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
@@ -10,7 +11,6 @@ namespace NFirmwareEditor.Windows
 		public ResizeImageWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 			NewWidthUpDown.Maximum = NewHeightUpDown.Maximum = Consts.MaximumImageWidthAndHeight;
 
 			Load += (s, e) => { NewWidthUpDown.Select(); };

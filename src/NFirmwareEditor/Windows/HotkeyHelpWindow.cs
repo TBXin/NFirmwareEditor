@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using NFirmwareEditor.Core;
+using NCore.UI;
 
 namespace NFirmwareEditor.Windows
 {
@@ -8,7 +8,6 @@ namespace NFirmwareEditor.Windows
 		public HotkeyHelpWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 
 			MessageTextBox.ReadOnly = true;
 			MessageTextBox.BackColor = Color.White;

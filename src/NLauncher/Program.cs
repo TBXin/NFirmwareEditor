@@ -21,7 +21,7 @@ namespace NLauncher
 			}
 			else
 			{
-				InfoBox.Show("Path to the *.bin file is required.\n\nPass it as argument, e.g. \"NLauncher.exe path\\to\\the\\firmware.bin\".");
+				InfoBox.Global.Show("Path to the *.bin file is required.\n\nPass it as argument, e.g. \"NLauncher.exe path\\to\\the\\firmware.bin\".");
 			}
 		}
 	}

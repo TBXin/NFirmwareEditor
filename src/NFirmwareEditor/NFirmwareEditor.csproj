@@ -136,9 +136,6 @@
     <Compile Include="Windows\DischargeProfileWindow.Designer.cs">
       <DependentUpon>DischargeProfileWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\EditorDialogWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Windows\FirmwareUpdaterWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -907,7 +904,13 @@
     <None Include="ResourcePacks\ArcticFox\Neo.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ResourcePacks\ArcticFox\Segment_numbers.respack">
+    <None Include="ResourcePacks\ArcticFox\Pico_sans-serif.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\ArcticFox\Segment_capital_digits.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\ArcticFox\Segment_small_digits.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ResourcePacks\Cuboid 3.02\3.02_Cuboid_default.respack">

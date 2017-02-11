@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using NCore.UI;
 using NFirmwareEditor.Core;
 
 namespace NFirmwareEditor.Windows
@@ -8,7 +9,6 @@ namespace NFirmwareEditor.Windows
 		public AboutWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 			ApplicationTitleLable.Text = Consts.ApplicationTitle;
 
 			ReikoKitsuneLinkLabel.Click += ReikoKitsuneLinkLabel_Click;

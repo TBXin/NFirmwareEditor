@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Models;
@@ -13,7 +14,7 @@ using NFirmwareEditor.UI;
 
 namespace NFirmwareEditor.Windows
 {
-	internal partial class CreateResourcePackWindow : Form
+	internal partial class CreateResourcePackWindow : EditorDialogWindow
 	{
 		private readonly ResourcePacksStorage m_resourcePackStorage;
 		private readonly List<ExportedImage> m_exportedImages;
@@ -21,8 +22,6 @@ namespace NFirmwareEditor.Windows
 		public CreateResourcePackWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
-
 			OkButton.Click += OkButton_Click;
 		}
 

@@ -363,6 +363,11 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen", "Info Screen"); }
 		}
 
+		public static string ResetCounters
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters", "Reset Counters"); }
+		}
+
 		public static string ClickActionsSmartOnOff
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff", "Smart On / Off"); }
@@ -486,6 +491,21 @@ namespace NToolbox.Services
 		public static string FirmwareUpdaterDataflashReseted
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashReseted", "Dataflash has been reseted."); }
+		}
+
+		public static string FirmwareSuccessfullyUpdated
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated", "Firmware successfully updated."); }
+		}
+
+		public static string FirmwareUpdateFailed
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed", "Firmware update failed!"); }
+		}
+
+		public static string FirmwareUpdateFatalError
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError", "An exception occured during firmware update."); }
 		}
 		#endregion
 

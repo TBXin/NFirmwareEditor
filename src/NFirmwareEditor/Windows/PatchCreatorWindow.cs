@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using NCore;
+using NCore.UI;
 using NFirmware;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
@@ -21,7 +22,6 @@ namespace NFirmwareEditor.Windows
 		public PatchCreatorWindow()
 		{
 			InitializeComponent();
-			Icon = NFEPaths.ApplicationIcon;
 
 			SelectSource1Button.Click += SelectSourceButton_Click;
 			SelectSource2Button.Click += SelectSourceButton_Click;
