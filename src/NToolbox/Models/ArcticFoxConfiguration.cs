@@ -275,7 +275,8 @@ namespace NToolbox.Models
 			Preheat = 8,
 			ProfileEdit = 9,
 			SmartOnOff = 10,
-			InfoScreen = 11
+			InfoScreen = 11,
+			ResetCounters = 12
 		}
 
 		[Flags]

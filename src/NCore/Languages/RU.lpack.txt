@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Ред. профиль
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=ТК регулятор W/Temp
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Показать часы
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Информация
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Сброс статистики
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Смарт Вкл / Выкл
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=Дремать Вкл / Выкл
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Вкл / Выкл

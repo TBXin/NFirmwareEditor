@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Profil szerkesztő
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=Hőmérséklet dominancia Be / Ki
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Óra mutatása
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Információs kép
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Reset Counters
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Be / Ki
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Be / Ki
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Be / Ki

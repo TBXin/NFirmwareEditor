@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Pas het Profiel aan
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TemperatuurDominant
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Laat klok zien
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Laat Infoscherm zien
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Reset Counters
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Slimme modus Aan / Uit
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Aan / Uit
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Aan / Uit

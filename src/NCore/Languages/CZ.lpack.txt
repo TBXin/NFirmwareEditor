@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Upravit profil
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TDom
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Zobrazit hodiny
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Informační obrazovka
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Reset Counters
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Zap / Vyp
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Zap / Vyp
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Zap / Vyp

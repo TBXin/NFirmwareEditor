@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Edit Profile
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=TDom
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Show Clock
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Info Screen
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Reset Counters
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart On / Off
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL On / Off
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=On / Off

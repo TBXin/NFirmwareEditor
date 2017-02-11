@@ -363,6 +363,11 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen", "Info Screen"); }
 		}
 
+		public static string ResetCounters
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters", "Reset Counters"); }
+		}
+
 		public static string ClickActionsSmartOnOff
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff", "Smart On / Off"); }

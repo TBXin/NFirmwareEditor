@@ -184,6 +184,7 @@ Toolbox.ArcticFoxConfiguration.ClickActions.Edit Profile=Uredi profil
 Toolbox.ArcticFoxConfiguration.ClickActions.TDom=Temp. Dominira
 Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock=Pokaži sat
 Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen=Informacije
+Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters=Reset Counters
 Toolbox.ArcticFoxConfiguration.ClickActions.SmartOnOff=Smart Da/Ne
 Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf=LSL Da./Ne
 Toolbox.ArcticFoxConfiguration.ClickActions.OnOff=Gašenje
