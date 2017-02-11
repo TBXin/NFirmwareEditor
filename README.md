@@ -9,7 +9,7 @@ NFirmwareEditor is a firmware editor and updater for vaping devices from Joyetec
 
 * Joyetech: eVic VTC Mini, eVic VTwo, eVic VTwo Mini, eVic AIO, eVic Basic, Cuboid, Cuboid Mini, eGrip II;
 * Eleaf: iStick TC100W, iStick TC200W, iStick Pico, iStick Pico Mega, iStick Power, ASTER;
-* Wismec: Reuleaux RX200, RX200S, RX2/3, Presa TC75W;
+* Wismec: Reuleaux RX200, RX200S, RX300, RX2/3, Presa TC75W;
 * Vaporflask: Lite, Classic, Stout;
 * Beyondvape Centurion
 
