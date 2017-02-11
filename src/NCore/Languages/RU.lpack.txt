@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Загрузка прошив
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash был успешно прочитан и сохранен в файл.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash успешно записан.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash успешно сброшен.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Прошивка успешно обновлена.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Обновление прошивка не удалось!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=Во время обновления прошивка произошла ошибка.

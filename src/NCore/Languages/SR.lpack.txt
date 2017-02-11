@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Prenos firmvera...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Fleš podaci uspešno pročitani i sačuvani u datoteci.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Fleš podaci uspešno zapisani.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Fleš podaci resetovani.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.

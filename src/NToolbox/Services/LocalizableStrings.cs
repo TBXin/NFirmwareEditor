@@ -492,6 +492,21 @@ namespace NToolbox.Services
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.DataflashReseted", "Dataflash has been reseted."); }
 		}
+
+		public static string FirmwareSuccessfullyUpdated
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated", "Firmware successfully updated."); }
+		}
+
+		public static string FirmwareUpdateFailed
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed", "Firmware update failed!"); }
+		}
+
+		public static string FirmwareUpdateFatalError
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError", "An exception occured during firmware update."); }
+		}
 		#endregion
 
 		#region Tooltips

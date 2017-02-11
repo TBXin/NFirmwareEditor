@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Nahrávám firmware...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash byl úspěšně načten a uložen do souboru.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash byl úspěšně zapsán.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash byl úspěšně resetován.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.

@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Chargement du firmware ...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash a été lu avec succès et enregistré dans le fichier.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash a été écrit avec succès.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash a été réinitialisé.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.

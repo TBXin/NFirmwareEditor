@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Uploaden van firmware...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash is succesvol uitgelezen en opgeslagen naar een bestand.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash is succesvol weggeschreven.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash is gereset.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.

@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Firmware feltöltése...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Adattároló sikeresen elmentve a fileba.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Adattároló sikeresen visszatöltve a készülékre.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Adattároló törölve.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.

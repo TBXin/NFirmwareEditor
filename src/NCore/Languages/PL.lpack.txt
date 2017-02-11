@@ -305,3 +305,6 @@ Toolbox.FirmwareUpdater.Messages.UploadingFirmware=Zapisywanie firmware...
 Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dane zostały poprawnie odczytane i zapisane do pliku.
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dane zostały poprawnie zapisane.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dane zostały zresetowane.
+Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware successfully updated.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware update failed!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=An exception occured during firmware update.
