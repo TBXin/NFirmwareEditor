@@ -12,6 +12,7 @@ Toolbox.MainWindow.AboutLink=О Программе && Ссылки
 
 Toolbox.MainWindow.Tray.ShowToolbox=Показать NFE Toolbox
 Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Запускать ArcticFox Configuration при подключении устройства
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceDisconnected=Закрывать ArcticFox Configuration при отключении устройства
 Toolbox.MainWindow.Tray.TimeSync=Синхронизация времени при подключении устройства
 Toolbox.MainWindow.Tray.StartWithWindows=Запускать вместе с Windows
 Toolbox.MainWindow.Tray.Exit=Выход

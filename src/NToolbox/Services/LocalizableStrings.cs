@@ -635,6 +635,11 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected", "Open ArcticFox Configuration when device is connected"); }
 		}
 
+		public static string TrayArcticFoxConfigurationAutoClose
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceDisconnected", "Close ArcticFox Configuration when device is disconnected"); }
+		}
+
 		public static string TrayTimeSync
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.Tray.TimeSync", "Synchronize time when device is connected"); }

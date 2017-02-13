@@ -23,16 +23,20 @@ namespace NToolbox.Windows
 		private const int MinimumSupportedBuildNumber = 170201;
 		private const int SupportedSettingsVersion = 7;
 
+		private readonly ToolboxConfiguration m_toolboxConfiguration;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
 		private readonly Func<BackgroundWorker, byte[]> m_deviceConfigurationProvider = worker => HidConnector.Instance.ReadConfiguration(worker);
 
 		private bool m_isWorkspaceOpen;
 		private bool m_isDeviceConnected;
-		private ArcticFoxConfiguration m_configuration;
+		private ArcticFoxConfiguration m_deviceConfiguration;
 
-		public ArcticFoxConfigurationWindow()
+		public ArcticFoxConfigurationWindow([NotNull] ToolboxConfiguration toolboxConfiguration)
 		{
+			if (toolboxConfiguration == null) throw new ArgumentNullException("toolboxConfiguration");
+
+			m_toolboxConfiguration = toolboxConfiguration;			
 			InitializeComponent();
 			Initialize();
 			InitializeControls();
@@ -270,7 +274,7 @@ namespace NToolbox.Windows
 
 		private void WriteConfiguration()
 		{
-			var data = BinaryStructure.WriteBinary(m_configuration);
+			var data = BinaryStructure.WriteBinary(m_deviceConfiguration);
 			try
 			{
 				HidConnector.Instance.WriteConfiguration(data, m_worker);
@@ -283,7 +287,7 @@ namespace NToolbox.Windows
 
 		private void InitializeWorkspace()
 		{
-			var deviceInfo = m_configuration.Info;
+			var deviceInfo = m_deviceConfiguration.Info;
 			{
 				DeviceNameLabel.Text = HidDeviceInfo.Get(deviceInfo.ProductId).Name;
 				FirmwareVersionTextBox.Text = (deviceInfo.FirmwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
@@ -302,7 +306,7 @@ namespace NToolbox.Windows
 				Battery4OffsetLabel.Visible = Battery4OffsetUpDown.Visible = Battery4OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 3;
 			}
 
-			var general = m_configuration.General;
+			var general = m_deviceConfiguration.General;
 			{
 				for (var i = 0; i < general.Profiles.Length; i++)
 				{
@@ -323,9 +327,9 @@ namespace NToolbox.Windows
 						tabContent = (ProfileTabContent)ProfilesTabControl.TabPages[i].Controls[0];
 					}
 
-					tabContent.Initialize(m_configuration, i);
-					tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
-					tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
+					tabContent.Initialize(m_deviceConfiguration, i);
+					tabContent.UpdatePowerCurveNames(m_deviceConfiguration.Advanced.PowerCurves);
+					tabContent.UpdateTFRNames(m_deviceConfiguration.Advanced.TFRTables);
 				}
 
 				ProfilesTabControl.SelectedIndex = Math.Max(0, Math.Min(general.SelectedProfile, ProfilesTabControl.TabCount));
@@ -333,7 +337,7 @@ namespace NToolbox.Windows
 				SmartCheckBox.Checked = general.IsSmartEnabled;
 			}
 
-			var ui = m_configuration.Interface;
+			var ui = m_deviceConfiguration.Interface;
 			{
 				BrightnessTrackBar.Value = ui.Brightness;
 				IdleTimeUpDow.SetValue(ui.DimTimeout);
@@ -394,14 +398,14 @@ namespace NToolbox.Windows
 					: SmallScreenTabPage;
 			}
 
-			var stats = m_configuration.Counters;
+			var stats = m_deviceConfiguration.Counters;
 			{
 				PuffsUpDown.SetValue(stats.PuffsCount);
 				PuffsTimeUpDown.SetValue(stats.PuffsTime / 10m);
 				PuffsTimeFormatComboBox.SelectItem(ui.PuffsTimeFormat);
 			}
 
-			var advanced = m_configuration.Advanced;
+			var advanced = m_deviceConfiguration.Advanced;
 			{
 				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
 				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
@@ -420,9 +424,9 @@ namespace NToolbox.Windows
 
 				PowerCurvesListView.Items.Clear();
 				PowerCurvesListView.LargeImageList.Images.Clear();
-				for (var i = 0; i < m_configuration.Advanced.PowerCurves.Length; i++)
+				for (var i = 0; i < m_deviceConfiguration.Advanced.PowerCurves.Length; i++)
 				{
-					var powerCurve = m_configuration.Advanced.PowerCurves[i];
+					var powerCurve = m_deviceConfiguration.Advanced.PowerCurves[i];
 					var bitmap = ChartPreviewService.CreatePowerCurvePreview(powerCurve, PowerCurvesListView.LargeImageList.ImageSize);
 					PowerCurvesListView.LargeImageList.Images.Add(bitmap);
 					PowerCurvesListView.Items.Add(new ListViewItem(powerCurve.Name, i) { Tag = i });
@@ -430,9 +434,9 @@ namespace NToolbox.Windows
 
 				MaterialsListView.Items.Clear();
 				MaterialsListView.LargeImageList.Images.Clear();
-				for (var i = 0; i < m_configuration.Advanced.TFRTables.Length; i++)
+				for (var i = 0; i < m_deviceConfiguration.Advanced.TFRTables.Length; i++)
 				{
-					var tfrTable = m_configuration.Advanced.TFRTables[i];
+					var tfrTable = m_deviceConfiguration.Advanced.TFRTables[i];
 					var bitmap = ChartPreviewService.CreateTFRCurvePreview(tfrTable, PowerCurvesListView.LargeImageList.ImageSize);
 					MaterialsListView.LargeImageList.Images.Add(bitmap);
 					MaterialsListView.Items.Add(new ListViewItem("[TFR] " + tfrTable.Name, i) { Tag = i });
@@ -453,7 +457,7 @@ namespace NToolbox.Windows
 
 		private void SaveWorkspace()
 		{
-			var general = m_configuration.General;
+			var general = m_deviceConfiguration.General;
 			{
 				// Profiles Tab
 				for (var i = 0; i < general.Profiles.Length; i++)
@@ -466,7 +470,7 @@ namespace NToolbox.Windows
 				general.IsSmartEnabled = SmartCheckBox.Checked;
 			}
 
-			var ui = m_configuration.Interface;
+			var ui = m_deviceConfiguration.Interface;
 			{
 				// General -> Screen Tab
 				ui.Brightness = (byte)BrightnessTrackBar.Value;
@@ -523,7 +527,7 @@ namespace NToolbox.Windows
 				ui.IsPowerStep1W = Step1WCheckBox.Checked;
 			}
 
-			var stats = m_configuration.Counters;
+			var stats = m_deviceConfiguration.Counters;
 			{
 				var now = DateTime.Now;
 
@@ -542,7 +546,7 @@ namespace NToolbox.Windows
 				ui.PuffsTimeFormat = PuffsTimeFormatComboBox.GetSelectedItem<ArcticFoxConfiguration.PuffsTimeFormat>();
 			}
 
-			var advanced = m_configuration.Advanced;
+			var advanced = m_deviceConfiguration.Advanced;
 			{
 				advanced.PuffCutOff = (byte)(PuffCutOffUpDown.Value * 10);
 				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
@@ -607,7 +611,7 @@ namespace NToolbox.Windows
 					InfoBox.Show("Something strange happened! Please restart application.");
 					return;
 				}
-				m_configuration = readResult.Configuration;
+				m_deviceConfiguration = readResult.Configuration;
 				UpdateUI(InitializeWorkspace);
 			}
 			catch (Exception ex)
@@ -619,37 +623,37 @@ namespace NToolbox.Windows
 
 		internal void UpdatePowerCurveNames()
 		{
-			UpdatePowerCurveLabels(m_configuration.Advanced.PowerCurves);
+			UpdatePowerCurveLabels(m_deviceConfiguration.Advanced.PowerCurves);
 			foreach (TabPage tabPage in ProfilesTabControl.TabPages)
 			{
 				var tabContent = tabPage.Controls[0] as ProfileTabContent;
 				if (tabContent == null) continue;
 
-				tabContent.UpdatePowerCurveNames(m_configuration.Advanced.PowerCurves);
+				tabContent.UpdatePowerCurveNames(m_deviceConfiguration.Advanced.PowerCurves);
 			}
 		}
 
 		internal void UpdatePowerCurvePreview(int powerCurveIndex)
 		{
-			var powerCurve = m_configuration.Advanced.PowerCurves[powerCurveIndex];
+			var powerCurve = m_deviceConfiguration.Advanced.PowerCurves[powerCurveIndex];
 			UpdateListViewPreview(PowerCurvesListView, powerCurveIndex, ChartPreviewService.CreatePowerCurvePreview(powerCurve, PowerCurvesListView.LargeImageList.ImageSize));
 		}
 
 		internal void UpdateTFRCurveNames()
 		{
-			UpdateTFRLables(m_configuration.Advanced.TFRTables);
+			UpdateTFRLables(m_deviceConfiguration.Advanced.TFRTables);
 			foreach (TabPage tabPage in ProfilesTabControl.TabPages)
 			{
 				var tabContent = tabPage.Controls[0] as ProfileTabContent;
 				if (tabContent == null) continue;
 
-				tabContent.UpdateTFRNames(m_configuration.Advanced.TFRTables);
+				tabContent.UpdateTFRNames(m_deviceConfiguration.Advanced.TFRTables);
 			}
 		}
 
 		internal void UpdateTFRCurvePreview(int tfrTableIndex)
 		{
-			var tfrTable = m_configuration.Advanced.TFRTables[tfrTableIndex];
+			var tfrTable = m_deviceConfiguration.Advanced.TFRTables[tfrTableIndex];
 			UpdateListViewPreview(MaterialsListView, tfrTableIndex, ChartPreviewService.CreateTFRCurvePreview(tfrTable, MaterialsListView.LargeImageList.ImageSize));
 		}
 
@@ -713,7 +717,7 @@ namespace NToolbox.Windows
 
 		private void BatteryEditButton_Click(object sender, EventArgs e)
 		{
-			using (var editor = new DischargeProfileWindow(m_configuration.Advanced.CustomBatteryProfile))
+			using (var editor = new DischargeProfileWindow(m_deviceConfiguration.Advanced.CustomBatteryProfile))
 			{
 				editor.ShowDialog();
 			}
@@ -726,7 +730,7 @@ namespace NToolbox.Windows
 				: PowerCurvesListView.SelectedItems[0].Tag as int?;
 			if (!curveIndex.HasValue) return;
 
-			var curve = m_configuration.Advanced.PowerCurves[curveIndex.Value];
+			var curve = m_deviceConfiguration.Advanced.PowerCurves[curveIndex.Value];
 
 			PowerCurvesListView.SelectedItems.Clear();
 			using (var editor = new PowerCurveProfileWindow(curve))
@@ -745,7 +749,7 @@ namespace NToolbox.Windows
 				: MaterialsListView.SelectedItems[0].Tag as int?;
 			if (!tfrTableIndex.HasValue) return;
 
-			var tfrTable = m_configuration.Advanced.TFRTables[tfrTableIndex.Value];
+			var tfrTable = m_deviceConfiguration.Advanced.TFRTables[tfrTableIndex.Value];
 
 			MaterialsListView.SelectedItems.Clear();
 			using (var editor = new TFRProfileWindow(tfrTable))
@@ -770,17 +774,17 @@ namespace NToolbox.Windows
 
 		private void NewMenuItem_Click(object sender, EventArgs e)
 		{
-			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration, m_configuration));
+			ReadConfigurationAndShowResult(w => PrepairConfiguration(Resources.new_configuration, m_deviceConfiguration));
 		}
 
 		private void OpenMenuItem_Click(object sender, EventArgs e)
 		{
-			OpenConfigurationFile(m_configuration);
+			OpenConfigurationFile(m_deviceConfiguration);
 		}
 
 		private void SaveAsMenuItem_Click(object sender, EventArgs e)
 		{
-			if (m_configuration == null) return;
+			if (m_deviceConfiguration == null) return;
 
 			var isBinary = ModifierKeys.HasFlag(Keys.Control) && ModifierKeys.HasFlag(Keys.Alt);
 			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
@@ -790,7 +794,7 @@ namespace NToolbox.Windows
 				try
 				{
 					SaveWorkspace();
-					var cfgCopy = BinaryStructure.Copy(m_configuration);
+					var cfgCopy = BinaryStructure.Copy(m_deviceConfiguration);
 					{
 						cfgCopy.Info.FirmwareVersion = 0;
 						cfgCopy.Info.HardwareVersion = 0;
@@ -834,7 +838,7 @@ namespace NToolbox.Windows
 
 		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			OpenConfigurationFile(m_configuration);
+			OpenConfigurationFile(m_deviceConfiguration);
 		}
 
 		private void DownloadButton_Click(object sender, EventArgs e)
@@ -887,8 +891,15 @@ namespace NToolbox.Windows
 			m_isDeviceConnected = isConnected;
 			UpdateUI(() =>
 			{
-				DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = m_isDeviceConnected;
-				StatusLabel.Text = LocalizableStrings.StatusDevice + @" " + (m_isDeviceConnected ? LocalizableStrings.StatusDeviceConnected : LocalizableStrings.StatusDeviceDisconnected);
+				if (!m_isDeviceConnected && m_toolboxConfiguration.CloseArcticFoxConfigurationWhenDeviceIsDisconnected)
+				{
+					Close();
+				}
+				else
+				{
+					DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = m_isDeviceConnected;
+					StatusLabel.Text = LocalizableStrings.StatusDevice + @" " + (m_isDeviceConnected ? LocalizableStrings.StatusDeviceConnected : LocalizableStrings.StatusDeviceDisconnected);
+				}
 			});
 
 			if (m_isWorkspaceOpen || !onStartup) return;
@@ -906,7 +917,7 @@ namespace NToolbox.Windows
 			try
 			{
 				var readResult = ReadBinaryConfiguration(configurationProvider, false);
-				m_configuration = readResult.Configuration;
+				m_deviceConfiguration = readResult.Configuration;
 				if (readResult.Result == ReadResult.Success)
 				{
 					OpenWorkspace(readResult.Configuration);
@@ -933,7 +944,7 @@ namespace NToolbox.Windows
 
 		private void OpenWorkspace(ArcticFoxConfiguration configuration)
 		{
-			m_configuration = configuration;
+			m_deviceConfiguration = configuration;
 			UpdateUI(() =>
 			{
 				InitializeWorkspace();

@@ -120,6 +120,12 @@ namespace NToolbox.Windows
 				m_configuration.OpenArcticFoxConfigurationWhenDeviceIsConnected = OpenArcticFoxConfigurationTrayMenuItem.Checked;
 				SaveConfiguration();
 			};
+			CloseArcticFoxConfigurationTrayMenuItem.Checked = m_configuration.CloseArcticFoxConfigurationWhenDeviceIsDisconnected;
+			CloseArcticFoxConfigurationTrayMenuItem.CheckedChanged += (s, e) =>
+			{
+				m_configuration.CloseArcticFoxConfigurationWhenDeviceIsDisconnected = CloseArcticFoxConfigurationTrayMenuItem.Checked;
+				SaveConfiguration();
+			};
 			TimeSyncTrayMenuItem.Checked = m_configuration.SynchronizeTimeWhenDeviceIsConnected;
 			TimeSyncTrayMenuItem.CheckedChanged += (s, e) =>
 			{
@@ -177,7 +183,7 @@ namespace NToolbox.Windows
 
 		private void StartArcticFoxConfiguration(object sender, EventArgs e)
 		{
-			using (var cfg = new ArcticFoxConfigurationWindow())
+			using (var cfg = new ArcticFoxConfigurationWindow(m_configuration))
 			{
 				ShowDialogWindow(cfg);
 			}
@@ -279,6 +285,7 @@ namespace NToolbox.Windows
 			ScreenshooterTrayMenuItem.Text = LocalizableStrings.TrayScreenshooter;
 			FirmwareUpdaterTrayMenuItem.Text = LocalizableStrings.TrayFirmwareUpdater;
 			OpenArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfigurationAutostart;
+			CloseArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfigurationAutoClose;
 			AutorunTrayMenuItem.Text = LocalizableStrings.TrayToolboxAutostart;
 			TimeSyncTrayMenuItem.Text = LocalizableStrings.TrayTimeSync;
 			ExitTrayMenuItem.Text = LocalizableStrings.TrayExit;

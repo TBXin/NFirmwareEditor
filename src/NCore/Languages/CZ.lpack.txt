@@ -12,6 +12,7 @@ Toolbox.MainWindow.AboutLink=O programu && Odkazy
 
 Toolbox.MainWindow.Tray.ShowToolbox=Zobrazit okno NFE Toolbox
 Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Otevřít konfiguraci ArcticFox je-li zařízení připojeno
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceDisconnected=Close ArcticFox Configuration when device is disconnected
 Toolbox.MainWindow.Tray.TimeSync=Synchronizace času je-li zařízení připojeno
 Toolbox.MainWindow.Tray.StartWithWindows=Sputit NFE Toolbox po startu Windows
 Toolbox.MainWindow.Tray.Exit=Konec

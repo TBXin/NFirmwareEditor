@@ -49,6 +49,8 @@
 			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.OpenArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.CloseArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.TimeSyncTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,6 +205,8 @@
             this.FirmwareUpdaterTrayMenuItem,
             this.toolStripSeparator2,
             this.OpenArcticFoxConfigurationTrayMenuItem,
+            this.CloseArcticFoxConfigurationTrayMenuItem,
+            this.toolStripSeparator5,
             this.TimeSyncTrayMenuItem,
             this.toolStripSeparator3,
             this.AutorunTrayMenuItem,
@@ -210,90 +214,102 @@
             this.ExitTrayMenuItem});
 			this.MainLocalizationExtender.SetKey(this.TrayContextMenuStrip, "");
 			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
-			this.TrayContextMenuStrip.Size = new System.Drawing.Size(372, 248);
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(387, 298);
 			// 
 			// ShowTrayMenuItem
 			// 
 			this.ShowTrayMenuItem.Name = "ShowTrayMenuItem";
-			this.ShowTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ShowTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ShowTrayMenuItem.Text = "Show NFE Toolbox window";
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(383, 6);
 			// 
 			// ArcticFoxConfigurationTrayMenuItem
 			// 
 			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
-			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
 			// 
 			// MyEvicConfigurationTrayMenuItem
 			// 
 			this.MyEvicConfigurationTrayMenuItem.Enabled = false;
 			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
-			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
 			// 
 			// DeviceMonitorTrayMenuItem
 			// 
 			this.DeviceMonitorTrayMenuItem.Name = "DeviceMonitorTrayMenuItem";
-			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.DeviceMonitorTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.DeviceMonitorTrayMenuItem.Text = "Device Monitor";
 			// 
 			// ScreenshooterTrayMenuItem
 			// 
 			this.ScreenshooterTrayMenuItem.Name = "ScreenshooterTrayMenuItem";
-			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ScreenshooterTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ScreenshooterTrayMenuItem.Text = "Screenshooter";
 			// 
 			// FirmwareUpdaterTrayMenuItem
 			// 
 			this.FirmwareUpdaterTrayMenuItem.Name = "FirmwareUpdaterTrayMenuItem";
-			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.FirmwareUpdaterTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.FirmwareUpdaterTrayMenuItem.Text = "Firmware Updater";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(368, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(383, 6);
 			// 
 			// OpenArcticFoxConfigurationTrayMenuItem
 			// 
 			this.OpenArcticFoxConfigurationTrayMenuItem.CheckOnClick = true;
 			this.OpenArcticFoxConfigurationTrayMenuItem.Name = "OpenArcticFoxConfigurationTrayMenuItem";
-			this.OpenArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.OpenArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.OpenArcticFoxConfigurationTrayMenuItem.Text = "Open ArcticFox Configuration when device is connected";
+			// 
+			// CloseArcticFoxConfigurationTrayMenuItem
+			// 
+			this.CloseArcticFoxConfigurationTrayMenuItem.CheckOnClick = true;
+			this.CloseArcticFoxConfigurationTrayMenuItem.Name = "CloseArcticFoxConfigurationTrayMenuItem";
+			this.CloseArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
+			this.CloseArcticFoxConfigurationTrayMenuItem.Text = "Close ArcticFox Configuration when device is disconnected";
+			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(383, 6);
 			// 
 			// TimeSyncTrayMenuItem
 			// 
 			this.TimeSyncTrayMenuItem.CheckOnClick = true;
 			this.TimeSyncTrayMenuItem.Name = "TimeSyncTrayMenuItem";
-			this.TimeSyncTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.TimeSyncTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.TimeSyncTrayMenuItem.Text = "Synchronize time when device is connected";
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(368, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(383, 6);
 			// 
 			// AutorunTrayMenuItem
 			// 
 			this.AutorunTrayMenuItem.CheckOnClick = true;
 			this.AutorunTrayMenuItem.Name = "AutorunTrayMenuItem";
-			this.AutorunTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.AutorunTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.AutorunTrayMenuItem.Text = "Run NFE Toolbox when Windows starts";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(368, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(383, 6);
 			// 
 			// ExitTrayMenuItem
 			// 
 			this.ExitTrayMenuItem.Name = "ExitTrayMenuItem";
-			this.ExitTrayMenuItem.Size = new System.Drawing.Size(371, 22);
+			this.ExitTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
 			// LanguageComboBox
@@ -359,6 +375,8 @@
 		private System.Windows.Forms.Label VersionLabel;
 		private System.Windows.Forms.LinkLabel AboutLinkLabel;
 		private System.Windows.Forms.ComboBox LanguageComboBox;
+		private System.Windows.Forms.ToolStripMenuItem CloseArcticFoxConfigurationTrayMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 	}
 }
 

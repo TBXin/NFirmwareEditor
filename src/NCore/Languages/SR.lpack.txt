@@ -12,6 +12,7 @@ Toolbox.MainWindow.AboutLink=O nama && Linkovi
 
 Toolbox.MainWindow.Tray.ShowToolbox=Pokaži NFO Toolbox prozor
 Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Otvori ArcticFox Konfiguraciju kada je priključen uređaj
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceDisconnected=Close ArcticFox Configuration when device is disconnected
 Toolbox.MainWindow.Tray.TimeSync=Sinhronizacija vremena kada je uređaj povezan
 Toolbox.MainWindow.Tray.StartWithWindows=Pokreni NFO Toolbox kada se Windows pokrene
 Toolbox.MainWindow.Tray.Exit=Izlaz

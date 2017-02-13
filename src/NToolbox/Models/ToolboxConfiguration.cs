@@ -11,11 +11,17 @@ namespace NToolbox.Models
 			ShowPuffsBoundaries = true;
 			ActiveSeries = new SerializableDictionary<string, bool>();
 			Language = "EN";
+
+			OpenArcticFoxConfigurationWhenDeviceIsConnected = false;
+			CloseArcticFoxConfigurationWhenDeviceIsDisconnected = false;
+			SynchronizeTimeWhenDeviceIsConnected = false;
 		}
 
 		public string Language { get; set; }
 
 		public bool OpenArcticFoxConfigurationWhenDeviceIsConnected { get; set; }
+
+		public bool CloseArcticFoxConfigurationWhenDeviceIsDisconnected { get; set; }
 
 		public bool SynchronizeTimeWhenDeviceIsConnected { get; set; }
 
