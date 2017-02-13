@@ -8,11 +8,6 @@ namespace NFirmware
 		private const int MagicNumber = 0x63B38;
 
 		#region Implementation of IEncryption
-		public EncryptionType Type
-		{
-			get { return EncryptionType.Joyetech; }
-		}
-
 		public byte[] Encode(byte[] source)
 		{
 			if (source == null) throw new ArgumentNullException("source");

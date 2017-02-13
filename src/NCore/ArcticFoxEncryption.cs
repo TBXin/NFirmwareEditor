@@ -5,12 +5,16 @@ namespace NCore
 {
 	public class ArcticFoxEncryption : IEncryption
 	{
-		#region Implementation of IEncryption
-		public EncryptionType Type
+		private readonly byte m_keyKey;
+		private readonly int m_tableLength;
+
+		public ArcticFoxEncryption(byte keyKey = 0x17, int tableLength = 9)
 		{
-			get { return EncryptionType.ArcticFox; }
+			m_keyKey = keyKey;
+			m_tableLength = tableLength;
 		}
 
+		#region Implementation of IEncryption
 		public byte[] Encode(byte[] source)
 		{
 			return Encode(source, null);
@@ -56,29 +60,29 @@ namespace NCore
 			return (int)DateTime.UtcNow.ToBinary();
 		}
 
-		private static int ReadKey(byte[] keyBytes)
+		private int ReadKey(byte[] keyBytes)
 		{
 			var decyptedKeyBytes = new byte[keyBytes.Length];
 			for (var i = 0; i < decyptedKeyBytes.Length; i++)
 			{
-				decyptedKeyBytes[i] = (byte)(keyBytes[i] ^ 0x17);
+				decyptedKeyBytes[i] = (byte)(keyBytes[i] ^ m_keyKey);
 			}
 			return BitConverter.ToInt32(decyptedKeyBytes, 0);
 		}
 
-		private static byte[] WriteKey(int key)
+		private byte[] WriteKey(int key)
 		{
 			var result =  BitConverter.GetBytes(key);
 			for (var i = 0; i < result.Length; i++)
 			{
-				result[i] ^= 0x17;
+				result[i] ^= m_keyKey;
 			}
 			return result;
 		}
 
-		private static byte[] CreateTable(int seed)
+		private byte[] CreateTable(int seed)
 		{
-			var result = new byte[9];
+			var result = new byte[m_tableLength];
 			new Random(seed).NextBytes(result);
 			return result;
 		}

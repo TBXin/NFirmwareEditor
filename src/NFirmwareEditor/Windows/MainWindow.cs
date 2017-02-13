@@ -225,7 +225,7 @@ namespace NFirmwareEditor.Windows
 
 				SaveMenuItem.Enabled = true;
 				SaveEncryptedMenuItem.Enabled = true;
-				SaveDecryptedMenuItem.Enabled = SaveDecryptedMenuItem.Visible = m_firmware.EncryptionType != EncryptionType.ArcticFox;
+				SaveDecryptedMenuItem.Enabled = SaveDecryptedMenuItem.Visible = m_firmware.EncryptionType == EncryptionType.Joyetech || m_firmware.EncryptionType == EncryptionType.None;
 				StatusLabel.Text = @"Firmware file has been successfully loaded.";
 
 				m_mruFirmwares.Add(firmwareFile);

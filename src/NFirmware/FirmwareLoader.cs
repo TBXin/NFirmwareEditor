@@ -13,7 +13,8 @@ namespace NFirmware
 		private static readonly IDictionary<EncryptionType, IEncryption> s_encryptors = new Dictionary<EncryptionType, IEncryption>
 		{
 			{ EncryptionType.Joyetech, new JoyetechEncryption() },
-			{ EncryptionType.ArcticFox, new ArcticFoxEncryption() }
+			{ EncryptionType.ArcticFox, new ArcticFoxEncryption() },
+			{ EncryptionType.ArcticFox2, new ArcticFoxEncryption(0x19, 11) }
 		};
 
 		private readonly byte[] m_encryptedFirmwareMark = Encoding.ASCII.GetBytes("Joyetech APROM");
@@ -69,12 +70,15 @@ namespace NFirmware
 
 		private byte[] DecryptIfNecessary(byte[] firmwareBytes, out EncryptionType encryptionType)
 		{
-			foreach (var encryptor in s_encryptors.Values)
+			foreach (var kvp in s_encryptors)
 			{
+				var type = kvp.Key;
+				var encryptor = kvp.Value;
+
 				var result = encryptor.Decode(firmwareBytes);
 				if (!IsFirmwareEncrypted(result))
 				{
-					encryptionType = encryptor.Type;
+					encryptionType = type;
 					return result;
 				}
 			}

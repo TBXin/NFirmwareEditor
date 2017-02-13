@@ -2,8 +2,6 @@
 {
 	public interface IEncryption
 	{
-		EncryptionType Type { get; }
-
 		byte[] Encode(byte[] source);
 
 		byte[] Decode(byte[] source);
@@ -13,6 +11,7 @@
 	{
 		None,
 		Joyetech,
-		ArcticFox
+		ArcticFox,
+		ArcticFox2
 	}
 }
