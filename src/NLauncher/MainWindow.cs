@@ -17,7 +17,7 @@ namespace NLauncher
 		public MainWindow(string[] args)
 		{
 			if (args == null || args.Length == 0) throw new ArgumentNullException(nameof(args));
-			m_firmwarePath = args[0];
+			m_firmwarePath = "\"" + string.Join(" ", args) + "\"";
 
 			InitializeComponent();
 			EditorButton.Click += EditorButton_Click;

@@ -16,6 +16,7 @@ namespace NCore.USB
 			{ "E079", new HidDeviceInfo("Joyetech eVic VTC Dual", 64, 40) },
 			{ "E150", new HidDeviceInfo("Joyetech eVic Basic", 64, 40) },
 			{ "E092", new HidDeviceInfo("Joyetech eVic AIO", 64, 40) },
+			{ "E182", new HidDeviceInfo("Joyetech eVic Primo", 64, 40) },
 
 			{ "E060", new HidDeviceInfo("Joyetech Cuboid", 64, 40) },
 			{ "E056", new HidDeviceInfo("Joyetech Cuboid Mini", 64, 40) },
@@ -23,10 +24,12 @@ namespace NCore.USB
 
 			{ "E083", new HidDeviceInfo("Joyetech eGrip II", 64, 40) },
 
+			{ "M973", new HidDeviceInfo("Eleaf iStick QC 200W", 96, 16) },
 			{ "M972", new HidDeviceInfo("Eleaf iStick TC200W", 96, 16) },
 			{ "M011", new HidDeviceInfo("Eleaf iStick TC100W", 96, 16) },
 			{ "M041", new HidDeviceInfo("Eleaf iStick Pico", 96, 16) },
 			{ "M045", new HidDeviceInfo("Eleaf iStick Pico Mega", 96, 16) },
+			{ "M065", new HidDeviceInfo("Eleaf iStick Pico Dual", 96, 16) },
 			{ "M046", new HidDeviceInfo("Eleaf iStick Power", 96, 16) },
 			{ "M037", new HidDeviceInfo("Eleaf ASTER", 96, 16) },
 
@@ -44,7 +47,8 @@ namespace NCore.USB
 			{ "W011", new HidDeviceInfo("Vaporflask Lite") },
 			{ "W013", new HidDeviceInfo("Vaporflask Stout") },
 
-			{ "W016", new HidDeviceInfo("Beyondvape Centurion") }
+			{ "W016", new HidDeviceInfo("Beyondvape Centurion") },
+			{ "W043", new HidDeviceInfo("Vaponaute La Petit Box", 64, 48) }
 		};
 
 		[NotNull]
