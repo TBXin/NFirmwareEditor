@@ -241,14 +241,14 @@ namespace NCore.USB
 			return device.Open();
 		}
 
-		private byte[] Read(HidStream steam, int length, BackgroundWorker worker = null)
+		private byte[] Read(HidStream stream, int length, BackgroundWorker worker = null)
 		{
 			var offset = 0;
 			var result = new byte[length];
 			while (offset < length)
 			{
 				var rawPacket = new byte[m_receiveBufferLength];
-				steam.Read(rawPacket);
+				stream.Read(rawPacket);
 
 				// First byte is always HID Report ID, which is useless in our cases, so we are skipping it.
 				var data = new byte[m_receiveDataLength];
@@ -267,7 +267,7 @@ namespace NCore.USB
 			return result;
 		}
 
-		public void Write(HidStream steam, byte[] data, BackgroundWorker worker = null)
+		public void Write(HidStream stream, byte[] data, BackgroundWorker worker = null)
 		{
 			var offset = 0;
 			while (offset < data.Length)
@@ -282,7 +282,7 @@ namespace NCore.USB
 					Buffer.BlockCopy(data, offset, buffer, 1, bufferLength);
 				}
 
-				steam.Write(buffer);
+				stream.Write(buffer);
 				offset += bufferLength;
 
 				if (worker != null) worker.ReportProgress((int)(offset * 100f / data.Length));
