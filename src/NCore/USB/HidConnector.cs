@@ -45,6 +45,7 @@ namespace NCore.USB
 		private readonly Timer m_monitoringTimer;
 
 		private int m_receiveBufferLength;
+		private int m_receiveDataLength;
 		private int m_sentBufferLength;
 		private bool? m_isDeviceConnected;
 
@@ -234,6 +235,7 @@ namespace NCore.USB
 			if (device == null) return null;
 
 			m_receiveBufferLength = device.MaxOutputReportLength;
+			m_receiveDataLength = m_receiveBufferLength - 1;
 			m_sentBufferLength = device.MaxInputReportLength - 1;
 
 			return device.Open();
@@ -245,19 +247,21 @@ namespace NCore.USB
 			var result = new byte[length];
 			while (offset < length)
 			{
-				var data = new byte[m_receiveBufferLength];
-				steam.Read(data);
+				var rawPacket = new byte[m_receiveBufferLength];
+				steam.Read(rawPacket);
+
+				// First byte is always HID Report ID, which is useless in our cases, so we are skipping it.
+				var data = new byte[m_receiveDataLength];
+				Buffer.BlockCopy(rawPacket, 1, data, 0, data.Length);
+				
 				var bufferLength = offset + data.Length < length
 					? data.Length
 					: length - offset;
 
-				Buffer.BlockCopy(data, 1, result, offset, bufferLength - 1);
-				offset += bufferLength == data.Length
-					? bufferLength - 1
-					: bufferLength;
+				Buffer.BlockCopy(data, 0, result, offset, bufferLength);
+				offset += bufferLength;
 
-				if (worker != null)
-					worker.ReportProgress((int)(offset * 100f / length));
+				if (worker != null) worker.ReportProgress((int)(offset * 100f / length));
 			}
 			if (worker != null) worker.ReportProgress(100);
 			return result;
