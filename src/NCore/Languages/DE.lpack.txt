@@ -4,7 +4,7 @@ Toolbox.Shared.SecondsString=Sekunden
 
 // NToolbox Window
 Toolbox.MainWindow.ArcticFoxConfigurationButton=ArcticFox konfigurieren
-Toolbox.MainWindow.MyEvicConfigurationButton=myEvic konfigurieren
+Toolbox.MainWindow.MyEvicConfigurationButton=myEvic konfigurieren\n(derzeit nicht aktiviert)
 Toolbox.MainWindow.DeviceMonitorButton=Geräte Monitor
 Toolbox.MainWindow.ScreenshooterButton=Bildschirmfotos
 Toolbox.MainWindow.FirmwareUpdaterButton=Firmware Updater
@@ -293,7 +293,7 @@ Toolbox.FirmwareUpdater.WriteDataflashButton=Schreibe dataflash
 Toolbox.FirmwareUpdater.ResetDataFlashButton=Setze dataflash zurück
 Toolbox.FirmwareUpdater.AdvancedTab=Experte
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Ändere HW Version
-Toolbox.FirmwareUpdater.SwitchBootModeButton=Wechsel Boot Art
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Boot Art wechseln
 Toolbox.FirmwareUpdater.CancelButton=Zurück
 
 Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Gerät ist fertig.
@@ -307,5 +307,5 @@ Toolbox.FirmwareUpdater.Messages.DataflashReadAndSave=Dataflash wurde erfolgreic
 Toolbox.FirmwareUpdater.Messages.DataflashWritten=Dataflash wurde erfolgreich geschrieben.
 Toolbox.FirmwareUpdater.Messages.DataflashReseted=Dataflash wurde zurückgesetzt.
 Toolbox.FirmwareUpdater.Messages.FirmwareSuccessfullyUpdated=Firmware Update erfolgreich.
-Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware Update misslungen!
-Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=Es gab eine Ausnahme während des Firmware Updates.
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFailed=Firmware Update fehlgeschlagen!
+Toolbox.FirmwareUpdater.Messages.FirmwareUpdateFatalError=Schwerer Ausnahmefehler während des Firmware Updates.
