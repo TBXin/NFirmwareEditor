@@ -891,7 +891,7 @@ namespace NToolbox.Windows
 			m_isDeviceConnected = isConnected;
 			UpdateUI(() =>
 			{
-				if (!m_isDeviceConnected && m_toolboxConfiguration.CloseArcticFoxConfigurationWhenDeviceIsDisconnected)
+				if (!m_isDeviceConnected && !onStartup && m_toolboxConfiguration.CloseArcticFoxConfigurationWhenDeviceIsDisconnected)
 				{
 					Close();
 				}

@@ -12,6 +12,7 @@ Toolbox.MainWindow.AboutLink=Links y Acerca de...
 
 Toolbox.MainWindow.Tray.ShowToolbox=Mostrar ventana de NFE Toolbox
 Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceConnected=Abrir Configuración de ArcticFox al conectar el dispositivo
+Toolbox.MainWindow.Tray.ArcticFoxConfigurationWhenDeviceDisconnected=Close ArcticFox Configuration when device is disconnected
 Toolbox.MainWindow.Tray.TimeSync=Sincronizar el reloj al conectar el dispositivo
 Toolbox.MainWindow.Tray.StartWithWindows=Ejecutar NFE Toolbox al iniciar Windows
 Toolbox.MainWindow.Tray.Exit=Salir
