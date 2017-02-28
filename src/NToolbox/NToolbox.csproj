@@ -134,11 +134,11 @@
     <Compile Include="Windows\TempControlSetupWindow.Designer.cs">
       <DependentUpon>TempControlSetupWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TFRProfileWindow.cs">
+    <Compile Include="Windows\TfrProfileWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\TFRProfileWindow.Designer.cs">
-      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
+    <Compile Include="Windows\TfrProfileWindow.Designer.cs">
+      <DependentUpon>TfrProfileWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Windows\AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
@@ -178,8 +178,8 @@
     <EmbeddedResource Include="Windows\TempControlSetupWindow.resx">
       <DependentUpon>TempControlSetupWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\TFRProfileWindow.resx">
-      <DependentUpon>TFRProfileWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\TfrProfileWindow.resx">
+      <DependentUpon>TfrProfileWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

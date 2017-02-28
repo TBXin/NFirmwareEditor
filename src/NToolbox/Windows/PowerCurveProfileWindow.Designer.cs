@@ -241,8 +241,8 @@ namespace NToolbox.Windows
             0});
 			this.Time12UpDown.Name = "Time12UpDown";
 			this.Time12UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time12UpDown.TabIndex = 101;
-			this.Time12UpDown.TabStop = false;
+			this.Time12UpDown.TabIndex = 42;
+			this.Time12UpDown.TabStop = true;
 			this.Time12UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time11UpDown
@@ -262,8 +262,8 @@ namespace NToolbox.Windows
             0});
 			this.Time11UpDown.Name = "Time11UpDown";
 			this.Time11UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time11UpDown.TabIndex = 97;
-			this.Time11UpDown.TabStop = false;
+			this.Time11UpDown.TabIndex = 40;
+			this.Time11UpDown.TabStop = true;
 			this.Time11UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time10UpDown
@@ -283,8 +283,8 @@ namespace NToolbox.Windows
             0});
 			this.Time10UpDown.Name = "Time10UpDown";
 			this.Time10UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time10UpDown.TabIndex = 93;
-			this.Time10UpDown.TabStop = false;
+			this.Time10UpDown.TabIndex = 38;
+			this.Time10UpDown.TabStop = true;
 			this.Time10UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time9UpDown
@@ -304,8 +304,8 @@ namespace NToolbox.Windows
             0});
 			this.Time9UpDown.Name = "Time9UpDown";
 			this.Time9UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time9UpDown.TabIndex = 89;
-			this.Time9UpDown.TabStop = false;
+			this.Time9UpDown.TabIndex = 36;
+			this.Time9UpDown.TabStop = true;
 			this.Time9UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time8UpDown
@@ -325,8 +325,8 @@ namespace NToolbox.Windows
             0});
 			this.Time8UpDown.Name = "Time8UpDown";
 			this.Time8UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time8UpDown.TabIndex = 85;
-			this.Time8UpDown.TabStop = false;
+			this.Time8UpDown.TabIndex = 34;
+			this.Time8UpDown.TabStop = true;
 			this.Time8UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time7UpDown
@@ -346,8 +346,8 @@ namespace NToolbox.Windows
             0});
 			this.Time7UpDown.Name = "Time7UpDown";
 			this.Time7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time7UpDown.TabIndex = 81;
-			this.Time7UpDown.TabStop = false;
+			this.Time7UpDown.TabIndex = 32;
+			this.Time7UpDown.TabStop = true;
 			this.Time7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time6UpDown
@@ -367,8 +367,8 @@ namespace NToolbox.Windows
             0});
 			this.Time6UpDown.Name = "Time6UpDown";
 			this.Time6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time6UpDown.TabIndex = 77;
-			this.Time6UpDown.TabStop = false;
+			this.Time6UpDown.TabIndex = 30;
+			this.Time6UpDown.TabStop = true;
 			this.Time6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time5UpDown
@@ -388,8 +388,8 @@ namespace NToolbox.Windows
             0});
 			this.Time5UpDown.Name = "Time5UpDown";
 			this.Time5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time5UpDown.TabIndex = 73;
-			this.Time5UpDown.TabStop = false;
+			this.Time5UpDown.TabIndex = 28;
+			this.Time5UpDown.TabStop = true;
 			this.Time5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time4UpDown
@@ -409,8 +409,8 @@ namespace NToolbox.Windows
             0});
 			this.Time4UpDown.Name = "Time4UpDown";
 			this.Time4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time4UpDown.TabIndex = 69;
-			this.Time4UpDown.TabStop = false;
+			this.Time4UpDown.TabIndex = 26;
+			this.Time4UpDown.TabStop = true;
 			this.Time4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time3UpDown
@@ -430,8 +430,8 @@ namespace NToolbox.Windows
             0});
 			this.Time3UpDown.Name = "Time3UpDown";
 			this.Time3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time3UpDown.TabIndex = 65;
-			this.Time3UpDown.TabStop = false;
+			this.Time3UpDown.TabIndex = 24;
+			this.Time3UpDown.TabStop = true;
 			this.Time3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time2UpDown
@@ -451,8 +451,8 @@ namespace NToolbox.Windows
             0});
 			this.Time2UpDown.Name = "Time2UpDown";
 			this.Time2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time2UpDown.TabIndex = 61;
-			this.Time2UpDown.TabStop = false;
+			this.Time2UpDown.TabIndex = 22;
+			this.Time2UpDown.TabStop = true;
 			this.Time2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// Time1UpDown
@@ -472,8 +472,8 @@ namespace NToolbox.Windows
             0});
 			this.Time1UpDown.Name = "Time1UpDown";
 			this.Time1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Time1UpDown.TabIndex = 57;
-			this.Time1UpDown.TabStop = false;
+			this.Time1UpDown.TabIndex = 20;
+			this.Time1UpDown.TabStop = true;
 			this.Time1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label23
@@ -497,8 +497,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents12UpDown.Name = "Percents12UpDown";
 			this.Percents12UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents12UpDown.TabIndex = 103;
-			this.Percents12UpDown.TabStop = false;
+			this.Percents12UpDown.TabIndex = 43;
+			this.Percents12UpDown.TabStop = true;
 			this.Percents12UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label24
@@ -518,8 +518,8 @@ namespace NToolbox.Windows
 			this.NameTextBox.MaxLength = 8;
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(55, 21);
-			this.NameTextBox.TabIndex = 63;
-			this.NameTextBox.TabStop = false;
+			this.NameTextBox.TabIndex = 5;
+			this.NameTextBox.TabStop = true;
 			// 
 			// label21
 			// 
@@ -542,8 +542,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents11UpDown.Name = "Percents11UpDown";
 			this.Percents11UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents11UpDown.TabIndex = 99;
-			this.Percents11UpDown.TabStop = false;
+			this.Percents11UpDown.TabIndex = 41;
+			this.Percents11UpDown.TabStop = true;
 			this.Percents11UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label22
@@ -577,8 +577,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents10UpDown.Name = "Percents10UpDown";
 			this.Percents10UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents10UpDown.TabIndex = 95;
-			this.Percents10UpDown.TabStop = false;
+			this.Percents10UpDown.TabIndex = 39;
+			this.Percents10UpDown.TabStop = true;
 			this.Percents10UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label20
@@ -612,8 +612,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents9UpDown.Name = "Percents9UpDown";
 			this.Percents9UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents9UpDown.TabIndex = 91;
-			this.Percents9UpDown.TabStop = false;
+			this.Percents9UpDown.TabIndex = 37;
+			this.Percents9UpDown.TabStop = true;
 			this.Percents9UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label18
@@ -647,8 +647,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents8UpDown.Name = "Percents8UpDown";
 			this.Percents8UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents8UpDown.TabIndex = 87;
-			this.Percents8UpDown.TabStop = false;
+			this.Percents8UpDown.TabIndex = 35;
+			this.Percents8UpDown.TabStop = true;
 			this.Percents8UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label16
@@ -682,8 +682,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents7UpDown.Name = "Percents7UpDown";
 			this.Percents7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents7UpDown.TabIndex = 83;
-			this.Percents7UpDown.TabStop = false;
+			this.Percents7UpDown.TabIndex = 33;
+			this.Percents7UpDown.TabStop = true;
 			this.Percents7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label14
@@ -717,8 +717,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents6UpDown.Name = "Percents6UpDown";
 			this.Percents6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents6UpDown.TabIndex = 79;
-			this.Percents6UpDown.TabStop = false;
+			this.Percents6UpDown.TabIndex = 31;
+			this.Percents6UpDown.TabStop = true;
 			this.Percents6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label12
@@ -752,8 +752,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents5UpDown.Name = "Percents5UpDown";
 			this.Percents5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents5UpDown.TabIndex = 75;
-			this.Percents5UpDown.TabStop = false;
+			this.Percents5UpDown.TabIndex = 29;
+			this.Percents5UpDown.TabStop = true;
 			this.Percents5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label10
@@ -787,8 +787,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents4UpDown.Name = "Percents4UpDown";
 			this.Percents4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents4UpDown.TabIndex = 71;
-			this.Percents4UpDown.TabStop = false;
+			this.Percents4UpDown.TabIndex = 27;
+			this.Percents4UpDown.TabStop = true;
 			this.Percents4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label8
@@ -822,8 +822,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents3UpDown.Name = "Percents3UpDown";
 			this.Percents3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents3UpDown.TabIndex = 67;
-			this.Percents3UpDown.TabStop = false;
+			this.Percents3UpDown.TabIndex = 25;
+			this.Percents3UpDown.TabStop = true;
 			this.Percents3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label6
@@ -857,8 +857,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents2UpDown.Name = "Percents2UpDown";
 			this.Percents2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents2UpDown.TabIndex = 63;
-			this.Percents2UpDown.TabStop = false;
+			this.Percents2UpDown.TabIndex = 23;
+			this.Percents2UpDown.TabStop = true;
 			this.Percents2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label4
@@ -868,7 +868,6 @@ namespace NToolbox.Windows
 			this.label4.Location = new System.Drawing.Point(6, 66);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(33, 13);
-			this.label4.TabIndex = 62;
 			this.label4.Text = "Time:";
 			// 
 			// label2
@@ -892,8 +891,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents1UpDown.Name = "Percents1UpDown";
 			this.Percents1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents1UpDown.TabIndex = 59;
-			this.Percents1UpDown.TabStop = false;
+			this.Percents1UpDown.TabIndex = 21;
+			this.Percents1UpDown.TabStop = true;
 			this.Percents1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label1
@@ -927,7 +926,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.Text = "Power Curve:";
 			// 
 			// TimeScaleButton
-			// 
+			//
 			this.TimeScaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.TimeScaleButton, "Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton");
 			this.TimeScaleButton.Location = new System.Drawing.Point(501, 4);

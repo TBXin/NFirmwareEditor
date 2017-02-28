@@ -204,7 +204,7 @@ namespace NToolbox.Windows
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(55, 21);
 			this.NameTextBox.TabIndex = 14;
-			this.NameTextBox.TabStop = false;
+			this.NameTextBox.TabStop = true;
 			// 
 			// Volts7UpDown
 			// 
@@ -228,8 +228,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts7UpDown.Name = "Volts7UpDown";
 			this.Volts7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts7UpDown.TabIndex = 13;
-			this.Volts7UpDown.TabStop = false;
+			this.Volts7UpDown.TabIndex = 43;
+			this.Volts7UpDown.TabStop = true;
 			this.Volts7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts7UpDown.Value = new decimal(new int[] {
             1,
@@ -259,8 +259,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts6UpDown.Name = "Volts6UpDown";
 			this.Volts6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts6UpDown.TabIndex = 11;
-			this.Volts6UpDown.TabStop = false;
+			this.Volts6UpDown.TabIndex = 41;
+			this.Volts6UpDown.TabStop = true;
 			this.Volts6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts6UpDown.Value = new decimal(new int[] {
             1,
@@ -290,8 +290,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts5UpDown.Name = "Volts5UpDown";
 			this.Volts5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts5UpDown.TabIndex = 9;
-			this.Volts5UpDown.TabStop = false;
+			this.Volts5UpDown.TabIndex = 39;
+			this.Volts5UpDown.TabStop = true;
 			this.Volts5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts5UpDown.Value = new decimal(new int[] {
             1,
@@ -321,8 +321,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts4UpDown.Name = "Volts4UpDown";
 			this.Volts4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts4UpDown.TabIndex = 7;
-			this.Volts4UpDown.TabStop = false;
+			this.Volts4UpDown.TabIndex = 37;
+			this.Volts4UpDown.TabStop = true;
 			this.Volts4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts4UpDown.Value = new decimal(new int[] {
             1,
@@ -352,8 +352,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts3UpDown.Name = "Volts3UpDown";
 			this.Volts3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts3UpDown.TabIndex = 5;
-			this.Volts3UpDown.TabStop = false;
+			this.Volts3UpDown.TabIndex = 35;
+			this.Volts3UpDown.TabStop = true;
 			this.Volts3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts3UpDown.Value = new decimal(new int[] {
             1,
@@ -383,8 +383,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts2UpDown.Name = "Volts2UpDown";
 			this.Volts2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts2UpDown.TabIndex = 3;
-			this.Volts2UpDown.TabStop = false;
+			this.Volts2UpDown.TabIndex = 33;
+			this.Volts2UpDown.TabStop = true;
 			this.Volts2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts2UpDown.Value = new decimal(new int[] {
             1,
@@ -414,8 +414,8 @@ namespace NToolbox.Windows
             0});
 			this.Volts1UpDown.Name = "Volts1UpDown";
 			this.Volts1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Volts1UpDown.TabIndex = 1;
-			this.Volts1UpDown.TabStop = false;
+			this.Volts1UpDown.TabIndex = 31;
+			this.Volts1UpDown.TabStop = true;
 			this.Volts1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.Volts1UpDown.Value = new decimal(new int[] {
             1,
@@ -454,8 +454,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents7UpDown.Name = "Percents7UpDown";
 			this.Percents7UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents7UpDown.TabIndex = 12;
-			this.Percents7UpDown.TabStop = false;
+			this.Percents7UpDown.TabIndex = 42;
+			this.Percents7UpDown.TabStop = true;
 			this.Percents7UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label11
@@ -489,8 +489,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents6UpDown.Name = "Percents6UpDown";
 			this.Percents6UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents6UpDown.TabIndex = 10;
-			this.Percents6UpDown.TabStop = false;
+			this.Percents6UpDown.TabIndex = 40;
+			this.Percents6UpDown.TabStop = true;
 			this.Percents6UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label9
@@ -524,8 +524,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents5UpDown.Name = "Percents5UpDown";
 			this.Percents5UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents5UpDown.TabIndex = 8;
-			this.Percents5UpDown.TabStop = false;
+			this.Percents5UpDown.TabIndex = 38;
+			this.Percents5UpDown.TabStop = true;
 			this.Percents5UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label7
@@ -559,8 +559,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents4UpDown.Name = "Percents4UpDown";
 			this.Percents4UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents4UpDown.TabIndex = 6;
-			this.Percents4UpDown.TabStop = false;
+			this.Percents4UpDown.TabIndex = 36;
+			this.Percents4UpDown.TabStop = true;
 			this.Percents4UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label5
@@ -594,8 +594,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents3UpDown.Name = "Percents3UpDown";
 			this.Percents3UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents3UpDown.TabIndex = 4;
-			this.Percents3UpDown.TabStop = false;
+			this.Percents3UpDown.TabIndex = 34;
+			this.Percents3UpDown.TabStop = true;
 			this.Percents3UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label3
@@ -629,8 +629,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents2UpDown.Name = "Percents2UpDown";
 			this.Percents2UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents2UpDown.TabIndex = 2;
-			this.Percents2UpDown.TabStop = false;
+			this.Percents2UpDown.TabIndex = 32;
+			this.Percents2UpDown.TabStop = true;
 			this.Percents2UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label2
@@ -664,8 +664,8 @@ namespace NToolbox.Windows
             0});
 			this.Percents1UpDown.Name = "Percents1UpDown";
 			this.Percents1UpDown.Size = new System.Drawing.Size(55, 21);
-			this.Percents1UpDown.TabIndex = 0;
-			this.Percents1UpDown.TabStop = false;
+			this.Percents1UpDown.TabIndex = 30;
+			this.Percents1UpDown.TabStop = true;
 			this.Percents1UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// groupPanel2
