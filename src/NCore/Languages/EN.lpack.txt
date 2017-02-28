@@ -55,7 +55,7 @@ Toolbox.ArcticFoxConfiguration.ConfigurationMenu.Open=Open
 Toolbox.ArcticFoxConfiguration.ConfigurationMenu.SaveAs=Save As
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Connect and Download configuration
 Toolbox.ArcticFoxConfiguration.ControlsTab=Controls
-Toolbox.ArcticFoxConfiguration.DownloadButton=Download settings
+Toolbox.ArcticFoxConfiguration.DownloadButton=&Download settings
 Toolbox.ArcticFoxConfiguration.EnabledCheckBox=Enabled
 Toolbox.ArcticFoxConfiguration.General.Controls.2ClicksLabel=2 Clicks:
 Toolbox.ArcticFoxConfiguration.General.Controls.3ClicksLabel=3 Clicks:
@@ -123,7 +123,7 @@ Toolbox.ArcticFoxConfiguration.SettingsTab=Settings
 Toolbox.ArcticFoxConfiguration.SmallScreenTab=Small Screen
 Toolbox.ArcticFoxConfiguration.SmartCheckBox=Smart profile selection
 Toolbox.ArcticFoxConfiguration.StatsTab=Stats
-Toolbox.ArcticFoxConfiguration.UploadButton=Upload settings
+Toolbox.ArcticFoxConfiguration.UploadButton=&Upload settings
 Toolbox.ArcticFoxConfiguration.VoltsLabel=v
 
 // Tooltips
@@ -207,22 +207,22 @@ Toolbox.ArcticFoxConfiguration.PiRegulator.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.PiRegulator.CancelButton=Cancel
 
 // ArcticFox Configuration - Power Curve Editor Window
-Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=Power Curve Name:
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.NameLabel=&Power Curve Name:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.ChartNameLabel=Power Curve:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Time:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.PercentLabel=Pct:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Time Scale
-Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
-Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=Cancel
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=&Save
+Toolbox.ArcticFoxConfiguration.PowerCurveEditor.CancelButton=&Cancel
 
 // ArcticFox Configuration - TFR Curve Editor Window
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=Profile:
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.NameLabel=&Profile:
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ChartNameLabel=TFR Curve:
 Toolbox.ArcticFoxConfiguration.TFRCurveEditor.FactorLabel=Factor:
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=Export
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=Import
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=Save
-Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=Cancel
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ExportButton=&Export
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.ImportButton=&Import
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.SaveButton=&Save
+Toolbox.ArcticFoxConfiguration.TFRCurveEditor.CancelButton=&Cancel
 
 // ArcticFox Configuration - Discharge Curve Editor Window
 Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ProfileLabel=Profile:
