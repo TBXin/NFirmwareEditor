@@ -77,6 +77,13 @@ namespace NFirmware
 		}
 
 		[NotNull]
+		public byte[] ReadImageAsByteArray([NotNull] FirmwareImageMetadata imageMetadata)
+		{
+			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");
+			return m_bodyStream.ReadBytes((int)imageMetadata.DataOffset, (int)imageMetadata.DataLength + FirmwareImageMetadata.HeaderLength);
+		}
+
+		[NotNull]
 		public bool[,] ReadImage([NotNull] FirmwareImageMetadata imageMetadata)
 		{
 			if (imageMetadata == null) throw new ArgumentNullException("imageMetadata");

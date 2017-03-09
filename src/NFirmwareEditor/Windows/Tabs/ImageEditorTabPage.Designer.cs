@@ -38,6 +38,7 @@
 			this.ImportFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportBitmapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExportBinaryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExportResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.UpdateResourcePackContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,7 @@
 			this.Block2ImageListBox = new System.Windows.Forms.ListBox();
 			this.ImageListBoxStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.ImageListBoxStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ExportSFileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ImageListBoxContextMenu.SuspendLayout();
 			this.borderedPanel3.SuspendLayout();
 			this.borderedPanel5.SuspendLayout();
@@ -121,11 +123,13 @@
             this.ImportFontMenuItem,
             this.toolStripSeparator3,
             this.ExportBitmapMenuItem,
+            this.ExportBinaryMenuItem,
+            this.ExportSFileMenuItem,
             this.toolStripSeparator2,
             this.ExportResourcePackContextMenuItem,
             this.UpdateResourcePackContextMenuItem});
 			this.ImageListBoxContextMenu.Name = "ImageListBoxContextMenu";
-			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(192, 154);
+			this.ImageListBoxContextMenu.Size = new System.Drawing.Size(192, 220);
 			// 
 			// CopyContextMenuItem
 			// 
@@ -164,6 +168,13 @@
 			this.ExportBitmapMenuItem.Name = "ExportBitmapMenuItem";
 			this.ExportBitmapMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.ExportBitmapMenuItem.Text = "Export Bitmap(s)";
+			// 
+			// ExportBinaryMenuItem
+			// 
+			this.ExportBinaryMenuItem.Image = global::NFirmwareEditor.Properties.Resources.patch_creator;
+			this.ExportBinaryMenuItem.Name = "ExportBinaryMenuItem";
+			this.ExportBinaryMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.ExportBinaryMenuItem.Text = "Export Binary";
 			// 
 			// toolStripSeparator2
 			// 
@@ -544,7 +555,7 @@
 			// 
 			this.CursorPositionLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.CursorPositionLabel.Name = "CursorPositionLabel";
-			this.CursorPositionLabel.Size = new System.Drawing.Size(579, 17);
+			this.CursorPositionLabel.Size = new System.Drawing.Size(491, 17);
 			this.CursorPositionLabel.Spring = true;
 			this.CursorPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -659,6 +670,13 @@
 			this.ImageListBoxStatusLabel.Name = "ImageListBoxStatusLabel";
 			this.ImageListBoxStatusLabel.Size = new System.Drawing.Size(0, 17);
 			// 
+			// ExportSFileMenuItem
+			// 
+			this.ExportSFileMenuItem.Image = global::NFirmwareEditor.Properties.Resources.s_file;
+			this.ExportSFileMenuItem.Name = "ExportSFileMenuItem";
+			this.ExportSFileMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.ExportSFileMenuItem.Text = "Export *.s File";
+			// 
 			// ImageEditorTabPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,5 +759,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel ImageListBoxStatusLabel;
 		private System.Windows.Forms.ToolStripMenuItem UpdateResourcePackContextMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem ExportBinaryMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ExportSFileMenuItem;
 	}
 }

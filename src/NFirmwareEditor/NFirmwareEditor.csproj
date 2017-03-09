@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+	<PropertyGroup>
+		<SignAssembly>true</SignAssembly>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>app_icon.ico</ApplicationIcon>
   </PropertyGroup>
@@ -65,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\MruList.cs" />
+    <Compile Include="Managers\ArcticFoxResourceFileBuilder.cs" />
     <Compile Include="Managers\BackupManager.cs" />
     <Compile Include="Managers\BitmapProcessor.cs" />
     <Compile Include="Managers\ClipboardManager.cs" />
@@ -1008,6 +1015,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <None Include="Resources\s_file.png" />
     <None Include="Definitions\ArcticFox.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

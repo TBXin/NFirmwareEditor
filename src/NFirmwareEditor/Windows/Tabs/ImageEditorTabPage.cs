@@ -258,6 +258,8 @@ namespace NFirmwareEditor.Windows.Tabs
 			PasteContextMenuItem.Click += PasteButton_Click;
 			ImportFontMenuItem.Click += ImportFontMenuItem_Click;
 			ExportBitmapMenuItem.Click += ExportBitmapMenuItem_Click;
+			ExportBinaryMenuItem.Click += ExportBinaryMenuItem_Click;
+			ExportSFileMenuItem.Click += ExportSFileMenuItem_Click;
 			ExportResourcePackContextMenuItem.Click += ExportResourcePackContextMenuItem_Click;
 			UpdateResourcePackContextMenuItem.Click += UpdateResourcePackContextMenuItem_Click;
 		}
@@ -647,6 +649,53 @@ namespace NFirmwareEditor.Windows.Tabs
 				{
 					// Ignore
 				}
+			}
+		}
+
+		private void ExportBinaryMenuItem_Click(object sender, EventArgs e)
+		{
+			if (SelectedImageMetadata.Count == 0) return;
+
+			string directoryPath;
+			using (var fb = new FolderBrowserDialog())
+			{
+				if (fb.ShowDialog() != DialogResult.OK) return;
+				directoryPath = fb.SelectedPath;
+			}
+
+			var exportData = SelectedImageMetadata.Select(x => new { Metadata = x, ImageBytes = m_firmware.ReadImageAsByteArray(x) });
+			foreach (var data in exportData)
+			{
+				try
+				{
+					var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + ".bin");
+					File.WriteAllBytes(fileName, data.ImageBytes);
+				}
+				catch
+				{
+					// Ignore
+				}
+			}
+		}
+
+		private void ExportSFileMenuItem_Click(object sender, EventArgs e)
+		{
+			var imageMetadatas = ImageListBox.Items.Cast<ImagedItem<FirmwareImageMetadata>>().Select(x => x.Value);
+
+			string fileName;
+			using (var sf = new SaveFileDialog { Filter = @"Firmware Resource File|*.s" })
+			{
+				if (sf.ShowDialog() != DialogResult.OK) return;
+				fileName = sf.FileName;
+			}
+
+			try
+			{
+				File.WriteAllText(fileName, ArcticFoxResourceFileBuilder.CreateResourceFile(m_firmware, imageMetadatas));
+			}
+			catch
+			{
+				// Ignore
 			}
 		}
 
