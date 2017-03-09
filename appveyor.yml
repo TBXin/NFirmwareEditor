@@ -10,14 +10,13 @@ environment:
   pfx_pwd:
     secure: 8O5C6ksDG2epfcj92HlPPg==
 before_build:
-  - cmd >-
-      cd src
-      
-      nuget restore
-      
-      nuget install secure-file -ExcludeVersion
-      
-      secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
+- cmd: >-
+    cd src
+
+    nuget restore
+
+    nuget install secure-file -ExcludeVersion
+
   - ps: >-  
       $pfx = "NFETeam.pfx"
       
