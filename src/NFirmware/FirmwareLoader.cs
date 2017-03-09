@@ -128,7 +128,7 @@ namespace NFirmware
 			return null;
 		}
 
-		internal bool IsFirmwareEncrypted([NotNull] byte[] firmwareBytes)
+		public bool IsFirmwareEncrypted([NotNull] byte[] firmwareBytes)
 		{
 			if (firmwareBytes == null) throw new ArgumentNullException("firmwareBytes");
 			if (m_encryptedFirmwareMark.Length > firmwareBytes.Length) return false;
