@@ -15,7 +15,7 @@ before_build:
   - cmd: nuget install secure-file -ExcludeVersion
   - cmd: secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
   - ps: $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-  - ps: $cert.Import(NFETeam.pfx, $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
+  - ps: $cert.Import("NFETeam.pfx", $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
   - ps: $exportPrivateKeyInformation = $true
   - ps: $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
   - ps: $csp = New-Object System.Security.Cryptography.CspParameters
