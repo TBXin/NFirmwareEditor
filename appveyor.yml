@@ -19,7 +19,9 @@ before_build:
 
     secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx    
 - ps: >-
-    Import-PfxCertificate -FilePath C:\mypfx.pfx cert:\localMachine\VS_KEY_05B73E7374811DEA -Password $env:pfx_pwd
+    $pwd = ConvertTo-SecureString -String $env:pfx_pwd -Force -AsPlainText
+
+    Import-PfxCertificate -FilePath C:\mypfx.pfx cert:\localMachine\VS_KEY_05B73E7374811DEA -Password $pwd
 
     Write-Output "Sucesfully imported $pfx into StrongName CSP store"
 build:
