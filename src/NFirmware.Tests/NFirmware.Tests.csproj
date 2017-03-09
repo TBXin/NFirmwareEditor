@@ -17,7 +17,7 @@
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
 		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\NFETeam.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
