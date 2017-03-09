@@ -9,7 +9,7 @@ environment:
     secure: AHimXBh+X6BjzeQqH6XOj+E4njc5S4kxhacPvuR1aK0=
   pfx_pwd:
     secure: 8O5C6ksDG2epfcj92HlPPg==
-  sn_path: C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
+  sn_path: "C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools"
 before_build:
   - cmd: cd src
   - cmd: nuget restore
