@@ -19,6 +19,10 @@ before_build:
 - ps: >-
     $pfx = "NFETeam.pfx"
 
+    $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+
+    $pfx = Join-Path $scriptPath $pfx    
+
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 
     $cert.Import($pfx, $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
