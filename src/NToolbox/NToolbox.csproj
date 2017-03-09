@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,12 +36,6 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-	<PropertyGroup>
-		<SignAssembly>true</SignAssembly>
-	</PropertyGroup>
-	<PropertyGroup>
-		<AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
-	</PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>NToolbox.ico</ApplicationIcon>
   </PropertyGroup>
