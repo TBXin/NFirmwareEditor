@@ -5,7 +5,7 @@ branches:
 configuration: Release
 platform: Any CPU
 environment:
-  SN_PATH: C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
+  SN_PATH: "C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools"
   pfx_decrypt:
     secure: AHimXBh+X6BjzeQqH6XOj+E4njc5S4kxhacPvuR1aK0=
   pfx_pwd:
