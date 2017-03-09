@@ -14,7 +14,7 @@ before_build:
   - cmd: nuget restore
   - cmd: nuget install secure-file -ExcludeVersion
   - cmd: secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
-  - ps: $psw = ConvertTo-SecureString $env:pfx_pwd -AsPlainText
+  - ps: $psw = ConvertTo-SecureString $env:pfx_pwd -AsPlainText -Force
   - ps: Import-PfxCertificate -FilePath .\NFETeam.pfx -CertStoreLocation cert:\CurrentUser\My -Password $psw
 build:
   verbosity: quiet
