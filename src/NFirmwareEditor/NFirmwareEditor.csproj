@@ -13,8 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\NFETeam.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -990,7 +990,16 @@
     </None>
     <None Include="Resources\transparent_bg.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NCore\NCore.csproj">
+      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
+      <Name>NCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFirmware\NFirmware.csproj">
+      <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
+      <Name>NFirmware</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow_right.png" />
   </ItemGroup>
@@ -1355,16 +1364,6 @@
     <None Include="Resources\exit.png" />
     <None Include="Resources\paste.png" />
     <None Include="Resources\copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NCore\NCore.csproj">
-      <Project>{b256f46a-bfd9-4a53-b3d9-a808216f074b}</Project>
-      <Name>NCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NFirmware\NFirmware.csproj">
-      <Project>{557a7598-73fa-42e5-bf8f-a2d1c4767953}</Project>
-      <Name>NFirmware</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
