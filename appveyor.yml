@@ -10,23 +10,25 @@ environment:
   pfx_pwd:
     secure: 8O5C6ksDG2epfcj92HlPPg==
 before_build:
-  - cmd: cd src
-  - cmd: nuget restore
-  - cmd: nuget install secure-file -ExcludeVersion
-  - cmd: secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
-  - ps: $pfx = "NFETeam.pfx"
-  - ps: $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-  - ps: $cert.Import($pfx, $psw, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-  - ps: $exportPrivateKeyInformation = $true
-  - ps: $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
-  - ps: $csp = New-Object System.Security.Cryptography.CspParameters
-  - ps: $csp.KeyContainerName = VS_KEY_05B73E7374811DEA
-  - ps: $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
-  - ps: $csp.KeyNumber = [System.Security.Cryptography.KeyNumber]::Signature
-  - ps: $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider $csp
-  - ps: $rsa.FromXmlString($certXml)
-  - ps: $rsa.Clear()
-  - ps: Write-Output "Sucesfully imported $pfx into StrongName CSP store"
+  - cmd >-
+      cd src
+      nuget restore
+      nuget install secure-file -ExcludeVersion
+      secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
+  - ps: >-  
+      $pfx = "NFETeam.pfx"
+      $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+      $cert.Import($pfx, $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
+      $exportPrivateKeyInformation = $true
+      $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
+      $csp = New-Object System.Security.Cryptography.CspParameters
+      $csp.KeyContainerName = VS_KEY_05B73E7374811DEA
+      $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
+      $csp.KeyNumber = [System.Security.Cryptography.KeyNumber]::Signature
+      $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider $csp
+      $rsa.FromXmlString($certXml)
+      $rsa.Clear()
+      Write-Output "Sucesfully imported $pfx into StrongName CSP store"
 build:
   verbosity: quiet
 after_build:
