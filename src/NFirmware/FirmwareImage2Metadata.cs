@@ -46,7 +46,7 @@
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public override byte[] Save(bool[,] imageData)
+		internal override byte[] Save(bool[,] imageData)
 		{
 			var imageBytes = CreateImageDataWithHeader();
 			var stride = (Width + 7) / 8;

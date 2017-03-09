@@ -81,7 +81,7 @@ namespace NFirmware
 		/// Transforms two-dimensional bool array to the bytes array.
 		/// </summary>
 		/// <param name="imageData">Image data.</param>
-		public abstract byte[] Save(bool[,] imageData);
+		internal abstract byte[] Save(bool[,] imageData);
 
 		/// <summary>
 		/// Returns a <see cref="T:System.String"/> that represents the current <see cref="FirmwareImageMetadata"/>.

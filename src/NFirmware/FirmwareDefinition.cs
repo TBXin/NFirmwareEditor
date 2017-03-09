@@ -9,10 +9,10 @@ namespace NFirmware
 	public class FirmwareDefinition : NamespacelessObject
 	{
 		[XmlIgnore]
-		public string FileName { get; set; }
+		internal string FileName { get; set; }
 
 		[XmlIgnore]
-		public string Sha { get; set; }
+		internal string Sha { get; set; }
 
 		[XmlAttribute]
 		public string Name { get; set; }

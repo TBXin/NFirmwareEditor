@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 
 namespace NFirmware
 {
-	public static class StringExtensions
+	internal static class StringExtensions
 	{
 		internal static byte HexStringToByte([NotNull] this string hexNumber)
 		{
@@ -13,7 +13,7 @@ namespace NFirmware
 			return byte.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);
 		}
 
-		public static int HexStringToInt([NotNull] this string hexNumber)
+		internal static int HexStringToInt([NotNull] this string hexNumber)
 		{
 			if (string.IsNullOrEmpty(hexNumber)) throw new ArgumentNullException("hexNumber");
 			return int.Parse(PrepairHexString(hexNumber), NumberStyles.AllowHexSpecifier);

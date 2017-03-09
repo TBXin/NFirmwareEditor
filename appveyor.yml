@@ -19,9 +19,29 @@ before_build:
 
     secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx    
 - ps: >-
-    $pwd = ConvertTo-SecureString -String $env:pfx_pwd -Force -AsPlainText
+    $PWD = $env:pfx_pwd
 
-    Import-PfxCertificate -FilePath C:\mypfx.pfx cert:\localMachine\VS_KEY_05B73E7374811DEA -Password $pwd
+    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+
+    $cert.Import("C:\projects\nfirmwareeditor\src\NFETeam.pfx", $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
+
+    $exportPrivateKeyInformation = $false
+
+    $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
+
+    $csp = New-Object System.Security.Cryptography.CspParameters
+
+    $csp.KeyContainerName = "VS_KEY_05B73E7374811DEA"
+
+    $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
+
+    $csp.KeyNumber = [System.Security.Cryptography.KeyNumber]::Signature
+
+    $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider $csp
+
+    $rsa.FromXmlString($certXml)
+
+    $rsa.Clear()
 
     Write-Output "Sucesfully imported $pfx into StrongName CSP store"
 build:

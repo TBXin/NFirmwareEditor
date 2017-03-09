@@ -44,7 +44,7 @@ namespace NFirmware
 		[NotNull]
 		public FirmwareDefinition Definition { get; private set; }
 
-		public EncryptionType EncryptionType { get; set; }
+		public EncryptionType EncryptionType { get; internal set; }
 
 		[NotNull]
 		public IDictionary<int, FirmwareImageMetadata> Block1Images
@@ -158,7 +158,7 @@ namespace NFirmware
 			}
 		}
 
-		public void ReloadResources([NotNull] FirmwareLoader loader)
+		internal void ReloadResources([NotNull] FirmwareLoader loader)
 		{
 			if (loader == null) throw new ArgumentNullException("loader");
 
