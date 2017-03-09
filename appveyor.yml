@@ -43,7 +43,7 @@ before_build:
 
     Write-Output "Sucesfully imported $pfx into StrongName CSP store"
 build:
-  verbosity: quiet
+  verbosity: minimal
 after_build:
 - cmd: cd C:\projects\nfirmwareeditor\src\out\
 - cmd: del /q *.pdb, *.xml
