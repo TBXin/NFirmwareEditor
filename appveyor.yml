@@ -5,6 +5,7 @@ branches:
 configuration: Release
 platform: Any CPU
 environment:
+  SN_PATH: C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
   pfx_decrypt:
     secure: AHimXBh+X6BjzeQqH6XOj+E4njc5S4kxhacPvuR1aK0=
   pfx_pwd:
@@ -16,7 +17,7 @@ before_build:
   - cmd: secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.pfx
   - ps: $psw = ConvertTo-SecureString $env:pfx_pwd -AsPlainText -Force
   - ps: Import-PfxCertificate -FilePath .\NFETeam.pfx cert:\localMachine\my -Password $psw
-  - cmd: sn -i NFETeam.pfx VS_KEY_05B73E7374811DEA
+  - cmd: %SN_PATH%\sn -i NFETeam.pfx VS_KEY_05B73E7374811DEA
 build:
   verbosity: quiet
 after_build:
