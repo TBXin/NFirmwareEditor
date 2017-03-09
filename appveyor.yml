@@ -29,7 +29,7 @@ before_build:
 
     $csp = New-Object System.Security.Cryptography.CspParameters
 
-    $csp.KeyContainerName = VS_KEY_05B73E7374811DEA
+    $csp.KeyContainerName = "VS_KEY_05B73E7374811DEA"
 
     $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
 
