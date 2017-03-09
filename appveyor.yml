@@ -10,13 +10,12 @@ environment:
   pfx_pwd:
     secure: 8O5C6ksDG2epfcj92HlPPg==
 before_build:
-  - cmd: >-
+- cmd: >-
     cd src
 
     nuget restore
 
     nuget install secure-file -ExcludeVersion
-
   - ps: >-  
       $pfx = "NFETeam.pfx"
       
