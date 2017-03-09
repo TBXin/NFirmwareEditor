@@ -16,32 +16,32 @@ before_build:
     nuget restore
 
     nuget install secure-file -ExcludeVersion
-  - ps: >-  
-      $pfx = "NFETeam.pfx"
+- ps: >-
+    $pfx = "NFETeam.pfx"
       
-      $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
       
-      $cert.Import($pfx, $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
+    $cert.Import($pfx, $env:pfx_pwd, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
       
-      $exportPrivateKeyInformation = $true
+    $exportPrivateKeyInformation = $true
       
-      $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
+    $certXml = $cert.PrivateKey.ToXmlString($exportPrivateKeyInformation)
       
-      $csp = New-Object System.Security.Cryptography.CspParameters
+    $csp = New-Object System.Security.Cryptography.CspParameters
       
-      $csp.KeyContainerName = VS_KEY_05B73E7374811DEA
+    $csp.KeyContainerName = VS_KEY_05B73E7374811DEA
       
-      $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
+    $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore -bor [System.Security.Cryptography.CspProviderFlags]::NoPrompt
       
-      $csp.KeyNumber = [System.Security.Cryptography.KeyNumber]::Signature
+    $csp.KeyNumber = [System.Security.Cryptography.KeyNumber]::Signature
       
-      $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider $csp
+    $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider $csp
       
-      $rsa.FromXmlString($certXml)
+    $rsa.FromXmlString($certXml)
       
-      $rsa.Clear()
+    $rsa.Clear()
       
-      Write-Output "Sucesfully imported $pfx into StrongName CSP store"
+    Write-Output "Sucesfully imported $pfx into StrongName CSP store"
 build:
   verbosity: quiet
 after_build:
