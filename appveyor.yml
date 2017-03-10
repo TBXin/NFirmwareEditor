@@ -19,7 +19,7 @@ before_build:
 build:
   verbosity: minimal
 after_build:
-- cmd: cd C:\projects\nfirmwareeditor\src\out\
+- cmd: cd %APPVEYOR_BUILD_FOLDER%\src\out\
 - cmd: del /q *.pdb, *.xml
 artifacts:
 - path: src\out
