@@ -5,7 +5,7 @@ branches:
 configuration: Release
 platform: Any CPU
 environment:
-  pfx_decrypt:
+  dummy_secret:
     secure: AHimXBh+X6BjzeQqH6XOj+E4njc5S4kxhacPvuR1aK0=
 before_build:
 - cmd: >-
@@ -15,7 +15,7 @@ before_build:
 
     nuget install secure-file -ExcludeVersion
 
-    secure-file\tools\secure-file -decrypt dummy.data -secret %pfx_decrypt% -out NFETeam.snk
+    secure-file\tools\secure-file -decrypt dummy.data -secret %dummy_secret% -out NFETeam.snk
 build:
   verbosity: minimal
 after_build:
@@ -23,4 +23,4 @@ after_build:
 - cmd: del /q *.pdb, *.xml
 artifacts:
 - path: src\out
-  name: NFirmwareEditor-v$(appveyor_build_version)
+  name: NFirmwareEditor-v$(APPVEYOR_BUILD_VERSION)
