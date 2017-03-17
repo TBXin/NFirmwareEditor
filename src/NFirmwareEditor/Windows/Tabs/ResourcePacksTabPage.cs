@@ -210,7 +210,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				InfoBox.Global.Show("Selected resource pack is incompatible with the loaded firmware.\nResource pack is designed for: "
 				             + resourcePack.Definition
-				             + "\nOpend firmware is: "
+				             + "\nOpened firmware is: "
 				             + m_firmware.Definition.Name);
 				return;
 			}
