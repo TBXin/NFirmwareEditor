@@ -172,7 +172,7 @@ namespace NToolbox.Windows
 					var temp = line[0];
 					var factor = line[1];
 
-					m_curveControls[counter].TemperatureUpDown.Value = int.Parse(temp, CultureInfo.InvariantCulture);
+					m_curveControls[counter].TemperatureUpDown.Value = Math.Round(decimal.Parse(temp, CultureInfo.InvariantCulture), 0);
 					m_curveControls[counter].FactorUpDown.Value = Math.Round(decimal.Parse(factor, CultureInfo.InvariantCulture), 4);
 					counter++;
 				}
