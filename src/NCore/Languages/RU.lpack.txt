@@ -22,7 +22,7 @@ Toolbox.ArcticFoxConfiguration.Message.ConnectDevice=Подключите уст
 Toolbox.ArcticFoxConfiguration.Message.DownloadingSettings=Загрузка настроек...
 Toolbox.ArcticFoxConfiguration.Message.OutdatedToolbox=Текущий NFE Toolbox устарел.\n\nДля продолжения пожалуйста скачайте\n\nпоследний доступный релиз.
 Toolbox.ArcticFoxConfiguration.Message.NoCompatibleUSBDevice=Совместимые устройства не обнаружены.\n\nДля продолжения подключите совместимое устройство.\n\nЕсли устройство подключено, попробуйте отключить и подключить его снова - возможно у вас проблемы с кабелем или разъемом.
-Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Не удалось считать данные с утройства. Попробуйте переподключить ваше устройство.
+Toolbox.ArcticFoxConfiguration.Message.UnableToReadData=Не удалось считать данные с устройства. Попробуйте переподключить ваше устройство.
 
 Toolbox.ArcticFoxConfiguration.Status.Device=Устройство
 Toolbox.ArcticFoxConfiguration.Status.Connected=подключено
@@ -293,7 +293,7 @@ Toolbox.FirmwareUpdater.WriteDataflashButton=Записать
 Toolbox.FirmwareUpdater.ResetDataFlashButton=Сбросить
 Toolbox.FirmwareUpdater.AdvancedTab=Эксперт
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Сменить версию платы
-Toolbox.FirmwareUpdater.SwitchBootModeButton=Переключить загручик
+Toolbox.FirmwareUpdater.SwitchBootModeButton=Переключить загрузчик
 Toolbox.FirmwareUpdater.CancelButton=Отмена
 
 Toolbox.FirmwareUpdater.Messages.DeviceIsReady=Устройство обнаружено.
