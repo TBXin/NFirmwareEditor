@@ -87,7 +87,7 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
-					DeviceNameTextBox.Text = m_deviceInfo.Name;
+					DeviceNameTextBox.Text = string.Format("[{0}] {1}", m_dataflash.ProductId, m_deviceInfo.Name); ;
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
 					BootModeTextBox.Text = m_dataflash.LoadFromLdrom ? "LDROM" : "APROM";
