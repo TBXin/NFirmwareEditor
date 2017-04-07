@@ -62,12 +62,18 @@
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="ArcticFoxEncryption.cs" />
     <Compile Include="CrossApplicationIndentifiers.cs" />
+    <Compile Include="VandalProofEncryption.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileFilters.cs" />
     <Compile Include="CsvManager.cs" />
     <Compile Include="IEncryption.cs" />
     <Compile Include="InfoBox.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\NamespacelessObject.cs" />
     <Compile Include="Safe.cs" />
     <Compile Include="Serialization\SerializableDictionary.cs" />
@@ -107,6 +113,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EditorDialogWindow.resx">
       <DependentUpon>EditorDialogWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +180,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

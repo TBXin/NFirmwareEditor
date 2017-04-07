@@ -6,7 +6,7 @@ configuration: Release
 platform: Any CPU
 environment:
   dummy_secret:
-    secure: AHimXBh+X6BjzeQqH6XOj+E4njc5S4kxhacPvuR1aK0=
+    secure: oR1iuicCPpDYrr6jK6pbhNkqxJ5KYAF7EhBDawQHXBl6EIHeca7B6X+sja17/hPh
 before_build:
 - cmd: >-
     cd src
