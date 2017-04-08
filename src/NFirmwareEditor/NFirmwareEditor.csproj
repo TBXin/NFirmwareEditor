@@ -1016,6 +1016,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <None Include="Definitions\Predator 228 5.04.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\s_file.png" />
     <None Include="Definitions\ArcticFox.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
