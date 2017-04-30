@@ -35,6 +35,7 @@ namespace NToolbox.Windows
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.groupPanel1 = new NCore.UI.GroupPanel();
+			this.NameTextBox = new System.Windows.Forms.TextBox();
 			this.Volts11UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts10UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts9UpDown = new System.Windows.Forms.NumericUpDown();
@@ -46,7 +47,6 @@ namespace NToolbox.Windows
 			this.Volts3UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts2UpDown = new System.Windows.Forms.NumericUpDown();
 			this.Volts1UpDown = new System.Windows.Forms.NumericUpDown();
-			this.PresetsButton = new System.Windows.Forms.Button();
 			this.groupPanel3 = new NCore.UI.GroupPanel();
 			this.CutoffUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label23 = new System.Windows.Forms.Label();
@@ -186,6 +186,7 @@ namespace NToolbox.Windows
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupPanel1.BackColor = System.Drawing.Color.White;
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel1.Controls.Add(this.NameTextBox);
 			this.groupPanel1.Controls.Add(this.Volts11UpDown);
 			this.groupPanel1.Controls.Add(this.Volts10UpDown);
 			this.groupPanel1.Controls.Add(this.Volts9UpDown);
@@ -197,7 +198,6 @@ namespace NToolbox.Windows
 			this.groupPanel1.Controls.Add(this.Volts3UpDown);
 			this.groupPanel1.Controls.Add(this.Volts2UpDown);
 			this.groupPanel1.Controls.Add(this.Volts1UpDown);
-			this.groupPanel1.Controls.Add(this.PresetsButton);
 			this.groupPanel1.Controls.Add(this.groupPanel3);
 			this.groupPanel1.Controls.Add(this.label21);
 			this.groupPanel1.Controls.Add(this.label22);
@@ -241,6 +241,16 @@ namespace NToolbox.Windows
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Profile:";
+			// 
+			// NameTextBox
+			// 
+			this.NameTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.MainLocalizationExtender.SetKey(this.NameTextBox, "");
+			this.NameTextBox.Location = new System.Drawing.Point(135, 4);
+			this.NameTextBox.MaxLength = 4;
+			this.NameTextBox.Name = "NameTextBox";
+			this.NameTextBox.Size = new System.Drawing.Size(55, 21);
+			this.NameTextBox.TabIndex = 102;
 			// 
 			// Volts11UpDown
 			// 
@@ -582,17 +592,6 @@ namespace NToolbox.Windows
             0,
             0,
             131072});
-			// 
-			// PresetsButton
-			// 
-			this.PresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.MainLocalizationExtender.SetKey(this.PresetsButton, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.PresetsButton");
-			this.PresetsButton.Location = new System.Drawing.Point(134, 4);
-			this.PresetsButton.Name = "PresetsButton";
-			this.PresetsButton.Size = new System.Drawing.Size(57, 22);
-			this.PresetsButton.TabIndex = 102;
-			this.PresetsButton.Text = "Presets";
-			this.PresetsButton.UseVisualStyleBackColor = true;
 			// 
 			// groupPanel3
 			// 
@@ -1046,7 +1045,7 @@ namespace NToolbox.Windows
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel2.Controls.Add(this.DischargeChart);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
-			this.groupPanel2.HeaderHeight = 30;
+			this.groupPanel2.HeaderHeight = 32;
 			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.ArcticFoxConfiguration.DischargeCurveEditor.ChartNameLabel");
 			this.groupPanel2.Location = new System.Drawing.Point(206, 3);
 			this.groupPanel2.Name = "groupPanel2";
@@ -1059,9 +1058,9 @@ namespace NToolbox.Windows
 			// 
 			this.DischargeChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.DischargeChart, "");
-			this.DischargeChart.Location = new System.Drawing.Point(3, 33);
+			this.DischargeChart.Location = new System.Drawing.Point(3, 35);
 			this.DischargeChart.Name = "DischargeChart";
-			this.DischargeChart.Size = new System.Drawing.Size(569, 361);
+			this.DischargeChart.Size = new System.Drawing.Size(569, 359);
 			this.DischargeChart.TabIndex = 0;
 			// 
 			// DischargeProfileWindow
@@ -1169,8 +1168,8 @@ namespace NToolbox.Windows
 		private NCore.UI.GroupPanel groupPanel3;
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.NumericUpDown CutoffUpDown;
-		private System.Windows.Forms.Button PresetsButton;
 		private System.Windows.Forms.Button ExportButton;
 		private System.Windows.Forms.Button ImportButton;
+		private System.Windows.Forms.TextBox NameTextBox;
 	}
 }

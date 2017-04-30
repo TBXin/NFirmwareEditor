@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using JetBrains.Annotations;
@@ -20,10 +21,11 @@ namespace NToolbox.Windows
 		private const decimal MinVolts = 3.0m;
 		private const decimal MaxVolts = 4.2m;
 
+		private static readonly Regex s_blackList = new Regex("(?![A-Z0-9\\+\\-\\.\\s]).", RegexOptions.Compiled);
 		private readonly ArcticFoxConfiguration.CustomBattery m_battery;
 
 		private PercentVoltsControlGroup[] m_curveControls;
-		private ContextMenu m_presetsMenu;
+		//private ContextMenu m_presetsMenu;
 		private bool m_isInstallingPreset;
 		private bool m_isDragginPoint;
 		private DataPoint m_pointUnderCursor;
@@ -58,7 +60,7 @@ namespace NToolbox.Windows
 				new PercentVoltsControlGroup(Percents1UpDown, Volts1UpDown)
 			};
 
-			m_presetsMenu = new ContextMenu();
+			/*m_presetsMenu = new ContextMenu();
 			foreach (var kvp in BatteryPresets.Presets)
 			{
 				var presetName = kvp.Key;
@@ -70,6 +72,19 @@ namespace NToolbox.Windows
 			{
 				var control = (Control)s;
 				m_presetsMenu.Show(control, new Point(control.Width, 0));
+			};*/
+			NameTextBox.TextChanged += (s, e) =>
+			{
+				var position = NameTextBox.SelectionStart;
+				var input = NameTextBox.Text;
+				var matches = s_blackList.Matches(input);
+				foreach (Match match in matches)
+				{
+					if (!match.Success) continue;
+					input = input.Replace(match.Value, string.Empty);
+				}
+				NameTextBox.Text = input;
+				NameTextBox.SelectionStart = position;
 			};
 			ExportButton.Click += ExportButton_Click;
 			ImportButton.Click += ImportButton_Click;
@@ -147,6 +162,7 @@ namespace NToolbox.Windows
 		{
 			if (battery == null) throw new ArgumentNullException("battery");
 
+			NameTextBox.Text = m_battery.Name;
 			for (var i = 0; i < battery.Data.Length; i++)
 			{
 				var data = battery.Data[i];
@@ -177,6 +193,7 @@ namespace NToolbox.Windows
 		{
 			if (battery == null) throw new ArgumentNullException("battery");
 
+			battery.Name = NameTextBox.Text;
 			for (var i = 0; i < battery.Data.Length; i++)
 			{
 				var data = m_curveControls[i];

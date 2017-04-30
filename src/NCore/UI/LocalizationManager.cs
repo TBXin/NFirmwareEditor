@@ -92,28 +92,96 @@ namespace NCore.UI
 			if (string.IsNullOrEmpty(key)) throw new ArgumentNullException("key");
 			if (string.IsNullOrEmpty(defaultValue)) throw new ArgumentNullException("defaultValue");
 
+			#if DEBUG
+			if (!m_registeredDictionary.ContainsKey(key)) m_registeredDictionary[key] = defaultValue;
+			#endif
+
 			return m_localizationDictionary.ContainsKey(key) ? m_localizationDictionary[key] : defaultValue;
 		}
 
+		#if DEBUG
 		public void RegisterLocalizationKeyValue(IDictionary<Control, string> localizableControls)
 		{
 			foreach (var kvp in localizableControls)
 			{
-				m_registeredDictionary[kvp.Value] = kvp.Key.Text;
+				if (!m_registeredDictionary.ContainsKey(kvp.Value)) m_registeredDictionary[kvp.Value] = kvp.Key.Text;
 			}
 		}
 
-		private string GetLanguagePack
+		public string GetLanguagePack()
 		{
-			get
+			try
 			{
 				var sb = new StringBuilder();
-				foreach (var kvp in m_registeredDictionary.OrderBy(x => x.Key))
+				var rootNode = new Node();
+				foreach (var item in m_registeredDictionary.Keys)
 				{
-					sb.AppendLine(kvp.Key + "=" + kvp.Value.Replace("\\r", "\\\r").Replace("\\n", "\\\n"));
+					RecursiveCreateTree(item.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries), rootNode);
+				}
+
+				foreach (var key in RecursiveNodeIterator(rootNode))
+				{
+					sb.AppendLine(key + "=" + m_registeredDictionary[key].Replace("\r", "\\r").Replace("\n", "\\n"));
 				}
 				return sb.ToString();
 			}
+			catch (Exception ex)
+			{
+				ex = ex;
+				throw;
+			}
 		}
+
+		private void RecursiveCreateTree(IList<string> parts, Node node)
+		{
+			if (parts.Count == 1)
+			{
+				node.Items.Add(parts[0]);
+			}
+			else
+			{
+				Node parent;
+				if (node.Nodes.ContainsKey(parts[0]))
+				{
+					parent = node.Nodes[parts[0]];
+				}
+				else
+				{
+					parent = new Node();
+					node.Nodes[parts[0]] = parent;
+				}
+				RecursiveCreateTree(parts.Skip(1).ToArray(), parent);
+			}
+		}
+
+		private IEnumerable<string> RecursiveNodeIterator(Node node, string path = null)
+		{
+			foreach (var item in node.Items.OrderBy(x => x))
+			{
+				yield return !string.IsNullOrEmpty(path) ? path + "." + item : item;
+			}
+
+			foreach (var kvp in node.Nodes.OrderBy(n => n.Key))
+			{
+				foreach (var iterator in RecursiveNodeIterator(kvp.Value, !string.IsNullOrEmpty(path) ? path + "." + kvp.Key : kvp.Key))
+				{
+					yield return iterator;
+				}
+			}
+		}
+
+		private class Node
+		{
+			public Node()
+			{
+				Nodes = new Dictionary<string, Node>();
+				Items = new List<string>();
+			}
+
+			internal Dictionary<string, Node> Nodes { get; private set; }
+
+			internal List<string> Items { get; private set; }
+		}
+		#endif
 	}
 }

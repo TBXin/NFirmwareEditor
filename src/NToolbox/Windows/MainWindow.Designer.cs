@@ -31,9 +31,10 @@
 			this.components = new System.ComponentModel.Container();
 			this.VersionLabel = new System.Windows.Forms.Label();
 			this.ButtonsPanel = new NCore.UI.BorderedPanel();
+			this.borderedPanel1 = new NCore.UI.BorderedPanel();
+			this.LanguageComboBox = new System.Windows.Forms.ComboBox();
 			this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
-			this.MyEvicConfigurationButton = new NCore.UI.ExtendedButton();
 			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
 			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
 			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
@@ -43,7 +44,6 @@
 			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.ArcticFoxConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.MyEvicConfigurationTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.DeviceMonitorTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ScreenshooterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.FirmwareUpdaterTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +56,8 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.LanguageComboBox = new System.Windows.Forms.ComboBox();
 			this.ButtonsPanel.SuspendLayout();
+			this.borderedPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.TrayContextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
@@ -85,17 +85,46 @@
 			this.ButtonsPanel.BorderRight = false;
 			this.ButtonsPanel.BorderTop = false;
 			this.ButtonsPanel.BorderWidth = 1F;
+			this.ButtonsPanel.Controls.Add(this.borderedPanel1);
 			this.ButtonsPanel.Controls.Add(this.AboutLinkLabel);
 			this.ButtonsPanel.Controls.Add(this.ScreenshooterButton);
-			this.ButtonsPanel.Controls.Add(this.MyEvicConfigurationButton);
 			this.ButtonsPanel.Controls.Add(this.DeviceMonitorButton);
 			this.ButtonsPanel.Controls.Add(this.ArcticFoxConfigurationButton);
 			this.ButtonsPanel.Controls.Add(this.FirmwareUpdaterButton);
 			this.MainLocalizationExtender.SetKey(this.ButtonsPanel, "");
 			this.ButtonsPanel.Location = new System.Drawing.Point(0, 214);
 			this.ButtonsPanel.Name = "ButtonsPanel";
-			this.ButtonsPanel.Size = new System.Drawing.Size(240, 320);
+			this.ButtonsPanel.Size = new System.Drawing.Size(240, 295);
 			this.ButtonsPanel.TabIndex = 4;
+			// 
+			// borderedPanel1
+			// 
+			this.borderedPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+			this.borderedPanel1.BorderBottom = false;
+			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.borderedPanel1.BorderLeft = false;
+			this.borderedPanel1.BorderRight = false;
+			this.borderedPanel1.BorderTop = true;
+			this.borderedPanel1.BorderWidth = 1F;
+			this.borderedPanel1.Controls.Add(this.LanguageComboBox);
+			this.borderedPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
+			this.borderedPanel1.Location = new System.Drawing.Point(0, 261);
+			this.borderedPanel1.Name = "borderedPanel1";
+			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.borderedPanel1.Size = new System.Drawing.Size(240, 34);
+			this.borderedPanel1.TabIndex = 10;
+			// 
+			// LanguageComboBox
+			// 
+			this.LanguageComboBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.LanguageComboBox.FormattingEnabled = true;
+			this.MainLocalizationExtender.SetKey(this.LanguageComboBox, "");
+			this.LanguageComboBox.Location = new System.Drawing.Point(90, 7);
+			this.LanguageComboBox.Name = "LanguageComboBox";
+			this.LanguageComboBox.Size = new System.Drawing.Size(60, 21);
+			this.LanguageComboBox.TabIndex = 9;
 			// 
 			// AboutLinkLabel
 			// 
@@ -105,7 +134,7 @@
 			this.AboutLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.AboutLinkLabel, "Toolbox.MainWindow.AboutLink");
 			this.AboutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.AboutLinkLabel.Location = new System.Drawing.Point(10, 294);
+			this.AboutLinkLabel.Location = new System.Drawing.Point(10, 236);
 			this.AboutLinkLabel.Name = "AboutLinkLabel";
 			this.AboutLinkLabel.Size = new System.Drawing.Size(220, 18);
 			this.AboutLinkLabel.TabIndex = 8;
@@ -120,24 +149,11 @@
 			this.ScreenshooterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
 			this.MainLocalizationExtender.SetKey(this.ScreenshooterButton, "Toolbox.MainWindow.ScreenshooterButton");
-			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 180);
+			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 122);
 			this.ScreenshooterButton.Name = "ScreenshooterButton";
 			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
 			this.ScreenshooterButton.TabIndex = 4;
 			this.ScreenshooterButton.Text = "Screenshooter";
-			// 
-			// MyEvicConfigurationButton
-			// 
-			this.MyEvicConfigurationButton.AdditionalText = "";
-			this.MyEvicConfigurationButton.Enabled = false;
-			this.MyEvicConfigurationButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.MyEvicConfigurationButton.Image = global::NToolbox.Properties.Resources.configuration;
-			this.MainLocalizationExtender.SetKey(this.MyEvicConfigurationButton, "Toolbox.MainWindow.MyEvicConfigurationButton");
-			this.MyEvicConfigurationButton.Location = new System.Drawing.Point(10, 64);
-			this.MyEvicConfigurationButton.Name = "MyEvicConfigurationButton";
-			this.MyEvicConfigurationButton.Size = new System.Drawing.Size(220, 52);
-			this.MyEvicConfigurationButton.TabIndex = 1;
-			this.MyEvicConfigurationButton.Text = "myEvic Configuration";
 			// 
 			// DeviceMonitorButton
 			// 
@@ -145,7 +161,7 @@
 			this.DeviceMonitorButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
 			this.MainLocalizationExtender.SetKey(this.DeviceMonitorButton, "Toolbox.MainWindow.DeviceMonitorButton");
-			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 122);
+			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 64);
 			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
 			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
 			this.DeviceMonitorButton.TabIndex = 2;
@@ -169,7 +185,7 @@
 			this.FirmwareUpdaterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
 			this.MainLocalizationExtender.SetKey(this.FirmwareUpdaterButton, "Toolbox.MainWindow.FirmwareUpdaterButton");
-			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 238);
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 180);
 			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
 			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
 			this.FirmwareUpdaterButton.TabIndex = 3;
@@ -199,7 +215,6 @@
             this.ShowTrayMenuItem,
             this.toolStripSeparator4,
             this.ArcticFoxConfigurationTrayMenuItem,
-            this.MyEvicConfigurationTrayMenuItem,
             this.DeviceMonitorTrayMenuItem,
             this.ScreenshooterTrayMenuItem,
             this.FirmwareUpdaterTrayMenuItem,
@@ -214,7 +229,7 @@
             this.ExitTrayMenuItem});
 			this.MainLocalizationExtender.SetKey(this.TrayContextMenuStrip, "");
 			this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
-			this.TrayContextMenuStrip.Size = new System.Drawing.Size(387, 298);
+			this.TrayContextMenuStrip.Size = new System.Drawing.Size(387, 254);
 			// 
 			// ShowTrayMenuItem
 			// 
@@ -232,13 +247,6 @@
 			this.ArcticFoxConfigurationTrayMenuItem.Name = "ArcticFoxConfigurationTrayMenuItem";
 			this.ArcticFoxConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ArcticFoxConfigurationTrayMenuItem.Text = "ArcticFox Configuration";
-			// 
-			// MyEvicConfigurationTrayMenuItem
-			// 
-			this.MyEvicConfigurationTrayMenuItem.Enabled = false;
-			this.MyEvicConfigurationTrayMenuItem.Name = "MyEvicConfigurationTrayMenuItem";
-			this.MyEvicConfigurationTrayMenuItem.Size = new System.Drawing.Size(386, 22);
-			this.MyEvicConfigurationTrayMenuItem.Text = "myEvic Configuration";
 			// 
 			// DeviceMonitorTrayMenuItem
 			// 
@@ -312,23 +320,12 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
-			// LanguageComboBox
-			// 
-			this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.LanguageComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.LanguageComboBox, "");
-			this.LanguageComboBox.Location = new System.Drawing.Point(171, 134);
-			this.LanguageComboBox.Name = "LanguageComboBox";
-			this.LanguageComboBox.Size = new System.Drawing.Size(41, 21);
-			this.LanguageComboBox.TabIndex = 9;
-			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 534);
-			this.Controls.Add(this.LanguageComboBox);
+			this.ClientSize = new System.Drawing.Size(240, 509);
 			this.Controls.Add(this.VersionLabel);
 			this.Controls.Add(this.ButtonsPanel);
 			this.Controls.Add(this.LogoPictureBox);
@@ -340,6 +337,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NFE Toolbox";
 			this.ButtonsPanel.ResumeLayout(false);
+			this.borderedPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
 			this.TrayContextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -350,7 +348,6 @@
 		#endregion
 
 		private NCore.UI.ExtendedButton ArcticFoxConfigurationButton;
-		private NCore.UI.ExtendedButton MyEvicConfigurationButton;
 		private NCore.UI.ExtendedButton DeviceMonitorButton;
 		private NCore.UI.ExtendedButton FirmwareUpdaterButton;
 		private System.Windows.Forms.PictureBox LogoPictureBox;
@@ -368,7 +365,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem ArcticFoxConfigurationTrayMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem MyEvicConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem DeviceMonitorTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ScreenshooterTrayMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
@@ -377,6 +373,7 @@
 		private System.Windows.Forms.ComboBox LanguageComboBox;
 		private System.Windows.Forms.ToolStripMenuItem CloseArcticFoxConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private NCore.UI.BorderedPanel borderedPanel1;
 	}
 }
 

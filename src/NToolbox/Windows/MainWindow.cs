@@ -13,7 +13,7 @@ namespace NToolbox.Windows
 {
 	internal partial class MainWindow : WindowBase
 	{
-		private const string ApplicationVersion = "1.5";
+		private const string ApplicationVersion = "1.7";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
@@ -82,13 +82,20 @@ namespace NToolbox.Windows
 		{
 			VersionLabel.Text = @"v" + ApplicationVersion;
 			ArcticFoxConfigurationButton.Click += StartArcticFoxConfiguration;
-			MyEvicConfigurationButton.Click += StartMyEvicConfiguration;
 			DeviceMonitorButton.Click += StartDeviceMonitor;
 			ScreenshooterButton.Click += StartScreenshooter;
 			FirmwareUpdaterButton.Click += StartFirmwareUpdater;
 
 			AboutLinkLabel.Click += (s, e) =>
 			{
+				#if DEBUG
+				// Initialize all localizable strings.
+				typeof(LocalizableStrings).GetProperties().ForEach(p => p.GetValue(null, null));
+				// Create exportable lpack.txt
+				var result = LocalizationManager.Instance.GetLanguagePack();
+				System.Diagnostics.Debugger.Break();
+				#endif
+
 				using (var aboutWindow = new AboutWindow())
 				{
 					aboutWindow.ShowDialog();
@@ -109,7 +116,6 @@ namespace NToolbox.Windows
 			ExitTrayMenuItem.Click += (s, e) => Application.Exit();
 
 			ArcticFoxConfigurationTrayMenuItem.Click += StartArcticFoxConfiguration;
-			MyEvicConfigurationTrayMenuItem.Click += StartMyEvicConfiguration;
 			DeviceMonitorTrayMenuItem.Click += StartDeviceMonitor;
 			ScreenshooterTrayMenuItem.Click += StartScreenshooter;
 			FirmwareUpdaterTrayMenuItem.Click += StartFirmwareUpdater;
@@ -187,11 +193,6 @@ namespace NToolbox.Windows
 			{
 				ShowDialogWindow(cfg);
 			}
-		}
-
-		private void StartMyEvicConfiguration(object sender, EventArgs e)
-		{
-			InfoBox.Show("Work in progress... Be patient.");
 		}
 
 		private void StartDeviceMonitor(object sender, EventArgs e)
@@ -280,7 +281,6 @@ namespace NToolbox.Windows
 		{
 			ShowTrayMenuItem.Text = LocalizableStrings.TrayShowToolbox;
 			ArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfiguration;
-			MyEvicConfigurationTrayMenuItem.Text = LocalizableStrings.TrayMyEvicConfiguration;
 			DeviceMonitorTrayMenuItem.Text = LocalizableStrings.TrayDeviceMonitor;
 			ScreenshooterTrayMenuItem.Text = LocalizableStrings.TrayScreenshooter;
 			FirmwareUpdaterTrayMenuItem.Text = LocalizableStrings.TrayFirmwareUpdater;

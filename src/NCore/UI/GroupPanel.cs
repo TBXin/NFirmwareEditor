@@ -36,23 +36,27 @@ namespace NCore.UI
 			set { m_headerBackgroundColor = value; }
 		}
 
-		/*public override Rectangle DisplayRectangle
+		public override Rectangle DisplayRectangle
 		{
 			get
 			{
-				return new Rectangle
-				(
-					Padding.Left,
-					Padding.Top + m_actualHeaderHeight,
-					Math.Max(Width - Padding.Horizontal, 0),
-					Math.Max(Height - m_actualHeaderHeight - Padding.Vertical, 0)
-				);
+				using (var gfx = Graphics.FromHwnd(IntPtr.Zero))
+				{
+					m_actualHeaderHeight = ScaleToDpi(gfx, m_headerHeight);
+					return new Rectangle
+					(
+						Padding.Left,
+						Padding.Top + m_actualHeaderHeight,
+						Math.Max(Width - Padding.Horizontal, 0),
+						Math.Max(Height - m_actualHeaderHeight - Padding.Vertical, 0)
+					);
+				}
 			}
-		}*/
+		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			m_actualHeaderHeight = (int)(m_headerHeight * (e.Graphics.DpiX / 96f));
+			m_actualHeaderHeight = ScaleToDpi(e.Graphics, m_headerHeight);
 
 			var clientRect = GetClientRect();
 			var headerRect = GetHedearRect(clientRect);
@@ -75,6 +79,11 @@ namespace NCore.UI
 
 			// Draw borders
 			e.Graphics.DrawRectangle(borderPen, clientRect);
+		}
+
+		private static int ScaleToDpi(Graphics gfx, int dimension)
+		{
+			return (int)(dimension * (gfx.DpiX / 96f));
 		}
 
 		private Rectangle GetClientRect()

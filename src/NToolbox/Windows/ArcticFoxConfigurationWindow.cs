@@ -18,11 +18,6 @@ namespace NToolbox.Windows
 {
 	internal partial class ArcticFoxConfigurationWindow : EditorDialogWindow
 	{
-		private const ushort MaxPower = 3000;
-		private const byte MaxBatteries = 4;
-		private const int MinimumSupportedBuildNumber = 170201;
-		private const int SupportedSettingsVersion = 7;
-
 		private readonly ToolboxConfiguration m_toolboxConfiguration;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
@@ -78,8 +73,6 @@ namespace NToolbox.Windows
 			HardwareVersionTextBox.BackColor = Color.White;
 
 			ProgressLabel.Text = LocalizableStrings.StatusReady;
-
-			SmartCheckBox.CheckedChanged += (s, e) => SelectedProfleComboBox.Enabled = !SmartCheckBox.Checked;
 			BrightnessTrackBar.ValueChanged += (s, e) => BrightnessPercentLabel.Text = (int)(BrightnessTrackBar.Value * 100m / 255) + @"%";
 
 			PowerCurvesListView.LargeImageList = new ImageList { ImageSize = new Size(60, 30) };
@@ -122,9 +115,6 @@ namespace NToolbox.Windows
 			MainToolTip.SetToolTip(MainScreenSkinLabel, LocalizableStrings.MainScreenSkinTooltip);
 			MainToolTip.SetToolTip(MainScreenSkinComboBox, LocalizableStrings.MainScreenSkinTooltip);
 
-			MainToolTip.SetToolTip(UseClassicMenuLabel, LocalizableStrings.UseClassicMenuTooltip);
-			MainToolTip.SetToolTip(UseClassicMenuCheckBox, LocalizableStrings.UseClassicMenuTooltip);
-
 			MainToolTip.SetToolTip(ShowLogoLabel, LocalizableStrings.ShowLogoTooltip);
 			MainToolTip.SetToolTip(ShowLogoCheckBox, LocalizableStrings.ShowLogoTooltip);
 
@@ -137,11 +127,8 @@ namespace NToolbox.Windows
 			MainToolTip.SetToolTip(ShuntCorrectionLabel, LocalizableStrings.ShuntCorrectionTooltip);
 			MainToolTip.SetToolTip(ShuntCorrectionUpDown, LocalizableStrings.ShuntCorrectionTooltip);
 
-			MainToolTip.SetToolTip(X32Label, LocalizableStrings.X32Tooltip);
-			MainToolTip.SetToolTip(X32CheckBox, LocalizableStrings.X32Tooltip);
-
-			MainToolTip.SetToolTip(LightSleepLabel, LocalizableStrings.LightSleepTooltip);
-			MainToolTip.SetToolTip(LightSleepCheckBox, LocalizableStrings.LightSleepTooltip);
+			MainToolTip.SetToolTip(RtcModeLabel, LocalizableStrings.RtcModeTooltip);
+			MainToolTip.SetToolTip(RtcModeComboBox, LocalizableStrings.RtcModeTooltip);
 
 			MainToolTip.SetToolTip(ResetCountersLabel, LocalizableStrings.RcobcTooltip);
 			MainToolTip.SetToolTip(ResetCountersCheckBox, LocalizableStrings.RcobcTooltip);
@@ -162,10 +149,20 @@ namespace NToolbox.Windows
 			foreach (var comboBox in new[]
 			{
 				ClassicVWLine1ComboBox, ClassicVWLine2ComboBox, ClassicVWLine3ComboBox, ClassicVWLine4ComboBox,
-				ClassicTCLine1ComboBox, ClassicTCLine2ComboBox, ClassicTCLine3ComboBox, ClassicTCLine4ComboBox,
+				ClassicTCLine1ComboBox, ClassicTCLine2ComboBox, ClassicTCLine3ComboBox, ClassicTCLine4ComboBox
 			})
 			{
 				comboBox.Fill(PredefinedData.ArcticFox.ClassicSkinLineContentItems);
+			}
+
+			// Fill Foxy Skin ComboBoxes
+			foreach (var comboBox in new[]
+			{
+				FoxyVWLine1ComboBox, FoxyVWLine2ComboBox, FoxyVWLine3ComboBox,
+				FoxyTCLine1ComboBox, FoxyTCLine2ComboBox, FoxyTCLine3ComboBox
+			})
+			{
+				comboBox.Fill(PredefinedData.ArcticFox.FoxySkinLineContentItems);
 			}
 
 			// Fill Circle Skin ComboBoxes
@@ -186,8 +183,8 @@ namespace NToolbox.Windows
 				comboBox.Fill(PredefinedData.ArcticFox.SmallScreenLineContentItems);
 			}
 
-			MainScreenSkinComboBox.Fill(PredefinedData.ArcticFox.MainScreenSkins);
 			ChargeScreenComboBox.Fill(PredefinedData.ArcticFox.ChargeScreenTypes);
+			ChargeScreenExtraСomboBox.Fill(PredefinedData.ArcticFox.ChargeScreenExtraTypes);
 			ClockTypeComboBox.Fill(PredefinedData.ArcticFox.ClockTypes);
 			ScreensaverTimeComboBox.Fill(PredefinedData.ArcticFox.ScreenSaverTimes);
 
@@ -199,15 +196,58 @@ namespace NToolbox.Windows
 			{
 				clickComboBox.Fill(PredefinedData.ArcticFox.ClickActions);
 			}
+			Clicks5ComboBox.Fill(PredefinedData.ArcticFox.Click5Actions);
+
+			// Shortcuts - In Standby
+			foreach (var comboBox in new[] 
+			{
+				InStandbyVWFireMinusComboBox, InStandbyVWFirePlusComboBox, InStandbyVWPlusMinusComboBox,
+				InStandbyTCFireMinusComboBox, InStandbyTCFirePlusComboBox, InStandbyTCPlusMinusComboBox
+			})
+			{
+				comboBox.Fill(PredefinedData.ArcticFox.ClickActions);
+			}
+			// Shortcuts - In Edit
+			foreach (var comboBox in new[] 
+			{
+				InEditVWFireMinusComboBox, InEditVWFirePlusComboBox, InEditVWPlusMinusComboBox,
+				InEditTCFireMinusComboBox, InEditTCFirePlusComboBox, InEditTCPlusMinusComboBox
+			})
+			{
+				comboBox.Fill(PredefinedData.ArcticFox.ShortcutsInEdit);
+			}
+			// Shortcuts - In Menu
+			foreach (var comboBox in new[] 
+			{
+				InMenuVWFireMinusComboBox, InMenuVWFirePlusComboBox, InMenuVWPlusMinusComboBox,
+				InMenuTCFireMinusComboBox, InMenuTCFirePlusComboBox, InMenuTCPlusMinusComboBox
+			})
+			{
+				comboBox.Fill(PredefinedData.ArcticFox.ShortcutsInMenu);
+			}
+			// Shortcuts - In Selector
+			foreach (var comboBox in new[] 
+			{
+				InSelectorVWFireMinusComboBox, InSelectorVWFirePlusComboBox, InSelectorVWPlusMinusComboBox,
+				InSelectorTCFireMinusComboBox, InSelectorTCFirePlusComboBox, InSelectorTCPlusMinusComboBox
+			})
+			{
+				comboBox.Fill(PredefinedData.ArcticFox.ShortcutsInSelector);
+			}
+
 			UpDownButtonsComboBox.Fill(PredefinedData.ArcticFox.UpDownButtons);
 
 			PuffsTimeFormatComboBox.Fill(PredefinedData.ArcticFox.PuffTimeFormats);
-			BatteryModelComboBox.Fill(PredefinedData.ArcticFox.BatteryModels);
+			SmartModeComboBox.Fill(PredefinedData.ArcticFox.SmartModes);
+			BatteryModelComboBox.Fill(PredefinedData.ArcticFox.GenericBattery);
+
 			BatteryModelComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var batteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
-				BatteryEditButton.Visible = batteryModel == ArcticFoxConfiguration.BatteryModel.Custom;
+				BatteryEditButton.Visible = batteryModel != ArcticFoxConfiguration.BatteryModel.Generic;
 			};
+
+			RtcModeComboBox.Fill(PredefinedData.ArcticFox.RtcModes);
 
 			SelectedProfleComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -230,6 +270,12 @@ namespace NToolbox.Windows
 						tabContent.CanDeactive = true;
 					}
 				}
+			};
+
+			SmartModeComboBox.SelectedIndexChanged += (s, e) =>
+			{
+				var mode = SmartModeComboBox.GetSelectedItem<ArcticFoxConfiguration.SmartMode>();
+				SelectedProfleComboBox.Enabled = mode == ArcticFoxConfiguration.SmartMode.Off;
 			};
 		}
 
@@ -254,11 +300,11 @@ namespace NToolbox.Windows
 				if (data == null) return new ConfigurationReadResult(null, ReadResult.UnableToRead);
 
 				var info = BinaryStructure.ReadBinary<ArcticFoxConfiguration.DeviceInfo>(data);
-				if (info.SettingsVersion < SupportedSettingsVersion || info.FirmwareBuild < MinimumSupportedBuildNumber)
+				if (info.SettingsVersion < ArcticFoxConfiguration.SupportedSettingsVersion || info.FirmwareBuild < ArcticFoxConfiguration.MinimumSupportedBuildNumber)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedFirmware);
 				}
-				if (info.SettingsVersion > SupportedSettingsVersion)
+				if (info.SettingsVersion > ArcticFoxConfiguration.SupportedSettingsVersion)
 				{
 					return new ConfigurationReadResult(null, ReadResult.OutdatedToolbox);
 				}
@@ -296,11 +342,30 @@ namespace NToolbox.Windows
 
 				if (deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W96H16)
 				{
-					MainScreenSkinLabel.Visible = MainScreenSkinComboBox.Visible = false;
+					MainScreenSkinComboBox.Fill(PredefinedData.ArcticFox.MainSmallScreenSkins);
 					ClockTypeLabel.Visible = ClockTypeComboBox.Visible = false;
-					UseClassicMenuLabel.Visible = UseClassicMenuCheckBox.Visible = false;
+
+					if (LayoutTabControl.TabCount > 1)
+					{
+						LayoutTabControl.TabPages.Remove(ClassicScreenTabPage);
+						LayoutTabControl.TabPages.Remove(FoxyScreenTabPage);
+						LayoutTabControl.TabPages.Remove(CircleScreenTabPage);
+					}
+				}
+				else
+				{
+					MainScreenSkinComboBox.Fill(PredefinedData.ArcticFox.MainBigScreenSkins);
+					ClockTypeLabel.Visible = ClockTypeComboBox.Visible = true;
+
+					if (LayoutTabControl.TabCount == 1)
+					{
+						LayoutTabControl.TabPages.Insert(0, CircleScreenTabPage);
+						LayoutTabControl.TabPages.Insert(0, FoxyScreenTabPage);
+						LayoutTabControl.TabPages.Insert(0, ClassicScreenTabPage);
+					}
 				}
 
+				UsbChargeLabel.Visible = UsbChargeCheckBox.Visible = deviceInfo.NumberOfBatteries > 1;
 				Battery2OffsetLabel.Visible = Battery2OffsetUpDown.Visible = Battery2OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 1;
 				Battery3OffsetLabel.Visible = Battery3OffsetUpDown.Visible = Battery3OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 2;
 				Battery4OffsetLabel.Visible = Battery4OffsetUpDown.Visible = Battery4OffsetVoltsLabel.Visible = deviceInfo.NumberOfBatteries > 3;
@@ -334,23 +399,30 @@ namespace NToolbox.Windows
 
 				ProfilesTabControl.SelectedIndex = Math.Max(0, Math.Min(general.SelectedProfile, ProfilesTabControl.TabCount));
 				SelectedProfleComboBox.SelectItem(general.SelectedProfile);
-				SmartCheckBox.Checked = general.IsSmartEnabled;
+
+				SmartModeComboBox.SelectItem(general.SmartMode);
+				SmartRangeUpDown.SetValue(general.SmartRange);
 			}
 
 			var ui = m_deviceConfiguration.Interface;
 			{
 				BrightnessTrackBar.Value = ui.Brightness;
 				IdleTimeUpDow.SetValue(ui.DimTimeout);
+				IdleLockedTimeUpDow.SetValue(ui.DimTimeoutLocked);
 				PuffScreenDelayUpDown.SetValue(ui.PuffScreenDelay / 10m);
-				StealthModeCheckBox.Checked = ui.IsStealthMode;
+				IsStealthModeCheckBox.Checked = ui.IsStealthMode;
+				ShowChargingInStealthCheckBox.Checked = ui.ShowChargingInStealth;
+				ShowScreensaverInStealthCheckBox.Checked = ui.ShowScreensaverInStealth;
 				FlippedModeCheckBox.Checked = ui.IsFlipped;
 				MainScreenSkinComboBox.SelectItem(ui.MainScreenSkin);
-				UseClassicMenuCheckBox.Checked = ui.IsClassicMenu;
 				ShowLogoCheckBox.Checked = ui.IsLogoEnabled;
+				ShowLogoDelayUpDown.SetValue(ui.ShowLogoDelay);
 				ShowClockCheckBox.Checked = ui.IsClockOnMainScreen;
+				ShowClockDelayUpDown.SetValue(ui.ShowClockDelay);
 				ClockTypeComboBox.SelectItem(ui.ClockType);
 				ScreensaverTimeComboBox.SelectItem(ui.ScreensaveDuration);
 				ChargeScreenComboBox.SelectItem(ui.ChargeScreenType);
+				ChargeScreenExtraСomboBox.SelectItem(ui.ChargeExtraType);
 
 				// Classic Screen
 				InitializeLineContentEditor(ui.ClassicSkinVWLines.Line1, ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);
@@ -362,6 +434,15 @@ namespace NToolbox.Windows
 				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line2, ClassicTCLine2ComboBox, ClassicTCLine2FireCheckBox);
 				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line3, ClassicTCLine3ComboBox, ClassicTCLine3FireCheckBox);
 				InitializeLineContentEditor(ui.ClassicSkinTCLines.Line4, ClassicTCLine4ComboBox, ClassicTCLine4FireCheckBox);
+
+				// Foxy Screen
+				InitializeLineContentEditor(ui.FoxySkinVWLines.Line1, FoxyVWLine1ComboBox, FoxyVWLine1FireCheckBox);
+				InitializeLineContentEditor(ui.FoxySkinVWLines.Line2, FoxyVWLine2ComboBox, FoxyVWLine2FireCheckBox);
+				InitializeLineContentEditor(ui.FoxySkinVWLines.Line3, FoxyVWLine3ComboBox, FoxyVWLine3FireCheckBox);
+
+				InitializeLineContentEditor(ui.FoxySkinTCLines.Line1, FoxyTCLine1ComboBox, FoxyTCLine1FireCheckBox);
+				InitializeLineContentEditor(ui.FoxySkinTCLines.Line2, FoxyTCLine2ComboBox, FoxyTCLine2FireCheckBox);
+				InitializeLineContentEditor(ui.FoxySkinTCLines.Line3, FoxyTCLine3ComboBox, FoxyTCLine3FireCheckBox);
 
 				// Circle Screen
 				InitializeLineContentEditor(ui.CircleSkinVWLines.Line1, CircleVWLine1ComboBox);
@@ -387,15 +468,56 @@ namespace NToolbox.Windows
 				ClicksTC3ComboBox.SelectItem(ui.ClicksTC[1]);
 				ClicksTC4ComboBox.SelectItem(ui.ClicksTC[2]);
 
+				Clicks5ComboBox.SelectItem(ui.FiveClicks);
+
+				// Shortcuts VW
+				InStandbyVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InStandby);
+				InStandbyVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InStandby);
+				InStandbyVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InStandby);
+
+				InMenuVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InMenu);
+				InMenuVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InMenu);
+				InMenuVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InMenu);
+
+				InEditVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InEditMain);
+				InEditVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InEditMain);
+				InEditVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InEditMain);
+
+				InSelectorVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InSelector);
+				InSelectorVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InSelector);
+				InSelectorVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InSelector);
+
+				// Shortcuts TC
+				InStandbyTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InStandby);
+				InStandbyTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InStandby);
+				InStandbyTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InStandby);
+
+				InMenuTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InMenu);
+				InMenuTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InMenu);
+				InMenuTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InMenu);
+
+				InEditTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InEditMain);
+				InEditTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InEditMain);
+				InEditTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InEditMain);
+
+				InSelectorTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InSelector);
+				InSelectorTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InSelector);
+				InSelectorTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InSelector);
+
 				UpDownButtonsComboBox.SelectItem(ui.IsUpDownSwapped);
 				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
 				Step1WCheckBox.Checked = ui.IsPowerStep1W;
 
-				LayoutTabControl.SelectedTab = deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W64H128
-					? ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Classic
-						? ClassicScreenTabPage
-						: CircleScreenTabPage
-					: SmallScreenTabPage;
+				if (deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W96H16)
+				{
+					LayoutTabControl.SelectedTab = SmallScreenTabPage;
+				}
+				else
+				{
+					if (ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Classic) LayoutTabControl.SelectedTab = ClassicScreenTabPage;
+					if (ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Foxy) LayoutTabControl.SelectedTab = FoxyScreenTabPage;
+					if (ui.MainScreenSkin == ArcticFoxConfiguration.Skin.Circle) LayoutTabControl.SelectedTab = CircleScreenTabPage;
+				}
 			}
 
 			var stats = m_deviceConfiguration.Counters;
@@ -409,13 +531,14 @@ namespace NToolbox.Windows
 			{
 				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
 				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
-				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
-				X32CheckBox.Checked = advanced.IsX32;
-				LightSleepCheckBox.Checked = advanced.IsLightSleepMode;
+				RtcModeComboBox.SelectItem(advanced.RtcMode);
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
 				CheckTCRCheckBox.Checked = advanced.CheckTCR;
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
 				UsbNoSleepCheckBox.Checked = advanced.UsbNoSleep;
+				
+				BatteryModelComboBox.SelectItem(advanced.BatteryModel);
+				UpdateDischargeProfileNames();
 
 				Battery1OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[0] / 100m);
 				Battery2OffsetUpDown.SetValue(advanced.BatteryVoltageOffsets[1] / 100m);
@@ -455,6 +578,17 @@ namespace NToolbox.Windows
 			comboBox.SelectItem(contentCopy);
 		}
 
+		private void InitializeLineContentEditor(ArcticFoxConfiguration.FoxyLineContent content, ComboBox comboBox, CheckBox checkBox = null)
+		{
+			var contentCopy = content;
+			if (checkBox != null)
+			{
+				checkBox.Checked = contentCopy.HasFlag(ArcticFoxConfiguration.FoxyLineContent.FireTimeMask);
+			}
+			contentCopy &= ~ArcticFoxConfiguration.FoxyLineContent.FireTimeMask;
+			comboBox.SelectItem(contentCopy);
+		}
+
 		private void SaveWorkspace()
 		{
 			var general = m_deviceConfiguration.General;
@@ -467,7 +601,8 @@ namespace NToolbox.Windows
 				}
 
 				general.SelectedProfile = SelectedProfleComboBox.GetSelectedItem<byte>();
-				general.IsSmartEnabled = SmartCheckBox.Checked;
+				general.SmartMode = SmartModeComboBox.GetSelectedItem<ArcticFoxConfiguration.SmartMode>();
+				general.SmartRange = (byte)SmartRangeUpDown.Value;
 			}
 
 			var ui = m_deviceConfiguration.Interface;
@@ -475,16 +610,21 @@ namespace NToolbox.Windows
 				// General -> Screen Tab
 				ui.Brightness = (byte)BrightnessTrackBar.Value;
 				ui.DimTimeout = (byte)IdleTimeUpDow.Value;
+				ui.DimTimeoutLocked = (byte)IdleLockedTimeUpDow.Value;
 				ui.PuffScreenDelay = (byte)(PuffScreenDelayUpDown.Value * 10);
-				ui.IsStealthMode = StealthModeCheckBox.Checked;
+				ui.IsStealthMode = IsStealthModeCheckBox.Checked;
+				ui.ShowChargingInStealth = ShowChargingInStealthCheckBox.Checked;
+				ui.ShowScreensaverInStealth = ShowScreensaverInStealthCheckBox.Checked;
 				ui.IsFlipped = FlippedModeCheckBox.Checked;
 				ui.MainScreenSkin = MainScreenSkinComboBox.GetSelectedItem<ArcticFoxConfiguration.Skin>();
-				ui.IsClassicMenu = UseClassicMenuCheckBox.Checked;
 				ui.IsLogoEnabled = ShowLogoCheckBox.Checked;
+				ui.ShowLogoDelay = (byte)ShowLogoDelayUpDown.Value;
 				ui.IsClockOnMainScreen = ShowClockCheckBox.Checked;
+				ui.ShowClockDelay = (byte)ShowClockDelayUpDown.Value;
 				ui.ClockType = ClockTypeComboBox.GetSelectedItem<ArcticFoxConfiguration.ClockType>();
 				ui.ScreensaveDuration = ScreensaverTimeComboBox.GetSelectedItem<ArcticFoxConfiguration.ScreenProtectionTime>();
 				ui.ChargeScreenType = ChargeScreenComboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeScreenType>();
+				ui.ChargeExtraType = ChargeScreenExtraСomboBox.GetSelectedItem<ArcticFoxConfiguration.ChargeExtraType>();
 
 				// General -> Layout Tab -> Classic Screen
 				ui.ClassicSkinVWLines.Line1 = SaveLineContent(ClassicVWLine1ComboBox, ClassicVWLine1FireCheckBox);
@@ -496,6 +636,15 @@ namespace NToolbox.Windows
 				ui.ClassicSkinTCLines.Line2 = SaveLineContent(ClassicTCLine2ComboBox, ClassicTCLine2FireCheckBox);
 				ui.ClassicSkinTCLines.Line3 = SaveLineContent(ClassicTCLine3ComboBox, ClassicTCLine3FireCheckBox);
 				ui.ClassicSkinTCLines.Line4 = SaveLineContent(ClassicTCLine4ComboBox, ClassicTCLine4FireCheckBox);
+
+				// General -> Layout Tab -> Foxy Screen
+				ui.FoxySkinVWLines.Line1 = SaveFoxyLineContent(FoxyVWLine1ComboBox, FoxyVWLine1FireCheckBox);
+				ui.FoxySkinVWLines.Line2 = SaveFoxyLineContent(FoxyVWLine2ComboBox, FoxyVWLine2FireCheckBox);
+				ui.FoxySkinVWLines.Line3 = SaveFoxyLineContent(FoxyVWLine3ComboBox, FoxyVWLine3FireCheckBox);
+
+				ui.FoxySkinTCLines.Line1 = SaveFoxyLineContent(FoxyTCLine1ComboBox, FoxyTCLine1FireCheckBox);
+				ui.FoxySkinTCLines.Line2 = SaveFoxyLineContent(FoxyTCLine2ComboBox, FoxyTCLine2FireCheckBox);
+				ui.FoxySkinTCLines.Line3 = SaveFoxyLineContent(FoxyTCLine3ComboBox, FoxyTCLine3FireCheckBox);
 
 				// General -> Layout Tab -> Circle Screen
 				ui.CircleSkinVWLines.Line1 = SaveLineContent(CircleVWLine1ComboBox);
@@ -521,6 +670,42 @@ namespace NToolbox.Windows
 				ui.ClicksTC[0] = ClicksTC2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 				ui.ClicksTC[1] = ClicksTC3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 				ui.ClicksTC[2] = ClicksTC4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+
+				ui.FiveClicks = Clicks5ComboBox.GetSelectedItem<ArcticFoxConfiguration.FiveClicks>();
+
+				// Shortcuts VW
+				ui.ShortcutsVW[0].InStandby = InStandbyVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsVW[1].InStandby = InStandbyVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsVW[2].InStandby = InStandbyVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+
+				ui.ShortcutsVW[0].InMenu = InMenuVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+				ui.ShortcutsVW[1].InMenu = InMenuVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+				ui.ShortcutsVW[2].InMenu = InMenuVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+
+				ui.ShortcutsVW[0].InEditMain = InEditVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+				ui.ShortcutsVW[1].InEditMain = InEditVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+				ui.ShortcutsVW[2].InEditMain = InEditVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+
+				ui.ShortcutsVW[0].InSelector = InSelectorVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
+				ui.ShortcutsVW[1].InSelector = InSelectorVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
+				ui.ShortcutsVW[2].InSelector = InSelectorVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
+
+				// Shortcuts TC
+				ui.ShortcutsTC[0].InStandby = InStandbyTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsTC[1].InStandby = InStandbyTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsTC[2].InStandby = InStandbyTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+
+				ui.ShortcutsTC[0].InMenu = InMenuTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+				ui.ShortcutsTC[1].InMenu = InMenuTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+				ui.ShortcutsTC[2].InMenu = InMenuTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
+
+				ui.ShortcutsTC[0].InEditMain = InEditTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+				ui.ShortcutsTC[1].InEditMain = InEditTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+				ui.ShortcutsTC[2].InEditMain = InEditTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInEdit>();
+
+				ui.ShortcutsTC[0].InSelector = InSelectorTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
+				ui.ShortcutsTC[1].InSelector = InSelectorTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
+				ui.ShortcutsTC[2].InSelector = InSelectorTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
 
 				ui.IsUpDownSwapped = UpDownButtonsComboBox.GetSelectedItem<bool>();
 				ui.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
@@ -551,8 +736,7 @@ namespace NToolbox.Windows
 				advanced.PuffCutOff = (byte)(PuffCutOffUpDown.Value * 10);
 				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
 				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
-				advanced.IsX32 = X32CheckBox.Checked;
-				advanced.IsLightSleepMode = LightSleepCheckBox.Checked;
+				advanced.RtcMode = RtcModeComboBox.GetSelectedItem<ArcticFoxConfiguration.RtcMode>();
 				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
 				advanced.CheckTCR = CheckTCRCheckBox.Checked;
 				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;
@@ -571,6 +755,16 @@ namespace NToolbox.Windows
 			if (checkBox != null && checkBox.Checked)
 			{
 				result |= ArcticFoxConfiguration.LineContent.FireTimeMask;
+			}
+			return result;
+		}
+
+		private ArcticFoxConfiguration.FoxyLineContent SaveFoxyLineContent(ComboBox comboBox, CheckBox checkBox = null)
+		{
+			var result = comboBox.GetSelectedItem<ArcticFoxConfiguration.FoxyLineContent>();
+			if (checkBox != null && checkBox.Checked)
+			{
+				result |= ArcticFoxConfiguration.FoxyLineContent.FireTimeMask;
 			}
 			return result;
 		}
@@ -619,6 +813,22 @@ namespace NToolbox.Windows
 				Trace.Warn(ex);
 				InfoBox.Show(GetErrorMessage("downloading settings"));
 			}
+		}
+
+		internal void UpdateDischargeProfileNames()
+		{
+			var selectedProfile = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
+			BatteryModelComboBox.BeginUpdate();
+			for (var i = 0; i < m_deviceConfiguration.Advanced.CustomBatteryProfiles.Length; i++)
+			{
+				var profile = m_deviceConfiguration.Advanced.CustomBatteryProfiles[i];
+				var index = i + 1;
+
+				BatteryModelComboBox.Items.RemoveAt(index);
+				BatteryModelComboBox.Items.Insert(index, new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>(profile.Name, (ArcticFoxConfiguration.BatteryModel)index));
+			}
+			BatteryModelComboBox.EndUpdate();
+			BatteryModelComboBox.SelectItem(selectedProfile);
 		}
 
 		internal void UpdatePowerCurveNames()
@@ -673,8 +883,8 @@ namespace NToolbox.Windows
 
 		private static void SetSharedDeviceInfo(ArcticFoxConfiguration.DeviceInfo deviceInfo)
 		{
-			deviceInfo.MaxPower = MaxPower;
-			deviceInfo.NumberOfBatteries = MaxBatteries;
+			deviceInfo.MaxDevicePower = ArcticFoxConfiguration.MaxPower;
+			deviceInfo.NumberOfBatteries = ArcticFoxConfiguration.MaxBatteries;
 			deviceInfo.DisplaySize = ArcticFoxConfiguration.DisplaySize.W64H128;
 		}
 
@@ -717,9 +927,14 @@ namespace NToolbox.Windows
 
 		private void BatteryEditButton_Click(object sender, EventArgs e)
 		{
-			using (var editor = new DischargeProfileWindow(m_deviceConfiguration.Advanced.CustomBatteryProfile))
+			var selectedBattery = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
+			// Ignoring GEN profile.
+			var customBattery = m_deviceConfiguration.Advanced.CustomBatteryProfiles[(byte)selectedBattery - 1];
+
+			using (var editor = new DischargeProfileWindow(customBattery))
 			{
-				editor.ShowDialog();
+				if (editor.ShowDialog() != DialogResult.OK) return;
+				UpdateDischargeProfileNames();
 			}
 		}
 
@@ -786,7 +1001,6 @@ namespace NToolbox.Windows
 		{
 			if (m_deviceConfiguration == null) return;
 
-			var isBinary = ModifierKeys.HasFlag(Keys.Control) && ModifierKeys.HasFlag(Keys.Alt);
 			using (var sf = new SaveFileDialog { Filter = FileFilters.ArcticFoxConfigFilter })
 			{
 				if (sf.ShowDialog() != DialogResult.OK) return;
@@ -798,12 +1012,13 @@ namespace NToolbox.Windows
 					{
 						cfgCopy.Info.FirmwareVersion = 0;
 						cfgCopy.Info.HardwareVersion = 0;
-						cfgCopy.Info.MaxPower = 0;
+						cfgCopy.Info.MaxDevicePower = 0;
 						cfgCopy.Info.NumberOfBatteries = 0;
 						cfgCopy.Info.ProductId = string.Empty;
 					}
 
 					byte[] bytes;
+					var isBinary = ModifierKeys.HasFlag(Keys.Control) && ModifierKeys.HasFlag(Keys.Alt);
 					if (isBinary)
 					{
 						bytes = BinaryStructure.WriteBinary(cfgCopy);
@@ -905,7 +1120,7 @@ namespace NToolbox.Windows
 			if (m_isWorkspaceOpen || !onStartup) return;
 			if (!m_isDeviceConnected)
 			{
-				ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, MinimumSupportedBuildNumber));
+				ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, ArcticFoxConfiguration.MinimumSupportedBuildNumber));
 				return;
 			}
 			ReadConfigurationAndShowResult(m_deviceConfigurationProvider);
@@ -924,7 +1139,7 @@ namespace NToolbox.Windows
 				}
 				else if (readResult.Result == ReadResult.OutdatedFirmware)
 				{
-					ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, MinimumSupportedBuildNumber));
+					ShowWelcomeScreen(string.Format(LocalizableStrings.MessageConnectDevice, ArcticFoxConfiguration.MinimumSupportedBuildNumber));
 				}
 				else if (readResult.Result == ReadResult.OutdatedToolbox)
 				{
