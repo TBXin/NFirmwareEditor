@@ -4056,9 +4056,9 @@
 			// 
 			this.ConfigurationMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.ConfigurationMenuButton, "Toolbox.ArcticFoxConfiguration.ConfigurationButton");
-			this.ConfigurationMenuButton.Location = new System.Drawing.Point(238, 3);
+			this.ConfigurationMenuButton.Location = new System.Drawing.Point(218, 3);
 			this.ConfigurationMenuButton.Name = "ConfigurationMenuButton";
-			this.ConfigurationMenuButton.Size = new System.Drawing.Size(90, 24);
+			this.ConfigurationMenuButton.Size = new System.Drawing.Size(110, 24);
 			this.ConfigurationMenuButton.TabIndex = 35;
 			this.ConfigurationMenuButton.TabStop = false;
 			this.ConfigurationMenuButton.Text = "Configuration▾";
