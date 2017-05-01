@@ -176,7 +176,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Languages\UK.lpack.txt">
+    <None Include="Languages\UA.lpack.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
