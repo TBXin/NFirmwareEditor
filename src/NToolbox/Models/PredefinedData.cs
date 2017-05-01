@@ -219,7 +219,7 @@ namespace NToolbox.Models
 					return new object[]
 					{
 						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinClassic, ArcticFoxConfiguration.Skin.Classic),
-						new NamedItemContainer<ArcticFoxConfiguration.Skin>("Lite", ArcticFoxConfiguration.Skin.Circle)
+						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinLite, ArcticFoxConfiguration.Skin.Circle)
 					};
 				}
 			}
@@ -299,16 +299,16 @@ namespace NToolbox.Models
 						
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsShowClock, ArcticFoxConfiguration.ClickAction.MainScreenClock),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsInfoScreen, ArcticFoxConfiguration.ClickAction.InfoScreen),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ResetCounters, ArcticFoxConfiguration.ClickAction.ResetCounters),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Power Bank", ArcticFoxConfiguration.ClickAction.PowerBank),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsResetCounters, ArcticFoxConfiguration.ClickAction.ResetCounters),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsPowerBank, ArcticFoxConfiguration.ClickAction.PowerBank),
 
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Resistance Lock / Unlock", ArcticFoxConfiguration.ClickAction.LockResistance),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Key Lock / Unlock", ArcticFoxConfiguration.ClickAction.KeyLock),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsResistanceLockUnlock, ArcticFoxConfiguration.ClickAction.LockResistance),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsKeyLockUnlock, ArcticFoxConfiguration.ClickAction.KeyLock),
 
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>("Stealth On / Off", ArcticFoxConfiguration.ClickAction.Stealth),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsStealthOnOff, ArcticFoxConfiguration.ClickAction.Stealth),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSmartOnOff, ArcticFoxConfiguration.ClickAction.SmartOnOff),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsLslOnOff, ArcticFoxConfiguration.ClickAction.LslOnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsOnOff, ArcticFoxConfiguration.ClickAction.OnOff)
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsDeviceOnOff, ArcticFoxConfiguration.ClickAction.OnOff)
 					};
 				}
 			}
@@ -319,8 +319,8 @@ namespace NToolbox.Models
 				{
 					return new object[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>("Device On / Off", ArcticFoxConfiguration.FiveClicks.OnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>("Device Lock / Unlock", ArcticFoxConfiguration.FiveClicks.LockUnlock)
+						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>(LocalizableStrings.ClickActionsDeviceOnOff, ArcticFoxConfiguration.FiveClicks.OnOff),
+						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>(LocalizableStrings.ClickActionsDeviceLockUnlock, ArcticFoxConfiguration.FiveClicks.LockUnlock)
 					};
 				}
 			}
@@ -331,8 +331,8 @@ namespace NToolbox.Models
 				{
 					return new object[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>("No Action", ArcticFoxConfiguration.ShortcutsInEdit.None),
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>("Reset Counter", ArcticFoxConfiguration.ShortcutsInEdit.ResetCounters)
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInEdit.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>(LocalizableStrings.ClickActionsResetCounters, ArcticFoxConfiguration.ShortcutsInEdit.ResetCounters)
 					};
 				}
 			}
@@ -343,8 +343,8 @@ namespace NToolbox.Models
 				{
 					return new object[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>("No Action", ArcticFoxConfiguration.ShortcutsInSelector.None),
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>("Reset Saved Resistance", ArcticFoxConfiguration.ShortcutsInSelector.ResetResistance)
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInSelector.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>(LocalizableStrings.ClickActionsResestSavedResistance, ArcticFoxConfiguration.ShortcutsInSelector.ResetResistance)
 					};
 				}
 			}
@@ -355,9 +355,9 @@ namespace NToolbox.Models
 				{
 					return new object[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>("No Action", ArcticFoxConfiguration.ShortcutsInMenu.None),
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>("Back", ArcticFoxConfiguration.ShortcutsInMenu.Back),
-						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>("Exit", ArcticFoxConfiguration.ShortcutsInMenu.Exit)
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInMenu.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsMenuBack, ArcticFoxConfiguration.ShortcutsInMenu.Back),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsMenuExit, ArcticFoxConfiguration.ShortcutsInMenu.Exit)
 					};
 				}
 			}

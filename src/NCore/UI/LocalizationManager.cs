@@ -114,7 +114,7 @@ namespace NCore.UI
 			{
 				var sb = new StringBuilder();
 				var rootNode = new Node();
-				foreach (var item in m_registeredDictionary.Keys)
+				foreach (var item in m_registeredDictionary.Keys.OrderBy(x => x))
 				{
 					RecursiveCreateTree(item.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries), rootNode);
 				}

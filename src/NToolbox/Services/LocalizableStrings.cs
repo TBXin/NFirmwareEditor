@@ -259,6 +259,11 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Circle", "Circle"); }
 		}
 
+		public static string SkinLite
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Lite", "Lite"); }
+		}
+
 		public static string ChargeScreenClassic
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreen.Classic", "Classic"); }
@@ -388,9 +393,14 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen", "Info Screen"); }
 		}
 
-		public static string ResetCounters
+		public static string ClickActionsResetCounters
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters", "Reset Counters"); }
+		}
+
+		public static string ClickActionsPowerBank
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.PowerBank", "Power Bank"); }
 		}
 
 		public static string ClickActionsSmartOnOff
@@ -403,9 +413,44 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf", "LSL On / Off"); }
 		}
 
-		public static string ClickActionsOnOff
+		public static string ClickActionsDeviceOnOff
 		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.OnOff", "Device On / Off"); }
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.DeviceOnOff", "Device On / Off"); }
+		}
+
+		public static string ClickActionsStealthOnOff
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.StealthOnOff", "Stealth On / Off"); }
+		}
+
+		public static string ClickActionsKeyLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.KeyLockUnlock", "Key Lock / Unlock"); }
+		}
+
+		public static string ClickActionsDeviceLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.DeviceLockUnlock", "Device Lock / Unlock"); }
+		}
+
+		public static string ClickActionsResistanceLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResistanceLockUnlock", "Resistance Lock / Unlock"); }
+		}
+
+		public static string ClickActionsResestSavedResistance
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResestSavedResistance", "Reset Saved Resistance"); }
+		}
+
+		public static string ClickActionsMenuBack
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.MenuBack", "Back"); }
+		}
+
+		public static string ClickActionsMenuExit
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.MenuExit", "Exit"); }
 		}
 		#endregion
 
@@ -552,18 +597,6 @@ namespace NToolbox.Services
 		#endregion
 
 		#region Tooltips
-		public static string MainScreenSkinTooltip
-		{
-			get
-			{
-				return LocalizationManager.Instance.GetLocalizedString
-				(
-					"Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin",
-					"Change main screen style. Applicable only for devices with big screen (64x128)."
-				);
-			}
-		}
-
 		public static string ShowLogoTooltip
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo", "Show the logo on the main screen."); }

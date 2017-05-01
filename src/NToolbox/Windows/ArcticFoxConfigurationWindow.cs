@@ -112,9 +112,6 @@ namespace NToolbox.Windows
 
 		private void InitializeTooltips()
 		{
-			MainToolTip.SetToolTip(MainScreenSkinLabel, LocalizableStrings.MainScreenSkinTooltip);
-			MainToolTip.SetToolTip(MainScreenSkinComboBox, LocalizableStrings.MainScreenSkinTooltip);
-
 			MainToolTip.SetToolTip(ShowLogoLabel, LocalizableStrings.ShowLogoTooltip);
 			MainToolTip.SetToolTip(ShowLogoCheckBox, LocalizableStrings.ShowLogoTooltip);
 

@@ -62,7 +62,6 @@
 			this.label73 = new System.Windows.Forms.Label();
 			this.IdleLockedTimeUpDow = new System.Windows.Forms.NumericUpDown();
 			this.label74 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
 			this.PuffScreenDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label22 = new System.Windows.Forms.Label();
 			this.BrightnessPercentLabel = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@
 			this.label33 = new System.Windows.Forms.Label();
 			this.label36 = new System.Windows.Forms.Label();
 			this.AppearanceTabPage = new System.Windows.Forms.TabPage();
+			this.label17 = new System.Windows.Forms.Label();
 			this.label77 = new System.Windows.Forms.Label();
 			this.ShowClockDelayUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label78 = new System.Windows.Forms.Label();
@@ -800,7 +800,6 @@
 			this.ScreenSettingsTabPage.Controls.Add(this.label73);
 			this.ScreenSettingsTabPage.Controls.Add(this.IdleLockedTimeUpDow);
 			this.ScreenSettingsTabPage.Controls.Add(this.label74);
-			this.ScreenSettingsTabPage.Controls.Add(this.label17);
 			this.ScreenSettingsTabPage.Controls.Add(this.PuffScreenDelayUpDown);
 			this.ScreenSettingsTabPage.Controls.Add(this.label22);
 			this.ScreenSettingsTabPage.Controls.Add(this.BrightnessPercentLabel);
@@ -812,7 +811,7 @@
 			this.ScreenSettingsTabPage.Controls.Add(this.label32);
 			this.ScreenSettingsTabPage.Controls.Add(this.label33);
 			this.ScreenSettingsTabPage.Controls.Add(this.label36);
-			this.MainLocalizationExtender.SetKey(this.ScreenSettingsTabPage, "Toolbox.ArcticFoxConfiguration.ScreenTab.SettingsTab");
+			this.MainLocalizationExtender.SetKey(this.ScreenSettingsTabPage, "Toolbox.ArcticFoxConfiguration.Screen.SettingsTab");
 			this.ScreenSettingsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ScreenSettingsTabPage.Name = "ScreenSettingsTabPage";
 			this.ScreenSettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -865,16 +864,6 @@
 			this.label74.Size = new System.Drawing.Size(98, 13);
 			this.label74.TabIndex = 147;
 			this.label74.Text = "Idle Time (Locked):";
-			// 
-			// label17
-			// 
-			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.Screen.Settings.TooltipLabel");
-			this.label17.Location = new System.Drawing.Point(4, 360);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(364, 17);
-			this.label17.TabIndex = 145;
-			this.label17.Text = "Move mouse to the checkbox or label to show tooltip.";
 			// 
 			// PuffScreenDelayUpDown
 			// 
@@ -1018,6 +1007,7 @@
 			// 
 			// AppearanceTabPage
 			// 
+			this.AppearanceTabPage.Controls.Add(this.label17);
 			this.AppearanceTabPage.Controls.Add(this.label77);
 			this.AppearanceTabPage.Controls.Add(this.ShowClockDelayUpDown);
 			this.AppearanceTabPage.Controls.Add(this.label78);
@@ -1038,13 +1028,23 @@
 			this.AppearanceTabPage.Controls.Add(this.ShowLogoLabel);
 			this.AppearanceTabPage.Controls.Add(this.MainScreenSkinComboBox);
 			this.AppearanceTabPage.Controls.Add(this.MainScreenSkinLabel);
-			this.MainLocalizationExtender.SetKey(this.AppearanceTabPage, "Toolbox.ArcticFoxConfiguration.ScreenTab.AppearanceTab");
+			this.MainLocalizationExtender.SetKey(this.AppearanceTabPage, "Toolbox.ArcticFoxConfiguration.Screen.AppearanceTab");
 			this.AppearanceTabPage.Location = new System.Drawing.Point(4, 22);
 			this.AppearanceTabPage.Name = "AppearanceTabPage";
 			this.AppearanceTabPage.Size = new System.Drawing.Size(374, 379);
 			this.AppearanceTabPage.TabIndex = 2;
 			this.AppearanceTabPage.Text = "Appearance";
 			this.AppearanceTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label17
+			// 
+			this.label17.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.MainLocalizationExtender.SetKey(this.label17, "Toolbox.ArcticFoxConfiguration.Screen.Appearance.TooltipLabel");
+			this.label17.Location = new System.Drawing.Point(4, 360);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(364, 17);
+			this.label17.TabIndex = 163;
+			this.label17.Text = "Move mouse to the checkbox / combobox or label to show tooltip.";
 			// 
 			// label77
 			// 
@@ -1205,7 +1205,6 @@
 			this.ShowClockCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowClockCheckBox.TabIndex = 150;
 			this.ShowClockCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.ShowClockCheckBox, "Show the clock on the main screen.");
 			this.ShowClockCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ClockTypeComboBox
@@ -1227,7 +1226,6 @@
 			this.ShowLogoCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ShowLogoCheckBox.TabIndex = 146;
 			this.ShowLogoCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.ShowLogoCheckBox, "Show the logo on the main screen");
 			this.ShowLogoCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ShowClockLabel
@@ -1239,7 +1237,6 @@
 			this.ShowClockLabel.Size = new System.Drawing.Size(65, 13);
 			this.ShowClockLabel.TabIndex = 149;
 			this.ShowClockLabel.Text = "Show Clock:";
-			this.MainToolTip.SetToolTip(this.ShowClockLabel, "Show the clock on the main screen.");
 			// 
 			// ClockTypeLabel
 			// 
@@ -1260,7 +1257,6 @@
 			this.ShowLogoLabel.Size = new System.Drawing.Size(63, 13);
 			this.ShowLogoLabel.TabIndex = 145;
 			this.ShowLogoLabel.Text = "Show Logo:";
-			this.MainToolTip.SetToolTip(this.ShowLogoLabel, "Show the logo on the main screen");
 			// 
 			// MainScreenSkinComboBox
 			// 
@@ -1271,7 +1267,6 @@
 			this.MainScreenSkinComboBox.Name = "MainScreenSkinComboBox";
 			this.MainScreenSkinComboBox.Size = new System.Drawing.Size(106, 21);
 			this.MainScreenSkinComboBox.TabIndex = 144;
-			this.MainToolTip.SetToolTip(this.MainScreenSkinComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// MainScreenSkinLabel
 			// 
@@ -1282,12 +1277,11 @@
 			this.MainScreenSkinLabel.Size = new System.Drawing.Size(91, 13);
 			this.MainScreenSkinLabel.TabIndex = 143;
 			this.MainScreenSkinLabel.Text = "Main Screen Skin:";
-			this.MainToolTip.SetToolTip(this.MainScreenSkinLabel, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// LayoutTabPage
 			// 
 			this.LayoutTabPage.Controls.Add(this.LayoutTabControl);
-			this.MainLocalizationExtender.SetKey(this.LayoutTabPage, "Toolbox.ArcticFoxConfiguration.ScreenTab.LayoutTab");
+			this.MainLocalizationExtender.SetKey(this.LayoutTabPage, "Toolbox.ArcticFoxConfiguration.Screen.LayoutTab");
 			this.LayoutTabPage.Location = new System.Drawing.Point(4, 22);
 			this.LayoutTabPage.Name = "LayoutTabPage";
 			this.LayoutTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1316,7 +1310,7 @@
 			// 
 			this.ClassicScreenTabPage.Controls.Add(this.groupPanel10);
 			this.ClassicScreenTabPage.Controls.Add(this.groupPanel9);
-			this.MainLocalizationExtender.SetKey(this.ClassicScreenTabPage, "Toolbox.ArcticFoxConfiguration.ClassicScreenTab");
+			this.MainLocalizationExtender.SetKey(this.ClassicScreenTabPage, "Toolbox.ArcticFoxConfiguration.Screen.Layout.ClassicScreenTab");
 			this.ClassicScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ClassicScreenTabPage.Name = "ClassicScreenTabPage";
 			this.ClassicScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1627,7 +1621,7 @@
 			// 
 			this.FoxyScreenTabPage.Controls.Add(this.groupPanel12);
 			this.FoxyScreenTabPage.Controls.Add(this.groupPanel11);
-			this.MainLocalizationExtender.SetKey(this.FoxyScreenTabPage, "");
+			this.MainLocalizationExtender.SetKey(this.FoxyScreenTabPage, "Toolbox.ArcticFoxConfiguration.Screen.Layout.FoxyScreenTab");
 			this.FoxyScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.FoxyScreenTabPage.Name = "FoxyScreenTabPage";
 			this.FoxyScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1870,7 +1864,7 @@
 			// 
 			this.CircleScreenTabPage.Controls.Add(this.groupPanel14);
 			this.CircleScreenTabPage.Controls.Add(this.groupPanel13);
-			this.MainLocalizationExtender.SetKey(this.CircleScreenTabPage, "Toolbox.ArcticFoxConfiguration.CircleScreenTab");
+			this.MainLocalizationExtender.SetKey(this.CircleScreenTabPage, "Toolbox.ArcticFoxConfiguration.Screen.Layout.CircleScreenTab");
 			this.CircleScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.CircleScreenTabPage.Name = "CircleScreenTabPage";
 			this.CircleScreenTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2065,7 +2059,7 @@
 			// 
 			this.SmallScreenTabPage.Controls.Add(this.groupPanel16);
 			this.SmallScreenTabPage.Controls.Add(this.groupPanel15);
-			this.MainLocalizationExtender.SetKey(this.SmallScreenTabPage, "Toolbox.ArcticFoxConfiguration.SmallScreenTab");
+			this.MainLocalizationExtender.SetKey(this.SmallScreenTabPage, "Toolbox.ArcticFoxConfiguration.Screen.Layout.SmallScreenTab");
 			this.SmallScreenTabPage.Location = new System.Drawing.Point(4, 22);
 			this.SmallScreenTabPage.Name = "SmallScreenTabPage";
 			this.SmallScreenTabPage.Size = new System.Drawing.Size(358, 344);
@@ -2243,7 +2237,7 @@
 			this.StealthTabPage.Controls.Add(this.label63);
 			this.StealthTabPage.Controls.Add(this.IsStealthModeCheckBox);
 			this.StealthTabPage.Controls.Add(this.label37);
-			this.MainLocalizationExtender.SetKey(this.StealthTabPage, "Toolbox.ArcticFoxConfiguration.ScreenTab.StealthTab");
+			this.MainLocalizationExtender.SetKey(this.StealthTabPage, "Toolbox.ArcticFoxConfiguration.Screen.StealthTab");
 			this.StealthTabPage.Location = new System.Drawing.Point(4, 22);
 			this.StealthTabPage.Name = "StealthTabPage";
 			this.StealthTabPage.Size = new System.Drawing.Size(374, 379);
@@ -2282,7 +2276,6 @@
 			this.label61.Size = new System.Drawing.Size(100, 13);
 			this.label61.TabIndex = 153;
 			this.label61.Text = "Show Screensaver:";
-			this.MainToolTip.SetToolTip(this.label61, "Show the clock on the main screen.");
 			// 
 			// label63
 			// 
@@ -2293,7 +2286,6 @@
 			this.label63.Size = new System.Drawing.Size(83, 13);
 			this.label63.TabIndex = 151;
 			this.label63.Text = "Show Charging:";
-			this.MainToolTip.SetToolTip(this.label63, "Show the logo on the main screen");
 			// 
 			// IsStealthModeCheckBox
 			// 
@@ -2352,7 +2344,7 @@
 			this.ControlsSettingsTabPage.Controls.Add(this.label65);
 			this.ControlsSettingsTabPage.Controls.Add(this.label25);
 			this.ControlsSettingsTabPage.Controls.Add(this.label39);
-			this.MainLocalizationExtender.SetKey(this.ControlsSettingsTabPage, "Toolbox.ArcticFoxConfiguration.ControlsTab.SettingsTab");
+			this.MainLocalizationExtender.SetKey(this.ControlsSettingsTabPage, "Toolbox.ArcticFoxConfiguration.Controls.SettingsTab");
 			this.ControlsSettingsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ControlsSettingsTabPage.Name = "ControlsSettingsTabPage";
 			this.ControlsSettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2428,7 +2420,7 @@
 			this.MultiClicksTabPage.Controls.Add(this.groupPanel8);
 			this.MultiClicksTabPage.Controls.Add(this.groupPanel7);
 			this.MultiClicksTabPage.Controls.Add(this.groupPanel6);
-			this.MainLocalizationExtender.SetKey(this.MultiClicksTabPage, "Toolbox.ArcticFoxConfiguration.ControlsTab.MultiClicksTab");
+			this.MainLocalizationExtender.SetKey(this.MultiClicksTabPage, "Toolbox.ArcticFoxConfiguration.Controls.MultiClicksTab");
 			this.MultiClicksTabPage.Location = new System.Drawing.Point(4, 22);
 			this.MultiClicksTabPage.Name = "MultiClicksTabPage";
 			this.MultiClicksTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2636,7 +2628,7 @@
 			this.ShortcutsVWTabPage.Controls.Add(this.groupPanel5);
 			this.ShortcutsVWTabPage.Controls.Add(this.groupPanel3);
 			this.ShortcutsVWTabPage.Controls.Add(this.groupPanel2);
-			this.MainLocalizationExtender.SetKey(this.ShortcutsVWTabPage, "Toolbox.ArcticFoxConfiguration.ControlsTab.ShortcutsVWTab");
+			this.MainLocalizationExtender.SetKey(this.ShortcutsVWTabPage, "Toolbox.ArcticFoxConfiguration.Controls.ShortcutsVWTab");
 			this.ShortcutsVWTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ShortcutsVWTabPage.Name = "ShortcutsVWTabPage";
 			this.ShortcutsVWTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -2967,7 +2959,7 @@
 			this.ShortcutsTCTabPage.Controls.Add(this.groupPanel18);
 			this.ShortcutsTCTabPage.Controls.Add(this.groupPanel19);
 			this.ShortcutsTCTabPage.Controls.Add(this.groupPanel20);
-			this.MainLocalizationExtender.SetKey(this.ShortcutsTCTabPage, "Toolbox.ArcticFoxConfiguration.ControlsTab.ShortcutsTCTab");
+			this.MainLocalizationExtender.SetKey(this.ShortcutsTCTabPage, "Toolbox.ArcticFoxConfiguration.Controls.ShortcutsTCTab");
 			this.ShortcutsTCTabPage.Location = new System.Drawing.Point(4, 22);
 			this.ShortcutsTCTabPage.Name = "ShortcutsTCTabPage";
 			this.ShortcutsTCTabPage.Size = new System.Drawing.Size(374, 379);
@@ -3359,7 +3351,6 @@
 			this.SmartModeComboBox.Name = "SmartModeComboBox";
 			this.SmartModeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.SmartModeComboBox.TabIndex = 118;
-			this.MainToolTip.SetToolTip(this.SmartModeComboBox, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// SmartModeLabel
 			// 
@@ -3370,7 +3361,6 @@
 			this.SmartModeLabel.Size = new System.Drawing.Size(68, 13);
 			this.SmartModeLabel.TabIndex = 117;
 			this.SmartModeLabel.Text = "Smart Mode:";
-			this.MainToolTip.SetToolTip(this.SmartModeLabel, "Change main screen style. Applicable only for devices with big screen (64x128).");
 			// 
 			// AdvancedTabPage
 			// 
@@ -3422,7 +3412,7 @@
 			this.SettingsTabPage.Controls.Add(this.ResetCountersLabel);
 			this.SettingsTabPage.Controls.Add(this.UsbChargeLabel);
 			this.SettingsTabPage.Controls.Add(this.label56);
-			this.MainLocalizationExtender.SetKey(this.SettingsTabPage, "Toolbox.ArcticFoxConfiguration.AdvancedTab.SettingsTab");
+			this.MainLocalizationExtender.SetKey(this.SettingsTabPage, "Toolbox.ArcticFoxConfiguration.Advanced.SettingsTab");
 			this.SettingsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.SettingsTabPage.Name = "SettingsTabPage";
 			this.SettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -3460,8 +3450,6 @@
 			this.CheckTCRCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.CheckTCRCheckBox.TabIndex = 113;
 			this.CheckTCRCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.CheckTCRCheckBox, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
-        "heavy coils.");
 			this.CheckTCRCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// UsbNoSleepCheckBox
@@ -3473,7 +3461,6 @@
 			this.UsbNoSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbNoSleepCheckBox.TabIndex = 111;
 			this.UsbNoSleepCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.UsbNoSleepCheckBox, "Do not enter deep sleep mode while connected to USB.");
 			this.UsbNoSleepCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// label19
@@ -3511,7 +3498,6 @@
 			this.PuffCutOffUpDown.TabIndex = 107;
 			this.PuffCutOffUpDown.TabStop = false;
 			this.PuffCutOffUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.PuffCutOffUpDown, "Maximum puff time correction.");
 			this.PuffCutOffUpDown.Value = new decimal(new int[] {
             10,
             0,
@@ -3547,7 +3533,6 @@
 			this.ShuntCorrectionUpDown.TabIndex = 74;
 			this.ShuntCorrectionUpDown.TabStop = false;
 			this.ShuntCorrectionUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.MainToolTip.SetToolTip(this.ShuntCorrectionUpDown, "Ohm-meter correction.");
 			this.ShuntCorrectionUpDown.Value = new decimal(new int[] {
             85,
             0,
@@ -3563,7 +3548,6 @@
 			this.ResetCountersCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ResetCountersCheckBox.TabIndex = 105;
 			this.ResetCountersCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.ResetCountersCheckBox, "Reset Counters on Battery Change, clear vaping statistics.");
 			this.ResetCountersCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// BatteryModelComboBox
@@ -3585,7 +3569,6 @@
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
 			this.UsbChargeCheckBox.Text = "Enabled";
-			this.MainToolTip.SetToolTip(this.UsbChargeCheckBox, "Enables or disables charging via USB.");
 			this.UsbChargeCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// BatteryEditButton
@@ -3618,8 +3601,6 @@
 			this.CheckTCRLabel.Size = new System.Drawing.Size(63, 13);
 			this.CheckTCRLabel.TabIndex = 112;
 			this.CheckTCRLabel.Text = "Check TCR:";
-			this.MainToolTip.SetToolTip(this.CheckTCRLabel, "Check coil material TCR, switching this option to off can eliminate TCR Error on " +
-        "heavy coils.");
 			// 
 			// UsbNoSleepLabel
 			// 
@@ -3630,7 +3611,6 @@
 			this.UsbNoSleepLabel.Size = new System.Drawing.Size(75, 13);
 			this.UsbNoSleepLabel.TabIndex = 110;
 			this.UsbNoSleepLabel.Text = "USB No Sleep:";
-			this.MainToolTip.SetToolTip(this.UsbNoSleepLabel, "Do not enter deep sleep mode while connected to USB.");
 			// 
 			// PuffCutOffLabel
 			// 
@@ -3641,7 +3621,6 @@
 			this.PuffCutOffLabel.Size = new System.Drawing.Size(71, 13);
 			this.PuffCutOffLabel.TabIndex = 108;
 			this.PuffCutOffLabel.Text = "Puff Cut-Off:";
-			this.MainToolTip.SetToolTip(this.PuffCutOffLabel, "Maximum puff time correction.");
 			// 
 			// ShuntCorrectionLabel
 			// 
@@ -3652,7 +3631,6 @@
 			this.ShuntCorrectionLabel.Size = new System.Drawing.Size(92, 13);
 			this.ShuntCorrectionLabel.TabIndex = 75;
 			this.ShuntCorrectionLabel.Text = "Shunt Correction:";
-			this.MainToolTip.SetToolTip(this.ShuntCorrectionLabel, "Ohm-meter correction.");
 			// 
 			// ResetCountersLabel
 			// 
@@ -3663,7 +3641,6 @@
 			this.ResetCountersLabel.Size = new System.Drawing.Size(46, 13);
 			this.ResetCountersLabel.TabIndex = 104;
 			this.ResetCountersLabel.Text = "RCOBC:";
-			this.MainToolTip.SetToolTip(this.ResetCountersLabel, "Reset Counters on Battery Change, clear vaping statistics.");
 			// 
 			// UsbChargeLabel
 			// 
@@ -3674,7 +3651,6 @@
 			this.UsbChargeLabel.Size = new System.Drawing.Size(68, 13);
 			this.UsbChargeLabel.TabIndex = 102;
 			this.UsbChargeLabel.Text = "USB Charge:";
-			this.MainToolTip.SetToolTip(this.UsbChargeLabel, "Enables or disables charging via USB.");
 			// 
 			// label56
 			// 
@@ -3689,7 +3665,7 @@
 			// PowerCurvesTabPage
 			// 
 			this.PowerCurvesTabPage.Controls.Add(this.PowerCurvesListView);
-			this.MainLocalizationExtender.SetKey(this.PowerCurvesTabPage, "Toolbox.ArcticFoxConfiguration.AdvancedTab.PowerCurvesTab");
+			this.MainLocalizationExtender.SetKey(this.PowerCurvesTabPage, "Toolbox.ArcticFoxConfiguration.Advanced.PowerCurvesTab");
 			this.PowerCurvesTabPage.Location = new System.Drawing.Point(4, 22);
 			this.PowerCurvesTabPage.Name = "PowerCurvesTabPage";
 			this.PowerCurvesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -3719,7 +3695,7 @@
 			// MaterialsTabPage
 			// 
 			this.MaterialsTabPage.Controls.Add(this.MaterialsListView);
-			this.MainLocalizationExtender.SetKey(this.MaterialsTabPage, "Toolbox.ArcticFoxConfiguration.AdvancedTab.MaterialsTab");
+			this.MainLocalizationExtender.SetKey(this.MaterialsTabPage, "Toolbox.ArcticFoxConfiguration.Advanced.MaterialsTab");
 			this.MaterialsTabPage.Location = new System.Drawing.Point(4, 22);
 			this.MaterialsTabPage.Name = "MaterialsTabPage";
 			this.MaterialsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -3760,7 +3736,7 @@
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetVoltsLabel);
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetLabel);
 			this.BVOTabPage.Controls.Add(this.Battery1OffsetUpDown);
-			this.MainLocalizationExtender.SetKey(this.BVOTabPage, "Toolbox.ArcticFoxConfiguration.AdvancedTab.BVOTab");
+			this.MainLocalizationExtender.SetKey(this.BVOTabPage, "Toolbox.ArcticFoxConfiguration.Advanced.BVOTab");
 			this.BVOTabPage.Location = new System.Drawing.Point(4, 22);
 			this.BVOTabPage.Name = "BVOTabPage";
 			this.BVOTabPage.Size = new System.Drawing.Size(374, 379);
@@ -4518,7 +4494,6 @@
 		private System.Windows.Forms.Label label32;
 		private System.Windows.Forms.Label label33;
 		private System.Windows.Forms.Label label36;
-		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.TabPage AppearanceTabPage;
 		private System.Windows.Forms.ComboBox ChargeScreenExtraСomboBox;
 		private System.Windows.Forms.Label label54;
@@ -4634,5 +4609,6 @@
 		private System.Windows.Forms.Label label71;
 		private System.Windows.Forms.ComboBox InStandbyTCFirePlusComboBox;
 		private System.Windows.Forms.Label label89;
+		private System.Windows.Forms.Label label17;
 	}
 }
