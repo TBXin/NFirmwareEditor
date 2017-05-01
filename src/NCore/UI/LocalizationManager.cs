@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,9 @@ namespace NCore.UI
 		}
 
 		[NotNull]
-		public static List<NamedItemContainer<string>> GetAvailableLanguages()
+		public static List<LanguagePackReference> GetAvailableLanguages()
 		{
-			var result = new List<NamedItemContainer<string>>();
+			var result = new List<LanguagePackReference>();
 			try
 			{
 				var files = Directory.GetFiles(ApplicationService.LanguagePacksDirectory, FileFilters.LanguagePackExtension);
@@ -45,7 +46,15 @@ namespace NCore.UI
 						var dotIndex = fileName.IndexOf(".", StringComparison.InvariantCulture);
 						lpName = dotIndex == -1 ? fileName : fileName.Substring(0, dotIndex);
 					}
-					result.Add(new NamedItemContainer<string>(lpName, file));
+
+					var flagFileName = lpName + ".png";
+					var flagFilePath = Path.Combine(ApplicationService.LanguagePacksDirectory, flagFileName);
+					result.Add
+					(
+						File.Exists(flagFilePath)
+							? new LanguagePackReference(lpName, file, Image.FromFile(flagFilePath))
+							: new LanguagePackReference(lpName, file, null)
+					);
 				}
 			}
 			catch (Exception ex)
@@ -183,5 +192,27 @@ namespace NCore.UI
 			internal List<string> Items { get; private set; }
 		}
 		#endif
+	}
+
+	public class LanguagePackReference
+	{
+		public LanguagePackReference([NotNull] string displayName, [NotNull] string filePath, [CanBeNull] Image flag)
+		{
+			if (string.IsNullOrEmpty(displayName)) throw new ArgumentNullException("displayName");
+			if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException("filePath");
+
+			DisplayName = displayName;
+			FilePath = filePath;
+			Flag = flag;
+		}
+
+		[NotNull]
+		public string DisplayName { get; private set; }
+
+		[NotNull]
+		public string FilePath { get; private set; }
+
+		[CanBeNull]
+		public Image Flag { get; private set; }
 	}
 }

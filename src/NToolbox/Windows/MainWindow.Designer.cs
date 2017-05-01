@@ -32,7 +32,7 @@
 			this.VersionLabel = new System.Windows.Forms.Label();
 			this.ButtonsPanel = new NCore.UI.BorderedPanel();
 			this.borderedPanel1 = new NCore.UI.BorderedPanel();
-			this.LanguageComboBox = new System.Windows.Forms.ComboBox();
+			this.LanguageButton = new System.Windows.Forms.Button();
 			this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
 			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
@@ -106,25 +106,27 @@
 			this.borderedPanel1.BorderRight = false;
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.LanguageComboBox);
+			this.borderedPanel1.Controls.Add(this.LanguageButton);
 			this.borderedPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
-			this.borderedPanel1.Location = new System.Drawing.Point(0, 261);
+			this.borderedPanel1.Location = new System.Drawing.Point(0, 260);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel1.Size = new System.Drawing.Size(240, 34);
+			this.borderedPanel1.Size = new System.Drawing.Size(240, 35);
 			this.borderedPanel1.TabIndex = 10;
 			// 
-			// LanguageComboBox
+			// LanguageButton
 			// 
-			this.LanguageComboBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.LanguageComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.LanguageComboBox, "");
-			this.LanguageComboBox.Location = new System.Drawing.Point(90, 7);
-			this.LanguageComboBox.Name = "LanguageComboBox";
-			this.LanguageComboBox.Size = new System.Drawing.Size(60, 21);
-			this.LanguageComboBox.TabIndex = 9;
+			this.LanguageButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.LanguageButton, "");
+			this.LanguageButton.Location = new System.Drawing.Point(80, 6);
+			this.LanguageButton.Name = "LanguageButton";
+			this.LanguageButton.Size = new System.Drawing.Size(80, 24);
+			this.LanguageButton.TabIndex = 10;
+			this.LanguageButton.TabStop = false;
+			this.LanguageButton.Text = "EN";
+			this.LanguageButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.LanguageButton.UseVisualStyleBackColor = true;
 			// 
 			// AboutLinkLabel
 			// 
@@ -370,10 +372,10 @@
 		private System.Windows.Forms.ToolStripMenuItem FirmwareUpdaterTrayMenuItem;
 		private System.Windows.Forms.Label VersionLabel;
 		private System.Windows.Forms.LinkLabel AboutLinkLabel;
-		private System.Windows.Forms.ComboBox LanguageComboBox;
 		private System.Windows.Forms.ToolStripMenuItem CloseArcticFoxConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private NCore.UI.BorderedPanel borderedPanel1;
+		private System.Windows.Forms.Button LanguageButton;
 	}
 }
 

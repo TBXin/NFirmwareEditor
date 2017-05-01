@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace NToolbox.Windows
 	{
 		private const string ApplicationVersion = "1.7";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
+		private readonly ContextMenuStrip m_languageContextMenu = new ContextMenuStrip();
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
 		private readonly string m_firmwareFile;
@@ -89,11 +91,14 @@ namespace NToolbox.Windows
 			AboutLinkLabel.Click += (s, e) =>
 			{
 				#if DEBUG
-				// Initialize all localizable strings.
-				typeof(LocalizableStrings).GetProperties().ForEach(p => p.GetValue(null, null));
-				// Create exportable lpack.txt
-				var result = LocalizationManager.Instance.GetLanguagePack();
-				System.Diagnostics.Debugger.Break();
+				if (System.Diagnostics.Debugger.IsAttached)
+				{
+					// Initialize all localizable strings.
+					typeof(LocalizableStrings).GetProperties().ForEach(p => p.GetValue(null, null));
+					// Create exportable lpack.txt
+					var result = LocalizationManager.Instance.GetLanguagePack();
+					System.Diagnostics.Debugger.Break();
+				}
 				#endif
 
 				using (var aboutWindow = new AboutWindow())
@@ -150,30 +155,45 @@ namespace NToolbox.Windows
 		private void InitializeLanguages()
 		{
 			var languages = LocalizationManager.GetAvailableLanguages();
-			foreach (var itemContainer in languages)
+			m_languageContextMenu.SuspendLayout();
+			foreach (var item in languages)
 			{
-				LanguageComboBox.Items.Add(itemContainer);
+				var lang = item;
+				var menuItem = new ToolStripMenuItem(lang.DisplayName, lang.Flag, (s, e) =>
+				{
+					foreach (ToolStripMenuItem child in m_languageContextMenu.Items)
+					{
+						child.Checked = false;
+					}
+
+					LocalizationManager.Instance.InitializeLanguagePack(lang.FilePath);
+					LocalizeSelf();
+
+					m_configuration.Language = lang.DisplayName;
+					SaveConfiguration();
+
+					((ToolStripMenuItem)s).Checked = true;
+					LanguageButton.Image = lang.Flag;
+					LanguageButton.Text = lang.DisplayName + @" ▾ ";
+				});
+				m_languageContextMenu.Items.Add(menuItem);
 			}
-			LanguageComboBox.SelectedIndexChanged += (s, e) =>
+			m_languageContextMenu.ResumeLayout(false);
+			LanguageButton.Click += (s, e) =>
 			{
-				var selectedContainer = LanguageComboBox.SelectedItem as NamedItemContainer<string>;
-				if (selectedContainer == null) return;
-
-				LocalizationManager.Instance.InitializeLanguagePack(selectedContainer.Data);
-				LocalizeSelf();
-
-				m_configuration.Language = selectedContainer.Name;
-				SaveConfiguration();
+				ArcticFoxConfigurationButton.Focus();
+				m_languageContextMenu.Show(LanguageButton, new Point(0, LanguageButton.Height + 1));
+				m_languageContextMenu.Focus();
 			};
 
-			if (string.IsNullOrEmpty(m_configuration.Language) && LanguageComboBox.Items.Count > 0)
+			if (string.IsNullOrEmpty(m_configuration.Language) && m_languageContextMenu.Items.Count > 0)
 			{
-				LanguageComboBox.SelectedIndex = 0;
+				m_languageContextMenu.Items[0].PerformClick();
 			}
 			else
 			{
-				var activeLanguage = languages.FindIndex(x => string.Equals(x.Name, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
-				if (activeLanguage != -1) LanguageComboBox.SelectedIndex = activeLanguage;
+				var activeLanguage = languages.FindIndex(x => string.Equals(x.DisplayName, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
+				if (activeLanguage != -1) m_languageContextMenu.Items[activeLanguage].PerformClick();
 			}
 		}
 
