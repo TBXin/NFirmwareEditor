@@ -17,6 +17,8 @@ namespace NCore.USB
 			{ "E150", new HidDeviceInfo("Joyetech eVic Basic", 64, 40) },
 			{ "E092", new HidDeviceInfo("Joyetech eVic AIO", 64, 40) },
 			{ "E182", new HidDeviceInfo("Joyetech eVic Primo", 64, 40) },
+			{ "E203", new HidDeviceInfo("Joyetech eVic Primo 2.0", 64, 40) },
+			{ "E196", new HidDeviceInfo("Joyetech eVic Primo Mini", 64, 40) },
 
 			{ "E060", new HidDeviceInfo("Joyetech Cuboid", 64, 40) },
 			{ "E056", new HidDeviceInfo("Joyetech Cuboid Mini", 64, 40) },
@@ -28,6 +30,7 @@ namespace NCore.USB
 			{ "M972", new HidDeviceInfo("Eleaf iStick TC200W", 96, 16) },
 			{ "M011", new HidDeviceInfo("Eleaf iStick TC100W", 96, 16) },
 			{ "M041", new HidDeviceInfo("Eleaf iStick Pico", 96, 16) },
+			{ "M038", new HidDeviceInfo("Eleaf iStick Pico RDTA", 96, 16) },
 			{ "M045", new HidDeviceInfo("Eleaf iStick Pico Mega", 96, 16) },
 			{ "M065", new HidDeviceInfo("Eleaf iStick Pico Dual", 96, 16) },
 			{ "M046", new HidDeviceInfo("Eleaf iStick Power", 96, 16) },
@@ -42,13 +45,16 @@ namespace NCore.USB
 			{ "W026", new HidDeviceInfo("Wismec Reuleaux RX75", 64, 48) },
 			{ "W069", new HidDeviceInfo("Wismec Reuleaux RX300", 64, 48) },
 			{ "W073", new HidDeviceInfo("Wismec Reuleaux RXmini", 64, 48) },
+			{ "W078", new HidDeviceInfo("Wismec Predator", 64, 48) },
 
-			{ "W010", new HidDeviceInfo("Vaporflask Classic") },
-			{ "W011", new HidDeviceInfo("Vaporflask Lite") },
-			{ "W013", new HidDeviceInfo("Vaporflask Stout") },
+			{ "W010", new HidDeviceInfo("Vaporflask Classic", 96, 16) },
+			{ "W011", new HidDeviceInfo("Vaporflask Lite", 96, 16) },
+			{ "W013", new HidDeviceInfo("Vaporflask Stout", 96, 16) },
 
 			{ "W016", new HidDeviceInfo("Beyondvape Centurion") },
-			{ "W043", new HidDeviceInfo("Vaponaute La Petit Box", 64, 48) }
+			{ "W043", new HidDeviceInfo("Vaponaute La Petit Box", 64, 48) },
+
+			{ "W057", new HidDeviceInfo("Vapor Shark SwitchBox RX", 96, 16) }
 		};
 
 		[NotNull]
