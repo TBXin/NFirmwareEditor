@@ -245,6 +245,7 @@ namespace NToolbox.Windows
 			};
 
 			RtcModeComboBox.Fill(PredefinedData.ArcticFox.RtcModes);
+			DeepSleepBehaviorComboBox.Fill(PredefinedData.ArcticFox.DeepSleepModes);
 
 			SelectedProfleComboBox.SelectedValueChanged += (s, e) =>
 			{
@@ -529,6 +530,7 @@ namespace NToolbox.Windows
 				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
 				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
 				RtcModeComboBox.SelectItem(advanced.RtcMode);
+				DeepSleepBehaviorComboBox.SelectItem(advanced.DeepSleepMode);
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
 				CheckTCRCheckBox.Checked = advanced.CheckTCR;
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
@@ -734,6 +736,7 @@ namespace NToolbox.Windows
 				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
 				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				advanced.RtcMode = RtcModeComboBox.GetSelectedItem<ArcticFoxConfiguration.RtcMode>();
+				advanced.DeepSleepMode = DeepSleepBehaviorComboBox.GetSelectedItem<ArcticFoxConfiguration.DeepSleepMode>();
 				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
 				advanced.CheckTCR = CheckTCRCheckBox.Checked;
 				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;

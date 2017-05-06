@@ -308,6 +308,7 @@ namespace NToolbox.Models
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsStealthOnOff, ArcticFoxConfiguration.ClickAction.Stealth),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSmartOnOff, ArcticFoxConfiguration.ClickAction.SmartOnOff),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsLslOnOff, ArcticFoxConfiguration.ClickAction.LslOnOff),
+						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsDeviceLockUnlock, ArcticFoxConfiguration.ClickAction.DeviceLock),
 						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsDeviceOnOff, ArcticFoxConfiguration.ClickAction.OnOff)
 					};
 				}
@@ -408,6 +409,19 @@ namespace NToolbox.Models
 						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LXT", ArcticFoxConfiguration.RtcMode.Lxt),
 						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LIRC", ArcticFoxConfiguration.RtcMode.Lirc),
 						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LSL", ArcticFoxConfiguration.RtcMode.Lsl)
+					};
+				}
+			}
+
+			public static object[] DeepSleepModes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeStandart, ArcticFoxConfiguration.DeepSleepMode.Standart),
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeLockDevice, ArcticFoxConfiguration.DeepSleepMode.DeviceLock),
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeTurnOffDevice, ArcticFoxConfiguration.DeepSleepMode.DeviceOff)
 					};
 				}
 			}

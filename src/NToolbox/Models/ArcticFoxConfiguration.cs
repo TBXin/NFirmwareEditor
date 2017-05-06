@@ -9,7 +9,7 @@ namespace NToolbox.Models
 	{
 		internal const ushort MaxPower = 4000;
 		internal const byte MaxBatteries = 4;
-		internal const int MinimumSupportedBuildNumber = 170425;
+		internal const int MinimumSupportedBuildNumber = 170506;
 		internal const int SupportedSettingsVersion = 8;
 
 		public DeviceInfo Info;
@@ -141,6 +141,7 @@ namespace NToolbox.Models
 
 			public bool CheckTCR;
 			public bool UsbNoSleep;
+			public DeepSleepMode DeepSleepMode;
 		}
 
 		internal class TFRTable
@@ -336,7 +337,8 @@ namespace NToolbox.Models
 			Stealth = 13,
 			KeyLock = 14,
 			LockResistance = 15,
-			PowerBank = 16
+			PowerBank = 16,
+			DeviceLock = 17
 		}
 
 		internal enum ShortcutsInEdit : byte
@@ -364,6 +366,13 @@ namespace NToolbox.Models
 			public ShortcutsInEdit InEditMain;
 			public ShortcutsInSelector InSelector;
 			public ShortcutsInMenu InMenu;
+		}
+
+		internal enum DeepSleepMode : byte
+		{
+			Standart = 0,
+			DeviceOff = 1,
+			DeviceLock = 2
 		}
 
 		[Flags]

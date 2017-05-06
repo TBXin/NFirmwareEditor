@@ -146,11 +146,6 @@ namespace NToolbox.Services
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Generic", "Generic Battery"); }
 		}
-
-		public static string BatteryModelCustom
-		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Custom", "Custom"); }
-		}
 		#endregion
 
 		#region InfoLines
@@ -451,6 +446,23 @@ namespace NToolbox.Services
 		public static string ClickActionsMenuExit
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.MenuExit", "Exit"); }
+		}
+		#endregion
+
+		#region DeepSleepModes
+		public static string DeepSleepModeStandart
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.Standart", "Just Sleep"); }
+		}
+
+		public static string DeepSleepModeTurnOffDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.TurnOffDevice", "Turn Off Device"); }
+		}
+
+		public static string DeepSleepModeLockDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.Lock Device", "Lock Device"); }
 		}
 		#endregion
 

@@ -278,6 +278,8 @@
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.DeepSleepBehaviorComboBox = new System.Windows.Forms.ComboBox();
+			this.DeepSleepBehaviorLabel = new System.Windows.Forms.Label();
 			this.RtcModeComboBox = new System.Windows.Forms.ComboBox();
 			this.RtcModeLabel = new System.Windows.Forms.Label();
 			this.CheckTCRCheckBox = new System.Windows.Forms.CheckBox();
@@ -3392,6 +3394,8 @@
 			// 
 			// SettingsTabPage
 			// 
+			this.SettingsTabPage.Controls.Add(this.DeepSleepBehaviorComboBox);
+			this.SettingsTabPage.Controls.Add(this.DeepSleepBehaviorLabel);
 			this.SettingsTabPage.Controls.Add(this.RtcModeComboBox);
 			this.SettingsTabPage.Controls.Add(this.RtcModeLabel);
 			this.SettingsTabPage.Controls.Add(this.CheckTCRCheckBox);
@@ -3420,6 +3424,26 @@
 			this.SettingsTabPage.TabIndex = 0;
 			this.SettingsTabPage.Text = "Settings";
 			this.SettingsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// DeepSleepBehaviorComboBox
+			// 
+			this.DeepSleepBehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.DeepSleepBehaviorComboBox.FormattingEnabled = true;
+			this.MainLocalizationExtender.SetKey(this.DeepSleepBehaviorComboBox, "");
+			this.DeepSleepBehaviorComboBox.Location = new System.Drawing.Point(160, 170);
+			this.DeepSleepBehaviorComboBox.Name = "DeepSleepBehaviorComboBox";
+			this.DeepSleepBehaviorComboBox.Size = new System.Drawing.Size(106, 21);
+			this.DeepSleepBehaviorComboBox.TabIndex = 118;
+			// 
+			// DeepSleepBehaviorLabel
+			// 
+			this.DeepSleepBehaviorLabel.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.DeepSleepBehaviorLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.DeepSleepBehaviorLabel");
+			this.DeepSleepBehaviorLabel.Location = new System.Drawing.Point(4, 173);
+			this.DeepSleepBehaviorLabel.Name = "DeepSleepBehaviorLabel";
+			this.DeepSleepBehaviorLabel.Size = new System.Drawing.Size(110, 13);
+			this.DeepSleepBehaviorLabel.TabIndex = 117;
+			this.DeepSleepBehaviorLabel.Text = "Deep Sleep Behavior:";
 			// 
 			// RtcModeComboBox
 			// 
@@ -3456,7 +3480,7 @@
 			// 
 			this.UsbNoSleepCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 200);
+			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 227);
 			this.UsbNoSleepCheckBox.Name = "UsbNoSleepCheckBox";
 			this.UsbNoSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbNoSleepCheckBox.TabIndex = 111;
@@ -3564,7 +3588,7 @@
 			// 
 			this.UsbChargeCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 173);
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 200);
 			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
@@ -3606,7 +3630,7 @@
 			// 
 			this.UsbNoSleepLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel");
-			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 200);
+			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 227);
 			this.UsbNoSleepLabel.Name = "UsbNoSleepLabel";
 			this.UsbNoSleepLabel.Size = new System.Drawing.Size(75, 13);
 			this.UsbNoSleepLabel.TabIndex = 110;
@@ -3646,7 +3670,7 @@
 			// 
 			this.UsbChargeLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel");
-			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 173);
+			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 200);
 			this.UsbChargeLabel.Name = "UsbChargeLabel";
 			this.UsbChargeLabel.Size = new System.Drawing.Size(68, 13);
 			this.UsbChargeLabel.TabIndex = 102;
@@ -4610,5 +4634,7 @@
 		private System.Windows.Forms.ComboBox InStandbyTCFirePlusComboBox;
 		private System.Windows.Forms.Label label89;
 		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.ComboBox DeepSleepBehaviorComboBox;
+		private System.Windows.Forms.Label DeepSleepBehaviorLabel;
 	}
 }
