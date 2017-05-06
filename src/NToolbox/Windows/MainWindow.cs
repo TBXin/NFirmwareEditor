@@ -252,8 +252,7 @@ namespace NToolbox.Windows
 
 				if (m_startupMode == StartupMode.ArcticFoxConfiguration ||
 				    m_startupMode == StartupMode.DeviceMonitor ||
-				    m_startupMode == StartupMode.FirmwareUpdater ||
-				    m_startupMode == StartupMode.MyEvicConfiguration)
+				    m_startupMode == StartupMode.FirmwareUpdater)
 				{
 					Opacity = 0;
 					Application.Exit();
@@ -271,7 +270,6 @@ namespace NToolbox.Windows
 		private void SetTrayItemsState(bool enable)
 		{
 			ArcticFoxConfigurationTrayMenuItem.Enabled =
-			//MyEvicConfigurationTrayMenuItem.Enabled = 
 			DeviceMonitorTrayMenuItem.Enabled = 
 			ScreenshooterTrayMenuItem.Enabled = 
 			FirmwareUpdaterTrayMenuItem.Enabled = enable;
