@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -144,6 +145,11 @@ namespace NCore
 		public static string SplitLines([CanBeNull] this string source)
 		{
 			return (source ?? string.Empty).Trim().Replace("\n", Environment.NewLine);
+		}
+
+		public static int ScaleToDpi(this Graphics gfx, int dimension)
+		{
+			return (int)(dimension * (gfx.DpiX / 96f));
 		}
 	}
 }

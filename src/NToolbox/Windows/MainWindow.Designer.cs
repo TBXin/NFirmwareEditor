@@ -32,14 +32,12 @@
 			this.VersionLabel = new System.Windows.Forms.Label();
 			this.ButtonsPanel = new NCore.UI.BorderedPanel();
 			this.borderedPanel1 = new NCore.UI.BorderedPanel();
-			this.LanguageButton = new System.Windows.Forms.Button();
+			this.LanguageMenuButton = new NCore.UI.MenuButton();
 			this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
 			this.DeviceMonitorButton = new NCore.UI.ExtendedButton();
 			this.ArcticFoxConfigurationButton = new NCore.UI.ExtendedButton();
 			this.FirmwareUpdaterButton = new NCore.UI.ExtendedButton();
-			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
-			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ShowTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,10 +54,12 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
+			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.ButtonsPanel.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.TrayContextMenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// VersionLabel
@@ -106,7 +106,7 @@
 			this.borderedPanel1.BorderRight = false;
 			this.borderedPanel1.BorderTop = true;
 			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.LanguageButton);
+			this.borderedPanel1.Controls.Add(this.LanguageMenuButton);
 			this.borderedPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
 			this.borderedPanel1.Location = new System.Drawing.Point(0, 260);
@@ -115,18 +115,18 @@
 			this.borderedPanel1.Size = new System.Drawing.Size(240, 35);
 			this.borderedPanel1.TabIndex = 10;
 			// 
-			// LanguageButton
+			// LanguageMenuButton
 			// 
-			this.LanguageButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.MainLocalizationExtender.SetKey(this.LanguageButton, "");
-			this.LanguageButton.Location = new System.Drawing.Point(80, 6);
-			this.LanguageButton.Name = "LanguageButton";
-			this.LanguageButton.Size = new System.Drawing.Size(80, 24);
-			this.LanguageButton.TabIndex = 10;
-			this.LanguageButton.TabStop = false;
-			this.LanguageButton.Text = "EN";
-			this.LanguageButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.LanguageButton.UseVisualStyleBackColor = true;
+			this.LanguageMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.LanguageMenuButton, "");
+			this.LanguageMenuButton.Location = new System.Drawing.Point(80, 6);
+			this.LanguageMenuButton.Name = "LanguageMenuButton";
+			this.LanguageMenuButton.Size = new System.Drawing.Size(80, 24);
+			this.LanguageMenuButton.TabIndex = 11;
+			this.LanguageMenuButton.Text = "EN";
+			this.LanguageMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.LanguageMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.LanguageMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// AboutLinkLabel
 			// 
@@ -192,24 +192,6 @@
 			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
 			this.FirmwareUpdaterButton.TabIndex = 3;
 			this.FirmwareUpdaterButton.Text = "Firmware Updater";
-			// 
-			// LogoPictureBox
-			// 
-			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.nfetoolbox;
-			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
-			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
-			this.LogoPictureBox.Name = "LogoPictureBox";
-			this.LogoPictureBox.Size = new System.Drawing.Size(180, 200);
-			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.LogoPictureBox.TabIndex = 0;
-			this.LogoPictureBox.TabStop = false;
-			// 
-			// TrayNotifyIcon
-			// 
-			this.TrayNotifyIcon.ContextMenuStrip = this.TrayContextMenuStrip;
-			this.TrayNotifyIcon.Text = "NFE Toolbox";
-			this.TrayNotifyIcon.Visible = true;
 			// 
 			// TrayContextMenuStrip
 			// 
@@ -322,6 +304,24 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
+			// LogoPictureBox
+			// 
+			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.nfetoolbox;
+			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
+			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
+			this.LogoPictureBox.Name = "LogoPictureBox";
+			this.LogoPictureBox.Size = new System.Drawing.Size(180, 200);
+			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.LogoPictureBox.TabIndex = 0;
+			this.LogoPictureBox.TabStop = false;
+			// 
+			// TrayNotifyIcon
+			// 
+			this.TrayNotifyIcon.ContextMenuStrip = this.TrayContextMenuStrip;
+			this.TrayNotifyIcon.Text = "NFE Toolbox";
+			this.TrayNotifyIcon.Visible = true;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -340,8 +340,8 @@
 			this.Text = "NFE Toolbox";
 			this.ButtonsPanel.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
 			this.TrayContextMenuStrip.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -375,7 +375,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CloseArcticFoxConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private NCore.UI.BorderedPanel borderedPanel1;
-		private System.Windows.Forms.Button LanguageButton;
+		private NCore.UI.MenuButton LanguageMenuButton;
 	}
 }
 

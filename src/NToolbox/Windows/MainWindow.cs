@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,7 +15,6 @@ namespace NToolbox.Windows
 	{
 		private const string ApplicationVersion = "1.7";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
-		private readonly ContextMenuStrip m_languageContextMenu = new ContextMenuStrip();
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
 		private readonly string m_firmwareFile;
@@ -155,13 +153,14 @@ namespace NToolbox.Windows
 		private void InitializeLanguages()
 		{
 			var languages = LocalizationManager.GetAvailableLanguages();
-			m_languageContextMenu.SuspendLayout();
+			var languageContextMenu = new ContextMenuStrip();
+			
 			foreach (var item in languages)
 			{
 				var lang = item;
 				var menuItem = new ToolStripMenuItem(lang.DisplayName, lang.Flag, (s, e) =>
 				{
-					foreach (ToolStripMenuItem child in m_languageContextMenu.Items)
+					foreach (ToolStripMenuItem child in languageContextMenu.Items)
 					{
 						child.Checked = false;
 					}
@@ -173,27 +172,19 @@ namespace NToolbox.Windows
 					SaveConfiguration();
 
 					((ToolStripMenuItem)s).Checked = true;
-					LanguageButton.Image = lang.Flag;
-					LanguageButton.Text = lang.DisplayName + @" ▾ ";
 				});
-				m_languageContextMenu.Items.Add(menuItem);
+				languageContextMenu.Items.Add(menuItem);
 			}
-			m_languageContextMenu.ResumeLayout(false);
-			LanguageButton.Click += (s, e) =>
-			{
-				ArcticFoxConfigurationButton.Focus();
-				m_languageContextMenu.Show(LanguageButton, new Point(0, LanguageButton.Height + 1));
-				m_languageContextMenu.Focus();
-			};
+			LanguageMenuButton.Menu = languageContextMenu;
 
-			if (string.IsNullOrEmpty(m_configuration.Language) && m_languageContextMenu.Items.Count > 0)
+			if (string.IsNullOrEmpty(m_configuration.Language) && languageContextMenu.Items.Count > 0)
 			{
-				m_languageContextMenu.Items[0].PerformClick();
+				languageContextMenu.Items[0].PerformClick();
 			}
 			else
 			{
 				var activeLanguage = languages.FindIndex(x => string.Equals(x.DisplayName, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
-				if (activeLanguage != -1) m_languageContextMenu.Items[activeLanguage].PerformClick();
+				if (activeLanguage != -1) languageContextMenu.Items[activeLanguage].PerformClick();
 			}
 		}
 
@@ -291,9 +282,9 @@ namespace NToolbox.Windows
 			return ApplicationService.GetAutorunState(StartupArgs.Minimzed);
 		}
 
-		private bool SetAutorunState(bool enabled)
+		private void SetAutorunState(bool enabled)
 		{
-			return ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
+			ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
 		}
 
 		#region Overrides of WindowBase

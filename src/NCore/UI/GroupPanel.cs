@@ -42,7 +42,7 @@ namespace NCore.UI
 			{
 				using (var gfx = Graphics.FromHwnd(IntPtr.Zero))
 				{
-					m_actualHeaderHeight = ScaleToDpi(gfx, m_headerHeight);
+					m_actualHeaderHeight = gfx.ScaleToDpi(m_headerHeight);
 					return new Rectangle
 					(
 						Padding.Left,
@@ -56,7 +56,7 @@ namespace NCore.UI
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			m_actualHeaderHeight = ScaleToDpi(e.Graphics, m_headerHeight);
+			m_actualHeaderHeight = e.Graphics.ScaleToDpi(m_headerHeight);
 
 			var clientRect = GetClientRect();
 			var headerRect = GetHedearRect(clientRect);
@@ -79,11 +79,6 @@ namespace NCore.UI
 
 			// Draw borders
 			e.Graphics.DrawRectangle(borderPen, clientRect);
-		}
-
-		private static int ScaleToDpi(Graphics gfx, int dimension)
-		{
-			return (int)(dimension * (gfx.DpiX / 96f));
 		}
 
 		private Rectangle GetClientRect()
