@@ -195,21 +195,21 @@
 			this.label39 = new System.Windows.Forms.Label();
 			this.MultiClicksTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel8 = new NCore.UI.GroupPanel();
+			this.Clicks5MenuButton = new NCore.UI.MenuButton();
 			this.label72 = new System.Windows.Forms.Label();
-			this.Clicks5ComboBox = new System.Windows.Forms.ComboBox();
 			this.groupPanel7 = new NCore.UI.GroupPanel();
+			this.ClicksTC4MenuButton = new NCore.UI.MenuButton();
 			this.label70 = new System.Windows.Forms.Label();
-			this.ClicksTC2ComboBox = new System.Windows.Forms.ComboBox();
-			this.ClicksTC3ComboBox = new System.Windows.Forms.ComboBox();
+			this.ClicksTC3MenuButton = new NCore.UI.MenuButton();
+			this.ClicksTC2MenuButton = new NCore.UI.MenuButton();
 			this.label69 = new System.Windows.Forms.Label();
-			this.ClicksTC4ComboBox = new System.Windows.Forms.ComboBox();
 			this.label68 = new System.Windows.Forms.Label();
 			this.groupPanel6 = new NCore.UI.GroupPanel();
-			this.ClicksVW2ComboBox = new System.Windows.Forms.ComboBox();
+			this.ClicksVW4MenuButton = new NCore.UI.MenuButton();
+			this.ClicksVW3MenuButton = new NCore.UI.MenuButton();
+			this.ClicksVW2MenuButton = new NCore.UI.MenuButton();
 			this.label42 = new System.Windows.Forms.Label();
-			this.ClicksVW3ComboBox = new System.Windows.Forms.ComboBox();
 			this.label43 = new System.Windows.Forms.Label();
-			this.ClicksVW4ComboBox = new System.Windows.Forms.ComboBox();
 			this.label44 = new System.Windows.Forms.Label();
 			this.ShortcutsVWTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel4 = new NCore.UI.GroupPanel();
@@ -234,11 +234,11 @@
 			this.InMenuVWFirePlusComboBox = new System.Windows.Forms.ComboBox();
 			this.label96 = new System.Windows.Forms.Label();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
-			this.InStandbyVWFireMinusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyVWPlusMinusMenuButton = new NCore.UI.MenuButton();
 			this.label82 = new System.Windows.Forms.Label();
-			this.InStandbyVWPlusMinusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyVWFirePlusMenuButton = new NCore.UI.MenuButton();
 			this.label81 = new System.Windows.Forms.Label();
-			this.InStandbyVWFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyVWFireMinusMenuButton = new NCore.UI.MenuButton();
 			this.label80 = new System.Windows.Forms.Label();
 			this.ShortcutsTCTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel17 = new NCore.UI.GroupPanel();
@@ -263,11 +263,11 @@
 			this.InMenuTCFirePlusComboBox = new System.Windows.Forms.ComboBox();
 			this.label66 = new System.Windows.Forms.Label();
 			this.groupPanel20 = new NCore.UI.GroupPanel();
-			this.InStandbyTCFireMinusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyTCPlusMinusMenuButton = new NCore.UI.MenuButton();
 			this.label67 = new System.Windows.Forms.Label();
-			this.InStandbyTCPlusMinusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyTCFirePlusMenuButton = new NCore.UI.MenuButton();
 			this.label71 = new System.Windows.Forms.Label();
-			this.InStandbyTCFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.InStandbyTCFireMinusMenuButton = new NCore.UI.MenuButton();
 			this.label89 = new System.Windows.Forms.Label();
 			this.SmartTabPage = new System.Windows.Forms.TabPage();
 			this.label14 = new System.Windows.Forms.Label();
@@ -2434,8 +2434,8 @@
 			// groupPanel8
 			// 
 			this.groupPanel8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel8.Controls.Add(this.Clicks5MenuButton);
 			this.groupPanel8.Controls.Add(this.label72);
-			this.groupPanel8.Controls.Add(this.Clicks5ComboBox);
 			this.groupPanel8.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel8.HeaderHeight = 30;
 			this.MainLocalizationExtender.SetKey(this.groupPanel8, "Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel");
@@ -2445,6 +2445,19 @@
 			this.groupPanel8.TabIndex = 153;
 			this.groupPanel8.TabStop = false;
 			this.groupPanel8.Text = "Shared:";
+			// 
+			// Clicks5MenuButton
+			// 
+			this.Clicks5MenuButton.AutoEllipsis = true;
+			this.Clicks5MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.Clicks5MenuButton, "");
+			this.Clicks5MenuButton.Location = new System.Drawing.Point(160, 35);
+			this.Clicks5MenuButton.Name = "Clicks5MenuButton";
+			this.Clicks5MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.Clicks5MenuButton.TabIndex = 147;
+			this.Clicks5MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.Clicks5MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.Clicks5MenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label72
 			// 
@@ -2456,24 +2469,14 @@
 			this.label72.TabIndex = 149;
 			this.label72.Text = "5 Clicks:";
 			// 
-			// Clicks5ComboBox
-			// 
-			this.Clicks5ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Clicks5ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.Clicks5ComboBox, "");
-			this.Clicks5ComboBox.Location = new System.Drawing.Point(160, 36);
-			this.Clicks5ComboBox.Name = "Clicks5ComboBox";
-			this.Clicks5ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.Clicks5ComboBox.TabIndex = 150;
-			// 
 			// groupPanel7
 			// 
 			this.groupPanel7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel7.Controls.Add(this.ClicksTC4MenuButton);
 			this.groupPanel7.Controls.Add(this.label70);
-			this.groupPanel7.Controls.Add(this.ClicksTC2ComboBox);
-			this.groupPanel7.Controls.Add(this.ClicksTC3ComboBox);
+			this.groupPanel7.Controls.Add(this.ClicksTC3MenuButton);
+			this.groupPanel7.Controls.Add(this.ClicksTC2MenuButton);
 			this.groupPanel7.Controls.Add(this.label69);
-			this.groupPanel7.Controls.Add(this.ClicksTC4ComboBox);
 			this.groupPanel7.Controls.Add(this.label68);
 			this.groupPanel7.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel7.HeaderHeight = 30;
@@ -2485,6 +2488,19 @@
 			this.groupPanel7.TabStop = false;
 			this.groupPanel7.Text = "TC Mode Fire Button Multi Clicks:";
 			// 
+			// ClicksTC4MenuButton
+			// 
+			this.ClicksTC4MenuButton.AutoEllipsis = true;
+			this.ClicksTC4MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksTC4MenuButton, "");
+			this.ClicksTC4MenuButton.Location = new System.Drawing.Point(160, 89);
+			this.ClicksTC4MenuButton.Name = "ClicksTC4MenuButton";
+			this.ClicksTC4MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksTC4MenuButton.TabIndex = 141;
+			this.ClicksTC4MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksTC4MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksTC4MenuButton.UseVisualStyleBackColor = true;
+			// 
 			// label70
 			// 
 			this.label70.AutoSize = true;
@@ -2495,25 +2511,31 @@
 			this.label70.TabIndex = 142;
 			this.label70.Text = "2 Clicks:";
 			// 
-			// ClicksTC2ComboBox
+			// ClicksTC3MenuButton
 			// 
-			this.ClicksTC2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC2ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksTC2ComboBox, "");
-			this.ClicksTC2ComboBox.Location = new System.Drawing.Point(160, 36);
-			this.ClicksTC2ComboBox.Name = "ClicksTC2ComboBox";
-			this.ClicksTC2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC2ComboBox.TabIndex = 143;
+			this.ClicksTC3MenuButton.AutoEllipsis = true;
+			this.ClicksTC3MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksTC3MenuButton, "");
+			this.ClicksTC3MenuButton.Location = new System.Drawing.Point(160, 62);
+			this.ClicksTC3MenuButton.Name = "ClicksTC3MenuButton";
+			this.ClicksTC3MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksTC3MenuButton.TabIndex = 140;
+			this.ClicksTC3MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksTC3MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksTC3MenuButton.UseVisualStyleBackColor = true;
 			// 
-			// ClicksTC3ComboBox
+			// ClicksTC2MenuButton
 			// 
-			this.ClicksTC3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC3ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksTC3ComboBox, "");
-			this.ClicksTC3ComboBox.Location = new System.Drawing.Point(160, 63);
-			this.ClicksTC3ComboBox.Name = "ClicksTC3ComboBox";
-			this.ClicksTC3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC3ComboBox.TabIndex = 145;
+			this.ClicksTC2MenuButton.AutoEllipsis = true;
+			this.ClicksTC2MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksTC2MenuButton, "");
+			this.ClicksTC2MenuButton.Location = new System.Drawing.Point(160, 35);
+			this.ClicksTC2MenuButton.Name = "ClicksTC2MenuButton";
+			this.ClicksTC2MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksTC2MenuButton.TabIndex = 139;
+			this.ClicksTC2MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksTC2MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksTC2MenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label69
 			// 
@@ -2524,16 +2546,6 @@
 			this.label69.Size = new System.Drawing.Size(46, 13);
 			this.label69.TabIndex = 144;
 			this.label69.Text = "3 Clicks:";
-			// 
-			// ClicksTC4ComboBox
-			// 
-			this.ClicksTC4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksTC4ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksTC4ComboBox, "");
-			this.ClicksTC4ComboBox.Location = new System.Drawing.Point(160, 90);
-			this.ClicksTC4ComboBox.Name = "ClicksTC4ComboBox";
-			this.ClicksTC4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksTC4ComboBox.TabIndex = 147;
 			// 
 			// label68
 			// 
@@ -2548,11 +2560,11 @@
 			// groupPanel6
 			// 
 			this.groupPanel6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel6.Controls.Add(this.ClicksVW2ComboBox);
+			this.groupPanel6.Controls.Add(this.ClicksVW4MenuButton);
+			this.groupPanel6.Controls.Add(this.ClicksVW3MenuButton);
+			this.groupPanel6.Controls.Add(this.ClicksVW2MenuButton);
 			this.groupPanel6.Controls.Add(this.label42);
-			this.groupPanel6.Controls.Add(this.ClicksVW3ComboBox);
 			this.groupPanel6.Controls.Add(this.label43);
-			this.groupPanel6.Controls.Add(this.ClicksVW4ComboBox);
 			this.groupPanel6.Controls.Add(this.label44);
 			this.groupPanel6.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel6.HeaderHeight = 30;
@@ -2564,15 +2576,44 @@
 			this.groupPanel6.TabStop = false;
 			this.groupPanel6.Text = "VW Mode Fire Button Multi Clicks:";
 			// 
-			// ClicksVW2ComboBox
+			// ClicksVW4MenuButton
 			// 
-			this.ClicksVW2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksVW2ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksVW2ComboBox, "");
-			this.ClicksVW2ComboBox.Location = new System.Drawing.Point(160, 36);
-			this.ClicksVW2ComboBox.Name = "ClicksVW2ComboBox";
-			this.ClicksVW2ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksVW2ComboBox.TabIndex = 131;
+			this.ClicksVW4MenuButton.AutoEllipsis = true;
+			this.ClicksVW4MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksVW4MenuButton, "");
+			this.ClicksVW4MenuButton.Location = new System.Drawing.Point(160, 89);
+			this.ClicksVW4MenuButton.Name = "ClicksVW4MenuButton";
+			this.ClicksVW4MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksVW4MenuButton.TabIndex = 138;
+			this.ClicksVW4MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksVW4MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksVW4MenuButton.UseVisualStyleBackColor = true;
+			// 
+			// ClicksVW3MenuButton
+			// 
+			this.ClicksVW3MenuButton.AutoEllipsis = true;
+			this.ClicksVW3MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksVW3MenuButton, "");
+			this.ClicksVW3MenuButton.Location = new System.Drawing.Point(160, 62);
+			this.ClicksVW3MenuButton.Name = "ClicksVW3MenuButton";
+			this.ClicksVW3MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksVW3MenuButton.TabIndex = 137;
+			this.ClicksVW3MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksVW3MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksVW3MenuButton.UseVisualStyleBackColor = true;
+			// 
+			// ClicksVW2MenuButton
+			// 
+			this.ClicksVW2MenuButton.AutoEllipsis = true;
+			this.ClicksVW2MenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.ClicksVW2MenuButton, "");
+			this.ClicksVW2MenuButton.Location = new System.Drawing.Point(160, 35);
+			this.ClicksVW2MenuButton.Name = "ClicksVW2MenuButton";
+			this.ClicksVW2MenuButton.Size = new System.Drawing.Size(142, 23);
+			this.ClicksVW2MenuButton.TabIndex = 136;
+			this.ClicksVW2MenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.ClicksVW2MenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.ClicksVW2MenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label42
 			// 
@@ -2584,16 +2625,6 @@
 			this.label42.TabIndex = 130;
 			this.label42.Text = "2 Clicks:";
 			// 
-			// ClicksVW3ComboBox
-			// 
-			this.ClicksVW3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksVW3ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksVW3ComboBox, "");
-			this.ClicksVW3ComboBox.Location = new System.Drawing.Point(160, 63);
-			this.ClicksVW3ComboBox.Name = "ClicksVW3ComboBox";
-			this.ClicksVW3ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksVW3ComboBox.TabIndex = 133;
-			// 
 			// label43
 			// 
 			this.label43.AutoSize = true;
@@ -2603,16 +2634,6 @@
 			this.label43.Size = new System.Drawing.Size(46, 13);
 			this.label43.TabIndex = 132;
 			this.label43.Text = "3 Clicks:";
-			// 
-			// ClicksVW4ComboBox
-			// 
-			this.ClicksVW4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ClicksVW4ComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ClicksVW4ComboBox, "");
-			this.ClicksVW4ComboBox.Location = new System.Drawing.Point(160, 90);
-			this.ClicksVW4ComboBox.Name = "ClicksVW4ComboBox";
-			this.ClicksVW4ComboBox.Size = new System.Drawing.Size(140, 21);
-			this.ClicksVW4ComboBox.TabIndex = 135;
 			// 
 			// label44
 			// 
@@ -2879,11 +2900,11 @@
 			// groupPanel2
 			// 
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel2.Controls.Add(this.InStandbyVWFireMinusComboBox);
+			this.groupPanel2.Controls.Add(this.InStandbyVWPlusMinusMenuButton);
 			this.groupPanel2.Controls.Add(this.label82);
-			this.groupPanel2.Controls.Add(this.InStandbyVWPlusMinusComboBox);
+			this.groupPanel2.Controls.Add(this.InStandbyVWFirePlusMenuButton);
 			this.groupPanel2.Controls.Add(this.label81);
-			this.groupPanel2.Controls.Add(this.InStandbyVWFirePlusComboBox);
+			this.groupPanel2.Controls.Add(this.InStandbyVWFireMinusMenuButton);
 			this.groupPanel2.Controls.Add(this.label80);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
@@ -2895,15 +2916,18 @@
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "In Standby:";
 			// 
-			// InStandbyVWFireMinusComboBox
+			// InStandbyVWPlusMinusMenuButton
 			// 
-			this.InStandbyVWFireMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyVWFireMinusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyVWFireMinusComboBox, "");
-			this.InStandbyVWFireMinusComboBox.Location = new System.Drawing.Point(43, 36);
-			this.InStandbyVWFireMinusComboBox.Name = "InStandbyVWFireMinusComboBox";
-			this.InStandbyVWFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyVWFireMinusComboBox.TabIndex = 120;
+			this.InStandbyVWPlusMinusMenuButton.AutoEllipsis = true;
+			this.InStandbyVWPlusMinusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyVWPlusMinusMenuButton, "");
+			this.InStandbyVWPlusMinusMenuButton.Location = new System.Drawing.Point(42, 89);
+			this.InStandbyVWPlusMinusMenuButton.Name = "InStandbyVWPlusMinusMenuButton";
+			this.InStandbyVWPlusMinusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyVWPlusMinusMenuButton.TabIndex = 154;
+			this.InStandbyVWPlusMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyVWPlusMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyVWPlusMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label82
 			// 
@@ -2915,15 +2939,18 @@
 			this.label82.TabIndex = 123;
 			this.label82.Text = "+ –";
 			// 
-			// InStandbyVWPlusMinusComboBox
+			// InStandbyVWFirePlusMenuButton
 			// 
-			this.InStandbyVWPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyVWPlusMinusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyVWPlusMinusComboBox, "");
-			this.InStandbyVWPlusMinusComboBox.Location = new System.Drawing.Point(43, 90);
-			this.InStandbyVWPlusMinusComboBox.Name = "InStandbyVWPlusMinusComboBox";
-			this.InStandbyVWPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyVWPlusMinusComboBox.TabIndex = 124;
+			this.InStandbyVWFirePlusMenuButton.AutoEllipsis = true;
+			this.InStandbyVWFirePlusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyVWFirePlusMenuButton, "");
+			this.InStandbyVWFirePlusMenuButton.Location = new System.Drawing.Point(42, 62);
+			this.InStandbyVWFirePlusMenuButton.Name = "InStandbyVWFirePlusMenuButton";
+			this.InStandbyVWFirePlusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyVWFirePlusMenuButton.TabIndex = 153;
+			this.InStandbyVWFirePlusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyVWFirePlusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyVWFirePlusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label81
 			// 
@@ -2935,15 +2962,18 @@
 			this.label81.TabIndex = 121;
 			this.label81.Text = "Fire +";
 			// 
-			// InStandbyVWFirePlusComboBox
+			// InStandbyVWFireMinusMenuButton
 			// 
-			this.InStandbyVWFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyVWFirePlusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyVWFirePlusComboBox, "");
-			this.InStandbyVWFirePlusComboBox.Location = new System.Drawing.Point(43, 63);
-			this.InStandbyVWFirePlusComboBox.Name = "InStandbyVWFirePlusComboBox";
-			this.InStandbyVWFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyVWFirePlusComboBox.TabIndex = 122;
+			this.InStandbyVWFireMinusMenuButton.AutoEllipsis = true;
+			this.InStandbyVWFireMinusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyVWFireMinusMenuButton, "");
+			this.InStandbyVWFireMinusMenuButton.Location = new System.Drawing.Point(42, 35);
+			this.InStandbyVWFireMinusMenuButton.Name = "InStandbyVWFireMinusMenuButton";
+			this.InStandbyVWFireMinusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyVWFireMinusMenuButton.TabIndex = 152;
+			this.InStandbyVWFireMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyVWFireMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyVWFireMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label80
 			// 
@@ -3209,11 +3239,11 @@
 			// groupPanel20
 			// 
 			this.groupPanel20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel20.Controls.Add(this.InStandbyTCFireMinusComboBox);
+			this.groupPanel20.Controls.Add(this.InStandbyTCPlusMinusMenuButton);
 			this.groupPanel20.Controls.Add(this.label67);
-			this.groupPanel20.Controls.Add(this.InStandbyTCPlusMinusComboBox);
+			this.groupPanel20.Controls.Add(this.InStandbyTCFirePlusMenuButton);
 			this.groupPanel20.Controls.Add(this.label71);
-			this.groupPanel20.Controls.Add(this.InStandbyTCFirePlusComboBox);
+			this.groupPanel20.Controls.Add(this.InStandbyTCFireMinusMenuButton);
 			this.groupPanel20.Controls.Add(this.label89);
 			this.groupPanel20.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel20.HeaderHeight = 30;
@@ -3225,15 +3255,18 @@
 			this.groupPanel20.TabStop = false;
 			this.groupPanel20.Text = "In Standby:";
 			// 
-			// InStandbyTCFireMinusComboBox
+			// InStandbyTCPlusMinusMenuButton
 			// 
-			this.InStandbyTCFireMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyTCFireMinusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyTCFireMinusComboBox, "");
-			this.InStandbyTCFireMinusComboBox.Location = new System.Drawing.Point(43, 36);
-			this.InStandbyTCFireMinusComboBox.Name = "InStandbyTCFireMinusComboBox";
-			this.InStandbyTCFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyTCFireMinusComboBox.TabIndex = 120;
+			this.InStandbyTCPlusMinusMenuButton.AutoEllipsis = true;
+			this.InStandbyTCPlusMinusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyTCPlusMinusMenuButton, "");
+			this.InStandbyTCPlusMinusMenuButton.Location = new System.Drawing.Point(42, 89);
+			this.InStandbyTCPlusMinusMenuButton.Name = "InStandbyTCPlusMinusMenuButton";
+			this.InStandbyTCPlusMinusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyTCPlusMinusMenuButton.TabIndex = 158;
+			this.InStandbyTCPlusMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyTCPlusMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyTCPlusMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label67
 			// 
@@ -3245,15 +3278,18 @@
 			this.label67.TabIndex = 123;
 			this.label67.Text = "+ –";
 			// 
-			// InStandbyTCPlusMinusComboBox
+			// InStandbyTCFirePlusMenuButton
 			// 
-			this.InStandbyTCPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyTCPlusMinusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyTCPlusMinusComboBox, "");
-			this.InStandbyTCPlusMinusComboBox.Location = new System.Drawing.Point(43, 90);
-			this.InStandbyTCPlusMinusComboBox.Name = "InStandbyTCPlusMinusComboBox";
-			this.InStandbyTCPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyTCPlusMinusComboBox.TabIndex = 124;
+			this.InStandbyTCFirePlusMenuButton.AutoEllipsis = true;
+			this.InStandbyTCFirePlusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyTCFirePlusMenuButton, "");
+			this.InStandbyTCFirePlusMenuButton.Location = new System.Drawing.Point(42, 62);
+			this.InStandbyTCFirePlusMenuButton.Name = "InStandbyTCFirePlusMenuButton";
+			this.InStandbyTCFirePlusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyTCFirePlusMenuButton.TabIndex = 157;
+			this.InStandbyTCFirePlusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyTCFirePlusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyTCFirePlusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label71
 			// 
@@ -3265,15 +3301,18 @@
 			this.label71.TabIndex = 121;
 			this.label71.Text = "Fire +";
 			// 
-			// InStandbyTCFirePlusComboBox
+			// InStandbyTCFireMinusMenuButton
 			// 
-			this.InStandbyTCFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.InStandbyTCFirePlusComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.InStandbyTCFirePlusComboBox, "");
-			this.InStandbyTCFirePlusComboBox.Location = new System.Drawing.Point(43, 63);
-			this.InStandbyTCFirePlusComboBox.Name = "InStandbyTCFirePlusComboBox";
-			this.InStandbyTCFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
-			this.InStandbyTCFirePlusComboBox.TabIndex = 122;
+			this.InStandbyTCFireMinusMenuButton.AutoEllipsis = true;
+			this.InStandbyTCFireMinusMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.MainLocalizationExtender.SetKey(this.InStandbyTCFireMinusMenuButton, "");
+			this.InStandbyTCFireMinusMenuButton.Location = new System.Drawing.Point(42, 35);
+			this.InStandbyTCFireMinusMenuButton.Name = "InStandbyTCFireMinusMenuButton";
+			this.InStandbyTCFireMinusMenuButton.Size = new System.Drawing.Size(132, 23);
+			this.InStandbyTCFireMinusMenuButton.TabIndex = 156;
+			this.InStandbyTCFireMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.InStandbyTCFireMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.InStandbyTCFireMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
 			// label89
 			// 
@@ -4411,17 +4450,11 @@
 		private System.Windows.Forms.TabControl ControlsTabControl;
 		private System.Windows.Forms.TabPage MultiClicksTabPage;
 		private System.Windows.Forms.Label label68;
-		private System.Windows.Forms.ComboBox ClicksTC4ComboBox;
 		private System.Windows.Forms.Label label69;
-		private System.Windows.Forms.ComboBox ClicksTC3ComboBox;
 		private System.Windows.Forms.Label label70;
-		private System.Windows.Forms.ComboBox ClicksTC2ComboBox;
 		private System.Windows.Forms.Label label44;
-		private System.Windows.Forms.ComboBox ClicksVW4ComboBox;
 		private System.Windows.Forms.Label label43;
-		private System.Windows.Forms.ComboBox ClicksVW3ComboBox;
 		private System.Windows.Forms.Label label42;
-		private System.Windows.Forms.ComboBox ClicksVW2ComboBox;
 		private System.Windows.Forms.TabPage ShortcutsVWTabPage;
 		private System.Windows.Forms.TabPage ControlsSettingsTabPage;
 		private System.Windows.Forms.CheckBox Step1WCheckBox;
@@ -4541,7 +4574,6 @@
 		private System.Windows.Forms.Label label61;
 		private System.Windows.Forms.Label label63;
 		private System.Windows.Forms.Label label72;
-		private System.Windows.Forms.ComboBox Clicks5ComboBox;
 		private System.Windows.Forms.TabPage SmartTabPage;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.NumericUpDown SmartRangeUpDown;
@@ -4565,11 +4597,8 @@
 		private System.Windows.Forms.Label label75;
 		private System.Windows.Forms.NumericUpDown ShowLogoDelayUpDown;
 		private System.Windows.Forms.Label label76;
-		private System.Windows.Forms.ComboBox InStandbyVWFireMinusComboBox;
 		private System.Windows.Forms.Label label80;
-		private System.Windows.Forms.ComboBox InStandbyVWFirePlusComboBox;
 		private System.Windows.Forms.Label label81;
-		private System.Windows.Forms.ComboBox InStandbyVWPlusMinusComboBox;
 		private System.Windows.Forms.Label label82;
 		private NCore.UI.GroupPanel groupPanel2;
 		private NCore.UI.GroupPanel groupPanel3;
@@ -4627,14 +4656,24 @@
 		private System.Windows.Forms.ComboBox InMenuTCFirePlusComboBox;
 		private System.Windows.Forms.Label label66;
 		private NCore.UI.GroupPanel groupPanel20;
-		private System.Windows.Forms.ComboBox InStandbyTCFireMinusComboBox;
 		private System.Windows.Forms.Label label67;
-		private System.Windows.Forms.ComboBox InStandbyTCPlusMinusComboBox;
 		private System.Windows.Forms.Label label71;
-		private System.Windows.Forms.ComboBox InStandbyTCFirePlusComboBox;
 		private System.Windows.Forms.Label label89;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.ComboBox DeepSleepBehaviorComboBox;
 		private System.Windows.Forms.Label DeepSleepBehaviorLabel;
+		private NCore.UI.MenuButton ClicksVW2MenuButton;
+		private NCore.UI.MenuButton ClicksVW4MenuButton;
+		private NCore.UI.MenuButton ClicksVW3MenuButton;
+		private NCore.UI.MenuButton ClicksTC4MenuButton;
+		private NCore.UI.MenuButton ClicksTC3MenuButton;
+		private NCore.UI.MenuButton ClicksTC2MenuButton;
+		private NCore.UI.MenuButton Clicks5MenuButton;
+		private NCore.UI.MenuButton InStandbyVWPlusMinusMenuButton;
+		private NCore.UI.MenuButton InStandbyVWFirePlusMenuButton;
+		private NCore.UI.MenuButton InStandbyVWFireMinusMenuButton;
+		private NCore.UI.MenuButton InStandbyTCPlusMinusMenuButton;
+		private NCore.UI.MenuButton InStandbyTCFirePlusMenuButton;
+		private NCore.UI.MenuButton InStandbyTCFireMinusMenuButton;
 	}
 }

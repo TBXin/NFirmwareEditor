@@ -1,4 +1,5 @@
-﻿using NCore.UI;
+﻿using System.Windows.Forms;
+using NCore.UI;
 using NToolbox.Services;
 
 namespace NToolbox.Models
@@ -280,48 +281,48 @@ namespace NToolbox.Models
 				}
 			}
 
-			public static object[] ClickActions
+			public static ToolStripItem[] ClickActions
 			{
 				get
 				{
-					return new object[]
+					return new ToolStripItem[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ClickAction.None),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsEdit, ArcticFoxConfiguration.ClickAction.Edit),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsMainMenu, ArcticFoxConfiguration.ClickAction.MainMenu),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsPreheatMenu, ArcticFoxConfiguration.ClickAction.Preheat),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSelectProfile, ArcticFoxConfiguration.ClickAction.ProfileSelector),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsEditProfile, ArcticFoxConfiguration.ClickAction.ProfileEdit),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsTDom, ArcticFoxConfiguration.ClickAction.TemperatureDominant),
-						
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsShowClock, ArcticFoxConfiguration.ClickAction.MainScreenClock),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsInfoScreen, ArcticFoxConfiguration.ClickAction.InfoScreen),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsResetCounters, ArcticFoxConfiguration.ClickAction.ResetCounters),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsPowerBank, ArcticFoxConfiguration.ClickAction.PowerBank),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsResistanceLockUnlock, ArcticFoxConfiguration.ClickAction.LockResistance),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsKeyLockUnlock, ArcticFoxConfiguration.ClickAction.KeyLock),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsStealthOnOff, ArcticFoxConfiguration.ClickAction.Stealth),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSmartOnOff, ArcticFoxConfiguration.ClickAction.SmartOnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsLslOnOff, ArcticFoxConfiguration.ClickAction.LslOnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsDeviceLockUnlock, ArcticFoxConfiguration.ClickAction.DeviceLock),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsDeviceOnOff, ArcticFoxConfiguration.ClickAction.OnOff)
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsNone) { Tag = ArcticFoxConfiguration.ClickAction.None },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsMainMenu) { Tag = ArcticFoxConfiguration.ClickAction.MainMenu },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsEdit) { Tag = ArcticFoxConfiguration.ClickAction.Edit },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsPreheatMenu) { Tag = ArcticFoxConfiguration.ClickAction.PreheatEdit },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsEditProfile) { Tag = ArcticFoxConfiguration.ClickAction.ProfileEdit },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsSelectProfile) { Tag = ArcticFoxConfiguration.ClickAction.ProfileSelector },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsResetCounters) { Tag = ArcticFoxConfiguration.ClickAction.ResetCounters },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsTDom) { Tag = ArcticFoxConfiguration.ClickAction.TemperatureDominant },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsResistanceLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.LockResistance },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsShowClock) { Tag = ArcticFoxConfiguration.ClickAction.MainScreenClock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsInfoScreen) { Tag = ArcticFoxConfiguration.ClickAction.InfoScreen },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsPowerBank) { Tag = ArcticFoxConfiguration.ClickAction.PowerBank },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsStealthOnOff) { Tag = ArcticFoxConfiguration.ClickAction.StealthOnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsSmartOnOff) { Tag = ArcticFoxConfiguration.ClickAction.SmartOnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsLslOnOff) { Tag = ArcticFoxConfiguration.ClickAction.LslOnOff },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsKeyLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.KeyLock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.DeviceLock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceOnOff) { Tag = ArcticFoxConfiguration.ClickAction.OnOff }
 					};
 				}
 			}
 
-			public static object[] Click5Actions
+			public static ToolStripItem[] Click5Actions
 			{
 				get
 				{
-					return new object[]
+					return new ToolStripItem[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>(LocalizableStrings.ClickActionsDeviceOnOff, ArcticFoxConfiguration.FiveClicks.OnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.FiveClicks>(LocalizableStrings.ClickActionsDeviceLockUnlock, ArcticFoxConfiguration.FiveClicks.LockUnlock)
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceOnOff) { Tag = ArcticFoxConfiguration.FiveClicks.OnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceLockUnlock) { Tag = ArcticFoxConfiguration.FiveClicks.LockUnlock }
 					};
 				}
 			}

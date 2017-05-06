@@ -187,22 +187,22 @@ namespace NToolbox.Windows
 
 			foreach (var clickComboBox in new[]
 			{
-				ClicksVW2ComboBox, ClicksVW3ComboBox, ClicksVW4ComboBox,
-				ClicksTC2ComboBox, ClicksTC3ComboBox, ClicksTC4ComboBox
+				ClicksVW2MenuButton, ClicksVW3MenuButton, ClicksVW4MenuButton,
+				ClicksTC2MenuButton, ClicksTC3MenuButton, ClicksTC4MenuButton
 			})
 			{
-				clickComboBox.Fill(PredefinedData.ArcticFox.ClickActions);
+				clickComboBox.AddItems(PredefinedData.ArcticFox.ClickActions);
 			}
-			Clicks5ComboBox.Fill(PredefinedData.ArcticFox.Click5Actions);
+			Clicks5MenuButton.AddItems(PredefinedData.ArcticFox.Click5Actions);
 
 			// Shortcuts - In Standby
 			foreach (var comboBox in new[] 
 			{
-				InStandbyVWFireMinusComboBox, InStandbyVWFirePlusComboBox, InStandbyVWPlusMinusComboBox,
-				InStandbyTCFireMinusComboBox, InStandbyTCFirePlusComboBox, InStandbyTCPlusMinusComboBox
+				InStandbyVWFireMinusMenuButton, InStandbyVWFirePlusMenuButton, InStandbyVWPlusMinusMenuButton,
+				InStandbyTCFireMinusMenuButton, InStandbyTCFirePlusMenuButton, InStandbyTCPlusMinusMenuButton
 			})
 			{
-				comboBox.Fill(PredefinedData.ArcticFox.ClickActions);
+				comboBox.AddItems(PredefinedData.ArcticFox.ClickActions);
 			}
 			// Shortcuts - In Edit
 			foreach (var comboBox in new[] 
@@ -458,20 +458,20 @@ namespace NToolbox.Windows
 				InitializeLineContentEditor(ui.SmallSkinTCLines.Line1, SmallTCLine1ComboBox, SmallTCLine1FireCheckBox);
 				InitializeLineContentEditor(ui.SmallSkinTCLines.Line2, SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
-				ClicksVW2ComboBox.SelectItem(ui.ClicksVW[0]);
-				ClicksVW3ComboBox.SelectItem(ui.ClicksVW[1]);
-				ClicksVW4ComboBox.SelectItem(ui.ClicksVW[2]);
+				ClicksVW2MenuButton.SelectItem(ui.ClicksVW[0]);
+				ClicksVW3MenuButton.SelectItem(ui.ClicksVW[1]);
+				ClicksVW4MenuButton.SelectItem(ui.ClicksVW[2]);
 
-				ClicksTC2ComboBox.SelectItem(ui.ClicksTC[0]);
-				ClicksTC3ComboBox.SelectItem(ui.ClicksTC[1]);
-				ClicksTC4ComboBox.SelectItem(ui.ClicksTC[2]);
+				ClicksTC2MenuButton.SelectItem(ui.ClicksTC[0]);
+				ClicksTC3MenuButton.SelectItem(ui.ClicksTC[1]);
+				ClicksTC4MenuButton.SelectItem(ui.ClicksTC[2]);
 
-				Clicks5ComboBox.SelectItem(ui.FiveClicks);
+				Clicks5MenuButton.SelectItem(ui.FiveClicks);
 
 				// Shortcuts VW
-				InStandbyVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InStandby);
-				InStandbyVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InStandby);
-				InStandbyVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InStandby);
+				InStandbyVWFireMinusMenuButton.SelectItem(ui.ShortcutsVW[0].InStandby);
+				InStandbyVWFirePlusMenuButton.SelectItem(ui.ShortcutsVW[1].InStandby);
+				InStandbyVWPlusMinusMenuButton.SelectItem(ui.ShortcutsVW[2].InStandby);
 
 				InMenuVWFireMinusComboBox.SelectItem(ui.ShortcutsVW[0].InMenu);
 				InMenuVWFirePlusComboBox.SelectItem(ui.ShortcutsVW[1].InMenu);
@@ -486,9 +486,9 @@ namespace NToolbox.Windows
 				InSelectorVWPlusMinusComboBox.SelectItem(ui.ShortcutsVW[2].InSelector);
 
 				// Shortcuts TC
-				InStandbyTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InStandby);
-				InStandbyTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InStandby);
-				InStandbyTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InStandby);
+				InStandbyTCFireMinusMenuButton.SelectItem(ui.ShortcutsTC[0].InStandby);
+				InStandbyTCFirePlusMenuButton.SelectItem(ui.ShortcutsTC[1].InStandby);
+				InStandbyTCPlusMinusMenuButton.SelectItem(ui.ShortcutsTC[2].InStandby);
 
 				InMenuTCFireMinusComboBox.SelectItem(ui.ShortcutsTC[0].InMenu);
 				InMenuTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InMenu);
@@ -662,20 +662,20 @@ namespace NToolbox.Windows
 				ui.SmallSkinTCLines.Line2 = SaveLineContent(SmallTCLine2ComboBox, SmallTCLine2FireCheckBox);
 
 				// General -> Controls Tab
-				ui.ClicksVW[0] = ClicksVW2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ClicksVW[1] = ClicksVW3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ClicksVW[2] = ClicksVW4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[0] = ClicksVW2MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[1] = ClicksVW3MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksVW[2] = ClicksVW4MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 
-				ui.ClicksTC[0] = ClicksTC2ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ClicksTC[1] = ClicksTC3ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ClicksTC[2] = ClicksTC4ComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksTC[0] = ClicksTC2MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksTC[1] = ClicksTC3MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ClicksTC[2] = ClicksTC4MenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 
-				ui.FiveClicks = Clicks5ComboBox.GetSelectedItem<ArcticFoxConfiguration.FiveClicks>();
+				ui.FiveClicks = Clicks5MenuButton.GetSelectedItem<ArcticFoxConfiguration.FiveClicks>();
 
 				// Shortcuts VW
-				ui.ShortcutsVW[0].InStandby = InStandbyVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ShortcutsVW[1].InStandby = InStandbyVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ShortcutsVW[2].InStandby = InStandbyVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsVW[0].InStandby = InStandbyVWFireMinusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsVW[1].InStandby = InStandbyVWFirePlusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsVW[2].InStandby = InStandbyVWPlusMinusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 
 				ui.ShortcutsVW[0].InMenu = InMenuVWFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
 				ui.ShortcutsVW[1].InMenu = InMenuVWFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
@@ -690,9 +690,9 @@ namespace NToolbox.Windows
 				ui.ShortcutsVW[2].InSelector = InSelectorVWPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
 
 				// Shortcuts TC
-				ui.ShortcutsTC[0].InStandby = InStandbyTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ShortcutsTC[1].InStandby = InStandbyTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
-				ui.ShortcutsTC[2].InStandby = InStandbyTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsTC[0].InStandby = InStandbyTCFireMinusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsTC[1].InStandby = InStandbyTCFirePlusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
+				ui.ShortcutsTC[2].InStandby = InStandbyTCPlusMinusMenuButton.GetSelectedItem<ArcticFoxConfiguration.ClickAction>();
 
 				ui.ShortcutsTC[0].InMenu = InMenuTCFireMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();
 				ui.ShortcutsTC[1].InMenu = InMenuTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInMenu>();

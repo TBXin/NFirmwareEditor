@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using JetBrains.Annotations;
 using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace NCore.UI
@@ -12,39 +15,91 @@ namespace NCore.UI
 		private ContextMenuStrip m_menu;
 		private const int DropDownArrowRectangleWidth = 17;
 
-		[DefaultValue(null)]
-		public ContextMenuStrip Menu
-		{
-			get { return m_menu; }
-			set
-			{
-				if (m_menu != null) m_menu.ItemClicked -= Menu_ItemClicked;
-				m_menu = value;
-				if (m_menu != null) m_menu.ItemClicked += Menu_ItemClicked;
-			}
-		}
-
 		public MenuButton()
 		{
 			TextAlign = ContentAlignment.MiddleLeft;
 			ImageAlign = ContentAlignment.MiddleLeft;
 			TextImageRelation = TextImageRelation.ImageBeforeText;
+			AutoEllipsis = true;
+			CheckClickedMenuItem = true;
+		}
+
+		[DefaultValue(true)]
+		public bool CheckClickedMenuItem { get; set; }
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), CanBeNull]
+		public ToolStripItem LastClickedMenuItem { get; private set; }
+
+		public void AddItems(IEnumerable<ToolStripItem> items)
+		{
+			if (m_menu == null)
+			{
+				m_menu = new ContextMenuStrip();
+				m_menu.ItemClicked += Menu_ItemClicked;
+			}
+
+			foreach (var item in items)
+			{
+				m_menu.Items.Add(item);
+			}
+		}
+
+		public T GetSelectedItem<T>()
+		{
+			if (LastClickedMenuItem == null) throw new InvalidOperationException("LastClickedMenuItem == null");
+			if (LastClickedMenuItem.Tag == null) throw new InvalidOperationException("LastClickedMenuItem.Tag == null");
+
+			return (T)LastClickedMenuItem.Tag;
+		}
+
+		public void SelectItem<T>(T data, bool ignoreNotFound = false)
+		{
+			if (m_menu == null) throw new InvalidOperationException("m_menu == null");
+
+			foreach (ToolStripItem menuItem in m_menu.Items)
+			{
+				if (Equals(menuItem.Tag, data))
+				{
+					menuItem.PerformClick();
+					return;
+				}
+			}
+
+			if (ignoreNotFound) return;
+			throw new InvalidOperationException(string.Format("Item \"{0}\" in the \"{1}\" not found.", data, Name));
 		}
 
 		private void Menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
-			Image = e.ClickedItem.Image;
-			Text = e.ClickedItem.Text;
+			LastClickedMenuItem = e.ClickedItem;
+
+			if (LastClickedMenuItem == null) return;
+			if (CheckClickedMenuItem)
+			{
+				var toolStripMenuItem = LastClickedMenuItem as ToolStripMenuItem;
+				if (toolStripMenuItem != null)
+				{
+					foreach (var menuItem in m_menu.Items.OfType<ToolStripMenuItem>())
+					{
+						menuItem.Checked = false;
+					}
+					toolStripMenuItem.Checked = true;
+				}
+			}
+			Image = LastClickedMenuItem.Image;
+			Text = LastClickedMenuItem.Text;
 		}
 
 		#region Overrides of Button
 		protected override void OnClick(EventArgs e)
 		{
 			base.OnClick(e);
+
+			if (m_menu == null) return;
 			if (Parent != null) Parent.Focus();
 
-			Menu.Show(this, new Point(0, Height));
-			Menu.Focus();
+			m_menu.Show(this, new Point(1, Height));
+			m_menu.Focus();
 		}
 
 		protected override void OnPaint(PaintEventArgs e)

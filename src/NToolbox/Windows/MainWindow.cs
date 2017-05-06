@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using NCore;
@@ -153,39 +154,20 @@ namespace NToolbox.Windows
 		private void InitializeLanguages()
 		{
 			var languages = LocalizationManager.GetAvailableLanguages();
-			var languageContextMenu = new ContextMenuStrip();
-			
-			foreach (var item in languages)
+			var languageMenuItems = languages.Select(item =>
 			{
-				var lang = item;
-				var menuItem = new ToolStripMenuItem(lang.DisplayName, lang.Flag, (s, e) =>
-				{
-					foreach (ToolStripMenuItem child in languageContextMenu.Items)
-					{
-						child.Checked = false;
-					}
+			    var lang = item;
+			    return new ToolStripMenuItem(lang.DisplayName, lang.Flag, (s, e) =>
+			    {
+			        LocalizationManager.Instance.InitializeLanguagePack(lang.FilePath);
+			        LocalizeSelf();
 
-					LocalizationManager.Instance.InitializeLanguagePack(lang.FilePath);
-					LocalizeSelf();
-
-					m_configuration.Language = lang.DisplayName;
-					SaveConfiguration();
-
-					((ToolStripMenuItem)s).Checked = true;
-				});
-				languageContextMenu.Items.Add(menuItem);
-			}
-			LanguageMenuButton.Menu = languageContextMenu;
-
-			if (string.IsNullOrEmpty(m_configuration.Language) && languageContextMenu.Items.Count > 0)
-			{
-				languageContextMenu.Items[0].PerformClick();
-			}
-			else
-			{
-				var activeLanguage = languages.FindIndex(x => string.Equals(x.DisplayName, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
-				if (activeLanguage != -1) languageContextMenu.Items[activeLanguage].PerformClick();
-			}
+			        m_configuration.Language = lang.DisplayName;
+			        SaveConfiguration();
+			    }) { Tag = lang.DisplayName };
+			}).ToList();
+			LanguageMenuButton.AddItems(languageMenuItems);
+			LanguageMenuButton.SelectItem(m_configuration.Language, true);
 		}
 
 		private ToolboxConfiguration LoadConfiguration()
