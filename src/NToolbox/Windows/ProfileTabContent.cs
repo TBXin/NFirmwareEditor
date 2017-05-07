@@ -159,7 +159,7 @@ namespace NToolbox.Windows
 				profile.SelectedCurve = (byte)PowerCurveComboBox.SelectedIndex;
 			}
 			profile.PreheatTime = (byte)(PreheatTimeUpDown.Value * 100);
-			profile.PreheatDelay = (byte)(PreheatDelayUpDown.Value);
+			profile.PreheatDelay = (byte)PreheatDelayUpDown.Value;
 
 			profile.Flags.IsCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
 			profile.Temperature = (ushort)TemperatureUpDown.Value;
@@ -291,7 +291,6 @@ namespace NToolbox.Windows
 				PowerCurveEditButton.Visible = true;
 
 				PreheatTimeUpDown.Enabled = false;
-				PreheatDelayUpDown.Enabled = false;
 				PreheatPowerUnitLabel.Text = string.Empty;
 			}
 			else
@@ -301,7 +300,6 @@ namespace NToolbox.Windows
 				PowerCurveEditButton.Visible = false;
 
 				PreheatTimeUpDown.Enabled = true;
-				PreheatDelayUpDown.Enabled = true;
 			}
 		}
 
