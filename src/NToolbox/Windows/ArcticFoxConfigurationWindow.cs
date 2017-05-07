@@ -66,9 +66,6 @@ namespace NToolbox.Windows
 			FirmwareVersionTextBox.ReadOnly = true;
 			FirmwareVersionTextBox.BackColor = Color.White;
 
-			BuildTextBox.ReadOnly = true;
-			BuildTextBox.BackColor = Color.White;
-
 			HardwareVersionTextBox.ReadOnly = true;
 			HardwareVersionTextBox.BackColor = Color.White;
 
@@ -334,8 +331,7 @@ namespace NToolbox.Windows
 			var deviceInfo = m_deviceConfiguration.Info;
 			{
 				DeviceNameLabel.Text = HidDeviceInfo.Get(deviceInfo.ProductId).Name;
-				FirmwareVersionTextBox.Text = (deviceInfo.FirmwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
-				BuildTextBox.Text = deviceInfo.FirmwareBuild.ToString();
+				FirmwareVersionTextBox.Text = deviceInfo.FirmwareBuild.ToString();
 				HardwareVersionTextBox.Text = (deviceInfo.HardwareVersion / 100f).ToString("0.00", CultureInfo.InvariantCulture);
 
 				if (deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W96H16)

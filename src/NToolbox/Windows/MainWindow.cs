@@ -14,7 +14,7 @@ namespace NToolbox.Windows
 {
 	internal partial class MainWindow : WindowBase
 	{
-		private const string ApplicationVersion = "1.7";
+		private const string ApplicationVersion = "2.0";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;

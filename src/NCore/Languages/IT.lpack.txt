@@ -1,5 +1,4 @@
 Toolbox.ArcticFoxConfiguration.AdvancedTab=Advanced
-Toolbox.ArcticFoxConfiguration.BuildLabel=Build:
 Toolbox.ArcticFoxConfiguration.ConfigurationButton=Configurazione▾
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Connetti e Scarica configurazione
 Toolbox.ArcticFoxConfiguration.ControlsTab=Controlli

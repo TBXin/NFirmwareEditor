@@ -1,5 +1,4 @@
 Toolbox.ArcticFoxConfiguration.AdvancedTab=Advanced
-Toolbox.ArcticFoxConfiguration.BuildLabel=Build:
 Toolbox.ArcticFoxConfiguration.ConfigurationButton=Dateien
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Verbinde und Lade Einstellungen
 Toolbox.ArcticFoxConfiguration.ControlsTab=Steuerung

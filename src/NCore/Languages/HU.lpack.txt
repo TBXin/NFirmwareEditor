@@ -1,5 +1,4 @@
 Toolbox.ArcticFoxConfiguration.AdvancedTab=Advanced
-Toolbox.ArcticFoxConfiguration.BuildLabel=Build:
 Toolbox.ArcticFoxConfiguration.ConfigurationButton=Konfiguráció▾
 Toolbox.ArcticFoxConfiguration.ConnectAndDownloadLink=Csatlakozás és beállítás letöltés
 Toolbox.ArcticFoxConfiguration.ControlsTab=Vezérlők

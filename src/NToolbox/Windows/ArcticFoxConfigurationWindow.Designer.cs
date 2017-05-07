@@ -40,8 +40,6 @@
 			this.ResetButton = new System.Windows.Forms.Button();
 			this.UploadButton = new System.Windows.Forms.Button();
 			this.DownloadButton = new System.Windows.Forms.Button();
-			this.borderedPanel1 = new NCore.UI.BorderedPanel();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.MainTabControl = new System.Windows.Forms.TabControl();
 			this.ProfilesTabPage = new System.Windows.Forms.TabPage();
 			this.label60 = new System.Windows.Forms.Label();
@@ -328,9 +326,7 @@
 			this.groupPanel1 = new NCore.UI.GroupPanel();
 			this.ConfigurationMenuButton = new System.Windows.Forms.Button();
 			this.HardwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.BuildTextBox = new System.Windows.Forms.TextBox();
 			this.FirmwareVersionTextBox = new System.Windows.Forms.TextBox();
-			this.label48 = new System.Windows.Forms.Label();
 			this.DeviceNameLabel = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -342,8 +338,6 @@
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).BeginInit();
 			this.WorkspacePage.SuspendLayout();
-			this.borderedPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.MainTabControl.SuspendLayout();
 			this.ProfilesTabPage.SuspendLayout();
 			this.ProfilesTabControl.SuspendLayout();
@@ -522,7 +516,6 @@
 			this.WorkspacePage.Controls.Add(this.ResetButton);
 			this.WorkspacePage.Controls.Add(this.UploadButton);
 			this.WorkspacePage.Controls.Add(this.DownloadButton);
-			this.WorkspacePage.Controls.Add(this.borderedPanel1);
 			this.WorkspacePage.Controls.Add(this.MainTabControl);
 			this.WorkspacePage.Controls.Add(this.groupPanel1);
 			this.WorkspacePage.Description = null;
@@ -572,36 +565,6 @@
 			this.DownloadButton.TabIndex = 38;
 			this.DownloadButton.Text = "Download settings";
 			this.DownloadButton.UseVisualStyleBackColor = true;
-			// 
-			// borderedPanel1
-			// 
-			this.borderedPanel1.BackColor = System.Drawing.Color.Transparent;
-			this.borderedPanel1.BorderBottom = true;
-			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel1.BorderLeft = true;
-			this.borderedPanel1.BorderRight = true;
-			this.borderedPanel1.BorderTop = true;
-			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.pictureBox2);
-			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
-			this.borderedPanel1.Location = new System.Drawing.Point(11, 11);
-			this.borderedPanel1.Name = "borderedPanel1";
-			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(1);
-			this.borderedPanel1.Size = new System.Drawing.Size(58, 58);
-			this.borderedPanel1.TabIndex = 37;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.arcticfox_logo;
-			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
-			this.pictureBox2.Location = new System.Drawing.Point(1, 1);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(56, 56);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox2.TabIndex = 0;
-			this.pictureBox2.TabStop = false;
 			// 
 			// MainTabControl
 			// 
@@ -4101,18 +4064,16 @@
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.ConfigurationMenuButton);
 			this.groupPanel1.Controls.Add(this.HardwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.BuildTextBox);
 			this.groupPanel1.Controls.Add(this.FirmwareVersionTextBox);
-			this.groupPanel1.Controls.Add(this.label48);
 			this.groupPanel1.Controls.Add(this.DeviceNameLabel);
 			this.groupPanel1.Controls.Add(this.label5);
 			this.groupPanel1.Controls.Add(this.label4);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
 			this.MainLocalizationExtender.SetKey(this.groupPanel1, "");
-			this.groupPanel1.Location = new System.Drawing.Point(76, 11);
+			this.groupPanel1.Location = new System.Drawing.Point(11, 11);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(333, 58);
+			this.groupPanel1.Size = new System.Drawing.Size(398, 58);
 			this.groupPanel1.TabIndex = 35;
 			this.groupPanel1.TabStop = false;
 			// 
@@ -4120,7 +4081,7 @@
 			// 
 			this.ConfigurationMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.ConfigurationMenuButton, "Toolbox.ArcticFoxConfiguration.ConfigurationButton");
-			this.ConfigurationMenuButton.Location = new System.Drawing.Point(218, 3);
+			this.ConfigurationMenuButton.Location = new System.Drawing.Point(283, 31);
 			this.ConfigurationMenuButton.Name = "ConfigurationMenuButton";
 			this.ConfigurationMenuButton.Size = new System.Drawing.Size(110, 24);
 			this.ConfigurationMenuButton.TabIndex = 35;
@@ -4130,47 +4091,23 @@
 			// 
 			// HardwareVersionTextBox
 			// 
-			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.HardwareVersionTextBox, "");
-			this.HardwareVersionTextBox.Location = new System.Drawing.Point(267, 33);
+			this.HardwareVersionTextBox.Location = new System.Drawing.Point(185, 33);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
 			this.HardwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
 			this.HardwareVersionTextBox.TabIndex = 28;
 			this.HardwareVersionTextBox.TabStop = false;
 			this.HardwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// BuildTextBox
-			// 
-			this.BuildTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.MainLocalizationExtender.SetKey(this.BuildTextBox, "");
-			this.BuildTextBox.Location = new System.Drawing.Point(152, 33);
-			this.BuildTextBox.Name = "BuildTextBox";
-			this.BuildTextBox.Size = new System.Drawing.Size(60, 21);
-			this.BuildTextBox.TabIndex = 34;
-			this.BuildTextBox.TabStop = false;
-			this.BuildTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
 			// FirmwareVersionTextBox
 			// 
-			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.FirmwareVersionTextBox, "");
-			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(52, 33);
+			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(53, 33);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
 			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(60, 21);
 			this.FirmwareVersionTextBox.TabIndex = 27;
 			this.FirmwareVersionTextBox.TabStop = false;
 			this.FirmwareVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// label48
-			// 
-			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label48.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label48, "Toolbox.ArcticFoxConfiguration.BuildLabel");
-			this.label48.Location = new System.Drawing.Point(120, 36);
-			this.label48.Name = "label48";
-			this.label48.Size = new System.Drawing.Size(33, 13);
-			this.label48.TabIndex = 33;
-			this.label48.Text = "Build:";
 			// 
 			// DeviceNameLabel
 			// 
@@ -4181,16 +4118,16 @@
 			this.MainLocalizationExtender.SetKey(this.DeviceNameLabel, "");
 			this.DeviceNameLabel.Location = new System.Drawing.Point(6, 5);
 			this.DeviceNameLabel.Name = "DeviceNameLabel";
-			this.DeviceNameLabel.Size = new System.Drawing.Size(241, 19);
+			this.DeviceNameLabel.Size = new System.Drawing.Size(386, 19);
 			this.DeviceNameLabel.TabIndex = 0;
 			this.DeviceNameLabel.Text = "Eleaf iStick Pico Mega";
+			this.DeviceNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label5
 			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label5.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.ArcticFoxConfiguration.HWVerLabel");
-			this.label5.Location = new System.Drawing.Point(221, 36);
+			this.label5.Location = new System.Drawing.Point(139, 36);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(47, 13);
 			this.label5.TabIndex = 30;
@@ -4198,10 +4135,9 @@
 			// 
 			// label4
 			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.ArcticFoxConfiguration.FWVerLabel");
-			this.label4.Location = new System.Drawing.Point(7, 36);
+			this.label4.Location = new System.Drawing.Point(8, 36);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(46, 13);
 			this.label4.TabIndex = 29;
@@ -4264,8 +4200,6 @@
 			this.WelcomePage.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).EndInit();
 			this.WorkspacePage.ResumeLayout(false);
-			this.borderedPanel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.MainTabControl.ResumeLayout(false);
 			this.ProfilesTabPage.ResumeLayout(false);
 			this.ProfilesTabPage.PerformLayout();
@@ -4372,8 +4306,6 @@
 		private NCore.UI.MultiPanelPage WorkspacePage;
 		private System.Windows.Forms.Label WelcomeLabel;
 		private NCore.UI.GroupPanel groupPanel1;
-		private System.Windows.Forms.TextBox BuildTextBox;
-		private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.TextBox FirmwareVersionTextBox;
 		private System.Windows.Forms.TextBox HardwareVersionTextBox;
 		private System.Windows.Forms.Label DeviceNameLabel;
@@ -4385,8 +4317,6 @@
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.PictureBox ArcticFoxLogoPictureBox;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.TabPage AdvancedTabPage;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.ComboBox SelectedProfleComboBox;
