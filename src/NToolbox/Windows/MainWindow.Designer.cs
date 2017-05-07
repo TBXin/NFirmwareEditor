@@ -54,8 +54,8 @@
 			this.AutorunTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
 			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
 			this.ButtonsPanel.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			this.TrayContextMenuStrip.SuspendLayout();
@@ -67,7 +67,7 @@
 			this.VersionLabel.AutoSize = true;
 			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
 			this.MainLocalizationExtender.SetKey(this.VersionLabel, "");
-			this.VersionLabel.Location = new System.Drawing.Point(196, 163);
+			this.VersionLabel.Location = new System.Drawing.Point(196, 92);
 			this.VersionLabel.Name = "VersionLabel";
 			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
 			this.VersionLabel.TabIndex = 5;
@@ -75,8 +75,7 @@
 			// 
 			// ButtonsPanel
 			// 
-			this.ButtonsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.ButtonsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ButtonsPanel.BackColor = System.Drawing.Color.White;
 			this.ButtonsPanel.BorderBottom = false;
@@ -92,7 +91,7 @@
 			this.ButtonsPanel.Controls.Add(this.ArcticFoxConfigurationButton);
 			this.ButtonsPanel.Controls.Add(this.FirmwareUpdaterButton);
 			this.MainLocalizationExtender.SetKey(this.ButtonsPanel, "");
-			this.ButtonsPanel.Location = new System.Drawing.Point(0, 214);
+			this.ButtonsPanel.Location = new System.Drawing.Point(0, 139);
 			this.ButtonsPanel.Name = "ButtonsPanel";
 			this.ButtonsPanel.Size = new System.Drawing.Size(240, 295);
 			this.ButtonsPanel.TabIndex = 4;
@@ -117,6 +116,7 @@
 			// 
 			// LanguageMenuButton
 			// 
+			this.LanguageMenuButton.AutoEllipsis = true;
 			this.LanguageMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.MainLocalizationExtender.SetKey(this.LanguageMenuButton, "");
 			this.LanguageMenuButton.Location = new System.Drawing.Point(80, 6);
@@ -304,30 +304,30 @@
 			this.ExitTrayMenuItem.Size = new System.Drawing.Size(386, 22);
 			this.ExitTrayMenuItem.Text = "Exit";
 			// 
-			// LogoPictureBox
-			// 
-			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.nfetoolbox;
-			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
-			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
-			this.LogoPictureBox.Name = "LogoPictureBox";
-			this.LogoPictureBox.Size = new System.Drawing.Size(180, 200);
-			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.LogoPictureBox.TabIndex = 0;
-			this.LogoPictureBox.TabStop = false;
-			// 
 			// TrayNotifyIcon
 			// 
 			this.TrayNotifyIcon.ContextMenuStrip = this.TrayContextMenuStrip;
 			this.TrayNotifyIcon.Text = "NFE Toolbox";
 			this.TrayNotifyIcon.Visible = true;
 			// 
+			// LogoPictureBox
+			// 
+			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.ntoolbox;
+			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
+			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
+			this.LogoPictureBox.Name = "LogoPictureBox";
+			this.LogoPictureBox.Size = new System.Drawing.Size(180, 125);
+			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.LogoPictureBox.TabIndex = 0;
+			this.LogoPictureBox.TabStop = false;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 509);
+			this.ClientSize = new System.Drawing.Size(240, 434);
 			this.Controls.Add(this.VersionLabel);
 			this.Controls.Add(this.ButtonsPanel);
 			this.Controls.Add(this.LogoPictureBox);
@@ -337,7 +337,7 @@
 			this.MaximizeBox = false;
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NFE Toolbox";
+			this.Text = "NToolbox";
 			this.ButtonsPanel.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
 			this.TrayContextMenuStrip.ResumeLayout(false);

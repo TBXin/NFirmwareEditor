@@ -73,9 +73,9 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arctic_fox_logo {
+        internal static System.Drawing.Bitmap arcticfox_logo {
             get {
-                object obj = ResourceManager.GetObject("arctic_fox_logo", resourceCulture);
+                object obj = ResourceManager.GetObject("arcticfox_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nfetoolbox {
+        internal static System.Drawing.Bitmap ntoolbox {
             get {
-                object obj = ResourceManager.GetObject("nfetoolbox", resourceCulture);
+                object obj = ResourceManager.GetObject("ntoolbox", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nfetoolbox_logo {
+        internal static System.Drawing.Bitmap ntoolbox_logo {
             get {
-                object obj = ResourceManager.GetObject("nfetoolbox_logo", resourceCulture);
+                object obj = ResourceManager.GetObject("ntoolbox_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

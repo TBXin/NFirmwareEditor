@@ -65,6 +65,11 @@
     <Compile Include="Models\ToolboxConfiguration.cs" />
     <Compile Include="Models\MonitoringData.cs" />
     <Compile Include="Models\StartupMode.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\ChartPreviewService.cs" />
     <Compile Include="Services\LocalizableStrings.cs" />
     <Compile Include="Storages\ConfigurationStorage.cs" />
@@ -189,11 +194,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -202,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\new_configuration.afc" />
-    <None Include="Resources\nfetoolbox.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\device_monitor.png" />
@@ -217,15 +216,14 @@
     <None Include="Resources\arctic_fox.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\arctic_fox_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\device_broadcast.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NToolbox.ico" />
+    <None Include="Resources\ntoolbox_logo.png" />
+    <None Include="Resources\arcticfox_logo.png" />
+    <None Include="Resources\ntoolbox.png" />
     <None Include="Resources\team_logo.png" />
-    <None Include="Resources\nfetoolbox_logo.png" />
     <None Include="Resources\www_page.png" />
     <None Include="Resources\ru.png" />
     <None Include="Resources\GitHub.png" />

@@ -48,15 +48,6 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.ArcticFoxProjectLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.label3 = new System.Windows.Forms.Label();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.ReikoKitsuneLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.ZingerLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.label12 = new System.Windows.Forms.Label();
-			this.MaelstromLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.ControlBorderedPanel = new NCore.UI.BorderedPanel();
 			this.OkButton = new System.Windows.Forms.Button();
 			this.label15 = new System.Windows.Forms.Label();
@@ -65,11 +56,20 @@
 			this.ArcticFoxLatestBuildLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.label10 = new System.Windows.Forms.Label();
 			this.borderedPanel1 = new NCore.UI.BorderedPanel();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.ReikoKitsuneLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.ZingerLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.label12 = new System.Windows.Forms.Label();
+			this.MaelstromLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// WebsiteLinkLabel
@@ -286,96 +286,6 @@
 			this.label3.TabIndex = 77;
 			this.label3.Text = "Project page:";
 			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.BackgroundImage = global::NToolbox.Properties.Resources.team_logo;
-			this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.MainLocalizationExtender.SetKey(this.pictureBox3, "");
-			this.pictureBox3.Location = new System.Drawing.Point(12, 280);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox3.TabIndex = 84;
-			this.pictureBox3.TabStop = false;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.arctic_fox_logo;
-			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
-			this.pictureBox2.Location = new System.Drawing.Point(12, 5);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox2.TabIndex = 83;
-			this.pictureBox2.TabStop = false;
-			// 
-			// ReikoKitsuneLinkLabel
-			// 
-			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ReikoKitsuneLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("ReikoKitsuneLinkLabel.Image")));
-			this.MainLocalizationExtender.SetKey(this.ReikoKitsuneLinkLabel, "");
-			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 328);
-			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
-			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.ReikoKitsuneLinkLabel.TabIndex = 50;
-			// 
-			// ZingerLinkLabel
-			// 
-			this.ZingerLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ZingerLinkLabel.Image = global::NToolbox.Properties.Resources.www_page;
-			this.MainLocalizationExtender.SetKey(this.ZingerLinkLabel, "");
-			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 371);
-			this.ZingerLinkLabel.Name = "ZingerLinkLabel";
-			this.ZingerLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.ZingerLinkLabel.TabIndex = 48;
-			// 
-			// label12
-			// 
-			this.label12.Image = ((System.Drawing.Image)(resources.GetObject("label12.Image")));
-			this.MainLocalizationExtender.SetKey(this.label12, "");
-			this.label12.Location = new System.Drawing.Point(149, 370);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(16, 16);
-			this.label12.TabIndex = 47;
-			// 
-			// MaelstromLinkLabel
-			// 
-			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.MaelstromLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("MaelstromLinkLabel.Image")));
-			this.MainLocalizationExtender.SetKey(this.MaelstromLinkLabel, "");
-			this.MaelstromLinkLabel.Location = new System.Drawing.Point(173, 350);
-			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
-			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.MaelstromLinkLabel.TabIndex = 45;
-			// 
-			// label9
-			// 
-			this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
-			this.MainLocalizationExtender.SetKey(this.label9, "");
-			this.label9.Location = new System.Drawing.Point(149, 349);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(16, 16);
-			this.label9.TabIndex = 44;
-			// 
-			// label6
-			// 
-			this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
-			this.MainLocalizationExtender.SetKey(this.label6, "");
-			this.label6.Location = new System.Drawing.Point(149, 328);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(16, 16);
-			this.label6.TabIndex = 42;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.nfetoolbox_logo;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
-			this.pictureBox1.Location = new System.Drawing.Point(12, 11);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
-			// 
 			// ControlBorderedPanel
 			// 
 			this.ControlBorderedPanel.BackColor = System.Drawing.Color.Transparent;
@@ -492,6 +402,96 @@
 			this.borderedPanel1.Size = new System.Drawing.Size(474, 140);
 			this.borderedPanel1.TabIndex = 89;
 			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.arcticfox_logo;
+			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
+			this.pictureBox2.Location = new System.Drawing.Point(12, 5);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox2.TabIndex = 83;
+			this.pictureBox2.TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.BackgroundImage = global::NToolbox.Properties.Resources.team_logo;
+			this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.MainLocalizationExtender.SetKey(this.pictureBox3, "");
+			this.pictureBox3.Location = new System.Drawing.Point(12, 280);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox3.TabIndex = 84;
+			this.pictureBox3.TabStop = false;
+			// 
+			// ReikoKitsuneLinkLabel
+			// 
+			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ReikoKitsuneLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("ReikoKitsuneLinkLabel.Image")));
+			this.MainLocalizationExtender.SetKey(this.ReikoKitsuneLinkLabel, "");
+			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 328);
+			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
+			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.ReikoKitsuneLinkLabel.TabIndex = 50;
+			// 
+			// ZingerLinkLabel
+			// 
+			this.ZingerLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ZingerLinkLabel.Image = global::NToolbox.Properties.Resources.www_page;
+			this.MainLocalizationExtender.SetKey(this.ZingerLinkLabel, "");
+			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 371);
+			this.ZingerLinkLabel.Name = "ZingerLinkLabel";
+			this.ZingerLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.ZingerLinkLabel.TabIndex = 48;
+			// 
+			// label12
+			// 
+			this.label12.Image = ((System.Drawing.Image)(resources.GetObject("label12.Image")));
+			this.MainLocalizationExtender.SetKey(this.label12, "");
+			this.label12.Location = new System.Drawing.Point(149, 370);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(16, 16);
+			this.label12.TabIndex = 47;
+			// 
+			// MaelstromLinkLabel
+			// 
+			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.MaelstromLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("MaelstromLinkLabel.Image")));
+			this.MainLocalizationExtender.SetKey(this.MaelstromLinkLabel, "");
+			this.MaelstromLinkLabel.Location = new System.Drawing.Point(173, 350);
+			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
+			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.MaelstromLinkLabel.TabIndex = 45;
+			// 
+			// label9
+			// 
+			this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
+			this.MainLocalizationExtender.SetKey(this.label9, "");
+			this.label9.Location = new System.Drawing.Point(149, 349);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(16, 16);
+			this.label9.TabIndex = 44;
+			// 
+			// label6
+			// 
+			this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
+			this.MainLocalizationExtender.SetKey(this.label6, "");
+			this.label6.Location = new System.Drawing.Point(149, 328);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(16, 16);
+			this.label6.TabIndex = 42;
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.ntoolbox_logo;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
+			this.pictureBox1.Location = new System.Drawing.Point(12, 11);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+			this.pictureBox1.TabIndex = 1;
+			this.pictureBox1.TabStop = false;
+			// 
 			// AboutWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -530,13 +530,13 @@
 			this.Name = "AboutWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NToolbox - About & Links";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ControlBorderedPanel.ResumeLayout(false);
 			this.ControlBorderedPanel.PerformLayout();
 			this.borderedPanel1.ResumeLayout(false);
 			this.borderedPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

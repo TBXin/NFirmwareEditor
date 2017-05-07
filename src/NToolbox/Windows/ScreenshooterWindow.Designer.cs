@@ -250,7 +250,7 @@
 			this.MinimizeBox = false;
 			this.Name = "ScreenshooterWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "NFE Toolbox - Screenshooter";
+			this.Text = "NToolbox - Screenshooter";
 			this.groupPanel1.ResumeLayout(false);
 			this.ScreenBordersPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ScreenPictureBox)).EndInit();

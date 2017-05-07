@@ -508,7 +508,7 @@
 			// 
 			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.pictureBox1.Image = global::NToolbox.Properties.Resources.arctic_fox_logo;
+			this.pictureBox1.Image = global::NToolbox.Properties.Resources.arcticfox_logo;
 			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
 			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
 			this.pictureBox1.Name = "pictureBox1";
@@ -593,7 +593,7 @@
 			// pictureBox2
 			// 
 			this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox2.Image = global::NToolbox.Properties.Resources.arctic_fox_logo;
+			this.pictureBox2.Image = global::NToolbox.Properties.Resources.arcticfox_logo;
 			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
 			this.pictureBox2.Location = new System.Drawing.Point(1, 1);
 			this.pictureBox2.Name = "pictureBox2";
