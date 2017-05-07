@@ -63,59 +63,9 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arctic_fox {
-            get {
-                object obj = ResourceManager.GetObject("arctic_fox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap arcticfox_logo {
             get {
                 object obj = ResourceManager.GetObject("arcticfox_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap configuration {
-            get {
-                object obj = ResourceManager.GetObject("configuration", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap device_broadcast {
-            get {
-                object obj = ResourceManager.GetObject("device_broadcast", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap device_monitor {
-            get {
-                object obj = ResourceManager.GetObject("device_monitor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap firmware_updater {
-            get {
-                object obj = ResourceManager.GetObject("firmware_updater", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -131,22 +81,22 @@ namespace NToolbox.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gray_white_separator {
+            get {
+                object obj = ResourceManager.GetObject("gray_white_separator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] new_configuration {
             get {
                 object obj = ResourceManager.GetObject("new_configuration", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ntoolbox {
-            get {
-                object obj = ResourceManager.GetObject("ntoolbox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -35,7 +35,7 @@
 			this.OpenConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.CreateConfigurationLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.WelcomeLabel = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.ArcticFoxLogoPictureBox = new System.Windows.Forms.PictureBox();
 			this.WorkspacePage = new NCore.UI.MultiPanelPage();
 			this.ResetButton = new System.Windows.Forms.Button();
 			this.UploadButton = new System.Windows.Forms.Button();
@@ -340,7 +340,7 @@
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).BeginInit();
 			this.WorkspacePage.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -428,13 +428,13 @@
 			this.WelcomePage.Controls.Add(this.OpenConfigurationLinkLabel);
 			this.WelcomePage.Controls.Add(this.CreateConfigurationLinkLabel);
 			this.WelcomePage.Controls.Add(this.WelcomeLabel);
-			this.WelcomePage.Controls.Add(this.pictureBox1);
+			this.WelcomePage.Controls.Add(this.ArcticFoxLogoPictureBox);
 			this.WelcomePage.Description = null;
 			this.WelcomePage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.WelcomePage, "");
 			this.WelcomePage.Location = new System.Drawing.Point(0, 0);
 			this.WelcomePage.Name = "WelcomePage";
-			this.WelcomePage.Size = new System.Drawing.Size(374, 581);
+			this.WelcomePage.Size = new System.Drawing.Size(420, 581);
 			this.WelcomePage.TabIndex = 0;
 			this.WelcomePage.Text = "WelcomePage";
 			// 
@@ -448,7 +448,7 @@
 			this.ConnectLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.ConnectLinkLabel.Location = new System.Drawing.Point(0, 460);
 			this.ConnectLinkLabel.Name = "ConnectLinkLabel";
-			this.ConnectLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.ConnectLinkLabel.Size = new System.Drawing.Size(420, 25);
 			this.ConnectLinkLabel.TabIndex = 7;
 			this.ConnectLinkLabel.TabStop = true;
 			this.ConnectLinkLabel.Text = "Connect and Download configuration";
@@ -465,7 +465,7 @@
 			this.OpenConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.OpenConfigurationLinkLabel.Location = new System.Drawing.Point(0, 510);
 			this.OpenConfigurationLinkLabel.Name = "OpenConfigurationLinkLabel";
-			this.OpenConfigurationLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.OpenConfigurationLinkLabel.Size = new System.Drawing.Size(420, 25);
 			this.OpenConfigurationLinkLabel.TabIndex = 6;
 			this.OpenConfigurationLinkLabel.TabStop = true;
 			this.OpenConfigurationLinkLabel.Text = "Open existing configuration";
@@ -482,7 +482,7 @@
 			this.CreateConfigurationLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
 			this.CreateConfigurationLinkLabel.Location = new System.Drawing.Point(0, 485);
 			this.CreateConfigurationLinkLabel.Name = "CreateConfigurationLinkLabel";
-			this.CreateConfigurationLinkLabel.Size = new System.Drawing.Size(374, 25);
+			this.CreateConfigurationLinkLabel.Size = new System.Drawing.Size(420, 25);
 			this.CreateConfigurationLinkLabel.TabIndex = 5;
 			this.CreateConfigurationLinkLabel.TabStop = true;
 			this.CreateConfigurationLinkLabel.Text = "Create new configuration";
@@ -499,23 +499,23 @@
 			this.MainLocalizationExtender.SetKey(this.WelcomeLabel, "");
 			this.WelcomeLabel.Location = new System.Drawing.Point(0, 242);
 			this.WelcomeLabel.Name = "WelcomeLabel";
-			this.WelcomeLabel.Size = new System.Drawing.Size(374, 218);
+			this.WelcomeLabel.Size = new System.Drawing.Size(420, 218);
 			this.WelcomeLabel.TabIndex = 2;
 			this.WelcomeLabel.Text = "Connect device with\r\n\r\nArcticFox\r\n[{0}]\r\n\r\nfirmware or newer";
 			this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
-			// pictureBox1
+			// ArcticFoxLogoPictureBox
 			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.pictureBox1.Image = global::NToolbox.Properties.Resources.arcticfox_logo;
-			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
-			this.pictureBox1.Location = new System.Drawing.Point(117, 60);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
+			this.ArcticFoxLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.ArcticFoxLogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.ArcticFoxLogoPictureBox.Image = global::NToolbox.Properties.Resources.arcticfox_logo;
+			this.MainLocalizationExtender.SetKey(this.ArcticFoxLogoPictureBox, "");
+			this.ArcticFoxLogoPictureBox.Location = new System.Drawing.Point(129, 22);
+			this.ArcticFoxLogoPictureBox.Name = "ArcticFoxLogoPictureBox";
+			this.ArcticFoxLogoPictureBox.Size = new System.Drawing.Size(160, 180);
+			this.ArcticFoxLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.ArcticFoxLogoPictureBox.TabIndex = 3;
+			this.ArcticFoxLogoPictureBox.TabStop = false;
 			// 
 			// WorkspacePage
 			// 
@@ -592,8 +592,9 @@
 			// 
 			// pictureBox2
 			// 
+			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.arcticfox_logo;
+			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox2.Image = global::NToolbox.Properties.Resources.arcticfox_logo;
 			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
 			this.pictureBox2.Location = new System.Drawing.Point(1, 1);
 			this.pictureBox2.Name = "pictureBox2";
@@ -4261,7 +4262,7 @@
 			this.Text = "ArcticFox Configuration";
 			this.MainContainer.ResumeLayout(false);
 			this.WelcomePage.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).EndInit();
 			this.WorkspacePage.ResumeLayout(false);
 			this.borderedPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -4383,7 +4384,7 @@
 		private System.Windows.Forms.TabControl ProfilesTabControl;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox ArcticFoxLogoPictureBox;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.TabPage AdvancedTabPage;

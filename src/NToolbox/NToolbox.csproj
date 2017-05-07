@@ -204,25 +204,10 @@
     <None Include="Resources\new_configuration.afc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\device_monitor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\firmware_updater.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\configuration.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arctic_fox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\device_broadcast.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="NToolbox.ico" />
+    <None Include="Resources\gray_white_separator.png" />
     <None Include="Resources\ntoolbox_logo.png" />
     <None Include="Resources\arcticfox_logo.png" />
-    <None Include="Resources\ntoolbox.png" />
     <None Include="Resources\team_logo.png" />
     <None Include="Resources\www_page.png" />
     <None Include="Resources\ru.png" />

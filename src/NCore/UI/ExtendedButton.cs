@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace NCore.UI
@@ -19,6 +21,11 @@ namespace NCore.UI
 		private bool m_isMouseDown;
 		private string m_additionalText;
 		private Image m_image;
+		private Size? m_imageSize;
+		private Font m_additionalTextFont;
+		private Color m_additionalTextColor;
+		private bool m_useCompatibleTextRendering;
+		private bool m_drawBorders;
 
 		public ExtendedButton()
 		{
@@ -26,9 +33,41 @@ namespace NCore.UI
 			SetStyle(ControlStyles.Selectable, false);
 			UpdateStyles();
 
+			m_drawBorders = true;
+			m_useCompatibleTextRendering = false;
+			m_image = null;
+			m_imageSize = null;
+			m_additionalText = null;
+			m_additionalTextFont = null;
+			m_additionalTextColor = SystemColors.ControlText;
+
 			TextChanged += (s, e) => Invalidate();
 		}
 
+		[DefaultValue(true)]
+		public bool DrawBorders
+		{
+			get { return m_drawBorders; }
+			set
+			{
+				m_drawBorders = value;
+				Cursor = m_drawBorders ? Cursors.Default : Cursors.Hand;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(false)]
+		public bool UseCompatibleTextRendering
+		{
+			get { return m_useCompatibleTextRendering; }
+			set
+			{
+				m_useCompatibleTextRendering = value;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(null)]
 		public string AdditionalText
 		{
 			get { return m_additionalText; }
@@ -39,6 +78,29 @@ namespace NCore.UI
 			}
 		}
 
+		[DefaultValue(null)]
+		public Font AdditionalTextFont
+		{
+			get { return m_additionalTextFont; }
+			set
+			{
+				m_additionalTextFont = value;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(typeof(Color), "ControlText")]
+		public Color AdditionalTextColor
+		{
+			get { return m_additionalTextColor; }
+			set
+			{
+				m_additionalTextColor = value;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(null)]
 		public Image Image
 		{
 			get { return m_image; }
@@ -48,6 +110,23 @@ namespace NCore.UI
 				Invalidate();
 			}
 		}
+
+		[DefaultValue(null)]
+		public Size? ImageSize
+		{
+			get { return m_imageSize; }
+			set
+			{
+				m_imageSize = value;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(null)]
+		public Color? MouserOverPrimaryTextColor { get; set; }
+
+		[DefaultValue(null)]
+		public Color? MouserDownPrimaryTextColor { get; set; }
 
 		public void PerformClick()
 		{
@@ -83,7 +162,7 @@ namespace NCore.UI
 		{
 			base.OnMouseUp(e);
 
-			m_isMouseDown = false;	
+			m_isMouseDown = false;
 			Invalidate();
 		}
 
@@ -103,12 +182,13 @@ namespace NCore.UI
 
 		private void DrawImage(Graphics gfx, Rectangle rect)
 		{
-			if (Image == null) return;
-			gfx.DrawImage(Image, rect);
+			if (m_image == null) return;
+			gfx.DrawImage(m_image, rect);
 		}
 
 		private void DrawBorder(Graphics gfx, Rectangle rect)
 		{
+			if (!m_drawBorders) return;
 			if (m_isMouseDown)
 			{
 				gfx.FillRectangle(new SolidBrush(Color.FromArgb(25, SystemColors.Highlight)), rect);
@@ -118,44 +198,62 @@ namespace NCore.UI
 
 		private void DrawText(Graphics gfx, Rectangle rect)
 		{
-			if (string.IsNullOrEmpty(AdditionalText))
+			gfx.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+
+			var primaryTextColor = ForeColor;
+			if (m_isMouseOver && MouserOverPrimaryTextColor != null) primaryTextColor = MouserOverPrimaryTextColor.Value;
+			if (m_isMouseDown && MouserDownPrimaryTextColor != null) primaryTextColor = MouserDownPrimaryTextColor.Value;
+
+			if (string.IsNullOrEmpty(m_additionalText))
 			{
-				DrawString(gfx, rect, Text, true);
+				DrawString(gfx, rect, Text, Font, primaryTextColor);
 			}
 			else
 			{
-				var textRect = new Rectangle
+				var layoutArea = new SizeF(rect.Width, 0);
+				var additionalTextFont = m_additionalTextFont ?? Font;
+
+				var primaryTextSize = gfx.MeasureString(Text, Font, layoutArea, s_headerStringFormat);
+				var additionalTextSize = gfx.MeasureString(m_additionalText, additionalTextFont, layoutArea, s_headerStringFormat);
+				var contentHeight = (int)(primaryTextSize.Height + additionalTextSize.Height);
+
+				var primaryTextRect = new Rectangle
 				{
 					X = rect.X,
-					Y = rect.Y,
+					Y = rect.Y + (rect.Height - contentHeight) / 2,
 					Width = rect.Width,
-					Height = rect.Height / 2
+					Height = (int)primaryTextSize.Height
 				};
 
 				var additionalTextRect = new Rectangle
 				{
 					X = rect.X,
-					Y = rect.Y + rect.Height / 2,
+					Y = rect.Y + primaryTextRect.Y + primaryTextRect.Height,
 					Width = rect.Width,
-					Height = rect.Height / 2
+					Height = (int)additionalTextSize.Height
 				};
 
-				DrawString(gfx, textRect, Text, true);
-				DrawString(gfx, additionalTextRect, AdditionalText);
+				DrawString(gfx, primaryTextRect, Text, Font, primaryTextColor);
+				DrawString(gfx, additionalTextRect, m_additionalText, additionalTextFont, m_additionalTextColor);
 			}
 		}
 
-		private void DrawString(Graphics gfx, Rectangle rect, string text, bool mainBold = false)
+		private void DrawString(Graphics gfx, Rectangle rect, string text, Font font, Color color)
 		{
-			var font = mainBold ? new Font(Font, FontStyle.Bold) : Font;
-
-			try
+			if (UseCompatibleTextRendering)
 			{
-				TextRenderer.DrawText(gfx, text, font, rect, ForeColor, s_headerFormatFlags);
+				gfx.DrawString(text, font, new SolidBrush(color), rect, s_headerStringFormat);
 			}
-			catch
+			else
 			{
-				gfx.DrawString(text, font, new SolidBrush(ForeColor), rect, s_headerStringFormat);
+				try
+				{
+					TextRenderer.DrawText(gfx, text, font, rect, color, s_headerFormatFlags);
+				}
+				catch
+				{
+					gfx.DrawString(text, font, new SolidBrush(color), rect, s_headerStringFormat);
+				}
 			}
 		}
 
@@ -172,9 +270,10 @@ namespace NCore.UI
 
 		private Rectangle GetImageRect(Rectangle clientRect)
 		{
-			return Image == null
-				? Rectangle.Empty
-				: new Rectangle(ImageOffset, clientRect.Height / 2 - Image.Height / 2 + 1, Image.Width, Image.Height);
+			if (m_image == null) return Rectangle.Empty;
+
+			var imageSize = m_imageSize ?? m_image.Size;
+			return new Rectangle(ImageOffset, clientRect.Height / 2 - imageSize.Height / 2 + 1, imageSize.Width, imageSize.Height);
 		}
 
 		private Rectangle GetTextRect(Rectangle clientRect, Rectangle imageRect)

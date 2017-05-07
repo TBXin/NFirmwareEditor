@@ -111,10 +111,10 @@ namespace NCore.UI
 				var actualDropDownArrowRectangleWidth = e.Graphics.ScaleToDpi(DropDownArrowRectangleWidth);
 				var rect = new Rectangle
 				(
-					e.ClipRectangle.X + e.ClipRectangle.Width - actualDropDownArrowRectangleWidth - 1,
+					ClientRectangle.X + ClientRectangle.Width - actualDropDownArrowRectangleWidth - 1,
 					1,
 					actualDropDownArrowRectangleWidth,
-					e.ClipRectangle.Y + e.ClipRectangle.Height - 2
+					ClientRectangle.Y + ClientRectangle.Height - 2
 				);
 				DrawDropDownButton(e.Graphics, rect, ComboBoxState.Normal, ComboBoxElementParts.DropDownButtonRight);
 			}

@@ -77,7 +77,7 @@
 			this.WebsiteLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.WebsiteLinkLabel, "");
 			this.WebsiteLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.WebsiteLinkLabel.Location = new System.Drawing.Point(206, 307);
+			this.WebsiteLinkLabel.Location = new System.Drawing.Point(206, 313);
 			this.WebsiteLinkLabel.Name = "WebsiteLinkLabel";
 			this.WebsiteLinkLabel.Size = new System.Drawing.Size(99, 13);
 			this.WebsiteLinkLabel.TabIndex = 40;
@@ -88,7 +88,7 @@
 			// label11
 			// 
 			this.MainLocalizationExtender.SetKey(this.label11, "");
-			this.label11.Location = new System.Drawing.Point(194, 370);
+			this.label11.Location = new System.Drawing.Point(194, 376);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(120, 16);
 			this.label11.TabIndex = 49;
@@ -98,7 +98,7 @@
 			// label8
 			// 
 			this.MainLocalizationExtender.SetKey(this.label8, "");
-			this.label8.Location = new System.Drawing.Point(194, 349);
+			this.label8.Location = new System.Drawing.Point(194, 355);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(120, 16);
 			this.label8.TabIndex = 46;
@@ -108,7 +108,7 @@
 			// label7
 			// 
 			this.MainLocalizationExtender.SetKey(this.label7, "");
-			this.label7.Location = new System.Drawing.Point(194, 328);
+			this.label7.Location = new System.Drawing.Point(194, 334);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(120, 16);
 			this.label7.TabIndex = 43;
@@ -120,7 +120,7 @@
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.label5, "");
-			this.label5.Location = new System.Drawing.Point(146, 307);
+			this.label5.Location = new System.Drawing.Point(146, 313);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(64, 13);
 			this.label5.TabIndex = 41;
@@ -131,7 +131,7 @@
 			this.label16.AutoSize = true;
 			this.label16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.label16, "");
-			this.label16.Location = new System.Drawing.Point(146, 21);
+			this.label16.Location = new System.Drawing.Point(146, 22);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(170, 13);
 			this.label16.TabIndex = 51;
@@ -153,7 +153,7 @@
 			this.NfeIssuesLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.NfeIssuesLinkLabel, "");
 			this.NfeIssuesLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.NfeIssuesLinkLabel.Location = new System.Drawing.Point(182, 84);
+			this.NfeIssuesLinkLabel.Location = new System.Drawing.Point(182, 85);
 			this.NfeIssuesLinkLabel.Name = "NfeIssuesLinkLabel";
 			this.NfeIssuesLinkLabel.Size = new System.Drawing.Size(243, 13);
 			this.NfeIssuesLinkLabel.TabIndex = 76;
@@ -165,7 +165,7 @@
 			// 
 			this.label24.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label24, "");
-			this.label24.Location = new System.Drawing.Point(146, 84);
+			this.label24.Location = new System.Drawing.Point(146, 85);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(42, 13);
 			this.label24.TabIndex = 75;
@@ -176,7 +176,7 @@
 			this.NfeReleasesLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.NfeReleasesLinkLabel, "");
 			this.NfeReleasesLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.NfeReleasesLinkLabel.Location = new System.Drawing.Point(194, 63);
+			this.NfeReleasesLinkLabel.Location = new System.Drawing.Point(194, 64);
 			this.NfeReleasesLinkLabel.Name = "NfeReleasesLinkLabel";
 			this.NfeReleasesLinkLabel.Size = new System.Drawing.Size(254, 13);
 			this.NfeReleasesLinkLabel.TabIndex = 74;
@@ -188,7 +188,7 @@
 			// 
 			this.label25.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label25, "");
-			this.label25.Location = new System.Drawing.Point(146, 63);
+			this.label25.Location = new System.Drawing.Point(146, 64);
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(54, 13);
 			this.label25.TabIndex = 73;
@@ -199,7 +199,7 @@
 			this.NfeProjectLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.NfeProjectLinkLabel, "");
 			this.NfeProjectLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.NfeProjectLinkLabel.Location = new System.Drawing.Point(212, 42);
+			this.NfeProjectLinkLabel.Location = new System.Drawing.Point(212, 43);
 			this.NfeProjectLinkLabel.Name = "NfeProjectLinkLabel";
 			this.NfeProjectLinkLabel.Size = new System.Drawing.Size(210, 13);
 			this.NfeProjectLinkLabel.TabIndex = 72;
@@ -211,7 +211,7 @@
 			// 
 			this.label26.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label26, "");
-			this.label26.Location = new System.Drawing.Point(146, 42);
+			this.label26.Location = new System.Drawing.Point(146, 43);
 			this.label26.Name = "label26";
 			this.label26.Size = new System.Drawing.Size(72, 13);
 			this.label26.TabIndex = 71;
@@ -299,7 +299,7 @@
 			this.ControlBorderedPanel.Controls.Add(this.label15);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 417);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 426);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.ControlBorderedPanel.Size = new System.Drawing.Size(474, 39);
@@ -333,7 +333,7 @@
 			this.NfeLatestBuildLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.NfeLatestBuildLinkLabel, "");
 			this.NfeLatestBuildLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.NfeLatestBuildLinkLabel.Location = new System.Drawing.Point(215, 105);
+			this.NfeLatestBuildLinkLabel.Location = new System.Drawing.Point(215, 106);
 			this.NfeLatestBuildLinkLabel.Name = "NfeLatestBuildLinkLabel";
 			this.NfeLatestBuildLinkLabel.Size = new System.Drawing.Size(62, 13);
 			this.NfeLatestBuildLinkLabel.TabIndex = 86;
@@ -345,7 +345,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label4, "");
-			this.label4.Location = new System.Drawing.Point(146, 105);
+			this.label4.Location = new System.Drawing.Point(146, 106);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(74, 13);
 			this.label4.TabIndex = 85;
@@ -396,16 +396,16 @@
 			this.borderedPanel1.Controls.Add(this.label2);
 			this.borderedPanel1.Controls.Add(this.label1);
 			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
-			this.borderedPanel1.Location = new System.Drawing.Point(0, 139);
+			this.borderedPanel1.Location = new System.Drawing.Point(0, 144);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-			this.borderedPanel1.Size = new System.Drawing.Size(474, 140);
+			this.borderedPanel1.Size = new System.Drawing.Size(474, 138);
 			this.borderedPanel1.TabIndex = 89;
 			// 
 			// pictureBox2
 			// 
 			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.arcticfox_logo;
-			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
 			this.pictureBox2.Location = new System.Drawing.Point(12, 5);
 			this.pictureBox2.Name = "pictureBox2";
@@ -418,7 +418,7 @@
 			this.pictureBox3.BackgroundImage = global::NToolbox.Properties.Resources.team_logo;
 			this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.MainLocalizationExtender.SetKey(this.pictureBox3, "");
-			this.pictureBox3.Location = new System.Drawing.Point(12, 280);
+			this.pictureBox3.Location = new System.Drawing.Point(12, 286);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(128, 128);
 			this.pictureBox3.TabIndex = 84;
@@ -429,7 +429,7 @@
 			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ReikoKitsuneLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("ReikoKitsuneLinkLabel.Image")));
 			this.MainLocalizationExtender.SetKey(this.ReikoKitsuneLinkLabel, "");
-			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 328);
+			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 334);
 			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
 			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.ReikoKitsuneLinkLabel.TabIndex = 50;
@@ -439,7 +439,7 @@
 			this.ZingerLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ZingerLinkLabel.Image = global::NToolbox.Properties.Resources.www_page;
 			this.MainLocalizationExtender.SetKey(this.ZingerLinkLabel, "");
-			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 371);
+			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 377);
 			this.ZingerLinkLabel.Name = "ZingerLinkLabel";
 			this.ZingerLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.ZingerLinkLabel.TabIndex = 48;
@@ -448,7 +448,7 @@
 			// 
 			this.label12.Image = ((System.Drawing.Image)(resources.GetObject("label12.Image")));
 			this.MainLocalizationExtender.SetKey(this.label12, "");
-			this.label12.Location = new System.Drawing.Point(149, 370);
+			this.label12.Location = new System.Drawing.Point(149, 376);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(16, 16);
 			this.label12.TabIndex = 47;
@@ -458,7 +458,7 @@
 			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.MaelstromLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("MaelstromLinkLabel.Image")));
 			this.MainLocalizationExtender.SetKey(this.MaelstromLinkLabel, "");
-			this.MaelstromLinkLabel.Location = new System.Drawing.Point(173, 350);
+			this.MaelstromLinkLabel.Location = new System.Drawing.Point(173, 356);
 			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
 			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.MaelstromLinkLabel.TabIndex = 45;
@@ -467,7 +467,7 @@
 			// 
 			this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
 			this.MainLocalizationExtender.SetKey(this.label9, "");
-			this.label9.Location = new System.Drawing.Point(149, 349);
+			this.label9.Location = new System.Drawing.Point(149, 355);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(16, 16);
 			this.label9.TabIndex = 44;
@@ -476,7 +476,7 @@
 			// 
 			this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
 			this.MainLocalizationExtender.SetKey(this.label6, "");
-			this.label6.Location = new System.Drawing.Point(149, 328);
+			this.label6.Location = new System.Drawing.Point(149, 334);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(16, 16);
 			this.label6.TabIndex = 42;
@@ -484,9 +484,9 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.BackgroundImage = global::NToolbox.Properties.Resources.ntoolbox_logo;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.MainLocalizationExtender.SetKey(this.pictureBox1, "");
-			this.pictureBox1.Location = new System.Drawing.Point(12, 11);
+			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(128, 128);
 			this.pictureBox1.TabIndex = 1;
@@ -497,7 +497,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(474, 456);
+			this.ClientSize = new System.Drawing.Size(474, 465);
 			this.Controls.Add(this.NfeLatestBuildLinkLabel);
 			this.Controls.Add(this.NfeIssuesLinkLabel);
 			this.Controls.Add(this.NfeReleasesLinkLabel);

@@ -89,7 +89,7 @@ namespace NToolbox.Windows
 
 			AboutLinkLabel.Click += (s, e) =>
 			{
-				#if DEBUG
+				/*#if DEBUG
 				if (System.Diagnostics.Debugger.IsAttached)
 				{
 					// Initialize all localizable strings.
@@ -98,13 +98,14 @@ namespace NToolbox.Windows
 					var result = LocalizationManager.Instance.GetLanguagePack();
 					System.Diagnostics.Debugger.Break();
 				}
-				#endif
+				#endif*/
 
 				using (var aboutWindow = new AboutWindow())
 				{
 					aboutWindow.ShowDialog();
 				}
 			};
+			LanguageMenuButton.Click += (s, e) => LogoPictureBox.Focus();
 		}
 
 		private void InitializeTray()
@@ -270,6 +271,11 @@ namespace NToolbox.Windows
 		#region Overrides of WindowBase
 		protected override void OnLocalization()
 		{
+			ArcticFoxConfigurationButton.AdditionalText = LocalizableStrings.ArcticFoxConfigurationButtonTooltip;
+			DeviceMonitorButton.AdditionalText = LocalizableStrings.DeviceMonitorButtonTooltip;
+			ScreenshooterButton.AdditionalText = LocalizableStrings.ScreenshooterButtonTooltip;
+			FirmwareUpdaterButton.AdditionalText = LocalizableStrings.FirmwareUpdaterButtonTooltip;
+
 			ShowTrayMenuItem.Text = LocalizableStrings.TrayShowToolbox;
 			ArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfiguration;
 			DeviceMonitorTrayMenuItem.Text = LocalizableStrings.TrayDeviceMonitor;

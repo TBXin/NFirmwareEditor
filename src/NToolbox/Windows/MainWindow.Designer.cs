@@ -30,8 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.VersionLabel = new System.Windows.Forms.Label();
-			this.ButtonsPanel = new NCore.UI.BorderedPanel();
-			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.LanguageMenuButton = new NCore.UI.MenuButton();
 			this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ScreenshooterButton = new NCore.UI.ExtendedButton();
@@ -55,71 +53,34 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.ExitTrayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TrayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.TaglineLabel = new System.Windows.Forms.Label();
+			this.TitleLabel = new System.Windows.Forms.Label();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.LogoPictureBox = new System.Windows.Forms.PictureBox();
-			this.ButtonsPanel.SuspendLayout();
-			this.borderedPanel1.SuspendLayout();
 			this.TrayContextMenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// VersionLabel
 			// 
-			this.VersionLabel.AutoSize = true;
 			this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+			this.VersionLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.VersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.VersionLabel, "");
-			this.VersionLabel.Location = new System.Drawing.Point(196, 92);
+			this.VersionLabel.Location = new System.Drawing.Point(7, 191);
 			this.VersionLabel.Name = "VersionLabel";
-			this.VersionLabel.Size = new System.Drawing.Size(29, 13);
+			this.VersionLabel.Size = new System.Drawing.Size(176, 18);
 			this.VersionLabel.TabIndex = 5;
 			this.VersionLabel.Text = "v1.1";
-			// 
-			// ButtonsPanel
-			// 
-			this.ButtonsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonsPanel.BackColor = System.Drawing.Color.White;
-			this.ButtonsPanel.BorderBottom = false;
-			this.ButtonsPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.ButtonsPanel.BorderLeft = false;
-			this.ButtonsPanel.BorderRight = false;
-			this.ButtonsPanel.BorderTop = false;
-			this.ButtonsPanel.BorderWidth = 1F;
-			this.ButtonsPanel.Controls.Add(this.borderedPanel1);
-			this.ButtonsPanel.Controls.Add(this.AboutLinkLabel);
-			this.ButtonsPanel.Controls.Add(this.ScreenshooterButton);
-			this.ButtonsPanel.Controls.Add(this.DeviceMonitorButton);
-			this.ButtonsPanel.Controls.Add(this.ArcticFoxConfigurationButton);
-			this.ButtonsPanel.Controls.Add(this.FirmwareUpdaterButton);
-			this.MainLocalizationExtender.SetKey(this.ButtonsPanel, "");
-			this.ButtonsPanel.Location = new System.Drawing.Point(0, 139);
-			this.ButtonsPanel.Name = "ButtonsPanel";
-			this.ButtonsPanel.Size = new System.Drawing.Size(240, 295);
-			this.ButtonsPanel.TabIndex = 4;
-			// 
-			// borderedPanel1
-			// 
-			this.borderedPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			this.borderedPanel1.BorderBottom = false;
-			this.borderedPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.borderedPanel1.BorderLeft = false;
-			this.borderedPanel1.BorderRight = false;
-			this.borderedPanel1.BorderTop = true;
-			this.borderedPanel1.BorderWidth = 1F;
-			this.borderedPanel1.Controls.Add(this.LanguageMenuButton);
-			this.borderedPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
-			this.borderedPanel1.Location = new System.Drawing.Point(0, 260);
-			this.borderedPanel1.Name = "borderedPanel1";
-			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.borderedPanel1.Size = new System.Drawing.Size(240, 35);
-			this.borderedPanel1.TabIndex = 10;
+			this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// LanguageMenuButton
 			// 
 			this.LanguageMenuButton.AutoEllipsis = true;
 			this.LanguageMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.MainLocalizationExtender.SetKey(this.LanguageMenuButton, "");
-			this.LanguageMenuButton.Location = new System.Drawing.Point(80, 6);
+			this.LanguageMenuButton.Location = new System.Drawing.Point(55, 255);
 			this.LanguageMenuButton.Name = "LanguageMenuButton";
 			this.LanguageMenuButton.Size = new System.Drawing.Size(80, 24);
 			this.LanguageMenuButton.TabIndex = 11;
@@ -131,65 +92,88 @@
 			// AboutLinkLabel
 			// 
 			this.AboutLinkLabel.ActiveLinkColor = System.Drawing.Color.SlateGray;
-			this.AboutLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.AboutLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.AboutLinkLabel, "Toolbox.MainWindow.AboutLink");
-			this.AboutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.AboutLinkLabel.Location = new System.Drawing.Point(10, 236);
+			this.AboutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
+			this.AboutLinkLabel.Location = new System.Drawing.Point(7, 211);
 			this.AboutLinkLabel.Name = "AboutLinkLabel";
-			this.AboutLinkLabel.Size = new System.Drawing.Size(220, 18);
+			this.AboutLinkLabel.Size = new System.Drawing.Size(176, 36);
 			this.AboutLinkLabel.TabIndex = 8;
 			this.AboutLinkLabel.TabStop = true;
 			this.AboutLinkLabel.Text = "About && Links";
 			this.AboutLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
+			this.AboutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
 			// 
 			// ScreenshooterButton
 			// 
-			this.ScreenshooterButton.AdditionalText = "";
-			this.ScreenshooterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.ScreenshooterButton.Image = global::NToolbox.Properties.Resources.device_broadcast;
+			this.ScreenshooterButton.AdditionalText = "Share screenshots of your device";
+			this.ScreenshooterButton.AdditionalTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
+			this.ScreenshooterButton.AdditionalTextFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ScreenshooterButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ScreenshooterButton.DrawBorders = false;
+			this.ScreenshooterButton.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+			this.ScreenshooterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
 			this.MainLocalizationExtender.SetKey(this.ScreenshooterButton, "Toolbox.MainWindow.ScreenshooterButton");
-			this.ScreenshooterButton.Location = new System.Drawing.Point(10, 122);
+			this.ScreenshooterButton.Location = new System.Drawing.Point(200, 182);
+			this.ScreenshooterButton.MouserDownPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(93)))), ((int)(((byte)(187)))));
+			this.ScreenshooterButton.MouserOverPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(120)))), ((int)(((byte)(206)))));
 			this.ScreenshooterButton.Name = "ScreenshooterButton";
-			this.ScreenshooterButton.Size = new System.Drawing.Size(220, 52);
+			this.ScreenshooterButton.Size = new System.Drawing.Size(350, 50);
 			this.ScreenshooterButton.TabIndex = 4;
 			this.ScreenshooterButton.Text = "Screenshooter";
 			// 
 			// DeviceMonitorButton
 			// 
-			this.DeviceMonitorButton.AdditionalText = "";
-			this.DeviceMonitorButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DeviceMonitorButton.Image = global::NToolbox.Properties.Resources.device_monitor;
+			this.DeviceMonitorButton.AdditionalText = "Gain full control over all sensors readings";
+			this.DeviceMonitorButton.AdditionalTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
+			this.DeviceMonitorButton.AdditionalTextFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeviceMonitorButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.DeviceMonitorButton.DrawBorders = false;
+			this.DeviceMonitorButton.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+			this.DeviceMonitorButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
 			this.MainLocalizationExtender.SetKey(this.DeviceMonitorButton, "Toolbox.MainWindow.DeviceMonitorButton");
-			this.DeviceMonitorButton.Location = new System.Drawing.Point(10, 64);
+			this.DeviceMonitorButton.Location = new System.Drawing.Point(200, 124);
+			this.DeviceMonitorButton.MouserDownPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(93)))), ((int)(((byte)(187)))));
+			this.DeviceMonitorButton.MouserOverPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(120)))), ((int)(((byte)(206)))));
 			this.DeviceMonitorButton.Name = "DeviceMonitorButton";
-			this.DeviceMonitorButton.Size = new System.Drawing.Size(220, 52);
+			this.DeviceMonitorButton.Size = new System.Drawing.Size(350, 50);
 			this.DeviceMonitorButton.TabIndex = 2;
 			this.DeviceMonitorButton.Text = "Device Monitor";
 			// 
 			// ArcticFoxConfigurationButton
 			// 
-			this.ArcticFoxConfigurationButton.AdditionalText = "";
-			this.ArcticFoxConfigurationButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.ArcticFoxConfigurationButton.Image = global::NToolbox.Properties.Resources.arctic_fox;
+			this.ArcticFoxConfigurationButton.AdditionalText = "Configure your device powered by ArcticFox firmware";
+			this.ArcticFoxConfigurationButton.AdditionalTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
+			this.ArcticFoxConfigurationButton.AdditionalTextFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ArcticFoxConfigurationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ArcticFoxConfigurationButton.DrawBorders = false;
+			this.ArcticFoxConfigurationButton.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+			this.ArcticFoxConfigurationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
+			this.ArcticFoxConfigurationButton.ImageSize = new System.Drawing.Size(48, 48);
 			this.MainLocalizationExtender.SetKey(this.ArcticFoxConfigurationButton, "Toolbox.MainWindow.ArcticFoxConfigurationButton");
-			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(10, 6);
+			this.ArcticFoxConfigurationButton.Location = new System.Drawing.Point(200, 66);
+			this.ArcticFoxConfigurationButton.MouserDownPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(93)))), ((int)(((byte)(187)))));
+			this.ArcticFoxConfigurationButton.MouserOverPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(120)))), ((int)(((byte)(206)))));
 			this.ArcticFoxConfigurationButton.Name = "ArcticFoxConfigurationButton";
-			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(220, 52);
+			this.ArcticFoxConfigurationButton.Size = new System.Drawing.Size(350, 50);
 			this.ArcticFoxConfigurationButton.TabIndex = 0;
 			this.ArcticFoxConfigurationButton.Text = "ArcticFox Configuration";
 			// 
 			// FirmwareUpdaterButton
 			// 
-			this.FirmwareUpdaterButton.AdditionalText = "";
-			this.FirmwareUpdaterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.FirmwareUpdaterButton.Image = global::NToolbox.Properties.Resources.firmware_updater;
+			this.FirmwareUpdaterButton.AdditionalText = "Install a new firmware or upgrade existing one";
+			this.FirmwareUpdaterButton.AdditionalTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
+			this.FirmwareUpdaterButton.AdditionalTextFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.FirmwareUpdaterButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.FirmwareUpdaterButton.DrawBorders = false;
+			this.FirmwareUpdaterButton.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+			this.FirmwareUpdaterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
 			this.MainLocalizationExtender.SetKey(this.FirmwareUpdaterButton, "Toolbox.MainWindow.FirmwareUpdaterButton");
-			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(10, 180);
+			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(200, 240);
+			this.FirmwareUpdaterButton.MouserDownPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(93)))), ((int)(((byte)(187)))));
+			this.FirmwareUpdaterButton.MouserOverPrimaryTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(120)))), ((int)(((byte)(206)))));
 			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
-			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
+			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(350, 50);
 			this.FirmwareUpdaterButton.TabIndex = 3;
 			this.FirmwareUpdaterButton.Text = "Firmware Updater";
 			// 
@@ -310,14 +294,47 @@
 			this.TrayNotifyIcon.Text = "NFE Toolbox";
 			this.TrayNotifyIcon.Visible = true;
 			// 
+			// TaglineLabel
+			// 
+			this.TaglineLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.TaglineLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
+			this.MainLocalizationExtender.SetKey(this.TaglineLabel, "Toolbox.MainWindow.TaglineLabel");
+			this.TaglineLabel.Location = new System.Drawing.Point(205, 36);
+			this.TaglineLabel.Name = "TaglineLabel";
+			this.TaglineLabel.Size = new System.Drawing.Size(350, 20);
+			this.TaglineLabel.TabIndex = 15;
+			this.TaglineLabel.Text = "Almost unlimited features";
+			// 
+			// TitleLabel
+			// 
+			this.TitleLabel.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
+			this.MainLocalizationExtender.SetKey(this.TitleLabel, "Toolbox.MainWindow.TitleLabel");
+			this.TitleLabel.Location = new System.Drawing.Point(202, 6);
+			this.TitleLabel.Name = "TitleLabel";
+			this.TitleLabel.Size = new System.Drawing.Size(350, 30);
+			this.TitleLabel.TabIndex = 14;
+			this.TitleLabel.Text = "Welcome to NToolbox";
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.BackgroundImage = global::NToolbox.Properties.Resources.gray_white_separator;
+			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.MainLocalizationExtender.SetKey(this.pictureBox2, "");
+			this.pictureBox2.Location = new System.Drawing.Point(180, 0);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(1, 300);
+			this.pictureBox2.TabIndex = 13;
+			this.pictureBox2.TabStop = false;
+			// 
 			// LogoPictureBox
 			// 
+			this.LogoPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.ntoolbox_logo;
 			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.LogoPictureBox.Image = global::NToolbox.Properties.Resources.ntoolbox;
 			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
-			this.LogoPictureBox.Location = new System.Drawing.Point(30, 5);
+			this.LogoPictureBox.Location = new System.Drawing.Point(12, 10);
 			this.LogoPictureBox.Name = "LogoPictureBox";
-			this.LogoPictureBox.Size = new System.Drawing.Size(180, 125);
+			this.LogoPictureBox.Size = new System.Drawing.Size(160, 180);
 			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.LogoPictureBox.TabIndex = 0;
 			this.LogoPictureBox.TabStop = false;
@@ -327,9 +344,17 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(240, 434);
+			this.ClientSize = new System.Drawing.Size(558, 301);
+			this.Controls.Add(this.TaglineLabel);
+			this.Controls.Add(this.TitleLabel);
+			this.Controls.Add(this.pictureBox2);
+			this.Controls.Add(this.LanguageMenuButton);
+			this.Controls.Add(this.AboutLinkLabel);
+			this.Controls.Add(this.ScreenshooterButton);
+			this.Controls.Add(this.DeviceMonitorButton);
 			this.Controls.Add(this.VersionLabel);
-			this.Controls.Add(this.ButtonsPanel);
+			this.Controls.Add(this.ArcticFoxConfigurationButton);
+			this.Controls.Add(this.FirmwareUpdaterButton);
 			this.Controls.Add(this.LogoPictureBox);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -338,12 +363,10 @@
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NToolbox";
-			this.ButtonsPanel.ResumeLayout(false);
-			this.borderedPanel1.ResumeLayout(false);
 			this.TrayContextMenuStrip.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -353,7 +376,6 @@
 		private NCore.UI.ExtendedButton DeviceMonitorButton;
 		private NCore.UI.ExtendedButton FirmwareUpdaterButton;
 		private System.Windows.Forms.PictureBox LogoPictureBox;
-		private NCore.UI.BorderedPanel ButtonsPanel;
 		private NCore.UI.ExtendedButton ScreenshooterButton;
 		private System.Windows.Forms.NotifyIcon TrayNotifyIcon;
 		private System.Windows.Forms.ContextMenuStrip TrayContextMenuStrip;
@@ -374,8 +396,10 @@
 		private System.Windows.Forms.LinkLabel AboutLinkLabel;
 		private System.Windows.Forms.ToolStripMenuItem CloseArcticFoxConfigurationTrayMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private NCore.UI.BorderedPanel borderedPanel1;
 		private NCore.UI.MenuButton LanguageMenuButton;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.Label TaglineLabel;
+		private System.Windows.Forms.Label TitleLabel;
 	}
 }
 

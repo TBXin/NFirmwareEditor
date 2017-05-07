@@ -696,6 +696,28 @@ namespace NToolbox.Services
 		}
 		#endregion
 
+		#region MainWindowButtonDescriptions
+		public static string ArcticFoxConfigurationButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ArcticFoxConfigurationButton.Tooltip", "Configure your device powered by ArcticFox firmware"); }
+		}
+
+		public static string DeviceMonitorButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.DeviceMonitorButton.Tooltip", "Gain full control over all sensors readings"); }
+		}
+
+		public static string ScreenshooterButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ScreenshooterButton.Tooltip", "Share screenshots of your device"); }
+		}
+
+		public static string FirmwareUpdaterButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.FirmwareUpdaterButton.Tooltip", "Install a new firmware or upgrade existing one"); }
+		}
+		#endregion
+
 		#region MainWindowContextMenu
 		public static string TrayShowToolbox
 		{
