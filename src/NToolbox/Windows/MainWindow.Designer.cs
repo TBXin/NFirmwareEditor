@@ -332,7 +332,7 @@
 			this.LogoPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.ntoolbox_logo;
 			this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.MainLocalizationExtender.SetKey(this.LogoPictureBox, "");
-			this.LogoPictureBox.Location = new System.Drawing.Point(12, 10);
+			this.LogoPictureBox.Location = new System.Drawing.Point(11, 10);
 			this.LogoPictureBox.Name = "LogoPictureBox";
 			this.LogoPictureBox.Size = new System.Drawing.Size(160, 180);
 			this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
