@@ -2628,10 +2628,10 @@
 			// 
 			this.groupPanel4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel4.Controls.Add(this.InSelectorVWFireMinusComboBox);
-			this.groupPanel4.Controls.Add(this.label79);
 			this.groupPanel4.Controls.Add(this.InSelectorVWPlusMinusComboBox);
-			this.groupPanel4.Controls.Add(this.label84);
 			this.groupPanel4.Controls.Add(this.InSelectorVWFirePlusComboBox);
+			this.groupPanel4.Controls.Add(this.label79);
+			this.groupPanel4.Controls.Add(this.label84);
 			this.groupPanel4.Controls.Add(this.label85);
 			this.groupPanel4.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel4.HeaderHeight = 30;
@@ -2707,10 +2707,10 @@
 			// 
 			this.groupPanel5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel5.Controls.Add(this.InEditVWFireMinusComboBox);
-			this.groupPanel5.Controls.Add(this.label86);
 			this.groupPanel5.Controls.Add(this.InEditVWPlusMinusComboBox);
-			this.groupPanel5.Controls.Add(this.label87);
 			this.groupPanel5.Controls.Add(this.InEditVWFirePlusComboBox);
+			this.groupPanel5.Controls.Add(this.label86);
+			this.groupPanel5.Controls.Add(this.label87);
 			this.groupPanel5.Controls.Add(this.label88);
 			this.groupPanel5.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel5.HeaderHeight = 30;
@@ -2786,10 +2786,10 @@
 			// 
 			this.groupPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel3.Controls.Add(this.InMenuVWFireMinusComboBox);
-			this.groupPanel3.Controls.Add(this.label83);
 			this.groupPanel3.Controls.Add(this.InMenuVWPlusMinusComboBox);
-			this.groupPanel3.Controls.Add(this.label95);
 			this.groupPanel3.Controls.Add(this.InMenuVWFirePlusComboBox);
+			this.groupPanel3.Controls.Add(this.label83);
+			this.groupPanel3.Controls.Add(this.label95);
 			this.groupPanel3.Controls.Add(this.label96);
 			this.groupPanel3.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel3.HeaderHeight = 30;
@@ -2865,10 +2865,10 @@
 			// 
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel2.Controls.Add(this.InStandbyVWPlusMinusMenuButton);
-			this.groupPanel2.Controls.Add(this.label82);
 			this.groupPanel2.Controls.Add(this.InStandbyVWFirePlusMenuButton);
-			this.groupPanel2.Controls.Add(this.label81);
 			this.groupPanel2.Controls.Add(this.InStandbyVWFireMinusMenuButton);
+			this.groupPanel2.Controls.Add(this.label82);
+			this.groupPanel2.Controls.Add(this.label81);
 			this.groupPanel2.Controls.Add(this.label80);
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
@@ -2967,10 +2967,10 @@
 			// 
 			this.groupPanel17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel17.Controls.Add(this.InSelectorTCFireMinusComboBox);
-			this.groupPanel17.Controls.Add(this.label10);
 			this.groupPanel17.Controls.Add(this.InSelectorTCPlusMinusComboBox);
-			this.groupPanel17.Controls.Add(this.label12);
 			this.groupPanel17.Controls.Add(this.InSelectorTCFirePlusComboBox);
+			this.groupPanel17.Controls.Add(this.label10);
+			this.groupPanel17.Controls.Add(this.label12);
 			this.groupPanel17.Controls.Add(this.label13);
 			this.groupPanel17.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel17.HeaderHeight = 30;
@@ -3046,10 +3046,10 @@
 			// 
 			this.groupPanel18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel18.Controls.Add(this.InEditTCFireMinusComboBox);
-			this.groupPanel18.Controls.Add(this.label15);
 			this.groupPanel18.Controls.Add(this.InEditTCPlusMinusComboBox);
-			this.groupPanel18.Controls.Add(this.label24);
 			this.groupPanel18.Controls.Add(this.InEditTCFirePlusComboBox);
+			this.groupPanel18.Controls.Add(this.label15);
+			this.groupPanel18.Controls.Add(this.label24);
 			this.groupPanel18.Controls.Add(this.label26);
 			this.groupPanel18.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel18.HeaderHeight = 30;
@@ -3125,10 +3125,10 @@
 			// 
 			this.groupPanel19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel19.Controls.Add(this.InMenuTCFireMinusComboBox);
-			this.groupPanel19.Controls.Add(this.label28);
 			this.groupPanel19.Controls.Add(this.InMenuTCPlusMinusComboBox);
-			this.groupPanel19.Controls.Add(this.label47);
 			this.groupPanel19.Controls.Add(this.InMenuTCFirePlusComboBox);
+			this.groupPanel19.Controls.Add(this.label28);
+			this.groupPanel19.Controls.Add(this.label47);
 			this.groupPanel19.Controls.Add(this.label66);
 			this.groupPanel19.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel19.HeaderHeight = 30;
@@ -3204,10 +3204,10 @@
 			// 
 			this.groupPanel20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel20.Controls.Add(this.InStandbyTCPlusMinusMenuButton);
-			this.groupPanel20.Controls.Add(this.label67);
 			this.groupPanel20.Controls.Add(this.InStandbyTCFirePlusMenuButton);
-			this.groupPanel20.Controls.Add(this.label71);
 			this.groupPanel20.Controls.Add(this.InStandbyTCFireMinusMenuButton);
+			this.groupPanel20.Controls.Add(this.label67);
+			this.groupPanel20.Controls.Add(this.label71);
 			this.groupPanel20.Controls.Add(this.label89);
 			this.groupPanel20.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel20.HeaderHeight = 30;
