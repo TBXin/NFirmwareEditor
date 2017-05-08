@@ -14,7 +14,8 @@ namespace NFirmware
 		{
 			{ EncryptionType.Joyetech, new JoyetechEncryption() },
 			{ EncryptionType.ArcticFox, new ArcticFoxEncryption() },
-			{ EncryptionType.ArcticFox2, new ArcticFoxEncryption(0x19, 11) }
+			{ EncryptionType.ArcticFox2, new ArcticFoxEncryption(0x19, 11) },
+			{ EncryptionType.VandalProof, new VandalProofEncryption() }
 		};
 
 		private readonly byte[] m_encryptedFirmwareMark = Encoding.ASCII.GetBytes("Joyetech APROM");
@@ -75,11 +76,17 @@ namespace NFirmware
 				var type = kvp.Key;
 				var encryptor = kvp.Value;
 
-				var result = encryptor.Decode(firmwareBytes);
-				if (!IsFirmwareEncrypted(result))
+				try
 				{
+					var result = encryptor.Decode(firmwareBytes);
+					if (IsFirmwareEncrypted(result)) continue;
+
 					encryptionType = type;
 					return result;
+				}
+				catch
+				{
+					// Ignore
 				}
 			}
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using NCore;
@@ -13,7 +14,7 @@ namespace NToolbox.Windows
 {
 	internal partial class MainWindow : WindowBase
 	{
-		private const string ApplicationVersion = "1.5";
+		private const string ApplicationVersion = "2.0";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
@@ -82,18 +83,29 @@ namespace NToolbox.Windows
 		{
 			VersionLabel.Text = @"v" + ApplicationVersion;
 			ArcticFoxConfigurationButton.Click += StartArcticFoxConfiguration;
-			MyEvicConfigurationButton.Click += StartMyEvicConfiguration;
 			DeviceMonitorButton.Click += StartDeviceMonitor;
 			ScreenshooterButton.Click += StartScreenshooter;
 			FirmwareUpdaterButton.Click += StartFirmwareUpdater;
 
 			AboutLinkLabel.Click += (s, e) =>
 			{
+				/*#if DEBUG
+				if (System.Diagnostics.Debugger.IsAttached)
+				{
+					// Initialize all localizable strings.
+					typeof(LocalizableStrings).GetProperties().ForEach(p => p.GetValue(null, null));
+					// Create exportable lpack.txt
+					var result = LocalizationManager.Instance.GetLanguagePack();
+					System.Diagnostics.Debugger.Break();
+				}
+				#endif*/
+
 				using (var aboutWindow = new AboutWindow())
 				{
 					aboutWindow.ShowDialog();
 				}
 			};
+			LanguageMenuButton.Click += (s, e) => LogoPictureBox.Focus();
 		}
 
 		private void InitializeTray()
@@ -109,7 +121,6 @@ namespace NToolbox.Windows
 			ExitTrayMenuItem.Click += (s, e) => Application.Exit();
 
 			ArcticFoxConfigurationTrayMenuItem.Click += StartArcticFoxConfiguration;
-			MyEvicConfigurationTrayMenuItem.Click += StartMyEvicConfiguration;
 			DeviceMonitorTrayMenuItem.Click += StartDeviceMonitor;
 			ScreenshooterTrayMenuItem.Click += StartScreenshooter;
 			FirmwareUpdaterTrayMenuItem.Click += StartFirmwareUpdater;
@@ -144,31 +155,20 @@ namespace NToolbox.Windows
 		private void InitializeLanguages()
 		{
 			var languages = LocalizationManager.GetAvailableLanguages();
-			foreach (var itemContainer in languages)
+			var languageMenuItems = languages.Select(item =>
 			{
-				LanguageComboBox.Items.Add(itemContainer);
-			}
-			LanguageComboBox.SelectedIndexChanged += (s, e) =>
-			{
-				var selectedContainer = LanguageComboBox.SelectedItem as NamedItemContainer<string>;
-				if (selectedContainer == null) return;
+			    var lang = item;
+			    return new ToolStripMenuItem(lang.DisplayName, lang.Flag, (s, e) =>
+			    {
+			        LocalizationManager.Instance.InitializeLanguagePack(lang.FilePath);
+			        LocalizeSelf();
 
-				LocalizationManager.Instance.InitializeLanguagePack(selectedContainer.Data);
-				LocalizeSelf();
-
-				m_configuration.Language = selectedContainer.Name;
-				SaveConfiguration();
-			};
-
-			if (string.IsNullOrEmpty(m_configuration.Language) && LanguageComboBox.Items.Count > 0)
-			{
-				LanguageComboBox.SelectedIndex = 0;
-			}
-			else
-			{
-				var activeLanguage = languages.FindIndex(x => string.Equals(x.Name, m_configuration.Language, StringComparison.OrdinalIgnoreCase));
-				if (activeLanguage != -1) LanguageComboBox.SelectedIndex = activeLanguage;
-			}
+			        m_configuration.Language = lang.DisplayName;
+			        SaveConfiguration();
+			    }) { Tag = lang.DisplayName };
+			}).ToList();
+			LanguageMenuButton.AddItems(languageMenuItems);
+			LanguageMenuButton.SelectItem(m_configuration.Language, true);
 		}
 
 		private ToolboxConfiguration LoadConfiguration()
@@ -187,11 +187,6 @@ namespace NToolbox.Windows
 			{
 				ShowDialogWindow(cfg);
 			}
-		}
-
-		private void StartMyEvicConfiguration(object sender, EventArgs e)
-		{
-			InfoBox.Show("Work in progress... Be patient.");
 		}
 
 		private void StartDeviceMonitor(object sender, EventArgs e)
@@ -240,8 +235,7 @@ namespace NToolbox.Windows
 
 				if (m_startupMode == StartupMode.ArcticFoxConfiguration ||
 				    m_startupMode == StartupMode.DeviceMonitor ||
-				    m_startupMode == StartupMode.FirmwareUpdater ||
-				    m_startupMode == StartupMode.MyEvicConfiguration)
+				    m_startupMode == StartupMode.FirmwareUpdater)
 				{
 					Opacity = 0;
 					Application.Exit();
@@ -259,7 +253,6 @@ namespace NToolbox.Windows
 		private void SetTrayItemsState(bool enable)
 		{
 			ArcticFoxConfigurationTrayMenuItem.Enabled =
-			//MyEvicConfigurationTrayMenuItem.Enabled = 
 			DeviceMonitorTrayMenuItem.Enabled = 
 			ScreenshooterTrayMenuItem.Enabled = 
 			FirmwareUpdaterTrayMenuItem.Enabled = enable;
@@ -270,17 +263,21 @@ namespace NToolbox.Windows
 			return ApplicationService.GetAutorunState(StartupArgs.Minimzed);
 		}
 
-		private bool SetAutorunState(bool enabled)
+		private void SetAutorunState(bool enabled)
 		{
-			return ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
+			ApplicationService.UpdateAutorunState(enabled, StartupArgs.Minimzed);
 		}
 
 		#region Overrides of WindowBase
 		protected override void OnLocalization()
 		{
+			ArcticFoxConfigurationButton.AdditionalText = LocalizableStrings.ArcticFoxConfigurationButtonTooltip;
+			DeviceMonitorButton.AdditionalText = LocalizableStrings.DeviceMonitorButtonTooltip;
+			ScreenshooterButton.AdditionalText = LocalizableStrings.ScreenshooterButtonTooltip;
+			FirmwareUpdaterButton.AdditionalText = LocalizableStrings.FirmwareUpdaterButtonTooltip;
+
 			ShowTrayMenuItem.Text = LocalizableStrings.TrayShowToolbox;
 			ArcticFoxConfigurationTrayMenuItem.Text = LocalizableStrings.TrayArcticFoxConfiguration;
-			MyEvicConfigurationTrayMenuItem.Text = LocalizableStrings.TrayMyEvicConfiguration;
 			DeviceMonitorTrayMenuItem.Text = LocalizableStrings.TrayDeviceMonitor;
 			ScreenshooterTrayMenuItem.Text = LocalizableStrings.TrayScreenshooter;
 			FirmwareUpdaterTrayMenuItem.Text = LocalizableStrings.TrayFirmwareUpdater;

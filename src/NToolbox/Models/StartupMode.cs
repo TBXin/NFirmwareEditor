@@ -5,7 +5,6 @@
 		None,
 		Minimized,
 		ArcticFoxConfiguration,
-		MyEvicConfiguration,
 		DeviceMonitor,
 		FirmwareUpdater
 	}

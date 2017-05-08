@@ -1,4 +1,5 @@
-﻿using NCore.UI;
+﻿using System.Windows.Forms;
+using NCore.UI;
 using NToolbox.Services;
 
 namespace NToolbox.Models
@@ -109,6 +110,30 @@ namespace NToolbox.Models
 				}
 			}
 
+			public static object[] FoxySkinLineContentItems
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineOutputVolts, ArcticFoxConfiguration.FoxyLineContent.Vout),
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineOutputAmps, ArcticFoxConfiguration.FoxyLineContent.Amps),
+
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineLiveResistance, ArcticFoxConfiguration.FoxyLineContent.RealResistance),
+
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLinePuffs, ArcticFoxConfiguration.FoxyLineContent.Puffs),
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLinePuffsTime, ArcticFoxConfiguration.FoxyLineContent.Time),
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineBatteriesVolts, ArcticFoxConfiguration.FoxyLineContent.BatteryVolts),
+
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineDateTime, ArcticFoxConfiguration.FoxyLineContent.DateTime),
+
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineLastPuffTime, ArcticFoxConfiguration.FoxyLineContent.LastPuff),
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineLastPower, ArcticFoxConfiguration.FoxyLineContent.LastPower),
+						new NamedItemContainer<ArcticFoxConfiguration.FoxyLineContent>(LocalizableStrings.InfoLineLastTemperature, ArcticFoxConfiguration.FoxyLineContent.LastTemperature)
+					};
+				}
+			}
+
 			public static object[] CircleSkinLineContentItems
 			{
 				get
@@ -175,14 +200,27 @@ namespace NToolbox.Models
 				}
 			}
 
-			public static object[] MainScreenSkins
+			public static object[] MainBigScreenSkins
 			{
 				get
 				{
 					return new object[]
 					{
 						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinClassic, ArcticFoxConfiguration.Skin.Classic),
+						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinFoxy, ArcticFoxConfiguration.Skin.Foxy),
 						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinCircle, ArcticFoxConfiguration.Skin.Circle)
+					};
+				}
+			}
+
+			public static object[] MainSmallScreenSkins
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinClassic, ArcticFoxConfiguration.Skin.Classic),
+						new NamedItemContainer<ArcticFoxConfiguration.Skin>(LocalizableStrings.SkinLite, ArcticFoxConfiguration.Skin.Circle)
 					};
 				}
 			}
@@ -195,6 +233,20 @@ namespace NToolbox.Models
 					{
 						new NamedItemContainer<ArcticFoxConfiguration.ChargeScreenType>(LocalizableStrings.ChargeScreenClassic, ArcticFoxConfiguration.ChargeScreenType.Classic),
 						new NamedItemContainer<ArcticFoxConfiguration.ChargeScreenType>(LocalizableStrings.ChargeScreenExtended, ArcticFoxConfiguration.ChargeScreenType.Extended)
+					};
+				}
+			}
+
+			public static object[] ChargeScreenExtraTypes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.ChargeExtraType>(LocalizableStrings.ChargeScreenExtraNone, ArcticFoxConfiguration.ChargeExtraType.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ChargeExtraType>(LocalizableStrings.ChargeScreenExtraAnalogClock, ArcticFoxConfiguration.ChargeExtraType.AnalogClock),
+						new NamedItemContainer<ArcticFoxConfiguration.ChargeExtraType>(LocalizableStrings.ChargeScreenExtraDigitalClock, ArcticFoxConfiguration.ChargeExtraType.DigitalClock),
+						new NamedItemContainer<ArcticFoxConfiguration.ChargeExtraType>(LocalizableStrings.ChargeScreenExtraLogo, ArcticFoxConfiguration.ChargeExtraType.Logo)
 					};
 				}
 			}
@@ -229,29 +281,85 @@ namespace NToolbox.Models
 				}
 			}
 
-			public static object[] ClickActions
+			public static ToolStripItem[] ClickActions
+			{
+				get
+				{
+					return new ToolStripItem[]
+					{
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsNone) { Tag = ArcticFoxConfiguration.ClickAction.None },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsMainMenu) { Tag = ArcticFoxConfiguration.ClickAction.MainMenu },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsEdit) { Tag = ArcticFoxConfiguration.ClickAction.Edit },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsPreheatMenu) { Tag = ArcticFoxConfiguration.ClickAction.PreheatEdit },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsEditProfile) { Tag = ArcticFoxConfiguration.ClickAction.ProfileEdit },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsSelectProfile) { Tag = ArcticFoxConfiguration.ClickAction.ProfileSelector },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsResetCounters) { Tag = ArcticFoxConfiguration.ClickAction.ResetCounters },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsTDom) { Tag = ArcticFoxConfiguration.ClickAction.TemperatureDominant },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsResistanceLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.LockResistance },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsShowClock) { Tag = ArcticFoxConfiguration.ClickAction.MainScreenClock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsInfoScreen) { Tag = ArcticFoxConfiguration.ClickAction.InfoScreen },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsPowerBank) { Tag = ArcticFoxConfiguration.ClickAction.PowerBank },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsStealthOnOff) { Tag = ArcticFoxConfiguration.ClickAction.StealthOnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsSmartOnOff) { Tag = ArcticFoxConfiguration.ClickAction.SmartOnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsLslOnOff) { Tag = ArcticFoxConfiguration.ClickAction.LslOnOff },
+						new ToolStripSeparator(),
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsKeyLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.KeyLock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceLockUnlock) { Tag = ArcticFoxConfiguration.ClickAction.DeviceLock },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceOnOff) { Tag = ArcticFoxConfiguration.ClickAction.OnOff }
+					};
+				}
+			}
+
+			public static ToolStripItem[] Click5Actions
+			{
+				get
+				{
+					return new ToolStripItem[]
+					{
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceOnOff) { Tag = ArcticFoxConfiguration.FiveClicks.OnOff },
+						new ToolStripMenuItem(LocalizableStrings.ClickActionsDeviceLockUnlock) { Tag = ArcticFoxConfiguration.FiveClicks.LockUnlock }
+					};
+				}
+			}
+
+			public static object[] ShortcutsInEdit
 			{
 				get
 				{
 					return new object[]
 					{
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ClickAction.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInEdit.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInEdit>(LocalizableStrings.ClickActionsResetCounters, ArcticFoxConfiguration.ShortcutsInEdit.ResetCounters)
+					};
+				}
+			}
 
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsEdit, ArcticFoxConfiguration.ClickAction.Edit),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsMainMenu, ArcticFoxConfiguration.ClickAction.MainMenu),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsPreheatMenu, ArcticFoxConfiguration.ClickAction.Preheat),
+			public static object[] ShortcutsInSelector
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInSelector.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInSelector>(LocalizableStrings.ClickActionsResestSavedResistance, ArcticFoxConfiguration.ShortcutsInSelector.ResetResistance)
+					};
+				}
+			}
 
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSelectProfile, ArcticFoxConfiguration.ClickAction.ProfileSelector),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsEditProfile, ArcticFoxConfiguration.ClickAction.ProfileEdit),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsTDom, ArcticFoxConfiguration.ClickAction.TemperatureDominant),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsShowClock, ArcticFoxConfiguration.ClickAction.MainScreenClock),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsInfoScreen, ArcticFoxConfiguration.ClickAction.InfoScreen),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ResetCounters, ArcticFoxConfiguration.ClickAction.ResetCounters),
-
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsSmartOnOff, ArcticFoxConfiguration.ClickAction.SmartOnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsLslOnOff, ArcticFoxConfiguration.ClickAction.LslOnOff),
-						new NamedItemContainer<ArcticFoxConfiguration.ClickAction>(LocalizableStrings.ClickActionsOnOff, ArcticFoxConfiguration.ClickAction.OnOff)
+			public static object[] ShortcutsInMenu
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsNone, ArcticFoxConfiguration.ShortcutsInMenu.None),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsMenuBack, ArcticFoxConfiguration.ShortcutsInMenu.Back),
+						new NamedItemContainer<ArcticFoxConfiguration.ShortcutsInMenu>(LocalizableStrings.ClickActionsMenuExit, ArcticFoxConfiguration.ShortcutsInMenu.Exit)
 					};
 				}
 			}
@@ -280,20 +388,55 @@ namespace NToolbox.Models
 				}
 			}
 
-			public static object[] BatteryModels
+			public static object[] SmartModes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.SmartMode>(LocalizableStrings.SmartModeOff, ArcticFoxConfiguration.SmartMode.Off),
+						new NamedItemContainer<ArcticFoxConfiguration.SmartMode>(LocalizableStrings.SmartModeOn, ArcticFoxConfiguration.SmartMode.On),
+						new NamedItemContainer<ArcticFoxConfiguration.SmartMode>(LocalizableStrings.SmartModeLazy, ArcticFoxConfiguration.SmartMode.Lazy)
+					};
+				}
+			}
+
+			public static object[] RtcModes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LXT", ArcticFoxConfiguration.RtcMode.Lxt),
+						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LIRC", ArcticFoxConfiguration.RtcMode.Lirc),
+						new NamedItemContainer<ArcticFoxConfiguration.RtcMode>("LSL", ArcticFoxConfiguration.RtcMode.Lsl)
+					};
+				}
+			}
+
+			public static object[] DeepSleepModes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeStandart, ArcticFoxConfiguration.DeepSleepMode.Standart),
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeLockDevice, ArcticFoxConfiguration.DeepSleepMode.DeviceLock),
+						new NamedItemContainer<ArcticFoxConfiguration.DeepSleepMode>(LocalizableStrings.DeepSleepModeTurnOffDevice, ArcticFoxConfiguration.DeepSleepMode.DeviceOff)
+					};
+				}
+			}
+
+			public static object[] GenericBattery
 			{
 				get
 				{
 					return new object[]
 					{
 						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>(LocalizableStrings.BatteryModelGeneric, ArcticFoxConfiguration.BatteryModel.Generic),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Samsung 25R", ArcticFoxConfiguration.BatteryModel.Samsung25R),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Samsung 30Q", ArcticFoxConfiguration.BatteryModel.Samsung30Q),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("LG HG2", ArcticFoxConfiguration.BatteryModel.LGHG2),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("LG HE4", ArcticFoxConfiguration.BatteryModel.LGHE4),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Sony VTC4", ArcticFoxConfiguration.BatteryModel.SonyVTC4),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Sony VTC5", ArcticFoxConfiguration.BatteryModel.SonyVTC5),
-						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>(LocalizableStrings.BatteryModelCustom, ArcticFoxConfiguration.BatteryModel.Custom)
+						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom1", ArcticFoxConfiguration.BatteryModel.Custom1),
+						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom2", ArcticFoxConfiguration.BatteryModel.Custom2),
+						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom3", ArcticFoxConfiguration.BatteryModel.Custom3)
 					};
 				}
 			}

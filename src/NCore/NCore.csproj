@@ -62,12 +62,21 @@
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="ArcticFoxEncryption.cs" />
     <Compile Include="CrossApplicationIndentifiers.cs" />
+    <Compile Include="UI\MenuButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VandalProofEncryption.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileFilters.cs" />
     <Compile Include="CsvManager.cs" />
     <Compile Include="IEncryption.cs" />
     <Compile Include="InfoBox.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\NamespacelessObject.cs" />
     <Compile Include="Safe.cs" />
     <Compile Include="Serialization\SerializableDictionary.cs" />
@@ -107,6 +116,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EditorDialogWindow.resx">
       <DependentUpon>EditorDialogWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,10 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Languages\EN.lpack.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Languages\RU.lpack.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +179,45 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Languages\UK.lpack.txt">
+    <None Include="Languages\UA.lpack.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Languages\CZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\DE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\EN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\ES.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\FR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\HU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\IT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\NL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\PL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\RU.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\SR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\UA.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

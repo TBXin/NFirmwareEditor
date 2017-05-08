@@ -118,43 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="arctic_fox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arctic_fox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="device_monitor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\device_monitor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="www_page" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\www_page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="firmware_updater" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\firmware_updater.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nfetoolbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nfetoolbox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GitHub.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arcticfox_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arcticfox_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="team_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\team_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="www_page" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\www_page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ntoolbox_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ntoolbox_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GitHub.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="new_configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new_configuration.afc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\configuration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="device_broadcast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\device_broadcast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arctic_fox_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arctic_fox_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nfetoolbox_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nfetoolbox_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="team_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\team_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gray_white_separator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gray_white_separator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

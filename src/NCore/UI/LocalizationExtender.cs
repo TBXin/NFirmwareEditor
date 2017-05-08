@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace NCore.UI
@@ -23,8 +26,15 @@ namespace NCore.UI
 
 		public void SetKey(Control control, string value)
 		{
-			if (control == null || string.IsNullOrEmpty(value)) return;
-			m_controls[control] = value;
+			if (control == null) return;
+			if (string.IsNullOrEmpty(value))
+			{
+				m_controls.Remove(control);
+			}
+			else
+			{
+				m_controls[control] = value;
+			}
 		}
 
 		public IDictionary<Control, string> GetLocalizableControls()

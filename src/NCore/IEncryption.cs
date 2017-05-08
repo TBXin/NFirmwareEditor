@@ -12,6 +12,7 @@
 		None,
 		Joyetech,
 		ArcticFox,
-		ArcticFox2
+		ArcticFox2,
+		VandalProof
 	}
 }

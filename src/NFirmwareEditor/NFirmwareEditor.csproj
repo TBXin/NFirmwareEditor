@@ -891,6 +891,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ResourcePacks\ArcticFox\Graffiti_Large_Digits.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\ArcticFox\Neo.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\ArcticFox\Pico_Sans.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourcePacks\ArcticFox\Segment_Digits.respack">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ResourcePacks\Cuboid 3.02\3.02_Cuboid_default.respack">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1016,6 +1028,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <None Include="Definitions\Predator 228 5.04.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\s_file.png" />
     <None Include="Definitions\ArcticFox.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

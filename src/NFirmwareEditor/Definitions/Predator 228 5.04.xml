@@ -1,0 +1,8 @@
+﻿<FirmwareDefinition Name="Predator 228 5.04">
+	<Marker Offset="0x90" Bytes="0xE1 0x23" />
+	<Marker Offset="0xC0" Bytes="0x19 0x87" />
+	<ImageTable1 From="0xE70C" To="0xEB18" />
+	<ImageTable2 From="0xC658" To="0xCA64" />
+	<StringTable1 From="0xA1C4" To="0xA472" TwoBytesPerChar="true" />
+	<StringsPreviewCorrection ForGlyphs="0x39 0x42 0x4B" />
+</FirmwareDefinition>

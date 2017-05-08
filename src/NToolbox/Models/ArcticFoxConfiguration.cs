@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using NCore;
 
@@ -8,6 +7,11 @@ namespace NToolbox.Models
 	#pragma warning disable 0649
 	internal class ArcticFoxConfiguration
 	{
+		internal const ushort MaxPower = 4000;
+		internal const byte MaxBatteries = 4;
+		internal const int MinimumSupportedBuildNumber = 170508;
+		internal const int SupportedSettingsVersion = 8;
+
 		public DeviceInfo Info;
 		public GeneralConfiguration General;
 		public UIConfiguration Interface;
@@ -22,7 +26,7 @@ namespace NToolbox.Models
 			public string ProductId;
 
 			public uint HardwareVersion;
-			public ushort MaxPower;
+			public ushort MaxDevicePower;
 			public byte NumberOfBatteries;
 			public DisplaySize DisplaySize;
 			public uint FirmwareVersion;
@@ -40,7 +44,7 @@ namespace NToolbox.Models
 			public Profile[] Profiles;
 
 			public byte SelectedProfile;
-			public bool IsSmartEnabled;
+			public SmartMode SmartMode;
 			public byte SmartRange; // 1..15, percents
 		}
 
@@ -52,22 +56,35 @@ namespace NToolbox.Models
 			[BinaryArray(Length = 3)]
 			public ClickAction[] ClicksTC;
 
+			[BinaryArray(Length = 3)]
+			public Shortcuts[] ShortcutsVW; // [0]: Fire -, [1]: Fire +, [2]: - +
+
+			[BinaryArray(Length = 3)]
+			public Shortcuts[] ShortcutsTC; // [0]: Fire -, [1]: Fire +, [2]: - +
+
 			public ClassicLinesContent ClassicSkinVWLines;
 			public ClassicLinesContent ClassicSkinTCLines;
 
 			public CircleLinesContent CircleSkinVWLines;
 			public CircleLinesContent CircleSkinTCLines;
 
+			public FoxyLinesContent FoxySkinVWLines;
+			public FoxyLinesContent FoxySkinTCLines;
+
 			public SmallLinesContent SmallSkinVWLines;
 			public SmallLinesContent SmallSkinTCLines;
 
 			public byte Brightness;
-			public byte DimTimeout;
+			public byte DimTimeout; // 5..60 sec
+			public byte DimTimeoutLocked; // 5..60 sec
+			public byte ShowLogoDelay; // 1..60 sec
+			public byte ShowClockDelay; // 1..60 sec
 			public bool IsFlipped;
 			public bool IsStealthMode;
 			public bool WakeUpByPlusMinus;
 			public bool IsPowerStep1W;
 			public ChargeScreenType ChargeScreenType;
+			public ChargeExtraType ChargeExtraType;
 			public bool IsLogoEnabled;
 			public bool IsClassicMenu;
 			public ClockType ClockType;
@@ -75,14 +92,18 @@ namespace NToolbox.Models
 			public ScreenProtectionTime ScreensaveDuration;
 			public byte PuffScreenDelay; // 0..50 = 0,0..5,0 sec
 			public PuffsTimeFormat PuffsTimeFormat;
-			public Skin MainScreenSkin;
+			public Skin MainScreenSkin; // 64x128: 0 - Classic, 1 - Circle, 2 - Foxy; 96x16: 0 - Classic, 1 - Lite
 			public bool IsUpDownSwapped;
+			public bool ShowChargingInStealth;
+			public bool ShowScreensaverInStealth;
+			public bool ClockOnClickInStealth;
+			public FiveClicks FiveClicks;
 		}
 
 		internal class CountersData
 		{
-			public uint PuffsCount;
-			public uint PuffsTime; // Value multiplied by 10
+			public uint PuffsCount; // Max 99999
+			public uint PuffsTime; // Value multiplied by 10. Max 359999.
 			public DateTime DateTime;
 		}
 
@@ -100,9 +121,10 @@ namespace NToolbox.Models
 		{
 			public byte ShuntCorrection; // Value from 85 to 115
 			public BatteryModel BatteryModel;
-			public CustomBattery CustomBatteryProfile;
-			public bool IsX32;
-			public bool IsLightSleepMode;
+			[BinaryArray(Length = 3)]
+			public CustomBattery[] CustomBatteryProfiles;
+
+			public RtcMode RtcMode;
 			public bool IsUsbCharge;
 			public bool ResetCountersOnStartup;
 
@@ -119,6 +141,7 @@ namespace NToolbox.Models
 
 			public bool CheckTCR;
 			public bool UsbNoSleep;
+			public DeepSleepMode DeepSleepMode;
 		}
 
 		internal class TFRTable
@@ -163,6 +186,9 @@ namespace NToolbox.Models
 				Cutoff = cutoff;
 			}
 
+			[BinaryAsciiString(Length = 4)]
+			public string Name;
+
 			[BinaryArray(Length = 11)]
 			public PercentsVoltage[] Data;
 
@@ -192,23 +218,46 @@ namespace NToolbox.Models
 			#endregion
 		}
 
-		[SuppressMessage("ReSharper", "InconsistentNaming")]
+		internal enum SmartMode : byte
+		{
+			Off = 0,
+			On = 1,
+			Lazy = 2
+		}
+
+		internal enum RtcMode : byte
+		{
+			Lxt = 0,
+			Lirc = 1,
+			Lsl = 2
+		}
+
 		internal enum BatteryModel : byte
 		{
 			Generic = 0,
-			Samsung25R = 1,
-			LGHG2 = 2,
-			LGHE4 = 3,
-			Samsung30Q = 4,
-			SonyVTC4 = 5,
-			SonyVTC5 = 6,
-			Custom = 7
+			Custom1 = 1,
+			Custom2 = 2,
+			Custom3 = 3
 		}
 
 		internal enum ChargeScreenType : byte
 		{
 			Classic = 0,
 			Extended = 1
+		}
+
+		internal enum ChargeExtraType : byte
+		{
+			None = 0,
+			AnalogClock = 1,
+			DigitalClock = 2,
+			Logo = 3
+		}
+
+		internal enum FiveClicks : byte
+		{
+			OnOff = 0,
+			LockUnlock = 1
 		}
 
 		internal enum ClockType : byte
@@ -226,7 +275,8 @@ namespace NToolbox.Models
 		internal enum Skin : byte
 		{
 			Classic = 0,
-			Circle = 1
+			Circle = 1,
+			Foxy = 2
 		}
 
 		internal enum ScreenProtectionTime : byte
@@ -262,6 +312,13 @@ namespace NToolbox.Models
 			public LineContent Line2; // 0x20, 0x30...0x3A | 0x80
 		}
 
+		internal class FoxyLinesContent
+		{
+			public FoxyLineContent Line1;
+			public FoxyLineContent Line2;
+			public FoxyLineContent Line3;
+		}
+
 		internal enum ClickAction : byte
 		{
 			None = 0,
@@ -272,11 +329,50 @@ namespace NToolbox.Models
 			OnOff = 5,
 			LslOnOff = 6,
 			MainMenu = 7,
-			Preheat = 8,
+			PreheatEdit = 8,
 			ProfileEdit = 9,
 			SmartOnOff = 10,
 			InfoScreen = 11,
-			ResetCounters = 12
+			ResetCounters = 12,
+			StealthOnOff = 13,
+			KeyLock = 14,
+			LockResistance = 15,
+			PowerBank = 16,
+			DeviceLock = 17
+		}
+
+		internal enum ShortcutsInEdit : byte
+		{
+			None = 0,
+			ResetCounters = 1,
+		}
+
+		internal enum ShortcutsInSelector : byte
+		{
+			None = 0,
+			ResetResistance = 1
+		}
+
+		internal enum ShortcutsInMenu : byte
+		{
+			None = 0,
+			Back = 1,
+			Exit = 2
+		}
+
+		internal class Shortcuts
+		{
+			public ClickAction InStandby;
+			public ShortcutsInEdit InEditMain;
+			public ShortcutsInSelector InSelector;
+			public ShortcutsInMenu InMenu;
+		}
+
+		internal enum DeepSleepMode : byte
+		{
+			Standart = 0,
+			DeviceOff = 1,
+			DeviceLock = 2
 		}
 
 		[Flags]
@@ -302,6 +398,23 @@ namespace NToolbox.Models
 			Battery = 0x40,
 			BatteryWithPercents = 0x41,
 			BatteryWithVolts = 0x42,
+
+			FireTimeMask = 0x80
+		}
+
+		[Flags]
+		internal enum FoxyLineContent : byte
+		{
+			Amps = 0x30,
+			Puffs = 0x31,
+			Time = 0x32,
+			BatteryVolts = 0x33,
+			Vout = 0x34,
+			RealResistance = 0x35,
+			DateTime = 0x36,
+			LastPuff = 0x37,
+			LastTemperature = 0x38,
+			LastPower = 0x39,
 
 			FireTimeMask = 0x80
 		}

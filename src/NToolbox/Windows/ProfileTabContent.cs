@@ -67,7 +67,7 @@ namespace NToolbox.Windows
 
 			ProfileEnabledCheckBox.Checked = m_profile.Flags.IsEnabled;
 			ProfileNameTextBox.Text = m_profile.Name;
-			PowerUpDown.Maximum = configuration.Info.MaxPower / 10m;
+			PowerUpDown.Maximum = configuration.Info.MaxDevicePower / 10m;
 			PowerUpDown.SetValue(m_profile.Power / 10m);
 
 			var selectedPreheatType = PreheatTypeComboBox.SelectedItem as NamedItemContainer<ArcticFoxConfiguration.PreheatType>;
@@ -82,7 +82,7 @@ namespace NToolbox.Windows
 
 			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
 			PreheatTimeUpDown.SetValue(m_profile.PreheatTime / 100m);
-			PreheatDelayUpDown.SetValue(m_profile.PreheatDelay / 10m);
+			PreheatDelayUpDown.SetValue(m_profile.PreheatDelay);
 
 			TemperatureTypeComboBox.SelectItem(m_profile.Flags.IsCelcius);
 			TemperatureUpDown.SetValue(m_profile.Temperature);
@@ -159,7 +159,7 @@ namespace NToolbox.Windows
 				profile.SelectedCurve = (byte)PowerCurveComboBox.SelectedIndex;
 			}
 			profile.PreheatTime = (byte)(PreheatTimeUpDown.Value * 100);
-			profile.PreheatDelay = (byte)(PreheatDelayUpDown.Value * 10);
+			profile.PreheatDelay = (byte)PreheatDelayUpDown.Value;
 
 			profile.Flags.IsCelcius = TemperatureTypeComboBox.GetSelectedItem<bool>();
 			profile.Temperature = (ushort)TemperatureUpDown.Value;
@@ -270,7 +270,7 @@ namespace NToolbox.Windows
 				PreheatPowerUpDown.DecimalPlaces = 1;
 				PreheatPowerUpDown.Increment = 0.1m;
 				PreheatPowerUpDown.Minimum = MinimumWatts;
-				PreheatPowerUpDown.Maximum = m_configuration.Info.MaxPower / 10m;
+				PreheatPowerUpDown.Maximum = m_configuration.Info.MaxDevicePower / 10m;
 				PreheatPowerUpDown.SetValue(m_profile.PreheatPower / 10m);
 				PreheatPowerUnitLabel.Text = LocalizableStrings.WattsLabel;
 			}
@@ -291,7 +291,6 @@ namespace NToolbox.Windows
 				PowerCurveEditButton.Visible = true;
 
 				PreheatTimeUpDown.Enabled = false;
-				PreheatDelayUpDown.Enabled = false;
 				PreheatPowerUnitLabel.Text = string.Empty;
 			}
 			else
@@ -301,7 +300,6 @@ namespace NToolbox.Windows
 				PowerCurveEditButton.Visible = false;
 
 				PreheatTimeUpDown.Enabled = true;
-				PreheatDelayUpDown.Enabled = true;
 			}
 		}
 

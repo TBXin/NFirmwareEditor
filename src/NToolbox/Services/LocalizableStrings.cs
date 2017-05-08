@@ -146,11 +146,6 @@ namespace NToolbox.Services
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Generic", "Generic Battery"); }
 		}
-
-		public static string BatteryModelCustom
-		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.BatteryModel.Custom", "Custom"); }
-		}
 		#endregion
 
 		#region InfoLines
@@ -249,9 +244,19 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Classic", "Classic"); }
 		}
 
+		public static string SkinFoxy
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Foxy", "Foxy"); }
+		}
+
 		public static string SkinCircle
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Circle", "Circle"); }
+		}
+
+		public static string SkinLite
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Skin.Lite", "Lite"); }
 		}
 
 		public static string ChargeScreenClassic
@@ -262,6 +267,26 @@ namespace NToolbox.Services
 		public static string ChargeScreenExtended
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreen.Extended", "Extended"); }
+		}
+
+		public static string ChargeScreenExtraNone
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreenExtra.None", "None"); }
+		}
+
+		public static string ChargeScreenExtraAnalogClock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreenExtra.AnalogClock", "Clock A"); }
+		}
+
+		public static string ChargeScreenExtraDigitalClock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreenExtra.DigitalClock", "Clock D"); }
+		}
+
+		public static string ChargeScreenExtraLogo
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ChargeScreenExtra.Logo", "Logo"); }
 		}
 
 		public static string ClockTypeAnalog
@@ -320,7 +345,7 @@ namespace NToolbox.Services
 		#region ClickActions
 		public static string ClickActionsNone
 		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.None", "None"); }
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.None", "No Action"); }
 		}
 
 		public static string ClickActionsEdit
@@ -363,9 +388,14 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.InfoScreen", "Info Screen"); }
 		}
 
-		public static string ResetCounters
+		public static string ClickActionsResetCounters
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResetCounters", "Reset Counters"); }
+		}
+
+		public static string ClickActionsPowerBank
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.PowerBank", "Power Bank"); }
 		}
 
 		public static string ClickActionsSmartOnOff
@@ -378,9 +408,61 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.LLSOnOf", "LSL On / Off"); }
 		}
 
-		public static string ClickActionsOnOff
+		public static string ClickActionsDeviceOnOff
 		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.OnOff", "On / Off"); }
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.DeviceOnOff", "Device On / Off"); }
+		}
+
+		public static string ClickActionsStealthOnOff
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.StealthOnOff", "Stealth On / Off"); }
+		}
+
+		public static string ClickActionsKeyLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.KeyLockUnlock", "Key Lock / Unlock"); }
+		}
+
+		public static string ClickActionsDeviceLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.DeviceLockUnlock", "Device Lock / Unlock"); }
+		}
+
+		public static string ClickActionsResistanceLockUnlock
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResistanceLockUnlock", "Resistance Lock / Unlock"); }
+		}
+
+		public static string ClickActionsResestSavedResistance
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ResestSavedResistance", "Reset Saved Resistance"); }
+		}
+
+		public static string ClickActionsMenuBack
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.MenuBack", "Back"); }
+		}
+
+		public static string ClickActionsMenuExit
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.MenuExit", "Exit"); }
+		}
+		#endregion
+
+		#region DeepSleepModes
+		public static string DeepSleepModeStandart
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.Standart", "Just Sleep"); }
+		}
+
+		public static string DeepSleepModeTurnOffDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.TurnOffDevice", "Turn Off Device"); }
+		}
+
+		public static string DeepSleepModeLockDevice
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.DeepSleepMode.Lock Device", "Lock Device"); }
 		}
 		#endregion
 
@@ -405,6 +487,23 @@ namespace NToolbox.Services
 		public static string PuffsTimeFormatHhMmSs
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.PuffsTimeFormat.HHMMSS", "HH:MM:SS"); }
+		}
+		#endregion
+
+		#region SmartModes
+		public static string SmartModeOff
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.SmartMode.Off", "Off"); }
+		}
+
+		public static string SmartModeOn
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.SmartMode.On", "On"); }
+		}
+
+		public static string SmartModeLazy
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.SmartMode.Lazy", "Lazy"); }
 		}
 		#endregion
 
@@ -510,30 +609,6 @@ namespace NToolbox.Services
 		#endregion
 
 		#region Tooltips
-		public static string MainScreenSkinTooltip
-		{
-			get
-			{
-				return LocalizationManager.Instance.GetLocalizedString
-				(
-					"Toolbox.ArcticFoxConfiguration.Tooltips.MainScreenSkin",
-					"Change main screen style. Applicable only for devices with big screen (64x128)."
-				);
-			}
-		}
-
-		public static string UseClassicMenuTooltip
-		{
-			get
-			{
-				return LocalizationManager.Instance.GetLocalizedString
-				(
-					"Toolbox.ArcticFoxConfiguration.Tooltips.UseClassicMenu",
-					"Allows to switch profiles in the classical way, like old modes: Power, Ni, Ti, etc."
-				);
-			}
-		}
-
 		public static string ShowLogoTooltip
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo", "Show the logo on the main screen."); }
@@ -571,6 +646,28 @@ namespace NToolbox.Services
 			}
 		}
 
+		public static string RtcModeTooltip
+		{
+			get
+			{
+				return LocalizationManager.Instance.GetLocalizedString
+				(
+					"Toolbox.ArcticFoxConfiguration.Tooltips.RTCModeLabel",
+					"LXT:\n" +
+					"Enables usage of the internal X32 crystal of the PCB.\n" +
+					"If this value is selected, the firmware will try to drive the Real-Time Clock with the 32.768kHz crystal." +
+					"\n\n" +
+					"LIRC:\n" +
+					"The box continues to drive the Real-Time Clock with the internal LIRC oscillator when entering sleep mode. Maybe inaccurate." +
+					"\n\n" +
+					"LSL:\n" +
+					"Light Sleep Mode, for devices without secondary oscillator keep Real-Time Clock accurate.\n" +
+					"It takes some more energy in standby mode, so user will be warned by ! sign right of battery indicator.\n" +
+					"Using this setting, Clock accuracy is identical to those of real RTC boxes."
+				);
+			}
+		}
+
 		public static string RcobcTooltip
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc", "Reset Counters on Battery Change, clear vaping statistics."); }
@@ -599,6 +696,28 @@ namespace NToolbox.Services
 		}
 		#endregion
 
+		#region MainWindowButtonDescriptions
+		public static string ArcticFoxConfigurationButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ArcticFoxConfigurationButton.Tooltip", "Configure your device powered by ArcticFox firmware"); }
+		}
+
+		public static string DeviceMonitorButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.DeviceMonitorButton.Tooltip", "Gain full control over all sensors readings"); }
+		}
+
+		public static string ScreenshooterButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ScreenshooterButton.Tooltip", "Share screenshots of your device"); }
+		}
+
+		public static string FirmwareUpdaterButtonTooltip
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.FirmwareUpdaterButton.Tooltip", "Install a new firmware or upgrade existing one"); }
+		}
+		#endregion
+
 		#region MainWindowContextMenu
 		public static string TrayShowToolbox
 		{
@@ -608,11 +727,6 @@ namespace NToolbox.Services
 		public static string TrayArcticFoxConfiguration
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.ArcticFoxConfigurationButton", "ArcticFox Configuration"); }
-		}
-
-		public static string TrayMyEvicConfiguration
-		{
-			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.MainWindow.MyEvicConfigurationButton", "myEvic Configuration"); }
 		}
 
 		public static string TrayDeviceMonitor
