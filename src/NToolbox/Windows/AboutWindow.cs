@@ -19,6 +19,11 @@ namespace NToolbox.Windows
 			ArcticFoxIssuesLinkLabel.Click += (s, e) => OpenUrl(ArcticFoxIssuesLinkLabel.Text);
 			ArcticFoxLatestBuildLinkLabel.Click += (s, e) => OpenUrl("https://github.com/maelstrom2001/ArcticFox/wiki/Changelog");
 
+			ReikoKitsuneLinkLabel.Click += (s, e) => OpenUrl("https://github.com/TBXin");
+			Maelstrom2001LinkLabel.Click += (s, e) => OpenUrl("https://github.com/maelstrom2001");
+			ZingerLinkLabel.Click += (s, e) => OpenUrl("http://www.ecigtalk.ru/members/u75453.html");
+			ArionWTLinkLabel.Click += (s, e) => OpenUrl("http://www.ecigtalk.ru/members/u92309.html");
+
 			WebsiteLinkLabel.Click += (s, e) => OpenUrl(WebsiteLinkLabel.Text);
 		}
 

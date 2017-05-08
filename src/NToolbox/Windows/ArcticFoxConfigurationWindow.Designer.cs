@@ -3483,7 +3483,7 @@
 			// 
 			this.UsbNoSleepCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 227);
+			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 200);
 			this.UsbNoSleepCheckBox.Name = "UsbNoSleepCheckBox";
 			this.UsbNoSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbNoSleepCheckBox.TabIndex = 111;
@@ -3591,7 +3591,7 @@
 			// 
 			this.UsbChargeCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 200);
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 227);
 			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
@@ -3633,7 +3633,7 @@
 			// 
 			this.UsbNoSleepLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel");
-			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 227);
+			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 200);
 			this.UsbNoSleepLabel.Name = "UsbNoSleepLabel";
 			this.UsbNoSleepLabel.Size = new System.Drawing.Size(75, 13);
 			this.UsbNoSleepLabel.TabIndex = 110;
@@ -3673,7 +3673,7 @@
 			// 
 			this.UsbChargeLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel");
-			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 200);
+			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 227);
 			this.UsbChargeLabel.Name = "UsbChargeLabel";
 			this.UsbChargeLabel.Size = new System.Drawing.Size(68, 13);
 			this.UsbChargeLabel.TabIndex = 102;

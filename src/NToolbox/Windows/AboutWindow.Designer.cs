@@ -61,10 +61,13 @@
 			this.ReikoKitsuneLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ZingerLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.label12 = new System.Windows.Forms.Label();
-			this.MaelstromLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.Maelstrom2001LinkLabel = new System.Windows.Forms.LinkLabel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.ArionWTLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.label14 = new System.Windows.Forms.Label();
 			this.ControlBorderedPanel.SuspendLayout();
 			this.borderedPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,7 +80,7 @@
 			this.WebsiteLinkLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.WebsiteLinkLabel, "");
 			this.WebsiteLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(129)))), ((int)(((byte)(230)))));
-			this.WebsiteLinkLabel.Location = new System.Drawing.Point(206, 313);
+			this.WebsiteLinkLabel.Location = new System.Drawing.Point(206, 302);
 			this.WebsiteLinkLabel.Name = "WebsiteLinkLabel";
 			this.WebsiteLinkLabel.Size = new System.Drawing.Size(99, 13);
 			this.WebsiteLinkLabel.TabIndex = 40;
@@ -88,7 +91,7 @@
 			// label11
 			// 
 			this.MainLocalizationExtender.SetKey(this.label11, "");
-			this.label11.Location = new System.Drawing.Point(194, 376);
+			this.label11.Location = new System.Drawing.Point(194, 365);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(120, 16);
 			this.label11.TabIndex = 49;
@@ -98,7 +101,7 @@
 			// label8
 			// 
 			this.MainLocalizationExtender.SetKey(this.label8, "");
-			this.label8.Location = new System.Drawing.Point(194, 355);
+			this.label8.Location = new System.Drawing.Point(194, 344);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(120, 16);
 			this.label8.TabIndex = 46;
@@ -108,7 +111,7 @@
 			// label7
 			// 
 			this.MainLocalizationExtender.SetKey(this.label7, "");
-			this.label7.Location = new System.Drawing.Point(194, 334);
+			this.label7.Location = new System.Drawing.Point(194, 323);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(120, 16);
 			this.label7.TabIndex = 43;
@@ -120,7 +123,7 @@
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.label5, "");
-			this.label5.Location = new System.Drawing.Point(146, 313);
+			this.label5.Location = new System.Drawing.Point(146, 302);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(64, 13);
 			this.label5.TabIndex = 41;
@@ -429,7 +432,7 @@
 			this.ReikoKitsuneLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ReikoKitsuneLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("ReikoKitsuneLinkLabel.Image")));
 			this.MainLocalizationExtender.SetKey(this.ReikoKitsuneLinkLabel, "");
-			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 334);
+			this.ReikoKitsuneLinkLabel.Location = new System.Drawing.Point(172, 323);
 			this.ReikoKitsuneLinkLabel.Name = "ReikoKitsuneLinkLabel";
 			this.ReikoKitsuneLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.ReikoKitsuneLinkLabel.TabIndex = 50;
@@ -439,7 +442,7 @@
 			this.ZingerLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ZingerLinkLabel.Image = global::NToolbox.Properties.Resources.www_page;
 			this.MainLocalizationExtender.SetKey(this.ZingerLinkLabel, "");
-			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 377);
+			this.ZingerLinkLabel.Location = new System.Drawing.Point(173, 366);
 			this.ZingerLinkLabel.Name = "ZingerLinkLabel";
 			this.ZingerLinkLabel.Size = new System.Drawing.Size(16, 16);
 			this.ZingerLinkLabel.TabIndex = 48;
@@ -448,26 +451,26 @@
 			// 
 			this.label12.Image = ((System.Drawing.Image)(resources.GetObject("label12.Image")));
 			this.MainLocalizationExtender.SetKey(this.label12, "");
-			this.label12.Location = new System.Drawing.Point(149, 376);
+			this.label12.Location = new System.Drawing.Point(149, 365);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(16, 16);
 			this.label12.TabIndex = 47;
 			// 
-			// MaelstromLinkLabel
+			// Maelstrom2001LinkLabel
 			// 
-			this.MaelstromLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.MaelstromLinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("MaelstromLinkLabel.Image")));
-			this.MainLocalizationExtender.SetKey(this.MaelstromLinkLabel, "");
-			this.MaelstromLinkLabel.Location = new System.Drawing.Point(173, 356);
-			this.MaelstromLinkLabel.Name = "MaelstromLinkLabel";
-			this.MaelstromLinkLabel.Size = new System.Drawing.Size(16, 16);
-			this.MaelstromLinkLabel.TabIndex = 45;
+			this.Maelstrom2001LinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.Maelstrom2001LinkLabel.Image = ((System.Drawing.Image)(resources.GetObject("Maelstrom2001LinkLabel.Image")));
+			this.MainLocalizationExtender.SetKey(this.Maelstrom2001LinkLabel, "");
+			this.Maelstrom2001LinkLabel.Location = new System.Drawing.Point(173, 345);
+			this.Maelstrom2001LinkLabel.Name = "Maelstrom2001LinkLabel";
+			this.Maelstrom2001LinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.Maelstrom2001LinkLabel.TabIndex = 45;
 			// 
 			// label9
 			// 
 			this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
 			this.MainLocalizationExtender.SetKey(this.label9, "");
-			this.label9.Location = new System.Drawing.Point(149, 355);
+			this.label9.Location = new System.Drawing.Point(149, 344);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(16, 16);
 			this.label9.TabIndex = 44;
@@ -476,7 +479,7 @@
 			// 
 			this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
 			this.MainLocalizationExtender.SetKey(this.label6, "");
-			this.label6.Location = new System.Drawing.Point(149, 334);
+			this.label6.Location = new System.Drawing.Point(149, 323);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(16, 16);
 			this.label6.TabIndex = 42;
@@ -492,12 +495,44 @@
 			this.pictureBox1.TabIndex = 1;
 			this.pictureBox1.TabStop = false;
 			// 
+			// label13
+			// 
+			this.MainLocalizationExtender.SetKey(this.label13, "");
+			this.label13.Location = new System.Drawing.Point(194, 386);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(120, 16);
+			this.label13.TabIndex = 92;
+			this.label13.Text = "ArionWT";
+			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// ArionWTLinkLabel
+			// 
+			this.ArionWTLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ArionWTLinkLabel.Image = global::NToolbox.Properties.Resources.www_page;
+			this.MainLocalizationExtender.SetKey(this.ArionWTLinkLabel, "");
+			this.ArionWTLinkLabel.Location = new System.Drawing.Point(173, 387);
+			this.ArionWTLinkLabel.Name = "ArionWTLinkLabel";
+			this.ArionWTLinkLabel.Size = new System.Drawing.Size(16, 16);
+			this.ArionWTLinkLabel.TabIndex = 91;
+			// 
+			// label14
+			// 
+			this.label14.Image = ((System.Drawing.Image)(resources.GetObject("label14.Image")));
+			this.MainLocalizationExtender.SetKey(this.label14, "");
+			this.label14.Location = new System.Drawing.Point(149, 386);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(16, 16);
+			this.label14.TabIndex = 90;
+			// 
 			// AboutWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(474, 465);
+			this.Controls.Add(this.label13);
+			this.Controls.Add(this.ArionWTLinkLabel);
+			this.Controls.Add(this.label14);
 			this.Controls.Add(this.NfeLatestBuildLinkLabel);
 			this.Controls.Add(this.NfeIssuesLinkLabel);
 			this.Controls.Add(this.NfeReleasesLinkLabel);
@@ -516,7 +551,7 @@
 			this.Controls.Add(this.ZingerLinkLabel);
 			this.Controls.Add(this.label12);
 			this.Controls.Add(this.label8);
-			this.Controls.Add(this.MaelstromLinkLabel);
+			this.Controls.Add(this.Maelstrom2001LinkLabel);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
@@ -554,7 +589,7 @@
 		private System.Windows.Forms.LinkLabel ZingerLinkLabel;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.LinkLabel MaelstromLinkLabel;
+		private System.Windows.Forms.LinkLabel Maelstrom2001LinkLabel;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label6;
@@ -580,5 +615,8 @@
 		private System.Windows.Forms.LinkLabel ArcticFoxLatestBuildLinkLabel;
 		private System.Windows.Forms.Label label10;
 		private NCore.UI.BorderedPanel borderedPanel1;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.LinkLabel ArionWTLinkLabel;
+		private System.Windows.Forms.Label label14;
 	}
 }
