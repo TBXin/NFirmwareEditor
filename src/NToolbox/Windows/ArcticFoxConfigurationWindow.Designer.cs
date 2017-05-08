@@ -2125,7 +2125,7 @@
 			this.groupPanel15.Controls.Add(this.SmallVWLine1FireCheckBox);
 			this.groupPanel15.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel15.HeaderHeight = 30;
-			this.MainLocalizationExtender.SetKey(this.groupPanel15, "Toolbox.ArcticFoxConfiguration.Screen.Layout.TCModeLayoutLabel");
+			this.MainLocalizationExtender.SetKey(this.groupPanel15, "Toolbox.ArcticFoxConfiguration.Screen.Layout.VWModeLayoutLabel");
 			this.groupPanel15.Location = new System.Drawing.Point(4, 6);
 			this.groupPanel15.Name = "groupPanel15";
 			this.groupPanel15.Size = new System.Drawing.Size(348, 100);
