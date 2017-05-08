@@ -37,7 +37,9 @@
 			this.EditorButton.AdditionalText = "";
 			this.EditorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditorButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.EditorButton.Image = global::NLauncher.Properties.Resources.configuration;
+			this.MainLocalizationExtender.SetKey(this.EditorButton, "");
 			this.EditorButton.Location = new System.Drawing.Point(12, 12);
 			this.EditorButton.Name = "EditorButton";
 			this.EditorButton.Size = new System.Drawing.Size(220, 52);
@@ -49,7 +51,9 @@
 			this.FirmwareUpdaterButton.AdditionalText = "";
 			this.FirmwareUpdaterButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.FirmwareUpdaterButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FirmwareUpdaterButton.Image = global::NLauncher.Properties.Resources.firmware_updater;
+			this.MainLocalizationExtender.SetKey(this.FirmwareUpdaterButton, "");
 			this.FirmwareUpdaterButton.Location = new System.Drawing.Point(12, 70);
 			this.FirmwareUpdaterButton.Name = "FirmwareUpdaterButton";
 			this.FirmwareUpdaterButton.Size = new System.Drawing.Size(220, 52);
@@ -66,6 +70,7 @@
 			this.Controls.Add(this.FirmwareUpdaterButton);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainWindow";
