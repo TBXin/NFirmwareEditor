@@ -15,7 +15,7 @@ before_build:
 
     nuget install secure-file -ExcludeVersion
 
-    secure-file\tools\secure-file -decrypt dummy.data -secret "%dummy_secret%" -out NFETeam.snk
+    secure-file\tools\secure-file -decrypt dummy.data -out NFETeam.snk -secret "%dummy_secret%"
 build:
   verbosity: minimal
 after_build:
