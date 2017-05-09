@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
 using System.Threading;
@@ -10,6 +11,7 @@ using NCore;
 using NCore.Serialization;
 using NCore.UI;
 using NCore.USB;
+using NFirmware;
 using NToolbox.Models;
 using NToolbox.Properties;
 using NToolbox.Services;
@@ -26,6 +28,10 @@ namespace NToolbox.Windows
 		private bool m_isWorkspaceOpen;
 		private bool m_isDeviceConnected;
 		private ArcticFoxConfiguration m_deviceConfiguration;
+
+		private TextureBrush m_fontPreviewBackgroundBrush;
+		private Bitmap m_loadedLogoImage;
+		private Bitmap m_monochromeImage;
 
 		public ArcticFoxConfigurationWindow([NotNull] ToolboxConfiguration toolboxConfiguration)
 		{
@@ -94,6 +100,37 @@ namespace NToolbox.Windows
 				(int)(ProfilesTabControl.ItemSize.Width * multiplier),
 				(int)(ProfilesTabControl.ItemSize.Height * multiplier)
 			);
+
+			LogoSizeComboBox.SelectedIndexChanged += (s, e) => CreateMonochromeBitmap();
+
+			ThresholdUpDown.ValueChanged += (s, e) => CreateMonochromeBitmap();
+			LogoZoomCheckBox.CheckedChanged += (s, e) => LogoDrawingSurface.Invalidate();
+
+			SelectLogoButton.Click += SelectLogoButton_Click;
+			UploadLogoButton.Click += UploadLogoButton_Click;
+			RemoveLogoButton.Click += RemoveLogoButton_Click;
+
+			LogoDrawingSurface.Paint += LogoDrawingSurface_Paint;
+		}
+
+		private void CreateMonochromeBitmap()
+		{
+			if (m_loadedLogoImage == null) return;
+			if (m_monochromeImage != null)
+			{
+				m_monochromeImage.Dispose();
+				m_monochromeImage = null;
+			}
+
+			var size = LogoSizeComboBox.GetSelectedItem<Size>();
+			var mode = ConversionTypeComboBox.GetSelectedItem<MonochromeConversionMode>();
+			var threshold = (int)ThresholdUpDown.Value;
+
+			using (var resizedImage = m_loadedLogoImage.Resize(size))
+			{
+				m_monochromeImage = MonochromeBitmap.ConvertTo1Bit(resizedImage, mode, threshold);
+			}
+			LogoDrawingSurface.Invalidate();
 		}
 
 		private void InitializeMenu()
@@ -272,6 +309,15 @@ namespace NToolbox.Windows
 				var mode = SmartModeComboBox.GetSelectedItem<ArcticFoxConfiguration.SmartMode>();
 				SelectedProfleComboBox.Enabled = mode == ArcticFoxConfiguration.SmartMode.Off;
 			};
+
+			ConversionTypeComboBox.Fill(PredefinedData.ArcticFox.MonochromeConversionModes);
+			ConversionTypeComboBox.SelectedIndexChanged += (s, e) =>
+			{
+				var selectedItem = ConversionTypeComboBox.GetSelectedItem<MonochromeConversionMode>();
+				ThresholdUpDown.Enabled = selectedItem == MonochromeConversionMode.ThresholdBased;
+				CreateMonochromeBitmap();
+			};
+			ConversionTypeComboBox.SelectedIndex = 0;
 		}
 
 		private bool ValidateConnectionStatus()
@@ -345,6 +391,9 @@ namespace NToolbox.Windows
 						LayoutTabControl.TabPages.Remove(FoxyScreenTabPage);
 						LayoutTabControl.TabPages.Remove(CircleScreenTabPage);
 					}
+
+					LogoSizeComboBox.Fill(new object[] { new NamedItemContainer<Size>("96x16", new Size(96, 16)) });
+					LogoSizeComboBox.SelectedIndex = 0;
 				}
 				else
 				{
@@ -357,6 +406,13 @@ namespace NToolbox.Windows
 						LayoutTabControl.TabPages.Insert(0, FoxyScreenTabPage);
 						LayoutTabControl.TabPages.Insert(0, ClassicScreenTabPage);
 					}
+
+					LogoSizeComboBox.Fill(new object[]
+					{
+						new NamedItemContainer<Size>("64x48", new Size(64, 48)),
+						new NamedItemContainer<Size>("64x40", new Size(64, 40))
+					});
+					LogoSizeComboBox.SelectedIndex = 0;
 				}
 
 				UsbChargeLabel.Visible = UsbChargeCheckBox.Visible = deviceInfo.NumberOfBatteries > 1;
@@ -560,6 +616,8 @@ namespace NToolbox.Windows
 					MaterialsListView.Items.Add(new ListViewItem("[TFR] " + tfrTable.Name, i) { Tag = i });
 				}
 			}
+
+			UploadLogoButton.Enabled = m_isDeviceConnected && m_monochromeImage != null;
 		}
 
 		private void InitializeLineContentEditor(ArcticFoxConfiguration.LineContent content, ComboBox comboBox, CheckBox checkBox = null)
@@ -1097,6 +1155,73 @@ namespace NToolbox.Windows
 			}));
 		}
 
+		private void SelectLogoButton_Click(object sender, EventArgs e)
+		{
+			string filePath;
+			using (var op = new OpenFileDialog { Filter = FileFilters.BitmapImportFilter })
+			{
+				if (op.ShowDialog() != DialogResult.OK) return;
+				filePath = op.FileName;
+			}
+			if (string.IsNullOrEmpty(filePath)) return;
+
+			using (var imageStream = new MemoryStream(File.ReadAllBytes(filePath)))
+			{
+				if (m_loadedLogoImage != null) m_loadedLogoImage.Dispose();
+				m_loadedLogoImage = (Bitmap)Image.FromStream(imageStream);
+
+				CreateMonochromeBitmap();
+				UploadLogoButton.Enabled = m_isDeviceConnected && m_monochromeImage != null;
+			}
+		}
+
+		private void UploadLogoButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					var imageData = m_monochromeImage.CreateRawFromBitmap();
+
+					var block1ImageMetadata = new FirmwareImage1Metadata { Width = (byte)m_monochromeImage.Width, Height = (byte)m_monochromeImage.Height };
+					var block2ImageMetadata = new FirmwareImage2Metadata { Width = (byte)m_monochromeImage.Width, Height = (byte)m_monochromeImage.Height };
+
+					var block1ImageBytes = block1ImageMetadata.Save(imageData);
+					var block2ImageBytes = block2ImageMetadata.Save(imageData);
+
+					HidConnector.Instance.WriteLogoHot(block1ImageBytes, block2ImageBytes, worker);
+
+					InfoBox.Show(LocalizableStrings.MessageLogoUpdated);
+				}
+				catch (Exception ex)
+				{
+					Trace.Warn(ex);
+					InfoBox.Show(GetErrorMessage("uploading logo"));
+				}
+			}));
+		}
+
+		private void RemoveLogoButton_Click(object sender, EventArgs e)
+		{
+			if (!ValidateConnectionStatus()) return;
+
+			m_worker.RunWorkerAsync(new AsyncProcessWrapper(worker =>
+			{
+				try
+				{
+					HidConnector.Instance.RemoveLogoHot(worker);
+					InfoBox.Show(LocalizableStrings.MessageLogoRemoved);
+				}
+				catch (Exception ex)
+				{
+					Trace.Warn(ex);
+					InfoBox.Show(GetErrorMessage("uploading logo"));
+				}
+			}));
+		}
+
 		private void DeviceConnected(bool isConnected, bool onStartup)
 		{
 			m_isDeviceConnected = isConnected;
@@ -1108,7 +1233,8 @@ namespace NToolbox.Windows
 				}
 				else
 				{
-					DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = m_isDeviceConnected;
+					DownloadButton.Enabled = UploadButton.Enabled = ResetButton.Enabled = RemoveLogoButton.Enabled = m_isDeviceConnected;
+					UploadLogoButton.Enabled = m_isDeviceConnected && m_monochromeImage != null;
 					StatusLabel.Text = LocalizableStrings.StatusDevice + @" " + (m_isDeviceConnected ? LocalizableStrings.StatusDeviceConnected : LocalizableStrings.StatusDeviceDisconnected);
 				}
 			});
@@ -1210,6 +1336,45 @@ namespace NToolbox.Windows
 			UnableToRead,
 			OutdatedFirmware,
 			OutdatedToolbox
+		}
+
+		private void LogoDrawingSurface_Paint(object sender, PaintEventArgs e)
+		{
+			Safe.Execute(() =>
+			{
+				if (LogoDrawingSurface.BackgroundImage != null)
+				{
+					if (m_fontPreviewBackgroundBrush == null)
+					{
+						m_fontPreviewBackgroundBrush = new TextureBrush(LogoDrawingSurface.BackgroundImage) { WrapMode = WrapMode.Tile };
+					}
+					e.Graphics.FillRectangle(m_fontPreviewBackgroundBrush, 0, 0, LogoDrawingSurface.Width + LogoDrawingSurface.HorizontalScroll.Value, LogoDrawingSurface.Height + LogoDrawingSurface.VerticalScroll.Value);
+				}
+
+				if (m_monochromeImage == null) return;
+
+				using (var buffer = new Bitmap(m_monochromeImage.Width, m_monochromeImage.Height))
+				{
+					using (var gfx = Graphics.FromImage(buffer))
+					{
+						gfx.Clear(Color.Transparent);
+						gfx.DrawImage(m_monochromeImage, new Rectangle(0, 0, m_monochromeImage.Width, m_monochromeImage.Height));
+					}
+
+					var bufferWidth = LogoZoomCheckBox.Checked ? buffer.Width * 2 : buffer.Width;
+					var bufferHeight = LogoZoomCheckBox.Checked ? buffer.Height * 2 : buffer.Height;
+					var bufferRect = new Rectangle
+					(
+						LogoDrawingSurface.Width / 2 - bufferWidth / 2,
+						LogoDrawingSurface.Height / 2 - bufferHeight / 2,
+						bufferWidth,
+						bufferHeight
+					);
+
+					e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+					e.Graphics.DrawImage(buffer, bufferRect.Left, bufferRect.Top, bufferWidth, bufferHeight);
+				}
+			});
 		}
 	}
 }

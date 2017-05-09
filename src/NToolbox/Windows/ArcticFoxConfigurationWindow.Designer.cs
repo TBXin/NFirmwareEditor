@@ -182,6 +182,21 @@
 			this.label63 = new System.Windows.Forms.Label();
 			this.IsStealthModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.label37 = new System.Windows.Forms.Label();
+			this.LoogTabPage = new System.Windows.Forms.TabPage();
+			this.RemoveLogoButton = new System.Windows.Forms.Button();
+			this.UploadLogoButton = new System.Windows.Forms.Button();
+			this.groupPanel22 = new NCore.UI.GroupPanel();
+			this.ThresholdUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label90 = new System.Windows.Forms.Label();
+			this.ConversionTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.groupPanel21 = new NCore.UI.GroupPanel();
+			this.LogoZoomCheckBox = new System.Windows.Forms.CheckBox();
+			this.label91 = new System.Windows.Forms.Label();
+			this.LogoDrawingSurface = new NCore.UI.DrawingSurface();
+			this.ChooseLogoGroupPanel = new NCore.UI.GroupPanel();
+			this.SelectLogoButton = new System.Windows.Forms.Button();
+			this.label48 = new System.Windows.Forms.Label();
+			this.LogoSizeComboBox = new System.Windows.Forms.ComboBox();
 			this.ControlsTabPage = new System.Windows.Forms.TabPage();
 			this.ControlsTabControl = new System.Windows.Forms.TabControl();
 			this.ControlsSettingsTabPage = new System.Windows.Forms.TabPage();
@@ -212,60 +227,60 @@
 			this.ShortcutsVWTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel4 = new NCore.UI.GroupPanel();
 			this.InSelectorVWFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label79 = new System.Windows.Forms.Label();
 			this.InSelectorVWPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label84 = new System.Windows.Forms.Label();
 			this.InSelectorVWFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label79 = new System.Windows.Forms.Label();
+			this.label84 = new System.Windows.Forms.Label();
 			this.label85 = new System.Windows.Forms.Label();
 			this.groupPanel5 = new NCore.UI.GroupPanel();
 			this.InEditVWFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label86 = new System.Windows.Forms.Label();
 			this.InEditVWPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label87 = new System.Windows.Forms.Label();
 			this.InEditVWFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label86 = new System.Windows.Forms.Label();
+			this.label87 = new System.Windows.Forms.Label();
 			this.label88 = new System.Windows.Forms.Label();
 			this.groupPanel3 = new NCore.UI.GroupPanel();
 			this.InMenuVWFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label83 = new System.Windows.Forms.Label();
 			this.InMenuVWPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label95 = new System.Windows.Forms.Label();
 			this.InMenuVWFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label83 = new System.Windows.Forms.Label();
+			this.label95 = new System.Windows.Forms.Label();
 			this.label96 = new System.Windows.Forms.Label();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
 			this.InStandbyVWPlusMinusMenuButton = new NCore.UI.MenuButton();
-			this.label82 = new System.Windows.Forms.Label();
 			this.InStandbyVWFirePlusMenuButton = new NCore.UI.MenuButton();
-			this.label81 = new System.Windows.Forms.Label();
 			this.InStandbyVWFireMinusMenuButton = new NCore.UI.MenuButton();
+			this.label82 = new System.Windows.Forms.Label();
+			this.label81 = new System.Windows.Forms.Label();
 			this.label80 = new System.Windows.Forms.Label();
 			this.ShortcutsTCTabPage = new System.Windows.Forms.TabPage();
 			this.groupPanel17 = new NCore.UI.GroupPanel();
 			this.InSelectorTCFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label10 = new System.Windows.Forms.Label();
 			this.InSelectorTCPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label12 = new System.Windows.Forms.Label();
 			this.InSelectorTCFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.groupPanel18 = new NCore.UI.GroupPanel();
 			this.InEditTCFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label15 = new System.Windows.Forms.Label();
 			this.InEditTCPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label24 = new System.Windows.Forms.Label();
 			this.InEditTCFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label24 = new System.Windows.Forms.Label();
 			this.label26 = new System.Windows.Forms.Label();
 			this.groupPanel19 = new NCore.UI.GroupPanel();
 			this.InMenuTCFireMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label28 = new System.Windows.Forms.Label();
 			this.InMenuTCPlusMinusComboBox = new System.Windows.Forms.ComboBox();
-			this.label47 = new System.Windows.Forms.Label();
 			this.InMenuTCFirePlusComboBox = new System.Windows.Forms.ComboBox();
+			this.label28 = new System.Windows.Forms.Label();
+			this.label47 = new System.Windows.Forms.Label();
 			this.label66 = new System.Windows.Forms.Label();
 			this.groupPanel20 = new NCore.UI.GroupPanel();
 			this.InStandbyTCPlusMinusMenuButton = new NCore.UI.MenuButton();
-			this.label67 = new System.Windows.Forms.Label();
 			this.InStandbyTCFirePlusMenuButton = new NCore.UI.MenuButton();
-			this.label71 = new System.Windows.Forms.Label();
 			this.InStandbyTCFireMinusMenuButton = new NCore.UI.MenuButton();
+			this.label67 = new System.Windows.Forms.Label();
+			this.label71 = new System.Windows.Forms.Label();
 			this.label89 = new System.Windows.Forms.Label();
 			this.SmartTabPage = new System.Windows.Forms.TabPage();
 			this.label14 = new System.Windows.Forms.Label();
@@ -366,6 +381,11 @@
 			this.groupPanel16.SuspendLayout();
 			this.groupPanel15.SuspendLayout();
 			this.StealthTabPage.SuspendLayout();
+			this.LoogTabPage.SuspendLayout();
+			this.groupPanel22.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThresholdUpDown)).BeginInit();
+			this.groupPanel21.SuspendLayout();
+			this.ChooseLogoGroupPanel.SuspendLayout();
 			this.ControlsTabPage.SuspendLayout();
 			this.ControlsTabControl.SuspendLayout();
 			this.ControlsSettingsTabPage.SuspendLayout();
@@ -754,6 +774,7 @@
 			this.ScreenTabControl.Controls.Add(this.AppearanceTabPage);
 			this.ScreenTabControl.Controls.Add(this.LayoutTabPage);
 			this.ScreenTabControl.Controls.Add(this.StealthTabPage);
+			this.ScreenTabControl.Controls.Add(this.LoogTabPage);
 			this.MainLocalizationExtender.SetKey(this.ScreenTabControl, "");
 			this.ScreenTabControl.Location = new System.Drawing.Point(5, 6);
 			this.ScreenTabControl.Name = "ScreenTabControl";
@@ -2274,6 +2295,198 @@
 			this.label37.TabIndex = 122;
 			this.label37.Text = "Stealth Mode:";
 			// 
+			// LoogTabPage
+			// 
+			this.LoogTabPage.Controls.Add(this.RemoveLogoButton);
+			this.LoogTabPage.Controls.Add(this.UploadLogoButton);
+			this.LoogTabPage.Controls.Add(this.groupPanel22);
+			this.LoogTabPage.Controls.Add(this.groupPanel21);
+			this.LoogTabPage.Controls.Add(this.ChooseLogoGroupPanel);
+			this.MainLocalizationExtender.SetKey(this.LoogTabPage, "Toolbox.ArcticFoxConfiguration.Screen.LogoTab");
+			this.LoogTabPage.Location = new System.Drawing.Point(4, 22);
+			this.LoogTabPage.Name = "LoogTabPage";
+			this.LoogTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.LoogTabPage.Size = new System.Drawing.Size(374, 379);
+			this.LoogTabPage.TabIndex = 4;
+			this.LoogTabPage.Text = "Logo";
+			this.LoogTabPage.UseVisualStyleBackColor = true;
+			// 
+			// RemoveLogoButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.RemoveLogoButton, "Toolbox.ArcticFoxConfiguration.Screen.Logo.RemoveLogoButton");
+			this.RemoveLogoButton.Location = new System.Drawing.Point(186, 347);
+			this.RemoveLogoButton.Name = "RemoveLogoButton";
+			this.RemoveLogoButton.Size = new System.Drawing.Size(182, 26);
+			this.RemoveLogoButton.TabIndex = 87;
+			this.RemoveLogoButton.Text = "Remove Logo";
+			this.RemoveLogoButton.UseVisualStyleBackColor = true;
+			// 
+			// UploadLogoButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.UploadLogoButton, "Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton");
+			this.UploadLogoButton.Location = new System.Drawing.Point(3, 347);
+			this.UploadLogoButton.Name = "UploadLogoButton";
+			this.UploadLogoButton.Size = new System.Drawing.Size(182, 26);
+			this.UploadLogoButton.TabIndex = 86;
+			this.UploadLogoButton.Text = "Upload Logo";
+			this.UploadLogoButton.UseVisualStyleBackColor = true;
+			// 
+			// groupPanel22
+			// 
+			this.groupPanel22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel22.Controls.Add(this.ThresholdUpDown);
+			this.groupPanel22.Controls.Add(this.label90);
+			this.groupPanel22.Controls.Add(this.ConversionTypeComboBox);
+			this.groupPanel22.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel22.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel22, "Toolbox.ArcticFoxConfiguration.Screen.Logo.ConversionLabel");
+			this.groupPanel22.Location = new System.Drawing.Point(4, 76);
+			this.groupPanel22.Name = "groupPanel22";
+			this.groupPanel22.Size = new System.Drawing.Size(364, 64);
+			this.groupPanel22.TabIndex = 85;
+			this.groupPanel22.TabStop = false;
+			this.groupPanel22.Text = "Conversion:";
+			// 
+			// ThresholdUpDown
+			// 
+			this.ThresholdUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ThresholdUpDown.Enabled = false;
+			this.MainLocalizationExtender.SetKey(this.ThresholdUpDown, "");
+			this.ThresholdUpDown.Location = new System.Drawing.Point(308, 36);
+			this.ThresholdUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.ThresholdUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.ThresholdUpDown.Name = "ThresholdUpDown";
+			this.ThresholdUpDown.Size = new System.Drawing.Size(50, 21);
+			this.ThresholdUpDown.TabIndex = 84;
+			this.ThresholdUpDown.Value = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+			// 
+			// label90
+			// 
+			this.label90.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label90, "Toolbox.ArcticFoxConfiguration.Screen.Logo.ConversionTypeLabel");
+			this.label90.Location = new System.Drawing.Point(4, 39);
+			this.label90.Name = "label90";
+			this.label90.Size = new System.Drawing.Size(35, 13);
+			this.label90.TabIndex = 82;
+			this.label90.Text = "Type:";
+			// 
+			// ConversionTypeComboBox
+			// 
+			this.ConversionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ConversionTypeComboBox.FormattingEnabled = true;
+			this.MainLocalizationExtender.SetKey(this.ConversionTypeComboBox, "");
+			this.ConversionTypeComboBox.Location = new System.Drawing.Point(103, 36);
+			this.ConversionTypeComboBox.Name = "ConversionTypeComboBox";
+			this.ConversionTypeComboBox.Size = new System.Drawing.Size(199, 21);
+			this.ConversionTypeComboBox.TabIndex = 83;
+			// 
+			// groupPanel21
+			// 
+			this.groupPanel21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.groupPanel21.Controls.Add(this.LogoZoomCheckBox);
+			this.groupPanel21.Controls.Add(this.label91);
+			this.groupPanel21.Controls.Add(this.LogoDrawingSurface);
+			this.groupPanel21.HeaderBackColor = System.Drawing.Color.White;
+			this.groupPanel21.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.groupPanel21, "Toolbox.ArcticFoxConfiguration.Screen.Logo.PreviewLabel");
+			this.groupPanel21.Location = new System.Drawing.Point(4, 146);
+			this.groupPanel21.Name = "groupPanel21";
+			this.groupPanel21.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
+			this.groupPanel21.Size = new System.Drawing.Size(364, 196);
+			this.groupPanel21.TabIndex = 3;
+			this.groupPanel21.TabStop = false;
+			this.groupPanel21.Text = "Preview:";
+			// 
+			// LogoZoomCheckBox
+			// 
+			this.LogoZoomCheckBox.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.LogoZoomCheckBox, "");
+			this.LogoZoomCheckBox.Location = new System.Drawing.Point(325, 7);
+			this.LogoZoomCheckBox.Name = "LogoZoomCheckBox";
+			this.LogoZoomCheckBox.Size = new System.Drawing.Size(38, 17);
+			this.LogoZoomCheckBox.TabIndex = 1;
+			this.LogoZoomCheckBox.Text = "2x";
+			this.LogoZoomCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label91
+			// 
+			this.MainLocalizationExtender.SetKey(this.label91, "Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel");
+			this.label91.Location = new System.Drawing.Point(185, 8);
+			this.label91.Name = "label91";
+			this.label91.Size = new System.Drawing.Size(139, 16);
+			this.label91.TabIndex = 2;
+			this.label91.Text = "Zoom:";
+			this.label91.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// LogoDrawingSurface
+			// 
+			this.LogoDrawingSurface.BackgroundImage = global::NToolbox.Properties.Resources.transparent_bg;
+			this.LogoDrawingSurface.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainLocalizationExtender.SetKey(this.LogoDrawingSurface, "");
+			this.LogoDrawingSurface.Location = new System.Drawing.Point(1, 30);
+			this.LogoDrawingSurface.Name = "LogoDrawingSurface";
+			this.LogoDrawingSurface.Size = new System.Drawing.Size(362, 165);
+			this.LogoDrawingSurface.TabIndex = 0;
+			this.LogoDrawingSurface.Text = "drawingSurface1";
+			// 
+			// ChooseLogoGroupPanel
+			// 
+			this.ChooseLogoGroupPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+			this.ChooseLogoGroupPanel.Controls.Add(this.SelectLogoButton);
+			this.ChooseLogoGroupPanel.Controls.Add(this.label48);
+			this.ChooseLogoGroupPanel.Controls.Add(this.LogoSizeComboBox);
+			this.ChooseLogoGroupPanel.HeaderBackColor = System.Drawing.Color.White;
+			this.ChooseLogoGroupPanel.HeaderHeight = 30;
+			this.MainLocalizationExtender.SetKey(this.ChooseLogoGroupPanel, "Toolbox.ArcticFoxConfiguration.Screen.Logo.ChooseLogoLabel");
+			this.ChooseLogoGroupPanel.Location = new System.Drawing.Point(4, 6);
+			this.ChooseLogoGroupPanel.Name = "ChooseLogoGroupPanel";
+			this.ChooseLogoGroupPanel.Size = new System.Drawing.Size(364, 64);
+			this.ChooseLogoGroupPanel.TabIndex = 2;
+			this.ChooseLogoGroupPanel.TabStop = false;
+			this.ChooseLogoGroupPanel.Text = "Choose logo:";
+			// 
+			// SelectLogoButton
+			// 
+			this.MainLocalizationExtender.SetKey(this.SelectLogoButton, "Toolbox.ArcticFoxConfiguration.Screen.Logo.SelectLogoButton");
+			this.SelectLogoButton.Location = new System.Drawing.Point(168, 35);
+			this.SelectLogoButton.Name = "SelectLogoButton";
+			this.SelectLogoButton.Size = new System.Drawing.Size(190, 23);
+			this.SelectLogoButton.TabIndex = 84;
+			this.SelectLogoButton.Text = "Select Logo File ...";
+			this.SelectLogoButton.UseVisualStyleBackColor = true;
+			// 
+			// label48
+			// 
+			this.label48.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label48, "Toolbox.ArcticFoxConfiguration.Screen.Logo.SelectSizeLabel");
+			this.label48.Location = new System.Drawing.Point(4, 39);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(61, 13);
+			this.label48.TabIndex = 82;
+			this.label48.Text = "Select size:";
+			// 
+			// LogoSizeComboBox
+			// 
+			this.LogoSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.LogoSizeComboBox.FormattingEnabled = true;
+			this.MainLocalizationExtender.SetKey(this.LogoSizeComboBox, "");
+			this.LogoSizeComboBox.Location = new System.Drawing.Point(103, 36);
+			this.LogoSizeComboBox.Name = "LogoSizeComboBox";
+			this.LogoSizeComboBox.Size = new System.Drawing.Size(60, 21);
+			this.LogoSizeComboBox.TabIndex = 83;
+			// 
 			// ControlsTabPage
 			// 
 			this.ControlsTabPage.Controls.Add(this.ControlsTabControl);
@@ -2653,16 +2866,6 @@
 			this.InSelectorVWFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorVWFireMinusComboBox.TabIndex = 120;
 			// 
-			// label79
-			// 
-			this.label79.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label79, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label79.Location = new System.Drawing.Point(4, 93);
-			this.label79.Name = "label79";
-			this.label79.Size = new System.Drawing.Size(24, 13);
-			this.label79.TabIndex = 123;
-			this.label79.Text = "+ –";
-			// 
 			// InSelectorVWPlusMinusComboBox
 			// 
 			this.InSelectorVWPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2673,16 +2876,6 @@
 			this.InSelectorVWPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorVWPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label84
-			// 
-			this.label84.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label84, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label84.Location = new System.Drawing.Point(4, 66);
-			this.label84.Name = "label84";
-			this.label84.Size = new System.Drawing.Size(36, 13);
-			this.label84.TabIndex = 121;
-			this.label84.Text = "Fire +";
-			// 
 			// InSelectorVWFirePlusComboBox
 			// 
 			this.InSelectorVWFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2692,6 +2885,26 @@
 			this.InSelectorVWFirePlusComboBox.Name = "InSelectorVWFirePlusComboBox";
 			this.InSelectorVWFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorVWFirePlusComboBox.TabIndex = 122;
+			// 
+			// label79
+			// 
+			this.label79.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label79, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label79.Location = new System.Drawing.Point(4, 93);
+			this.label79.Name = "label79";
+			this.label79.Size = new System.Drawing.Size(24, 13);
+			this.label79.TabIndex = 123;
+			this.label79.Text = "+ –";
+			// 
+			// label84
+			// 
+			this.label84.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label84, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label84.Location = new System.Drawing.Point(4, 66);
+			this.label84.Name = "label84";
+			this.label84.Size = new System.Drawing.Size(36, 13);
+			this.label84.TabIndex = 121;
+			this.label84.Text = "Fire +";
 			// 
 			// label85
 			// 
@@ -2732,16 +2945,6 @@
 			this.InEditVWFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditVWFireMinusComboBox.TabIndex = 120;
 			// 
-			// label86
-			// 
-			this.label86.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label86, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label86.Location = new System.Drawing.Point(4, 93);
-			this.label86.Name = "label86";
-			this.label86.Size = new System.Drawing.Size(24, 13);
-			this.label86.TabIndex = 123;
-			this.label86.Text = "+ –";
-			// 
 			// InEditVWPlusMinusComboBox
 			// 
 			this.InEditVWPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2752,16 +2955,6 @@
 			this.InEditVWPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditVWPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label87
-			// 
-			this.label87.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label87, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label87.Location = new System.Drawing.Point(4, 66);
-			this.label87.Name = "label87";
-			this.label87.Size = new System.Drawing.Size(36, 13);
-			this.label87.TabIndex = 121;
-			this.label87.Text = "Fire +";
-			// 
 			// InEditVWFirePlusComboBox
 			// 
 			this.InEditVWFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2771,6 +2964,26 @@
 			this.InEditVWFirePlusComboBox.Name = "InEditVWFirePlusComboBox";
 			this.InEditVWFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditVWFirePlusComboBox.TabIndex = 122;
+			// 
+			// label86
+			// 
+			this.label86.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label86, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label86.Location = new System.Drawing.Point(4, 93);
+			this.label86.Name = "label86";
+			this.label86.Size = new System.Drawing.Size(24, 13);
+			this.label86.TabIndex = 123;
+			this.label86.Text = "+ –";
+			// 
+			// label87
+			// 
+			this.label87.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label87, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label87.Location = new System.Drawing.Point(4, 66);
+			this.label87.Name = "label87";
+			this.label87.Size = new System.Drawing.Size(36, 13);
+			this.label87.TabIndex = 121;
+			this.label87.Text = "Fire +";
 			// 
 			// label88
 			// 
@@ -2811,16 +3024,6 @@
 			this.InMenuVWFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuVWFireMinusComboBox.TabIndex = 120;
 			// 
-			// label83
-			// 
-			this.label83.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label83, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label83.Location = new System.Drawing.Point(4, 93);
-			this.label83.Name = "label83";
-			this.label83.Size = new System.Drawing.Size(24, 13);
-			this.label83.TabIndex = 123;
-			this.label83.Text = "+ –";
-			// 
 			// InMenuVWPlusMinusComboBox
 			// 
 			this.InMenuVWPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2831,16 +3034,6 @@
 			this.InMenuVWPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuVWPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label95
-			// 
-			this.label95.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label95, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label95.Location = new System.Drawing.Point(4, 66);
-			this.label95.Name = "label95";
-			this.label95.Size = new System.Drawing.Size(36, 13);
-			this.label95.TabIndex = 121;
-			this.label95.Text = "Fire +";
-			// 
 			// InMenuVWFirePlusComboBox
 			// 
 			this.InMenuVWFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2850,6 +3043,26 @@
 			this.InMenuVWFirePlusComboBox.Name = "InMenuVWFirePlusComboBox";
 			this.InMenuVWFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuVWFirePlusComboBox.TabIndex = 122;
+			// 
+			// label83
+			// 
+			this.label83.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label83, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label83.Location = new System.Drawing.Point(4, 93);
+			this.label83.Name = "label83";
+			this.label83.Size = new System.Drawing.Size(24, 13);
+			this.label83.TabIndex = 123;
+			this.label83.Text = "+ –";
+			// 
+			// label95
+			// 
+			this.label95.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label95, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label95.Location = new System.Drawing.Point(4, 66);
+			this.label95.Name = "label95";
+			this.label95.Size = new System.Drawing.Size(36, 13);
+			this.label95.TabIndex = 121;
+			this.label95.Text = "Fire +";
 			// 
 			// label96
 			// 
@@ -2893,16 +3106,6 @@
 			this.InStandbyVWPlusMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyVWPlusMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
-			// label82
-			// 
-			this.label82.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label82, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label82.Location = new System.Drawing.Point(4, 93);
-			this.label82.Name = "label82";
-			this.label82.Size = new System.Drawing.Size(24, 13);
-			this.label82.TabIndex = 123;
-			this.label82.Text = "+ –";
-			// 
 			// InStandbyVWFirePlusMenuButton
 			// 
 			this.InStandbyVWFirePlusMenuButton.AutoEllipsis = true;
@@ -2916,16 +3119,6 @@
 			this.InStandbyVWFirePlusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyVWFirePlusMenuButton.UseVisualStyleBackColor = true;
 			// 
-			// label81
-			// 
-			this.label81.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label81, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label81.Location = new System.Drawing.Point(4, 66);
-			this.label81.Name = "label81";
-			this.label81.Size = new System.Drawing.Size(36, 13);
-			this.label81.TabIndex = 121;
-			this.label81.Text = "Fire +";
-			// 
 			// InStandbyVWFireMinusMenuButton
 			// 
 			this.InStandbyVWFireMinusMenuButton.AutoEllipsis = true;
@@ -2938,6 +3131,26 @@
 			this.InStandbyVWFireMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.InStandbyVWFireMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyVWFireMinusMenuButton.UseVisualStyleBackColor = true;
+			// 
+			// label82
+			// 
+			this.label82.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label82, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label82.Location = new System.Drawing.Point(4, 93);
+			this.label82.Name = "label82";
+			this.label82.Size = new System.Drawing.Size(24, 13);
+			this.label82.TabIndex = 123;
+			this.label82.Text = "+ –";
+			// 
+			// label81
+			// 
+			this.label81.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label81, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label81.Location = new System.Drawing.Point(4, 66);
+			this.label81.Name = "label81";
+			this.label81.Size = new System.Drawing.Size(36, 13);
+			this.label81.TabIndex = 121;
+			this.label81.Text = "Fire +";
 			// 
 			// label80
 			// 
@@ -2992,16 +3205,6 @@
 			this.InSelectorTCFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorTCFireMinusComboBox.TabIndex = 120;
 			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label10, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label10.Location = new System.Drawing.Point(4, 93);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(24, 13);
-			this.label10.TabIndex = 123;
-			this.label10.Text = "+ –";
-			// 
 			// InSelectorTCPlusMinusComboBox
 			// 
 			this.InSelectorTCPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3012,16 +3215,6 @@
 			this.InSelectorTCPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorTCPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label12, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label12.Location = new System.Drawing.Point(4, 66);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(36, 13);
-			this.label12.TabIndex = 121;
-			this.label12.Text = "Fire +";
-			// 
 			// InSelectorTCFirePlusComboBox
 			// 
 			this.InSelectorTCFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3031,6 +3224,26 @@
 			this.InSelectorTCFirePlusComboBox.Name = "InSelectorTCFirePlusComboBox";
 			this.InSelectorTCFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InSelectorTCFirePlusComboBox.TabIndex = 122;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label10, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label10.Location = new System.Drawing.Point(4, 93);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(24, 13);
+			this.label10.TabIndex = 123;
+			this.label10.Text = "+ –";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label12, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label12.Location = new System.Drawing.Point(4, 66);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(36, 13);
+			this.label12.TabIndex = 121;
+			this.label12.Text = "Fire +";
 			// 
 			// label13
 			// 
@@ -3071,16 +3284,6 @@
 			this.InEditTCFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditTCFireMinusComboBox.TabIndex = 120;
 			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label15.Location = new System.Drawing.Point(4, 93);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(24, 13);
-			this.label15.TabIndex = 123;
-			this.label15.Text = "+ –";
-			// 
 			// InEditTCPlusMinusComboBox
 			// 
 			this.InEditTCPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3091,16 +3294,6 @@
 			this.InEditTCPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditTCPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label24
-			// 
-			this.label24.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label24, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label24.Location = new System.Drawing.Point(4, 66);
-			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(36, 13);
-			this.label24.TabIndex = 121;
-			this.label24.Text = "Fire +";
-			// 
 			// InEditTCFirePlusComboBox
 			// 
 			this.InEditTCFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3110,6 +3303,26 @@
 			this.InEditTCFirePlusComboBox.Name = "InEditTCFirePlusComboBox";
 			this.InEditTCFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InEditTCFirePlusComboBox.TabIndex = 122;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label15, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label15.Location = new System.Drawing.Point(4, 93);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(24, 13);
+			this.label15.TabIndex = 123;
+			this.label15.Text = "+ –";
+			// 
+			// label24
+			// 
+			this.label24.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label24, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label24.Location = new System.Drawing.Point(4, 66);
+			this.label24.Name = "label24";
+			this.label24.Size = new System.Drawing.Size(36, 13);
+			this.label24.TabIndex = 121;
+			this.label24.Text = "Fire +";
 			// 
 			// label26
 			// 
@@ -3150,16 +3363,6 @@
 			this.InMenuTCFireMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuTCFireMinusComboBox.TabIndex = 120;
 			// 
-			// label28
-			// 
-			this.label28.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label28, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label28.Location = new System.Drawing.Point(4, 93);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(24, 13);
-			this.label28.TabIndex = 123;
-			this.label28.Text = "+ –";
-			// 
 			// InMenuTCPlusMinusComboBox
 			// 
 			this.InMenuTCPlusMinusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3170,16 +3373,6 @@
 			this.InMenuTCPlusMinusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuTCPlusMinusComboBox.TabIndex = 124;
 			// 
-			// label47
-			// 
-			this.label47.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label47, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label47.Location = new System.Drawing.Point(4, 66);
-			this.label47.Name = "label47";
-			this.label47.Size = new System.Drawing.Size(36, 13);
-			this.label47.TabIndex = 121;
-			this.label47.Text = "Fire +";
-			// 
 			// InMenuTCFirePlusComboBox
 			// 
 			this.InMenuTCFirePlusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3189,6 +3382,26 @@
 			this.InMenuTCFirePlusComboBox.Name = "InMenuTCFirePlusComboBox";
 			this.InMenuTCFirePlusComboBox.Size = new System.Drawing.Size(130, 21);
 			this.InMenuTCFirePlusComboBox.TabIndex = 122;
+			// 
+			// label28
+			// 
+			this.label28.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label28, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label28.Location = new System.Drawing.Point(4, 93);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(24, 13);
+			this.label28.TabIndex = 123;
+			this.label28.Text = "+ –";
+			// 
+			// label47
+			// 
+			this.label47.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label47, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label47.Location = new System.Drawing.Point(4, 66);
+			this.label47.Name = "label47";
+			this.label47.Size = new System.Drawing.Size(36, 13);
+			this.label47.TabIndex = 121;
+			this.label47.Text = "Fire +";
 			// 
 			// label66
 			// 
@@ -3232,16 +3445,6 @@
 			this.InStandbyTCPlusMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyTCPlusMinusMenuButton.UseVisualStyleBackColor = true;
 			// 
-			// label67
-			// 
-			this.label67.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label67, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
-			this.label67.Location = new System.Drawing.Point(4, 93);
-			this.label67.Name = "label67";
-			this.label67.Size = new System.Drawing.Size(24, 13);
-			this.label67.TabIndex = 123;
-			this.label67.Text = "+ –";
-			// 
 			// InStandbyTCFirePlusMenuButton
 			// 
 			this.InStandbyTCFirePlusMenuButton.AutoEllipsis = true;
@@ -3255,16 +3458,6 @@
 			this.InStandbyTCFirePlusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyTCFirePlusMenuButton.UseVisualStyleBackColor = true;
 			// 
-			// label71
-			// 
-			this.label71.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label71, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
-			this.label71.Location = new System.Drawing.Point(4, 66);
-			this.label71.Name = "label71";
-			this.label71.Size = new System.Drawing.Size(36, 13);
-			this.label71.TabIndex = 121;
-			this.label71.Text = "Fire +";
-			// 
 			// InStandbyTCFireMinusMenuButton
 			// 
 			this.InStandbyTCFireMinusMenuButton.AutoEllipsis = true;
@@ -3277,6 +3470,26 @@
 			this.InStandbyTCFireMinusMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.InStandbyTCFireMinusMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.InStandbyTCFireMinusMenuButton.UseVisualStyleBackColor = true;
+			// 
+			// label67
+			// 
+			this.label67.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label67, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.PlusMinusLabel");
+			this.label67.Location = new System.Drawing.Point(4, 93);
+			this.label67.Name = "label67";
+			this.label67.Size = new System.Drawing.Size(24, 13);
+			this.label67.TabIndex = 123;
+			this.label67.Text = "+ –";
+			// 
+			// label71
+			// 
+			this.label71.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label71, "Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FirePlusLabel");
+			this.label71.Location = new System.Drawing.Point(4, 66);
+			this.label71.Name = "label71";
+			this.label71.Size = new System.Drawing.Size(36, 13);
+			this.label71.TabIndex = 121;
+			this.label71.Text = "Fire +";
 			// 
 			// label89
 			// 
@@ -4240,6 +4453,14 @@
 			this.groupPanel15.PerformLayout();
 			this.StealthTabPage.ResumeLayout(false);
 			this.StealthTabPage.PerformLayout();
+			this.LoogTabPage.ResumeLayout(false);
+			this.groupPanel22.ResumeLayout(false);
+			this.groupPanel22.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThresholdUpDown)).EndInit();
+			this.groupPanel21.ResumeLayout(false);
+			this.groupPanel21.PerformLayout();
+			this.ChooseLogoGroupPanel.ResumeLayout(false);
+			this.ChooseLogoGroupPanel.PerformLayout();
 			this.ControlsTabPage.ResumeLayout(false);
 			this.ControlsTabControl.ResumeLayout(false);
 			this.ControlsSettingsTabPage.ResumeLayout(false);
@@ -4606,5 +4827,20 @@
 		private NCore.UI.MenuButton InStandbyTCPlusMinusMenuButton;
 		private NCore.UI.MenuButton InStandbyTCFirePlusMenuButton;
 		private NCore.UI.MenuButton InStandbyTCFireMinusMenuButton;
+		private System.Windows.Forms.TabPage LoogTabPage;
+		private NCore.UI.GroupPanel groupPanel21;
+		private NCore.UI.GroupPanel ChooseLogoGroupPanel;
+		private System.Windows.Forms.Button SelectLogoButton;
+		private System.Windows.Forms.Label label48;
+		private System.Windows.Forms.ComboBox LogoSizeComboBox;
+		private NCore.UI.DrawingSurface LogoDrawingSurface;
+		private NCore.UI.GroupPanel groupPanel22;
+		private System.Windows.Forms.Label label90;
+		private System.Windows.Forms.ComboBox ConversionTypeComboBox;
+		private System.Windows.Forms.NumericUpDown ThresholdUpDown;
+		private System.Windows.Forms.CheckBox LogoZoomCheckBox;
+		private System.Windows.Forms.Label label91;
+		private System.Windows.Forms.Button UploadLogoButton;
+		private System.Windows.Forms.Button RemoveLogoButton;
 	}
 }

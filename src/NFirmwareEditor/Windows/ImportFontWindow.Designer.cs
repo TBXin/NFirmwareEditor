@@ -50,7 +50,7 @@ namespace NFirmwareEditor.Windows
 			this.label4 = new System.Windows.Forms.Label();
 			this.FontComboBox = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.FontPreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
+			this.FontPreviewSurface = new NCore.UI.DrawingSurface();
 			this.label1 = new System.Windows.Forms.Label();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.groupPanel1 = new NCore.UI.GroupPanel();
@@ -386,7 +386,7 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.NumericUpDown FontSizeUpDown;
 		private System.Windows.Forms.ComboBox FontComboBox;
 		private System.Windows.Forms.Label label2;
-		private UI.DrawingSurface FontPreviewSurface;
+		private NCore.UI.DrawingSurface FontPreviewSurface;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox LettersTextBox;
 		private System.Windows.Forms.Button LoadFontButton;

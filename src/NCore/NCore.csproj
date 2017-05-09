@@ -61,7 +61,12 @@
     <Compile Include="AsyncProcessWrapper.cs" />
     <Compile Include="BinaryStructure.cs" />
     <Compile Include="ArcticFoxEncryption.cs" />
+    <Compile Include="BitmapExtensions.cs" />
     <Compile Include="CrossApplicationIndentifiers.cs" />
+    <Compile Include="MonochromeBitmap.cs" />
+    <Compile Include="UI\DrawingSurface.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\MenuButton.cs">
       <SubType>Component</SubType>
     </Compile>

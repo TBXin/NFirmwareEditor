@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using NCore;
 using NCore.UI;
 using NToolbox.Services;
 
@@ -437,6 +438,18 @@ namespace NToolbox.Models
 						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom1", ArcticFoxConfiguration.BatteryModel.Custom1),
 						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom2", ArcticFoxConfiguration.BatteryModel.Custom2),
 						new NamedItemContainer<ArcticFoxConfiguration.BatteryModel>("Custom3", ArcticFoxConfiguration.BatteryModel.Custom3)
+					};
+				}
+			}
+
+			public static object[] MonochromeConversionModes
+			{
+				get
+				{
+					return new object[]
+					{
+						new NamedItemContainer<MonochromeConversionMode>("Threshold based", MonochromeConversionMode.ThresholdBased),
+						new NamedItemContainer<MonochromeConversionMode>("Floyd Steinberg Dithering", MonochromeConversionMode.FloydSteinbergDithering)
 					};
 				}
 			}

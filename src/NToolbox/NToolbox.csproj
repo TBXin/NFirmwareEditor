@@ -205,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NToolbox.ico" />
+    <None Include="Resources\transparent_bg.png" />
     <None Include="Resources\gray_white_separator.png" />
     <None Include="Resources\ntoolbox_logo.png" />
     <None Include="Resources\arcticfox_logo.png" />

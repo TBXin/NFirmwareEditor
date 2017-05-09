@@ -57,6 +57,16 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.UnableToReadData", "Unable to download device settings. Reconnect your device."); }
 		}
 
+		public static string MessageLogoUpdated
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.LogoUpdated", "Logo successfully updated."); }
+		}
+
+		public static string MessageLogoRemoved
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.LogoRemoved", "Logo successfully removed."); }
+		}
+
 		public static string StatusDevice
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Status.Device", "Device is"); }

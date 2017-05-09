@@ -606,7 +606,7 @@ namespace NFirmwareEditor.Windows.Tabs
 
 					using (var monochrome = imageConverterWindow.GetConvertedImage())
 					{
-						var imageData = BitmapProcessor.CreateRawFromBitmap(monochrome);
+						var imageData = monochrome.CreateRawFromBitmap();
 						ImagePixelGrid.CreateUndo();
 						ImagePixelGrid.Data = ImagePreviewPixelGrid.Data = ProcessImage(x => FirmwareImageProcessor.PasteImage(x, imageData), LastSelectedImageMetadata, true);
 					}
@@ -639,7 +639,7 @@ namespace NFirmwareEditor.Windows.Tabs
 			{
 				try
 				{
-					using (var image = BitmapProcessor.Create1BitBitmapFromRaw(data.ImageData))
+					using (var image = MonochromeBitmap.Create1BitBitmapFromRaw(data.ImageData))
 					{
 						var fileName = Path.Combine(directoryPath, "0x" + data.Metadata.Index.ToString("X2") + Consts.BitmapFileExtensionWoAsterisk);
 						image.Save(fileName, ImageFormat.Bmp);

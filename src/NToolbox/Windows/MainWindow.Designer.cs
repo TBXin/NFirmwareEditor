@@ -303,7 +303,7 @@
 			this.TaglineLabel.Name = "TaglineLabel";
 			this.TaglineLabel.Size = new System.Drawing.Size(350, 20);
 			this.TaglineLabel.TabIndex = 15;
-			this.TaglineLabel.Text = "Almost unlimited features";
+			this.TaglineLabel.Text = "your access to almost limitless possibilities";
 			// 
 			// TitleLabel
 			// 

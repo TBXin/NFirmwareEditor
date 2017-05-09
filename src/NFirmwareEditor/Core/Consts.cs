@@ -20,7 +20,6 @@
 		internal const string DefinitionFilter = "Definition file|*.xml";
 		internal const string PatchFilter = "Patch file|" + PatchFileExtension;
 		internal const string ExportResourcePackFilter = "Resource packs|" + ResourcePackFileExtension;
-		internal const string BitmapImportFilter = "Common graphic files|*.bmp;*.png;*.jpg;*.jpeg;*.gif";
 		internal const string BitmapExportFilter = "Common graphic files|*.bmp";
 		internal const string PngExportFilter = "Portable Network Graphics|*.png";
 		internal const string FontImportFilter = "Font files|*.ttf;*.otf";

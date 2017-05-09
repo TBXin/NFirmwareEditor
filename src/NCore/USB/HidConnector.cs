@@ -36,6 +36,8 @@ namespace NCore.USB
 			public const byte ReadConfiguration = 0x60;
 			public const byte WriteConfiguration = 0x61;
 			public const byte SetDateTime = 0x64;
+
+			public const byte SetLogo = 0xA5;
 		}
 
 		private static readonly byte[] s_hidSignature = Encoding.UTF8.GetBytes("HIDC");
@@ -210,6 +212,34 @@ namespace NCore.USB
 			{
 				Write(stream, CreateCommand(Commands.WriteData, LogoOffset, LogoLength));
 				Write(stream, data, worker);
+			}
+		}
+
+		public void WriteLogoHot(byte[] block1ImageBytes, byte[] block2ImageBytes, BackgroundWorker worker = null)
+		{
+			if (block1ImageBytes == null) throw new ArgumentNullException("block1ImageBytes");
+			if (block2ImageBytes == null) throw new ArgumentNullException("block2ImageBytes");
+			if (block1ImageBytes.Length > 512) throw new ArgumentException("block1ImageBytes is to big. Maximum allowed size is 512 bytes.");
+			if (block2ImageBytes.Length > 512) throw new ArgumentException("block2ImageBytes is to big. Maximum allowed size is 512 bytes.");
+
+			var data = new byte[LogoLength];
+			{
+				Buffer.BlockCopy(block2ImageBytes, 0, data, 0, block2ImageBytes.Length);
+				Buffer.BlockCopy(block1ImageBytes, 0, data, 512, block1ImageBytes.Length);
+			}
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.SetLogo, LogoOffset, LogoLength));
+				Write(stream, data, worker);
+			}
+		}
+
+		public void RemoveLogoHot(BackgroundWorker worker = null)
+		{
+			using (var stream = OpenDeviceStream())
+			{
+				Write(stream, CreateCommand(Commands.SetLogo, LogoOffset, LogoLength));
+				Write(stream, new byte[1024], worker);
 			}
 		}
 

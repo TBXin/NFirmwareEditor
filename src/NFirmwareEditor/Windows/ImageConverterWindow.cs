@@ -8,7 +8,6 @@ using NCore;
 using NCore.UI;
 using NFirmwareEditor.Core;
 using NFirmwareEditor.Managers;
-using NFirmwareEditor.Models;
 
 namespace NFirmwareEditor.Windows
 {
@@ -138,7 +137,7 @@ namespace NFirmwareEditor.Windows
 		{
 			if (m_originalBitmap == null || m_doNotUpdateMonochrome) return;
 
-			using (var scaledImage = BitmapProcessor.FitToSize(m_originalBitmap, new Size(m_width, m_height)))
+			using (var scaledImage = m_originalBitmap.Resize(new Size(m_width, m_height)))
 			{
 				if (m_monochromeBitmap != null)
 				{
@@ -151,12 +150,12 @@ namespace NFirmwareEditor.Windows
 				{
 					case MonochromeConversionMode.ThresholdBased:
 					{
-						m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage, MonochromeConversionMode.ThresholdBased, (int)ThresholdUpDown.Value);
+						m_monochromeBitmap = MonochromeBitmap.ConvertTo1Bit(scaledImage, MonochromeConversionMode.ThresholdBased, (int)ThresholdUpDown.Value);
 						break;
 					}
 					case MonochromeConversionMode.FloydSteinbergDithering:
 					{
-						m_monochromeBitmap = BitmapProcessor.ConvertTo1Bit(scaledImage);
+						m_monochromeBitmap = MonochromeBitmap.ConvertTo1Bit(scaledImage);
 						break;
 					}
 					default: throw new ArgumentOutOfRangeException();
@@ -167,7 +166,7 @@ namespace NFirmwareEditor.Windows
 		private void SelectSourceButton_Click(object sender, EventArgs e)
 		{
 			string fileName;
-			using (var op = new OpenFileDialog { Filter = Consts.BitmapImportFilter })
+			using (var op = new OpenFileDialog { Filter = FileFilters.BitmapImportFilter })
 			{
 				if (op.ShowDialog() != DialogResult.OK) return;
 				fileName = op.FileName;

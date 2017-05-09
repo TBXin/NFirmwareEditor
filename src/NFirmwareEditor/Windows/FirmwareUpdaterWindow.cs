@@ -381,7 +381,7 @@ namespace NFirmwareEditor.Windows
 
 			using (logoBitmap)
 			{
-				var imageData = BitmapProcessor.CreateRawFromBitmap(logoBitmap);
+				var imageData = logoBitmap.CreateRawFromBitmap();
 
 				var block1ImageMetadata = new FirmwareImage1Metadata { Width = m_deviceInfo.LogoWidth, Height = m_deviceInfo.LogoHeight };
 				var block2ImageMetadata = new FirmwareImage2Metadata { Width = m_deviceInfo.LogoWidth, Height = m_deviceInfo.LogoHeight };

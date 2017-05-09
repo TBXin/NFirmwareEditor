@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NFirmwareEditor.UI
+namespace NCore.UI
 {
-	internal class DrawingSurface : ScrollableControl
+	public class DrawingSurface : ScrollableControl
 	{
 		public DrawingSurface()
 		{

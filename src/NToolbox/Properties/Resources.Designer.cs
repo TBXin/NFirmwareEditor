@@ -133,6 +133,16 @@ namespace NToolbox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap transparent_bg {
+            get {
+                object obj = ResourceManager.GetObject("transparent_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap www_page {
             get {
                 object obj = ResourceManager.GetObject("www_page", resourceCulture);

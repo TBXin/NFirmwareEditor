@@ -89,7 +89,7 @@ namespace NToolbox.Windows
 
 			AboutLinkLabel.Click += (s, e) =>
 			{
-				/*#if DEBUG
+				#if DEBUG
 				if (System.Diagnostics.Debugger.IsAttached)
 				{
 					// Initialize all localizable strings.
@@ -98,7 +98,7 @@ namespace NToolbox.Windows
 					var result = LocalizationManager.Instance.GetLanguagePack();
 					System.Diagnostics.Debugger.Break();
 				}
-				#endif*/
+				#endif
 
 				using (var aboutWindow = new AboutWindow())
 				{

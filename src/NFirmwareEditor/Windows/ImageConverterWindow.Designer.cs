@@ -43,7 +43,7 @@ namespace NFirmwareEditor.Windows
 			this.borderedPanel3 = new NCore.UI.BorderedPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.borderedPanel5 = new NCore.UI.BorderedPanel();
-			this.ImagePreviewSurface = new NFirmwareEditor.UI.DrawingSurface();
+			this.ImagePreviewSurface = new NCore.UI.DrawingSurface();
 			this.borderedPanel1 = new NCore.UI.BorderedPanel();
 			this.label5 = new System.Windows.Forms.Label();
 			this.ResizeContainerPanel = new NCore.UI.BorderedPanel();
@@ -538,7 +538,7 @@ namespace NFirmwareEditor.Windows
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.NumericUpDown NewWidthUpDown;
-		private UI.DrawingSurface ImagePreviewSurface;
+		private NCore.UI.DrawingSurface ImagePreviewSurface;
 		private System.Windows.Forms.Button JoyetechSizeButton;
 		private NCore.UI.BorderedPanel borderedPanel1;
 		private System.Windows.Forms.Label label5;

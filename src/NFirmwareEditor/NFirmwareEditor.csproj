@@ -84,7 +84,6 @@
     <Compile Include="Models\ImageImportMode.cs" />
     <Compile Include="Models\Updatable.cs" />
     <Compile Include="Models\LoadableObject.cs" />
-    <Compile Include="Models\MonochromeConversionMode.cs" />
     <Compile Include="Models\Patch.cs" />
     <Compile Include="Models\PatchModificationData.cs" />
     <Compile Include="Models\ResourcePack.cs" />
@@ -93,9 +92,6 @@
     <Compile Include="Storages\FirmwareDefinitionsStorage.cs" />
     <Compile Include="Storages\IFileStorage.cs" />
     <Compile Include="Storages\ResourcePacksStorage.cs" />
-    <Compile Include="UI\DrawingSurface.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ListViewItemComparer.cs" />
     <Compile Include="Windows\AboutWindow.cs">
       <SubType>Form</SubType>
