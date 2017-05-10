@@ -23,4 +23,4 @@ after_build:
 - cmd: del /q *.pdb, *.xml
 artifacts:
 - path: src\out
-  name: NFirmwareEditor-v$(APPVEYOR_BUILD_VERSION)
+  name: NFE-Tools-v$(APPVEYOR_BUILD_VERSION)
