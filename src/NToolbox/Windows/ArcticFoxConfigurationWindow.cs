@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -20,6 +22,8 @@ namespace NToolbox.Windows
 {
 	internal partial class ArcticFoxConfigurationWindow : EditorDialogWindow
 	{
+		private const int MaximumFailedSettingsInTheReport = 10;
+
 		private readonly ToolboxConfiguration m_toolboxConfiguration;
 		private readonly BackgroundWorker m_worker = new BackgroundWorker { WorkerReportsProgress = true };
 		private readonly IEncryption m_encryption = new ArcticFoxEncryption();
@@ -961,7 +965,9 @@ namespace NToolbox.Windows
 					InfoBox.Show("Most likely you are trying to open an obsolete configuration file. This operation is not supported.");
 					return;
 				}
-				BinaryStructure.ReadFromDictionary(result, serializableConfiguration.GetDictionary());
+				List<string> failedKeys;
+				var configurationDictionary = serializableConfiguration.GetDictionary();
+				BinaryStructure.ReadFromDictionary(result, configurationDictionary, out failedKeys);
 				if (existedInfoBlock != null)
 				{
 					result.Info = existedInfoBlock;
@@ -970,7 +976,37 @@ namespace NToolbox.Windows
 				{
 					SetSharedDeviceInfo(result.Info);
 				}
+
 				OpenWorkspace(result);
+
+				if (failedKeys != null && failedKeys.Count > 0)
+				{
+					var loadedPercents = (int)((configurationDictionary.Count - failedKeys.Count) * 100f / configurationDictionary.Count);
+					string failedSettings;
+					var humanizedFailedKeys = failedKeys.Select(x =>
+					{
+						var dotIndex = x.IndexOf('.');
+						if (dotIndex == -1) return x;
+						return dotIndex + 1 > x.Length ? x : x.Substring(dotIndex + 1);
+					});
+					if (failedKeys.Count > MaximumFailedSettingsInTheReport)
+					{
+						var limitedFailedkeys = humanizedFailedKeys.Take(MaximumFailedSettingsInTheReport);
+						failedSettings = string.Join(Environment.NewLine, limitedFailedkeys.Select(x => "  -> " + x)) +
+						                 Environment.NewLine + "  ...";
+					}
+					else
+					{
+						failedSettings = string.Join(Environment.NewLine, humanizedFailedKeys.Select(x => "  -> " + x));
+					}
+
+					InfoBox.Show
+					(
+						"Configuration successfully loaded by {0}%.\n\nSome settings were not read:\n{1}\n\nMore information can be found in the log file.",
+						loadedPercents,
+						failedSettings
+					);
+				}
 			}
 			catch (Exception ex)
 			{

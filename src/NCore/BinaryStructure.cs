@@ -61,13 +61,15 @@ namespace NCore
 		/// <typeparam name="T">Source object type.</typeparam>
 		/// <param name="data">Source object.</param>
 		/// <param name="kvp">Values collection.</param>
+		/// <param name="failedKeys">List of keys that failed to load.</param>
 		[NotNull]
-		public static T ReadFromDictionary<T>([NotNull] T data, [NotNull] IDictionary<string, string> kvp)
+		public static T ReadFromDictionary<T>([NotNull] T data, [NotNull] IDictionary<string, string> kvp, out List<string> failedKeys)
 		{
 			if (data == null) throw new ArgumentNullException("data");
 			if (kvp == null) throw new ArgumentNullException("kvp");
 
-			RecursiveReadFromDictionary(data, "Model", kvp);
+			failedKeys = new List<string>();
+			RecursiveReadFromDictionary(data, "Model", kvp, failedKeys);
 			return data;
 		}
 
@@ -212,7 +214,7 @@ namespace NCore
 			}
 		}
 
-		private static void RecursiveReadFromDictionary(object obj, string path, IDictionary<string, string> kvp)
+		private static void RecursiveReadFromDictionary(object obj, string path, IDictionary<string, string> kvp, List<string> failedKeys)
 		{
 			foreach (var iterator in obj.GetType().GetFields())
 			{
@@ -224,7 +226,15 @@ namespace NCore
 				{
 					if (kvp.ContainsKey(key))
 					{
-						field.SetValue(obj, GetTypeConverter(filedType).ConvertFromString(kvp[key]));
+						try
+						{
+							field.SetValue(obj, GetTypeConverter(filedType).ConvertFromString(kvp[key]));
+						}
+						catch (Exception ex)
+						{
+							failedKeys.Add(key);
+							Trace.Warn(ex, "Configuration value for \"{0}\" can not be read.", key);
+						}
 					}
 				}
 				else if (filedType.IsArray)
@@ -237,13 +247,21 @@ namespace NCore
 						var arrayKey = path + "." + field.Name + "[" + i + "]";
 						if (elType.IsClass)
 						{
-							RecursiveReadFromDictionary(array.GetValue(i), arrayKey, kvp);
+							RecursiveReadFromDictionary(array.GetValue(i), arrayKey, kvp, failedKeys);
 						}
 						else
 						{
 							if (kvp.ContainsKey(arrayKey))
 							{
-								array.SetValue(GetTypeConverter(elType).ConvertFromString(kvp[arrayKey]), i);
+								try
+								{
+									array.SetValue(GetTypeConverter(elType).ConvertFromString(kvp[arrayKey]), i);
+								}
+								catch (Exception ex)
+								{
+									failedKeys.Add(arrayKey);
+									Trace.Warn(ex, "Configuration value for \"{0}\" can not be read.", arrayKey);
+								}
 							}
 						}
 					}
@@ -252,16 +270,24 @@ namespace NCore
 				{
 					if (kvp.ContainsKey(key))
 					{
-						field.SetValue(obj, kvp[key]);
+						try
+						{
+							field.SetValue(obj, kvp[key]);
+						}
+						catch (Exception ex)
+						{
+							failedKeys.Add(key);
+							Trace.Warn(ex, "Configuration value for \"{0}\" can not be read.", key);
+						}
 					}
 				}
 				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
 				{
-					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp);
+					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp, failedKeys);
 				}
 				else if (filedType.IsClass)
 				{
-					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp);
+					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp, failedKeys);
 				}
 			}
 		}
