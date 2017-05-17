@@ -1,3 +1,8 @@
+# We now have a forum
+Please do not create new issues on GitHub. We will close this possibility in a 2-4 weeks.
+If you have questions or suggestions or you just want to talk - https://nfeteam.org/forum. 
+We are hoping that you will like it ;)
+
 # NFirmwareEditor + NFE Toolbox
 
 Supported OS: Windows 7 and higher.  
