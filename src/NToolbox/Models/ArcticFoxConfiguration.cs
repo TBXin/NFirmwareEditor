@@ -338,7 +338,9 @@ namespace NToolbox.Models
 			KeyLock = 14,
 			LockResistance = 15,
 			PowerBank = 16,
-			DeviceLock = 17
+			DeviceLock = 17,
+			ReReadResistanceAndSaveToProfile = 18,
+			ReReadResistanceAndSmart = 19
 		}
 
 		internal enum ShortcutsInEdit : byte

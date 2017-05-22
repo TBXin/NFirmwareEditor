@@ -388,6 +388,16 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.TDom", "TDom"); }
 		}
 
+		public static string ClickActionsReReadResistanceAndSaveToProfile
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ReReadResistanceAndSaveToProfile", "Re-Read Resistance"); }
+		}
+
+		public static string ClickActionsReReadResistanceAndSmart
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ReReadResistanceAndSmart", "Re-Detect Atomizer"); }
+		}
+
 		public static string ClickActionsShowClock
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.ClickActions.ShowClock", "Show Clock"); }
