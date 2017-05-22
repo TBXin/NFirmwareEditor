@@ -104,11 +104,18 @@ namespace NCore.UI
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
+			var actualDropDownArrowRectangleWidth = e.Graphics.ScaleToDpi(DropDownArrowRectangleWidth);
+			var paddingRight = actualDropDownArrowRectangleWidth / 2;
+			if (Padding.Right != paddingRight)
+			{
+				Padding = new Padding(Padding.Left, Padding.Top, Padding.Right + paddingRight, Padding.Bottom);
+			}
+
 			base.OnPaint(e);
 
 			if (ComboBoxRenderer.IsSupported)
 			{
-				var actualDropDownArrowRectangleWidth = e.Graphics.ScaleToDpi(DropDownArrowRectangleWidth);
+				
 				var rect = new Rectangle
 				(
 					ClientRectangle.X + ClientRectangle.Width - actualDropDownArrowRectangleWidth - 1,
