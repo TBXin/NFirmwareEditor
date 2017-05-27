@@ -3721,6 +3721,11 @@
 			// InternalResistanceUpDown
 			// 
 			this.InternalResistanceUpDown.DecimalPlaces = 3;
+			this.InternalResistanceUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
 			this.MainLocalizationExtender.SetKey(this.InternalResistanceUpDown, "");
 			this.InternalResistanceUpDown.Location = new System.Drawing.Point(160, 89);
 			this.InternalResistanceUpDown.Maximum = new decimal(new int[] {
