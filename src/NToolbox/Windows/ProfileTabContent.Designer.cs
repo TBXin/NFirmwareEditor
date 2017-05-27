@@ -66,6 +66,7 @@
 			this.label37 = new System.Windows.Forms.Label();
 			this.ProfileEnabledCheckBox = new System.Windows.Forms.CheckBox();
 			this.ProfileLocalizationExtender = new NCore.UI.LocalizationExtender(this.components);
+			this.ResistanceLockedPictureBox = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.TemperatureUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatTimeUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatPowerUpDown)).BeginInit();
@@ -73,6 +74,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatDelayUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceLockedPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ProfileNameTextBox
@@ -100,7 +102,7 @@
 			// TemperatureUpDown
 			// 
 			this.ProfileLocalizationExtender.SetKey(this.TemperatureUpDown, "");
-			this.TemperatureUpDown.Location = new System.Drawing.Point(160, 301);
+			this.TemperatureUpDown.Location = new System.Drawing.Point(160, 278);
 			this.TemperatureUpDown.Maximum = new decimal(new int[] {
             300,
             0,
@@ -125,7 +127,7 @@
 			// 
 			this.TemperatureDominantCheckBox.AutoSize = true;
 			this.ProfileLocalizationExtender.SetKey(this.TemperatureDominantCheckBox, "Toolbox.ArcticFoxConfiguration.Profile.TDomCheckBox");
-			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(160, 328);
+			this.TemperatureDominantCheckBox.Location = new System.Drawing.Point(160, 305);
 			this.TemperatureDominantCheckBox.Name = "TemperatureDominantCheckBox";
 			this.TemperatureDominantCheckBox.Size = new System.Drawing.Size(136, 17);
 			this.TemperatureDominantCheckBox.TabIndex = 70;
@@ -136,7 +138,7 @@
 			// 
 			this.TemperatureLabel.AutoSize = true;
 			this.ProfileLocalizationExtender.SetKey(this.TemperatureLabel, "Toolbox.ArcticFoxConfiguration.Profile.TemperatureLabel");
-			this.TemperatureLabel.Location = new System.Drawing.Point(4, 304);
+			this.TemperatureLabel.Location = new System.Drawing.Point(4, 281);
 			this.TemperatureLabel.Name = "TemperatureLabel";
 			this.TemperatureLabel.Size = new System.Drawing.Size(73, 13);
 			this.TemperatureLabel.TabIndex = 68;
@@ -147,7 +149,7 @@
 			this.TemperatureTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.TemperatureTypeComboBox.FormattingEnabled = true;
 			this.ProfileLocalizationExtender.SetKey(this.TemperatureTypeComboBox, "");
-			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(272, 301);
+			this.TemperatureTypeComboBox.Location = new System.Drawing.Point(273, 278);
 			this.TemperatureTypeComboBox.Name = "TemperatureTypeComboBox";
 			this.TemperatureTypeComboBox.Size = new System.Drawing.Size(42, 21);
 			this.TemperatureTypeComboBox.TabIndex = 69;
@@ -291,7 +293,7 @@
 			// 
 			this.ResistanceLabel.AutoSize = true;
 			this.ProfileLocalizationExtender.SetKey(this.ResistanceLabel, "Toolbox.ArcticFoxConfiguration.Profile.ResistanceLabel");
-			this.ResistanceLabel.Location = new System.Drawing.Point(4, 254);
+			this.ResistanceLabel.Location = new System.Drawing.Point(4, 200);
 			this.ResistanceLabel.Name = "ResistanceLabel";
 			this.ResistanceLabel.Size = new System.Drawing.Size(63, 13);
 			this.ResistanceLabel.TabIndex = 84;
@@ -306,7 +308,7 @@
             0,
             196608});
 			this.ProfileLocalizationExtender.SetKey(this.ResistanceUpDown, "");
-			this.ResistanceUpDown.Location = new System.Drawing.Point(160, 251);
+			this.ResistanceUpDown.Location = new System.Drawing.Point(160, 197);
 			this.ResistanceUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -328,7 +330,7 @@
 			this.OhmLabel.AutoSize = true;
 			this.OhmLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.ProfileLocalizationExtender.SetKey(this.OhmLabel, "");
-			this.OhmLabel.Location = new System.Drawing.Point(272, 253);
+			this.OhmLabel.Location = new System.Drawing.Point(272, 199);
 			this.OhmLabel.Name = "OhmLabel";
 			this.OhmLabel.Size = new System.Drawing.Size(17, 16);
 			this.OhmLabel.TabIndex = 86;
@@ -337,19 +339,18 @@
 			// ResistanceLockedCheckBox
 			// 
 			this.ResistanceLockedCheckBox.AutoSize = true;
-			this.ProfileLocalizationExtender.SetKey(this.ResistanceLockedCheckBox, "Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox");
-			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(160, 278);
+			this.ProfileLocalizationExtender.SetKey(this.ResistanceLockedCheckBox, "");
+			this.ResistanceLockedCheckBox.Location = new System.Drawing.Point(318, 201);
 			this.ResistanceLockedCheckBox.Name = "ResistanceLockedCheckBox";
-			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(59, 17);
+			this.ResistanceLockedCheckBox.Size = new System.Drawing.Size(15, 14);
 			this.ResistanceLockedCheckBox.TabIndex = 85;
-			this.ResistanceLockedCheckBox.Text = "Locked";
 			this.ResistanceLockedCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// MaterialLabel
 			// 
 			this.MaterialLabel.AutoSize = true;
 			this.ProfileLocalizationExtender.SetKey(this.MaterialLabel, "Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel");
-			this.MaterialLabel.Location = new System.Drawing.Point(4, 227);
+			this.MaterialLabel.Location = new System.Drawing.Point(4, 254);
 			this.MaterialLabel.Name = "MaterialLabel";
 			this.MaterialLabel.Size = new System.Drawing.Size(69, 13);
 			this.MaterialLabel.TabIndex = 87;
@@ -360,7 +361,7 @@
 			this.MaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.MaterialComboBox.FormattingEnabled = true;
 			this.ProfileLocalizationExtender.SetKey(this.MaterialComboBox, "");
-			this.MaterialComboBox.Location = new System.Drawing.Point(160, 224);
+			this.MaterialComboBox.Location = new System.Drawing.Point(160, 251);
 			this.MaterialComboBox.Name = "MaterialComboBox";
 			this.MaterialComboBox.Size = new System.Drawing.Size(106, 21);
 			this.MaterialComboBox.TabIndex = 88;
@@ -368,7 +369,7 @@
 			// TCRUpDown
 			// 
 			this.ProfileLocalizationExtender.SetKey(this.TCRUpDown, "");
-			this.TCRUpDown.Location = new System.Drawing.Point(273, 224);
+			this.TCRUpDown.Location = new System.Drawing.Point(273, 251);
 			this.TCRUpDown.Maximum = new decimal(new int[] {
             999,
             0,
@@ -438,7 +439,7 @@
 			// 
 			this.label9.AutoSize = true;
 			this.ProfileLocalizationExtender.SetKey(this.label9, "Toolbox.ArcticFoxConfiguration.Profile.ModeLabel");
-			this.label9.Location = new System.Drawing.Point(4, 200);
+			this.label9.Location = new System.Drawing.Point(4, 227);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(37, 13);
 			this.label9.TabIndex = 97;
@@ -449,7 +450,7 @@
 			this.ModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ModeComboBox.FormattingEnabled = true;
 			this.ProfileLocalizationExtender.SetKey(this.ModeComboBox, "");
-			this.ModeComboBox.Location = new System.Drawing.Point(160, 197);
+			this.ModeComboBox.Location = new System.Drawing.Point(160, 224);
 			this.ModeComboBox.Name = "ModeComboBox";
 			this.ModeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.ModeComboBox.TabIndex = 98;
@@ -479,7 +480,7 @@
 			// TFRCurveEditButton
 			// 
 			this.ProfileLocalizationExtender.SetKey(this.TFRCurveEditButton, "Toolbox.ArcticFoxConfiguration.Profile.TFREditButton");
-			this.TFRCurveEditButton.Location = new System.Drawing.Point(272, 223);
+			this.TFRCurveEditButton.Location = new System.Drawing.Point(272, 250);
 			this.TFRCurveEditButton.Name = "TFRCurveEditButton";
 			this.TFRCurveEditButton.Size = new System.Drawing.Size(60, 23);
 			this.TFRCurveEditButton.TabIndex = 101;
@@ -510,7 +511,7 @@
 			// SetupTempControlButton
 			// 
 			this.ProfileLocalizationExtender.SetKey(this.SetupTempControlButton, "Toolbox.ArcticFoxConfiguration.Profile.TCSetupButton");
-			this.SetupTempControlButton.Location = new System.Drawing.Point(272, 196);
+			this.SetupTempControlButton.Location = new System.Drawing.Point(272, 223);
 			this.SetupTempControlButton.Name = "SetupTempControlButton";
 			this.SetupTempControlButton.Size = new System.Drawing.Size(60, 23);
 			this.SetupTempControlButton.TabIndex = 104;
@@ -539,11 +540,23 @@
 			this.ProfileEnabledCheckBox.Text = "Enabled";
 			this.ProfileEnabledCheckBox.UseVisualStyleBackColor = true;
 			// 
+			// ResistanceLockedPictureBox
+			// 
+			this.ResistanceLockedPictureBox.BackgroundImage = global::NToolbox.Properties.Resources.resistance_lock;
+			this.ResistanceLockedPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.ProfileLocalizationExtender.SetKey(this.ResistanceLockedPictureBox, "");
+			this.ResistanceLockedPictureBox.Location = new System.Drawing.Point(300, 199);
+			this.ResistanceLockedPictureBox.Name = "ResistanceLockedPictureBox";
+			this.ResistanceLockedPictureBox.Size = new System.Drawing.Size(16, 16);
+			this.ResistanceLockedPictureBox.TabIndex = 107;
+			this.ResistanceLockedPictureBox.TabStop = false;
+			// 
 			// ProfileTabContent
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.ResistanceLockedPictureBox);
 			this.Controls.Add(this.ProfileEnabledCheckBox);
 			this.Controls.Add(this.SetupTempControlButton);
 			this.Controls.Add(this.TFRCurveEditButton);
@@ -591,6 +604,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.ResistanceUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.TCRUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PreheatDelayUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ResistanceLockedPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -634,5 +648,6 @@
 		private System.Windows.Forms.ComboBox PowerCurveComboBox;
 		private System.Windows.Forms.CheckBox ProfileEnabledCheckBox;
 		private NCore.UI.LocalizationExtender ProfileLocalizationExtender;
+		private System.Windows.Forms.PictureBox ResistanceLockedPictureBox;
 	}
 }

@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using NCore;
 using NCore.UI;
 using NToolbox.Models;
+using NToolbox.Properties;
 using NToolbox.Services;
 
 namespace NToolbox.Windows
@@ -83,6 +84,8 @@ namespace NToolbox.Windows
 			PowerCurveComboBox.SelectItem(m_profile.SelectedCurve);
 			PreheatTimeUpDown.SetValue(m_profile.PreheatTime / 100m);
 			PreheatDelayUpDown.SetValue(m_profile.PreheatDelay);
+
+			ResistanceLockedCheckBox_CheckedChanged(null, EventArgs.Empty);
 
 			TemperatureTypeComboBox.SelectItem(m_profile.Flags.IsCelcius);
 			TemperatureUpDown.SetValue(m_profile.Temperature);
@@ -220,6 +223,7 @@ namespace NToolbox.Windows
 			    new NamedItemContainer<Mode>(LocalizableStrings.VapeModePower, Mode.Power),
 			    new NamedItemContainer<Mode>(LocalizableStrings.VapeModeTempControl, Mode.TemperatureControl)
 			});
+			ResistanceLockedCheckBox.CheckedChanged += ResistanceLockedCheckBox_CheckedChanged;
 			ModeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				var isTemperatureSensing = ModeComboBox.GetSelectedItem<Mode>() == Mode.TemperatureControl;
@@ -229,10 +233,8 @@ namespace NToolbox.Windows
 				MaterialComboBox.Visible = isTemperatureSensing;
 				MaterialLabel.Visible = isTemperatureSensing;
 
-				ResistanceLabel.Visible = isTemperatureSensing;
-				ResistanceUpDown.Visible = isTemperatureSensing;
+				ResistanceLockedPictureBox.Visible = isTemperatureSensing;
 				ResistanceLockedCheckBox.Visible = isTemperatureSensing;
-				OhmLabel.Visible = isTemperatureSensing;
 
 				TemperatureLabel.Visible = isTemperatureSensing;
 				TemperatureUpDown.Visible = isTemperatureSensing;
@@ -260,6 +262,11 @@ namespace NToolbox.Windows
 			PowerCurveEditButton.Click += PowerCurveEditButton_Click;
 			TFRCurveEditButton.Click += TFRCurveEditButton_Click;
 			SetupTempControlButton.Click += SetupTempControlButton_Click;
+		}
+
+		private void ResistanceLockedCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			ResistanceLockedPictureBox.BackgroundImage = ResistanceLockedCheckBox.Checked ? Resources.resistance_lock : Resources.resistance_unlock;
 		}
 
 		private void PreheatTypeComboBox_SelectedValueChanged(object sender, EventArgs e)

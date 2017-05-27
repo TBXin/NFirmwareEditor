@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=保存
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=时间:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=时间单位
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=热丝材料:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=锁定
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=模式:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=名字:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=编辑

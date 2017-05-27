@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Idő:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Idő skála
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Huzal anyaga:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zárolva
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Mód:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Név:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Edit

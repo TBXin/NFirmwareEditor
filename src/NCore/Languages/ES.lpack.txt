@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Tiempo:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Escala de Tiempo
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Material:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Bloqueada
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Modo:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Nombre:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Edit

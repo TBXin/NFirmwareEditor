@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Kaydet
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Süre:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Süre Ölçeği
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Coil Materyali:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Kilitli
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Mod:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=İsim:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Düzenle

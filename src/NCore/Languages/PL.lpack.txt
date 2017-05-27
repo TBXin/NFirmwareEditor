@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Zapisz
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=sek :
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Skala czasu
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Materiał grzałki:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zablokowana
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Ustawienie:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Nazwa:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Edytuj

@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Save
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Čas:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Časový škála
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Materiál spirály:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zamknuto
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Režim:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Název:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Edit

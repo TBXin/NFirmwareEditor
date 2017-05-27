@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Сохранить
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Сек:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Масштаб
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Материал:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Заблокировать
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Основной режим:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Имя профиля:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Настр.

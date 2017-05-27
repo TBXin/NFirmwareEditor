@@ -146,7 +146,6 @@ Toolbox.ArcticFoxConfiguration.PowerCurveEditor.SaveButton=Sačuvaj
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeLabel=Vreme:
 Toolbox.ArcticFoxConfiguration.PowerCurveEditor.TimeScaleButton=Opseg
 Toolbox.ArcticFoxConfiguration.Profile.CoilMaterialLabel=Vrsta Žice:
-Toolbox.ArcticFoxConfiguration.Profile.LockedCheckBox=Zaključan
 Toolbox.ArcticFoxConfiguration.Profile.ModeLabel=Režim:
 Toolbox.ArcticFoxConfiguration.Profile.NameLabel=Naziv Profila:
 Toolbox.ArcticFoxConfiguration.Profile.PowerCurveEditButton=Uredi
