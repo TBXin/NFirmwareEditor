@@ -239,9 +239,23 @@ namespace NCore
 				}
 				else if (filedType.IsArray)
 				{
-					var elType = filedType.GetElementType();
 					var array = (Array)field.GetValue(obj);
+					var elType = filedType.GetElementType();
 
+					if (array == null)
+					{
+						var arrayAttribute = GetAttribute<BinaryArrayAttribute>(field, true);
+						array = (Array)Activator.CreateInstance(filedType, arrayAttribute.Length);
+						if (elType.IsClass)
+						{
+							for (var i = 0; i < arrayAttribute.Length; i++)
+							{
+								array.SetValue(Activator.CreateInstance(elType), i);
+							}
+						}
+						field.SetValue(obj, array);
+					}
+					
 					for (var i = 0; i < array.Length; i++)
 					{
 						var arrayKey = path + "." + field.Name + "[" + i + "]";
@@ -283,10 +297,18 @@ namespace NCore
 				}
 				else if (typeof(IBinaryStructure).IsAssignableFrom(filedType))
 				{
+					if (field.GetValue(obj) == null)
+					{
+						field.SetValue(obj, Activator.CreateInstance(filedType));
+					}
 					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp, failedKeys);
 				}
 				else if (filedType.IsClass)
 				{
+					if(field.GetValue(obj) == null)
+					{
+						field.SetValue(obj, Activator.CreateInstance(filedType));
+					}
 					RecursiveReadFromDictionary(field.GetValue(obj), key, kvp, failedKeys);
 				}
 			}
