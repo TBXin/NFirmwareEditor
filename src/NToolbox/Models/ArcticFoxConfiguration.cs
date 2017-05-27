@@ -9,8 +9,8 @@ namespace NToolbox.Models
 	{
 		internal const ushort MaxPower = 4000;
 		internal const byte MaxBatteries = 4;
-		internal const int MinimumSupportedBuildNumber = 170508;
-		internal const int SupportedSettingsVersion = 8;
+		internal const int MinimumSupportedBuildNumber = 170527;
+		internal const int SupportedSettingsVersion = 9;
 
 		public DeviceInfo Info;
 		public GeneralConfiguration General;
@@ -142,6 +142,9 @@ namespace NToolbox.Models
 			public bool CheckTCR;
 			public bool UsbNoSleep;
 			public DeepSleepMode DeepSleepMode;
+			public byte DeepSleepDelay; // 0..30 seconds
+			public ushort PowerLimit; // Watts * 10
+			public byte InternalResistance; // 0..255 milli Ohms
 		}
 
 		internal class TFRTable

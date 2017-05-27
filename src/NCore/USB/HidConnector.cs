@@ -14,7 +14,7 @@ namespace NCore.USB
 		private const int VendorId = 0x0416;
 		private const int ProductId = 0x5020;
 		private const int DataflashLength = 2048;
-		private const int ConfigurationLength = 1024;
+		private const int ConfigurationLength = 1088;
 		private const int MonitoringDataLength = 64;
 		private const int LogoOffset = 102400;
 		private const int LogoLength = 1024;

@@ -28,6 +28,9 @@ Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton=Edytuj
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel=Model baterii:
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel=Sprawdź TCR:
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.DeepSleepBehaviorLabel=Przy pełnym uśpieniu:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.DeepSleepDelayLabel=Deep Sleep Delay:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.InternalResistanceLabel=Internal Resistance:
+Toolbox.ArcticFoxConfiguration.Advanced.Settings.PowerLimitLabel=Power Limit:
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel=Odcięcie wap. po:
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel=RCOBC:
 Toolbox.ArcticFoxConfiguration.Advanced.Settings.RTCModeLabel=Zegar czasu rzeczywistego:
@@ -248,9 +251,7 @@ Toolbox.ArcticFoxConfiguration.Tooltips.CheckTCR=Sprawdzanie materiału grzałki
 Toolbox.ArcticFoxConfiguration.Tooltips.LightSleep=Tryb LIGHT SLEEP dla urządzeń bez drugiego oscylatora zachowuje dokładność RTC\ni może pobierać więcej energii w trybie uśpienia. Użytkownik będzie ostrzegany "!"\nznakiem wykrzyknika z prawej strony wskaźnika baterii.
 Toolbox.ArcticFoxConfiguration.Tooltips.MaxPuffTime=Dopuszczalny czas jednego zaciągnięcia.
 Toolbox.ArcticFoxConfiguration.Tooltips.Rcobc=Włącza dodatkowe menu resetu liczników po rozłączeniu baterii,\naktualizacji firmware, loga itp. Czyszczenie statystyk wapowania.
-
 Toolbox.ArcticFoxConfiguration.Tooltips.RTCModeLabel=LXT:\nUmożliwia wykorzystanie wewnętrznego kryształu X32 na PCB.\nJeśli zostanie wybrana ta opcja, oprogramowanie sprzętowe spróbuje sterować zegarem czasu rzeczywistego za pomocą wbudowanego kryształu 32,768kHz.\n\nLIRC:\nPo przejściu do trybu uśpienia urządzenie podtrzymuje zegar czasu rzeczywistego korzystając z wewnętrznego oscylatora LIRC. Może być niedokładne.\n\nLSL:\nLekki tryb uśpienia, dla urządzeń bez dodatkowego oscylatora RTC, zapewnia dokładność porównywalną z RTC.\nW trybie gotowości pobiera więcej energii, dlatego użytkownik zostanie ostrzeżony znakiem "!" po prawej stronie wskaźnika baterii.
-
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowClock=Pokaż zegar na ekranie głównym.
 Toolbox.ArcticFoxConfiguration.Tooltips.ShowLogo=Pokaż logo na ekranie głównym.
 Toolbox.ArcticFoxConfiguration.Tooltips.ShuntCorrection=Korekcja wewnętrznego rezystora miernika do wyliczania oporu grzałki.
@@ -342,5 +343,6 @@ Toolbox.Screenshooter.StopBroadcastButton=Wyłącz podgląd
 Toolbox.Screenshooter.TakeBeforeSaveCheckbox=tak
 Toolbox.Screenshooter.TakeBeforeSaveLabel=Odśwież przed zapisem:
 Toolbox.Screenshooter.TakeScreenshotButton=Przechwyć obraz
+Toolbox.Shared.MinutesString=min
 Toolbox.Shared.SecondsString=sekund(y)
 Toolbox.Shared.SecondString=sekunda

@@ -583,10 +583,14 @@ namespace NToolbox.Windows
 
 			var advanced = m_deviceConfiguration.Advanced;
 			{
+				PowerLimitUpDown.Maximum = deviceInfo.MaxDevicePower;
+				PowerLimitUpDown.SetValue(advanced.PowerLimit / 10m);
 				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
 				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
+				InternalResistanceUpDown.SetValue(advanced.InternalResistance / 1000m);
 				RtcModeComboBox.SelectItem(advanced.RtcMode);
 				DeepSleepBehaviorComboBox.SelectItem(advanced.DeepSleepMode);
+				DeepSleepDelayUpDown.SetValue(advanced.DeepSleepDelay);
 				ResetCountersCheckBox.Checked = advanced.ResetCountersOnStartup;
 				CheckTCRCheckBox.Checked = advanced.CheckTCR;
 				UsbChargeCheckBox.Checked = advanced.IsUsbCharge;
@@ -790,11 +794,14 @@ namespace NToolbox.Windows
 
 			var advanced = m_deviceConfiguration.Advanced;
 			{
+				advanced.PowerLimit = (ushort)(PowerLimitUpDown.Value * 10);
 				advanced.PuffCutOff = (byte)(PuffCutOffUpDown.Value * 10);
 				advanced.ShuntCorrection = (byte)ShuntCorrectionUpDown.Value;
+				advanced.InternalResistance = (byte)(InternalResistanceUpDown.Value * 1000);
 				advanced.BatteryModel = BatteryModelComboBox.GetSelectedItem<ArcticFoxConfiguration.BatteryModel>();
 				advanced.RtcMode = RtcModeComboBox.GetSelectedItem<ArcticFoxConfiguration.RtcMode>();
 				advanced.DeepSleepMode = DeepSleepBehaviorComboBox.GetSelectedItem<ArcticFoxConfiguration.DeepSleepMode>();
+				advanced.DeepSleepDelay = (byte)DeepSleepDelayUpDown.Value;
 				advanced.ResetCountersOnStartup = ResetCountersCheckBox.Checked;
 				advanced.CheckTCR = CheckTCRCheckBox.Checked;
 				advanced.IsUsbCharge = UsbChargeCheckBox.Checked;

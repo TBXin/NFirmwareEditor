@@ -14,6 +14,11 @@ namespace NToolbox.Services
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Shared.SecondsString", "seconds"); }
 		}
 
+		public static string Minutes
+		{
+			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.Shared.MinutesString", "min"); }
+		}
+
 		public static string MessageConnectDevice
 		{
 			get { return LocalizationManager.Instance.GetLocalizedString("Toolbox.ArcticFoxConfiguration.Message.ConnectDevice", "Connect device with\n\nArcticFox\n[{0}]\n\nfirmware or newer"); }

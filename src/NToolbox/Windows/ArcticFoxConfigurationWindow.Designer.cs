@@ -291,6 +291,15 @@
 			this.AdvancedTabPage = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.SettingsTabPage = new System.Windows.Forms.TabPage();
+			this.label98 = new System.Windows.Forms.Label();
+			this.DeepSleepDelayUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label99 = new System.Windows.Forms.Label();
+			this.label94 = new System.Windows.Forms.Label();
+			this.InternalResistanceUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label97 = new System.Windows.Forms.Label();
+			this.label92 = new System.Windows.Forms.Label();
+			this.PowerLimitUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label93 = new System.Windows.Forms.Label();
 			this.DeepSleepBehaviorComboBox = new System.Windows.Forms.ComboBox();
 			this.DeepSleepBehaviorLabel = new System.Windows.Forms.Label();
 			this.RtcModeComboBox = new System.Windows.Forms.ComboBox();
@@ -408,6 +417,9 @@
 			this.AdvancedTabPage.SuspendLayout();
 			this.tabControl2.SuspendLayout();
 			this.SettingsTabPage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.DeepSleepDelayUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.InternalResistanceUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PowerLimitUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).BeginInit();
 			this.PowerCurvesTabPage.SuspendLayout();
@@ -3610,6 +3622,15 @@
 			// 
 			// SettingsTabPage
 			// 
+			this.SettingsTabPage.Controls.Add(this.label98);
+			this.SettingsTabPage.Controls.Add(this.DeepSleepDelayUpDown);
+			this.SettingsTabPage.Controls.Add(this.label99);
+			this.SettingsTabPage.Controls.Add(this.label94);
+			this.SettingsTabPage.Controls.Add(this.InternalResistanceUpDown);
+			this.SettingsTabPage.Controls.Add(this.label97);
+			this.SettingsTabPage.Controls.Add(this.label92);
+			this.SettingsTabPage.Controls.Add(this.PowerLimitUpDown);
+			this.SettingsTabPage.Controls.Add(this.label93);
 			this.SettingsTabPage.Controls.Add(this.DeepSleepBehaviorComboBox);
 			this.SettingsTabPage.Controls.Add(this.DeepSleepBehaviorLabel);
 			this.SettingsTabPage.Controls.Add(this.RtcModeComboBox);
@@ -3641,12 +3662,145 @@
 			this.SettingsTabPage.Text = "Settings";
 			this.SettingsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// label98
+			// 
+			this.label98.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label98, "Toolbox.Shared.MinutesString");
+			this.label98.Location = new System.Drawing.Point(272, 254);
+			this.label98.Name = "label98";
+			this.label98.Size = new System.Drawing.Size(23, 13);
+			this.label98.TabIndex = 127;
+			this.label98.Text = "min";
+			// 
+			// DeepSleepDelayUpDown
+			// 
+			this.MainLocalizationExtender.SetKey(this.DeepSleepDelayUpDown, "");
+			this.DeepSleepDelayUpDown.Location = new System.Drawing.Point(160, 251);
+			this.DeepSleepDelayUpDown.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+			this.DeepSleepDelayUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.DeepSleepDelayUpDown.Name = "DeepSleepDelayUpDown";
+			this.DeepSleepDelayUpDown.Size = new System.Drawing.Size(106, 21);
+			this.DeepSleepDelayUpDown.TabIndex = 125;
+			this.DeepSleepDelayUpDown.TabStop = false;
+			this.DeepSleepDelayUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.DeepSleepDelayUpDown.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			// 
+			// label99
+			// 
+			this.label99.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label99, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.DeepSleepDelayLabel");
+			this.label99.Location = new System.Drawing.Point(4, 254);
+			this.label99.Name = "label99";
+			this.label99.Size = new System.Drawing.Size(95, 13);
+			this.label99.TabIndex = 126;
+			this.label99.Text = "Deep Sleep Delay:";
+			// 
+			// label94
+			// 
+			this.label94.AutoSize = true;
+			this.label94.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.MainLocalizationExtender.SetKey(this.label94, "");
+			this.label94.Location = new System.Drawing.Point(272, 91);
+			this.label94.Name = "label94";
+			this.label94.Size = new System.Drawing.Size(17, 16);
+			this.label94.TabIndex = 124;
+			this.label94.Text = "Ω";
+			// 
+			// InternalResistanceUpDown
+			// 
+			this.InternalResistanceUpDown.DecimalPlaces = 3;
+			this.MainLocalizationExtender.SetKey(this.InternalResistanceUpDown, "");
+			this.InternalResistanceUpDown.Location = new System.Drawing.Point(160, 89);
+			this.InternalResistanceUpDown.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            196608});
+			this.InternalResistanceUpDown.Name = "InternalResistanceUpDown";
+			this.InternalResistanceUpDown.Size = new System.Drawing.Size(106, 21);
+			this.InternalResistanceUpDown.TabIndex = 122;
+			this.InternalResistanceUpDown.TabStop = false;
+			this.InternalResistanceUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label97
+			// 
+			this.label97.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label97, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.InternalResistanceLabel");
+			this.label97.Location = new System.Drawing.Point(4, 92);
+			this.label97.Name = "label97";
+			this.label97.Size = new System.Drawing.Size(104, 13);
+			this.label97.TabIndex = 123;
+			this.label97.Text = "Internal Resistance:";
+			// 
+			// label92
+			// 
+			this.label92.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label92, "Toolbox.ArcticFoxConfiguration.Profile.WattsLabel");
+			this.label92.Location = new System.Drawing.Point(272, 11);
+			this.label92.Name = "label92";
+			this.label92.Size = new System.Drawing.Size(17, 13);
+			this.label92.TabIndex = 121;
+			this.label92.Text = "W";
+			// 
+			// PowerLimitUpDown
+			// 
+			this.PowerLimitUpDown.DecimalPlaces = 1;
+			this.PowerLimitUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.MainLocalizationExtender.SetKey(this.PowerLimitUpDown, "");
+			this.PowerLimitUpDown.Location = new System.Drawing.Point(160, 8);
+			this.PowerLimitUpDown.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+			this.PowerLimitUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.PowerLimitUpDown.Name = "PowerLimitUpDown";
+			this.PowerLimitUpDown.Size = new System.Drawing.Size(106, 21);
+			this.PowerLimitUpDown.TabIndex = 119;
+			this.PowerLimitUpDown.TabStop = false;
+			this.PowerLimitUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.PowerLimitUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
+			// label93
+			// 
+			this.label93.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label93, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.PowerLimitLabel");
+			this.label93.Location = new System.Drawing.Point(4, 11);
+			this.label93.Name = "label93";
+			this.label93.Size = new System.Drawing.Size(65, 13);
+			this.label93.TabIndex = 120;
+			this.label93.Text = "Power Limit:";
+			// 
 			// DeepSleepBehaviorComboBox
 			// 
 			this.DeepSleepBehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.DeepSleepBehaviorComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.DeepSleepBehaviorComboBox, "");
-			this.DeepSleepBehaviorComboBox.Location = new System.Drawing.Point(160, 170);
+			this.DeepSleepBehaviorComboBox.Location = new System.Drawing.Point(160, 224);
 			this.DeepSleepBehaviorComboBox.Name = "DeepSleepBehaviorComboBox";
 			this.DeepSleepBehaviorComboBox.Size = new System.Drawing.Size(106, 21);
 			this.DeepSleepBehaviorComboBox.TabIndex = 118;
@@ -3655,7 +3809,7 @@
 			// 
 			this.DeepSleepBehaviorLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.DeepSleepBehaviorLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.DeepSleepBehaviorLabel");
-			this.DeepSleepBehaviorLabel.Location = new System.Drawing.Point(4, 173);
+			this.DeepSleepBehaviorLabel.Location = new System.Drawing.Point(4, 227);
 			this.DeepSleepBehaviorLabel.Name = "DeepSleepBehaviorLabel";
 			this.DeepSleepBehaviorLabel.Size = new System.Drawing.Size(110, 13);
 			this.DeepSleepBehaviorLabel.TabIndex = 117;
@@ -3666,7 +3820,7 @@
 			this.RtcModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.RtcModeComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.RtcModeComboBox, "");
-			this.RtcModeComboBox.Location = new System.Drawing.Point(160, 89);
+			this.RtcModeComboBox.Location = new System.Drawing.Point(160, 143);
 			this.RtcModeComboBox.Name = "RtcModeComboBox";
 			this.RtcModeComboBox.Size = new System.Drawing.Size(106, 21);
 			this.RtcModeComboBox.TabIndex = 116;
@@ -3675,7 +3829,7 @@
 			// 
 			this.RtcModeLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.RtcModeLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.RTCModeLabel");
-			this.RtcModeLabel.Location = new System.Drawing.Point(4, 92);
+			this.RtcModeLabel.Location = new System.Drawing.Point(4, 146);
 			this.RtcModeLabel.Name = "RtcModeLabel";
 			this.RtcModeLabel.Size = new System.Drawing.Size(60, 13);
 			this.RtcModeLabel.TabIndex = 115;
@@ -3685,7 +3839,7 @@
 			// 
 			this.CheckTCRCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.CheckTCRCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.CheckTCRCheckBox.Location = new System.Drawing.Point(160, 146);
+			this.CheckTCRCheckBox.Location = new System.Drawing.Point(160, 200);
 			this.CheckTCRCheckBox.Name = "CheckTCRCheckBox";
 			this.CheckTCRCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.CheckTCRCheckBox.TabIndex = 113;
@@ -3696,7 +3850,7 @@
 			// 
 			this.UsbNoSleepCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 200);
+			this.UsbNoSleepCheckBox.Location = new System.Drawing.Point(160, 281);
 			this.UsbNoSleepCheckBox.Name = "UsbNoSleepCheckBox";
 			this.UsbNoSleepCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbNoSleepCheckBox.TabIndex = 111;
@@ -3707,7 +3861,7 @@
 			// 
 			this.label19.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label19, "Toolbox.ArcticFoxConfiguration.SecondsLabel");
-			this.label19.Location = new System.Drawing.Point(272, 11);
+			this.label19.Location = new System.Drawing.Point(272, 38);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(12, 13);
 			this.label19.TabIndex = 109;
@@ -3722,7 +3876,7 @@
             0,
             65536});
 			this.MainLocalizationExtender.SetKey(this.PuffCutOffUpDown, "");
-			this.PuffCutOffUpDown.Location = new System.Drawing.Point(160, 8);
+			this.PuffCutOffUpDown.Location = new System.Drawing.Point(160, 35);
 			this.PuffCutOffUpDown.Maximum = new decimal(new int[] {
             15,
             0,
@@ -3748,7 +3902,7 @@
 			// 
 			this.label55.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label55, "");
-			this.label55.Location = new System.Drawing.Point(272, 37);
+			this.label55.Location = new System.Drawing.Point(272, 64);
 			this.label55.Name = "label55";
 			this.label55.Size = new System.Drawing.Size(18, 13);
 			this.label55.TabIndex = 76;
@@ -3757,7 +3911,7 @@
 			// ShuntCorrectionUpDown
 			// 
 			this.MainLocalizationExtender.SetKey(this.ShuntCorrectionUpDown, "");
-			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(160, 35);
+			this.ShuntCorrectionUpDown.Location = new System.Drawing.Point(160, 62);
 			this.ShuntCorrectionUpDown.Maximum = new decimal(new int[] {
             115,
             0,
@@ -3783,7 +3937,7 @@
 			// 
 			this.ResetCountersCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.ResetCountersCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.ResetCountersCheckBox.Location = new System.Drawing.Point(160, 119);
+			this.ResetCountersCheckBox.Location = new System.Drawing.Point(160, 173);
 			this.ResetCountersCheckBox.Name = "ResetCountersCheckBox";
 			this.ResetCountersCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.ResetCountersCheckBox.TabIndex = 105;
@@ -3795,7 +3949,7 @@
 			this.BatteryModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.BatteryModelComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.BatteryModelComboBox, "");
-			this.BatteryModelComboBox.Location = new System.Drawing.Point(160, 62);
+			this.BatteryModelComboBox.Location = new System.Drawing.Point(160, 116);
 			this.BatteryModelComboBox.Name = "BatteryModelComboBox";
 			this.BatteryModelComboBox.Size = new System.Drawing.Size(106, 21);
 			this.BatteryModelComboBox.TabIndex = 78;
@@ -3804,7 +3958,7 @@
 			// 
 			this.UsbChargeCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 227);
+			this.UsbChargeCheckBox.Location = new System.Drawing.Point(160, 308);
 			this.UsbChargeCheckBox.Name = "UsbChargeCheckBox";
 			this.UsbChargeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.UsbChargeCheckBox.TabIndex = 103;
@@ -3814,7 +3968,7 @@
 			// BatteryEditButton
 			// 
 			this.MainLocalizationExtender.SetKey(this.BatteryEditButton, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryEditButton");
-			this.BatteryEditButton.Location = new System.Drawing.Point(272, 61);
+			this.BatteryEditButton.Location = new System.Drawing.Point(272, 115);
 			this.BatteryEditButton.Name = "BatteryEditButton";
 			this.BatteryEditButton.Size = new System.Drawing.Size(60, 23);
 			this.BatteryEditButton.TabIndex = 79;
@@ -3836,7 +3990,7 @@
 			// 
 			this.CheckTCRLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.CheckTCRLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.CheckTCRLabel");
-			this.CheckTCRLabel.Location = new System.Drawing.Point(4, 146);
+			this.CheckTCRLabel.Location = new System.Drawing.Point(4, 200);
 			this.CheckTCRLabel.Name = "CheckTCRLabel";
 			this.CheckTCRLabel.Size = new System.Drawing.Size(63, 13);
 			this.CheckTCRLabel.TabIndex = 112;
@@ -3846,7 +4000,7 @@
 			// 
 			this.UsbNoSleepLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbNoSleepLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBNoSleepLabel");
-			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 200);
+			this.UsbNoSleepLabel.Location = new System.Drawing.Point(4, 281);
 			this.UsbNoSleepLabel.Name = "UsbNoSleepLabel";
 			this.UsbNoSleepLabel.Size = new System.Drawing.Size(75, 13);
 			this.UsbNoSleepLabel.TabIndex = 110;
@@ -3856,7 +4010,7 @@
 			// 
 			this.PuffCutOffLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.PuffCutOffLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.PuffCutOffLabel");
-			this.PuffCutOffLabel.Location = new System.Drawing.Point(4, 11);
+			this.PuffCutOffLabel.Location = new System.Drawing.Point(4, 38);
 			this.PuffCutOffLabel.Name = "PuffCutOffLabel";
 			this.PuffCutOffLabel.Size = new System.Drawing.Size(71, 13);
 			this.PuffCutOffLabel.TabIndex = 108;
@@ -3866,7 +4020,7 @@
 			// 
 			this.ShuntCorrectionLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.ShuntCorrectionLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.ShuntCorrectionLabel");
-			this.ShuntCorrectionLabel.Location = new System.Drawing.Point(4, 38);
+			this.ShuntCorrectionLabel.Location = new System.Drawing.Point(4, 65);
 			this.ShuntCorrectionLabel.Name = "ShuntCorrectionLabel";
 			this.ShuntCorrectionLabel.Size = new System.Drawing.Size(92, 13);
 			this.ShuntCorrectionLabel.TabIndex = 75;
@@ -3876,7 +4030,7 @@
 			// 
 			this.ResetCountersLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.ResetCountersLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.RCOBCLabel");
-			this.ResetCountersLabel.Location = new System.Drawing.Point(4, 119);
+			this.ResetCountersLabel.Location = new System.Drawing.Point(4, 173);
 			this.ResetCountersLabel.Name = "ResetCountersLabel";
 			this.ResetCountersLabel.Size = new System.Drawing.Size(46, 13);
 			this.ResetCountersLabel.TabIndex = 104;
@@ -3886,7 +4040,7 @@
 			// 
 			this.UsbChargeLabel.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.UsbChargeLabel, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.USBChargeLabel");
-			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 227);
+			this.UsbChargeLabel.Location = new System.Drawing.Point(4, 308);
 			this.UsbChargeLabel.Name = "UsbChargeLabel";
 			this.UsbChargeLabel.Size = new System.Drawing.Size(68, 13);
 			this.UsbChargeLabel.TabIndex = 102;
@@ -3896,7 +4050,7 @@
 			// 
 			this.label56.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label56, "Toolbox.ArcticFoxConfiguration.Advanced.Settings.BatteryModelLabel");
-			this.label56.Location = new System.Drawing.Point(4, 65);
+			this.label56.Location = new System.Drawing.Point(4, 119);
 			this.label56.Name = "label56";
 			this.label56.Size = new System.Drawing.Size(78, 13);
 			this.label56.TabIndex = 77;
@@ -4497,6 +4651,9 @@
 			this.tabControl2.ResumeLayout(false);
 			this.SettingsTabPage.ResumeLayout(false);
 			this.SettingsTabPage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.DeepSleepDelayUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.InternalResistanceUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PowerLimitUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PuffCutOffUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ShuntCorrectionUpDown)).EndInit();
 			this.PowerCurvesTabPage.ResumeLayout(false);
@@ -4842,5 +4999,14 @@
 		private System.Windows.Forms.Label label91;
 		private System.Windows.Forms.Button UploadLogoButton;
 		private System.Windows.Forms.Button RemoveLogoButton;
+		private System.Windows.Forms.Label label92;
+		private System.Windows.Forms.NumericUpDown PowerLimitUpDown;
+		private System.Windows.Forms.Label label93;
+		private System.Windows.Forms.Label label94;
+		private System.Windows.Forms.NumericUpDown InternalResistanceUpDown;
+		private System.Windows.Forms.Label label97;
+		private System.Windows.Forms.Label label98;
+		private System.Windows.Forms.NumericUpDown DeepSleepDelayUpDown;
+		private System.Windows.Forms.Label label99;
 	}
 }
