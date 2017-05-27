@@ -83,6 +83,7 @@ namespace NToolbox.Models
 			public bool IsStealthMode;
 			public bool WakeUpByPlusMinus;
 			public bool IsPowerStep1W;
+			public bool IsTemperatureStep1C2F;
 			public ChargeScreenType ChargeScreenType;
 			public ChargeExtraType ChargeExtraType;
 			public bool IsLogoEnabled;

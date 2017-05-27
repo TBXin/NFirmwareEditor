@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=Zajednička kont
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=Višestruki Klik Dugmeta za Paljenje u TC Režimu:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=Višestruki Klik Dugmeta za Paljenje u VW Režimu:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Korak Snage 1W:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+ / – ponašanje:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+ / – buđenje:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Fire –

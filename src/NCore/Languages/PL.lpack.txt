@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=Wspólne:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=Wieloklik przycisku FIRE, tryb TC:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=Wieloklik przycisku FIRE, tryb VW:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Krok zmiany mocy co 1W:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+ / – Ustawienie:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+ / – Wybudzają Urządzenie:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Fire –

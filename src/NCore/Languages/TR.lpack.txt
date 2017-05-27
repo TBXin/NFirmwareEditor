@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=Paylaşılan:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=TC Modundaki Düğmeye Çoklu Tıklamalar:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=VW Modundaki Düğmeye Çoklu Tıklamalar:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Güç 1W Aşama:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+ / – hareket:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+ / – Uyanma zamanı:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Ateşleme –

@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=Partagé:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=TC Mode Bouton Fire Clics multiples:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=VW Mode Bouton Fire Clics multiples:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Puiss. 1W Étape:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+ / – behavior:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+ / – wake up:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Fire –

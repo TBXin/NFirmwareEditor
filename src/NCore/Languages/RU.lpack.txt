@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=Общие:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=Клики в режиме ТК:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=Клики в режиме ВВ:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Шаг по 1 ватту:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Шаг по 1 °C / 2 °F:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=Поведение кнопок +/– :
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=Пробуждение +/– :
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Fire –

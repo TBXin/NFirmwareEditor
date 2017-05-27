@@ -558,9 +558,10 @@ namespace NToolbox.Windows
 				InSelectorTCFirePlusComboBox.SelectItem(ui.ShortcutsTC[1].InSelector);
 				InSelectorTCPlusMinusComboBox.SelectItem(ui.ShortcutsTC[2].InSelector);
 
-				UpDownButtonsComboBox.SelectItem(ui.IsUpDownSwapped);
-				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
 				Step1WCheckBox.Checked = ui.IsPowerStep1W;
+				Step1C2FCheckBox.Checked = ui.IsTemperatureStep1C2F;
+				WakeUpByPlusMinusCheckBox.Checked = ui.WakeUpByPlusMinus;
+				UpDownButtonsComboBox.SelectItem(ui.IsUpDownSwapped);
 
 				if (deviceInfo.DisplaySize == ArcticFoxConfiguration.DisplaySize.W96H16)
 				{
@@ -768,9 +769,10 @@ namespace NToolbox.Windows
 				ui.ShortcutsTC[1].InSelector = InSelectorTCFirePlusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
 				ui.ShortcutsTC[2].InSelector = InSelectorTCPlusMinusComboBox.GetSelectedItem<ArcticFoxConfiguration.ShortcutsInSelector>();
 
+				ui.IsPowerStep1W = Step1WCheckBox.Checked;
+				ui.IsTemperatureStep1C2F = Step1C2FCheckBox.Checked;
 				ui.IsUpDownSwapped = UpDownButtonsComboBox.GetSelectedItem<bool>();
 				ui.WakeUpByPlusMinus = WakeUpByPlusMinusCheckBox.Checked;
-				ui.IsPowerStep1W = Step1WCheckBox.Checked;
 			}
 
 			var stats = m_deviceConfiguration.Counters;

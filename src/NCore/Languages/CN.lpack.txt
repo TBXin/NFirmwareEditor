@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=共享:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=温控模式点火键多次连按:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=功率模式点火键多次连按:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=1W单位调节:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+ / – 模式:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+ / – 唤醒:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=F   -

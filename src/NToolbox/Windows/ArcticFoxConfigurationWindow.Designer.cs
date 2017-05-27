@@ -358,6 +358,8 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.Step1C2FCheckBox = new System.Windows.Forms.CheckBox();
+			this.label100 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).BeginInit();
@@ -2529,6 +2531,8 @@
 			// 
 			// ControlsSettingsTabPage
 			// 
+			this.ControlsSettingsTabPage.Controls.Add(this.Step1C2FCheckBox);
+			this.ControlsSettingsTabPage.Controls.Add(this.label100);
 			this.ControlsSettingsTabPage.Controls.Add(this.Step1WCheckBox);
 			this.ControlsSettingsTabPage.Controls.Add(this.WakeUpByPlusMinusCheckBox);
 			this.ControlsSettingsTabPage.Controls.Add(this.UpDownButtonsComboBox);
@@ -2559,7 +2563,7 @@
 			// 
 			this.WakeUpByPlusMinusCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.WakeUpByPlusMinusCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(160, 38);
+			this.WakeUpByPlusMinusCheckBox.Location = new System.Drawing.Point(160, 65);
 			this.WakeUpByPlusMinusCheckBox.Name = "WakeUpByPlusMinusCheckBox";
 			this.WakeUpByPlusMinusCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.WakeUpByPlusMinusCheckBox.TabIndex = 141;
@@ -2571,7 +2575,7 @@
 			this.UpDownButtonsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.UpDownButtonsComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.UpDownButtonsComboBox, "");
-			this.UpDownButtonsComboBox.Location = new System.Drawing.Point(160, 62);
+			this.UpDownButtonsComboBox.Location = new System.Drawing.Point(160, 89);
 			this.UpDownButtonsComboBox.Name = "UpDownButtonsComboBox";
 			this.UpDownButtonsComboBox.Size = new System.Drawing.Size(140, 21);
 			this.UpDownButtonsComboBox.TabIndex = 145;
@@ -2580,7 +2584,7 @@
 			// 
 			this.label65.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label65, "Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel");
-			this.label65.Location = new System.Drawing.Point(4, 65);
+			this.label65.Location = new System.Drawing.Point(4, 92);
 			this.label65.Name = "label65";
 			this.label65.Size = new System.Drawing.Size(80, 13);
 			this.label65.TabIndex = 144;
@@ -2600,7 +2604,7 @@
 			// 
 			this.label39.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label39, "Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel");
-			this.label39.Location = new System.Drawing.Point(4, 38);
+			this.label39.Location = new System.Drawing.Point(4, 65);
 			this.label39.Name = "label39";
 			this.label39.Size = new System.Drawing.Size(78, 13);
 			this.label39.TabIndex = 140;
@@ -4552,6 +4556,27 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
+			// Step1C2FCheckBox
+			// 
+			this.Step1C2FCheckBox.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.Step1C2FCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
+			this.Step1C2FCheckBox.Location = new System.Drawing.Point(160, 38);
+			this.Step1C2FCheckBox.Name = "Step1C2FCheckBox";
+			this.Step1C2FCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.Step1C2FCheckBox.TabIndex = 147;
+			this.Step1C2FCheckBox.Text = "Enabled";
+			this.Step1C2FCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label100
+			// 
+			this.label100.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label100, "Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel");
+			this.label100.Location = new System.Drawing.Point(4, 38);
+			this.label100.Name = "label100";
+			this.label100.Size = new System.Drawing.Size(120, 13);
+			this.label100.TabIndex = 146;
+			this.label100.Text = "Temp. 1 °C / 2 °F Step:";
+			// 
 			// ArcticFoxConfigurationWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -5013,5 +5038,7 @@
 		private System.Windows.Forms.Label label98;
 		private System.Windows.Forms.NumericUpDown DeepSleepDelayUpDown;
 		private System.Windows.Forms.Label label99;
+		private System.Windows.Forms.CheckBox Step1C2FCheckBox;
+		private System.Windows.Forms.Label label100;
 	}
 }

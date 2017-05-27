@@ -85,6 +85,7 @@ Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.SharedLabel=+/- Tasten:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.TCModeClicksLabel=TC Betrieb Feuertaste Multiklicks:
 Toolbox.ArcticFoxConfiguration.Controls.MultiClicks.VWModeClicksLabel=VW Betrieb Feuertaste Multiklicks:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.Power1WStepLabel=Leistung 1W:
+Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel=Temp. 1 °C / 2 °F Step:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.UpDownButtonsBehaviorLabel=+/– Verhalten:
 Toolbox.ArcticFoxConfiguration.Controls.Settings.WakeUpPlusMinusLabel=+/– aufwecken:
 Toolbox.ArcticFoxConfiguration.Controls.Shortcuts.FireMinusLabel=Feuer–
