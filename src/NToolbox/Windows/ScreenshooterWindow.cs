@@ -18,6 +18,7 @@ namespace NToolbox.Windows
 	{
 		private const int ScreenshotMargin = 1;
 		private readonly ToolboxConfiguration m_configuration;
+		private Size? m_initialWindowSize;
 		private bool m_isBroadcasting;
 		private Size m_screenSize;
 
@@ -34,38 +35,33 @@ namespace NToolbox.Windows
 		{
 			TakeScreenshotBeforeSaveCheckBox.Checked = m_configuration.TakeScreenshotBeforeSave;
 			TakeScreenshotBeforeSaveCheckBox.CheckedChanged += (s, e) => m_configuration.TakeScreenshotBeforeSave = TakeScreenshotBeforeSaveCheckBox.Checked;
-			PixelSizeUpDown.ValueChanged += (s, e) => m_configuration.PixelSizeMultiplier = (int)PixelSizeUpDown.Value;
+			PixelSizeUpDown.ValueChanged += PixelSizeUpDown_ValueChanged;
 			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
 			BroadcastButton.Click += BroadcastButton_Click;
 			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
 
+			Load += (s, e) =>
+			{
+				m_initialWindowSize = Size;
+				PixelSizeUpDown_ValueChanged(null, EventArgs.Empty);
+			};
 			Closing += (s, e) => m_isBroadcasting = false;
 
 			ScreenSizeComboBox.Items.Clear();
 			ScreenSizeComboBox.Items.AddRange(new object[]
 			{
 				new NamedItemContainer<Size>("[64x128] VTC, Cuboid, etc...", new Size(64, 128)),
-				new NamedItemContainer<Size>("[96x16] iStick, etc...", new Size(96, 16))
+				new NamedItemContainer<Size>("[96x16] iStick, RX200, etc...", new Size(96, 16))
 			});
 			ScreenSizeComboBox.SelectedValueChanged += (s, e) =>
 			{
 				m_screenSize = ScreenSizeComboBox.GetSelectedItem<Size>();
-				ResizeScreenPictureBox();
 				PlaceScreePictureBox();
-				if (ScreenPictureBox.Image != null)
-				{
-					ScreenPictureBox.Image.Dispose();
-					ScreenPictureBox.Image = null;
-				}
+				PixelSizeUpDown_ValueChanged(null, EventArgs.Empty);
 				m_configuration.SelectedScreenSize = ScreenSizeComboBox.SelectedIndex;
 			};
 			PixelSizeUpDown.SetValue(m_configuration.PixelSizeMultiplier);
 			ScreenSizeComboBox.SelectedIndex = Math.Max(Math.Min(m_configuration.SelectedScreenSize, ScreenSizeComboBox.Items.Count), 0);
-		}
-
-		private void ResizeScreenPictureBox()
-		{
-			ScreenPictureBox.Size = new Size(m_screenSize.Width + ScreenshotMargin * 2, m_screenSize.Height + ScreenshotMargin * 2);
 		}
 
 		private void PlaceScreePictureBox()
@@ -160,7 +156,7 @@ namespace NToolbox.Windows
 		}
 
 		[CanBeNull]
-		private Image TakeScreenshot(bool ignoreErrors = false)
+		private Bitmap TakeScreenshot(bool ignoreErrors = false)
 		{
 			try
 			{
@@ -179,12 +175,16 @@ namespace NToolbox.Windows
 			}
 		}
 
-		private void ShowScreenshot([NotNull] Image screenshot)
+		private void ShowScreenshot([NotNull] Bitmap screenshot)
 		{
 			if (screenshot == null) throw new ArgumentNullException("screenshot");
 
-			var prevImage = ScreenPictureBox.Image;
-			ScreenPictureBox.Image = screenshot;
+			var prevImage = ScreenPictureBox.BackgroundImage;
+
+			using (screenshot)
+			{
+				ScreenPictureBox.BackgroundImage = EnlargePixelSize(screenshot, Math.Min(m_configuration.PixelSizeMultiplier, 4));
+			}
 
 			if (prevImage != null)
 			{
@@ -198,7 +198,7 @@ namespace NToolbox.Windows
 			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = BroadcastButton.Enabled = enabled;
 		}
 
-		public Image CreateBitmapFromBytesArray(int width, int height, [NotNull] byte[] imageData)
+		public Bitmap CreateBitmapFromBytesArray(int width, int height, [NotNull] byte[] imageData)
 		{
 			if (imageData == null) throw new ArgumentNullException("imageData");
 
@@ -241,6 +241,38 @@ namespace NToolbox.Windows
 				}
 			}
 			return result;
+		}
+
+		private void PixelSizeUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			m_configuration.PixelSizeMultiplier = (int)PixelSizeUpDown.Value;
+
+			// Do not change window size before window appear.
+			if (!m_initialWindowSize.HasValue) return;
+			// Do no change window size if zoom is big enough.
+			if (m_configuration.PixelSizeMultiplier > 4) return;
+			// Clean screen buffer.
+			if (ScreenPictureBox.BackgroundImage != null)
+			{
+				ScreenPictureBox.BackgroundImage.Dispose();
+				ScreenPictureBox.BackgroundImage = null;
+			}
+
+			var desiredWidth = m_configuration.PixelSizeMultiplier * m_screenSize.Width - m_screenSize.Width;
+			var desiredHeight = m_configuration.PixelSizeMultiplier * m_screenSize.Height - m_screenSize.Height;
+
+			var prevSize = Size;
+			Size = new Size
+			(
+				m_initialWindowSize.Value.Width + desiredWidth,
+				m_initialWindowSize.Value.Height + desiredHeight
+			);
+
+			Location = new Point
+			(
+				Location.X - (Size.Width - prevSize.Width) / 2,
+				Location.Y - (Size.Height - prevSize.Height) / 2
+			);
 		}
 	}
 }

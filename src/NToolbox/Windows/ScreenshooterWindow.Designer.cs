@@ -52,6 +52,9 @@
 			// 
 			// groupPanel1
 			// 
+			this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel1.Controls.Add(this.ScreenSizeComboBox);
 			this.groupPanel1.Controls.Add(this.ScreenBordersPanel);
@@ -60,19 +63,20 @@
 			this.MainLocalizationExtender.SetKey(this.groupPanel1, "Toolbox.Screenshooter.ScreenGroupLabel");
 			this.groupPanel1.Location = new System.Drawing.Point(3, 3);
 			this.groupPanel1.Name = "groupPanel1";
-			this.groupPanel1.Size = new System.Drawing.Size(224, 173);
+			this.groupPanel1.Size = new System.Drawing.Size(270, 171);
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Screen:";
 			// 
 			// ScreenSizeComboBox
 			// 
+			this.ScreenSizeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ScreenSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ScreenSizeComboBox.FormattingEnabled = true;
 			this.MainLocalizationExtender.SetKey(this.ScreenSizeComboBox, "");
-			this.ScreenSizeComboBox.Location = new System.Drawing.Point(50, 5);
+			this.ScreenSizeComboBox.Location = new System.Drawing.Point(95, 5);
 			this.ScreenSizeComboBox.Name = "ScreenSizeComboBox";
-			this.ScreenSizeComboBox.Size = new System.Drawing.Size(169, 21);
+			this.ScreenSizeComboBox.Size = new System.Drawing.Size(170, 21);
 			this.ScreenSizeComboBox.TabIndex = 2;
 			// 
 			// ScreenBordersPanel
@@ -85,22 +89,25 @@
 			this.MainLocalizationExtender.SetKey(this.ScreenBordersPanel, "");
 			this.ScreenBordersPanel.Location = new System.Drawing.Point(5, 34);
 			this.ScreenBordersPanel.Name = "ScreenBordersPanel";
-			this.ScreenBordersPanel.Size = new System.Drawing.Size(214, 134);
+			this.ScreenBordersPanel.Size = new System.Drawing.Size(260, 132);
 			this.ScreenBordersPanel.TabIndex = 1;
 			// 
 			// ScreenPictureBox
 			// 
-			this.ScreenPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.ScreenPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.ScreenPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainLocalizationExtender.SetKey(this.ScreenPictureBox, "");
-			this.ScreenPictureBox.Location = new System.Drawing.Point(76, 3);
+			this.ScreenPictureBox.Location = new System.Drawing.Point(0, 0);
 			this.ScreenPictureBox.Name = "ScreenPictureBox";
-			this.ScreenPictureBox.Size = new System.Drawing.Size(64, 128);
+			this.ScreenPictureBox.Size = new System.Drawing.Size(260, 132);
 			this.ScreenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.ScreenPictureBox.TabIndex = 0;
 			this.ScreenPictureBox.TabStop = false;
 			// 
 			// groupPanel2
 			// 
+			this.groupPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
 			this.groupPanel2.Controls.Add(this.label46);
 			this.groupPanel2.Controls.Add(this.label47);
@@ -112,9 +119,9 @@
 			this.groupPanel2.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel2.HeaderHeight = 30;
 			this.MainLocalizationExtender.SetKey(this.groupPanel2, "Toolbox.Screenshooter.ControlsGroupLabel");
-			this.groupPanel2.Location = new System.Drawing.Point(230, 3);
+			this.groupPanel2.Location = new System.Drawing.Point(3, 177);
 			this.groupPanel2.Name = "groupPanel2";
-			this.groupPanel2.Size = new System.Drawing.Size(224, 173);
+			this.groupPanel2.Size = new System.Drawing.Size(270, 173);
 			this.groupPanel2.TabIndex = 1;
 			this.groupPanel2.TabStop = false;
 			this.groupPanel2.Text = "Controls:";
@@ -141,10 +148,11 @@
 			// 
 			// PixelSizeUpDown
 			// 
+			this.PixelSizeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.PixelSizeUpDown, "");
-			this.PixelSizeUpDown.Location = new System.Drawing.Point(158, 94);
+			this.PixelSizeUpDown.Location = new System.Drawing.Point(204, 94);
 			this.PixelSizeUpDown.Maximum = new decimal(new int[] {
-            8,
+            4,
             0,
             0,
             0});
@@ -164,9 +172,10 @@
 			// 
 			// TakeScreenshotBeforeSaveCheckBox
 			// 
+			this.TakeScreenshotBeforeSaveCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.TakeScreenshotBeforeSaveCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.TakeScreenshotBeforeSaveCheckBox, "Toolbox.Screenshooter.TakeBeforeSaveCheckbox");
-			this.TakeScreenshotBeforeSaveCheckBox.Location = new System.Drawing.Point(158, 121);
+			this.TakeScreenshotBeforeSaveCheckBox.Location = new System.Drawing.Point(204, 121);
 			this.TakeScreenshotBeforeSaveCheckBox.Name = "TakeScreenshotBeforeSaveCheckBox";
 			this.TakeScreenshotBeforeSaveCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.TakeScreenshotBeforeSaveCheckBox.TabIndex = 71;
@@ -175,30 +184,36 @@
 			// 
 			// BroadcastButton
 			// 
+			this.BroadcastButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.BroadcastButton, "Toolbox.Screenshooter.StartBroadcastButton");
 			this.BroadcastButton.Location = new System.Drawing.Point(5, 145);
 			this.BroadcastButton.Name = "BroadcastButton";
-			this.BroadcastButton.Size = new System.Drawing.Size(214, 23);
+			this.BroadcastButton.Size = new System.Drawing.Size(260, 23);
 			this.BroadcastButton.TabIndex = 2;
 			this.BroadcastButton.Text = "Start broadcast";
 			this.BroadcastButton.UseVisualStyleBackColor = true;
 			// 
 			// SaveScreenshotButton
 			// 
+			this.SaveScreenshotButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.SaveScreenshotButton, "Toolbox.Screenshooter.SaveScreenshotButton");
 			this.SaveScreenshotButton.Location = new System.Drawing.Point(5, 63);
 			this.SaveScreenshotButton.Name = "SaveScreenshotButton";
-			this.SaveScreenshotButton.Size = new System.Drawing.Size(214, 23);
+			this.SaveScreenshotButton.Size = new System.Drawing.Size(260, 23);
 			this.SaveScreenshotButton.TabIndex = 1;
 			this.SaveScreenshotButton.Text = "Save screenshot";
 			this.SaveScreenshotButton.UseVisualStyleBackColor = true;
 			// 
 			// TakeScreenshotButton
 			// 
+			this.TakeScreenshotButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainLocalizationExtender.SetKey(this.TakeScreenshotButton, "Toolbox.Screenshooter.TakeScreenshotButton");
 			this.TakeScreenshotButton.Location = new System.Drawing.Point(5, 34);
 			this.TakeScreenshotButton.Name = "TakeScreenshotButton";
-			this.TakeScreenshotButton.Size = new System.Drawing.Size(214, 23);
+			this.TakeScreenshotButton.Size = new System.Drawing.Size(260, 23);
 			this.TakeScreenshotButton.TabIndex = 0;
 			this.TakeScreenshotButton.Text = "Take screenshot";
 			this.TakeScreenshotButton.UseVisualStyleBackColor = true;
@@ -215,10 +230,10 @@
 			this.ControlBorderedPanel.Controls.Add(this.CancelButton);
 			this.ControlBorderedPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.MainLocalizationExtender.SetKey(this.ControlBorderedPanel, "");
-			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 179);
+			this.ControlBorderedPanel.Location = new System.Drawing.Point(0, 359);
 			this.ControlBorderedPanel.Name = "ControlBorderedPanel";
 			this.ControlBorderedPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.ControlBorderedPanel.Size = new System.Drawing.Size(457, 44);
+			this.ControlBorderedPanel.Size = new System.Drawing.Size(276, 44);
 			this.ControlBorderedPanel.TabIndex = 2;
 			this.ControlBorderedPanel.Text = "borderedPanel1";
 			// 
@@ -227,7 +242,7 @@
 			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.MainLocalizationExtender.SetKey(this.CancelButton, "Toolbox.Screenshooter.CancelButton");
-			this.CancelButton.Location = new System.Drawing.Point(353, 5);
+			this.CancelButton.Location = new System.Drawing.Point(172, 5);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(100, 35);
 			this.CancelButton.TabIndex = 2;
@@ -239,7 +254,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(457, 223);
+			this.ClientSize = new System.Drawing.Size(276, 403);
 			this.Controls.Add(this.ControlBorderedPanel);
 			this.Controls.Add(this.groupPanel2);
 			this.Controls.Add(this.groupPanel1);
