@@ -207,8 +207,8 @@
     <Content Include="NToolbox.ico" />
     <None Include="Resources\connection_inactive.png" />
     <None Include="Resources\connection_active.png" />
-    <None Include="Resources\lock_open.png" />
-    <None Include="Resources\lock.png" />
+    <None Include="Resources\resistance_unlock.png" />
+    <None Include="Resources\resistance_lock.png" />
     <None Include="Resources\transparent_bg.png" />
     <None Include="Resources\gray_white_separator.png" />
     <None Include="Resources\ntoolbox_logo.png" />

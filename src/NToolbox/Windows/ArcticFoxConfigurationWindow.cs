@@ -585,7 +585,7 @@ namespace NToolbox.Windows
 
 			var advanced = m_deviceConfiguration.Advanced;
 			{
-				PowerLimitUpDown.Maximum = deviceInfo.MaxDevicePower;
+				PowerLimitUpDown.Maximum = deviceInfo.MaxDevicePower / 10m;
 				PowerLimitUpDown.SetValue(advanced.PowerLimit / 10m);
 				PuffCutOffUpDown.SetValue(advanced.PuffCutOff / 10m);
 				ShuntCorrectionUpDown.SetValue(advanced.ShuntCorrection);
@@ -954,6 +954,7 @@ namespace NToolbox.Windows
 				result.Info.MaxDevicePower = ArcticFoxConfiguration.MaxPower;
 				result.Info.NumberOfBatteries = ArcticFoxConfiguration.MaxBatteries;
 				result.Info.DisplaySize = ArcticFoxConfiguration.DisplaySize.W64H128;
+				result.Advanced.PowerLimit = ArcticFoxConfiguration.MaxPower;
 			}
 			return result;
 		}
@@ -1154,7 +1155,7 @@ namespace NToolbox.Windows
 
 		private void OpenConfigurationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			OpenConfigurationFile(m_deviceConfiguration);
+			OpenConfigurationFile(m_deviceConfiguration ?? GetBlankConfiguration());
 		}
 
 		private void DownloadButton_Click(object sender, EventArgs e)
