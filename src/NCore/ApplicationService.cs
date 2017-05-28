@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -167,6 +168,11 @@ namespace NCore
 			{
 				return 1;
 			}
+		}
+
+		public static string GetVersion()
+		{
+			return string.Format("v{0}", Assembly.GetCallingAssembly().GetName().Version.ToString(3));
 		}
 
 		private static string GetAutorunValue(string args = null)

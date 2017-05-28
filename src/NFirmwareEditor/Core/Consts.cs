@@ -2,9 +2,7 @@
 {
 	internal static class Consts
 	{
-		internal const string ApplicationVersion = "7.0";
 		internal const string ApplicationTitleWoVersion = "NFirmwareEditor";
-		internal const string ApplicationTitle = ApplicationTitleWoVersion + " v" + ApplicationVersion;
 
 		internal const string DefinitionFileExtensionWoAsterisk = ".xml";
 		internal const string PatchFileExtensionWoAsterisk = ".patch";

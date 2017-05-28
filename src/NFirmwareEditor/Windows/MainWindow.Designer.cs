@@ -71,6 +71,7 @@ namespace NFirmwareEditor.Windows
             this.FileMenuItem,
             this.ToolsMenuItem,
             this.HelpMenuItem});
+			this.MainLocalizationExtender.SetKey(this.MainMenuStrip, "");
 			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuStrip.Name = "MainMenuStrip";
 			this.MainMenuStrip.Size = new System.Drawing.Size(784, 24);
@@ -256,12 +257,14 @@ namespace NFirmwareEditor.Windows
 			this.CheckForUpdatesMenuItem.Name = "CheckForUpdatesMenuItem";
 			this.CheckForUpdatesMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.CheckForUpdatesMenuItem.Text = "Check for updates";
+			this.CheckForUpdatesMenuItem.Visible = false;
 			this.CheckForUpdatesMenuItem.Click += new System.EventHandler(this.CheckForUpdatesMenuItem_Click);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(159, 6);
+			this.toolStripSeparator5.Visible = false;
 			// 
 			// AboutMenuItem
 			// 
@@ -276,6 +279,7 @@ namespace NFirmwareEditor.Windows
 			this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel,
             this.LoadedFirmwareLabel});
+			this.MainLocalizationExtender.SetKey(this.MainStatusStrip, "");
 			this.MainStatusStrip.Location = new System.Drawing.Point(0, 539);
 			this.MainStatusStrip.Name = "MainStatusStrip";
 			this.MainStatusStrip.Size = new System.Drawing.Size(784, 22);
@@ -308,6 +312,7 @@ namespace NFirmwareEditor.Windows
 			this.borderedPanel1.BorderWidth = 1F;
 			this.borderedPanel1.Controls.Add(this.MainTabControl);
 			this.borderedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainLocalizationExtender.SetKey(this.borderedPanel1, "");
 			this.borderedPanel1.Location = new System.Drawing.Point(0, 24);
 			this.borderedPanel1.Name = "borderedPanel1";
 			this.borderedPanel1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -321,6 +326,7 @@ namespace NFirmwareEditor.Windows
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.MainTabControl.ItemSize = new System.Drawing.Size(100, 20);
+			this.MainLocalizationExtender.SetKey(this.MainTabControl, "");
 			this.MainTabControl.Location = new System.Drawing.Point(4, 5);
 			this.MainTabControl.Name = "MainTabControl";
 			this.MainTabControl.SelectedIndex = 0;
@@ -337,6 +343,7 @@ namespace NFirmwareEditor.Windows
 			this.Controls.Add(this.MainStatusStrip);
 			this.Controls.Add(this.MainMenuStrip);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			this.MainLocalizationExtender.SetKey(this, "");
 			this.MinimumSize = new System.Drawing.Size(800, 600);
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

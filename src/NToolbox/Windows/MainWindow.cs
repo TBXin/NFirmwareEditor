@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using NCore;
@@ -14,7 +15,6 @@ namespace NToolbox.Windows
 {
 	internal partial class MainWindow : WindowBase
 	{
-		private const string ApplicationVersion = "2.0";
 		private const string SettingsFileName = "NToolboxConfiguration.xml";
 		private readonly ConfigurationStorage m_configurationStorage = new ConfigurationStorage();
 		private readonly StartupMode m_startupMode;
@@ -81,7 +81,7 @@ namespace NToolbox.Windows
 
 		private void InitializeControls()
 		{
-			VersionLabel.Text = @"v" + ApplicationVersion;
+			VersionLabel.Text = ApplicationService.GetVersion();
 			ArcticFoxConfigurationButton.Click += StartArcticFoxConfiguration;
 			DeviceMonitorButton.Click += StartDeviceMonitor;
 			ScreenshooterButton.Click += StartScreenshooter;
@@ -110,7 +110,7 @@ namespace NToolbox.Windows
 
 		private void InitializeTray()
 		{
-			TrayNotifyIcon.Text = @"NToolbox v" + ApplicationVersion + @" © ReikoKitsune";
+			TrayNotifyIcon.Text = @"NToolbox " + ApplicationService.GetVersion() + @" © ReikoKitsune";
 			TrayNotifyIcon.Icon = Icon;
 			TrayNotifyIcon.MouseDoubleClick += (s, e) =>
 			{

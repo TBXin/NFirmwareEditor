@@ -9,7 +9,7 @@ namespace NFirmwareEditor.Windows
 		public AboutWindow()
 		{
 			InitializeComponent();
-			ApplicationTitleLable.Text = Consts.ApplicationTitle;
+			ApplicationTitleLable.Text = Consts.ApplicationTitleWoVersion;
 
 			ReikoKitsuneLinkLabel.Click += ReikoKitsuneLinkLabel_Click;
 			MaelstromLinkLabel.Click += MaelstromLinkLabel_Click;

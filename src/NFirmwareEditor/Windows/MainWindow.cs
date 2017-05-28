@@ -24,7 +24,7 @@ namespace NFirmwareEditor.Windows
 		private readonly PatchManager m_patchManager = new PatchManager();
 		private readonly BackupManager m_backupManager = new BackupManager();
 
-		private readonly UpdatesManager m_updatesManager = new UpdatesManager(TimeSpan.FromHours(1));
+		//private readonly UpdatesManager m_updatesManager = new UpdatesManager(TimeSpan.FromHours(1));
 		private readonly FirmwareLoader m_loader = new FirmwareLoader();
 		
 		private IList<IEditorTabPage> m_tabPages;
@@ -40,7 +40,7 @@ namespace NFirmwareEditor.Windows
 			InitializeApplication();
 
 			Icon = NFEPaths.ApplicationIcon;
-			Text = Consts.ApplicationTitle;
+			Text = Text = Consts.ApplicationTitleWoVersion + @" " + ApplicationService.GetVersion();
 			LoadedFirmwareLabel.Text = null;
 			StatusLabel.Text = null;
 		}
@@ -95,7 +95,7 @@ namespace NFirmwareEditor.Windows
 			m_configuration = m_configurationStorage.TryLoad(NFEPaths.SettingsFile) ?? new ApplicationConfiguration();
 			m_mruFirmwares = new MruList<string>(m_configuration.MostRecentlyUsed);
 			m_patchManager.InitializeStorage(m_definitions);
-			m_updatesManager.SetupInitialData(Consts.ApplicationVersion, m_definitions);
+			//m_updatesManager.SetupInitialData(Consts.ApplicationVersion, m_definitions);
 		}
 
 		private void InitializeApplicationWindow()
@@ -169,7 +169,7 @@ namespace NFirmwareEditor.Windows
 
 		private void InitializeUpdatesChecking()
 		{
-			if (m_configuration.CheckForApplicationUpdates || m_configuration.CheckForDefinitionsUpdates)
+			/*if (m_configuration.CheckForApplicationUpdates || m_configuration.CheckForDefinitionsUpdates)
 			{
 				m_updatesManager.UpdatesAvailable += ShowUpdatesWindow;
 				m_updatesManager.StartChecking();
@@ -178,7 +178,7 @@ namespace NFirmwareEditor.Windows
 			{
 				m_updatesManager.StopChecking();
 				m_updatesManager.UpdatesAvailable -= ShowUpdatesWindow;
-			}
+			}*/
 		}
 
 		private void ResetWorkspace()
@@ -197,7 +197,7 @@ namespace NFirmwareEditor.Windows
 
 		private void UpdateOpenedFirmwareInfo()
 		{
-			Text = string.Format("{0} - {1}", Consts.ApplicationTitle, m_firmwareFile);
+			Text = string.Format("{0} {1} - {2}", Consts.ApplicationTitleWoVersion, ApplicationService.GetVersion(), m_firmwareFile);
 			LoadedFirmwareLabel.Text = string.Format("{0} [{1}]", m_firmware.Definition.Name, m_firmware.EncryptionType != EncryptionType.None ? "Encrypted" : "Decrypted");
 			SaveDefinitionMenuItem.Visible = !m_definitions.Any(x => x.Name.Equals(m_firmware.Definition.Name));
 		}
@@ -277,9 +277,9 @@ namespace NFirmwareEditor.Windows
 			}
 		}
 
-		private void ShowUpdatesWindow(UpdatesInfo updatesInfo)
+		/*private void ShowUpdatesWindow(UpdatesInfo updatesInfo)
 		{
-			this.UpdateUI(() =>
+			UpdateUI(() =>
 			{
 				if (updatesInfo.Release != null)
 				{
@@ -301,7 +301,7 @@ namespace NFirmwareEditor.Windows
 					}
 				}
 			});
-		}
+		}*/
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -476,11 +476,11 @@ namespace NFirmwareEditor.Windows
 
 		private void CheckForUpdatesMenuItem_Click(object sender, EventArgs e)
 		{
-			CheckForUpdatesMenuItem.Enabled = false;
+			/*CheckForUpdatesMenuItem.Enabled = false;
 			var checkForUpdatesAction = new Action(() =>
 			{
 				var releaseInfo = UpdatesManager.CheckForNewRelease(Consts.ApplicationVersion);
-				this.UpdateUI(() => CheckForUpdatesMenuItem.Enabled = true);
+				UpdateUI(() => CheckForUpdatesMenuItem.Enabled = true);
 				if (releaseInfo == null)
 				{
 					InfoBox.Show("You are using latest version!");
@@ -490,7 +490,7 @@ namespace NFirmwareEditor.Windows
 					ShowUpdatesWindow(new UpdatesInfo { Release = releaseInfo });
 				}
 			});
-			checkForUpdatesAction.BeginInvoke(null, null);
+			checkForUpdatesAction.BeginInvoke(null, null);*/
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
