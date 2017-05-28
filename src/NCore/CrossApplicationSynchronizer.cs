@@ -51,7 +51,7 @@ namespace NCore
 
 		public void ShowFirstInstance()
 		{
-			NativeMethods.SendMessage(s_broadCast, ShowFirstInstanceMessage, IntPtr.Zero, IntPtr.Zero);
+			NativeMethods.PostMessage(s_broadCast, ShowFirstInstanceMessage, IntPtr.Zero, IntPtr.Zero);
 		}
 
 		public void Dispose()
