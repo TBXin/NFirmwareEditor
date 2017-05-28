@@ -81,7 +81,6 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
-					ConnectionPictureBox.BackgroundImage = Resources.connection_active;
 					DeviceNameTextBox.Text = string.Format("[{0}] {1}", m_dataflash.ProductId, m_deviceInfo.Name);
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
@@ -98,7 +97,6 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
-					ConnectionPictureBox.BackgroundImage = Resources.connection_inactive;
 					DeviceNameTextBox.Clear();
 					HardwareVersionTextBox.Clear();
 					FirmwareVersionTextBox.Clear();
@@ -121,16 +119,22 @@ namespace NToolbox.Windows
 			FirmwareVersionTextBox.ReadOnly = true;
 			BootModeTextBox.ReadOnly = true;
 
+			multiPanel1.SelectedPage = CommonPage;
+
+			CommonLinkLabel.Click += TabLinkLabel_Click;
+			DataflashLinkLabel.Click += TabLinkLabel_Click;
+			AdvancedLinkLabel.Click += TabLinkLabel_Click;
+
 			UpdateFromFileButton.Text = m_firmwareFileExist ? @"Update" : @"Update from file";
 
-			UpdateFromFileButton.Click += UpdateFromFileButton_Click;
+			UpdateFromFileButton.LinkClicked += UpdateFromFileButton_Click;
 
-			ResetDataflashButton.Click += ResetDataflashButton_Click;
-			ReadDataflashButton.Click += ReadDataflashButton_Click;
-			WriteDataflashButton.Click += WriteDataflashButton_Click;
+			ResetDataflashButton.LinkClicked += ResetDataflashButton_Click;
+			ReadDataflashButton.LinkClicked += ReadDataflashButton_Click;
+			WriteDataflashButton.LinkClicked += WriteDataflashButton_Click;
 
-			ChangeHWButton.Click += ChangeHWButton_Click;
-			ChangeBootModeButton.Click += ChangeBootModeButton_Click;
+			ChangeHWButton.LinkClicked += ChangeHWButton_Click;
+			ChangeBootModeButton.LinkClicked += ChangeBootModeButton_Click;
 		}
 
 		private void UpdateFirmware(Func<byte[]> firmwareFunc)
@@ -300,14 +304,14 @@ namespace NToolbox.Windows
 
 		private void SetUpdaterButtonsState(bool enabled)
 		{
-			UpdateFromFileButton.Enabled = enabled;
+			UpdateFromFileButton.Links[0].Enabled = enabled;
 
-			ResetDataflashButton.Enabled = enabled;
-			ReadDataflashButton.Enabled = enabled;
-			WriteDataflashButton.Enabled = enabled;
+			ResetDataflashButton.Links[0].Enabled = enabled;
+			ReadDataflashButton.Links[0].Enabled = enabled;
+			WriteDataflashButton.Links[0].Enabled = enabled;
 
-			ChangeHWButton.Enabled = enabled;
-			ChangeBootModeButton.Enabled = enabled;
+			ChangeHWButton.Links[0].Enabled = enabled;
+			ChangeBootModeButton.Links[0].Enabled = enabled;
 		}
 
 		private void SetAllButtonsState(bool enabled)
@@ -445,6 +449,22 @@ namespace NToolbox.Windows
 			}
 		}
 
+		private void TabLinkLabel_Click(object sender, EventArgs e)
+		{
+			var link = sender as LinkLabel;
+			if (link == null) return;
+
+			var activeColor = Color.FromArgb(90, 146, 221);
+			var inactiveColor = Color.FromArgb(110, 110, 110);
+
+			CommonLinkLabel.LinkColor = DataflashLinkLabel.LinkColor = AdvancedLinkLabel.LinkColor = inactiveColor;
+			link.LinkColor = activeColor;
+
+			if (link == CommonLinkLabel) multiPanel1.SelectedPage = CommonPage;
+			if (link == DataflashLinkLabel) multiPanel1.SelectedPage = DataflashPage;
+			if (link == AdvancedLinkLabel) multiPanel1.SelectedPage = AdvancedPage;
+		}
+
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			if (keyData == Keys.Escape)
@@ -475,6 +495,11 @@ namespace NToolbox.Windows
 				UpdateUI(() => SetAllButtonsState(true));
 				HidConnector.Instance.StartUSBConnectionMonitoring();
 			}
+		}
+
+		private void FirmwareUpdaterWindow_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
