@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=Upload Logo
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=Zoom:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=Kontrast:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=Odwróc o 180°:
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Idle Time (Charging):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=Czas bezczynności:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=Czas bezczynności (blokada):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=Zamrożenie wskazań:

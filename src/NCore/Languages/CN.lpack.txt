@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=更新Logo
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=放大:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=亮度:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=屏幕翻转:
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Idle Time (Charging):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=空闲时间:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=空闲时间(锁屏):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=吸烟屏幕延时:

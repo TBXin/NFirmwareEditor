@@ -77,6 +77,7 @@ namespace NToolbox.Models
 			public byte Brightness;
 			public byte DimTimeout; // 5..60 sec
 			public byte DimTimeoutLocked; // 5..60 sec
+			public byte DimTimeoutCharging; // 0..60 sec, 0 - Off
 			public byte ShowLogoDelay; // 1..60 sec
 			public byte ShowClockDelay; // 1..60 sec
 			public bool IsFlipped;

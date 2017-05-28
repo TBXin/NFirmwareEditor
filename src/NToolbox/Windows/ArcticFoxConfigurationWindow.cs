@@ -463,6 +463,7 @@ namespace NToolbox.Windows
 				BrightnessTrackBar.Value = ui.Brightness;
 				IdleTimeUpDow.SetValue(ui.DimTimeout);
 				IdleLockedTimeUpDow.SetValue(ui.DimTimeoutLocked);
+				IdleChargingTimeUpDow.SetValue(ui.DimTimeoutCharging);
 				PuffScreenDelayUpDown.SetValue(ui.PuffScreenDelay / 10m);
 				IsStealthModeCheckBox.Checked = ui.IsStealthMode;
 				ShowChargingInStealthCheckBox.Checked = ui.ShowChargingInStealth;
@@ -673,6 +674,7 @@ namespace NToolbox.Windows
 				ui.Brightness = (byte)BrightnessTrackBar.Value;
 				ui.DimTimeout = (byte)IdleTimeUpDow.Value;
 				ui.DimTimeoutLocked = (byte)IdleLockedTimeUpDow.Value;
+				ui.DimTimeoutLocked = (byte)IdleChargingTimeUpDow.Value;
 				ui.PuffScreenDelay = (byte)(PuffScreenDelayUpDown.Value * 10);
 				ui.IsStealthMode = IsStealthModeCheckBox.Checked;
 				ui.ShowChargingInStealth = ShowChargingInStealthCheckBox.Checked;

@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=Upload Logo
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=Zoom:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=Fényerő:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=Fordított kép:
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Idle Time (Charging):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=Készenléti idő:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=Idle Time (Locked):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=Slukk utáni kép:

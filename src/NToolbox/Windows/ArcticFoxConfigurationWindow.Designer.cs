@@ -200,6 +200,8 @@
 			this.ControlsTabPage = new System.Windows.Forms.TabPage();
 			this.ControlsTabControl = new System.Windows.Forms.TabControl();
 			this.ControlsSettingsTabPage = new System.Windows.Forms.TabPage();
+			this.Step1C2FCheckBox = new System.Windows.Forms.CheckBox();
+			this.label100 = new System.Windows.Forms.Label();
 			this.Step1WCheckBox = new System.Windows.Forms.CheckBox();
 			this.WakeUpByPlusMinusCheckBox = new System.Windows.Forms.CheckBox();
 			this.UpDownButtonsComboBox = new System.Windows.Forms.ComboBox();
@@ -358,8 +360,9 @@
 			this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ProgressLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.Step1C2FCheckBox = new System.Windows.Forms.CheckBox();
-			this.label100 = new System.Windows.Forms.Label();
+			this.label101 = new System.Windows.Forms.Label();
+			this.IdleChargingTimeUpDow = new System.Windows.Forms.NumericUpDown();
+			this.label102 = new System.Windows.Forms.Label();
 			this.MainContainer.SuspendLayout();
 			this.WelcomePage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ArcticFoxLogoPictureBox)).BeginInit();
@@ -436,6 +439,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.PuffsUpDown)).BeginInit();
 			this.groupPanel1.SuspendLayout();
 			this.MainStatusBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.IdleChargingTimeUpDow)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainContainer
@@ -798,6 +802,9 @@
 			// 
 			// ScreenSettingsTabPage
 			// 
+			this.ScreenSettingsTabPage.Controls.Add(this.label101);
+			this.ScreenSettingsTabPage.Controls.Add(this.IdleChargingTimeUpDow);
+			this.ScreenSettingsTabPage.Controls.Add(this.label102);
 			this.ScreenSettingsTabPage.Controls.Add(this.label73);
 			this.ScreenSettingsTabPage.Controls.Add(this.IdleLockedTimeUpDow);
 			this.ScreenSettingsTabPage.Controls.Add(this.label74);
@@ -875,7 +882,7 @@
             0,
             65536});
 			this.MainLocalizationExtender.SetKey(this.PuffScreenDelayUpDown, "");
-			this.PuffScreenDelayUpDown.Location = new System.Drawing.Point(160, 89);
+			this.PuffScreenDelayUpDown.Location = new System.Drawing.Point(160, 116);
 			this.PuffScreenDelayUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -891,7 +898,7 @@
 			// 
 			this.label22.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label22, "Toolbox.ArcticFoxConfiguration.SecondsLabel");
-			this.label22.Location = new System.Drawing.Point(272, 92);
+			this.label22.Location = new System.Drawing.Point(272, 119);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(12, 13);
 			this.label22.TabIndex = 140;
@@ -959,7 +966,7 @@
 			// 
 			this.FlippedModeCheckBox.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.FlippedModeCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.FlippedModeCheckBox.Location = new System.Drawing.Point(160, 119);
+			this.FlippedModeCheckBox.Location = new System.Drawing.Point(160, 146);
 			this.FlippedModeCheckBox.Name = "FlippedModeCheckBox";
 			this.FlippedModeCheckBox.Size = new System.Drawing.Size(64, 17);
 			this.FlippedModeCheckBox.TabIndex = 123;
@@ -970,7 +977,7 @@
 			// 
 			this.label23.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label23, "Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel");
-			this.label23.Location = new System.Drawing.Point(4, 92);
+			this.label23.Location = new System.Drawing.Point(4, 119);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(97, 13);
 			this.label23.TabIndex = 139;
@@ -1000,7 +1007,7 @@
 			// 
 			this.label36.AutoSize = true;
 			this.MainLocalizationExtender.SetKey(this.label36, "Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel");
-			this.label36.Location = new System.Drawing.Point(4, 119);
+			this.label36.Location = new System.Drawing.Point(4, 146);
 			this.label36.Name = "label36";
 			this.label36.Size = new System.Drawing.Size(45, 13);
 			this.label36.TabIndex = 122;
@@ -2547,6 +2554,27 @@
 			this.ControlsSettingsTabPage.TabIndex = 2;
 			this.ControlsSettingsTabPage.Text = "Settings";
 			this.ControlsSettingsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// Step1C2FCheckBox
+			// 
+			this.Step1C2FCheckBox.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.Step1C2FCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
+			this.Step1C2FCheckBox.Location = new System.Drawing.Point(160, 38);
+			this.Step1C2FCheckBox.Name = "Step1C2FCheckBox";
+			this.Step1C2FCheckBox.Size = new System.Drawing.Size(64, 17);
+			this.Step1C2FCheckBox.TabIndex = 147;
+			this.Step1C2FCheckBox.Text = "Enabled";
+			this.Step1C2FCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label100
+			// 
+			this.label100.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label100, "Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel");
+			this.label100.Location = new System.Drawing.Point(4, 38);
+			this.label100.Name = "label100";
+			this.label100.Size = new System.Drawing.Size(120, 13);
+			this.label100.TabIndex = 146;
+			this.label100.Text = "Temp. 1 °C / 2 °F Step:";
 			// 
 			// Step1WCheckBox
 			// 
@@ -4556,26 +4584,40 @@
 			this.MainToolTip.InitialDelay = 500;
 			this.MainToolTip.ReshowDelay = 100;
 			// 
-			// Step1C2FCheckBox
+			// label101
 			// 
-			this.Step1C2FCheckBox.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.Step1C2FCheckBox, "Toolbox.ArcticFoxConfiguration.EnabledCheckBox");
-			this.Step1C2FCheckBox.Location = new System.Drawing.Point(160, 38);
-			this.Step1C2FCheckBox.Name = "Step1C2FCheckBox";
-			this.Step1C2FCheckBox.Size = new System.Drawing.Size(64, 17);
-			this.Step1C2FCheckBox.TabIndex = 147;
-			this.Step1C2FCheckBox.Text = "Enabled";
-			this.Step1C2FCheckBox.UseVisualStyleBackColor = true;
+			this.label101.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label101, "Toolbox.ArcticFoxConfiguration.SecondsLabel");
+			this.label101.Location = new System.Drawing.Point(272, 92);
+			this.label101.Name = "label101";
+			this.label101.Size = new System.Drawing.Size(12, 13);
+			this.label101.TabIndex = 151;
+			this.label101.Text = "s";
 			// 
-			// label100
+			// IdleChargingTimeUpDow
 			// 
-			this.label100.AutoSize = true;
-			this.MainLocalizationExtender.SetKey(this.label100, "Toolbox.ArcticFoxConfiguration.Controls.Settings.Temperature1C2FStepLabel");
-			this.label100.Location = new System.Drawing.Point(4, 38);
-			this.label100.Name = "label100";
-			this.label100.Size = new System.Drawing.Size(120, 13);
-			this.label100.TabIndex = 146;
-			this.label100.Text = "Temp. 1 °C / 2 °F Step:";
+			this.MainLocalizationExtender.SetKey(this.IdleChargingTimeUpDow, "");
+			this.IdleChargingTimeUpDow.Location = new System.Drawing.Point(160, 89);
+			this.IdleChargingTimeUpDow.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+			this.IdleChargingTimeUpDow.Name = "IdleChargingTimeUpDow";
+			this.IdleChargingTimeUpDow.Size = new System.Drawing.Size(106, 21);
+			this.IdleChargingTimeUpDow.TabIndex = 149;
+			this.IdleChargingTimeUpDow.TabStop = false;
+			this.IdleChargingTimeUpDow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label102
+			// 
+			this.label102.AutoSize = true;
+			this.MainLocalizationExtender.SetKey(this.label102, "Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel");
+			this.label102.Location = new System.Drawing.Point(4, 92);
+			this.label102.Name = "label102";
+			this.label102.Size = new System.Drawing.Size(108, 13);
+			this.label102.TabIndex = 150;
+			this.label102.Text = "Idle Time (Charging):";
 			// 
 			// ArcticFoxConfigurationWindow
 			// 
@@ -4702,6 +4744,7 @@
 			this.groupPanel1.PerformLayout();
 			this.MainStatusBar.ResumeLayout(false);
 			this.MainStatusBar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.IdleChargingTimeUpDow)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -5040,5 +5083,8 @@
 		private System.Windows.Forms.Label label99;
 		private System.Windows.Forms.CheckBox Step1C2FCheckBox;
 		private System.Windows.Forms.Label label100;
+		private System.Windows.Forms.Label label101;
+		private System.Windows.Forms.NumericUpDown IdleChargingTimeUpDow;
+		private System.Windows.Forms.Label label102;
 	}
 }

@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=Otpremanje logotipa
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=Zumiranje: 
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=Osvetljenost:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=Rotiran ekran:
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Idle Time (Charging):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=Vreme mirovanja:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=Vreme mirovanja (Zaklj.):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=Zadrži Puff brojač:

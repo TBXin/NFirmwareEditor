@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=Upload Logo
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=Zoom:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=Parlaklıkrlaklık:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=Ekran Döndürme
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Idle Time (Charging):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=Çalışmayan Süre:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=Çalışmayan Süre (Kilitli):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=Puff Ekran Gecikmesi:

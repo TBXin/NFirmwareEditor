@@ -209,6 +209,7 @@ Toolbox.ArcticFoxConfiguration.Screen.Logo.UploadLogoButton=Установить
 Toolbox.ArcticFoxConfiguration.Screen.Logo.ZoomLabel=Приближение:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.BrightnessLabel=Яркость:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.FlippedLabel=Перевернуть экран:
+Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeChargingLabel=Затухание через (зарядка):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLabel=Затухание через:
 Toolbox.ArcticFoxConfiguration.Screen.Settings.IdleTimeLockedLabel=Затухание через (в заблок.):
 Toolbox.ArcticFoxConfiguration.Screen.Settings.PuffScreenDelayLabel=Показывать затяжку:
