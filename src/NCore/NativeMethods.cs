@@ -11,10 +11,6 @@ namespace NCore
 		[DllImport("user32", CharSet = CharSet.Auto)]
 		public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
-		[return: MarshalAs(UnmanagedType.Bool)]
-		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-		public static extern bool PostMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
-
 		[DllImport("user32")]
 		public static extern int RegisterWindowMessage(string message);
 
