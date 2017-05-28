@@ -9,7 +9,7 @@ namespace NToolbox.Models
 	{
 		internal const ushort MaxPower = 4000;
 		internal const byte MaxBatteries = 4;
-		internal const int MinimumSupportedBuildNumber = 170527;
+		internal const int MinimumSupportedBuildNumber = 170528;
 		internal const int SupportedSettingsVersion = 9;
 
 		public DeviceInfo Info;
