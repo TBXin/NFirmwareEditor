@@ -26,6 +26,7 @@ namespace NCore.UI
 		private Color m_additionalTextColor;
 		private bool m_useCompatibleTextRendering;
 		private bool m_drawBorders;
+		private Color m_primaryTextDisabledColor;
 
 		public ExtendedButton()
 		{
@@ -96,6 +97,17 @@ namespace NCore.UI
 			set
 			{
 				m_additionalTextColor = value;
+				Invalidate();
+			}
+		}
+
+		[DefaultValue(typeof(Color), "85; 85; 85")]
+		public Color PrimaryTextDisabledColor
+		{
+			get { return m_primaryTextDisabledColor; }
+			set
+			{
+				m_primaryTextDisabledColor = value;
 				Invalidate();
 			}
 		}
@@ -203,6 +215,7 @@ namespace NCore.UI
 			var primaryTextColor = ForeColor;
 			if (m_isMouseOver && MouserOverPrimaryTextColor != null) primaryTextColor = MouserOverPrimaryTextColor.Value;
 			if (m_isMouseDown && MouserDownPrimaryTextColor != null) primaryTextColor = MouserDownPrimaryTextColor.Value;
+			if (!Enabled) primaryTextColor = PrimaryTextDisabledColor;
 
 			if (string.IsNullOrEmpty(m_additionalText))
 			{

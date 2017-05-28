@@ -82,6 +82,7 @@
 			this.MainLocalizationExtender.SetKey(this.LanguageMenuButton, "");
 			this.LanguageMenuButton.Location = new System.Drawing.Point(55, 255);
 			this.LanguageMenuButton.Name = "LanguageMenuButton";
+			this.LanguageMenuButton.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
 			this.LanguageMenuButton.Size = new System.Drawing.Size(80, 24);
 			this.LanguageMenuButton.TabIndex = 11;
 			this.LanguageMenuButton.Text = "EN";

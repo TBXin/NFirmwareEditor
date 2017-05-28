@@ -12,6 +12,7 @@ using NCore.UI;
 using NCore.USB;
 using NCore.USB.Models;
 using NFirmware;
+using NToolbox.Properties;
 using NToolbox.Services;
 
 namespace NToolbox.Windows
@@ -56,13 +57,6 @@ namespace NToolbox.Windows
 				}
 				HidConnector.Instance.DeviceConnected -= DeviceConnected;
 			};
-
-			var multiplier = ApplicationService.GetDpiMultiplier();
-			tabControl1.ItemSize = new Size
-			(
-				(int)(tabControl1.ItemSize.Width * multiplier),
-				(int)(tabControl1.ItemSize.Height * multiplier)
-			);
 		}
 
 		private void DeviceConnected(bool isConnected)
@@ -87,7 +81,8 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
-					DeviceNameTextBox.Text = string.Format("[{0}] {1}", m_dataflash.ProductId, m_deviceInfo.Name); ;
+					ConnectionPictureBox.BackgroundImage = Resources.connection_active;
+					DeviceNameTextBox.Text = string.Format("[{0}] {1}", m_dataflash.ProductId, m_deviceInfo.Name);
 					HardwareVersionTextBox.Text = m_hardwareVersion;
 					FirmwareVersionTextBox.Text = m_firmwareVersion;
 					BootModeTextBox.Text = m_dataflash.LoadFromLdrom ? "LDROM" : "APROM";
@@ -103,6 +98,7 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
+					ConnectionPictureBox.BackgroundImage = Resources.connection_inactive;
 					DeviceNameTextBox.Clear();
 					HardwareVersionTextBox.Clear();
 					FirmwareVersionTextBox.Clear();

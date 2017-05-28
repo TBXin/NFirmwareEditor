@@ -205,6 +205,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NToolbox.ico" />
+    <None Include="Resources\connection_inactive.png" />
+    <None Include="Resources\connection_active.png" />
     <None Include="Resources\lock_open.png" />
     <None Include="Resources\lock.png" />
     <None Include="Resources\transparent_bg.png" />
