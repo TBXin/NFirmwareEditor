@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Afficher les limites des bouff�
 Toolbox.DeviceMonitor.TemperatureLabel=Température:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Température réglée:
 Toolbox.FirmwareUpdater.AdvancedTab=Avancé
-Toolbox.FirmwareUpdater.BootModeLabel=Mode d'amorçage:
 Toolbox.FirmwareUpdater.CancelButton=Cancel
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Changer la version HW
 Toolbox.FirmwareUpdater.CommonTab=Commun

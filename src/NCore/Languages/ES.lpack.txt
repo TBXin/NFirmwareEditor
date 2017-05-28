@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Mostrar límite de calada
 Toolbox.DeviceMonitor.TemperatureLabel=Temperatura:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Temperatura configurada:
 Toolbox.FirmwareUpdater.AdvancedTab=Avanzado
-Toolbox.FirmwareUpdater.BootModeLabel=Modo de Booteo:
 Toolbox.FirmwareUpdater.CancelButton=Cancel
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Cambiar Version HW
 Toolbox.FirmwareUpdater.CommonTab=Común

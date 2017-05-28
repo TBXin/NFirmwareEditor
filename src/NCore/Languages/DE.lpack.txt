@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Zeige Zugbegrenzung
 Toolbox.DeviceMonitor.TemperatureLabel=Temperatur:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Temperatur Einstellung:
 Toolbox.FirmwareUpdater.AdvancedTab=Experte
-Toolbox.FirmwareUpdater.BootModeLabel=Boot Art:
 Toolbox.FirmwareUpdater.CancelButton=Abbruch
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Ändere HW Version
 Toolbox.FirmwareUpdater.CommonTab=Standard

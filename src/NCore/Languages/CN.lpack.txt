@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=显示吸烟
 Toolbox.DeviceMonitor.TemperatureLabel=温度:
 Toolbox.DeviceMonitor.TemperatureSetLabel=设置的温度:
 Toolbox.FirmwareUpdater.AdvancedTab=高级
-Toolbox.FirmwareUpdater.BootModeLabel=引导模式:
 Toolbox.FirmwareUpdater.CancelButton=取消
 Toolbox.FirmwareUpdater.ChangeHWVerButton=修改硬件版本
 Toolbox.FirmwareUpdater.CommonTab=常用

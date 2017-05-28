@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Slukk határok mutatása
 Toolbox.DeviceMonitor.TemperatureLabel=Aktuális hőmérséklet:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Beállított hőmérséklet:
 Toolbox.FirmwareUpdater.AdvancedTab=Haladó
-Toolbox.FirmwareUpdater.BootModeLabel=Boot mód:
 Toolbox.FirmwareUpdater.CancelButton=Mégsem
 Toolbox.FirmwareUpdater.ChangeHWVerButton=HW Verzió átírása
 Toolbox.FirmwareUpdater.CommonTab=Általános

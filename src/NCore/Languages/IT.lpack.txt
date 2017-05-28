@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Mostra Limiti dei Tiri
 Toolbox.DeviceMonitor.TemperatureLabel=Temperatura:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Temperatura Impostata:
 Toolbox.FirmwareUpdater.AdvancedTab=Avanzato
-Toolbox.FirmwareUpdater.BootModeLabel=Modalità di boot:
 Toolbox.FirmwareUpdater.CancelButton=Cancel
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Cambia versione HW
 Toolbox.FirmwareUpdater.CommonTab=Comune

@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Zobrazit hranice potažení
 Toolbox.DeviceMonitor.TemperatureLabel=Teplota:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Teplota nastavená:
 Toolbox.FirmwareUpdater.AdvancedTab=Pokročilé
-Toolbox.FirmwareUpdater.BootModeLabel=Režim spuštění:
 Toolbox.FirmwareUpdater.CancelButton=Cancel
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Změnit verzi HW
 Toolbox.FirmwareUpdater.CommonTab=Běžné

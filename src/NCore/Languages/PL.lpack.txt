@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=pokazuj granice wapów
 Toolbox.DeviceMonitor.TemperatureLabel=Temperatura odczytana:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Temperatura ustawiona:
 Toolbox.FirmwareUpdater.AdvancedTab=Rozszerzone
-Toolbox.FirmwareUpdater.BootModeLabel=Tryb BOOT:
 Toolbox.FirmwareUpdater.CancelButton=Anuluj
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Zmień wersje HW
 Toolbox.FirmwareUpdater.CommonTab=Podstawowe

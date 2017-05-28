@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Puff Prikaz granica
 Toolbox.DeviceMonitor.TemperatureLabel=Trenutna Temperatura:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Podešena Temperatura:
 Toolbox.FirmwareUpdater.AdvancedTab=Napredno
-Toolbox.FirmwareUpdater.BootModeLabel=Boot mod:
 Toolbox.FirmwareUpdater.CancelButton=Otkaži
 Toolbox.FirmwareUpdater.ChangeHWVerButton=Promena HW Verzije
 Toolbox.FirmwareUpdater.CommonTab=Osnovno

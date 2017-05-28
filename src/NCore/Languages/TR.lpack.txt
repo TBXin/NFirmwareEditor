@@ -288,7 +288,6 @@ Toolbox.DeviceMonitor.ShowPufsBoundariesCheckBox=Puff Sınırını Güncelle
 Toolbox.DeviceMonitor.TemperatureLabel=Anlık Sıcaklık:
 Toolbox.DeviceMonitor.TemperatureSetLabel=Ayarlanan Sıcaklık:
 Toolbox.FirmwareUpdater.AdvancedTab=Gelişmiş
-Toolbox.FirmwareUpdater.BootModeLabel=Önyükleme Modu:
 Toolbox.FirmwareUpdater.CancelButton=İptal
 Toolbox.FirmwareUpdater.ChangeHWVerButton=HW Sürümünü Değiştir
 Toolbox.FirmwareUpdater.CommonTab=Genel
