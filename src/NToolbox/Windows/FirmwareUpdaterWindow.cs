@@ -101,6 +101,7 @@ namespace NToolbox.Windows
 					HardwareVersionTextBox.Text = @"?";
 					FirmwareVersionTextBox.Text = @"?";
 					BootModeTextBox.Text = @"?";
+					UpdateStatusLabel.Text = string.Empty;
 					SetUpdaterButtonsState(false);
 				});
 			}

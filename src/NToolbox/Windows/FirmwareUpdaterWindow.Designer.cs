@@ -77,7 +77,6 @@ namespace NToolbox.Windows
 			this.UpdateStatusLabel.Name = "UpdateStatusLabel";
 			this.UpdateStatusLabel.Size = new System.Drawing.Size(336, 20);
 			this.UpdateStatusLabel.TabIndex = 5;
-			this.UpdateStatusLabel.Text = "Device is ready...";
 			this.UpdateStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// UpdateProgressBar
