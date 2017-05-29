@@ -109,9 +109,9 @@ namespace NToolbox.Windows
 		private void InitializeControls()
 		{
 			DeviceNameTextBox.BackColor = panel1.BackColor;
-			HardwareVersionTextBox.BackColor = Color.White;
-			FirmwareVersionTextBox.BackColor = Color.White;
-			BootModeTextBox.BackColor = Color.White;
+			HardwareVersionTextBox.BackColor = panel1.BackColor;
+			FirmwareVersionTextBox.BackColor = panel1.BackColor;
+			BootModeTextBox.BackColor = panel1.BackColor;
 
 			DeviceNameTextBox.ReadOnly = true;
 			HardwareVersionTextBox.ReadOnly = true;
@@ -456,9 +456,10 @@ namespace NToolbox.Windows
 			if (link == null) return;
 
 			var activeLinkColor = Color.FromArgb(255, 255, 255);
-			var inactiveLinkColor = Color.FromArgb(153, 207, 249);
-			var activePanelColor = Color.FromArgb(0, 119, 171);
-			var inactiveBorderColor = Color.FromArgb(9, 181, 255);
+			var activePanelColor = Color.FromArgb(255, 195, 15);
+
+			var inactiveLinkColor = Color.FromArgb(118, 185, 237);
+			var inactiveBorderColor = Color.FromArgb(35, 111, 170);
 
 			CommonPanel.BackColor = DataflashPanel.BackColor = AdvancedPanel.BackColor = inactiveBorderColor;
 			CommonLinkLabel.LinkColor = DataflashLinkLabel.LinkColor = AdvancedLinkLabel.LinkColor = inactiveLinkColor;

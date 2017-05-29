@@ -13,6 +13,7 @@ namespace NCore.UI
 		private int m_cornerRadius = 3;
 		private int m_shadowLength = 5;
 		private bool m_showBorder = true;
+		private byte m_shadowDensity = 180;
 
 		public CardPanel()
 		{
@@ -65,6 +66,17 @@ namespace NCore.UI
 			}
 		}
 
+		[DefaultValue(180)]
+		public byte ShadowDensity
+		{
+			get { return m_shadowDensity; }
+			set
+			{
+				m_shadowDensity = value;
+				Invalidate();
+			}
+		}
+
 		[DefaultValue(typeof(Color), "0xA9A9A9")]
 		public Color ShadowColor
 		{
@@ -80,16 +92,13 @@ namespace NCore.UI
 		{
 			get
 			{
-				using (var gfx = Graphics.FromHwnd(IntPtr.Zero))
-				{
-					return new Rectangle
-					(
-						Padding.Left + m_shadowLength,
-						Padding.Top + 0,
-						Math.Max(Width - Padding.Horizontal - m_shadowLength * 2, 0),
-						Math.Max(Height - m_shadowLength - Padding.Vertical, 0)
-					);
-				}
+				return new Rectangle
+				(
+					Padding.Left + m_shadowLength,
+					Padding.Top + 0,
+					Math.Max(Width - Padding.Horizontal - m_shadowLength * 2, 0),
+					Math.Max(Height - m_shadowLength - Padding.Vertical, 0)
+				);
 			}
 		}
 
@@ -102,8 +111,7 @@ namespace NCore.UI
 			var clientRect = GetClientRectangle();
 			var shadowRect = GetShadowRectangle(clientRect);
 
-			var shadowPath = GetShadowPath(shadowRect);
-			DrawShadow(gfx, shadowPath);
+			DrawShadow(gfx, shadowRect);
 
 			var borderPath = GenerateRoundedRectangle(clientRect, m_cornerRadius, RectangleEdgeFilter.All);
 			FillPath(gfx, new SolidBrush(BackColor), borderPath);
@@ -111,8 +119,9 @@ namespace NCore.UI
 			if (ShowBorder) DrawPath(gfx, new Pen(m_borderColor, 1), borderPath);
 		}
 
-		private void DrawShadow(Graphics gfx, GraphicsPath shadowPath)
+		private void DrawShadow(Graphics gfx, RectangleF shadowRect)
 		{
+			using (var shadowPath = GetShadowPath(shadowRect))
 			using (var shadowBrush = new PathGradientBrush(shadowPath))
 			{
 				shadowBrush.WrapMode = WrapMode.Clamp;
@@ -121,13 +130,13 @@ namespace NCore.UI
 					Colors = new[]
 					{
 						Color.Transparent,
-						Color.FromArgb(180, m_shadowColor),
-						Color.FromArgb(180, m_shadowColor)
+						Color.FromArgb(ShadowDensity, m_shadowColor),
+						Color.FromArgb(ShadowDensity, m_shadowColor)
 					},
-					Positions = new[] { 0f, .4f, 1f }
+					Positions = new[] { 0f, .1f, 1f }
 				};
-
 				shadowBrush.InterpolationColors = colorBlend;
+				shadowBrush.CenterPoint = new PointF(shadowRect.Width / 2, shadowRect.Height / 2);
 				gfx.FillPath(shadowBrush, shadowPath);
 			}
 		}
