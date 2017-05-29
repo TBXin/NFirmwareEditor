@@ -97,11 +97,10 @@ namespace NToolbox.Windows
 
 				UpdateUI(() =>
 				{
-					DeviceNameTextBox.Clear();
-					HardwareVersionTextBox.Clear();
-					FirmwareVersionTextBox.Clear();
-					BootModeTextBox.Clear();
-					UpdateStatusLabel.Text = LocalizableStrings.FirmwareUpdaterWaitingForDevice;
+					DeviceNameTextBox.Text = LocalizableStrings.FirmwareUpdaterWaitingForDevice;
+					HardwareVersionTextBox.Text = @"?";
+					FirmwareVersionTextBox.Text = @"?";
+					BootModeTextBox.Text = @"?";
 					SetUpdaterButtonsState(false);
 				});
 			}
@@ -109,7 +108,7 @@ namespace NToolbox.Windows
 
 		private void InitializeControls()
 		{
-			DeviceNameTextBox.BackColor = Color.White;
+			DeviceNameTextBox.BackColor = panel1.BackColor;
 			HardwareVersionTextBox.BackColor = Color.White;
 			FirmwareVersionTextBox.BackColor = Color.White;
 			BootModeTextBox.BackColor = Color.White;
@@ -135,6 +134,8 @@ namespace NToolbox.Windows
 
 			ChangeHWButton.LinkClicked += ChangeHWButton_Click;
 			ChangeBootModeButton.LinkClicked += ChangeBootModeButton_Click;
+
+			TabLinkLabel_Click(CommonLinkLabel, EventArgs.Empty);
 		}
 
 		private void UpdateFirmware(Func<byte[]> firmwareFunc)
@@ -454,15 +455,30 @@ namespace NToolbox.Windows
 			var link = sender as LinkLabel;
 			if (link == null) return;
 
-			var activeColor = Color.FromArgb(90, 146, 221);
-			var inactiveColor = Color.FromArgb(110, 110, 110);
+			var activeLinkColor = Color.FromArgb(255, 255, 255);
+			var inactiveLinkColor = Color.FromArgb(153, 207, 249);
+			var activePanelColor = Color.FromArgb(0, 119, 171);
+			var inactiveBorderColor = Color.FromArgb(9, 181, 255);
 
-			CommonLinkLabel.LinkColor = DataflashLinkLabel.LinkColor = AdvancedLinkLabel.LinkColor = inactiveColor;
-			link.LinkColor = activeColor;
+			CommonPanel.BackColor = DataflashPanel.BackColor = AdvancedPanel.BackColor = inactiveBorderColor;
+			CommonLinkLabel.LinkColor = DataflashLinkLabel.LinkColor = AdvancedLinkLabel.LinkColor = inactiveLinkColor;
+			link.LinkColor = activeLinkColor;
 
-			if (link == CommonLinkLabel) multiPanel1.SelectedPage = CommonPage;
-			if (link == DataflashLinkLabel) multiPanel1.SelectedPage = DataflashPage;
-			if (link == AdvancedLinkLabel) multiPanel1.SelectedPage = AdvancedPage;
+			if (link == CommonLinkLabel)
+			{
+				CommonPanel.BackColor = activePanelColor;
+				multiPanel1.SelectedPage = CommonPage;
+			}
+			if (link == DataflashLinkLabel)
+			{
+				DataflashPanel.BackColor = activePanelColor;
+				multiPanel1.SelectedPage = DataflashPage;
+			}
+			if (link == AdvancedLinkLabel)
+			{
+				AdvancedPanel.BackColor = activePanelColor;
+				multiPanel1.SelectedPage = AdvancedPage;
+			}
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
