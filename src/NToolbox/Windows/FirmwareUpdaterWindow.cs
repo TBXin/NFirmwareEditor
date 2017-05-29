@@ -455,11 +455,11 @@ namespace NToolbox.Windows
 			var link = sender as LinkLabel;
 			if (link == null) return;
 
-			var activeLinkColor = Color.FromArgb(255, 255, 255);
-			var activePanelColor = Color.FromArgb(255, 195, 15);
+			var activeLinkColor = Color.FromArgb(90, 146, 221);
+			var activePanelColor = Color.FromArgb(90, 146, 221);
 
-			var inactiveLinkColor = Color.FromArgb(118, 185, 237);
-			var inactiveBorderColor = Color.FromArgb(35, 111, 170);
+			var inactiveLinkColor = Color.FromArgb(200, 200, 200);
+			var inactiveBorderColor = Color.FromArgb(240, 240, 240);
 
 			CommonPanel.BackColor = DataflashPanel.BackColor = AdvancedPanel.BackColor = inactiveBorderColor;
 			CommonLinkLabel.LinkColor = DataflashLinkLabel.LinkColor = AdvancedLinkLabel.LinkColor = inactiveLinkColor;

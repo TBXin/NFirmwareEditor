@@ -92,13 +92,13 @@ namespace NToolbox.Windows
 			// 
 			this.BootModeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.BootModeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(144)))), ((int)(((byte)(236)))));
+			this.BootModeTextBox.BackColor = System.Drawing.Color.White;
 			this.BootModeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.BootModeTextBox.ForeColor = System.Drawing.Color.White;
+			this.BootModeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.BootModeTextBox, "");
-			this.BootModeTextBox.Location = new System.Drawing.Point(220, 75);
+			this.BootModeTextBox.Location = new System.Drawing.Point(219, 75);
 			this.BootModeTextBox.Name = "BootModeTextBox";
-			this.BootModeTextBox.Size = new System.Drawing.Size(108, 14);
+			this.BootModeTextBox.Size = new System.Drawing.Size(106, 14);
 			this.BootModeTextBox.TabIndex = 25;
 			this.BootModeTextBox.TabStop = false;
 			this.BootModeTextBox.Text = "APROM";
@@ -108,13 +108,13 @@ namespace NToolbox.Windows
 			// 
 			this.HardwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.HardwareVersionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(144)))), ((int)(((byte)(236)))));
+			this.HardwareVersionTextBox.BackColor = System.Drawing.Color.White;
 			this.HardwareVersionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.HardwareVersionTextBox.ForeColor = System.Drawing.Color.White;
+			this.HardwareVersionTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.HardwareVersionTextBox, "");
-			this.HardwareVersionTextBox.Location = new System.Drawing.Point(112, 75);
+			this.HardwareVersionTextBox.Location = new System.Drawing.Point(111, 75);
 			this.HardwareVersionTextBox.Name = "HardwareVersionTextBox";
-			this.HardwareVersionTextBox.Size = new System.Drawing.Size(108, 14);
+			this.HardwareVersionTextBox.Size = new System.Drawing.Size(106, 14);
 			this.HardwareVersionTextBox.TabIndex = 21;
 			this.HardwareVersionTextBox.TabStop = false;
 			this.HardwareVersionTextBox.Text = "1.00";
@@ -124,13 +124,13 @@ namespace NToolbox.Windows
 			// 
 			this.FirmwareVersionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.FirmwareVersionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(144)))), ((int)(((byte)(236)))));
+			this.FirmwareVersionTextBox.BackColor = System.Drawing.Color.White;
 			this.FirmwareVersionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.FirmwareVersionTextBox.ForeColor = System.Drawing.Color.White;
+			this.FirmwareVersionTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.FirmwareVersionTextBox, "");
-			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(4, 75);
+			this.FirmwareVersionTextBox.Location = new System.Drawing.Point(3, 75);
 			this.FirmwareVersionTextBox.Name = "FirmwareVersionTextBox";
-			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(108, 14);
+			this.FirmwareVersionTextBox.Size = new System.Drawing.Size(106, 14);
 			this.FirmwareVersionTextBox.TabIndex = 20;
 			this.FirmwareVersionTextBox.TabStop = false;
 			this.FirmwareVersionTextBox.Text = "1.00";
@@ -140,14 +140,14 @@ namespace NToolbox.Windows
 			// 
 			this.DeviceNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.DeviceNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(144)))), ((int)(((byte)(236)))));
+			this.DeviceNameTextBox.BackColor = System.Drawing.Color.White;
 			this.DeviceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.DeviceNameTextBox.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DeviceNameTextBox.ForeColor = System.Drawing.Color.White;
+			this.DeviceNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
 			this.MainLocalizationExtender.SetKey(this.DeviceNameTextBox, "");
 			this.DeviceNameTextBox.Location = new System.Drawing.Point(1, 16);
 			this.DeviceNameTextBox.Name = "DeviceNameTextBox";
-			this.DeviceNameTextBox.Size = new System.Drawing.Size(330, 19);
+			this.DeviceNameTextBox.Size = new System.Drawing.Size(328, 19);
 			this.DeviceNameTextBox.TabIndex = 19;
 			this.DeviceNameTextBox.TabStop = false;
 			this.DeviceNameTextBox.Text = "[W057] Vapor Shark SwitchBox RX";
@@ -156,9 +156,9 @@ namespace NToolbox.Windows
 			// label5
 			// 
 			this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(97)))), ((int)(((byte)(164)))));
+			this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.label5, "Toolbox.FirmwareUpdater.HardwareLabel");
-			this.label5.Location = new System.Drawing.Point(112, 59);
+			this.label5.Location = new System.Drawing.Point(111, 59);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(108, 13);
 			this.label5.TabIndex = 24;
@@ -168,9 +168,9 @@ namespace NToolbox.Windows
 			// label4
 			// 
 			this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(97)))), ((int)(((byte)(164)))));
+			this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.label4, "Toolbox.FirmwareUpdater.FirmwareLabel");
-			this.label4.Location = new System.Drawing.Point(4, 59);
+			this.label4.Location = new System.Drawing.Point(3, 59);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(108, 13);
 			this.label4.TabIndex = 23;
@@ -211,22 +211,22 @@ namespace NToolbox.Windows
 			// CommonPanel
 			// 
 			this.CommonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.CommonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(246)))));
+			this.CommonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
 			this.MainLocalizationExtender.SetKey(this.CommonPanel, "");
-			this.CommonPanel.Location = new System.Drawing.Point(0, 130);
+			this.CommonPanel.Location = new System.Drawing.Point(0, 127);
 			this.CommonPanel.Name = "CommonPanel";
 			this.CommonPanel.Size = new System.Drawing.Size(110, 3);
 			this.CommonPanel.TabIndex = 32;
 			// 
 			// CommonLinkLabel
 			// 
-			this.CommonLinkLabel.ActiveLinkColor = System.Drawing.Color.White;
+			this.CommonLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(164)))), ((int)(((byte)(164)))));
 			this.CommonLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.CommonLinkLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.CommonLinkLabel, "Toolbox.FirmwareUpdater.CommonTab");
 			this.CommonLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-			this.CommonLinkLabel.LinkColor = System.Drawing.Color.White;
-			this.CommonLinkLabel.Location = new System.Drawing.Point(1, 111);
+			this.CommonLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(146)))), ((int)(((byte)(221)))));
+			this.CommonLinkLabel.Location = new System.Drawing.Point(1, 108);
 			this.CommonLinkLabel.Name = "CommonLinkLabel";
 			this.CommonLinkLabel.Size = new System.Drawing.Size(110, 13);
 			this.CommonLinkLabel.TabIndex = 47;
@@ -237,13 +237,13 @@ namespace NToolbox.Windows
 			// 
 			// DataflashLinkLabel
 			// 
-			this.DataflashLinkLabel.ActiveLinkColor = System.Drawing.Color.White;
+			this.DataflashLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(164)))), ((int)(((byte)(164)))));
 			this.DataflashLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.DataflashLinkLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.DataflashLinkLabel, "Toolbox.FirmwareUpdater.DatalfashTab");
 			this.DataflashLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-			this.DataflashLinkLabel.LinkColor = System.Drawing.Color.White;
-			this.DataflashLinkLabel.Location = new System.Drawing.Point(111, 111);
+			this.DataflashLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+			this.DataflashLinkLabel.Location = new System.Drawing.Point(111, 108);
 			this.DataflashLinkLabel.Name = "DataflashLinkLabel";
 			this.DataflashLinkLabel.Size = new System.Drawing.Size(110, 13);
 			this.DataflashLinkLabel.TabIndex = 48;
@@ -254,13 +254,13 @@ namespace NToolbox.Windows
 			// 
 			// AdvancedLinkLabel
 			// 
-			this.AdvancedLinkLabel.ActiveLinkColor = System.Drawing.Color.White;
+			this.AdvancedLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(164)))), ((int)(((byte)(164)))));
 			this.AdvancedLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.AdvancedLinkLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.MainLocalizationExtender.SetKey(this.AdvancedLinkLabel, "Toolbox.FirmwareUpdater.AdvancedTab");
 			this.AdvancedLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-			this.AdvancedLinkLabel.LinkColor = System.Drawing.Color.White;
-			this.AdvancedLinkLabel.Location = new System.Drawing.Point(221, 111);
+			this.AdvancedLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+			this.AdvancedLinkLabel.Location = new System.Drawing.Point(221, 108);
 			this.AdvancedLinkLabel.Name = "AdvancedLinkLabel";
 			this.AdvancedLinkLabel.Size = new System.Drawing.Size(110, 13);
 			this.AdvancedLinkLabel.TabIndex = 49;
@@ -432,7 +432,7 @@ namespace NToolbox.Windows
 			// 
 			// cardPanel1
 			// 
-			this.cardPanel1.BorderColor = System.Drawing.Color.LightGray;
+			this.cardPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
 			this.cardPanel1.Controls.Add(this.panel1);
 			this.cardPanel1.Controls.Add(this.multiPanel1);
 			this.MainLocalizationExtender.SetKey(this.cardPanel1, "");
@@ -446,7 +446,10 @@ namespace NToolbox.Windows
 			// 
 			// panel1
 			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(144)))), ((int)(((byte)(236)))));
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.BorderBottom = false;
 			this.panel1.BorderColor = System.Drawing.Color.LightGray;
 			this.panel1.BorderLeft = false;
@@ -466,19 +469,18 @@ namespace NToolbox.Windows
 			this.panel1.Controls.Add(this.label5);
 			this.panel1.Controls.Add(this.CommonPanel);
 			this.panel1.Controls.Add(this.AdvancedLinkLabel);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.MainLocalizationExtender.SetKey(this.panel1, "");
-			this.panel1.Location = new System.Drawing.Point(10, 0);
+			this.panel1.Location = new System.Drawing.Point(11, 3);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(332, 133);
+			this.panel1.Size = new System.Drawing.Size(330, 130);
 			this.panel1.TabIndex = 0;
 			// 
 			// label1
 			// 
 			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(97)))), ((int)(((byte)(164)))));
+			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(167)))), ((int)(((byte)(169)))));
 			this.MainLocalizationExtender.SetKey(this.label1, "Toolbox.FirmwareUpdater.BootLabel");
-			this.label1.Location = new System.Drawing.Point(220, 59);
+			this.label1.Location = new System.Drawing.Point(219, 59);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(108, 13);
 			this.label1.TabIndex = 26;
@@ -488,9 +490,9 @@ namespace NToolbox.Windows
 			// AdvancedPanel
 			// 
 			this.AdvancedPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.AdvancedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(246)))));
+			this.AdvancedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
 			this.MainLocalizationExtender.SetKey(this.AdvancedPanel, "");
-			this.AdvancedPanel.Location = new System.Drawing.Point(220, 130);
+			this.AdvancedPanel.Location = new System.Drawing.Point(220, 127);
 			this.AdvancedPanel.Name = "AdvancedPanel";
 			this.AdvancedPanel.Size = new System.Drawing.Size(112, 3);
 			this.AdvancedPanel.TabIndex = 50;
@@ -498,9 +500,9 @@ namespace NToolbox.Windows
 			// DataflashPanel
 			// 
 			this.DataflashPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.DataflashPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(246)))));
+			this.DataflashPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
 			this.MainLocalizationExtender.SetKey(this.DataflashPanel, "");
-			this.DataflashPanel.Location = new System.Drawing.Point(110, 130);
+			this.DataflashPanel.Location = new System.Drawing.Point(110, 127);
 			this.DataflashPanel.Name = "DataflashPanel";
 			this.DataflashPanel.Size = new System.Drawing.Size(112, 3);
 			this.DataflashPanel.TabIndex = 33;
