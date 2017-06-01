@@ -129,7 +129,7 @@ namespace NToolbox.Windows
 				ShowScreenshot(screenshot);
 			}
 
-			if (ScreenPictureBox.Image == null)
+			if (ScreenPictureBox.BackgroundImage == null)
 			{
 				InfoBox.Show("Something went wrong!");
 				return;
@@ -140,7 +140,7 @@ namespace NToolbox.Windows
 				using (var gfx = Graphics.FromImage(containerImage))
 				{
 					gfx.Clear(Color.Black);
-					gfx.DrawImage(ScreenPictureBox.Image, ScreenshotMargin, ScreenshotMargin, m_screenSize.Width, m_screenSize.Height);
+					gfx.DrawImage(ScreenPictureBox.BackgroundImage, ScreenshotMargin, ScreenshotMargin, m_screenSize.Width, m_screenSize.Height);
 				}
 
 				using (var sf = new SaveFileDialog { FileName = string.Format("{0:yyyy.MM.dd HH.mm.ss}", DateTime.Now), Filter = @"Portable Network Graphics|*.png" })
