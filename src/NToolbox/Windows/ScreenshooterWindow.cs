@@ -121,7 +121,7 @@ namespace NToolbox.Windows
 
 		private void SaveScreenshotButton_Click(object sender, EventArgs e)
 		{
-			if (TakeScreenshotBeforeSaveCheckBox.Checked || ScreenPictureBox.Image == null)
+			if (TakeScreenshotBeforeSaveCheckBox.Checked || ScreenPictureBox.BackgroundImage == null)
 			{
 				var screenshot = TakeScreenshot();
 				if (screenshot == null) return;
