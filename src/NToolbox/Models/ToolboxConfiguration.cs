@@ -27,8 +27,6 @@ namespace NToolbox.Models
 
 		public bool TakeScreenshotBeforeSave { get; set; }
 
-		public int SelectedScreenSize { get; set; }
-
 		public int PixelSizeMultiplier { get; set; }
 
 		public bool ShowPuffsBoundaries { get; set; }
