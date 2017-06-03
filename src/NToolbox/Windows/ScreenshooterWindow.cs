@@ -30,7 +30,9 @@ namespace NToolbox.Windows
 		public ScreenshooterWindow([NotNull] ToolboxConfiguration configuration)
 		{
 			if (configuration == null) throw new ArgumentNullException("configuration");
+
 			m_configuration = configuration;
+			m_screenSize = m_bigScreenSize;
 
 			InitializeComponent();
 			InitializeControls();
