@@ -17,10 +17,15 @@ namespace NToolbox.Windows
 	internal partial class ScreenshooterWindow : EditorDialogWindow
 	{
 		private const int ScreenshotMargin = 1;
+		private const int W96H16BufferLength = 96 * 16 / 8;
+
+		private readonly Size m_smallScreenSize = new Size(96, 16);
+		private readonly Size m_bigScreenSize = new Size(64, 128);
 		private readonly ToolboxConfiguration m_configuration;
+
 		private Size? m_initialWindowSize;
-		private bool m_isBroadcasting;
 		private Size m_screenSize;
+		private bool m_isBroadcasting;
 
 		public ScreenshooterWindow([NotNull] ToolboxConfiguration configuration)
 		{
@@ -43,34 +48,10 @@ namespace NToolbox.Windows
 			Load += (s, e) =>
 			{
 				m_initialWindowSize = Size;
-				PixelSizeUpDown_ValueChanged(null, EventArgs.Empty);
+				ResizeWindow();
 			};
 			Closing += (s, e) => m_isBroadcasting = false;
-
-			ScreenSizeComboBox.Items.Clear();
-			ScreenSizeComboBox.Items.AddRange(new object[]
-			{
-				new NamedItemContainer<Size>("[64x128] VTC, Cuboid, etc...", new Size(64, 128)),
-				new NamedItemContainer<Size>("[96x16] iStick, RX200, etc...", new Size(96, 16))
-			});
-			ScreenSizeComboBox.SelectedValueChanged += (s, e) =>
-			{
-				m_screenSize = ScreenSizeComboBox.GetSelectedItem<Size>();
-				PlaceScreePictureBox();
-				PixelSizeUpDown_ValueChanged(null, EventArgs.Empty);
-				m_configuration.SelectedScreenSize = ScreenSizeComboBox.SelectedIndex;
-			};
 			PixelSizeUpDown.SetValue(m_configuration.PixelSizeMultiplier);
-			ScreenSizeComboBox.SelectedIndex = Math.Max(Math.Min(m_configuration.SelectedScreenSize, ScreenSizeComboBox.Items.Count), 0);
-		}
-
-		private void PlaceScreePictureBox()
-		{
-			ScreenPictureBox.Location = new Point
-			(
-				ScreenBordersPanel.Width / 2 - ScreenPictureBox.Width / 2,
-				ScreenBordersPanel.Height / 2 - ScreenPictureBox.Height / 2
-			);
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -163,6 +144,13 @@ namespace NToolbox.Windows
 				var data = HidConnector.Instance.Screenshot();
 				if (data == null) throw new InvalidOperationException("Invalid screenshot data!");
 
+				if (data.Any(x => x != 0))
+				{
+					m_screenSize = data.Skip(W96H16BufferLength).Any(x => x != 0)
+						? m_bigScreenSize
+						: m_smallScreenSize;
+				}
+
 				data = data.Take(m_screenSize.Width * m_screenSize.Height / 8).ToArray();
 				return CreateBitmapFromBytesArray(m_screenSize.Width, m_screenSize.Height, data);
 			}
@@ -179,8 +167,9 @@ namespace NToolbox.Windows
 		{
 			if (screenshot == null) throw new ArgumentNullException("screenshot");
 
-			var prevImage = ScreenPictureBox.BackgroundImage;
+			ResizeWindow();
 
+			var prevImage = ScreenPictureBox.BackgroundImage;
 			using (screenshot)
 			{
 				ScreenPictureBox.BackgroundImage = EnlargePixelSize(screenshot, Math.Min(m_configuration.PixelSizeMultiplier, 4));
@@ -194,8 +183,38 @@ namespace NToolbox.Windows
 
 		private void SetButtonState(bool enabled)
 		{
-			ScreenSizeComboBox.Enabled = PixelSizeUpDown.Enabled = TakeScreenshotBeforeSaveCheckBox.Enabled = enabled;
+			PixelSizeUpDown.Enabled = TakeScreenshotBeforeSaveCheckBox.Enabled = enabled;
 			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = BroadcastButton.Enabled = enabled;
+		}
+
+		private void ResizeWindow()
+		{
+			// Do not change window size before window appear.
+			if (!m_initialWindowSize.HasValue) return;
+			// Do no change window size if zoom is big enough.
+			if (m_configuration.PixelSizeMultiplier > 4) return;
+			// Clean screen buffer.
+			if (ScreenPictureBox.BackgroundImage != null)
+			{
+				ScreenPictureBox.BackgroundImage.Dispose();
+				ScreenPictureBox.BackgroundImage = null;
+			}
+
+			var desiredWidth = m_configuration.PixelSizeMultiplier * m_screenSize.Width - m_screenSize.Width;
+			var desiredHeight = m_configuration.PixelSizeMultiplier * m_screenSize.Height - m_screenSize.Height;
+
+			var prevSize = Size;
+			Size = new Size
+			(
+				m_initialWindowSize.Value.Width + desiredWidth,
+				m_initialWindowSize.Value.Height + desiredHeight
+			);
+
+			Location = new Point
+			(
+				Location.X - (Size.Width - prevSize.Width) / 2,
+				Location.Y - (Size.Height - prevSize.Height) / 2
+			);
 		}
 
 		public Bitmap CreateBitmapFromBytesArray(int width, int height, [NotNull] byte[] imageData)
@@ -246,33 +265,7 @@ namespace NToolbox.Windows
 		private void PixelSizeUpDown_ValueChanged(object sender, EventArgs e)
 		{
 			m_configuration.PixelSizeMultiplier = (int)PixelSizeUpDown.Value;
-
-			// Do not change window size before window appear.
-			if (!m_initialWindowSize.HasValue) return;
-			// Do no change window size if zoom is big enough.
-			if (m_configuration.PixelSizeMultiplier > 4) return;
-			// Clean screen buffer.
-			if (ScreenPictureBox.BackgroundImage != null)
-			{
-				ScreenPictureBox.BackgroundImage.Dispose();
-				ScreenPictureBox.BackgroundImage = null;
-			}
-
-			var desiredWidth = m_configuration.PixelSizeMultiplier * m_screenSize.Width - m_screenSize.Width;
-			var desiredHeight = m_configuration.PixelSizeMultiplier * m_screenSize.Height - m_screenSize.Height;
-
-			var prevSize = Size;
-			Size = new Size
-			(
-				m_initialWindowSize.Value.Width + desiredWidth,
-				m_initialWindowSize.Value.Height + desiredHeight
-			);
-
-			Location = new Point
-			(
-				Location.X - (Size.Width - prevSize.Width) / 2,
-				Location.Y - (Size.Height - prevSize.Height) / 2
-			);
+			ResizeWindow();
 		}
 	}
 }

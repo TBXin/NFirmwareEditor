@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.groupPanel1 = new NCore.UI.GroupPanel();
-			this.ScreenSizeComboBox = new System.Windows.Forms.ComboBox();
 			this.ScreenBordersPanel = new System.Windows.Forms.Panel();
 			this.ScreenPictureBox = new System.Windows.Forms.PictureBox();
 			this.groupPanel2 = new NCore.UI.GroupPanel();
@@ -56,7 +55,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
-			this.groupPanel1.Controls.Add(this.ScreenSizeComboBox);
 			this.groupPanel1.Controls.Add(this.ScreenBordersPanel);
 			this.groupPanel1.HeaderBackColor = System.Drawing.Color.White;
 			this.groupPanel1.HeaderHeight = 30;
@@ -67,17 +65,6 @@
 			this.groupPanel1.TabIndex = 0;
 			this.groupPanel1.TabStop = false;
 			this.groupPanel1.Text = "Screen:";
-			// 
-			// ScreenSizeComboBox
-			// 
-			this.ScreenSizeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ScreenSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ScreenSizeComboBox.FormattingEnabled = true;
-			this.MainLocalizationExtender.SetKey(this.ScreenSizeComboBox, "");
-			this.ScreenSizeComboBox.Location = new System.Drawing.Point(95, 5);
-			this.ScreenSizeComboBox.Name = "ScreenSizeComboBox";
-			this.ScreenSizeComboBox.Size = new System.Drawing.Size(170, 21);
-			this.ScreenSizeComboBox.TabIndex = 2;
 			// 
 			// ScreenBordersPanel
 			// 
@@ -290,7 +277,6 @@
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.NumericUpDown PixelSizeUpDown;
 		private System.Windows.Forms.CheckBox TakeScreenshotBeforeSaveCheckBox;
-		private System.Windows.Forms.ComboBox ScreenSizeComboBox;
 		private NCore.UI.BorderedPanel ControlBorderedPanel;
 		private System.Windows.Forms.Button CancelButton;
 	}
