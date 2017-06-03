@@ -32,7 +32,6 @@ namespace NToolbox.Windows
 			if (configuration == null) throw new ArgumentNullException("configuration");
 
 			m_configuration = configuration;
-			m_screenSize = m_bigScreenSize;
 
 			InitializeComponent();
 			InitializeControls();
@@ -175,6 +174,10 @@ namespace NToolbox.Windows
 					m_screenSize = data.Skip(W96H16BufferLength).Any(x => x != 0)
 						? m_bigScreenSize
 						: m_smallScreenSize;
+				}
+				else if (m_screenSize.IsEmpty)
+				{
+					return new Bitmap(1, 1);
 				}
 
 				data = data.Take(m_screenSize.Width * m_screenSize.Height / 8).ToArray();
