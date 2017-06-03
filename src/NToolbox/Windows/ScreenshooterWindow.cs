@@ -40,12 +40,18 @@ namespace NToolbox.Windows
 
 		private void InitializeControls()
 		{
+			TabMultiPanel.SelectedPage = ControlPage;
+
+			ControlLinkLabel.LinkClicked += TabLinkLabel_Click;
+			OptionsLinkLabel.LinkClicked += TabLinkLabel_Click;
+
+			TakeScreenshotButton.LinkClicked += TakeScreenshotButton_Click;
+			BroadcastButton.LinkClicked += BroadcastButton_Click;
+			SaveScreenshotButton.LinkClicked += SaveScreenshotButton_Click;
+
 			TakeScreenshotBeforeSaveCheckBox.Checked = m_configuration.TakeScreenshotBeforeSave;
 			TakeScreenshotBeforeSaveCheckBox.CheckedChanged += (s, e) => m_configuration.TakeScreenshotBeforeSave = TakeScreenshotBeforeSaveCheckBox.Checked;
 			PixelSizeUpDown.ValueChanged += PixelSizeUpDown_ValueChanged;
-			TakeScreenshotButton.Click += TakeScreenshotButton_Click;
-			BroadcastButton.Click += BroadcastButton_Click;
-			SaveScreenshotButton.Click += SaveScreenshotButton_Click;
 
 			Load += (s, e) =>
 			{
@@ -54,6 +60,24 @@ namespace NToolbox.Windows
 			};
 			Closing += (s, e) => m_isBroadcasting = false;
 			PixelSizeUpDown.SetValue(m_configuration.PixelSizeMultiplier);
+		}
+
+		private void TabLinkLabel_Click(object sender, EventArgs e)
+		{
+			var link = sender as LinkLabel;
+			if (link == null) return;
+
+			var activeLinkColor = Color.FromArgb(90, 146, 221);
+			var inactiveLinkColor = Color.FromArgb(200, 200, 200);
+
+			ControlLinkLabel.LinkColor = OptionsLinkLabel.LinkColor = inactiveLinkColor;
+			link.LinkColor = activeLinkColor;
+
+			ActiveTabPanel.Left = link.Left;
+			ActiveTabPanel.Width = link.Width;
+
+			if (link == ControlLinkLabel) TabMultiPanel.SelectedPage = ControlPage;
+			if (link == OptionsLinkLabel) TabMultiPanel.SelectedPage = OptionsPage;
 		}
 
 		private void TakeScreenshotButton_Click(object sender, EventArgs e)
@@ -76,7 +100,7 @@ namespace NToolbox.Windows
 			else
 			{
 				SetButtonState(false);
-				BroadcastButton.Enabled = true;
+				BroadcastButton.Links[0].Enabled = true;
 				BroadcastButton.Text = LocalizableStrings.ScreenshooterStopBroadcast;
 				m_isBroadcasting = true;
 				new Thread(() =>
@@ -186,7 +210,7 @@ namespace NToolbox.Windows
 		private void SetButtonState(bool enabled)
 		{
 			PixelSizeUpDown.Enabled = TakeScreenshotBeforeSaveCheckBox.Enabled = enabled;
-			TakeScreenshotButton.Enabled = SaveScreenshotButton.Enabled = BroadcastButton.Enabled = enabled;
+			TakeScreenshotButton.Links[0].Enabled = SaveScreenshotButton.Links[0].Enabled = BroadcastButton.Links[0].Enabled = enabled;
 		}
 
 		private void ResizeWindow()
@@ -217,6 +241,15 @@ namespace NToolbox.Windows
 				Location.X - (Size.Width - prevSize.Width) / 2,
 				Location.Y - (Size.Height - prevSize.Height) / 2
 			);
+
+			if (TabMultiPanel.SelectedPage == ControlPage)
+			{
+				ActiveTabPanel.Left = ControlLinkLabel.Left;
+			}
+			if (TabMultiPanel.SelectedPage == OptionsPage)
+			{
+				ActiveTabPanel.Left = OptionsLinkLabel.Left;
+			}
 		}
 
 		public Bitmap CreateBitmapFromBytesArray(int width, int height, [NotNull] byte[] imageData)

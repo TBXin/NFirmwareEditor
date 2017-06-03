@@ -135,8 +135,6 @@ namespace NToolbox.Windows
 
 			ChangeHWButton.LinkClicked += ChangeHWButton_Click;
 			ChangeBootModeButton.LinkClicked += ChangeBootModeButton_Click;
-
-			TabMultiPanel.SelectedPage = CommonPage;
 		}
 
 		private void UpdateFirmware(Func<byte[]> firmwareFunc)
