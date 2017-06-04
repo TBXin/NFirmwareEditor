@@ -218,6 +218,8 @@ namespace NToolbox.Windows
 
 		private void ResizeWindow()
 		{
+			m_configuration.PixelSizeMultiplier = (int)PixelSizeUpDown.Value;
+
 			// Do not change window size before window appear.
 			if (!m_initialWindowSize.HasValue) return;
 			// Do no change window size if zoom is big enough.
