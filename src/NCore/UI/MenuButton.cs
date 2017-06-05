@@ -102,17 +102,29 @@ namespace NCore.UI
 			m_menu.Focus();
 		}
 
+		#region Overrides of Control
+		protected override void OnLayout(LayoutEventArgs e)
+		{
+			if (!string.Equals(e.AffectedProperty, "Padding")) return;
+
+			using (var gfx = CreateGraphics())
+			{
+				var actualDropDownArrowRectangleWidth = gfx.ScaleToDpi(DropDownArrowRectangleWidth);
+				var paddingRight = actualDropDownArrowRectangleWidth / 2;
+				if (Padding.Right != paddingRight)
+				{
+					Padding = new Padding(Padding.Left, Padding.Top, paddingRight, Padding.Bottom);
+				}
+			}
+			base.OnLayout(e);
+		}
+		#endregion
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			var actualDropDownArrowRectangleWidth = e.Graphics.ScaleToDpi(DropDownArrowRectangleWidth);
-			var paddingRight = actualDropDownArrowRectangleWidth / 2;
-			if (Padding.Right != paddingRight)
-			{
-				Padding = new Padding(Padding.Left, Padding.Top, Padding.Right + paddingRight, Padding.Bottom);
-			}
-
 			base.OnPaint(e);
 
+			var actualDropDownArrowRectangleWidth = e.Graphics.ScaleToDpi(DropDownArrowRectangleWidth);
 			if (ComboBoxRenderer.IsSupported)
 			{
 				
