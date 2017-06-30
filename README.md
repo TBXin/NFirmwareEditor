@@ -7,8 +7,6 @@ We are hoping that you will like it ;)
 
 Supported OS: Windows 7 and higher.  
 
-Nightly build: [![Build status](https://ci.appveyor.com/api/projects/status/github/TBXin/NFirmwareEditor?branch=master&svg=true)](https://ci.appveyor.com/project/TBXin/NFirmwareEditor/branch/master/artifacts)
-
 ## NFirmwareEditor
 NFirmwareEditor is a firmware editor and updater for vaping devices from Joyetech, Wismec, Eleaf, Vaporflask, such as:
 
